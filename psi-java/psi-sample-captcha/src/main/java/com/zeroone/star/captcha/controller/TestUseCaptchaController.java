@@ -36,6 +36,8 @@ public class TestUseCaptchaController {
             //repCode  6111  验证失败
             //repCode  6112  获取验证码失败,请联系管理员
         }
+        // TODO: 加入用户名验证逻辑
+
         return response;
     }
 }
