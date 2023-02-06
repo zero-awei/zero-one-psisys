@@ -70,7 +70,9 @@ function submitForm() {
   //$router.push('/home')
 
   // 弹出验证码框
-  useVerify('clickWord')
+  // useVerify('clickWord')
+
+  doLogin()
 }
 
 // 验证码组件引用
