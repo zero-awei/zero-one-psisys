@@ -30,6 +30,7 @@
 #include "NacosClient.h"
 #include "YamlHelper.h"
 #endif
+#include "FastDfsClient.h"
 
 /**
  * 解析启动参数
@@ -134,6 +135,33 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
+	// 编写一些测试示例
+#ifdef LINUX
+	//定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	//定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+	std::string fileName = "E:\\Images\\20141011112401959.jpg.source.jpg";
+
+	//测试上传
+	std::string fieldName = client.uploadFile(fileName);
+	std::cout << "upload fieldname is : " << fieldName << std::endl;
+	//测试下载
+	if (!fieldName.empty())
+	{
+		std::string path = "./public/fastdfs";
+		fileName = client.downloadFile(fieldName, &path);
+		std::cout << "download savepath is : " << fileName << std::endl;
+	}
+	//测试删除文件
+	if (!fieldName.empty())
+	{
+		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
+	}
+
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
