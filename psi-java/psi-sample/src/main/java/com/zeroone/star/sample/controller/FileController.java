@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.nio.charset.StandardCharsets;
 
 /**
  * <p>
@@ -69,6 +70,7 @@ public class FileController {
         HttpHeaders headers = new HttpHeaders();
         // 构建一个下载的文件名称
         String fileName = "img-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".jpg";
+        fileName = new String(fileName.getBytes(StandardCharsets.UTF_8),StandardCharsets.ISO_8859_1);
         headers.setContentDispositionFormData("attachment", fileName);
         headers.setContentType(MediaType.IMAGE_JPEG);
         return new ResponseEntity<>(bytes, headers, HttpStatus.CREATED);

@@ -4,10 +4,14 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * @Description 测试用户类
- * @Author 阿伟学长
- * @Copy &copy;01星球
- * @Address 01星球总部
+ * <p>
+ * 描述：测试用户类
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ *
+ * @author 阿伟学长
+ * @version 1.0.0
  */
 @Data
 @Builder
