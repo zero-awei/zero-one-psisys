@@ -10,7 +10,11 @@ import com.zeroone.star.sample.entity.Sample;
 import com.zeroone.star.sample.mapper.SampleMapper;
 import com.zeroone.star.sample.service.ISampleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.sample.service.SeataService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -43,5 +47,28 @@ public class SampleServiceImpl extends ServiceImpl<SampleMapper, Sample> impleme
             return sampleVO;
         }
         return null;
+    }
+
+    @Resource
+    SeataService seata;
+
+    @Override
+    @GlobalTransactional
+    public int testSeata() {
+        // 先保存本地数据
+        Sample sample = new Sample();
+        sample.setAge(19);
+        sample.setName("消炎");
+        sample.setSex("女");
+        int row = baseMapper.insert(sample);
+        if (row != 1){
+            throw new RuntimeException("本地数据保存失败");
+        }
+        // 在调用其他微服务
+        Integer res = seata.testSave();
+        if (res == null || res != 1){
+            throw new RuntimeException("微服务数据保存失败");
+        }
+        return 1;
     }
 }

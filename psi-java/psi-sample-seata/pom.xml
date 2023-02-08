@@ -8,16 +8,17 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>psi-sample-ws</artifactId>
+    <artifactId>psi-sample-seata</artifactId>
     <dependencies>
+        <!-- mvc -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--common-->
         <dependency>
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-domain</artifactId>
         </dependency>
         <!--nacos config-->
         <dependency>
@@ -29,15 +30,25 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!-- ws -->
+        <!-- jdbc driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- jdbc template -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-        <!-- rocket-mq -->
+        <!-- seata -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -46,7 +57,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.ws.WsApplication</mainClass>
+                    <mainClass>com.zeroone.star.seata.SeataApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

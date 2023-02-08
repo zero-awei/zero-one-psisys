@@ -53,5 +53,16 @@ public class SampleController implements SampleApis {
             @RequestParam int id) {
         return queryById(id);
     }
+
+    @GetMapping("test-seata")
+    @ApiOperation(value = "测试seata")
+    public JsonVO<String> testSeata() {
+        try {
+            service.testSeata();
+            return JsonVO.success("数据保存成功");
+        }catch (Exception e){
+            return JsonVO.fail(e.getMessage());
+        }
+    }
 }
 

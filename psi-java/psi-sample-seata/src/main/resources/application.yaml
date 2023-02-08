@@ -1,8 +1,9 @@
+# 应用名称
 server:
-  port: ${sp.sample}
+  port: ${sp.seata}
 spring:
   application:
-    name: ${sn.sample}
+    name: ${sn.seata}
 
 seata:
   tx-service-group: tx-business

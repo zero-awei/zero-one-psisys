@@ -46,7 +46,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.captcha.WsApplication</mainClass>
+                    <mainClass>com.zeroone.star.publish.WsApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

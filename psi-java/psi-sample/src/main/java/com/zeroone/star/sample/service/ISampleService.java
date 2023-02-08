@@ -28,4 +28,6 @@ public interface ISampleService extends IService<Sample> {
      * @return 查询结果
      */
     SampleVO getById(int id);
+
+    int testSeata();
 }
