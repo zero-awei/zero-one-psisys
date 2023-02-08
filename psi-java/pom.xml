@@ -18,6 +18,11 @@
         <module>psi-common</module>
         <module>psi-domain</module>
         <module>psi-apis</module>
+        <module>psi-doc</module>
+        <module>psi-sample</module>
+        <module>psi-sample-captcha</module>
+        <module>psi-sample-cpp</module>
+        <module>psi-payablemanagement</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
