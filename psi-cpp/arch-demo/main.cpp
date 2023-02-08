@@ -30,6 +30,7 @@
 #include "NacosClient.h"
 #include "YamlHelper.h"
 #endif
+#include "uselib/rocketmq/TestRocket.h"
 
 /**
  * 解析启动参数
@@ -130,6 +131,9 @@ int main(int argc, char* argv[]) {
 #ifdef HTTP_SERVER_DEMO
 	// 测试生成 JWT Token
 	TestToken::generateToken();
+	// 测试RocketMq
+	TestRocket test;
+	test.testRocket();
 #endif
 
 	// 服务器参数初始化
