@@ -23,6 +23,7 @@
         <module>psi-sample-captcha</module>
         <module>psi-sample-cpp</module>
         <module>psi-sample-ws</module>
+        <module>psi-sample-publish</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->

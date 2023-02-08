@@ -1,20 +1,23 @@
 # 应用名称
 server:
-  port: ${sp.ws}
+  port: ${sp.publish}
 spring:
   application:
-    name: ${sn.ws}
+    name: ${sn.publish}
   cloud:
     stream:
       rocketmq:
         binder:
           name-server: ${rocket-mq.name-server}
+        bindings:
+          output:
+            producer:
+              group: socket
+              sync: true
       bindings:
-        input:
+        output:
           destination: test-topic
           content-type: application/json
-          group: socket
-
 logging:
   level:
     com:
