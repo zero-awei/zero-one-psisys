@@ -23,6 +23,7 @@ import java.util.Collection;
 public class SecurityUser extends org.springframework.security.core.userdetails.User {
     /**
      * 关联一个用户对象
+     * TODO: 这里可能需要管理一个自定义对象，去扩展存储字段
      */
     private User user;
 

@@ -46,6 +46,7 @@ class JwtTokenEnhancer implements TokenEnhancer {
         Map<String, Object> info = new HashMap<>(1);
         //把用户ID设置到JWT中
         info.put("id", securityUser.getUser().getId());
+        //TODO: 在凭证里面附加其它字段，在这里补充
         DefaultOAuth2AccessToken result = (DefaultOAuth2AccessToken) oAuth2AccessToken;
         result.setAdditionalInformation(info);
         return result;
