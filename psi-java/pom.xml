@@ -18,6 +18,9 @@
         <module>psi-common</module>
         <module>psi-domain</module>
         <module>psi-apis</module>
+        <module>psi-oauth2</module>
+        <module>psi-gateway</module>
+        <module>psi-login</module>
         <module>psi-doc</module>
         <module>psi-sample</module>
         <module>psi-sample-captcha</module>
