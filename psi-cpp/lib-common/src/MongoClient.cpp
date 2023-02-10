@@ -27,8 +27,7 @@
 #define MONGO_COLLECTION_ACCESS(__CN__, __VAR__) \
 if (!initPool()) return {}; \
 auto client = m_pool->acquire(); \
-auto db = client->database(m_db); \
-mongocxx::collection __VAR__ = db[#__CN__];
+auto __VAR__ = client->database(m_db); 
 
 bool MongoClient::initPool()
 {
@@ -91,7 +90,8 @@ void MongoClient::setMin(int min)
 bool MongoClient::execute(const string& collectionName, std::function<void(mongocxx::collection*)> callfun)
 {
 	// 访问集合
-	MONGO_COLLECTION_ACCESS(collectionName, collection);
+	MONGO_COLLECTION_ACCESS(collectionName, db);
+	mongocxx::collection collection = db[collectionName];
 	// 呼叫函数
 	try
 	{
@@ -112,7 +112,8 @@ bool MongoClient::execute(const string& collectionName, std::function<void(mongo
 bsoncxx::types::bson_value::view MongoClient::addOne(const string& collectionName, const bsoncxx::document::view& document)
 {
 	// 访问集合
-	MONGO_COLLECTION_ACCESS(collectionName, collection);
+	MONGO_COLLECTION_ACCESS(collectionName, db);
+	mongocxx::collection collection = db[collectionName];
 	// 执行添加并返回插入ID
 	try
 	{
@@ -132,7 +133,8 @@ bsoncxx::types::bson_value::view MongoClient::addOne(const string& collectionNam
 int32_t MongoClient::addMultiple(const string& collectionName, const std::vector<bsoncxx::document::value>& documents)
 {
 	// 访问集合
-	MONGO_COLLECTION_ACCESS(collectionName, collection);
+	MONGO_COLLECTION_ACCESS(collectionName, db);
+	mongocxx::collection collection = db[collectionName];
 	// 执行添加
 	try
 	{

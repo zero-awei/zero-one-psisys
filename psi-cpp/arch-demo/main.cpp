@@ -30,6 +30,8 @@
 #include "NacosClient.h"
 #include "YamlHelper.h"
 #endif
+#include "uselib/mongo/TestMongo.h"
+#include "uselib/redis/TestRedis.h"
 
 /**
  * 解析启动参数
@@ -50,7 +52,7 @@ bool getStartArg(int argc, char* argv[]) {
 #ifdef USE_NACOS
 	// Nacos配置参数
 	std::string nacosAddr = "192.168.220.128:8848";
-	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
+	std::string nacosNs = "082a8a58-389e-4001-8c85-15d9c91f9c9c";
 	std::string serviceName = "feign-cpp-sample";
 	std::string regIp = "192.168.220.128";
 #endif
@@ -134,6 +136,11 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
+	// 测试MongoDB
+	TestMongo::testUseMongo();
+	// 测试Redis
+	TestRedis::testUseRedis();
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
