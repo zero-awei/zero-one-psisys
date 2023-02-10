@@ -29,6 +29,7 @@
         <module>psi-sample-publish</module>
         <module>psi-sample-seata</module>
         <module>psi-sample-ee</module>
+        <module>psi-sample-mongo</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
