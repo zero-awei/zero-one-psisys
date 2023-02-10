@@ -1,0 +1,5 @@
+server:
+  port: ${sp.homepage}
+spring:
+  application:
+    name: ${sn.homepage}
