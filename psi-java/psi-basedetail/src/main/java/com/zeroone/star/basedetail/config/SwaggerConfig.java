@@ -18,6 +18,6 @@ public class SwaggerConfig {
 
     @Bean
     Docket sampleApi() {
-        return SwaggerCore.defaultDocketBuilder("基础信息模块", "com.zeroone.star.basedetail.controller", "sample");
+        return SwaggerCore.defaultDocketBuilder("基础信息模块", "com.zeroone.star.basedetail.controller", "basedetail");
     }
 }
