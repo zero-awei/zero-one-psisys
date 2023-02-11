@@ -3,10 +3,15 @@
 
 #include "../GlobalInclude.h"
 
+/*
+单据阶段
+Author C1-三木
+2023.2.11 18点11分
+*/
 	class BillStageVO
 {
 	// 阶段编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(int, id, Id);
 	// 阶段名称
 	CC_SYNTHESIZE(string, name, Name);
 public:
@@ -14,4 +19,4 @@ public:
 	BIND_TO_JSON(BillStageVO, id, name);
 };
 
-#endif // !_SAMPLE_VO_
+#endif //_BILLSTAGE_VO_

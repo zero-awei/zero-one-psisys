@@ -30,6 +30,18 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\BillStageController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\PurTypeController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\TaxRateController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\TaxScaleController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -72,6 +84,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\BillStageVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\TaxRateVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\TaxScaleVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BillStageController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\PurTypeController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\TaxRateController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\TaxScaleController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
