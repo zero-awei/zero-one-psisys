@@ -127,8 +127,58 @@ let testMenus = [
         pid: 3
       }
     ]
-  }
+  },
+  
 ]
+const componentRouter = {
+  id: 999,
+  text: '组件封装',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 2,
+      text: '查询组件',
+      href: '/component/search',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 3,
+      text: '表格组件',
+      href: '/component/table',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 4,
+      text: '弹出框组件',
+      href: '/component/dialog',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 5,
+      text: '抽屉组件',
+      href: '/component/drawer',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 6,
+      text: '自定义列组件',
+      href: '/component/custom',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 6,
+      text: 'center组件',
+      href: '/component/center',
+      icon: 'IconTickets',
+      pid: 3
+    }
+  ]
+}
 
 export const userStore = defineStore('user', {
   state: () => ({
@@ -175,7 +225,9 @@ export const userStore = defineStore('user', {
         '/login/get-menus',
         null
       )
-      this.menus = data.data
+       this.menus = data.data
+       // 在后端返回菜单列表中添加组件列表路由
+       this.menus.push(componentRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {
