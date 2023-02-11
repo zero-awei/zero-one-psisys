@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 public class SwaggerConfig {
     @Bean
-    Docket sampleApi() {
-        return SwaggerCore.defaultDocketBuilder("采购预付", "com.zeroone.star.payment.controller", "payment");
+    Docket modifyApi() {
+        return SwaggerCore.defaultDocketBuilder("采购预付", "com.zeroone.star.payment.controller", "modify");
     }
 }
