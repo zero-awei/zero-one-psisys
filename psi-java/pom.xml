@@ -24,6 +24,8 @@
         <module>psi-systemmanagement</module>
         <module>psi-homepage</module>
         <module>psi-basedetail</module>
+        <module>psi-sample</module>
+        <module>psi-homepage-information</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
