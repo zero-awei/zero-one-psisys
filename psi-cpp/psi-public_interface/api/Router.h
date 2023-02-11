@@ -41,6 +41,11 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
+
+	void initBillStage();
+	void initPurType();
+	void initTaxRate();
+	void initTaxScale();
 };
 
 #endif // !_ROUTER_
