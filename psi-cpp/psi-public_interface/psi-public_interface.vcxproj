@@ -102,6 +102,7 @@
 libssl.lib
 ;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -152,6 +153,10 @@ libcrypto.lib
 libssl.lib
 ;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -185,6 +190,7 @@ libcrypto.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\BasBankAccountController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
@@ -196,12 +202,14 @@ libcrypto.lib
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\BasBankAccountController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\vo\BasBankAccountVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

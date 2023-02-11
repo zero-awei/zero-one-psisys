@@ -93,4 +93,8 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+void Router::createBasBankAccount()
+{
+	BIND_POSTROUTER(server, "/query-bas-bank-account", &BasBankAccountController::queryBasBankAccount, nullptr);
+}
 #endif

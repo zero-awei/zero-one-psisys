@@ -21,6 +21,7 @@
 #define _ROUTER_
 
 #include "api/ApiHelper.h"
+#include"api/BasBankAccountController.h"
 
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
@@ -40,6 +41,9 @@ private:
 	void createSampleRouter();
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
+
+	//公共接口的供应商资金账户
+	void createBasBankAccount();
 #endif
 };
 
