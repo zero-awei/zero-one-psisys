@@ -30,7 +30,6 @@
 #include "NacosClient.h"
 #include "YamlHelper.h"
 #endif
-#include "uselib/rocketmq/TestRocket.h"
 
 /**
  * 解析启动参数
@@ -40,12 +39,12 @@
  */
 bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
-	std::string serverPort = "3306";
+	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "psitxms9527";
+	std::string dbPassword = "123456";
 	std::string dbName = "test";
-	std::string dbHost = "43.138.223.223";
+	std::string dbHost = "192.168.220.128";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
@@ -131,9 +130,6 @@ int main(int argc, char* argv[]) {
 #ifdef HTTP_SERVER_DEMO
 	// 测试生成 JWT Token
 	TestToken::generateToken();
-	// 测试RocketMq
-	TestRocket test;
-	test.testRocket();
 #endif
 
 	// 服务器参数初始化
