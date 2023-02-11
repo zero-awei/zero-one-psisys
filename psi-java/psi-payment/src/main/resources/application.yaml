@@ -1,0 +1,11 @@
+server:
+  port: ${sp.sample}
+spring:
+  application:
+    name: ${sn.sample}
+
+#server:
+#  port: ${sp.payment}
+#spring:
+#  application:
+#    name: ${sn.payment}
