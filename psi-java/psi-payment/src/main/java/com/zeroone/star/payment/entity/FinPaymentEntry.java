@@ -46,6 +46,9 @@ public class FinPaymentEntry implements Serializable {
      */
     private String srcBillType;
 
+    /**
+     * 源单id
+     */
     private String srcBillId;
 
     /**
