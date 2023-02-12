@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="01星球" />
+    <meta name="description" content="01星球" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>测试访问服务器</title>
+    <script type="text/javascript" src="./static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./static/js/vendor/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="./static/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="./static/js/jquery.fileupload.js"></script>
+</head>
+<body>
+    <!--请求测试-->
+    <span>请求测试：</span>
+    <button onclick="onGet()">GET请求</button>
+    <button onclick="onPost()">POST请求</button>
+    <button onclick="onPut()">PUT请求</button>
+    <button onclick="onDel()">DEL请求</button>
+    <button onclick="onJson()">提交JSON</button>
+    <hr />
+    <!--单文件上传-->
+    <span>单文件上传：</span>
+    <input type="file" id="file1" style="width:73px" />
+    <button onclick="uploadFile()">上传</button>
+    <hr />
+    <!--多文件上传-->
+    <span>多文件上传：</span>
+    <input type="file" id="file2" multiple style="width:73px" />
+    <button id="upload">上传</button>
+
+    <script>
+        let pageIndex = 1;
+        let pageSize = 2;
+        let name = "张三";
+        let sex = "女";
+        function onGet() {
+            $.ajax({
+                type: 'GET',
+                url: `/get?pageIndex=${pageIndex}&pageSize=${pageSize}&name=${name}&sex=${sex}`,
+                dataType: 'json',
+                success: function (message) {
+                    alert('提交成功' + JSON.stringify(message));
+                    pageIndex++;
+                    if (pageIndex > message.data.pages)
+                        pageIndex = 1;
+                },
+                error: function (message) {
+                    alert('提交失败' + JSON.stringify(message));
+                },
+            });
+        }
+        function onPost() {
+            $.post({
+                type: 'POST',
+                url: '/post',
+                dataType: 'json',
+                data: {
+                    name: '张三',
+                    age: 28,
+                    sex: '男',
+                },
+                success: function (message) {
+                    alert('提交成功' + JSON.stringify(message));
+                },
+                error: function (message) {
+                    alert('提交失败' + JSON.stringify(message));
+                },
+            });
+        }
+        function onPut() {
+            $.post({
+                type: 'PUT',
+                url: '/put',
+                dataType: 'json',
+                data: {
+                    name: '小风1',
+                    age: 18,
+                    sex: '女',
+                    id: 2,
+                },
+                success: function (message) {
+                    alert('提交成功' + JSON.stringify(message));
+                },
+                error: function (message) {
+                    alert('提交失败' + JSON.stringify(message));
+                },
+            });
+        }
+        function onDel() {
+            $.ajax({
+                type: 'DELETE',
+                url: '/delete',
+                dataType: 'json',
+                data: {
+                    id: 4,
+                },
+                success: function (message) {
+                    alert('提交成功' + JSON.stringify(message));
+                },
+                error: function (message) {
+                    alert('提交失败' + JSON.stringify(message));
+                },
+            });
+        }
+        function onJson() {
+            $.ajax({
+                type: 'POST',
+                url: '/json',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({
+                    name: '李四',
+                    age: 28,
+                    sex: '女',
+                }),
+                success: function (message) {
+                    alert('提交成功' + JSON.stringify(message));
+                },
+                error: function (message) {
+                    alert('提交失败' + JSON.stringify(message));
+                },
+            });
+        }
+
+        //创建表单数据
+        function createFormData() {
+            let file = $("#file1")[0].files[0];
+            let formData = new FormData();
+            formData.append('file', file);
+            formData.append('nickname', 'feifei');
+            formData.append('age', 18);
+            return formData;
+        }
+        function uploadFile() {
+            $.ajax({
+                type: 'POST',
+                url: '/upload-file',
+                data: createFormData(),
+                processData: false,  // 告诉jquery不转换数据
+                contentType: false,  // 告诉jquery不设置内容格式
+                success: function (res) {
+                    alert("上传完成");
+                    console.log(res);
+                }
+            });
+        }
+
+        //使用文件上传插件实现多文件上传
+        //https://github.com/blueimp/jQuery-File-Upload
+        $(function () {
+            $("#file2").fileupload({
+                url: "/upload-file",
+                singleFileUploads: false,
+                done: function (e, data) {
+                    alert("上传完成");
+                    console.log(data.result);
+                },
+                add: function (e, data) {
+                    $("#upload").one("click", function (e) {
+                        data.submit();
+                    });
+                },
+            });
+        });
+    </script>
+</body>
+</html>
