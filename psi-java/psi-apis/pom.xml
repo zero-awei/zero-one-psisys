@@ -15,5 +15,9 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>psi-domain</artifactId>
+        </dependency>
     </dependencies>
 </project>
