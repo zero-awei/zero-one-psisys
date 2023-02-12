@@ -26,6 +26,8 @@
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
+#include "api/ApiHelper.h"
+#include "BankAccount/AddAccountController.h"
 
 Router::Router(http_server* sever)
 {
@@ -73,7 +75,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	initBankAccount();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -93,4 +95,13 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
 #endif
+
+void Router::initBankAccount()
+{
+	BIND_POST_ROUTER(server, "/post-account", &AddAccountController::addBankAccount, nullptr);
+
+}
+
+
