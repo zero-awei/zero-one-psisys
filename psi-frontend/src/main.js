@@ -18,3 +18,7 @@ installHttp(router)
 // 安装ElIcon
 import installElIcon from './plugins/el-icon'
 installElIcon(app)
+
+// 注册全局组件
+import SearchComponent from './components/search/search.vue'
+app.component('SearchComponent', SearchComponent)
