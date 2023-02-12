@@ -1,6 +1,7 @@
 package com.zeroone.star.payablemanagement.controller;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.Serializable;
 
 /**
  * 用例
@@ -44,13 +47,17 @@ public class SampleController {
 }
 
 @Data
-
-class User {
+class User implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /** value表示该属性对应的表头名称， index表示该属性所处的列的位置 */
     @ExcelProperty(value = "编号", index = 0)
+    @JsonProperty(value = "id")
     private Integer id;
     @ExcelProperty(value = "姓名", index = 1)
+    @JsonProperty(value = "name")
     private String name;
     @ExcelProperty(value = "电话", index = 2)
+    @JsonProperty(value = "phone")
     private String phone;
 }
