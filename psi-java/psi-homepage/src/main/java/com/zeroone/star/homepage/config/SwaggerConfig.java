@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
 
     @Bean
-    Docket sampleApi() {
+    Docket homepageApi() {
         return SwaggerCore.defaultDocketBuilder("首页模块", "com.zeroone.star.homepage.controller", "homepage");
     }
 }
