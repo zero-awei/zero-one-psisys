@@ -177,11 +177,7 @@
     <ClCompile Include="domain\dto\supplier\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplier\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplier\ModifySupplierDTO.cpp" />
-    <ClCompile Include="domain\query\supplier\AdvancedQuery.cpp" />
-    <ClCompile Include="domain\query\supplier\SpecifiedSupplierDataQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
-    <ClCompile Include="domain\vo\supplier\AdvancedQueryVO.cpp" />
-    <ClCompile Include="domain\vo\supplier\SpecifiedSupplierDataQueryVO.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
