@@ -5,6 +5,7 @@ import com.zeroone.star.project.query.systemmanagement.positionmanagement.Positi
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.positionmanagement.PositionVO;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @Description position apis
@@ -35,10 +36,10 @@ public interface PositionApis {
 
     /**
      * 删除指定职务信息
-     * @param positionDTO 根据DTO删除职务
+     * @param positionId 根据DTO删除职务
      * @return 结果的字符串
      */
-    JsonVO<String> deletePosition(PositionDTO positionDTO);
+    JsonVO<String> deletePosition(String positionId);
 
     // TODO: 2023/2/11 导入功能
 

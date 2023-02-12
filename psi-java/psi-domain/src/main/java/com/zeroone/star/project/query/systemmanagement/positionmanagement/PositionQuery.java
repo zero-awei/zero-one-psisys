@@ -13,7 +13,7 @@ import lombok.Data;
 @ApiModel("职务查询Query")
 public class PositionQuery {
     @ApiModelProperty(value = "职务编码", example = "devleader")
-    private Integer code;
+    private String code;
 
     @ApiModelProperty(value = "职务名称", example = "研发部经理")
     private String name;

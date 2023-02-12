@@ -1,0 +1,17 @@
+package com.zeroone.star.systemmanagement.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.systemmanagement.entity.positionmanagement.Position;
+
+/**
+ * @Description
+ * @Author mumu
+ * @Data 2023-02-12 19:31
+ */
+public interface IPositionService extends IService<Position>{
+    /**
+     * 根据id删除职务
+     * @param positionId
+     */
+    void deletePositionById(String positionId);
+}

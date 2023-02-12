@@ -16,22 +16,19 @@ import java.time.LocalDateTime;
 public class PositionVO {
 
     @ApiModelProperty(value = "职务对象ID",example = "1624315388342083586")
-    private Integer Id;
+    private String Id;
 
     @ApiModelProperty(value = "公司ID",example = "null")
-    private Integer companyId;
+    private String companyId;
 
     @ApiModelProperty(value = "职务编码", example = "devleader")
-    private Integer code;
+    private String code;
 
     @ApiModelProperty(value = "职务名称", example = "研发部经理")
     private String name;
 
     @ApiModelProperty(value = "职级", example = "2")
     private String postRank;
-
-    @ApiModelProperty(value = "职务名称", example = "研发部经理")
-    private String postRankDictText;
 
     @ApiModelProperty(value = "创建人", example = "张三")
     private String createBy;

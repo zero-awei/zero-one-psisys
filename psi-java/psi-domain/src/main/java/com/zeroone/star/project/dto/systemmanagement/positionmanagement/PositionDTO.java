@@ -14,10 +14,10 @@ import lombok.Data;
 public class PositionDTO {
 
     @ApiModelProperty(value = "职务对象ID",example = "1624315388342083586")
-    private Integer Id;
+    private String Id;
 
     @ApiModelProperty(value = "职务编码", example = "devleader")
-    private Integer code;
+    private String code;
 
     @ApiModelProperty(value = "职务名称", example = "研发部经理")
     private String name;
