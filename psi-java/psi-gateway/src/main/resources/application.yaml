@@ -35,6 +35,10 @@ spring:
           uri: lb://${sn.cpp}
           predicates:
             - Path=/cpp/**
+        - id: cpp-route
+          uri: lb://${sn.payment}
+          predicates:
+            - Path=/payment/**
 secure:
   # 配置是否开启鉴权
   openauthorization: true

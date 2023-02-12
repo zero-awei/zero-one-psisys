@@ -1,8 +1,8 @@
 server:
-  port: ${sp.sample}
+  port: ${sp.payment}
 spring:
   application:
-    name: ${sn.sample}
+    name: ${sn.payment}
 
 #server:
 #  port: ${sp.payment}
