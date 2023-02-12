@@ -26,7 +26,7 @@ public class User implements Serializable {
     /**
      * 主键id
      */
-    private String  id;
+    private String id;
 
     /**
      * 登录账号
