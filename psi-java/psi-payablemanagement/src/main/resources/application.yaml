@@ -4,7 +4,7 @@ spring:
   application:
     name: ${sn.payablemanagement}
   datasource:
-    url: jdbc:mysql://localhost:3306/xxx?serverTimezone=UTC&characterEncoding=utf8&useUnicode=ture&useSSL=false
+    url: jdbc:mysql://localhost:3306/payable_management?serverTimezone=UTC&characterEncoding=utf8&useUnicode=ture&useSSL=false
     username: root
     password:
     type: com.alibaba.druid.pool.DruidDataSource
