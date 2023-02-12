@@ -21,6 +21,7 @@
         <module>psi-oauth2</module>
         <module>psi-gateway</module>
         <module>psi-login</module>
+        <module>psi-user</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
@@ -240,23 +241,23 @@
                 <version>${apache.common.io.version}</version>
             </dependency>
             <!-- logstash logback encoder -->
-            <dependency>
-                <groupId>net.logstash.logback</groupId>
-                <artifactId>logstash-logback-encoder</artifactId>
-                <version>${logstash-logback-encoder.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>net.logstash.logback</groupId>-->
+<!--                <artifactId>logstash-logback-encoder</artifactId>-->
+<!--                <version>${logstash-logback-encoder.version}</version>-->
+<!--            </dependency>-->
             <!-- spring boot admin server -->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>${spring-boot-admin.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>de.codecentric</groupId>-->
+<!--                <artifactId>spring-boot-admin-starter-server</artifactId>-->
+<!--                <version>${spring-boot-admin.version}</version>-->
+<!--            </dependency>-->
             <!-- spring boot admin client -->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>${spring-boot-admin.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>de.codecentric</groupId>-->
+<!--                <artifactId>spring-boot-admin-starter-client</artifactId>-->
+<!--                <version>${spring-boot-admin.version}</version>-->
+<!--            </dependency>-->
             <!-- findbugs -->
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
@@ -264,27 +265,27 @@
                 <version>${gc.findbugs.version}</version>
             </dependency>
             <!-- easy es -->
-            <dependency>
-                <groupId>cn.easy-es</groupId>
-                <artifactId>easy-es-boot-starter</artifactId>
-                <version>${ee.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                <version>${es.client.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch</groupId>
-                <artifactId>elasticsearch</artifactId>
-                <version>${es.client.version}</version>
-            </dependency>
-            <!-- captcha -->
-            <dependency>
-                <groupId>com.anji-plus</groupId>
-                <artifactId>spring-boot-starter-captcha</artifactId>
-                <version>${captcha.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>cn.easy-es</groupId>-->
+<!--                <artifactId>easy-es-boot-starter</artifactId>-->
+<!--                <version>${ee.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.elasticsearch.client</groupId>-->
+<!--                <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+<!--                <version>${es.client.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.elasticsearch</groupId>-->
+<!--                <artifactId>elasticsearch</artifactId>-->
+<!--                <version>${es.client.version}</version>-->
+<!--            </dependency>-->
+<!--            &lt;!&ndash; captcha &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>com.anji-plus</groupId>-->
+<!--                <artifactId>spring-boot-starter-captcha</artifactId>-->
+<!--                <version>${captcha.version}</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
     <build>

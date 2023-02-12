@@ -1,26 +1,36 @@
-package com.zeroone.star.project.dto.user;
+package com.zeroone.star.user.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@ApiModel("用户管理数据传输对象")
-public class UserDTO {
+/**
+ * <p>
+ * 用户表
+ * </p>
+ *
+ * @author axin
+ * @since 2023-02-12
+ */
+@Getter
+@Setter
+@TableName("sys_user")
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 主键id
      */
-    @ApiModelProperty(value = "id", example = "e9ca23d68d884d4ebb19d07889727dae")
-    private String id;
+    private String  id;
 
     /**
      * 登录账号
      */
-    @ApiModelProperty(value = "用户名", example = "张三")
     private String username;
 
     /**
@@ -98,7 +108,16 @@ public class UserDTO {
      */
     private String telephone;
 
+    /**
+     * 创建人
+     */
+    private String createBy;
 
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     /**
      * 更新人
