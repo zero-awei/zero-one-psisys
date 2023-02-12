@@ -298,7 +298,7 @@ xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C
 
 ![image-20221017115342096](imgs/image-20221017115342096.png)
 
-##### 5.1.8.2 Debug模式
+##### 5.1.8.2==Debug模式==
 
 Debug模式下为了加快启动效率，使用添加环境变量的方式。
 

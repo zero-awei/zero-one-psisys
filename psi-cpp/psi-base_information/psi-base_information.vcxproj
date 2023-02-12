@@ -97,10 +97,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib
-;libcrypto.lib;
-libssl.lib
-;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,10 +119,7 @@ libssl.lib
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;
-libcrypto.lib
-;libssl.lib
-;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -147,10 +141,7 @@ libcrypto.lib
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib
-;libcrypto.lib;
-libssl.lib
-;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -172,10 +163,7 @@ libssl.lib
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;
-libcrypto.lib
-;libssl.lib
-;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -186,7 +174,14 @@ libcrypto.lib
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="domain\dto\supplier\AddSupplierDTO.cpp" />
+    <ClCompile Include="domain\dto\supplier\DeleteSupplierDTO.cpp" />
+    <ClCompile Include="domain\dto\supplier\ModifySupplierDTO.cpp" />
+    <ClCompile Include="domain\query\supplier\AdvancedQuery.cpp" />
+    <ClCompile Include="domain\query\supplier\SpecifiedSupplierDataQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
+    <ClCompile Include="domain\vo\supplier\AdvancedQueryVO.cpp" />
+    <ClCompile Include="domain\vo\supplier\SpecifiedSupplierDataQueryVO.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -200,12 +195,19 @@ libcrypto.lib
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\supplier\AddSupplierDTO.h" />
+    <ClInclude Include="domain\dto\supplier\DeleteSupplierDTO.h" />
+    <ClInclude Include="domain\dto\supplier\ModifySupplierDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\supplier\AdvancedQuery.h" />
+    <ClInclude Include="domain\query\supplier\SpecifiedSupplierDataQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\supplier\AdvancedQueryVO.h" />
+    <ClInclude Include="domain\vo\supplier\SpecifiedSupplierDataQueryVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="stdafx.h" />
