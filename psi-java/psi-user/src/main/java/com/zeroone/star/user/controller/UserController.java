@@ -1,9 +1,17 @@
 package com.zeroone.star.user.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.zeroone.star.project.dto.user.UserDTO;
+import com.zeroone.star.project.query.user.UserQuery;
+import com.zeroone.star.project.user.UserApis;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.user.UserVO;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -15,7 +23,77 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user/sys-user")
-public class UserController {
+public class UserController implements UserApis {
 
+    @ApiOperation(value = "查询用户列表")
+    @GetMapping("list-all")
+    @Override
+    public JsonVO<PageVO<UserVO>> listAllUsers(UserQuery query) {
+        return null;
+    }
+
+    @ApiOperation(value = "查询用户")
+    @GetMapping("query-user")
+    @Override
+    public JsonVO<PageVO<UserVO>> queryUser(UserQuery query) {
+        return null;
+    }
+
+    @ApiOperation(value = "用户信息回显")
+    @GetMapping("echo")
+    @Override
+    public JsonVO<UserVO> echo(String id) {
+        return null;
+    }
+
+
+    @ApiOperation(value = "添加用户")
+    @PostMapping("add")
+    @Override
+    public JsonVO<Long> addUser(UserDTO dto) {
+        return null;
+    }
+
+    @ApiOperation(value = "删除用户")
+    @DeleteMapping("delete")
+    @Override
+    public JsonVO<Long> deleteUser(String id) {
+        return null;
+    }
+
+    @ApiOperation(value = "修改用户")
+    @PutMapping("modify")
+    @Override
+    public JsonVO<Long> modifyUser(UserDTO dto) {
+        return null;
+    }
+
+    @ApiOperation(value = "冻结/解冻用户")
+    @PutMapping("status")
+    @Override
+    public JsonVO<Long> modifyStatus(String id) {
+        return null;
+    }
+
+    @ApiOperation(value = "导入用户")
+    @GetMapping("upload")
+    @Override
+    public JsonVO<Long> upload() {
+        return null;
+    }
+
+    @ApiOperation(value = "导出用户")
+    @GetMapping(value = "get-user")
+    @Override
+    public JsonVO<String> download(List<String> id) {
+        return null;
+    }
+
+    @ApiOperation(value = "导出所有用户")
+    @GetMapping(value = "get-user")
+    @Override
+    public JsonVO<String> downloadAllUsers() {
+        return null;
+    }
 }
 
