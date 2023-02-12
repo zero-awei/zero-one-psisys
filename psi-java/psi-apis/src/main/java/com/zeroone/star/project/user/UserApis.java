@@ -14,7 +14,7 @@ public interface UserApis {
      * @param query 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<UserVO>> listAllUser(UserQuery query);
+    JsonVO<PageVO<UserVO>> listAllUsers(UserQuery query);
 
     /**
      * 查询用户
@@ -28,7 +28,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 用户信息
      */
-    JsonVO<UserVO> review(int id);
+    JsonVO<UserVO> review(String id);
 
     /**
      * 新增用户
@@ -42,7 +42,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 删除用户的编号
      */
-    JsonVO<Long> deleteUser(int id);
+    JsonVO<Long> deleteUser(String id);
 
     /**
      * 修改用户
@@ -56,7 +56,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 修改的用户编号
      */
-    JsonVO<Long> modifyStatus(int id);
+    JsonVO<Long> modifyStatus(String id);
 
     /**
      * 用户导入
@@ -69,11 +69,11 @@ public interface UserApis {
      * @param id 用户id
      * @return 下载地址
      */
-    JsonVO<String> download(List<Integer> id);
+    JsonVO<String> download(List<String> id);
 
     /**
      * 导出全部用户
      * @return 下载地址
      */
-    JsonVO<String> downloadAllUser();
+    JsonVO<String> downloadAllUsers();
 }
