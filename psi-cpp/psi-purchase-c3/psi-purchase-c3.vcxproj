@@ -188,25 +188,49 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\inquiry-eleanor\InquiryEleanorController.h" />
+    <ClInclude Include="api\req-eleanor\ReqEleanorController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\inquiry-eleanor\InquiryEleanorDO.h" />
+    <ClInclude Include="domain\do\req-eleanor\ReqEleanorDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\inquiry-eleanor\InquiryEleanorDTO.h" />
+    <ClInclude Include="domain\dto\req-eleanor\ReqEleanorDTO.h" />
+    <ClInclude Include="domain\dto\user\UserDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\inquiry-eleanor\InquiryEleanorQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\vo\inquiry-eleanor\InquiryEleanorVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\req-eleanor\ReqEleanorVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\user\UserVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\inquiry-eleanor\InquiryEleanorService.h" />
+    <ClInclude Include="service\req-eleanor\ReqEleanorService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\inquiry-eleanor\InquiryEleanorController.cpp" />
+    <ClCompile Include="api\req-eleanor\ReqEleanorController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="domain\do\inquiry-eleanor\InquiryEleanorDO.cpp" />
+    <ClCompile Include="domain\do\req-eleanor\ReqEleanorDO.cpp" />
+    <ClCompile Include="domain\dto\inquiry-eleanor\InquiryEleanorDTO.cpp" />
+    <ClCompile Include="domain\dto\req-eleanor\ReqEleanorDTO.cpp" />
+    <ClCompile Include="domain\query\inquiry-eleanor\InquiryEleanorQuery.cpp" />
+    <ClCompile Include="domain\vo\inquiry-eleanor\InquiryEleanorVO.cpp" />
+    <ClCompile Include="domain\vo\req-eleanor\ReqEleanorVO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\inquiry-eleanor\InquiryEleanorService.cpp" />
+    <ClCompile Include="service\req-eleanor\ReqEleanorService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

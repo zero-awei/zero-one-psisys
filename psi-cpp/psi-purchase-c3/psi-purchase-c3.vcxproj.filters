@@ -54,6 +54,45 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\inquiry-eleanor\InquiryEleanorController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\inquiry-eleanor\InquiryEleanorDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\inquiry-eleanor\InquiryEleanorDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\inquiry-eleanor\InquiryEleanorQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\inquiry-eleanor\InquiryEleanorVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\user\UserVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\inquiry-eleanor\InquiryEleanorService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\user\UserDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\req-eleanor\ReqEleanorController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\req-eleanor\ReqEleanorDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\req-eleanor\ReqEleanorDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\req-eleanor\ReqEleanorVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\req-eleanor\ReqEleanorService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -69,6 +108,39 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\vo\ResultStatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\inquiry-eleanor\InquiryEleanorController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\do\inquiry-eleanor\InquiryEleanorDO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\inquiry-eleanor\InquiryEleanorDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\query\inquiry-eleanor\InquiryEleanorQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\vo\inquiry-eleanor\InquiryEleanorVO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\inquiry-eleanor\InquiryEleanorService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\req-eleanor\ReqEleanorController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\do\req-eleanor\ReqEleanorDO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\req-eleanor\ReqEleanorDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\vo\req-eleanor\ReqEleanorVO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\req-eleanor\ReqEleanorService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
