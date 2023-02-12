@@ -21,8 +21,8 @@ import java.time.LocalDate;
  *      附件：private String attachment;
  *      单据主题：private String subject;
  *      金额：private BigDecimal amt;
- * ---------------fin_payment_req---------------------
- * ---------------fin_payment_req_entry---------------------
+ * ---------------pur_order---------------------
+ * ---------------pur_order_entry---------------------
  *      源单id：private String srcBillId;
  *      分录号：private Integer entryNo;
  *      结算方式：private String settleMethod;
@@ -40,7 +40,7 @@ import java.time.LocalDate;
  */
 @Data
 @ApiModel("查询对象")
-public class ModifyDTO {
+public class ModifyNonApplicationDTO {
     //    fin_payment
     @ApiModelProperty(value = "ID",example = "1590727821862420481")
     private String id;

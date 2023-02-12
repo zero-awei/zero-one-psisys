@@ -1,6 +1,7 @@
 package com.zeroone.star.payment.controller;
 
 import com.zeroone.star.project.dto.payment.ModifyDTO;
+import com.zeroone.star.project.dto.payment.ModifyNonApplicationDTO;
 import com.zeroone.star.project.payment.ModifyApis;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
@@ -19,5 +20,12 @@ public class ModifyController implements ModifyApis {
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
         return JsonVO.success("1111");
+    }
+
+    @PutMapping("submit2")
+    @ApiOperation(value = "修改功能（无申请）")
+    @Override
+    public JsonVO<String> modifyNonApplicationById(ModifyNonApplicationDTO modifyNonApplicationDTO) {
+        return JsonVO.success("2222");
     }
 }
