@@ -160,9 +160,9 @@ public class OthersPayableVO implements Serializable {
     String subject;
 
     /**
-     * 状态
+     * 已关闭
      */
-    Actions actions;
+    String isClosed_dictText;
 
     /**
      * 审批实例id
@@ -174,11 +174,4 @@ public class OthersPayableVO implements Serializable {
         map.put("approver_dictText", approver_dictText);
         return map;
     }
-}
-
-class Actions {
-    /**
-     * 已关闭
-     */
-    String close;
 }
