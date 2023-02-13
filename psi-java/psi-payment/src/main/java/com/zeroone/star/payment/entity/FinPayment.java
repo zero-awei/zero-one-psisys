@@ -228,7 +228,7 @@ public class FinPayment implements Serializable {
         map.put("execute", b);
 
         actionsEnabled = map;
-
+        
         return map;
     }
 
