@@ -1,25 +1,32 @@
 package com.zeroone.star.payablemanagement.controller;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.util.MapUtils;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zeroone.star.payablemanagement.service.base.FinPayableService;
 import com.zeroone.star.project.utils.easyexcel.EasyExcelUtils;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.payablemanagement.OthersPayableVO;
 import entity.FinPayable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
+import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用例
@@ -35,7 +42,28 @@ public class SampleController {
     @Resource
     FinPayableService finPayableService;
 
+    @Value("${customization.name.OthersPayable}")
+    String name;
+
     Logger logger = LoggerFactory.getLogger(SampleController.class);
+
+    @SneakyThrows
+    @ApiOperation("模板导出Excel")
+    @PostMapping(value = "importExcelAsTemplate", produces = "application/octet-stream")
+    public ResponseEntity<byte[]> importExcelAsTemplate() {
+
+        List<OthersPayableVO> list = new ArrayList<>(2);
+        OthersPayableVO vo1 = new OthersPayableVO();
+        OthersPayableVO vo2 = new OthersPayableVO();
+        vo1.setApprovalResultType("11");
+        vo2.setAmt("222");
+        list.add(vo1);
+        list.add(vo2);
+        Map<String, Object> map = MapUtils.newHashMap();
+        map.put("approver_dictText", "管理员");
+
+        return EasyExcelUtils.downloadsAsTemplate(name, list, map);
+    }
 
     @ApiOperation("上传Excel")
     @PostMapping("importExcel")
