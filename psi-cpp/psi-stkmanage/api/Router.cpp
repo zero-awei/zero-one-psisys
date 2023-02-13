@@ -18,6 +18,7 @@
 */
 #include "stdafx.h"
 #include "Router.h"
+#include "IncreaseTon/IncreaseTonController.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
@@ -94,3 +95,14 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+void Router::createIncreaseTonRouter()
+{
+	BIND_GET_ROUTER(server, "/QueryDoc", &IncreaseTonController::QueryDocIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/QueryDocList", &IncreaseTonController::QueryDocListIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/AddDoc", &IncreaseTonController::AddDocIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/ModifyDoc", &IncreaseTonController::ModifyDocIncreaseTon, nullptr);
+	//BIND_GET_ROUTER(server, "/RemoveDoc", &IncreaseTonController::RemoveDocIncreaseTon, nullptr);
+	//BIND_GET_ROUTER(server, "/ModifyDocStat", &IncreaseTonController::ModifyDocStatIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/ImportDocFile", &IncreaseTonController::ImportDocFileIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/EmportDocFile", &IncreaseTonController::EmportDocFileIncreaseTon, nullptr);
+}

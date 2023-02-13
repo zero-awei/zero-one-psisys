@@ -40,7 +40,11 @@ private:
 	void createSampleRouter();
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
+	//创建涨吨入库router
+	void createIncreaseTonRouter();
 #endif
+	//创建涨吨入库router
+	void createIncreaseTonRouter();
 };
 
 #endif // !_ROUTER_
