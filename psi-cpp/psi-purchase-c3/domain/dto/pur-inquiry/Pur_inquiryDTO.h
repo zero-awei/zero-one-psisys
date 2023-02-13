@@ -5,7 +5,8 @@
 
     class Pur_inquiryDTO
     {
-		
+		//单据编号
+		CC_SYNTHESIZE(string, bill_no, Bill_no);
 		//单据主题
 		CC_SYNTHESIZE(string, subject, Subject);
         //付款方式
