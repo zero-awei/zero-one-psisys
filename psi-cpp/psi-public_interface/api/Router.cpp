@@ -37,6 +37,8 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	initAreaSetting();
+	initUserChoiceController();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -98,4 +100,10 @@ void Router::createUserDepartRouter()
 void Router::initAreaSetting()
 {
 	BIND_GET_ROUTER(server, "/get-area", &AreaController::queryArea, nullptr);
+}
+
+void Router::initUserChoiceController()
+{
+	BIND_GET_ROUTER(server, "/get-user", &UserChoiceController::queryUser, nullptr);
+	BIND_GET_ROUTER(server, "/get-depart", &UserChoiceController::queryDepart, nullptr);
 }

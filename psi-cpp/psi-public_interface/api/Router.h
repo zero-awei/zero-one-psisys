@@ -21,7 +21,8 @@
 #define _ROUTER_
 
 #include "api/ApiHelper.h"
-#include "areaController.h"
+#include "AreaController.h"
+#include "UserChoiceController.h"
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */
@@ -42,6 +43,7 @@ private:
 	void createUserDepartRouter();
 #endif
 	void initAreaSetting();
+	void initUserChoiceController();
 };
 
 #endif // !_ROUTER_

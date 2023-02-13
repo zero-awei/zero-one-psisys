@@ -30,7 +30,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\areaController.cpp">
+    <ClCompile Include="api\AreaController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\UserChoiceController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,16 +77,31 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\areaVO.h">
+    <ClInclude Include="domain\vo\AreaVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\areaQuery.h">
+    <ClInclude Include="domain\query\AreaQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\areaDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\areaController.h">
+    <ClInclude Include="api\AreaController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\UserVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\UserQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\DepartVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\DepartNameQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\UserChoiceController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
