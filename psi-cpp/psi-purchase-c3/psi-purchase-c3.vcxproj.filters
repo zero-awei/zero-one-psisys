@@ -54,43 +54,34 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\inquiry-eleanor\InquiryEleanorController.h">
+    <ClInclude Include="api\inquiry-eleanor\PurInquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\inquiry-eleanor\InquiryEleanorDO.h">
+    <ClInclude Include="domain\dto\inquiry-eleanor\PurInquiryDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\inquiry-eleanor\InquiryEleanorDTO.h">
+    <ClInclude Include="domain\query\inquiry-eleanor\PurInquiryQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\inquiry-eleanor\InquiryEleanorQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\inquiry-eleanor\InquiryEleanorVO.h">
+    <ClInclude Include="domain\vo\inquiry-eleanor\PurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\user\UserVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\inquiry-eleanor\InquiryEleanorService.h">
+    <ClInclude Include="service\inquiry-eleanor\PurInquiryService.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\user\UserDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\req-eleanor\ReqEleanorController.h">
+    <ClInclude Include="api\req-eleanor\PurReqController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\req-eleanor\ReqEleanorDO.h">
+    <ClInclude Include="domain\dto\req-eleanor\PurReqDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\req-eleanor\ReqEleanorDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\req-eleanor\ReqEleanorVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="service\req-eleanor\ReqEleanorService.h">
+    <ClInclude Include="service\req-eleanor\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,37 +101,22 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\inquiry-eleanor\InquiryEleanorController.cpp">
+    <ClCompile Include="api\inquiry-eleanor\PurInquiryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\do\inquiry-eleanor\InquiryEleanorDO.cpp">
+    <ClCompile Include="domain\dto\inquiry-eleanor\PurInquiryDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\inquiry-eleanor\InquiryEleanorDTO.cpp">
+    <ClCompile Include="service\inquiry-eleanor\PurInquiryService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\query\inquiry-eleanor\InquiryEleanorQuery.cpp">
+    <ClCompile Include="api\req-eleanor\PurReqController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\vo\inquiry-eleanor\InquiryEleanorVO.cpp">
+    <ClCompile Include="domain\dto\req-eleanor\PurReqDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\inquiry-eleanor\InquiryEleanorService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="api\req-eleanor\ReqEleanorController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\do\req-eleanor\ReqEleanorDO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\req-eleanor\ReqEleanorDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\vo\req-eleanor\ReqEleanorVO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\req-eleanor\ReqEleanorService.cpp">
+    <ClCompile Include="service\req-eleanor\PurReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
