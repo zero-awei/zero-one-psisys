@@ -19,4 +19,5 @@ public class HomeDoingBillVO {
     private Integer appr;
     @ApiModelProperty(value = "执行中",example = "0")
     private Integer exec;
+
 }

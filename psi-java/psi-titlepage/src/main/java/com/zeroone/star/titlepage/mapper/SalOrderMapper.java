@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.titlepage.entity.SalOrder;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * <p>
  * 销售订单 Mapper 接口
@@ -15,4 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SalOrderMapper extends BaseMapper<SalOrder> {
 
+    /*
+    查询毛利润
+     */
+    List<SalOrder> querySalOrder();
 }

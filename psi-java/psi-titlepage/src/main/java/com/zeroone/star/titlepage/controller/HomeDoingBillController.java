@@ -21,13 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/homepage/home-doing-bill")
-@Api(tags = "处理中主要单据")
 public class HomeDoingBillController {
 
-    @ApiOperation("查询所有根字典")
-    @GetMapping("/queryall")
-    public JsonVO<PageVO<ClassifiedDictionaryVO>> queryAll(ClassifiedDictionaryQuery condition) {
-        return null;
-    }
 }
 

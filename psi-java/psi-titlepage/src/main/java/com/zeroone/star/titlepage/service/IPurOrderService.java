@@ -1,7 +1,10 @@
 package com.zeroone.star.titlepage.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.homepage.PurOrderVO;
 import com.zeroone.star.titlepage.entity.PurOrder;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,8 @@ import com.zeroone.star.titlepage.entity.PurOrder;
  */
 public interface IPurOrderService extends IService<PurOrder> {
 
+    /**
+     * 查询采购金额
+     */
+    public List<PurOrderVO> queryPurOrder();
 }

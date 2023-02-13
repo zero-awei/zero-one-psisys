@@ -3,6 +3,7 @@ package com.zeroone.star.titlepage.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.titlepage.entity.HomeDoingBill;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -15,4 +16,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface HomeDoingBillMapper extends BaseMapper<HomeDoingBill> {
 
+    HomeDoingBill selectbyName(@Param("name") String name);
 }

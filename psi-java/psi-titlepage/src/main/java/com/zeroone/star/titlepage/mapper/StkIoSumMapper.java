@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.titlepage.entity.StkIoSum;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * <p>
  * 出入库汇总 Mapper 接口
@@ -14,5 +16,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface StkIoSumMapper extends BaseMapper<StkIoSum> {
-
+    /*
+    查询库存结余
+     */
+    List<StkIoSum> queryStkIoSum();
 }

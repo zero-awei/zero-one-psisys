@@ -1,7 +1,12 @@
 package com.zeroone.star.titlepage.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.homepage.HomeDoingBillVO;
+import com.zeroone.star.project.vo.homepage.SalOrderVO;
 import com.zeroone.star.titlepage.entity.SalOrder;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +17,8 @@ import com.zeroone.star.titlepage.entity.SalOrder;
  * @since 2023-02-12
  */
 public interface ISalOrderService extends IService<SalOrder> {
-
+    /**
+     * 查询毛利润
+     */
+    public List<SalOrderVO> listSalOrder();
 }

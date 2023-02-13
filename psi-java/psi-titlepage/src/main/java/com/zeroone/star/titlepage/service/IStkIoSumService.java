@@ -1,7 +1,10 @@
 package com.zeroone.star.titlepage.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.homepage.StkIoSumVO;
 import com.zeroone.star.titlepage.entity.StkIoSum;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.zeroone.star.titlepage.entity.StkIoSum;
  */
 public interface IStkIoSumService extends IService<StkIoSum> {
 
+    public List<StkIoSumVO> queryStkIoSum();
 }
