@@ -30,6 +30,12 @@
     <ClCompile Include="api\Router.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\dto\returntovendor\AddDocListDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\returntovendor\ModifyDocListDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macros.h">
@@ -71,5 +77,23 @@
     <ClInclude Include="api\Router.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\returntovendor\ReturnToVendorDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\returntovendor\AddDocListDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\returntovendor\ModifyDocListDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\returntovendor\RemoveDocListDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\returntovendor\ExportDocListDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
