@@ -8,7 +8,6 @@ import lombok.Data;
  * @author spk
  * @since 2023-02-13 10:44
  * @description 根据供应商查询付款单，位于应付核销的新增界面
- * 这个的DTO和VO应该是别的组做的吧
  */
 @Data
 @ApiModel("根据供应商查询付款单列表")

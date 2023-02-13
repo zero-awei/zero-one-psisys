@@ -1,9 +1,11 @@
 package com.zeroone.star.project.vo.payablemanagement;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,7 +18,9 @@ import java.util.Date;
  * ApiModelProperty value 以网页上显示的名称为准，如果没有则使用数据库名称
  */
 
-// TODO xxx_dictText的字段如何处理？
+// TODO xxx_dictText的字段的处理：对于同时存在xxx和xxx_dictText的情况，
+//  一种方法是把 xxx_dictText写到VO上，不保留xxx；在DTO上两者都保留，我这里是先只保留了 xxx
+// 如supplierId, supplierId_dictText
 @Data
 @ApiModel("应付核销单显示对象")
 public class FinPayableCheckVO {
@@ -36,7 +40,8 @@ public class FinPayableCheckVO {
     @ApiModelProperty(value = "附件", example = "")
     private String attachment;
 
-    // TODO 看了一眼J4组的代码，他说billDate需要单独传，为什么？
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
     private Date billDate;
 
@@ -55,9 +60,13 @@ public class FinPayableCheckVO {
     @ApiModelProperty(value = "制单人", example = "psi")
     private String createBy;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
     private Date createTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
     private Date effectiveTime;
 
@@ -106,6 +115,8 @@ public class FinPayableCheckVO {
     @ApiModelProperty(value = "修改人", example = "psi")
     private String updateBy;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
     private Date updateTime;
 

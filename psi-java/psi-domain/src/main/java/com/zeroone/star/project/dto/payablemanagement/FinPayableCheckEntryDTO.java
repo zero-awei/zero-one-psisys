@@ -12,6 +12,7 @@ import java.math.BigDecimal;
  * @description 应付核销单明细DTO. copy自VO.
  * 有一个fin_payable_entry中找不到的字段：uncheckAmt，
  * 猜测是 amt - fin_payable的check_amt = uncheckedAmt
+ * 需要做视图或者在service或mapper中处理，暂且保留
  */
 @Data
 @ApiModel("应付核销单明细数据传输对象")

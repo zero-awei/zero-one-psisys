@@ -1,8 +1,10 @@
 package com.zeroone.star.project.dto.payablemanagement;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -31,6 +33,8 @@ public class FinPayableCheckDTO {
     @ApiModelProperty(value = "附件", example = "")
     private String attachment;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
     private Date billDate;
 
@@ -46,9 +50,13 @@ public class FinPayableCheckDTO {
     @ApiModelProperty(value = "制单人", example = "psi")
     private String createBy;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
     private Date createTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
     private Date effectiveTime;
 
@@ -97,6 +105,8 @@ public class FinPayableCheckDTO {
     @ApiModelProperty(value = "修改人", example = "psi")
     private String updateBy;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
     private Date updateTime;
 

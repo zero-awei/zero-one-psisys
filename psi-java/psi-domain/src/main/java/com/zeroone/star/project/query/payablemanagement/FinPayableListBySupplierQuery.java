@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @ApiModel("根据供应商查询应付单列表")
-public class FinPayableCheckListBySupplierQuery {
+public class FinPayableListBySupplierQuery {
     @ApiModelProperty(value = "供应商", example = "1623284221748748290")
     private String supplierId;
 }
