@@ -1,18 +1,23 @@
 package com.zeroone.star.project.vo.payablemanagement;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 应付管理导出Excel
+ * 其他应付导出Excel
  *
  * @author iceberg-work
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OthersPayableVO implements Serializable {
 
     /**
