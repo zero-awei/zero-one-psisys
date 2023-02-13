@@ -3,10 +3,14 @@ package com.zeroone.star.payment.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +19,7 @@ import lombok.Setter;
  * 付款单
  * </p>
  *
- * @author zhd
+ * @author zhd, yuhang
  * @since 2023-02-11
  */
 @Getter
@@ -143,7 +147,7 @@ public class FinPayment implements Serializable {
     /**
      * 是否作废
      */
-    private Boolean isVoided;
+    private Integer isVoided;
 
     /**
      * 创建时间
@@ -176,5 +180,56 @@ public class FinPayment implements Serializable {
      */
     private Integer version;
 
+
+    /**
+     * 操作开启
+     *
+     * @auther: yuhang
+     * @date: 2023/2/13 23:19
+     */
+    private Map actionsEnabled;
+
+    public Map getActionsEnabled() {
+
+        if (id == null) {
+            return null;
+        }
+        /**
+         * 判断条件
+         */
+        HashMap<String, Boolean> map = new HashMap<String, Boolean>();
+
+        boolean b =
+                billStage != null && billStage.startsWith("1")
+                        && (isVoided == null || isVoided == 0)
+                        && (isClosed == null || isClosed == 0)
+                        && (isEffective == null || isEffective == 0);
+        map.put("edit", b);
+
+        b = billStage != null
+                && billStage.startsWith("1")
+                && (isVoided == null || isVoided == 0)
+                && (isClosed == null || isClosed == 0)
+                && (isEffective == null || isEffective == 0)
+                && approver == null;
+        map.put("delete", b);
+
+        b = billStage != null
+                && (isVoided == null || isVoided == 0)
+                && (isClosed == null || isClosed == 0)
+                && (isEffective == null || isEffective == 0);
+        map.put("approve", b);
+
+        b = billStage != null
+                && (billStage.equals("23") || billStage.startsWith("3") )
+                && isEffective != null && isEffective == 1
+                && (isClosed == null || isClosed == 0)
+                && (isVoided == null || isVoided == 0);
+        map.put("execute", b);
+
+        actionsEnabled = map;
+
+        return map;
+    }
 
 }
