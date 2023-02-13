@@ -1,14 +1,10 @@
-package com.zeroone.star.payable.service;
+package com.zeroone.star.project.payable;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zeroone.star.payable.entity.FinPayable;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.payable.FinPayableDTO;
-import com.zeroone.star.project.query.sample.SampleQuery;
+import com.zeroone.star.project.query.patable.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payable.FinPayableVO;
-import com.zeroone.star.project.vo.sample.SampleVO;
 
 /**
  * <p>
@@ -18,7 +14,7 @@ import com.zeroone.star.project.vo.sample.SampleVO;
  * @author chosen1
  * @since 2023-02-13
  */
-public interface IFinPayableService extends IService<FinPayable> {
+public interface IFinPayableService{
     /**
      * 分页查询
      * @param payableDTO 查询条件
@@ -28,8 +24,8 @@ public interface IFinPayableService extends IService<FinPayable> {
 
     /**
      * 根据ID查询
-     * @param id 编号
+     * @param query 编号
      * @return 查询结果
      */
-    JsonVO<FinPayableVO> getById(String id);
+    JsonVO<FinPayableVO> getById(PayableQuery query);
 }
