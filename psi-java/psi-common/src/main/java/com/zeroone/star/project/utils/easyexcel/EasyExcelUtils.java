@@ -38,7 +38,7 @@ public class EasyExcelUtils {
      * @return 二进制流
      */
     @SneakyThrows
-    public byte[] download(String sheetName, Class<T> tClass, List<T> list) {
+    public static byte[] download(String sheetName, Class<T> tClass, List<T> list) {
         // 导出Excel
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             EXCEL.export(sheetName, out, tClass, list);
@@ -54,7 +54,7 @@ public class EasyExcelUtils {
      * @return 二进制流
      */
     @SneakyThrows
-    public byte[] download(String sheetName, List<T> list) {
+    public static byte[] download(String sheetName, List<T> list) {
         return download(sheetName,T.class, list);
     }
 
@@ -67,7 +67,7 @@ public class EasyExcelUtils {
      * @return 下载链接
      */
     @SneakyThrows
-    public String downloadUrl(String sheetName, Class<T> tClass, List<T> list) {
+    public static String downloadUrl(String sheetName, Class<T> tClass, List<T> list) {
         // 导出Excel
         byte[] out = download(sheetName, tClass, list);
         // 上传到fastdfs
@@ -88,7 +88,7 @@ public class EasyExcelUtils {
      * @return 下载链接
      */
     @SneakyThrows
-    public String downloadUrl(String sheetName, List<T> list) {
+    public static String downloadUrl(String sheetName, List<T> list) {
         return downloadUrl(sheetName, T.class, list);
     }
 }

@@ -23,7 +23,7 @@ public class ResponseUtils {
      * @param bytes 二进制流
      * @return 介质类型为JPG类型的HTTP响应体
      */
-    public ResponseEntity<byte[]> bytes2Jpg(byte[] bytes) {
+    public static ResponseEntity<byte[]> bytes2Jpg(byte[] bytes) {
         // 构建一个下载的文件名称
         String fileName = "img-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".jpg";
         return makeBytesResponseEntity(bytes, fileName, MediaType.IMAGE_JPEG);
@@ -35,7 +35,7 @@ public class ResponseUtils {
      * @param bytes 二进制流
      * @return 介质类型为JPG类型的HTTP响应体
      */
-    public ResponseEntity<byte[]> bytes2Xlsx(byte[] bytes, String sheetName) {
+    public static ResponseEntity<byte[]> bytes2Xlsx(byte[] bytes, String sheetName) {
         // 构建一个下载的文件名称
         String fileName = sheetName + "-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
         return makeBytesResponseEntity(bytes, fileName, MediaType.APPLICATION_OCTET_STREAM);
@@ -49,9 +49,9 @@ public class ResponseUtils {
      * @param mediaType 介质类型
      * @return HTTP响应体
      */
-    private ResponseEntity<byte[]> makeBytesResponseEntity(byte[] bytes,
-                                                          String fileName,
-                                                          MediaType mediaType) {
+    private static ResponseEntity<byte[]> makeBytesResponseEntity(byte[] bytes,
+                                                                  String fileName,
+                                                                  MediaType mediaType) {
         // 创建响应头
         HttpHeaders headers = new HttpHeaders();
         fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
