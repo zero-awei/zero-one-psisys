@@ -10,10 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
@@ -39,6 +36,12 @@ public class SampleController {
         return JsonVO.success(finPayableService.list());
     }
 
+    @ApiOperation(value = "传入实体并返回")
+    @PostMapping(value = "entity2entity")
+    public JsonVO<FinPayable> entity2entity(@RequestBody FinPayable finPayable) {
+        return JsonVO.success(finPayable);
+    }
+
     @ApiOperation(value = "获取用例1")
     @GetMapping(value = "get-sample1")
     public JsonVO<User> getSample1(User user) {
@@ -51,7 +54,7 @@ public class SampleController {
      * 加了@RequestBody后要传json格式数据
      */
     @ApiOperation(value = "获取用例2")
-    @GetMapping(value = "get-sample2")
+    @PostMapping(value = "get-sample2")
     public JsonVO<User> getSample2(@RequestBody User user) {
         System.out.println(user);
         System.out.println(JsonVO.success(user));
