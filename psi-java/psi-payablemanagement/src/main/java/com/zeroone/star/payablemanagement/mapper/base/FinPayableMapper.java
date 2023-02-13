@@ -1,4 +1,4 @@
-package com.zeroone.star.payablemanagement.mapper;
+package com.zeroone.star.payablemanagement.mapper.base;
 
 import entity.FinPayable;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

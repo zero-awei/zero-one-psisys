@@ -3,7 +3,7 @@ package com.zeroone.star.payablemanagement.controller;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.zeroone.star.payablemanagement.service.FinPayableService;
+import com.zeroone.star.payablemanagement.service.base.FinPayableService;
 import com.zeroone.star.project.vo.JsonVO;
 import entity.FinPayable;
 import io.swagger.annotations.Api;

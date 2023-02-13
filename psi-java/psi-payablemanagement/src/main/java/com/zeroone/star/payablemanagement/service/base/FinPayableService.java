@@ -1,4 +1,4 @@
-package com.zeroone.star.payablemanagement.service;
+package com.zeroone.star.payablemanagement.service.base;
 
 import entity.FinPayable;
 import com.baomidou.mybatisplus.extension.service.IService;
