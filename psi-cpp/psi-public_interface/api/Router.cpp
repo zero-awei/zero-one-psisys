@@ -16,10 +16,23 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+
+/**
+ *Author c1-ruizi
+ * 2023/2/12  17:46
+ * 接口：开票方式
+ */
+
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+
+#include "api/InvoiceTypeController.h"
+#include "api/InvoiceMethodController.h"
+#include "api/SettleMethodController.h"
+#include "api/TransportMethodController.h"
+
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -37,6 +50,11 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	
+	initInvoiceMethodSetting();
+	initInvoiceTypeSetting();
+	initSettleMethodSetting();
+	initTransportMethodSetting();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -73,7 +91,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +112,20 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::initInvoiceMethodSetting()
+{
+	BIND_GET_ROUTER(server, "/query-invoice-method", &InvoiceMethodController::queryInvoiceMethod, nullptr);
+}
+void Router::initInvoiceTypeSetting()
+{
+	BIND_GET_ROUTER(server, "/query-invoice-type", &InvoiceTypeController::queryInvoiceType, nullptr);
+}
+void Router::initSettleMethodSetting()
+{
+	BIND_GET_ROUTER(server, "/query-settle-method", &SettleMethodController::querySettleMethod, nullptr);
+}
+void Router::initTransportMethodSetting()
+{
+	BIND_GET_ROUTER(server, "/query-transport-method", &TransportMethodController::queryTransportMethod, nullptr);
+}
