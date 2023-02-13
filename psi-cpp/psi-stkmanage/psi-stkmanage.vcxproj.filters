@@ -36,6 +36,9 @@
     <ClCompile Include="domain\dto\returntovendor\ModifyDocListDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\query\returntovendor\DocListQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macros.h">
@@ -90,6 +93,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\returntovendor\ExportDocListDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\returntovendor\DocListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\returntovendor\ReturnToVendorVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
