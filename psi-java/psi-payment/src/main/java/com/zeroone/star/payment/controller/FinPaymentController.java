@@ -25,19 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/payment/fin-payment")
 @Api(tags = "预付款")
-public class FinPaymentController implements PaymentApis {
-
-    @PutMapping("insert-prepayment")
-    @ApiOperation(value = "预付款操作")
-    @Override
-    public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
-        return null;
-    }
-
-    @Override
-    public JsonVO<List<SupplierVO>> querySupplierList() {
-        return null;
-    }
+public class FinPaymentController {
 
 
 }

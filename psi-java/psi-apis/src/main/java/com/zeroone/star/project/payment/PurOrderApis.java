@@ -16,10 +16,5 @@ import com.zeroone.star.project.vo.payment.PurOrderEntryVO;
 
 public interface PurOrderApis {
 
-    /**
-     * 获取采购项目清单（无申请）
-     * @param purchaseListQuery
-     * @return 采购项目清单
-     */
-    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+
 }

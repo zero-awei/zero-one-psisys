@@ -27,11 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/payment/fin-payment-req")
 @Api(tags = "采购清单（有申请）")
 public class FinPaymentReqController implements FinPaymentReqApis {
-    @GetMapping("list-purhcaserequisitions")
-    @ApiOperation(value = "获取采购清单（有申请）")
-    @Override
-    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-        return null;
-    }
+
 }
 

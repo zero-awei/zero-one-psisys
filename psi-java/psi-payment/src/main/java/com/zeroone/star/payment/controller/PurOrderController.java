@@ -26,11 +26,5 @@ import org.springframework.web.bind.annotation.RestController;
 public class PurOrderController implements PurOrderApis {
 
 
-    @GetMapping("list-purhcaserequisitions")
-    @ApiOperation(value = "获取采购清单（无申请）")
-    @Override
-    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-        return null;
-    }
 }
 

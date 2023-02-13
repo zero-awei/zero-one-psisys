@@ -16,11 +16,6 @@ import com.zeroone.star.project.vo.payment.FinPaymentReqVO;
 
 public interface FinPaymentReqApis {
 
-    /**
-     * 获取采购项目清单（有申请）
-     * @param purchaseListQuery
-     * @return 采购项目清单
-     */
-    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+
 
 }

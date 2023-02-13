@@ -1,9 +1,11 @@
 package com.zeroone.star.project.vo.payment;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 /**
  * <p>
@@ -16,76 +18,62 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class FinPaymentReqVO {
-
+//jeecg_row_key
     /**
-     * ID
+     * id
      */
+    @ApiModelProperty(value = "id",example = "1594317750844637186")
     private String id;
-
-    /**
-     * 主表
-     */
-    private String mid;
 
     /**
      * 单据号
      */
+    @ApiModelProperty(value = "单据编号",example = "CGYFSQ-221120-001")
     private String billNo;
 
     /**
-     * 分录号
+     * 单据日期
      */
-    private Integer entryNo;
+    @ApiModelProperty(value = "单据日期",example = "2022-11-20")
+    private Date billDate;
 
     /**
-     * 源单类型
+     * 付款类型
      */
-    private String srcBillType;
+    @ApiModelProperty(value = "付款类型",example = "2011")
+    private Integer paymentType;
 
     /**
-     * srcBillId
+     * 已关闭
      */
-    private String srcBillId;
+    @ApiModelProperty(value = "已关闭",example = "1")
+    private Integer isClosed;
+
+    @ApiModelProperty(value = "操作部门",example = "A01A03")
+    private String opDept;
 
     /**
-     * 源单分录id
+     * 业务员
      */
-    private String srcEntryId;
+    @ApiModelProperty(value = "业务员",example = "zhagnxiao")
+    private String operator;
 
     /**
-     * 源单分录号
+     * 供应商
      */
-    private String srcNo;
+    @ApiModelProperty(value = "供应商",example = "1584950950470164481")
+    private String supplierId;
 
     /**
-     * 申请金额
+     * 含税金额
      */
+    @ApiModelProperty(value = "含税金额",example = "1000.00")
     private BigDecimal amt;
-
-    /**
-     * 已付金额
-     */
-    private BigDecimal paidAmt;
 
     /**
      * 备注
      */
+    @ApiModelProperty(value = "备注",example = "备注")
     private String remark;
-
-    /**
-     * 自定义1
-     */
-    private String custom1;
-
-    /**
-     * 自定义2
-     */
-    private String custom2;
-
-    /**
-     * 版本
-     */
-    private Integer version;
-
 
 }
