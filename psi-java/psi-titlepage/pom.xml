@@ -5,12 +5,11 @@
     <parent>
         <artifactId>psi-java</artifactId>
         <groupId>com.zeroone.star</groupId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>psi-system-management</artifactId>
+    <artifactId>psi-titlepage</artifactId>
 
     <dependencies>
         <dependency>

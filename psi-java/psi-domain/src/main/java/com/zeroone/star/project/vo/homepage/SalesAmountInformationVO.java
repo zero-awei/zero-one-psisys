@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 public class SalesAmountInformationVO {
 
     @ApiModelProperty(value = "月份", example = "3月")
-    private Integer x;
+    private String x;
 
     @ApiModelProperty(value = "销售金额", example = "115500.0")
     private BigDecimal y;

@@ -18,6 +18,6 @@ public class CustomerInformationVO {
     @ApiModelProperty(value = "类型", example = "今日客户")
     private String label;
 
-    @ApiModelProperty(value = "客户数量", example = "1")
+    @ApiModelProperty(value = "客户数量", example = "0")
     private Integer value;
 }

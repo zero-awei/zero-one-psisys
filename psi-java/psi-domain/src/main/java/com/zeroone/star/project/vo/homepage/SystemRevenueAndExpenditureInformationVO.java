@@ -20,7 +20,7 @@ public class SystemRevenueAndExpenditureInformationVO {
     @ApiModelProperty(value = "系统收支属性", example = "即时库存(元)")
     private String label;
 
-    @ApiModelProperty(value = "价值", example = "8532255680.22")
+    @ApiModelProperty(value = "价值", example = "98600")
     private BigDecimal value;
 
 }
