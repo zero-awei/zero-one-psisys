@@ -1,6 +1,6 @@
 package com.zeroone.star.project.payment;
 
-import com.zeroone.star.project.query.payment.DetQuery;
+import com.zeroone.star.project.query.payment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.payment.DetHavVO;
 import com.zeroone.star.project.vo.payment.DetNoVO;
@@ -15,18 +15,18 @@ import com.zeroone.star.project.vo.payment.DetNoVO;
  * @author 狂踹瘸子那条好腿
  * @version 1.0.0
  */
-public interface PaymentDetApis {
+public interface PrePaymentDetApis {
     /**
      * 通过单据编号查询数据-采购预付有申请
      * @param condition 单据编号-查询条件
      * @return 查询结果
      */
-    JsonVO<DetHavVO> queryByBillHav(DetQuery condition);
+    JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition);
 
     /**
      *通过单据编号查询数据-采购预付无申请
      * @param condition 单据编号-查询条件
      * @return 查询结果
      */
-    JsonVO<DetNoVO> queryByBillNo (DetQuery condition);
+    JsonVO<DetNoVO> queryByBillNo (PreDetQuery condition);
 }

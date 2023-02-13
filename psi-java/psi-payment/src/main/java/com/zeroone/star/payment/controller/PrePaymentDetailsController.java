@@ -1,7 +1,7 @@
 package com.zeroone.star.payment.controller;
 
-import com.zeroone.star.project.payment.PaymentDetApis;
-import com.zeroone.star.project.query.payment.DetQuery;
+import com.zeroone.star.project.payment.PrePaymentDetApis;
+import com.zeroone.star.project.query.payment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.payment.DetHavVO;
 import com.zeroone.star.project.vo.payment.DetNoVO;
@@ -23,19 +23,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/payment/detail")
 @Api(tags = "查询详细信息")
 @Validated
-public class PaymentDetailsController implements PaymentDetApis {
+public class PrePaymentDetailsController implements PrePaymentDetApis {
 
     @GetMapping("/hav")
     @ApiOperation(value = "有申请")
     @Override
-    public JsonVO<DetHavVO> queryByBillHav(DetQuery condition) {
+    public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
         return JsonVO.success(new DetHavVO());
     }
 
     @GetMapping("/no")
     @ApiOperation(value = "无申请")
     @Override
-    public JsonVO<DetNoVO> queryByBillNo(DetQuery condition) {
+    public JsonVO<DetNoVO> queryByBillNo(PreDetQuery condition) {
         return JsonVO.success(new DetNoVO());
     }
 }

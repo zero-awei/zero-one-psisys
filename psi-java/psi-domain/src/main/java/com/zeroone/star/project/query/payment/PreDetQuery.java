@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @ApiModel("单据编号查询")
-public class DetQuery {
+public class PreDetQuery {
     @NotBlank(message = "单据编号不能为空")
     @ApiModelProperty(value = "单据编号",example = "CGYF-230211-022")
     private String billNo;
