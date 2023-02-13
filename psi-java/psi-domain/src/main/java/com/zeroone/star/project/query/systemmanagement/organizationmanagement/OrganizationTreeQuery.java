@@ -4,6 +4,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * <p>
+ * 描述：查询指定组织结构树
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ *
+ * @author Morrangee
+ * @version 1.0.0
+ */
 @Data
 @ApiModel("查询指定组织结构树")
 public class OrganizationTreeQuery {

@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author Morrangee
- * @since 2023-02-12
+ * @since 2023-02-13
  */
 @Mapper
 public interface SysDepartMapper extends BaseMapper<SysDepart> {
