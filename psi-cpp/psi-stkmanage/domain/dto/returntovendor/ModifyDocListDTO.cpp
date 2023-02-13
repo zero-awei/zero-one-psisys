@@ -3,6 +3,7 @@
 
 void from_json(const json& j, ModifyDocListDTO& t)
 {
+	BIND_FROM_TO_NORMAL(j, t, src_no);
 	BIND_FROM_TO_NORMAL(j, t, bill_date);
 	BIND_FROM_TO_NORMAL(j, t, subject);
 	BIND_FROM_TO_NORMAL(j, t, handler);

@@ -7,6 +7,8 @@
 */
 class ModifyDocListDTO
 {
+	// 采购入库单编号
+	CC_SYNTHESIZE(std::string, src_no, SrcNo);
 	// 单据日期
 	CC_SYNTHESIZE(std::string, bill_date, BillDate);
 	// 单据主题
