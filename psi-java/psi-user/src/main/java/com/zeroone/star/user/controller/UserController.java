@@ -89,7 +89,7 @@ public class UserController implements UserApis {
     }
 
     @ApiOperation(value = "导出所有用户")
-    @GetMapping(value = "get-user")
+    @GetMapping(value = "get-users")
     @Override
     public JsonVO<String> downloadAllUsers() {
         return null;
