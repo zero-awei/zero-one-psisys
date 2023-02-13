@@ -9,7 +9,6 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.user.UserVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -50,35 +49,35 @@ public class UserController implements UserApis {
     @ApiOperation(value = "添加用户")
     @PostMapping("add")
     @Override
-    public JsonVO<Long> addUser(UserDTO dto) {
+    public JsonVO<String> addUser(UserDTO dto) {
         return null;
     }
 
     @ApiOperation(value = "删除用户")
     @DeleteMapping("delete")
     @Override
-    public JsonVO<Long> deleteUser(String id) {
+    public JsonVO<String> deleteUser(String id) {
         return null;
     }
 
     @ApiOperation(value = "修改用户")
     @PutMapping("modify")
     @Override
-    public JsonVO<Long> modifyUser(UserDTO dto) {
+    public JsonVO<String> modifyUser(UserDTO dto) {
         return null;
     }
 
     @ApiOperation(value = "冻结/解冻用户")
     @PutMapping("status")
     @Override
-    public JsonVO<Long> modifyStatus(String id) {
+    public JsonVO<String> modifyStatus(String id) {
         return null;
     }
 
     @ApiOperation(value = "导入用户")
     @GetMapping("upload")
     @Override
-    public JsonVO<Long> upload() {
+    public JsonVO<String> upload() {
         return null;
     }
 
