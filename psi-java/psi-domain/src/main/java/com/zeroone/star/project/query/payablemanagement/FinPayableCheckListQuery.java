@@ -9,13 +9,14 @@ import java.util.Date;
 /**
  * @author spk
  * @since 2023-02-13 08:43
- * @description 应付核销单Query。查询按钮左侧和上侧用到的字段。
+ * @description 应付核销单Query。在应付核销页面查询按钮左侧和上侧用到的字段。
  * TODO 是否需要区分展开前和展开后？先暂时不做区分
+ * TODO 咱也不知道用不用 extend PageQuery
  * 因为已经包括了供应商，所以根据供应商查询应付单就不做了
  */
 @Data
 @ApiModel("应付核销单查询")
-public class FinPayableCheckQuery {
+public class FinPayableCheckListQuery {
     // ---展开前---
 
     /**
