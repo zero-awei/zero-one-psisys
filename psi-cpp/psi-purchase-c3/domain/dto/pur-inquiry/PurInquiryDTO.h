@@ -3,7 +3,7 @@
 #ifndef __PUR_INQUIRYDTO_H__
 #define __PUR_INQUIRYDTO_H__
 
-    class Pur_inquiryDTO
+    class PurInquiryDTO
     {
 		//单据编号
 		CC_SYNTHESIZE(string, bill_no, Bill_no);
@@ -38,7 +38,7 @@
 		//单据日期
 		CC_SYNTHESIZE(string, bill_date, Bill_Date);
 	public:
-		friend void from_json(const json& j, Pur_inquiryDTO& t)
+		friend void from_json(const json& j, PurInquiryDTO& t)
 		{
 			BIND_FROM_TO_NORMAL(j, t, subject);
 			BIND_FROM_TO_NORMAL(j, t, payment_method);
