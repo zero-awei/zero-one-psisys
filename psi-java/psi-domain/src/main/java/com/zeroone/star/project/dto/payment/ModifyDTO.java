@@ -1,5 +1,6 @@
 package com.zeroone.star.project.dto.payment;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class ModifyDTO {
     private BigDecimal amt;
 
     @ApiModelProperty(value = "单据日期",example = "2022-01-14")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
     @ApiModelProperty(value = "单据编号",example = "CGYF-221120-002")
