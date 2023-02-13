@@ -12,5 +12,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-02-11
  */
 public interface IPurOrderService extends IService<PurOrder> {
-
 }
