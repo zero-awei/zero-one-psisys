@@ -47,7 +47,7 @@ public class FinPayableCheck implements Serializable {
     private String srcNo;
 
     /**
-     * 
+     * spk: 数据库中没有但网页上写的单据主题
      */
     private String subject;
 
