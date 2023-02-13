@@ -8,7 +8,7 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>psi-sample</artifactId>
+    <artifactId>psi-role</artifactId>
     <dependencies>
 <!--        spring mvc-->
         <dependency>
@@ -57,7 +57,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.example.psisample.PsiSampleApplication</mainClass>
+                    <mainClass>com.zeroone.star.role.RoleApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
