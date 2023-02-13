@@ -43,16 +43,16 @@ public:
 private:
 	//默认查询数据
 	JsonVO<PageVO<DepotVO>> execQueryDepot(const DepotQuery& query, const PayloadDTO& payload);
-	//查询子级列表 这里应该传个唯一值就行 要不要分页的问题之后测试了再说
+	//查询子级列表 # 这里应该传个唯一值就行 要不要分页的问题之后测试了再说
 	JsonVO<DepotVO> execQueryKidDepot(const DepotQuery& query, const PayloadDTO& payload);
-	// 查询详情  这里应该传个唯一值就行
+	// 查询详情 # 这里应该传个唯一值就行
 	JsonVO<DepotDetailVO> execQueryDetail(const DepotQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const DepotQuery& query, const PayloadDTO& payload);
-	//新增仓库 添加下级应该可以通过这个来实现，就先不写
+	//新增仓库 # 添加下级应该可以通过这个来实现，就先不写
 	JsonVO<uint64_t> execAddDepot(const DepotDTO& dto);
 	//修改仓库
 	JsonVO<uint64_t> execModifyDepot(const DepotDTO& dto);
-	//删除仓库 这里应该传个唯一值就行，反正是对应删除的
+	//删除仓库 # 这里应该传个唯一值就行，反正是对应删除的
 	JsonVO<uint64_t> execRemoveDepot(const DepotDTO& dto);
 	//文件导入
 	JsonVO<DepotVO> execModifyDepots(const DepotDTO& dto);
