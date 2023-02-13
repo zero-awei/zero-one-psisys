@@ -20,5 +20,7 @@ import installElIcon from './plugins/el-icon'
 installElIcon(app)
 
 // 注册全局组件
-import SearchComponent from './components/search/search.vue'
+import SearchComponent from './components/search/searchComponent.vue'
+import TableComponent from './components/table/tableComponent.vue'
 app.component('SearchComponent', SearchComponent)
+app.component('TableComponent', TableComponent)

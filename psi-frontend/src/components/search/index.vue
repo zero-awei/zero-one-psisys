@@ -256,7 +256,7 @@ const state2 = reactive({
   // 配置数据绑定的字段
   formData2: {
     billNo: '',
-    daterange: '',
+    daterange: [],
     subject: '',
     supplierId: '',
     billStage: '',

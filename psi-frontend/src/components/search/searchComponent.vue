@@ -9,29 +9,6 @@
         label-position="right"
         label-width="auto"
       >
-        <!-- <el-row :gutter="20">
-            <el-col :xl="6" :lg="7" :md="8" :sm="24">
-              <el-form-item label="Approved by">
-                <el-input v-model="formInline.user" placeholder="Approved by" />
-              </el-form-item>
-            </el-col>
-            <el-col :xl="6" :lg="7" :md="8" :sm="24">
-              <el-form-item label="Approved by">
-                <el-input v-model="formInline.a" placeholder="Approved by" />
-              </el-form-item>
-            </el-col>
-            <el-col :xl="6" :lg="7" :md="8" :sm="24">
-              <el-form-item label="Activity zone">
-                <el-select
-                  v-model="formInline.region"
-                  placeholder="Activity zone"
-                >
-                  <el-option label="Zone one" value="shanghai" />
-                  <el-option label="Zone two" value="beijing" />
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
         <el-row :gutter="20">
           <template v-for="item in items">
             <el-col :xl="6" :lg="7" :md="8" :sm="24">
