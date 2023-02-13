@@ -38,6 +38,15 @@ void Router::initRouter()
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
+	//公共接口的供应商资金账户
+	createBasBankAccount();
+
+	//物料分类树状结构列表
+	createMaterialTypeTreeList();
+
+	//仓库树状结构列表
+	createBasWareHouseTreeList();
+
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -70,9 +79,15 @@ void Router::initRouter()
 	createSampleRouter();
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
+
+
+
+
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+
+
 
 }
 
@@ -96,5 +111,13 @@ void Router::createUserDepartRouter()
 void Router::createBasBankAccount()
 {
 	BIND_POSTROUTER(server, "/query-bas-bank-account", &BasBankAccountController::queryBasBankAccount, nullptr);
+}
+void Router::createMaterialTypeTreeList()
+{
+	BIND_POSTROUTER(server, "/query-material-type-tree-list", &MaterialTypeTreeListController::queryMaterialTypeTreeList, nullptr);
+}
+void Router::createBasWareHouseTreeList()
+{
+	BIND_POSTROUTER(server, "/query-bas-ware-house-tree-list", &BasWareHouseTreeListController::queryBasWareHouseTreeList, nullptr);
 }
 #endif

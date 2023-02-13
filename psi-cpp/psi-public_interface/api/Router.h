@@ -22,6 +22,8 @@
 
 #include "api/ApiHelper.h"
 #include"api/BasBankAccountController.h"
+#include"api/MaterialTypeTreeListController.h"
+#include"api/BasWareHouseTreeListController.h"
 
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
@@ -35,6 +37,16 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
+
+	//公共接口的供应商资金账户
+	void createBasBankAccount();
+
+	//物料分类树状结构列表
+	void createMaterialTypeTreeList();
+
+	//仓库树状结构列表
+	void createBasWareHouseTreeList();
+	
 private:
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
@@ -42,9 +54,11 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 
-	//公共接口的供应商资金账户
-	void createBasBankAccount();
+	
 #endif
+
+
+	
 };
 
 #endif // !_ROUTER_
