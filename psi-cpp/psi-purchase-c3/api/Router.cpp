@@ -22,7 +22,7 @@
 #include "domain/vo/JsonVO.h"
 
 #ifdef HTTP_SERVER_DEMO
-#include "sample/SampleController.h"
+#include "ReqAdam/ReqAdamController.h"
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
@@ -67,7 +67,7 @@ void Router::initRouter()
 			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
-	createSampleRouter();
+	createReqAdamRouter();
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
@@ -77,15 +77,13 @@ void Router::initRouter()
 }
 
 #ifdef HTTP_SERVER_DEMO
-void Router::createSampleRouter()
+void Router::createReqAdamRouter()
 {
-	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
-	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
-	BIND_PUT_ROUTER(server, "/put", &SampleController::modifySample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &SampleController::removeSample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
-	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
-	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
+	BIND_POST_ROUTER(server, "/post-pur-req", &ReqAdamController::addPurReq, nullptr);
+	BIND_PUT_ROUTER(server, "/put-pur-req", &ReqAdamController::modifyPurReq, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-pur-req", &ReqAdamController::removePurReq, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-by-id", &ReqAdamController::removeById, nullptr);
+	BIND_POST_ROUTER(server, "/modify-pur-req-state", &ReqAdamController::modifyPurReqState, nullptr);
 }
 
 void Router::createUserDepartRouter()
