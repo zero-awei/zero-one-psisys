@@ -79,23 +79,14 @@
 .el-menu {
   border: 0;
 }
-.el-menu-item-group .el-menu-item {
-  text-indent: 1.5em;
+      .manage-title{
+        color: #fff;
+        font-size: 18px;
+        left:10px;
+        margin: 0 0 0 8px;
+        font-weight: bold;
+      }
 }
-.el-main {
-  padding: 20px;
-}
-.el-header {
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  .header-nav {
-    padding: 20px;
-    background-color: #6c777f;
-    width: 100%;
-    color: #f8f8f8;
-    text-align: right;
   }
 }
 </style>
