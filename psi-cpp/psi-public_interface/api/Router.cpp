@@ -93,4 +93,9 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
 #endif
+void Router::initAreaSetting()
+{
+	BIND_GET_ROUTER(server, "/get-area", &AreaController::queryArea, nullptr);
+}
