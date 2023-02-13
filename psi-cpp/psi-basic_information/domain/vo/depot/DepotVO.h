@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/25 11:34:14
+ @Author: Linsky
+ @Date: 2023/2/13 20:31:04
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -44,6 +44,35 @@ class DepotVO
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(DepotVO, name, id, help_name, phone);
+};
+
+class DepotDetailVO
+{
+	// 上级
+	// 下级
+	// 名称
+	CC_SYNTHESIZE(string, name, Name);
+	// 编号
+	CC_SYNTHESIZE(string, id, Id);
+	// 助记名
+	CC_SYNTHESIZE(string, help_name, Help_name);
+	// 电话
+	CC_SYNTHESIZE(int, phone, Phone);
+	// 启用
+	// 备注
+public:
+	// 绑定JSON转换方法
+	BIND_TO_JSON(DepotVO, name, id, help_name, phone);
+};
+
+class DepotActionInfoVO
+{
+	// 创建时间
+	// 创建人
+	// 修改时间
+	// 修改人
+public:
+	// 绑定JSON转换方法
 };
 
 #endif // !_DEPOT_VO_

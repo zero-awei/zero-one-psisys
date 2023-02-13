@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/25 0:27:04
+ @Author: Linsky
+ @Date: 2023/2/13 20:31:04
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@
 class SampleController
 {
 public:
+	// 这里帮忙补一下，就下面对应绑定上来
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDepot, execQueryDepot, DepotQuery);
 	CREATE_API_FUN_BODY(addDepot, execAddDepot, DepotDTO);
 	CREATE_API_FUN_BODY(modifyDepot, execModifyDepot, DepotDTO);
@@ -42,10 +43,11 @@ public:
 private:
 	//默认查询数据
 	JsonVO<PageVO<DepotVO>> execQueryDepot(const DepotQuery& query, const PayloadDTO& payload);
-	//查询子级列表 没写完,暂时复制的默认查询
+	//查询子级列表 这里应该传个唯一值就行 要不要分页的问题之后测试了再说
 	JsonVO<DepotVO> execQueryKidDepot(const DepotQuery& query, const PayloadDTO& payload);
-	// 查询详情
-	
+	// 查询详情  这里应该传个唯一值就行
+	JsonVO<DepotDetailVO> execQueryDetail(const DepotQuery& query, const PayloadDTO& payload);
+	JsonVO<DepotActionInfoVO> execQueryActionInfo(const DepotQuery& query, const PayloadDTO& payload);
 	//新增仓库 添加下级应该可以通过这个来实现，就先不写
 	JsonVO<uint64_t> execAddDepot(const DepotDTO& dto);
 	//修改仓库
