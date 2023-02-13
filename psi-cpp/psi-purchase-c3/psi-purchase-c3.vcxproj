@@ -188,19 +188,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\purchase_quotation_naiguan\pur_quotController.h" />
+    <ClInclude Include="api\purchase-quotation-naiguan\PurQuotNaiguanController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\purchase_quotation_naiguan\pur_quotDO.h" />
+    <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\purchase_quotation_naiguan\pur_quotDTO.h" />
+    <ClInclude Include="domain\dto\purchase-quotation-naiguan\PurQuotNaiguanDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\purchase_quotation_naiguan\pur_quotQUERY.h" />
+    <ClInclude Include="domain\query\purchase-quotation-naiguan\PurQuotNaiguanQUERY.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\purchase-quotation-naiguan\PurQuotNaiguanVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -208,7 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\purchase_quotation_naiguan\pur_quotController.cpp" />
+    <ClCompile Include="api\purchase-quotation-naiguan\PurQuotNaiguanController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
