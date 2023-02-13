@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/payable_management?serverTimezone=UTC&characterEncoding=utf8&useUnicode=ture&useSSL=false
     username: root
-    password:
+    password: 12345678
     type: com.alibaba.druid.pool.DruidDataSource
     name: druid
 mybatis-plus:
@@ -18,3 +18,7 @@ mybatis-plus:
       logic-delete-field: isDelete # 全局逻辑删除的实体字段名
       logic-delete-value: 1 # 逻辑已删除值（默认为 1）
       logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+
+customization:
+  name:
+    OthersPayable: "OthersPayable.xls"
