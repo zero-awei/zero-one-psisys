@@ -1,29 +1,24 @@
 package com.zeroone.star.payablemanagement.controller;
 
-import cn.hutool.core.date.DateTime;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zeroone.star.payablemanagement.service.base.FinPayableService;
 import com.zeroone.star.project.utils.easyexcel.EasyExcelUtils;
-import com.zeroone.star.project.utils.response.ResponseUtils;
 import com.zeroone.star.project.vo.JsonVO;
 import entity.FinPayable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
-import lombok.SneakyThrows;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -40,20 +35,19 @@ public class SampleController {
     @Resource
     FinPayableService finPayableService;
 
-    @ApiOperation(value = "导出ExcelByPost", produces = "application/octet-stream")
-    @PostMapping(value = "toExcelByPost")
-    public ResponseEntity<byte[]> toExcelByPost() {
-        String sheetName = "fin";
-        byte[] bytes = EasyExcelUtils.download(sheetName, FinPayable.class, finPayableService.list());
-        return ResponseUtils.bytes2Xlsx(bytes, sheetName);
+    Logger logger = LoggerFactory.getLogger(SampleController.class);
+
+    @ApiOperation("上传Excel")
+    @PostMapping("importExcel")
+    public JsonVO<List<FinPayable>> uploadWithEasyExcel(MultipartFile file) {
+        return JsonVO.success(EasyExcelUtils.imports(file, FinPayable.class));
     }
 
-    @ApiOperation(value = "导出ExcelByGet", produces = "application/octet-stream")
-    @GetMapping(value = "toExcel2ByPost")
+    @ApiOperation(value = "下载Excel")
+    @GetMapping(value = "toExcel", produces = "application/octet-stream")
     public ResponseEntity<byte[]> toExcelByGet() {
         String sheetName = "fin";
-        byte[] bytes = EasyExcelUtils.download(sheetName, FinPayable.class, finPayableService.list());
-        return ResponseUtils.bytes2Xlsx(bytes, sheetName);
+        return EasyExcelUtils.downloads(sheetName, FinPayable.class, finPayableService.list());
     }
 
     @ApiOperation(value = "获取列表")
@@ -71,8 +65,8 @@ public class SampleController {
     @ApiOperation(value = "获取用例1")
     @GetMapping(value = "get-sample1")
     public JsonVO<User> getSample1(User user) {
-        System.out.println(user);
-        System.out.println(JsonVO.success(user));
+        logger.debug("user: {}", user);
+        logger.debug("vo: {}", JsonVO.success(user));
         return JsonVO.success(user);
     }
 
@@ -82,8 +76,8 @@ public class SampleController {
     @ApiOperation(value = "获取用例2")
     @PostMapping(value = "get-sample2")
     public JsonVO<User> getSample2(@RequestBody User user) {
-        System.out.println(user);
-        System.out.println(JsonVO.success(user));
+        logger.debug("user: {}", user);
+        logger.debug("vo: {}", JsonVO.success(user));
         return JsonVO.success(user);
     }
 }
