@@ -22,6 +22,7 @@
         <module>psi-gateway</module>
         <module>psi-login</module>
         <module>psi-user</module>
+        <module>psi-sample-ws</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
