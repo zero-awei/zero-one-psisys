@@ -1,19 +1,29 @@
 package com.zeroone.star.payablemanagement.controller;
 
+import cn.hutool.core.date.DateTime;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zeroone.star.payablemanagement.service.base.FinPayableService;
+import com.zeroone.star.project.utils.easyexcel.EasyExcelUtils;
+import com.zeroone.star.project.utils.response.ResponseUtils;
 import com.zeroone.star.project.vo.JsonVO;
 import entity.FinPayable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
+import lombok.SneakyThrows;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -29,6 +39,22 @@ public class SampleController {
 
     @Resource
     FinPayableService finPayableService;
+
+    @ApiOperation(value = "导出ExcelByPost", produces = "application/octet-stream")
+    @PostMapping(value = "toExcelByPost")
+    public ResponseEntity<byte[]> toExcelByPost() {
+        String sheetName = "fin";
+        byte[] bytes = EasyExcelUtils.download(sheetName, FinPayable.class, finPayableService.list());
+        return ResponseUtils.bytes2Xlsx(bytes, sheetName);
+    }
+
+    @ApiOperation(value = "导出ExcelByGet", produces = "application/octet-stream")
+    @GetMapping(value = "toExcel2ByPost")
+    public ResponseEntity<byte[]> toExcelByGet() {
+        String sheetName = "fin";
+        byte[] bytes = EasyExcelUtils.download(sheetName, FinPayable.class, finPayableService.list());
+        return ResponseUtils.bytes2Xlsx(bytes, sheetName);
+    }
 
     @ApiOperation(value = "获取列表")
     @GetMapping(value = "list")
