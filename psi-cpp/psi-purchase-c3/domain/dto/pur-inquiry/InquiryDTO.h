@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
-#ifndef __INQUIRYHUILAIDTO_H__
-#define __INQUIRYHUILAIDTO_H__
-
-class InquiryHuilaiDTO : public FileDTO
+#ifndef __INQUIRYDTO_H__
+#define __INQUIRYDTO_H__
+class InquiryDTO : public FileDTO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
@@ -39,7 +38,7 @@ class InquiryHuilaiDTO : public FileDTO
 	//单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_Date);
 public:
-	friend void from_json(const json& j, InquiryHuilaiDTO& t)
+	friend void from_json(const json& j, InquiryDTO& t)
 	{
 		BIND_FROM_TO_NORMAL(j, t, subject);
 		BIND_FROM_TO_NORMAL(j, t, payment_method);
@@ -60,5 +59,4 @@ public:
 
 
 };
-
-#endif  //__INQUIRYHUILAIDTO_H__
+#endif  //__INQUIRYDTO_H__

@@ -1,12 +1,11 @@
-
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
-#ifndef __INQUIRYHUILAIDO_H__
-#define __INQUIRYHUILAIDO_H__
-
-class InquiryHuilaiDO
+#include <vector>
+#ifndef __INQUIRYVO_H__
+#define __INQUIRYVO_H__
+//展示vo
+class InquiryVO
 {
-
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
@@ -53,11 +52,29 @@ class InquiryHuilaiDO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
 public:
-	InquiryHuilaiDO()
-	{
-
-	}
-
+	BIND_TO_JSON(InquiryVO, bill_no, bill_date, subject, src_no,
+		delivery_time, qty, amt, quot_count, bill_stage, is_effective
+		, is_close, is_voided, deliver_place, contact, phone, fax, email
+		, remark, is_auto, effective_time, create_time, update_by
+	);
 };
 
-#endif  //__INQUIRYHUILAIDO_H__
+
+//付款方式
+class PaymentVO
+{
+	CC_SYNTHESIZE(std::vector<string>, payment, Payment);
+
+public:
+	BIND_TO_JSON(PaymentVO, payment);
+	PaymentVO()
+	{
+		payment.push_back(u8"全款到发货");
+		payment.push_back(u8"货到付全款");
+		payment.push_back(u8"发票到付全款");
+		payment.push_back(u8"发票到付余款 ");
+	}
+};
+
+
+#endif  //__INQUIRYVO_H__

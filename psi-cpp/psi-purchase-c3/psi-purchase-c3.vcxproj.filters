@@ -54,13 +54,16 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-inquiry\Pur_inquiryVO.h">
+    <ClInclude Include="domain\vo\inquiry-huilai\InquiryHuilaiVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur-inquiry\Pur_inquiryDTO.h">
+    <ClInclude Include="domain\dto\inquiry-huilai\InquiryHuilaiDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\pur-inquiry\Pur_inquiryDO.h">
+    <ClInclude Include="domain\do\inquiry-huilai\InquiryHuilaiDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\inquiry-huilai\InquiryHuilaiController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -78,6 +81,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\vo\ResultStatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\inquiry-huilai\InquiryHuilaiController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
