@@ -4,7 +4,6 @@ package com.zeroone.star.project.vo.payablemanagement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -88,7 +87,7 @@ public class OthersPayableVO implements Serializable {
     /**
      * 单据日期
      */
-    String billDate;
+    Data billDate;
 
     /**
      * 源单类型
@@ -108,7 +107,7 @@ public class OthersPayableVO implements Serializable {
     /**
      * 修改时间
      */
-    String updateTime;
+    Data updateTime;
 
     /**
      * 是否自动生成
@@ -128,7 +127,7 @@ public class OthersPayableVO implements Serializable {
     /**
      * 制单时间
      */
-    String createTime;
+    Data createTime;
 
     /**
      * 制单人
@@ -143,7 +142,7 @@ public class OthersPayableVO implements Serializable {
     /**
      * 生效时间
      */
-    String effectiveTime;
+    Data effectiveTime;
 
     /**
      * 单据阶段
