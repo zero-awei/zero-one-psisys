@@ -28,7 +28,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 用户信息
      */
-    JsonVO<UserVO> echo(String id);
+    JsonVO<UserVO> review(String id);
 
     /**
      * 新增用户

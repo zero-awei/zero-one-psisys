@@ -1,27 +1,21 @@
 package com.zeroone.star.user.controller;
 
-
 import com.zeroone.star.project.dto.user.UserDTO;
 import com.zeroone.star.project.query.user.UserQuery;
 import com.zeroone.star.project.user.UserApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.user.UserVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * <p>
- * 用户表 前端控制器
- * </p>
- *
- * @author axin
- * @since 2023-02-12
- */
 @RestController
-@RequestMapping("/user/sys-user")
+@RequestMapping("/user")
+@Api(tags = "用户列表示例接口")
+//@Validated
 public class UserController implements UserApis {
 
     @ApiOperation(value = "查询用户列表")
@@ -38,9 +32,13 @@ public class UserController implements UserApis {
         return null;
     }
 
+    @Override
+    public JsonVO<UserVO> review(String id) {
+        return null;
+    }
+
     @ApiOperation(value = "用户信息回显")
     @GetMapping("echo")
-    @Override
     public JsonVO<UserVO> echo(String id) {
         return null;
     }
@@ -95,4 +93,3 @@ public class UserController implements UserApis {
         return null;
     }
 }
-
