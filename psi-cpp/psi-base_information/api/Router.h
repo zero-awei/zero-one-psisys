@@ -41,8 +41,10 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
-
+	//供应商等级
 	void initSupplierLevel();
+	//供应商高级查询条件
+	void initSupplierQueryCriteria();
 };
 
 #endif // !_ROUTER_

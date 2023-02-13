@@ -41,10 +41,13 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
-
+	//单据阶段
 	void initBillStage();
+	//采购类型
 	void initPurType();
+	//税率
 	void initTaxRate();
+	//纳税规模
 	void initTaxScale();
 };
 

@@ -41,6 +41,14 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	//单据阶段
+	initBillStage();
+	//采购类型
+	initPurType();
+	//税率
+	initTaxRate();
+	//纳税规模
+	initTaxScale();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -99,22 +107,22 @@ void Router::createUserDepartRouter()
 }
 #endif
 
-
+//单据阶段
 void Router::initBillStage()
 {
 	BIND_GET_ROUTER(server, "/query-bill-stage", &BillStageController::queryBillStage, nullptr);
 }
-
+//采购类型
 void Router::initPurType()
 {
 	BIND_GET_ROUTER(server, "/query-purchase-type", &PurTypeController::queryPurType, nullptr);
 }
-
+//税率
 void Router::initTaxRate()
 {
 	BIND_GET_ROUTER(server, "/query-tax-rate", &TaxRateController::queryTaxRate, nullptr);
 }
-
+//纳税规模
 void Router::initTaxScale()
 {
 	BIND_GET_ROUTER(server, "/query-tax-scale", &TaxScaleController::queryTaxScale, nullptr);

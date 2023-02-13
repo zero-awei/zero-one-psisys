@@ -1,26 +1,16 @@
 /*
- Copyright Zero One Star. All rights reserved.
-
- @Author: awei
- @Date: 2022/10/24 23:38:25
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+供应商高级查询条件下拉列表
+Author C1-三木
+2023.2.13 21点10分
 */
+
+
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 #include "api/bas_supplier/SupplierLevelController.h"
+#include "api/bas_supplier/SupplierQueryCriteriaController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -37,6 +27,11 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	//供应商等级
+	initSupplierLevel();
+	//供应商高级查询条件
+	initSupplierQueryCriteria();
+
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -95,9 +90,15 @@ void Router::createUserDepartRouter()
 }
 #endif
 
+//供应商等级
 void Router::initSupplierLevel()
 {
 	BIND_GET_ROUTER(server, "/qurey-supplier-level", &SupplierLevelController::querySupplierLevel, nullptr);
 
+}
+
+void Router::initSupplierQueryCriteria()
+{
+	BIND_GET_ROUTER(server, "/qurey-supplier-advanced_criteria", &SupplierQueryCriteriaController::querySupplierQueryCriteria, nullptr);
 }
 

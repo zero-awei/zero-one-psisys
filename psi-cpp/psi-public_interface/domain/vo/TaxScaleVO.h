@@ -4,7 +4,7 @@
 #include "../GlobalInclude.h"
 
 /*
-纳税模式
+纳税规模
 Author C1-三木
 2023.2.11 18点36分
 */
