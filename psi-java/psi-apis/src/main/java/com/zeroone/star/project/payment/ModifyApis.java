@@ -1,7 +1,6 @@
 package com.zeroone.star.project.payment;
 
 import com.zeroone.star.project.dto.payment.ModifyDTO;
-import com.zeroone.star.project.dto.payment.ModifyNonApplicationDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
 /**
@@ -22,10 +21,4 @@ public interface ModifyApis {
      */
     JsonVO<String> modifyById(ModifyDTO modifyDTO);
 
-    /**
-     * 测试API接口
-     * @param modifyNonApplicationDTO 带明细表的收款单DTO(无申请）
-     * @return 查询结果
-     */
-    JsonVO<String> modifyNonApplicationById(ModifyNonApplicationDTO modifyNonApplicationDTO);
 }
