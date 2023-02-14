@@ -28,6 +28,9 @@
 #endif
 #include "api/ApiHelper.h"
 #include "BankAccount/AddAccountController.h"
+#include "BankAccount/EditAccountController.h"
+#include "BankAccount/DeleteAccountController.h"
+#include "BankAccount/ImportAccountController.h"
 
 Router::Router(http_server* sever)
 {
@@ -101,7 +104,9 @@ void Router::createUserDepartRouter()
 void Router::initBankAccount()
 {
 	BIND_POST_ROUTER(server, "/post-account", &AddAccountController::addBankAccount, nullptr);
-
+	BIND_PUT_ROUTER(server, "/put-account", &EditAccountController::modifyBankAccount, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-account", &DeleteAccountController::removeBankAccount, nullptr);
+	BIND_POST_ROUTER(server, "/import-account", &ImportAccountController::modifyAccountInfo, nullptr);
 }
 
 

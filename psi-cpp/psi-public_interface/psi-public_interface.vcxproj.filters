@@ -30,6 +30,27 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\BankAccount\AddAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\BankAccount\IsEnabledController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\BankAccount\SysUserController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\BankAccountVO\BankAccountDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\BankAccount\EditAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\BankAccount\DeleteAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\BankAccount\ImportAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -69,6 +90,36 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\BankAccountVO\SysUserVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\AddAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\EditAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\SysUserController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\IsEnabledController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\BankAccountVO\IsEnabledVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\BankAccountVO\BankAccountDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\DeleteAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\ImportAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\ExportAccountController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
