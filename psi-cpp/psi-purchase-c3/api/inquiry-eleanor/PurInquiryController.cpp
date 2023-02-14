@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PurInquiryController.h"
 #include "../../service/inquiry-eleanor/PurInquiryService.h"
-#include "nlohmann/json.hpp"
+
 
 //查询采购询价单分页列表
 JsonVO<PageVO<PurInquiryFindBillVO>> PurInquiryController::execQueryPurInquiryFindBill(const PurInquiryFindBillQuery& query, const PayloadDTO& payload)

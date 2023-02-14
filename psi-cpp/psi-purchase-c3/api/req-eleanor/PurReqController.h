@@ -3,12 +3,14 @@
 #ifndef _PURREQ_CONTROLLER_
 #define _PURREQ_CONTROLLER_
 
+#include"api/ApiHelper.h"
 #include "../../domain/dto/req-eleanor/PurReqExportDTO.h"
 #include "../../domain/dto/req-eleanor/PurReqIntoDTO.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/req-eleanor/PurReqIntoVO.h"
+
 
 /**
  * 提供接口：导出申请单、导入申请单
@@ -22,7 +24,7 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(exportPurReqInfo, execPurReqExportInfo, PurReqExportDTO);
 
 	//接口2 导入申请单
-	CREATE_API_FUN_BODY_FILE(inportPurReqInfo, execPurReqIntoInfo, PurReqIntoDTO);
+	CREATE_API_FUN_BODY_FILE(PurReqIntoInfo, execPurReqIntoInfo, PurReqIntoDTO);
 	
 	
 private:

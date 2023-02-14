@@ -14,7 +14,7 @@
 class PurReqExportDTO 
 {
 	//传输对象信息 —— 利用单据编号查询想导出的订单
-	CC_SYNTHESIZE(std::list<string>, purReqId, PurReqId);
+	CC_SYNTHESIZE(string, purReqId, PurReqId);
 
 public:
 	// 绑定JSON转换方法

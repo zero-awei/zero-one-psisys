@@ -11,11 +11,12 @@ class PurReqIntoVO
 //导入对象的信息 - 同新增信息
 	// 单据主题
 	CC_SYNTHESIZE(string, purReqSubject, PurReqSubject);
-
 	// 采购类型	（公共接口）
+	CC_SYNTHESIZE(string, purReqType, PurReqType);
 	// 需求部门	（公共接口）
+	CC_SYNTHESIZE(string, purReqRequestDept, PurReqRequestDept);
 	// 需求人	（选择用户公共接口）
-	
+	CC_SYNTHESIZE(string, purReqRequester, PurReqRequester);
 	// 需求时间 
 	CC_SYNTHESIZE(string, purReqRequestTime, PurReqRequestTime);
 
@@ -39,7 +40,7 @@ class PurReqIntoVO
 	CC_SYNTHESIZE(double, purReqAmt, PurReqAmt);
 
 	// 建议供应商（公共接口）
-
+	CC_SYNTHESIZE(string, purReqSuggestSupplierId, PurReqSuggestSupplierId);
 	// 备注	
 	CC_SYNTHESIZE(string, purReqRemark, PurReqRemark);
 	// 自定义1	
@@ -49,8 +50,9 @@ class PurReqIntoVO
 
 public:
 // 绑定JSON转换方法
-	//BIND_TO_JSON();
-
+	BIND_TO_JSON(PurReqIntoVO, purReqSubject, purReqType, purReqRequestDept, purReqRequester, purReqRequestTime,
+		purReqSrcEntryNo, purReqMaterialId, purReqUnitId, purReqQty, purReqTaxRate, purReqPrice, purReqAmt,
+		purReqSuggestSupplierId, purReqRemark, purReqCustom1, purReqCustom2);
 
 };
 

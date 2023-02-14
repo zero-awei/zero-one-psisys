@@ -3,7 +3,6 @@
 #ifndef _PURREQINTO_DTO_
 #define _PURREQINTO_DTO_
 
-#include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
 /**
@@ -17,14 +16,15 @@ class PurReqIntoDTO : public FileDTO
 	CC_SYNTHESIZE(string, purReqSubject, PurReqSubject);
 
 	// 采购类型	（公共接口）
+	CC_SYNTHESIZE(string, purReqType, PurReqType);
 	// 需求部门	（公共接口）
+	CC_SYNTHESIZE(string, purReqRequestDept, PurReqRequestDept);
 	// 需求人	（选择用户公共接口）
-
+	CC_SYNTHESIZE(string, purReqRequester, PurReqRequester);
 	// 需求时间 
 	CC_SYNTHESIZE(string, purReqRequestTime, PurReqRequestTime);
-
-	//明细
-		// 源单分录号	
+//明细
+	// 源单分录号	
 	CC_SYNTHESIZE(string, purReqSrcEntryNo, PurReqSrcEntryNo);
 	// 物料	
 	CC_SYNTHESIZE(string, purReqMaterialId, PurReqMaterialId);
@@ -43,7 +43,7 @@ class PurReqIntoDTO : public FileDTO
 	CC_SYNTHESIZE(double, purReqAmt, PurReqAmt);
 
 	// 建议供应商（公共接口）
-
+	CC_SYNTHESIZE(string, purReqSuggestSupplierId, PurReqSuggestSupplierId);
 	// 备注	
 	CC_SYNTHESIZE(string, purReqRemark, PurReqRemark);
 	// 自定义1	
@@ -54,8 +54,9 @@ class PurReqIntoDTO : public FileDTO
 
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PurReqIntoDTO& t);  // NOLINT
-
+	friend void from_json(const json& j, PurReqIntoDTO& t); // NOLINT
+	
+	
 };
 
 #endif // !_PURREQINTO_DTO_

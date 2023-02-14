@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "PurReqController.h"
-#include "../../service/req-eleanor/PurReqService.h"
+#include "service/req-eleanor/PurReqService.h"
+#include "domain/dto/req-eleanor/PurReqExportDTO.h"
+
 
 //导出
 nlohmann::json PurReqController::execPurReqExportInfo(const PurReqExportDTO& dto, const PayloadDTO& payload)
 {
 	//响应结果
-	return JsonVO<std::string>();
+	return nlohmann::json(JsonVO<std::string>());
 }
 
 //导入
