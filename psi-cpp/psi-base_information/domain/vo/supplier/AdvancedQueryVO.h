@@ -5,7 +5,7 @@
 #include "../../GlobalInclude.h"
 #include"../PageVO.h"
 
-class AdvancedQueryVO : public PageVO<int>
+class AdvancedQueryVO 
 {
 	// 姓名
 	CC_SYNTHESIZE(int, code, Code);
@@ -25,6 +25,7 @@ class AdvancedQueryVO : public PageVO<int>
 	CC_SYNTHESIZE(string, enable, Enable);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
+
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(AdvancedQueryVO, code, name, alias, supplierCassification, 

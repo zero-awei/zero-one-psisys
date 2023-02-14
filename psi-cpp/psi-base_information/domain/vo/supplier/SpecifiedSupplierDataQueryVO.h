@@ -103,11 +103,11 @@ class SpecifiedSupplierDataQueryVO
 	CC_SYNTHESIZE(string, modifiedBy, ModifiedBy);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(SpecifiedSupplierDataQueryVO, code, name, alias, supplierClassification, supplierLevel, taxScale, alternativeSuppliers, enable, remark,\
-		unitName1, TaxiD, accountbank1, lineNumber1, account1, contactNumber1, invoicingAddress,\
-		unitName2, accountBank2, lineNumber2, account2,\
-		addressee, contactNumber2, fax, email, address, zip,\
-		financial_InformationContact, contactNumberOfFinancial_Information, abbreviation, accessibleName, supplierWebsite, legalRepresentative, corporateTelephone, headOffice, businessArea, region, supplierAddress,\
+	BIND_TO_JSON(SpecifiedSupplierDataQueryVO, code, name, alias, supplierClassification, supplierLevel, taxScale, alternativeSuppliers, enable, remark,
+		unitName1, TaxiD, accountbank1, lineNumber1, account1, contactNumber1, invoicingAddress,
+		unitName2, accountBank2, lineNumber2, account2,
+		addressee, contactNumber2, fax, email, address, zip,
+		financial_InformationContact, contactNumberOfFinancial_Information, abbreviation, accessibleName, supplierWebsite, legalRepresentative, corporateTelephone, headOffice, businessArea, region, supplierAddress,
 		creationTime, createdBy, modificationTime, modifiedBy);
 };
 

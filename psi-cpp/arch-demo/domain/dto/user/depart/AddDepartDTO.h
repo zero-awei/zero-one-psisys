@@ -36,6 +36,7 @@ class AddDepartDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddDepartDTO& t); // NOLINT
+
 };
 
 #endif // !_UPDATE_DEPART_DTO_
