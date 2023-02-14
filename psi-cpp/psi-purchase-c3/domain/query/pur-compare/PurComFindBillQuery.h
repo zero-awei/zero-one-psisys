@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _PUR_COMPARE_QUERY_
-#define _PUR_COMPARE_QUERY_
+#ifndef _PUR_COM_FIND_BILL_QUERY_
+#define _PUR_COM_FIND_BILL_QUERY_
 
 #include "../PageQuery.h"
 
@@ -41,35 +41,6 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, isVoided);
 	}
 };
-
-/**
- *  指定的比价单详细信息/报价单列表查询对象
- */
-class PurComFindDetailBillQuery
-{
-	// 单据编号
-	CC_SYNTHESIZE(string, billNo, BillNo);	
-public:
-	// 绑定from_json
-	friend void from_json(const json& j, PurComFindDetailBillQuery& t) { // NOLINT		
-		BIND_FROM_TO_NORMAL(j, t, billNo);
-	}
-};
-
-/**
- *  报价单分录列表查询对象
- */
-class PurComDividedListQuery
-{
-	// 单据编号
-	CC_SYNTHESIZE(std::list<std::string>, billNos, BillNos);
-public:
-	// 绑定from_json
-	friend void from_json(const json& j, PurComDividedListQuery& t) { // NOLINT		
-		BIND_FROM_TO_NORMAL(j, t, billNos);
-	}
-}; 
-
 
 #endif 
 

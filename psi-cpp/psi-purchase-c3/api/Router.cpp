@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "pur-compare/PurCompareController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createPurCompareRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +95,9 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPurCompareRouter()
+{
+	BIND_POST_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
+	//BIND_POST_ROUTER(server, "/get", &PurCompareController::queryPurComFindBill, nullptr);
+}

@@ -54,13 +54,22 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\pur-compare\PurCompareQuery.h">
+    <ClInclude Include="domain\query\pur-compare\PurComFindBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-compare\PurCompareVO.h">
+    <ClInclude Include="domain\vo\pur-compare\PurComFindBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\pur-compare\PurCompare.h">
+    <ClInclude Include="api\pur-compare\PurCompareController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-compare\PurComFindDetailBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-compare\PurComListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-compare\PurComDividedListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,7 +89,7 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\pur-compare\PurCompare.cpp">
+    <ClCompile Include="api\pur-compare\PurCompareController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
