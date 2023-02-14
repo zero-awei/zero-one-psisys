@@ -3,6 +3,8 @@
 #include <vector>
 #ifndef __INQUIRYVO_H__
 #define __INQUIRYVO_H__
+
+
 //展示vo
 class InquiryVO
 {
@@ -50,6 +52,7 @@ class InquiryVO
 	CC_SYNTHESIZE(string, create_time, Create_time);
 	//修改人			;
 	CC_SYNTHESIZE(string, update_by, Update_by);
+
 
 public:
 	BIND_TO_JSON(InquiryVO, bill_no, bill_date, subject, src_no,

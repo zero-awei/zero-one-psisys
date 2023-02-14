@@ -3,6 +3,8 @@
 #include "../FileDTO.h"
 #ifndef __INQUIRYDTO_H__
 #define __INQUIRYDTO_H__
+
+//增加和修改DTO
 class InquiryDTO
 {
 	//单据编号
@@ -60,6 +62,7 @@ public:
 
 };
 
+//文件上传DTO
 class PurInquiryDTO : public FileDTO
 {
 	//单据编号
@@ -136,13 +139,14 @@ public:
 	}
 };
 
+//删除DTO
 class InquiryRemoveDTO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 
 public:
-	friend void from_json(const json& j, PurInquiryDTO& t)
+	friend void from_json(const json& j, InquiryRemoveDTO& t)
 	{
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 	}

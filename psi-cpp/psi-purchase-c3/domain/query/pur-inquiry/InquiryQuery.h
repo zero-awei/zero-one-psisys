@@ -3,6 +3,9 @@
 #define __INQUIRYQUERY_H__
 #include "../../GlobalInclude.h"
 #include "../arch-demo/domain/query/PageQuery.h"
+
+
+//文件上传Query
 class PurInquiryQurey : public PageQuery
 {
 	//单据编号
