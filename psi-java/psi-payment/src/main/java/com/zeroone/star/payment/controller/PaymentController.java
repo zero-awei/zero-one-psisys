@@ -11,13 +11,17 @@ import com.zeroone.star.project.vo.payment.DetNoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import com.zeroone.star.project.query.payment.DocListQuery;
+import com.zeroone.star.project.vo.payment.DocListVO;
+import com.zeroone.star.project.dto.payment.DeleteDTO;
+import com.zeroone.star.project.payment.PaymentApis;
+import com.zeroone.star.project.vo.JsonVO;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.zeroone.star.project.query.payment.DocListQuery;
-import com.zeroone.star.project.vo.payment.DocListVO;
-
 
 @RestController
 @RequestMapping("payment")
@@ -94,5 +98,18 @@ public class PaymentController implements PaymentApis {
     @Override
     public JsonVO<String> downloadUrl() {
         return null;
+    }
+
+    /**
+     * 删除
+     * author 出运费
+     * since 2023-02-13
+     */
+    @DeleteMapping("delete")
+    @ApiOperation(value = "删除信息")
+    @Override
+    public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
+        return JsonVO.success("删除成功");
+
     }
 }

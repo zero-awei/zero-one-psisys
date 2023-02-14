@@ -18,6 +18,9 @@ import com.zeroone.star.project.vo.payment.DetNoVO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.http.ResponseEntity;
 
+import com.zeroone.star.project.dto.payment.DeleteDTO;
+import com.zeroone.star.project.vo.JsonVO;
+
 /**
  * <p>
  * 描述：API接口定义
@@ -83,4 +86,12 @@ public interface PaymentApis {
      * author 明破
      */
     JsonVO<String> downloadUrl();
+
+    /**
+     * 删除预付单功能
+     * param deleteDTO 包含付款单id
+     * return 删除结果
+     * author 出运费
+     */
+    JsonVO<String> deleteById(DeleteDTO deleteDTO);
 }
