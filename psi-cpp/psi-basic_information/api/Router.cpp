@@ -67,7 +67,7 @@ void Router::initRouter()
 			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
-	createSampleRouter();
+	createMeasurementRouter();
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif

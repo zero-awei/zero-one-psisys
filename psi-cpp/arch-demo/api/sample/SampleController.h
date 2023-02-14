@@ -16,9 +16,9 @@
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
-*/
-#ifndef _SAMPLE_CONTROLLER_
-#define _SAMPLE_CONTROLLER_
+*/	
+#ifndef _Sample_CONTROLLER_
+#define _Sample_CONTROLLER_
 
 #include "../../domain/query/sample/SampleQuery.h"
 #include "../../domain/dto/sample/SampleDTO.h"
