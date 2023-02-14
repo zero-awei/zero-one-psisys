@@ -8,7 +8,7 @@
 /**
  *  比价单列表查询对象
  */
-class PurCompareQuery : public PageQuery
+class PurComFindBillQuery : public PageQuery
 {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -28,7 +28,7 @@ class PurCompareQuery : public PageQuery
 	CC_SYNTHESIZE(string, isVoided, IsVoided);
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, PurCompareQuery& t) { // NOLINT
+	friend void from_json(const json& j, PurComFindBillQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, billNo);
@@ -43,18 +43,34 @@ public:
 };
 
 /**
- *  指定的比价单详细信息查询对象
+ *  指定的比价单详细信息/报价单列表查询对象
  */
-class AssignPurCompareQuery
+class PurComFindDetailBillQuery
 {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);	
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, AssignPurCompareQuery& t) { // NOLINT		
+	friend void from_json(const json& j, PurComFindDetailBillQuery& t) { // NOLINT		
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 	}
 };
+
+/**
+ *  报价单分录列表查询对象
+ */
+class PurComDividedListQuery
+{
+	// 单据编号
+	CC_SYNTHESIZE(std::list<std::string>, billNos, BillNos);
+public:
+	// 绑定from_json
+	friend void from_json(const json& j, PurComDividedListQuery& t) { // NOLINT		
+		BIND_FROM_TO_NORMAL(j, t, billNos);
+	}
+}; 
+
+
 #endif 
 
 
