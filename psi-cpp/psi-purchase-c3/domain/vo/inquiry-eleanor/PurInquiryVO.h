@@ -136,9 +136,6 @@ public:
 		purInquiryApprovalResultType);
 };
 
-#endif // !_PURINQUIRY_VO_
-
-
 
 //采购询价单明细—采购申请单
 class EntryPurInquiryVO
@@ -179,3 +176,4 @@ public:
 
 
 
+#endif // !_PURINQUIRY_VO_

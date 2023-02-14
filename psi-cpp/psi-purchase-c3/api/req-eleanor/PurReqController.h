@@ -7,8 +7,7 @@
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
-#include "../../domain/dto/user/UserDTO.h"
-#include "../../domain/vo/user/UserVO.h"
+#include "../../domain/vo/req-eleanor/PurReqVO.h"
 
 /**
  * 示例控制器，演示接口的使用
@@ -29,8 +28,7 @@ private:
 	nlohmann::json execPurReqExportInfo(const PurReqExportDTO &dto, const PayloadDTO &payload);
 
 	//执行方法：导入
-	nlohmann::json execPurReqIntoInfo(const PurReqIntoDTO& dto);
-	
+	JsonVO<PurReqIntoVO> execPurReqIntoInfo(const PurReqIntoDTO& dto);
 };
 
 #endif // _PURREQ__CONTROLLER_

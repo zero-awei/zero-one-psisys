@@ -13,10 +13,10 @@ nlohmann::json PurReqController::execPurReqExportInfo(const PurReqExportDTO& dto
 }
 
 //导入
-nlohmann::json PurReqController::execPurReqIntoInfo(const PurReqIntoDTO& dto)
+JsonVO<PurReqIntoVO> PurReqController::execPurReqIntoInfo(const PurReqIntoDTO& dto)
 {
 	//构建一个测试VO
-	UserVO vo;
+	PurReqIntoVO vo;
 
 
 	//输出测试上传文件路径列表
@@ -25,5 +25,5 @@ nlohmann::json PurReqController::execPurReqIntoInfo(const PurReqIntoDTO& dto)
 	}
 
 	//响应结果
-	return JsonVO<UserVO>(vo, RS_SUCCESS);
+	return JsonVO<PurReqIntoVO>(vo, RS_SUCCESS);
 }
