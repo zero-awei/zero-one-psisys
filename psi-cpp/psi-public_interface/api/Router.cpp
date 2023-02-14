@@ -20,6 +20,12 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "api/setting-qiuqiu/MaterialTypeController.h"
+#include "api/setting-qiuqiu/SuppliersNameController.h"
+#include "api/setting-qiuqiu/DeliveryMethodController.h"
+#include "api/setting-qiuqiu/PayMethodController.h"
+#include "api/setting-qiuqiu/SuppliersNomalQueryController.h"
+
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -71,7 +77,7 @@ void Router::initRouter()
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-
+	initSuppliersSetting();
 	//#TIP :系统扩展路由定义，写在这个后面
 
 }
@@ -93,4 +99,13 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
 #endif
+void Router::initSuppliersSetting()
+{
+	BIND_GET_ROUTER(server, "/query-suppliers-name", &SuppliersNameController::querySuppliersName, nullptr);
+	BIND_GET_ROUTER(server, "/query-material-type", &MaterialTypeController::queryMaterialType, nullptr);
+	BIND_GET_ROUTER(server, "/query-paymethod-type", &PayMethodController::queryPayMethod, nullptr);
+	BIND_GET_ROUTER(server, "/query-deliverymothod-type", &DeliveryMethodController::queryDeliveryMethod, nullptr);
+	BIND_GET_ROUTER(server, "/query-suppliernomal-type", &SuppliersNomalQueryController::querySuppliersNomal, nullptr);
+}
