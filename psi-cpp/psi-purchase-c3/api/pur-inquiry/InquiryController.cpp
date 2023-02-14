@@ -47,7 +47,7 @@ JsonVO<std::string> InquiryController::execPurInquiryExport(const PurInquiryQure
 {
 
 	JsonVO<std::string> result;
-
+	result.success("c//a//a.xls");
 
 
 
