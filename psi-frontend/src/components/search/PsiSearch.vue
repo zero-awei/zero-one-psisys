@@ -1,5 +1,5 @@
 <template>
-  <div class="search-main">
+  <div class="psi-search">
     <!-- 查询区域 -->
     <div class="table-page-search-wrapper">
       <el-form

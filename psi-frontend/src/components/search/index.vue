@@ -1,11 +1,11 @@
 <template>
   <div class="main">
     <el-card>
-      <search-component :items="items1" :formData="formData1" />
+      <psi-search :items="items1" :formData="formData1" />
     </el-card>
     <br />
     <el-card>
-      <search-component
+      <psi-search
         :items="items"
         :toggle-items="toggleItems"
         :formData="formData"
@@ -13,7 +13,7 @@
     </el-card>
     <br />
     <el-card>
-      <search-component
+      <psi-search
         :items="items2"
         :toggle-items="toggleItems2"
         :formData="formData2"

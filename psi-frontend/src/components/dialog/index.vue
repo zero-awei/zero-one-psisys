@@ -1,16 +1,14 @@
 <template>
   <div>
-    dialog 组件
+    <el-button @click="dialogVisible = true">弹出对话框</el-button>
 
+    <psi-dialog :dialogVisible="true" />
   </div>
 </template>
 
 <script>
-export default {
-
-}
+import { ref } from 'vue'
+let dialogVisible = ref(false)
 </script>
 
-<style>
-
-</style>
+<style></style>

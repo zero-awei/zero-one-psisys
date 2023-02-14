@@ -1,7 +1,21 @@
+<!--
+ * @Author: li.ziwei
+ * @Date: 2023-02-13 14:21:13
+ * @LastEditTime: 2023-02-14 14:52:25
+ * @LastEditors: li.ziwei
+ * @Description: 
+ * @FilePath: \psi-frontend\src\components\table\index.vue
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
 <template>
   <div class="main">
     <el-card>
-      <table-component :tableData="tableData"></table-component>
+      <psi-table
+        :items="items"
+        :tableData="tableData"
+        :attributes="attributes"
+        :pagination="pagination"
+      />
     </el-card>
   </div>
 </template>
@@ -9,6 +23,58 @@
 <script setup>
 import { reactive, toRefs } from 'vue'
 const status = reactive({
+  // table列配置
+  items: [
+    {
+      label: 'Name',
+      prop: 'name',
+      width: '120',
+      align: 'center',
+      type: 'function',
+      fixed: true,
+      // ES6 的 Template Strings 模版字符串
+      callback: (data) => {
+        return `<span style="color:#409eff"> ${data.name}</span>`
+      }
+    },
+    {
+      type: 'text',
+      label: 'Date',
+      prop: 'date',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: 'City',
+      prop: 'city',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: 'Address',
+      prop: 'address',
+      width: '600'
+    },
+    {
+      type: 'text',
+      label: 'Zip',
+      prop: 'zip',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: 'Tag',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'slot',
+      label: '操作',
+      prop: 'operation',
+      slotName: 'operation'
+    }
+  ],
+  // table 数据
   tableData: [
     {
       date: '2016-05-03',
@@ -46,10 +112,25 @@ const status = reactive({
       zip: 'CA 90036',
       tag: 'Office'
     }
-  ]
+  ],
+  // table 总体配置
+  attributes: {
+    selection: true, //是否多选框
+    index: true, // 索引
+    border: true
+  }
 })
 
-const { tableData } = toRefs(status)
+const { items, tableData, attributes } = toRefs(status)
+
+// 分页相关配置
+const pagination = reactive({
+  currentPage: 2, // 当前页
+  pageSize: 100, // 每页数据量
+  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  total: 400, //数据总量
+  layout: 'total, sizes, prev, pager, next, jumper'
+})
 </script>
 
 <style></style>

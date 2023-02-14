@@ -20,7 +20,9 @@ import installElIcon from './plugins/el-icon'
 installElIcon(app)
 
 // 注册全局组件
-import SearchComponent from './components/search/searchComponent.vue'
-import TableComponent from './components/table/tableComponent.vue'
-app.component('SearchComponent', SearchComponent)
-app.component('TableComponent', TableComponent)
+import PsiSearch from './components/search/PsiSearch.vue'
+import PsiTable from './components/table/PsiTable.vue'
+import PsiDialog from './components/dialog/PsiDialog.vue'
+app.component('PsiSearch', PsiSearch)
+app.component('PsiTable', PsiTable)
+app.component('PsiDialog', PsiDialog)
