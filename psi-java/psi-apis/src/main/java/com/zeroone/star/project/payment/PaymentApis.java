@@ -14,6 +14,9 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.payment.DetHavVO;
 import com.zeroone.star.project.vo.payment.DetNoVO;
 
+import com.zeroone.star.project.vo.JsonVO;
+import org.springframework.http.ResponseEntity;
+
 /**
  * <p>
  * 描述：API接口定义
@@ -54,4 +57,15 @@ public interface PaymentApis {
      * @return 查询结果
      */
     JsonVO<DetNoVO> queryByBillNo (PreDetQuery condition);
+    /**
+     * 获取导出文件
+     * @return 返回响应对象
+     */
+    ResponseEntity<byte[]> download();
+
+    /**
+     * 获取导出链接
+     * @return 返回下载路径
+     */
+    JsonVO<String> downloadUrl();
 }

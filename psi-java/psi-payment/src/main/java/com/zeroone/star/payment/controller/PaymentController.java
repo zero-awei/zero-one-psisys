@@ -9,6 +9,7 @@ import com.zeroone.star.project.vo.payment.DetHavVO;
 import com.zeroone.star.project.vo.payment.DetNoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,5 +63,18 @@ public class PaymentController implements PaymentApis {
     @Override
     public JsonVO<DetNoVO> queryByBillNo(PreDetQuery condition) {
         return JsonVO.success(new DetNoVO());
+    }
+
+    @GetMapping("export")
+    @ApiOperation(value = "获取导出文件")
+    @Override
+    public ResponseEntity<byte[]> download() {
+        return null;
+    }
+
+    @ApiOperation(value = "获取导出链接")
+    @Override
+    public JsonVO<String> downloadUrl() {
+        return null;
     }
 }
