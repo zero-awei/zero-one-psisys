@@ -39,6 +39,9 @@
     <ClCompile Include="domain\query\returntovendor\DocListQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\returntovendor\RtvController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macros.h">
@@ -99,6 +102,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\returntovendor\ReturnToVendorVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\returntovendor\RtvController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

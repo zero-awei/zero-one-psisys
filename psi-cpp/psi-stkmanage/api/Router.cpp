@@ -98,5 +98,6 @@ void Router::createUserDepartRouter()
 
 void Router::createRtvRouter()
 {
-	BIND_POST_ROUTER(server, "/rtv/get", &RtvController::rtvQuery, nullptr);
+	BIND_GET_ROUTER(server, "/rtv/get", &RtvController::rtvQuery, nullptr);
+	BIND_GET_ROUTER(server, "/rtv/getall", &RtvController::rtvEntryQuery, nullptr);
 }

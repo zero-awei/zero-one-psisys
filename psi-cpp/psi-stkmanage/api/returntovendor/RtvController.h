@@ -18,9 +18,11 @@ class RtvController
 {
 public:
 	CREATE_API_FUN_QUERY(rtvQuery, execRtvQuery, DocListQuery);
+	CREATE_API_FUN_QUERY(rtvEntryQuery, execRtvEntryQuery, DocListQuery);
 private:
 	// 测试查询数据
 	JsonVO<PageVO<RtvShowVO>> execRtvQuery(const DocListQuery& query);
+	JsonVO<PageVO<RtvCheckVO>> execRtvEntryQuery(const DocListQuery& query);
 	// 测试添加数据
 	// 测试修改数据
 	// 测试删除数据

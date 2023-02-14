@@ -178,6 +178,7 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="domain\dto\returntovendor\ModifyDocListDTO.cpp" />
+    <ClCompile Include="api\returntovendor\RtvController.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -204,6 +205,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="domain\do\returntovendor\ReturnToVendorDO.h" />
     <ClInclude Include="domain\dto\returntovendor\ModifyDocListDTO.h" />
+    <ClInclude Include="api\returntovendor\RtvController.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
