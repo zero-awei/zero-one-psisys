@@ -63,6 +63,9 @@
     <ClInclude Include="domain\query\pur-compare\PurCompareQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\pur-compare\PurCompareController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -78,6 +81,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\vo\ResultStatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-compare\PurCompareDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\query\pur-compare\PurCompareQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\pur-compare\PurCompareController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

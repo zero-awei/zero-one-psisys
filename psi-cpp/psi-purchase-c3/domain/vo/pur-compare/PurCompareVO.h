@@ -108,19 +108,12 @@ class ModPurComVO
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
-	
-	// 核批结果
-	CC_SYNTHESIZE(int, auditResult, AuditResult);
-	// 核批意见
-	CC_SYNTHESIZE(int, auditRemark, AuditRemark);
-
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(ModPurComVO, billId, billDate, isEffect, isClose, isCancelled,
 		effectDate, approver, makeBillDate, makeBillDept, makeBillPerson,
 		updateDate, updatePerson, autoBill, redBill, billType, billTheme, billStatus,
-		inquiryBill, payMethod, deliveryDate, deliveryPlace, remark,
-		auditResult, auditRemark);
+		inquiryBill, payMethod, deliveryDate, deliveryPlace, remark);
 };
 
 //删除比价
@@ -131,7 +124,7 @@ class DelPurComVO
 	
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(AddPurComVO, billId);
+	BIND_TO_JSON(DelPurComVO, billId);
 };
 
 //修改单据状态
@@ -154,6 +147,6 @@ class PurComModBillStatusVO
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(AddPurComVO, billId, isEffect, isClose, isCancelled, billStatus, updateDate, updatePerson);
+	BIND_TO_JSON(PurComModBillStatusVO, billId, isEffect, isClose, isCancelled, billStatus, updateDate, updatePerson);
 };
 #endif // !_PUR_COMPARE_VO_
