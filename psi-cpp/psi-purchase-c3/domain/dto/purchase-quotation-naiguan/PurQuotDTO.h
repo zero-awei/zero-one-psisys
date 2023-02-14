@@ -1,10 +1,10 @@
-//因为有多人在同时写_PUR_QUOT_里的功能，因此这里添加NAIGUAN来进行区分，以免发生编码错误
-#ifndef _PUR_QUOT_NAIGUAN_DTO_
-#define _PUR_QUOT_NAIGUAN_DTO_
+#include "stdafx.h"
+#ifndef _PUR_QUOT_DTO_
+#define _PUR_QUOT_DTO_
 
 #include "../../GlobalInclude.h"
 
-class PurQuotNaiguanDTO
+class PurQuotDTO
 {
 	//以下有一些字段，我不确定是否真的会用到，如果之后写代码，发现还需要其他字段，就添加上去；不需要再删除；
 	// 单据id
@@ -74,7 +74,7 @@ class PurQuotNaiguanDTO
 
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, PurQuotNaiguanDTO& t) {
+	friend void from_json(const json& j, PurQuotDTO& t) {
 		BIND_FROM_TO_L(j, t, id);
 		BIND_FROM_TO_L(j, t, supplierId);
 
@@ -83,6 +83,7 @@ public:
 		BIND_FROM_TO_I(j, t, isClosed);
 		BIND_FROM_TO_I(j, t, isVoided);
 		BIND_FROM_TO_I(j, t, approvalResultType);
+		BIND_FROM_TO_I(j, t, billStage);
 
 		BIND_FROM_TO_D(j, t, qty);
 		BIND_FROM_TO_D(j, t, amt);
@@ -101,7 +102,6 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, email);
 		BIND_FROM_TO_NORMAL(j, t, attachment);
 		BIND_FROM_TO_NORMAL(j, t, remark);
-		BIND_FROM_TO_NORMAL(j, t, billStage);
 		BIND_FROM_TO_NORMAL(j, t, approver);
 
 		BIND_FROM_TO_NORMAL(j, t, approvalRemark);
@@ -114,4 +114,4 @@ public:
 	}
 };
 
-#endif // !_PUR_QUOT_NAIGUAN_DTO_
+#endif // !_PUR_QUOT_DTO_

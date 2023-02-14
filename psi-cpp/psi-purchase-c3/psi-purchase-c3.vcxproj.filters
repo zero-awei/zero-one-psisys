@@ -54,19 +54,25 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\purchase-quotation-naiguan\PurQuotNaiguanController.h">
+    <ClInclude Include="api\purchase-quotation-naiguan\PurQuotController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\purchase-quotation-naiguan\PurQuotNaiguanQUERY.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\purchase-quotation-naiguan\PurQuotNaiguanDTO.h">
+    <ClInclude Include="domain\dto\purchase-quotation-naiguan\PurQuotDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\purchase-quotation-naiguan\PurQuotNaiguanVO.h">
+    <ClInclude Include="domain\vo\purchase-quotation-naiguan\AddPurQuotVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\purchase-quotation-naiguan\ModPurQuotVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\purchase-quotation-naiguan\DelPurQuotVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\purchase-quotation-naiguan\PurQuotModBillStatusVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,7 +92,7 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\purchase-quotation-naiguan\PurQuotNaiguanController.cpp">
+    <ClCompile Include="api\purchase-quotation-naiguan\PurQuotController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
