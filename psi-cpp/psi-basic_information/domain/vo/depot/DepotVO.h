@@ -36,20 +36,28 @@ class DepotVO
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
+	CC_SYNTHESIZE(string, start, Start);
 	// 备注
+	CC_SYNTHESIZE(string, remarks, Remarks);
 	// 创建时间
+	CC_SYNTHESIZE(string, creationTime, CreationTime);
 	// 创建人
+	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
 	// 修改时间
+	CC_SYNTHESIZE(string, modiTime, ModiTime);
 	// 修改人
+	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(DepotVO, name, id, helpName, phone);
+	BIND_TO_JSON(DepotVO, name, id, helpName, phone,start,remarks,creationTime, creationPeo, modiTime, modiPeo);
 };
 
 class DepotDetailVO
 {
 	// 上级
+	CC_SYNTHESIZE(int, previous, Previous);
 	// 下级
+	CC_SYNTHESIZE(int, next, Next);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
@@ -59,20 +67,27 @@ class DepotDetailVO
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
+	CC_SYNTHESIZE(string, start, Start);
 	// 备注
+	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(DepotVO, name, id, helpName, phone);
+	BIND_TO_JSON(DepotDetailVO, previous, next, name, helpName, phone, start, remarks);
 };
 
 class DepotActionInfoVO
 {
 	// 创建时间
+	CC_SYNTHESIZE(string, creationTime, CreationTime);
 	// 创建人
+	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
 	// 修改时间
+	CC_SYNTHESIZE(string, modiTime, ModiTime);
 	// 修改人
+	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
+	BIND_TO_JSON(DepotActionInfoVO, creationTime, creationPeo, modiTime, modiPeo);
 };
 
 #endif // !_DEPOT_VO_

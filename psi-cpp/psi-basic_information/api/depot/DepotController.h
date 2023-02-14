@@ -30,11 +30,13 @@
 /**
  * 基础资料仓库模块接口
  */
-class SampleController
+class DepotController
 {
 public:
-	// 这里帮忙补一下，就下面对应绑定上来
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDepot, execQueryDepot, DepotQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryKidDepot, execQueryKidDepot, DepotQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailDepot, execQueryDetail, DepotQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolDepot, execQueryActionInfo, DepotQuery);
 	CREATE_API_FUN_BODY(addDepot, execAddDepot, DepotDTO);
 	CREATE_API_FUN_BODY(modifyDepot, execModifyDepot, DepotDTO);
 	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, DepotDTO);
@@ -49,13 +51,13 @@ private:
 	JsonVO<DepotDetailVO> execQueryDetail(const DepotQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const DepotQuery& query, const PayloadDTO& payload);
 	//新增仓库 # 添加下级应该可以通过这个来实现，就先不写
-	JsonVO<uint64_t> execAddDepot(const DepotDTO& dto);
+	JsonVO<PageVO<DepotVO>> execAddDepot(const DepotDTO& dto);
 	//修改仓库
-	JsonVO<uint64_t> execModifyDepot(const DepotDTO& dto);
+	JsonVO<PageVO<DepotVO>> execModifyDepot(const DepotDTO& dto);
 	//删除仓库 # 这里应该传个唯一值就行，反正是对应删除的
-	JsonVO<uint64_t> execRemoveDepot(const DepotDTO& dto);
+	JsonVO<PageVO<DepotVO>> execRemoveDepot(const DepotDTO& dto);
 	//文件导入
-	JsonVO<DepotVO> execModifyDepots(const DepotDTO& dto);
+	JsonVO<PageVO<DepotVO>> execModifyDepots(const DepotDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
 };

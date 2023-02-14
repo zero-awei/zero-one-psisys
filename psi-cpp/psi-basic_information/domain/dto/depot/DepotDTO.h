@@ -37,11 +37,17 @@ class DepotDTO : public FileDTO
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
+	CC_SYNTHESIZE(string, start, Start);
 	// 备注
+	CC_SYNTHESIZE(string, remarks, Remarks);
 	// 创建时间
+	CC_SYNTHESIZE(string, creationTime, CreationTime);
 	// 创建人
+	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
 	// 修改时间
+	CC_SYNTHESIZE(string, modiTime, ModiTime);
 	// 修改人
+	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DepotDTO& t) { // NOLINT
@@ -49,9 +55,15 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, helpName);
 		BIND_FROM_TO_I(j, t, phone);
+		BIND_FROM_TO_NORMAL(j, t, start);
+		BIND_FROM_TO_NORMAL(j, t, remarks);
+		BIND_FROM_TO_NORMAL(j, t, creationTime);
+		BIND_FROM_TO_NORMAL(j, t, creationPeo);
+		BIND_FROM_TO_NORMAL(j, t, modiTime);
+		BIND_FROM_TO_NORMAL(j, t, modiPeo);
 	}
 
-	BIND_TO_JSON(DepotDTO, name, id, helpName, phone);
+	BIND_TO_JSON(DepotDTO, name, id, helpName, phone, start, remarks, creationTime, creationPeo, modiTime, modiPeo);
 };
 
 #endif // !_DEPOT_DTO_
