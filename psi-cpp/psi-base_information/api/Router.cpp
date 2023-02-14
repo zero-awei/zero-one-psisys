@@ -99,8 +99,16 @@ void Router::createUserDepartRouter()
 
 void Router::initSupplier()
 {
+	//高级查询
 	BIND_GET_ROUTER(server, "/Advanced-Query", &SupplierController::advancedquerySupplier, nullptr);
+	//指定查询
 	BIND_GET_ROUTER(server, "/Specified-Supplier-Data-Query", &SupplierController::specifiedquerySupplier, nullptr);
+	//增加
+	BIND_POST_ROUTER(server, "/add", &SupplierController::addSupplier, nullptr);
+	//删除
+	BIND_DEL_ROUTER(server, "/delete", &SupplierController::deleteSupplier, nullptr);
+	//修改
+	BIND_PUT_ROUTER(server, "/modify", &SupplierController::modifySupplier, nullptr);
 }
 
 
