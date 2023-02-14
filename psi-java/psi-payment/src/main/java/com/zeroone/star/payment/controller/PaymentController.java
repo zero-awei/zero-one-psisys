@@ -2,8 +2,11 @@ package com.zeroone.star.payment.controller;
 
 import com.zeroone.star.project.dto.payment.ModifyDTO;
 import com.zeroone.star.project.payment.PaymentApis;
+import com.zeroone.star.project.query.payment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payment.DetHavVO;
+import com.zeroone.star.project.vo.payment.DetNoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +19,7 @@ import com.zeroone.star.project.vo.payment.DocListVO;
 
 @RestController
 @RequestMapping("payment")
-@Api(tags = "测试")
+@Api(tags = "预付模块")
 public class PaymentController implements PaymentApis {
     /**
      * 修改采购预付单功能
@@ -42,6 +45,11 @@ public class PaymentController implements PaymentApis {
         return null;
     }
 
+    /**
+     * 根据单据编号查询信息
+     * author hzp
+     * since 2023-02-13
+     */
     @GetMapping("/detHav")
     @ApiOperation(value = "有申请详情信息")
     @Override
