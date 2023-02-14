@@ -57,11 +57,11 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 系统收支概况，如果失败返回的数据为null
      */
     @ApiOperation("查询系统收支概况")
-    @GetMapping("/querySys")
+    @GetMapping("/query-Sys")
     @Override
     @ResponseBody
     public JsonVO<List<SystemRevenueAndExpenditureInformationVO>>
-    querySystemInfoById() {
+    querySystemInfo() {
         SystemRevenueAndExpenditureInformationVO inventoryVO = stkInventoryService.getInventoryVO();
         SystemRevenueAndExpenditureInformationVO customerDebtVO = receivableBalService.getCustomerDebtVO();
         SystemRevenueAndExpenditureInformationVO myDebtVO = payableBalService.getMyDebtVO();
@@ -76,10 +76,10 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 销售概况视图对象，如果未能查到数据返回的数据为null
      */
     @ApiOperation("查询销售概况")
-    @GetMapping("/querySale")
+    @GetMapping("/query-Sale")
     @Override
     @ResponseBody
-    public JsonVO<List<SaleInformationVO>> querySaleInfoById() {
+    public JsonVO<List<SaleInformationVO>> querySaleInfo() {
         List<HomeSale> homeSales = homeSaleService.listHomeSales();
         if(homeSales.isEmpty()){
             return JsonVO.fail(null);
@@ -104,10 +104,10 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 采购概况视图对象，如果未能查到数据返回的数据为null
      */
     @ApiOperation("查询采购概况")
-    @GetMapping("/queryPurchase")
+    @GetMapping("/query-Purchase")
     @Override
     @ResponseBody
-    public JsonVO<List<PurchaseInformationVO>> queryPurchaseInfoById() {
+    public JsonVO<List<PurchaseInformationVO>> queryPurchaseInfo() {
         List<HomePurchase> homePurchases = homePurchaseService.listHomePurchases();
         if(homePurchases.isEmpty()){
             return JsonVO.fail(null);
@@ -132,10 +132,10 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 客户数量视图对象
      */
     @ApiOperation("查询客户数量概况")
-    @GetMapping("/queryCustomer")
+    @GetMapping("/query-Customer")
     @Override
     @ResponseBody
-    public JsonVO<List<CustomerInformationVO>> queryCustomerInfoById() {
+    public JsonVO<List<CustomerInformationVO>> queryCustomerInfo() {
         ArrayList<CustomerInformationVO> customerInformationList = new ArrayList<>();
         CustomerInformationVO customerOnTheDay = customerService.countCustomerOnTheDay();
         CustomerInformationVO customerOfTheWeek = customerService.countCustomerOfTheWeek();
@@ -153,10 +153,10 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 销售金额视图对象
      */
     @ApiOperation("查询销售金额概况")
-    @GetMapping("/querySalesAmount")
+    @GetMapping("/query-SalesAmount")
     @Override
     @ResponseBody
-    public JsonVO<List<SalesAmountInformationVO>> querySalesAmountInfoById() {
+    public JsonVO<List<SalesAmountInformationVO>> querySalesAmountInfo() {
         return JsonVO.success(salOrderService.listSalesAmount());
     }
 }

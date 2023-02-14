@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>psi-system-management</artifactId>
+    <artifactId>psi-systemmanagement</artifactId>
 
     <dependencies>
         <dependency>

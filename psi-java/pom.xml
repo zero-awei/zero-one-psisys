@@ -22,10 +22,7 @@
         <module>psi-gateway</module>
         <module>psi-login</module>
         <module>psi-systemmanagement</module>
-        <module>psi-homepage</module>
         <module>psi-basedetail</module>
-        <module>aaaa</module>
-        <module>psi-home</module>
         <module>psi-titlepage</module>
     </modules>
     <properties>
