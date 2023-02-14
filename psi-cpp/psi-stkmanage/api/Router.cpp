@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "cgrk/CgrkController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -67,12 +68,13 @@ void Router::initRouter()
 			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
-	createSampleRouter();
-	createUserDepartRouter();
+	//createSampleRouter();
+	//createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createCgrkRouter();
 
 }
 
@@ -93,4 +95,9 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
 #endif
+void Router::createCgrkRouter()
+{
+	BIND_GET_ROUTER(server, "/get", &CgrkController::cgrkQuery, nullptr);
+}
