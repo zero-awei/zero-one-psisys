@@ -8,41 +8,42 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.user.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/user")
-@Api(tags = "用户列表示例接口")
-//@Validated
+@Api(tags = "用户管理示例接口")
+@Validated
 public class UserController implements UserApis {
 
     @ApiOperation(value = "查询用户列表")
     @GetMapping("list-all")
     @Override
-    public JsonVO<PageVO<UserVO>> listAllUsers(UserQuery query) {
+    public JsonVO<PageVO<UserVO>> listAllUsers(@Validated UserQuery query) {
         return null;
     }
 
     @ApiOperation(value = "查询用户")
     @GetMapping("query-user")
     @Override
-    public JsonVO<PageVO<UserVO>> queryUser(UserQuery query) {
-        return null;
-    }
-
-    @Override
-    public JsonVO<UserVO> review(String id) {
+    public JsonVO<PageVO<UserVO>> queryUser(@Validated UserQuery query) {
         return null;
     }
 
     @ApiOperation(value = "用户信息回显")
-    @GetMapping("echo")
-    public JsonVO<UserVO> echo(String id) {
+    @GetMapping("review")
+    @Override
+    public JsonVO<UserVO> review(@NotBlank(message = "id 不能为空") @RequestParam String id) {
         return null;
     }
-
 
     @ApiOperation(value = "添加用户")
     @PostMapping("add")
@@ -54,8 +55,9 @@ public class UserController implements UserApis {
     @ApiOperation(value = "删除用户")
     @DeleteMapping("delete")
     @Override
-    public JsonVO<String> deleteUser(String id) {
-        return null;
+    public JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") @RequestParam String id) {
+        log.info("id = {}", id);
+        return JsonVO.success("删除成功");
     }
 
     @ApiOperation(value = "修改用户")
@@ -68,7 +70,7 @@ public class UserController implements UserApis {
     @ApiOperation(value = "冻结/解冻用户")
     @PutMapping("status")
     @Override
-    public JsonVO<String> modifyStatus(String id) {
+    public JsonVO<String> modifyStatus(@NotBlank(message = "id 不能为空") @RequestParam String id) {
         return null;
     }
 

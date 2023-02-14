@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @ApiModel("用户管理数据传输对象")
@@ -44,8 +47,9 @@ public class UserDTO {
     /**
      * 生日
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "生日", example = "2003-04-05 00:00:00")
-    private LocalDateTime birthday;
+    private Date birthday;
 
     /**
      * 性别(0-默认未知,1-男,2-女)
@@ -118,8 +122,9 @@ public class UserDTO {
     /**
      * 更新时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "更新时间", example = "2023-02-12 22:18:43")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     /**
      * 身份（1普通成员 2上级）
