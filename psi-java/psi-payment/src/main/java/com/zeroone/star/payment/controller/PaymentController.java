@@ -41,4 +41,18 @@ public class PaymentController implements PaymentApis {
     public JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition) {
         return null;
     }
+
+    @GetMapping("/detHav")
+    @ApiOperation(value = "有申请详情信息")
+    @Override
+    public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
+        return JsonVO.success(new DetHavVO());
+    }
+
+    @GetMapping("/detNo")
+    @ApiOperation(value = "无申请详情信息")
+    @Override
+    public JsonVO<DetNoVO> queryByBillNo(PreDetQuery condition) {
+        return JsonVO.success(new DetNoVO());
+    }
 }
