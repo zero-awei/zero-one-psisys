@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IFinPaymentService extends IService<FinPayment> {
 
+    /**
+     * 删除付款单和付款单明细
+     * @param id
+     */
+    void delete(String id);
 }
