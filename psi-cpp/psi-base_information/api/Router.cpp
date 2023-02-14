@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "BankAccountController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -37,6 +38,9 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+
+	//银行账户
+	initbaSetting();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -94,3 +98,8 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::initbaSetting()
+{
+	BIND_GET_ROUTER(server, "/query-bankaccount-list", &BankAccountController::queryBankAccountList, nullptr);
+}
