@@ -3,11 +3,12 @@
 #define _PUR_REQ_ADAM_DTO_
 
 #include "../../GlobalInclude.h"
+#include "../FileDTO.h"
+
 //考虑到修改和添加采购订单的操作类似所以合并为一个DTO
-//添加订单的DTO(不包括明细内容)
-class AddAndModifyPurReqDTO
+//添加订单的DTO(不包括明细内容),同时由于有附件内容可能添加,所以继承FileDTO
+class AddAndModifyPurReqDTO:FileDTO
 {
-	//暂时先添加这些
 	// 单据id
 	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
