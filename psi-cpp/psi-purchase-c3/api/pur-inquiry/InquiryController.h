@@ -12,7 +12,7 @@ class InquiryController
 public:
 	CREATE_API_FUN_BODY(addPurInquiry, execAddPurInquiry, InquiryDTO);
 	CREATE_API_FUN_BODY(modifyPurInquiry, execModifyPurInquiry, InquiryDTO);
-	CREATE_API_FUN_BODY(removePurInquiry, execRemovePurInquiry, InquiryDTO);
+	CREATE_API_FUN_BODY(removePurInquiry, execRemovePurInquiry, InquiryRemoveDTO);
 	CREATE_API_FUN_BODY_FILE(PurInquiryInto, execPurInquiryInto, PurInquiryDTO);
 	CREATE_API_FUN_QUERY(PurInquiryExport, execPurInquiryExport, PurInquiryQurey);
 
@@ -24,7 +24,7 @@ private:
 	JsonVO<uint64_t> execModifyPurInquiry(const InquiryDTO& dto);
 
 	//删除数据
-	JsonVO<uint64_t> execRemovePurInquiry(const InquiryDTO& dto);
+	JsonVO<uint64_t> execRemovePurInquiry(const InquiryRemoveDTO& dto);
 
 	//文件上传
 	JsonVO<InquiryVO> execPurInquiryInto(const PurInquiryDTO& dto);

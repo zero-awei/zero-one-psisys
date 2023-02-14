@@ -136,6 +136,16 @@ public:
 	}
 };
 
+class InquiryRemoveDTO
+{
+	//µ¥¾Ý±àºÅ
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
 
+public:
+	friend void from_json(const json& j, PurInquiryDTO& t)
+	{
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
+	}
+};
 
 #endif  //__INQUIRYDTO_H__

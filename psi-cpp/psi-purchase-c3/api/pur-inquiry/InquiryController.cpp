@@ -21,7 +21,7 @@ JsonVO<uint64_t> InquiryController::execModifyPurInquiry(const InquiryDTO& dto)
 	return result;
 }
 
-JsonVO<uint64_t> InquiryController::execRemovePurInquiry(const InquiryDTO& dto)
+JsonVO<uint64_t> InquiryController::execRemovePurInquiry(const InquiryRemoveDTO& dto)
 {
 	JsonVO<uint64_t> result;
 
@@ -47,7 +47,6 @@ JsonVO<std::string> InquiryController::execPurInquiryExport(const PurInquiryQure
 {
 
 	JsonVO<std::string> result;
-	result.success("c//a//a.xls");
 
 
 

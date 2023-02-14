@@ -102,7 +102,7 @@ void Router::createInquiryRouter()
 	BIND_POST_ROUTER(server, "/add", &InquiryController::addPurInquiry, nullptr);
 	BIND_PUT_ROUTER(server, "/modify", &InquiryController::modifyPurInquiry, nullptr);
 	BIND_DEL_ROUTER(server, "/delete", &InquiryController::removePurInquiry, nullptr);
-	BIND_PUT_ROUTER(server, "/purReqInto", &InquiryController::PurInquiryInto,nullptr);
+	BIND_POST_ROUTER(server, "/purReqInto", &InquiryController::PurInquiryInto,nullptr);
 	BIND_GET_ROUTER(server, "/purReqExport", &InquiryController::PurInquiryExport, nullptr);
 
 }
