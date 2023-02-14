@@ -2,18 +2,19 @@
 #include "domain/vo/JsonVO.h"
 #include "domain/dto/pur-inquiry/InquiryDTO.h"
 #include "domain/vo/pur-inquiry/InquiryVO.h"
+#include "domain/query/pur-inquiry/InquiryQuery.h"
 #ifndef __INQUIRYCONTROLLER_H__
 #define __INQUIRYCONTROLLER_H__
 
 
-class InquiryHuilaiController
+class InquiryController
 {
 public:
 	CREATE_API_FUN_BODY(addPurInquiry, execAddPurInquiry, InquiryDTO);
 	CREATE_API_FUN_BODY(modifyPurInquiry, execModifyPurInquiry, InquiryDTO);
 	CREATE_API_FUN_BODY(removePurInquiry, execRemovePurInquiry, InquiryDTO);
 	CREATE_API_FUN_BODY_FILE(PurInquiryInto, execPurInquiryInto, PurInquiryDTO);
-	CREATE_API_FUN_BODY_FILE(PurInquiryExport, execPurInquiryExport, PurInquiryDTO);
+	CREATE_API_FUN_QUERY(PurInquiryExport, execPurInquiryExport, PurInquiryQurey);
 
 private:
 	//添加数据
@@ -29,7 +30,7 @@ private:
 	JsonVO<InquiryVO> execPurInquiryInto(const PurInquiryDTO& dto);
 
 	//文件下载
-	JsonVO<InquiryVO> execPurInquiryExport(const PurInquiryDTO& dto);
+	JsonVO<std::string> execPurInquiryExport(const PurInquiryQurey& qurry);
 
 
 };

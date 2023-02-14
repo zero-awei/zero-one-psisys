@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-
+#include "pur-inquiry/InquiryController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -76,6 +76,8 @@ void Router::initRouter()
 
 }
 
+
+
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
@@ -94,3 +96,13 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createInquiryRouter()
+{
+	BIND_POST_ROUTER(server, "/add", &InquiryController::addPurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/modify", &InquiryController::modifyPurInquiry, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &InquiryController::removePurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/purReqInto", &InquiryController::PurInquiryInto,nullptr);
+	BIND_GET_ROUTER(server, "/purReqExport", &InquiryController::PurInquiryExport, nullptr);
+
+}

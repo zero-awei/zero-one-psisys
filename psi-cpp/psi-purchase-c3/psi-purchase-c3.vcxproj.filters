@@ -66,6 +66,9 @@
     <ClInclude Include="api\pur-inquiry\InquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\pur-inquiry\InquiryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
