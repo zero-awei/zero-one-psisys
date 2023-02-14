@@ -52,7 +52,7 @@ class PurInquiryQurey : public PageQuery
 
 public:
 
-	friend void from_json(const json& j, PurInquiryDTO& t)
+	friend void from_json(const json& j, PurInquiryQurey& t)
 	{
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		BIND_FROM_TO_NORMAL(j, t, bill_date);

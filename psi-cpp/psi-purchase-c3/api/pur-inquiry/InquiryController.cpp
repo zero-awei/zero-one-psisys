@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "InquiryController.h"
 
 JsonVO<uint64_t> InquiryController::execAddPurInquiry(const InquiryDTO& dto)
