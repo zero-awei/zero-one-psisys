@@ -18,5 +18,6 @@ public class PaymentController implements PaymentApis {
     @Override
     public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
         return JsonVO.success("删除成功");
+
     }
 }
