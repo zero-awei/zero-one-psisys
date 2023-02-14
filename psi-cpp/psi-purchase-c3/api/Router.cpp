@@ -103,4 +103,5 @@ void Router::purReqAdamRouter()
 	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqAdamController::removePurReqById, nullptr);
 	//采购订单状态修改接口
 	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqAdamController::modifyPurReqBillStatus, nullptr);
+
 }

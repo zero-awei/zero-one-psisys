@@ -20,6 +20,7 @@ public:
 	CREATE_API_FUN_BODY(removePurReqById, execRemovePurReqById, DeletePurDTO);
 	//修改订单状态（关闭、作废、反关闭）
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPurReqBillStatus, execModifyPurReqBillStatus, PurReqModBillStatusDTO);
+
 private:
 	//新增订单
 	JsonVO<uint64_t> execAddPurReq(const AddAndModifyPurReqDTO& dto, const PayloadDTO& payload);
