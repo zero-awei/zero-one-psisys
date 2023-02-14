@@ -41,6 +41,11 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
+	//下面开始是自己写的
+	//void initSupplier();
+
+
+
 };
 
 #endif // !_ROUTER_
