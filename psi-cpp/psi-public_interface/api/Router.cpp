@@ -20,6 +20,10 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "CurrencyTypeController.h"
+#include "DeliveryTypeController.h"
+#include "ClearingFormController.h"
+#include "WarehouseController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +77,10 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	initCurrencyType();
+	initDeliveryType();
+	initClearingForm();
+	initWarehouse();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +101,23 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+void Router::initCurrencyType()
+{
+	BIND_GET_ROUTER(server, "/query-Currency-Type", &CurrencyTypeController::queryCurrencyType, nullptr);
+}
+
+void Router::initDeliveryType()
+{
+	BIND_GET_ROUTER(server, "/query-Delivery-Type", &DeliveryTypeController::queryDeliveryType, nullptr);
+}
+
+void Router::initClearingForm()
+{
+	BIND_GET_ROUTER(server, "/query-Clearing-Form", &ClearingFormController::queryClearingForm, nullptr);
+}
+
+void Router::initWarehouse()
+{
+	BIND_GET_ROUTER(server, "/query-Warehouse", &WarehouseController::queryWarehouse, nullptr);
+}
+
