@@ -174,7 +174,10 @@
   <ItemGroup>
     <ClCompile Include="api\AreaController.cpp" />
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\DepartChoiceController.cpp" />
+    <ClCompile Include="api\MaterialQueryController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="api\SuppliserController.cpp" />
     <ClCompile Include="api\UserChoiceController.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
@@ -187,7 +190,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\AreaController.h" />
+    <ClInclude Include="api\DepartChoiceController.h" />
+    <ClInclude Include="api\MaterialQueryController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="api\SupplierController.h" />
     <ClInclude Include="api\UserChoiceController.h" />
     <ClInclude Include="domain\do\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
@@ -196,14 +202,18 @@
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\AreaQuery.h" />
     <ClInclude Include="domain\query\DepartNameQuery.h" />
+    <ClInclude Include="domain\query\MaterialQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\SuppliersQuery.h" />
     <ClInclude Include="domain\query\UserQuery.h" />
     <ClInclude Include="domain\vo\AreaVO.h" />
     <ClInclude Include="domain\vo\DepartVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\MaterialVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\SuppliersVO.h" />
     <ClInclude Include="domain\vo\UserVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />

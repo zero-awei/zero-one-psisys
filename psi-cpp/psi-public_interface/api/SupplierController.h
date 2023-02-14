@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/13 16:41
+ @Date: 2023/2/14 18:50
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,18 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _USERCHOICECONTROLLER_H_
-#define _USERCHOICECONTROLLER_H_
-
-#include "../domain/vo/DepartVO.h"
-#include "../domain/vo/UserVO.h"
+#ifndef SUPPLIER_CONTROLLER_
+#define SUPPLIER_CONTROLLER_
+#include"../domain/query/SuppliersQuery.h"
+#include"../domain/vo/SuppliersVO.h"
 #include "../domain/vo/JsonVO.h"
-#include "../domain/vo/PageVO.h"
-#include "../domain/query/DepartNameQuery.h"
-#include "../domain/query/UserQuery.h"
 
-class UserChoiceController
+class SupplierController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(queryUser, execQueryUser, UserQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(querySupplier, execQuerySupplier, SupplierQuery);
 private:
-	//≤È—Ø”√ªß
-	JsonVO<PageVO<UserVO>>execQueryUser(const UserQuery& query, const PayloadDTO& payload);
+	JsonVO<list<SuppliersVO>>execQuerySupplier(const SupplierQuery& query,const PayloadDTO& payload);
 };
 
-#endif // _USERCHOICECONTROLLER_H_
+#endif // !SUPPLIER_CONTROLLER_

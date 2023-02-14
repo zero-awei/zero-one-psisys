@@ -38,7 +38,10 @@ void Router::initRouter()
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 	initAreaSetting();
-	initUserChoiceController();
+	initUserChoiceSetting();
+	initMaterialQuerySetting();
+	initSupplierSetting();
+	initDepartChioceSetting();
 
 #ifdef HTTP_SERVER_DEMO
 	//°ó¶¨Ê×Ò³Ò³Ãæ
@@ -102,8 +105,22 @@ void Router::initAreaSetting()
 	BIND_GET_ROUTER(server, "/get-area", &AreaController::queryArea, nullptr);
 }
 
-void Router::initUserChoiceController()
+void Router::initUserChoiceSetting()
 {
 	BIND_GET_ROUTER(server, "/get-user", &UserChoiceController::queryUser, nullptr);
-	BIND_GET_ROUTER(server, "/get-depart", &UserChoiceController::queryDepart, nullptr);
+}
+
+void Router::initMaterialQuerySetting()
+{
+	BIND_GET_ROUTER(server, "/get-material", &MaterialQueryController::queryMaterial, nullptr);
+}
+
+void Router::initDepartChioceSetting()
+{
+	BIND_GET_ROUTER(server, "/get-depart", &DepartChoiceController::queryDepart, nullptr);
+}
+
+void Router::initSupplierSetting()
+{
+	BIND_GET_ROUTER(server, "/get-supplier", &SupplierController::querySupplier, nullptr);
 }

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/13 16:41
+ @Date: 2023/2/14 15:57
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _USERCHOICECONTROLLER_H_
-#define _USERCHOICECONTROLLER_H_
 
-#include "../domain/vo/DepartVO.h"
-#include "../domain/vo/UserVO.h"
-#include "../domain/vo/JsonVO.h"
+#ifndef _MATERIAL_QUERY_CONTROLLER_
+#define _MATERIAL_QUERY_CONTROLLER_
+
+#include "../domain/query/MaterialQuery.h"
+#include "../domain/vo/MaterialVO.h"
 #include "../domain/vo/PageVO.h"
-#include "../domain/query/DepartNameQuery.h"
-#include "../domain/query/UserQuery.h"
+#include "../domain/vo/JsonVO.h"
 
-class UserChoiceController
+class MaterialQueryController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(queryUser, execQueryUser, UserQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterial, execQueryMaterial, MaterialQuery);
 private:
-	//≤È—Ø”√ªß
-	JsonVO<PageVO<UserVO>>execQueryUser(const UserQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<MaterialVO>>execQueryMaterial(const MaterialQuery& query, const PayloadDTO& payload);
 };
 
-#endif // _USERCHOICECONTROLLER_H_
+#endif //!_MATERIAL_QUERY_CONTROLLER_

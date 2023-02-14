@@ -36,6 +36,15 @@
     <ClCompile Include="api\UserChoiceController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\DepartChoiceController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\MaterialQueryController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\SuppliserController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -102,6 +111,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\UserChoiceController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\MaterialVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\MaterialQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\MaterialQueryController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\DepartChoiceController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\SuppliersQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\SuppliersVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\SupplierController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

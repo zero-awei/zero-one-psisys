@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/13 16:41
+ @Date: 2023/2/14 18:41
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,18 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _USERCHOICECONTROLLER_H_
-#define _USERCHOICECONTROLLER_H_
+#ifndef _SUPPLIERS_VO_
+#define _SUPPLIERS_VO_
+#include"../GlobalInclude.h"
 
-#include "../domain/vo/DepartVO.h"
-#include "../domain/vo/UserVO.h"
-#include "../domain/vo/JsonVO.h"
-#include "../domain/vo/PageVO.h"
-#include "../domain/query/DepartNameQuery.h"
-#include "../domain/query/UserQuery.h"
-
-class UserChoiceController
+class SuppliersVO
 {
+	//供应商类型名字
+	CC_SYNTHESIZE(std::string, name, Name);
+	//供应商类型对应id
+	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(queryUser, execQueryUser, UserQuery);
-private:
-	//查询用户
-	JsonVO<PageVO<UserVO>>execQueryUser(const UserQuery& query, const PayloadDTO& payload);
+	//绑定json转换方法
+	BIND_TO_JSON(SuppliersVO, name, id);
 };
-
-#endif // _USERCHOICECONTROLLER_H_
+#endif//!_SUPPLIERS_VO_
