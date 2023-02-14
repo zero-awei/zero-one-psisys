@@ -30,7 +30,7 @@ JsonVO<uint64_t> InquiryHuilaiController::execRemovePurInquiry(const InquiryDTO&
 	return result;
 }
 
-JsonVO<InquiryVO> InquiryHuilaiController::execModifyPurInquiryInfo(const InquiryDTO& dto)
+JsonVO<InquiryVO> InquiryHuilaiController::execPurInquiryInto(const PurInquiryDTO& dto)
 {
 	JsonVO<InquiryVO> result;
 
@@ -41,8 +41,9 @@ JsonVO<InquiryVO> InquiryHuilaiController::execModifyPurInquiryInfo(const Inquir
 	return result;
 }
 
-JsonVO<InquiryVO> InquiryHuilaiController::execModifyPurInquiryIn(const InquiryDTO& dto)
+JsonVO<InquiryVO> InquiryHuilaiController::execPurInquiryExport(const PurInquiryDTO& dto)
 {
+
 	JsonVO<InquiryVO> result;
 
 
@@ -50,4 +51,6 @@ JsonVO<InquiryVO> InquiryHuilaiController::execModifyPurInquiryIn(const InquiryD
 
 
 	return result;
+
 }
+

@@ -12,8 +12,8 @@ public:
 	CREATE_API_FUN_BODY(addPurInquiry, execAddPurInquiry, InquiryDTO);
 	CREATE_API_FUN_BODY(modifyPurInquiry, execModifyPurInquiry, InquiryDTO);
 	CREATE_API_FUN_BODY(removePurInquiry, execRemovePurInquiry, InquiryDTO);
-	CREATE_API_FUN_BODY_FILE(modifyPurInquiryInfo, execModifyPurInquiryInfo, InquiryDTO);
-	CREATE_API_FUN_BODY_FILE(modifyPurInquiryIn, execModifyPurInquiryIn, InquiryDTO);
+	CREATE_API_FUN_BODY_FILE(PurInquiryInto, execPurInquiryInto, PurInquiryDTO);
+	CREATE_API_FUN_BODY_FILE(PurInquiryExport, execPurInquiryExport, PurInquiryDTO);
 
 private:
 	//添加数据
@@ -26,10 +26,10 @@ private:
 	JsonVO<uint64_t> execRemovePurInquiry(const InquiryDTO& dto);
 
 	//文件上传
-	JsonVO<InquiryVO> execModifyPurInquiryInfo(const InquiryDTO& dto);
+	JsonVO<InquiryVO> execPurInquiryInto(const PurInquiryDTO& dto);
 
 	//文件下载
-	JsonVO<InquiryVO> execModifyPurInquiryIn(const InquiryDTO& dto);
+	JsonVO<InquiryVO> execPurInquiryExport(const PurInquiryDTO& dto);
 
 
 };

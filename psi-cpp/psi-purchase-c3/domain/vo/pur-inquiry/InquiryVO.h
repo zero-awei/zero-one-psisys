@@ -27,7 +27,7 @@ class InquiryVO
 	//已生效			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
 		//已关闭			;
-		CC_SYNTHESIZE(int, is_close, Is_close);
+	CC_SYNTHESIZE(int, is_close, Is_close);
 	//已作废			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 	//交货地点		   ;
