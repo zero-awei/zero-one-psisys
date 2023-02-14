@@ -43,7 +43,7 @@ public:
 	CREATE_API_FUN_JSON(jsonSample, execJsonSample, SampleDTO);
 	CREATE_API_FUN_BODY_FILE(modifyUserInfo, execModifyUserInfo, UserDTO);
 private:
-	//演示查询数据
+	//查询数据
 	JsonVO<PageVO<SampleVO>> execQuerySample(const SampleQuery& query, const PayloadDTO& payload);
 	//演示新增数据
 	JsonVO<uint64_t> execAddSample(const SampleDTO& dto);
