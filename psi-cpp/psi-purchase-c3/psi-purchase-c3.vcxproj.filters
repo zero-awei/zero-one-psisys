@@ -54,6 +54,15 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\pur-compare\PurCompareDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-compare\PurCompareVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-compare\PurCompareQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
