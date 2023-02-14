@@ -5,7 +5,7 @@
 #include "../../GlobalInclude.h"
 
 /**
- * 示例添加部门数据传输对象
+ * 添加单据传输对象
  */
 class DocDTO
 {
@@ -86,6 +86,7 @@ class DocDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DocDTO& t); // NOLINT
+	BIND_TO_JSON(DocDTO, billNo,billDate,subject,opDept,operatoR,handler,entryNo,materialId,model,warehouseId,unitId,swellQty,inCost,remarK,custom1,custom2,remark,attachment,billStage,isEffective,isClosed,isVoided,effectiveTime,approver,bpmiInstanceId,createBy,createTime,sysOrgCode,updateTime,updateTime,updateBy,isAuto,isRubric,hasRp);
 };
 
 #endif // !_DOC_DTO_

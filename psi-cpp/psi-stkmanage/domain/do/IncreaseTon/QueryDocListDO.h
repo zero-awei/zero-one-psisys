@@ -10,59 +10,59 @@
 class QueryDocListDO
 {
 	//单据编号
-	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	CC_SYNTHESIZE(string, billNo, BillNo);
 	//单据日期
-	CC_SYNTHESIZE(string, bill_date, Bill_date);
+	CC_SYNTHESIZE(string, billDate, BillDate);
 	//业务部门
-	CC_SYNTHESIZE(string, op_dept, op_dept);
+	CC_SYNTHESIZE(string, opDept, opDept);
 	//业务员
 	CC_SYNTHESIZE(string, operatoR, Operator);
 	//单据阶段
-	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
+	CC_SYNTHESIZE(string, billStage, BillStage);
 	//已生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
+	CC_SYNTHESIZE(int, isEffective, IsEffective);
 	//已关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	CC_SYNTHESIZE(int, isClosed, IsClosed);
 	//已作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	CC_SYNTHESIZE(int, isVoided, IsVoided);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//备注
-	CC_SYNTHESIZE(int,is_auto, Is_auto);
+	CC_SYNTHESIZE(int,isAuto, IsAuto);
 	//生效时间
-	CC_SYNTHESIZE(string, effective_time, Effective_time);
+	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
 	//核批人 
 	CC_SYNTHESIZE(string, approver, Approver);
 	//制单人
-	CC_SYNTHESIZE(string, create_by, Create_by);
+	CC_SYNTHESIZE(string, createBy, CreateBy);
 	//制单时间
-	CC_SYNTHESIZE(string, create_time, Create_time);
+	CC_SYNTHESIZE(string, createTime, CreateTime);
 	//制单部门
-	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
+	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, Update_time);
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	//修改人
-	CC_SYNTHESIZE(string, update_by, Update_by);
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 
 public:
 	QueryDocListDO() {
-		bill_no = "";
-		bill_date = "";
-		op_dept = "";
+		billNo = "";
+		billDate = "";
+		opDept = "";
 		operatoR = "";
-		bill_stage = "";
-		is_effective = -1;
-		is_closed = 1;
-		is_voided = -1;
+		billStage = "";
+		isEffective = -1;
+		isClosed = 1;
+		isVoided = -1;
 		remark = "";
-		is_auto = -1;
-		effective_time = "";
+		isAuto = -1;
+		effectiveTime = "";
 		approver = "";
-		create_by = "";
-		create_time = "";
-		sys_org_code = "";
-		update_time = "";
-		update_by = "";
+		createBy = "";
+		createTime = "";
+		sysOrgCode = "";
+		updateTime = "";
+		updateBy = "";
 
 
 	}

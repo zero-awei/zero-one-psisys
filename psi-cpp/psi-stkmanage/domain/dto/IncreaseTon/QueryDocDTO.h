@@ -5,7 +5,7 @@
 #include "../../GlobalInclude.h"
 
 /**
- * 示例传输对象
+ * 查询负载对象对象
  */
 class QueryDocDTO
 {
@@ -19,7 +19,12 @@ class QueryDocDTO
 	CC_SYNTHESIZE(string, sex, Sex);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j,QueryDocDTO& t); // NOLINT
+	friend void from_json(const json& j, QueryDocDTO& t) {
+		BIND_FROM_TO_I(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, name);
+		BIND_FROM_TO_I(j, t,age);
+		BIND_FROM_TO_NORMAL(j, t, sex);
+	}
 	BIND_TO_JSON(QueryDocDTO, id, name, age, sex);
 };
 

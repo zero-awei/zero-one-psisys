@@ -11,7 +11,10 @@ JsonVO<QueryDocVO> IncreaseTonController::execQueryDocIncreaseTon(const QueryDoc
 
 JsonVO<PageVO<DoclVO>> IncreaseTonController::execQueryDocListIncreaseTon(const QueryDocListQuery& query, const PayloadDTO& payload)
 {
-    return JsonVO<PageVO<DoclVO>>();
+    //查询数据
+    PageVO<DoclVO> result;
+    //响应结果
+    return JsonVO<PageVO<DoclVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<SucVO> IncreaseTonController::execAddDocIncreaseTon(const DocDTO& dto)
@@ -39,7 +42,7 @@ JsonVO<SucVO> IncreaseTonController::execImportDocFileIncreaseTon(const DocFileD
     return JsonVO<SucVO>();
 }
 
-JsonVO<SucVO> IncreaseTonController::execEmportDocFileIncreaseTon()
+JsonVO<std::string> IncreaseTonController::execEmportDocFileIncreaseTon()
 {
-    return JsonVO<SucVO>();
+    return JsonVO<std::string>();
 }

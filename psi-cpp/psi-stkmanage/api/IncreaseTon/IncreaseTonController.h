@@ -47,7 +47,7 @@ private:
 	//导入
 	JsonVO<SucVO> execImportDocFileIncreaseTon(const DocFileDTO& dto);
 	//导出
-	JsonVO<SucVO> execEmportDocFileIncreaseTon();
+	JsonVO<std::string> execEmportDocFileIncreaseTon();
 };
 
 #endif // _QUERYDOCLIST_CONTROLLER_

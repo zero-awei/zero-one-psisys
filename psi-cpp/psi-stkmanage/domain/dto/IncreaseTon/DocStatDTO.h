@@ -17,7 +17,11 @@ class DocStatDTO
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, DocStatDTO& t); // NOLINT
+	friend void from_json(const json& j, DocStatDTO& t) {
+		BIND_FROM_TO_NORMAL(j, t, billNo);
+		BIND_FROM_TO_I(j, t, isClosed);
+		BIND_FROM_TO_I(j, t, isVoided);
+	}
 	BIND_TO_JSON(DocStatDTO, billNo,isClosed,isVoided);
 };
 

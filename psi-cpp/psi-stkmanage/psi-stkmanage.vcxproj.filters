@@ -107,9 +107,6 @@
     <ClInclude Include="domain\dto\IncreaseTon\DocDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\IncreaseTon\DocVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\IncreaseTon\DocNoDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>

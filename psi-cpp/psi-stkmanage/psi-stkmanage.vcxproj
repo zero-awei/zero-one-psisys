@@ -215,7 +215,6 @@
     <ClInclude Include="domain\query\IncreaseTon\QueryDocListQuery.h" />
     <ClInclude Include="domain\query\IncreaseTon\QueryDocQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\vo\IncreaseTon\DocVO.h" />
     <ClInclude Include="domain\vo\IncreaseTon\DoclVO.h" />
     <ClInclude Include="domain\vo\IncreaseTon\QueryDocVO.h" />
     <ClInclude Include="domain\vo\IncreaseTon\SucVO.h" />

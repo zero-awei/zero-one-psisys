@@ -72,7 +72,7 @@ void Router::initRouter()
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-
+	createIncreaseTonRouter();
 	//#TIP :系统扩展路由定义，写在这个后面
 
 }
@@ -101,8 +101,8 @@ void Router::createIncreaseTonRouter()
 	BIND_GET_ROUTER(server, "/QueryDocList", &IncreaseTonController::QueryDocListIncreaseTon, nullptr);
 	BIND_GET_ROUTER(server, "/AddDoc", &IncreaseTonController::AddDocIncreaseTon, nullptr);
 	BIND_GET_ROUTER(server, "/ModifyDoc", &IncreaseTonController::ModifyDocIncreaseTon, nullptr);
-	//BIND_GET_ROUTER(server, "/RemoveDoc", &IncreaseTonController::RemoveDocIncreaseTon, nullptr);
-	//BIND_GET_ROUTER(server, "/ModifyDocStat", &IncreaseTonController::ModifyDocStatIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/RemoveDoc", &IncreaseTonController::RemoveDocIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/ModifyDocStat", &IncreaseTonController::ModifyDocStatIncreaseTon, nullptr);
 	BIND_GET_ROUTER(server, "/ImportDocFile", &IncreaseTonController::ImportDocFileIncreaseTon, nullptr);
 	BIND_GET_ROUTER(server, "/EmportDocFile", &IncreaseTonController::EmportDocFileIncreaseTon, nullptr);
 }
