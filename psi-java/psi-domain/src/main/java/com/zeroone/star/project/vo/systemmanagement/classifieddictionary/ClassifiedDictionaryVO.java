@@ -5,9 +5,14 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @Description
- * @Author 苏乞儿
- * @Date 2023/2/11
+ * <p>
+ * 描述：分类字典视图对象
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ *
+ * @author suqier
+ * @version 1.0.0
  */
 @Data
 @ApiModel("分类字典显示对象")

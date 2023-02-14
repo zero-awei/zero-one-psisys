@@ -10,7 +10,14 @@ import com.zeroone.star.project.vo.systemmanagement.classifieddictionary.Classif
 import java.util.List;
 
 /**
- * @author wangxiaohu
+ * <p>
+ * 描述：分类字典接口定义
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ *
+ * @author suqier
+ * @version 1.0.0
  */
 public interface ClassifiedDictionaryApis {
 
@@ -19,14 +26,14 @@ public interface ClassifiedDictionaryApis {
      * @param condition
      * @return
      */
-    JsonVO<PageVO<List<ClassifiedDictionaryVO>>> queryAll(PageQuery condition);
+    JsonVO<PageVO<ClassifiedDictionaryVO>> queryAll(PageQuery condition);
 
     /**
      * 查询指定根字典
      * @param pid
      * @return
      */
-    JsonVO<PageVO<List<ClassifiedDictionaryVO>>> queryOne(String pid);
+    JsonVO<PageVO<ClassifiedDictionaryVO>> queryOne(String pid);
 
 
     /**
@@ -34,14 +41,14 @@ public interface ClassifiedDictionaryApis {
      * @param data
      * @return
      */
-    JsonVO update(ClassifiedDictionaryDTO data);
+    JsonVO<String> update(ClassifiedDictionaryDTO data);
 
     /**
      * 删除指定根字典
      * @param id
      * @return
      */
-    JsonVO delete(String id);
+    JsonVO<String> delete(String id);
 
 
     /**
@@ -49,7 +56,7 @@ public interface ClassifiedDictionaryApis {
      * @param data
      * @return
      */
-    JsonVO insert(ClassifiedDictionaryDTO data);
+    JsonVO<String> insert(ClassifiedDictionaryDTO data);
 
 
 }
