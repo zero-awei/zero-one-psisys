@@ -44,28 +44,34 @@ public interface PaymentApis {
      * version 1.0.0
      */
     JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition);
+
     /**
      * 通过单据编号查询数据-采购预付有申请
-     * @param condition 单据编号-查询条件
-     * @return 查询结果
+     * param condition 单据编号-查询条件
+     * return 查询结果
+     * author hzp
      */
     JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition);
 
     /**
      *通过单据编号查询数据-采购预付无申请
-     * @param condition 单据编号-查询条件
-     * @return 查询结果
+     * param condition 单据编号-查询条件
+     * return 查询结果
+     * author hzp
      */
     JsonVO<DetNoVO> queryByBillNo (PreDetQuery condition);
+
     /**
      * 获取导出文件
-     * @return 返回响应对象
+     * return 返回响应对象
+     * author 明破
      */
     ResponseEntity<byte[]> download();
 
     /**
      * 获取导出链接
-     * @return 返回下载路径
+     * return 返回下载路径
+     * author 明破
      */
     JsonVO<String> downloadUrl();
 }

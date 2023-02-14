@@ -65,6 +65,11 @@ public class PaymentController implements PaymentApis {
         return JsonVO.success(new DetNoVO());
     }
 
+    /**
+     * 导出功能实现
+     * author 明破
+     * since 2023-02-13
+     */
     @GetMapping("export")
     @ApiOperation(value = "获取导出文件")
     @Override
