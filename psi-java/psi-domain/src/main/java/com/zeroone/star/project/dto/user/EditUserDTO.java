@@ -1,18 +1,15 @@
 package com.zeroone.star.project.dto.user;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@ApiModel("用户管理数据传输对象")
-public class UserDTO {
+@ApiModel("用户管理编辑用户数据传输对象")
+public class EditUserDTO {
     /**
      * 主键id
      */

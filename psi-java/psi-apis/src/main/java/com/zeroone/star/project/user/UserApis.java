@@ -6,6 +6,7 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.user.UserVO;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public interface UserApis {
@@ -28,7 +29,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 用户信息
      */
-    JsonVO<UserVO> review(String id);
+    JsonVO<UserVO> review(@NotBlank(message = "id 不能为空") String id);
 
     /**
      * 新增用户
@@ -42,7 +43,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 删除用户的编号
      */
-    JsonVO<String> deleteUser(String id);
+    JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") String id);
 
     /**
      * 修改用户
@@ -56,7 +57,7 @@ public interface UserApis {
      * @param id 用户id
      * @return 修改的用户编号
      */
-    JsonVO<String> modifyStatus(String id);
+    JsonVO<String> modifyStatus(@NotBlank(message = "id 不能为空") String id);
 
     /**
      * 用户导入

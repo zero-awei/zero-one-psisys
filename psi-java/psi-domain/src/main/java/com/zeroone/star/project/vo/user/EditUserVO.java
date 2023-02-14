@@ -1,18 +1,14 @@
-package com.zeroone.star.project.dto.user;
+package com.zeroone.star.project.vo.user;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
-@ApiModel("用户管理数据传输对象")
-public class UserDTO {
+@ApiModel("用户管理编辑显示对象")
+public class EditUserVO {
     /**
      * 主键id
      */
@@ -47,9 +43,8 @@ public class UserDTO {
     /**
      * 生日
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "生日", example = "2003-04-05 00:00:00")
-    private Date birthday;
+    private LocalDateTime birthday;
 
     /**
      * 性别(0-默认未知,1-男,2-女)
@@ -122,9 +117,8 @@ public class UserDTO {
     /**
      * 更新时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "更新时间", example = "2023-02-12 22:18:43")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 身份（1普通成员 2上级）
@@ -149,6 +143,5 @@ public class UserDTO {
      */
     @ApiModelProperty(value = "设备ID", example = "1")
     private String clientId;
-
 
 }

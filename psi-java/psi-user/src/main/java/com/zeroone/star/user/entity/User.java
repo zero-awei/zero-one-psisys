@@ -2,6 +2,7 @@ package com.zeroone.star.user.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -86,6 +87,7 @@ public class User implements Serializable {
     /**
      * 删除状态(0-正常,1-已删除)
      */
+    @TableLogic(value = "0", delval = "1")
     private Boolean delFlag;
 
     /**
@@ -127,6 +129,7 @@ public class User implements Serializable {
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;
 
     /**
