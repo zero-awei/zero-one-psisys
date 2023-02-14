@@ -1,16 +1,12 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
  @Author: Linsky
  @Date: 2023/2/13 20:31:04
-
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
 	  https://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,7 +24,7 @@
 #include "../../domain/vo/JsonVO.h"
 
 /**
- * »ù´¡×ÊÁÏ²Ö¿âÄ£¿é½Ó¿Ú
+ * åŸºç¡€èµ„æ–™ä»“åº“æ¨¡å—æ¥å£
  */
 class DepotController
 {
@@ -43,22 +39,22 @@ public:
 	CREATE_API_FUN_BODY_FILE(modifyDepots, execModifyDepots, DepotDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, DepotQuery);
 private:
-	//Ä¬ÈÏ²éÑ¯Êı¾İ
+	//é»˜è®¤æŸ¥è¯¢æ•°æ®
 	JsonVO<PageVO<DepotVO>> execQueryDepot(const DepotQuery& query, const PayloadDTO& payload);
-	//²éÑ¯×Ó¼¶ÁĞ±í # ÕâÀïÓ¦¸Ã´«¸öÎ¨Ò»Öµ¾ÍĞĞ Òª²»Òª·ÖÒ³µÄÎÊÌâÖ®ºó²âÊÔÁËÔÙËµ
+	//æŸ¥è¯¢å­çº§åˆ—è¡¨ # è¿™é‡Œåº”è¯¥ä¼ ä¸ªå”¯ä¸€å€¼å°±è¡Œ è¦ä¸è¦åˆ†é¡µçš„é—®é¢˜ä¹‹åæµ‹è¯•äº†å†è¯´
 	JsonVO<DepotVO> execQueryKidDepot(const DepotQuery& query, const PayloadDTO& payload);
-	// ²éÑ¯ÏêÇé # ÕâÀïÓ¦¸Ã´«¸öÎ¨Ò»Öµ¾ÍĞĞ
+	// æŸ¥è¯¢è¯¦æƒ… # è¿™é‡Œåº”è¯¥ä¼ ä¸ªå”¯ä¸€å€¼å°±è¡Œ
 	JsonVO<DepotDetailVO> execQueryDetail(const DepotQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const DepotQuery& query, const PayloadDTO& payload);
-	//ĞÂÔö²Ö¿â # Ìí¼ÓÏÂ¼¶Ó¦¸Ã¿ÉÒÔÍ¨¹ıÕâ¸öÀ´ÊµÏÖ£¬¾ÍÏÈ²»Ğ´
+	//æ–°å¢ä»“åº“ # æ·»åŠ ä¸‹çº§åº”è¯¥å¯ä»¥é€šè¿‡è¿™ä¸ªæ¥å®ç°ï¼Œå°±å…ˆä¸å†™
 	JsonVO<PageVO<DepotVO>> execAddDepot(const DepotDTO& dto);
-	//ĞŞ¸Ä²Ö¿â
+	//ä¿®æ”¹ä»“åº“
 	JsonVO<PageVO<DepotVO>> execModifyDepot(const DepotDTO& dto);
-	//É¾³ı²Ö¿â # ÕâÀïÓ¦¸Ã´«¸öÎ¨Ò»Öµ¾ÍĞĞ£¬·´ÕıÊÇ¶ÔÓ¦É¾³ıµÄ
+	//åˆ é™¤ä»“åº“ # è¿™é‡Œåº”è¯¥ä¼ ä¸ªå”¯ä¸€å€¼å°±è¡Œï¼Œåæ­£æ˜¯å¯¹åº”åˆ é™¤çš„
 	JsonVO<PageVO<DepotVO>> execRemoveDepot(const DepotDTO& dto);
-	//ÎÄ¼şµ¼Èë
+	//æ–‡ä»¶å¯¼å…¥
 	JsonVO<PageVO<DepotVO>> execModifyDepots(const DepotDTO& dto);
-	//ÎÄ¼şµ¼³ö
+	//æ–‡ä»¶å¯¼å‡º
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
 };
 

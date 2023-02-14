@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,16 +23,16 @@
 #include "../PageQuery.h"
 
 /**
- * »ù´¡×ÊÁÏ²Ö¿âÄ£¿é²éÑ¯¶ÔÏó
+ * åŸºç¡€èµ„æ–™ä»“åº“æ¨¡å—æŸ¥è¯¢å¯¹è±¡
  */
 class DepotQuery : public PageQuery
 {
-	// Ãû³Æ
+	// åç§°
 	CC_SYNTHESIZE(string, name, Name);
-	// ±àºÅ
+	// ç¼–å·
 	CC_SYNTHESIZE(string, id, Id);
 public:
-	// °ó¶¨from_json
+	// ç»‘å®šfrom_json
 	friend void from_json(const json& j, DepotQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
