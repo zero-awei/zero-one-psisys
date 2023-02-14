@@ -174,6 +174,7 @@
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="api\supplier\SupplierController.cpp" />
     <ClCompile Include="domain\dto\supplier\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplier\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplier\ModifySupplierDTO.cpp" />
@@ -188,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="api\supplier\SupplierController.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
