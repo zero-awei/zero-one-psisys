@@ -1,8 +1,6 @@
 package com.zeroone.star.payment.controller;
 
 
-import com.zeroone.star.project.vo.JsonVO;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/payment/fin-payment-entry")
 public class FinPaymentEntryController {
-
 
 }
 
