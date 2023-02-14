@@ -1,16 +1,17 @@
 #pragma once
 
-#ifndef _PURINQUIRY_QUERY_
-#define _PURINQUIRY_QUERY_
+#ifndef _PURINQUIRYFINDBILL_QUERY_
+#define _PURINQUIRYFINDBILL_QUERY_
 
 #include "../PageQuery.h"
 
 /**
- * 示例分页查询对象
+ * 示例分页查询对象 —— 采购询价单列表
  */
+
+//采购询价单查询列表
 class PurInquiryFindBillQuery : public PageQuery
 {
-//查询的对象信息
 	//单据编号
 	CC_SYNTHESIZE(string, purInquiryBillNo, PurInquiryBillNo);
 	//单据日期
@@ -25,7 +26,6 @@ class PurInquiryFindBillQuery : public PageQuery
 	//是否作废
 	CC_SYNTHESIZE(int, purInquiryIsVoided, PurInquiryIsVoided);
 
-
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, PurInquiryFindBillQuery& t) { // NOLINT
@@ -38,20 +38,4 @@ public:
 	}
 };
 
-
-
-//指定询价单详细信息
-class PurInquiryFindDetailBillQuery : public PageQuery
-{
-//查询的指定对象信息
-	//单据编号
-	CC_SYNTHESIZE(string, purInquiryBillNo, PurInquiryBillNo);    // 对应mysql数据库中bill_no字段
-
-public:
-	// 绑定from_json
-	friend void from_json(const json& j, PurInquiryFindDetailBillQuery& t) { // NOLINT
-		BIND_FROM_TO_ULL(j, t, purInquiryBillNo);
-	}
-};
-
-#endif // !_PURINQUIRY_QUERY_
+#endif // !_PURINQUIRYFINDBILL_QUERY_

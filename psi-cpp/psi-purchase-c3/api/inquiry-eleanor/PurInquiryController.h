@@ -4,14 +4,17 @@
 #ifndef _PURINQUIRY_CONTROLLER_
 #define _PURINQUIRY_CONTROLLER_
 
-#include "../../domain/query/inquiry-eleanor/PurInquiryQuery.h"
-#include "../../domain/dto/inquiry-eleanor/PurInquiryDTO.h"
+#include "../../domain/query/inquiry-eleanor/PurInquiryFindBillQuery.h"
+#include "../../domain/query/inquiry-eleanor/PurInquiryFindDetailBillQuery.h"
+#include "../../domain/dto/inquiry-eleanor/PurInquiryFindBillDTO.h"
+#include "../../domain/dto/inquiry-eleanor/PurInquiryFindDetailBillDTO.h"
 #include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/inquiry-eleanor/PurInquiryVO.h"
+#include "../../domain/vo/inquiry-eleanor/PurInquiryFindBillVO.h"
+#include "../../domain/vo/inquiry-eleanor/PurInquiryFindDetailBillVO.h"
+#include "../../domain/vo/inquiry-eleanor/EntryPurInquiryVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
-#include "../../domain/dto/user/UserDTO.h"
-#include "../../domain/vo/user/UserVO.h"
+
 
 /**
  * 示例控制器，演示接口的使用

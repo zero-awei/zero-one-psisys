@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "PurInquiryDTO.h"
+#include "PurInquiryFindBillDTO.h"
 void from_json(const json& j, PurInquiryFindBillDTO& t) { // NOLINT
 	BIND_FROM_TO_ULL(j, t, purInquiryBillNo);
 	BIND_FROM_TO_ULL(j, t, purInquiryBillDate);
@@ -9,6 +9,3 @@ void from_json(const json& j, PurInquiryFindBillDTO& t) { // NOLINT
 	BIND_FROM_TO_I(j, t, purInquiryIsVoided);
 }
 
-void from_json(const json& j, PurInquiryFindDetailBillDTO& t) { // NOLINT
-	BIND_FROM_TO_ULL(j, t, purInquiryBillNo);
-}

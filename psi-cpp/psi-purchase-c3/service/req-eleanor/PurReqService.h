@@ -4,7 +4,7 @@
 #define _PURREQ_SERVICE_
 #include <list>
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/dto/req-eleanor/PurReqDTO.h"
+#include "../../domain/dto/req-eleanor/PurReqIntoDTO.h"
 
 /**
  * 示例服务实现

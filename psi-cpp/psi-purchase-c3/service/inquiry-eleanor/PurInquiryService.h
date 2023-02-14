@@ -3,10 +3,10 @@
 #ifndef _PURINQUIRY_SERVICE_
 #define _PURINQUIRY_SERVICE_
 #include <list>
-#include "../../domain/vo/inquiry-eleanor/PurInquiryVO.h"
+#include "../../domain/vo/inquiry-eleanor/PurInquiryFindBillVO.h"
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/query/inquiry-eleanor/PurInquiryQuery.h"
-#include "../../domain/dto/inquiry-eleanor/PurInquiryDTO.h"
+#include "../../domain/query/inquiry-eleanor/PurInquiryFindBillQuery.h"
+#include "../../domain/dto/inquiry-eleanor/PurInquiryFindBillDTO.h"
 
 /**
  * 示例服务实现
