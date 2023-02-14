@@ -1,28 +1,31 @@
 # 示例模块
 
 ## 简介
+
 架构使用示例项目。
 
 ## 目录结构说明
+
 > `arch-demo`
 >
-> > `api` -- 模拟`MVC`中Controller实现，用于接收用户请求
-> >
-> > `service` -- 业务逻辑服务层
-> >
-> > `dao` -- 数据库访问层
-> >
-> > `domain`  -- 领域模型实体
-> >
-> > `public` -- 测试访问网页案例
-> >
-> > `Macros.h` -- 通用宏定义
-> >
-> > `uselib` -- 静态库测试案例
-> >
-> > `stdafx.h` -- 预编译标头文件
-> >
-> > `main.cpp` -- 程序入口
+>> `api` -- 模拟 `MVC`中Controller实现，用于接收用户请求
+>>
+>> `service` -- 业务逻辑服务层
+>>
+>> `dao` -- 数据库访问层
+>>
+>> `domain`  -- 领域模型实体
+>>
+>> `public` -- 测试访问网页案例
+>>
+>> `Macros.h` -- 通用宏定义
+>>
+>> `uselib` -- 静态库测试案例
+>>
+>> `stdafx.h` -- 预编译标头文件
+>>
+>> `main.cpp` -- 程序入口
+>>
 
 ## 测试数据库表
 
@@ -49,8 +52,8 @@ CREATE TABLE `sample` (
   - 删除的方法用 `remove/remove/delete` 做前缀。
   - 修改的方法用 `modify/update/update` 做前缀。
   - `Controller`数据执行方法使用exec作前缀。
-    - 如接口方法名称为`queryByName`，对应的执行方法名则为`execQueryByName`。
-  - `API`请求路径命名，多个单词使用-连接，如`/query-by-name`。
+    - 如接口方法名称为 `queryByName`，对应的执行方法名则为 `execQueryByName`。
+  - `API`请求路径命名，多个单词使用-连接，如 `/query-by-name`。
 - 领域模型命名规约
   - 数据对象：`xxxDO`，`xxx` 即为数据表名。
   - 数据传输对象：`xxxDTO`，`xxx` 为业务领域相关的名称。
