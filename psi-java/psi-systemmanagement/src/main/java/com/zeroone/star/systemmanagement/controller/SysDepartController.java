@@ -1,6 +1,7 @@
 package com.zeroone.star.systemmanagement.controller;
 
 
+import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
 import com.zeroone.star.project.systemmanagement.organizationmanagement.OrganizationManagementApis;
 import com.zeroone.star.project.vo.JsonVO;
@@ -30,6 +31,9 @@ public class SysDepartController implements OrganizationManagementApis {
      */
     @Override
     public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
+
+        condition.getDepartName();
+
         return null;
     }
 
@@ -49,7 +53,7 @@ public class SysDepartController implements OrganizationManagementApis {
      * @return
      */
     @Override
-    public JsonVO<String> add(OrganizationListVO data) {
+    public JsonVO<String> add(OrganizationManagementDTO data) {
         return null;
     }
 
@@ -59,7 +63,7 @@ public class SysDepartController implements OrganizationManagementApis {
      * @return
      */
     @Override
-    public JsonVO<String> modify(OrganizationListVO data) {
+    public JsonVO<String> modify(OrganizationManagementDTO data) {
         return null;
     }
 
