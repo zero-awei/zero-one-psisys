@@ -41,8 +41,4 @@ public interface PositionApis {
      */
     JsonVO<String> deletePosition(String positionId);
 
-    // TODO: 2023/2/11 导入功能
-
-    // TODO: 2023/2/11 导出功能
-
 }
