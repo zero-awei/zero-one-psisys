@@ -1,12 +1,5 @@
-#include "stdafx.h"
 #include "PurQuotController.h"
-#include "../../domain/vo/JsonVO.h"
-#include "../../domain/vo/PageVO.h"
-#include "../../domain/vo/purchase-quotation-naiguan/AddPurQuotVO.h"
-#include "../../domain/vo/purchase-quotation-naiguan/DelPurQuotVO.h"
-#include "../../domain/vo/purchase-quotation-naiguan/ModPurQuotVO.h"
-#include "../../domain/vo/purchase-quotation-naiguan/PurQuotModBillStatusVO.h"
-#include "../../domain/dto/purchase-quotation-naiguan/PurQuotDTO.h"
+
 //#include "../../service/purchase-quotation-naiguan/PurQuotService.h"
 
 

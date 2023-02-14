@@ -1,7 +1,9 @@
+#include "stdafx.h"
+#include "../../GlobalInclude.h"
+
 #ifndef _MOD_PUR_QUOT_VO_
 #define _MOD_PUR_QUOT_VO_
 
-#include "../../GlobalInclude.h"
 
 //修改供应报价单据
 class ModPurQuotVO

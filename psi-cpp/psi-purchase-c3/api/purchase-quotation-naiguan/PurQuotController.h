@@ -1,8 +1,17 @@
+#include "stdafx.h"
+#include "domain/dto/IDDTO.h"
+#include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/dto/purchase-quotation-naiguan/PurQuotDTO.h"
+#include "../../domain/vo/purchase-quotation-naiguan/AddPurQuotVO.h"
+#include "../../domain/vo/purchase-quotation-naiguan/DelPurQuotVO.h"
+#include "../../domain/vo/purchase-quotation-naiguan/ModPurQuotVO.h"
+#include "../../domain/vo/purchase-quotation-naiguan/PurQuotModBillStatusVO.h"
+
 #ifndef _PUR_QUOT_CONTROLLER_
 #define _PUR_QUOT_CONTROLLER_
 
-#include "../../domain/dto/purchase-quotation-naiguan/PurQuotDTO.h"
-#include "domain/dto/IDDTO.h"
+
 
 class PurQuotController
 {

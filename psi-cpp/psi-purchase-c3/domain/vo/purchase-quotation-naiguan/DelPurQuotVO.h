@@ -1,7 +1,9 @@
+#include "stdafx.h"
+#include "../../GlobalInclude.h"
+
 #ifndef _DEL_PUR_QUOT_VO_
 #define _DEL_PUR_QUOT_VO_
 
-#include "../../GlobalInclude.h"
 
 //删除供应报价单据
 class DelPurQuotVO
