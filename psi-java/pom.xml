@@ -21,6 +21,7 @@
         <module>psi-oauth2</module>
         <module>psi-gateway</module>
         <module>psi-login</module>
+        <module>psi-accountPayable</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
