@@ -24,6 +24,8 @@
 #include"api/BasBankAccountController.h"
 #include"api/MaterialTypeTreeListController.h"
 #include"api/BasWareHouseTreeListController.h"
+#include"./BankAccount/BankAccountController.h"
+#include"api/CreateReceiptController.h"
 
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
@@ -46,6 +48,12 @@ public:
 
 	//仓库树状结构列表
 	void createBasWareHouseTreeList();
+
+	//银行账户
+	void createBankAccount();
+
+	//创建单据编号
+	void createCreateReceipt();
 	
 private:
 #ifdef HTTP_SERVER_DEMO

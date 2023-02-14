@@ -45,7 +45,12 @@ void Router::initRouter()
 	createMaterialTypeTreeList();
 
 	//仓库树状结构列表
+	
 	createBasWareHouseTreeList();
+
+	createBankAccount();
+
+	createCreateReceipt();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -108,16 +113,28 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
+#endif
+
+
+
 void Router::createBasBankAccount()
 {
-	BIND_POSTROUTER(server, "/query-bas-bank-account", &BasBankAccountController::queryBasBankAccount, nullptr);
+	BIND_GET_ROUTER(server, "/query-bas-bank-account", &BasBankAccountController::queryBasBankAccount, nullptr);
 }
 void Router::createMaterialTypeTreeList()
-{
-	BIND_POSTROUTER(server, "/query-material-type-tree-list", &MaterialTypeTreeListController::queryMaterialTypeTreeList, nullptr);
+{                                            
+	BIND_GET_ROUTER(server, "/query-material-type-tree-list", &MaterialTypeTreeListController::queryMaterialTypeTreeList, nullptr);
 }
 void Router::createBasWareHouseTreeList()
 {
-	BIND_POSTROUTER(server, "/query-bas-ware-house-tree-list", &BasWareHouseTreeListController::queryBasWareHouseTreeList, nullptr);
+	BIND_GET_ROUTER(server, "/query-bas-ware-house-tree-list", &BasWareHouseTreeListController::queryBasWareHouseTreeList, nullptr);
 }
-#endif
+
+void Router::createBankAccount() {
+	BIND_GET_ROUTER(server, "/query-specified-bank-account", &BankAccountController::querySpecifiedBankAccount, nullptr);
+}
+
+void Router::createCreateReceipt() {
+	BIND_PUT_ROUTER(server, "/create-receipt", &CreateReceiptController::createReceipt, nullptr);
+}

@@ -39,6 +39,12 @@
     <ClCompile Include="api\BasWareHouseTreeListController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\BankAccount\BankAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\CreateReceiptController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -102,6 +108,24 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\BasWareHouseTreeListController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\BankAccount\SpecifiedBankAccountListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\BankAccount\SpecifiedBankAccountQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\BankAccount\BankAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\CreateReceiptDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\CreateReceiptController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\CreateReceiptVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

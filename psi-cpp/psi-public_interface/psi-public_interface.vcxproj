@@ -97,10 +97,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib
-;libcrypto.lib;
-libssl.lib
-;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent />
   </ItemDefinitionGroup>
@@ -190,8 +187,10 @@ libcrypto.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\BankAccount\BankAccountController.cpp" />
     <ClCompile Include="api\BasBankAccountController.cpp" />
     <ClCompile Include="api\BasWareHouseTreeListController.cpp" />
+    <ClCompile Include="api\CreateReceiptController.cpp" />
     <ClCompile Include="api\MaterialTypeTreeListController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
@@ -204,19 +203,25 @@ libcrypto.lib
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\BankAccount\BankAccountController.h" />
     <ClInclude Include="api\BasBankAccountController.h" />
     <ClInclude Include="api\BasWareHouseTreeListController.h" />
+    <ClInclude Include="api\CreateReceiptController.h" />
     <ClInclude Include="api\MaterialTypeTreeListController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\dto\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\BasWareHouseItemQuery.h" />
     <ClInclude Include="domain\query\MaterialTypeItemQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\BankAccount\SpecifiedBankAccountQuery.h" />
+    <ClInclude Include="domain\vo\BankAccount\SpecifiedBankAccountListVO.h" />
     <ClInclude Include="domain\vo\BasBankAccountVO.h" />
     <ClInclude Include="domain\vo\BasWareHouseTreeListVO.h" />
+    <ClInclude Include="domain\vo\CreateReceiptVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\MaterialTypeTreeListVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
