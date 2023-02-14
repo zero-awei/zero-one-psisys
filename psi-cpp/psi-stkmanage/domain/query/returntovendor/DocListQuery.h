@@ -8,21 +8,21 @@
 class DocListQuery : public PageQuery
 {
 	// 单据编号
-	CC_SYNTHESIZE(std::string, bill_no, BillNo);
+	CC_SYNTHESIZE(std::string, billNo, BillNo);
 	// 单据日期
-	CC_SYNTHESIZE(std::string, bill_date, BillDate);
+	CC_SYNTHESIZE(std::string, billDate, BillDate);
 	// 单据主题
 	CC_SYNTHESIZE(std::string, subject, Subject);
 	// 供应商
-	CC_SYNTHESIZE(std::string, supplier_id, SupplierId);
+	CC_SYNTHESIZE(std::string, supplierId, SupplierId);
 	// 单据阶段
-	CC_SYNTHESIZE(std::string, bill_stage, BillStage);
+	CC_SYNTHESIZE(std::string, billStage, BillStage);
 	// 是否生效
-	CC_SYNTHESIZE(bool, is_eff, IsEff);
+	CC_SYNTHESIZE(bool, isEff, IsEff);
 	// 是否关闭
-	CC_SYNTHESIZE(bool, is_closed, IsClosed);
+	CC_SYNTHESIZE(bool, isClosed, IsClosed);
 	// 是否作废
-	CC_SYNTHESIZE(bool, is_voided, IsVoided);
+	CC_SYNTHESIZE(bool, isVoided, IsVoided);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, DocListQuery& t);
