@@ -1,5 +1,6 @@
 package com.zeroone.star.project.payment;
 
+import com.zeroone.star.project.dto.payment.AuditDTO;
 import com.zeroone.star.project.dto.payment.ModifyDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
@@ -35,6 +36,14 @@ public interface PaymentApis {
      * author forever爱
      */
     JsonVO<String> modifyById(ModifyDTO modifyDTO);
+
+    /**
+     * 审核采购预付单功能
+     * param auditDTO 审核DTO
+     * return 查询结果
+     * author forever爱
+     */
+    JsonVO<String> auditById(AuditDTO auditDTO);
 
     /**
      * 单据列表查询

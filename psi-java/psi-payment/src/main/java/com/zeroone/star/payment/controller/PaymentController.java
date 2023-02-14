@@ -1,5 +1,6 @@
 package com.zeroone.star.payment.controller;
 
+import com.zeroone.star.project.dto.payment.AuditDTO;
 import com.zeroone.star.project.dto.payment.ModifyDTO;
 import com.zeroone.star.project.payment.PaymentApis;
 import com.zeroone.star.project.query.payment.PreDetQuery;
@@ -31,6 +32,18 @@ public class PaymentController implements PaymentApis {
     @ApiOperation(value = "修改采购预付单功能")
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
+        return JsonVO.success("1111");
+    }
+
+    /**
+     * 审核采购预付单功能
+     * author forever爱
+     * since 2023-02-13
+     */
+    @PutMapping("audit")
+    @ApiOperation(value = "审核采购预付单功能")
+    @Override
+    public JsonVO<String> auditById(AuditDTO auditDTO) {
         return JsonVO.success("1111");
     }
 
