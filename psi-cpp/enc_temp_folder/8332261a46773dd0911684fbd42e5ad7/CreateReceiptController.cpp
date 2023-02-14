@@ -58,16 +58,19 @@ JsonVO<CreateReceiptVO> CreateReceiptController::execCreateReceipt(CreateReceipt
     std::stringstream ss;
     map<string, int> ma;
     auto it = ma.find(result);
-    int l = 0;
+    int i = 1;
     if (it != ma.end()) {
-        l = it->second++;
+        i = ++it->second;
     }
     else {
-        ma.insert(pair<string, int>(result, 0));
+        ma.insert(pair<string, int>(result, 1));
     }
-    string liushui ;
-    if (l > 10)  result += "-" + to_string((tm_t->tm_year + 1900) % 100) + to_string(tm_t->tm_mon + 1) + to_string(tm_t->tm_mday) + "-00" + to_string(l);
-    else if (l > 100)   result += "-" + to_string((tm_t->tm_year + 1900) % 100) + to_string(tm_t->tm_mon + 1) + to_string(tm_t->tm_mday) + "-0" + to_string(l);
+    string liushui;
+    std::cout << i << endl;
+    if (i < 10) liushui += "00" + to_string(i) + ""; 
+    else if(i<100) liushui += "0" + to_string(i) + "";
+    else if(i<1000) liushui += "0" + to_string(i) + "";
+    result += "-" + to_string((tm_t->tm_year + 1900) % 100) + to_string(tm_t->tm_mon + 1) + to_string(tm_t->tm_mday) + "-" +liushui;
     //cr.setResult("CGSQ-230214-034");
     cr.setResult(result);
     JsonVO<CreateReceiptVO> res;
