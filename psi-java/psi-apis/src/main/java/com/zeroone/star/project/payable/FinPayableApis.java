@@ -14,7 +14,7 @@ import com.zeroone.star.project.vo.payable.FinPayableVO;
  * @author chosen1
  * @since 2023-02-13
  */
-public interface IFinPayableService{
+public interface FinPayableApis {
     /**
      * 分页查询
      * @param payableDTO 查询条件
