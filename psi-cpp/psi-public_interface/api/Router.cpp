@@ -122,5 +122,5 @@ void Router::initDepartChioceSetting()
 
 void Router::initSupplierSetting()
 {
-	BIND_GET_ROUTER(server, "/get-supplier", &SupplierController::querySupplier, nullptr);
+	BIND_GET_ROUTER(server, "/get-supplier", &SupplierCategoryController::querySupplierCategory, nullptr);
 }

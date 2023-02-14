@@ -17,18 +17,18 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef SUPPLIER_CONTROLLER_
-#define SUPPLIER_CONTROLLER_
-#include"../domain/query/SuppliersQuery.h"
-#include"../domain/vo/SuppliersVO.h"
+#ifndef SUPPLIER_CATEGORY_CONTROLLER_
+#define SUPPLIER_CATEGORY_CONTROLLER_
+#include"../domain/query/SupplierCategoryQuery.h"
+#include"../domain/vo/SupplierCategoruVO.h"
 #include "../domain/vo/JsonVO.h"
 
-class SupplierController
+class SupplierCategoryController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(querySupplier, execQuerySupplier, SupplierQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(querySupplierCategory, execQuerySupplierCategory, SupplierCategoryQuery);
 private:
-	JsonVO<list<SuppliersVO>>execQuerySupplier(const SupplierQuery& query,const PayloadDTO& payload);
+	JsonVO<list<SuppliersCategoryVO>>execQuerySupplierCategory(const SupplierCategoryQuery& query,const PayloadDTO& payload);
 };
 
-#endif // !SUPPLIER_CONTROLLER_
+#endif // !SUPPLIER_CATEGORY_CONTROLLER_

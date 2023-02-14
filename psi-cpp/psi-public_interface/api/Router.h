@@ -25,7 +25,7 @@
 #include "UserChoiceController.h"
 #include"MaterialQueryController.h"
 #include"DepartChoiceController.h"
-#include"SupplierController.h"
+#include"SupplierCategoryController.h"
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */

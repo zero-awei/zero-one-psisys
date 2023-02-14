@@ -125,13 +125,13 @@
     <ClInclude Include="api\DepartChoiceController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\SuppliersQuery.h">
+    <ClInclude Include="domain\query\SupplierCategoryQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\SuppliersVO.h">
+    <ClInclude Include="domain\vo\SupplierCategoruVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\SupplierController.h">
+    <ClInclude Include="api\SupplierCategoryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

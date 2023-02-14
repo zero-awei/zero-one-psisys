@@ -1,10 +1,10 @@
 #include"stdafx.h"
-#include"SupplierController.h"
+#include"SupplierCategoryController.h"
 
-JsonVO<list<SuppliersVO>>SupplierController::execQuerySupplier(const SupplierQuery& query, const PayloadDTO& payload)
+JsonVO<list<SuppliersCategoryVO>>SupplierCategoryController::execQuerySupplierCategory(const SupplierCategoryQuery& query, const PayloadDTO& payload)
 {
-	JsonVO<list<SuppliersVO>>rs;
-	list<SuppliersVO>data;
+	JsonVO<list<SuppliersCategoryVO>>rs;
+	list<SuppliersCategoryVO>data;
 	rs.success(data);
 	return rs;
 }
