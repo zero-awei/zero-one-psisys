@@ -1,10 +1,12 @@
 package com.zeroone.star.project.vo.systemmanagement.positionmanagement;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @Description position select returned  VO
@@ -34,13 +36,17 @@ public class PositionVO {
     private String createBy;
 
     @ApiModelProperty(value = "创建时间", example = "2023-10-01 09:00:00")
-    private LocalDateTime createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
     @ApiModelProperty(value = "修改人", example = "张三")
     private String updateBy;
 
     @ApiModelProperty(value = "修改时间", example = "2023-10-01 09:00:00")
-    private LocalDateTime updateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 
     @ApiModelProperty(value = "组织机构编码", example = "A01")
     private String sysOrgCode;
