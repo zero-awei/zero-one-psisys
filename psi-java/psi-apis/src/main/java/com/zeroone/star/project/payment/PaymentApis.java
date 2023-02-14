@@ -30,10 +30,10 @@ public interface PaymentApis {
 
     /**
      * 单据列表查询
-     * @param condition 查询条件
-     * @return 查询结果
-     * @author husj
-     * @version 1.0.0
+     * param condition 查询条件
+     * return 查询结果
+     * author husj
+     * version 1.0.0
      */
     JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition);
 }
