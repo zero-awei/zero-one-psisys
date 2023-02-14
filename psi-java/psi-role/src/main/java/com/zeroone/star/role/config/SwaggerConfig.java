@@ -13,8 +13,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @Configuration
 @EnableSwagger2WebMvc
 public class SwaggerConfig {
+
     @Bean
-    Docket sampleApi(){
-        return SwaggerCore.defaultDocketBuilder("示例模块","com.zeroone.star.role.controller","sample");
-    }
+    Docket menuApi(){
+        return SwaggerCore.defaultDocketBuilder(
+                "菜单管理模块","com.zeroone.star.role.controller","menu");
+    } //MenuController
+
+//    @Bean
+//    Docket permissionApi(){
+//        return SwaggerCore.defaultDocketBuilder(
+//                "权限管理模块","com.zeroone.star.role.controller.PermissionController","permission");
+//    }
 }
