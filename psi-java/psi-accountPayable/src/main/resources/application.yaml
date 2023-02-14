@@ -3,3 +3,4 @@ server:
 spring:
   application:
     name: ${sn.payable}
+
