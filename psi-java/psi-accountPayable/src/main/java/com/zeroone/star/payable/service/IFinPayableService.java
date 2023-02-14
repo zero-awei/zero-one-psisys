@@ -1,8 +1,8 @@
-package com.zeroone.star.purchase.service;
+package com.zeroone.star.payable.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zeroone.star.purchase.entity.FinPayable;
+import com.zeroone.star.payable.entity.FinPayable;
 
 /**
  * <p>

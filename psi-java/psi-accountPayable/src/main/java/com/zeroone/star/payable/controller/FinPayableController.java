@@ -1,4 +1,4 @@
-package com.zeroone.star.purchase.controller;
+package com.zeroone.star.payable.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.payable.FinPayableDTO;

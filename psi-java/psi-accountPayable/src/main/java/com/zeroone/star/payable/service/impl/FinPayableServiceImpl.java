@@ -1,10 +1,10 @@
-package com.zeroone.star.purchase.service.impl;
+package com.zeroone.star.payable.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.purchase.entity.FinPayable;
-import com.zeroone.star.purchase.mapper.FinPayableMapper;
-import com.zeroone.star.purchase.service.IFinPayableService;
+import com.zeroone.star.payable.entity.FinPayable;
+import com.zeroone.star.payable.mapper.FinPayableMapper;
+import com.zeroone.star.payable.service.IFinPayableService;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,4 +1,4 @@
-package com.zeroone.star.purchase.entity;
+package com.zeroone.star.payable.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 
