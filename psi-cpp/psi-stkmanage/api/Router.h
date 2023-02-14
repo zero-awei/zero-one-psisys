@@ -22,6 +22,7 @@
 
 #include "api/ApiHelper.h"
 
+
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */
@@ -41,6 +42,7 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
+	void createRtvRouter();
 };
 
 #endif // !_ROUTER_

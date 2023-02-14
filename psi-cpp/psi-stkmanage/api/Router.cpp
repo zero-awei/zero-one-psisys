@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "api/returntovendor/RtvController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createRtvRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +95,8 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createRtvRouter()
+{
+	BIND_POST_ROUTER(server, "/rtv/get", &RtvController::rtvQuery, nullptr);
+}
