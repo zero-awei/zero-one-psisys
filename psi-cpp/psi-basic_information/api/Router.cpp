@@ -27,6 +27,8 @@
 #include "uselib/ws/TestWs.h"
 #endif
 
+#include "MaterialClassification/MaterialClassificationController.h"
+
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -94,3 +96,7 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createMaterialClassificationRouter() {
+	BIND_GET_ROUTER(server, "/get", &MaterialClassificationController::queryMaterialClassification, nullptr);
+}
