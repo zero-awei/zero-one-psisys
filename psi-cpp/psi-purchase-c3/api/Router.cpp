@@ -79,13 +79,14 @@ void Router::initRouter()
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
-	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
-	BIND_PUT_ROUTER(server, "/put", &SampleController::modifySample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &SampleController::removeSample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
-	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
-	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
+	//新增供应报价
+	BIND_POST_ROUTER(server, "/post", &PurQuotController::addPurQuot, nullptr);
+	//修改供应报价
+	BIND_PUT_ROUTER(server, "/put", &PurQuotController::modPurQuot, nullptr);
+	//删除供应报价
+	BIND_DEL_ROUTER(server, "/delete", &PurQuotController::delPurQuot, nullptr);
+	//修改供应报价状态（关闭、作弊、反关闭）
+	BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
 }
 
 void Router::createUserDepartRouter()

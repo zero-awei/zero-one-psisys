@@ -11,82 +11,94 @@
 
 
 //添加供应报价——演示，尚未实现
-nlohmann::json PurQuotController::execAddPurQuot(PurQuotDTO dto)
+JsonVO<uint64_t> PurQuotController::execAddPurQuot(const PurQuotDTO& dto)
 {
 	JsonVO<uint64_t> result;
 	/*
-	//暂时别动这部分注释！！！！！！！！！！！！
-	//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
-	PurQuotService service;
+//暂时别动这部分注释！！！！！！！！！！！！
+//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
+//DTO这里，还没有写默认构造函数，因此getId()没有值
+//另外，Servie部分还没有写，因此没有SampleService类，无法做service.updateData(dto)的条件判断（虽然可以用其他方式替代）
+	SampleService service;
 	//执行数据新增
 	uint64_t id = service.saveData(dto);
 	if (id > 0) {
 		result.success(id);
 	}
-	else {
+	else
+	{
 		result.fail(id);
 	}
 	//响应结果
 	*/
-	return nlohmann::json(result);
+	return result;
 }
 
 //修改供应报价——演示，尚未实现
-nlohmann::json PurQuotController::execModPurQuot(PurQuotDTO dto)
+JsonVO<uint64_t> PurQuotController::execModPurQuot(const PurQuotDTO& dto)
 {
-	JsonVO<int> result;
+	JsonVO<uint64_t> result;
 	/*
-	//暂时别动这部分注释！！！！！！！！！！！！
-	//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
-	PurQuotService service;
-	
+//暂时别动这部分注释！！！！！！！！！！！！
+//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
+//DTO这里，还没有写默认构造函数，因此getId()没有值
+//另外，Servie部分还没有写，因此没有SampleService类，无法做service.updateData(dto)的条件判断（虽然可以用其他方式替代）
+
+	SampleService service;
 	if (service.updateData(dto)) {
 		result.success(dto.getId());
 	}
-	else {
+	else
+	{
 		result.fail(dto.getId());
 	}
 	*/
-	return nlohmann::json(result);
+	return result;
 }
 
 //删除供应报价——演示，尚未实现
-nlohmann::json PurQuotController::execDelPurQuot(PurQuotDTO dto)
+JsonVO<uint64_t> PurQuotController::execDelPurQuot(const PurQuotDTO& dto)
 {
-	JsonVO<int> result;
+	JsonVO<uint64_t> result;
 	/*
-	//暂时别动这部分注释！！！！！！！！！！！！
-	//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
-	PurQuotService service;
+//暂时别动这部分注释！！！！！！！！！！！！
+//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
+//DTO这里，还没有写默认构造函数，因此getId()没有值
+//另外，Servie部分还没有写，因此没有SampleService类，无法做service.updateData(dto)的条件判断（虽然可以用其他方式替代）
+	SampleService service;
 	//执行数据删除
 	if (service.removeData(dto.getId())) {
 		result.success(dto.getId());
 	}
-	else {
+	else
+	{
 		result.fail(dto.getId());
 	}
 	//响应结果
 	*/
-	return nlohmann::json(result);
+	return result;
 }
 
 //修改报价状态——演示，尚未实现
-nlohmann::json PurQuotController::execPurQuotModBillStatus(PurQuotDTO dto)
+JsonVO<uint64_t> PurQuotController::execPurQuotModBillStatus(const PurQuotDTO& dto)
 {
-	JsonVO<int> result;
+	JsonVO<uint64_t> result;
 	/*
-	//暂时别动这部分注释！！！！！！！！！！！！
-	//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
-	PurQuotService service;
+//暂时别动这部分注释！！！！！！！！！！！！
+//解释：这是定义接口的时候，参考Sample的案例，没有实现，仅用于APIPost测试
+//DTO这里，还没有写默认构造函数，因此getId()没有值
+//另外，Servie部分还没有写，因此没有SampleService类，无法做service.updateData(dto)的条件判断（虽然可以用其他方式替代）
 
+	SampleService service;
 	if (service.updateData(dto)) {
 		result.success(dto.getId());
 	}
-	else {
+	else
+	{
 		result.fail(dto.getId());
 	}
 	*/
-	return nlohmann::json(result);
+	return result;
 }
 
 

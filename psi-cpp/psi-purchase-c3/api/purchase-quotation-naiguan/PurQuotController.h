@@ -21,13 +21,13 @@ public:
 
 private:
 	//演示新增报价
-	nlohmann::json execAddPurQuot(PurQuotDTO dto);
+	JsonVO<uint64_t> execAddPurQuot(const PurQuotDTO& dto);
 	//演示修改报价
-	nlohmann::json execModPurQuot(PurQuotDTO dto);
+	JsonVO<uint64_t> execModPurQuot(const PurQuotDTO& dto);
 	//演示删除报价
-	nlohmann::json execDelPurQuot(PurQuotDTO dto);
+	JsonVO<uint64_t> execDelPurQuot(const PurQuotDTO& dto);
 	//修改报价状态（关闭、作废、反关闭）
-	nlohmann::json execPurQuotModBillStatus(PurQuotDTO dto);
+	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotDTO& dto);
 };
 
 #endif // _PUI_QUOT_CONTROLLER_
