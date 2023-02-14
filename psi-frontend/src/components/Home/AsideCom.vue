@@ -1,5 +1,8 @@
 <script>
-
+import { userStore } from '../stores/user'
+const store = userStore()
+    // 菜单数据
+    const menus = store.getMenus
 </script>
 
 <template>

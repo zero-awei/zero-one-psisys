@@ -22,14 +22,8 @@
             <!-- <Fold /> -->
             <component :is="headerleft"></component>
           </el-icon>
-
-        <el-icon style="color:white;top=8px;left:425px;"><Search /></el-icon>
-
-          <div class="header-nav">
-            <!-- 欢迎您,管理员 -->
-            {{ userInfo }}
-            <span style="margin:0px 8px;" >当前月度:2023-2</span>
-          </div>
+       <!-- <el-icon style="color:white;top=8px;left:100px;"><Search /></el-icon> -->
+          <HeadSideCom />
 
         </el-header>
         <el-main>
@@ -72,8 +66,6 @@
     }
     }
 }
-
-
   .el-header{
     background-color: #1890ff;
     display: flex;
@@ -85,23 +77,6 @@
       height:2em;
       color:white;
     }
-
-    .header-nav{
-      padding: 20px;
-      background-color: #1890ff;
-      color: #f8f8f8;
-      z-index: 2;
-      color: #fff;
-      height: 59px;
-      font-size: 14px;
-
-      span{
-        z-index: 2;
-        color: #fff;
-        height: 59px;
-        font-size: 14px;
-      }
-    }
   }
 
 /*   .el-main{
@@ -111,7 +86,6 @@
 </style>
 
 <script>
-import {onMounted,ref } from 'vue'
 import { userStore } from '../stores/user'
 //引入图标
 import {Fold,Expand} from '@element-plus/icons-vue'
@@ -120,21 +94,11 @@ import {Fold,Expand} from '@element-plus/icons-vue'
 import test from "@/components/Home/test.vue"
 //导入logo
 import File from "@/assets/1.png"
+//导入UserNameCom
+import HeadSideCom from "@/components/Home/HeadSideCom.vue"
 
 const store = userStore()
 export default {
-   // 用户信息提示
-   setup() {
-    const userInfo = ref(null)
-    const getUsers = () => {
-      ref('欢迎用户：' + (store.getUser === null ? 
-      '游客' : store.getUser.username))
-    }
-    onMounted(() => {
-      getUsers();
-    })
-    return userInfo
-   },
   data() {
     return {
       url:File,
@@ -155,7 +119,8 @@ export default {
     Fold,
     Expand,
     // AsideCom,
-    test
+    test,
+    HeadSideCom
   }
 }
 
