@@ -42,7 +42,7 @@ private:
 	void createUserDepartRouter();
 #endif
 	//下面开始是自己写的
-	//void initSupplier();
+	void initSupplier();
 
 
 

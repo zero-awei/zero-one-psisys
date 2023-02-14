@@ -74,7 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	initSupplier();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -97,15 +97,11 @@ void Router::createUserDepartRouter()
 #endif
 
 
-//void Router::initSupplier()
-//{
-//	BIND_GET_ROUTER(server, "/Advanced-Query", &SupplierController::advancedquerySupplier, nullptr);
-//	BIND_GET_ROUTER(server, "/Specified-Supplier-Data-Query", &SupplierController::specifiedquerySupplier, nullptr);
-//
-//
-//
-//
-//}
+void Router::initSupplier()
+{
+	BIND_GET_ROUTER(server, "/Advanced-Query", &SupplierController::advancedquerySupplier, nullptr);
+	BIND_GET_ROUTER(server, "/Specified-Supplier-Data-Query", &SupplierController::specifiedquerySupplier, nullptr);
+}
 
 
 
