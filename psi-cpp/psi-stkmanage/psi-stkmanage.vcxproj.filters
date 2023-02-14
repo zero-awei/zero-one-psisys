@@ -86,5 +86,11 @@
     <ClInclude Include="domain\query\cgrk\CgrkAdvancedQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\cgrk\CgrkBillDetailsQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\cgrk\CgrkBillDetailsVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

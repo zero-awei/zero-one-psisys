@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 10:58:42
+ @Date: 2022/10/25 11:36:29
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,20 +17,31 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "CgrkController.h"
 
+/*
+	查询单据详细信息
+*/
 
+#ifndef _CGRK_BILL_DETAILS_QUERY_
+#define _CGRK_BILL_DETAILS_QUERY_
 
+#include "../PageQuery.h"
 
-JsonVO<PageVO<CgrkQueryVO>> CgrkController::execCgrkQuery(const CgrkQuery& query)
+class CgrkBillDetailsQuery 
 {
-	PageVO<CgrkQueryVO> result;
-	return JsonVO<PageVO<CgrkQueryVO>>(result, RS_FAIL);
-}
+	//单据编号
+	CC_SYNTHESIZE(string, billNo, BillNo);
 
-JsonVO<PageVO<CgrkBillDetailsVO>> CgrkController::execCgrkBillDetailsQuery(const CgrkBillDetailsQuery& query)
-{
-	PageVO<CgrkBillDetailsVO> result;
-	return JsonVO<PageVO<CgrkBillDetailsVO>>(result, RS_SUCCESS);
-}
+
+
+
+public:
+	// 绑定from_json
+	friend void from_json(const json& j, CgrkBillDetailsQuery& t) { // NOLINT
+
+		BIND_FROM_TO_NORMAL(j, t, billNo);
+
+	}
+};
+
+#endif // !_CGRK_BILL_DETAILS_QUERY_

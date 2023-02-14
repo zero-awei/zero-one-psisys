@@ -191,8 +191,10 @@
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\cgrk\CgrkAdvancedQuery.h" />
+    <ClInclude Include="domain\query\cgrk\CgrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\cgrk\CgrkQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\vo\cgrk\CgrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\cgrk\CgrkQueryVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />

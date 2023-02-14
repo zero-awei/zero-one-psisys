@@ -99,5 +99,6 @@ void Router::createUserDepartRouter()
 #endif
 void Router::createCgrkRouter()
 {
-	BIND_GET_ROUTER(server, "/get", &CgrkController::cgrkQuery, nullptr);
+	BIND_GET_ROUTER(server, "/cgrk/query", &CgrkController::cgrkQuery, nullptr);
+	BIND_GET_ROUTER(server, "/cgrk/billDetails", &CgrkController::cgrkBillDetailsQuery, nullptr);
 }

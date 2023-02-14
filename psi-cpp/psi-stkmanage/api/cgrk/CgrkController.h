@@ -21,9 +21,11 @@
 #define _CGRK_CONTROLLER_
 
 #include "../../domain/query/cgrk/CgrkQuery.h"
+#include "../../domain/query/cgrk/CgrkBillDetailsQuery.h"
 //#include "../../domain/dto/cgrk/SampleDTO.h"
 //#include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/cgrk/CgrkQueryVO.h"
+#include "../../domain/vo/cgrk/CgrkBillDetailsVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 //#include "../../domain/dto/user/UserDTO.h"
@@ -35,7 +37,8 @@
 class CgrkController
 {
 public:
-	CREATE_API_FUN_QUERY(cgrkQuery, execCgrkQuery, CgrkQuery)
+	CREATE_API_FUN_QUERY(cgrkQuery, execCgrkQuery, CgrkQuery);
+	CREATE_API_FUN_QUERY(cgrkBillDetailsQuery, execCgrkBillDetailsQuery, CgrkBillDetailsQuery);
 
 	//CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);
 	//CREATE_API_FUN_BODY(addSample, execAddSample, SampleDTO);
@@ -47,6 +50,9 @@ public:
 private:
 	//查询采购入库表单
 	JsonVO<PageVO<CgrkQueryVO>> execCgrkQuery(const CgrkQuery& query);
+	//查询单据详细信息
+	JsonVO<PageVO<CgrkBillDetailsVO>> execCgrkBillDetailsQuery(const CgrkBillDetailsQuery& query);
+
 	////演示新增数据
 	//JsonVO<uint64_t> execAddSample(const SampleDTO& dto);
 	////演示修改数据
