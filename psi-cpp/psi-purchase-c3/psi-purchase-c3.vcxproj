@@ -208,6 +208,7 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\req_adam\ReqAdamController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="domain\dto\pur-req-adam\PurReqAdamDTO.cpp" />
     <ClCompile Include="domain\dto\req_adam\ReqAdamDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
