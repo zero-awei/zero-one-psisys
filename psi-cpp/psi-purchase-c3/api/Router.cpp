@@ -22,7 +22,7 @@
 #include "domain/vo/JsonVO.h"
 
 #ifdef HTTP_SERVER_DEMO
-#include "ReqAdam/ReqAdamController.h"
+#include "pur-req-adam/PurReqAdamController.h"
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
@@ -79,11 +79,10 @@ void Router::initRouter()
 #ifdef HTTP_SERVER_DEMO
 void Router::createReqAdamRouter()
 {
-	BIND_POST_ROUTER(server, "/post-pur-req", &ReqAdamController::addPurReq, nullptr);
-	BIND_PUT_ROUTER(server, "/put-pur-req", &ReqAdamController::modifyPurReq, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-pur-req", &ReqAdamController::removePurReq, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &ReqAdamController::removeById, nullptr);
-	BIND_POST_ROUTER(server, "/modify-pur-req-state", &ReqAdamController::modifyPurReqState, nullptr);
+	BIND_POST_ROUTER(server, "/post-add-pur-req", &PurReqAdamController::addPurReq, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-pur-req", &PurReqAdamController::modifyPurReq, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-pur-req-by-id", &PurReqAdamController::removePurReqById, nullptr);
+	BIND_POST_ROUTER(server, "/modify-pur-req-bill-state", &PurReqAdamController::modifyPurReqBillStatus, nullptr);
 }
 
 void Router::createUserDepartRouter()

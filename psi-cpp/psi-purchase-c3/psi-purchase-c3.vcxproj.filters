@@ -60,6 +60,15 @@
     <ClInclude Include="domain\dto\req_adam\ReqAdamDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\pur-req-adam\PurReqAdamController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req-adam\PurReqAdamDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req-adam\PurReqAdamVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -84,6 +93,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\pur-req-adam\PurReqAdamDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\pur-req-adam\PurReqAdamController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

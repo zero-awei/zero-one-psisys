@@ -188,17 +188,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\req_adam\ReqAdamController.h" />
+    <ClInclude Include="api\pur-req-adam\PurReqAdamController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\req_adam\ReqAdamDTO.h" />
+    <ClInclude Include="domain\dto\pur-req-adam\PurReqAdamDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\pur-req-adam\PurReqAdamVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -206,10 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\req_adam\ReqAdamController.cpp" />
+    <ClCompile Include="api\pur-req-adam\PurReqAdamController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\dto\pur-req-adam\PurReqAdamDTO.cpp" />
-    <ClCompile Include="domain\dto\req_adam\ReqAdamDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
