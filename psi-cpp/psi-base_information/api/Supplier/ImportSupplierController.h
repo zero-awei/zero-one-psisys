@@ -10,6 +10,7 @@ class ImportSupplierController
 public:
 	CREATE_API_FUN_BODY_FILE(importSupplier, execImportSupplier, FileDTO);
 private:
+	//执行供应商导入
 	JsonVO<bool> execImportSupplier(const FileDTO& dto);
 };
 

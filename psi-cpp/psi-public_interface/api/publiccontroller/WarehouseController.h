@@ -10,6 +10,7 @@ class WarehouseController
 public:
 	CREATE_API_FUN_QUERY3(queryWarehouse, execQueryWarehouse);
 private:
+	//÷¥––≤È—Ø≤÷ø‚
 	JsonVO<list<WarehouseVO>> execQueryWarehouse();
 };
 #endif // _WAREHOUSE_CONTROLLER_

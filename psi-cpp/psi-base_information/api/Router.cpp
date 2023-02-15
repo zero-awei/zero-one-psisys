@@ -99,6 +99,8 @@ void Router::createUserDepartRouter()
 
 void Router::initSupplier()
 {
+	//供应商导入
 	BIND_POST_ROUTER(server, "/import-supplier", &ImportSupplierController::importSupplier, nullptr);
+	//供应商导出
 	BIND_GET_ROUTER(server, "/export-supplier", &ExportSupplierController::exportSupplier, nullptr);
 }

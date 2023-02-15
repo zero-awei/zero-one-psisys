@@ -20,9 +20,9 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-#include "CurrencyTypeController.h"
-#include "DeliveryTypeController.h"
-#include "WarehouseController.h"
+#include "publiccontroller/CurrencyTypeController.h"
+#include "publiccontroller/DeliveryTypeController.h"
+#include "publiccontroller/WarehouseController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -101,16 +101,19 @@ void Router::createUserDepartRouter()
 #endif
 void Router::initCurrencyType()
 {
+	//获取货币类型
 	BIND_GET_ROUTER(server, "/query-Currency-Type", &CurrencyTypeController::queryCurrencyType, nullptr);
 }
 
 void Router::initDeliveryType()
 {
+	//获取交货方式
 	BIND_GET_ROUTER(server, "/query-Delivery-Type", &DeliveryTypeController::queryDeliveryType, nullptr);
 }
 
 void Router::initWarehouse()
 {
+	//获取仓库
 	BIND_GET_ROUTER(server, "/query-Warehouse", &WarehouseController::queryWarehouse, nullptr);
 }
 
