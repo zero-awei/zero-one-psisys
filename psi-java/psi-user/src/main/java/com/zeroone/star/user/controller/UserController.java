@@ -3,10 +3,13 @@ package com.zeroone.star.user.controller;
 import cn.hutool.core.date.DateTime;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
 import com.zeroone.star.project.dto.user.UserDTO;
+import com.zeroone.star.project.query.user.FindUserQuery;
 import com.zeroone.star.project.query.user.UserQuery;
 import com.zeroone.star.project.user.UserApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.user.AddUserVO;
+import com.zeroone.star.project.vo.user.EditUserVO;
 import com.zeroone.star.project.vo.user.UserVO;
 import com.zeroone.star.user.entity.User;
 import io.swagger.annotations.Api;
@@ -51,14 +54,14 @@ public class UserController implements UserApis {
     @ApiOperation(value = "查询用户")
     @GetMapping("query-user")
     @Override
-    public JsonVO<PageVO<UserVO>> queryUser(@Validated UserQuery query) {
+    public JsonVO<PageVO<UserVO>> queryUser(@Validated FindUserQuery query) {
         return null;
     }
 
-    @ApiOperation(value = "用户信息回显")
+    @ApiOperation(value = "修改用户时的信息回显")
     @GetMapping("review")
     @Override
-    public JsonVO<UserVO> review(@NotBlank(message = "id 不能为空") @RequestParam String id) {
+    public JsonVO<EditUserVO> review(@NotBlank(message = "id 不能为空") @RequestParam String id) {
         return null;
     }
 
@@ -100,7 +103,7 @@ public class UserController implements UserApis {
 
     @SneakyThrows
     @ApiOperation(value = "导出用户")
-    @GetMapping(value = "get-user", produces = "application/octet-stream")
+    @GetMapping(value = "download", produces = "application/octet-stream")
     @Override
     public ResponseEntity<byte[]> download(@NotEmpty(message = "导出用户必须大于0") @RequestParam(value = "id") List<String> id) {
         log.info("id = {}", id);
@@ -128,9 +131,16 @@ public class UserController implements UserApis {
     }
 
     @ApiOperation(value = "导出所有用户")
-    @GetMapping(value = "get-users", produces = "application/octet-stream")
+    @GetMapping(value = "download-all", produces = "application/octet-stream")
     @Override
     public ResponseEntity<byte[]> downloadAllUsers() {
+        return null;
+    }
+
+    @ApiOperation(value = "下拉框获取部门列表")
+    @GetMapping("list-depart")
+    @Override
+    public JsonVO<List<AddUserVO>> listDepartment() {
         return null;
     }
 }
