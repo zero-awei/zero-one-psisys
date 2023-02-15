@@ -75,7 +75,12 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	BIND_GET_ROUTER(server, "/query-all", &StatisController::queryExeStatus, nullptr);
+	BIND_GET_ROUTER(server, "/query/ExecuteStatus", &StatisController::queryExeStatus, nullptr);
+	BIND_GET_ROUTER(server, "/query-all", &StatisController::queryStatis, nullptr);
+	BIND_GET_ROUTER(server, "/query-byDept", &StatisController::queryStatisByDept, nullptr);
+	BIND_GET_ROUTER(server, "/query-byOperator", &StatisController::queryStatisByOperator, nullptr);
+	BIND_GET_ROUTER(server, "/query-bySupplier", &StatisController::queryStatisBySupplier, nullptr);
+	BIND_GET_ROUTER(server, "/query-byMaterial", &StatisController::queryStatisByMaterial, nullptr);
 }
 
 #ifdef HTTP_SERVER_DEMO

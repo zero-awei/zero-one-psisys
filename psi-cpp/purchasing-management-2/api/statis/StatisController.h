@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Andrew
- @Date: 2023/02/14 21:30:00
+ @Date: 2023/02/15 22:00:00
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -23,7 +23,9 @@
 #include "../../domain/query/StatisQuery/ExeStatusQuery.h"
 #include "../../domain/query/StatisQuery/StatisQuery.h"
 #include "../../domain/dto/IDDTO.h"
+#include "../../domain/vo/StatisVO/ExeStatusVO.h"
 #include "../../domain/vo/StatisVO/StatisVO.h"
+#include "../../domain/vo/StatisVO/MaterialVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
@@ -31,12 +33,18 @@
 class StatisController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(queryExeStatus, execQuerySample, ExeStatusQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryExeStatus, (execQuery<ExeStatusQuery, ExeStatusVO>), ExeStatusQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryStatis, (execQuery<StatisQuery, StatisVO>), StatisQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryStatisByDept, (execQuery<StatisByDeptQuery, StatisByDeptVO>), StatisByDeptQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryStatisByOperator, (execQuery<StatisByOperatorQuery, StatisByOperatorVO>), StatisByOperatorQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryStatisBySupplier, (execQuery<StatisBySupplierQuery, StatisBySupplierVO>), StatisBySupplierQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryStatisByMaterial, (execQuery<StatisByMaterialQuery, MaterialVO>), StatisByMaterialQuery);
 private:
-	JsonVO<PageVO<StatisVO>> execQuerySample(const ExeStatusQuery& query, const PayloadDTO& payload)
+	template <class Q, class VO>
+	JsonVO<PageVO<VO>> execQuery(const Q& query, const PayloadDTO& payload)
 	{
-		PageVO<StatisVO> result;
-		return JsonVO<PageVO<StatisVO>>(result, RS_SUCCESS);
+		PageVO<VO> result;
+		return JsonVO<PageVO<VO>>(result, RS_SUCCESS);
 	}
 };
 

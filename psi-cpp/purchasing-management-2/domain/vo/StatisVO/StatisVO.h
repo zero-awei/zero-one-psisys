@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: andrew
- @Date: 2023/02/14 21:30:00
+ @Author: Andrew
+ @Date: 2023/02/15 22:00:00
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -23,31 +23,82 @@
 #include "../../GlobalInclude.h"
 
 /**
-* 采购订单执行情况VO领域模型
+* 采购订单汇总VO领域模型
 */
 class StatisVO
 {
 	CC_SYNTHESIZE(uint64_t, id, Id); // ID
-	CC_SYNTHESIZE(int, quantity, Quantity); // 采购数量
 	CC_SYNTHESIZE(double, price, Price); // 采购金额
-	CC_SYNTHESIZE(double, inPost, InCost); // 入库金额
-	CC_SYNTHESIZE(int, inQty, InQty); // 入库数量
+	CC_SYNTHESIZE(double, incost, Incost); // 入库金额
 	CC_SYNTHESIZE(double, settlePrice, SettlePrice); // 结算金额
-	CC_SYNTHESIZE(int, settleQty, SettleQty); // 结算数量
-	CC_SYNTHESIZE(uint64_t, supplier, Supplier); // 供应商ID
-	CC_SYNTHESIZE(std::string, supName, SupName); // 供应商ID
-	CC_SYNTHESIZE(uint64_t, dept, Dept); // 业务部门ID
-	CC_SYNTHESIZE(std::string, deptName, DeptName); // 业务部门名
-	CC_SYNTHESIZE(uint64_t, op, Op); // 业务员ID
-	CC_SYNTHESIZE(std::string, opName, OpName); // 业务员名
-	CC_SYNTHESIZE(std::string, billNo, BillNo); // 单据编号
-	CC_SYNTHESIZE(std::string, billDate, BillDate); // 单据日期
-	CC_SYNTHESIZE(bool, exeEnd, ExeEnd); // 执行结束
-	CC_SYNTHESIZE(std::string, exeEndText, ExeEndText); // 执行结束文字
-	CC_SYNTHESIZE(double, invoidced, Invoidced); // 已结算金额
-public:
-	// 绑定JSON转换方法
-	BIND_TO_JSON(StatisVO, id, quantity, price, inPost, inQty, settlePrice, settleQty, supplier, supName, dept, deptName, op, opName, billNo, billDate, exeEnd, exeEndText, invoidced);
+	CC_SYNTHESIZE(double, settledPrice, SettledPrice); // 已结算金额
+	CC_SYNTHESIZE(double, unsettledPrice, UnsettledPrice); // 未结算金额
+	CC_SYNTHESIZE(uint16_t, year, Year); // 年份
+	CC_SYNTHESIZE(uint16_t, month, Month); // 月份
+	CC_SYNTHESIZE(uint16_t, orders, Orders); // 订单笔数
+private:
+	friend void to_json(json& j, const StatisVO& sv)
+	{
+		j = json{
+			{"id", sv.id},
+			{"price", sv.price},
+			{"incost", sv.incost},
+			{"settlePrice", sv.settlePrice},
+			{"settledPrice", sv.settledPrice},
+			{"unsettledPrice", sv.unsettledPrice},
+			{"year", sv.year},
+			{"month", sv.month},
+			{"orders", sv.orders}
+		};
+	}
 };
 
-#endif
+/**
+* 采购订单汇总-部门/业务员/供应商VO领域模型
+*/
+class StatisByDeptVO : public StatisVO
+{
+	CC_SYNTHESIZE(std::string, dept, Dept); // 业务部门ID
+	CC_SYNTHESIZE(std::string, deptName, DeptName); // 业务部门名
+private:
+	friend void to_json(json& j, const StatisByDeptVO& sv)
+	{
+		to_json(j, static_cast<const StatisVO&>(sv));
+		j = json{
+			{"dept", sv.dept},
+			{"deptName", sv.deptName},
+		};
+	}
+};
+
+class StatisByOperatorVO : public StatisByDeptVO
+{
+	CC_SYNTHESIZE(std::string, op, Op); // 业务员ID
+	CC_SYNTHESIZE(std::string, opName, OpName); // 业务员名
+private:
+	friend void to_json(json& j, const StatisByOperatorVO& sv)
+	{
+		to_json(j, static_cast<const StatisByDeptVO&>(sv));
+		j = json{
+			{"op", sv.op},
+			{"opName", sv.opName},
+		};
+	}
+};
+
+class StatisBySupplierVO : public StatisVO
+{
+	CC_SYNTHESIZE(std::string, supplier, supplier); // 供应商ID
+	CC_SYNTHESIZE(std::string, supName, SupName); // 供应商名
+private:
+	friend void to_json(json& j, const StatisBySupplierVO& sv)
+	{
+		to_json(j, static_cast<const StatisVO&>(sv));
+		j = json{
+			{"supplier", sv.supplier},
+			{"supName", sv.supName},
+		};
+	}
+};
+
+#endif // !__STATIS_VO__
