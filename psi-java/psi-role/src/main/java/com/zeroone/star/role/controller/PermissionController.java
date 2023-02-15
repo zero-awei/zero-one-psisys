@@ -1,9 +1,12 @@
 package com.zeroone.star.role.controller;
 
+import com.zeroone.star.project.query.role.MenuQuery;
 import com.zeroone.star.project.query.role.PermissionQuery;
 import com.zeroone.star.project.role.RoleApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.role.entity.SysMenu;
 import com.zeroone.star.role.entity.SysPermission;
+import com.zeroone.star.role.service.IMenuService;
 import com.zeroone.star.role.service.IPermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,9 +21,9 @@ import java.util.List;
 @RestController // 返回类型
 @RequestMapping("permission") // 请求前缀
 @Api(tags = "角色权限管理接口")
-public class PermissionController implements RoleApis<PermissionQuery> {
+public class PermissionController extends RoleController<SysPermission, IPermissionService> implements RoleApis<PermissionQuery> {
 
-    @Resource
+    @Autowired
     private IPermissionService service;
 
     @GetMapping("list")

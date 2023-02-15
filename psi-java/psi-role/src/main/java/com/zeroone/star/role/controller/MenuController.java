@@ -19,9 +19,9 @@ import java.util.List;
 @RestController // 返回类型
 @RequestMapping("menu") // 请求前缀
 @Api(tags = "角色菜单管理接口")
-public class MenuController  implements RoleApis<MenuQuery> {
+public class MenuController  extends RoleController<SysMenu,IMenuService> implements RoleApis<MenuQuery> {
 
-//    @Resource
+    @Autowired
     private IMenuService service;
 
     @GetMapping("list")
