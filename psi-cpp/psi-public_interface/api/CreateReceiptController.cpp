@@ -2,13 +2,12 @@
 #include "CreateReceiptController.h"
 #include<time.h> 
 #include <sstream>
+#include"hiredis/hiredis.h"
+
+map<string, int> CreateReceiptController::ma;
 
 JsonVO<CreateReceiptVO> CreateReceiptController::execCreateReceipt(CreateReceiptDTO& dto)
 {
-    if (dto.getType() == "111") {
-
-    }
-    //dto.setType("CGSQ");
     CreateReceiptVO cr;
     /*
         xsbj
@@ -56,7 +55,7 @@ JsonVO<CreateReceiptVO> CreateReceiptController::execCreateReceipt(CreateReceipt
     time_t now = time(NULL);
     tm* tm_t = localtime(&now);
     std::stringstream ss;
-    map<string, int> ma;
+    
     auto it = ma.find(result);
     int i = 1;
     if (it != ma.end()) {
@@ -65,12 +64,13 @@ JsonVO<CreateReceiptVO> CreateReceiptController::execCreateReceipt(CreateReceipt
     else {
         ma.insert(pair<string, int>(result, 1));
     }
+        
     string liushui;
-    std::cout << i << endl;
     if (i < 10) liushui += "00" + to_string(i) + ""; 
     else if(i<100) liushui += "0" + to_string(i) + "";
     else if(i<1000) liushui += "0" + to_string(i) + "";
-    result += "-" + to_string((tm_t->tm_year + 1900) % 100) + to_string(tm_t->tm_mon + 1) + to_string(tm_t->tm_mday) + "-" +liushui;
+    if((tm_t->tm_mon + 1)<10) result += "-" + to_string((tm_t->tm_year + 1900) % 100) + "0" +to_string(tm_t->tm_mon + 1) + to_string(tm_t->tm_mday) + "-" + liushui;
+    else  result += "-" + to_string((tm_t->tm_year + 1900) % 100) + to_string(tm_t->tm_mon + 1) + to_string(tm_t->tm_mday) + "-" + liushui;
     //cr.setResult("CGSQ-230214-034");
     cr.setResult(result);
     JsonVO<CreateReceiptVO> res;

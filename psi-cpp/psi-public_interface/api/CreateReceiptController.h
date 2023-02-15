@@ -11,6 +11,8 @@ public:
 private:
 	JsonVO<CreateReceiptVO> execCreateReceipt(CreateReceiptDTO& dto);
 
+	static map<string, int> ma;
+
 };
 
 
