@@ -22,7 +22,6 @@
 #include "../../domain/vo/pur-req/PurReqFindDetailBillVO.h"
 #include "../../domain/vo/pur-req/PurReqFindBillVO.h"
 
-
 //dto
 #include "../../domain/dto/pur-req/AddPurReqDTO.h"
 #include "../../domain/dto/pur-req/DeletePurReqDTO.h"
@@ -46,7 +45,8 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurReqFindBill, execQueryPurReqFindBill,PurReqFindBillQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurReqFindDetailBill, execQueryPurReqFindDetailBill, PurReqFindDetailBillQuery);
 	//添加修改删除需要修改人和需求人的信息,所以添加用户信息负载
-	//添加订单
+	
+//添加订单
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurReq, execAddPurReq, AddPurReqDTO);
 	//修改订单
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(modifyPurReq, execModifyPurReq, ModifyPurReqDTO);
@@ -64,7 +64,8 @@ private:
 	nlohmann::json execPurReqExport(const PurReqExportDTO &dto, const PayloadDTO &payload);
 	//执行方法：导入
 	JsonVO<PurReqIntoVO> execPurReqInto(const PurReqIntoDTO& dto);
-	//新增订单
+	
+//新增订单
 	JsonVO<uint64_t> execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload);
 	//修改订单
 	JsonVO<uint64_t> execModifyPurReq(const ModifyPurReqDTO& dto, const PayloadDTO& payload);
