@@ -43,6 +43,20 @@ void Router::initRouter()
 	initSupplierSetting();
 	initDepartChioceSetting();
 
+	//公共接口的供应商资金账户
+	createBasBankAccount();
+
+	//物料分类树状结构列表
+	createMaterialTypeTreeList();
+
+	//仓库树状结构列表
+	
+	createBasWareHouseTreeList();
+
+	createBankAccount();
+
+	createCreateReceipt();
+
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -75,9 +89,15 @@ void Router::initRouter()
 	createSampleRouter();
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
+
+
+
+
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+
+
 
 }
 
@@ -123,4 +143,25 @@ void Router::initDepartChioceSetting()
 void Router::initSupplierSetting()
 {
 	BIND_GET_ROUTER(server, "/get-supplier", &SupplierCategoryController::querySupplierCategory, nullptr);
+}
+
+void Router::createBasBankAccount()
+{
+	BIND_GET_ROUTER(server, "/query-bas-bank-account", &BasBankAccountController::queryBasBankAccount, nullptr);
+}
+void Router::createMaterialTypeTreeList()
+{                                            
+	BIND_GET_ROUTER(server, "/query-material-type-tree-list", &MaterialTypeTreeListController::queryMaterialTypeTreeList, nullptr);
+}
+void Router::createBasWareHouseTreeList()
+{
+	BIND_GET_ROUTER(server, "/query-bas-ware-house-tree-list", &BasWareHouseTreeListController::queryBasWareHouseTreeList, nullptr);
+}
+
+void Router::createBankAccount() {
+	BIND_GET_ROUTER(server, "/query-specified-bank-account", &BankAccountController::querySpecifiedBankAccount, nullptr);
+}
+
+void Router::createCreateReceipt() {
+	BIND_PUT_ROUTER(server, "/create-receipt", &CreateReceiptController::createReceipt, nullptr);
 }
