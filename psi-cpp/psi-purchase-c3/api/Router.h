@@ -43,7 +43,7 @@ private:
 	void createUserDepartRouter();
 #endif
 
-<<<<<<< HEAD
+
 
 	void createPurReqRouter();
 	void createPurCompareRouter();
