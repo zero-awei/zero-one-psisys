@@ -44,9 +44,6 @@
     <ClInclude Include="domain\dto\IDDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\GlobalInclude.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\query\PageQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -62,6 +59,9 @@
     <ClInclude Include="domain\vo\ResultStatus.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\GlobalInclude.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="Macros.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -69,9 +69,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\PurReq\PurReqListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
