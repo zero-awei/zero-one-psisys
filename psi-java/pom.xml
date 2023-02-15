@@ -23,6 +23,7 @@
         <module>psi-login</module>
         <module>psi-rolemanagement</module>
         <module>psi-role</module>
+        <module>psi-menuManagement</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
