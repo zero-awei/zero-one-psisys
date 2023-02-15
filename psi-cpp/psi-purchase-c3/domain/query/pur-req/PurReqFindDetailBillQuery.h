@@ -24,7 +24,7 @@
 /*
 查询指定单据详细信息
 */
-class PurReqFindDetailBillQuery :  {
+class PurReqFindDetailBillQuery {
 	//指定的单据号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:

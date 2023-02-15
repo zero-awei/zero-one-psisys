@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-
+#include "pur-req/PurReqController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -94,3 +94,10 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPurReqRouter() {
+	//查询比价单列表接口路由绑定
+	BIND_GET_ROUTER(server, "/get-combill-list", &PurReqController::queryPurReqFindBill, nullptr);
+	//查询指定比价单详细信息接口路由绑定
+	BIND_GET_ROUTER(server, "/get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
+}

@@ -52,9 +52,9 @@ public:
 		BIND_FROM_TO_ULL(j, t, billDate);
 		BIND_FROM_TO_ULL(j, t, subject);
 		BIND_FROM_TO_ULL(j, t, billStage);
-		BIND_FROM_TO_i(j, t, isEffective);
-		BIND_FROM_TO_i(j, t, isClose);
-		BIND_FROM_TO_i(j, t, isVoided);
+		BIND_FROM_TO_I(j, t, isEffective);
+		BIND_FROM_TO_I(j, t, isClose);
+		BIND_FROM_TO_I(j, t, isVoided);
 	}
 };
 #endif // !
