@@ -3,6 +3,8 @@ package com.zeroone.star.menumanagement.controller;
 
 import com.zeroone.star.menumanagement.entity.SysMenu;
 import com.zeroone.star.project.dto.menumanagement.MenuDto;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -27,23 +29,23 @@ public class SysMenuController {
     @SneakyThrows
     @ApiOperation(value = "新增菜单")
     @PostMapping("/add")
-    public boolean addMenu(SysMenu sysMenu){
-        return true;
+    public JsonVO<String> addMenu(SysMenu sysMenu){
+        return JsonVO.create("新增成功", ResultStatus.SUCCESS);
     }
 
     @SneakyThrows
     @ApiOperation(value = "修改菜单")
     @PostMapping("/update")
-    public boolean updateMenu(int id){
-        return true;
+    public JsonVO<String> updateMenu(int id){
+        return JsonVO.create("修改成功", ResultStatus.SUCCESS);
     }
 
     @ResponseBody
     @SneakyThrows
     @ApiOperation(value = "删除菜单")
     @PostMapping("/delete")
-    public boolean deleteMenu(int id){
-        return true;
+    public JsonVO<String> deleteMenu(int id){
+        return JsonVO.create("删除成功", ResultStatus.SUCCESS);
     }
 
 
