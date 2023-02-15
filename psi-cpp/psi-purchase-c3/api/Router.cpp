@@ -97,7 +97,8 @@ void Router::createUserDepartRouter()
 
 void Router::createPurReqRouter() {
 	//查询比价单列表接口路由绑定
-	BIND_GET_ROUTER(server, "/get-combill-list", &PurReqController::queryPurReqFindBill, nullptr);
+	BIND_GET_ROUTER(server, "/get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
 	//查询指定比价单详细信息接口路由绑定
 	BIND_GET_ROUTER(server, "/get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
+
 }
