@@ -31,6 +31,11 @@ import com.zeroone.star.project.vo.payment.SupplierVO;
 
 import java.util.List;
 
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payment.PaymentReqEntryVO;
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * <p>
  * 描述：API接口定义
@@ -136,4 +141,12 @@ public interface PaymentApis {
      * author 空
      */
 //    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+
+    /**
+     * 导入功能
+     * author 出运费
+     */
+    JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo);
+    JsonVO<String> excelImport(MultipartFile file);
+
 }

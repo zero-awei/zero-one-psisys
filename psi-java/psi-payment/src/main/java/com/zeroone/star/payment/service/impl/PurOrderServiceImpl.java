@@ -16,5 +16,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PurOrderServiceImpl extends ServiceImpl<PurOrderMapper, PurOrder> implements IPurOrderService {
-
 }

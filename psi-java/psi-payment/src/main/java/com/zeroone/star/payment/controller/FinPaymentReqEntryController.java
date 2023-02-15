@@ -1,9 +1,7 @@
 package com.zeroone.star.payment.controller;
 
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -15,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/payment/fin-payment-req-entry")
-public class FinPaymentReqEntryController {
+@Api(tags = "付款申请单明细接口")
+public class FinPaymentReqEntryController{
 
 }
 

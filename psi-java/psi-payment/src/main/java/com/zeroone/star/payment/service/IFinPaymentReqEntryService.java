@@ -2,6 +2,8 @@ package com.zeroone.star.payment.service;
 
 import com.zeroone.star.payment.entity.FinPaymentReqEntry;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payment.PaymentReqEntryVO;
 
 /**
  * <p>
@@ -13,4 +15,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IFinPaymentReqEntryService extends IService<FinPaymentReqEntry> {
 
+    /**
+     * 根据源单号获取明细信息
+     * @param billNo 源单号
+     * @return 返回明细结果
+     */
+    PageVO<PaymentReqEntryVO> getByBillNo(String billNo);
 }
