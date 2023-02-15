@@ -47,59 +47,42 @@ import java.util.List;
 public class ExcelController {
     @Resource
     EasyExcelComponent excel;
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     @Resource
     IAddressbookService service;
 
-    public PageVO<AddressbookVO> getByRealname(@Validated AddressbookQuery condition) {
-        return service.getByRealname(condition);
-
-    }
-
     @PostConstruct
     public void initData() {
 
-        users = new ArrayList<>(50);
-        for (int i = 1; i <= 50; i++) {
-            User u = new User();
-//            u.setId(i);
-//            u.setName("用户" + i);
-            u.setPhone("1234567" + i);
-            users.add(u);
-        }
     }
-
-    /*public ExcelController(@RequestBody JsonVO<PageVO<AddressbookVO>> request) {
-
-        PageVO<AddressbookVO> data = request.getData();
-        List<AddressbookVO> rows = data.getRows();
-        users = new ArrayList<User>(rows.size());
-        for (AddressbookVO row : rows) {
-            for (int i = 0; i < rows.size(); i++) {
-                User u = new User();
-                u.setRealname(row.getRealname());
-                u.setWorkNo(row.getWorkNo());
-                u.setDepartName(row.getDepartName());
-                u.setPost(row.getPost());
-                u.setPhone(row.getPhone());
-                u.setEmail(row.getEmail());
-                users.add(u);
-            }
-        }
-    }*/
 
     @SneakyThrows
     @ApiOperation(value = "获取导出文件")
     @GetMapping(value = "get-file", produces = "application/octet-stream")
-    public ResponseEntity<byte[]> download() {
+    public ResponseEntity<byte[]> download(AddressbookQuery condition) {
+        // 清理数据
+        users.clear();
+        // 初始化数据
+        PageVO<AddressbookVO> vo = service.listAddressbook(condition);
+        List<AddressbookVO> rows = vo.getRows();
+        for (AddressbookVO row : rows) {
+            User u = new User();
+            u.setRealname(row.getRealname());
+            u.setPhone(row.getPhone());
+            u.setEmail(row.getEmail());
+            u.setDepartName(row.getDepartName());
+            u.setPost(row.getPost());
+            u.setWorkNo(row.getWorkNo());
+            users.add(u);
+        }
         // 导出Excel
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        excel.export("通讯录", out, User.class, users);
+        excel.export("测试", out, User.class, users);
         // 创建响应头
         HttpHeaders headers = new HttpHeaders();
         // 构建一个下载的文件名称
-        String fileName = "addressbook-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
+        String fileName = "test-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
         fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
         headers.setContentDispositionFormData("attachment", fileName);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
@@ -118,10 +101,25 @@ public class ExcelController {
     @ApiOperation(value = "获取导出链接")
     @ResponseBody
     @GetMapping("get-url")
-    public JsonVO<String> downloadUrl() {
+    public JsonVO<String> downloadUrl(AddressbookQuery condition) {
+        // 清理数据
+        users.clear();
+        // 初始化数据
+        PageVO<AddressbookVO> vo = service.listAddressbook(condition);
+        List<AddressbookVO> rows = vo.getRows();
+        for (AddressbookVO row : rows) {
+            User u = new User();
+            u.setRealname(row.getRealname());
+            u.setPhone(row.getPhone());
+            u.setEmail(row.getEmail());
+            u.setDepartName(row.getDepartName());
+            u.setPost(row.getPost());
+            u.setWorkNo(row.getWorkNo());
+            users.add(u);
+        }
         // 导出Excel
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        excel.export("通讯录", out, User.class, users);
+        excel.export("测试", out, User.class, users);
         // 上传到fastdfs
         String suffix = "xlsx";
         FastDfsFileInfo result = dfsClient.uploadFile(out.toByteArray(), suffix);
