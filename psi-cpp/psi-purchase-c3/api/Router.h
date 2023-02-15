@@ -34,6 +34,7 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
+
 private:
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
@@ -42,8 +43,15 @@ private:
 	void createUserDepartRouter();
 #endif
 
+<<<<<<< HEAD
+
 	void createPurReqRouter();
 	void createPurCompareRouter();
+	//采购询价单路由
+	void createPurInquiryRouter();
+
+
+
 };
 
 #endif // !_ROUTER_

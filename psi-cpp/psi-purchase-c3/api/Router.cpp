@@ -22,6 +22,9 @@
 #include "domain/vo/JsonVO.h"
 #include "pur-req/PurReqController.h"
 #include "pur-compare/PurCompareController.h"
+#include "pur-inquiry/PurInquiryController.h"
+
+
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -75,7 +78,11 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+
 	createPurCompareRouter();
+	createPurInquiryRouter();
+	createPurReqRouter();
+
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -98,11 +105,16 @@ void Router::createUserDepartRouter()
 #endif
 
 
+
 void Router::createPurReqRouter() {
 	//查询比价单列表接口路由绑定
 	BIND_GET_ROUTER(server, "/get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
 	//查询指定比价单详细信息接口路由绑定
 	BIND_GET_ROUTER(server, "/get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
+	//导出申请单接口路由绑定
+	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
+	//导入申请单接口路由绑定
+	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
 
 }
 void Router::createPurCompareRouter()
@@ -115,5 +127,14 @@ void Router::createPurCompareRouter()
 	BIND_GET_ROUTER(server, "/get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
 	//查询报价单分录接口路由绑定
 	BIND_GET_ROUTER(server, "/get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
+}
+
+
+void Router::createPurInquiryRouter()
+{
+	//查询询价单列表接口路由绑定
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
+	//查看指定询价单详细信息接口路由绑定
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
 }
 
