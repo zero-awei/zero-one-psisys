@@ -18,9 +18,10 @@
         <module>psi-common</module>
         <module>psi-domain</module>
         <module>psi-apis</module>
-        <module>psi-oauth2</module>
-        <module>psi-gateway</module>
-        <module>psi-login</module>
+        <module>psi-doc</module>
+        <module>psi-sample</module>
+        <module>psi-sample-captcha</module>
+        <module>psi-paymentmanager</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
@@ -46,7 +47,6 @@
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <gc.findbugs.version>3.0.1</gc.findbugs.version>
         <ee.version>1.0.3</ee.version>
-        <es.client.version>7.14.0</es.client.version>
         <captcha.version>1.3.0</captcha.version>
     </properties>
     <dependencies>
@@ -268,16 +268,6 @@
                 <groupId>cn.easy-es</groupId>
                 <artifactId>easy-es-boot-starter</artifactId>
                 <version>${ee.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                <version>${es.client.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch</groupId>
-                <artifactId>elasticsearch</artifactId>
-                <version>${es.client.version}</version>
             </dependency>
             <!-- captcha -->
             <dependency>
