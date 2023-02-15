@@ -25,6 +25,7 @@
         <module>psi-role</module>
         <module>psi-menuManagement</module>
         <module>psi-user</module>
+        <module>psi-permission</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
