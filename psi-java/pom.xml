@@ -21,6 +21,7 @@
         <module>psi-doc</module>
         <module>psi-sample</module>
         <module>psi-sample-captcha</module>
+        <module>psi-paymentmanager</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
