@@ -15,5 +15,10 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.3.24</version>
+        </dependency>
     </dependencies>
 </project>
