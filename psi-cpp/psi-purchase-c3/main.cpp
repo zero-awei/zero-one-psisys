@@ -187,6 +187,7 @@ int main(int argc, char* argv[]) {
 		[=](http_server* server) {
 			Router router(server);
 			router.initRouter();
+
 		}
 	);
 	// 释放数据库连接

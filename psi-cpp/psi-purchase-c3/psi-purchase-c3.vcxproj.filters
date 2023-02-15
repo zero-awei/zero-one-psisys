@@ -54,49 +54,49 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\inquiry-eleanor\PurInquiryController.h">
+    <ClInclude Include="api\pur-inquiry\PurInquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\inquiry-eleanor\PurInquiryFindBillDTO.h">
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryFindBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\inquiry-eleanor\PurInquiryFindBillQuery.h">
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\inquiry-eleanor\PurInquiryFindBillVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\inquiry-eleanor\PurInquiryService.h">
+    <ClInclude Include="service\pur-inquiry\PurInquiryService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\req-eleanor\PurReqController.h">
+    <ClInclude Include="api\pur-req\PurReqController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\req-eleanor\PurReqExportDTO.h">
+    <ClInclude Include="domain\dto\pur-req\PurReqExportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\req-eleanor\PurReqService.h">
+    <ClInclude Include="service\pur-req\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\inquiry-eleanor\PurInquiryFindDetailBillDTO.h">
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryFindDetailBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\inquiry-eleanor\EntryPurInquiryDTO.h">
+    <ClInclude Include="domain\dto\pur-inquiry\EntryPurInquiryDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\inquiry-eleanor\PurInquiryFindDetailBillVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindDetailBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\inquiry-eleanor\EntryPurInquiryVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\inquiry-eleanor\PurInquiryFindDetailBillQuery.h">
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindDetailBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\req-eleanor\PurReqIntoDTO.h">
+    <ClInclude Include="domain\dto\pur-req\PurReqIntoDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\req-eleanor\PurReqIntoVO.h">
+    <ClInclude Include="domain\vo\pur-req\PurReqIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -116,31 +116,31 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\inquiry-eleanor\PurInquiryController.cpp">
+    <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\inquiry-eleanor\PurInquiryFindBillDTO.cpp">
+    <ClCompile Include="domain\dto\pur-inquiry\PurInquiryFindBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\inquiry-eleanor\PurInquiryService.cpp">
+    <ClCompile Include="service\pur-inquiry\PurInquiryService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\req-eleanor\PurReqController.cpp">
+    <ClCompile Include="api\pur-req\PurReqController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\req-eleanor\PurReqExportDTO.cpp">
+    <ClCompile Include="domain\dto\pur-req\PurReqExportDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\req-eleanor\PurReqService.cpp">
+    <ClCompile Include="service\pur-req\PurReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\inquiry-eleanor\PurInquiryFindDetailBillDTO.cpp">
+    <ClCompile Include="domain\dto\pur-inquiry\PurInquiryFindDetailBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\inquiry-eleanor\EntryPurInquiryDTO.cpp">
+    <ClCompile Include="domain\dto\pur-inquiry\EntryPurInquiryDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\req-eleanor\PurReqIntoDTO.cpp">
+    <ClCompile Include="domain\dto\pur-req\PurReqIntoDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

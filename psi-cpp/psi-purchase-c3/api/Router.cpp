@@ -20,6 +20,8 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "pur-inquiry/PurInquiryController.h"
+#include "pur-req/PurReqController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +75,8 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createPurInquiryRouter();
+	createPurReqRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +97,18 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPurInquiryRouter()
+{
+	//查询询价单列表接口路由绑定
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
+	//查看指定询价单详细信息接口路由绑定
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
+}
+
+void Router::createPurReqRouter() {
+	//导出申请单接口路由绑定
+	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
+	//导入申请单接口路由绑定
+	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
+}
