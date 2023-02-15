@@ -28,13 +28,11 @@ private:
 	void createUserDepartRouter();
 
 #endif
-
 	void createPurReqRouter();
 	void createPurCompareRouter();
-	//采购询价单路由
 	void createPurInquiryRouter();
+	void purReqRouter();
 
 };
 
-#endif // !_ROUTER_
 

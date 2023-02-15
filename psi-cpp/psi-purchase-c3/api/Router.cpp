@@ -1,9 +1,11 @@
 
+//公共接口
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
+//
 #include "pur-req/PurReqController.h"
 #include "pur-compare/PurCompareController.h"
 #include "pur-inquiry/PurInquiryController.h"
@@ -14,6 +16,8 @@
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
+
+#include "pur-req/PurReqController.h"
 
 Router::Router(http_server* sever)
 {
@@ -26,6 +30,7 @@ void Router::initRouter()
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
+
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -34,25 +39,25 @@ void Router::initRouter()
 
 	//初始化一个文件上传接口示例
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
-			if (req.get_content_type() != content_type::multipart)
-			{
-				JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
-				nlohmann::json jvo = nlohmann::json(vo);
-				jvo.erase("data");
-				res.render_json(jvo);
-				return;
-			}
-			//获取表单参数
-			std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-			std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-			//获取文件路径
-			auto& files = req.get_upload_files();
-			std::vector<string> filePaths;
-			for (auto& file : files) {
-				filePaths.push_back(file.get_file_path().substr(1));
-				std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-			}
-			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
+		if (req.get_content_type() != content_type::multipart)
+		{
+			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
+			nlohmann::json jvo = nlohmann::json(vo);
+			jvo.erase("data");
+			res.render_json(jvo);
+			return;
+		}
+	//获取表单参数
+	std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
+	std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
+	//获取文件路径
+	auto& files = req.get_upload_files();
+	std::vector<string> filePaths;
+	for (auto& file : files) {
+		filePaths.push_back(file.get_file_path().substr(1));
+		std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
+	}
+	res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
 	createSampleRouter();
@@ -60,13 +65,15 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 
+
 	//#TIP :系统扩展路由定义，写在这个后面
 
 
 	createPurCompareRouter();
 	createPurInquiryRouter();
 	createPurReqRouter();
-
+	purReqRouter();
+	
 }
 
 
@@ -88,8 +95,8 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
-#endif
 
+#endif
 
 
 void Router::createPurReqRouter() {
@@ -101,6 +108,14 @@ void Router::createPurReqRouter() {
 	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
 	//导入申请单接口路由绑定
 	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
+	//采购订单添加接口
+	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqController::addPurReq, nullptr);
+	//采购订单修改接口
+	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqController::modifyPurReq, nullptr);
+	//采购订单删除接口
+	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqController::removePurReqById, nullptr);
+	//采购订单状态修改接口
+	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqController::modifyPurReqBillStatus, nullptr);
 
 }
 void Router::createPurCompareRouter()
@@ -129,5 +144,8 @@ void Router::createPurInquiryRouter()
 	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
 	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
 }
+
+
+
 
 

@@ -34,7 +34,7 @@
 /**
  * 解析启动参数
  * 注意：
- * 参数中数据需要满足一定的格式，如：sp=8090、sn=feign-cpp-sample
+ * 参数中数据需要满足一定的格式，如：sp=8090、sn=feign-cpp-Req
  * 前缀与真实值之间使用=分隔
  */
 bool getStartArg(int argc, char* argv[]) {
@@ -51,8 +51,10 @@ bool getStartArg(int argc, char* argv[]) {
 	// Nacos配置参数
 	std::string nacosAddr = "192.168.197.128:8848";
 	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
+
 	std::string serviceName = "feign-cpp-sample";
 	std::string regIp = "192.168.197.128";
+
 #endif
 
 	// 开始解析

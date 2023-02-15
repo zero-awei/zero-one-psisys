@@ -56,6 +56,7 @@
     </ClInclude>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -141,6 +142,21 @@
     </ClInclude>
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotDividedList.h">
 >>>>>>> remotes/origin/c3-pur-quot-luoluo
+=======
+    <ClInclude Include="api\pur-req\PurReqController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\AddPurReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\DeletePurReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\PurReqModBillStatusDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h">
+>>>>>>> remotes/origin/c3-pur-req-adam
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -161,10 +177,26 @@
       <Filter>源文件</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="api\pur-req\PurReqController.cpp">
 =======
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp">
 >>>>>>> remotes/origin/c3-pur-inquiry-huilai
+=======
+    <ClCompile Include="api\pur-req\PurReqController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\AddPurReqDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\DeletePurReqDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\PurReqModBillStatusDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\ModifyPurReqDTO.cpp">
+>>>>>>> remotes/origin/c3-pur-req-adam
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

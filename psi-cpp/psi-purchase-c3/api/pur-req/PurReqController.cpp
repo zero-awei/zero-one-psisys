@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "PurReqController.h"
 #include "service/pur-req/PurReqService.h"
@@ -32,3 +33,34 @@ JsonVO<PurReqIntoVO> PurReqController::execPurReqInto(const PurReqIntoDTO& dto)
 	//响应结果
 	return JsonVO<PurReqIntoVO>();
 }
+
+
+
+//新增订单
+JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload)
+{
+	JsonVO<uint64_t> result;
+	return result;
+}
+
+//修改订单
+JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, const PayloadDTO& payload)
+{
+	JsonVO<uint64_t> result;
+	return result;
+}
+
+//修改订单状态
+JsonVO<uint64_t> PurReqController::execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto,  const PayloadDTO& payload)
+{
+	JsonVO<uint64_t> result;
+	return result;
+}
+
+//删除订单
+JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& id)
+{
+	JsonVO<uint64_t> result;
+	return result;
+}
+
