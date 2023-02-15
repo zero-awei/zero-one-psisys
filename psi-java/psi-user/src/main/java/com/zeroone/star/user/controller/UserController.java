@@ -2,6 +2,8 @@ package com.zeroone.star.user.controller;
 
 import cn.hutool.core.date.DateTime;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
+import com.zeroone.star.project.dto.user.AddUserDTO;
+import com.zeroone.star.project.dto.user.EditUserDTO;
 import com.zeroone.star.project.dto.user.UserDTO;
 import com.zeroone.star.project.query.user.FindUserQuery;
 import com.zeroone.star.project.query.user.UserQuery;
@@ -68,8 +70,8 @@ public class UserController implements UserApis {
     @ApiOperation(value = "添加用户")
     @PostMapping("add")
     @Override
-    public JsonVO<String> addUser(UserDTO dto) {
-        return null;
+    public JsonVO<String> addUser(AddUserDTO dto) {
+        return JsonVO.success("添加成功");
     }
 
     @ApiOperation(value = "删除用户")
@@ -83,22 +85,22 @@ public class UserController implements UserApis {
     @ApiOperation(value = "修改用户")
     @PutMapping("modify")
     @Override
-    public JsonVO<String> modifyUser(UserDTO dto) {
-        return null;
+    public JsonVO<String> modifyUser(EditUserDTO dto) {
+        return JsonVO.success("修改成功");
     }
 
     @ApiOperation(value = "冻结/解冻用户")
     @PutMapping("status")
     @Override
     public JsonVO<String> modifyStatus(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        return null;
+        return JsonVO.success("冻结成功");
     }
 
     @ApiOperation(value = "导入用户")
     @GetMapping("upload")
     @Override
     public JsonVO<String> upload() {
-        return null;
+        return JsonVO.success("导入成功");
     }
 
     @SneakyThrows
