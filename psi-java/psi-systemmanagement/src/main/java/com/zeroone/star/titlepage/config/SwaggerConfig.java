@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
-import springfox.documentation.swagger2.annotations.*;
 
 /**
  * @Description
@@ -18,6 +17,6 @@ public class SwaggerConfig {
 
     @Bean
     Docket sampleApi() {
-        return SwaggerCore.defaultDocketBuilder("首页模块", "com.zeroone.star.titlepage.controller", "titlepage");
+        return SwaggerCore.defaultDocketBuilder("系统管理模块", "com.zeroone.star.systemmanagement", "systemmanagement");
     }
 }

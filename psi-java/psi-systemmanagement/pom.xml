@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>psi-system-management</artifactId>
+    <artifactId>psi-systemmanagement</artifactId>
 
     <dependencies>
         <dependency>
@@ -52,7 +52,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.systemmanagement.SystemManagementApp</mainClass>
+                    <mainClass>com.zeroone.star.titlepage.SystemManagementApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

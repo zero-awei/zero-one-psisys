@@ -9,6 +9,14 @@ import com.zeroone.star.titlepage.service.ISalOrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.vo.homepage.SalesAmountInformationVO;
+import com.zeroone.star.titlepage.entity.SalOrder;
+import com.zeroone.star.titlepage.mapper.SalOrderMapper;
+import com.zeroone.star.titlepage.service.ISalOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**
@@ -16,11 +24,19 @@ import java.util.List;
  * 销售订单 服务实现类
  * </p>
  *
- * @author ss
+ * @author ss yx
  * @since 2023-02-12
  */
 @Service
 public class SalOrderServiceImpl extends ServiceImpl<SalOrderMapper, SalOrder> implements ISalOrderService {
+
+    @Autowired
+    SalOrderMapper mapper;
+
+    /**
+     * 查询毛利润
+     * @return
+     */
 
     @Override
     public List<SalOrderVO> listSalOrder() {
@@ -34,5 +50,14 @@ public class SalOrderServiceImpl extends ServiceImpl<SalOrderMapper, SalOrder> i
             list1.add(salOrderVO);
         }
         return list1;
+
+
+    /**
+     * 获取每月销售金额
+     * @return 每月销售金额构成的list
+     */
+    @Override
+    public List<SalesAmountInformationVO> listSalesAmount() {
+        return mapper.listSalesAmount();
     }
 }

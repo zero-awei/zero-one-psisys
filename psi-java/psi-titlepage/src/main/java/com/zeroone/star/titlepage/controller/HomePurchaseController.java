@@ -6,16 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 销售订单 前端控制器
+ * VIEW 前端控制器
  * </p>
  *
-<<<<<<< HEAD
- * @author ss yx
- * @since 2023-02-12
+ * @author yx
+ * @since 2023-02-11
  */
 @RestController
-@RequestMapping("/homepage/sal-order")
-public class SalOrderController {
+@RequestMapping("/homepage/home-purchase")
+public class HomePurchaseController {
 
 }
 
