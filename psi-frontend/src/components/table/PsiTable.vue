@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-13 14:25:07
- * @LastEditTime: 2023-02-13 22:56:37
+ * @LastEditTime: 2023-02-15 16:44:46
  * @LastEditors: li.ziwei
  * @Description: 
  * @FilePath: \psi-frontend\src\components\table\PsiTable.vue
@@ -59,9 +59,7 @@
       </template>
       <el-table-column fixed="right" label="Operations" width="120">
         <template #default>
-          <el-button link type="primary" size="small" @click="handleClick"
-            >Detail</el-button
-          >
+          <el-button link type="primary" size="small">Detail</el-button>
           <el-button link type="primary" size="small">Edit</el-button>
         </template>
       </el-table-column>

@@ -30,10 +30,10 @@ const routes = [
     component: () => import('@/views/status/403.vue')
   },
   {
-    path: '/component/search',
+    path: '/component/psi-search',
     name: 'search',
     // component: () => import('@/components/search/index.vue')
-    component: () => import('../../../components/search/index.vue')
+    component: () => import('../../../components/psiSearch/index.vue')
   },
   {
     path: '/component/table',

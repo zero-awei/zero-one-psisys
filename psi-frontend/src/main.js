@@ -1,4 +1,4 @@
-import { createApp }  from 'vue'
+import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
@@ -7,7 +7,6 @@ import 'element-plus/theme-chalk/src/message.scss'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './assets/main.css'
 // import Vue from 'vue'
-
 
 const app = createApp(App)
 app.use(createPinia())
@@ -26,9 +25,13 @@ import installElIcon from './plugins/el-icon'
 installElIcon(app)
 
 // 注册全局组件
-import PsiSearch from './components/search/PsiSearch.vue'
+import PsiSearch from './components/psiSearch/PsiSearch.vue'
 import PsiTable from './components/table/PsiTable.vue'
 import PsiDialog from './components/dialog/PsiDialog.vue'
+import PsiDrawer from './components/drawer/com/PsiDrawer.vue'
+import PsiPopover from './components/drawer/com/PsiPopover.vue'
 app.component('PsiSearch', PsiSearch)
 app.component('PsiTable', PsiTable)
 app.component('PsiDialog', PsiDialog)
+app.component('PsiDrawer', PsiDrawer)
+app.component('PsiPopover', PsiPopover)

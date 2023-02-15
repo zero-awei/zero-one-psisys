@@ -1,12 +1,3 @@
-<!--
- * @Author: li.ziwei
- * @Date: 2023-02-13 14:21:13
- * @LastEditTime: 2023-02-14 14:52:25
- * @LastEditors: li.ziwei
- * @Description: 
- * @FilePath: \psi-frontend\src\components\table\index.vue
- * 可以输入预定的版权声明、个性签名、空行等
--->
 <template>
   <div class="main">
     <el-card>

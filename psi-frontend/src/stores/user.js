@@ -127,8 +127,7 @@ let testMenus = [
         pid: 3
       }
     ]
-  },
-  
+  }
 ]
 const componentRouter = {
   id: 999,
@@ -138,7 +137,7 @@ const componentRouter = {
     {
       id: 2,
       text: '查询组件',
-      href: '/component/search',
+      href: '/component/psi-search',
       icon: 'IconTickets',
       pid: 3
     },
@@ -225,9 +224,9 @@ export const userStore = defineStore('user', {
         '/login/get-menus',
         null
       )
-       this.menus = data.data
-       // 在后端返回菜单列表中添加组件列表路由
-       this.menus.push(componentRouter)
+      this.menus = data.data
+      // 在后端返回菜单列表中添加组件列表路由
+      this.menus.push(componentRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {

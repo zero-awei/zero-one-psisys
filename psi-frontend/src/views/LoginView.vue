@@ -13,7 +13,6 @@
       </el-form-item>
     </el-form>
   </el-card>
-
   <!-- 验证码组件 -->
   <Verify
     mode="pop"

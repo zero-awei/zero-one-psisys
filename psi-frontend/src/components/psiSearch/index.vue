@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="search-main">
     <el-card>
       <psi-search :items="items1" :formData="formData1" />
     </el-card>
@@ -273,8 +273,4 @@ function search(res) {
 }
 </script>
 
-<style>
-.main {
-  height: 100vh;
-}
-</style>
+<style></style>
