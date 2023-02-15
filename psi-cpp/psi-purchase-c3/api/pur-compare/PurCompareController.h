@@ -95,8 +95,6 @@ private:
 	JsonVO<uint64_t> execRemovePurCom(const DelPurComDTO& dto);
 	//演示修改单据状态
 	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto);
-
-
 };
 
 #endif // _SAMPLE_CONTROLLER_#pragma once
