@@ -1,5 +1,7 @@
 package com.zeroone.star.project.user;
 
+import com.zeroone.star.project.dto.user.AddUserDTO;
+import com.zeroone.star.project.dto.user.EditUserDTO;
 import com.zeroone.star.project.dto.user.UserDTO;
 import com.zeroone.star.project.query.user.FindUserQuery;
 import com.zeroone.star.project.query.user.UserQuery;
@@ -42,7 +44,7 @@ public interface UserApis {
      * @param dto 数据对象
      * @return 新增用户的编号
      */
-    JsonVO<String> addUser(UserDTO dto);
+    JsonVO<String> addUser(AddUserDTO dto);
 
     /**
      * 删除用户
@@ -56,7 +58,7 @@ public interface UserApis {
      * @param dto 数据数据内容
      * @return 修改后的用户编号
      */
-    JsonVO<String> modifyUser(UserDTO dto);
+    JsonVO<String> modifyUser(EditUserDTO dto);
 
     /**
      * 冻结/解冻用户
