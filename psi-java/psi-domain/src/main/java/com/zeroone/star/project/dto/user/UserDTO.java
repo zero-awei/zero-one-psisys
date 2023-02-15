@@ -79,19 +79,19 @@ public class UserDTO {
      * 状态(1-正常,2-冻结)
      */
     @ApiModelProperty(value = "状态", example = "1")
-    private Boolean status;
+    private Integer status;
 
     /**
      * 删除状态(0-正常,1-已删除)
      */
     @ApiModelProperty(value = "删除状态", example = "0")
-    private Boolean delFlag;
+    private Integer delFlag;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
     @ApiModelProperty(value = "同步工作流引擎", example = "1")
-    private Boolean activitiSync;
+    private Integer activitiSync;
 
     /**
      * 工号，唯一键

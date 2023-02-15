@@ -1,14 +1,18 @@
 package com.zeroone.star.project.user;
 
 import com.zeroone.star.project.dto.user.UserDTO;
+import com.zeroone.star.project.query.user.FindUserQuery;
 import com.zeroone.star.project.query.user.UserQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.user.AddUserVO;
+import com.zeroone.star.project.vo.user.EditUserVO;
 import com.zeroone.star.project.vo.user.UserVO;
 import org.springframework.http.ResponseEntity;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public interface UserApis {
@@ -24,14 +28,14 @@ public interface UserApis {
      * @param query 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<UserVO>> queryUser(UserQuery query);
+    JsonVO<PageVO<UserVO>> queryUser(FindUserQuery query);
 
     /**
      * 数据回显
      * @param id 用户id
      * @return 用户信息
      */
-    JsonVO<UserVO> review(@NotBlank(message = "id 不能为空") String id);
+    JsonVO<EditUserVO> review(@NotBlank(message = "id 不能为空") String id);
 
     /**
      * 新增用户
@@ -79,4 +83,10 @@ public interface UserApis {
      * @return 下载地址
      */
     ResponseEntity<byte[]> downloadAllUsers();
+
+    /**
+     * 下拉框获取部门列表
+     * @return
+     */
+    JsonVO<List<AddUserVO>> listDepartment();
 }
