@@ -3,6 +3,7 @@ package com.zeroone.star.project.payment;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payment.PaymentReqEntryVO;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
@@ -17,4 +18,6 @@ import com.zeroone.star.project.vo.payment.PaymentReqEntryVO;
 public interface PaymentApis {
 
     JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo);
+    JsonVO<String> excelImport(MultipartFile file);
+
 }
