@@ -1,7 +1,6 @@
 package com.zeroone.star.payment.controller;
 
-import com.zeroone.star.project.dto.payment.AuditDTO;
-import com.zeroone.star.project.dto.payment.ModifyDTO;
+import com.zeroone.star.project.dto.payment.*;
 import com.zeroone.star.project.payment.PaymentApis;
 import com.zeroone.star.project.query.payment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -14,12 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zeroone.star.project.query.payment.DocListQuery;
 import com.zeroone.star.project.vo.payment.DocListVO;
-import com.zeroone.star.project.dto.payment.DeleteDTO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.zeroone.star.project.dto.payment.PrepaymentDTO;
 import com.zeroone.star.project.payment.PaymentApis;
 import com.zeroone.star.project.query.payment.PurchaseListQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -112,7 +109,7 @@ public class PaymentController implements PaymentApis {
      * since 2023-02-13
      */
     @GetMapping("export")
-    @ApiOperation(value = "获取导出文件")
+    @ApiOperation(value = "导出功能")
     @Override
     public ResponseEntity<byte[]> download() {
         return null;
@@ -178,11 +175,11 @@ public class PaymentController implements PaymentApis {
      * return 分录明细列表
      * author 内鬼
      */
-    @GetMapping("/{billNo}")
+    @GetMapping("query-all-by-billno")
     @Override
     @ApiOperation("付款申请单分录列表查询")
     public JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(@PathVariable("billNo") String billNo) {
-        return JsonVO.success(iFinPaymentReqEntryService.getByBillNo(billNo));
+        return null;
     }
 
     /**
@@ -192,10 +189,35 @@ public class PaymentController implements PaymentApis {
      * author 内鬼
      */
     @Override
-    @PostMapping("/import")
+    @PostMapping("import")
     @ResponseBody
-    @ApiOperation("Excel表格导入")
+    @ApiOperation("导入功能")
     public JsonVO<String> excelImport(@RequestParam("file") MultipartFile file) {
         return JsonVO.success("文件上传成功！");
+    }
+
+    /**
+     * 修改状态
+     * author yu-hang
+     */
+    @Override
+    @PutMapping("close")
+    @ApiOperation(value = "关闭操作")
+    public JsonVO<String> closeById(StatusDTO statusDTO) {
+        return null;
+    }
+
+    @PutMapping("unclose")
+    @ApiOperation(value = "反关闭操作")
+    @Override
+    public JsonVO<String> uncloseById(StatusDTO statusDTO) {
+        return null;
+    }
+
+    @Override
+    @PutMapping("void")
+    @ApiOperation(value = "作废操作")
+    public JsonVO<String> voidById(StatusDTO statusDTO) {
+        return null;
     }
 }

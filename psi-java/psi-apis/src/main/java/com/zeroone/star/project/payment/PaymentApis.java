@@ -1,7 +1,6 @@
 package com.zeroone.star.project.payment;
 
-import com.zeroone.star.project.dto.payment.AuditDTO;
-import com.zeroone.star.project.dto.payment.ModifyDTO;
+import com.zeroone.star.project.dto.payment.*;
 import com.zeroone.star.project.vo.JsonVO;
 
 import com.zeroone.star.project.query.payment.DocListQuery;
@@ -18,10 +17,8 @@ import com.zeroone.star.project.vo.payment.DetNoVO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.http.ResponseEntity;
 
-import com.zeroone.star.project.dto.payment.DeleteDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
-import com.zeroone.star.project.dto.payment.PrepaymentDTO;
 import com.zeroone.star.project.query.payment.PurchaseListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -144,9 +141,26 @@ public interface PaymentApis {
 
     /**
      * 导入功能
-     * author 出运费
+     * author 内鬼
      */
     JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo);
     JsonVO<String> excelImport(MultipartFile file);
 
+    /**
+     * 修改状态——关闭
+     * author yu-hang
+     */
+    JsonVO<String> closeById(StatusDTO statusDTO);
+
+    /**
+     * 修改状态——反关闭
+     * author yu-hang
+     */
+    JsonVO<String> uncloseById(StatusDTO statusDTO);
+
+    /**
+     * 修改状态——作废
+     * author yu-hang
+     */
+    JsonVO<String> voidById(StatusDTO statusDTO);
 }
