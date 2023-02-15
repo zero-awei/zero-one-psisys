@@ -188,6 +188,8 @@
     <ClCompile Include="api\BasWareHouseTreeListController.cpp" />
     <ClCompile Include="api\BillStageController.cpp" />
     <ClCompile Include="api\CreateReceiptController.cpp" />
+    <ClCompile Include="api\CurrencyTypeController.cpp" />
+    <ClCompile Include="api\DeliveryTypeController.cpp" />
     <ClCompile Include="api\DepartChoiceController.cpp" />
     <ClCompile Include="api\InvoiceMethodController.cpp" />
     <ClCompile Include="api\InvoiceTypeController.cpp" />
@@ -206,6 +208,7 @@
     <ClCompile Include="api\TaxScaleController.cpp" />
     <ClCompile Include="api\TransportMethodController.cpp" />
     <ClCompile Include="api\UserChoiceController.cpp" />
+    <ClCompile Include="api\WarehouseController.cpp" />
     <ClCompile Include="domain\dto\BankAccountVO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
@@ -229,6 +232,8 @@
     <ClInclude Include="api\BasWareHouseTreeListController.h" />
     <ClInclude Include="api\BillStageController.h" />
     <ClInclude Include="api\CreateReceiptController.h" />
+    <ClInclude Include="api\CurrencyTypeController.h" />
+    <ClInclude Include="api\DeliveryTypeController.h" />
     <ClInclude Include="api\DepartChoiceController.h" />
     <ClInclude Include="api\InvoiceMethodController.h" />
     <ClInclude Include="api\InvoiceTypeController.h" />
@@ -247,6 +252,7 @@
     <ClInclude Include="api\TaxScaleController.h" />
     <ClInclude Include="api\TransportMethodController.h" />
     <ClInclude Include="api\UserChoiceController.h" />
+    <ClInclude Include="api\WarehouseController.h" />
     <ClInclude Include="domain\do\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\BankAccountVO\BankAccountDTO.h" />
@@ -272,6 +278,8 @@
     <ClInclude Include="domain\vo\BasWareHouseTreeListVO.h" />
     <ClInclude Include="domain\vo\BillStageVO.h" />
     <ClInclude Include="domain\vo\CreateReceiptVO.h" />
+    <ClInclude Include="domain\vo\CurrencyTypeVO.h" />
+    <ClInclude Include="domain\vo\DeliveryTypeVO.h" />
     <ClInclude Include="domain\vo\DepartVO.h" />
     <ClInclude Include="domain\vo\InvoiceMethodVO.h" />
     <ClInclude Include="domain\vo\InvoiceTypeVO.h" />
@@ -294,6 +302,7 @@
     <ClInclude Include="domain\vo\TaxScaleVO.h" />
     <ClInclude Include="domain\vo\TransportMethodVO.h" />
     <ClInclude Include="domain\vo\UserVO.h" />
+    <ClInclude Include="domain\vo\WarehouseVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="stdafx.h" />

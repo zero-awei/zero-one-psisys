@@ -264,6 +264,7 @@ void Router::initTaxRate()
 void Router::initTaxScale()
 {
 	BIND_GET_ROUTER(server, "/query-tax-scale", &TaxScaleController::queryTaxScale, nullptr);
+}
 void Router::initCurrencyType()
 {
 	BIND_GET_ROUTER(server, "/query-Currency-Type", &CurrencyTypeController::queryCurrencyType, nullptr);

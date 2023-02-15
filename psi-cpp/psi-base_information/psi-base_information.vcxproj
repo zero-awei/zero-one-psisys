@@ -176,6 +176,8 @@
     <ClCompile Include="api\bas_supplier\SupplierLevelController.cpp" />
     <ClCompile Include="api\bas_supplier\SupplierQueryCriteriaController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="api\supplier\ExportSupplierController.cpp" />
+    <ClCompile Include="api\supplier\ImportSupplierController.cpp" />
     <ClCompile Include="api\supplier\SupplierController.cpp" />
     <ClCompile Include="domain\dto\supplier\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplier\DeleteSupplierDTO.cpp" />
@@ -194,6 +196,8 @@
     <ClInclude Include="api\bas_supplier\SupplierLevelController.h" />
     <ClInclude Include="api\bas_supplier\SupplierQueryCriteriaController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="api\supplier\ExportSupplierController.h" />
+    <ClInclude Include="api\supplier\ImportSupplierController.h" />
     <ClInclude Include="api\supplier\SupplierController.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
