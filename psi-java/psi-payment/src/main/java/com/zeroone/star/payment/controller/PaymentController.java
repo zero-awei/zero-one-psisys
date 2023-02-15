@@ -17,32 +17,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.zeroone.star.project.payment.PaymentApis;
-import com.zeroone.star.project.query.payment.PurchaseListQuery;
-import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.payment.FinPaymentReqVO;
-import com.zeroone.star.project.vo.payment.PurOrderEntryVO;
 import com.zeroone.star.project.vo.payment.SupplierVO;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
-import com.zeroone.star.payment.service.IFinPaymentReqEntryService;
-import com.zeroone.star.project.payment.PaymentApis;
-import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payment.PaymentReqEntryVO;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("payment")
@@ -54,7 +34,7 @@ public class PaymentController implements PaymentApis {
      * since 2023-02-13
      */
     @PutMapping("edit")
-    @ApiOperation(value = "修改采购预付单功能")
+    @ApiOperation(value = "修改采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
         return JsonVO.success("1111");
@@ -66,7 +46,7 @@ public class PaymentController implements PaymentApis {
      * since 2023-02-13
      */
     @PutMapping("audit")
-    @ApiOperation(value = "审核采购预付单功能")
+    @ApiOperation(value = "审核采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> auditById(AuditDTO auditDTO) {
         return JsonVO.success("1111");
@@ -127,7 +107,7 @@ public class PaymentController implements PaymentApis {
      * since 2023-02-13
      */
     @DeleteMapping("delete")
-    @ApiOperation(value = "删除信息")
+    @ApiOperation(value = "删除信息（返回值data值表示删除成功与否）")
     @Override
     public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
         return JsonVO.success("删除成功");
@@ -139,14 +119,14 @@ public class PaymentController implements PaymentApis {
      * author 空
      * since 2023-02-13
      */
-    @PutMapping("insert")
-    @ApiOperation(value = "添加采购预付单功能")
+    @PostMapping("insert")
+    @ApiOperation(value = "添加采购预付单功能（返回值data值表示创建成功与否）")
     @Override
     public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
         return null;
     }
 
-    @PutMapping("getSuppliers")
+    @GetMapping("getSuppliers")
     @ApiOperation(value = "获取供应商列表")
     @Override
     public JsonVO<List<SupplierVO>> querySupplierList() {
@@ -178,7 +158,7 @@ public class PaymentController implements PaymentApis {
     @GetMapping("query-all-by-billno")
     @Override
     @ApiOperation("付款申请单分录列表查询")
-    public JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(@PathVariable("billNo") String billNo) {
+    public JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo) {
         return null;
     }
 
@@ -191,7 +171,7 @@ public class PaymentController implements PaymentApis {
     @Override
     @PostMapping("import")
     @ResponseBody
-    @ApiOperation("导入功能")
+    @ApiOperation("导入功能（返回值data值表示导入成功与否）")
     public JsonVO<String> excelImport(@RequestParam("file") MultipartFile file) {
         return JsonVO.success("文件上传成功！");
     }
@@ -202,13 +182,13 @@ public class PaymentController implements PaymentApis {
      */
     @Override
     @PutMapping("close")
-    @ApiOperation(value = "关闭操作")
+    @ApiOperation(value = "关闭操作（返回值data值表示更新成功与否）")
     public JsonVO<String> closeById(StatusDTO statusDTO) {
         return null;
     }
 
     @PutMapping("unclose")
-    @ApiOperation(value = "反关闭操作")
+    @ApiOperation(value = "反关闭操作（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> uncloseById(StatusDTO statusDTO) {
         return null;
@@ -216,7 +196,7 @@ public class PaymentController implements PaymentApis {
 
     @Override
     @PutMapping("void")
-    @ApiOperation(value = "作废操作")
+    @ApiOperation(value = "作废操作（返回值data值表示更新成功与否）")
     public JsonVO<String> voidById(StatusDTO statusDTO) {
         return null;
     }
