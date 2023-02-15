@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/paymentmanagement/")
+@RequestMapping("/paymentmanagement/querydocumentlist")
 @ApiModel("单据表单查询接口")
 public class QueryDocumentListController implements PaymentManagementApis {
-    @GetMapping("/querydocumentlist")
+    @GetMapping("/listOne")
     @Override
     public JsonVO<PageVO<QueryDocumentListVO>> queryAll(QueryDocumentListQuery condition) {
         return null;
