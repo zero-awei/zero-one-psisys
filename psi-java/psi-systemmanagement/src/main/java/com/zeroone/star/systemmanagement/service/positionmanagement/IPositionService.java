@@ -1,4 +1,4 @@
-package com.zeroone.star.systemmanagement.service;
+package com.zeroone.star.systemmanagement.service.positionmanagement;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.systemmanagement.entity.positionmanagement.Position;

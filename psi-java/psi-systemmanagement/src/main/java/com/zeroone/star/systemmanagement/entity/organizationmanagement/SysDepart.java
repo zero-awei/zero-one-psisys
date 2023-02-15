@@ -1,4 +1,4 @@
-package com.zeroone.star.systemmanagement.entity;
+package com.zeroone.star.systemmanagement.entity.organizationmanagement;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

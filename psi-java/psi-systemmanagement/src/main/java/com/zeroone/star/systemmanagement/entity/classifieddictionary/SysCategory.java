@@ -1,4 +1,4 @@
-package com.zeroone.star.titlepage.entity;
+package com.zeroone.star.systemmanagement.entity.classifieddictionary;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

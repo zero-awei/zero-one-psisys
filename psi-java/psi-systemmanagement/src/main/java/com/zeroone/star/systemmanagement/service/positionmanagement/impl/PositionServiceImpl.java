@@ -1,9 +1,9 @@
-package com.zeroone.star.systemmanagement.service.impl.positionmanagement;
+package com.zeroone.star.systemmanagement.service.positionmanagement.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.systemmanagement.entity.positionmanagement.Position;
 import com.zeroone.star.systemmanagement.mapper.positionmanagement.PositionMapper;
-import com.zeroone.star.systemmanagement.service.IPositionService;
+import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

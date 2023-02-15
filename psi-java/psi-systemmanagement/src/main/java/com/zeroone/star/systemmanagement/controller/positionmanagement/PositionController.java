@@ -6,12 +6,14 @@ import com.zeroone.star.project.systemmanagement.positionmanagement.PositionApis
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.positionmanagement.PositionVO;
-import com.zeroone.star.systemmanagement.service.IPositionService;
+import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Description
@@ -57,5 +59,13 @@ public class PositionController implements PositionApis {
         //service
         iPositionService.deletePositionById(positionId);
         return JsonVO.success("删除成功");
+    }
+
+    @ApiOperation(value = "查询职级")
+    @DeleteMapping("/queryPostRank")
+    @Override
+    public JsonVO<List<String>> queryPostRank() {
+        //service
+        return null;
     }
 }

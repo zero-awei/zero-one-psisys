@@ -1,4 +1,4 @@
-package com.zeroone.star.titlepage.controller;
+package com.zeroone.star.systemmanagement.controller.classifieddictionary;
 
 
 import com.zeroone.star.project.dto.systemmanagement.classifieddictionary.ClassifiedDictionaryDTO;
@@ -38,19 +38,19 @@ public class SysCategoryController implements ClassifiedDictionaryApis {
         return null;
     }
     @ApiOperation("更新指定根字典")
-    @PutMapping("/updateone")
+    @PutMapping("/update-one")
     @Override
     public JsonVO<String> update(ClassifiedDictionaryDTO data) {
         return null;
     }
     @ApiOperation("删除指定根字典")
-    @DeleteMapping("/deleteone")
+    @DeleteMapping("/delete-one")
     @Override
     public JsonVO<String> delete(String id) {
         return null;
     }
     @ApiOperation("插入根字典")
-    @PostMapping("/insertone")
+    @PostMapping("/insert-one")
     @Override
     public JsonVO<String> insert(ClassifiedDictionaryDTO data) {
         return null;

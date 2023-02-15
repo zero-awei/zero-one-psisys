@@ -7,6 +7,8 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.positionmanagement.PositionVO;
 import io.swagger.annotations.ApiOperation;
 
+import java.util.List;
+
 /**
  * @Description position apis
  * @Author j2 - mumu
@@ -40,5 +42,12 @@ public interface PositionApis {
      * @return 结果的字符串
      */
     JsonVO<String> deletePosition(String positionId);
+
+
+    /**
+     * 查询职级信息
+     * @return 结果的字符串
+     */
+    JsonVO<List<String>> queryPostRank();
 
 }

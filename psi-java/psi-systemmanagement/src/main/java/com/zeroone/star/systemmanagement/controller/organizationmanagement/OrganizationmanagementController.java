@@ -1,4 +1,4 @@
-package com.zeroone.star.systemmanagement.controller;
+package com.zeroone.star.systemmanagement.controller.organizationmanagement;
 
 
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
@@ -8,9 +8,9 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationTreeVO;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -22,13 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/systemmanagement/sys-depart")
-public class SysDepartController implements OrganizationManagementApis {
+@Api(tags = "组织机构")
+public class OrganizationmanagementController implements OrganizationManagementApis {
 
     /**
      * 查询组织列表
      * @param condition 查询条件
      * @return
      */
+    @ApiOperation("查询组织列表")
+    @GetMapping("query-all")
     @Override
     public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
 
@@ -42,6 +45,8 @@ public class SysDepartController implements OrganizationManagementApis {
      * @param departName 部门名称
      * @return
      */
+    @ApiOperation("查询指定结构树")
+    @GetMapping("query-one")
     @Override
     public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName) {
         return null;
@@ -52,6 +57,9 @@ public class SysDepartController implements OrganizationManagementApis {
      * @param data 数据
      * @return
      */
+
+    @ApiOperation("新增组织结构")
+    @PostMapping("insert")
     @Override
     public JsonVO<String> add(OrganizationManagementDTO data) {
         return null;
@@ -62,6 +70,8 @@ public class SysDepartController implements OrganizationManagementApis {
      * @param data 数据
      * @return
      */
+    @ApiOperation("修改组织结构")
+    @PutMapping("update")
     @Override
     public JsonVO<String> modify(OrganizationManagementDTO data) {
         return null;
@@ -72,6 +82,8 @@ public class SysDepartController implements OrganizationManagementApis {
      * @param id 部门id
      * @return
      */
+    @ApiOperation("删除组织结构")
+    @DeleteMapping("delete")
     @Override
     public JsonVO<String> delete(String id) {
         return null;

@@ -1,6 +1,6 @@
-package com.zeroone.star.titlepage.mapper;
+package com.zeroone.star.systemmanagement.mapper.classifieddictionary;
 
-import com.zeroone.star.titlepage.entity.SysCategory;
+import com.zeroone.star.systemmanagement.entity.classifieddictionary.SysCategory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

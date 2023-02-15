@@ -1,6 +1,6 @@
-package com.zeroone.star.titlepage.service;
+package com.zeroone.star.systemmanagement.service.classifieddictionary;
 
-import com.zeroone.star.titlepage.entity.SysCategory;
+import com.zeroone.star.systemmanagement.entity.classifieddictionary.SysCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
