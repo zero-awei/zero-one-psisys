@@ -7,6 +7,8 @@ import { Tickets } from '@element-plus/icons-vue'
 import { RefreshRight } from '@element-plus/icons-vue'
 import { ArrowUp } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+import { FullScreen } from '@element-plus/icons-vue'
+import { Close } from '@element-plus/icons-vue'
 
 export default (app) => {
   app.component('IconMenu', Menu)
@@ -16,4 +18,6 @@ export default (app) => {
   app.component('RefreshRight', RefreshRight)
   app.component('ArrowUp', ArrowUp)
   app.component('ArrowDown', ArrowDown)
+  app.component('FullScreen', FullScreen)
+  app.component('Close', Close)
 }
