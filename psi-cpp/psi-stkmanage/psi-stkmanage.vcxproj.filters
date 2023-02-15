@@ -30,7 +30,7 @@
     <ClCompile Include="api\Router.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\Cgthck\RtvController.cpp">
+    <ClCompile Include="api\Cgthck\CgthckController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,7 +95,7 @@
     <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\Cgthck\RtvController.h">
+    <ClInclude Include="api\Cgthck\CgthckController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

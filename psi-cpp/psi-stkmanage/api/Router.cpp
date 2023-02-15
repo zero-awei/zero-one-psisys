@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-#include "api/returntovendor/RtvController.h"
+#include "api/Cgthck/CgthckController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -74,7 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	createRtvRouter();
+	createCgthckRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -96,8 +96,8 @@ void Router::createUserDepartRouter()
 }
 #endif
 
-void Router::createRtvRouter()
+void Router::createCgthckRouter()
 {
-	BIND_GET_ROUTER(server, "/rtv/get", &RtvController::rtvQuery, nullptr);
-	BIND_GET_ROUTER(server, "/rtv/getall", &RtvController::rtvEntryQuery, nullptr);
+	BIND_GET_ROUTER(server, "/cgthck-cgthck-bill-list", &CgthckController::cgthcBillkQuery, nullptr);
+	BIND_GET_ROUTER(server, "/query-cgthck-bill-details", &CgthckController::cgthckBillDetailQuery, nullptr);
 }

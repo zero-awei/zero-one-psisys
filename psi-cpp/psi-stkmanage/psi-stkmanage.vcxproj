@@ -175,7 +175,7 @@
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="api\Cgthck\RtvController.cpp" />
+    <ClCompile Include="api\Cgthck\CgthckController.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -202,7 +202,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
     <ClInclude Include="domain\dto\Cgthck\ModifyCgthckBillDTO.h" />
-    <ClInclude Include="api\Cgthck\RtvController.h" />
+    <ClInclude Include="api\Cgthck\CgthckController.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
