@@ -1,4 +1,4 @@
-package om.zeroone.star.onlytype.config;
+package com.zeroone.star.onlytype.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;

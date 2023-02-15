@@ -1,4 +1,4 @@
-package om.zeroone.star.onlytype.config;
+package com.zeroone.star.onlytype.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +13,6 @@ import org.springframework.context.annotation.Configuration;
  * @version 1.0.0
  */
 @Configuration
-@ComponentScan("om.zeroone.star.onlytype.config")
+@ComponentScan("com.zeroone.star.onlytype.config")
 public class MybatisInit {
 }

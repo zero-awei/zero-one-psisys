@@ -1,4 +1,4 @@
-package om.zeroone.star.onlytype;
+package com.zeroone.star.onlytype;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
