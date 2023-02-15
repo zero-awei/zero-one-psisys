@@ -99,4 +99,10 @@ void Router::createUserDepartRouter()
 
 void Router::createMaterialClassificationRouter() {
 	BIND_GET_ROUTER(server, "/get", &MaterialClassificationController::queryMaterialClassification, nullptr);
+	BIND_GET_ROUTER(server, "/get-children", &MaterialClassificationController::queryMaterialClassificationChild, nullptr);
+	BIND_GET_ROUTER(server, "/get-detail", &MaterialClassificationController::queryMaterialClassificationDetail, nullptr);
+	BIND_POST_ROUTER(server, "/post", &MaterialClassificationController::addMaterialClassification, nullptr);
+	BIND_PUT_ROUTER(server, "/put", &MaterialClassificationController::modifyMaterialClassification, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &MaterialClassificationController::removeMaterialClassification, nullptr);
+
 }

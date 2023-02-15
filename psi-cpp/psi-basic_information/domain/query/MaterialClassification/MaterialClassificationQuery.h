@@ -42,7 +42,7 @@ public:
 	}
 };
 
-
+//查询子级列表对象
 class MaterialClassificationChildQuery  {
 
 	//名称
@@ -59,6 +59,8 @@ public:
 	}
 };
 
+
+//查询详细信息对象
 class MaterialClassificationDetailQuery {
 
 	//创建时间
