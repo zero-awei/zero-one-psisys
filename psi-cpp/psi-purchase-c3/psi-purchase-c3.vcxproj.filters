@@ -111,6 +111,9 @@
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\pur-req\PurReqController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -126,6 +129,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\vo\ResultStatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\pur-req\PurReqController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
