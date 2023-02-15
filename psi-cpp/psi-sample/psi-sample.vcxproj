@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{beebabea-7be9-4ceb-97ea-953b3d750fe5}</ProjectGuid>
-    <RootNamespace>psic1</RootNamespace>
+    <ProjectGuid>{8923c521-c663-434e-98e2-c2046d828e16}</ProjectGuid>
+    <RootNamespace>psisample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -99,7 +99,6 @@
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -109,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -120,11 +119,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /F /Y /C</Command>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -144,10 +143,6 @@
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -157,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -168,33 +163,16 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "S(OutDir)" /a /F/I /V/C
-</Command>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="api\AreaController.cpp" />
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\BankAccount\AddAccountController.cpp" />
-    <ClCompile Include="api\BankAccount\BankAccountController.cpp" />
-    <ClCompile Include="api\BankAccount\DeleteAccountController.cpp" />
-    <ClCompile Include="api\BankAccount\EditAccountController.cpp" />
-    <ClCompile Include="api\BankAccount\ImportAccountController.cpp" />
-    <ClCompile Include="api\BankAccount\IsEnabledController.cpp" />
-    <ClCompile Include="api\BasBankAccountController.cpp" />
-    <ClCompile Include="api\BasWareHouseTreeListController.cpp" />
-    <ClCompile Include="api\CreateReceiptController.cpp" />
-    <ClCompile Include="api\DepartChoiceController.cpp" />
-    <ClCompile Include="api\MaterialQueryController.cpp" />
-    <ClCompile Include="api\MaterialTypeTreeListController.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="api\SuppliserController.cpp" />
-    <ClCompile Include="api\UserChoiceController.cpp" />
-    <ClCompile Include="domain\dto\BankAccountVO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -205,55 +183,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\AreaController.h" />
-    <ClInclude Include="api\BankAccount\AddAccountController.h" />
-    <ClInclude Include="api\BankAccount\BankAccountController.h" />
-    <ClInclude Include="api\BankAccount\DeleteAccountController.h" />
-    <ClInclude Include="api\BankAccount\EditAccountController.h" />
-    <ClInclude Include="api\BankAccount\ExportAccountController.h" />
-    <ClInclude Include="api\BankAccount\ImportAccountController.h" />
-    <ClInclude Include="api\BankAccount\IsEnabledController.h" />
-    <ClInclude Include="api\BasBankAccountController.h" />
-    <ClInclude Include="api\BasWareHouseTreeListController.h" />
-    <ClInclude Include="api\CreateReceiptController.h" />
-    <ClInclude Include="api\DepartChoiceController.h" />
-    <ClInclude Include="api\MaterialQueryController.h" />
-    <ClInclude Include="api\MaterialTypeTreeListController.h" />
     <ClInclude Include="api\Router.h" />
-    <ClInclude Include="api\SupplierCategoryController.h" />
-    <ClInclude Include="api\UserChoiceController.h" />
-    <ClInclude Include="domain\do\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\dto\BankAccountVO\BankAccountDTO.h" />
-    <ClInclude Include="domain\dto\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
-    <ClInclude Include="domain\query\AreaQuery.h" />
-    <ClInclude Include="domain\query\BankAccount\SpecifiedBankAccountQuery.h" />
-    <ClInclude Include="domain\query\BasWareHouseItemQuery.h" />
-    <ClInclude Include="domain\query\DepartNameQuery.h" />
-    <ClInclude Include="domain\query\MaterialQuery.h" />
-    <ClInclude Include="domain\query\MaterialTypeItemQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\SupplierCategoryQuery.h" />
-    <ClInclude Include="domain\query\UserQuery.h" />
-    <ClInclude Include="domain\vo\AreaVO.h" />
-    <ClInclude Include="domain\vo\BankAccountVO\IsEnabledVO.h" />
-    <ClInclude Include="domain\vo\BankAccountVO\SysUserVO.h" />
-    <ClInclude Include="domain\vo\BankAccount\SpecifiedBankAccountListVO.h" />
-    <ClInclude Include="domain\vo\BasBankAccountVO.h" />
-    <ClInclude Include="domain\vo\BasWareHouseTreeListVO.h" />
-    <ClInclude Include="domain\vo\CreateReceiptVO.h" />
-    <ClInclude Include="domain\vo\DepartVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
-    <ClInclude Include="domain\vo\MaterialTypeTreeListVO.h" />
-    <ClInclude Include="domain\vo\MaterialVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
-    <ClInclude Include="domain\vo\SupplierCategoruVO.h" />
-    <ClInclude Include="domain\vo\UserVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="stdafx.h" />

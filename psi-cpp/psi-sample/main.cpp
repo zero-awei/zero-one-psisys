@@ -30,7 +30,9 @@
 #include "NacosClient.h"
 #include "YamlHelper.h"
 #endif
-#include "uselib/rocketmq/TestRocket.h"
+#include "FastDfsClient.h"
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
 
 /**
  * 解析启动参数
@@ -40,12 +42,12 @@
  */
 bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
-	std::string serverPort = "3306";
+	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "root";
-	std::string dbName = "zopsi_sys";
-	std::string dbHost = "192.168.124.10";
+	std::string dbPassword = "123456";
+	std::string dbName = "test";
+	std::string dbHost = "192.168.220.128";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
@@ -131,13 +133,81 @@ int main(int argc, char* argv[]) {
 #ifdef HTTP_SERVER_DEMO
 	// 测试生成 JWT Token
 	TestToken::generateToken();
-	// 测试RocketMq
-	TestRocket test;
-	test.testRocket();
 #endif
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
+// 	// 编写一些测试示例
+// #ifdef LINUX
+// 	//定义客户端对象
+// 	FastDfsClient client("conf/client.conf", 3);
+// #else
+// 	//定义客户端对象
+// 	FastDfsClient client("1.15.240.108");
+// #endif
+// 	std::string fileName = "E:\\Images\\20141011112401959.jpg.source.jpg";
+// 
+// 	//测试上传
+// 	std::string fieldName = client.uploadFile(fileName);
+// 	std::cout << "upload fieldname is : " << fieldName << std::endl;
+// 	//测试下载
+// 	if (!fieldName.empty())
+// 	{
+// 		std::string path = "./public/fastdfs";
+// 		fileName = client.downloadFile(fieldName, &path);
+// 		std::cout << "download savepath is : " << fileName << std::endl;
+// 	}
+// 	//测试删除文件
+// 	if (!fieldName.empty())
+// 	{
+// 		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
+// 	}
+
+	//创建测试数据
+	vector<vector<std::string>> data;
+	vector<std::string> header{ 
+		CharsetConvertHepler::ansiToUtf8("一"),
+		CharsetConvertHepler::ansiToUtf8("二"),
+		CharsetConvertHepler::ansiToUtf8("三"),
+		CharsetConvertHepler::ansiToUtf8("四"),
+		CharsetConvertHepler::ansiToUtf8("五"),
+	};
+	data.push_back(header);
+	stringstream ss;
+	for (int i = 1; i <= 10; i++)
+	{
+		vector<std::string> row;
+		for (int j = 1; j <= 5; j++)
+		{
+			ss.clear();
+			ss
+				<< CharsetConvertHepler::ansiToUtf8("单元格坐标：(") << i
+				<< CharsetConvertHepler::ansiToUtf8(",") << j << ")";
+			row.push_back(ss.str());
+			ss.str("");
+		}
+		data.push_back(row);
+	}
+
+	//定义保存数据位置和页签名称
+	std::string fileName = "./public/excel/1.xlsx";
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("数据表");
+
+	//保存到文件
+	ExcelComponent excel;
+	excel.writeVectorToFile(fileName, sheetName, data);
+
+	//从文件中读取
+	auto readData = excel.readIntoVector(fileName, sheetName);
+	for (auto row : readData)
+	{
+		for (auto cellVal : row)
+		{
+			cout << CharsetConvertHepler::utf8ToAnsi(cellVal) << ",";
+		}
+		cout << endl;
+	}
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象

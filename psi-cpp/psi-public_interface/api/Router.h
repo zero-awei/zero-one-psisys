@@ -74,6 +74,7 @@ private:
 	void initMaterialQuerySetting();
 	void initDepartChioceSetting();
 	void initSupplierSetting();
+	void initBankAccount();
 };
 
 #endif // !_ROUTER_

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/26 23:27:06
+ @Date: 2022/10/25 11:51:41
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _FILEDTO_H_
-#define _FILEDTO_H_
+#ifndef _DO_INCLUDE_
+#define _DO_INCLUDE_
 
-#include "../GlobalInclude.h"
+#include "../../Macros.h"
+#include <string>
 #include <list>
+using namespace std;
 
-/**
- * 定义一个文件上传传输数据模型
- */
-class FileDTO
-{
-private:
-	friend void from_json(const json& j, FileDTO& t); // NOLINT
-protected:
-	// 上传文件路径列表
-	CC_SYNTHESIZE_GET(std::list<std::string>, files, Files);
-public:
-	// 添加文件上传路径
-	void addFile(std::string file) {
-		files.push_back(file);
-	}
-};
-
-#endif // _FILEDTO_H_
+#endif // !_DO_INCLUDE_

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/26 23:27:06
+ @Date: 2022/10/25 11:35:41
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _FILEDTO_H_
-#define _FILEDTO_H_
+#ifndef _PAGE_QUERY_
+#define _PAGE_QUERY_
 
 #include "../GlobalInclude.h"
-#include <list>
 
 /**
- * 定义一个文件上传传输数据模型
+ * 分页查询对象父类，后续分页查询对象可以继承它
  */
-class FileDTO
+class PageQuery
 {
-private:
-	friend void from_json(const json& j, FileDTO& t); // NOLINT
-protected:
-	// 上传文件路径列表
-	CC_SYNTHESIZE_GET(std::list<std::string>, files, Files);
-public:
-	// 添加文件上传路径
-	void addFile(std::string file) {
-		files.push_back(file);
-	}
+	//查询页码
+	CC_SYNTHESIZE(uint64_t, pageIndex, PageIndex);
+	//查询条数
+	CC_SYNTHESIZE(uint64_t, pageSize, PageSize);
 };
-
-#endif // _FILEDTO_H_
+#endif // !_PAGE_QUERY_

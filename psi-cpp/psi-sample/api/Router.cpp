@@ -26,11 +26,6 @@
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
-#include "api/ApiHelper.h"
-#include "BankAccount/AddAccountController.h"
-#include "BankAccount/EditAccountController.h"
-#include "BankAccount/DeleteAccountController.h"
-#include "BankAccount/ImportAccountController.h"
 
 Router::Router(http_server* sever)
 {
@@ -42,25 +37,6 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
-	initAreaSetting();
-	initUserChoiceSetting();
-	initMaterialQuerySetting();
-	initSupplierSetting();
-	initDepartChioceSetting();
-
-	//公共接口的供应商资金账户
-	createBasBankAccount();
-
-	//物料分类树状结构列表
-	createMaterialTypeTreeList();
-
-	//仓库树状结构列表
-	
-	createBasWareHouseTreeList();
-
-	createBankAccount();
-
-	createCreateReceipt();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -94,14 +70,10 @@ void Router::initRouter()
 	createSampleRouter();
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
-
-
-
-
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	initBankAccount();
+
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -121,60 +93,4 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
-
 #endif
-void Router::initAreaSetting()
-{
-	BIND_GET_ROUTER(server, "/get-area", &AreaController::queryArea, nullptr);
-}
-
-void Router::initUserChoiceSetting()
-{
-	BIND_GET_ROUTER(server, "/get-user", &UserChoiceController::queryUser, nullptr);
-}
-
-void Router::initMaterialQuerySetting()
-{
-	BIND_GET_ROUTER(server, "/get-material", &MaterialQueryController::queryMaterial, nullptr);
-}
-
-void Router::initDepartChioceSetting()
-{
-	BIND_GET_ROUTER(server, "/get-depart", &DepartChoiceController::queryDepart, nullptr);
-}
-
-void Router::initSupplierSetting()
-{
-	BIND_GET_ROUTER(server, "/get-supplier", &SupplierCategoryController::querySupplierCategory, nullptr);
-}
-
-void Router::createBasBankAccount()
-{
-	BIND_GET_ROUTER(server, "/query-bas-bank-account", &BasBankAccountController::queryBasBankAccount, nullptr);
-}
-void Router::createMaterialTypeTreeList()
-{                                            
-	BIND_GET_ROUTER(server, "/query-material-type-tree-list", &MaterialTypeTreeListController::queryMaterialTypeTreeList, nullptr);
-}
-void Router::createBasWareHouseTreeList()
-{
-	BIND_GET_ROUTER(server, "/query-bas-ware-house-tree-list", &BasWareHouseTreeListController::queryBasWareHouseTreeList, nullptr);
-}
-
-void Router::createBankAccount() {
-	BIND_GET_ROUTER(server, "/query-specified-bank-account", &BankAccountController::querySpecifiedBankAccount, nullptr);
-}
-
-void Router::createCreateReceipt() {
-	BIND_PUT_ROUTER(server, "/create-receipt", &CreateReceiptController::createReceipt, nullptr);
-}
-
-void Router::initBankAccount()
-{
-	BIND_POST_ROUTER(server, "/post-account", &AddAccountController::addBankAccount, nullptr);
-	BIND_PUT_ROUTER(server, "/put-account", &EditAccountController::modifyBankAccount, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-account", &DeleteAccountController::removeBankAccount, nullptr);
-	BIND_POST_ROUTER(server, "/import-account", &ImportAccountController::modifyAccountInfo, nullptr);
-}
-
-

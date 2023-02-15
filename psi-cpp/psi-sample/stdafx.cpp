@@ -1,43 +1,22 @@
-#pragma once
+ï»¿// stdafx.cpp: ä¸é¢„ç¼–è¯‘æ ‡å¤´å¯¹åº”çš„æºæ–‡ä»¶
 /*
  Copyright Zero One Star. All rights reserved.
-
+ 
  @Author: awei
- @Date: 2022/10/26 23:27:06
-
+ @Date: 2022/10/24 23:01:07
+ 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
+ 
+      https://www.apache.org/licenses/LICENSE-2.0
+ 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _FILEDTO_H_
-#define _FILEDTO_H_
+#include "stdafx.h"
 
-#include "../GlobalInclude.h"
-#include <list>
-
-/**
- * ¶¨ÒåÒ»¸öÎÄ¼şÉÏ´«´«ÊäÊı¾İÄ£ĞÍ
- */
-class FileDTO
-{
-private:
-	friend void from_json(const json& j, FileDTO& t); // NOLINT
-protected:
-	// ÉÏ´«ÎÄ¼şÂ·¾¶ÁĞ±í
-	CC_SYNTHESIZE_GET(std::list<std::string>, files, Files);
-public:
-	// Ìí¼ÓÎÄ¼şÉÏ´«Â·¾¶
-	void addFile(std::string file) {
-		files.push_back(file);
-	}
-};
-
-#endif // _FILEDTO_H_
+// å½“ä½¿ç”¨é¢„ç¼–è¯‘çš„å¤´æ—¶ï¼Œéœ€è¦ä½¿ç”¨æ­¤æºæ–‡ä»¶ï¼Œç¼–è¯‘æ‰èƒ½æˆåŠŸã€‚
