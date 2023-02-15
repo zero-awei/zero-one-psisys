@@ -1,13 +1,13 @@
 #pragma once
 #pragma once
-#ifndef _QUERYDOCLIST_DO_
-#define _QUERYDOCLIST_DO_
+#ifndef _QUERYZDRKBILLLIST_DO_
+#define _QUERYZDRKBILLLIST_DO_
 #include "../DoInclude.h"
 
 /**
  * 涨吨入库，查询单据详细数据库实体类
  */
-class QueryDocListDO
+class queryZdrkBillListDO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -45,7 +45,7 @@ class QueryDocListDO
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 
 public:
-	QueryDocListDO() {
+	queryZdrkBillListDO() {
 		billNo = "";
 		billDate = "";
 		opDept = "";
@@ -68,4 +68,4 @@ public:
 	}
 };
 
-#endif // __QUERYDOC_DO_
+#endif // __QUERYZDRKBILL_DO_

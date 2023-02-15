@@ -1,14 +1,14 @@
 #pragma once
 #pragma once
-#ifndef _QUERYDOCLIST_QUERY_
-#define _QUERYDOCLIST_QUERY_
+#ifndef _QUERYZDRKBILLLIST_QUERY_
+#define _QUERYZDRKBILLLIST_QUERY_
 
 #include "../PageQuery.h"
 
 /**
  * 查询单据详细信息
  */
-class QueryDocListQuery		:public PageQuery
+class QueryZdrkBillListQuery		:public PageQuery
 {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -28,7 +28,7 @@ class QueryDocListQuery		:public PageQuery
 
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, QueryDocListQuery& t) { // NOLINTq
+	friend void from_json(const json& j, QueryZdrkBillListQuery& t) { // NOLINTq
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, billNo);
@@ -41,4 +41,4 @@ public:
 	}
 };
 
-#endif // !_QUERYDOCLIST_QUERY_
+#endif // !_QUERYZDRKBILLLIST_QUERY_

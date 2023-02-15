@@ -7,7 +7,7 @@
 /**
  * 查询单据详细信息显示对象
  */
-class QueryDocVO
+class QueryZdrkBillDetailsVO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
@@ -80,7 +80,7 @@ class QueryDocVO
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(QueryDocVO, bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided, effective_time, approver,bpmi_instance_id, create_by, create_time,sys_org_code, update_time, update_by, is_auto, is_rubric, has_rp, subject, op_dept, operatoR, handler, entry_no, material_id, model, warehouse_id, unit_id, swell_qty, in_cost, remarK, approval_remark, custom1, custom2, remark, approval_remark, approval_result_type);
+	BIND_TO_JSON(QueryZdrkBillDetailsVO, bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided, effective_time, approver,bpmi_instance_id, create_by, create_time,sys_org_code, update_time, update_by, is_auto, is_rubric, has_rp, subject, op_dept, operatoR, handler, entry_no, material_id, model, warehouse_id, unit_id, swell_qty, in_cost, remarK, approval_remark, custom1, custom2, remark, approval_remark, approval_result_type);
 };
 
-#endif // !_QUERYDOC_VO_
+#endif // !QueryZdrkBillDetailsVO

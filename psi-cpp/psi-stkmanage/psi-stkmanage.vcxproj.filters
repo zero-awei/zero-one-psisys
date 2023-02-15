@@ -30,13 +30,16 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\IncreaseTon\IncreaseTonController.cpp">
+    <ClCompile Include="domain\dto\Zdrk\DocFileDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\IncreaseTon\DocDTO.cpp">
+    <ClCompile Include="api\Zdrk\ZdrkController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\IncreaseTon\DocFileDTO.cpp">
+    <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,40 +83,40 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\IncreaseTon\QueryDocDO.h">
+    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\IncreaseTon\QueryDocQuery.h">
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\IncreaseTon\QueryDocVO.h">
+    <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillDetailsVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\IncreaseTon\IncreaseTonController.h">
+    <ClInclude Include="api\Zdrk\ZdrkController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\IncreaseTon\QueryDocListDO.h">
+    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\IncreaseTon\QueryDocListQuery.h">
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\IncreaseTon\DoclVO.h">
+    <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\IncreaseTon\DocDTO.h">
+    <ClInclude Include="domain\dto\Zdrk\AddZdrkBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\IncreaseTon\DocNoDTO.h">
+    <ClInclude Include="domain\dto\Zdrk\DocFileDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\IncreaseTon\SucVO.h">
+    <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\IncreaseTon\DocFileDTO.h">
+    <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillStateDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\IncreaseTon\DocStatDTO.h">
+    <ClInclude Include="domain\dto\Zdrk\ImportZdrkFileDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

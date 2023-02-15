@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "DocDTO.h"
+#include "ModifyZdrkBillDTO.h"
 
-void from_json(const json& j, DocDTO& t)
+void from_json(const json& j, ModifyZdrkBillDTO& t)
 {
 	BIND_FROM_TO_NORMAL(j, t, billNo);
 	BIND_FROM_TO_NORMAL(j, t, billDate);
@@ -33,5 +33,5 @@ void from_json(const json& j, DocDTO& t)
 	BIND_FROM_TO_NORMAL(j, t, updateBy);
 	BIND_FROM_TO_I(j, t, isAuto);
 	BIND_FROM_TO_I(j, t, isRubric);
-	BIND_FROM_TO_I(j, t, hasRp); 
+	BIND_FROM_TO_I(j, t, hasRp);
 }

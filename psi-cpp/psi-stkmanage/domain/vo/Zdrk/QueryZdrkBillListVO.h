@@ -1,13 +1,13 @@
 #pragma once
-#ifndef _DOCl_VO_
-#define _DOCl_VO_
+#ifndef _QUERYZDRKBILLLIST_VO_
+#define _QUERYZDRKBILLLIST_VO_
 
 #include "../../GlobalInclude.h"
 
 /**
  * 查询单据列表显示对象
  */
-class DoclVO
+class QueryZdrkBillListVO
 {
 	//单据编号     
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -45,7 +45,7 @@ class DoclVO
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 public:
 	// 绑定JSON转换方法    
-	BIND_TO_JSON(DoclVO, billNo, billDate, billStage, isEffective, isClosed, isVoided, effectiveTime, approver, createBy, createTime, sysOrgCode, updateTime, updateBy, isAuto, opDept, operatoR, remark);
+	BIND_TO_JSON(QueryZdrkBillListVO, billNo, billDate, billStage, isEffective, isClosed, isVoided, effectiveTime, approver, createBy, createTime, sysOrgCode, updateTime, updateBy, isAuto, opDept, operatoR, remark);
 };
 
-#endif // !_QUERYDOCLIST_VO_
+#endif // !QueryZdrkBillListVO

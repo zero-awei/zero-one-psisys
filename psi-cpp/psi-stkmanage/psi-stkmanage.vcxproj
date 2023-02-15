@@ -185,10 +185,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\IncreaseTon\IncreaseTonController.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="domain\dto\IncreaseTon\DocDTO.cpp" />
-    <ClCompile Include="domain\dto\IncreaseTon\DocFileDTO.cpp" />
+    <ClCompile Include="api\Zdrk\ZdrkController.cpp" />
+    <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Zdrk\DocFileDTO.cpp" />
+    <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -199,24 +200,24 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\IncreaseTon\IncreaseTonController.h" />
+    <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\IncreaseTon\QueryDocDO.h" />
-    <ClInclude Include="domain\do\IncreaseTon\QueryDocListDO.h" />
+    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
+    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\IncreaseTon\DocDTO.h" />
-    <ClInclude Include="domain\dto\IncreaseTon\DocFileDTO.h" />
-    <ClInclude Include="domain\dto\IncreaseTon\DocStatDTO.h" />
-    <ClInclude Include="domain\dto\IncreaseTon\DocNoDTO.h" />
+    <ClInclude Include="domain\dto\Zdrk\AddZdrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Zdrk\DocFileDTO.h" />
+    <ClInclude Include="domain\dto\Zdrk\ImportZdrkFileDTO.h" />
+    <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillStateDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
-    <ClInclude Include="domain\query\IncreaseTon\QueryDocListQuery.h" />
-    <ClInclude Include="domain\query\IncreaseTon\QueryDocQuery.h" />
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h" />
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\vo\IncreaseTon\DoclVO.h" />
-    <ClInclude Include="domain\vo\IncreaseTon\QueryDocVO.h" />
-    <ClInclude Include="domain\vo\IncreaseTon\SucVO.h" />
+    <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h" />
+    <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

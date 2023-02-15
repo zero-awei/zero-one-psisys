@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "Router.h"
-#include "IncreaseTon/IncreaseTonController.h"
+#include "Zdrk/ZdrkController.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
@@ -97,12 +97,12 @@ void Router::createUserDepartRouter()
 #endif
 void Router::createIncreaseTonRouter()
 {
-	BIND_GET_ROUTER(server, "/QueryDoc", &IncreaseTonController::QueryDocIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/QueryDocList", &IncreaseTonController::QueryDocListIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/AddDoc", &IncreaseTonController::AddDocIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/ModifyDoc", &IncreaseTonController::ModifyDocIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/RemoveDoc", &IncreaseTonController::RemoveDocIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/ModifyDocStat", &IncreaseTonController::ModifyDocStatIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/ImportDocFile", &IncreaseTonController::ImportDocFileIncreaseTon, nullptr);
-	BIND_GET_ROUTER(server, "/EmportDocFile", &IncreaseTonController::EmportDocFileIncreaseTon, nullptr);
+	BIND_GET_ROUTER(server, "/query-zdrk-bill-list", &ZdrkController::queryZdrkBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-zdrk-bill-details", &ZdrkController::queryZdrkBillDetails, nullptr);
+	BIND_POST_ROUTER(server, "/add-zdrk-bill", &ZdrkController::addZdrkBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill", &ZdrkController::modifyZdrkBill, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-zdrk-bill", &ZdrkController::removeZdrkBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state", &ZdrkController::modifyZdrkBillState, nullptr);
+	BIND_POST_ROUTER(server, "/import-zdrk-file", &ZdrkController::ImportZdrkFile, nullptr);
+	BIND_GET_ROUTER(server, "/emport-zdrk-file", &ZdrkController::EmportZdrkFile, nullptr);
 }
