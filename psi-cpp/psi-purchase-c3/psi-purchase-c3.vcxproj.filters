@@ -72,6 +72,15 @@
     <ClInclude Include="domain\vo\pur-compare\PurComDividedListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\pur-compare\PurComFindDetailBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-compare\PurComListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-compare\PurComDividedListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">

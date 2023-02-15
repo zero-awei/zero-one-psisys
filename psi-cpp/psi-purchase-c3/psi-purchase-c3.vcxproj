@@ -195,7 +195,10 @@
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComDividedListQuery.h" />
     <ClInclude Include="domain\query\pur-compare\PurComFindBillQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComFindDetailBillQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComListQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
