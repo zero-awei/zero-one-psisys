@@ -24,10 +24,7 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-common</artifactId>
-        </dependency>
+
         <!--        nacos相关配置-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -55,10 +52,6 @@
         <dependency>
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-domain</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-apis</artifactId>
         </dependency>
         <dependency>
             <groupId>com.zeroone.star</groupId>

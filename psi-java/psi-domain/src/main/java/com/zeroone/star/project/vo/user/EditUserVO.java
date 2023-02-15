@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @ApiModel("用户管理中编辑的显示对象")
@@ -78,14 +79,14 @@ public class EditUserVO {
      * 状态(1-正常,0-冻结)
      */
     @ApiModelProperty(value = "修改您的状态，1为正常，0为冻结", example = "1")
-    private Boolean status;
+    private Integer status;
 
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
     @ApiModelProperty(value = "同步工作流引擎，1为同步，0为不同步", example = "1")
-    private Boolean activitiSync;
+    private Integer activitiSync;
 
     /**
      * 工号，唯一键
@@ -104,7 +105,6 @@ public class EditUserVO {
      */
     @ApiModelProperty(value = "座机号", example = "87678999")
     private String telephone;
-
 
 
     /**
@@ -129,8 +129,15 @@ public class EditUserVO {
     /**
      * 负责部门
      */
-    @ApiModelProperty(value = "负责的部门", example = "6")
-    private String departIds;
+    @ApiModelProperty(value = "负责的部门", example = "市场部")
+    private String departName;
+
+    /**
+     * 部门列表
+     */
+    @ApiModelProperty(value = "部门列表", example = "市场部")
+    private List<String> departments;
+
 
     /**
      * 多租户标识

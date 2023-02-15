@@ -1,10 +1,9 @@
-
 package com.zeroone.star.user.config;
 
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -19,16 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-/**
- * <p>
- * 描述：全局异常捕获处理
- * </p>
- * <p>版权：&copy;01星球</p>
- * <p>地址：01星球总部</p>
- *
- * @author 阿伟学长
- * @version 1.0.0
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     /**
@@ -78,7 +67,7 @@ public class GlobalExceptionHandler {
                     .getConstraintViolations().stream().findFirst().orElse(null);
             if (constraint != null) {
                 List<Path.Node> pathList = StreamSupport.stream
-                                (constraint.getPropertyPath().spliterator(), false)
+                        (constraint.getPropertyPath().spliterator(), false)
                         .collect(Collectors.toList());
                 field = pathList.get(pathList.size() - 1).getName();
                 msg = constraint.getMessage();

@@ -115,7 +115,7 @@ public class AddUserDTO {
      * 负责部门
      */
     @ApiModelProperty(value = "选择您负责的部门", example = "")
-    private List<String> departName;
+    private String departName;
 
     /**
      * 多租户标识

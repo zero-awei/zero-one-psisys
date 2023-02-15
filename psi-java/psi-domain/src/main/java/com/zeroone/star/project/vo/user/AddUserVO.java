@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@ApiModel("用户管理中添加的显示对象")
+@ApiModel("用户管理中下拉框部门显示对象")
 public class AddUserVO {
     /**
      * 主键id
@@ -18,7 +18,7 @@ public class AddUserVO {
     private String id;
 
     /**
-     * 登录账号
+     * 部门列表
      */
     @ApiModelProperty(value = "输入您的用户名", example = "")
     private String username;
@@ -115,18 +115,6 @@ public class AddUserVO {
      * 负责部门
      */
     @ApiModelProperty(value = "选择您负责的部门", example = "")
-    private List<String> departName;
-
-    /**
-     * 多租户标识
-     */
-    @ApiModelProperty(value = "是否为多租户", example = "")
-    private String relTenantIds;
-
-    /**
-     * 设备ID
-     */
-    @ApiModelProperty(value = "输入您的设备ID", example = "")
-    private String clientId;
+    private String departName;
 
 }

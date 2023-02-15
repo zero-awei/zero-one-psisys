@@ -83,13 +83,13 @@ public class EditUserDTO {
      * 删除状态(0-正常,1-已删除)
      */
     @ApiModelProperty(value = "删除状态", example = "0")
-    private Boolean delFlag;
+    private Integer delFlag;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
     @ApiModelProperty(value = "同步工作流引擎", example = "1")
-    private Boolean activitiSync;
+    private Integer activitiSync;
 
     /**
      * 工号，唯一键
@@ -114,7 +114,7 @@ public class EditUserDTO {
      * 身份（1普通成员 2上级）
      */
     @ApiModelProperty(value = "身份", example = "1")
-    private Boolean userIdentity;
+    private Integer userIdentity;
 
     /**
      * 负责部门

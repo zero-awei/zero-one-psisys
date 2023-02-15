@@ -10,9 +10,9 @@ import javax.validation.constraints.NotBlank;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ApiModel("用户管理中编辑的查询对象")
-public class EditUserQuery extends PageQuery {
-    @NotBlank(message = "id不能为空")
-    @ApiModelProperty(value = "id", example = "1a2b3")
-    private String id;
+@ApiModel("查询功能对象")
+public class FindUserQuery extends PageQuery {
+    @NotBlank(message = "查询内容不能为空")
+    @ApiModelProperty(value = "name", example = "张三")
+    private String name;
 }
