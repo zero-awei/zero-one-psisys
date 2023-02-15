@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
-#ifndef __INQUIRYDTO_H__
-#define __INQUIRYDTO_H__
-
+#ifndef __PURINQUIRYDTO_H__
+#define __PURINQUIRYDTO_H__
 //增加和修改DTO
 class InquiryDTO
 {
@@ -86,7 +85,7 @@ class PurInquiryDTO : public FileDTO
 	//已生效			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
 		//已关闭			;
-	CC_SYNTHESIZE(int, is_close, Is_close);
+		CC_SYNTHESIZE(int, is_close, Is_close);
 	//已作废			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 	//交货地点		   ;
@@ -123,7 +122,7 @@ public:
 		BIND_FROM_TO_D(j, t, amt);
 		BIND_FROM_TO_I(j, t, quot_count);
 		BIND_FROM_TO_NORMAL(j, t, bill_stage);
-		BIND_FROM_TO_I(j, t, is_effective); 
+		BIND_FROM_TO_I(j, t, is_effective);
 		BIND_FROM_TO_I(j, t, is_close);
 		BIND_FROM_TO_I(j, t, is_voided);
 		BIND_FROM_TO_NORMAL(j, t, deliver_place);
@@ -140,16 +139,17 @@ public:
 };
 
 //删除DTO
-class InquiryRemoveDTO
+class PurInquiryRemoveDTO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 
 public:
-	friend void from_json(const json& j, InquiryRemoveDTO& t)
+	friend void from_json(const json& j, PurInquiryRemoveDTO& t)
 	{
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 	}
 };
 
-#endif  //__INQUIRYDTO_H__
+
+#endif  //__PURINQUIRYDTO_H__

@@ -1,9 +1,10 @@
 #include "stdafx.h"
-#ifndef __INQUIRYQUERY_H__
-#define __INQUIRYQUERY_H__
+
 #include "../../GlobalInclude.h"
 #include "../arch-demo/domain/query/PageQuery.h"
 
+#ifndef __PURINQUIRYQUERY_H__
+#define __PURINQUIRYQUERY_H__
 
 //文件上传Query
 class PurInquiryQurey : public PageQuery
@@ -83,5 +84,5 @@ public:
 };
 
 
+#endif  //__PURINQUIRYQUERY_H__
 
-#endif  //__INQUIRYQUERY_H__

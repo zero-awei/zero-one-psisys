@@ -54,19 +54,19 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-inquiry\InquiryVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur-inquiry\InquiryDTO.h">
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\pur-inquiry\InquiryDO.h">
+    <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\pur-inquiry\InquiryController.h">
+    <ClInclude Include="api\pur-inquiry\PurInquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\pur-inquiry\InquiryQuery.h">
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,7 +86,7 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\pur-inquiry\InquiryController.cpp">
+    <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-#include "pur-inquiry/InquiryController.h"
+#include "pur-inquiry/PurInquiryController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -73,7 +73,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	createInquiryRouter();
+	createPurInquiryRouter();
 }
 
 
@@ -97,12 +97,12 @@ void Router::createUserDepartRouter()
 }
 #endif
 
-void Router::createInquiryRouter()
+void Router::createPurInquiryRouter()
 {
-	BIND_POST_ROUTER(server, "/add", &InquiryController::addPurInquiry, nullptr);
-	BIND_PUT_ROUTER(server, "/modify", &InquiryController::modifyPurInquiry, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &InquiryController::removePurInquiry, nullptr);
-	BIND_POST_ROUTER(server, "/purReqInto", &InquiryController::PurInquiryInto,nullptr);
-	BIND_GET_ROUTER(server, "/purReqExport", &InquiryController::PurInquiryExport, nullptr);
+	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
+	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
+	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
 
 }

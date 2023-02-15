@@ -1,11 +1,12 @@
-
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
-#ifndef __INQUIRYDO_H__
-#define __INQUIRYDO_H__
-class InquiryDO
-{
+#include <vector>
+#ifndef __PURINQUIRYVO_H__
+#define __PURINQUIRYVO_H__
 
+//展示vo
+class PurInquiryVO
+{
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
@@ -27,7 +28,7 @@ class InquiryDO
 	//已生效			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
 		//已关闭			;
-	CC_SYNTHESIZE(int, is_close, Is_close);
+		CC_SYNTHESIZE(int, is_close, Is_close);
 	//已作废			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 	//交货地点		   ;
@@ -51,12 +52,30 @@ class InquiryDO
 	//修改人			;
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
+
 public:
-	InquiryDO()
-	{
-
-	}
-
+	BIND_TO_JSON(PurInquiryVO, bill_no, bill_date, subject, src_no,
+		delivery_time, qty, amt, quot_count, bill_stage, is_effective
+		, is_close, is_voided, deliver_place, contact, phone, fax, email
+		, remark, is_auto, effective_time, create_time, update_by
+	);
 };
 
-#endif  //__INQUIRYDO_H__
+
+//付款方式
+class PaymentVO
+{
+	CC_SYNTHESIZE(std::vector<string>, payment, Payment);
+
+public:
+	BIND_TO_JSON(PaymentVO, payment);
+	PaymentVO()
+	{
+		payment.push_back(u8"全款到发货");
+		payment.push_back(u8"货到付全款");
+		payment.push_back(u8"发票到付全款");
+		payment.push_back(u8"发票到付余款 ");
+	}
+};
+
+#endif  //__PURINQUIRYVO_H__

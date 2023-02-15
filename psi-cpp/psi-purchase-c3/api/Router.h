@@ -46,7 +46,7 @@ private:
 #endif
 
 	//采购询价路由
-	void createInquiryRouter();
+	void createPurInquiryRouter();
 };
 
 #endif // !_ROUTER_

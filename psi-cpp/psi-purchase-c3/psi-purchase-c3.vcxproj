@@ -188,20 +188,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\pur-inquiry\InquiryController.h" />
+    <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\pur-inquiry\InquiryDO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\pur-inquiry\InquiryDTO.h" />
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\pur-inquiry\InquiryQuery.h" />
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-    <ClInclude Include="domain\vo\pur-inquiry\InquiryVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -209,7 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\pur-inquiry\InquiryController.cpp" />
+    <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
