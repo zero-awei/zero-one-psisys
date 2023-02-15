@@ -128,9 +128,9 @@ public class UserController implements UserApis {
     }
 
     @ApiOperation(value = "导出所有用户")
-    @GetMapping(value = "get-users")
+    @GetMapping(value = "get-users", produces = "application/octet-stream")
     @Override
-    public JsonVO<String> downloadAllUsers() {
+    public ResponseEntity<byte[]> downloadAllUsers() {
         return null;
     }
 }

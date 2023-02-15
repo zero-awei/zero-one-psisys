@@ -79,5 +79,5 @@ public interface UserApis {
      * 导出全部用户
      * @return 下载地址
      */
-    JsonVO<String> downloadAllUsers();
+    ResponseEntity<byte[]> downloadAllUsers();
 }
