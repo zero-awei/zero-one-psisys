@@ -17,8 +17,8 @@ class AdvancedQuery
 public:
 	// °ó¶¨from_json
 	friend void from_json(const json& j, AdvancedQuery& t) { // NOLINT
-		BIND_FROM_TO_ULL(j, t, rule);
-		BIND_FROM_TO_ULL(j, t, name);
+		BIND_FROM_TO_NORMAL(j, t, rule);
+		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, condition);
 		BIND_FROM_TO_NORMAL(j, t, value);
 	}

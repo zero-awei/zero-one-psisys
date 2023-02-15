@@ -33,7 +33,7 @@ private:
 	////演示高级查询数据
 	JsonVO<PageVO<AdvancedQueryVO>> execAdvancedQuerySupplier(const AdvancedQuery& query);
 	////演示查询指定供应商数据
-	JsonVO<PageVO<SpecifiedSupplierDataQueryVO>> execSpecifiedQuerySupplier(const SpecifiedSupplierDataQuery& query);//就是这一行
+	JsonVO<SpecifiedSupplierDataQueryVO> execSpecifiedQuerySupplier(const SpecifiedSupplierDataQuery& query);//就是这一行
 	//演示新增数据
 	JsonVO<uint64_t> execAddSupplier(const AddSupplierDTO& dto);
 	//演示修改数据
