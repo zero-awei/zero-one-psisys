@@ -2,6 +2,7 @@ package com.zeroone.star.project.vo.payment;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +17,7 @@ import java.math.BigDecimal;
  * @author Kong
  * @since 2023-02-12
  */
-@Getter
-@Setter
+@Data
 @ApiModel("付款单明细")
 public class FinPaymentEntryVO{
 

@@ -1,6 +1,8 @@
 package com.zeroone.star.project.vo.payment;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +17,8 @@ import java.sql.Date;
  * @author Kong
  * @since 2023-02-11
  */
-@Getter
-@Setter
+@Data
+@ApiModel("采购明细对象")
 public class FinPaymentReqVO {
 //jeecg_row_key
     /**

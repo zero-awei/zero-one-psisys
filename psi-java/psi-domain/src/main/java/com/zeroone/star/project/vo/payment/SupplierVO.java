@@ -1,5 +1,6 @@
 package com.zeroone.star.project.vo.payment;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
@@ -9,9 +10,9 @@ import io.swagger.annotations.ApiModelProperty;
  * @Contact: xxx@xxx.com
  * @Date: 2023-02-11 21:20
  * @Version: 1.0
- * @Description:
+ * @Description: 供应商 字典
  */
-
+@ApiModel("供应商显示对象")
 public class SupplierVO {
     /**
      * id

@@ -4,9 +4,7 @@ import com.zeroone.star.project.dto.payment.PrepaymentDTO;
 import com.zeroone.star.project.query.payment.PurchaseListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.payment.FinPaymentReqVO;
-import com.zeroone.star.project.vo.payment.PurOrderEntryVO;
-import com.zeroone.star.project.vo.payment.SupplierVO;
+import com.zeroone.star.project.vo.payment.*;
 
 import java.util.List;
 
@@ -50,4 +48,23 @@ public interface PaymentApis {
      * @return 采购项目清单
      */
     public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+
+    /**
+     * 获取系统用户列表
+     * @return
+     */
+    public JsonVO<List<SysUserVO>> getSysUsersName();
+
+    /**
+     * 获取组织机构表
+     * @return
+     */
+    public JsonVO<List<SysDepartVO>> getSysDepart();
+
+    /**
+     * 获取银行账户列表
+     * @return
+     */
+    public JsonVO<List<BasBankAccountVO>> getBankAccount();
+
 }
