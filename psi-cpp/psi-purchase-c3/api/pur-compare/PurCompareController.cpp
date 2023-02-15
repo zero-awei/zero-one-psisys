@@ -20,23 +20,25 @@
 #include"PurCompareController.h"
 
 //演示新增比价
-JsonVO<uint64_t> PurComRenqingController::execAddPurCom(const AddPurComDTO& dto)
+JsonVO<uint64_t> PurCompareController::execAddPurCom(const AddPurComDTO& dto)
 {
 	JsonVO<uint64_t> result;
+	// 接口测试
+	/*result.success(1);*/
 	return result;
 }
 //演示修改比价
-JsonVO<uint64_t> PurComRenqingController::execModifyPurCom(const ModPurComDTO& dto) {
+JsonVO<uint64_t> PurCompareController::execModifyPurCom(const ModPurComDTO& dto) {
 	JsonVO<uint64_t> result;
 	return result;
 }
 //演示删除比价
-JsonVO<uint64_t> PurComRenqingController::execRemovePurCom(const DelPurComDTO& dto) {
+JsonVO<uint64_t> PurCompareController::execRemovePurCom(const DelPurComDTO& dto) {
 	JsonVO<uint64_t> result;
 	return result;
 }
 //演示修改单据状态
-JsonVO<uint64_t> PurComRenqingController::execPurComModBillStatus(const PurComModBillStatusDTO& dto) {
+JsonVO<uint64_t> PurCompareController::execPurComModBillStatus(const PurComModBillStatusDTO& dto) {
 	JsonVO<uint64_t> result;
 	return result;
 }

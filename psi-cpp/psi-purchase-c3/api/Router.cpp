@@ -99,11 +99,11 @@ void Router::createUserDepartRouter()
 void Router::createPurComRouter()
 {
 	// 新增比价的接口
-	BIND_POST_ROUTER(server, "/post", &PurComRenqingController::addPurCom, nullptr);
+	BIND_POST_ROUTER(server, "/add-pur-com", &PurCompareController::addPurCom, nullptr);
 	// 修改比价的接口
-	BIND_POST_ROUTER(server, "/post", &PurComRenqingController::modifyPurCom, nullptr);
+	BIND_POST_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
 	// 删除比价的接口
-	BIND_DEL_ROUTER(server, "/delete", &PurComRenqingController::removePurCom, nullptr);
+	BIND_DEL_ROUTER(server, "/del-pur-com", &PurCompareController::removePurCom, nullptr);
 	// 修改单据状态的接口
-	BIND_POST_ROUTER(server, "/post", &PurComRenqingController::purComModBillStatus, nullptr);
+	BIND_POST_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
 }

@@ -30,7 +30,7 @@
 /**
  * 示例控制器，演示基础接口的使用
  */
-class PurComRenqingController
+class PurCompareController
 {
 public:
 	// 新增比价
@@ -40,7 +40,7 @@ public:
 	// 删除比价
 	CREATE_API_FUN_BODY(removePurCom, execRemovePurCom, DelPurComDTO);
 	// 修改单据状态
-	CREATE_API_FUN_JSON(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
+	CREATE_API_FUN_BODY(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
 private:
 	//演示新增比价
 	JsonVO<uint64_t> execAddPurCom(const AddPurComDTO& dto);

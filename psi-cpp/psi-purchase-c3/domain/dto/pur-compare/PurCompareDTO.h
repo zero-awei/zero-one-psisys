@@ -75,9 +75,6 @@ class AddPurComDTO : public FileDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddPurComDTO& t);// NOLINT	
-	AddPurComDTO() {
-		this->billId = "001";
-	}
 };
 
 // 修改比价
