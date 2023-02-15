@@ -3,7 +3,6 @@
 
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
-
 class ModPurComDTO : public FileDTO
 {
 	// µ¥¾Ý±àºÅ
@@ -80,5 +79,5 @@ public:
 };
 
 
-#endif // !_ADD_PUR_COM_DTO_
+#endif 
 

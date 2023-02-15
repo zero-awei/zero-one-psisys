@@ -20,20 +20,45 @@
 #ifndef _PUR_COMPARE_CONTROLLER_
 #define _PUR_COMPARE_CONTROLLER_
 
-#include "../../domain/query/pur-compare/PurComFindBillQuery.h"
-#include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
-#include "../../domain/query/pur-compare/PurComDividedListQuery.h"
-#include "../../domain/query/pur-compare/PurComListQuery.h"
-#include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/pur-compare/PurComFindBillVO.h"
-#include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
-#include "../../domain/vo/pur-compare/PurComListVO.h"
-#include "../../domain/vo/pur-compare/PurComDividedListVO.h"
-#include "../../domain/vo/PageVO.h"
+//公共接口
 #include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/dto/IDDTO.h"
+
+//vo
+
+#include "../../domain/vo/pur-compare/PurComFindBillVO.h"
+#include "../../domain/query/pur-compare/PurComFindBillQuery.h"
+
+#include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
+#include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
+
+
+#include "../../domain/vo/pur-compare/PurComListVO.h"
+#include "../../domain/query/pur-compare/PurComListQuery.h"
+
+#include "../../domain/vo/pur-compare/PurComDividedListVO.h"
+#include "../../domain/query/pur-compare/PurComDividedListQuery.h"
+
+#include "../../domain/vo/pur-compare/AddPurComVO.h"
+#include "../../domain/dto/pur-compare/AddPurComDTO.h"
+
+#include "../../domain/vo/pur-compare/ModPurComVO.h"
+#include "../../domain/dto/pur-compare/ModPurComDTO.h"
+
+
+#include "../../domain/vo/pur-compare/PurComModBillStatusVO.h"
+#include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
+
+
+#include "../../domain/dto/pur-compare/DelPurComDTO.h"
+#include "../../domain/vo/pur-compare/DelPurComVO.h"
+
 //#include "../../domain/dto/sample/SampleDTO.h"
 //#include "../../domain/dto/user/UserDTO.h"
 //#include "../../domain/vo/user/UserVO.h"
+//公共接口
+
 
 /**
  * 比价单控制器
@@ -45,6 +70,14 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComFindDetailBill, execQueryPurComFindDetailBill, PurComFindDetailBillQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComList, execQueryPurComList, PurComListQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComDividedList, execQueryPurComDividedList, PurComDividedListQuery);
+	// 新增比价
+	CREATE_API_FUN_BODY(addPurCom, execAddPurCom, AddPurComDTO);
+	// 修改比价
+	CREATE_API_FUN_BODY(modifyPurCom, execModifyPurCom, ModPurComDTO);
+	// 删除比价
+	CREATE_API_FUN_BODY(removePurCom, execRemovePurCom, DelPurComDTO);
+	// 修改单据状态
+	CREATE_API_FUN_BODY(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
 private:
 	// 查询比价单单据列表
 	JsonVO<PageVO<PurComFindBillVO>> execQueryPurComFindBill(const PurComFindBillQuery& query, const PayloadDTO& payload);
@@ -54,6 +87,16 @@ private:
 	JsonVO<PageVO<PurComListVO>> execQueryPurComList(const PurComListQuery& query, const PayloadDTO& payload);
 	// 查询报价单分录列表
 	JsonVO<PageVO<PurComDividedListVO>> execQueryPurComDividedList(const PurComDividedListQuery& query, const PayloadDTO& payload);
+	//演示新增比价
+	JsonVO<uint64_t> execAddPurCom(const AddPurComDTO& dto);
+	//演示修改比价
+	JsonVO<uint64_t> execModifyPurCom(const ModPurComDTO& dto);
+	//演示删除比价
+	JsonVO<uint64_t> execRemovePurCom(const DelPurComDTO& dto);
+	//演示修改单据状态
+	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto);
+
+
 };
 
 #endif // _SAMPLE_CONTROLLER_#pragma once
