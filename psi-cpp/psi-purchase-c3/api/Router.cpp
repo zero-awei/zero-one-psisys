@@ -1,29 +1,12 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/24 23:38:25
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+
 #include "pur-req/PurReqController.h"
 #include "pur-compare/PurCompareController.h"
 #include "pur-inquiry/PurInquiryController.h"
-
 
 
 #ifdef HTTP_SERVER_DEMO
@@ -79,11 +62,14 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 
+
 	createPurCompareRouter();
 	createPurInquiryRouter();
 	createPurReqRouter();
 
 }
+
+
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
@@ -136,5 +122,12 @@ void Router::createPurInquiryRouter()
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
 	//查看指定询价单详细信息接口路由绑定
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
+	
+	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
+	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
+	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
 }
+
 

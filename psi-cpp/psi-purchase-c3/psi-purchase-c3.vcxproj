@@ -188,11 +188,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="api\pur-req\PurReqController.h" />
+=======
+    <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
+>>>>>>> remotes/origin/c3-pur-inquiry-huilai
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+<<<<<<< HEAD
     <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotExportDTO.h" />
@@ -217,6 +223,16 @@
     <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h" />
+=======
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h" />
+    <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h" />
+    <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\Message.h" />
+    <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h" />
+>>>>>>> remotes/origin/c3-pur-inquiry-huilai
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -224,7 +240,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
+=======
+    <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
+>>>>>>> remotes/origin/c3-pur-inquiry-huilai
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
