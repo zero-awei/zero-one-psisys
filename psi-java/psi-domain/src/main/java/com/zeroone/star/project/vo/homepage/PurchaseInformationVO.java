@@ -21,20 +21,20 @@ public class PurchaseInformationVO {
     private String label;
 
     @ApiModelProperty(value = "今日笔数", example = "0")
-    private Long tCount;
+    private Long todayCount;
 
     @ApiModelProperty(value = "今日金额", example = "0.00")
-    private BigDecimal tAmt;
+    private BigDecimal todayAmt;
 
     @ApiModelProperty(value = "本周笔数", example = "0")
-    private Long wCount;
+    private Long weekCount;
 
     @ApiModelProperty(value = "本周金额", example = "0.00")
-    private BigDecimal wAmt;
+    private BigDecimal weekAmt;
 
     @ApiModelProperty(value = "本月笔数", example = "0")
-    private Long mCount;
+    private Long monthCount;
 
     @ApiModelProperty(value = "本月金额", example = "0.00")
-    private BigDecimal mAmt;
+    private BigDecimal monthAmt;
 }
