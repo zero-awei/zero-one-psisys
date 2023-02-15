@@ -33,9 +33,9 @@ public class SaleInformationVO {
     private BigDecimal weekAmt;
 
     @ApiModelProperty(value = "本月笔数", example = "0")
-    private Long mouthCount;
+    private Long monthCount;
 
     @ApiModelProperty(value = "本月金额", example = "8532255680.22")
-    private BigDecimal mouthAmt;
+    private BigDecimal monthAmt;
 
 }

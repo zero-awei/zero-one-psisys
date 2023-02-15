@@ -89,8 +89,8 @@ public class OnlCgreportHeadController implements InformationApis {
         for(HomeSale homeSale : homeSales){
             SaleInformationVO saleInformationVO = new SaleInformationVO();
             saleInformationVO.setLabel(homeSale.getLabel());
-            saleInformationVO.setMouthAmt(homeSale.getMAmt());
-            saleInformationVO.setMouthCount(homeSale.getMCount());
+            saleInformationVO.setMonthAmt(homeSale.getMAmt());
+            saleInformationVO.setMonthCount(homeSale.getMCount());
             saleInformationVO.setTodayAmt(homeSale.getTAmt());
             saleInformationVO.setTodayCount(homeSale.getTCount());
             saleInformationVO.setWeekAmt(homeSale.getWAmt());
