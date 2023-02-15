@@ -75,6 +75,7 @@ private:
 	void initDepartChioceSetting();
 	void initSupplierSetting();
 	void initBankAccount();
+	void initSuppliersSetting();
 };
 
 #endif // !_ROUTER_
