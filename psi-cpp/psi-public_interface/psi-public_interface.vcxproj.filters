@@ -42,7 +42,7 @@
     <ClCompile Include="api\MaterialQueryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\SuppliserController.cpp">
+    <ClCompile Include="api\SuppliserCategoryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\BankAccount\BankAccountController.cpp">

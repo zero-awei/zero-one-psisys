@@ -5,6 +5,10 @@ JsonVO<list<DepartVO>> DepartChoiceController::execQueryDepart(const DepartNameQ
 {
 	JsonVO<list<DepartVO>>rs;
 	list<DepartVO>data;
+	data.push_back(DepartVO());
+	data.push_back(DepartVO());
+	data.push_back(DepartVO());
+	data.push_back(DepartVO());
 	rs.success(data);
 	return rs;
 }

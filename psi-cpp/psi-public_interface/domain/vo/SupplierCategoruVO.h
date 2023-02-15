@@ -28,6 +28,11 @@ class SuppliersCategoryVO
 	//供应商类型对应id
 	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
+	SuppliersCategoryVO()
+	{
+		name = "windows";
+		id = 0;
+	}
 	//绑定json转换方法
 	BIND_TO_JSON(SuppliersCategoryVO, name, id);
 };

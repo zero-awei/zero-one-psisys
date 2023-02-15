@@ -31,7 +31,7 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryArea, execQueryArea, AreaQuery);
 private:
 	//查询某区域的下辖区
-	JsonVO<PageVO<AreaVO>>execQueryArea(const AreaQuery& query, const PayloadDTO& payload);
+	JsonVO<list<AreaVO>>execQueryArea(const AreaQuery& query, const PayloadDTO& payload);
 	
 };
 

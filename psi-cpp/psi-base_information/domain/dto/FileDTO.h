@@ -29,11 +29,14 @@
 class FileDTO
 {
 private:
-	friend void from_json(const json& j, FileDTO& t); // NOLINT
 protected:
 	// 上传文件路径列表
 	CC_SYNTHESIZE_GET(std::list<std::string>, files, Files);
 public:
+	friend void from_json(const json& j, FileDTO& t) // NOLINT
+	{
+
+	}
 	// 添加文件上传路径
 	void addFile(std::string file) {
 		files.push_back(file);

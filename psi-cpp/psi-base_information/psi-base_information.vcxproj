@@ -235,9 +235,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="conf\data-source.yaml" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

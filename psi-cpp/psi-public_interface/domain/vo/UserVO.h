@@ -36,6 +36,14 @@ class UserVO
 	CC_SYNTHESIZE(std::string, department, Department);
 public:
 	BIND_TO_JSON(UserVO, id, username,realname,sex,department);
+	UserVO()
+	{
+		id = 1;
+		username = "awei";
+		realname = "awei";
+		sex = "man";
+		department = "naowubu";
+	}
 };
 
 #endif // _USERVO_H_

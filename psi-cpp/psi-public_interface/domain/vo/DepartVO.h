@@ -29,6 +29,11 @@ class DepartVO
 	//²¿ÃÅµÄid
 	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
+	DepartVO()
+	{
+		departname = "yingxiaobu";
+		id = 1;
+	}
 	BIND_TO_JSON(DepartVO, departname, id);
 };
 

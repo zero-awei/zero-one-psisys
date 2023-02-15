@@ -58,6 +58,21 @@ class MaterialVO
 	//ÐÞ¸ÄÈË
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 public:
+	MaterialVO()
+	{
+		id = 1;
+		code = 111;
+		name = "aaa";
+		auxName = "aa";
+		categoryId = 90;
+		model = "500L";
+		unitIdDictText = "a";
+		price = 114514;
+		taxCode = "1919810";
+		isEnabledDictText = "a";
+		remake = "";
+		createBy = "a";
+	}
 	BIND_TO_JSON(MaterialVO, id,code,name,auxName, categoryId, categoryIdDictText, model, unitIdDictText, 
 		price, taxCode, isEnabledDictText, remake, createTime, createBy, updateTime, updateBy);
 

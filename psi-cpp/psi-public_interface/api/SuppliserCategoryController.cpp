@@ -5,6 +5,9 @@ JsonVO<list<SuppliersCategoryVO>>SupplierCategoryController::execQuerySupplierCa
 {
 	JsonVO<list<SuppliersCategoryVO>>rs;
 	list<SuppliersCategoryVO>data;
+	data.push_back(SuppliersCategoryVO());
+	data.push_back(SuppliersCategoryVO());
+	data.push_back(SuppliersCategoryVO());
 	rs.success(data);
 	return rs;
 }

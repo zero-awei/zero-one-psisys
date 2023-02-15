@@ -5,6 +5,11 @@ JsonVO<PageVO<MaterialVO>>MaterialQueryController::execQueryMaterial(const Mater
 {
 	JsonVO<PageVO<MaterialVO>>rs;
 	PageVO<MaterialVO>data;
+	list<MaterialVO> rows;
+	rows.push_back(MaterialVO());
+	rows.push_back(MaterialVO());
+	rows.push_back(MaterialVO());
+	data.setRows(rows);
 	rs.success(data);
 	return rs;
 }

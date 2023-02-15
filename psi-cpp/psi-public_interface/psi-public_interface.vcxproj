@@ -203,7 +203,7 @@
     <ClCompile Include="api\setting-qiuqiu\SuppliersNameController.cpp" />
     <ClCompile Include="api\setting-qiuqiu\SuppliersNomalQueryController.cpp" />
     <ClCompile Include="api\SettleMethodController.cpp" />
-    <ClCompile Include="api\SuppliserController.cpp" />
+    <ClCompile Include="api\SuppliserCategoryController.cpp" />
     <ClCompile Include="api\TaxRateController.cpp" />
     <ClCompile Include="api\TaxScaleController.cpp" />
     <ClCompile Include="api\TransportMethodController.cpp" />
