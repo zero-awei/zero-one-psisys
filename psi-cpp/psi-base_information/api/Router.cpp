@@ -20,6 +20,8 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "Supplier/ImportSupplierController.h"
+#include "Supplier/ExportSupplierController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +75,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	initSupplier();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +96,9 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::initSupplier()
+{
+	BIND_POST_ROUTER(server, "/import-supplier", &ImportSupplierController::importSupplier, nullptr);
+	BIND_GET_ROUTER(server, "/export-supplier", &ExportSupplierController::exportSupplier, nullptr);
+}

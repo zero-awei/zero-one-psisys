@@ -36,9 +36,6 @@
     <ClCompile Include="api\DeliveryTypeController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\ClearingFormController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="api\WarehouseController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -92,16 +89,10 @@
     <ClInclude Include="domain\vo\DeliveryTypeVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\ClearingFormVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\WarehouseVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\DeliveryTypeController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="api\ClearingFormController.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\WarehouseController.h">
