@@ -35,7 +35,8 @@
 class SampleController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);/*宏也是定义函数啊，
+			这里面定义的函数querySample会调用executeXXX，并且规定参数类型，然后宏定义的函数querySample被Router调用*/
 	CREATE_API_FUN_BODY(addSample, execAddSample, SampleDTO);
 	CREATE_API_FUN_BODY(modifySample, execModifySample, SampleDTO);
 	CREATE_API_FUN_BODY(removeSample, execRemoveSample, SampleDTO);

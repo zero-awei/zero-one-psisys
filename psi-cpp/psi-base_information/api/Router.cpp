@@ -21,6 +21,7 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 #include "BankAccountController.h"
+#include "../api/supplier/SupplierController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -77,7 +78,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	initSupplier();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -103,3 +104,21 @@ void Router::initbaSetting()
 {
 	BIND_GET_ROUTER(server, "/query-bankaccount-list", &BankAccountController::queryBankAccountList, nullptr);
 }
+
+void Router::initSupplier()
+{
+	//高级查询
+	BIND_GET_ROUTER(server, "/Advanced-Query", &SupplierController::advancedquerySupplier, nullptr);
+	//指定查询
+	BIND_GET_ROUTER(server, "/Specified-Supplier-Data-Query", &SupplierController::specifiedquerySupplier, nullptr);
+	//增加
+	BIND_POST_ROUTER(server, "/add", &SupplierController::addSupplier, nullptr);
+	//删除
+	BIND_DEL_ROUTER(server, "/delete", &SupplierController::deleteSupplier, nullptr);
+	//修改
+	BIND_PUT_ROUTER(server, "/modify", &SupplierController::modifySupplier, nullptr);
+}
+
+
+
+

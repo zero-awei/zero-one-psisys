@@ -42,6 +42,11 @@ private:
 	void createUserDepartRouter();
 #endif
 	void initbaSetting();
+	//下面开始是自己写的
+	void initSupplier();
+
+
+
 };
 
 #endif // !_ROUTER_
