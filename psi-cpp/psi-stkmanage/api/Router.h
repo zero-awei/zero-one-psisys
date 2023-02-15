@@ -41,6 +41,8 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
+	//创建盘盈入库路由
+	void createPyrkRouter();
 };
 
 #endif // !_ROUTER_

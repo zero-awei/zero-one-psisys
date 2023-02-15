@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "Pyrk/PyrkController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,6 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createPyrkRouter();
 
 }
 
@@ -94,3 +96,8 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPyrkRouter()
+{
+	BIND_DEL_ROUTER(server, "/Pyrk/delete-by-id", &PyrkController::removeById, nullptr);
+}
