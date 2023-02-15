@@ -4,41 +4,70 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.role.MenuQuery;
+import com.zeroone.star.project.query.role.PermissionQuery;
 import com.zeroone.star.role.entity.SysMenu;
+import com.zeroone.star.role.entity.SysPermission;
 import com.zeroone.star.role.mapper.MenuMapper;
 import com.zeroone.star.role.service.IMenuService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
 
 
     @Override
-    public List<MenuQuery> showList(int RId) {
-
+    public List<MenuQuery> showList(String RId) {
         QueryWrapper<SysMenu> listMenu = new QueryWrapper<>();
-        List<SysMenu> sysMenus = baseMapper.selectList(listMenu);
+        listMenu.eq("parent_id",RId);
+        List<SysMenu> menus = baseMapper.selectList(listMenu);
         List<MenuQuery> list = new ArrayList<>();
-        System.out.println("+++++++++++++++++++++++++");
-        for (SysMenu sysMenu : sysMenus) {
-            MenuQuery menuQuery = null;
-            SysMenu sysMenu1 = sysMenu;
-            BeanUtil.copyProperties(sysMenu1,menuQuery);
-            System.out.println(sysMenu1);
+        System.out.println("==============================");
+        for (SysMenu menu : menus) {
+            MenuQuery menuQuery = new MenuQuery();
+            BeanUtil.copyProperties(menu,menuQuery);
+            System.out.println(menuQuery);
             list.add(menuQuery);
         }
-        System.out.println("+++++++++++++++++++++++++");
+        System.out.println("========================");
         return list;
     }
 
+    /**
+     * 用户选中菜单后，新增菜单
+     * @param menu
+     * @return
+     */
     @Override
-    public Boolean addMenuOrJurisdiction(List<MenuQuery> listMenu) {
-        return null;
+    public Boolean addMenuOrPermission(MenuQuery menu) { // 添加菜单
+        SysMenu sysMenu = new SysMenu();
+        BeanUtil.copyProperties(menu,sysMenu);
+        QueryWrapper<SysMenu> wrapper = new QueryWrapper<>();
+        int num = baseMapper.insert(sysMenu);
+        if (num >= 1){
+            System.out.println("+++++++++++++"+num+"+++++++++++");
+            System.out.println(sysMenu);
+            return true;
+        }
+        return false;
     }
 
+    /**
+     * 根据ID删除菜单
+     * @param Id
+     * @return
+     */
     @Override
-    public Boolean deleteMenuOrJurisdiction(int RId, int MId) {
-        return null;
+    public Boolean deleteMenuOrPermission(String Id) {
+        int num = baseMapper.deleteById(Id);
+        if (num >= 1) {
+            System.out.println("++++++++++++++++++++++++++++++++++++++");
+            System.out.println(num);
+            System.out.println("++++++++++++++++++++++++++++++++++++++");
+            return true;
+        }
+        return false;
     }
 }

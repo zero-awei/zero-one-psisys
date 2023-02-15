@@ -10,20 +10,19 @@ public interface RoleApis<T> {
      * @param RId
      * @return 菜单或者权限列表
      */
-    JsonVO<List<T>> showList(int RId);
+    JsonVO<List<T>> showList(String RId);
 
     /**
      * 根据用户选择的权限增加该用户的菜单或者权限列表
-     * @param listMenu
+     * @param roles 要添加的权限id列表
      * @return 是否添加成功
      */
-    JsonVO<Boolean> addMenuOrJurisdiction(List<T> listMenu);
+    JsonVO<Boolean> addMenuOrPermission(T roles);
 
     /**
      * 根据用户的角色id和要删除的权限id，删除权限
-     * @param RId
-     * @param MId
+     * @param Id
      * @return 是否删除成功
      */
-    JsonVO<Boolean> deleteMenuOrJurisdiction (int RId,int MId);
+    JsonVO<Boolean> deleteMenuOrPermission (String Id);
 }

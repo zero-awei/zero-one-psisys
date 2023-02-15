@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface IMenuService extends IService<SysMenu> {
-    List<MenuQuery> showList(int RId);
+    List<MenuQuery> showList(String RId) ;
 
-    Boolean addMenuOrJurisdiction(List<MenuQuery> listMenu) ;
+    Boolean addMenuOrPermission(MenuQuery menu) ;
 
-    Boolean deleteMenuOrJurisdiction(int RId, int MId) ;
+    Boolean deleteMenuOrPermission(String Id) ;
 }

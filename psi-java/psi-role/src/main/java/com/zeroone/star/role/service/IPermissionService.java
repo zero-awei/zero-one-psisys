@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface IPermissionService extends IService<SysPermission> {
 
-    List<PermissionQuery> showList(int RId);
+    List<PermissionQuery> showList(String RId);
 
-    Boolean addMenuOrJurisdiction(List<PermissionQuery> listMenu) ;
+    Boolean addMenuOrPermission(PermissionQuery permission) ;
 
-    Boolean deleteMenuOrJurisdiction(int RId, int MId) ;
+    Boolean deleteMenuOrPermission(String Id) ;
 }

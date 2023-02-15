@@ -3,6 +3,7 @@ package com.zeroone.star.role.controller;
 import com.zeroone.star.project.query.role.MenuQuery;
 import com.zeroone.star.project.role.RoleApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.role.entity.SysMenu;
 import com.zeroone.star.role.service.IMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,31 +19,30 @@ import java.util.List;
 @RestController // 返回类型
 @RequestMapping("menu") // 请求前缀
 @Api(tags = "角色菜单管理接口")
-public class MenuController implements RoleApis<MenuQuery> {
+public class MenuController  implements RoleApis<MenuQuery> {
 
 //    @Resource
-    @Autowired
     private IMenuService service;
 
     @GetMapping("list")
-    @ApiOperation(value = "查询角色权限或菜单列表")
+    @ApiOperation(value = "查询菜单")
     @Override
-    public JsonVO<List<MenuQuery>> showList(int RId) {
+    public JsonVO<List<MenuQuery>> showList(String RId) {
 
         return JsonVO.success(service.showList(RId));
     }
 
     @GetMapping("add")
-    @ApiOperation(value = "新增角色权限或菜单列表")
+    @ApiOperation(value = "新增菜单")
     @Override
-    public JsonVO<Boolean> addMenuOrJurisdiction(List<MenuQuery> listMenu) {
-        return JsonVO.success(service.addMenuOrJurisdiction(listMenu));
+    public JsonVO<Boolean> addMenuOrPermission(MenuQuery menu) {
+        return JsonVO.success(service.addMenuOrPermission(menu));
     }
 
     @GetMapping("delete")
-    @ApiOperation(value = "删除角色权限或菜单列表")
+    @ApiOperation(value = "删除菜单")
     @Override
-    public JsonVO<Boolean> deleteMenuOrJurisdiction(int RId, int MId) {
-        return JsonVO.success(service.deleteMenuOrJurisdiction(RId,MId));
+    public JsonVO<Boolean> deleteMenuOrPermission(String Id) {
+        return JsonVO.success(service.deleteMenuOrPermission(Id));
     }
 }
