@@ -5,7 +5,8 @@
     <parent>
         <artifactId>psi-java</artifactId>
         <groupId>com.zeroone.star</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -51,7 +52,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.titlepage.SystemManagementApp</mainClass>
+                    <mainClass>com.zeroone.star.titlepage.TitlePageApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

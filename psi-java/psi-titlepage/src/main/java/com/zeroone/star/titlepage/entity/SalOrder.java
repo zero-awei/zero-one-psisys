@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
  * 销售订单
  * </p>
  *
- * @author yx
- * @since 2023-02-11
+ * @author ss yx
+ * @since 2023-02-12
  */
 @Getter
 @Setter

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.titlepage.mapper.BasSupplierMapper">
+
+    <select id="queryBasSupplier" resultType="com.zeroone.star.titlepage.entity.BasSupplier">
+        SELECT '今日+' label, COUNT(1) value, 5 width
+        FROM bas_supplier
+        WHERE is_enabled = 1
+          AND create_time >= DATE(SYSDATE())
+        UNION
+        SELECT '本周+', COUNT(1), 5
+        FROM bas_supplier
+        WHERE is_enabled = 1
+          AND YEARWEEK(create_time, 1) = YEARWEEK(SYSDATE(), 1)
+        UNION
+        SELECT '本月+', COUNT(1), 6
+        FROM bas_supplier
+        WHERE is_enabled = 1
+            AND YEAR(create_time) = YEAR(SYSDATE()) AND MONTH(create_time) = MONTH(SYSDATE())
+        UNION
+        SELECT '供应商数', COUNT(1), 8
+        FROM bas_supplier
+        WHERE is_enabled = 1
+    </select>
+</mapper>
