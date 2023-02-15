@@ -41,7 +41,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 
     @Override
-    public PageVO<AddressbookVO> getByRealnameOrWorkNo(AddressbookQuery query, String realname, String workNo) {
+    public PageVO<AddressbookVO> getByRealnameAndWorkNo(AddressbookQuery query, String realname, String workNo) {
         // 构建分页对象
         Page<SysUser> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件

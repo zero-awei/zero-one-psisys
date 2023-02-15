@@ -5,19 +5,17 @@ import com.zeroone.star.project.systemmanagement.addressbook.AddressbookApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
-import com.zeroone.star.systemmanagement.service.addressbook.IAddressbookService;
-import io.swagger.annotations.Api;
+import com.zeroone.star.systemmanagement.service.addressbook.ISysUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
 /**
  * <p>
- * 描述：查询通讯录列表
+ * 描述：查询通讯录列表不完全版
  * </p>
  * <p>版权：&copy;01星球</p>
  * <p>地址：01星球总部</p>
@@ -26,14 +24,19 @@ import javax.annotation.Resource;
  * @version 1.0.0
  */
 
+
+// ======================================== 无效(第一版本) =====================================
+
+
+
 @RestController
-@RequestMapping("/addressbook")
-@Api(tags = "查询通讯录列表")
+//@RequestMapping("/addressbook-fake")
+//@Api(tags = "查询通讯录列表不完全版")
 @Validated
-public class AddressbookController implements AddressbookApis {
+public class SysUserController implements AddressbookApis {
 
     @Resource
-    IAddressbookService service;
+    ISysUserService service;
 
     @GetMapping("query-all")
     @ApiOperation(value = "通讯录分页查询")
@@ -42,25 +45,23 @@ public class AddressbookController implements AddressbookApis {
         return JsonVO.success(service.listAddressbook(condition));
     }
 
-    @GetMapping("query-realname-and-workno")
+    @GetMapping("query-more")
     @ApiOperation(value = "根据姓名和工号查询通讯录")
     @Override
     public JsonVO<PageVO<AddressbookVO>> getByRealnameAndWorkNo(@Validated AddressbookQuery condition) {
-        return JsonVO.success(service.getByRealnameAndWorkNo(condition));
+        return JsonVO.success(service.getByRealnameAndWorkNo(condition, condition.getRealname(), condition.getWorkNo()));
     }
 
-    @GetMapping("query-realname")
-    @ApiOperation(value = "根据姓名查询通讯录")
     @Override
-    public JsonVO<PageVO<AddressbookVO>> getByRealname(@Validated AddressbookQuery condition) {
-        return JsonVO.success(service.getByRealname(condition));
+    public JsonVO<PageVO<AddressbookVO>> getByRealname(AddressbookQuery condition) {
+        return null;
     }
 
-    @GetMapping("query-workno")
-    @ApiOperation(value = "根据工号查询通讯录")
     @Override
-    public JsonVO<PageVO<AddressbookVO>> getByWorkNo(@Validated AddressbookQuery condition) {
-        return JsonVO.success(service.getByWorkNo(condition));
+    public JsonVO<PageVO<AddressbookVO>> getByWorkNo(AddressbookQuery condition) {
+        return null;
     }
+
 
 }
+

@@ -32,6 +32,6 @@ public interface ISysDepartService extends IService<SysDepart> {
      * @param query 查询条件
      * @return 查询结果
      */
-    PageVO<OrganizationTreeVO> listOrganizationTree(OrganizationTreeQuery query,String departName);
+    PageVO<OrganizationTreeVO> listOrganizationTree(OrganizationTreeQuery query);
 
 }

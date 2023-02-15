@@ -32,6 +32,6 @@ public interface ISysUserService extends IService<SysUser> {
      * @param workNo
      * @return
      */
-    PageVO<AddressbookVO> getByRealnameOrWorkNo(AddressbookQuery query,String realname,String workNo);
+    PageVO<AddressbookVO> getByRealnameAndWorkNo(AddressbookQuery query,String realname,String workNo);
 
 }

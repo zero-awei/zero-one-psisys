@@ -30,6 +30,22 @@ public interface AddressbookApis {
      * @param condition 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<AddressbookVO>> getByRealnameOrWorkNo(AddressbookQuery condition);
+    JsonVO<PageVO<AddressbookVO>> getByRealnameAndWorkNo(AddressbookQuery condition);
+
+    /**
+     * 根据姓名查询通讯录列表
+     *
+     * @param condition 查询条件
+     * @return 查询结果
+     */
+    JsonVO<PageVO<AddressbookVO>> getByRealname(AddressbookQuery condition);
+
+    /**
+     * 根据工号查询通讯录列表
+     *
+     * @param condition 查询条件
+     * @return 查询结果
+     */
+    JsonVO<PageVO<AddressbookVO>> getByWorkNo(AddressbookQuery condition);
 
 }

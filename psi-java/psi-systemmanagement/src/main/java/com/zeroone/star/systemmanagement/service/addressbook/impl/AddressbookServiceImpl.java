@@ -1,6 +1,5 @@
 package com.zeroone.star.systemmanagement.service.addressbook.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
@@ -9,8 +8,6 @@ import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
 import com.zeroone.star.systemmanagement.entity.addressbook.Addressbook;
 import com.zeroone.star.systemmanagement.mapper.addressbook.AddressbookMapper;
 import com.zeroone.star.systemmanagement.service.addressbook.IAddressbookService;
-import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,11 +42,29 @@ public class AddressbookServiceImpl extends ServiceImpl<AddressbookMapper, Addre
     }
 
     @Override
-    public PageVO<AddressbookVO> getByRealnameOrWorkNo(AddressbookQuery query) {
+    public PageVO<AddressbookVO> getByRealnameAndWorkNo(AddressbookQuery query) {
         // 执行查询
         Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件
-        Page<Addressbook> result = mapper.getByRealnameOrWorkNo(addressBookPage,query);
+        Page<Addressbook> result = mapper.getByRealnameAndWorkNo(addressBookPage,query);
+        return PageVO.create(result, AddressbookVO.class);
+    }
+
+    @Override
+    public PageVO<AddressbookVO> getByRealname(AddressbookQuery query) {
+        // 执行查询
+        Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        // 构建查询条件
+        Page<Addressbook> result = mapper.getByRealname(addressBookPage,query);
+        return PageVO.create(result, AddressbookVO.class);
+    }
+
+    @Override
+    public PageVO<AddressbookVO> getByWorkNo(AddressbookQuery query) {
+        // 执行查询
+        Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        // 构建查询条件
+        Page<Addressbook> result = mapper.getByWorkNo(addressBookPage,query);
         return PageVO.create(result, AddressbookVO.class);
     }
 }

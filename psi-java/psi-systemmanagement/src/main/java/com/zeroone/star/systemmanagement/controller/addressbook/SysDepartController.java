@@ -32,7 +32,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/addressbook")
-@Api(tags = "查询组织列表和指定组织树")
+@Api(tags = "查询组织列表或指定组织树")
 @Validated
 public class SysDepartController implements OrganizationApis, OrganizationTreeApis {
 
@@ -50,7 +50,7 @@ public class SysDepartController implements OrganizationApis, OrganizationTreeAp
     @ApiOperation(value = "查询指定组织树")
     @Override
     public JsonVO<PageVO<OrganizationTreeVO>> queryOrganizationTree(@Validated OrganizationTreeQuery condition) {
-        return JsonVO.success(service.listOrganizationTree(condition, condition.getDepartName()));
+        return JsonVO.success(service.listOrganizationTree(condition));
     }
 }
 

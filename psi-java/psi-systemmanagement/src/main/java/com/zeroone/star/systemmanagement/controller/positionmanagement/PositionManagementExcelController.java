@@ -26,7 +26,7 @@ import javax.annotation.Resource;
  * @since 2023-02-14
  */
 @Controller
-@RequestMapping("excel")
+@RequestMapping("excel-positionmanagement")
 @Api(tags = "部门管理导出导入")
 public class PositionManagementExcelController {
     @Resource

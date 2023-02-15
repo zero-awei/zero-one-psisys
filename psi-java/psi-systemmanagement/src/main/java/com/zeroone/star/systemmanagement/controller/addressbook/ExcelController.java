@@ -4,8 +4,12 @@ import cn.hutool.core.date.DateTime;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
 import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
 import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
+import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
 import com.zeroone.star.systemmanagement.entity.addressbook.User;
+import com.zeroone.star.systemmanagement.service.addressbook.IAddressbookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -15,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,24 +42,52 @@ import java.util.List;
  * @version 1.0.0
  */
 @Controller
-@RequestMapping("addressbook-excel")
-@Api(tags = "通讯录导出")
-public class AddressBookExcelController {
+@RequestMapping("excel-addressbook")
+@Api(tags = "通讯录数据导出")
+public class ExcelController {
     @Resource
     EasyExcelComponent excel;
     private List<User> users;
 
+    @Resource
+    IAddressbookService service;
+
+    public PageVO<AddressbookVO> getByRealname(@Validated AddressbookQuery condition) {
+        return service.getByRealname(condition);
+
+    }
+
     @PostConstruct
     public void initData() {
+
         users = new ArrayList<>(50);
         for (int i = 1; i <= 50; i++) {
             User u = new User();
-            u.setId(i);
-            u.setName("用户" + i);
+//            u.setId(i);
+//            u.setName("用户" + i);
             u.setPhone("1234567" + i);
             users.add(u);
         }
     }
+
+    /*public ExcelController(@RequestBody JsonVO<PageVO<AddressbookVO>> request) {
+
+        PageVO<AddressbookVO> data = request.getData();
+        List<AddressbookVO> rows = data.getRows();
+        users = new ArrayList<User>(rows.size());
+        for (AddressbookVO row : rows) {
+            for (int i = 0; i < rows.size(); i++) {
+                User u = new User();
+                u.setRealname(row.getRealname());
+                u.setWorkNo(row.getWorkNo());
+                u.setDepartName(row.getDepartName());
+                u.setPost(row.getPost());
+                u.setPhone(row.getPhone());
+                u.setEmail(row.getEmail());
+                users.add(u);
+            }
+        }
+    }*/
 
     @SneakyThrows
     @ApiOperation(value = "获取导出文件")
@@ -82,7 +115,7 @@ public class AddressBookExcelController {
     private String serverUrl;
 
     @SneakyThrows
-    @ApiOperation(value = "获取导出链接（返回值data值表示导出链接）")
+    @ApiOperation(value = "获取导出链接")
     @ResponseBody
     @GetMapping("get-url")
     public JsonVO<String> downloadUrl() {

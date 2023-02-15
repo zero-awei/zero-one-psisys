@@ -30,6 +30,22 @@ public interface IAddressbookService extends IService<Addressbook> {
      * @param query 查询条件
      * @return
      */
-    PageVO<AddressbookVO> getByRealnameOrWorkNo(AddressbookQuery query);
+    PageVO<AddressbookVO> getByRealnameAndWorkNo(AddressbookQuery query);
+
+
+    /**
+     * 根据姓名查询通讯录列表
+     * @param query 查询条件
+     * @return
+     */
+    PageVO<AddressbookVO> getByRealname(AddressbookQuery query);
+
+
+    /**
+     * 根据工号查询通讯录列表
+     * @param query 查询条件
+     * @return
+     */
+    PageVO<AddressbookVO> getByWorkNo(AddressbookQuery query);
 
 }

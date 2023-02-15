@@ -11,7 +11,6 @@ import com.zeroone.star.project.vo.systemmanagement.addressbook.OrganizationVO;
 import com.zeroone.star.systemmanagement.entity.addressbook.SysDepart;
 import com.zeroone.star.systemmanagement.mapper.addressbook.SysDepartMapper;
 import com.zeroone.star.systemmanagement.service.addressbook.ISysDepartService;
-import org.bouncycastle.util.Strings;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,18 +39,19 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
         // 构建查询条件
         QueryWrapper<SysDepart> sysDepartQueryWrapper = new QueryWrapper<>();
         // 执行分页查询
-        Page<SysDepart> result = baseMapper.selectPage(sysDepartPage, sysDepartQueryWrapper);
+//        Page<SysDepart> result = baseMapper.selectPage(sysDepartPage, sysDepartQueryWrapper);
+        Page<SysDepart> result = mapper.getOrganizationName(sysDepartPage, query);
         return PageVO.create(result, OrganizationVO.class);
     }
 
     @Override
-    public PageVO<OrganizationTreeVO> listOrganizationTree(OrganizationTreeQuery query,String departName) {
+    public PageVO<OrganizationTreeVO> listOrganizationTree(OrganizationTreeQuery query) {
         // 构建分页对象
         Page<SysDepart> sysDepartPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件
         QueryWrapper<SysDepart> sysDepartQueryWrapper = new QueryWrapper<>();
         // 执行分页查询
-        Page<SysDepart> result = mapper.getOrganizationTreeName(sysDepartPage, sysDepartQueryWrapper, departName);
+        Page<SysDepart> result = mapper.getOrganizationTreeName(sysDepartPage, query);
         return PageVO.create(result, OrganizationTreeVO.class);
     }
 }
