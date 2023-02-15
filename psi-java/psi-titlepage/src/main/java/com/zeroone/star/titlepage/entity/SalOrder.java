@@ -26,10 +26,6 @@ public class SalOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String x;
-
-    private String y;
-
     /**
      * ID
      */
@@ -306,6 +302,5 @@ public class SalOrder implements Serializable {
      */
     private Integer version;
 
->>>>>>> origin/j2-yx
 
 }

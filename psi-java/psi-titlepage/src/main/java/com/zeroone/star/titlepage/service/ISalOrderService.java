@@ -1,13 +1,10 @@
 package com.zeroone.star.titlepage.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-<<<<<<< HEAD
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.homepage.HomeDoingBillVO;
 import com.zeroone.star.project.vo.homepage.SalOrderVO;
-=======
 import com.zeroone.star.project.vo.homepage.SalesAmountInformationVO;
->>>>>>> origin/j2-yx
 import com.zeroone.star.titlepage.entity.SalOrder;
 
 import java.util.List;
@@ -30,7 +27,6 @@ public interface ISalOrderService extends IService<SalOrder> {
      * 获取每月销售金额
      * @return 每月销售金额构成的list
      */
-
     public List<SalesAmountInformationVO> listSalesAmount();
 
 

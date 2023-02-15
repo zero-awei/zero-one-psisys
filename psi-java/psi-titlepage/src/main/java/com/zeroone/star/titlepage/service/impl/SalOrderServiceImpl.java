@@ -35,6 +35,7 @@ public class SalOrderServiceImpl extends ServiceImpl<SalOrderMapper, SalOrder> i
 
     /**
      * 查询毛利润
+     *
      * @return
      */
 
@@ -42,22 +43,25 @@ public class SalOrderServiceImpl extends ServiceImpl<SalOrderMapper, SalOrder> i
     public List<SalOrderVO> listSalOrder() {
         //调用方法查询毛利润
         List<SalOrder> list = baseMapper.querySalOrder();
-        List<SalOrderVO> list1=new ArrayList<>();
+        List<SalOrderVO> list1 = new ArrayList<>();
         //list里的元素转化为VO类型
         for (SalOrder salOrder : list) {
             SalOrderVO salOrderVO = new SalOrderVO();
-            BeanUtil.copyProperties(salOrder,salOrderVO);
+            BeanUtil.copyProperties(salOrder, salOrderVO);
             list1.add(salOrderVO);
         }
         return list1;
 
 
-    /**
-     * 获取每月销售金额
-     * @return 每月销售金额构成的list
-     */
+        /**
+         * 获取每月销售金额
+         * @return 每月销售金额构成的list
+         */
+
+    }
+
     @Override
     public List<SalesAmountInformationVO> listSalesAmount() {
-        return mapper.listSalesAmount();
+        return  mapper.listSalesAmount();
     }
 }
