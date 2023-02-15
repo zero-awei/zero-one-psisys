@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 
 @Data
-@ApiModel("用户管理显示对象")
+@ApiModel("用户管理的显示对象")
 public class UserVO {
     /**
      * 主键id

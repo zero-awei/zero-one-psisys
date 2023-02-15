@@ -1,7 +1,5 @@
 package com.zeroone.star.project.dto.user;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,8 +9,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@ApiModel("用户管理的数据传输对象")
-public class UserDTO {
+@ApiModel("用户管理中编辑的数据传输对象")
+public class EditUserDTO {
     /**
      * 主键id
      */
@@ -112,20 +110,6 @@ public class UserDTO {
     private String telephone;
 
 
-
-    /**
-     * 更新人
-     */
-    @ApiModelProperty(value = "更新人", example = "admin")
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @ApiModelProperty(value = "更新时间", example = "2023-02-12 22:18:43")
-    private Date updateTime;
-
     /**
      * 身份（1普通成员 2上级）
      */
@@ -149,6 +133,5 @@ public class UserDTO {
      */
     @ApiModelProperty(value = "设备ID", example = "1")
     private String clientId;
-
 
 }

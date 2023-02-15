@@ -1,7 +1,5 @@
-package com.zeroone.star.project.dto.user;
+package com.zeroone.star.project.vo.user;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,8 +9,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@ApiModel("用户管理的数据传输对象")
-public class UserDTO {
+@ApiModel("用户管理中编辑的显示对象")
+public class EditUserVO {
     /**
      * 主键id
      */
@@ -78,19 +76,14 @@ public class UserDTO {
     /**
      * 状态(1-正常,2-冻结)
      */
-    @ApiModelProperty(value = "状态", example = "1")
+    @ApiModelProperty(value = "修改您的状态，1为正常，0为冻结", example = "1")
     private Boolean status;
 
-    /**
-     * 删除状态(0-正常,1-已删除)
-     */
-    @ApiModelProperty(value = "删除状态", example = "0")
-    private Boolean delFlag;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
-    @ApiModelProperty(value = "同步工作流引擎", example = "1")
+    @ApiModelProperty(value = "同步工作流引擎，1为同步，0为不同步", example = "1")
     private Boolean activitiSync;
 
     /**
@@ -135,13 +128,13 @@ public class UserDTO {
     /**
      * 负责部门
      */
-    @ApiModelProperty(value = "负责部门", example = "6")
+    @ApiModelProperty(value = "负责的部门", example = "6")
     private String departIds;
 
     /**
      * 多租户标识
      */
-    @ApiModelProperty(value = "多租户标识", example = "1")
+    @ApiModelProperty(value = "是否为多租户", example = "1")
     private String relTenantIds;
 
     /**
@@ -149,6 +142,5 @@ public class UserDTO {
      */
     @ApiModelProperty(value = "设备ID", example = "1")
     private String clientId;
-
 
 }
