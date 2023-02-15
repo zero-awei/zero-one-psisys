@@ -57,6 +57,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -157,6 +158,36 @@
     </ClInclude>
     <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h">
 >>>>>>> remotes/origin/c3-pur-req-adam
+=======
+    <ClInclude Include="api\pur-quot\PurQuotController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-quot\AddPurQuotVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-quot\ModPurQuotVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-quot\DelPurQuotVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-quot\PurQuotModBillStatusVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h">
+>>>>>>> remotes/origin/c3-pur-quot-naiguan
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -178,6 +209,7 @@
     </ClCompile>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="api\pur-req\PurReqController.cpp">
 =======
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp">
@@ -197,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="domain\dto\pur-req\ModifyPurReqDTO.cpp">
 >>>>>>> remotes/origin/c3-pur-req-adam
+=======
+    <ClCompile Include="api\pur-quot\PurQuotController.cpp">
+>>>>>>> remotes/origin/c3-pur-quot-naiguan
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

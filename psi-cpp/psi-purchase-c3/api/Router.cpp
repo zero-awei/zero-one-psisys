@@ -4,6 +4,8 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "pur-quot/PurQuotController.h"
+
 
 //
 #include "pur-req/PurReqController.h"
@@ -67,27 +69,28 @@ void Router::initRouter()
 
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
-
 	createPurCompareRouter();
 	createPurInquiryRouter();
 	createPurReqRouter();
-	purReqRouter();
-	
+	createPurQuotRouter();
+
 }
+
+
 
 
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
-	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
-	BIND_PUT_ROUTER(server, "/put", &SampleController::modifySample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &SampleController::removeSample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
-	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
-	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
+	//新增供应报价
+	BIND_POST_ROUTER(server, "/post", &PurQuotController::addPurQuot, nullptr);
+	//修改供应报价
+	BIND_PUT_ROUTER(server, "/put", &PurQuotController::modPurQuot, nullptr);
+	//删除供应报价
+	BIND_DEL_ROUTER(server, "/delete", &PurQuotController::delPurQuot, nullptr);
+	//修改供应报价状态（关闭、作弊、反关闭）
+	BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
 }
 
 void Router::createUserDepartRouter()
@@ -137,13 +140,29 @@ void Router::createPurInquiryRouter()
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
 	//查看指定询价单详细信息接口路由绑定
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
-	
 	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
 	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
 	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
 	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
 	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
 }
+
+
+
+//奶罐的代码
+void Router::createPurQuotRouter()
+{
+	//新增供应报价
+	BIND_POST_ROUTER(server, "/add-pur-quot", &PurQuotController::addPurQuot, nullptr);
+	//修改供应报价
+	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
+	//删除供应报价
+	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
+	//修改供应报价状态（关闭、作弊、反关闭）
+	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
+	
+}
+
 
 
 

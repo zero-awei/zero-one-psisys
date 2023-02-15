@@ -190,6 +190,7 @@
   <ItemGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="api\pur-req\PurReqController.h" />
 =======
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
@@ -216,6 +217,18 @@
     <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h" />
     <ClInclude Include="domain\dto\pur-req\PurReqModBillStatusDTO.h" />
 >>>>>>> remotes/origin/c3-pur-req-adam
+=======
+    <ClInclude Include="api\pur-quot\PurQuotController.h" />
+    <ClInclude Include="api\Router.h" />
+    <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h" />
+    <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h" />
+>>>>>>> remotes/origin/c3-pur-quot-naiguan
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
 <<<<<<< HEAD
@@ -234,6 +247,7 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+<<<<<<< HEAD
     <ClInclude Include="domain\vo\pur-compare\PurComExportVO.h" />
     <ClInclude Include="domain\vo\pur-compare\PurComIntoVO.h" />
     <ClInclude Include="domain\vo\pur-compare\导出VO.h" />
@@ -251,6 +265,12 @@
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h" />
 >>>>>>> remotes/origin/c3-pur-inquiry-huilai
+=======
+    <ClInclude Include="domain\vo\pur-quot\AddPurQuotVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\DelPurQuotVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\ModPurQuotVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotModBillStatusVO.h" />
+>>>>>>> remotes/origin/c3-pur-quot-naiguan
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -260,6 +280,7 @@
     <ClCompile Include="api\Aspect.cpp" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
 =======
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
@@ -267,6 +288,9 @@
 =======
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
 >>>>>>> remotes/origin/c3-pur-req-adam
+=======
+    <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
+>>>>>>> remotes/origin/c3-pur-quot-naiguan
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\dto\pur-req\AddPurReqDTO.cpp" />
     <ClCompile Include="domain\dto\pur-req\DeletePurReqDTO.cpp" />

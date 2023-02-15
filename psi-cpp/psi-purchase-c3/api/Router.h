@@ -19,7 +19,6 @@ public:
 	void initRouter();
 
 private:
-	
 
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
@@ -31,8 +30,7 @@ private:
 	void createPurReqRouter();
 	void createPurCompareRouter();
 	void createPurInquiryRouter();
-	void purReqRouter();
-
+	void createPurQuotRouter();
 };
 
 
