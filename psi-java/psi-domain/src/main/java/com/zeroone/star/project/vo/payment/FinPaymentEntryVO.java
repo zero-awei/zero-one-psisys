@@ -1,9 +1,17 @@
 package com.zeroone.star.project.vo.payment;
 
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -18,8 +26,42 @@ import java.math.BigDecimal;
 public class FinPaymentEntryVO {
 
     /**
+     * ID
+     */
+    private String id;
+
+    /**
+     * 主表
+     */
+    private String mid;
+
+    /**
+     * 单据编号
+     */
+    private String billNo;
+
+    /**
+     * 分录号
+     */
+    private Integer entryNo;
+
+    /**
+     * 源单类型
+     */
+    private String srcBillType;
+
+    private String srcBillId;
+
+    /**
+     * 源单分录id
+     */
+    private String srcEntryId;
+
+
+    /**
      * 源单分录号
      */
+
     @ApiModelProperty(value = "源单号",example = "CGFKSQ-230211-004")
     private String srcNo;
 
@@ -58,4 +100,12 @@ public class FinPaymentEntryVO {
      */
     @ApiModelProperty(value = "自定义2",example = "")
     private String custom2;
+
+    /**
+     * 版本
+     */
+    private Integer version;
+
+
 }
+

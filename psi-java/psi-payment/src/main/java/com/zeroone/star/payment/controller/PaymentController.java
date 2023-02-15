@@ -19,6 +19,22 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.zeroone.star.project.dto.payment.PrepaymentDTO;
+import com.zeroone.star.project.payment.PaymentApis;
+import com.zeroone.star.project.query.payment.PurchaseListQuery;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payment.FinPaymentReqVO;
+import com.zeroone.star.project.vo.payment.PurOrderEntryVO;
+import com.zeroone.star.project.vo.payment.SupplierVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("payment")
@@ -108,5 +124,40 @@ public class PaymentController implements PaymentApis {
     public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
         return JsonVO.success("删除成功");
 
+    }
+
+    /**
+     * 添加
+     * author 空
+     * since 2023-02-13
+     */
+    @PutMapping("insert-prepayment")
+    @ApiOperation(value = "预付款操作")
+    @Override
+    public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
+        return null;
+    }
+
+    @PutMapping("getSuppliers")
+    @ApiOperation(value = "获取供应商")
+    @Override
+    public JsonVO<List<SupplierVO>> querySupplierList() {
+        return null;
+    }
+
+
+
+    @GetMapping("list-purhcaserequisitions")
+    @ApiOperation(value = "获取采购清单（有申请）")
+    @Override
+    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+        return null;
+    }
+
+    @GetMapping("list-purhcaserequisitions")
+    @ApiOperation(value = "获取采购清单（无申请）")
+    @Override
+    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+        return null;
     }
 }
