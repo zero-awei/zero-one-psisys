@@ -23,7 +23,7 @@
 #include "uselib/ws/TestWs.h"
 #endif
 
-#include "pur-req-adam/PurReqAdamController.h"
+#include "pur-req/PurReqController.h"
 
 Router::Router(http_server* sever)
 {
@@ -70,7 +70,7 @@ void Router::initRouter()
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-	purReqAdamRouter();
+	purReqRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -93,15 +93,14 @@ void Router::createUserDepartRouter()
 
 #endif
 
-void Router::purReqAdamRouter()
+void Router::purReqRouter()
 {
 	//采购订单添加接口
-	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqAdamController::addPurReq, nullptr);
+	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqController::addPurReq, nullptr);
 	//采购订单修改接口
-	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqAdamController::modifyPurReq, nullptr);
+	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqController::modifyPurReq, nullptr);
 	//采购订单删除接口
-	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqAdamController::removePurReqById, nullptr);
+	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqController::removePurReqById, nullptr);
 	//采购订单状态修改接口
-	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqAdamController::modifyPurReqBillStatus, nullptr);
-
+	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqController::modifyPurReqBillStatus, nullptr);
 }

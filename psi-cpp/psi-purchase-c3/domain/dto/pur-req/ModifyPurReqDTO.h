@@ -1,16 +1,32 @@
 #pragma once
-#ifndef _PUR_REQ_ADAM_DTO_
-#define _PUR_REQ_ADAM_DTO_
+/*
+ Copyright Zero One Star. All rights reserved.
+
+ @Author: Adam
+ @Date: 2023年2月15日
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+#ifndef _MODIFY_PUR_REQ_DTO_
+#define _MODIFY_PUR_REQ_DTO_
 
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
 //考虑到修改和添加采购订单的操作类似所以合并为一个DTO
 //添加订单的DTO(不包括明细内容),同时由于有附件内容可能添加,所以继承FileDTO
-class AddAndModifyPurReqDTO:FileDTO
+class ModifyPurReqDTO :public FileDTO
 {
-	// 单据id
-	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//单据日期
@@ -35,8 +51,6 @@ class AddAndModifyPurReqDTO:FileDTO
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已订数量
 	CC_SYNTHESIZE(double, orderedQty, OrderedQty);
-	//附件
-	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//是否自动生成
@@ -69,35 +83,10 @@ class AddAndModifyPurReqDTO:FileDTO
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//修改时间
 	CC_SYNTHESIZE(string, updateTime, updateTime);
-	//版本
-	CC_SYNTHESIZE(int, version, Version);
+
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, AddAndModifyPurReqDTO& t);
+	friend void from_json(const json& j, ModifyPurReqDTO& t);
 };
 
-//删除订单的DTO 前端只需要传递一个单据编号给我即可进行修改
-class DeletePurDTO {
-	//单据编号
-	CC_SYNTHESIZE(string, billNo, BillNo);
-public:
-	//绑定JSON转换方法
-	friend void from_json(const json& j, DeletePurDTO& t);
-};
-//修改订单状态的DTO 前端需要传递一个单据编号以及状态修改信息
-class PurReqModBillStatusDTO {
-	//单据编号
-	CC_SYNTHESIZE(string, billNo, BillNo);
-	//是否生效
-	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//生效时间
-	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//是否已关闭
-	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//是否作废
-	CC_SYNTHESIZE(int, isVoided, IsVoided);
-public:
-	//绑定JSON转换方法
-	friend void from_json(const json& j, PurReqModBillStatusDTO& t);
-};
-#endif // !_PUR_REQ_ADAM_DTO_
+#endif // !_MODIFY_PUR_REQ_DTO_

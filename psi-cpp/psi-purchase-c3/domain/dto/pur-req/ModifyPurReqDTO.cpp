@@ -1,20 +1,36 @@
-#include "stdafx.h"
-#include "PurReqAdamDTO.h"
+/*
+ Copyright Zero One Star. All rights reserved.
 
-void from_json(const json& j, AddAndModifyPurReqDTO& t) {
+ @Author: Adam
+ @Date: 2023Äê2ÔÂ15ÈÕ
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+#include "stdafx.h"
+#include "ModifyPurReqDTO.h"
+
+void from_json(const json& j, ModifyPurReqDTO& t) {
 
 	BIND_FROM_TO_I(j, t, isAuto);
 	BIND_FROM_TO_I(j, t, approvalResultType);
 	BIND_FROM_TO_I(j, t, isEffective);
 	BIND_FROM_TO_I(j, t, isClosed);
 	BIND_FROM_TO_I(j, t, isVoided);
-	BIND_FROM_TO_I(j, t, version);
 
 	BIND_FROM_TO_D(j, t, qty);
 	BIND_FROM_TO_D(j, t, amt);
 	BIND_FROM_TO_D(j, t, orderedQty);
 
-	BIND_FROM_TO_NORMAL(j, t, id);
 	BIND_FROM_TO_NORMAL(j, t, billNo);
 	BIND_FROM_TO_NORMAL(j, t, billDate);
 	BIND_FROM_TO_NORMAL(j, t, subject);
@@ -24,7 +40,7 @@ void from_json(const json& j, AddAndModifyPurReqDTO& t) {
 	BIND_FROM_TO_NORMAL(j, t, purType);
 	BIND_FROM_TO_NORMAL(j, t, requester);
 	BIND_FROM_TO_NORMAL(j, t, requestTime);
-	BIND_FROM_TO_NORMAL(j, t, attachment);
+
 	BIND_FROM_TO_NORMAL(j, t, remark);
 	BIND_FROM_TO_NORMAL(j, t, billStage);
 	BIND_FROM_TO_NORMAL(j, t, approver);
@@ -37,15 +53,5 @@ void from_json(const json& j, AddAndModifyPurReqDTO& t) {
 	BIND_FROM_TO_NORMAL(j, t, updateBy);
 	BIND_FROM_TO_NORMAL(j, t, updateTime);
 }
-void from_json(const json& j, DeletePurDTO& t) {
-	BIND_FROM_TO_NORMAL(j, t, billNo);
-}
 
-void from_json(const json& j, PurReqModBillStatusDTO& t) {
-	BIND_FROM_TO_NORMAL(j, t, billNo);
-	BIND_FROM_TO_NORMAL(j, t, effectiveTime);
 
-	BIND_FROM_TO_I(j, t, isEffective);
-	BIND_FROM_TO_I(j, t, isClosed);
-	BIND_FROM_TO_I(j, t, isVoided);
-}
