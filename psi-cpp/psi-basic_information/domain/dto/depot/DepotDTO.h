@@ -33,7 +33,7 @@ class DepotDTO : public FileDTO
 	// 编号
 	CC_SYNTHESIZE(string, id, Id);
 	// 助记名
-	CC_SYNTHESIZE(string, help_name, Help_name);
+	CC_SYNTHESIZE(string, helpName, HelpName);
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
@@ -47,11 +47,11 @@ public:
 	friend void from_json(const json& j, DepotDTO& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, id);
-		BIND_FROM_TO_NORMAL(j, t, help_name);
+		BIND_FROM_TO_NORMAL(j, t, helpName);
 		BIND_FROM_TO_I(j, t, phone);
 	}
 
-	BIND_TO_JSON(DepotDTO, name, id, help_name, phone);
+	BIND_TO_JSON(DepotDTO, name, id, helpName, phone);
 };
 
 #endif // !_DEPOT_DTO_

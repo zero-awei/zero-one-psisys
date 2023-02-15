@@ -32,7 +32,7 @@ class DepotVO
 	// 编号
 	CC_SYNTHESIZE(string, id, Id);
 	// 助记名
-	CC_SYNTHESIZE(string, help_name, Help_name);
+	CC_SYNTHESIZE(string, helpName, HelpName);
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
@@ -43,7 +43,7 @@ class DepotVO
 	// 修改人
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(DepotVO, name, id, help_name, phone);
+	BIND_TO_JSON(DepotVO, name, id, helpName, phone);
 };
 
 class DepotDetailVO
@@ -55,14 +55,14 @@ class DepotDetailVO
 	// 编号
 	CC_SYNTHESIZE(string, id, Id);
 	// 助记名
-	CC_SYNTHESIZE(string, help_name, Help_name);
+	CC_SYNTHESIZE(string, helpName, HelpName);
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
 	// 备注
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(DepotVO, name, id, help_name, phone);
+	BIND_TO_JSON(DepotVO, name, id, helpName, phone);
 };
 
 class DepotActionInfoVO
