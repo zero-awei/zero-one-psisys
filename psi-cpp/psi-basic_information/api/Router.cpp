@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "depot/DepotController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -37,34 +38,35 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	createDepotRouter();
 
 #ifdef HTTP_SERVER_DEMO
-	//绑定首页页面
-	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
+		//绑定首页页面
+		BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
 		res.render_raw_view("./public/test.html");
-		}, nullptr);
+			}, nullptr);
 
 	//初始化一个文件上传接口示例
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
-			if (req.get_content_type() != content_type::multipart)
-			{
-				JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
-				nlohmann::json jvo = nlohmann::json(vo);
-				jvo.erase("data");
-				res.render_json(jvo);
-				return;
-			}
-			//获取表单参数
-			std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-			std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-			//获取文件路径
-			auto& files = req.get_upload_files();
-			std::vector<string> filePaths;
-			for (auto& file : files) {
-				filePaths.push_back(file.get_file_path().substr(1));
-				std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-			}
-			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
+		if (req.get_content_type() != content_type::multipart)
+		{
+			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
+			nlohmann::json jvo = nlohmann::json(vo);
+			jvo.erase("data");
+			res.render_json(jvo);
+			return;
+		}
+		//获取表单参数
+		std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
+		std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
+		//获取文件路径
+		auto& files = req.get_upload_files();
+		std::vector<string> filePaths;
+		for (auto& file : files) {
+			filePaths.push_back(file.get_file_path().substr(1));
+			std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
+		}
+		res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
 	createSampleRouter();
@@ -93,4 +95,19 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
+
 #endif
+void Router::createDepotRouter()
+{
+	BIND_GET_ROUTER(server, "/depot-query", &DepotController::queryDepot, nullptr);
+	BIND_GET_ROUTER(server, "/depot-query-kid", &DepotController::queryKidDepot, nullptr);
+	BIND_GET_ROUTER(server, "/depot-detail", &DepotController::queryDetailDepot, nullptr);
+	BIND_GET_ROUTER(server, "/depot-action-info", &DepotController::queryActionInfolDepot, nullptr);
+	BIND_GET_ROUTER(server, "/depot-execAddDepot", &DepotController::addDepot, nullptr);
+	BIND_POST_ROUTER(server, "/depot-modify", &DepotController::modifyDepot, nullptr);
+	BIND_GET_ROUTER(server, "/depot-remove", &DepotController::removeDepot, nullptr);
+	BIND_GET_ROUTER(server, "/depot-add-depots", &DepotController::addDepots, nullptr);
+	BIND_GET_ROUTER(server, "/depot-export", &DepotController::exportExecl, nullptr);
+	BIND_GET_ROUTER(server, "/depot-export-only", &DepotController::exportExeclOnly, nullptr);
+}

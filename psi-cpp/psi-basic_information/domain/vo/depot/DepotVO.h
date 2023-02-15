@@ -55,9 +55,9 @@ public:
 class DepotDetailVO
 {
 	// 上级
-	CC_SYNTHESIZE(int, previous, Previous);
+	CC_SYNTHESIZE(string, previous, Previous);
 	// 下级
-	CC_SYNTHESIZE(int, next, Next);
+	CC_SYNTHESIZE(bool, next, Next);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号

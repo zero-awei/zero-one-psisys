@@ -23,11 +23,14 @@
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
+
 /**
  * 基础资料仓库模块传输对象
  */
 class DepotDTO : public FileDTO
 {
+	// 上级
+	CC_SYNTHESIZE(string, previous, Previous);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
@@ -51,6 +54,7 @@ class DepotDTO : public FileDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DepotDTO& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, previous);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, helpName);
@@ -63,7 +67,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, modiPeo);
 	}
 
-	BIND_TO_JSON(DepotDTO, name, id, helpName, phone, start, remarks, creationTime, creationPeo, modiTime, modiPeo);
+	BIND_TO_JSON(DepotDTO, previous, name, id, helpName, phone, start, remarks, creationTime, creationPeo, modiTime, modiPeo);
 };
 
 #endif // !_DEPOT_DTO_

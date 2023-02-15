@@ -171,6 +171,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\depot\DepotController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />

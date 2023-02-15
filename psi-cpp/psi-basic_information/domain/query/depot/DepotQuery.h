@@ -41,4 +41,14 @@ public:
 	}
 };
 
+class OnlyValueQuery
+{
+	CC_SYNTHESIZE(string, id, ID);
+public:
+	// °ó¶¨from_json
+	friend void from_json(const json& j, OnlyValueQuery& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, id);
+	}
+};
+
 #endif // !_DEPOT_QUERY_

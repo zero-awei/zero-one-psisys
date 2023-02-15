@@ -34,6 +34,7 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
+	void createDepotRouter();
 private:
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
