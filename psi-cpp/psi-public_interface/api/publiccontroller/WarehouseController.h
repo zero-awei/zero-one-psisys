@@ -2,8 +2,8 @@
 #ifndef _WAREHOUSE_CONTROLLER_
 #define _WAREHOUSE_CONTROLLER_
 
-#include "../domain/vo/JsonVO.h"
-#include "../domain/vo/WarehouseVO.h"
+#include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/WarehouseVO.h"
 
 class WarehouseController
 {

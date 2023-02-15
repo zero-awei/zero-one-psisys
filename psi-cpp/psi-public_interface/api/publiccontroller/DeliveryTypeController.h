@@ -2,8 +2,8 @@
 #ifndef _DELIVERY_TYPE_CONTROLLER_
 #define _DELIVERY_TYPE_CONTROLLER_
 
-#include "../domain/vo/JsonVO.h"
-#include "../domain/vo/DeliveryTypeVO.h"
+#include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/DeliveryTypeVO.h"
 class DeliveryTypeController
 {
 public:

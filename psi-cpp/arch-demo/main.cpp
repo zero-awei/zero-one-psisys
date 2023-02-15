@@ -31,6 +31,11 @@
 #include "YamlHelper.h"
 #endif
 
+#include <FastDfsClient.h>
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
+#include "uselib/fastdfs/TestFastDfs.h"
+
 /**
  * 解析启动参数
  * 注意：
@@ -39,12 +44,12 @@
  */
 bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
-	std::string serverPort = "3306";
+	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "psitxms9527";
+	std::string dbPassword = "123456";
 	std::string dbName = "test";
-	std::string dbHost = "43.138.223.223";
+	std::string dbHost = "localhost";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
@@ -134,6 +139,11 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
+	//测试示例
+	/*TestFastDfs fd;
+	string filename = "C:\\Users\\1.png";
+	fd.testDfs(filename);*/
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象

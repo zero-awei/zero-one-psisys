@@ -1,8 +1,8 @@
 #pragma once
 #ifndef _CURRENCY_TYPE_CONTROLLER_
 #define _CURRENCY_TYPE_CONTROLLER_
-#include "../domain/vo/JsonVO.h"
-#include "../domain/vo/CurrencyTypeVO.h"
+#include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/CurrencyTypeVO.h"
 
 
 class CurrencyTypeController

@@ -30,13 +30,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\CurrencyTypeController.cpp">
+    <ClCompile Include="api\publiccontroller\CurrencyTypeController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\DeliveryTypeController.cpp">
+    <ClCompile Include="api\publiccontroller\DeliveryTypeController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\WarehouseController.cpp">
+    <ClCompile Include="api\publiccontroller\WarehouseController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,7 +83,7 @@
     <ClInclude Include="domain\vo\CurrencyTypeVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\CurrencyTypeController.h">
+    <ClInclude Include="api\publiccontroller\CurrencyTypeController.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\DeliveryTypeVO.h">
@@ -92,10 +92,10 @@
     <ClInclude Include="domain\vo\WarehouseVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\DeliveryTypeController.h">
+    <ClInclude Include="api\publiccontroller\DeliveryTypeController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\WarehouseController.h">
+    <ClInclude Include="api\publiccontroller\WarehouseController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
