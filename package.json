@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "echarts": "^4.9.0",
+    "v-charts": "^1.19.0"
+  }
+}

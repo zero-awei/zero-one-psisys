@@ -13,14 +13,14 @@
       </el-form-item>
     </el-form>
   </el-card>
+
   <!-- 验证码组件 -->
   <Verify
     mode="pop"
     :captchaType="captchaType"
     :imgSize="{ width: '400px', height: '200px' }"
     ref="verify"
-    @success="handleSuccess"
-  ></Verify>
+    @success="handleSuccess"></Verify>
 </template>
 
 <script setup>
