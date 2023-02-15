@@ -14,8 +14,8 @@ import java.math.BigDecimal;
  * <p>版权：&copy;01星球</p>
  * <p>地址：01星球总部</p>
  *
- * @author forever爱
- * @version 1.0.0
+ * author forever爱
+ * version 1.0.0
  */
 @Data
 public class FinPaymentEntryDTO {

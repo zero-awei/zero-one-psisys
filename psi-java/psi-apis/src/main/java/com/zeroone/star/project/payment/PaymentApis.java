@@ -127,7 +127,7 @@ public interface PaymentApis {
      * return 采购项目清单
      * author 空
      */
-    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+//    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
     /**
      * 获取采购项目清单（有申请）
@@ -135,5 +135,5 @@ public interface PaymentApis {
      * return 采购项目清单
      * author 空
      */
-    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+//    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 }

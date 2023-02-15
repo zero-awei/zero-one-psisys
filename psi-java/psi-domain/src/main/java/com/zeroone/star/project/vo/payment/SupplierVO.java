@@ -25,7 +25,4 @@ public class SupplierVO {
     @ApiModelProperty(value = "助记名",example = "00001 公交卡")
     private String aux_name;
 
-
-
-
 }

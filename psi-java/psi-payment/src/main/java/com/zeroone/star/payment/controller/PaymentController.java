@@ -71,7 +71,7 @@ public class PaymentController implements PaymentApis {
      */
     @Override
     @GetMapping("query-all")
-    @ApiOperation(value = "按照条件实现单据查询")
+    @ApiOperation(value = "查询采购预付单功能")
     public JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition) {
         return null;
     }
@@ -81,15 +81,15 @@ public class PaymentController implements PaymentApis {
      * author hzp
      * since 2023-02-13
      */
-    @GetMapping("/detHav")
-    @ApiOperation(value = "有申请详情信息")
+    @GetMapping("query-one-hav")
+    @ApiOperation(value = "查看单据详情信息（有申请）")
     @Override
     public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
         return JsonVO.success(new DetHavVO());
     }
 
-    @GetMapping("/detNo")
-    @ApiOperation(value = "无申请详情信息")
+    @GetMapping("query-one-no")
+    @ApiOperation(value = "查看单据详情信息（无申请）")
     @Override
     public JsonVO<DetNoVO> queryByBillNo(PreDetQuery condition) {
         return JsonVO.success(new DetNoVO());
@@ -131,15 +131,15 @@ public class PaymentController implements PaymentApis {
      * author 空
      * since 2023-02-13
      */
-    @PutMapping("insert-prepayment")
-    @ApiOperation(value = "预付款操作")
+    @PutMapping("insert")
+    @ApiOperation(value = "添加采购预付单功能")
     @Override
     public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
         return null;
     }
 
     @PutMapping("getSuppliers")
-    @ApiOperation(value = "获取供应商")
+    @ApiOperation(value = "获取供应商列表")
     @Override
     public JsonVO<List<SupplierVO>> querySupplierList() {
         return null;
@@ -147,17 +147,17 @@ public class PaymentController implements PaymentApis {
 
 
 
-    @GetMapping("list-purhcaserequisitions")
-    @ApiOperation(value = "获取采购清单（有申请）")
-    @Override
-    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-        return null;
-    }
-
-    @GetMapping("list-purhcaserequisitions")
-    @ApiOperation(value = "获取采购清单（无申请）")
-    @Override
-    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-        return null;
-    }
+//    @GetMapping("list-purhcaserequisitions")
+//    @ApiOperation(value = "获取采购清单（有申请）")
+//    @Override
+//    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+//        return null;
+//    }
+//
+//    @GetMapping("list-purhcaserequisitions")
+//    @ApiOperation(value = "获取采购清单（无申请）")
+//    @Override
+//    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+//        return null;
+//    }
 }
