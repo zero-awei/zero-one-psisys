@@ -17,39 +17,39 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_VO_
-#define _SAMPLE_VO_
+#ifndef _QUERYBILLLIST_VO_
+#define _QUERYBILLLIST_VO_
 
 #include "../../GlobalInclude.h"
 
 /**
- * 示例显示对象
+ * 查询单据列表显示对象
  */
 class QueryBillListVO
 {
 	// 单据编号
 	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 单据日期-开始
-	CC_SYNTHESIZE(string, bill_date_start, Bill_Date_Start);
+	CC_SYNTHESIZE(string, billDateStart, BillDateStart);
 	// 单据日期-结束
-	CC_SYNTHESIZE(string, bill_date_end, Bill_Date_End);
+	CC_SYNTHESIZE(string, billDateEnd, BillDateEnd);
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 供应商
-	CC_SYNTHESIZE(string, supplier_id, Supplier_Id);
+	CC_SYNTHESIZE(string, supplierId, SupplierId);
 	// 单据阶段
-	CC_SYNTHESIZE(string, bill_stage, Bill_Stage);
+	CC_SYNTHESIZE(string, billStage, BillStage);
 	// 是否生效
-	CC_SYNTHESIZE(uint64_t, is_effective, Is_effective);
+	CC_SYNTHESIZE(uint64_t, isEffective, IsEffective);
 	// 是否关闭
-	CC_SYNTHESIZE(uint64_t, is_closed, Is_closed);
+	CC_SYNTHESIZE(uint64_t, isClosed, IsClosed);
 	// 是否作废
-	CC_SYNTHESIZE(uint64_t, is_voided, Is_voided);
+	CC_SYNTHESIZE(uint64_t, isVoided, IsVoided);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, QueryBillListVO& t); // NOLINT
-	BIND_TO_JSON(QueryBillListVO, id, bill_date_start, bill_date_end, subject, supplier_id, bill_stage, is_effective, is_closed, is_voided);
+	BIND_TO_JSON(QueryBillListVO, id, billDateStart, billDateEnd, subject,supplierId, billStage, isEffective, isClosed, isVoided);
 
 };
 
-#endif // !_SAMPLE_VO_
+#endif // !_QueryBillList_VO_

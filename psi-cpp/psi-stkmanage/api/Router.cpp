@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "Qtrk/QtrkController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createQtrkRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +95,37 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+//文件上传接口示例
+void Router::createQtrkRouter()
+{
+	
+	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
+		if (req.get_content_type() != content_type::multipart)
+		{
+			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
+			nlohmann::json jvo = nlohmann::json(vo);
+			jvo.erase("data");
+			res.render_json(jvo);
+			return;
+		}
+		//获取表单参数
+		std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
+		std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
+		//获取文件路径
+		auto& files = req.get_upload_files();
+		std::vector<string> filePaths;
+		for (auto& file : files) {
+			filePaths.push_back(file.get_file_path().substr(1));
+			std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
+		}
+		res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
+		}, nullptr);
+	BIND_GET_ROUTER(server, "/Qtrk/get", &QtrkController::queryQtrk, nullptr);
+	BIND_POST_ROUTER(server, "/Qtrk/post", &QtrkController::addQtrk, nullptr);
+	BIND_PUT_ROUTER(server, "/Qtrk/put", &QtrkController::modifyQtrk, nullptr);
+	BIND_DEL_ROUTER(server, "/Qtrk/delete", &QtrkController::removeQtrk, nullptr);
+	//BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
+	//BIND_POST_ROUTER(server, "/json", &QtrkController::jsonSample, nullptr);
+	//BIND_POST_ROUTER(server, "/Qtrk/uploadFile", &QtrkController::uploadFile, nullptr);
+}
+

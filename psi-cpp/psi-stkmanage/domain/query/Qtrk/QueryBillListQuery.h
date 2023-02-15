@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_QUERY_
-#define _SAMPLE_QUERY_
+#ifndef _QueryBillList_QUERY_
+#define _QueryBillList_QUERY_
 
 #include "../PageQuery.h"
 
@@ -39,4 +39,4 @@ public:
 	}
 };
 
-#endif // !_SAMPLE_QUERY_
+#endif // !_QueryBillList_QUERY_

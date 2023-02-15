@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 11:46:24
+ @Date: 2022/10/25 11:36:29
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,15 +17,26 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "QueryBillListDTO.h"
-void from_json(const json& j, QueryBillListDTO& t) { // NOLINT
-	BIND_FROM_TO_ULL(j, t, id);
-	BIND_FROM_TO_NORMAL(j, t, bill_date_start);
-	BIND_FROM_TO_NORMAL(j, t, bill_date_end);
-	BIND_FROM_TO_NORMAL(j, t, supplier_id);
-	BIND_FROM_TO_NORMAL(j, t, bill_stage);
-	BIND_FROM_TO_I(j, t, is_effective);
-	BIND_FROM_TO_I(j, t, is_closed);
-	BIND_FROM_TO_I(j, t, is_voided);
-}
+#ifndef _QueryDetailMessageQuery_QUERY_
+#define _QueryDetailMessageQuery_QUERY_
+
+#include "../PageQuery.h"
+
+/**
+ * 查询单据列表分页查询对象
+ */
+class QueryDetailMessageQuery : public PageQuery
+{
+	// 单据编号
+	CC_SYNTHESIZE(uint64_t, id, Id);
+public:
+	// 绑定from_json
+	friend void from_json(const json& j, QueryDetailMessageQuery& t) { // NOLINT
+		BIND_FROM_TO_ULL(j, t, pageIndex);
+		BIND_FROM_TO_ULL(j, t, pageSize);
+		BIND_FROM_TO_ULL(j, t, id);
+		//BIND_FROM_TO_NORMAL(j, t, sex);
+	}
+};
+
+#endif // !_QueryDetailMessage_QUERY_

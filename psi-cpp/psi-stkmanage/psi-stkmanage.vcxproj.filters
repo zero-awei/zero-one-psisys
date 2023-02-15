@@ -54,19 +54,37 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\QueryBillListDTO\QueryBillListDTO.h">
+    <ClInclude Include="domain\dto\Qtrk\QueryBillListDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\QueryBillListDO\QueryBillListDO.h">
+    <ClInclude Include="domain\dto\Qtrk\QueryDetailMessageDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\QueryBillList\QueryBillListQuery.h">
+    <ClInclude Include="domain\query\Qtrk\QueryBillListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\QueryBillList\QueryBillListVO.h">
+    <ClInclude Include="domain\query\Qtrk\QueryDetailMessageQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\QueryBillList\QueryBillListController.h">
+    <ClInclude Include="domain\vo\Qtrk\QueryBillListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Qtrk\QueryDetailMessageVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Qtrk\QtrkController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Qtrk\AddListDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Qtrk\DeleteBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,11 +104,20 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\QueryBillListDTO\QueryBillListDTO.cpp">
+    <ClCompile Include="domain\dto\Qtrk\QueryBillListDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\QueryBillList\QueryBillListController.cpp">
+    <ClCompile Include="api\Qtrk\QtrkController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\dto\Qtrk\AddListDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Qtrk\DeleteBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="conf\data-source.yaml" />
   </ItemGroup>
 </Project>
