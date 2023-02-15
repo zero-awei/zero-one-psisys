@@ -1,6 +1,6 @@
-package com.zeroone.star.onlytype.service;
+package com.zeroone.star.paymentmanagement.service;
 
-import com.zeroone.star.onlytype.entity.FinPaymentReq;
+import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -1,4 +1,4 @@
-package com.zeroone.star.onlytype.config;
+package com.zeroone.star.paymentmanagement.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
     @Bean
     Docket sampleApi() {
-        return SwaggerCore.defaultDocketBuilder("模块", "xyz/onlytype", "code");
+        return SwaggerCore.defaultDocketBuilder("采购付款模块", "com.zeroone.star.paymentmanagement.controller", "paymentmanagement");
     }
 }

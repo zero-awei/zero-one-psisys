@@ -1,8 +1,8 @@
-package com.zeroone.star.onlytype.service.impl;
+package com.zeroone.star.paymentmanagement.service.impl;
 
-import com.zeroone.star.onlytype.entity.FinPaymentReq;
-import com.zeroone.star.onlytype.mapper.FinPaymentReqMapper;
-import com.zeroone.star.onlytype.service.IFinPaymentReqService;
+import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
+import com.zeroone.star.paymentmanagement.mapper.FinPaymentReqMapper;
+import com.zeroone.star.paymentmanagement.service.IFinPaymentReqService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

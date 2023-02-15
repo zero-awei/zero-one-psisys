@@ -1,6 +1,6 @@
-package com.zeroone.star.onlytype.mapper;
+package com.zeroone.star.paymentmanagement.mapper;
 
-import com.zeroone.star.onlytype.entity.FinPaymentReq;
+import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

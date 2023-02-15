@@ -1,4 +1,4 @@
-package com.zeroone.star.onlytype.entity;
+package com.zeroone.star.paymentmanagement.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
