@@ -51,6 +51,18 @@ class PurComIntoDTO : public FileDTO {
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurComIntoDTO& t) { // NOLINT
+		BIND_FROM_TO_ULL(j, t, bill_no);
+		BIND_FROM_TO_ULL(j, t, bill_date);
+		BIND_FROM_TO_ULL(j, t, is_effective);
+		BIND_FROM_TO_I(j, t, is_closed);
+		BIND_FROM_TO_I(j, t, is_voided);
+		BIND_FROM_TO_I(j, t, subject);
+		BIND_FROM_TO_ULL(j, t, bill_no);
+		BIND_FROM_TO_ULL(j, t, payment_method);
+		BIND_FROM_TO_ULL(j, t, delivery_time);
+		BIND_FROM_TO_ULL(j, t, delivery_place);
+		BIND_FROM_TO_ULL(j, t, remark);
+		BIND_FROM_TO_ULL(j, t, attachment);
 	}
 };
 

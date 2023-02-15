@@ -49,7 +49,7 @@ class PurReqFindBillVO {
 	CC_SYNTHESIZE(double, ordered_qty, Ordered_qty);
 	// 参考金额
 	CC_SYNTHESIZE(double, amt, Amt);
-	// 单据阶段
+	// 单据阶段--公共接口
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//已生效			
 	CC_SYNTHESIZE(int, is_effective, Is_effective);

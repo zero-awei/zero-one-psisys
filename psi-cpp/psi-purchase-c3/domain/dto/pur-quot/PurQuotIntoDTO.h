@@ -52,6 +52,18 @@ class PurQuotIntoDTO : public FileDTO {
 	CC_SYNTHESIZE(string, attachment, attachment);
 public:
 	friend void from_json(const json& j, PurQuotIntoDTO& t) { // NOLINT
+		BIND_FROM_TO_ULL(j, t, bill_no);
+		BIND_FROM_TO_ULL(j, t, bill_date);
+		BIND_FROM_TO_I(j, t, is_effective);
+		BIND_FROM_TO_I(j, t, is_closed);
+		BIND_FROM_TO_I(j, t, is_voided);
+		BIND_FROM_TO_ULL(j, t, payment_method);
+		BIND_FROM_TO_ULL(j, t, delivery_place);
+		BIND_FROM_TO_ULL(j, t, contact);
+		BIND_FROM_TO_ULL(j, t, fax);
+		BIND_FROM_TO_ULL(j, t, email);
+		BIND_FROM_TO_ULL(j, t, remark);
+		BIND_FROM_TO_ULL(j, t, attachment);
 	}
 };
 

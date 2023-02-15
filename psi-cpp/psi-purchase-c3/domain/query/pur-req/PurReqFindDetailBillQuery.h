@@ -20,15 +20,17 @@
 #ifndef _PUR_RER_FIND_Detail_BILL_Query_
 #define _PUR_RER_FIND_Detail_BILL_Query_
 
+#include "../PageQuery.h"
 /*
 查询指定单据详细信息
 */
-class PurReqFindDetailBillQuery {
+class PurReqFindDetailBillQuery :  {
 	//指定的单据号
-	CC_SYNTHESIZE(string, id, ID);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurReqFindDetailBillQuery& t) {
+		BIND_FROM_TO_ULL(j, t, bill_no);
 	}
 };
 #endif // !
