@@ -93,6 +93,9 @@ private:
 	void initTaxRate();
 	//纳税规模下拉列表
 	void initTaxScale();
+	void initCurrencyType();
+	void initDeliveryType();
+	void initWarehouse();
 };
 
 #endif // !_ROUTER_

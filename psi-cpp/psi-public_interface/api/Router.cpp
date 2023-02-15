@@ -43,6 +43,9 @@
 #include "api/PurTypeController.h"
 #include "api/TaxRateController.h"
 #include "api/TaxScaleController.h"
+#include "CurrencyTypeController.h"
+#include "DeliveryTypeController.h"
+#include "WarehouseController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -137,6 +140,9 @@ void Router::initRouter()
 	initSuppliersSetting();
 	//#TIP :系统扩展路由定义，写在这个后面
 	initBankAccount();
+	initCurrencyType();
+	initDeliveryType();
+	initWarehouse();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -258,5 +264,18 @@ void Router::initTaxRate()
 void Router::initTaxScale()
 {
 	BIND_GET_ROUTER(server, "/query-tax-scale", &TaxScaleController::queryTaxScale, nullptr);
+void Router::initCurrencyType()
+{
+	BIND_GET_ROUTER(server, "/query-Currency-Type", &CurrencyTypeController::queryCurrencyType, nullptr);
+}
+
+void Router::initDeliveryType()
+{
+	BIND_GET_ROUTER(server, "/query-Delivery-Type", &DeliveryTypeController::queryDeliveryType, nullptr);
+}
+
+void Router::initWarehouse()
+{
+	BIND_GET_ROUTER(server, "/query-Warehouse", &WarehouseController::queryWarehouse, nullptr);
 }
 

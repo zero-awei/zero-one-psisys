@@ -51,6 +51,7 @@ private:
 	void initSupplierLevel();
 	//供应商高级查询条件下拉列表
 	void initSupplierQueryCriteria();
+	void initSupplier();
 };
 
 #endif // !_ROUTER_

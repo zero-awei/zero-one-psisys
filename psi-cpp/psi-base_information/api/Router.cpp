@@ -13,6 +13,9 @@ Author C1-ÈýÄ¾
 #include "../api/supplier/SupplierController.h"
 #include "api/bas_supplier/SupplierLevelController.h"
 #include "api/bas_supplier/SupplierQueryCriteriaController.h"
+#include "Supplier/ImportSupplierController.h"
+#include "Supplier/ExportSupplierController.h"
+
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -128,3 +131,9 @@ void Router::initSupplierQueryCriteria()
 	BIND_GET_ROUTER(server, "/qurey-supplier-advanced_criteria", &SupplierQueryCriteriaController::querySupplierQueryCriteria, nullptr);
 }
 
+
+void Router::initSupplier()
+{
+	BIND_POST_ROUTER(server, "/import-supplier", &ImportSupplierController::importSupplier, nullptr);
+	BIND_GET_ROUTER(server, "/export-supplier", &ExportSupplierController::exportSupplier, nullptr);
+}
