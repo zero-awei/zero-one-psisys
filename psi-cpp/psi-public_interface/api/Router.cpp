@@ -41,13 +41,13 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
-	//单据阶段
+	//单据阶段下拉列表
 	initBillStage();
-	//采购类型
+	//采购类型下拉列表
 	initPurType();
-	//税率
+	//税率下拉列表
 	initTaxRate();
-	//纳税规模
+	//纳税规模下拉列表
 	initTaxScale();
 
 #ifdef HTTP_SERVER_DEMO

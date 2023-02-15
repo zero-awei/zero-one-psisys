@@ -4,7 +4,7 @@
 #include "../GlobalInclude.h"
 
 /*
-采购类型
+采购类型下拉列表
 Author C1-三木
 2023.2.11 18点40分
 */

@@ -90,13 +90,13 @@ void Router::createUserDepartRouter()
 }
 #endif
 
-//供应商等级
+//供应商等级下拉列表
 void Router::initSupplierLevel()
 {
 	BIND_GET_ROUTER(server, "/qurey-supplier-level", &SupplierLevelController::querySupplierLevel, nullptr);
 
 }
-
+//供应商高级查询条件下拉列表
 void Router::initSupplierQueryCriteria()
 {
 	BIND_GET_ROUTER(server, "/qurey-supplier-advanced_criteria", &SupplierQueryCriteriaController::querySupplierQueryCriteria, nullptr);

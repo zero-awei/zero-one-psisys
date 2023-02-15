@@ -2,7 +2,7 @@
 #include "TaxRateController.h"
 
 /*
-税率
+税率下拉列表
 Author C1-三木
 2023.2.11 21点59分
 */

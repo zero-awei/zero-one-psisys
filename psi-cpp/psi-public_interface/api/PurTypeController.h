@@ -6,7 +6,7 @@
 #include "api/ApiHelper.h"
 
 /*
-采购方式
+采购方式下拉列表
 Author C1-三木
 2023.2.11 20点54分
 */
