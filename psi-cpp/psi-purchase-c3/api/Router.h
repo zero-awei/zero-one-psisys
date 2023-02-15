@@ -35,6 +35,11 @@ public:
 	//呼叫初始化
 	void initRouter();
 private:
+	void createAddPurQuotRouter();
+	void createDelPurQuotRouter();
+	void createModPurQuotRouter();
+	void createPurQuotModBillStatusRouter();
+
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
 	void createSampleRouter();

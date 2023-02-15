@@ -20,6 +20,8 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "pur-quot/PurQuotController.h"
+
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,8 +75,38 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createAddPurQuotRouter();
+	createDelPurQuotRouter();
+	createModPurQuotRouter();
+	createPurQuotModBillStatusRouter();
 }
+
+void Router::createAddPurQuotRouter()
+{
+	//新增供应报价
+	BIND_POST_ROUTER(server, "/add-pur-quot", &PurQuotController::addPurQuot, nullptr);
+}
+
+void Router::createDelPurQuotRouter()
+{
+	//修改供应报价
+	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
+}
+
+void Router::createModPurQuotRouter()
+{
+	//删除供应报价
+	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
+}
+
+void Router::createPurQuotModBillStatusRouter()
+{
+	//修改供应报价状态（关闭、作弊、反关闭）
+	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
+}
+
+
+
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()

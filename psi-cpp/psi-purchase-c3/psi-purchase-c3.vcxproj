@@ -188,22 +188,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\purchase-quotation-naiguan\PurQuotController.h" />
+    <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\purchase-quotation-naiguan\PurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-    <ClInclude Include="domain\vo\purchase-quotation-naiguan\AddPurQuotVO.h" />
-    <ClInclude Include="domain\vo\purchase-quotation-naiguan\DelPurQuotVO.h" />
-    <ClInclude Include="domain\vo\purchase-quotation-naiguan\ModPurQuotVO.h" />
-    <ClInclude Include="domain\vo\purchase-quotation-naiguan\PurQuotModBillStatusVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\AddPurQuotVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\DelPurQuotVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\ModPurQuotVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotModBillStatusVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -211,7 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\purchase-quotation-naiguan\PurQuotController.cpp" />
+    <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
