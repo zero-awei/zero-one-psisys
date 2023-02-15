@@ -30,6 +30,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\dto\PurOrder\PurOrderDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -71,7 +74,16 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\PurReq\PurReqListQuery.h">
+    <ClInclude Include="domain\query\PurOrder\PurOrderQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurOrder\PurOrderDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
