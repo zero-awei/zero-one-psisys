@@ -9,6 +9,7 @@
  */
 class DocFileDTO : public FileDTO
 {
+	/*
 	//必填
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);//自动生成
@@ -81,11 +82,11 @@ class DocFileDTO : public FileDTO
 	//红字单据
 	CC_SYNTHESIZE(int, isRubric, IsRubric);
 	//有应付
-	CC_SYNTHESIZE(int, hasRp, HasRp);
+	CC_SYNTHESIZE(int, hasRp, HasRp);*/
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DocFileDTO& t);
-	BIND_TO_JSON(DocFileDTO, billNo, billDate, subject, opDept, operatoR, handler, entryNo, materialId, model, warehouseId, unitId, swellQty, inCost, remarK, custom1, custom2, remark, attachment, billStage, isEffective, isClosed, isVoided, effectiveTime, approver, bpmiInstanceId, createBy, createTime, sysOrgCode, updateTime, updateTime, updateBy, isAuto, isRubric, hasRp);
+	//BIND_TO_JSON(DocFileDTO, billNo, billDate, subject, opDept, operatoR, handler, entryNo, materialId, model, warehouseId, unitId, swellQty, inCost, remarK, custom1, custom2, remark, attachment, billStage, isEffective, isClosed, isVoided, effectiveTime, approver, bpmiInstanceId, createBy, createTime, sysOrgCode, updateTime, updateTime, updateBy, isAuto, isRubric, hasRp);
 };
 
 #endif // _USERDTO_H_

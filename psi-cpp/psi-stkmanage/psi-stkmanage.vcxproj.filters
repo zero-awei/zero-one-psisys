@@ -92,9 +92,6 @@
     <ClInclude Include="api\IncreaseTon\IncreaseTonController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\IncreaseTon\QueryDocDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\do\IncreaseTon\QueryDocListDO.h">
       <Filter>头文件</Filter>
     </ClInclude>

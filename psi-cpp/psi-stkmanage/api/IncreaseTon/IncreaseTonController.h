@@ -13,6 +13,7 @@
 #include "../../domain/vo/IncreaseTon/DoclVO.h"
 #include "../../domain\query\IncreaseTon\QueryDocListQuery.h"
 #include "../../domain\dto\IncreaseTon\QueryDocDTO.h"
+#include "../../domain/dto/FileDTO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 

@@ -3,6 +3,7 @@
 
 void from_json(const json& j, DocFileDTO& t)
 {
+	/*
 	BIND_FROM_TO_NORMAL(j, t, billNo);
 	BIND_FROM_TO_NORMAL(j, t, billDate);
 	BIND_FROM_TO_NORMAL(j, t, billStage);
@@ -33,5 +34,5 @@ void from_json(const json& j, DocFileDTO& t)
 	BIND_FROM_TO_NORMAL(j, t, updateBy);
 	BIND_FROM_TO_I(j, t, isAuto);
 	BIND_FROM_TO_I(j, t, isRubric);
-	BIND_FROM_TO_I(j, t, hasRp);
+	BIND_FROM_TO_I(j, t, hasRp);*/
 }

@@ -209,7 +209,6 @@
     <ClInclude Include="domain\dto\IncreaseTon\DocDTO.h" />
     <ClInclude Include="domain\dto\IncreaseTon\DocFileDTO.h" />
     <ClInclude Include="domain\dto\IncreaseTon\DocStatDTO.h" />
-    <ClInclude Include="domain\dto\IncreaseTon\QueryDocDTO.h" />
     <ClInclude Include="domain\dto\IncreaseTon\DocNoDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\IncreaseTon\QueryDocListQuery.h" />
