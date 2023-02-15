@@ -1,4 +1,4 @@
-package com.zeroone.star.project.dto.systemmanagement.customermanagement;
+package com.zeroone.star.project.dto.basedetail.customermanagement;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

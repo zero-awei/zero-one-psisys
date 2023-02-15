@@ -1,4 +1,4 @@
-package com.zeroone.star.homepage.config;
+package com.zeroone.star.titlepage.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
 
     @Bean
-    Docket homepageApi() {
-        return SwaggerCore.defaultDocketBuilder("首页模块", "com.zeroone.star.homepage.controller", "homepage");
+    Docket titlepageApi() {
+        return SwaggerCore.defaultDocketBuilder("首页模块", "com.zeroone.star.titlepage.controller", "titlepage");
     }
 }

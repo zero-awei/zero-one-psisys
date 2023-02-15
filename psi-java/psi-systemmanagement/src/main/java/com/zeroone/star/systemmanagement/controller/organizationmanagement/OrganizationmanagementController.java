@@ -58,7 +58,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
 
-    @ApiOperation("新增组织结构")
+    @ApiOperation("新增组织结构（返回值data值表示插入成功与否）")
     @PostMapping("insert")
     @Override
     public JsonVO<String> add(OrganizationManagementDTO data) {
@@ -70,7 +70,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @param data 数据
      * @return
      */
-    @ApiOperation("修改组织结构")
+    @ApiOperation("修改组织结构（返回值data值表示更新成功与否）")
     @PutMapping("update")
     @Override
     public JsonVO<String> modify(OrganizationManagementDTO data) {
@@ -82,7 +82,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @param id 部门id
      * @return
      */
-    @ApiOperation("删除组织结构")
+    @ApiOperation("删除组织结构（返回值data值表示删除成功与否）")
     @DeleteMapping("delete")
     @Override
     public JsonVO<String> delete(String id) {

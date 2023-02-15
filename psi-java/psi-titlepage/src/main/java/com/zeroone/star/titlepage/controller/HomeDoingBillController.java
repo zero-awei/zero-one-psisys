@@ -1,10 +1,8 @@
 package com.zeroone.star.titlepage.controller;
 
 
-import com.zeroone.star.project.query.systemmanagement.ClassifiedDictionaryQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.systemmanagement.ClassifiedDictionaryVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

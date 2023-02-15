@@ -37,19 +37,19 @@ public class SysCategoryController implements ClassifiedDictionaryApis {
     public JsonVO<PageVO<ClassifiedDictionaryVO>> queryOne(String pid) {
         return null;
     }
-    @ApiOperation("更新指定根字典")
+    @ApiOperation("更新指定根字典（返回值data值表示更新成功与否）")
     @PutMapping("/update-one")
     @Override
     public JsonVO<String> update(ClassifiedDictionaryDTO data) {
         return null;
     }
-    @ApiOperation("删除指定根字典")
+    @ApiOperation("删除指定根字典（返回值data值表示删除成功与否）")
     @DeleteMapping("/delete-one")
     @Override
     public JsonVO<String> delete(String id) {
         return null;
     }
-    @ApiOperation("插入根字典")
+    @ApiOperation("插入根字典（返回值data值表示插入成功与否）")
     @PostMapping("/insert-one")
     @Override
     public JsonVO<String> insert(ClassifiedDictionaryDTO data) {

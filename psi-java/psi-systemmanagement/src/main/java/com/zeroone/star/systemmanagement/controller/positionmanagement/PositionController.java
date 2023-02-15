@@ -36,7 +36,7 @@ public class PositionController implements PositionApis {
         return null;
     }
 
-    @ApiOperation("添加职务")
+    @ApiOperation("添加职务（返回值data值表示插入成功与否）")
     @PostMapping("/addPosition")
     @Override
     public JsonVO<String> savePosition(PositionDTO positionDTO) {
@@ -44,7 +44,7 @@ public class PositionController implements PositionApis {
     }
 
 
-    @ApiOperation(value = "修改职务")
+    @ApiOperation(value = "修改职务（返回值data值表示更新成功与否）")
     @PostMapping("updatePosition")
     @Override
     public JsonVO<String> updatePosition(PositionDTO positionDTO) {
@@ -52,7 +52,7 @@ public class PositionController implements PositionApis {
     }
 
 
-    @ApiOperation(value = "删除职务")
+    @ApiOperation(value = "删除职务（返回值data值表示删除成功与否）")
     @DeleteMapping("/deletePosition")
     @Override
     public JsonVO<String> deletePosition(String positionId) {
