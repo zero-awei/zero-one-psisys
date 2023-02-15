@@ -30,9 +30,9 @@ JsonVO<PageVO<MaterialClassificationVO>> MaterialClassificationController::execQ
 
 JsonVO<MaterialClassificationVO> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload)
 {
-
+	JsonVO<MaterialClassificationVO> result;
 	//ÏìÓ¦½á¹û
-	return JsonVO<MaterialClassificationVO>();
+	return JsonVO<MaterialClassificationVO>(result);
 }
 
 JsonVO<MaterialClassificationVO> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationDetailQuery& query, const PayloadDTO& payload)

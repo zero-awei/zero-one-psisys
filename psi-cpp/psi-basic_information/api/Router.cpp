@@ -40,6 +40,7 @@ void Router::initRouter()
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
+	createMaterialClassificationRouter(); //
 #ifdef HTTP_SERVER_DEMO
 	//°ó¶¨Ê×Ò³Ò³Ãæ
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -98,11 +99,11 @@ void Router::createUserDepartRouter()
 #endif
 
 void Router::createMaterialClassificationRouter() {
-	BIND_GET_ROUTER(server, "/get", &MaterialClassificationController::queryMaterialClassification, nullptr);
+	BIND_GET_ROUTER(server, "/get-base", &MaterialClassificationController::queryMaterialClassification, nullptr);
 	BIND_GET_ROUTER(server, "/get-children", &MaterialClassificationController::queryMaterialClassificationChild, nullptr);
 	BIND_GET_ROUTER(server, "/get-detail", &MaterialClassificationController::queryMaterialClassificationDetail, nullptr);
-	BIND_POST_ROUTER(server, "/post", &MaterialClassificationController::addMaterialClassification, nullptr);
-	BIND_PUT_ROUTER(server, "/put", &MaterialClassificationController::modifyMaterialClassification, nullptr);
+	BIND_POST_ROUTER(server, "/post-add", &MaterialClassificationController::addMaterialClassification, nullptr);
+	BIND_PUT_ROUTER(server, "/put-modify", &MaterialClassificationController::modifyMaterialClassification, nullptr);
 	BIND_DEL_ROUTER(server, "/delete", &MaterialClassificationController::removeMaterialClassification, nullptr);
 
 }
