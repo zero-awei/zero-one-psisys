@@ -1,16 +1,16 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
- 
- @Author: awei
- @Date: 2022/10/24 23:36:43
- 
+
+ @Author: renqing
+ @Date: 2023/2/15 13:21:22
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
-      https://www.apache.org/licenses/LICENSE-2.0
- 
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -41,6 +41,8 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
+	// 采购比价路由
+	void createPurComRouter();
 };
 
 #endif // !_ROUTER_

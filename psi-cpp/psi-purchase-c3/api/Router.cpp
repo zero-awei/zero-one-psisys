@@ -1,8 +1,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/24 23:38:25
+ @Author: renqing
+ @Date: 2023/2/15 13:22:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include"pur-compare/PurCompareController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -73,7 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createPurComRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -94,3 +95,15 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPurComRouter()
+{
+	// 新增比价的接口
+	BIND_POST_ROUTER(server, "/post", &PurComRenqingController::addPurCom, nullptr);
+	// 修改比价的接口
+	BIND_POST_ROUTER(server, "/post", &PurComRenqingController::modifyPurCom, nullptr);
+	// 删除比价的接口
+	BIND_DEL_ROUTER(server, "/delete", &PurComRenqingController::removePurCom, nullptr);
+	// 修改单据状态的接口
+	BIND_POST_ROUTER(server, "/post", &PurComRenqingController::purComModBillStatus, nullptr);
+}

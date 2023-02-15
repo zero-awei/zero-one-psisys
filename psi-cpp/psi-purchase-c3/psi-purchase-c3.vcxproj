@@ -196,7 +196,6 @@
     <ClInclude Include="domain\dto\pur-compare\PurCompareDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\pur-compare\PurCompareQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
@@ -211,7 +210,6 @@
     <ClCompile Include="api\pur-compare\PurCompareController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\dto\pur-compare\PurCompareDTO.cpp" />
-    <ClCompile Include="domain\query\pur-compare\PurCompareQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
