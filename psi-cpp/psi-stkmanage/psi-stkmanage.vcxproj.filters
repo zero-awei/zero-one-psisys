@@ -54,22 +54,22 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\QueryBillListDTO.h">
+    <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillListDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\QueryDetailMessageDTO.h">
+    <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\Qtrk\QueryBillListQuery.h">
+    <ClInclude Include="domain\query\Qtrk\QueryQtrkBillListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\Qtrk\QueryDetailMessageQuery.h">
+    <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\Qtrk\QueryBillListVO.h">
+    <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\Qtrk\QueryDetailMessageVO.h">
+    <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillDetailsVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h">
@@ -81,10 +81,25 @@
     <ClInclude Include="api\Qtrk\QtrkController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\AddListDTO.h">
+    <ClInclude Include="domain\dto\Qtrk\AddQtrkBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\DeleteBillDTO.h">
+    <ClInclude Include="domain\dto\Qtrk\DeleteQtrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Qtrk\ModifyQtrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Qtrk\ImportQtrkFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Qtrk\ExportQtrkFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Qtrk\ImportQtrkFileVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -104,16 +119,22 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\QueryBillListDTO.cpp">
+    <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillListDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\Qtrk\QtrkController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\AddListDTO.cpp">
+    <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\DeleteBillDTO.cpp">
+    <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

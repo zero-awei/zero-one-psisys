@@ -3,17 +3,17 @@
 #include "QtrkController.h"
 //#include "../../service/sample/SampleService.h"
 
-JsonVO<PageVO<QueryBillListVO>> QtrkController::execQueryQtrk(const QueryBillListQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<QueryQtrkBillListVO>> QtrkController::execQueryQtrk(const QueryQtrkBillListQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	//SampleService service;
 	//查询数据
-	PageVO<QueryBillListVO> result ;
+	PageVO<QueryQtrkBillListVO> result ;
 	//响应结果
-	return JsonVO<PageVO<QueryBillListVO>>(result, RS_SUCCESS);
+	return JsonVO<PageVO<QueryQtrkBillListVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<uint64_t> QtrkController::execAddQtrk(const AddListDTO& dto)
+JsonVO<uint64_t> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto)
 {
 	JsonVO<uint64_t> result;
 	//SampleService service;
@@ -30,7 +30,7 @@ JsonVO<uint64_t> QtrkController::execAddQtrk(const AddListDTO& dto)
 	return result;
 }
 
-JsonVO<uint64_t> QtrkController::execModifyQtrk(const AddListDTO& dto)
+JsonVO<uint64_t> QtrkController::execModifyQtrk(const ModifyQtrkBillDTO& dto)
 {
 	//SampleService service;
 	JsonVO<uint64_t> result;
@@ -44,7 +44,7 @@ JsonVO<uint64_t> QtrkController::execModifyQtrk(const AddListDTO& dto)
 	return result;
 }
 
-JsonVO<uint64_t> QtrkController::execRemoveQtrk(const DeleteBillDTO& dto)
+JsonVO<uint64_t> QtrkController::execRemoveQtrk(const DeleteQtrkBillDTO& dto)
 {
 	//SampleService service;
 	JsonVO<uint64_t> result;
@@ -80,10 +80,10 @@ JsonVO<uint64_t> QtrkController::execRemoveQtrk(const DeleteBillDTO& dto)
 //	return JsonVO<SampleVO>(vo, RS_API_UN_IMPL);
 //}
 //
-JsonVO<QueryDetailMessageVO> QtrkController::execUploadFile(const QueryDetailMessageDTO& dto)
+JsonVO<ImportQtrkFileVO> QtrkController::execImportFileQtrk(const ImportQtrkFileDTO& dto)
 {
 	//构建一个测试VO
-	QueryDetailMessageVO vo;
+	ImportQtrkFileVO vo;
 	/*vo.setNickname(dto.getNickname());
 	vo.setIdCard(dto.getIdCard());
 	vo.setAge(dto.getAge());*/
@@ -94,5 +94,21 @@ JsonVO<QueryDetailMessageVO> QtrkController::execUploadFile(const QueryDetailMes
 	}*/
 
 	//响应结果
-	return JsonVO<QueryDetailMessageVO>(vo, RS_API_UN_IMPL);
+	return JsonVO<ImportQtrkFileVO>(vo, RS_API_UN_IMPL);
+}
+JsonVO<ExportQtrkFileVO> QtrkController::execExportFileQtrk(const ExportQtrkFileDTO& dto)
+{
+	//构建一个测试VO
+	ExportQtrkFileVO vo;
+	/*vo.setNickname(dto.getNickname());
+	vo.setIdCard(dto.getIdCard());
+	vo.setAge(dto.getAge());*/
+
+	//输出测试上传文件路径列表
+	/*for (auto file : dto.getFiles()) {
+		std::cout << "path " << file << std::endl;
+	}*/
+
+	//响应结果
+	return JsonVO<ExportQtrkFileVO>(vo, RS_API_UN_IMPL);
 }

@@ -1,21 +1,4 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/24 23:38:25
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
@@ -99,7 +82,13 @@ void Router::createUserDepartRouter()
 void Router::createQtrkRouter()
 {
 	
-	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
+	BIND_GET_ROUTER(server, "/query-qtrk-bill-list", &QtrkController::queryQtrk, nullptr);
+	BIND_GET_ROUTER(server, "/query-qtrk-bill-details", &QtrkController::queryQtrk, nullptr);
+	BIND_POST_ROUTER(server, "/add-qtrk-bill", &QtrkController::addQtrk, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-qtrk-bill", &QtrkController::modifyQtrk, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-qtrk-bill", &QtrkController::removeQtrk, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-qtrk-bill-state", &QtrkController::modifyQtrk, nullptr);
+	BIND_POST_ROUTER(server, "/import-qtrk-file", [](request& req, response& res) {
 		if (req.get_content_type() != content_type::multipart)
 		{
 			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
@@ -120,10 +109,7 @@ void Router::createQtrkRouter()
 		}
 		res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
-	BIND_GET_ROUTER(server, "/Qtrk/get", &QtrkController::queryQtrk, nullptr);
-	BIND_POST_ROUTER(server, "/Qtrk/post", &QtrkController::addQtrk, nullptr);
-	BIND_PUT_ROUTER(server, "/Qtrk/put", &QtrkController::modifyQtrk, nullptr);
-	BIND_DEL_ROUTER(server, "/Qtrk/delete", &QtrkController::removeQtrk, nullptr);
+	BIND_POST_ROUTER(server, "/export-qtrk-file", &QtrkController::exportFileQtrk, nullptr);
 	//BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
 	//BIND_POST_ROUTER(server, "/json", &QtrkController::jsonSample, nullptr);
 	//BIND_POST_ROUTER(server, "/Qtrk/uploadFile", &QtrkController::uploadFile, nullptr);
