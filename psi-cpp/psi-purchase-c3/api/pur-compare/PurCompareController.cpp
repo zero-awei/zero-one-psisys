@@ -9,7 +9,11 @@ JsonVO<PageVO<PurComFindBillVO>> PurCompareController::execQueryPurComFindBill(c
 	////查询数据
 	//PageVO<SampleVO> result = service.listAll(query);
 	////响应结果
-	PageVO<PurComFindBillVO> result;
+	//以下三行用于测试Apipost
+	PurComFindBillVO test1;
+	list<PurComFindBillVO> ls; ls.push_back(test1);
+	PageVO<PurComFindBillVO> result(1,2,0,0,ls);
+	//PageVO<PurComFindBillVO> result;
 	return JsonVO<PageVO<PurComFindBillVO>>(result, RS_SUCCESS);
 }
 

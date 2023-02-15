@@ -63,7 +63,7 @@ public:
 	PurComFindBillVO() {
 		this->setId(100);
 		this->setBillNo("CGBJ100QZP");
-		this->setSubject("²âÊÔ½Ó¿Ú");
+		this->setSubject("test function");
 	}
 };
 

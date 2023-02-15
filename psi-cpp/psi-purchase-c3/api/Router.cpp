@@ -99,11 +99,11 @@ void Router::createUserDepartRouter()
 void Router::createPurCompareRouter()
 {
 	//查询比价单列表接口路由绑定
-	BIND_POST_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
+	BIND_GET_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
 	//查询指定比价单详细信息接口路由绑定
-	BIND_POST_ROUTER(server, "/get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
+	BIND_GET_ROUTER(server, "/get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
 	//查询报价单接口路由绑定
-	BIND_POST_ROUTER(server, "/get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
+	BIND_GET_ROUTER(server, "/get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
 	//查询报价单分录接口路由绑定
-	BIND_POST_ROUTER(server, "/get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
+	BIND_GET_ROUTER(server, "/get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
 }
