@@ -18,6 +18,7 @@
         <module>psi-common</module>
         <module>psi-domain</module>
         <module>psi-apis</module>
+        <module>psi-paymentmanagement</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
