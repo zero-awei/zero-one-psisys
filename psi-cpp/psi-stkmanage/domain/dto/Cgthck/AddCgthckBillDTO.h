@@ -1,11 +1,11 @@
-#ifndef _ADD_DOC_LIST_DTO_
-#define _ADD_DOC_LIST_DTO_
+#ifndef ADD_CGTHCK_BILL_DTO_
+#define ADD_CGTHCK_BILL_DTO_
 
 #include "../../GlobalInclude.h"
 /**
 * 采购退货出库(红入), 添加采购退货出库单数据传输对象
 */
-class AddDocListDTO
+class AddCgthckBillDTO
 {
 	// 单据日期
 	CC_SYNTHESIZE(std::string, billDate, BillDate);
@@ -37,7 +37,23 @@ class AddDocListDTO
 	CC_SYNTHESIZE(std::string, custom2, Custom2);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, AddDocListDTO& t); // NOLINT
+	friend void from_json(const json& j, AddCgthckBillDTO& t) // NOLINT
+	{
+		BIND_FROM_TO_NORMAL(j, t, billDate);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, srcOperator);
+		BIND_FROM_TO_NORMAL(j, t, opDept);
+		BIND_FROM_TO_NORMAL(j, t, supplierId);
+		BIND_FROM_TO_NORMAL(j, t, srcNo);
+		BIND_FROM_TO_NORMAL(j, t, handler);
+		BIND_FROM_TO_D(j, t, settleQty);
+		BIND_FROM_TO_D(j, t, tax);
+		BIND_FROM_TO_D(j, t, settleAmt);
+		BIND_FROM_TO_D(j, t, cost);
+		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_NORMAL(j, t, custom1);
+		BIND_FROM_TO_NORMAL(j, t, custom2);
+	}
 };
 
-#endif _ADD_DOC_LIST_DTO_ // !_ADD_DOC_LIST_DTO_
+#endif // !ADD_CGTHCK_BILL_DTO_

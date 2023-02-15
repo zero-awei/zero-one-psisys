@@ -1,12 +1,12 @@
-#ifndef _RETURN_TO_VENDOR_VO_
-#define _RETURN_TO_VENDOR_VO_
+#ifndef _QUERY_CGTHCK_BILL_VO_
+#define _QUERY_CGTHCK_BILL_VO_
 
 #include "../../GlobalInclude.h"
 
 /**
 * 采购退货出库(红入), 单据显示对象
 */
-class RtvCheckVO
+class QueryCgthckBillVO
 {
 	// 单据编号
 	CC_SYNTHESIZE(std::string, billNo, BillNo);
@@ -65,14 +65,17 @@ class RtvCheckVO
 public:
 	BIND_TO_JSON
 	(
-		RtvCheckVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,
+		QueryCgthckBillVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,
 		inAmt, settleAmt, settledAmt, invoicedAmt, invoiceType, handler, billStage, isEff,
 		isClosed, isVoided, isAuto, isRubric, remark, effTime, approver, createTime, createBy,
 		sysOrgCode, updateTime, updateBy
 	);
 };
 
-class RtvShowVO : public RtvCheckVO
+/**
+*  采购退货出库(红入), 单据明细显示对象
+*/
+class QueryCgthckBillDetailVO : public QueryCgthckBillVO
 {
 	// 审批实例
 	CC_SYNTHESIZE(std::string, bpmiInstanceId, BpmiInstanceId);
@@ -111,7 +114,7 @@ class RtvShowVO : public RtvCheckVO
 public:
 	BIND_TO_JSON
 	(
-		RtvShowVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,
+		QueryCgthckBillDetailVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,
 		inAmt, settleAmt, settledAmt, invoicedAmt, invoiceType, handler, billStage, isEff,
 		isClosed, isVoided, isAuto, isRubric, remark, effTime, approver, createTime, createBy,
 		sysOrgCode, updateTime, updateBy, bpmiInstanceId, hasRp, hasSwell, srcBillType,
@@ -120,5 +123,5 @@ public:
 	);
 };
 
-#endif // ! _RETURN_TO_VENDOR_VO_
+#endif // ! _QUERY_CGTHCK_BILL_VO_
 

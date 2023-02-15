@@ -1,11 +1,11 @@
-#ifndef _RETURN_TO_VENDOR_DO_
-#define _RETURN_TO_VENDOR_DO_
+#ifndef _CGTHCK_DO_
+#define _CGTHCK_DO_
 #include "../DoInclude.h"
 
 /**
 * 采购退货出库(红入), 查询单据列表数据库实体类
 */
-class RtvDocDO
+class CgthckBillListDO
 {
 	// 单据编号
 	CC_SYNTHESIZE(std::string, billNo, BillNo);
@@ -74,7 +74,7 @@ class RtvDocDO
 /**
 * 采购退货出库(红入), 查询单据列表明细数据库实体类
 */
-class RtvEntryDO
+class CgthckBillDetailDO : public CgthckBillListDO
 {
 	// 源单分录号
 	CC_SYNTHESIZE(std::string, srcNo, SrcNo);
@@ -116,4 +116,4 @@ class RtvEntryDO
 	CC_SYNTHESIZE(std::string, custom2, Custom2);
 };
 
-#endif // !_RETURN_TO_VENDOR_DO_
+#endif // !_CGTHCK_DO_

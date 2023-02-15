@@ -4,12 +4,12 @@
 #include "../psi-stkmanage/domain/vo/JsonVO.h"
 #include "../psi-stkmanage/domain/vo/Message.h"
 #include "../psi-stkmanage/domain/vo/PageVO.h"
-#include "../psi-stkmanage/domain/query/returntovendor/DocListQuery.h"
-#include "../psi-stkmanage/domain/dto/returntovendor/AddDocListDTO.h"
-#include "../psi-stkmanage/domain/dto/returntovendor/ExportDocListDTO.h"
-#include "../psi-stkmanage/domain/dto/returntovendor/ModifyDocListDTO.h"
-#include "../psi-stkmanage/domain/dto/returntovendor/RemoveDocListDTO.h"
-#include "../psi-stkmanage/domain/vo/returntovendor/ReturnToVendorVO.h"
+#include "../psi-stkmanage/domain/query/Cgthck/DocListQuery.h"
+#include "../psi-stkmanage/domain/dto/Cgthck/AddDocListDTO.h"
+#include "../psi-stkmanage/domain/dto/Cgthck/ExportDocListDTO.h"
+#include "../psi-stkmanage/domain/dto/Cgthck/ModifyDocListDTO.h"
+#include "../psi-stkmanage/domain/dto/Cgthck/RemoveDocListDTO.h"
+#include "../psi-stkmanage/domain/vo/Cgthck/ReturnToVendorVO.h"
 
 /**
 * 控制器, 采购退货出库接口的使用

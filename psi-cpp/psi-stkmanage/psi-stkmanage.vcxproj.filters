@@ -30,16 +30,7 @@
     <ClCompile Include="api\Router.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\returntovendor\AddDocListDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\returntovendor\ModifyDocListDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\query\returntovendor\DocListQuery.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="api\returntovendor\RtvController.cpp">
+    <ClCompile Include="api\Cgthck\RtvController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,28 +74,28 @@
     <ClInclude Include="api\Router.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\returntovendor\ReturnToVendorDO.h">
+    <ClInclude Include="domain\do\Cgthck\CgthckDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\returntovendor\AddDocListDTO.h">
+    <ClInclude Include="domain\dto\Cgthck\AddCgthckBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\returntovendor\ModifyDocListDTO.h">
+    <ClInclude Include="domain\dto\Cgthck\ModifyCgthckBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\returntovendor\RemoveDocListDTO.h">
+    <ClInclude Include="domain\dto\Cgthck\DeleteCgthckBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\returntovendor\ExportDocListDTO.h">
+    <ClInclude Include="domain\dto\Cgthck\ExportCgthckFileDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\returntovendor\DocListQuery.h">
+    <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\returntovendor\ReturnToVendorVO.h">
+    <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\returntovendor\RtvController.h">
+    <ClInclude Include="api\Cgthck\RtvController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
