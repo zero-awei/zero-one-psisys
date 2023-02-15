@@ -179,8 +179,13 @@
   <ItemGroup>
     <ClCompile Include="api\AreaController.cpp" />
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\BankAccount\BankAccountController.cpp" />
+    <ClCompile Include="api\BasBankAccountController.cpp" />
+    <ClCompile Include="api\BasWareHouseTreeListController.cpp" />
+    <ClCompile Include="api\CreateReceiptController.cpp" />
     <ClCompile Include="api\DepartChoiceController.cpp" />
     <ClCompile Include="api\MaterialQueryController.cpp" />
+    <ClCompile Include="api\MaterialTypeTreeListController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\SuppliserController.cpp" />
     <ClCompile Include="api\UserChoiceController.cpp" />
@@ -195,8 +200,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\AreaController.h" />
+    <ClInclude Include="api\BankAccount\BankAccountController.h" />
+    <ClInclude Include="api\BasBankAccountController.h" />
+    <ClInclude Include="api\BasWareHouseTreeListController.h" />
+    <ClInclude Include="api\CreateReceiptController.h" />
     <ClInclude Include="api\DepartChoiceController.h" />
     <ClInclude Include="api\MaterialQueryController.h" />
+    <ClInclude Include="api\MaterialTypeTreeListController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\SupplierCategoryController.h" />
     <ClInclude Include="api\UserChoiceController.h" />
@@ -207,14 +217,22 @@
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\AreaQuery.h" />
+    <ClInclude Include="domain\query\BankAccount\SpecifiedBankAccountQuery.h" />
+    <ClInclude Include="domain\query\BasWareHouseItemQuery.h" />
     <ClInclude Include="domain\query\DepartNameQuery.h" />
     <ClInclude Include="domain\query\MaterialQuery.h" />
+    <ClInclude Include="domain\query\MaterialTypeItemQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\SupplierCategoryQuery.h" />
     <ClInclude Include="domain\query\UserQuery.h" />
     <ClInclude Include="domain\vo\AreaVO.h" />
+    <ClInclude Include="domain\vo\BankAccount\SpecifiedBankAccountListVO.h" />
+    <ClInclude Include="domain\vo\BasBankAccountVO.h" />
+    <ClInclude Include="domain\vo\BasWareHouseTreeListVO.h" />
+    <ClInclude Include="domain\vo\CreateReceiptVO.h" />
     <ClInclude Include="domain\vo\DepartVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\MaterialTypeTreeListVO.h" />
     <ClInclude Include="domain\vo\MaterialVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
