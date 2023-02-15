@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@ApiModel("用户管理数据传输对象")
+@ApiModel("用户管理的数据传输对象")
 public class UserDTO {
     /**
      * 主键id

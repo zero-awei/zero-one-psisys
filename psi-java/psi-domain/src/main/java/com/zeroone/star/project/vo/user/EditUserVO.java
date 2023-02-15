@@ -3,11 +3,13 @@ package com.zeroone.star.project.vo.user;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
-@ApiModel("用户管理编辑显示对象")
+@ApiModel("用户管理中编辑的显示对象")
 public class EditUserVO {
     /**
      * 主键id
@@ -43,8 +45,9 @@ public class EditUserVO {
     /**
      * 生日
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "生日", example = "2003-04-05 00:00:00")
-    private LocalDateTime birthday;
+    private Date birthday;
 
     /**
      * 性别(0-默认未知,1-男,2-女)
@@ -73,19 +76,14 @@ public class EditUserVO {
     /**
      * 状态(1-正常,2-冻结)
      */
-    @ApiModelProperty(value = "状态", example = "1")
+    @ApiModelProperty(value = "修改您的状态，1为正常，0为冻结", example = "1")
     private Boolean status;
 
-    /**
-     * 删除状态(0-正常,1-已删除)
-     */
-    @ApiModelProperty(value = "删除状态", example = "0")
-    private Boolean delFlag;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
-    @ApiModelProperty(value = "同步工作流引擎", example = "1")
+    @ApiModelProperty(value = "同步工作流引擎，1为同步，0为不同步", example = "1")
     private Boolean activitiSync;
 
     /**
@@ -117,8 +115,9 @@ public class EditUserVO {
     /**
      * 更新时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "更新时间", example = "2023-02-12 22:18:43")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     /**
      * 身份（1普通成员 2上级）
@@ -129,13 +128,13 @@ public class EditUserVO {
     /**
      * 负责部门
      */
-    @ApiModelProperty(value = "负责部门", example = "6")
+    @ApiModelProperty(value = "负责的部门", example = "6")
     private String departIds;
 
     /**
      * 多租户标识
      */
-    @ApiModelProperty(value = "多租户标识", example = "1")
+    @ApiModelProperty(value = "是否为多租户", example = "1")
     private String relTenantIds;
 
     /**

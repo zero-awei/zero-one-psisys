@@ -5,10 +5,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@ApiModel("用户管理编辑用户数据传输对象")
+@ApiModel("用户管理中编辑的数据传输对象")
 public class EditUserDTO {
     /**
      * 主键id
@@ -109,20 +110,6 @@ public class EditUserDTO {
     private String telephone;
 
 
-
-    /**
-     * 更新人
-     */
-    @ApiModelProperty(value = "更新人", example = "admin")
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @ApiModelProperty(value = "更新时间", example = "2023-02-12 22:18:43")
-    private Date updateTime;
-
     /**
      * 身份（1普通成员 2上级）
      */
@@ -146,6 +133,5 @@ public class EditUserDTO {
      */
     @ApiModelProperty(value = "设备ID", example = "1")
     private String clientId;
-
 
 }

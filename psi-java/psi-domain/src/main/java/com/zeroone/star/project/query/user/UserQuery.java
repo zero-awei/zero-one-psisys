@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ApiModel("用户管理查询对象")
+@ApiModel("用户管理的查询对象")
 public class UserQuery extends PageQuery {
     @NotBlank(message = "id不能为空")
     @ApiModelProperty(value = "id", example = "1a2b3")
