@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
 
     @Bean
-    Docket sampleApi() {
-        return SwaggerCore.defaultDocketBuilder("基础信息模块", "com.zeroone.star.basedetail.controller", "basedetail");
+    Docket baseDetailApi() {
+        return SwaggerCore.defaultDocketBuilder("基础信息模块", "com.zeroone.star.basedetail", "basedetail");
     }
 }
