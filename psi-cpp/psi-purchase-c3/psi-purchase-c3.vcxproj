@@ -207,12 +207,19 @@
     <ClInclude Include="domain\dto\pur-req\PurReqFindDetailBillDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+<<<<<<< HEAD
     <ClInclude Include="domain\query\pur-compare\PurComExportQuery.h" />
     <ClInclude Include="domain\query\pur-compare\PurComIntoQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotExportQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotIntoQuery.h" />
     <ClInclude Include="domain\query\pur-req\PurReqFindBillQuery.h" />
     <ClInclude Include="domain\query\pur-req\PurReqFindDetailBillQuery.h" />
+=======
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotDividedList.h" />
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindBill.h" />
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindDetailBill.h" />
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotList.h" />
+>>>>>>> remotes/origin/c3-pur-quot-luoluo
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

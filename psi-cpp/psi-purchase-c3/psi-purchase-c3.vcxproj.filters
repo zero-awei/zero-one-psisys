@@ -55,6 +55,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -128,6 +129,18 @@
     </ClInclude>
     <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h">
 >>>>>>> remotes/origin/c3-pur-inquiry-huilai
+=======
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindBill.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindDetailBill.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotDividedList.h">
+>>>>>>> remotes/origin/c3-pur-quot-luoluo
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
