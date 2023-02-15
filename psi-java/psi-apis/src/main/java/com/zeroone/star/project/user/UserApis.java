@@ -5,8 +5,10 @@ import com.zeroone.star.project.query.user.UserQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.user.UserVO;
+import org.springframework.http.ResponseEntity;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 public interface UserApis {
@@ -70,11 +72,11 @@ public interface UserApis {
      * @param id 用户id
      * @return 下载地址
      */
-    JsonVO<String> download(List<String> id);
+    ResponseEntity<byte[]> download(@NotEmpty(message = "导出用户必须大于0") List<String> id);
 
     /**
      * 导出全部用户
      * @return 下载地址
      */
-    JsonVO<String> downloadAllUsers();
+    ResponseEntity<byte[]> downloadAllUsers();
 }
