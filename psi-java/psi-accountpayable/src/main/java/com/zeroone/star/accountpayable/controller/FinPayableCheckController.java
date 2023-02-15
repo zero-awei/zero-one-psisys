@@ -2,12 +2,17 @@ package com.zeroone.star.accountpayable.controller;
 
 import com.zeroone.star.accountpayable.service.FinPayableCheckService;
 import com.zeroone.star.project.accountpayable.FinPayableCheckApis;
+import com.zeroone.star.project.dto.accountpayable.FinPayableCheckDTO;
+import com.zeroone.star.project.query.accountpayable.FInPayableCheckEntryQuery;
 import com.zeroone.star.project.query.accountpayable.FinPayableListBySupplierQuery;
-import com.zeroone.star.project.query.accountpayable.FinPayableCheckListQuery;
+import com.zeroone.star.project.query.accountpayable.FinPayableCheckListAdvancedQuery;
 import com.zeroone.star.project.query.accountpayable.FinPaymentListBySupplierQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.accountpayable.FinPayableCheckEntryVO;
 import com.zeroone.star.project.vo.accountpayable.FinPayableCheckVO;
+import com.zeroone.star.project.vo.accountpayable.FinPayableVO;
+import com.zeroone.star.project.vo.accountpayable.FinPaymentVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +21,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 /**
  * @author spk
  * @since 2023-02-13 19:48
  * @description
- * 当前存在的问题：
- * 1. 没有继承Api
- * 2. 一些命名存在不规范的问题，可以看着改改
- * 3. 用了不是该查询所使用的VO，因为那些VO其他组员写了，合并改一下应该就可以？
  */
 @RestController
 @RequestMapping("fin-payable-check")
@@ -34,32 +37,37 @@ public class FinPayableCheckController implements FinPayableCheckApis {
     @Autowired
     FinPayableCheckService finPayableCheck;
 
-    /**
-     * 在应付核销首页上查询
-     */
-    @GetMapping("list")
+    @Override
+    @GetMapping("list-all")
+    @ApiOperation("列出所有单据")
+    public JsonVO<PageVO<FinPayableCheckVO>> listAll(List<FinPayableCheckDTO> finPayableCheckDTOS) {
+        return null;
+    }
+
+    @Override
+    @GetMapping("detail")
+    @ApiOperation("单据详情")
+    public JsonVO<PageVO<FinPayableCheckEntryVO>> getById(FInPayableCheckEntryQuery condition) {
+        return null;
+    }
+
+    @GetMapping("query")
     @ApiOperation("普通查询")
-    public JsonVO<PageVO<FinPayableCheckVO>> listFinPayableCheck(FinPayableCheckListQuery condition) {
+    public JsonVO<PageVO<FinPayableCheckVO>> listFinPayableCheck(FinPayableCheckListAdvancedQuery condition) {
         return null;
     }
 
-    /**
-     * 在新增界面上根据供应商ID查询应付单
-     * TODO PageVO<这里应该是 FinPayableVO 应付单>
-     */
-    @GetMapping("payable-new-by-supplier")
+    @Override
+    @GetMapping("payable-new-by-supplier-query")
     @ApiOperation("根据供应商ID查询应付单")
-    public JsonVO<PageVO<FinPayableCheckVO>> listFinPayableBySupplier(FinPayableListBySupplierQuery condition) {
+    public JsonVO<PageVO<FinPayableVO>> listFinPayableBySupplier(FinPayableListBySupplierQuery condition) {
         return null;
     }
 
-    /**
-     * 在新增页面上根据供应商ID查询付款单
-     * TODO PageVO<这里应该是 FinPaymentVO 付款单>
-     */
-    @GetMapping("payment-new-by-supplier")
+    @Override
+    @GetMapping("payment-new-by-supplier-query")
     @ApiOperation("根据供应商ID查询付款单")
-    public JsonVO<PageVO<FinPayableCheckVO>> listFinPaymentBySupplier(FinPaymentListBySupplierQuery condition) {
+    public JsonVO<PageVO<FinPaymentVO>> listFinPaymentBySupplier(FinPaymentListBySupplierQuery condition) {
         return null;
     }
 

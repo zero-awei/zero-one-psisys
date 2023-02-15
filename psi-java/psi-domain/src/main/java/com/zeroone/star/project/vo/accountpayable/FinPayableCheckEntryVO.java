@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 /**
  * @author spk
- * @since 2023-02-13 09:11
+ * @since 2023-02-15
  * @description 应付核销单明细VO。
  * ApiModelProperty value 以网页显示内容为准，没有则用以数据库备注。
  */

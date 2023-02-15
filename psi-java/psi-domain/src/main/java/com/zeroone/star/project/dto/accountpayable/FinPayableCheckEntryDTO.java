@@ -2,7 +2,9 @@ package com.zeroone.star.project.dto.accountpayable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -16,6 +18,8 @@ import java.math.BigDecimal;
  */
 @Data
 @ApiModel("应付核销单明细数据传输对象")
+@AllArgsConstructor
+@NoArgsConstructor
 public class FinPayableCheckEntryDTO {
     @ApiModelProperty(value = "ID", example = "1623386325955944449")
     private String id;

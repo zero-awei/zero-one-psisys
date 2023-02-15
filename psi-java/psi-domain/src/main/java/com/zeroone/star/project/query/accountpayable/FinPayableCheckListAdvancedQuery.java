@@ -11,13 +11,11 @@ import java.util.Date;
 /**
  * @author spk
  * @since 2023-02-13 08:43
- * @description 应付核销单Query。在应付核销页面查询按钮左侧和上侧用到的字段。
- * TODO 是否需要区分展开前和展开后？好像有的组区分了，有的组没管
- * TODO 咱也不知道用不用 extend PageQuery
+ * @description 应付核销上的Query。在应付核销页面查询按钮左侧和上侧用到的字段。
  */
 @Data
-@ApiModel("应付核销单查询")
-public class FinPayableCheckListQuery {
+@ApiModel("应付核销单自定义查询")
+public class FinPayableCheckListAdvancedQuery {
     // ---展开前---
 
     /**
