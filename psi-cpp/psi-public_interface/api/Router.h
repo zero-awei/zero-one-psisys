@@ -85,6 +85,14 @@ private:
 	void initInvoiceTypeSetting();
 	void initSettleMethodSetting();
 	void initTransportMethodSetting();
+	//单据阶段下拉列表
+	void initBillStage();
+	//采购类型下拉列表
+	void initPurType();
+	//税率下拉列表
+	void initTaxRate();
+	//纳税规模下拉列表
+	void initTaxScale();
 };
 
 #endif // !_ROUTER_

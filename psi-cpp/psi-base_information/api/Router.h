@@ -47,6 +47,10 @@ private:
 
 
 
+	//供应商等级下拉列表
+	void initSupplierLevel();
+	//供应商高级查询条件下拉列表
+	void initSupplierQueryCriteria();
 };
 
 #endif // !_ROUTER_

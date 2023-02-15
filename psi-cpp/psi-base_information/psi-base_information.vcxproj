@@ -173,6 +173,8 @@
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\BankAccountController.cpp" />
+    <ClCompile Include="api\bas_supplier\SupplierLevelController.cpp" />
+    <ClCompile Include="api\bas_supplier\SupplierQueryCriteriaController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\supplier\SupplierController.cpp" />
     <ClCompile Include="domain\dto\supplier\AddSupplierDTO.cpp" />
@@ -189,6 +191,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\BankAccountController.h" />
+    <ClInclude Include="api\bas_supplier\SupplierLevelController.h" />
+    <ClInclude Include="api\bas_supplier\SupplierQueryCriteriaController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\supplier\SupplierController.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
@@ -200,7 +204,11 @@
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\BankAccountQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\supplier\AdvancedQuery.h" />
+    <ClInclude Include="domain\query\supplier\SpecifiedSupplierDataQuery.h" />
     <ClInclude Include="domain\vo\BankAccountListVO.h" />
+    <ClInclude Include="domain\vo\bas_supplier\SupplierLevelVO.h" />
+    <ClInclude Include="domain\vo\bas_supplier\SupplierQueryCriteriaVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
