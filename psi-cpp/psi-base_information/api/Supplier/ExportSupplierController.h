@@ -10,6 +10,7 @@ class ExportSupplierController
 public:
 	CREATE_API_FUN_QUERY3(exportSupplier, execExportSupplier);
 private:
+	//执行供应商导出
 	JsonVO<std::string> execExportSupplier();
 };
 
