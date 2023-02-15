@@ -55,7 +55,7 @@ public class UserDTO {
      * 性别(0-默认未知,1-男,2-女)
      */
     @ApiModelProperty(value = "性别", example = "1")
-    private Boolean sex;
+    private Integer sex;
 
     /**
      * 电子邮件
@@ -130,7 +130,7 @@ public class UserDTO {
      * 身份（1普通成员 2上级）
      */
     @ApiModelProperty(value = "身份", example = "1")
-    private Boolean userIdentity;
+    private Integer userIdentity;
 
     /**
      * 负责部门

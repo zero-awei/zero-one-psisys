@@ -109,7 +109,7 @@ public class AddUserVO {
      * 身份（1普通成员 2上级）
      */
     @ApiModelProperty(value = "选择您的身份", example = "")
-    private Boolean userIdentity;
+    private Integer userIdentity;
 
     /**
      * 负责部门

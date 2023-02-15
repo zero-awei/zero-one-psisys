@@ -51,7 +51,7 @@ public class UserVO {
      * 性别(0-默认未知,1-男,2-女)
      */
     @ApiModelProperty(value = "性别", example = "1")
-    private Boolean sex;
+    private Integer sex;
 
     /**
      * 电子邮件
@@ -72,7 +72,7 @@ public class UserVO {
     private String orgCode;
 
     /**
-     * 状态(1-正常,2-冻结)
+     * 状态(1-正常,0d-冻结)
      */
     @ApiModelProperty(value = "状态", example = "1")
     private Boolean status;
@@ -108,7 +108,6 @@ public class UserVO {
     private String telephone;
 
 
-
     /**
      * 更新人
      */
@@ -125,7 +124,7 @@ public class UserVO {
      * 身份（1普通成员 2上级）
      */
     @ApiModelProperty(value = "身份", example = "1")
-    private Boolean userIdentity;
+    private Integer userIdentity;
 
     /**
      * 负责部门

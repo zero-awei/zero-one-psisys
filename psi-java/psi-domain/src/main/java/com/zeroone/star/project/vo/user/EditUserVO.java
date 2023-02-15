@@ -2,6 +2,7 @@ package com.zeroone.star.project.vo.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -53,7 +54,7 @@ public class EditUserVO {
      * 性别(0-默认未知,1-男,2-女)
      */
     @ApiModelProperty(value = "性别", example = "1")
-    private Boolean sex;
+    private Integer sex;
 
     /**
      * 电子邮件
@@ -74,7 +75,7 @@ public class EditUserVO {
     private String orgCode;
 
     /**
-     * 状态(1-正常,2-冻结)
+     * 状态(1-正常,0-冻结)
      */
     @ApiModelProperty(value = "修改您的状态，1为正常，0为冻结", example = "1")
     private Boolean status;
@@ -123,7 +124,7 @@ public class EditUserVO {
      * 身份（1普通成员 2上级）
      */
     @ApiModelProperty(value = "身份", example = "1")
-    private Boolean userIdentity;
+    private Integer userIdentity;
 
     /**
      * 负责部门
