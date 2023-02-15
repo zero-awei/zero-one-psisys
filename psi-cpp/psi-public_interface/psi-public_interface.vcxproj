@@ -124,7 +124,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /F /Y /C</Command>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -172,8 +172,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "S(OutDir)" /a /F/I /V/C
-</Command>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -189,6 +188,8 @@
     <ClCompile Include="api\BasWareHouseTreeListController.cpp" />
     <ClCompile Include="api\CreateReceiptController.cpp" />
     <ClCompile Include="api\DepartChoiceController.cpp" />
+    <ClCompile Include="api\InvoiceMethodController.cpp" />
+    <ClCompile Include="api\InvoiceTypeController.cpp" />
     <ClCompile Include="api\MaterialQueryController.cpp" />
     <ClCompile Include="api\MaterialTypeTreeListController.cpp" />
     <ClCompile Include="api\Router.cpp" />
@@ -197,7 +198,9 @@
     <ClCompile Include="api\setting-qiuqiu\PayMethodController.cpp" />
     <ClCompile Include="api\setting-qiuqiu\SuppliersNameController.cpp" />
     <ClCompile Include="api\setting-qiuqiu\SuppliersNomalQueryController.cpp" />
+    <ClCompile Include="api\SettleMethodController.cpp" />
     <ClCompile Include="api\SuppliserController.cpp" />
+    <ClCompile Include="api\TransportMethodController.cpp" />
     <ClCompile Include="api\UserChoiceController.cpp" />
     <ClCompile Include="domain\dto\BankAccountVO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
@@ -222,6 +225,8 @@
     <ClInclude Include="api\BasWareHouseTreeListController.h" />
     <ClInclude Include="api\CreateReceiptController.h" />
     <ClInclude Include="api\DepartChoiceController.h" />
+    <ClInclude Include="api\InvoiceMethodController.h" />
+    <ClInclude Include="api\InvoiceTypeController.h" />
     <ClInclude Include="api\MaterialQueryController.h" />
     <ClInclude Include="api\MaterialTypeTreeListController.h" />
     <ClInclude Include="api\Router.h" />
@@ -230,7 +235,9 @@
     <ClInclude Include="api\setting-qiuqiu\PayMethodController.h" />
     <ClInclude Include="api\setting-qiuqiu\SuppliersNameController.h" />
     <ClInclude Include="api\setting-qiuqiu\SuppliersNomalQueryController.h" />
+    <ClInclude Include="api\SettleMethodController.h" />
     <ClInclude Include="api\SupplierCategoryController.h" />
+    <ClInclude Include="api\TransportMethodController.h" />
     <ClInclude Include="api\UserChoiceController.h" />
     <ClInclude Include="domain\do\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
@@ -257,6 +264,8 @@
     <ClInclude Include="domain\vo\BasWareHouseTreeListVO.h" />
     <ClInclude Include="domain\vo\CreateReceiptVO.h" />
     <ClInclude Include="domain\vo\DepartVO.h" />
+    <ClInclude Include="domain\vo\InvoiceMethodVO.h" />
+    <ClInclude Include="domain\vo\InvoiceTypeVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\MaterialTypeTreeListVO.h" />
     <ClInclude Include="domain\vo\MaterialVO.h" />
@@ -269,7 +278,9 @@
     <ClInclude Include="domain\vo\qiuqiu\SuppliersInfoVo.h" />
     <ClInclude Include="domain\vo\qiuqiu\SuppliersNameVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\SettleMethodVO.h" />
     <ClInclude Include="domain\vo\SupplierCategoruVO.h" />
+    <ClInclude Include="domain\vo\TransportMethodVO.h" />
     <ClInclude Include="domain\vo\UserVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />

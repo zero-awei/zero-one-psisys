@@ -16,6 +16,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+
+/**
+ *Author c1-ruizi
+ * 2023/2/12  17:46
+ * 接口：开票方式
+ */
+
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
@@ -25,6 +32,12 @@
 #include "api/setting-qiuqiu/DeliveryMethodController.h"
 #include "api/setting-qiuqiu/PayMethodController.h"
 #include "api/setting-qiuqiu/SuppliersNomalQueryController.h"
+
+
+#include "api/InvoiceTypeController.h"
+#include "api/InvoiceMethodController.h"
+#include "api/SettleMethodController.h"
+#include "api/TransportMethodController.h"
 
 
 #ifdef HTTP_SERVER_DEMO
@@ -67,6 +80,10 @@ void Router::initRouter()
 	createBankAccount();
 
 	createCreateReceipt();
+	initInvoiceMethodSetting();
+	initInvoiceTypeSetting();
+	initSettleMethodSetting();
+	initTransportMethodSetting();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -192,3 +209,20 @@ void Router::initSuppliersSetting()
 	BIND_GET_ROUTER(server, "/query-suppliernomal-type", &SuppliersNomalQueryController::querySuppliersNomal, nullptr);
 }
 
+
+void Router::initInvoiceMethodSetting()
+{
+	BIND_GET_ROUTER(server, "/query-invoice-method", &InvoiceMethodController::queryInvoiceMethod, nullptr);
+}
+void Router::initInvoiceTypeSetting()
+{
+	BIND_GET_ROUTER(server, "/query-invoice-type", &InvoiceTypeController::queryInvoiceType, nullptr);
+}
+void Router::initSettleMethodSetting()
+{
+	BIND_GET_ROUTER(server, "/query-settle-method", &SettleMethodController::querySettleMethod, nullptr);
+}
+void Router::initTransportMethodSetting()
+{
+	BIND_GET_ROUTER(server, "/query-transport-method", &TransportMethodController::queryTransportMethod, nullptr);
+}

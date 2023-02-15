@@ -35,6 +35,11 @@
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */
+ /**
+  *Author c1-ruizi
+  * 2023/2/12  17:46
+  * 接口：开票方式
+  */
 class Router
 {
 private:
@@ -76,6 +81,10 @@ private:
 	void initSupplierSetting();
 	void initBankAccount();
 	void initSuppliersSetting();
+	void initInvoiceMethodSetting();
+	void initInvoiceTypeSetting();
+	void initSettleMethodSetting();
+	void initTransportMethodSetting();
 };
 
 #endif // !_ROUTER_
