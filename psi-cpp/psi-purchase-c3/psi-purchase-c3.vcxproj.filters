@@ -54,10 +54,7 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -116,7 +113,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\pur-req\PurReqController.h">
-=======
+
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -129,9 +126,7 @@
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h">
->>>>>>> remotes/origin/c3-pur-inquiry-huilai
-=======
+
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindBill.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -142,8 +137,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotDividedList.h">
->>>>>>> remotes/origin/c3-pur-quot-luoluo
-=======
+
     <ClInclude Include="api\pur-req\PurReqController.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -157,8 +151,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h">
->>>>>>> remotes/origin/c3-pur-req-adam
-=======
+
     <ClInclude Include="api\pur-quot\PurQuotController.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -187,7 +180,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h">
->>>>>>> remotes/origin/c3-pur-quot-naiguan
+
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,14 +200,11 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <ClCompile Include="api\pur-req\PurReqController.cpp">
-=======
+
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp">
->>>>>>> remotes/origin/c3-pur-inquiry-huilai
-=======
+
     <ClCompile Include="api\pur-req\PurReqController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -228,10 +218,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\pur-req\ModifyPurReqDTO.cpp">
->>>>>>> remotes/origin/c3-pur-req-adam
-=======
+
     <ClCompile Include="api\pur-quot\PurQuotController.cpp">
->>>>>>> remotes/origin/c3-pur-quot-naiguan
+
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

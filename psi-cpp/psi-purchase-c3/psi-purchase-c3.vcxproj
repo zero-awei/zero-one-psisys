@@ -188,36 +188,32 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <ClInclude Include="api\pur-req\PurReqController.h" />
-=======
+
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
->>>>>>> remotes/origin/c3-pur-inquiry-huilai
-=======
+
+
     <ClInclude Include="api\pur-req\PurReqController.h" />
->>>>>>> remotes/origin/c3-pur-req-adam
+
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotExportDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-req\PurReqFindBillDTO.h" />
     <ClInclude Include="domain\dto\pur-req\PurReqFindDetailBillDTO.h" />
-=======
+
     <ClInclude Include="domain\dto\pur-req\AddPurReqDTO.h" />
     <ClInclude Include="domain\dto\pur-req\DeletePurReqDTO.h" />
     <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h" />
     <ClInclude Include="domain\dto\pur-req\PurReqModBillStatusDTO.h" />
->>>>>>> remotes/origin/c3-pur-req-adam
-=======
+
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
@@ -228,26 +224,26 @@
     <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h" />
->>>>>>> remotes/origin/c3-pur-quot-naiguan
+
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-<<<<<<< HEAD
+
     <ClInclude Include="domain\query\pur-compare\PurComExportQuery.h" />
     <ClInclude Include="domain\query\pur-compare\PurComIntoQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotExportQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotIntoQuery.h" />
     <ClInclude Include="domain\query\pur-req\PurReqFindBillQuery.h" />
     <ClInclude Include="domain\query\pur-req\PurReqFindDetailBillQuery.h" />
-=======
+
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotDividedList.h" />
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindBill.h" />
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindDetailBill.h" />
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotList.h" />
->>>>>>> remotes/origin/c3-pur-quot-luoluo
+
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-<<<<<<< HEAD
+
     <ClInclude Include="domain\vo\pur-compare\PurComExportVO.h" />
     <ClInclude Include="domain\vo\pur-compare\PurComIntoVO.h" />
     <ClInclude Include="domain\vo\pur-compare\导出VO.h" />
@@ -255,8 +251,7 @@
     <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h" />
-=======
-    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h" />
+ <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h" />
@@ -264,13 +259,12 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h" />
->>>>>>> remotes/origin/c3-pur-inquiry-huilai
-=======
+
     <ClInclude Include="domain\vo\pur-quot\AddPurQuotVO.h" />
     <ClInclude Include="domain\vo\pur-quot\DelPurQuotVO.h" />
     <ClInclude Include="domain\vo\pur-quot\ModPurQuotVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotModBillStatusVO.h" />
->>>>>>> remotes/origin/c3-pur-quot-naiguan
+
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
@@ -278,19 +272,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
-=======
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
->>>>>>> remotes/origin/c3-pur-inquiry-huilai
-=======
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
->>>>>>> remotes/origin/c3-pur-req-adam
-=======
     <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
->>>>>>> remotes/origin/c3-pur-quot-naiguan
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\dto\pur-req\AddPurReqDTO.cpp" />
     <ClCompile Include="domain\dto\pur-req\DeletePurReqDTO.cpp" />
