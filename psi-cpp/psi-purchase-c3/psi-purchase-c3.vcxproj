@@ -201,7 +201,6 @@
     <ClInclude Include="domain\dto\pur-compare\AddPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\DelPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\ModPurComDTO.h" />
-    <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComModBillStatusDTO.h" />
     <ClInclude Include="domain\dto\pur-inquiry\EntryPurInquiryDTO.h" />

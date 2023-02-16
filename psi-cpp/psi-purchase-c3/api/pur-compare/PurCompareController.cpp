@@ -74,3 +74,18 @@ JsonVO<uint64_t> PurCompareController::execPurComModBillStatus(const PurComModBi
 	JsonVO<uint64_t> result;
 	return result;
 }
+
+
+//导出
+nlohmann::json PurCompareController::execPurComExport(const PurComExportQuery& dto, const PayloadDTO& payload)
+{
+	//响应结果
+	return nlohmann::json(JsonVO<std::string>());
+}
+
+//导入
+JsonVO<PurComIntoVO> PurCompareController::execPurComInto(const PurComIntoDTO& dto)
+{
+	//响应结果
+	return JsonVO<PurComIntoVO>();
+}

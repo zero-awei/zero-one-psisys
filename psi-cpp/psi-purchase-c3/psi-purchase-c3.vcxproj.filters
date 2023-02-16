@@ -72,9 +72,6 @@
     <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>

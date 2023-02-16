@@ -139,6 +139,11 @@ void Router::createPurCompareRouter()
 	BIND_DEL_ROUTER(server, "/del-pur-com", &PurCompareController::removePurCom, nullptr);
 	// 修改单据状态的接口
 	BIND_POST_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
+
+	//导出
+	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
+	//导入
+	BIND_POST_ROUTER(server, "/pur-into-into", &PurCompareController::modifyPurComInto, nullptr);
 }
 
 

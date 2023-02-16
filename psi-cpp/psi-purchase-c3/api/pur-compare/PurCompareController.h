@@ -58,6 +58,10 @@
 //#include "../../domain/dto/user/UserDTO.h"
 //#include "../../domain/vo/user/UserVO.h"
 //公共接口
+#include "../../domain/vo/pur-compare/PurComExportVO.h"
+#include "../../domain/vo/pur-compare/PurComIntoVO.h"
+#include "../../domain/query/pur-compare/PurComExportQuery.h"
+#include "../../domain/dto/pur-compare/PurComIntoDTO.h"
 
 
 /**
@@ -78,6 +82,11 @@ public:
 	CREATE_API_FUN_BODY(removePurCom, execRemovePurCom, DelPurComDTO);
 	// 修改单据状态
 	CREATE_API_FUN_BODY(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
+
+	//导出
+	CREATE_API_FUN_BODY_PAYLOAD(queryPurComExport, execPurComExport, PurComExportQuery);
+	//导入
+	CREATE_API_FUN_BODY_FILE(modifyPurComInto, execPurComInto, PurComIntoDTO);
 private:
 	// 查询比价单单据列表
 	JsonVO<PageVO<PurComFindBillVO>> execQueryPurComFindBill(const PurComFindBillQuery& query, const PayloadDTO& payload);
@@ -95,6 +104,11 @@ private:
 	JsonVO<uint64_t> execRemovePurCom(const DelPurComDTO& dto);
 	//演示修改单据状态
 	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto);
+
+	//执行方法：导出
+	nlohmann::json execPurComExport(const PurComExportQuery& dto, const PayloadDTO& payload);
+	//执行方法：导入
+	JsonVO<PurComIntoVO> execPurComInto(const PurComIntoDTO& dto);
 };
 
 #endif // _SAMPLE_CONTROLLER_#pragma once
