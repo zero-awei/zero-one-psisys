@@ -30,10 +30,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\pur_order\pur_otherDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\user\depart\AddDepartDTO.cpp">
+    <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,19 +74,28 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\pur_order\pur_otherQuery.h">
+    <ClInclude Include="domain\dto\prepayment\PrepaymentDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur_order\pur_otherDTO.h">
+    <ClInclude Include="domain\query\prepaymentbill\PrepaymentBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\user\depart\AddDepartDTO.h">
+    <ClInclude Include="domain\query\prepaymentbill\PrepaymentDetailBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\user\depart\AddDepartMoreDTO.h">
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\user\UserDTO.h">
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

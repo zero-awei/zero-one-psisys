@@ -180,8 +180,7 @@
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="domain\dto\pur_order\pur_otherDTO.cpp" />
-    <ClCompile Include="domain\dto\user\depart\AddDepartDTO.cpp" />
+    <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -196,16 +195,19 @@
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\pur_order\pur_otherDTO.h" />
-    <ClInclude Include="domain\dto\user\depart\AddDepartDTO.h" />
-    <ClInclude Include="domain\dto\user\depart\AddDepartMoreDTO.h" />
-    <ClInclude Include="domain\dto\user\UserDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\PrepaymentDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\pur_order\pur_otherQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrepaymentBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrepaymentDetailBillQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h" />
+    <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
+    <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
+    <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
