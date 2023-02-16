@@ -30,6 +30,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\payment\PaymentController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -74,13 +77,13 @@
     <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\payment\PaymentDeleteDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\payment\PaymentImportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\payment\PaymentExportQuery.h">
+    <ClInclude Include="api\payment\PaymentController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\payment\PaymentVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

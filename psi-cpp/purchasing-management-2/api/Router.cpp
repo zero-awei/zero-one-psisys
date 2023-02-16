@@ -21,6 +21,9 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
+#include "payment/PaymentController.h"
+
+
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -73,7 +76,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	createPaymentRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -93,4 +96,12 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
 #endif
+void Router::createPaymentRouter()
+{
+	BIND_PUT_ROUTER(server, "/payment-change", &PaymentController::changePayment, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-by-id", &PaymentController::deleteById, nullptr);
+	BIND_POST_ROUTER(server, "/payment-export", &PaymentController::exportPayment, nullptr);
+	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
+}
