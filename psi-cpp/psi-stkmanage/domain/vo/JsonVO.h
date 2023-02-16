@@ -40,7 +40,7 @@ public:
 		this->message = "";
 	}
 	JsonVO(T data, ResultStatus resultStatus) {
-		this->setStatus(resultStatus);
+		this->setStatus(resultStatus); 
 		this->setData(data);
 	}
 	// ÉèÖÃ×´Ì¬

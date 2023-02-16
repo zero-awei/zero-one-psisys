@@ -1,36 +1,36 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
  @Author: awei
- @Date: 2022/10/25 11:35:41
-
+ @Date: 2022/10/25 11:36:29
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
 	  https://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAGE_QUERY_
-#define _PAGE_QUERY_
 
-#include "../GlobalInclude.h"
 
-/**
- * 分页查询对象父类，后续分页查询对象可以继承它
- */
-class PageQuery
+//	查询单据列表
+
+#include "../psi-stkmanage/domain/query/PageQuery.h"
+
+#ifndef _QUERY_PYRK_BILL_LIST_QUERY_
+#define _QUERY_PYRK_BILL_LIST_QUERY_
+
+class QueryCgrkBillDetailsQuery
 {
-	//查询页码
-	CC_SYNTHESIZE(uint64_t, pageIndex, PageIndex);
-	//查询条数
-	CC_SYNTHESIZE(uint64_t, pageSize, PageSize);
+	//单据编号
+	CC_SYNTHESIZE(string, billNo, BillNo);
 
+public:
+	// 绑定from_json
+	friend void from_json(const json& j, QueryCgrkBillDetailsQuery& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, billNo);
+	}
 };
-#endif // !_PAGE_QUERY_
+
+#endif // !_QUERY_PYRK_BILL_LIST_QUERY_
