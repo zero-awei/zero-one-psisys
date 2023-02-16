@@ -234,7 +234,11 @@
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindBill.h" />
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotFindDetailBill.h" />
     <ClInclude Include="domain\query\pur-quot-luoluo\PurQuotList.h" />
+    <ClInclude Include="domain\query\pur-quot\PurQuotDividedListQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotExportQuery.h" />
+    <ClInclude Include="domain\query\pur-quot\PurQuotFindBillQuery.h" />
+    <ClInclude Include="domain\query\pur-quot\PurQuotFindDetailBillQuery.h" />
+    <ClInclude Include="domain\query\pur-quot\PurQuotListQuery.h" />
     <ClInclude Include="domain\query\pur-req\PurReqFindBillQuery.h" />
     <ClInclude Include="domain\query\pur-req\PurReqFindDetailBillQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />

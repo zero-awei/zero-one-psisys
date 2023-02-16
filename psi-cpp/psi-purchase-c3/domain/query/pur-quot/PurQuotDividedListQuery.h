@@ -4,7 +4,7 @@
 
 #include "../PageQuery.h"
 
-class PurQuotDividedList : public PageQuery
+class PurQuotDividedListQuery : public PageQuery
 {
 
 	// ÐòºÅ
@@ -28,7 +28,7 @@ class PurQuotDividedList : public PageQuery
 	//±¸×¢
 	CC_SYNTHESIZE(string, comments, Comments);
 public:
-	friend void from_json(const json& j, PurQuotDividedList& t) {
+	friend void from_json(const json& j, PurQuotDividedListQuery& t) {
 		BIND_FROM_TO_I(j, t, pageIndex);
 		BIND_FROM_TO_I(j, t, pageSize);
 		BIND_FROM_TO_I(j, t, receiptNum);

@@ -4,7 +4,7 @@
 
 #include "../PageQuery.h"
 
-class PurQuotList : public PageQuery
+class PurQuotListQuery : public PageQuery
 {
 
 	// 单据编号
@@ -22,7 +22,7 @@ class PurQuotList : public PageQuery
 	// 已关闭
 	CC_SYNTHESIZE(string, isClose, IsClose);
 public:
-	friend void from_json(const json& j, PurQuotList& t) {
+	friend void from_json(const json& j, PurQuotListQuery& t) {
 		BIND_FROM_TO_I(j, t, pageIndex);
 		BIND_FROM_TO_I(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, receiptId);

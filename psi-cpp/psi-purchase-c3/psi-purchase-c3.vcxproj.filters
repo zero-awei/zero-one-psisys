@@ -258,6 +258,18 @@
     <ClInclude Include="domain\vo\pur-compare\PurComModBillStatusVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\pur-quot\PurQuotDividedListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-quot\PurQuotFindBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-quot\PurQuotFindDetailBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-quot\PurQuotListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
