@@ -119,6 +119,7 @@ void Router::createPurReqRouter() {
 	//导出
 	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
 }
+<<<<<<< HEAD
 //采购询价
 void Router::createPurInquiryRouter() {
 	//查询单据列表
@@ -174,6 +175,7 @@ void Router::createPurCompareRouter(){
 	//导出
 	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
 }
+
 
 
 

@@ -56,7 +56,7 @@ JsonVO<uint64_t> PurCompareController::execAddPurCom(const AddPurComDTO& dto)
 {
 	JsonVO<uint64_t> result;
 	// 接口测试
-	/*result.success(1);*/
+	
 	return result;
 }
 //演示修改比价
