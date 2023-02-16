@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Eleanor
- @Date: 2023/2/15 14:42
+ @Date: 2023/2/16 10:24
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "PurReqExportDTO.h"
+#include "PurReqExportQuery.h"
 
-void from_json(const json& j, PurReqExportDTO& t) { // NOLINT
+void from_json(const json& j, PurReqExportQuery& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, purReqId);
 }

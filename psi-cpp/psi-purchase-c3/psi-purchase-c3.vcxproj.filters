@@ -72,9 +72,6 @@
     <ClInclude Include="api\pur-req\PurReqController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur-req\PurReqExportDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="service\pur-req\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -97,6 +94,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-req\PurReqIntoVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-req\PurReqExportQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -128,9 +128,6 @@
     <ClCompile Include="api\pur-req\PurReqController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\pur-req\PurReqExportDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="service\pur-req\PurReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -141,6 +138,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\pur-req\PurReqIntoDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\query\pur-req\PurReqExportQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

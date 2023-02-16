@@ -21,7 +21,7 @@
 #define _PUR_REQ_CONTROLLER_
 
 #include"api/ApiHelper.h"
-#include "../../domain/dto/pur-req/PurReqExportDTO.h"
+#include "../../domain/query/pur-req/PurReqExportQuery.h"
 #include "../../domain/dto/pur-req/PurReqIntoDTO.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PageVO.h"
@@ -38,7 +38,7 @@ class PurReqController
 {
 public:
 	//接口1 导出申请单
-	CREATE_API_FUN_BODY_PAYLOAD(queryPurReqExport, execPurReqExport, PurReqExportDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(queryPurReqExport, execPurReqExport, PurReqExportQuery);
 
 	//接口2 导入申请单
 	CREATE_API_FUN_BODY_FILE(modifyPurReqInto, execPurReqInto, PurReqIntoDTO);
@@ -46,7 +46,7 @@ public:
 	
 private:
 	//执行方法：导出
-	nlohmann::json execPurReqExport(const PurReqExportDTO &dto, const PayloadDTO &payload);
+	JsonVO<std::string> execPurReqExport(const PurReqExportQuery&query, const PayloadDTO &payload);
 
 	//执行方法：导入
 	JsonVO<PurReqIntoVO> execPurReqInto(const PurReqIntoDTO& dto);

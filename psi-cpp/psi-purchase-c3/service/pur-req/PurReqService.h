@@ -30,7 +30,7 @@ class PurReqService
 {
 public:
 	// 导出数据
-	//std::string purReqExportData(PurReqExportDTO dto);
+	//std::string purReqExportData(PurReqExportQuery query);
 	// 保存数据
 	//uint64_t saveData(const PurReqIntoDTO& dto);
 };
