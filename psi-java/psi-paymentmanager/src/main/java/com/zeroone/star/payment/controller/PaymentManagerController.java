@@ -4,7 +4,9 @@ import com.zeroone.star.payment.service.PaymentManagerService;
 import com.zeroone.star.project.dto.paymentManager.ChosenExportDto;
 import com.zeroone.star.project.paymentManager.PaymentManagerApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.paymentManager.ChosenExportVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +37,9 @@ public class PaymentManagerController implements PaymentManagerApis {
     }
 
     @PostMapping("/export")
+    @ApiOperation(value = "选择导出",notes = "选择所需要导出的单据构成一张表导出")
     @Override
-    public void chosenExport(@RequestBody ChosenExportDto chosenExportDto) {
-        paymentManagerService.chosenExport(chosenExportDto);
+    public JsonVO chosenExport(@RequestBody ChosenExportDto chosenExportDto) {
+        return paymentManagerService.chosenExport(chosenExportDto);
     }
 }

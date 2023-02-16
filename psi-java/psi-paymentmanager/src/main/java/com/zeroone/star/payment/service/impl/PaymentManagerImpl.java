@@ -3,8 +3,12 @@ package com.zeroone.star.payment.service.impl;
 import com.zeroone.star.payment.mapper.PaymentManagerMapper;
 import com.zeroone.star.payment.service.PaymentManagerService;
 import com.zeroone.star.project.dto.paymentManager.ChosenExportDto;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.paymentManager.ChosenExportVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PaymentManagerImpl implements PaymentManagerService {
@@ -23,7 +27,8 @@ public class PaymentManagerImpl implements PaymentManagerService {
     }
 
     @Override
-    public void chosenExport(ChosenExportDto chosenExportDto) {
-         paymentManagerMapper.chosenExport(chosenExportDto);
+    public JsonVO chosenExport(ChosenExportDto chosenExportDto) {
+        List<ChosenExportVo> chosenExportVos = paymentManagerMapper.chosenExport(chosenExportDto);
+        return JsonVO.success(chosenExportVos);
     }
 }
