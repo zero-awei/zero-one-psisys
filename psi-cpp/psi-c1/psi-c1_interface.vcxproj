@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{beebabea-7be9-4ceb-97ea-953b3d750fe5}</ProjectGuid>
+    <RootNamespace>psic1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="api\publicInterfaceController\areaController.cpp" />
+    <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\bankAccountController\AddAccountController.cpp" />
+    <ClCompile Include="api\bankAccountController\BankAccountController.cpp" />
+    <ClCompile Include="api\bankAccountController\DeleteAccountController.cpp" />
+    <ClCompile Include="api\bankAccountController\EditAccountController.cpp" />
+    <ClCompile Include="api\bankAccountController\ImportAccountController.cpp" />
+    <ClCompile Include="api\bankAccountController\IsEnabledController.cpp" />
+    <ClCompile Include="api\bankAccountController\BasBankAccountController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\BasWareHouseTreeListController.cpp" />
+    <ClCompile Include="api\supplierController\SupplierLevelController.cpp" />
+    <ClCompile Include="api\supplierController\SupplierQueryCriteriaController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\BillStageController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\CreateReceiptController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\DepartChoiceController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\InvoiceMethodController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\InvoiceTypeController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\MaterialQueryController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\MaterialTypeTreeListController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\CurrencyTypeController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\DeliveryTypeController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\WarehouseController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\PurTypeController.cpp" />
+    <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="api\publicInterfaceController\DeliveryMethodController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\MaterialTypeController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\PayMethodController.cpp" />
+    <ClCompile Include="api\supplierController\SuppliersNameController.cpp" />
+    <ClCompile Include="api\supplierController\SuppliersNomalQueryController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\SettleMethodController.cpp" />
+    <ClCompile Include="api\supplierController\ExportSupplierController.cpp" />
+    <ClCompile Include="api\supplierController\ImportSupplierController.cpp" />
+    <ClCompile Include="api\supplierController\SupplierController.cpp" />
+    <ClCompile Include="api\supplierController\SuppliserCategoryController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\TaxRateController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
+    <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
+    <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
+    <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
+    <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp" />
+    <ClCompile Include="domain\vo\ResultStatus.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="api\publicInterfaceController\areaController.h" />
+    <ClInclude Include="api\bankAccountController\AddAccountController.h" />
+    <ClInclude Include="api\bankAccountController\BankAccountController.h" />
+    <ClInclude Include="api\bankAccountController\DeleteAccountController.h" />
+    <ClInclude Include="api\bankAccountController\EditAccountController.h" />
+    <ClInclude Include="api\bankAccountController\ExportAccountController.h" />
+    <ClInclude Include="api\bankAccountController\ImportAccountController.h" />
+    <ClInclude Include="api\bankAccountController\IsEnabledController.h" />
+    <ClInclude Include="api\bankAccountController\BasBankAccountController.h" />
+    <ClInclude Include="api\publicInterfaceController\BasWareHouseTreeListController.h" />
+    <ClInclude Include="api\supplierController\SupplierLevelController.h" />
+    <ClInclude Include="api\supplierController\SupplierQueryCriteriaController.h" />
+    <ClInclude Include="api\publicInterfaceController\BillStageController.h" />
+    <ClInclude Include="api\publicInterfaceController\CreateReceiptController.h" />
+    <ClInclude Include="api\publicInterfaceController\DepartChoiceController.h" />
+    <ClInclude Include="api\publicInterfaceController\InvoiceMethodController.h" />
+    <ClInclude Include="api\publicInterfaceController\InvoiceTypeController.h" />
+    <ClInclude Include="api\publicInterfaceController\MaterialQueryController.h" />
+    <ClInclude Include="api\publicInterfaceController\MaterialTypeTreeListController.h" />
+    <ClInclude Include="api\publicInterfaceController\CurrencyTypeController.h" />
+    <ClInclude Include="api\publicInterfaceController\DeliveryTypeController.h" />
+    <ClInclude Include="api\publicInterfaceController\WarehouseController.h" />
+    <ClInclude Include="api\publicInterfaceController\PurTypeController.h" />
+    <ClInclude Include="api\Router.h" />
+    <ClInclude Include="api\publicInterfaceController\DeliveryMethodController.h" />
+    <ClInclude Include="api\publicInterfaceController\MaterialTypeController.h" />
+    <ClInclude Include="api\publicInterfaceController\PayMethodController.h" />
+    <ClInclude Include="api\supplierController\SuppliersNameController.h" />
+    <ClInclude Include="api\supplierController\SuppliersNomalQueryController.h" />
+    <ClInclude Include="api\publicInterfaceController\SettleMethodController.h" />
+    <ClInclude Include="api\supplierController\SupplierCategoryController.h" />
+    <ClInclude Include="api\supplierController\ExportSupplierController.h" />
+    <ClInclude Include="api\supplierController\ImportSupplierController.h" />
+    <ClInclude Include="api\supplierController\SupplierController.h" />
+    <ClInclude Include="api\publicInterfaceController\TaxRateController.h" />
+    <ClInclude Include="api\publicInterfaceController\TaxScaleController.h" />
+    <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
+    <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
+    <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
+    <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
+    <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\supplierDTO\AddSupplierDTO.h" />
+    <ClInclude Include="domain\dto\supplierDTO\DeleteSupplierDTO.h" />
+    <ClInclude Include="domain\dto\supplierDTO\ModifySupplierDTO.h" />
+    <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\publicInterfaceQuery\AreaQuery.h" />
+    <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h" />
+    <ClInclude Include="domain\query\bankAccountQuery\SpecifiedBankAccountQuery.h" />
+    <ClInclude Include="domain\query\publicInterfaceQuery\BasWareHouseItemQuery.h" />
+    <ClInclude Include="domain\query\publicInterfaceQuery\DepartNameQuery.h" />
+    <ClInclude Include="domain\query\publicInterfaceQuery\MaterialQuery.h" />
+    <ClInclude Include="domain\query\publicInterfaceQuery\MaterialTypeItemQuery.h" />
+    <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\supplierQuery\SuppliersNomalQuery.h" />
+    <ClInclude Include="domain\query\supplierQuery\SupplierCategoryQuery.h" />
+    <ClInclude Include="domain\query\supplierQuery\AdvancedQuery.h" />
+    <ClInclude Include="domain\query\supplierQuery\SpecifiedSupplierDataQuery.h" />
+    <ClInclude Include="domain\query\publicInterfaceQuery\UserQuery.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\AreaVO.h" />
+    <ClInclude Include="domain\vo\bankAccountVO\BankAccountListVO.h" />
+    <ClInclude Include="domain\vo\bankAccountVO\IsEnabledVO.h" />
+    <ClInclude Include="domain\vo\bankAccountVO\SysUserVO.h" />
+    <ClInclude Include="domain\vo\bankAccountVO\SpecifiedBankAccountListVO.h" />
+    <ClInclude Include="domain\vo\bankAccountVO\BasBankAccountVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\BasWareHouseTreeListVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\SupplierLevelVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\SupplierQueryCriteriaVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\BillStageVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\CreateReceiptVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\CurrencyTypeVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\DeliveryTypeVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\DepartVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\InvoiceMethodVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\InvoiceTypeVO.h" />
+    <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\MaterialTypeTreeListVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\MaterialVO.h" />
+    <ClInclude Include="domain\vo\Message.h" />
+    <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\PurTypeVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\DeliveryMethodVO.h" />
+    <ClInclude Include="domain\vo\qiuqiu\MaterialType.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\MaterialTypeVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\PayMethodTypeVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\SuppliersInfoVo.h" />
+    <ClInclude Include="domain\vo\supplierVO\SuppliersNameVO.h" />
+    <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\SettleMethodVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\SupplierCategoruVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\AdvancedQueryVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\SpecifiedSupplierDataQueryVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\TaxRateVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\TaxScaleVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\TransportMethodVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\UserVO.h" />
+    <ClInclude Include="domain\vo\publicInterfaceVO\WarehouseVO.h" />
+    <ClInclude Include="Macros.h" />
+    <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib-common\lib-common.vcxproj">
+      <Project>{213f58ad-9943-4155-8a45-1b2dab0bb8f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib-http\lib-http.vcxproj">
+      <Project>{634af60f-bb31-439b-98c1-805bc34265f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib-mysql\lib-mysql.vcxproj">
+      <Project>{8293b741-b019-444f-80bc-70321a47868e}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

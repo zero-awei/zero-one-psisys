@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api\Aspect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\Router.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\vo\ResultStatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\areaController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\DepartChoiceController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\MaterialQueryController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\SuppliserCategoryController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\BankAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\BasBankAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\BasWareHouseTreeListController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\CreateReceiptController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\MaterialTypeTreeListController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\AddAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\DeleteAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\EditAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\ImportAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\bankAccountController\IsEnabledController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\DeliveryMethodController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\MaterialTypeController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\PayMethodController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\SuppliersNameController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\SuppliersNomalQueryController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\InvoiceMethodController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\InvoiceTypeController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\SettleMethodController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\BillStageController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\PurTypeController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\TaxRateController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\CurrencyTypeController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\DeliveryTypeController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\publicInterfaceController\WarehouseController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\SupplierLevelController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\SupplierQueryCriteriaController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\ExportSupplierController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\ImportSupplierController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\supplierController\SupplierController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="api\Router.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\DoInclude.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\FileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\IDDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\PageQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\JsonVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Message.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PageVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\ResultStatus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\GlobalInclude.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Macros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\AreaVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\publicInterfaceQuery\AreaQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\areaController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\UserVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\publicInterfaceQuery\UserQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\DepartVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\publicInterfaceQuery\DepartNameQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\UserChoiceController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\MaterialVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\publicInterfaceQuery\MaterialQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\MaterialQueryController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\DepartChoiceController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\supplierQuery\SupplierCategoryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\SupplierCategoruVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\SupplierCategoryController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\BankAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\BasBankAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\BasWareHouseTreeListController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\CreateReceiptController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\MaterialTypeTreeListController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\bankAccountQuery\SpecifiedBankAccountQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\publicInterfaceQuery\BasWareHouseItemQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\publicInterfaceQuery\MaterialTypeItemQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\bankAccountVO\SpecifiedBankAccountListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\bankAccountVO\BasBankAccountVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\BasWareHouseTreeListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\CreateReceiptVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\MaterialTypeTreeListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\AddAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\DeleteAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\EditAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\ExportAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\ImportAccountController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\bankAccountController\IsEnabledController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\bankAccountVO\IsEnabledVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\bankAccountVO\SysUserVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\DeliveryMethodVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\qiuqiu\MaterialType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\MaterialTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\PayMethodTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\SuppliersInfoVo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\SuppliersNameVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\DeliveryMethodController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\MaterialTypeController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\PayMethodController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\SuppliersNameController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\SuppliersNomalQueryController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\supplierQuery\SuppliersNomalQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\InvoiceMethodController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\InvoiceTypeController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\SettleMethodController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\TransportMethodController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\InvoiceMethodVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\InvoiceTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\SettleMethodVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\TransportMethodVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\BillStageController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\PurTypeController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\TaxRateController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\TaxScaleController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\BillStageVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\PurTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\TaxRateVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\TaxScaleVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\CurrencyTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\DeliveryTypeVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\publicInterfaceVO\WarehouseVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\CurrencyTypeController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\DeliveryTypeController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\publicInterfaceController\WarehouseController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\SupplierLevelController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\SupplierQueryCriteriaController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\ExportSupplierController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\ImportSupplierController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\supplierController\SupplierController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\supplierDTO\AddSupplierDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\supplierDTO\DeleteSupplierDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\supplierDTO\ModifySupplierDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\supplierQuery\AdvancedQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\supplierQuery\SpecifiedSupplierDataQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\SupplierLevelVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\SupplierQueryCriteriaVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\AdvancedQueryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\supplierVO\SpecifiedSupplierDataQueryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\bankAccountVO\BankAccountListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
