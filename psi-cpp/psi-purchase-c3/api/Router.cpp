@@ -103,55 +103,54 @@ void Router::createUserDepartRouter()
 
 
 void Router::createPurReqRouter() {
-	//查询比价单列表接口路由绑定
+	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
-	//查询指定比价单详细信息接口路由绑定
+	//查询指定单据详细信息
 	BIND_GET_ROUTER(server, "/get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
-	//导出申请单接口路由绑定
-	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
-	//导入申请单接口路由绑定
-	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
-	//采购订单添加接口
+	//添加申请(保存/提交)
 	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqController::addPurReq, nullptr);
-	//采购订单修改接口
+	//修改申请(保存/提交/审核)
 	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqController::modifyPurReq, nullptr);
-	//采购订单删除接口
+	//删除申请
 	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqController::removePurReqById, nullptr);
-	//采购订单状态修改接口
+	//修改单据状态(关闭/作废/反关闭)
 	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqController::modifyPurReqBillStatus, nullptr);
+	//导入
+	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
+	//导出
+	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
 
 }
 void Router::createPurCompareRouter()
 {
-	//查询比价单列表接口路由绑定
+	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
-	//查询指定比价单详细信息接口路由绑定
+	//查询指定单据详细信息
 	BIND_GET_ROUTER(server, "/get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
-	//查询报价单接口路由绑定
+	//报价单列表
 	BIND_GET_ROUTER(server, "/get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
-	//查询报价单分录接口路由绑定
+	//报价单分录列表
 	BIND_GET_ROUTER(server, "/get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
-	// 新增比价的接口
+	//添加比价(保存/提交)
 	BIND_POST_ROUTER(server, "/add-pur-com", &PurCompareController::addPurCom, nullptr);
-	// 修改比价的接口
+	//修改比较(保存/提交/审核)
 	BIND_POST_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
-	// 删除比价的接口
+	//删除比价
 	BIND_DEL_ROUTER(server, "/del-pur-com", &PurCompareController::removePurCom, nullptr);
-	// 修改单据状态的接口
+	//修改单据状态(关闭/作废/反关闭)
 	BIND_POST_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
-
-	//导出
-	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pur-into-into", &PurCompareController::modifyPurComInto, nullptr);
+	//导出
+	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
 }
 
 
 void Router::createPurInquiryRouter()
 {
-	//查询询价单列表接口路由绑定
+	//查询单据列表
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
-	//查看指定询价单详细信息接口路由绑定
+	//查询指定单据详细信息
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
 	//BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
 	//BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
@@ -164,16 +163,18 @@ void Router::createPurInquiryRouter()
 
 void Router::createPurQuotRouter()
 {
-	//新增供应报价
+	//添加报价(保存/提交)
 	BIND_POST_ROUTER(server, "/add-pur-quot", &PurQuotController::addPurQuot, nullptr);
-	//修改供应报价
+	//修改报价(保存/提交/审核)
 	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
-	//删除供应报价
+	//删除报价
 	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
-	//修改供应报价状态（关闭、作弊、反关闭）
+	//修改单据状态(关闭/作废/反关闭)
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
-	BIND_PUT_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
+	//导入
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
+	//导出
+	BIND_PUT_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
 }
 
 
