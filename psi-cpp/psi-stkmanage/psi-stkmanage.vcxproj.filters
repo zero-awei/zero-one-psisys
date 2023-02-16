@@ -57,7 +57,10 @@
     <ClInclude Include="api\Pyrk\PyrkController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\Pyrk\ModifyPyrkBillStateDTO.h">
+    <ClInclude Include="domain\dto\Pyrk\ImportPyrkFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\ImportPyrkFileVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

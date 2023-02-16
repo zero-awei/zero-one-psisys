@@ -176,12 +176,13 @@
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\Pyrk\ModifyPyrkBillStateDTO.h" />
+    <ClInclude Include="domain\dto\Pyrk\ImportPyrkFileDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\Pyrk\ImportPyrkFileVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
