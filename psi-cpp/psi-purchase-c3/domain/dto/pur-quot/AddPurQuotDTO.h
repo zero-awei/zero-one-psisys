@@ -1,7 +1,9 @@
-#include "stdafx.h"
-#include "../../GlobalInclude.h"
 #ifndef _ADD_PUR_QUOT_DTO_
 #define _ADD_PUR_QUOT_DTO_
+
+#include "stdafx.h"
+#include "../../GlobalInclude.h"
+
 
 
 

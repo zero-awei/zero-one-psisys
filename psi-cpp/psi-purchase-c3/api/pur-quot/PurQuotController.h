@@ -1,3 +1,6 @@
+#ifndef _PUR_QUOT_CONTROLLER_
+#define _PUR_QUOT_CONTROLLER_
+
 #include "stdafx.h"
 #include "domain/dto/IDDTO.h"
 #include "../../domain/vo/JsonVO.h"
@@ -10,10 +13,6 @@
 #include "../../domain/vo/pur-quot/DelPurQuotVO.h"
 #include "../../domain/vo/pur-quot/ModPurQuotVO.h"
 #include "../../domain/vo/pur-quot/PurQuotModBillStatusVO.h"
-
-#ifndef _PUR_QUOT_CONTROLLER_
-#define _PUR_QUOT_CONTROLLER_
-
 
 
 class PurQuotController

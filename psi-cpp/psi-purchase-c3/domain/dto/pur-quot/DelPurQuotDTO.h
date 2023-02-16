@@ -1,8 +1,7 @@
-#include "stdafx.h"
-#include "../../GlobalInclude.h"
 #ifndef _DEL_PUR_QUOT_DTO_
 #define _DEL_PUR_QUOT_DTO_
-
+#include "stdafx.h"
+#include "../../GlobalInclude.h"
 
 
 class DelPurQuotDTO

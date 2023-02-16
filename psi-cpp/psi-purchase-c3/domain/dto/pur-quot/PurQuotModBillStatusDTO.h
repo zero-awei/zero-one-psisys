@@ -1,7 +1,8 @@
-#include "stdafx.h"
-#include "../../GlobalInclude.h"
 #ifndef _PUR_QUOT_MOD_BILL_STATUS_DTO_
 #define _PUR_QUOT_MOD_BILL_STATUS_DTO_
+#include "stdafx.h"
+#include "../../GlobalInclude.h"
+
 
 
 

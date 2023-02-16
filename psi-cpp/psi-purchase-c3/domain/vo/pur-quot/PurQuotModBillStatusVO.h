@@ -1,8 +1,9 @@
+#ifndef _PUR_QUOT_MOD_BILL_STATUS_VO_
+#define _PUR_QUOT_MOD_BILL_STATUS_VO_
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
 
-#ifndef _PUR_QUOT_MOD_BILL_STATUS_VO_
-#define _PUR_QUOT_MOD_BILL_STATUS_VO_
+
 
 
 //ÐÞ¸Äµ¥¾Ý×´Ì¬
