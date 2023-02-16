@@ -1,10 +1,8 @@
-<<<<<<< HEAD
+
 //公共头文件
-=======
+
 #ifndef _PUR_QUOT_CONTROLLER_
 #define _PUR_QUOT_CONTROLLER_
-
->>>>>>> remotes/origin/c3-improve-api-domain-naiguan
 #include "stdafx.h"
 #include "domain/dto/IDDTO.h"
 #include "../../domain/vo/JsonVO.h"
@@ -34,7 +32,6 @@ public:
 	//删除报价
 	CREATE_API_FUN_BODY(delPurQuotById, execDelPurQuotById, DelPurQuotDTO);
 	//修改报价状态（关闭、作废、反关闭）
-	CREATE_API_FUN_BODY(purQuotModBillStatus, execPurQuotModBillStatus, PurQuotModBillStatusDTO);
 	CREATE_API_FUN_BODY_PAYLOAD(purQuotModBillStatus, execPurQuotModBillStatus, PurQuotModBillStatusDTO);
 	//导出
 	CREATE_API_FUN_BODY_PAYLOAD(queryPurQuotExport, execPurQuotExport, PurQuotExportQuery);
