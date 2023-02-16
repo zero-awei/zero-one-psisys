@@ -8,7 +8,7 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>psi-accountpayable</artifactId>
+    <artifactId>psi-accountPayable</artifactId>
     <dependencies>
         <!-- spring mvc -->
         <dependency>

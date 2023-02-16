@@ -40,7 +40,8 @@ public class FinPayableCheckController implements FinPayableCheckApis {
     @Override
     @GetMapping("list-all")
     @ApiOperation("列出所有单据")
-    public JsonVO<PageVO<FinPayableCheckVO>> listAll(List<FinPayableCheckDTO> finPayableCheckDTOS) {
+    // TODO 咱也不知道咋写，先这样
+    public JsonVO<PageVO<FinPayableCheckVO>> listAll(FinPayableCheckDTO finPayableCheckDTO) {
         return null;
     }
 

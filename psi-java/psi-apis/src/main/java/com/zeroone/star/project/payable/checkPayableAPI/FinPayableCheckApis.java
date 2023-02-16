@@ -26,7 +26,7 @@ public interface FinPayableCheckApis {
      * @return null
      * @param finPayableCheckDTOS 应付核销DTO列表
      */
-    JsonVO<PageVO<FinPayableCheckVO>> listAll(List<FinPayableCheckDTO> finPayableCheckDTOS);
+    JsonVO<PageVO<FinPayableCheckVO>> listAll(FinPayableCheckDTO finPayableCheckDTO);
 
     /**
      * 根据ID查询单据详情
