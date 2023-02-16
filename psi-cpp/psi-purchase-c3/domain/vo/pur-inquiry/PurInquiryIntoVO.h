@@ -1,10 +1,13 @@
+#ifndef __PURINQUIRYINTOVO_H__
+#define __PURINQUIRYINTOVO_H__
+
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
-#ifndef __PURINQUIRYDO_H__
-#define __PURINQUIRYDO_H__
-class PurInquiryDO
-{
 
+
+//文件上传VO
+class PurInquiryIntoVO
+{
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
@@ -25,8 +28,8 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//已生效			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
-		//已关闭			;
-		CC_SYNTHESIZE(int, is_close, Is_close);
+	//已关闭			;
+	CC_SYNTHESIZE(int, is_close, Is_close);
 	//已作废			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 	//交货地点		   ;
@@ -50,12 +53,16 @@ class PurInquiryDO
 	//修改人			;
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
+
 public:
-	PurInquiryDO()
-	{
-
-	}
-
+	BIND_TO_JSON(PurInquiryIntoVO, bill_no, bill_date, subject, src_no,
+		delivery_time, qty, amt, quot_count, bill_stage, is_effective
+		, is_close, is_voided, deliver_place, contact, phone, fax, email
+		, remark, is_auto, effective_time, create_time, update_by
+	);
 };
 
-#endif  //__PURINQUIRYDO_H__
+
+
+
+#endif  //__PURINQUIRYINTOVO_H__

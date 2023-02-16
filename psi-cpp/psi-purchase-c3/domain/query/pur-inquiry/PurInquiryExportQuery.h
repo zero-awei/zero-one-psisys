@@ -1,10 +1,13 @@
 #include "stdafx.h"
-#include "../../GlobalInclude.h"
-#ifndef __PURINQUIRYDO_H__
-#define __PURINQUIRYDO_H__
-class PurInquiryDO
-{
 
+#ifndef __PURINQUIRYEXPORTQUERY_H__
+#define __PURINQUIRYEXPORTQUERY_H__
+
+#include "../../GlobalInclude.h"
+#include "../arch-demo/domain/query/PageQuery.h"
+//文件上传Query
+class PurInquiryExportQuery : public PageQuery
+{
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
@@ -26,7 +29,7 @@ class PurInquiryDO
 	//已生效			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
 		//已关闭			;
-		CC_SYNTHESIZE(int, is_close, Is_close);
+	CC_SYNTHESIZE(int, is_close, Is_close);
 	//已作废			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 	//交货地点		   ;
@@ -51,11 +54,35 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
 public:
-	PurInquiryDO()
+
+	friend void from_json(const json& j, PurInquiryExportQuery& t)
 	{
-
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
+		BIND_FROM_TO_NORMAL(j, t, bill_date);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, src_no);
+		BIND_FROM_TO_NORMAL(j, t, delivery_time);
+		BIND_FROM_TO_D(j, t, qty);
+		BIND_FROM_TO_D(j, t, amt);
+		BIND_FROM_TO_I(j, t, quot_count);
+		BIND_FROM_TO_NORMAL(j, t, bill_stage);
+		BIND_FROM_TO_I(j, t, is_effective);
+		BIND_FROM_TO_I(j, t, is_close);
+		BIND_FROM_TO_I(j, t, is_voided);
+		BIND_FROM_TO_NORMAL(j, t, deliver_place);
+		BIND_FROM_TO_NORMAL(j, t, contact);
+		BIND_FROM_TO_NORMAL(j, t, phone);
+		BIND_FROM_TO_NORMAL(j, t, fax);
+		BIND_FROM_TO_NORMAL(j, t, email);
+		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_I(j, t, is_auto);
+		BIND_FROM_TO_NORMAL(j, t, effective_time);
+		BIND_FROM_TO_NORMAL(j, t, create_time);
+		BIND_FROM_TO_NORMAL(j, t, update_by);
 	}
-
 };
 
-#endif  //__PURINQUIRYDO_H__
+
+
+#endif  //__PURINQUIRYEXPORTQUERY_H__
+
