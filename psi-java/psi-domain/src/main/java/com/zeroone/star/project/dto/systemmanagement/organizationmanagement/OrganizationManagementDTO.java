@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 /**
  * <p>
  * 描述：组织结构管理传输数据对象
@@ -29,7 +31,7 @@ public class OrganizationManagementDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(name = "创建时间", example = "2019-02-20 17:15:34")
-    private String creatTime;
+    private Date creatTime;
 
     @ApiModelProperty(name = "删除状态（0，正常，1已删除）", example = "0")
     private String delFlag;
@@ -44,7 +46,7 @@ public class OrganizationManagementDTO {
     private String departNameEn;
 
     @ApiModelProperty(name = "排序", example = "0")
-    private String departOrder;
+    private Integer departOrder;
 
     @ApiModelProperty(name = "描述", example = "很好")
     private String description;
@@ -85,6 +87,6 @@ public class OrganizationManagementDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(name = "更新时间", example = "2019-02-26 16:36:18")
-    private String updateTime;
+    private Date updateTime;
 
 }

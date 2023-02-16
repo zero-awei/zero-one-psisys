@@ -31,7 +31,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("查询组织列表")
-    @GetMapping("query-all")
+    @GetMapping("/query-all")
     @Override
     public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
 

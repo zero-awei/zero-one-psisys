@@ -1,5 +1,6 @@
 package com.zeroone.star.project.vo.systemmanagement.classifieddictionary;
 
+import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
