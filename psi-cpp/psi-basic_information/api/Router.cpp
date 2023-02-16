@@ -40,7 +40,7 @@ void Router::initRouter()
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
-	createMaterialClassificationRouter(); //
+	
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -76,6 +76,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createMaterialClassificationRouter(); //
 
 }
 
@@ -105,5 +106,7 @@ void Router::createMaterialClassificationRouter() {
 	BIND_POST_ROUTER(server, "/post-add", &MaterialClassificationController::addMaterialClassification, nullptr);
 	BIND_PUT_ROUTER(server, "/put-modify", &MaterialClassificationController::modifyMaterialClassification, nullptr);
 	BIND_DEL_ROUTER(server, "/delete", &MaterialClassificationController::removeMaterialClassification, nullptr);
+	BIND_POST_ROUTER(server, "/post-import", &MaterialClassificationController::importMaterialClassification, nullptr);
+	BIND_POST_ROUTER(server, "/get-export", &MaterialClassificationController::exportMaterialClassification, nullptr);
 
 }

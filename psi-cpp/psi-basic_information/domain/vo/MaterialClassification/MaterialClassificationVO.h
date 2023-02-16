@@ -57,6 +57,10 @@ class MaterialClassificationVO{
 	CC_SYNTHESIZE(string, modifyName, ModifyName);
 
 public:
+
+	MaterialClassificationVO() : name("nanan"), id(11) {}
+	
+
 	// 绑定JSON转换方法
 	BIND_TO_JSON(MaterialClassificationVO, name,id, 
 								fullName, enable, creationTime, creatorName, modifyTime, modifyName);

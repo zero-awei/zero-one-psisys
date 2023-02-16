@@ -23,13 +23,23 @@
 
 JsonVO<PageVO<MaterialClassificationVO>> MaterialClassificationController::execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
+	JsonVO<PageVO<MaterialClassificationVO>> rs;
+	PageVO<MaterialClassificationVO> data;
+	list<MaterialClassificationVO> rows;
+	rows.push_back(MaterialClassificationVO());
+	rows.push_back(MaterialClassificationVO());
+	rows.push_back(MaterialClassificationVO());
 	
+	data.setRows(rows);
+	rs.success(data);
+
 	//响应结果
-	return JsonVO<PageVO<MaterialClassificationVO>>();
+	return rs;
 }
 
 JsonVO<MaterialClassificationVO> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload)
 {
+
 	JsonVO<MaterialClassificationVO> result;
 	//响应结果
 	return JsonVO<MaterialClassificationVO>(result);
