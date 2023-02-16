@@ -48,7 +48,7 @@ JsonVO<uint64_t> PurInquiryController::execModifyPurQuotModBillStatus(const PurI
 	return result;
 }
 
-//文件导入
+//文件上传
 JsonVO<PurInquiryIntoVO> PurInquiryController::execPurInquiryInto(const PurInquiryIntoDTO& dto)
 {
 	JsonVO<PurInquiryIntoVO> result;

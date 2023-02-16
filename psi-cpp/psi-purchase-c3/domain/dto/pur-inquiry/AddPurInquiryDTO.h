@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
+#include "../FileDTO.h"
 #ifndef __ADDPURINQUIRYDTO_H__
 #define __ADDPURINQUIRYDTO_H__
 //增加和修改DTO
-class AddPurInquiryDTO
+class AddPurInquiryDTO : public FileDTO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);

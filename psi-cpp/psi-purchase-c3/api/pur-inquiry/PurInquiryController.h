@@ -13,8 +13,8 @@
 class PurInquiryController
 {
 public:
-	CREATE_API_FUN_BODY(addPurInquiry, execAddPurInquiry, AddPurInquiryDTO);
-	CREATE_API_FUN_BODY(modifyPurInquiry, execModifyPurInquiry, AddPurInquiryDTO);
+	CREATE_API_FUN_BODY_FILE(addPurInquiry, execAddPurInquiry, AddPurInquiryDTO);
+	CREATE_API_FUN_BODY_FILE(modifyPurInquiry, execModifyPurInquiry, AddPurInquiryDTO);
 	CREATE_API_FUN_BODY(removePurInquiry, execRemovePurInquiry, PurInquiryRemoveDTO);
 	CREATE_API_FUN_BODY(modifyPurQuotModBillStatus,execModifyPurQuotModBillStatus,PurInquiryModBillStatusDTO)
 	CREATE_API_FUN_BODY_FILE(PurInquiryInto, execPurInquiryInto, PurInquiryIntoDTO);
