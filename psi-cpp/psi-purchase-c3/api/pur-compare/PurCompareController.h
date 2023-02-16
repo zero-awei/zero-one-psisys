@@ -91,7 +91,7 @@ private:
 	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto);
 
 	//执行方法：导出
-	nlohmann::json execPurComExport(const PurComExportQuery& dto, const PayloadDTO& payload);
+	JsonVO<std::string> execPurComExport(const PurComExportQuery& dto, const PayloadDTO& payload);
 	//执行方法：导入
 	JsonVO<uint64_t> execPurComInto(const PurComIntoDTO& dto);
 };
