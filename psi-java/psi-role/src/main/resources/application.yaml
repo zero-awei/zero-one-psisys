@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: ${sn.sample}
-server:
-  port: ${sp.sample}
-
-
