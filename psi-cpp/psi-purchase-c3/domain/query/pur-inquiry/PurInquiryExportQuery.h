@@ -3,9 +3,8 @@
 #include "../../GlobalInclude.h"
 #include "../arch-demo/domain/query/PageQuery.h"
 
-#ifndef __PURINQUIRYQUERY_H__
-#define __PURINQUIRYQUERY_H__
-
+#ifndef __PURINQUIRYEXPORTQUERY_H__
+#define __PURINQUIRYEXPORTQUERY_H__
 //文件上传Query
 class PurInquiryExportQuery : public PageQuery
 {
@@ -30,7 +29,7 @@ class PurInquiryExportQuery : public PageQuery
 	//已生效			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
 		//已关闭			;
-	CC_SYNTHESIZE(int, is_close, Is_close);
+		CC_SYNTHESIZE(int, is_close, Is_close);
 	//已作废			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 	//交货地点		   ;
@@ -84,5 +83,6 @@ public:
 };
 
 
-#endif  //__PURINQUIRYQUERY_H__
+
+#endif  //__PURINQUIRYEXPORTQUERY_H__
 

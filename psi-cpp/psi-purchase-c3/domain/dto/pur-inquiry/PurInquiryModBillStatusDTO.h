@@ -20,4 +20,6 @@ public:
 
 
 };
+
+
 #endif  //__PURINQUIRYMODBILLSTATUSDTO_H__

@@ -31,7 +31,8 @@ JsonVO<uint64_t> PurInquiryController::execRemovePurInquiry(const PurInquiryRemo
 	return result;
 }
 
-JsonVO<uint64_t> execModifyPurQuotModBillStatus(const PurInquiryModBillStatusDTO& dto)
+
+JsonVO<uint64_t> PurInquiryController::execModifyPurQuotModBillStatus(const PurInquiryModBillStatusDTO& dto)
 {
 	JsonVO<uint64_t> result;
 

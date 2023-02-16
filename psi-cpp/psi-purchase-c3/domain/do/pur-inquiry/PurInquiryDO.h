@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
 #ifndef __PURINQUIRYDO_H__
