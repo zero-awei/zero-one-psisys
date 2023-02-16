@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 
 /**
  * <p>
@@ -26,8 +27,57 @@ import lombok.Setter;
 @Setter
 @TableName("bas_customer")
 @ColumnWidth(value = 20)
+//@ContentStyle(horizontalAlignment = HorizontalAlignment.CENTER)
 @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.CENTER)
 public class BasCustomer implements Serializable {
+    @Override
+    public String toString() {
+        return "BasCustomer{" +
+                "id='" + id + '\'' +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", auxName='" + auxName + '\'' +
+                ", customerCategory='" + customerCategory + '\'' +
+                ", customerLevel='" + customerLevel + '\'' +
+                ", taxScale='" + taxScale + '\'' +
+                ", creditQuota=" + creditQuota +
+                ", headquarters='" + headquarters + '\'' +
+                ", area='" + area + '\'' +
+                ", bizArea='" + bizArea + '\'' +
+                ", address='" + address + '\'' +
+                ", website='" + website + '\'' +
+                ", legalPerson='" + legalPerson + '\'' +
+                ", legalPersonPhone='" + legalPersonPhone + '\'' +
+                ", financialContacts='" + financialContacts + '\'' +
+                ", financialPhone='" + financialPhone + '\'' +
+                ", invoiceCompany='" + invoiceCompany + '\'' +
+                ", invoiceTaxCode='" + invoiceTaxCode + '\'' +
+                ", invoiceBankName='" + invoiceBankName + '\'' +
+                ", invoiceBankCode='" + invoiceBankCode + '\'' +
+                ", invoiceAccount='" + invoiceAccount + '\'' +
+                ", invoicePhone='" + invoicePhone + '\'' +
+                ", invoiceAddress='" + invoiceAddress + '\'' +
+                ", paymentCompany='" + paymentCompany + '\'' +
+                ", paymentBankName='" + paymentBankName + '\'' +
+                ", paymentBankCode='" + paymentBankCode + '\'' +
+                ", paymentAccount='" + paymentAccount + '\'' +
+                ", recvName='" + recvName + '\'' +
+                ", recvPhone='" + recvPhone + '\'' +
+                ", recvFax='" + recvFax + '\'' +
+                ", recvEmail='" + recvEmail + '\'' +
+                ", recvAddress='" + recvAddress + '\'' +
+                ", recvPostcode='" + recvPostcode + '\'' +
+                ", attachment='" + attachment + '\'' +
+                ", isEnabled='" + isEnabled + '\'' +
+                ", remark='" + remark + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                '}';
+    }
 
     private static final long serialVersionUID = 1L;
 
@@ -212,11 +262,11 @@ public class BasCustomer implements Serializable {
      * 附件
      */
     private String attachment;
-    @ExcelProperty(value = "启用", index = 35)
+    @ExcelProperty(value = "启用", index = 35,converter = IsEnabledConverter.class)
     /**
      * 启用
      */
-    private Integer isEnabled;
+    private String isEnabled;
     @ExcelProperty(value = "备注", index = 36)
     /**
      * 备注

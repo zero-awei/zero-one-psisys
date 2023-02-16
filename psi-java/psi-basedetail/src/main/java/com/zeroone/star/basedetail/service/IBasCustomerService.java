@@ -16,4 +16,6 @@ import java.util.List;
 public interface IBasCustomerService extends IService<BasCustomer> {
 
     List<BasCustomer> listBasCustomer();
+
+    void insertOne(BasCustomer basCustomer);
 }

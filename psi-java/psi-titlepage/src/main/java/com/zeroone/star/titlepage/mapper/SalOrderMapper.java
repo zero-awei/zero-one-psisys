@@ -2,6 +2,7 @@ package com.zeroone.star.titlepage.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.titlepage.entity.SalOrder;
+import com.zeroone.star.titlepage.entity.SalOrder2;
 import org.apache.ibatis.annotations.Mapper;
 import com.zeroone.star.project.vo.homepage.SalesAmountInformationVO;
 import com.zeroone.star.titlepage.entity.SalOrder;
@@ -25,7 +26,7 @@ public interface SalOrderMapper extends BaseMapper<SalOrder> {
     /*
     查询毛利润
      */
-    List<SalOrder> querySalOrder();
+    List<SalOrder2> querySalOrder();
 
     /**
      * 获取每月销售金额
