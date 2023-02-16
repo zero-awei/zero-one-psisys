@@ -15,5 +15,11 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-domain</artifactId>
         </dependency>
+
+        <!--        SpringMVC-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -1,12 +1,12 @@
-package com.zeroone.star.role.service.impl;
+package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
-import com.zeroone.star.role.entity.SysMenu;
-import com.zeroone.star.role.mapper.MenuMapper;
-import com.zeroone.star.role.service.IMenuService;
+import com.zeroone.star.psisysmanagement.entity.SysMenu;
+import com.zeroone.star.psisysmanagement.mapper.MenuMapper;
+import com.zeroone.star.psisysmanagement.service.IMenuService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import java.util.List;
 
 @Service
 public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
-
 
     @Override
     public List<MenuQuery> showList(String RId) {

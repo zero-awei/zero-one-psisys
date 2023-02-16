@@ -1,8 +1,8 @@
-package com.zeroone.star.role.service;
+package com.zeroone.star.psisysmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
-import com.zeroone.star.role.entity.SysPermission;
+import com.zeroone.star.psisysmanagement.entity.SysPermission;
 
 import java.util.List;
 
