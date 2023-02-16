@@ -9,9 +9,9 @@ JsonVO<PageVO<PaymentBillVO>> execQueryPayBill(const PaymentBillQuery& query, co
 	return JsonVO<PageVO<PaymentBillVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<PaymentBillVO> execQueryPayDetailBill(const PaymentBillDetailQuery& query, const PayloadDTO& payload) {
+JsonVO<PaymentBillDetailQuery> execQueryPayDetailBill(const PaymentBillDetailQuery& query, const PayloadDTO& payload) {
 	PaymentBillDetailQuery result;
-	return JsonVO<PaymentBillVO>(result, RS_SUCCESS);
+	return JsonVO<PaymentBillDetailQuery>(result, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> execAddPayHandle(const AddPayApplyDTO& dto, const PayloadDTO& payload)
