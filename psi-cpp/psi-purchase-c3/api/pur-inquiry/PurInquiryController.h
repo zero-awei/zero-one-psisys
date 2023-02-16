@@ -23,8 +23,6 @@
 
 #include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
 #include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
-//#include "../../domain/dto/pur-inquiry/PurInquiryFindBillDTO.h"
-//#include "../../domain/dto/pur-inquiry/PurInquiryFindDetailBillDTO.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"

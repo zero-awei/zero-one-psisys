@@ -194,9 +194,6 @@
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\pur-inquiry\EntryPurInquiryDTO.h" />
-    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryFindBillDTO.h" />
-    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryFindDetailBillDTO.h" />
     <ClInclude Include="domain\dto\pur-req\PurReqIntoDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindDetailBillQuery.h" />
@@ -222,9 +219,6 @@
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="domain\dto\pur-inquiry\EntryPurInquiryDTO.cpp" />
-    <ClCompile Include="domain\dto\pur-inquiry\PurInquiryFindBillDTO.cpp" />
-    <ClCompile Include="domain\dto\pur-inquiry\PurInquiryFindDetailBillDTO.cpp" />
     <ClCompile Include="domain\dto\pur-req\PurReqIntoDTO.cpp" />
     <ClCompile Include="domain\query\pur-req\PurReqExportQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />

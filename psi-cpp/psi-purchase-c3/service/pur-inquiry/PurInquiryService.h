@@ -23,7 +23,7 @@
 #include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
-#include "../../domain/dto/pur-inquiry/PurInquiryFindBillDTO.h"
+
 
 /**
  * 示例服务实现
