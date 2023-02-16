@@ -102,6 +102,7 @@ void Router::createPurInquiryRouter()
 	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
 	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
 	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-status", &PurInquiryController::modifyPurQuotModBillStatus, nullptr);
 	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
 	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
 

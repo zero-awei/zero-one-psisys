@@ -54,10 +54,10 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h">
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryRemoveDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h">
@@ -66,7 +66,19 @@
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h">
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryExportQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryModBillStatusDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\AddPurInquiryDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryIntoDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

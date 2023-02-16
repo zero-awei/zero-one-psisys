@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "PurInquiryController.h"
 
-JsonVO<uint64_t> PurInquiryController::execAddPurInquiry(const InquiryDTO& dto)
+JsonVO<AddPurInquiryVO> PurInquiryController::execAddPurInquiry(const AddPurInquiryDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<AddPurInquiryVO> result;
 
 
 
@@ -11,9 +11,9 @@ JsonVO<uint64_t> PurInquiryController::execAddPurInquiry(const InquiryDTO& dto)
 	return result;
 }
 
-JsonVO<uint64_t> PurInquiryController::execModifyPurInquiry(const InquiryDTO& dto)
+JsonVO<AddPurInquiryVO> PurInquiryController::execModifyPurInquiry(const AddPurInquiryDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<AddPurInquiryVO> result;
 
 
 
@@ -31,9 +31,19 @@ JsonVO<uint64_t> PurInquiryController::execRemovePurInquiry(const PurInquiryRemo
 	return result;
 }
 
-JsonVO<PurInquiryVO> PurInquiryController::execPurInquiryInto(const PurInquiryDTO& dto)
+JsonVO<uint64_t> execModifyPurQuotModBillStatus(const PurInquiryModBillStatusDTO& dto)
 {
-	JsonVO<PurInquiryVO> result;
+	JsonVO<uint64_t> result;
+
+
+
+
+	return result;
+}
+
+JsonVO<PurInquiryIntoVO> PurInquiryController::execPurInquiryInto(const PurInquiryIntoDTO& dto)
+{
+	JsonVO<PurInquiryIntoVO> result;
 
 
 
@@ -43,7 +53,7 @@ JsonVO<PurInquiryVO> PurInquiryController::execPurInquiryInto(const PurInquiryDT
 }
 
 
-JsonVO<std::string> PurInquiryController::execPurInquiryExport(const PurInquiryQurey& query)
+JsonVO<std::string> PurInquiryController::execPurInquiryExport(const PurInquiryExportQuery& query)
 {
 
 	JsonVO<std::string> result;
