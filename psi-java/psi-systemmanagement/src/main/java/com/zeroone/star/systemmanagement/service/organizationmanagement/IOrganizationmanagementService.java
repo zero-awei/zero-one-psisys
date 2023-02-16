@@ -1,5 +1,11 @@
 package com.zeroone.star.systemmanagement.service.organizationmanagement;
 
+import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
+import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
+import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationTreeVO;
 import com.zeroone.star.systemmanagement.entity.organizationmanagement.SysDepart;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +19,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IOrganizationmanagementService extends IService<SysDepart> {
 
+    public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition);
+    public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName);
+    public String add(OrganizationManagementDTO data);
+    public String modify(OrganizationManagementDTO data);
+    public String delete(String id);
 }

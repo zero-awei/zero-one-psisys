@@ -31,12 +31,9 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("查询组织列表")
-    @GetMapping("/query-all")
+    @GetMapping("/query-all") // query-list
     @Override
     public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
-
-        condition.getDepartName();
-
         return null;
     }
 
@@ -46,7 +43,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("查询指定结构树")
-    @GetMapping("query-one")
+    @GetMapping("query-one") // query-one
     @Override
     public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName) {
         return null;
@@ -59,7 +56,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      */
 
     @ApiOperation("新增组织结构（返回值data值表示插入成功与否）")
-    @PostMapping("insert")
+    @PostMapping("insert") // add
     @Override
     public JsonVO<String> add(OrganizationManagementDTO data) {
         return null;
@@ -71,7 +68,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("修改组织结构（返回值data值表示更新成功与否）")
-    @PutMapping("update")
+    @PutMapping("update") //modify
     @Override
     public JsonVO<String> modify(OrganizationManagementDTO data) {
         return null;
