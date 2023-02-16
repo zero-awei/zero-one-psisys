@@ -30,6 +30,7 @@ JsonVO<PurReqFindDetailBillVO> PurReqController::execQueryPurReqFindDetailBill(c
 JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
+	result.success(200);
 	return result;
 }
 
@@ -37,12 +38,17 @@ JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const 
 JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
+	result.success(200);
 	return result;
 }
+
+
+
 //…æ≥˝…Í«Î
-JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& id)
+JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& dto)
 {
 	JsonVO<uint64_t> result;
+	result.success(200);
 	return result;
 }
 
@@ -50,6 +56,7 @@ JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& i
 JsonVO<uint64_t> PurReqController::execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
+	result.success(200);
 	return result;
 }
 

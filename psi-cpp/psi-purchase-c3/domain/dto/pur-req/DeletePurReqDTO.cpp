@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "DeletePurReqDTO.h"
 
-void from_json(const json& j, DeletePurReqDTO& t) {
+void from_json(const json& j, DeletePurReqDTO& t)
+{
 	BIND_FROM_TO_NORMAL(j, t, billNo);
 }

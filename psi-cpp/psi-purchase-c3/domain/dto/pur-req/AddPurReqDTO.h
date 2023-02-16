@@ -21,6 +21,8 @@ class AddPurReqDTO :public FileDTO
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
+	//是否红字
+	CC_SYNTHESIZE(int, isRubric, IsRubric);
 	//采购类型
 	CC_SYNTHESIZE(string, purType, PurType);
 	//需求部门
