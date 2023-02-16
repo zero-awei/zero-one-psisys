@@ -98,6 +98,9 @@
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\prepayment\PrepaymentController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
