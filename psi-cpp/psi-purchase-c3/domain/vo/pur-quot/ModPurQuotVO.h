@@ -1,15 +1,13 @@
-#ifndef _ADD_PUR_QUOT_DTO_
-#define _ADD_PUR_QUOT_DTO_
-
+#ifndef _MOD_PUR_QUOT_VO_
+#define _MOD_PUR_QUOT_VO_
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
-#include "../FileDTO.h"
 
 
 
-class AddPurQuotDTO :public FileDTO
+//修改供应报价单据
+class ModPurQuotVO
 {
-	//以下有一些字段，我不确定是否真的会用到，如果之后写代码，发现还需要其他字段，就添加上去；不需要再删除；
 	// 单据id
 	CC_SYNTHESIZE(long, id, Id);
 	//单据编号
@@ -74,47 +72,19 @@ class AddPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//修改时间
 	CC_SYNTHESIZE(string, updateTime, updateTime);
-
 public:
-	//绑定JSON转换方法
-	friend void from_json(const json& j, AddPurQuotDTO& t) {
-		BIND_FROM_TO_L(j, t, id);
-		BIND_FROM_TO_L(j, t, supplierId);
-
-		BIND_FROM_TO_I(j, t, isTempSupplier);
-		BIND_FROM_TO_I(j, t, isEffective);
-		BIND_FROM_TO_I(j, t, isClosed);
-		BIND_FROM_TO_I(j, t, isVoided);
-		BIND_FROM_TO_I(j, t, approvalResultType);
-		BIND_FROM_TO_I(j, t, billStage);
-
-		BIND_FROM_TO_D(j, t, qty);
-		BIND_FROM_TO_D(j, t, amt);
-
-		BIND_FROM_TO_NORMAL(j, t, billNo);
-		BIND_FROM_TO_NORMAL(j, t, billDate);
-		BIND_FROM_TO_NORMAL(j, t, subject);
-		BIND_FROM_TO_NORMAL(j, t, srcNo);
-		BIND_FROM_TO_NORMAL(j, t, tempSupplierName);
-		BIND_FROM_TO_NORMAL(j, t, deliveryMethod);
-		BIND_FROM_TO_NORMAL(j, t, deliveryDate);
-		BIND_FROM_TO_NORMAL(j, t, deliveryAddress);
-		BIND_FROM_TO_NORMAL(j, t, contact);
-		BIND_FROM_TO_NORMAL(j, t, phone);
-		BIND_FROM_TO_NORMAL(j, t, tax);
-		BIND_FROM_TO_NORMAL(j, t, email);
-		BIND_FROM_TO_NORMAL(j, t, attachment);
-		BIND_FROM_TO_NORMAL(j, t, remark);
-		BIND_FROM_TO_NORMAL(j, t, approver);
-
-		BIND_FROM_TO_NORMAL(j, t, approvalRemark);
-		BIND_FROM_TO_NORMAL(j, t, effectiveTime);
-		BIND_FROM_TO_NORMAL(j, t, sysOrdCode);
-		BIND_FROM_TO_NORMAL(j, t, createBy);
-		BIND_FROM_TO_NORMAL(j, t, createTime);
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
-	}
+	// 绑定JSON转换方法
+	BIND_TO_JSON(ModPurQuotVO, 
+		id, billNo, billDate, subject, 
+		srcNo, isTempSupplier, supplierId, tempSupplierName, 
+		deliveryMethod, deliveryDate, deliveryAddress, contact,
+		phone, tax, email, qty,
+		amt, attachment, remark, billStage,
+		approver, approvalResultType, approvalRemark, isEffective,
+		effectiveTime, isClosed, isVoided, sysOrdCode,
+		createBy, createTime, updateBy, updateTime);
 };
 
-#endif // !_ADD_PUR_QUOT_DTO_
+
+
+#endif // !_MOD_PUR_QUOT_VO_

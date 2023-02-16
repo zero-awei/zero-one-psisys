@@ -19,7 +19,6 @@
 #include "uselib/ws/TestWs.h"
 #endif
 
-#include "pur-req/PurReqController.h"
 
 Router::Router(http_server* sever)
 {
@@ -143,7 +142,7 @@ void Router::createPurQuotRouter()
 	//修改报价(保存/提交/审核)
 	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
 	//删除报价
-	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
+BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuotById, nullptr);
 	//修改单据状态(关闭/作废/反关闭)
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
 	//导入
