@@ -20,7 +20,7 @@ class PaymentBillVO {
 	// 业务部门
 	CC_SYNTHESIZE(string, opDept, Op_dept)
 	// 业务员
-	CC_SYNTHESIZE(string, operator,Operator)
+	CC_SYNTHESIZE(string, operator_,Operator)
 	// 源单号
 	CC_SYNTHESIZE(string,srcNo,SrcNo)
 	// 申请金额
@@ -59,7 +59,7 @@ class PaymentBillVO {
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(PaymentBillVO, billNo, billDate, subject, supplierId, opDept,
-		operator, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
+		operator_, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
 		isAuto, isRubric, remark, effectiveTime,
 		approver, createTime, createBy, sysOrgCode, updateTime, updateBy);
 };

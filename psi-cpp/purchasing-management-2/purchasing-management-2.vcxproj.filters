@@ -21,10 +21,16 @@
     <ClInclude Include="domain\vo\PaymentBillImpl\PaymentBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\PaymentBillImpl\addPayApplyDTO.h">
+    <ClInclude Include="domain\dto\PaymentBillImpl\AddPayApplyDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\PaymentBillImpl\modPayApplyDTO.h">
+    <ClInclude Include="domain\dto\PaymentBillImpl\ModPayApplyDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

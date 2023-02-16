@@ -27,7 +27,7 @@ class ModPayApplyDTO :public FileDTO
 	//业务部门
 	CC_SYNTHESIZE(string, opDept, opDept);
 	//业务员
-	CC_SYNTHESIZE(string, operator, Operator);
+	CC_SYNTHESIZE(string, operator1, Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
@@ -67,7 +67,39 @@ class ModPayApplyDTO :public FileDTO
 
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, ModPayApplyDTO& mdt);
+	friend void from_json(const json& j, ModPayApplyDTO& mdt) {
+		BIND_FROM_TO_ULL(j, mdt, billNo);
+		BIND_FROM_TO_ULL(j, mdt, billDate);
+		BIND_FROM_TO_ULL(j, mdt, srcBillType);
+		BIND_FROM_TO_ULL(j, mdt, srcBillId);
+		BIND_FROM_TO_ULL(j, mdt, srcNo);
+		BIND_FROM_TO_ULL(j, mdt, subject);
+		BIND_FROM_TO_ULL(j, mdt, paymentType);
+		BIND_FROM_TO_ULL(j, mdt, supplierId);
+		BIND_FROM_TO_ULL(j, mdt, opDept);
+		BIND_FROM_TO_ULL(j, mdt, operator1);
+		BIND_FROM_TO_ULL(j, mdt, remark);
+		BIND_FROM_TO_ULL(j, mdt, billStage);
+		BIND_FROM_TO_ULL(j, mdt, approver);
+		BIND_FROM_TO_ULL(j, mdt, bpmiInstanceId);
+		BIND_FROM_TO_ULL(j, mdt, approvalRemark);
+		BIND_FROM_TO_ULL(j, mdt, effectiveTime);
+		BIND_FROM_TO_ULL(j, mdt, sysOrdCode);
+		BIND_FROM_TO_ULL(j, mdt, createBy);
+		BIND_FROM_TO_ULL(j, mdt, createTime);
+		BIND_FROM_TO_ULL(j, mdt, updateBy);
+		BIND_FROM_TO_ULL(j, mdt, updateTime);
+
+		BIND_FROM_TO_D(j, mdt, amt);
+		BIND_FROM_TO_D(j, mdt, paidAmt);
+
+		BIND_FROM_TO_I(j, mdt, isAuto);
+		BIND_FROM_TO_I(j, mdt, isEffective);
+		BIND_FROM_TO_I(j, mdt, isClosed);
+		BIND_FROM_TO_I(j, mdt, isVoided);
+
+
+	}
 };
 
 #endif
