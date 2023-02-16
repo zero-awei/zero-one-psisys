@@ -46,24 +46,24 @@ public:
 private:
 
 	//普通查询
-	JsonVO<PageVO<MaterialClassificationVO>> execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<MaterialClassificationBaseVO>> execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 
 	//查询子级列表   暂时先不分页显示
-	JsonVO<MaterialClassificationVO> execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload);
+	JsonVO<MaterialClassificationChildVO> execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload);
 	
 	//查询指定分类详细信息
-	JsonVO<MaterialClassificationVO> execQueryMaterialClassificationDetail(const MaterialClassificationDetailQuery& query, const PayloadDTO& payload);
+	JsonVO<MaterialClassificationDetailVO> execQueryMaterialClassificationDetail(const MaterialClassificationDetailQuery& query, const PayloadDTO& payload);
 
 
-	//新增分类
-	JsonVO<MaterialClassificationVO> execAddMaterialClassification(const MaterialClassificationDTO& dto);
+	//新增分类 ,添加、修改、删除下级应该也可以用这种方式
+	JsonVO<AddMaterialClassificationVO> execAddMaterialClassification(const MaterialClassificationDTO& dto);
 	//修改分类
-	JsonVO<MaterialClassificationVO> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<MaterialClassificationBaseVO> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
 	//删除分类
-	JsonVO<MaterialClassificationVO> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<MaterialClassificationBaseVO> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
 	
 	//文件导入
-	JsonVO<PageVO<MaterialClassificationVO>> execImportMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<PageVO<MaterialClassificationBaseVO>> execImportMaterialClassification(const MaterialClassificationDTO& dto);
 	//文件导出
 	JsonVO<string> execExportMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 };

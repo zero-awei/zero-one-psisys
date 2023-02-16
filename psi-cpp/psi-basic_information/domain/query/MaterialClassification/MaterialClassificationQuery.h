@@ -30,7 +30,7 @@ class MaterialClassificationQuery : public PageQuery {
 	CC_SYNTHESIZE(string, name, Name);
 
 	//编码
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(uint64_t, code, Code);
 
 public:
 	// 绑定from_json
@@ -38,7 +38,7 @@ public:
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_ULL(j, t, id);
+		BIND_FROM_TO_ULL(j, t, code);
 	}
 };
 
@@ -49,13 +49,13 @@ class MaterialClassificationChildQuery  {
 	CC_SYNTHESIZE(string, name, Name);
 
 	//编码
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(uint64_t, code, Code);
 
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, MaterialClassificationChildQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_ULL(j, t, id);
+		BIND_FROM_TO_ULL(j, t, code);
 	}
 };
 
@@ -64,25 +64,25 @@ public:
 class MaterialClassificationDetailQuery {
 
 	//创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
+	CC_SYNTHESIZE(string, create_time, createTime);
 
 	//创建人
-	CC_SYNTHESIZE(string, creatorName, CreatorName);
+	CC_SYNTHESIZE(string, create_by, createBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, modifyTime, ModifyTime);
+	CC_SYNTHESIZE(string, update_time, updateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, modifyName, ModifyName);
+	CC_SYNTHESIZE(string, update_by, updateBy);
 
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, MaterialClassificationDetailQuery& t) { // NOLINT
 
-		BIND_FROM_TO_NORMAL(j, t, creationTime);
-		BIND_FROM_TO_NORMAL(j, t, creatorName);
-		BIND_FROM_TO_NORMAL(j, t, modifyTime);
-		BIND_FROM_TO_NORMAL(j, t, modifyName);
+		BIND_FROM_TO_NORMAL(j, t, create_time);
+		BIND_FROM_TO_NORMAL(j, t, create_by);
+		BIND_FROM_TO_NORMAL(j, t, update_time);
+		BIND_FROM_TO_NORMAL(j, t, update_by);
 
 	}
 };

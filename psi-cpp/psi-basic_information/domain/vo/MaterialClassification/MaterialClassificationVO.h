@@ -27,105 +27,149 @@
 */
 
 //普通查询（根节点列表）对象
-class MaterialClassificationVO{
-	
+class MaterialClassificationBaseVO{
 
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
 
 	//编码
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(uint64_t, code, Code);
 
 	//全名
-	CC_SYNTHESIZE(string, fullName, FuLLName);
+	CC_SYNTHESIZE(string, fullname, FuLLname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, enable, Enable);
+	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
 
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
+	CC_SYNTHESIZE(string, create_time, CreateTime);
 
 	//创建人
-	CC_SYNTHESIZE(string, creatorName, CreatorName);
+	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, modifyTime, ModifyTime);
+	CC_SYNTHESIZE(string, update_time, updateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, modifyName, ModifyName);
+	CC_SYNTHESIZE(string, update_by, updateBy);
+
 
 public:
 
-	MaterialClassificationVO() : name("nanan"), id(11) {}
+	MaterialClassificationBaseVO() : name("nanan"), code(11) {}
 	
 
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MaterialClassificationVO, name,id, 
-								fullName, enable, creationTime, creatorName, modifyTime, modifyName);
+	BIND_TO_JSON(MaterialClassificationBaseVO, name,code, 
+								fullname, is_enabled, create_time, create_by, update_time, update_by);
 };
 
 
 //查询指定分类子级列表对象
-class MaterialClassificationNextListVO {
+class MaterialClassificationChildVO {
 
 	//父节点
-	CC_SYNTHESIZE(string, base, Base);
-
-	//是否有下级
-	CC_SYNTHESIZE(bool, hasChild, HasChild);
+	CC_SYNTHESIZE(uint64_t, pid, Pid);
 
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
 
 	//编码
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(uint64_t, code, Code);
 
 	//全名
-	CC_SYNTHESIZE(string, fullName, FuLLName);
+	CC_SYNTHESIZE(string, fullname, FuLLname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, enable, Enable);
+	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
 
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
+	CC_SYNTHESIZE(string, create_time, CreateTime);
 
 	//创建人
-	CC_SYNTHESIZE(string, creatorName, CreatorName);
+	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, modifyTime, ModifyTime);
+	CC_SYNTHESIZE(string, update_time, updateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, modifyName, ModifyName);
+	CC_SYNTHESIZE(string, update_by, updateBy);
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MaterialClassificationNextListVO,base,hasChild, name, id,
-		fullName, enable, creationTime, creatorName, modifyTime, modifyName);
+	BIND_TO_JSON(MaterialClassificationChildVO, pid, name, code,
+		fullname, is_enabled, create_time, create_by, update_time, update_by);
+
 };
 
 //查询指定分类详细信息对象
 class MaterialClassificationDetailVO {
 
 	
+	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
+	CC_SYNTHESIZE(string, create_time, CreateTime);
 
 	//创建人
-	CC_SYNTHESIZE(string, creatorName, CreatorName);
+	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, modifyTime, ModifyTime);
+	CC_SYNTHESIZE(string, update_time, updateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, modifyName, ModifyName);
+	CC_SYNTHESIZE(string, update_by, updateBy);
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MaterialClassificationDetailVO,creationTime, creatorName, modifyTime, modifyName);
+	BIND_TO_JSON(MaterialClassificationDetailVO, create_time, create_by, update_time, update_by);
 };
+
+
+//新建分类
+class AddMaterialClassificationVO {
+
+	//父节点
+	CC_SYNTHESIZE(uint64_t, pid, Pid);
+
+	//名称
+	CC_SYNTHESIZE(string, name, Name);
+
+	//编码
+	CC_SYNTHESIZE(uint64_t, code, Code);
+
+	//全名
+	CC_SYNTHESIZE(string, fullname, FuLLname);
+
+	//是否启用
+	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
+
+
+	//以下为操作信息，自动生成，不可手动修改
+	//创建时间
+	CC_SYNTHESIZE(string, create_time, CreateTime);
+
+	//创建人
+	CC_SYNTHESIZE(string, create_by, CreateBy);
+
+	//修改时间
+	CC_SYNTHESIZE(string, update_time, updateTime);
+
+	//修改人
+	CC_SYNTHESIZE(string, update_by, updateBy);
+
+
+public:
+
+	// 绑定JSON转换方法
+	BIND_TO_JSON(AddMaterialClassificationVO, pid,name, code,
+		fullname, is_enabled, create_time, create_by, update_time, update_by);
+
+};
+
 #endif
+
+

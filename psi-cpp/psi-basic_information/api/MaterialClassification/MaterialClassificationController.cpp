@@ -21,14 +21,14 @@
 #include "MaterialClassificationController.h"
 
 
-JsonVO<PageVO<MaterialClassificationVO>> MaterialClassificationController::execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
-	JsonVO<PageVO<MaterialClassificationVO>> rs;
-	PageVO<MaterialClassificationVO> data;
-	list<MaterialClassificationVO> rows;
-	rows.push_back(MaterialClassificationVO());
-	rows.push_back(MaterialClassificationVO());
-	rows.push_back(MaterialClassificationVO());
+	JsonVO<PageVO<MaterialClassificationBaseVO>> rs;
+	PageVO<MaterialClassificationBaseVO> data;
+	list<MaterialClassificationBaseVO> rows;
+	rows.push_back(MaterialClassificationBaseVO());
+	rows.push_back(MaterialClassificationBaseVO());
+	rows.push_back(MaterialClassificationBaseVO());
 	
 	data.setRows(rows);
 	rs.success(data);
@@ -37,48 +37,48 @@ JsonVO<PageVO<MaterialClassificationVO>> MaterialClassificationController::execQ
 	return rs;
 }
 
-JsonVO<MaterialClassificationVO> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload)
+JsonVO<MaterialClassificationChildVO> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload)
 {
 
-	JsonVO<MaterialClassificationVO> result;
+	JsonVO<MaterialClassificationChildVO> result;
 	//响应结果
-	return JsonVO<MaterialClassificationVO>(result);
+	return JsonVO<MaterialClassificationChildVO>(result);
 }
 
-JsonVO<MaterialClassificationVO> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationDetailQuery& query, const PayloadDTO& payload)
+JsonVO<MaterialClassificationDetailVO> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationDetailQuery& query, const PayloadDTO& payload)
 {
 
 	//响应结果
-	return JsonVO<MaterialClassificationVO>();
+	return JsonVO<MaterialClassificationDetailVO>();
 }
 
-JsonVO<MaterialClassificationVO> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto)
+JsonVO<AddMaterialClassificationVO> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto)
 {
-	JsonVO<MaterialClassificationVO> result;
+	JsonVO<AddMaterialClassificationVO> result;
 	
 	//响应结果
 	return result;
 }
 
-JsonVO<MaterialClassificationVO> MaterialClassificationController::execModifyMaterialClassification(const MaterialClassificationDTO& dto)
+JsonVO<MaterialClassificationBaseVO> MaterialClassificationController::execModifyMaterialClassification(const MaterialClassificationDTO& dto)
 {
 	
-	JsonVO<MaterialClassificationVO> result;
+	JsonVO<MaterialClassificationBaseVO> result;
 	
 	return result;
 }
 
-JsonVO<MaterialClassificationVO> MaterialClassificationController::execRemoveMaterialClassification(const MaterialClassificationDTO& dto)
+JsonVO<MaterialClassificationBaseVO> MaterialClassificationController::execRemoveMaterialClassification(const MaterialClassificationDTO& dto)
 {
 	
-	JsonVO<MaterialClassificationVO> result;
+	JsonVO<MaterialClassificationBaseVO> result;
 	//响应结果
 	return result;
 }
 
 //文件导入
-JsonVO<PageVO<MaterialClassificationVO>> MaterialClassificationController::execImportMaterialClassification(const MaterialClassificationDTO& dto) {
-	JsonVO<PageVO<MaterialClassificationVO>> result;
+JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::execImportMaterialClassification(const MaterialClassificationDTO& dto) {
+	JsonVO<PageVO<MaterialClassificationBaseVO>> result;
 	//响应结果
 	return result;
 }
