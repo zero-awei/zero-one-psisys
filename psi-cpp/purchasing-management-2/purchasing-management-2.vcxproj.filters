@@ -33,6 +33,9 @@
     <ClCompile Include="domain\dto\PurOrder\PurOrderDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\PurOrder\PurOrderController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -84,6 +87,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\PurOrder\PurOrderController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

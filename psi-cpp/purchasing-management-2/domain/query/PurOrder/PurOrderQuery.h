@@ -35,8 +35,8 @@ public:
 	friend void from_json(const json& j, PurOrderQuery& t) {
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, billNo);
-		BIND_FROM_TO_NORMAL(j, t, billDate);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
+		BIND_FROM_TO_NORMAL(j, t, bill_date);
 	}
 };
 #endif // !_PUR_ORDER_QUERY_
