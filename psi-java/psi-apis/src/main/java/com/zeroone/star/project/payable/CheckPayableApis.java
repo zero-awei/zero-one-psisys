@@ -1,6 +1,6 @@
-package com.zeroone.star.project.accountpayable;
+package com.zeroone.star.project.payable;
 
-import com.zeroone.star.project.dto.accountpayable.FinPayableCheckDto;
+import com.zeroone.star.project.dto.payable.FinPayableCheckDto;
 import com.zeroone.star.project.vo.JsonVO;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * @author The end
  * @date 2023/2/15
  */
-public interface FinPayableCheckApis {
+public interface CheckPayableApis {
 
     /**
      * 新增应付核销单

@@ -1,4 +1,4 @@
-package com.zeroone.star.project.dto.accountpayable;
+package com.zeroone.star.project.dto.payable;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

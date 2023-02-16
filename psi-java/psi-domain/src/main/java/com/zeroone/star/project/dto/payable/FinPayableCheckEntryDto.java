@@ -1,4 +1,4 @@
-package com.zeroone.star.project.dto.accountpayable;
+package com.zeroone.star.project.dto.payable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
