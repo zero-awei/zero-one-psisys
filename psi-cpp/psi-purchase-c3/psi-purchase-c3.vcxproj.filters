@@ -72,10 +72,16 @@
     <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\pur-compare\PurComExportDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\pur-inquiry\EntryPurInquiryDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\pur-inquiry\PurInquiryFindBillDTO.h">
@@ -91,6 +97,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-quot\PurQuotExportDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\pur-quot\PurQuotIntoDTO.h">
@@ -136,6 +145,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindDetailBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\pur-quot\PurQuotExportQuery.h">
@@ -184,6 +196,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindDetailBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-quot\AddPurQuotVO.h">
@@ -255,6 +270,9 @@
     <ClInclude Include="domain\query\pur-quot\PurQuotListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\pur-req\PurReqExportQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -315,6 +333,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\pur-req\PurReqService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\query\pur-req\PurReqExportQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

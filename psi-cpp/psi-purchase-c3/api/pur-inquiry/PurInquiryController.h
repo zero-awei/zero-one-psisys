@@ -11,14 +11,13 @@
 #include "../../domain/dto/IDDTO.h"
 //dto
 
-#include "../../domain/dto/pur-inquiry/PurInquiryFindBillDTO.h"
-#include "../../domain/dto/pur-inquiry/PurInquiryFindDetailBillDTO.h"
+
+
 
 //query
 
 #include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
 #include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
-<<<<<<< HEAD
 
 //vo
 

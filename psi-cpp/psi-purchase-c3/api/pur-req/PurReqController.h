@@ -31,7 +31,7 @@
 #include "../../domain/dto/pur-req/DeletePurReqDTO.h"
 #include "../../domain/dto/pur-req/ModifyPurReqDTO.h"
 #include "../../domain/dto/pur-req/PurReqModBillStatusDTO.h"
-#include "../../domain/dto/pur-req/PurReqExportDTO.h"
+
 #include "../../domain/dto/pur-req/PurReqIntoDTO.h"
 
 
@@ -69,7 +69,6 @@ private:
 	//查询指定单据详细信息
 	JsonVO<PurReqFindDetailBillVO> execQueryPurReqFindDetailBill(const PurReqFindDetailBillQuery& query, const PayloadDTO& payload);
 		//执行方法：导出
-	nlohmann::json execPurReqExport(const PurReqExportDTO &dto, const PayloadDTO &payload);
 
 	//执行方法：导出
 	JsonVO<std::string> execPurReqExport(const PurReqExportQuery&query, const PayloadDTO &payload);
