@@ -172,8 +172,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\cgrk\CgrkController.cpp" />
+    <ClCompile Include="api\Cgrk\CgrkController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -184,18 +186,27 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\cgrk\CgrkController.h" />
+    <ClInclude Include="api\Cgrk\CgrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Cgrk\ImportCgrkFileDTO.h" />
+    <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Cgrk\RemoveCgrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillStateDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
-    <ClInclude Include="domain\query\cgrk\CgrkAdvancedQuery.h" />
-    <ClInclude Include="domain\query\cgrk\CgrkBillDetailsQuery.h" />
-    <ClInclude Include="domain\query\cgrk\CgrkQuery.h" />
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListAdvancedQuery.h" />
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillDetailsQuery.h" />
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListQuery.h" />
+    <ClInclude Include="domain\query\Cgrk\QueryPurOrderEntryQuery.h" />
+    <ClInclude Include="domain\query\Cgrk\QueryPurOrderListQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\vo\cgrk\CgrkBillDetailsVO.h" />
-    <ClInclude Include="domain\vo\cgrk\CgrkQueryVO.h" />
+    <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillDetailsVO.h" />
+    <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillListVO.h" />
+    <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />
+    <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

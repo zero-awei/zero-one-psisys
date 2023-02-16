@@ -20,45 +20,66 @@
 #ifndef _CGRK_CONTROLLER_
 #define _CGRK_CONTROLLER_
 
-#include "../../domain/query/cgrk/CgrkQuery.h"
-#include "../../domain/query/cgrk/CgrkBillDetailsQuery.h"
-//#include "../../domain/dto/cgrk/SampleDTO.h"
-//#include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/cgrk/CgrkQueryVO.h"
-#include "../../domain/vo/cgrk/CgrkBillDetailsVO.h"
+#include "../../domain/query/Cgrk/QueryCgrkBillListQuery.h"
+#include "../../domain/query/Cgrk/QueryCgrkBillDetailsQuery.h"
+#include "../../domain/dto/IDDTO.h"
+#include "../../domain/vo/Cgrk/QueryCgrkBillListVO.h"
+#include "../../domain/vo/Cgrk/QueryCgrkBillDetailsVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
-//#include "../../domain/dto/user/UserDTO.h"
+#include "../../domain/dto/Cgrk/AddCgrkBillDTO.h"
+#include "../../domain/dto/Cgrk/ModifyCgrkBillDTO.h"
+#include "../../domain/dto/Cgrk/ModifyCgrkBillStateDTO.h"
+#include "../../domain/dto/Cgrk/RemoveCgrkBillDTO.h"
+#include "../../domain/dto/Cgrk/ImportCgrkFileDTO.h"
+#include "../../domain/query/Cgrk/QueryPurOrderListQuery.h"
+#include "../../domain/vo/Cgrk/QueryPurOrderListVO.h"
+#include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
+#include "../../domain/vo/Cgrk/QueryPurOrderEntryVO.h"
+
 //#include "../../domain/vo/user/UserVO.h"
 
 /**
- * 示例控制器，演示基础接口的使用
+ * CgrkController
  */
 class CgrkController
 {
 public:
-	CREATE_API_FUN_QUERY(cgrkQuery, execCgrkQuery, CgrkQuery);
-	CREATE_API_FUN_QUERY(cgrkBillDetailsQuery, execCgrkBillDetailsQuery, CgrkBillDetailsQuery);
+	CREATE_API_FUN_QUERY(queryCgrkBillList, execQueryCgrkBillList, QueryCgrkBillListQuery);
+	CREATE_API_FUN_QUERY(queryCgrkBillDetails, execQueryCgrkBillDetails, QueryCgrkBillDetailsQuery);
+	CREATE_API_FUN_QUERY(queryPurOrderList, execQueryPurOrderList, QueryPurOrderListQuery);
+	CREATE_API_FUN_QUERY(queryPurOrderEntry, execQueryPurOrderEntry, QueryPurOrderEntryQuery);
 
-	//CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);
-	//CREATE_API_FUN_BODY(addSample, execAddSample, SampleDTO);
-	//CREATE_API_FUN_BODY(modifySample, execModifySample, SampleDTO);
-	//CREATE_API_FUN_BODY(removeSample, execRemoveSample, SampleDTO);
-	//CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
+	CREATE_API_FUN_BODY(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
+	CREATE_API_FUN_BODY(modifyCgrkBill, execModifyCgrkBill, ModifyCgrkBillDTO);
+	CREATE_API_FUN_BODY(removeCgrkBill, execRemoveCgrkBill, RemoveCgrkBillDTO);
+	CREATE_API_FUN_BODY(modifyCgrkBillState, execModifyCgrkBillState, ModifyCgrkBillStateDTO);
+	CREATE_API_FUN_BODY_FILE(importCgrkFile, execImportCgrkFile, ImportCgrkFileDTO);
+	CREATE_API_FUN_QUERY3(exportCgrkFile, execExportCgrkFile);
 	//CREATE_API_FUN_JSON(jsonSample, execJsonSample, SampleDTO);
-	//CREATE_API_FUN_BODY_FILE(modifyUserInfo, execModifyUserInfo, UserDTO);
+
 private:
 	//查询采购入库表单
-	JsonVO<PageVO<CgrkQueryVO>> execCgrkQuery(const CgrkQuery& query);
+	JsonVO<PageVO<QueryCgrkBillListVO>> execQueryCgrkBillList(const QueryCgrkBillListQuery& query);
 	//查询单据详细信息
-	JsonVO<PageVO<CgrkBillDetailsVO>> execCgrkBillDetailsQuery(const CgrkBillDetailsQuery& query);
+	JsonVO<PageVO<QueryCgrkBillDetailsVO>> execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
+	//查询采购订单列表
+	JsonVO<PageVO<QueryPurOrderListVO>> execQueryPurOrderList(const QueryPurOrderListQuery& query);
+	//查看采购订单分录列表
+	JsonVO<PageVO<QueryPurOrderEntryVO>> execQueryPurOrderEntry(const QueryPurOrderEntryQuery& query);
+	//添加单据信息
+	JsonVO<uint64_t> execAddCgrkBill(const AddCgrkBillDTO& dto);
+	//修改单据信息
+	JsonVO<uint64_t>  execModifyCgrkBill(const ModifyCgrkBillDTO& dto);
+	//删除单据
+	JsonVO<uint64_t> execRemoveCgrkBill(const RemoveCgrkBillDTO& dto);
+	//修改单据状态
+	JsonVO<uint64_t> execModifyCgrkBillState(const ModifyCgrkBillStateDTO& dto);
+	// 导入
+	JsonVO<uint64_t> execImportCgrkFile(const ImportCgrkFileDTO& dto);
+	// 导出
+	JsonVO<std::string> execExportCgrkFile( );
 
-	////演示新增数据
-	//JsonVO<uint64_t> execAddSample(const SampleDTO& dto);
-	////演示修改数据
-	//JsonVO<uint64_t> execModifySample(const SampleDTO& dto);
-	////演示删除数据
-	//JsonVO<uint64_t> execRemoveSample(const SampleDTO& dto);
 	//JsonVO<uint64_t> execRemoveById(const IntID& id);
 	////演示JSON提交
 	//JsonVO<SampleVO> execJsonSample(const SampleDTO& dto);

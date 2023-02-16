@@ -30,7 +30,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\cgrk\CgrkController.cpp">
+    <ClCompile Include="api\Cgrk\CgrkController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,22 +80,49 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\cgrk\CgrkQueryVO.h">
+    <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\cgrk\CgrkController.h">
+    <ClInclude Include="api\Cgrk\CgrkController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\cgrk\CgrkQuery.h">
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\cgrk\CgrkAdvancedQuery.h">
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListAdvancedQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\cgrk\CgrkBillDetailsQuery.h">
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillDetailsQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\cgrk\CgrkBillDetailsVO.h">
+    <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillDetailsVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgrk\RemoveCgrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillStateDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Cgrk\QueryPurOrderListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgrk\ImportCgrkFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Cgrk\QueryPurOrderEntryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,16 +20,89 @@
 #include "CgrkController.h"
 
 
-
-
-JsonVO<PageVO<CgrkQueryVO>> CgrkController::execCgrkQuery(const CgrkQuery& query)
+//查询单据列表
+JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillList(const QueryCgrkBillListQuery& query)
 {
-	PageVO<CgrkQueryVO> result;
-	return JsonVO<PageVO<CgrkQueryVO>>(result, RS_FAIL);
+	PageVO<QueryCgrkBillListVO> result;
+	list<QueryCgrkBillListVO> rows;
+	rows.push_back(QueryCgrkBillListVO());
+	rows.push_back(QueryCgrkBillListVO());
+	rows.push_back(QueryCgrkBillListVO());
+	result.setRows(rows);
+	return JsonVO<PageVO<QueryCgrkBillListVO>>(result, RS_SUCCESS);
+}
+//查看指定单据详细信息
+JsonVO<PageVO<QueryCgrkBillDetailsVO>> CgrkController::execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query)
+{
+	PageVO<QueryCgrkBillDetailsVO> result;
+	list<QueryCgrkBillDetailsVO> rows;
+	rows.push_back(QueryCgrkBillDetailsVO());
+	rows.push_back(QueryCgrkBillDetailsVO());
+	rows.push_back(QueryCgrkBillDetailsVO());
+	return JsonVO<PageVO<QueryCgrkBillDetailsVO>>(result, RS_SUCCESS);
+}
+//查询采购订单列表
+JsonVO<PageVO<QueryPurOrderListVO>> CgrkController::execQueryPurOrderList(const QueryPurOrderListQuery& query)
+{
+	PageVO<QueryPurOrderListVO> result;
+
+	return JsonVO<PageVO<QueryPurOrderListVO>>(result, RS_FAIL);
+}
+//查看采购订单分录列表
+JsonVO<PageVO<QueryPurOrderEntryVO>> CgrkController::execQueryPurOrderEntry(const QueryPurOrderEntryQuery& query)
+{
+	PageVO<QueryPurOrderEntryVO> result;
+	return JsonVO<PageVO<QueryPurOrderEntryVO>>(result, RS_FAIL);
 }
 
-JsonVO<PageVO<CgrkBillDetailsVO>> CgrkController::execCgrkBillDetailsQuery(const CgrkBillDetailsQuery& query)
+//添加采购入库单
+JsonVO<uint64_t> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto)
 {
-	PageVO<CgrkBillDetailsVO> result;
-	return JsonVO<PageVO<CgrkBillDetailsVO>>(result, RS_SUCCESS);
+	JsonVO<uint64_t> result;
+
+	return result;
 }
+//修改采购入库单
+JsonVO<uint64_t>  CgrkController::execModifyCgrkBill(const ModifyCgrkBillDTO& dto)
+{
+
+	JsonVO<uint64_t> result;
+
+	return result;
+}
+
+//删除采购入库单
+JsonVO<uint64_t> CgrkController::execRemoveCgrkBill(const RemoveCgrkBillDTO& dto)
+{
+
+	JsonVO<uint64_t> result;
+	//执行数据删除
+
+	//响应结果
+	return result;
+}
+
+//修改单据状态
+JsonVO<uint64_t> CgrkController::execModifyCgrkBillState(const ModifyCgrkBillStateDTO& dto)
+{
+
+	JsonVO<uint64_t> result;
+
+	return result;
+}
+// 导入
+JsonVO<uint64_t> CgrkController::execImportCgrkFile(const ImportCgrkFileDTO& dto)
+{
+	JsonVO<uint64_t> result;
+
+	return result;
+}
+// 导出
+JsonVO<std::string> CgrkController::execExportCgrkFile()
+{
+	JsonVO<std::string> result;
+
+	return result;
+}
+
+

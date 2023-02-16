@@ -22,12 +22,11 @@
 	查询单据详细信息
 */
 
-#ifndef _CGRK_BILL_DETAILS_QUERY_
-#define _CGRK_BILL_DETAILS_QUERY_
-
+#ifndef _QUERY_PUR_ORDER_ENTRY_QUERY_
+#define _QUERY_PUR_ORDER_ENTRY_QUERY_
 #include "../PageQuery.h"
 
-class CgrkBillDetailsQuery 
+class QueryPurOrderEntryQuery
 {
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -37,11 +36,11 @@ class CgrkBillDetailsQuery
 
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, CgrkBillDetailsQuery& t) { // NOLINT
+	friend void from_json(const json& j, QueryPurOrderEntryQuery& t) { // NOLINT
 
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 
 	}
 };
 
-#endif // !_CGRK_BILL_DETAILS_QUERY_
+#endif // !_QUERY_PUR_ORDER_ENTRY_QUERY_

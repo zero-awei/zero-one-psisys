@@ -17,12 +17,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _CGRK_QUERY_
-#define _CGRK_QUERY_
+#ifndef _QUERY_CGRK_BILL_LIST_QUERY_
+#define _QUERY_CGRK_BILL_LIST_QUERY_
 
 #include "../PageQuery.h"
 
-class CgrkQuery : public PageQuery
+class QueryCgrkBillListQuery : public PageQuery
 {
 	//µ¥¾Ý±àºÅ
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -71,7 +71,7 @@ class CgrkQuery : public PageQuery
 
 public:
 	// °ó¶¨from_json
-	friend void from_json(const json& j, CgrkQuery& t) { // NOLINT
+	friend void from_json(const json& j, QueryCgrkBillListQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, billNo);
