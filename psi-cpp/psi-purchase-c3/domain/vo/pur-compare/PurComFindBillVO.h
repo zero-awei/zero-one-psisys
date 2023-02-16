@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_COM_FIND_BILL_VO_
-#define _PUR_COM_FIND_BILL_VO_
+#ifndef _PUR_COM_FIND_BILL_VO_H_
+#define _PUR_COM_FIND_BILL_VO_H_
 
 #include "../../GlobalInclude.h"
 

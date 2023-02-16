@@ -10,6 +10,11 @@
 
 //query
 #include "../../domain/query/pur-quot/PurQuotExportQuery.h"
+#include "../../domain/query/pur-quot/PurQuotDividedListQuery.h"
+#include "../../domain/query/pur-quot/PurQuotFindBillQuery.h"
+#include "../../domain/query/pur-quot/PurQuotFindDetailBillQuery.h"
+#include "../../domain/query/pur-quot/PurQuotListQuery.h"
+
 //dto
 #include "../../domain/dto/pur-quot/PurQuotIntoDTO.h"
 #include "../../domain/dto/pur-quot/AddPurQuotDTO.h"
@@ -17,7 +22,10 @@
 #include "../../domain/dto/pur-quot/ModPurQuotDTO.h"
 #include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
 //vo
-
+#include "../../domain/vo/pur-quot/PurQuotDividedListVO.h"
+#include "../../domain/vo/pur-quot/PurQuotFindBillVO.h"
+#include "../../domain/vo/pur-quot/PurQuotFindDetailBillVO.h"
+#include "../../domain/vo/pur-quot/PurQuotListVO.h"
 #include "../../domain/vo/pur-quot/PurQuotExportVO.h"
 
 
@@ -38,6 +46,16 @@ public:
 	//导入
 	CREATE_API_FUN_BODY_FILE(modifyPurQuotInto, execPurQuotInto, PurQuotIntoDTO);
 	
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotFindBill, execQueryPurQuotFindBill, PurQuotFindBillQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotFindDetailBill, execQueryPurQuotFindDetailBill, PurQuotFindDetailBillQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotList, execQueryPurQuotList,PurQuotListQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotDividedList, execQueryPurQuotDividedList, PurQuotDividedListQuery);
+
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryPurComFindBill, execQueryPurComFindBill, PurComFindBillQuery);
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryPurComFindDetailBill, execQueryPurComFindDetailBill, PurComFindDetailBillQuery);
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryPurComList, execQueryPurComList, PurComListQuery);
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryPurComDividedList, execQueryPurComDividedList, PurComDividedListQuery);
+
 private:
 	//新增报价
 	JsonVO<uint64_t> execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload);
@@ -52,6 +70,22 @@ private:
 	//导入
 	JsonVO<uint64_t> execPurQuotInto(const PurQuotIntoDTO& dto);
 
+	JsonVO<PageVO<PurQuotFindBillVO>> execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload);
+	//查看指定单据详细信息
+	JsonVO<PurQuotFindDetailBillVO> execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload);
+	//采购查询单列表
+	JsonVO<PageVO<PurQuotListVO>> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
+	//采购询价单分录列表
+	JsonVO<PageVO<PurQuotDividedListVO>> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
+
+
+	//JsonVO<PageVO<PurComFindBillVO>> execQueryPurComFindBill(const PurComFindBillQuery& query, const PayloadDTO& payload);
+	//// 查询指定比价单单据详细信息
+	//JsonVO<PurComFindDetailBillVO> execQueryPurComFindDetailBill(const PurComFindDetailBillQuery& query, const PayloadDTO& payload);
+	//// 查询报价单列表
+	//JsonVO<PageVO<PurComListVO>> execQueryPurComList(const PurComListQuery& query, const PayloadDTO& payload);
+	//// 查询报价单分录列表
+	//JsonVO<PageVO<PurComDividedListVO>> execQueryPurComDividedList(const PurComDividedListQuery& query, const PayloadDTO& payload);
 
 };
 

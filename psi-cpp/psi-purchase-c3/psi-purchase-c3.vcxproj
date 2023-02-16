@@ -248,7 +248,11 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotFindBillVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotFindDetailBillVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotListVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h" />
