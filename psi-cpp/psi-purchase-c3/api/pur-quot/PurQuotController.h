@@ -13,11 +13,7 @@
 #include "../../domain/dto/pur-quot/ModPurQuotDTO.h"
 #include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
 //vo
-#include "../../domain/vo/pur-quot/AddPurQuotVO.h"
-#include "../../domain/vo/pur-quot/DelPurQuotVO.h"
-#include "../../domain/vo/pur-quot/ModPurQuotVO.h"
-#include "../../domain/vo/pur-quot/PurQuotModBillStatusVO.h"
-#include "../../domain/vo/pur-quot/PurQuotIntoVO.h"
+
 #include "../../domain/vo/pur-quot/PurQuotExportVO.h"
 
 
@@ -58,7 +54,7 @@ private:
 	//导出
 	nlohmann::json execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
 	//导入
-	JsonVO<PurQuotIntoVO> execPurQuotInto(const PurQuotIntoDTO& dto);
+	JsonVO<uint64_t> execPurQuotInto(const PurQuotIntoDTO& dto);
 
 
 };

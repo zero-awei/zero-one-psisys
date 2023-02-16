@@ -102,8 +102,8 @@ nlohmann::json PurQuotController::execPurQuotExport(const PurQuotExportQuery& dt
 }
 
 //导入
-JsonVO<PurQuotIntoVO> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
+JsonVO<uint64_t> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 {
 	//响应结果
-	return JsonVO<PurQuotIntoVO>();
+	return JsonVO<uint64_t>();
 }
