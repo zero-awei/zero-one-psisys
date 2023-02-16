@@ -13,11 +13,19 @@ import com.zeroone.star.project.vo.accountPayable.otherPayable.OtherPayableVO;
  */
 public interface OtherPayableApis {
     /**
-     * 测试分页查询
+     * 其他应付界面根据查询条件分页查询
      * @param condition 查询条件
      * @return 查询结果
      */
     JsonVO<PageVO<OtherPayableVO>> queryAll(FinPayableQuery condition);
+
+
+    /**
+     * 点击‘其他应付’查询显示所有
+     * @param condition 查询条件
+     * @return 查询结果
+     */
+    JsonVO<PageVO<OtherPayableVO>> listAllFinPayable(FinPayableQuery condition);
 
     /**
      * 通过单据编号查询数据

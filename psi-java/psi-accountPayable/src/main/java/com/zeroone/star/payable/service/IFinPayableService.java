@@ -1,6 +1,6 @@
-package com.zeroone.star.accountPayable.service;
+package com.zeroone.star.payable.service;
 
-import com.zeroone.star.accountPayable.entity.FinPayable;
+import com.zeroone.star.payable.entity.FinPayable;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.PageVO;
@@ -17,7 +17,14 @@ import com.zeroone.star.project.vo.accountPayable.otherPayable.OtherPayableVO;
 public interface IFinPayableService extends IService<FinPayable> {
 
     /**
-     * 分页查询
+     * 根据条件分页查询
+     * @param query 查询条件
+     * @return 查询结果
+     */
+    PageVO<OtherPayableVO> queryAll(FinPayableQuery query);
+
+    /**
+     * 全部分页查询
      * @param query 查询条件
      * @return 查询结果
      */

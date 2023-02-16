@@ -1,17 +1,18 @@
-package com.zeroone.star.accountPayable.entity;
+package com.zeroone.star.payable.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * <p>
- * 应付单
+ * 应付核销单
  * </p>
  *
  * @author j3
@@ -19,8 +20,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("fin_payable")
-public class FinPayable implements Serializable {
+@TableName("fin_payable_check")
+public class FinPayableCheck implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +38,7 @@ public class FinPayable implements Serializable {
     /**
      * 单据日期
      */
-    private LocalDateTime billDate;
+    private LocalDate billDate;
 
     /**
      * 源单类型
@@ -54,9 +55,6 @@ public class FinPayable implements Serializable {
      */
     private String srcNo;
 
-    /**
-     * 单据主题
-     */
     private String subject;
 
     /**
@@ -65,31 +63,19 @@ public class FinPayable implements Serializable {
     private Integer isRubric;
 
     /**
-     * 应付类型
+     * 核销类型
      */
-    private String payableType;
+    private String payableCheckType;
 
     /**
      * 供应商
      */
     private String supplierId;
 
-    private String opDept;
-
     /**
-     * 业务员
-     */
-    private String operator;
-
-    /**
-     * 金额
+     * 核销金额
      */
     private BigDecimal amt;
-
-    /**
-     * 已核销金额
-     */
-    private BigDecimal checkedAmt;
 
     /**
      * 附件
@@ -134,7 +120,7 @@ public class FinPayable implements Serializable {
     /**
      * 是否通过
      */
-    private Integer isEffective;
+    private Boolean isEffective;
 
     /**
      * 生效时间
@@ -149,17 +135,7 @@ public class FinPayable implements Serializable {
     /**
      * 是否作废
      */
-    private Integer isVoided;
-
-    /**
-     * 创建部门
-     */
-    private String sysOrgCode;
-
-    /**
-     * 创建人
-     */
-    private String createBy;
+    private Boolean isVoided;
 
     /**
      * 创建时间
@@ -168,14 +144,24 @@ public class FinPayable implements Serializable {
     private LocalDateTime createTime;
 
     /**
-     * 修改人
+     * 创建人
      */
-    private String updateBy;
+    private String createBy;
+
+    /**
+     * 创建部门
+     */
+    private String sysOrgCode;
 
     /**
      * 修改时间
      */
     private LocalDateTime updateTime;
+
+    /**
+     * 修改人
+     */
+    private String updateBy;
 
     /**
      * 版本

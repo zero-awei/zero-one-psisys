@@ -1,4 +1,4 @@
-package com.zeroone.star.accountPayable;
+package com.zeroone.star.payable;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

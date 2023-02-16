@@ -1,8 +1,8 @@
-package com.zeroone.star.accountPayable.service.impl;
+package com.zeroone.star.payable.service.impl;
 
-import com.zeroone.star.accountPayable.entity.FinPayableCheck;
-import com.zeroone.star.accountPayable.mapper.FinPayableCheckMapper;
-import com.zeroone.star.accountPayable.service.IFinPayableCheckService;
+import com.zeroone.star.payable.entity.FinPayableCheck;
+import com.zeroone.star.payable.mapper.FinPayableCheckMapper;
+import com.zeroone.star.payable.service.IFinPayableCheckService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

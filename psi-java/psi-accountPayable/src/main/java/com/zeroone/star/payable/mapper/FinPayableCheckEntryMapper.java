@@ -1,6 +1,6 @@
-package com.zeroone.star.accountPayable.mapper;
+package com.zeroone.star.payable.mapper;
 
-import com.zeroone.star.accountPayable.entity.FinPayableCheckEntry;
+import com.zeroone.star.payable.entity.FinPayableCheckEntry;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

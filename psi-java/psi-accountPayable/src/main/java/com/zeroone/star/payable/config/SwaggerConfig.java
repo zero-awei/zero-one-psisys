@@ -1,4 +1,4 @@
-package com.zeroone.star.accountPayable.config;
+package com.zeroone.star.payable.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;
