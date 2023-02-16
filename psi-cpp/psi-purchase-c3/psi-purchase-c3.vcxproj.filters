@@ -258,6 +258,18 @@
     <ClInclude Include="domain\vo\pur-compare\PurComModBillStatusVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\PurReqModBillStatusVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\AddPurReqVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\DeletePurReqVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\ModifyPurReqVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">

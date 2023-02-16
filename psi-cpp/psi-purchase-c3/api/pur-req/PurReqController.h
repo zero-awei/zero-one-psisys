@@ -21,6 +21,10 @@
 #include "../../domain/vo/pur-req/PurReqIntoVO.h"
 #include "../../domain/vo/pur-req/PurReqFindDetailBillVO.h"
 #include "../../domain/vo/pur-req/PurReqFindBillVO.h"
+#include "../../domain/vo/pur-req/AddPurReqVO.h"
+#include "../../domain/vo/pur-req/DeletePurReqVO.h"
+#include "../../domain/vo/pur-req/ModifyPurReqVO.h"
+#include "../../domain/vo/pur-req/PurReqModBillStatusVO.h"
 
 //dto
 #include "../../domain/dto/pur-req/AddPurReqDTO.h"
