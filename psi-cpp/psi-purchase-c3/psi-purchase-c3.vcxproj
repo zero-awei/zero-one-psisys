@@ -254,7 +254,6 @@
     <ClInclude Include="domain\vo\pur-quot\PurQuotModBillStatusVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h" />
-    <ClInclude Include="domain\vo\pur-req\PurReqIntoVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />

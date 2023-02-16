@@ -84,9 +84,6 @@
     <ClInclude Include="domain\dto\pur-req\PurReqIntoDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-req\PurReqIntoVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\query\pur-req\PurReqExportQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>

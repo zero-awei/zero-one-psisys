@@ -1,8 +1,9 @@
 
 #include "stdafx.h"
 #include "PurReqController.h"
-#include "service/pur-req/PurReqService.h"
-#include "domain/query/pur-req/PurReqExportQuery.h"
+#include "../../domain/query/pur-req/PurReqExportQuery.h"
+
+#include "service/pur-req/PurReqService.h" //这个头文件是干嘛的?--阿坤
 
 //查询单据信息
 JsonVO<PageVO<PurReqFindBillVO>> PurReqController::execQueryPurReqFindBill(const PurReqFindBillQuery& query, const PayloadDTO& payload){
@@ -24,47 +25,44 @@ JsonVO<PurReqFindDetailBillVO> PurReqController::execQueryPurReqFindDetailBill(c
 }
 
 
-//导出
-JsonVO<std::string> PurReqController::execPurReqExport(const PurReqExportQuery& query, const PayloadDTO& payload)
-{
-	//响应结果
-	return JsonVO<std::string>();
-}
 
-//导入
-JsonVO<PurReqIntoVO> PurReqController::execPurReqInto(const PurReqIntoDTO& dto)
-{
-	//响应结果
-	return JsonVO<PurReqIntoVO>();
-}
-
-
-
-//新增订单
+//添加申请
 JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	return result;
 }
 
-//修改订单
+//修改申请
 JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	return result;
 }
-
-//修改订单状态
-JsonVO<uint64_t> PurReqController::execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto,  const PayloadDTO& payload)
-{
-	JsonVO<uint64_t> result;
-	return result;
-}
-
-//删除订单
+//删除申请
 JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& id)
 {
 	JsonVO<uint64_t> result;
 	return result;
 }
 
+//修改单据状态
+JsonVO<uint64_t> PurReqController::execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload)
+{
+	JsonVO<uint64_t> result;
+	return result;
+}
+
+//导入
+JsonVO<uint64_t> PurReqController::execPurReqInto(const PurReqIntoDTO& dto)
+{
+	//响应结果
+	return JsonVO<uint64_t>();
+}
+
+//导出
+JsonVO<std::string> PurReqController::execPurReqExport(const PurReqExportQuery& query, const PayloadDTO& payload)
+{
+	//响应结果
+	return JsonVO<std::string>();
+}

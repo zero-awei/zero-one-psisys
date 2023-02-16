@@ -99,7 +99,7 @@ void Router::createUserDepartRouter()
 
 #endif
 
-
+//采购申请
 void Router::createPurReqRouter() {
 	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
@@ -118,6 +118,37 @@ void Router::createPurReqRouter() {
 	//导出
 	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
 }
+//采购询价
+void Router::createPurInquiryRouter() {
+	//查询单据列表
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
+	//查询指定单据详细信息
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
+	//BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
+	//BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
+	//BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
+	//BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
+	//BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
+}
+
+//供应报价
+void Router::createPurQuotRouter()
+{
+	//添加报价(保存/提交)
+	BIND_POST_ROUTER(server, "/add-pur-quot", &PurQuotController::addPurQuot, nullptr);
+	//修改报价(保存/提交/审核)
+	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
+	//删除报价
+	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
+	//修改单据状态(关闭/作废/反关闭)
+	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
+	//导入
+	BIND_PUT_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
+	//导出
+	BIND_PUT_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
+}
+
+//采购比价
 void Router::createPurCompareRouter(){
 	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
@@ -142,35 +173,6 @@ void Router::createPurCompareRouter(){
 }
 
 
-void Router::createPurInquiryRouter(){
-	//查询单据列表
-	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
-	//查询指定单据详细信息
-	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
-	//BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
-	//BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
-	//BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
-	//BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
-	//BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
-}
-
-
-
-void Router::createPurQuotRouter()
-{
-	//添加报价(保存/提交)
-	BIND_POST_ROUTER(server, "/add-pur-quot", &PurQuotController::addPurQuot, nullptr);
-	//修改报价(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
-	//删除报价
-	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
-	//修改单据状态(关闭/作废/反关闭)
-	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
-	//导入
-	BIND_PUT_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
-	//导出
-	BIND_PUT_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
-}
 
 
 
