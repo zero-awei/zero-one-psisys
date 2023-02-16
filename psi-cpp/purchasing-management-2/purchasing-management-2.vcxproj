@@ -138,6 +138,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="domain\dto\PaymentBillImpl\addPayApplyDTO.h" />
+    <ClInclude Include="domain\dto\PaymentBillImpl\modPayApplyDTO.h" />
     <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillQuery.h" />
     <ClInclude Include="domain\vo\PaymentBillImpl\PaymentBillVO.h" />
   </ItemGroup>
