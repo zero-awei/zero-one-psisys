@@ -188,6 +188,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\奔赴山海\01 university\大项目\第一次进阶项目\代码\PurReqExportVO.h" />
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
     <ClInclude Include="api\pur-req\PurReqController.h" />
     <ClInclude Include="api\Router.h" />
@@ -206,7 +207,7 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-    <ClInclude Include="domain\vo\pur-req\PurReqIntoVO.h" />
+    <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />

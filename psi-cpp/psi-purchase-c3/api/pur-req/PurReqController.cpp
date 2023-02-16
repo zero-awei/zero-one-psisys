@@ -23,15 +23,15 @@
 
 
 //导出
-JsonVO<std::string> PurReqController::execPurReqExport(const PurReqExportQuery& query, const PayloadDTO& payload)
+JsonVO<PurReqExportVO> PurReqController::execPurReqExport(const PurReqExportQuery& query, const PayloadDTO& payload)
 {
 	//响应结果
-	return JsonVO<std::string>();
+	return JsonVO<PurReqExportVO>();
 }
 
 //导入
-JsonVO<PurReqIntoVO> PurReqController::execPurReqInto(const PurReqIntoDTO& dto)
+JsonVO<uint64_t> PurReqController::execPurReqInto(const PurReqIntoDTO& dto)
 {
 	//响应结果
-	return JsonVO<PurReqIntoVO>();
+	return JsonVO<uint64_t>();
 }

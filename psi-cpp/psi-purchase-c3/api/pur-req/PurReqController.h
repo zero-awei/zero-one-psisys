@@ -26,7 +26,7 @@
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
-#include "../../domain/vo/pur-req/PurReqIntoVO.h"
+#include "../../domain/vo/pur-req/PurReqExportVO.h"
 
 
 /**
@@ -46,10 +46,10 @@ public:
 	
 private:
 	//执行方法：导出
-	JsonVO<std::string> execPurReqExport(const PurReqExportQuery&query, const PayloadDTO &payload);
+	JsonVO<PurReqExportVO> execPurReqExport(const PurReqExportQuery&query, const PayloadDTO &payload);
 
 	//执行方法：导入
-	JsonVO<PurReqIntoVO> execPurReqInto(const PurReqIntoDTO& dto);
+	JsonVO<uint64_t> execPurReqInto(const PurReqIntoDTO& dto);
 };
 
 #endif // _PUR_REQ__CONTROLLER_
