@@ -33,5 +33,13 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillDetailQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

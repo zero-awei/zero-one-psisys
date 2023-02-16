@@ -181,10 +181,14 @@
     <ClInclude Include="domain\dto\PaymentBillImpl\AddPayApplyDTO.h" />
     <ClInclude Include="domain\dto\PaymentBillImpl\ModPayApplyDTO.h" />
     <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillQuery.h" />
+    <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillDetailQuery.h" />
     <ClInclude Include="domain\vo\PaymentBillImpl\PaymentBillVO.h" />
     <ClInclude Include="stdafx.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
