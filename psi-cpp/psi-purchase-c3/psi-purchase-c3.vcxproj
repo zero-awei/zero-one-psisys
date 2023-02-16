@@ -252,6 +252,7 @@
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotModBillStatusVO.h" />
+    <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />

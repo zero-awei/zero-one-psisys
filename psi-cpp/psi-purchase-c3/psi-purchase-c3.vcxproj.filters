@@ -231,6 +231,9 @@
     <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">

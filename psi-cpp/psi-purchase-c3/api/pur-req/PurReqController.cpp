@@ -25,7 +25,6 @@ JsonVO<PurReqFindDetailBillVO> PurReqController::execQueryPurReqFindDetailBill(c
 }
 
 
-
 //ÃÌº”…Í«Î
 JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload)
 {
@@ -41,8 +40,6 @@ JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, 
 	result.success(200);
 	return result;
 }
-
-
 
 //…æ≥˝…Í«Î
 JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& dto)

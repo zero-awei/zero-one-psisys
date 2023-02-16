@@ -66,8 +66,6 @@ private:
 	//导入
 	JsonVO<uint64_t> execPurReqInto(const PurReqIntoDTO& dto);
 	//导出
-	JsonVO<std::string> execPurReqExport(const PurReqExportQuery& query, const PayloadDTO& payload);
-	//导出
 	JsonVO<PurReqExportVO> execPurReqExport(const PurReqExportQuery&query, const PayloadDTO &payload);
 
 
