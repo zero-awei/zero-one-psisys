@@ -1,11 +1,11 @@
-package com.zeroone.star.payable.service.impl;
+package com.zeroone.star.accountPayable.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zeroone.star.payable.entity.FinPayable;
-import com.zeroone.star.payable.mapper.FinPayableMapper;
-import com.zeroone.star.payable.service.IFinPayableService;
+import com.zeroone.star.accountPayable.entity.FinPayable;
+import com.zeroone.star.accountPayable.mapper.FinPayableMapper;
+import com.zeroone.star.accountPayable.service.IFinPayableService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.PageVO;

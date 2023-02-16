@@ -1,8 +1,8 @@
-package com.zeroone.star.payable.controller;
+package com.zeroone.star.accountPayable.controller;
 
 
-import com.zeroone.star.payable.service.IFinPayableService;
-import com.zeroone.star.project.payable.FinPayableApis;
+import com.zeroone.star.accountPayable.service.IFinPayableService;
+import com.zeroone.star.project.accountPayable.otherPayableAPI.OtherPayableApis;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -25,7 +25,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/payable/fin-payable")
-public class FinPayableController implements FinPayableApis {
+public class FinPayableController implements OtherPayableApis {
 
     @Resource
     IFinPayableService service;

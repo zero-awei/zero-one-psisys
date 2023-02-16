@@ -1,6 +1,6 @@
-package com.zeroone.star.payable.service;
+package com.zeroone.star.accountPayable.service;
 
-import com.zeroone.star.payable.entity.FinPayable;
+import com.zeroone.star.accountPayable.entity.FinPayable;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.PageVO;

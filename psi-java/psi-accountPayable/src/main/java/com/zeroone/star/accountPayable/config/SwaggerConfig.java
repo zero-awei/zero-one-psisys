@@ -1,4 +1,4 @@
-package com.zeroone.star.payable.config;
+package com.zeroone.star.accountPayable.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ public class SwaggerConfig {
     @Bean
     Docket sampleApi() {
         return SwaggerCore.defaultDocketBuilder("示例模块",
-                "com.zeroone.star.payable.controller",
+                "com.zeroone.star.accountPayable.controller",
                 "payable");
     }
 }

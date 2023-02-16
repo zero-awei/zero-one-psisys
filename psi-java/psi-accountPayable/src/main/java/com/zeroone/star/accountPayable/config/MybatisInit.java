@@ -1,4 +1,4 @@
-package com.zeroone.star.payable.config;
+package com.zeroone.star.accountPayable.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

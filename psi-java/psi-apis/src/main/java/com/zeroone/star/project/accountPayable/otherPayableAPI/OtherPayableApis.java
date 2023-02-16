@@ -1,4 +1,4 @@
-package com.zeroone.star.project.payable;
+package com.zeroone.star.project.accountPayable.otherPayableAPI;
 
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -11,7 +11,7 @@ import com.zeroone.star.project.vo.accountPayable.otherPayable.OtherPayableVO;
  * @author: G.
  * @date: 2023/2/15 13:01
  */
-public interface FinPayableApis {
+public interface OtherPayableApis {
     /**
      * 测试分页查询
      * @param condition 查询条件

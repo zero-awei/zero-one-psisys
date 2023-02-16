@@ -1,4 +1,4 @@
-package com.zeroone.star.payable.entity;
+package com.zeroone.star.accountPayable.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
