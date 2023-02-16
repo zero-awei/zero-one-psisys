@@ -176,6 +176,7 @@
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\Pyrk\ModifyPyrkBillStateDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />

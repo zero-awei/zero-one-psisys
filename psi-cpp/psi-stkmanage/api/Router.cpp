@@ -99,5 +99,6 @@ void Router::createUserDepartRouter()
 
 void Router::createPyrkRouter()
 {
-	BIND_DEL_ROUTER(server, "/Pyrk/delete-by-id", &PyrkController::removeById, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-pyrk-bill-by-id", &PyrkController::removePyrkBillById, nullptr);
+	BIND_POST_ROUTER(server, "/modify-pyrk-bill-state", &PyrkController::modifyPyrkBillState, nullptr);
 }

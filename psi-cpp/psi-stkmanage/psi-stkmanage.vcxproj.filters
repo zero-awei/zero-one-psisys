@@ -57,6 +57,9 @@
     <ClInclude Include="api\Pyrk\PyrkController.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\Pyrk\ModifyPyrkBillStateDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
