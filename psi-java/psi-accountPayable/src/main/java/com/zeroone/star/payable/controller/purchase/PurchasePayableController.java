@@ -1,11 +1,11 @@
 package com.zeroone.star.payable.controller.purchase;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zeroone.star.project.dto.payable.FinPayableDTO;
+import com.zeroone.star.project.dto.payable.purchase.FinPayableDTO;
 import com.zeroone.star.project.payable.purchasePayableAPI.PurchasePayableApis;
-import com.zeroone.star.project.query.patable.PayableQuery;
+import com.zeroone.star.project.query.patable.purchase.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.payable.FinPayableVO;
+import com.zeroone.star.project.vo.payable.purchase.FinPayableVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;

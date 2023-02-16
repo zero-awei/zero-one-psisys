@@ -1,4 +1,4 @@
-package com.zeroone.star.project.query.patable;
+package com.zeroone.star.project.query.patable.purchase;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
