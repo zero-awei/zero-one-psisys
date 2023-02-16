@@ -153,11 +153,11 @@ void Router::createPurInquiryRouter()
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
 	//查看指定询价单详细信息接口路由绑定
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
-	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
-	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
-	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
-	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
+	//BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
+	//BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
+	//BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
+	//BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
+	//BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
 }
 
 
