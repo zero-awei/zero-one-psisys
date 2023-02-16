@@ -8,9 +8,14 @@ JsonVO<PageVO<QueryQtrkBillListVO>> QtrkController::execQueryQtrk(const QueryQtr
 	//定义一个Service
 	//SampleService service;
 	//查询数据
-	PageVO<QueryQtrkBillListVO> result ;
+	PageVO<QueryQtrkBillListVO> data;
+	list<QueryQtrkBillListVO> rows;
+	rows.push_back(QueryQtrkBillListVO());
+	rows.push_back(QueryQtrkBillListVO());
+	rows.push_back(QueryQtrkBillListVO());
+	data.setRows(rows);
 	//响应结果
-	return JsonVO<PageVO<QueryQtrkBillListVO>>(result, RS_SUCCESS);
+	return JsonVO<PageVO<QueryQtrkBillListVO>>(data, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto)
