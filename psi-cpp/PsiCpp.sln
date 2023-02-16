@@ -10,7 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib-common", "lib-common\li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arch-demo", "arch-demo\arch-demo.vcxproj", "{14C5B354-692F-4DD3-901C-35756CF336B8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psi-public_interface", "psi-public_interface\psi-public_interface.vcxproj", "{BEEBABEA-7BE9-4CEB-97EA-953B3D750FE5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psi-c1_interface", "psi-c1\psi-c1_interface.vcxproj", "{BEEBABEA-7BE9-4CEB-97EA-953B3D750FE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
