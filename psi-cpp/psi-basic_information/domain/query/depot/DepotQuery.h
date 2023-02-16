@@ -30,14 +30,14 @@ class DepotQuery : public PageQuery
 	// Ãû³Æ
 	CC_SYNTHESIZE(string, name, Name);
 	// ±àºÅ
-	CC_SYNTHESIZE(string, id, Id);
+	CC_SYNTHESIZE(string, code, code);
 public:
 	// °ó¶¨from_json
 	friend void from_json(const json& j, DepotQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, code);
 	}
 };
 

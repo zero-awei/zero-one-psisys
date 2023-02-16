@@ -104,10 +104,10 @@ void Router::createDepotRouter()
 	BIND_GET_ROUTER(server, "/depot-query-kid", &DepotController::queryKidDepot, nullptr);
 	BIND_GET_ROUTER(server, "/depot-detail", &DepotController::queryDetailDepot, nullptr);
 	BIND_GET_ROUTER(server, "/depot-action-info", &DepotController::queryActionInfolDepot, nullptr);
-	BIND_GET_ROUTER(server, "/depot-execAddDepot", &DepotController::addDepot, nullptr);
-	BIND_POST_ROUTER(server, "/depot-modify", &DepotController::modifyDepot, nullptr);
-	BIND_GET_ROUTER(server, "/depot-remove", &DepotController::removeDepot, nullptr);
-	BIND_GET_ROUTER(server, "/depot-add-depots", &DepotController::addDepots, nullptr);
+	BIND_PUT_ROUTER(server, "/depot-execAddDepot", &DepotController::addDepot, nullptr);
+	BIND_PUT_ROUTER(server, "/depot-modify", &DepotController::modifyDepot, nullptr);
+	BIND_DEL_ROUTER(server, "/depot-remove", &DepotController::removeDepot, nullptr);
+	BIND_POST_ROUTER(server, "/depot-add-depots", &DepotController::addDepots, nullptr);
 	BIND_GET_ROUTER(server, "/depot-export", &DepotController::exportExecl, nullptr);
 	BIND_GET_ROUTER(server, "/depot-export-only", &DepotController::exportExeclOnly, nullptr);
 }
