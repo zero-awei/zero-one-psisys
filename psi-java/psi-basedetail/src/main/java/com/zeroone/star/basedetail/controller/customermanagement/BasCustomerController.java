@@ -1,4 +1,4 @@
-package com.zeroone.star.basedetail.controller.customermanagement;
+/*package com.zeroone.star.basedetail.controller.customermanagement;
 
 
 import cn.hutool.core.date.DateTime;
@@ -30,14 +30,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+
  * <p>
  * 客户 前端控制器
  * </p>
  *
  * @author ss
  * @since 2023-02-14
- */
+
 @RestController
 @RequestMapping("/basedetail/bas-customer")
 @Api(tags = "客户导入导出")
@@ -116,4 +116,4 @@ public class BasCustomerController {
     public JsonVO<String> upload(MultipartFile file) {
         return null;
     }
-}
+}*/

@@ -22,6 +22,7 @@ public class CustomerQuery extends PageQuery {
     private String name;
 
     @ApiModelProperty(value = "客户分类customer_category(传回的时分类的id)",example = "001")
+
     private String customerCategory;
 
     @ApiModelProperty(value = "客户分类customer_level(传回来的是等级的id)",example = "001")
