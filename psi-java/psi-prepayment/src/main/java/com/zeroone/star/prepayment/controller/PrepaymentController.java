@@ -1,5 +1,6 @@
 package com.zeroone.star.prepayment.controller;
 
+import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
@@ -23,11 +24,17 @@ import java.util.List;
 import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+
 
 @RestController
 @RequestMapping("prepayment")
 @Api(tags = "预付模块")
 public class PrepaymentController implements PrepaymentApis {
+
+    @Resource
+    IPrepaymentService service;
+
     /**
      * 修改采购预付单功能
      * author forever爱
