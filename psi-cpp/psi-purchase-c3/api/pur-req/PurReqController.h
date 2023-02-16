@@ -16,22 +16,17 @@
 //查询单据列表
 #include "../../domain/query/pur-req/PurReqFindBillQuery.h"
 #include "../../domain/query/pur-req/PurReqFindDetailBillQuery.h"
-
-
 //query
 #include "../../domain/query/pur-req/PurReqExportQuery.h"
-
 //vo
 #include "../../domain/vo/pur-req/PurReqIntoVO.h"
 #include "../../domain/vo/pur-req/PurReqFindDetailBillVO.h"
 #include "../../domain/vo/pur-req/PurReqFindBillVO.h"
-
 //dto
 #include "../../domain/dto/pur-req/AddPurReqDTO.h"
 #include "../../domain/dto/pur-req/DeletePurReqDTO.h"
 #include "../../domain/dto/pur-req/ModifyPurReqDTO.h"
 #include "../../domain/dto/pur-req/PurReqModBillStatusDTO.h"
-
 #include "../../domain/dto/pur-req/PurReqIntoDTO.h"
 
 

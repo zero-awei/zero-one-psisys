@@ -6,11 +6,15 @@
 
 //查询单据信息
 JsonVO<PageVO<PurReqFindBillVO>> PurReqController::execQueryPurReqFindBill(const PurReqFindBillQuery& query, const PayloadDTO& payload){
-	PurReqFindBillVO test1;
-	list<PurReqFindBillVO> ls; 
-	ls.push_back(test1);
-	PageVO<PurReqFindBillVO> result(1, 2, 0, 0, ls);
-	return JsonVO<PageVO<PurReqFindBillVO>>(result, RS_SUCCESS);
+	JsonVO<PageVO<PurReqFindBillVO>> rs;
+
+	PageVO<PurReqFindBillVO> data;
+	std::list<PurReqFindBillVO> rows;
+	rows.push_back(PurReqFindBillVO());
+	rows.push_back(PurReqFindBillVO());
+	rows.push_back(PurReqFindBillVO());
+	data.setRows(rows);
+	return rs;
 }
 
 //查询指定单据详细信息

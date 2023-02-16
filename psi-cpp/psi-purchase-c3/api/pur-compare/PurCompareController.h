@@ -26,42 +26,31 @@
 #include "../../domain/dto/IDDTO.h"
 
 //vo
-
 #include "../../domain/vo/pur-compare/PurComFindBillVO.h"
-#include "../../domain/query/pur-compare/PurComFindBillQuery.h"
-
 #include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
-#include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
-
-
 #include "../../domain/vo/pur-compare/PurComListVO.h"
-#include "../../domain/query/pur-compare/PurComListQuery.h"
-
 #include "../../domain/vo/pur-compare/PurComDividedListVO.h"
-#include "../../domain/query/pur-compare/PurComDividedListQuery.h"
-
 #include "../../domain/vo/pur-compare/AddPurComVO.h"
-#include "../../domain/dto/pur-compare/AddPurComDTO.h"
-
 #include "../../domain/vo/pur-compare/ModPurComVO.h"
-#include "../../domain/dto/pur-compare/ModPurComDTO.h"
-
-
 #include "../../domain/vo/pur-compare/PurComModBillStatusVO.h"
-#include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
-
-
-#include "../../domain/dto/pur-compare/DelPurComDTO.h"
 #include "../../domain/vo/pur-compare/DelPurComVO.h"
-
-//#include "../../domain/dto/sample/SampleDTO.h"
-//#include "../../domain/dto/user/UserDTO.h"
-//#include "../../domain/vo/user/UserVO.h"
-//公共接口
 #include "../../domain/vo/pur-compare/PurComExportVO.h"
 #include "../../domain/vo/pur-compare/PurComIntoVO.h"
+
+//query
+#include "../../domain/query/pur-compare/PurComFindBillQuery.h"
+#include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
+#include "../../domain/query/pur-compare/PurComListQuery.h"
+#include "../../domain/query/pur-compare/PurComDividedListQuery.h"
 #include "../../domain/query/pur-compare/PurComExportQuery.h"
+//dto
+#include "../../domain/dto/pur-compare/AddPurComDTO.h"
+#include "../../domain/dto/pur-compare/ModPurComDTO.h"
+#include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
+#include "../../domain/dto/pur-compare/DelPurComDTO.h"
 #include "../../domain/dto/pur-compare/PurComIntoDTO.h"
+
+
 
 
 /**

@@ -66,8 +66,6 @@ void Router::initRouter()
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-
-
 	//#TIP :系统扩展路由定义，写在这个后面
 	createPurCompareRouter();
 	createPurInquiryRouter();
@@ -119,10 +117,8 @@ void Router::createPurReqRouter() {
 	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
 	//导出
 	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
-
 }
-void Router::createPurCompareRouter()
-{
+void Router::createPurCompareRouter(){
 	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
 	//查询指定单据详细信息
@@ -146,8 +142,7 @@ void Router::createPurCompareRouter()
 }
 
 
-void Router::createPurInquiryRouter()
-{
+void Router::createPurInquiryRouter(){
 	//查询单据列表
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
 	//查询指定单据详细信息

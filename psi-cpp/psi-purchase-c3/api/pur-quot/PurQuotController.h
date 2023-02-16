@@ -4,23 +4,21 @@
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/PageVO.h"
 
-//
+//query
 #include "../../domain/query/pur-quot/PurQuotExportQuery.h"
 //dto
-#include  "../../domain/dto/pur-quot/PurQuotIntoDTO.h"
+#include "../../domain/dto/pur-quot/PurQuotIntoDTO.h"
 #include "../../domain/dto/pur-quot/AddPurQuotDTO.h"
 #include "../../domain/dto/pur-quot/DelPurQuotDTO.h"
 #include "../../domain/dto/pur-quot/ModPurQuotDTO.h"
 #include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
-
 //vo
 #include "../../domain/vo/pur-quot/AddPurQuotVO.h"
 #include "../../domain/vo/pur-quot/DelPurQuotVO.h"
 #include "../../domain/vo/pur-quot/ModPurQuotVO.h"
 #include "../../domain/vo/pur-quot/PurQuotModBillStatusVO.h"
 #include "../../domain/vo/pur-quot/PurQuotIntoVO.h"
-#include  "../../domain/vo/pur-quot/PurQuotExportVO.h"
-
+#include "../../domain/vo/pur-quot/PurQuotExportVO.h"
 
 
 #ifndef _PUR_QUOT_CONTROLLER_
@@ -49,17 +47,17 @@ public:
 	CREATE_API_FUN_BODY_FILE(modifyPurQuotInto, execPurQuotInto, PurQuotIntoDTO);
 
 private:
-	//演示新增报价
+	//新增报价
 	JsonVO<uint64_t> execAddPurQuot(const AddPurQuotDTO& dto);
-	//演示修改报价
+	//修改报价
 	JsonVO<uint64_t> execModPurQuot(const ModPurQuotDTO& dto);
-	//演示删除报价
+	//删除报价
 	JsonVO<uint64_t> execDelPurQuot(const DelPurQuotDTO& dto);
 	//修改报价状态（关闭、作废、反关闭）
 	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto);
-	//执行方法：导出
+	//导出
 	nlohmann::json execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
-	//执行方法：导入
+	//导入
 	JsonVO<PurQuotIntoVO> execPurQuotInto(const PurQuotIntoDTO& dto);
 
 
