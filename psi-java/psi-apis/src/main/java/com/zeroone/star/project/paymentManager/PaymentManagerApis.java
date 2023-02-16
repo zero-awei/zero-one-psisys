@@ -15,5 +15,5 @@ public interface PaymentManagerApis {
 
     JsonVO updateBillStage(Integer id);
 
-    JsonVO chosenExport(@RequestBody ChosenExportDto chosenExportDto);
+    JsonVO chosenExport(ChosenExportDto chosenExportDto);
 }
