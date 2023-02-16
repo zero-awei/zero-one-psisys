@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "PurReqController.h"
 #include "service/pur-req/PurReqService.h"
-#include "domain/dto/pur-req/PurReqExportDTO.h"
+#include "domain/query/pur-req/PurReqExportQuery.h"
 
 //查询单据信息
 JsonVO<PageVO<PurReqFindBillVO>> PurReqController::execQueryPurReqFindBill(const PurReqFindBillQuery& query, const PayloadDTO& payload){
@@ -21,10 +21,10 @@ JsonVO<PurReqFindDetailBillVO> PurReqController::execQueryPurReqFindDetailBill(c
 
 
 //导出
-nlohmann::json PurReqController::execPurReqExport(const PurReqExportDTO& dto, const PayloadDTO& payload)
+JsonVO<std::string> PurReqController::execPurReqExport(const PurReqExportQuery& query, const PayloadDTO& payload)
 {
 	//响应结果
-	return nlohmann::json(JsonVO<std::string>());
+	return JsonVO<std::string>();
 }
 
 //导入

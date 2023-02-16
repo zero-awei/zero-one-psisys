@@ -1,9 +1,8 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: Eleanor
- @Date: 2023/2/15 14:42
+ @Date: 2023/2/16 10:24
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,25 +16,9 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _ENTRY_PUR_INQUIRY_DTO_
-#define _ENTRY_PUR_INQUIRY_DTO_
+#include "stdafx.h"
+#include "PurReqExportQuery.h"
 
-#include "../../GlobalInclude.h"
-
-/**
- * 传输对象 —— 单据编号（根据单据编号匹配对应的明细列表）
- */
-
-//指定询价单的明细分录 
-class EntryPurInquiryDTO
-{
-	//单据编号
-	CC_SYNTHESIZE(string, purInquiryBillNo, PurInquiryBillNo);    // 对应mysql数据库中bill_no字段
-
-public:
-	// 绑定from_json
-	friend void from_json(const json& j, EntryPurInquiryDTO& t);  // NOLINT
-	BIND_TO_JSON(EntryPurInquiryDTO, purInquiryBillNo);
-};
-
-#endif // !_ENTRY_PUR_INQUIRY_DTO_
+void from_json(const json& j, PurReqExportQuery& t) { // NOLINT
+	BIND_FROM_TO_NORMAL(j, t, purReqId);
+}

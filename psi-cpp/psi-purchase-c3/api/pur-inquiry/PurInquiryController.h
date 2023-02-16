@@ -10,17 +10,20 @@
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/dto/IDDTO.h"
 //dto
-//#include "../../domain/dto/pur-inquiry/PurInquiryDTO.h"
+
 #include "../../domain/dto/pur-inquiry/PurInquiryFindBillDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryFindDetailBillDTO.h"
 
 //query
-//#include "../../domain/query/pur-inquiry/PurInquiryQuery.h"
+
 #include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
 #include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
+<<<<<<< HEAD
 
 //vo
-//#include "../../domain/vo/pur-inquiry/PurInquiryVO.h"
+
+
+
 #include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"
 #include "../../domain/vo/pur-inquiry/EntryPurInquiryVO.h"

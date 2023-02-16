@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Eleanor
- @Date: 2023/2/15 14:42
+ @Date: 2023/2/16 10:24
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,25 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_REQ_EXPORT_DTO_
-#define _PUR_REQ_EXPORT_DTO_
+#ifndef _PUR_REQ_EXPORT_QUERY_
+#define _PUR_REQ_EXPORT_QUERY_
 
 #include "../../GlobalInclude.h"
-#include "../FileDTO.h"
+//#include "../FileDTO.h"
 
 /**
  * 传输对象 —— 单据编号（利用单据编号查询想导出的订单）
  */
 
-//导出
-class PurReqExportDTO 
+ //导出
+class PurReqExportQuery
 {
 	//传输对象信息 —— 利用单据编号查询想导出的订单
 	CC_SYNTHESIZE(string, purReqId, PurReqId);
 
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PurReqExportDTO& t);
+	friend void from_json(const json& j, PurReqExportQuery& t);
 };
 
-#endif // !_PUR_REQ_EXPORT_DTO_
+#endif // !_PUR_REQ_EXPORT_QUERY_
