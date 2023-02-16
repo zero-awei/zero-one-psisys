@@ -211,7 +211,6 @@
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h" />
-    <ClInclude Include="domain\dto\pur-quot\PurQuotExportDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h" />
     <ClInclude Include="domain\dto\pur-req\AddPurReqDTO.h" />

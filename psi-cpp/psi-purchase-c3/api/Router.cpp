@@ -157,7 +157,6 @@ void Router::createPurInquiryRouter()
 
 
 
-//奶罐的代码
 void Router::createPurQuotRouter()
 {
 	//新增供应报价
@@ -168,7 +167,8 @@ void Router::createPurQuotRouter()
 	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
 	//修改供应报价状态（关闭、作弊、反关闭）
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
-	
+	BIND_PUT_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
+	BIND_PUT_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
 }
 
 

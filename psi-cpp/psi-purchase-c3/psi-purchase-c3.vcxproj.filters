@@ -99,9 +99,6 @@
     <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\pur-quot\PurQuotExportDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\pur-quot\PurQuotIntoDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
