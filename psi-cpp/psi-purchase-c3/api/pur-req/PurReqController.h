@@ -72,7 +72,7 @@ private:
 	//ÐÞ¸Ä¶©µ¥×´Ì¬
 	JsonVO<uint64_t> execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload);
 	//É¾³ý¶©µ¥
-	JsonVO<uint64_t> execRemovePurReqById(const DeletePurReqDTO& id);
+	JsonVO<uint64_t> execRemovePurReqById(const DeletePurReqDTO& dto);
 
 };
 #endif 

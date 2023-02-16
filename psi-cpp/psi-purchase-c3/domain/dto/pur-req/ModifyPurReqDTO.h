@@ -42,6 +42,8 @@ class ModifyPurReqDTO :public FileDTO
 	//采购类型
 	CC_SYNTHESIZE(string, purType, PurType);
 	//需求部门
+	CC_SYNTHESIZE(string, requestDept, RequestDept);
+	//需求人
 	CC_SYNTHESIZE(string, requester, Requester);
 	//需求时间
 	CC_SYNTHESIZE(string, requestTime, RequestTime);
@@ -57,14 +59,6 @@ class ModifyPurReqDTO :public FileDTO
 	CC_SYNTHESIZE(int, isAuto, IsAuto);
 	//单据阶段
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	//审核人
-	CC_SYNTHESIZE(string, approver, Approver);
-	//审批实例id
-	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	//核批结果类型
-	CC_SYNTHESIZE(int, approvalResultType, ApprovalResultType);
-	//核批意见
-	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
 	//是否生效
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
 	//生效时间
@@ -79,10 +73,6 @@ class ModifyPurReqDTO :public FileDTO
 	CC_SYNTHESIZE(string, createBy, CreateBy);
 	//创建时间
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	//修改人
-	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	//修改时间
-	CC_SYNTHESIZE(string, updateTime, updateTime);
 
 public:
 	//绑定JSON转换方法

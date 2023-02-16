@@ -21,6 +21,7 @@
 
 void from_json(const json& j, AddPurReqDTO& t) {
 
+	BIND_FROM_TO_I(j, t, isRubric);
 	BIND_FROM_TO_I(j, t, isAuto);
 	BIND_FROM_TO_I(j, t, isEffective);
 	BIND_FROM_TO_I(j, t, isClosed);
