@@ -73,6 +73,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createPayApplyRouter();
 
 }
 
@@ -94,3 +95,15 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPayApplyRouter() {
+	//查询单据列
+	BIND_GET_ROUTER(server, "/paymentApplyBill", &PayApplyControlle::queryPaymentBill, nullptr);
+	//查看指定单据详细信息
+	BIND_GET_ROUTER(server, "/paymentApplyDetailBill", &PayApplyControlle::queryPaymentDetailBill, nullptr);
+	//添加采购付款接口
+	BIND_POST_ROUTER(server, "/paymentApply/add", &PayApplyControlle::addPayApply, nullptr);
+	//修改采购付款接口
+	BIND_PUT_ROUTER(server, "/paymentApply/mod", &PayApplyControlle::modPayReqApply, nullptr);
+
+}
