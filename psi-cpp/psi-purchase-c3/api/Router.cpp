@@ -165,7 +165,7 @@ void Router::createPurQuotRouter()
 	//修改供应报价
 	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
 	//删除供应报价
-	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuot, nullptr);
+	BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuotById, nullptr);
 	//修改供应报价状态（关闭、作弊、反关闭）
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
 	

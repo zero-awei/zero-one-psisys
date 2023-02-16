@@ -19,26 +19,24 @@ class PurQuotController
 {
 public:
 	//添加报价
-	//CREATE_API_FUN_BODY_PAYLOAD(addPurQuot, execAddPurQuot, PurQuotDTO);
-	CREATE_API_FUN_BODY(addPurQuot, execAddPurQuot, AddPurQuotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurQuot, execAddPurQuot, AddPurQuotDTO);
 	//修改报价
-	//CREATE_API_FUN_BODY_PAYLOAD(modPurQuot, execModPurQuot, PurQuotDTO);
-	CREATE_API_FUN_BODY(modPurQuot, execModPurQuot, ModPurQuotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(modPurQuot, execModPurQuot, ModPurQuotDTO);
 	//删除报价
-	CREATE_API_FUN_BODY(delPurQuot, execDelPurQuot, DelPurQuotDTO);
+	CREATE_API_FUN_BODY(delPurQuotById, execDelPurQuotById, DelPurQuotDTO);
 	//修改报价状态（关闭、作废、反关闭）
-	CREATE_API_FUN_BODY(purQuotModBillStatus, execPurQuotModBillStatus, PurQuotModBillStatusDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(purQuotModBillStatus, execPurQuotModBillStatus, PurQuotModBillStatusDTO);
 
 
 private:
 	//演示新增报价
-	JsonVO<uint64_t> execAddPurQuot(const AddPurQuotDTO& dto);
+	JsonVO<uint64_t> execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload);
 	//演示修改报价
-	JsonVO<uint64_t> execModPurQuot(const ModPurQuotDTO& dto);
+	JsonVO<uint64_t> execModPurQuot(const ModPurQuotDTO& dto, const PayloadDTO& payload);
 	//演示删除报价
-	JsonVO<uint64_t> execDelPurQuot(const DelPurQuotDTO& dto);
+	JsonVO<uint64_t> execDelPurQuotById(const DelPurQuotDTO& dto);
 	//修改报价状态（关闭、作废、反关闭）
-	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto);
+	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // _PUI_QUOT_CONTROLLER_

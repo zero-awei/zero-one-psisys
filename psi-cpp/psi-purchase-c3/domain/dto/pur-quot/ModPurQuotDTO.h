@@ -2,11 +2,11 @@
 #define _MOD_PUR_QUOT_DTO_
 #include "stdafx.h"
 #include "../../GlobalInclude.h"
+#include "../FileDTO.h"
 
 
 
-
-class ModPurQuotDTO
+class ModPurQuotDTO :public FileDTO
 {
 	//以下有一些字段，我不确定是否真的会用到，如果之后写代码，发现还需要其他字段，就添加上去；不需要再删除；
 	// 单据id
