@@ -19,6 +19,8 @@
 #include "stdafx.h"
 #include "PurOrderDTO.h"
 void from_json(const json& j, PurOrderDTO& t) { // NOLINT
+	// ID
+	BIND_FROM_TO_ULL(j, t, id);
 	// 单据编号
 	BIND_FROM_TO_NORMAL(j, t, bill_no);
 	// 单据日期
@@ -102,9 +104,9 @@ void from_json(const json& j, PurOrderDTO& t) { // NOLINT
 	// 审批实例id
 	BIND_FROM_TO_NORMAL(j, t, bpmi_instance_id);
 	// 核批结果类型
-	BIND_FROM_TO_NORMAL(j, t, approve_result_type);
+	BIND_FROM_TO_NORMAL(j, t, approval_result_type);
 	// 核批意见
-	BIND_FROM_TO_NORMAL(j, t, approve_remark);
+	BIND_FROM_TO_NORMAL(j, t, approval_remark);
 	// 是否生效
 	BIND_FROM_TO_I(j, t, is_effective);
 	// 生效时间

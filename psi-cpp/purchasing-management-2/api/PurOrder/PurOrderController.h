@@ -34,16 +34,31 @@
 class PurOrderController
 {
 public:
+	// 分页数据
+	CREATE_API_FUN_QUERY_PAYLOAD(listPurOrder, execListPurOrder, PurOrderQuery);
+	// 单个数据
+	CREATE_API_FUN_BODY(getPurOrder, execGetPurOrder, IntID);
+	// 新增数据
+	CREATE_API_FUN_BODY(addPurOrder, execAddPurOrder, PurOrderDTO);
+	// 修改数据
+	CREATE_API_FUN_BODY(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
+	// 删除数据
+	CREATE_API_FUN_BODY(removePurOrder, execRemovePurOrder, PurOrderDTO);
+	// 删除ById
+	CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
 
 private:
-	// 查询数据
-	JsonVO<PageVO<PurOrderVO>> execQueryPurOrder(const PurOrderQuery& query);
+	// 请求分页数据
+	JsonVO<PageVO<PurOrderVO>> execListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
+	// 查询单个数据
+	JsonVO<PurOrderVO> execGetPurOrder(const IntID& id);
 	// 新增数据
 	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto);
 	// 修改数据
 	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto);
 	//删除数据
 	JsonVO<uint64_t> execRemovePurOrder(const PurOrderDTO& dto);
+	// 删除数据-ID
 	JsonVO<uint64_t> execRemoveById(const IntID& id);
 
 };

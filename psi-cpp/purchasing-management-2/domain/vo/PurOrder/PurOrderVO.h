@@ -27,6 +27,8 @@
  */
 class PurOrderVO
 {
+	// ID
+	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
@@ -110,9 +112,9 @@ class PurOrderVO
 	// 审批实例id
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
 	// 核批结果类型
-	CC_SYNTHESIZE(string, approve_result_type, Approve_result_type);
+	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
 	// 核批意见
-	CC_SYNTHESIZE(string, approve_remark, Approve_remark);
+	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
 	// 是否生效
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	// 生效时间
@@ -137,7 +139,7 @@ class PurOrderVO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurOrderVO& t); // NOLINT
-	BIND_TO_JSON(PurOrderVO, bill_no, bill_date, src_bill_type, \
+	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \
 		src_bill_id, src_no, subject, \
 		is_rubric, pur_type, supplier_id, \
 		contact, phone, fax, email, \

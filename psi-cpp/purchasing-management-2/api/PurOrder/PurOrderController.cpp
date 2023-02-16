@@ -19,3 +19,51 @@
 #include "stdafx.h"
 #include "PurOrderController.h"
 // #include "../../service/PurOrder/PurOrderSerive.h"
+
+JsonVO<PageVO<PurOrderVO>> PurOrderController::execListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
+{
+	////定义一个Service
+	//SampleService service;
+	////查询数据
+	//PageVO<SampleVO> result = service.listAll(query);
+	////响应结果
+	//return JsonVO<PageVO<SampleVO>>(result, RS_SUCCESS);
+	JsonVO<PageVO<PurOrderVO>> result = JsonVO<PageVO<PurOrderVO>>();
+	return  result;
+}
+
+JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const IntID& id)
+{
+	JsonVO<PurOrderVO> result;
+
+	return result;
+}
+
+// 新增数据
+JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto)
+{
+	JsonVO<uint64_t> result;
+
+	return result;
+}
+// 修改数据
+JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
+{
+	JsonVO<uint64_t> result;
+
+	return result;
+}
+//删除数据
+JsonVO<uint64_t> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
+{
+	JsonVO<uint64_t> result;
+
+	return result;
+}
+// 删除数据-ID
+JsonVO<uint64_t> PurOrderController::execRemoveById(const IntID& id)
+{
+	JsonVO<uint64_t> result;
+
+	return result;
+}
