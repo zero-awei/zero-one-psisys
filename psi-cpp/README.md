@@ -285,7 +285,7 @@ Release模式下是进行`dll`文件复制，下面是复制指令：
 
 ```sh
 # win32
-xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C
+    xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C
 # x64
 xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C
 ```

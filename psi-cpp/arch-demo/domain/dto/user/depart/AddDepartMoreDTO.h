@@ -16,15 +16,18 @@
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
-*/
+
+ */
+
 #ifndef _UPDATE_DEPART_MORE_DTO_
 #define _UPDATE_DEPART_MORE_DTO_
 
 #include "AddDepartDTO.h"
 
-/**
- * 示例添加部门复杂数据传输对象
+ /**
+  * 示例添加部门复杂数据传输对象
  */
+
 class AddDepartMoreDTO
 {
 	// 编号
