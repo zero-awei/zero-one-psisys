@@ -84,8 +84,8 @@ nlohmann::json PurCompareController::execPurComExport(const PurComExportQuery& d
 }
 
 //导入
-JsonVO<PurComIntoVO> PurCompareController::execPurComInto(const PurComIntoDTO& dto)
+JsonVO<uint64_t> PurCompareController::execPurComInto(const PurComIntoDTO& dto)
 {
 	//响应结果
-	return JsonVO<PurComIntoVO>();
+	return JsonVO<uint64_t>();
 }

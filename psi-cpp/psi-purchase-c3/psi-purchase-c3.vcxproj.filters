@@ -177,15 +177,6 @@
     <ClInclude Include="domain\query\pur-req\PurReqFindDetailBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-compare\AddPurComVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\pur-compare\DelPurComVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\pur-compare\ModPurComVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\pur-compare\PurComDividedListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -198,13 +189,7 @@
     <ClInclude Include="domain\vo\pur-compare\PurComFindDetailBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-compare\PurComIntoVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\pur-compare\PurComListVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\pur-compare\PurComModBillStatusVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-quot\AddPurQuotVO.h">
@@ -232,6 +217,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\AddPurInquiryDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryIntoDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryModBillStatusDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-inquiry\PurInquiryRemoveDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryExportQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

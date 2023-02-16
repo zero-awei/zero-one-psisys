@@ -30,12 +30,8 @@
 #include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
 #include "../../domain/vo/pur-compare/PurComListVO.h"
 #include "../../domain/vo/pur-compare/PurComDividedListVO.h"
-#include "../../domain/vo/pur-compare/AddPurComVO.h"
-#include "../../domain/vo/pur-compare/ModPurComVO.h"
-#include "../../domain/vo/pur-compare/PurComModBillStatusVO.h"
-#include "../../domain/vo/pur-compare/DelPurComVO.h"
 #include "../../domain/vo/pur-compare/PurComExportVO.h"
-#include "../../domain/vo/pur-compare/PurComIntoVO.h"
+
 
 //query
 #include "../../domain/query/pur-compare/PurComFindBillQuery.h"
@@ -97,7 +93,7 @@ private:
 	//执行方法：导出
 	nlohmann::json execPurComExport(const PurComExportQuery& dto, const PayloadDTO& payload);
 	//执行方法：导入
-	JsonVO<PurComIntoVO> execPurComInto(const PurComIntoDTO& dto);
+	JsonVO<uint64_t> execPurComInto(const PurComIntoDTO& dto);
 };
 
 #endif // _SAMPLE_CONTROLLER_#pragma once
