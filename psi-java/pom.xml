@@ -22,6 +22,7 @@
         <module>psi-gateway</module>
         <module>psi-login</module>
         <module>psi-sysmanagement</module>
+        <module>psi-doc</module>
 
     </modules>
     <properties>

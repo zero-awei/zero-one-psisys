@@ -1,5 +1,5 @@
 server:
-  port: ${sp.sample}
+  port: ${sp.sysmanagement}
 spring:
   application:
-    name: ${sn.sample}
+    name: ${sn.sysmanagement}
