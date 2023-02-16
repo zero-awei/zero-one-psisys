@@ -134,11 +134,11 @@ void Router::createPurCompareRouter()
 	// 新增比价的接口
 	BIND_POST_ROUTER(server, "/add-pur-com", &PurCompareController::addPurCom, nullptr);
 	// 修改比价的接口
-	BIND_POST_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
+	BIND_PUT_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
 	// 删除比价的接口
 	BIND_DEL_ROUTER(server, "/del-pur-com", &PurCompareController::removePurCom, nullptr);
 	// 修改单据状态的接口
-	BIND_POST_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
+	BIND_PUT_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
 }
 
 

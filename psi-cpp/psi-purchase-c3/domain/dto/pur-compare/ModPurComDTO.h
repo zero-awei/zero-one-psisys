@@ -50,6 +50,8 @@ class ModPurComDTO : public FileDTO
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
+	// 核批意见
+	CC_SYNTHESIZE(string, auditResult, AuditResult);
 
 public:
 	// 绑定JSON转换方法
@@ -68,6 +70,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, updatePerson);
 		BIND_FROM_TO_I(j, t, autoBill);
 		BIND_FROM_TO_I(j, t, redBill);
+		BIND_FROM_TO_NORMAL(j, t, billType);
 		BIND_FROM_TO_NORMAL(j, t, billTheme);
 		BIND_FROM_TO_NORMAL(j, t, billStatus);
 		BIND_FROM_TO_NORMAL(j, t, inquiryBill);
@@ -75,6 +78,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, deliveryDate);
 		BIND_FROM_TO_NORMAL(j, t, deliveryPlace);
 		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_NORMAL(j, t, auditResult);
 	}
 };
 

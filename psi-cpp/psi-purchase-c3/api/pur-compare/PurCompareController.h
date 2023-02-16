@@ -71,7 +71,7 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComList, execQueryPurComList, PurComListQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComDividedList, execQueryPurComDividedList, PurComDividedListQuery);
 	// 新增比价
-	CREATE_API_FUN_BODY(addPurCom, execAddPurCom, AddPurComDTO);
+	CREATE_API_FUN_BODY_FILE(addPurCom, execAddPurCom, AddPurComDTO);
 	// 修改比价
 	CREATE_API_FUN_BODY(modifyPurCom, execModifyPurCom, ModPurComDTO);
 	// 删除比价
