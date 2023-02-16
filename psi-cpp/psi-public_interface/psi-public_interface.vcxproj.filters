@@ -117,15 +117,6 @@
     <ClCompile Include="api\TaxScaleController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\CurrencyTypeController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="api\DeliveryTypeController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="api\WarehouseController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="api\publiccontroller\CurrencyTypeController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -377,9 +368,6 @@
     <ClInclude Include="domain\vo\TaxScaleVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\DeliveryTypeController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\CurrencyTypeVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -387,12 +375,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\WarehouseVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="api\CurrencyTypeController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="api\WarehouseController.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\publiccontroller\CurrencyTypeController.h">
