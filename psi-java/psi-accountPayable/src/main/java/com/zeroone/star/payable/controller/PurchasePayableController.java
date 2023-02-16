@@ -2,7 +2,7 @@ package com.zeroone.star.payable.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.payable.FinPayableDTO;
-import com.zeroone.star.project.payable.FinPayableApis;
+import com.zeroone.star.project.payable.purchasePayableAPI.PurchasePayableApis;
 import com.zeroone.star.project.query.patable.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.payable.FinPayableVO;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/jeecg-boot/finance/finPayable/")
 @Api(tags = "采购预付")
 @Validated
-public class FinPayableController implements FinPayableApis {
+public class PurchasePayableController implements PurchasePayableApis {
 
     @ApiOperation("分页查询所有单据")
     @GetMapping("list/201")

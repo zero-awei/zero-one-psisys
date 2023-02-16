@@ -1,4 +1,4 @@
-package com.zeroone.star.project.payable;
+package com.zeroone.star.project.payable.purchasePayableAPI;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.payable.FinPayableDTO;
@@ -14,7 +14,7 @@ import com.zeroone.star.project.vo.payable.FinPayableVO;
  * @author chosen1
  * @since 2023-02-13
  */
-public interface FinPayableApis {
+public interface PurchasePayableApis {
     /**
      * 分页查询
      * @param payableDTO 查询条件
