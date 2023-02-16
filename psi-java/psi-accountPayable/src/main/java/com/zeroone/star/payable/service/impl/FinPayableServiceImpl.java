@@ -7,6 +7,7 @@ import com.zeroone.star.payable.entity.FinPayable;
 import com.zeroone.star.payable.mapper.FinPayableMapper;
 import com.zeroone.star.payable.service.IFinPayableService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.accountPayable.otherPayable.OtherPayableVO;
@@ -25,16 +26,23 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
     @Override
     public PageVO<OtherPayableVO> queryAll(FinPayableQuery query) {
-        return null;
-    }
-
-    @Override
-    public PageVO<OtherPayableVO> listAll(FinPayableQuery query) {
         // 构建分页对象
         Page<FinPayable> finPayablePage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件
         QueryWrapper<FinPayable> finPayableQueryWrapper = new QueryWrapper<>();
         finPayableQueryWrapper.like("bill_no",query.getBill_no());
+        // 执行分页查询
+        Page<FinPayable> result = baseMapper.selectPage(finPayablePage, finPayableQueryWrapper);
+        return PageVO.create(result,OtherPayableVO.class);
+    }
+
+    @Override
+    public PageVO<OtherPayableVO> listAll(PageQuery query) {
+        // 构建分页对象
+        Page<FinPayable> finPayablePage = new Page<>(query.getPageIndex(), query.getPageSize());
+        // 构建查询条件
+        QueryWrapper<FinPayable> finPayableQueryWrapper = new QueryWrapper<>();
+        finPayableQueryWrapper.select();
         // 执行分页查询
         Page<FinPayable> result = baseMapper.selectPage(finPayablePage, finPayableQueryWrapper);
         return PageVO.create(result,OtherPayableVO.class);

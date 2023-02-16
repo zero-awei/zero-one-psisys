@@ -1,9 +1,12 @@
 package com.zeroone.star.project.accountPayable.otherPayableAPI;
 
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.accountPayable.otherPayable.OtherPayableVO;
+
+import java.util.List;
 
 /**
  * 描述：测试API接口定义
@@ -25,7 +28,7 @@ public interface OtherPayableApis {
      * @param condition 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<OtherPayableVO>> listAllFinPayable(FinPayableQuery condition);
+    JsonVO<PageVO<OtherPayableVO>> listAllFinPayable(PageQuery condition);
 
     /**
      * 通过单据编号查询数据

@@ -3,6 +3,7 @@ package com.zeroone.star.payable.controller;
 
 import com.zeroone.star.payable.service.IFinPayableService;
 import com.zeroone.star.project.accountPayable.otherPayableAPI.OtherPayableApis;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.payable.FinPayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -31,9 +32,16 @@ public class FinPayableController implements OtherPayableApis {
     IFinPayableService service;
 
     @GetMapping("query-all")
-    @ApiOperation(value = "示例分页查询")
+    @ApiOperation(value = "根据条件分页查询")
     @Override
     public JsonVO<PageVO<OtherPayableVO>> queryAll(FinPayableQuery condition) {
+        return JsonVO.success(service.queryAll(condition));
+    }
+
+    @GetMapping("list-all")
+    @ApiOperation(value = "所有分页查询")
+    @Override
+    public JsonVO<PageVO<OtherPayableVO>> listAllFinPayable(PageQuery condition) {
         return JsonVO.success(service.listAll(condition));
     }
 
