@@ -188,7 +188,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\奔赴山海\01 university\大项目\第一次进阶项目\代码\PurReqExportVO.h" />
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
     <ClInclude Include="api\pur-req\PurReqController.h" />
     <ClInclude Include="api\Router.h" />

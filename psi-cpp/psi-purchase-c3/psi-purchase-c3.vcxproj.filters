@@ -87,9 +87,6 @@
     <ClInclude Include="domain\query\pur-req\PurReqExportQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\奔赴山海\01 university\大项目\第一次进阶项目\代码\PurReqExportVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h">
       <Filter>头文件</Filter>
     </ClInclude>

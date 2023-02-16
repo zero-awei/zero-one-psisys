@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _PURREQEXPORT_VO_
-#define _PURREQEXPORT_VO_
+#ifndef _PUR_REQ_EXPORT_VO_
+#define _PUR_REQ_EXPORT_VO_
 
 #include "../../GlobalInclude.h"
 
@@ -95,16 +95,14 @@ class PurReqExportVO
 
 public:
 // 绑定JSON转换方法
-	BIND_TO_JSON(PurReqExportVO, purReqType, purReqRequestDept, purReqRequester, purReqRequestTime, purReqQty, purReqAmt,
-		purReqOrderQty, purReqIsEffective, purReqAttachment, purReqSrcBillId, purReqSubject, purReqStage, 
-		purReqSrcNo, purReqIsAuto, purReqRemark, purReqBpmiInstenceId, purReqIsVoided, purReqBillNo,
-		purReqIsRubric, purReqSrcBillType, purReqCreateTime, purReqEffectiveTime, purReqApprover, 
-		purReqUpdateBy, purReqSysOrgCode, purReqIsClosed, purReqApprovalResultType, purReqBillDate,
-		purReqCreateBy, purReqApprovalRemark, purReqMaterialId, purReqUnitId,purReqTaxRate,
-		purReqPrice,purReqSuggestSupplierId, purReqCustom1, purReqSrcEntryNo, 
-		purReqEntryNo);
-
+	BIND_TO_JSON(PurReqExportVO, purReqType, purReqRequestDept, purReqRequester, purReqRequestTime, purReqQty,
+		purReqAmt,purReqOrderQty, purReqIsEffective, purReqAttachment, purReqSrcBillId, purReqSubject, purReqStage, 
+		purReqSrcNo, purReqIsAuto, purReqRemark, purReqBpmiInstenceId, purReqIsVoided, purReqBillNo,purReqIsRubric,
+		purReqSrcBillType, purReqCreateTime, purReqEffectiveTime, purReqApprover, purReqUpdateBy, purReqSysOrgCode,
+		purReqIsClosed, purReqApprovalResultType, purReqBillDate,purReqCreateBy, purReqApprovalRemark, 
+		purReqMaterialId, purReqUnitId,purReqTaxRate,purReqPrice,purReqSuggestSupplierId, purReqCustom1, 
+		purReqSrcEntryNo,purReqEntryNo,purReqCustom2, purReqSrcEntryId);
 };
 
 
-#endif // !_PURREQEXPORT_VO_
+#endif // !_PUR_REQ_EXPORT_VO_
