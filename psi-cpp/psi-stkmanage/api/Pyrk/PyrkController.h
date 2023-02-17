@@ -18,7 +18,7 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPyrkBillStateToUnclose, execModifyPyrkBillStateToUnclose, StringID);
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPyrkBillStateToVoid, execModifyPyrkBillStateToVoid, StringID);
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(importPyrkFile, execImportPyrkFile, ImportPyrkFileDTO);
-	CREATE_API_FUN_QUERY(exportPyrkFile, execExportPyrkFile, StringIDs);
+	CREATE_API_FUN_JSON(exportPyrkFile, execExportPyrkFile, StringIDs);
 private:
 	//É¾³ýµ¥¾Ý
 	JsonVO<uint64_t> execRemovePyrkBillById(const StringID& id);
