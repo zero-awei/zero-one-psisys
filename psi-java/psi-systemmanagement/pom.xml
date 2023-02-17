@@ -52,7 +52,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.titlepage.SystemManagementApp</mainClass>
+                    <mainClass>com.zeroone.star.systemmanagement.SystemManagementApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

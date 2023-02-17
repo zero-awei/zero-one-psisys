@@ -12,6 +12,7 @@
 
     <artifactId>psi-titlepage</artifactId>
 
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
