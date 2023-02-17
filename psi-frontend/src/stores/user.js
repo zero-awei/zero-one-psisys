@@ -136,8 +136,8 @@ const componentRouter = {
   children: [
     {
       id: 2,
-      text: '查询组件',
-      href: '/component/psi-search',
+      text: '表单组件',
+      href: '/component/form',
       icon: 'IconTickets',
       pid: 3
     },

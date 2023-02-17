@@ -30,25 +30,25 @@ const routes = [
     component: () => import('@/views/status/403.vue')
   },
   {
-    path: '/component/psi-search',
+    path: '/component/form',
     name: 'search',
-    // component: () => import('@/components/search/index.vue')
-    component: () => import('../../../components/psiSearch/index.vue')
+    component: () => import('@/components/form/demo.vue')
+    // component: () => import('../../../components/psiSearch/demo.vue')
   },
   {
     path: '/component/table',
     name: 'table',
-    component: () => import('@/components/table/index.vue')
+    component: () => import('@/components/table/demo.vue')
   },
   {
     path: '/component/dialog',
     name: 'dialog',
-    component: () => import('@/components/dialog/index.vue')
+    component: () => import('@/components/dialog/demo.vue')
   },
   {
     path: '/component/drawer',
     name: 'drawer',
-    component: () => import('@/components/drawer/index.vue')
+    component: () => import('@/components/drawer/demo.vue')
   },
   {
     path: '/component/custom',
