@@ -1,4 +1,4 @@
-package com.zeroone.star.paymentmanagement.service.paymentmanagement;
+package com.zeroone.star.paymentmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.paymentmanagement.entity.QueryDocumentList;

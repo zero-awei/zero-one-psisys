@@ -1,7 +1,7 @@
 package com.zeroone.star.paymentmanagement.controller;
 
 
-import com.zeroone.star.paymentmanagement.service.paymentmanagement.IQueryDocumentListService;
+import com.zeroone.star.paymentmanagement.service.IQueryDocumentListService;
 import com.zeroone.star.project.paymentmanagement.PaymentManagementApis;
 import com.zeroone.star.project.query.paymentmanagement.QueryDocumentListQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -10,7 +10,6 @@ import com.zeroone.star.project.vo.paymentmanagement.QueryDocumentListVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
