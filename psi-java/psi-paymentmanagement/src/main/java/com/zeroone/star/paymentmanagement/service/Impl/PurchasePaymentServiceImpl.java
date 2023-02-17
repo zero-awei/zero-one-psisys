@@ -1,9 +1,9 @@
-package com.zeroone.star.paymentmanagement.service.paymentmanagement.Impl;
+package com.zeroone.star.paymentmanagement.service.Impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.paymentmanagement.entity.PurchasePaymentEntity;
 import com.zeroone.star.paymentmanagement.mapper.PurchasePaymentMapper;
-import com.zeroone.star.paymentmanagement.service.paymentmanagement.PurchasePaymentService;
+import com.zeroone.star.paymentmanagement.service.PurchasePaymentService;
 import org.springframework.stereotype.Service;
 
 /**
