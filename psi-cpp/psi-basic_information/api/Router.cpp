@@ -107,6 +107,6 @@ void Router::createMaterialClassificationRouter() {
 	BIND_PUT_ROUTER(server, "/put-modify", &MaterialClassificationController::modifyMaterialClassification, nullptr);
 	BIND_DEL_ROUTER(server, "/delete", &MaterialClassificationController::removeMaterialClassification, nullptr);
 	BIND_POST_ROUTER(server, "/post-import", &MaterialClassificationController::importMaterialClassification, nullptr);
-	BIND_POST_ROUTER(server, "/get-export", &MaterialClassificationController::exportMaterialClassification, nullptr);
+	BIND_GET_ROUTER(server, "/get-export", &MaterialClassificationController::exportMaterialClassification, nullptr);
 
 }

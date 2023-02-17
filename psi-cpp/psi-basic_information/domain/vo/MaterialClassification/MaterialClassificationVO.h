@@ -170,6 +170,47 @@ public:
 
 };
 
+
+//新建分类
+class ModifyMaterialClassificationVO {
+
+	//父节点
+	CC_SYNTHESIZE(uint64_t, pid, Pid);
+
+	//名称
+	CC_SYNTHESIZE(string, name, Name);
+
+	//编码
+	CC_SYNTHESIZE(uint64_t, code, Code);
+
+	//全名
+	CC_SYNTHESIZE(string, fullname, FuLLname);
+
+	//是否启用
+	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
+
+
+	//以下为操作信息，自动生成，不可手动修改
+	//创建时间
+	CC_SYNTHESIZE(string, create_time, CreateTime);
+
+	//创建人
+	CC_SYNTHESIZE(string, create_by, CreateBy);
+
+	//修改时间
+	CC_SYNTHESIZE(string, update_time, updateTime);
+
+	//修改人
+	CC_SYNTHESIZE(string, update_by, updateBy);
+
+
+public:
+
+	// 绑定JSON转换方法
+	BIND_TO_JSON(ModifyMaterialClassificationVO, pid, name, code,
+		fullname, is_enabled, create_time, create_by, update_time, update_by);
+
+};
 #endif
 
 
