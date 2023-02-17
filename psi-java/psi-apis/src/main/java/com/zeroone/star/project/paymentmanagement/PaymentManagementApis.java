@@ -10,5 +10,7 @@ import com.zeroone.star.project.vo.paymentmanagement.QueryDocumentListVO;
    api接口自定义模块
  */
 public interface PaymentManagementApis {
-    JsonVO<PageVO<QueryDocumentListVO>> queryAll(QueryDocumentListQuery condition);
+    //根据筛选信息查询单据列表。
+    //传入筛选条件，返还结果page
+    JsonVO<PageVO<QueryDocumentListVO>> queryDocumentList(QueryDocumentListQuery condition);
 }

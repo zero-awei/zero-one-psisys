@@ -1,7 +1,9 @@
 package com.zeroone.star.paymentmanagement.mapper;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zeroone.star.project.query.paymentmanagement.QueryDocumentListQuery;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -14,5 +16,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface FinPaymentReqMapper extends BaseMapper<FinPaymentReq> {
-
+    public Page<FinPaymentReq> queryDocumentList(Page page, QueryDocumentListQuery condition);
 }
