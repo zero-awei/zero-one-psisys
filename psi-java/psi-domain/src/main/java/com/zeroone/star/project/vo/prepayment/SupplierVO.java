@@ -1,5 +1,6 @@
-package com.zeroone.star.project.vo.payment;
+package com.zeroone.star.project.vo.prepayment;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

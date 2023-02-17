@@ -60,4 +60,5 @@ public class PrepaymentDTO {
 
     @ApiModelProperty(value = "采购明细单",example = "")
     private List<FinPaymentEntryDTO> finPaymentEntryList;
+
 }
