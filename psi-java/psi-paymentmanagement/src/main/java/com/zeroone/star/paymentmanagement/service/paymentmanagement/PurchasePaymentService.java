@@ -1,7 +1,7 @@
-package com.zeroone.star.psipaymentmanagement.service.purchasepayment;
+package com.zeroone.star.paymentmanagement.service.paymentmanagement;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zeroone.star.psipaymentmanagement.entity.purchasepayment.PurchasePaymentEntity;
+import com.zeroone.star.paymentmanagement.entity.PurchasePaymentEntity;
 
 /**
  * @author Tomcat

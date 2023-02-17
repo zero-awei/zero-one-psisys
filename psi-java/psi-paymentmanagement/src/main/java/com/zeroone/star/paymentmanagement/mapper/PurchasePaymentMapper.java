@@ -1,7 +1,7 @@
-package com.zeroone.star.psipaymentmanagement.mapper.purchasepayment;
+package com.zeroone.star.paymentmanagement.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeroone.star.psipaymentmanagement.entity.purchasepayment.PurchasePaymentEntity;
+import com.zeroone.star.paymentmanagement.entity.PurchasePaymentEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

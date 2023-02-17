@@ -1,4 +1,4 @@
-package com.zeroone.star.psipaymentmanagement.controller.purchasepayment;
+package com.zeroone.star.paymentmanagement.controller;
 
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentCreateDTO;
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentDeleteDTO;

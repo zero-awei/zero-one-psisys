@@ -1,4 +1,4 @@
-package com.zeroone.star.psipaymentmanagement.entity.purchasepayment;
+package com.zeroone.star.paymentmanagement.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;

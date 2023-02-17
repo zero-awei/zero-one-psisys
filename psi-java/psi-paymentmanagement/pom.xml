@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<<<<<<< HEAD
     <parent>
         <artifactId>psi-java</artifactId>
         <groupId>com.zeroone.star</groupId>
@@ -14,73 +13,6 @@
     <artifactId>psi-paymentmanagement</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-annotation</artifactId>
-            <version>3.4.3.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.5.7</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-core</artifactId>
-            <version>3.4.3.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-=======
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.zeroone.star</groupId>
-        <artifactId>psi-java</artifactId>
-        <version>${revision}</version>
-    </parent>
-
-    <artifactId>psi-paymentmanagement</artifactId>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <dependencies>
-        <dependency>
->>>>>>> origin/j5-purchasepayment-tomcat
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-apis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-domain</artifactId>
-        </dependency>
-<<<<<<< HEAD
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-common</artifactId>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
-=======
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -109,6 +41,14 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>psi-apis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>psi-common</artifactId>
+        </dependency>
     </dependencies>
->>>>>>> origin/j5-purchasepayment-tomcat
 </project>
