@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author pyramid
  * @since 2023-02-15
  */
-@Api(value = "/onlytype/fin-payment-req", tags = {"付款申请单 前端控制器"})
+@Api(tags = "付款管理-采购付款")
 @RestController
 @RequestMapping("/onlytype/fin-payment-req")
 public class FinPaymentReqController implements FinPaymentReqApis {
