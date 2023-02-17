@@ -32,10 +32,10 @@ public class FinPaymentEntryDTO {
     @ApiModelProperty(value = "分录号",example = "10")
     private Integer entryNo;
 
-    @ApiModelProperty(value = "id",example = "")
+    @ApiModelProperty(value = "id",example = "222")
     private String id;
 
-    @ApiModelProperty(value = "mid",example = "")
+    @ApiModelProperty(value = "mid",example = "111")
     private String mid;
 
     @ApiModelProperty(value = "备注",example = "备注")

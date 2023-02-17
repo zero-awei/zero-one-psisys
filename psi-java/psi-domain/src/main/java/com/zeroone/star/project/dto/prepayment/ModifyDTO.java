@@ -23,7 +23,7 @@ import java.util.List;
 @Data
 @ApiModel("修改采购预付单功能")
 public class ModifyDTO {
-    @ApiModelProperty(value = "id",example = "001")
+    @ApiModelProperty(value = "id",example = "111")
     private Integer id;
 
     @ApiModelProperty(value = "金额",example = "1000.00")
@@ -33,7 +33,7 @@ public class ModifyDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
-    @ApiModelProperty(value = "单据编号",example = "CGYF-221120-002")
+    @ApiModelProperty(value = "单据编号",example = "CGYF-202302-002")
     private String billNo;
 
     @ApiModelProperty(value = "备注",example = "remark..")
@@ -45,7 +45,7 @@ public class ModifyDTO {
     @ApiModelProperty(value = "源单id",example = "1594317750844637186")
     private String srcBillId;
 
-    @ApiModelProperty(value = "源单号",example = "CGYFSQ-221120-001")
+    @ApiModelProperty(value = "源单号",example = "CGYFSQ-202302-001")
     private String srcNo;
 
     @ApiModelProperty(value = "单据主题",example = "tittle")
