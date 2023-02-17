@@ -3,6 +3,7 @@
 #define _Q_P_D_B_VO_
 #include "../../GlobalInclude.h"
 #include"QueryPyrkBillListVO.h"
+#include"DetailedMessage.h"
 class QueryPyrkDetailedBillVO  {
 	// 单据编号
 	CC_SYNTHESIZE(string, id, Id);
@@ -48,6 +49,16 @@ class QueryPyrkDetailedBillVO  {
 	CC_SYNTHESIZE(int, redBill, RedBill);
 	// 源单类型
 	CC_SYNTHESIZE(string, sourceBillType, SourceBillType);
+	// 明细
+protected:
+	DetailedMessage dm;
+public:
+	void setDm(DetailedMessage dm) {
+		this->dm = dm;
+	}
+	DetailedMessage getDm() {
+		return this->dm;
+	}
 	// 源单分录号
 	CC_SYNTHESIZE(string, sourceBillId, SourceBillId);
 	// 物料
@@ -67,7 +78,7 @@ class QueryPyrkDetailedBillVO  {
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	// 绑定JSON转换方法
+	 //绑定JSON转换方法
 	BIND_TO_JSON(QueryPyrkDetailedBillVO, id, data, theme, resourceId, handing, stage, isEffective,
 		isClosed, isVoided, remarks, isAuto, effectiveData, checkPerson, makePerson, makeData,
 		department, modifyData, modifyPerson, checkInstanceId, hasYF, redBill, sourceBillType,

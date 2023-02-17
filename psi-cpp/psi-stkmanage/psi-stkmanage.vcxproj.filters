@@ -39,6 +39,12 @@
     <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="service\Pyrk\PyrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macros.h">
@@ -96,6 +102,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Pyrk\PyrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

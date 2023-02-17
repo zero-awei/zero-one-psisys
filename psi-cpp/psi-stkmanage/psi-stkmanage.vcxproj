@@ -174,10 +174,12 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\Pyrk\PyrkController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\Pyrk\PyrkDao.cpp" />
     <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp" />
     <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\Pyrk\PyrkService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -188,6 +190,8 @@
   <ItemGroup>
     <ClInclude Include="api\Pyrk\PyrkController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\Pyrk\PyrkDao.h" />
+    <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
@@ -199,11 +203,13 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\Pyrk\PyrkService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,7 @@ private:
 	// 查询单据列表
 	JsonVO<PageVO<QueryPyrkBillListVO>> execQueryBillList(const QueryPyrkBillListQuery& query);
 	// 查询单据详细信息
-	JsonVO<QueryPyrkBillListVO> exeQueryBillDetailed(const QueryPyrkBillListQuery& query);
+	JsonVO<QueryPyrkDetailedBillVO> exeQueryBillDetailed(const QueryPyrkBillListQuery& query);
 	// 新增单据详细信息
 	JsonVO<int> exeAddBillDetailed(const PyrkBillDetailDTO& addMessage);
 	// 修改单据详细信息

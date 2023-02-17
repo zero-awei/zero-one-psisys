@@ -24,7 +24,6 @@ class QueryPyrkBillListQuery : public PageQuery {
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 	// °ó¶¨from_json
 	friend void from_json(const json& j, QueryPyrkBillListQuery& t);
-
 };
 
 

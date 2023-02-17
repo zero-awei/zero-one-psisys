@@ -8,9 +8,9 @@ JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryBillList(const Quer
     return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<QueryPyrkBillListVO> PyrkController::exeQueryBillDetailed(const QueryPyrkBillListQuery& query) {
-    QueryPyrkBillListVO result;
-    return JsonVO<QueryPyrkBillListVO>(result, RS_SUCCESS);
+JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const QueryPyrkBillListQuery& query) {
+    QueryPyrkDetailedBillVO result;
+    return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
 }
 
 JsonVO<int> PyrkController::exeAddBillDetailed(const PyrkBillDetailDTO& addMessage) {

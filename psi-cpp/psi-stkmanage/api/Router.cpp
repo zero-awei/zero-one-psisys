@@ -82,7 +82,7 @@ void Router::createPyrkRouter()
 	BIND_GET_ROUTER(server, "/pyrk-query-bill-list", &PyrkController::queryQueryBillList, nullptr);
 	BIND_GET_ROUTER(server, "/pyrk-query-detailed-bill", &PyrkController::queryQueryBillDetailed, nullptr);
 	BIND_POST_ROUTER(server, "/pyrk-add-detailed-bill", &PyrkController::addBillDetailed, nullptr);
-	BIND_POST_ROUTER(server, "/pyrk-update-detailed-bill", &PyrkController::updateBillDetailed, nullptr);
+	BIND_PUT_ROUTER(server, "/pyrk-update-detailed-bill", &PyrkController::updateBillDetailed, nullptr);
 }
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
