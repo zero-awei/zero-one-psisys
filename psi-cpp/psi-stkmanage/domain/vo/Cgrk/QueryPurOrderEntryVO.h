@@ -82,7 +82,10 @@ class QueryPurOrderEntryVO
 
 
 public:
-
+	QueryPurOrderEntryVO()
+	{
+		id = "7635498";
+	}
 	BIND_TO_JSON(QueryPurOrderEntryVO, id, billNo, subject, custom1, custom2, entryNo, discountRate, inQty, inCost, invoicedAmt, invoicedQty, materialCode, materialId, materialModel, mid, price, qty, remark,
 		settleAmt, settleQty, srcBillId, srcBillType, srcEntryId, srcNo, tax, taxRate, unitId, version);
 };

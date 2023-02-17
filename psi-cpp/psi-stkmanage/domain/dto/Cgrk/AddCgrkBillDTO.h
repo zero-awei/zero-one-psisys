@@ -41,7 +41,7 @@ class AddCgrkBillDTO
 	//业务部门
 	CC_SYNTHESIZE(string, opDept, OpDept);
 	//业务员
-	CC_SYNTHESIZE(string, operatoR, Operator);
+	CC_SYNTHESIZE(string, operator1, Operator1);
 	//入库经办
 	CC_SYNTHESIZE(string, handler, Handler);
 	//明细*********

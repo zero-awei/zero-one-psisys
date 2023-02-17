@@ -75,6 +75,10 @@ class QueryPurOrderListVO
 	CC_SYNTHESIZE(string, supplierId, SupplierId);
 
 public:
+	QueryPurOrderListVO()
+	{
+		id = "123456";
+	}
 
 	BIND_TO_JSON(QueryPurOrderListVO, id, billNo, billDate, purType, paymentMethod, prePaymentBal, settleMethod, deliveryTime, deliveryPlace,
 		deliveryMethod, inQty, inCost, invoicedAmt, invoiceType, amt, isClosed, opDept, operator1, qty, remark, settleAmt, settledAmt, srcNo, subject, supplierId);

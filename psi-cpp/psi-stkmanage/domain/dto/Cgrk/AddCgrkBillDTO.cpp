@@ -10,7 +10,7 @@ void from_json(const json& j, AddCgrkBillDTO& t)
 	BIND_FROM_TO_NORMAL(j, t, billStage);
 	BIND_FROM_TO_NORMAL(j, t, subject);
 	BIND_FROM_TO_NORMAL(j, t, opDept);
-	BIND_FROM_TO_NORMAL(j, t, operatoR);
+	BIND_FROM_TO_NORMAL(j, t, operator1);
 	BIND_FROM_TO_NORMAL(j, t, handler);
 	BIND_FROM_TO_I(j, t, entryNo);
 	BIND_FROM_TO_NORMAL(j, t, materialId);

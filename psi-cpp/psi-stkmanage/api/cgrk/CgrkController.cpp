@@ -37,29 +37,33 @@ JsonVO<PageVO<QueryCgrkBillDetailsVO>> CgrkController::execQueryCgrkBillDetails(
 	PageVO<QueryCgrkBillDetailsVO> result;
 	list<QueryCgrkBillDetailsVO> rows;
 	rows.push_back(QueryCgrkBillDetailsVO());
-	rows.push_back(QueryCgrkBillDetailsVO());
-	rows.push_back(QueryCgrkBillDetailsVO());
+	result.setRows(rows);
 	return JsonVO<PageVO<QueryCgrkBillDetailsVO>>(result, RS_SUCCESS);
 }
 //查询采购订单列表
 JsonVO<PageVO<QueryPurOrderListVO>> CgrkController::execQueryPurOrderList(const QueryPurOrderListQuery& query)
 {
 	PageVO<QueryPurOrderListVO> result;
-
-	return JsonVO<PageVO<QueryPurOrderListVO>>(result, RS_FAIL);
+	list<QueryPurOrderListVO> rows;
+	rows.push_back(QueryPurOrderListVO());
+	result.setRows(rows);
+	return JsonVO<PageVO<QueryPurOrderListVO>>(result, RS_SUCCESS);
 }
 //查看采购订单分录列表
 JsonVO<PageVO<QueryPurOrderEntryVO>> CgrkController::execQueryPurOrderEntry(const QueryPurOrderEntryQuery& query)
 {
 	PageVO<QueryPurOrderEntryVO> result;
-	return JsonVO<PageVO<QueryPurOrderEntryVO>>(result, RS_FAIL);
+	list<QueryPurOrderEntryVO> rows;
+	rows.push_back(QueryPurOrderEntryVO());
+	result.setRows(rows);
+	return JsonVO<PageVO<QueryPurOrderEntryVO>>(result, RS_SUCCESS);
 }
 
 //添加采购入库单
 JsonVO<uint64_t> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto)
 {
 	JsonVO<uint64_t> result;
-
+	result.success(1);
 	return result;
 }
 //修改采购入库单
@@ -67,7 +71,7 @@ JsonVO<uint64_t>  CgrkController::execModifyCgrkBill(const ModifyCgrkBillDTO& dt
 {
 
 	JsonVO<uint64_t> result;
-
+	result.success(1);
 	return result;
 }
 
@@ -77,7 +81,7 @@ JsonVO<uint64_t> CgrkController::execRemoveCgrkBill(const RemoveCgrkBillDTO& dto
 
 	JsonVO<uint64_t> result;
 	//执行数据删除
-
+	result.success(1);
 	//响应结果
 	return result;
 }
@@ -87,6 +91,7 @@ JsonVO<uint64_t> CgrkController::execModifyCgrkBillState(const ModifyCgrkBillSta
 {
 
 	JsonVO<uint64_t> result;
+	result.success(1);
 
 	return result;
 }
@@ -94,14 +99,14 @@ JsonVO<uint64_t> CgrkController::execModifyCgrkBillState(const ModifyCgrkBillSta
 JsonVO<uint64_t> CgrkController::execImportCgrkFile(const ImportCgrkFileDTO& dto)
 {
 	JsonVO<uint64_t> result;
-
+	result.success(1);
 	return result;
 }
 // 导出
 JsonVO<std::string> CgrkController::execExportCgrkFile()
 {
 	JsonVO<std::string> result;
-
+	result.success("1");
 	return result;
 }
 
