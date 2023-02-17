@@ -1,6 +1,6 @@
 package com.zeroone.star.paymentmanagement.service;
 
-import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
+import com.zeroone.star.paymentmanagement.entity.QueryDocumentList;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author achuan
  * @since 2023-02-13
  */
-public interface IFinPaymentReqService extends IService<FinPaymentReq> {
+public interface IFinPaymentReqService extends IService<QueryDocumentList> {
 
 }

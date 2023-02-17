@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("fin_payment_req")
-public class FinPaymentReq implements Serializable {
+public class QueryDocumentList implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
