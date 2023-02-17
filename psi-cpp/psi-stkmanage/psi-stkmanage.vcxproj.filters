@@ -39,6 +39,18 @@
     <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\Zdrk\ZdrkController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Zdrk\DocFileDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -123,6 +135,36 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Zdrk\ZdrkController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Zdrk\AddZdrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Zdrk\DocFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Zdrk\ImportZdrkFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillStateDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillDetailsVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

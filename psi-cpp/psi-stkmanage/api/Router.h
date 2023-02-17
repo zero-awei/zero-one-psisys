@@ -23,28 +23,28 @@
 #include "api/ApiHelper.h"
 
 /**
- * ǰ�˷��ʷ�����·�ɰ󶨣����ڶ���ǰ�˷��ʺ�˽ӿںͷ���·����
+ * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */
 class Router
 {
 private:
 	http_server* server;
 public:
-	//�����ʼ��
+	//构造初始化
 	explicit Router(http_server* sever);
-	//���г�ʼ��
+	//呼叫初始化
 	void initRouter();
 private:
 #ifdef HTTP_SERVER_DEMO
-	//������ʾ·��
+	//创建演示路由
 	void createSampleRouter();
-	//�����û�����-���Ź���·��
+	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
 
-
+	//采购入库Router
 	void createCgrkRouter();
-	//�����Ƕ����router
+	//涨吨入库Router
 	void createIncreaseTonRouter();
 };
 
