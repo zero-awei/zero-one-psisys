@@ -209,7 +209,11 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotFindBillVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotFindDetailBillVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotListVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />

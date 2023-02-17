@@ -11,8 +11,6 @@ class PurQuotFindDetailBillQuery : public PageQuery
 	CC_SYNTHESIZE(string, receiptId, ReceiptId);
 public:
 	friend void from_json(const json& j, PurQuotFindDetailBillQuery& t) {
-		BIND_FROM_TO_I(j, t, pageIndex);
-		BIND_FROM_TO_I(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, receiptId);
 	}
 };
