@@ -139,6 +139,7 @@ class PurOrderVO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurOrderVO& t); // NOLINT
+	friend void to_json(const json& j, PurOrderVO& t); // NOLINT
 	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \
 		src_bill_id, src_no, subject, \
 		is_rubric, pur_type, supplier_id, \

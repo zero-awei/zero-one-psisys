@@ -62,14 +62,14 @@ void Router::createPurOrderRouter()
 {
 	// 分页数据
 	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
-	//// 单个数据
-	//BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
-	//// 新增数据
-	//BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
-	//// 修改数据
-	//BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-	//// 删除数据
-	//BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
-	//// 删除ById
-	//BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
+	// 新增数据
+	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
+	// 修改数据
+	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
+	// 删除数据
+	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
+	// 删除ById
+	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 }

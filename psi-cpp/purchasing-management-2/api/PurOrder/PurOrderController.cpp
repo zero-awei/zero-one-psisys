@@ -18,24 +18,24 @@
 */
 #include "stdafx.h"
 #include "PurOrderController.h"
-// #include "../../service/PurOrder/PurOrderSerive.h"
+#include "../../service/PurOrder/PurOrderService.h"
 
+// 查询list数据
 JsonVO<PageVO<PurOrderVO>> PurOrderController::execListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
 {
-	////定义一个Service
-	//SampleService service;
-	////查询数据
-	//PageVO<SampleVO> result = service.listAll(query);
-	////响应结果
-	//return JsonVO<PageVO<SampleVO>>(result, RS_SUCCESS);
-	JsonVO<PageVO<PurOrderVO>> result = JsonVO<PageVO<PurOrderVO>>();
-	return  result;
+	//定义一个Service
+	PurOrderService service;
+	//查询数据
+	PageVO<PurOrderVO> result = service.listAll(query);
+	//响应结果
+	return JsonVO<PageVO<PurOrderVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const IntID& id)
+// 查询单个数据byDTO
+JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 {
-	JsonVO<PurOrderVO> result;
-
+	PurOrderService service;
+	JsonVO<PurOrderVO> result = JsonVO(service.getData(dto.getId()), RS_SUCCESS);
 	return result;
 }
 
@@ -43,27 +43,60 @@ JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const IntID& id)
 JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto)
 {
 	JsonVO<uint64_t> result;
+	//定义一个Service
+	PurOrderService service;
 
+	//执行数据新增
+	uint64_t id = service.saveData(dto);
+	if (id > 0) {
+		result.success(id);
+	}
+	else
+	{
+		result.fail(id);
+	}
+	//响应结果
 	return result;
 }
 // 修改数据
 JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	//定义一个Service
+	PurOrderService service;
 
+	JsonVO<uint64_t> result;
+	if (service.updateData(dto)) {
+		result.success(dto.getId());
+	}
+	else
+	{
+		result.fail(dto.getId());
+	}
+	return result;
 	return result;
 }
 //删除数据
 JsonVO<uint64_t> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	//定义一个Service
+	PurOrderService service;
 
+	JsonVO<uint64_t> result;
+	//执行数据删除
+	if (service.removeData(dto.getId())) {
+		result.success(dto.getId());
+	}
+	else
+	{
+		result.fail(dto.getId());
+	}
+	//响应结果
 	return result;
 }
-// 删除数据-ID
+//删除数据byId
 JsonVO<uint64_t> PurOrderController::execRemoveById(const IntID& id)
 {
-	JsonVO<uint64_t> result;
-
-	return result;
+	PurOrderDTO dto;
+	dto.setId(id.getId());
+	return execRemovePurOrder(dto);
 }
