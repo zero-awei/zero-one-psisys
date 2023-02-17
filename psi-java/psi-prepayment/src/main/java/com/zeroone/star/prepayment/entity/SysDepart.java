@@ -1,13 +1,12 @@
-package com.zeroone.star.payment.entity;
+package com.zeroone.star.prepayment.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Kong
- * @since 2023-02-15
+ * @since 2023-02-17
  */
 @Getter
 @Setter
