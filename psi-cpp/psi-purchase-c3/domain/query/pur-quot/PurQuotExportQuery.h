@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _PUR_QUOT_EXPORT_QUERY_
-#define _PUR_QUOT_EXPORT_QUERY_
+#ifndef _PUR_QUOT_EXPORT_QUERY_H_
+#define _PUR_QUOT_EXPORT_QUERY_H_
 
 #include "../PageQuery.h"
 

@@ -1,6 +1,7 @@
-#ifndef _DEL_PUR_QUOT_DTO_
-#define _DEL_PUR_QUOT_DTO_
-#include "stdafx.h"
+#pragma once
+#ifndef _DEL_PUR_QUOT_DTO_H_
+#define _DEL_PUR_QUOT_DTO_H_
+
 #include "../../GlobalInclude.h"
 
 

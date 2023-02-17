@@ -1,6 +1,6 @@
-#include "stdafx.h"
-#ifndef __PurQuotFindDetailBill_QUERY_H__
-#define __PurQuotFindDetailBill_QUERY_H__
+#pragma once
+#ifndef __PUR_QUOT_LIST_QUERY_H_
+#define __PUR_QUOT_LIST_QUERY_H_
 
 #include "../PageQuery.h"
 

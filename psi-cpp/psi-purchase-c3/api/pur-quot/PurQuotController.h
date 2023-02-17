@@ -1,9 +1,8 @@
 
 //公共头文件
-
-#ifndef _PUR_QUOT_CONTROLLER_
-#define _PUR_QUOT_CONTROLLER_
-#include "stdafx.h"
+#pragma once
+#ifndef _PUR_QUOT_CONTROLLER_H_
+#define _PUR_QUOT_CONTROLLER_H_
 #include "domain/dto/IDDTO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/PageVO.h"

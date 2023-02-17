@@ -1,9 +1,7 @@
-#ifndef _PUR_QUOT_MOD_BILL_STATUS_DTO_
-#define _PUR_QUOT_MOD_BILL_STATUS_DTO_
-#include "stdafx.h"
+#pragma once
+#ifndef _PUR_QUOT_MOD_BILL_STATUS_DTO_H_
+#define _PUR_QUOT_MOD_BILL_STATUS_DTO_H_
 #include "../../GlobalInclude.h"
-
-
 
 
 class PurQuotModBillStatusDTO
@@ -34,16 +32,13 @@ public:
 	//绑定JSON转换方法
 	friend void from_json(const json& j, PurQuotModBillStatusDTO& t) {
 		BIND_FROM_TO_L(j, t, id);
-
 		BIND_FROM_TO_I(j, t, isEffective);
 		BIND_FROM_TO_I(j, t, isClosed);
 		BIND_FROM_TO_I(j, t, isVoided);
 		BIND_FROM_TO_I(j, t, approvalResultType);
 		BIND_FROM_TO_I(j, t, billStage);
-
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 		BIND_FROM_TO_NORMAL(j, t, approver);
-
 		BIND_FROM_TO_NORMAL(j, t, approvalRemark);
 	}
 };

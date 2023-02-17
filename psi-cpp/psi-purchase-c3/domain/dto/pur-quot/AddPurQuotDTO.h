@@ -1,14 +1,13 @@
+#pragma once
 #ifndef _ADD_PUR_QUOT_DTO_
 #define _ADD_PUR_QUOT_DTO_
 
-#include "stdafx.h"
+
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
 
-
-class AddPurQuotDTO :public FileDTO
-{
+class AddPurQuotDTO :public FileDTO{
 	//以下有一些字段，我不确定是否真的会用到，如果之后写代码，发现还需要其他字段，就添加上去；不需要再删除；
 	// 单据id
 	CC_SYNTHESIZE(long, id, Id);

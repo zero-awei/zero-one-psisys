@@ -7,10 +7,6 @@
 #include "pur-quot/PurQuotController.h"
 
 
-//
-
-
-
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
