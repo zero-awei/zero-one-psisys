@@ -2,6 +2,9 @@ package com.zeroone.star.psisysmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.psisysmanagement.entity.User;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,5 @@ import com.zeroone.star.psisysmanagement.entity.User;
  * @since 2023-02-12
  */
 public interface IUserService extends IService<User> {
-
+    ResponseEntity<byte[]> getExcel(List<User> users);
 }
