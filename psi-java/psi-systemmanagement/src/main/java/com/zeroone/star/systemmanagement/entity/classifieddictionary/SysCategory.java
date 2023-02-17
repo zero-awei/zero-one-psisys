@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +18,8 @@ import lombok.Setter;
  * @author suqier
  * @since 2023-02-11
  */
-@Getter
 @Setter
+@Getter
 @TableName("sys_category")
 public class SysCategory implements Serializable {
 
