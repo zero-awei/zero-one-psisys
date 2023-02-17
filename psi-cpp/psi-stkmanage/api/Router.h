@@ -23,27 +23,29 @@
 #include "api/ApiHelper.h"
 
 /**
- * Ç°¶Ë·ÃÎÊ·şÎñÆ÷Â·ÓÉ°ó¶¨£¬ÓÃÓÚ¶¨ÒåÇ°¶Ë·ÃÎÊºó¶Ë½Ó¿ÚºÍ·ÃÎÊÂ·¾¶°ó¶¨
+ * Ç°ï¿½Ë·ï¿½ï¿½Ê·ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½É°ó¶¨£ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½Ç°ï¿½Ë·ï¿½ï¿½Êºï¿½Ë½Ó¿ÚºÍ·ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
  */
 class Router
 {
 private:
 	http_server* server;
 public:
-	//¹¹Ôì³õÊ¼»¯
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
 	explicit Router(http_server* sever);
-	//ºô½Ğ³õÊ¼»¯
+	//ï¿½ï¿½ï¿½Ğ³ï¿½Ê¼ï¿½ï¿½
 	void initRouter();
 private:
 #ifdef HTTP_SERVER_DEMO
-	//´´½¨ÑİÊ¾Â·ÓÉ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Â·ï¿½ï¿½
 	void createSampleRouter();
-	//´´½¨ÓÃ»§¹ÜÀí-²¿ÃÅ¹ÜÀíÂ·ÓÉ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 	void createUserDepartRouter();
 #endif
 
 
 	void createCgrkRouter();
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½router
+	void createIncreaseTonRouter();
 };
 
 #endif // !_ROUTER_

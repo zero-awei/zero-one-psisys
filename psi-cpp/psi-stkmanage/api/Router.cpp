@@ -18,6 +18,7 @@
 */
 #include "stdafx.h"
 #include "Router.h"
+#include "Zdrk/ZdrkController.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 #include "cgrk/CgrkController.h"
@@ -35,17 +36,17 @@ Router::Router(http_server* sever)
 
 void Router::initRouter()
 {
-	//设置静态文件目录
+	//锟斤拷锟矫撅拷态锟侥硷拷目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
 #ifdef HTTP_SERVER_DEMO
-	//绑定首页页面
+	//锟斤拷锟斤拷页页锟斤拷
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
 		res.render_raw_view("./public/test.html");
 		}, nullptr);
 
-	//初始化一个文件上传接口示例
+	//锟斤拷始锟斤拷一锟斤拷锟侥硷拷锟较达拷锟接匡拷示锟斤拷
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
 			if (req.get_content_type() != content_type::multipart)
 			{
@@ -55,10 +56,10 @@ void Router::initRouter()
 				res.render_json(jvo);
 				return;
 			}
-			//获取表单参数
+			//锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷
 			std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
 			std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-			//获取文件路径
+			//锟斤拷取锟侥硷拷路锟斤拷
 			auto& files = req.get_upload_files();
 			std::vector<string> filePaths;
 			for (auto& file : files) {
@@ -72,9 +73,10 @@ void Router::initRouter()
 	//createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-
-	//#TIP :系统扩展路由定义，写在这个后面
 	createCgrkRouter();
+	createIncreaseTonRouter();
+
+	
 
 }
 
@@ -97,6 +99,7 @@ void Router::createUserDepartRouter()
 }
 
 #endif
+
 void Router::createCgrkRouter()
 {
 	BIND_GET_ROUTER(server, "/query-cgrk-bill-list", &CgrkController::queryCgrkBillList, nullptr);
@@ -109,4 +112,17 @@ void Router::createCgrkRouter()
 	BIND_PUT_ROUTER(server, "/modify-cgrk-bill-state", &CgrkController::modifyCgrkBillState, nullptr);
 	BIND_POST_ROUTER(server, "/import-cgrk-file", &CgrkController::importCgrkFile, nullptr);
 	BIND_GET_ROUTER(server, "/export-cgrk-file", &CgrkController::exportCgrkFile, nullptr);
+}
+
+void Router::createIncreaseTonRouter()
+{
+	BIND_GET_ROUTER(server, "/query-zdrk-bill-list", &ZdrkController::queryZdrkBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-zdrk-bill-details", &ZdrkController::queryZdrkBillDetails, nullptr);
+	BIND_POST_ROUTER(server, "/add-zdrk-bill", &ZdrkController::addZdrkBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill", &ZdrkController::modifyZdrkBill, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-zdrk-bill", &ZdrkController::removeZdrkBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state", &ZdrkController::modifyZdrkBillState, nullptr);
+	BIND_POST_ROUTER(server, "/import-zdrk-file", &ZdrkController::ImportZdrkFile, nullptr);
+	BIND_GET_ROUTER(server, "/emport-zdrk-file", &ZdrkController::EmportZdrkFile, nullptr);
+
 }
