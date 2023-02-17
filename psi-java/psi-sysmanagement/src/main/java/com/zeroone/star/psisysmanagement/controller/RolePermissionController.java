@@ -23,7 +23,8 @@ public class RolePermissionController implements RoleApis<PermissionQuery> {
     @ApiOperation(value = "查询权限")
     @Override
     public JsonVO<List<PermissionQuery>> showList(String RId) {
-        return null;
+
+        return JsonVO.success(service.showList(RId));
     }
 
     @PostMapping("/add")

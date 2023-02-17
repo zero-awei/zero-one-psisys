@@ -1,7 +1,6 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
-import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
 import com.zeroone.star.project.sysmanagement.RoleApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.psisysmanagement.service.IMenuService;

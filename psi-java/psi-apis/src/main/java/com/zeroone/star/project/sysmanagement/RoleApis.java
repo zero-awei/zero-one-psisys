@@ -1,16 +1,13 @@
 package com.zeroone.star.project.sysmanagement;
 
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
-import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 public interface RoleApis<T> {
     /**
-     * 根据角色id查询角色所有能访问的菜单或权限列表
+     * 根据角色id(父id)查询角色所有能访问的菜单或权限列表
      * @param RId
      * @return 菜单或者权限列表
      */
