@@ -32,10 +32,10 @@ JsonVO<uint64_t> PurQuotController::execPurQuotModBillStatus(const PurQuotModBil
 
 
 //导出
-nlohmann::json PurQuotController::execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload)
+JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload)
 {
 	//响应结果
-	return nlohmann::json(JsonVO<std::string>());
+	return JsonVO<PurQuotExportVO>();
 }
 
 //导入

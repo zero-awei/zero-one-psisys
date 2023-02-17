@@ -219,10 +219,10 @@
     <ClInclude Include="domain\query\pur-inquiry\PurInquiryExportQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h">
+    <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

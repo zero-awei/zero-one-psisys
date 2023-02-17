@@ -48,7 +48,7 @@ private:
 	//修改报价状态（关闭、作废、反关闭）
 	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto, const PayloadDTO& payload);
 	//导出
-	nlohmann::json execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
+	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
 	//导入
 	JsonVO<uint64_t> execPurQuotInto(const PurQuotIntoDTO& dto);
 

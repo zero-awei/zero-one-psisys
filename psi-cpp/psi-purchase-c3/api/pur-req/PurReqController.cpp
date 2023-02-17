@@ -3,18 +3,12 @@
 #include "PurReqController.h"
 #include "../../domain/query/pur-req/PurReqExportQuery.h"
 
-#include "service/pur-req/PurReqService.h" //这个头文件是干嘛的?--阿坤
+//#include "service/pur-req/PurReqService.h" //这个头文件是干嘛的?--阿坤
 
 //查询单据信息
 JsonVO<PageVO<PurReqFindBillVO>> PurReqController::execQueryPurReqFindBill(const PurReqFindBillQuery& query, const PayloadDTO& payload){
 	JsonVO<PageVO<PurReqFindBillVO>> rs;
 
-	PageVO<PurReqFindBillVO> data;
-	std::list<PurReqFindBillVO> rows;
-	rows.push_back(PurReqFindBillVO());
-	rows.push_back(PurReqFindBillVO());
-	rows.push_back(PurReqFindBillVO());
-	data.setRows(rows);
 	return rs;
 }
 

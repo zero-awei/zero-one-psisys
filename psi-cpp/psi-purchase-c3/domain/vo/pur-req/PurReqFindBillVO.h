@@ -79,10 +79,6 @@ class PurReqFindBillVO {
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
 public:
-	PurReqFindBillVO() {
-		bill_no = 23131;
-		bill_date = "2023-2-16";
-	}
 	// 绑定JSON转换方法
 	BIND_TO_JSON(PurReqFindBillVO, bill_no, bill_date, subject, src_no, pur_type,
 		request_dept, requester, request_time, qty, ordered_qty, amt, bill_stage,

@@ -17,9 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_RER_FIND_BILL_Query_
-#define _PUR_RER_FIND_BILL_Query_
-
+#ifndef _PUR_RER_FIND_BILL_QUERY_
+#define _PUR_RER_FIND_BILL_QUERY_
 #include "../PageQuery.h"
 
 /*
