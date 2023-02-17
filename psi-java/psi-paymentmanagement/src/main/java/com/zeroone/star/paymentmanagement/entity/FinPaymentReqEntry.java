@@ -19,6 +19,7 @@ import lombok.Setter;
 @TableName("fin_payment_req_entry")
 public class FinPaymentReqEntry implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     /**
