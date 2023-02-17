@@ -20,3 +20,25 @@
   color: dimgray;
 }
 </style>
+
+
+
+getOption1(){
+      var myEcharts = echarts.init(document.getElementById("div1"));
+      myEcharts.setOption(option1);
+      axios.get("/js/testData.json").then(res => {
+        myEcharts.setOption(
+          {
+            xAxis: {
+              data: res.data.month
+            },
+            series: {
+              data: res.data.data,
+              label: {
+                  show: true
+              }
+            }
+          }
+        )
+      })
+    },
