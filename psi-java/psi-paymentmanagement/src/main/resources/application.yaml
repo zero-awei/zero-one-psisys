@@ -1,0 +1,5 @@
+server:
+  port: 10888
+spring:
+  application:
+    name: "PAYMENTMANAGEMENT"
