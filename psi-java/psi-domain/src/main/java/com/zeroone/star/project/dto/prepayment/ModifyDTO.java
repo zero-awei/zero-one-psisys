@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,11 +23,14 @@ import java.util.List;
 @Data
 @ApiModel("修改采购预付单功能")
 public class ModifyDTO {
+    @ApiModelProperty(value = "id",example = "001")
+    private Integer id;
+
     @ApiModelProperty(value = "金额",example = "1000.00")
     private BigDecimal amt;
 
     @ApiModelProperty(value = "单据日期",example = "2022-01-14")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
     @ApiModelProperty(value = "单据编号",example = "CGYF-221120-002")

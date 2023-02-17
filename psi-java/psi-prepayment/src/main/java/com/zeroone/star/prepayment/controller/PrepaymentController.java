@@ -3,6 +3,7 @@ package com.zeroone.star.prepayment.controller;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
+import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -44,7 +45,7 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "修改采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        return JsonVO.success("1111");
+        return service.modifyById(modifyDTO);
     }
 
     /**

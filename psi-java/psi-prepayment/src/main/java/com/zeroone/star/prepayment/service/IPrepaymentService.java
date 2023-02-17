@@ -2,6 +2,7 @@ package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
+import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
