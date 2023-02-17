@@ -137,6 +137,13 @@ class PurOrderVO
 	CC_SYNTHESIZE(int, version, Version);
 
 public:
+	//测试用无参构造
+	PurOrderVO()
+	{
+		id = 1231232;
+		bill_no = "0123";
+
+	}
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurOrderVO& t); // NOLINT
 	friend void to_json(const json& j, PurOrderVO& t); // NOLINT

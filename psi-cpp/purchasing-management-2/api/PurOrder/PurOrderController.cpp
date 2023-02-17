@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: qingyu
-@Date: 2023/02/16 0:23:02
+ @Date: 2023/02/16 0:23:02
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -26,7 +26,13 @@ JsonVO<PageVO<PurOrderVO>> PurOrderController::execListPurOrder(const PurOrderQu
 	//定义一个Service
 	PurOrderService service;
 	//查询数据
-	PageVO<PurOrderVO> result = service.listAll(query);
+	//PageVO<PurOrderVO> result = service.listAll(query);
+	// 测试
+	PageVO<PurOrderVO> result;
+	list<PurOrderVO> rows;
+	rows.push_back(PurOrderVO());
+	rows.push_back(PurOrderVO());
+	result.setRows(rows);
 	//响应结果
 	return JsonVO<PageVO<PurOrderVO>>(result, RS_SUCCESS);
 }
