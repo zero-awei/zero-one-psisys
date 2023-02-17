@@ -128,13 +128,6 @@ public class OnlCgreportHeadController implements InformationApis {
         return JsonVO.success(purchaseInformationVOList);
     }
 
-    @ApiOperation("pagetest")
-    @GetMapping("/page")
-    @ResponseBody
-    public PageVO test(){
-        return new PageVO();
-    }
-
     /**
      * 查询客户数量概况
      * @return 客户数量视图对象
