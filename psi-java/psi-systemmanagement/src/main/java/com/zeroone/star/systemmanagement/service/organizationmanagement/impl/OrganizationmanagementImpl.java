@@ -1,5 +1,7 @@
 package com.zeroone.star.systemmanagement.service.organizationmanagement.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -10,6 +12,7 @@ import com.zeroone.star.systemmanagement.entity.organizationmanagement.SysDepart
 import com.zeroone.star.systemmanagement.mapper.organizationmanagement.OrganizationmanagementMapper;
 import com.zeroone.star.systemmanagement.service.organizationmanagement.IOrganizationmanagementService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,11 +25,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrganizationmanagementImpl extends ServiceImpl<OrganizationmanagementMapper, SysDepart> implements IOrganizationmanagementService {
-
+    @Autowired
     private OrganizationmanagementMapper mapper;
+
     @Override
-    public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
-        return null;
+    public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition) {
+        // 从第一页开始，每一页查6条数据
+        Page<SysDepart> page = new Page<>(1, 6);
+        QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
+        wrapper.eq("depart_name", condition.getDepartName());
+        Page<SysDepart> p = mapper.selectPage(page, wrapper);
+        return PageVO.create(p, OrganizationListVO.class);
     }
 
     @Override
