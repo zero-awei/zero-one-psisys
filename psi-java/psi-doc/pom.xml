@@ -1,54 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>psi-java</artifactId>
         <groupId>com.zeroone.star</groupId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
     <artifactId>psi-doc</artifactId>
-
     <dependencies>
-<!--        SpringMVC-->
+        <!-- spring mvc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        内置模块-->
+        <!-- 内置模块 -->
         <dependency>
             <groupId>com.zeroone.star</groupId>
             <artifactId>psi-common</artifactId>
         </dependency>
-<!--        nacos相关配置-->
+        <!-- nacos 相关配置 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-domain</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>psi-apis</artifactId>
-        </dependency>
-<!--        聚合要用4.0版本-->
-        <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-aggregation-spring-boot-starter -->
-<!--        <dependency>-->
-<!--            <groupId>com.github.xiaoymin</groupId>-->
-<!--            <artifactId>knife4j-aggregation-spring-boot-starter</artifactId>-->
-<!--            <version>4.0.0</version>-->
-<!--        </dependency>-->
+        <!-- knife4j-aggregation -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-aggregation-spring-boot-starter</artifactId>
         </dependency>
-    </dependencies>
 
+        <!-- <dependency> -->
+        <!--     <groupId>com.github.xiaoymin</groupId> -->
+        <!--     <artifactId>knife4j-aggregation-spring-boot-starter</artifactId> -->
+        <!--     &lt;!&ndash;在引用时请在maven中央仓库搜索aggregation最新版本号&ndash;&gt; -->
+        <!--     <version>4.0.0</version> -->
+        <!-- </dependency> -->
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -60,10 +49,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
 </project>

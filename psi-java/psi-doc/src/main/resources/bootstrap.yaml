@@ -3,13 +3,26 @@ server:
 spring:
   application:
     name: ${sn.doc}
+
 knife4j:
   enableAggregation: true
   nacos:
     enable: true
-    serviceUrl: http://192.168.6.100:8848/nacos/
+    serviceUrl: http://${nacos.addr}:8848/nacos/
     routes:
-      - name: 示例服务
-        serviceName: ${sn.sample}
+      - name: 系统管理服务
+        serviceName: ${sn.sysmanagement}
         namespaceId: ${nacos.namespace}
-        location: /v2/api-docs?group=sample
+        location: /v2/api-docs?group=sysmanagement
+
+# 4.0及以后
+#knife4j:
+#  enable-aggregation: true
+#  nacos:
+#    enable: true
+#    service-url: http://43.138.51.248:8848/nacos/
+#    routes:
+#      - name: 系统管理服务
+#        service-name: ${sn.sample}
+#        namespace-id: ${nacos.namespace}
+#        location: /v2/api-docs?group=sample
