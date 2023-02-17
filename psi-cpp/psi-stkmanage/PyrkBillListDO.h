@@ -21,26 +21,15 @@
 
 #include "../arch-demo/domain/do/DoInclude.h"
 
-#ifndef _PYRK_DO_
-#define _PYRK_DO_
+#ifndef _PYRK_BILL_LIST_DO_
+#define _PYRK_BILL_LIST_DO_
 
 // 盘盈入库 ———— 单据列表实体类
 class PyrqBillListDO {
-	// 单据编号
+	// 单据编号 
 	CC_SYNTHESIZE(std::string, billNo, BillNo);
+public:
+
 };
 
-// 盘盈入库 ———— 单据详细数据实体类
-class PyrqBillDetailDO {
-	// 单据编号
-	CC_SYNTHESIZE(std::string, billNo, BillNo);
-	// 单据阶段
-	CC_SYNTHESIZE(std::string, billStage, BillStage);
-	// 单据日期
-	CC_SYNTHESIZE(std::string, billDate, BillDate);
-	
-
-	//待补充
-};
-
-#endif // _PYRK_DO_
+#endif // !_PYRK_BILL_LIST_DO_

@@ -40,6 +40,9 @@
     <Filter Include="domain\do\Pyrk">
       <UniqueIdentifier>{69aaa100-a352-47a7-adb8-e8e0181b685c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="domain\dto\Pyrk">
+      <UniqueIdentifier>{b77eed52-f8de-45b9-8fe6-1ac3f7738539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt">
@@ -86,6 +89,15 @@
     <ClInclude Include="domain\do\DoInclude.h">
       <Filter>domain\do</Filter>
     </ClInclude>
+    <ClInclude Include="PyrkBillDetailDO.h">
+      <Filter>domain\do\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="AddPyrkBillDTO.h">
+      <Filter>domain\dto\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="ModifyPyrkBillDTO.h">
+      <Filter>domain\dto\Pyrk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -109,8 +121,14 @@
     <ClCompile Include="QueryPyrkBillDetailQuery.h">
       <Filter>domain\query\Pyrk</Filter>
     </ClCompile>
-    <ClCompile Include="PyrkDo.h">
+    <ClCompile Include="PyrkBillListDO.h">
       <Filter>domain\do\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="AddPyrkBillDTO.cpp">
+      <Filter>domain\dto\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifyPyrkBillDTO.cpp">
+      <Filter>domain\dto\Pyrk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,9 +136,6 @@
       <Filter>源文件</Filter>
     </None>
     <None Include="README.md">
-      <Filter>源文件</Filter>
-    </None>
-    <None Include="test01.md">
       <Filter>源文件</Filter>
     </None>
     <None Include="conf\data-source.yaml">
