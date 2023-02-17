@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include"api/Pyrk/PyrkController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -71,11 +72,18 @@ void Router::initRouter()
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-
+	//呼叫盘盈入库路由
+	createPyrkRouter();
 	//#TIP :系统扩展路由定义，写在这个后面
 
 }
-
+void Router::createPyrkRouter()
+{
+	BIND_GET_ROUTER(server, "/pyrk-query-bill-list", &PyrkController::queryQueryBillList, nullptr);
+	BIND_GET_ROUTER(server, "/pyrk-query-detailed-bill", &PyrkController::queryQueryBillDetailed, nullptr);
+	BIND_POST_ROUTER(server, "/pyrk-add-detailed-bill", &PyrkController::addBillDetailed, nullptr);
+	BIND_POST_ROUTER(server, "/pyrk-update-detailed-bill", &PyrkController::updateBillDetailed, nullptr);
+}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
