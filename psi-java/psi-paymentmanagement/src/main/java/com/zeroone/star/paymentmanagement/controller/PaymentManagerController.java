@@ -1,6 +1,6 @@
-package com.zeroone.star.payment.controller;
+package com.zeroone.star.paymentmanagement.controller;
 
-import com.zeroone.star.payment.service.PaymentManagerService;
+import com.zeroone.star.paymentmanagement.service.PaymentManagerService;
 import com.zeroone.star.project.paymentManager.PaymentManagerApis;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("paymentmanager")
-@Api(tags = "支付管理")
+@Api(tags = "付款管理-采购付款")
 @Validated
 public class PaymentManagerController implements PaymentManagerApis {
     @Resource

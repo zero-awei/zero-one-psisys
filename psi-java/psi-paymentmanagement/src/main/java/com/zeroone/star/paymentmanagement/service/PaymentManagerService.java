@@ -1,4 +1,4 @@
-package com.zeroone.star.payment.service;
+package com.zeroone.star.paymentmanagement.service;
 
 public interface PaymentManagerService {
     void importAll();

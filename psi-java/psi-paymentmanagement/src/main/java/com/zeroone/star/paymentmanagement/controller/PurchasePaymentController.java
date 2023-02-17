@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @RequestMapping("/purchase")
-@Api(tags = "采购付款增删改")
+@Api(tags = "付款管理-采购付款")
 @Validated
 public class PurchasePaymentController implements PurchasePaymentApis {
     @PostMapping("save")

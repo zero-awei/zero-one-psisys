@@ -1,6 +1,6 @@
-package com.zeroone.star.payment.service.impl;
+package com.zeroone.star.paymentmanagement.service.Impl;
 
-import com.zeroone.star.payment.service.PaymentManagerService;
+import com.zeroone.star.paymentmanagement.service.PaymentManagerService;
 import org.springframework.stereotype.Service;
 
 @Service
