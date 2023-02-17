@@ -1,0 +1,8 @@
+server:
+  port: ${sp.sample}
+spring:
+  application:
+    name: ${sn.sample}
+  cloud:
+    bootstrap:
+      enabled: true
