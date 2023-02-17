@@ -17,11 +17,12 @@
  limitations under the License.
 */
 
+#include "stdafx.h"
+
+#include "../arch-demo/domain/do/DoInclude.h"
 
 #ifndef _PYRK_DO_
 #define _PYRK_DO_
-
-#include "../arch-demo/domain/do/DoInclude.h"
 
 // 盘盈入库 ———— 单据列表实体类
 class PyrqBillListDO {

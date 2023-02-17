@@ -16,7 +16,7 @@
 
 
 // 查询单据详细信息
-
+#include "stdafx.h"
 #include "../psi-stkmanage/domain/query/PageQuery.h"
 //#include "../../psi-stkmanage/domain/do/"
 

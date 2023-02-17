@@ -15,7 +15,7 @@
 
 
 //	查询单据列表
-
+#include "stdafx.h"
 #include "../psi-stkmanage/domain/query/PageQuery.h"
 
 #ifndef _QUERY_PYRK_BILL_LIST_QUERY_

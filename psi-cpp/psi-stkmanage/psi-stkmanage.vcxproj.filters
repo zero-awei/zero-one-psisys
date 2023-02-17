@@ -34,8 +34,11 @@
     <Filter Include="domain\vo">
       <UniqueIdentifier>{281c2eb1-8adb-461f-8b9a-1dc9c8d40caf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="domain\query\Pyrq">
+    <Filter Include="domain\query\Pyrk">
       <UniqueIdentifier>{d3a0ef1f-6533-4085-b6c9-bde313ea3a12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\do\Pyrk">
+      <UniqueIdentifier>{69aaa100-a352-47a7-adb8-e8e0181b685c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,9 +62,6 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>domain</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\DoInclude.h">
-      <Filter>domain\do</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\FileDTO.h">
       <Filter>domain\dto</Filter>
     </ClInclude>
@@ -83,6 +83,9 @@
     <ClInclude Include="domain\vo\ResultStatus.h">
       <Filter>domain\vo</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\DoInclude.h">
+      <Filter>domain\do</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -100,8 +103,14 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>domain\vo</Filter>
     </ClCompile>
-    <ClCompile Include="QueryPyrqBillListQuery.cpp">
-      <Filter>domain\query\Pyrq</Filter>
+    <ClCompile Include="QueryPyrkBillListQuery.h">
+      <Filter>domain\query\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryPyrkBillDetailQuery.h">
+      <Filter>domain\query\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="PyrkDo.h">
+      <Filter>domain\do\Pyrk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
