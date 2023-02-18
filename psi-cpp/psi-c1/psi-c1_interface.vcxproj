@@ -266,6 +266,9 @@
     <ClInclude Include="api\publicInterfaceController\TaxScaleController.h" />
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
+    <ClInclude Include="dao\bankAccountDao\temp.h" />
+    <ClInclude Include="dao\publicInterfaceDao\temp.h" />
+    <ClInclude Include="dao\supplierDao\temp.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
@@ -329,6 +332,9 @@
     <ClInclude Include="domain\vo\publicInterfaceVO\WarehouseVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\bankAccountService\temp.h" />
+    <ClInclude Include="service\publicInterfaceService\temp.h" />
+    <ClInclude Include="service\supplierService\temp.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

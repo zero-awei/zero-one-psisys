@@ -458,5 +458,23 @@
     <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\bankAccountDao\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDao\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\supplierDao\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bankAccountService\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\publicInterfaceService\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\supplierService\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
