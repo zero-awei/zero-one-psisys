@@ -63,6 +63,12 @@ class QueryCgthckBillVO
 	// 修改人
 	CC_SYNTHESIZE(std::string, updateBy, UpdateBy);
 public:
+	// 测试
+	QueryCgthckBillVO()
+	{
+		billNo = "CGRK-230203-974";
+	}
+
 	BIND_TO_JSON
 	(
 		QueryCgthckBillVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,
@@ -112,6 +118,12 @@ class QueryCgthckBillDetailVO : public QueryCgthckBillVO
 	// 自定义2
 	CC_SYNTHESIZE(std::string, custom2, Custom2);
 public:
+	// 测试
+	QueryCgthckBillDetailVO()
+	{
+		billNo = "CGRK-230203-974";
+	}
+
 	BIND_TO_JSON
 	(
 		QueryCgthckBillDetailVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,

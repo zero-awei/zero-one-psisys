@@ -98,6 +98,9 @@
     <ClInclude Include="api\Cgthck\CgthckController.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\Cgthck\ImportCgthckFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

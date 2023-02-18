@@ -9,6 +9,7 @@
 #include "../psi-stkmanage/domain/dto/Cgthck/DeleteCgthckBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ExportCgthckFileDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ModifyCgthckBillDTO.h"
+#include "../psi-stkmanage/domain/dto/Cgthck/ImportCgthckFileDTO.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgthckBillVO.h"
 
 /**
@@ -27,6 +28,10 @@ public:
 	CREATE_API_FUN_BODY(modifyCgthckBill, execModifyCgthckBill, ModifyCgthckBillDTO);
 	// 删除采购退货出库(红入)单据接口
 	CREATE_API_FUN_BODY(deleteCgthckBill, execDeleteCgthckBill, DeleteCgthckBillDTO);
+	// 导入
+	CREATE_API_FUN_BODY(importCgthckFile, execImportCgthckFile, ImportCgthckFileDTO);
+	// 导出
+	CREATE_API_FUN_BODY(exportCgthckFile, execExportCgthckFile, ExportCgthckFileDTO);
 private:
 	// 测试查询数据
 	JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
@@ -39,9 +44,10 @@ private:
 	// 测试删除数据
 	JsonVO<uint64_t> execDeleteCgthckBill(const DeleteCgthckBillDTO& dto);
 	// 测试提交JSON
-	
-	// 测试文件上传
-
+	// 测试文件导入
+	JsonVO<uint64_t> execImportCgthckFile(const ImportCgthckFileDTO& dto);
+	// 测试文件导出
+	JsonVO<uint64_t> execExportCgthckFile(const ExportCgthckFileDTO& dto);
 };
 
 

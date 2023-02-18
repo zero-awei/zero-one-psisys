@@ -184,6 +184,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="domain\dto\Cgthck\ImportCgthckFileDTO.h" />
     <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h" />
     <ClInclude Include="domain\dto\Cgthck\AddCgthckBillDTO.h" />
     <ClInclude Include="api\Router.h" />
