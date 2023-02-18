@@ -43,6 +43,12 @@
     <Filter Include="domain\dto\Pyrk">
       <UniqueIdentifier>{b77eed52-f8de-45b9-8fe6-1ac3f7738539}</UniqueIdentifier>
     </Filter>
+    <Filter Include="api\Pyrk">
+      <UniqueIdentifier>{a65f1745-0436-4786-be51-1efb7ac42214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\vo\Pyrk">
+      <UniqueIdentifier>{51cbb11e-0155-44ea-9afc-efd42b0aa04c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt">
@@ -89,14 +95,26 @@
     <ClInclude Include="domain\do\DoInclude.h">
       <Filter>domain\do</Filter>
     </ClInclude>
-    <ClInclude Include="PyrkBillDetailDO.h">
+    <ClInclude Include="PyrkController.h">
+      <Filter>api\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PyrkBillDetailDO.h">
       <Filter>domain\do\Pyrk</Filter>
     </ClInclude>
-    <ClInclude Include="AddPyrkBillDTO.h">
+    <ClInclude Include="domain\do\PyrkBillListDO.h">
+      <Filter>domain\do\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Pyrk\AddPyrkBillDTO.h">
       <Filter>domain\dto\Pyrk</Filter>
     </ClInclude>
-    <ClInclude Include="ModifyPyrkBillDTO.h">
+    <ClInclude Include="domain\dto\Pyrk\ModifyPyrkBillDTO.h">
       <Filter>domain\dto\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Pyrk\QueryPyrkBillDetailQuery.h">
+      <Filter>domain\query\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h">
+      <Filter>domain\query\Pyrk</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,20 +133,17 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>domain\vo</Filter>
     </ClCompile>
-    <ClCompile Include="QueryPyrkBillListQuery.h">
-      <Filter>domain\query\Pyrk</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryPyrkBillDetailQuery.h">
-      <Filter>domain\query\Pyrk</Filter>
-    </ClCompile>
-    <ClCompile Include="PyrkBillListDO.h">
-      <Filter>domain\do\Pyrk</Filter>
-    </ClCompile>
-    <ClCompile Include="AddPyrkBillDTO.cpp">
+    <ClCompile Include="domain\dto\Pyrk\AddPyrkBillDTO.cpp">
       <Filter>domain\dto\Pyrk</Filter>
     </ClCompile>
-    <ClCompile Include="ModifyPyrkBillDTO.cpp">
+    <ClCompile Include="domain\dto\Pyrk\ModifyPyrkBillDTO.cpp">
       <Filter>domain\dto\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\vo\Pyrk\QueryPyrkBillDetailVO.h">
+      <Filter>domain\vo\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\vo\Pyrk\QueryPyrkBillListVO.h">
+      <Filter>domain\vo\Pyrk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
