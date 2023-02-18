@@ -3,6 +3,7 @@ package com.zeroone.star.basedetail.service.customermanagement;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.basedetail.entity.customermanagement.Customer;
 import com.zeroone.star.project.query.PageQuery;
+import com.zeroone.star.project.query.basedetail.customermanagement.CustomerCdvancedQuery;
 import com.zeroone.star.project.query.basedetail.customermanagement.CustomerQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerShowVO;
@@ -30,6 +31,13 @@ public interface ICustomerService extends IService<Customer> {
          * @return PageVO<CustomerVO> 查询的分页对象
          */
         PageVO<CustomerShowVO> getByCondition(CustomerQuery customerQuery);
+
+        /**
+         * 根据高级条件分页查询
+         * @param customerCdvancedQuery 查询条件
+         * @return PageVO<CustomerVO> 查询的分页对象
+         */
+        PageVO<CustomerShowVO> getByAdvancedCondition(CustomerCdvancedQuery customerCdvancedQuery);
 
 }
 

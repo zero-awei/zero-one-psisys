@@ -14,6 +14,7 @@ import com.zeroone.star.basedetail.mapper.customermanagement.CusLevelMapper;
 import com.zeroone.star.basedetail.mapper.customermanagement.CustomerMapper;
 import com.zeroone.star.basedetail.service.customermanagement.ICustomerService;
 import com.zeroone.star.project.query.PageQuery;
+import com.zeroone.star.project.query.basedetail.customermanagement.CustomerCdvancedQuery;
 import com.zeroone.star.project.query.basedetail.customermanagement.CustomerQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerShowVO;
@@ -134,6 +135,11 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
         PageVO<CustomerShowVO> customerVOPageVO = PageVO.create(customerList,CustomerShowVO.class);
         return customerVOPageVO;
 
+    }
+
+    @Override
+    public PageVO<CustomerShowVO> getByAdvancedCondition(CustomerCdvancedQuery customerCdvancedQuery) {
+        return null;
     }
 
     /**
