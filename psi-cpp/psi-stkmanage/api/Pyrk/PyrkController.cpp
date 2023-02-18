@@ -8,7 +8,6 @@ JsonVO<QueryPyrkBillDetailVO> PyrkController::execQueryPyrkBillDetail(const Quer
     return JsonVO<QueryPyrkBillDetailVO>();
 }
 
-
 JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryPyrkBillList(const QueryPyrkBillListQuery& query)
 {
     return JsonVO<PageVO<QueryPyrkBillListVO>>();
