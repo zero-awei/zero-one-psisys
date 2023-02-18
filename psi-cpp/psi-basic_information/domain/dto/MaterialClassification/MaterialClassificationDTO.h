@@ -33,31 +33,21 @@
 class MaterialClassificationDTO :public FileDTO {
 
 
-	//数据库中有，可用来
-	CC_SYNTHESIZE(uint64_t, id, Id);
-
-	//父节点，用编码表示
-	CC_SYNTHESIZE(uint64_t, pid, pid);
-	
-
-	//子级节点,数据库中没有，先设置看看
-	CC_SYNTHESIZE(list<MaterialClassificationDTO>, children, Children);
-
-	//是否有子节点
-	CC_SYNTHESIZE(bool, has_child, HasChild);
-
+	// ID
+	CC_SYNTHESIZE(string, id, Id);
+	// 父节点
+	CC_SYNTHESIZE(string, pid, Pid);
+	// 是否有子节点
+	CC_SYNTHESIZE(string, has_child, HasChild);
+	// 编码
+	CC_SYNTHESIZE(string, code, Code);
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
-
-	//编号
-	CC_SYNTHESIZE(uint64_t, code, Code);
-
 	//全名
-	CC_SYNTHESIZE(string, fullname, FuLLname);
+	CC_SYNTHESIZE(string, fullname, Fullname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
-
+	CC_SYNTHESIZE(int, is_enabled, IsEnabled);
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
@@ -72,23 +62,31 @@ class MaterialClassificationDTO :public FileDTO {
 	//修改人
 	CC_SYNTHESIZE(string, update_by, updateBy);
 
+	//版本 #在数据库中是空的，不知道有什么作用
+	CC_SYNTHESIZE(int, version, Version);
+	
+
+	//子级节点,数据库中没有，先设置看看
+	CC_SYNTHESIZE(list<MaterialClassificationDTO>, children, Children);
+
+	
 public:
 	
 
 	friend void from_json(const json& j, MaterialClassificationDTO& t) { // NOLINT
-		BIND_FROM_TO_LL(j, t, pid);
-		BIND_FROM_TO_I(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, pid);
+		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_OBJ(j, t, children, list<MaterialClassificationDTO>);
-		BIND_FROM_TO_B(j, t, has_child);
+		BIND_FROM_TO_NORMAL(j, t, has_child);
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_ULL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, fullname);
-		BIND_FROM_TO_B(j, t, is_enabled);
+		BIND_FROM_TO_I(j, t, is_enabled);
 		BIND_FROM_TO_NORMAL(j, t, create_time);
 		BIND_FROM_TO_NORMAL(j, t, create_by);
 		BIND_FROM_TO_NORMAL(j, t, update_time);
 		BIND_FROM_TO_NORMAL(j, t, update_by);
-
+		BIND_FROM_TO_I(j, t, version);
 	}
 
 	BIND_TO_JSON(MaterialClassificationDTO,id, pid, has_child, name, code,
@@ -97,65 +95,7 @@ public:
 };
 
 
-/*class MaterialClassificationDTO {
-	
-	//父/根节点，用编码表示
-	CC_SYNTHESIZE(long long, base, Base);
 
-	//子级节点，用编码表示子级实体
-	CC_SYNTHESIZE(list<MaterialClassification1DTO>, children, Children);
-
-	//是否有子节点
-	CC_SYNTHESIZE(bool, hasChild, HasChild);
-
-	//名称
-	CC_SYNTHESIZE(string, name, Name);
-
-	//编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
-
-	//全名
-	CC_SYNTHESIZE(string, fullName, FuLLName);
-
-	//是否启用
-	CC_SYNTHESIZE(bool, enable, Enable);
-
-
-	//以下为操作信息，自动生成，不可手动修改
-	//创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
-
-	//创建人
-	CC_SYNTHESIZE(string, creatorName, CreatorName);
-
-	//修改时间
-	CC_SYNTHESIZE(string, modifyTime, ModifyTime);
-
-	//修改人
-	CC_SYNTHESIZE(string, modifyName, ModifyName);
-
-public:
-	// 绑定JSON转换方法
-	friend void from_json(const json& j, MaterialClassificationDTO& t) { // NOLINT
-
-		BIND_FROM_TO_LL(j, t, base);
-		BIND_FROM_TO_OBJ(j, t, children, list<MaterialClassificationDTO>)
-		BIND_FROM_TO_B(j, t, hasChild);
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_ULL(j, t, id);
-		BIND_FROM_TO_NORMAL(j, t, fullName);
-		BIND_FROM_TO_B(j, t, enable);
-		BIND_FROM_TO_NORMAL(j, t, creationTime);
-		BIND_FROM_TO_NORMAL(j, t, creatorName);
-		BIND_FROM_TO_NORMAL(j, t, modifyTime);
-		BIND_FROM_TO_NORMAL(j, t, modifyName);
-
-	}
-
-	BIND_TO_JSON(MaterialClassificationDTO, base,hasChild, name, id,
-						fullName, enable, creationTime, creatorName, modifyTime, modifyName);
-};
-*/
 
 #endif
 

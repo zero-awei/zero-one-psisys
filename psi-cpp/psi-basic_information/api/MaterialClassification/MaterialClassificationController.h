@@ -36,8 +36,8 @@ class MaterialClassificationController
 {
 public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassification, execQueryMaterialClassification, MaterialClassificationQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationChild, execQueryMaterialClassificationChild,MaterialClassificationChildQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationDetail, execQueryMaterialClassificationDetail,MaterialClassificationDetailQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationChild, execQueryMaterialClassificationChild,MaterialClassificationQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationDetail, execQueryMaterialClassificationDetail,MaterialClassificationQuery);
 	CREATE_API_FUN_BODY(addMaterialClassification, execAddMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY(modifyMaterialClassification, execModifyMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY(removeMaterialClassification, execRemoveMaterialClassification, MaterialClassificationDTO);
@@ -49,10 +49,10 @@ private:
 	JsonVO<PageVO<MaterialClassificationBaseVO>> execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 
 	//查询子级列表   暂时先不分页显示
-	JsonVO<MaterialClassificationChildVO> execQueryMaterialClassificationChild(const MaterialClassificationChildQuery& query, const PayloadDTO& payload);
+	JsonVO<MaterialClassificationChildVO> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 	
 	//查询指定分类详细信息
-	JsonVO<MaterialClassificationDetailVO> execQueryMaterialClassificationDetail(const MaterialClassificationDetailQuery& query, const PayloadDTO& payload);
+	JsonVO<MaterialClassificationDetailVO> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 
 
 	//新增分类 ,添加、修改、删除下级应该也可以用这种方式

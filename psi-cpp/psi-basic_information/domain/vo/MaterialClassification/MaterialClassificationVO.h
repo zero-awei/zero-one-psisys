@@ -18,8 +18,8 @@
  limitations under the License.
 */
 
-#ifndef _MaterialClassification_VO_
-#define _MaterialClassification_VO_
+#ifndef _MATERIALCLASSIFICATION_VO_
+#define _MATERIALCLASSIFICATION_VO_
 #include "../../GlobalInclude.h"
 
 /*
@@ -29,18 +29,16 @@
 //普通查询（根节点列表）对象
 class MaterialClassificationBaseVO{
 
+	
+	// 编码
+	CC_SYNTHESIZE(string, code, Code);
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
-
-	//编码
-	CC_SYNTHESIZE(uint64_t, code, Code);
-
 	//全名
-	CC_SYNTHESIZE(string, fullname, FuLLname);
+	CC_SYNTHESIZE(string, fullname, Fullname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
-
+	CC_SYNTHESIZE(int, is_enabled, IsEnabled);
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
@@ -55,10 +53,9 @@ class MaterialClassificationBaseVO{
 	//修改人
 	CC_SYNTHESIZE(string, update_by, updateBy);
 
-
 public:
 
-	MaterialClassificationBaseVO() : name("nanan"), code(11) {}
+	MaterialClassificationBaseVO() : name("nanan"), code("11") {}
 	
 
 	// 绑定JSON转换方法
@@ -70,21 +67,15 @@ public:
 //查询指定分类子级列表对象
 class MaterialClassificationChildVO {
 
-	//父节点
-	CC_SYNTHESIZE(uint64_t, pid, Pid);
-
+	// 编码
+	CC_SYNTHESIZE(string, code, Code);
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
-
-	//编码
-	CC_SYNTHESIZE(uint64_t, code, Code);
-
 	//全名
-	CC_SYNTHESIZE(string, fullname, FuLLname);
+	CC_SYNTHESIZE(string, fullname, Fullname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
-
+	CC_SYNTHESIZE(int, is_enabled, IsEnabled);
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
@@ -99,9 +90,11 @@ class MaterialClassificationChildVO {
 	//修改人
 	CC_SYNTHESIZE(string, update_by, updateBy);
 
+
+
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MaterialClassificationChildVO, pid, name, code,
+	BIND_TO_JSON(MaterialClassificationChildVO, name, code,
 		fullname, is_enabled, create_time, create_by, update_time, update_by);
 
 };
@@ -110,6 +103,20 @@ public:
 class MaterialClassificationDetailVO {
 
 	
+	// 父节点
+	CC_SYNTHESIZE(string, pid, Pid);
+	// 是否有子节点
+	CC_SYNTHESIZE(string, has_child, HasChild);
+	// 编码
+	CC_SYNTHESIZE(string, code, Code);
+	//名称
+	CC_SYNTHESIZE(string, name, Name);
+	//全名
+	CC_SYNTHESIZE(string, fullname, Fullname);
+
+	//是否启用
+	CC_SYNTHESIZE(int, is_enabled, IsEnabled);
+
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
 	CC_SYNTHESIZE(string, create_time, CreateTime);
@@ -123,30 +130,28 @@ class MaterialClassificationDetailVO {
 	//修改人
 	CC_SYNTHESIZE(string, update_by, updateBy);
 
+
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MaterialClassificationDetailVO, create_time, create_by, update_time, update_by);
+	BIND_TO_JSON(MaterialClassificationDetailVO, pid,has_child,code,name,fullname,is_enabled,create_time, create_by, update_time, update_by);
 };
 
 
 //新建分类
 class AddMaterialClassificationVO {
 
-	//父节点
-	CC_SYNTHESIZE(uint64_t, pid, Pid);
 
+	// 父节点 #添加下级时可能会用到
+	CC_SYNTHESIZE(string, pid, Pid);
+	// 编码
+	CC_SYNTHESIZE(string, code, Code);
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
-
-	//编码
-	CC_SYNTHESIZE(uint64_t, code, Code);
-
 	//全名
-	CC_SYNTHESIZE(string, fullname, FuLLname);
+	CC_SYNTHESIZE(string, fullname, Fullname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
-
+	CC_SYNTHESIZE(int, is_enabled, IsEnabled);
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
@@ -171,24 +176,19 @@ public:
 };
 
 
-//新建分类
+//修改分类
 class ModifyMaterialClassificationVO {
 
-	//父节点
-	CC_SYNTHESIZE(uint64_t, pid, Pid);
 
+	// 编码
+	CC_SYNTHESIZE(string, code, Code);
 	//名称
 	CC_SYNTHESIZE(string, name, Name);
-
-	//编码
-	CC_SYNTHESIZE(uint64_t, code, Code);
-
 	//全名
-	CC_SYNTHESIZE(string, fullname, FuLLname);
+	CC_SYNTHESIZE(string, fullname, Fullname);
 
 	//是否启用
-	CC_SYNTHESIZE(bool, is_enabled, IsEnabled);
-
+	CC_SYNTHESIZE(int, is_enabled, IsEnabled);
 
 	//以下为操作信息，自动生成，不可手动修改
 	//创建时间
@@ -207,10 +207,14 @@ class ModifyMaterialClassificationVO {
 public:
 
 	// 绑定JSON转换方法
-	BIND_TO_JSON(ModifyMaterialClassificationVO, pid, name, code,
+	BIND_TO_JSON(ModifyMaterialClassificationVO, name, code,
 		fullname, is_enabled, create_time, create_by, update_time, update_by);
 
 };
+
+//删除分类
+
+
 #endif
 
 

@@ -173,8 +173,10 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\MaterialClassification\MaterialClassificationController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\MaterialClassification\MaterialClassificationDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\MaterialClassification\MaterialClassificationService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -185,7 +187,10 @@
   <ItemGroup>
     <ClInclude Include="api\MaterialClassification\MaterialClassificationController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\MaterialClassification\MaterialClassificationDAO.h" />
+    <ClInclude Include="dao\MaterialClassification\MaterialClassificationMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\MaterialClassification\MaterialClassificationDO.h" />
     <ClInclude Include="domain\dto\MaterialClassification\MaterialClassificationDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
@@ -199,6 +204,7 @@
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\MaterialClassification\SampleService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
