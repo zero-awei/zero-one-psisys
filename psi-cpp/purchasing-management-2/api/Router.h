@@ -35,7 +35,8 @@ public:
 	//∫ÙΩ–≥ı ºªØ
 	void initRouter();
 private:
-	void createPurOrderRouter();
+
+
 };
 
 #endif // !_ROUTER_

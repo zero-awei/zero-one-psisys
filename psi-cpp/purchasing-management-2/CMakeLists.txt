@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 # 设置文件名称
-set (appName psi-test)
+set (appName arch-demo)
 
 # 包含库目录
 include_directories ("./")
@@ -73,6 +73,11 @@ if(USE_MONGO)
 endif()
 
 # 复制配置到调试时可执行文件所在的目录
+# RSA公钥证书
+file (COPY "public.pem" DESTINATION ${PROJECT_BINARY_DIR}/${appName})
+# FastDFS配置文件
+file (GLOB fdfsConf "../lib-common/include/fastdfs/conf/*")
+file (COPY ${fdfsConf} DESTINATION ${PROJECT_BINARY_DIR}/${appName}/conf)
 
 # 安装文件
 

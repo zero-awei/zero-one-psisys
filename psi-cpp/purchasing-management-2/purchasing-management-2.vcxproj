@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{30d64e67-972b-44fa-882f-ffa46be9102f}</ProjectGuid>
-    <RootNamespace>psttest</RootNamespace>
+    <ProjectGuid>{d3d1ff30-cc8d-47db-9fd8-90b0470b99cd}</ProjectGuid>
+    <RootNamespace>purchasingmanagement2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,34 +70,22 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcrypto.lib;libssl.lib;mysqlcppconn.lib;xlntd.lib;yaml-cppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;yaml-cppd.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -108,10 +96,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,9 +107,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;
-libcrypto.lib;
-libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;yaml-cpp.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -134,16 +120,16 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcrypto.lib;libssl.lib;mysqlcppconn.lib;xlntd.lib;yaml-cppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;yaml-cppd.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -154,10 +140,10 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,9 +151,7 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;
-libcrypto.lib;
-libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;yaml-cpp.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -206,26 +190,47 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
   <ItemGroup>
     <ClInclude Include="api\PurOrder\PurOrderController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="api\statis\StatisController.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\PurOrder\PurOrderDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\PurOrder\PurOrderQuery.h" />
+    <ClInclude Include="domain\query\StatisQuery\ExeStatusQuery.h" />
+    <ClInclude Include="domain\query\StatisQuery\StatisQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\StatisVO\ExeStatusVO.h" />
+    <ClInclude Include="domain\vo\StatisVO\MaterialVO.h" />
+    <ClInclude Include="domain\vo\StatisVO\StatisVO.h" />
     <ClInclude Include="Macros.h" />
-    <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h" />
-    <ClInclude Include="service\PurOrder\PurOrderService.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\PurOrder\PurOrderService.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="uselib\excel\TestExcel.h" />
     <ClInclude Include="uselib\fastdfs\TestFastDfs.h" />
     <ClInclude Include="uselib\ws\TestWs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\PurOrder\PurOrderController.cpp" />
+    <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="domain\dto\PurOrder\PurOrderDTO.cpp" />
+    <ClCompile Include="domain\vo\ResultStatus.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\PurOrder\PurOrderService.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
