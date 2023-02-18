@@ -179,8 +179,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\prepayment\PrePayController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp" />
+    <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp" />
+    <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp" />
+    <ClCompile Include="domain\query\prepaymentbill\PrepayExportQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -191,16 +196,21 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\prepayment\PrepaymentController.h" />
+    <ClInclude Include="api\prepayment\PrePayController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\DePayDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\PayIntoDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\PayModBillStatusDTO.h" />
     <ClInclude Include="domain\dto\prepayment\PrepaymentDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\prepaymentbill\PrepaymentBillQuery.h" />
-    <ClInclude Include="domain\query\prepaymentbill\PrepaymentDetailBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

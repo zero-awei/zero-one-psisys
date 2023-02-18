@@ -24,10 +24,10 @@ class PrepaymentExportVO {
 	CC_SYNTHESIZE(int, paid_amt, Paid_amt);
 
 	//-----------------付款申请单明细字段开始----------------------------
-	//申请金额
-	CC_SYNTHESIZE(int, amt, Amt);
-	//已付金额
-	CC_SYNTHESIZE(int, paid_amt, Paid_amt);
+	////申请金额
+	//CC_SYNTHESIZE(int, amt, Amt);
+	////已付金额
+	//CC_SYNTHESIZE(int, paid_amt, Paid_amt);
 	//自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
 	//源单分录号
@@ -51,8 +51,8 @@ class PrepaymentExportVO {
 	CC_SYNTHESIZE(bool, is_effective, Is_effective);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//源单id
-	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
+	////源单id
+	//CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//单据阶段
@@ -67,12 +67,12 @@ class PrepaymentExportVO {
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
 	//已作废
 	CC_SYNTHESIZE(bool, is_voided, Is_voided);
-	//单据编号
-	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	////单据编号
+	//CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//是否红字
 	CC_SYNTHESIZE(bool, is_rubric, Is_rubric);
-	//源单类型
-	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
+	////源单类型
+	//CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	//制单时间
 	CC_SYNTHESIZE(string, create_time, Create_time);
 	//生效时间
