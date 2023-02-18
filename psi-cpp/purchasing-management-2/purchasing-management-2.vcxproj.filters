@@ -80,18 +80,6 @@
     <ClInclude Include="api\Router.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\statis\StatisController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\StatisVO\StatisVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\StatisQuery\ExeStatusQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\StatisQuery\StatisQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="api\PurOrder\PurOrderController.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -107,12 +95,6 @@
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\StatisVO\ExeStatusVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\StatisVO\MaterialVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="service\PurOrder\PurOrderService.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -123,6 +105,33 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="uselib\ws\TestWs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Macros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\StatisVO\ExeStatusVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\StatisVO\MaterialVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\StatisVO\StatisVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\statis\StatisController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\StatisQuery\ExeStatusQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\StatisQuery\StatisQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -151,5 +160,8 @@
     <ClCompile Include="service\PurOrder\PurOrderService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="public\chat.html" />
   </ItemGroup>
 </Project>
