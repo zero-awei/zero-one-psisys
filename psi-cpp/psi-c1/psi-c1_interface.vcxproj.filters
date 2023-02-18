@@ -458,5 +458,17 @@
     <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\UserDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\DepartNameDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

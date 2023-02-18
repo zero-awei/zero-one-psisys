@@ -58,6 +58,7 @@ std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t page
 	return sqlSession->executeQuery<SampleDO, SampleMapper>(sqlStr, mapper, params);
 }
 
+
 std::list<SampleDO> SampleDAO::selectByName(const string& name)
 {
 	string sql = "SELECT * FROM sample WHERE `name` LIKE CONCAT('%',?,'%')";

@@ -268,6 +268,10 @@
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\DepartNameDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\UserDO.h" />
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryDO.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
     <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
