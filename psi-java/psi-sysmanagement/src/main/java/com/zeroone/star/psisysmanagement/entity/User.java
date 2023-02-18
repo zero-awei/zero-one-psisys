@@ -4,12 +4,15 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -19,9 +22,7 @@ import java.time.LocalDateTime;
  * @author axin
  * @since 2023-02-12
  */
-@Getter
-@Setter
-@ToString
+@Data
 @TableName("sys_user")
 public class User implements Serializable {
 
@@ -60,12 +61,13 @@ public class User implements Serializable {
     /**
      * 生日
      */
-    private LocalDateTime birthday;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
 
     /**
      * 性别(0-默认未知,1-男,2-女)
      */
-    private Boolean sex;
+    private Integer sex;
 
     /**
      * 电子邮件
@@ -83,20 +85,22 @@ public class User implements Serializable {
     private String orgCode;
 
     /**
-     * 性别(1-正常,2-冻结)
+     * 状态(1-正常,2-冻结)
      */
-    private Boolean status;
+    @TableField(fill = FieldFill.INSERT)
+    private Integer status;
 
     /**
      * 删除状态(0-正常,1-已删除)
      */
+    @TableField(fill = FieldFill.INSERT)
     @TableLogic(value = "0", delval = "1")
-    private Boolean delFlag;
+    private Integer delFlag;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
-    private Boolean activitiSync;
+    private Integer activitiSync;
 
     /**
      * 工号，唯一键
@@ -122,7 +126,8 @@ public class User implements Serializable {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createTime;
 
     /**
      * 更新人
@@ -133,12 +138,13 @@ public class User implements Serializable {
      * 更新时间
      */
     @TableField(fill = FieldFill.UPDATE)
-    private LocalDateTime updateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updateTime;
 
     /**
      * 身份（1普通成员 2上级）
      */
-    private Boolean userIdentity;
+    private Integer userIdentity;
 
     /**
      * 负责部门

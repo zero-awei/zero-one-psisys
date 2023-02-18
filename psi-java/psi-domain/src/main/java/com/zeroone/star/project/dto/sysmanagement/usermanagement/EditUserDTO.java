@@ -14,45 +14,44 @@ public class EditUserDTO {
     /**
      * 主键id
      */
-    @ApiModelProperty(value = "id", example = "1a2b3")
+    @ApiModelProperty(value = "id", example = "f0019fdebedb443c98dcb17d88222c38")
     private String id;
 
     /**
      * 登录账号
      */
-    @ApiModelProperty(value = "用户名", example = "axin")
+    @ApiModelProperty(value = "用户名", example = "zhagnxiao")
     private String username;
 
     /**
      * 真实姓名
      */
-    @ApiModelProperty(value = "真实名字", example = "阿鑫")
+    @ApiModelProperty(value = "真实名字", example = "张小红")
     private String realname;
 
     /**
      * 密码
      */
-    @ApiModelProperty(value = "密码", example = "testPassword123456WithoutMD5")
+    @ApiModelProperty(value = "密码", example = "f898134e5e52ae11a2ffb2c3b57a4e90")
     private String password;
-
 
     /**
      * 头像
      */
-    @ApiModelProperty(value = "头像", example = "")
+    @ApiModelProperty(value = "头像", example = "user/20190401/20180607175028Fn1Lq7zw_1554118444672.png")
     private String avatar;
 
     /**
      * 生日
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @ApiModelProperty(value = "生日", example = "2003-04-05 00:00:00")
+    @ApiModelProperty(value = "生日", example = "2019-04-01 00:00:00")
     private Date birthday;
 
     /**
      * 性别(0-默认未知,1-男,2-女)
      */
-    @ApiModelProperty(value = "性别", example = "1")
+    @ApiModelProperty(value = "性别", example = "2")
     private Integer sex;
 
     /**
@@ -64,7 +63,7 @@ public class EditUserDTO {
     /**
      * 电话
      */
-    @ApiModelProperty(value = "电话", example = "11111111111")
+    @ApiModelProperty(value = "电话", example = "18611783333")
     private String phone;
 
     /**
@@ -72,18 +71,6 @@ public class EditUserDTO {
      */
     @ApiModelProperty(value = "登录会话的机构编码", example = "A01A01")
     private String orgCode;
-
-    /**
-     * 状态(1-正常,0-冻结)
-     */
-    @ApiModelProperty(value = "状态", example = "1")
-    private Boolean status;
-
-    /**
-     * 删除状态(0-正常,1-已删除)
-     */
-    @ApiModelProperty(value = "删除状态", example = "0")
-    private Integer delFlag;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
@@ -94,7 +81,7 @@ public class EditUserDTO {
     /**
      * 工号，唯一键
      */
-    @ApiModelProperty(value = "工号", example = "666")
+    @ApiModelProperty(value = "工号", example = "3")
     private String workNo;
 
     /**

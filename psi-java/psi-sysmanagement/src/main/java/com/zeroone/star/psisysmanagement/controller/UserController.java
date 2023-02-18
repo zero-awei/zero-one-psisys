@@ -1,7 +1,9 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import cn.hutool.core.date.DateTime;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
@@ -13,9 +15,7 @@ import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import com.zeroone.star.psisysmanagement.entity.User;
 import com.zeroone.star.psisysmanagement.service.IUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -75,22 +76,33 @@ public class UserController implements UserApis {
     @DeleteMapping("/delete")
     @Override
     public JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        log.info("id = {}", id);
-        return JsonVO.success("删除成功");
+        boolean success = userService.removeById(id);
+        if (success) {
+            return JsonVO.success("删除成功");
+        }
+        return JsonVO.fail("请勿重复删除");
     }
 
     @ApiOperation(value = "修改用户")
     @PutMapping("/modify")
     @Override
-    public JsonVO<String> modifyUser(UserDTO dto) {
+    public JsonVO<String> modifyUser(EditUserDTO dto) {
+        userService.modifyUser(dto);
         return null;
     }
 
     @ApiOperation(value = "冻结/解冻用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "id", value = "用户id",dataType = "String", required = true),
+            @ApiImplicitParam(name = "status", value = "状态码(1为正常/2为冻结)",dataType = "String", required = true)
+    })
     @PutMapping("/status")
     @Override
-    public JsonVO<String> modifyStatus(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        return null;
+    public JsonVO<String> modifyStatus(
+            @NotBlank(message = "id不能为空") @RequestParam String id,
+            @NotNull(message = "状态不能为空") @RequestParam Integer status) {
+        userService.updateStatus(id, status);
+        return JsonVO.success("修改用户状态成功");
     }
 
     @ApiOperation(value = "导入用户")
@@ -102,9 +114,14 @@ public class UserController implements UserApis {
 
     @SneakyThrows
     @ApiOperation(value = "导出用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "ids", value = "用户id(多选)", allowMultiple = true, dataType = "String",required = true),
+    })
     @GetMapping(value = "/get-user", produces = "application/octet-stream")
     @Override
-    public ResponseEntity<byte[]> download(@NotEmpty(message = "导出用户必须大于0") @RequestParam(value = "ids") List<String> ids) {
+    public ResponseEntity<byte[]> download(
+            @NotEmpty(message = "导出用户必须大于0")
+            @RequestParam(value = "ids") List<String> ids) {
         List<User> users = userService.listByIds(ids);
         return userService.getExcel(users);
     }
