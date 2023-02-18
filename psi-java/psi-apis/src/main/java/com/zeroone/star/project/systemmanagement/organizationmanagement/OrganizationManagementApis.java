@@ -25,7 +25,7 @@ public interface OrganizationManagementApis {
      * @param departName 部门名称
      * @return
      */
-    JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName);
+    JsonVO<OrganizationTreeVO> queryTree(String departName);
 
     /**
      * 新增组织结构

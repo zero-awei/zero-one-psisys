@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IOrganizationmanagementService extends IService<SysDepart> {
 
     public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition);
-    public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName);
+    public JsonVO<OrganizationTreeVO> queryTree(String departName);
     public String add(OrganizationManagementDTO data);
     public String modify(OrganizationManagementDTO data);
     public String delete(String id);

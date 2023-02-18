@@ -33,14 +33,19 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
         // 从第一页开始，每一页查6条数据
         Page<SysDepart> page = new Page<>(1, 6);
         QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
-        wrapper.eq("depart_name", condition.getDepartName());
+        wrapper.eq("departName", condition.getDepartName());
         Page<SysDepart> p = mapper.selectPage(page, wrapper);
         return PageVO.create(p, OrganizationListVO.class);
     }
 
     @Override
-    public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName) {
-        return null;
+    public JsonVO<OrganizationTreeVO> queryTree(String departName) {
+        SysDepart sysDepart = mapper.selectById(departName);
+        String parentId = sysDepart.getParentId();
+        OrganizationTreeVO treeVO = new OrganizationTreeVO();
+        treeVO.setDepartName(departName);
+        treeVO.setParentId(parentId);
+        return JsonVO.success(treeVO);
     }
 
     @Override
@@ -101,6 +106,7 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
 
     @Override
     public String delete(String id) {
-        return null;
+        mapper.deleteById(id);
+        return "删除完毕";
     }
 }

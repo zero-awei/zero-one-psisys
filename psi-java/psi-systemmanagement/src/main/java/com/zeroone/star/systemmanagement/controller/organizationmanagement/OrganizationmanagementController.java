@@ -43,9 +43,9 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("查询指定结构树")
-    @GetMapping("query-one") // query-one
+    @GetMapping("query-one") // query-tree
     @Override
-    public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName) {
+    public JsonVO<OrganizationTreeVO> queryTree(String departName) {
         return null;
     }
 
