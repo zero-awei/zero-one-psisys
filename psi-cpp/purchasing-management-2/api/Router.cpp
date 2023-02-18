@@ -96,9 +96,4 @@ void Router::createSampleRouter()
 }
 #endif
 
-void Router::createUserDepartRouter()
-{
-	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
-	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
-}
-#endif
+
