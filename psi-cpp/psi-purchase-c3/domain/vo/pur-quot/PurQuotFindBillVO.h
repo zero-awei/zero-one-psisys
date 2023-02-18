@@ -3,7 +3,7 @@
 #define _PUR_QUOT_FIND_BILL_VO_H_
 #include "../../GlobalInclude.h"
 
-class PurQuotFindBillVO
+class PurQuotFindBillVO 
 {
 	//µ¥¾Ý±àºÅ
 	CC_SYNTHESIZE(string, bill_no, Bill_no);

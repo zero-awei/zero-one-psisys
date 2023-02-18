@@ -8,7 +8,7 @@ class PurQuotListQuery : public PageQuery
 {
 
 	// 单据编号
-	CC_SYNTHESIZE(string, receiptId, ReceiptId);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//// 单据日期 
 	//CC_SYNTHESIZE(string, receiptTime, ReceiptTime);
 	//// 单据主题
@@ -25,7 +25,7 @@ public:
 	friend void from_json(const json& j, PurQuotListQuery& t) {
 		BIND_FROM_TO_I(j, t, pageIndex);
 		BIND_FROM_TO_I(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, receiptId);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		//BIND_FROM_TO_NORMAL(j, t, receiptId);
 		//BIND_FROM_TO_NORMAL(j, t, receiptTime);
 		//BIND_FROM_TO_NORMAL(j, t, receiptTheme);

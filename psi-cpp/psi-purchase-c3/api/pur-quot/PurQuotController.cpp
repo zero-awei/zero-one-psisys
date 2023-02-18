@@ -41,6 +41,7 @@ JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExport
 //导入
 JsonVO<uint64_t> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 {
+	JsonVO<uint64_t> result;
 	//响应结果
 	return JsonVO<uint64_t>();
 }

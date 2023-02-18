@@ -4,7 +4,7 @@
 
 #include "../PageQuery.h"
 
-class PurQuotFindDetailBillQuery : public PageQuery
+class PurQuotFindDetailBillQuery
 {
 	// µ¥¾Ý±àºÅ
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
@@ -25,8 +25,6 @@ class PurQuotFindDetailBillQuery : public PageQuery
 	//CC_SYNTHESIZE(string, is_voided, Is_voided);
 public:
 	friend void from_json(const json& j, PurQuotFindDetailBillQuery& t) {
-		BIND_FROM_TO_I(j, t, pageIndex);
-		BIND_FROM_TO_I(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		//BIND_FROM_TO_NORMAL(j, t, bill_date_begin);
 		//BIND_FROM_TO_NORMAL(j, t, bill_date_end);
