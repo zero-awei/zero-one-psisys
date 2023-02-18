@@ -34,16 +34,19 @@ JsonVO<uint64_t> PurQuotController::execPurQuotModBillStatus(const PurQuotModBil
 //导出
 JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload)
 {
+	//构建一个测试VO
+	PurQuotExportVO vo;
 	//响应结果
-	return JsonVO<PurQuotExportVO>();
+	return JsonVO<PurQuotExportVO>(vo, RS_SUCCESS);;
 }
 
 //导入
-JsonVO<uint64_t> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
+JsonVO<PurQuotIntoVO> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	//构建一个测试VO
+	PurQuotIntoVO vo;
 	//响应结果
-	return JsonVO<uint64_t>();
+	return JsonVO<PurQuotIntoVO>(vo, RS_SUCCESS);;
 }
 
 //查询单据列表
@@ -53,33 +56,31 @@ JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(co
 	ls.push_back(test);
 	PageVO<PurQuotFindBillVO> result(1, 2, 0, 0, ls);
 	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
+
 }
 
 //查询指定单据列表
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
-	PurQuotFindDetailBillVO result;
+
+	//构建一个测试VO
+	PurQuotFindDetailBillVO vo;
 	//响应结果
-	return JsonVO<PurQuotFindDetailBillVO>(result, RS_SUCCESS);
+	return JsonVO<PurQuotFindDetailBillVO>(vo, RS_SUCCESS);
 }
 
-
+//询价单列表
 JsonVO<PurQuotListVO> PurQuotController::execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload)
 {
-	////定义一个Service
-	//SampleService service;
-	////查询数据
-	//PageVO<SampleVO> result = service.listAll(query);
-	////响应结果
-	return JsonVO<PurQuotListVO>();
+	//构建一个测试VO
+	PurQuotListVO vo;
+	//响应结果
+	return JsonVO<PurQuotListVO>(vo, RS_SUCCESS);
 }
-
+//询价单分录列表
 JsonVO<PurQuotDividedListVO> PurQuotController::execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload)
 {
-	////定义一个Service
-	//SampleService service;
-	////查询数据
-	//PageVO<SampleVO> result = service.listAll(query);
-	////响应结果
-//	PageVO<PurQuotDividedListVO> result;
-	return JsonVO<PurQuotDividedListVO>();
+	//构建一个测试VO
+	PurQuotDividedListVO vo;
+	//响应结果
+	return JsonVO<PurQuotDividedListVO>(vo, RS_SUCCESS);
 }

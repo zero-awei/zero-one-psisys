@@ -23,6 +23,7 @@
 #include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
 //vo
 
+#include "../../domain/vo/pur-quot/PurQuotIntoVO.h"
 #include "../../domain/vo/pur-quot/PurQuotExportVO.h"
 #include "../../domain/vo/pur-quot/PurQuotDividedListVO.h"
 #include "../../domain/vo/pur-quot/PurQuotFindBillVO.h"
@@ -33,10 +34,6 @@
 class PurQuotController
 {
 public:
-	//查询
-	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindBill, execQueryPurQuotFindBill, PurQuotFindBillQuery);
-	//查询
-	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindDetailBill, execQueryPurQuotFindDetailBill, PurQuotFindDetailBillQuery);
 	//添加报价
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurQuot, execAddPurQuot, AddPurQuotDTO);
 	//修改报价
@@ -49,15 +46,15 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(queryPurQuotExport, execPurQuotExport, PurQuotExportQuery);
 	//导入
 	CREATE_API_FUN_BODY_FILE(modifyPurQuotInto, execPurQuotInto, PurQuotIntoDTO);
-//
+	//询价单列表
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotList, execQueryPurQuotList, PurQuotListQuery);
+	//询价单分录列表
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotDividedList, execQueryPurQuotDividedList, PurQuotDividedListQuery);
-private:
 	//查询单据列表
-	JsonVO<PageVO<PurQuotFindBillVO>> execQueryPurQuotFindBill(const PurQuotFindBillQuery &query, const PayloadDTO& payload);
-
-	//查询指定单据列表
-	JsonVO<PurQuotFindDetailBillVO> execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindBill, execQueryPurQuotFindBill, PurQuotFindBillQuery);
+	//查询指定单据详细信息
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindDetailBill, execQueryPurQuotFindDetailBill, PurQuotFindDetailBillQuery);
+private:
 
 	//新增报价
 	JsonVO<uint64_t> execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload);
@@ -67,10 +64,15 @@ private:
 	JsonVO<uint64_t> execDelPurQuotById(const DelPurQuotDTO& dto);
 	//修改报价状态（关闭、作废、反关闭）
 	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto, const PayloadDTO& payload);
+
+	//查询单据列表
+	JsonVO<PageVO<PurQuotFindBillVO>> execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload);
+	//查询指定单据列表
+	JsonVO<PurQuotFindDetailBillVO> execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload);
 	//导出
 	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
 	//导入
-	JsonVO<uint64_t> execPurQuotInto(const PurQuotIntoDTO& dto);
+	JsonVO<PurQuotIntoVO> execPurQuotInto(const PurQuotIntoDTO& dto);
 	// 查询询价单列表
 	JsonVO<PurQuotListVO> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
 	// 查询询价单分录列表
@@ -80,3 +82,6 @@ private:
 
 
 #endif // _PUI_QUOT_CONTROLLER_
+
+
+

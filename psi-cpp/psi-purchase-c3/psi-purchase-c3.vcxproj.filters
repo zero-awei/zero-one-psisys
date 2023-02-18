@@ -108,6 +108,9 @@
     <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
