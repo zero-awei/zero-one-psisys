@@ -6,9 +6,9 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.psisysmanagement.service.IPermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController // 返回类型
@@ -16,7 +16,7 @@ import java.util.List;
 @Api(tags = "系统管理-角色权限管理接口")
 public class RolePermissionController implements RoleApis<PermissionQuery> {
 
-    @Resource
+    @Autowired
     private IPermissionService service;
 
     @GetMapping("/list")
@@ -37,7 +37,7 @@ public class RolePermissionController implements RoleApis<PermissionQuery> {
     @DeleteMapping("/delete")
     @ApiOperation(value = "删除权限")
     @Override
-    public JsonVO<Boolean> deleteMenuOrPermission(String Id) {
-        return JsonVO.success(service.deleteMenuOrPermission(Id));
+    public JsonVO<Boolean> deleteMenuOrPermission(String permissionId) {
+        return JsonVO.success(service.deleteMenuOrPermission(permissionId));
     }
 }

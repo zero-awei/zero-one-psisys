@@ -1,15 +1,14 @@
 package com.zeroone.star.psisysmanagement.entity;
 
-import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+@Getter
+@Setter
 public class Permission implements Serializable {
 
     private static final long serialVersionUID = 1L;

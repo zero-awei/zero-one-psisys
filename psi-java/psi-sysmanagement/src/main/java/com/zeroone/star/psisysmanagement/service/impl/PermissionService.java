@@ -41,8 +41,8 @@ public class PermissionService extends ServiceImpl<PermissionMapper, Permission>
     }
 
     @Override
-    public Boolean deleteMenuOrPermission(String Id) {
-        int num = baseMapper.deleteById(Id);
+    public Boolean deleteMenuOrPermission(String permissionId) {
+        int num = baseMapper.deleteById(permissionId);
         if (num >= 1) {
             return true;
         }

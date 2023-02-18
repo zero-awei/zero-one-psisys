@@ -12,5 +12,5 @@ public interface IPermissionService extends IService<Permission> {
 
     Boolean addMenuOrPermission(PermissionQuery permission) ;
 
-    Boolean deleteMenuOrPermission(String Id) ;
+    Boolean deleteMenuOrPermission(String permissionId) ;
 }

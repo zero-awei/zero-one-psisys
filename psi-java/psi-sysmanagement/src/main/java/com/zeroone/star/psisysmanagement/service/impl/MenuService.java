@@ -38,7 +38,6 @@ public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMe
     public Boolean addMenuOrPermission(MenuQuery menu) { // 添加菜单
         SysMenu sysMenu = new SysMenu();
         BeanUtil.copyProperties(menu,sysMenu);
-        QueryWrapper<SysMenu> wrapper = new QueryWrapper<>();
         int num = baseMapper.insert(sysMenu);
         if (num >= 1){
             return true;
