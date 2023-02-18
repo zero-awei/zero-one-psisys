@@ -8,7 +8,7 @@
 class SpecifiedSupplierDataQuery 
 {
 	// ±àºÅ
-	CC_SYNTHESIZE(int, code, Code);
+	CC_SYNTHESIZE(uint64_t, code, Code);
 	
 public:
 	// °ó¶¨from_json

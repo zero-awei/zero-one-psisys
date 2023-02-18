@@ -66,4 +66,29 @@ JsonVO<uint64_t> SupplierController::execDeleteSupplier(const DeleteSupplierDTO&
 
 }
 
+//JsonVO<bool> SupplierController::execAddSupplierImportFile(const FileDTO& dto)
+//{
+//
+//
+//
+//
+//
+//	JsonVO <bool> res;
+//	res.success(true);
+//	return res;
+//}
+//
+//
+//JsonVO<std::string> SupplierController::execExportSupplierExecl(const SpecifiedSupplierDataQuery& query)
+//{
+//	JsonVO <string> res;
+//	res.success(u8"123");
+//	return res;
+//}
+
+
+
+
+
+
 

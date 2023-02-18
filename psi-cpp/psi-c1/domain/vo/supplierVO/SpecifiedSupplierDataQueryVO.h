@@ -101,6 +101,7 @@ class SpecifiedSupplierDataQueryVO
 	CC_SYNTHESIZE(string, modificationTime, ModificationTime);
 	//修改人
 	CC_SYNTHESIZE(string, modifiedBy, ModifiedBy);
+	//41个字段
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(SpecifiedSupplierDataQueryVO, code, name, alias, supplierClassification, supplierLevel, taxScale, alternativeSuppliers, enable, remark,

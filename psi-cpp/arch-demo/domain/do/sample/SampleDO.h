@@ -21,8 +21,8 @@
 #define _SAMPLE_DO_
 #include "../DoInclude.h"
 
-/**
- * 示例数据库实体类
+/*
+ 示例数据库实体类
  */
 class SampleDO
 {
@@ -41,6 +41,8 @@ public:
 		sex = "";
 		age = -1;
 	}
+
+
 };
 
 #endif // !_SAMPLE_DO_

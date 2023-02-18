@@ -2,13 +2,13 @@
 
 #ifndef _ADD_DTO_
 #define _ADD_DTO_
-
+#include "../FileDTO.h"
 #include "../../GlobalInclude.h"
 
 /**
  * 示例传输对象
  */
-class AddSupplierDTO
+class AddSupplierDTO : public FileDTO
 {
 	/*供应商信息*/
 	// 编号
@@ -92,7 +92,7 @@ class AddSupplierDTO
 	//供应商地址
 	CC_SYNTHESIZE(string, supplierAddress, SupplierAddress);
 	//上传附件
-	//CC_SYNTHESIZE(string, remark, Remark);
+    //在DTO中不需要写上传附件了，因为我们自己写的dto继承了FileDTO
 	/*操作信息*/
 	//创建时间
 	CC_SYNTHESIZE(string, creationTime, CreationTime);

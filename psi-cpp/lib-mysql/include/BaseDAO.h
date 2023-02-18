@@ -34,7 +34,7 @@ protected:
 	SqlSession* sqlSession;
 public:
 	BaseDAO();
-	virtual ~BaseDAO();
+	virtual ~BaseDAO();//虚析构函数
 	// 获取SqlSession
 	SqlSession* getSqlSession();
 	// 设置SqlSession
