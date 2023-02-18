@@ -1,8 +1,8 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
- @Author: douhao
- @Date: 2023/2/14 16:07:21
+ @Author: Linsky
+ @Date: 2023/2/13 20:31:04
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,8 +13,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _CURRENCY_CONTROLLER_
-#define _CURRENCY_CONTROLLER_
+#ifndef _Currency_CONTROLLER_
+#define _Currency_CONTROLLER_
 
 #include "../domain/query/CurrencyQuery.h"
 #include "../domain/dto/CurrencyDTO.h"
@@ -22,37 +22,45 @@
 #include "../domain/vo/CurrencyVO.h"
 #include "../domain/vo/PageVO.h"
 #include "../domain/vo/JsonVO.h"
+// #include "../../domain/dto/FileDTO.h"
 
 /**
- * 基础资料币种模块接口
+ * 基础资料仓库模块接口
  */
 class CurrencyController
 {
 public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryCurrency, execQueryCurrency, CurrencyQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailCurrency, execQueryDetail, CurrencyQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolCurrency, execQueryActionInfo, CurrencyQuery);
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryKidCurrency, execQueryKidCurrency, OnlyValueQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailCurrency, execQueryDetail, OnlyValueQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolCurrency, execQueryActionInfo, OnlyValueQuery);
 	CREATE_API_FUN_BODY(addCurrency, execAddCurrency, CurrencyDTO);
 	CREATE_API_FUN_BODY(modifyCurrency, execModifyCurrency, CurrencyDTO);
-	CREATE_API_FUN_BODY(removeCurrency, execRemoveCurrency, CurrencyDTO);
-	CREATE_API_FUN_BODY_FILE(modifyCurrency, execModifyCurrencys, CurrencyDTO);
+	CREATE_API_FUN_BODY(removeCurrency, execRemoveCurrency, OnlyValueQuery);
+	// 这里直接用FileDTO报错
+	CREATE_API_FUN_BODY_FILE(addCurrencys, execAddCurrencys, CurrencyDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, CurrencyQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueQuery);
 private:
 	//默认查询数据
 	JsonVO<PageVO<CurrencyVO>> execQueryCurrency(const CurrencyQuery& query, const PayloadDTO& payload);
+	//查询子级列表
+	//JsonVO<CurrencyVO> execQueryKidCurrency(const OnlyValueQuery& query, const PayloadDTO& payload);
 	// 查询详情
-	JsonVO<CurrencyDetailVO> execQueryDetail(const CurrencyQuery& query, const PayloadDTO& payload);
-	JsonVO<CurrencyActionInfoVO> execQueryActionInfo(const CurrencyQuery& query, const PayloadDTO& payload);
-	//新增仓库 
+	JsonVO<CurrencyDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
+	JsonVO<CurrencyActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
+	//新增仓库
 	JsonVO<PageVO<CurrencyVO>> execAddCurrency(const CurrencyDTO& dto);
 	//修改仓库
 	JsonVO<PageVO<CurrencyVO>> execModifyCurrency(const CurrencyDTO& dto);
-	//删除仓库
-	JsonVO<PageVO<CurrencyVO>> execRemoveCurrency(const CurrencyDTO& dto);
+	//删除仓库 
+	JsonVO<PageVO<CurrencyVO>> execRemoveCurrency(const OnlyValueQuery& query);
 	//文件导入
-	JsonVO<PageVO<CurrencyVO>> execModifyCurrency(const CurrencyDTO& dto);
+	JsonVO<PageVO<CurrencyVO>> execAddCurrencys(const CurrencyDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const CurrencyQuery& query, const PayloadDTO& payload);
+	// 通过唯一值批量导出
+	JsonVO<string> execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload);
 };
 
-#endif // _CURRENCY_CONTROLLER_
+#endif // _Currency_CONTROLLER_

@@ -26,6 +26,7 @@
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
+#include "CurrencyController.h"
 
 Router::Router(http_server* sever)
 {
@@ -73,6 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createCurrencyRouter();
 
 }
 
@@ -94,3 +96,18 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createCurrencyRouter()
+{
+	BIND_GET_ROUTER(server, "/currency-query", &CurrencyController::queryCurrency, nullptr);
+	//BIND_GET_ROUTER(server, "/Currency-query-kid", &CurrencyController::queryKidCurrency, nullptr);
+	BIND_GET_ROUTER(server, "/currency-detail", &CurrencyController::queryDetailCurrency, nullptr);
+	BIND_GET_ROUTER(server, "/currency-action-info", &CurrencyController::queryActionInfolCurrency, nullptr);
+
+	BIND_PUT_ROUTER(server, "/currency-execAddCurrency", &CurrencyController::addCurrency, nullptr);
+	BIND_PUT_ROUTER(server, "/currency-modify", &CurrencyController::modifyCurrency, nullptr);
+	BIND_DEL_ROUTER(server, "/currency-remove", &CurrencyController::removeCurrency, nullptr);
+	BIND_POST_ROUTER(server, "/currency-add-Currencys", &CurrencyController::addCurrencys, nullptr);
+	BIND_GET_ROUTER(server, "/currency-export", &CurrencyController::exportExecl, nullptr);
+	BIND_GET_ROUTER(server, "/currency-export-only", &CurrencyController::exportExeclOnly, nullptr);
+}
