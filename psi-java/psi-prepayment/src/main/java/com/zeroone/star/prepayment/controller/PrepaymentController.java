@@ -114,11 +114,13 @@ public class PrepaymentController implements PrepaymentApis {
      * since 2023-02-13
      */
     @DeleteMapping("delete")
-    @ApiOperation(value = "删除信息（返回值data值表示删除成功与否）")
+    @ApiOperation(value = "删除信息（返回值data值保存删除成功与否）")
     @Override
-    public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
-        return JsonVO.success("删除成功");
+    public JsonVO<String> deleteById(DeleteDTO deleteDTO) throws Exception {
 
+        service.deleteById(deleteDTO);
+
+        return JsonVO.success("删除成功");
     }
 
     /**

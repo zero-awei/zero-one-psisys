@@ -78,7 +78,7 @@ public interface IPrepaymentService {
      * return 删除结果
      * author 出运费
      */
-    JsonVO<String> deleteById(DeleteDTO deleteDTO);
+    JsonVO<String> deleteById(DeleteDTO deleteDTO) throws Exception;
 
     //TODO 附件上传
     /**
