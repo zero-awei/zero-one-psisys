@@ -42,3 +42,5 @@ public:
 };
 
 #endif // !_SAMPLE_QUERY_
+
+
