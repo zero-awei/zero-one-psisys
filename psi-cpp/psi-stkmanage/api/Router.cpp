@@ -98,6 +98,9 @@ void Router::createUserDepartRouter()
 
 void Router::createCgthckRouter()
 {
-	BIND_GET_ROUTER(server, "/cgthck-cgthck-bill-list", &CgthckController::cgthcBillkQuery, nullptr);
-	BIND_GET_ROUTER(server, "/query-cgthck-bill-details", &CgthckController::cgthckBillDetailQuery, nullptr);
+	BIND_GET_ROUTER(server, "/get-cgthck-bill-list", &CgthckController::queryCgthcBillk, nullptr);
+	BIND_GET_ROUTER(server, "/get-cgthck-bill-details", &CgthckController::queryCgthckBillDetail, nullptr);
+	BIND_POST_ROUTER(server, "/post-cgthck-bill", &CgthckController::addCgthckBill, nullptr);
+	BIND_PUT_ROUTER(server, "/put-cgthck-bill", &CgthckController::modifyCgthckBill, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-cgthck-bill-by-id", &CgthckController::deleteCgthckBill, nullptr);
 }
