@@ -23,7 +23,7 @@
 
 #define PURORDER
 #include "PurOrder/PurOrderController.h"
-
+#include "prepayment/PrePayController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -86,6 +86,9 @@ void Router::initRouter()
 	BIND_GET_ROUTER(server, "/query-byOperator", &StatisController::queryStatisByOperator, nullptr);
 	BIND_GET_ROUTER(server, "/query-bySupplier", &StatisController::queryStatisBySupplier, nullptr);
 	BIND_GET_ROUTER(server, "/query-byMaterial", &StatisController::queryStatisByMaterial, nullptr);
+
+
+
 	// 分页数据
 	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
 	// 单个数据
@@ -98,10 +101,7 @@ void Router::initRouter()
 	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
 	// 删除ById
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
-}
 
-
-void Router::createPayRouter() {
 	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
 	//查询指定单据详细信息
@@ -118,7 +118,8 @@ void Router::createPayRouter() {
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-
 }
+
+
 
 
