@@ -39,6 +39,15 @@
     <ClCompile Include="service\PurOrder\PurOrderService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="uselib\excel\TestExcel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="uselib\ws\TestWs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="domain\do\DoInclude.h">
@@ -96,6 +105,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="service\PurOrder\PurOrderService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="uselib\fastdfs\TestFastDfs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="uselib\excel\TestExcel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="uselib\ws\TestWs.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

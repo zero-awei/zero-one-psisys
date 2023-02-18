@@ -22,7 +22,7 @@
 #include "../DoInclude.h"
 
 /**
- * 采购订单实体类
+ * 采购订单数据库实体类
  */
 class PurOrderDO
 {

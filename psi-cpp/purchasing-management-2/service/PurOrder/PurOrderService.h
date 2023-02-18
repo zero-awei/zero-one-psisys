@@ -39,6 +39,8 @@ public:
 	uint64_t saveData(const PurOrderDTO& dto);
 	// 修改数据
 	bool updateData(const PurOrderDTO& dto);
+	// 修改状态
+	bool updateStatus(const PurOrderDTO& dto);
 	// 通过ID删除数据
 	bool removeData(uint64_t id);
 };

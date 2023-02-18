@@ -41,7 +41,12 @@ JsonVO<PageVO<PurOrderVO>> PurOrderController::execListPurOrder(const PurOrderQu
 JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 {
 	PurOrderService service;
+	PurOrderVO test;
+
 	JsonVO<PurOrderVO> result = JsonVO(service.getData(dto.getId()), RS_SUCCESS);
+	test.setId(dto.getId());
+	result = JsonVO(test, RS_SUCCESS);
+
 	return result;
 }
 
@@ -79,6 +84,21 @@ JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 		result.fail(dto.getId());
 	}
 	return result;
+}
+
+// ÐÞ¸Ä×´Ì¬
+JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
+{
+	JsonVO<uint64_t> result;
+	PurOrderService service;
+
+	if (service.updateStatus(dto)) {
+		result.success(dto.getId());
+	}
+	else
+	{
+		result.fail(dto.getId());
+	}
 	return result;
 }
 //É¾³ýÊý¾Ý

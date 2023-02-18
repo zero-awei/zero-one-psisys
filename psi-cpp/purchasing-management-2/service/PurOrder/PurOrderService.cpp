@@ -53,6 +53,12 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 	return true;
 }
 
+// 修改数据
+bool PurOrderService::updateStatus(const PurOrderDTO& dto)
+{
+	return true;
+}
+
 // 通过ID删除数据
 bool PurOrderService::removeData(uint64_t id)
 {

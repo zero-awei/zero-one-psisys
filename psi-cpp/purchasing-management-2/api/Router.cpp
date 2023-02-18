@@ -68,6 +68,8 @@ void Router::createPurOrderRouter()
 	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
 	// 修改数据
 	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
+	// 修改状态
+	BIND_PUT_ROUTER(server, "/purOrder/status", &PurOrderController::statusPurOrder, nullptr);
 	// 删除数据
 	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
 	// 删除ById

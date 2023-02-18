@@ -22,6 +22,11 @@
 #include "api/Router.h"
 #include "ServerInfo.h"
 #include "StringUtil.h"
+//测试库
+#include "uselib/fastdfs/TestFastDfs.h"
+#include "uselib/excel/TestExcel.h"
+#include "uselib/ws/TestWs.h"
+
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
 #endif
@@ -134,6 +139,10 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+	//测试代码
+	//TestFastDfs::testDfs("");
+	//TestExcel::testExcel();
+	
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
@@ -186,9 +195,11 @@ int main(int argc, char* argv[]) {
 	int code = HttpServer::startServer(ServerInfo::getInstance().getServerPort(),
 		[=](http_server* server) {
 			Router router(server);
+			//TestWs::addChatHandler(server);
 			router.initRouter();
 		}
 	);
+	
 	// 释放数据库连接
 	DbInit::releasePool();
 
