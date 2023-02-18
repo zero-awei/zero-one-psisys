@@ -63,24 +63,23 @@ JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBil
 }
 
 
-JsonVO<PageVO<PurQuotListVO>> PurQuotController::execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload)
+JsonVO<PurQuotListVO> PurQuotController::execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload)
 {
 	////定义一个Service
 	//SampleService service;
 	////查询数据
 	//PageVO<SampleVO> result = service.listAll(query);
 	////响应结果
-	PageVO<PurQuotListVO> result;
-	return JsonVO<PageVO<PurQuotListVO>>(result, RS_SUCCESS);
+	return JsonVO<PurQuotListVO>();
 }
 
-JsonVO<PageVO<PurQuotDividedListVO>> PurQuotController::execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload)
+JsonVO<PurQuotDividedListVO> PurQuotController::execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload)
 {
 	////定义一个Service
 	//SampleService service;
 	////查询数据
 	//PageVO<SampleVO> result = service.listAll(query);
 	////响应结果
-	PageVO<PurQuotDividedListVO> result;
-	return JsonVO<PageVO<PurQuotDividedListVO>>(result, RS_SUCCESS);
+//	PageVO<PurQuotDividedListVO> result;
+	return JsonVO<PurQuotDividedListVO>();
 }

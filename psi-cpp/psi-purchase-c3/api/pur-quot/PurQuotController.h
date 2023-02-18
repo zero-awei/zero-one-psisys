@@ -72,9 +72,9 @@ private:
 	//导入
 	JsonVO<uint64_t> execPurQuotInto(const PurQuotIntoDTO& dto);
 	// 查询询价单列表
-	JsonVO<PageVO<PurQuotListVO>> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
+	JsonVO<PurQuotListVO> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
 	// 查询询价单分录列表
-	JsonVO<PageVO<PurQuotDividedListVO>> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
+	JsonVO<PurQuotDividedListVO> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
 
 };
 

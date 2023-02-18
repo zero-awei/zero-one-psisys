@@ -2,6 +2,7 @@
 #ifndef _PUR_QUOT_LIST_VO_H_
 #define _PUR_QUOT_LIST_VO_H_
 #include "../../GlobalInclude.h"
+#include "PurQuotFindDetailBillVO.h"
 class PurQuotListVO
 {
 	//源单分录号
@@ -30,8 +31,7 @@ class PurQuotListVO
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurQuotListVO, src_no, material_id, unit_id, qty, tax_rate, price,
-	discount_rate, amt, remark, custom1, custom2);
+	BIND_TO_JSON(PurQuotListVO,src_no, material_id, unit_id, qty, tax_rate, price,discount_rate, amt, remark, custom1, custom2);
 };
 #endif
 
