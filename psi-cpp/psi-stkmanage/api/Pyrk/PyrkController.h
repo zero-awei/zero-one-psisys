@@ -33,42 +33,44 @@
 
 #include "../psi-stkmanage/domain/dto/Pyrk/AddPyrkBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Pyrk/ModifyPyrkBillDTO.h"
+
+
 #include "../psi-stkmanage/domain/vo/JsonVO.h"
 #include "../psi-stkmanage/domain/vo/Message.h"
 #include "../psi-stkmanage/domain/vo/PageVO.h"
-#include "../psi-stkmanage/domain/vo/ResultStatus.h"
-//#include "../psi-stkmanage/domain/vo/Pyrk/"
-
-
-//#include "../../domain/dto/sample/SampleDTO.h"
-//#include "../../domain/dto/IDDTO.h"
-//#include "../../domain/vo/sample/SampleVO.h"
-//#include "../../domain/vo/PageVO.h"
-//#include "../../domain/vo/JsonVO.h"
-//#include "../../domain/dto/user/UserDTO.h"
-//#include "../../domain/vo/user/UserVO.h"
+#include "../psi-stkmanage/domain/vo/ResultStatus.h",
 
 /**
  * 示例控制器，演示基础接口的使用
  */
-class SampleController
-{
-//public:
-//	CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);
-//	CREATE_API_FUN_BODY(addSample, execAddSample, SampleDTO);
-//	CREATE_API_FUN_BODY(modifySample, execModifySample, SampleDTO);
-//	CREATE_API_FUN_BODY(removeSample, execRemoveSample, SampleDTO);
-//	CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
-//	CREATE_API_FUN_JSON(jsonSample, execJsonSample, SampleDTO);
-//	CREATE_API_FUN_BODY_FILE(modifyUserInfo, execModifyUserInfo, UserDTO);
-//private:
-//	//演示查询数据
-//	JsonVO<PageVO<SampleVO>> execQuerySample(const SampleQuery& query, const PayloadDTO& payload);
-//	//演示新增数据
-//	JsonVO<uint64_t> execAddSample(const SampleDTO& dto);
-//	//演示修改数据
-	//JsonVO<uint64_t> execModifySample(const SampleDTO& dto);
 
+class PyrkController {
+public:
+	CREATE_API_FUN_QUERY(queryPyrkBillDetail, execQueryPyrkBillDetail, QueryPyrkBillDetailQuery);
+	CREATE_API_FUN_QUERY(queryPyrkBillList, execQueryPyrkBillList, QueryPyrkBillListQuery);
+	/*CREATE_API_FUN_BODY(addPyrkBill, execAddPyrkBill, AddPyrkBillDTO);
+	CREATE_API_FUN_BODY(modifyPyrkBill, execModifyPyrkBill, ModifyPyrkBillDTO);
+	CREATE_API_FUN_BODY(removePyrkBill, execRemovePyrkBill, StringID);
+	CREATE_API_FUN_BODY(modifyPyrkBillState, execModifyPyrkBillState, ModifyPyrkBillStateDTO);
+	CREATE_API_FUN_BODY_FILE(ImportPyrkFile, execImportPyrkFile, ImportPyrkFileDTO);
+	CREATE_API_FUN_QUERY3(EmportPyrkFile, execEmportPyrkFile);*/
+private:
+	//查询单据详细信息
+	JsonVO<QueryPyrkBillDetailVO> execQueryPyrkBillDetail(const QueryPyrkBillDetailQuery& query);
+	//查询单据列表
+	JsonVO<PageVO<QueryPyrkBillListVO>> execQueryPyrkBillList(const QueryPyrkBillListQuery& query);
+	////添加单据
+	//JsonVO<uint64_t> execAddPyrkBill(const AddPyrkBillDTO& dto);
+	////修改单据
+	//JsonVO<uint64_t> execModifyPyrkBill(const ModifyPyrkBillDTO& dto);
+	////删除单据
+	//JsonVO<uint64_t> execRemovePyrkBill(const StringID& dto);
+	////修改单据状态
+	//JsonVO<uint64_t> execModifyPyrkBillState(const ModifyPyrkBillStateDTO& dto);
+	////导入
+	//JsonVO<uint64_t> execImportPyrkFile(const ImportPyrkFileDTO& dto);
+	////导出
+	//JsonVO<std::string>  execEmportPyrkFile();
 };
 
 #endif // _SAMPLE_CONTROLLER_

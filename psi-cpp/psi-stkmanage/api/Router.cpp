@@ -37,7 +37,6 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
-
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -72,6 +71,7 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 	//#TIP :系统扩展路由定义，写在这个后面
+	createIncreaseTonRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -92,3 +92,9 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createIncreaseTonRouter()
+{
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryPyrkBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-detail", &PyrkController::queryPyrkBillDetail, nullptr);
+}

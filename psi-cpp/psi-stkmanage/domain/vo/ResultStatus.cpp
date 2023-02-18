@@ -34,3 +34,4 @@ int ResultStatus::getCode()
 {
 	return code;
 }
+

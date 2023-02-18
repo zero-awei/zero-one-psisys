@@ -23,14 +23,13 @@
 #include "stdafx.h"
 #include "../psi-stkmanage/domain/query/PageQuery.h"
 
-class QueryCgrkBillDetailsQuery
-{
+class QueryPyrkBillListQuery {
 	//µ¥¾Ý±àºÅ
 	CC_SYNTHESIZE(string, billNo, BillNo);
 
 public:
 	// °ó¶¨from_json
-	friend void from_json(const json& j, QueryCgrkBillDetailsQuery& t) { // NOLINT
+	friend void from_json(const json& j, QueryPyrkBillListQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 	}
 };

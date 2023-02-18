@@ -19,14 +19,13 @@
 */
 #ifndef _ROUTER_
 #define _ROUTER_
-
+#include "stdafx.h"
 #include "api/ApiHelper.h"
-
+#include "api/Pyrk/PyrkController.h"
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */
-class Router
-{
+class Router {
 private:
 	http_server* server;
 public:
@@ -34,6 +33,7 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
+	void createIncreaseTonRouter();
 private:
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由

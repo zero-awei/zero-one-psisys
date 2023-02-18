@@ -95,9 +95,6 @@
     <ClInclude Include="domain\do\DoInclude.h">
       <Filter>domain\do</Filter>
     </ClInclude>
-    <ClInclude Include="PyrkController.h">
-      <Filter>api\Pyrk</Filter>
-    </ClInclude>
     <ClInclude Include="domain\do\PyrkBillDetailDO.h">
       <Filter>domain\do\Pyrk</Filter>
     </ClInclude>
@@ -115,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h">
       <Filter>domain\query\Pyrk</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Pyrk\PyrkController.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +144,9 @@
     </ClCompile>
     <ClCompile Include="domain\vo\Pyrk\QueryPyrkBillListVO.h">
       <Filter>domain\vo\Pyrk</Filter>
+    </ClCompile>
+    <ClCompile Include="api\Pyrk\PyrkController.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -23,7 +23,7 @@
 #ifndef _QUERY_PYRK_BILL_DETAIL_QUERY_
 #define _QUERY_PYRK_BILL_DETAIL_QUERY_
 
-class QueryCgrkBillDetailsQuery {
+class QueryPyrkBillDetailQuery {
 	// 单据编号
 	CC_SYNTHESIZE(std::string, billNo, BillNo);
 	// 单据阶段
@@ -33,7 +33,7 @@ class QueryCgrkBillDetailsQuery {
 
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, QueryCgrkBillDetailsQuery& t) { // NOLINT
+	friend void from_json(const json& j, QueryPyrkBillDetailQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 		BIND_FROM_TO_NORMAL(j, t, billtage);
 		BIND_FROM_TO_NORMAL(j, t, billDate); 

@@ -174,12 +174,12 @@
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\Pyrk\PyrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\dto\Pyrk\AddPyrkBillDTO.h" />
     <ClInclude Include="domain\dto\Pyrk\ModifyPyrkBillDTO.h" />
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillDetailQuery.h" />
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h" />
-    <ClInclude Include="PyrkController.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\PyrkBillDetailDO.h" />
     <ClInclude Include="domain\do\PyrkBillListDO.h" />
@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\Pyrk\PyrkController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="domain\dto\Pyrk\AddPyrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Pyrk\ModifyPyrkBillDTO.cpp" />
