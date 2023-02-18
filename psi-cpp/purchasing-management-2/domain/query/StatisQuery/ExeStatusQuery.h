@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Andrew
- @Date: 2023/02/15 22:00:00
+ @Date: 2023/02/18 10:00:00
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -27,9 +27,9 @@
 */
 class BaseQuery : public PageQuery
 {
-	CC_SYNTHESIZE(std::string, column, Column); // 订单编号
-	CC_SYNTHESIZE(std::string, order, Order); // 查询顺序
-	CC_SYNTHESIZE(std::string, field, Field); // 查询返回参数列
+	CC_SYNTHESIZE(string, column, Column); // 订单编号
+	CC_SYNTHESIZE(string, order, Order); // 查询顺序
+	CC_SYNTHESIZE(string, field, Field); // 查询返回参数列
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, BaseQuery& bq) // NOLINT
@@ -48,13 +48,13 @@ public:
 class ExeStatusQuery : public BaseQuery
 {
 	// 筛选条件
-	CC_SYNTHESIZE(std::string, dept, Dept); // 业务部门ID
-	CC_SYNTHESIZE(std::string, opName, OpName); // 业务员名
+	CC_SYNTHESIZE(string, dept, Dept); // 业务部门ID
+	CC_SYNTHESIZE(string, opName, OpName); // 业务员名
 	CC_SYNTHESIZE(uint64_t, supplier, Supplier); // 供应商ID
-	CC_SYNTHESIZE(std::string, billNo, BillNo); // 单据编号
+	CC_SYNTHESIZE(string, billNo, BillNo); // 单据编号
 	CC_SYNTHESIZE(bool, exeEnd, ExeEnd); // 执行结束
-	CC_SYNTHESIZE(std::string, beginDate, BeginDate); // 单据日期开始
-	CC_SYNTHESIZE(std::string, endDate, EndDate); // 单据日期结束
+	CC_SYNTHESIZE(string, beginDate, BeginDate); // 单据日期开始
+	CC_SYNTHESIZE(string, endDate, EndDate); // 单据日期结束
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, ExeStatusQuery& esq) // NOLINT

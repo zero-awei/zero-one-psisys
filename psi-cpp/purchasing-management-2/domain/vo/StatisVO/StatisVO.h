@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Andrew
- @Date: 2023/02/15 22:00:00
+ @Date: 2023/02/18 10:00:00
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
 #define __STATIS_VO__
 
 #include "../../GlobalInclude.h"
+#include "../lib-common/include/CharsetConvertHepler.h"
 
 /**
 * 采购订单汇总VO领域模型
@@ -36,7 +37,8 @@ class StatisVO
 	CC_SYNTHESIZE(uint16_t, year, Year); // 年份
 	CC_SYNTHESIZE(uint16_t, month, Month); // 月份
 	CC_SYNTHESIZE(uint16_t, orders, Orders); // 订单笔数
-private:
+public:
+	StatisVO() : id(666), price(6.6), incost(6.6), settlePrice(6.6), settledPrice(6.6), unsettledPrice(6.6), year(2023), month(2), orders(114514) {}
 	friend void to_json(json& j, const StatisVO& sv)
 	{
 		j = json{
@@ -58,46 +60,43 @@ private:
 */
 class StatisByDeptVO : public StatisVO
 {
-	CC_SYNTHESIZE(std::string, dept, Dept); // 业务部门ID
-	CC_SYNTHESIZE(std::string, deptName, DeptName); // 业务部门名
-private:
+	CC_SYNTHESIZE(string, dept, Dept); // 业务部门ID
+	CC_SYNTHESIZE(string, deptName, DeptName); // 业务部门名
+public:
+	StatisByDeptVO() : dept("114514"), deptName(CharsetConvertHepler::ansiToUtf8("部门")) {}
 	friend void to_json(json& j, const StatisByDeptVO& sv)
 	{
 		to_json(j, static_cast<const StatisVO&>(sv));
-		j = json{
-			{"dept", sv.dept},
-			{"deptName", sv.deptName},
-		};
+		j.push_back({ "dept", sv.dept });
+		j.push_back({ "deptName", sv.deptName });
 	}
 };
 
 class StatisByOperatorVO : public StatisByDeptVO
 {
-	CC_SYNTHESIZE(std::string, op, Op); // 业务员ID
-	CC_SYNTHESIZE(std::string, opName, OpName); // 业务员名
-private:
+	CC_SYNTHESIZE(string, op, Op); // 业务员ID
+	CC_SYNTHESIZE(string, opName, OpName); // 业务员名
+public:
+	StatisByOperatorVO() : op(CharsetConvertHepler::ansiToUtf8("op114")), opName(CharsetConvertHepler::ansiToUtf8("业务员1")) {}
 	friend void to_json(json& j, const StatisByOperatorVO& sv)
 	{
 		to_json(j, static_cast<const StatisByDeptVO&>(sv));
-		j = json{
-			{"op", sv.op},
-			{"opName", sv.opName},
-		};
+		j.push_back({ "op", sv.op });
+		j.push_back({ "opName", sv.opName });
 	}
 };
 
 class StatisBySupplierVO : public StatisVO
 {
-	CC_SYNTHESIZE(std::string, supplier, supplier); // 供应商ID
-	CC_SYNTHESIZE(std::string, supName, SupName); // 供应商名
-private:
+	CC_SYNTHESIZE(string, supplier, supplier); // 供应商ID
+	CC_SYNTHESIZE(string, supName, SupName); // 供应商名
+public:
+	StatisBySupplierVO() : supplier(CharsetConvertHepler::ansiToUtf8("Nvidia")), supName(CharsetConvertHepler::ansiToUtf8("老黄")) {}
 	friend void to_json(json& j, const StatisBySupplierVO& sv)
 	{
 		to_json(j, static_cast<const StatisVO&>(sv));
-		j = json{
-			{"supplier", sv.supplier},
-			{"supName", sv.supName},
-		};
+		j.push_back({ "supplier", sv.supplier });
+		j.push_back({ "supName", sv.supName });
 	}
 };
 

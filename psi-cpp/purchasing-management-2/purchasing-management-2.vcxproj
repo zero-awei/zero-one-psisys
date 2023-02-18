@@ -151,6 +151,8 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\StatisVO\ExeStatusVO.h" />
+    <ClInclude Include="domain\vo\StatisVO\MaterialVO.h" />
     <ClInclude Include="domain\vo\StatisVO\StatisVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />

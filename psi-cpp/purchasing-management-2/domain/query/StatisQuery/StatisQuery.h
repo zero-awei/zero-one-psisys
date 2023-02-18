@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Andrew
- @Date: 2023/02/15 22:00:00
+ @Date: 2023/02/18 10:00:00
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public:
 
 class StatisByOperatorQuery : public StatisByDeptQuery
 {
-	CC_SYNTHESIZE(std::string, opName, OpName); // 业务员名
+	CC_SYNTHESIZE(string, opName, OpName); // 业务员名
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisByOperatorQuery& bq)
@@ -68,7 +68,7 @@ class StatisBySupplierQuery : public StatisQuery
 {
 	CC_SYNTHESIZE(uint64_t, supplier, Supplier); // 供应商ID
 public:
-	// 绑定JSON转换方法
+	//// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisBySupplierQuery& bq)
 	{
 		from_json(j, static_cast<StatisQuery&>(bq));
@@ -79,8 +79,8 @@ public:
 class StatisByMaterialQuery : public StatisQuery
 {
 	CC_SYNTHESIZE(uint64_t, material, Material); // 物料ID
-	CC_SYNTHESIZE(std::string, materialCode, MaterialCode); // 物料代码
-	CC_SYNTHESIZE(std::string, materialName, MaterialName); // 物料名
+	CC_SYNTHESIZE(string, materialCode, MaterialCode); // 物料代码
+	CC_SYNTHESIZE(string, materialName, MaterialName); // 物料名
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisByMaterialQuery& bq)
