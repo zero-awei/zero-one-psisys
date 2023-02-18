@@ -63,9 +63,6 @@
     <ClInclude Include="api\pur-quot\PurQuotController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>

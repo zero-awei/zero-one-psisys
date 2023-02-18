@@ -191,7 +191,6 @@
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
