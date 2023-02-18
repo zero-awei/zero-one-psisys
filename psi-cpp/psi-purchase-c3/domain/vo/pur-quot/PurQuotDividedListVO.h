@@ -4,6 +4,7 @@
 #include "../../GlobalInclude.h"
 class PurQuotDividedListVO
 {
+	//采购询价单分录列表没有找到, 
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 
