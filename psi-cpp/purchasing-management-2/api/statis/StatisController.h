@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: Andrew
- @Date: 2023/02/18 10:00:00
+ @Date: 2023/02/18 13:30:00
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -63,8 +63,9 @@ private:
 	template <class E>
 	JsonVO<std::string> execExport(const E& query)
 	{
-		id = E.getId();
-		string fileName = CharsetConvertHepler::ansiToUtf8("http://localhost:8090/testExport/" + ".xls");
+		std::string fileName = "http://localhost:8090/", suffix = ".xls";
+		fileName.append(string(query.getColumn()));
+		fileName += suffix;
 		return JsonVO<std::string>(fileName, RS_SUCCESS);
 	}
 };
