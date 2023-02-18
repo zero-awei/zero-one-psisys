@@ -28,7 +28,7 @@
 class DepotVO
 {
 	// Î¨Ò»Öµ£ºid
-	CC_SYNTHESIZE(string, id, ID);
+	CC_SYNTHESIZE(string, id, Id);
 	// Ãû³Æ
 	CC_SYNTHESIZE(string, name, Name);
 	// ±àºÅ

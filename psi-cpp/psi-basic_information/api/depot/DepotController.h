@@ -26,6 +26,7 @@
 #include "../../domain/vo/depot/DepotVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
+#include "service/depot/DepotService.h"
 // #include "../../domain/dto/FileDTO.h"
 
 /**

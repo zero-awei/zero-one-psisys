@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: Linsky
- @Date: 2023/2/13 20:31:04
+ @Author: awei
+ @Date: 2022/10/25 11:52:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,38 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DEPOT_QUERY_
-#define _DEPOT_QUERY_
-
-#include "../PageQuery.h"
+#ifndef _DEPOT_DO_
+#define _DEPOT_DO_
+#include "../DoInclude.h"
 
 /**
- * 基础资料仓库模块查询对象
+ * 示例数据库实体类
  */
-class DepotQuery : public PageQuery
+class DepotDO
 {
-	// 名称
+	// 姓名
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
 	CC_SYNTHESIZE(string, code, Code);
+	// 这里和下面要补充对应的VO的属性
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, DepotQuery& t) { // NOLINT
-		BIND_FROM_TO_ULL(j, t, pageIndex);
-		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, code);
+	DepotDO() {
+		name = "Depot";
+		code = "12345678910";
 	}
 };
 
-class OnlyValueQuery
-{
-	CC_SYNTHESIZE(string, id, ID);
-public:
-	// 绑定from_json
-	friend void from_json(const json& j, OnlyValueQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, id);
-	}
-};
-
-#endif // !_DEPOT_QUERY_
+#endif // !_DEPOT_DO_

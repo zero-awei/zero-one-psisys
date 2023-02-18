@@ -173,8 +173,10 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\depot\DepotController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\depot\DepotDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\depot\depotService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -185,6 +187,9 @@
   <ItemGroup>
     <ClInclude Include="api\depot\DepotController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\depot\DepotDAO.h" />
+    <ClInclude Include="dao\depot\DepotMapper.h" />
+    <ClInclude Include="domain\do\depot\DepotDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\depot\DepotDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
@@ -199,6 +204,7 @@
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\depot\DepotService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
