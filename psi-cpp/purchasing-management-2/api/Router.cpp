@@ -94,6 +94,7 @@ void Router::createSampleRouter()
 	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
 	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
 }
+#endif
 
 void Router::createUserDepartRouter()
 {

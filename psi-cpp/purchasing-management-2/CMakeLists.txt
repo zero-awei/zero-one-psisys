@@ -80,6 +80,7 @@ file (GLOB fdfsConf "../lib-common/include/fastdfs/conf/*")
 file (COPY ${fdfsConf} DESTINATION ${PROJECT_BINARY_DIR}/${appName}/conf)
 
 # 安装文件
+
 # 可执行文件
 install (TARGETS ${appName} RUNTIME DESTINATION ${appName})
 # RSA公钥证书
