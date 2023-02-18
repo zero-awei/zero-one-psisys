@@ -21,6 +21,9 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
+#define PURORDER
+#include "PurOrder/PurOrderController.h"
+
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -81,19 +84,20 @@ void Router::initRouter()
 	BIND_GET_ROUTER(server, "/query-byOperator", &StatisController::queryStatisByOperator, nullptr);
 	BIND_GET_ROUTER(server, "/query-bySupplier", &StatisController::queryStatisBySupplier, nullptr);
 	BIND_GET_ROUTER(server, "/query-byMaterial", &StatisController::queryStatisByMaterial, nullptr);
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
+	// 新增数据
+	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
+	// 修改数据
+	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
+	// 删除数据
+	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
+	// 删除ById
+	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 }
 
-#ifdef HTTP_SERVER_DEMO
-void Router::createSampleRouter()
-{
-	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
-	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
-	BIND_PUT_ROUTER(server, "/put", &SampleController::modifySample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &SampleController::removeSample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
-	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
-	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
-}
-#endif
+
 
 
