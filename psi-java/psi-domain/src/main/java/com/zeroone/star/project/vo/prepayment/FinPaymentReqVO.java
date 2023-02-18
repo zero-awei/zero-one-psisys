@@ -69,8 +69,14 @@ public class FinPaymentReqVO {
     /**
      * 含税金额
      */
-    @ApiModelProperty(value = "含税金额",example = "1000.00")
+    @ApiModelProperty(value = "申请金额",example = "1000.00")
     private BigDecimal amt;
+
+    /**
+     * 含税金额
+     */
+    @ApiModelProperty(value = "已付金额",example = "1000.00")
+    private BigDecimal paidAmount;
 
     /**
      * 备注

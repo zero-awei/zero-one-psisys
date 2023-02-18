@@ -2,6 +2,7 @@ package com.zeroone.star.project.vo.prepayment;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
@@ -14,6 +15,7 @@ import lombok.Data;
  * @Description:
  */
 @Data
+@AllArgsConstructor
 @ApiModel("供应商显示对象")
 public class SupplierVO {
     /**

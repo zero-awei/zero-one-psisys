@@ -2,6 +2,9 @@ package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.BasSupplier;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.prepayment.SupplierVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IBasSupplierService extends IService<BasSupplier> {
 
+    /**
+     * 获取供应商列表
+     * @return SupplierVO 供应商显示对象
+     * @author Kong
+     */
+    public List<SupplierVO> getSupplierList();
 }

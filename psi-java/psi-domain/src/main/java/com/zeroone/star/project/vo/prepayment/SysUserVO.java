@@ -2,6 +2,7 @@ package com.zeroone.star.project.vo.prepayment;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -13,6 +14,7 @@ import lombok.Data;
  * @Description: 用户表 字典
  */
 @Data
+@AllArgsConstructor
 @ApiModel("系统用户显示对象")
 public class SysUserVO {
     /**

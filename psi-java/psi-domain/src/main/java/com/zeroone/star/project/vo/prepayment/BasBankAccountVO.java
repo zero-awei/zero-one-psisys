@@ -2,7 +2,9 @@ package com.zeroone.star.project.vo.prepayment;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Author: Kong
@@ -13,6 +15,8 @@ import lombok.Data;
  * @Description: 银行账户 字典
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @ApiModel("银行账户显示对象")
 public class BasBankAccountVO {
     /**

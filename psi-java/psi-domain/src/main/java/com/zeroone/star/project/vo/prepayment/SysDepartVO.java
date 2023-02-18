@@ -2,7 +2,7 @@ package com.zeroone.star.project.vo.prepayment;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.*;
 
 /**
  * @Author: Kong
@@ -13,6 +13,8 @@ import lombok.Data;
  * @Description: 组织机构表 字典
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @ApiModel("组织机构显示对象")
 public class SysDepartVO {
     /**

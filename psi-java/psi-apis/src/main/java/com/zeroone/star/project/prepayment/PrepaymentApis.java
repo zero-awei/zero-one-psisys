@@ -102,21 +102,21 @@ public interface PrepaymentApis {
     public JsonVO<List<SupplierVO>> querySupplierList();
 
     /**
-     * 获取采购项目清单（无申请）
+     * 获取采购项目清单
      * param purchaseListQuery
      * return 采购项目清单
      * author 空
      */
-    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+    public JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
-    /**
-     * 获取采购项目清单（有申请）
-     * param purchaseListQuery
-     * return 采购项目清单
-     * author 空
-     */
-    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
-
+//    /**
+//     * 获取采购项目清单（有申请）
+//     * param purchaseListQuery
+//     * return 采购项目清单
+//     * author 空
+//     */
+//    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+    //TODO 文件上传接口
 
     /**
      * 获取系统用户列表
