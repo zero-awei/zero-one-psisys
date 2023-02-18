@@ -1,5 +1,7 @@
 package com.zeroone.star.prepayment.controller;
 
+import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
+import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
@@ -36,6 +38,12 @@ public class PrepaymentController implements PrepaymentApis {
     @Resource
     IPrepaymentService service;
 
+    @Resource
+    IFinPaymentService finPaymentService;
+
+    @Resource
+    IFinPaymentEntryService finPaymentEntryService;
+
     /**
      * 修改采购预付单功能
      * author forever爱
@@ -45,7 +53,7 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "修改采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        return service.modifyById(modifyDTO);
+        return finPaymentEntryService.modifyById(modifyDTO);
     }
 
     /**
@@ -57,7 +65,7 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "审核采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> auditById(AuditDTO auditDTO) {
-        return JsonVO.success("1111");
+        return finPaymentService.auditById(auditDTO);
     }
 
     /**

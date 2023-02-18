@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  * 采购订单明细 前端控制器
  * </p>
  *
- * @author zhe
- * @since 2023-02-13
+ * @author zhd
+ * @since 2023-02-18
  */
 @RestController
-@RequestMapping("/payment/pur-order-entry")
+@RequestMapping("/prepayment/pur-order-entry")
 public class PurOrderEntryController {
 
 }

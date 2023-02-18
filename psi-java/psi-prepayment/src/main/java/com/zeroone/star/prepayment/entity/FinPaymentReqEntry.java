@@ -11,8 +11,8 @@ import lombok.Setter;
  * 付款申请单明细
  * </p>
  *
- * @author zhe
- * @since 2023-02-13
+ * @author zhd
+ * @since 2023-02-18
  */
 @Getter
 @Setter

@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  * 付款单明细 前端控制器
  * </p>
  *
- * @author zhe
- * @since 2023-02-13
+ * @author zhd
+ * @since 2023-02-18
  */
 @RestController
-@RequestMapping("/payment/fin-payment-entry")
+@RequestMapping("/prepayment/fin-payment-entry")
 public class FinPaymentEntryController {
 
 }

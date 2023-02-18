@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 采购订单 Mapper 接口
  * </p>
  *
- * @author zhe
- * @since 2023-02-13
+ * @author zhd
+ * @since 2023-02-18
  */
 @Mapper
 public interface PurOrderMapper extends BaseMapper<PurOrder> {

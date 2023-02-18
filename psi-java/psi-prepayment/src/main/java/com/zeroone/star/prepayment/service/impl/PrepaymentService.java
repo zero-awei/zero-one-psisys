@@ -50,37 +50,9 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
     @Override
     @Transactional
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        //1、finPayment表中数据修改
-        FinPayment finPayment = new FinPayment();
-        BeanUtil.copyProperties(modifyDTO, finPayment);
-        int i = finPaymentMapper.updateById(finPayment);
-
-        // 2、finPaymentEntry表中数据修改
-        List<FinPaymentEntryDTO> entryDTOList = modifyDTO.getEntryDTOList();
-            //2.1使用java8 stream流的特性，将List<FinPaymentEntryDTO>转化为List<FinPaymentEntry>
-        List<FinPaymentEntry> finPaymentEntryList = entryDTOList.stream().map(
-                dto -> {
-                    FinPaymentEntry entity = new FinPaymentEntry();
-                    BeanUtils.copyProperties(dto, entity);
-                    return entity;
-                }
-        ).collect(Collectors.toList());
-        boolean flag = updateBatchById(finPaymentEntryList);
-        //3、判断如果成功，返回“成功”
-        if (flag){
-            return JsonVO.success("修改成功");
-        }
-        //4、判断如果失败，返回“失败”
-        return JsonVO.fail("修改失败");
+        return null;
     }
 
-    /**
-     * 审核采购预付单
-     *  根据id更新，用到审核DTO
-     * param auditDTO 审核DTO
-     * return
-     * author forever爱
-     */
     @Override
     public JsonVO<String> auditById(AuditDTO auditDTO) {
         return null;

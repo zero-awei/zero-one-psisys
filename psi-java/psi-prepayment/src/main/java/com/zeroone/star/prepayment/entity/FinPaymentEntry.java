@@ -11,8 +11,8 @@ import lombok.Setter;
  * 付款单明细
  * </p>
  *
- * @author zhe
- * @since 2023-02-13
+ * @author zhd
+ * @since 2023-02-18
  */
 @Getter
 @Setter
@@ -46,9 +46,6 @@ public class FinPaymentEntry implements Serializable {
      */
     private String srcBillType;
 
-    /**
-     * 源单id
-     */
     private String srcBillId;
 
     /**
