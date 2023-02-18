@@ -80,7 +80,7 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "查看单据详情信息（有申请）")
     @Override
     public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
-        return JsonVO.success(new DetHavVO());
+        return JsonVO.success(service.queryByBillHav(condition));
     }
 
     @GetMapping("query-one-no")
