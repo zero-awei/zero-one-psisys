@@ -37,7 +37,7 @@ public:
 	//CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
 	//CREATE_API_FUN_JSON(jsonQtrk, execJsonQtrk, QueryBillListDTO);
 	CREATE_API_FUN_BODY_FILE(importFileQtrk, execImportFileQtrk, ImportQtrkFileDTO);
-	CREATE_API_FUN_BODY_FILE(exportFileQtrk, execExportFileQtrk, ExportQtrkFileDTO);
+	CREATE_API_FUN_QUERY3(exportFileQtrk, execExportFileQtrk);
 	//API_BODY_PARAM_FILE(uploadFile, execUploadFile, QueryDetailMessageDTO);
 private:
 	//查询其他入库单据列表
@@ -53,11 +53,12 @@ private:
 	//JsonVO<uint64_t> execRemoveById(const IntID& id);
 	////演示JSON提交
 	//JsonVO<SampleVO> execJsonSample(const SampleDTO& dto);
+	
 	//演示文件导入
 	//JsonVO<QueryDetailMessageVO> execUploadFile(const QueryDetailMessageDTO& dto);
-	JsonVO<ImportQtrkFileVO> execImportFileQtrk(const ImportQtrkFileDTO& dto);
+	JsonVO<uint64_t> execImportFileQtrk(const ImportQtrkFileDTO& dto);
 	//演示文件导出
-	JsonVO<ExportQtrkFileVO> execExportFileQtrk(const ExportQtrkFileDTO& dto);
+	JsonVO<std::string> execExportFileQtrk();
 };
 
 #endif // _Qtrk_CONTROLLER_

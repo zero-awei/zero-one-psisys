@@ -18,6 +18,21 @@ JsonVO<PageVO<QueryQtrkBillListVO>> QtrkController::execQueryQtrk(const QueryQtr
 	return JsonVO<PageVO<QueryQtrkBillListVO>>(data, RS_SUCCESS);
 }
 
+JsonVO<PageVO<QueryQtrkBillDetailsVO>> QtrkController::execQueryDetailsQtrk(const QueryQtrkBillDetailsQuery& query, const PayloadDTO& payload)
+{
+	//定义一个Service
+	//SampleService service;
+	//查询数据
+	PageVO<QueryQtrkBillDetailsVO> data;
+	list<QueryQtrkBillDetailsVO> rows;
+	rows.push_back(QueryQtrkBillDetailsVO());
+	rows.push_back(QueryQtrkBillDetailsVO());
+	rows.push_back(QueryQtrkBillDetailsVO());
+	data.setRows(rows);
+	//响应结果
+	return JsonVO<PageVO<QueryQtrkBillDetailsVO>>(data, RS_SUCCESS);
+}
+
 JsonVO<uint64_t> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto)
 {
 	JsonVO<uint64_t> result;
@@ -85,35 +100,27 @@ JsonVO<uint64_t> QtrkController::execRemoveQtrk(const DeleteQtrkBillDTO& dto)
 //	return JsonVO<SampleVO>(vo, RS_API_UN_IMPL);
 //}
 //
-JsonVO<ImportQtrkFileVO> QtrkController::execImportFileQtrk(const ImportQtrkFileDTO& dto)
+JsonVO<uint64_t> QtrkController::execImportFileQtrk(const ImportQtrkFileDTO& dto)
 {
-	//构建一个测试VO
-	ImportQtrkFileVO vo;
-	/*vo.setNickname(dto.getNickname());
-	vo.setIdCard(dto.getIdCard());
-	vo.setAge(dto.getAge());*/
+	//JsonVO<string> result;
+	//	//构建一个测试VO
+	//	//输出测试上传文件路径列表
+	//	for (auto file : dto.getFiles()) {
+	//		std::cout << "path " << file << std::endl;
+	//	}
 
-	//输出测试上传文件路径列表
-	/*for (auto file : dto.getFiles()) {
-		std::cout << "path " << file << std::endl;
-	}*/
-
-	//响应结果
-	return JsonVO<ImportQtrkFileVO>(vo, RS_API_UN_IMPL);
+	//	
+		//响应结果
+		return JsonVO<uint64_t>();
 }
-JsonVO<ExportQtrkFileVO> QtrkController::execExportFileQtrk(const ExportQtrkFileDTO& dto)
+JsonVO<std::string> QtrkController::execExportFileQtrk()
 {
-	//构建一个测试VO
-	ExportQtrkFileVO vo;
-	/*vo.setNickname(dto.getNickname());
-	vo.setIdCard(dto.getIdCard());
-	vo.setAge(dto.getAge());*/
+	
+	//return JsonVO<std::string>();
+	
 
-	//输出测试上传文件路径列表
-	/*for (auto file : dto.getFiles()) {
-		std::cout << "path " << file << std::endl;
-	}*/
 
 	//响应结果
-	return JsonVO<ExportQtrkFileVO>(vo, RS_API_UN_IMPL);
+
+	return JsonVO<string>();
 }

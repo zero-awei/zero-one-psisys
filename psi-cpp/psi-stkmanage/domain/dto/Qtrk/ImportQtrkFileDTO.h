@@ -11,12 +11,12 @@
 class ImportQtrkFileDTO : public FileDTO
 {
 	// 单据编号
-	CC_SYNTHESIZE(std::string, id, Id);
+	//CC_SYNTHESIZE(std::string, id, Id);
 	
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, ImportQtrkFileDTO& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, id);
+		//BIND_FROM_TO_NORMAL(j, t, id);
 		
 	}
 };

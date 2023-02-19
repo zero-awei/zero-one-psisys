@@ -10,7 +10,7 @@
 class QueryQtrkBillListDTO :public FileDTO
 {
 	// 单据编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据日期-开始
 	CC_SYNTHESIZE(string, billDateStart, BillDateStart);
 	// 单据日期-结束

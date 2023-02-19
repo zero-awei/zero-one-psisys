@@ -11,7 +11,7 @@
 class QueryQtrkBillDetailsQuery : public PageQuery
 {
 	// µ¥¾Ý±àºÅ
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 public:
 	// °ó¶¨from_json
 	friend void from_json(const json& j, QueryQtrkBillDetailsQuery& t) { // NOLINT

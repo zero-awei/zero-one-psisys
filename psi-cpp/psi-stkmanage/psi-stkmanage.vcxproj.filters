@@ -54,12 +54,6 @@
     <ClInclude Include="domain\GlobalInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillListDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -119,9 +113,6 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillListDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="api\Qtrk\QtrkController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -132,9 +123,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

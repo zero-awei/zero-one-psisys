@@ -17,11 +17,11 @@ class QueryQtrkBillDetailsVO
 	//单据阶段
 	CC_SYNTHESIZE(string, billStage, BillStage);
 	//已生效
-	CC_SYNTHESIZE(int, isEffective, IsEffective);
+	CC_SYNTHESIZE(uint64_t, isEffective, IsEffective);
 	//已关闭
-	CC_SYNTHESIZE(int, isClosed, IsClosed);
+	CC_SYNTHESIZE(uint64_t, isClosed, IsClosed);
 	//已作废
-	CC_SYNTHESIZE(int, isVoided, IsVoided);
+	CC_SYNTHESIZE(uint64_t, isVoided, IsVoided);
 	//生效时间
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
 	//核批人 
@@ -39,11 +39,11 @@ class QueryQtrkBillDetailsVO
 	//修改人
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//自动单据
-	CC_SYNTHESIZE(int, isAuto, IsAuto);
+	CC_SYNTHESIZE(uint64_t, isAuto, IsAuto);
 	//红字单据
-	CC_SYNTHESIZE(int, isRubric, IsRubric);
+	CC_SYNTHESIZE(uint64_t, isRubric, IsRubric);
 	//有应付
-	CC_SYNTHESIZE(int, hasRp, HasRp);
+	CC_SYNTHESIZE(uint64_t, hasRp, HasRp);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 供应商
@@ -51,6 +51,30 @@ class QueryQtrkBillDetailsVO
 	//入库经办
 	CC_SYNTHESIZE(string, handler, Handler);
 public:
+	QueryQtrkBillDetailsVO()
+	{
+		id = "12334";
+		billDate = "2023 - 2 - 17";
+		billStage = "ing";
+		isEffective = 0;
+		isClosed = 0;
+		isVoided = 0;
+		effectiveTime = "2023-2-17";
+		approver = "aaaa";
+		bpmiInstanceId = "";
+		createBy = "gonverner";
+		createTime = "2023-2-17";
+		sysOrgCode = "research gorver";
+		updateTime = "2023-2-17";
+		updateBy = "wangwu";
+		isAuto = 0;
+		isRubric = 0;
+		hasRp = 0;
+		subject = "sgrg";
+		supplierId = "wangwu";
+		handler = "aafef";
+		
+	}
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, QueryQtrkBillDetailsVO& t); // NOLINT
 	BIND_TO_JSON(QueryQtrkBillDetailsVO, id, billDate, billStage, isEffective, isClosed, isVoided, effectiveTime, approver,

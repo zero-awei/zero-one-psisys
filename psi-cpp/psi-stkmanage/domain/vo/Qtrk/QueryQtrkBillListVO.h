@@ -11,7 +11,7 @@
 class QueryQtrkBillListVO
 {
 	// 单据编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据日期-开始
 	CC_SYNTHESIZE(string, billDateStart, BillDateStart);
 	// 单据日期-结束
@@ -31,8 +31,15 @@ class QueryQtrkBillListVO
 public:
 	QueryQtrkBillListVO()
 	{
-		id = 1;
+		id ="123";
+		billDateStart = "2023 - 2 - 17";
+		billDateEnd = "2023 - 2 - 18";
 		subject = "sgrg";
+		supplierId = "wangwu";
+		billStage = "ing";
+		isEffective = 0;
+		isClosed = 0;
+		isVoided = 0;
 	}
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, QueryQtrkBillListVO& t); // NOLINT

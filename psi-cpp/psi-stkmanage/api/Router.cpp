@@ -83,32 +83,34 @@ void Router::createQtrkRouter()
 {
 	
 	BIND_GET_ROUTER(server, "/query-qtrk-bill-list", &QtrkController::queryQtrk, nullptr);
-	BIND_GET_ROUTER(server, "/query-qtrk-bill-details", &QtrkController::queryQtrk, nullptr);
+	BIND_GET_ROUTER(server, "/query-qtrk-bill-details", &QtrkController::querydetailsQtrk, nullptr);
 	BIND_POST_ROUTER(server, "/add-qtrk-bill", &QtrkController::addQtrk, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-qtrk-bill", &QtrkController::modifyQtrk, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-qtrk-bill", &QtrkController::removeQtrk, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-qtrk-bill-state", &QtrkController::modifyQtrk, nullptr);
-	BIND_POST_ROUTER(server, "/import-qtrk-file", [](request& req, response& res) {
-		if (req.get_content_type() != content_type::multipart)
-		{
-			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
-			nlohmann::json jvo = nlohmann::json(vo);
-			jvo.erase("data");
-			res.render_json(jvo);
-			return;
-		}
-		//获取表单参数
-		std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-		std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-		//获取文件路径
-		auto& files = req.get_upload_files();
-		std::vector<string> filePaths;
-		for (auto& file : files) {
-			filePaths.push_back(file.get_file_path().substr(1));
-			std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-		}
-		res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
-		}, nullptr);
+	//BIND_POST_ROUTER(server, "/import-qtrk-file", [](request& req, response& res) {
+	//	if (req.get_content_type() != content_type::multipart)
+	//	{
+	//		JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
+	//		nlohmann::json jvo = nlohmann::json(vo);
+	//		jvo.erase("data");
+	//		res.render_json(jvo);
+	//		return;
+	//	}
+	//	//获取表单参数
+	//	std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
+	//	std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
+	//	//获取文件路径
+	//	auto& files = req.get_upload_files();
+	//	std::vector<string> filePaths;
+	//	for (auto& file : files) {
+	//		filePaths.push_back(file.get_file_path().substr(1));
+	//		std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
+	//	}
+	//	res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
+	//	}, nullptr);
+	BIND_POST_ROUTER(server, "/import-qtrk-file", &QtrkController::importFileQtrk, nullptr);
+
 	BIND_POST_ROUTER(server, "/export-qtrk-file", &QtrkController::exportFileQtrk, nullptr);
 	//BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
 	//BIND_POST_ROUTER(server, "/json", &QtrkController::jsonSample, nullptr);
