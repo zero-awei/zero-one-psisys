@@ -29,13 +29,13 @@
 class MeasurementQuery : public PageQuery
 {
 	// 名称
-	CC_SYNTHESIZE(string, 名称, 名称);
+	CC_SYNTHESIZE(string, name, Name);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, MeasurementQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, 名称);
+		BIND_FROM_TO_NORMAL(j, t, name);
 	}
 };
 

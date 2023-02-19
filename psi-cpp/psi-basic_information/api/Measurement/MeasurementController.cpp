@@ -20,14 +20,16 @@
 #include "MeasurementController.h"
 #include "../../service/Measurement/MeasurementService.h"
 
+/*
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
-	MeasurementService service;
+	//MeasurementService service;
 	//查询数据
-	PageVO<MeasurementVO> result = service.listAll(query);
+	//PageVO<MeasurementVO> result = service.listAll(query);
 	//响应结果
-	return JsonVO<PageVO<MeasurementVO>>(result, RS_SUCCESS);
+	//return JsonVO<PageVO<MeasurementVO>>(result, RS_SUCCESS);
+	return JsonVO<PageVO<MeasurementVO>>();
 }
 
 JsonVO<uint64_t> MeasurementController::execAddMeasurement(const MeasurementDTO& dto)
@@ -44,7 +46,7 @@ JsonVO<uint64_t> MeasurementController::execAddMeasurement(const MeasurementDTO&
 		result.fail(id);
 	}
 	//响应结果
-	return result;
+	//return result;
 }
 
 JsonVO<uint64_t> MeasurementController::execModifyMeasurement(const MeasurementDTO& dto)
@@ -115,3 +117,44 @@ JsonVO<UserVO> MeasurementController::execModifyUserInfo(const UserDTO& dto)
 	return JsonVO<UserVO>(vo, RS_API_UN_IMPL);
 }
 */
+
+JsonVO<PageVO<MeasurementVO>> execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+{
+	return JsonVO<PageVO<MeasurementVO>>();
+}
+//查询指定单位子级列表
+JsonVO<MeasurementVO> execQueryKidMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+{
+	return JsonVO<MeasurementVO>();
+}
+//查询指定单位详细信息
+JsonVO<MeasurementVO> execQueryDetailMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+{
+	return JsonVO<MeasurementVO>();
+}
+//添加计量单位
+JsonVO<PageVO<MeasurementVO>> execAddMeasurement(const MeasurementDTO& dto)
+{
+	return JsonVO<PageVO<MeasurementVO>>();
+}
+//修改计量单位
+JsonVO<PageVO<MeasurementVO>> execModifyMeasurement(const MeasurementDTO& dto)
+{
+	return JsonVO<PageVO<MeasurementVO>>();
+}
+//删除计量单位(通过名称删除)
+JsonVO<PageVO<MeasurementVO>> execRemoveMeasurement(const MeasurementDTO& dto)
+{
+	return JsonVO<PageVO<MeasurementVO>>();
+}
+//JsonVO<PageVO<MeasurementVO>> execRemoveById(const IntID& id);
+//文件导入
+JsonVO<PageVO<MeasurementVO>> execAddFileMeasurements(const MeasurementDTO& dto)
+{
+	return JsonVO<PageVO<MeasurementVO>>();
+}
+//文件导出
+JsonVO<string> execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload)
+{
+	return JsonVO<string>();
+}

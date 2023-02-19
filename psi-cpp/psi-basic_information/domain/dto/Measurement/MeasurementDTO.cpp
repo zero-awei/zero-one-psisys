@@ -19,12 +19,12 @@
 #include "stdafx.h"
 #include "MeasurementDTO.h"
 void from_json(const json& j, MeasurementDTO& t) { // NOLINT
-	BIND_FROM_TO_NORMAL(j, t, 名称);
-	BIND_FROM_TO_NORMAL(j, t, 符号);
-	BIND_FROM_TO_I(j, t, 换算系数);
-	BIND_FROM_TO_NORMAL(j, t, 启用);
-	BIND_FROM_TO_NORMAL(j, t, 创建时间);
-	BIND_FROM_TO_NORMAL(j, t, 创建人);
-	BIND_FROM_TO_NORMAL(j, t, 修改时间);
-	BIND_FROM_TO_NORMAL(j, t, 修改人);
+	BIND_FROM_TO_NORMAL(j, t, name);
+	BIND_FROM_TO_NORMAL(j, t, sign);
+	BIND_FROM_TO_I(j, t, scale);
+	BIND_FROM_TO_NORMAL(j, t, enable);
+	BIND_FROM_TO_NORMAL(j, t, ctime);
+	BIND_FROM_TO_NORMAL(j, t, creater);
+	BIND_FROM_TO_NORMAL(j, t, rtime);
+	BIND_FROM_TO_NORMAL(j, t, riviser);
 }

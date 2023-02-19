@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "Measurement/MeasurementController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -67,17 +68,18 @@ void Router::initRouter()
 			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
-	createMeasurementRouter();
+	createSampleRouter();
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createMeasurementRouter();
 
 }
 
 #ifdef HTTP_SERVER_DEMO
-void Router::createSampleRouter()
+void Router::createMeasurementRouter()
 {
 	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
 	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
@@ -94,3 +96,15 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createMeasurementRouter()
+{
+	BIND_GET_ROUTER(server, "/Measurement-get", &MeasurementController::queryMeasurement, nullptr);
+	BIND_POST_ROUTER(server, "/Measurement-post", &MeasurementController::addMeasurement, nullptr);
+	BIND_PUT_ROUTER(server, "/Measurement-put", &MeasurementController::modifyMeasurement, nullptr);
+	BIND_DEL_ROUTER(server, "/Measurement-delete", &MeasurementController::removeMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-get", &MeasurementController::queryMeasurement, nullptr);
+	//BIND_DEL_ROUTER(server, "/delete-by-id", &MeasurementController::removeById, nullptr);
+	//BIND_POST_ROUTER(server, "/json", &MeasurementController::jsonSample, nullptr);
+	//BIND_POST_ROUTER(server, "/modify-user-info", &MeasurementController::modifyUserInfo, nullptr);
+}

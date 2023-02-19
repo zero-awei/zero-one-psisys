@@ -34,10 +34,12 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
+	//创建路由
+	void createMeasurementRouter();
 private:
 #ifdef HTTP_SERVER_DEMO
 	//创建路由
-	void createMeasurementRouter();
+	//void createMeasurementRouter();
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif

@@ -19,7 +19,7 @@
 */
 
 #ifndef _Measurement_DO_
-#define _Mesurement_DO_
+#define _Measurement_DO_
 #include "../DoInclude.h"
 
 /**
@@ -28,31 +28,31 @@
 class MeasurementDO
 {
 	// 名称
-	CC_SYNTHESIZE(string, 名称, 名称);
+	CC_SYNTHESIZE(string, name, Name);
 	// 符号
-	CC_SYNTHESIZE(string, 符号, 符号);
+	CC_SYNTHESIZE(string, sign, Sign);
 	// 换算系数
-	CC_SYNTHESIZE(uint64_t, 换算系数, 换算系数);
+	CC_SYNTHESIZE(uint64_t, scale, Scale);
 	// 启用
-	CC_SYNTHESIZE(string, 启用, 启用);
+	CC_SYNTHESIZE(string, enable, Enable);
 	// 创建时间
-	CC_SYNTHESIZE(string, 创建时间, 创建时间);
+	CC_SYNTHESIZE(string, ctime, Ctime);
 	// 创建人
-	CC_SYNTHESIZE(string, 创建人, 创建人);
+	CC_SYNTHESIZE(string, creater, Creater);
 	// 修改时间
-	CC_SYNTHESIZE(string, 修改时间, 修改时间);
+	CC_SYNTHESIZE(string, rtime, Rtime);
 	// 修改人
-	CC_SYNTHESIZE(string, 修改人, 修改人);
+	CC_SYNTHESIZE(string, riviser, Riviser);
 public:
 	MeasurementDO() {
-		名称 = "";
-		符号 = "";
-		换算系数 = 1;
-		启用 = "";
-		创建时间 = "";
-		创建人 = "";
-		修改时间 = "";
-		修改人 = "";
+		name = "";
+		sign = "";
+		scale = 1;
+		enable = "";
+		ctime = "";
+		creater = "";
+		rtime = "";
+		riviser = "";
 	}
 };
 

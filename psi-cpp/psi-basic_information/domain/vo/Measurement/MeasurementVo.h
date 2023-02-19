@@ -32,9 +32,9 @@ class MeasurementVO
 	// 符号
 	CC_SYNTHESIZE(string, sign, Sign);
 	// 换算系数
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(uint64_t, scale, Scale);
 	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	CC_SYNTHESIZE(string, enable, Enable);
 	// 创建时间
 	CC_SYNTHESIZE(string, ctime, Ctime);
 	// 创建人
@@ -42,10 +42,40 @@ class MeasurementVO
 	// 修改时间
 	CC_SYNTHESIZE(string, rtime, Rtime);
 	// 修改人
-	CC_SYNTHESIZE(string, reviser, Reviser);
+	CC_SYNTHESIZE(string, riviser, Riviser);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MeasurementDTO, 名称, 符号, 换算系数, 启用, 创建时间, 创建人, 修改时间, 修改人);
+	BIND_TO_JSON(MeasurementVO, name, sign, scale, enable, ctime, creater, rtime, riviser);
 };
 
-#endif // !_measurement_VO_
+class MeasurementDetailVO
+{
+	// 名称
+	CC_SYNTHESIZE(string, name, Name);
+	// 符号
+	CC_SYNTHESIZE(string, sign, Sign);
+	// 换算系数
+	CC_SYNTHESIZE(uint64_t, scale, Scale);
+	// 启用
+	CC_SYNTHESIZE(string, enable, Enable);
+public:
+	// 绑定JSON转换方法
+	BIND_TO_JSON(MeasurementDetailVO, name, sign, scale, enable);
+};
+
+class MeasurementActionInfoVO
+{
+	// 创建时间
+	CC_SYNTHESIZE(string, ctime, Ctime);
+	// 创建人
+	CC_SYNTHESIZE(string, creater, Creater);
+	// 修改时间
+	CC_SYNTHESIZE(string, rtime, Rtime);
+	// 修改人
+	CC_SYNTHESIZE(string, riviser, Riviser);
+public:
+	// 绑定JSON转换方法
+	BIND_TO_JSON(MeasurementActionInfoVO, ctime, creater, rtime, riviser);
+};
+
+#endif // !_MEASUREMENT_VO_
