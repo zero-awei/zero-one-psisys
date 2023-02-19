@@ -179,11 +179,17 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\Cgrk\CgrkController.cpp" />
     <ClCompile Include="api\Cgthck\CgthckController.cpp" />
+    <ClCompile Include="api\Qtrk\QtrkController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\Zdrk\ZdrkController.cpp" />
     <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp" />
+    <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillListDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\DocFileDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp" />
@@ -199,10 +205,13 @@
   <ItemGroup>
     <ClInclude Include="api\Cgrk\CgrkController.h" />
     <ClInclude Include="api\Cgthck\CgthckController.h" />
+    <ClInclude Include="api\Qtrk\QtrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
+    <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
@@ -218,6 +227,13 @@
     <ClInclude Include="domain\dto\Cgthck\ModifyCgthckBillDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\AddQtrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\DeleteQtrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\ExportQtrkFileDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\ImportQtrkFileDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\ModifyQtrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillListDTO.h" />
     <ClInclude Include="domain\dto\Zdrk\AddZdrkBillDTO.h" />
     <ClInclude Include="domain\dto\Zdrk\DocFileDTO.h" />
     <ClInclude Include="domain\dto\Zdrk\ImportZdrkFileDTO.h" />
@@ -232,6 +248,8 @@
     <ClInclude Include="domain\query\Cgrk\QueryPurOrderListQuery.h" />
     <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h" />
+    <ClInclude Include="domain\query\Qtrk\QueryQtrkBillListQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h" />
     <ClInclude Include="domain\vo\Cgrk\CgrkBillEntryVO.h" />
@@ -243,6 +261,10 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h" />
+    <ClInclude Include="domain\vo\Qtrk\ImportQtrkFileVO.h" />
+    <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillDetailsVO.h" />
+    <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillListVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h" />
