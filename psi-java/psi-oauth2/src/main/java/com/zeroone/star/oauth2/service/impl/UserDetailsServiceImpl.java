@@ -54,7 +54,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             //3 将数据库角色转换成Security权限对象
             List<GrantedAuthority> authorities = new ArrayList<>();
             roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getKeyword())));
-            //4 构建权限角色对象
+            //4 构建权限角色对象 TODO: 扩展存储对象在这里通过数据库查询获取并注入到SecurityUser对象中
             return new SecurityUser(user, authorities);
         } else if (AuthConstant.CLIENT_APP.equals(clientId)) {
             throw new UsernameNotFoundException("用户端查找用户尚未实现");

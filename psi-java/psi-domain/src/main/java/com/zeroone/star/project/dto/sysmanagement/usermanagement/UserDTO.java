@@ -5,11 +5,15 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+//import lombok.Getter;
+//import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
+//@Getter
+//@Setter
 @Data
 @ApiModel("用户管理的数据传输对象")
 public class UserDTO {
@@ -149,6 +153,11 @@ public class UserDTO {
      */
     @ApiModelProperty(value = "设备ID", example = "1")
     private String clientId;
+
+//    /**
+//    *  盐值
+//    * */
+//    private String salt;
 
 
 }

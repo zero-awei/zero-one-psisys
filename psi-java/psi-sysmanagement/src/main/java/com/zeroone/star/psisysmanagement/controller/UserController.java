@@ -12,6 +12,7 @@ import com.zeroone.star.project.vo.sysmanagement.usermanagement.AddUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import com.zeroone.star.psisysmanagement.entity.User;
+import com.zeroone.star.psisysmanagement.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -41,32 +42,39 @@ public class UserController implements UserApis {
     @Resource
     EasyExcelComponent excel;
 
+    @Resource
+    private IUserService iUserService;
+
+//    axin
     @ApiOperation(value = "查询用户列表")
     @GetMapping("/list-all")
     @Override
     public JsonVO<PageVO<UserVO>> listAllUsers(@Validated UserQuery query) {
-        return null;
+        return JsonVO.success(iUserService.listAllUsers(query));
     }
 
-    @ApiOperation(value = "查询用户")
+//    axin
+    @ApiOperation(value = "模糊查询用户")
     @GetMapping("/query-user")
     @Override
     public JsonVO<PageVO<UserVO>> queryUser(@Validated FindUserQuery query) {
-        return null;
+        return JsonVO.success(iUserService.queryUser(query));
     }
 
     @ApiOperation(value = "修改用户时的信息回显")
     @GetMapping("/review")
     @Override
     public JsonVO<EditUserVO> review(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        return null;
+        return iUserService.review(id);
     }
 
+//    axin
     @ApiOperation(value = "添加用户")
     @PostMapping("/add")
     @Override
     public JsonVO<String> addUser(UserDTO dto) {
-        return null;
+        iUserService.insert(dto);
+        return JsonVO.success("添加成功");
     }
 
     @ApiOperation(value = "删除用户")
@@ -74,6 +82,7 @@ public class UserController implements UserApis {
     @Override
     public JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") @RequestParam String id) {
         log.info("id = {}", id);
+        iUserService.deleteUser(id);
         return JsonVO.success("删除成功");
     }
 
@@ -81,23 +90,27 @@ public class UserController implements UserApis {
     @PutMapping("/modify")
     @Override
     public JsonVO<String> modifyUser(UserDTO dto) {
-        return null;
+        iUserService.modifyUser(dto);
+        return JsonVO.success("修改成功");
     }
 
     @ApiOperation(value = "冻结/解冻用户")
     @PutMapping("/status")
     @Override
     public JsonVO<String> modifyStatus(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        return null;
+        iUserService.modifyStatus(id);
+        return JsonVO.success("状态修改成功");
     }
 
     @ApiOperation(value = "导入用户")
     @PostMapping("/upload")
     @Override
     public JsonVO<String> upload() {
-        return null;
+
+        return JsonVO.success("导入成功");
     }
 
+//    axin
     @SneakyThrows
     @ApiOperation(value = "导出用户")
     @GetMapping(value = "/get-user", produces = "application/octet-stream")
