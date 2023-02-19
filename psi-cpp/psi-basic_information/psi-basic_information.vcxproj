@@ -173,7 +173,6 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\Measurement\MeasurementController.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="domain\dto\Measurement\MeasurementDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">

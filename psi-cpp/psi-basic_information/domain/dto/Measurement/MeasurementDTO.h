@@ -46,8 +46,33 @@ class MeasurementDTO : public FileDTO
 	CC_SYNTHESIZE(string, riviser, Riviser);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, MeasurementDTO& t); // NOLINT
+	friend void from_json(const json& j, MeasurementDTO& t)
+	{
+		BIND_FROM_TO_NORMAL(j, t, name);
+		BIND_FROM_TO_NORMAL(j, t, sign);
+		BIND_FROM_TO_I(j, t, scale);
+		BIND_FROM_TO_NORMAL(j, t, enable);
+		BIND_FROM_TO_NORMAL(j, t, ctime);
+		BIND_FROM_TO_NORMAL(j, t, creater);
+		BIND_FROM_TO_NORMAL(j, t, rtime);
+		BIND_FROM_TO_NORMAL(j, t, riviser);
+	}
+
 	BIND_TO_JSON(MeasurementDTO, name, sign, scale, enable, ctime, creater, rtime, riviser);
+};
+
+class MeasurementQueryDelete
+{
+	// 名称
+	CC_SYNTHESIZE(string, name, Name);
+public:
+	// 绑定JSON转换方法
+	friend void from_json(const json& j, MeasurementQueryDelete& t)
+	{
+		BIND_FROM_TO_NORMAL(j, t, name);
+	}
+
+	BIND_TO_JSON(MeasurementQueryDelete, name);
 };
 
 #endif // !_Measurement_DTO_

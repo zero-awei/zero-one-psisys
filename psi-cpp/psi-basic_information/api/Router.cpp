@@ -100,10 +100,13 @@ void Router::createUserDepartRouter()
 void Router::createMeasurementRouter()
 {
 	BIND_GET_ROUTER(server, "/Measurement-get", &MeasurementController::queryMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-get-kid", &MeasurementController::queryKidMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-get-detail", &MeasurementController::queryDetailMeasurement, nullptr);
 	BIND_POST_ROUTER(server, "/Measurement-post", &MeasurementController::addMeasurement, nullptr);
 	BIND_PUT_ROUTER(server, "/Measurement-put", &MeasurementController::modifyMeasurement, nullptr);
 	BIND_DEL_ROUTER(server, "/Measurement-delete", &MeasurementController::removeMeasurement, nullptr);
-	BIND_GET_ROUTER(server, "/Measurement-get", &MeasurementController::queryMeasurement, nullptr);
+	BIND_POST_ROUTER(server, "/Measurement-addfile", &MeasurementController::queryMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-export", &MeasurementController::addFileMeasurement, nullptr);
 	//BIND_DEL_ROUTER(server, "/delete-by-id", &MeasurementController::removeById, nullptr);
 	//BIND_POST_ROUTER(server, "/json", &MeasurementController::jsonSample, nullptr);
 	//BIND_POST_ROUTER(server, "/modify-user-info", &MeasurementController::modifyUserInfo, nullptr);

@@ -118,43 +118,43 @@ JsonVO<UserVO> MeasurementController::execModifyUserInfo(const UserDTO& dto)
 }
 */
 
-JsonVO<PageVO<MeasurementVO>> execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
 	return JsonVO<PageVO<MeasurementVO>>();
 }
 //查询指定单位子级列表
-JsonVO<MeasurementVO> execQueryKidMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+JsonVO<MeasurementVO> MeasurementController::execQueryKidMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
 	return JsonVO<MeasurementVO>();
 }
 //查询指定单位详细信息
-JsonVO<MeasurementVO> execQueryDetailMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+JsonVO<MeasurementVO> MeasurementController::execQueryDetailMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
 	return JsonVO<MeasurementVO>();
 }
 //添加计量单位
-JsonVO<PageVO<MeasurementVO>> execAddMeasurement(const MeasurementDTO& dto)
+JsonVO<PageVO<MeasurementVO>> MeasurementController::execAddMeasurement(const MeasurementDTO& dto)
 {
 	return JsonVO<PageVO<MeasurementVO>>();
 }
 //修改计量单位
-JsonVO<PageVO<MeasurementVO>> execModifyMeasurement(const MeasurementDTO& dto)
+JsonVO<PageVO<MeasurementVO>> MeasurementController::execModifyMeasurement(const MeasurementDTO& dto)
 {
 	return JsonVO<PageVO<MeasurementVO>>();
 }
 //删除计量单位(通过名称删除)
-JsonVO<PageVO<MeasurementVO>> execRemoveMeasurement(const MeasurementDTO& dto)
+JsonVO<PageVO<MeasurementVO>> MeasurementController::execRemoveMeasurement(const MeasurementQueryDelete& dto)
 {
 	return JsonVO<PageVO<MeasurementVO>>();
 }
 //JsonVO<PageVO<MeasurementVO>> execRemoveById(const IntID& id);
 //文件导入
-JsonVO<PageVO<MeasurementVO>> execAddFileMeasurements(const MeasurementDTO& dto)
+JsonVO<PageVO<MeasurementVO>> MeasurementController::execAddFileMeasurement(const MeasurementDTO& dto)
 {
 	return JsonVO<PageVO<MeasurementVO>>();
 }
 //文件导出
-JsonVO<string> execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload)
+JsonVO<string> MeasurementController::execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload)
 {
 	return JsonVO<string>();
 }

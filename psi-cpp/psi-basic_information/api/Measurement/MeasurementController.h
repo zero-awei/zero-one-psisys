@@ -35,12 +35,12 @@ class MeasurementController
 public:
 	//前端传输给后端的各种请求
 	CREATE_API_FUN_QUERY_PAYLOAD(queryMeasurement, execQueryMeasurement, MeasurementQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryKidMeasuremnet, execQueryKidMeasurement, MeasurementQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryKidMeasurement, execQueryKidMeasurement, MeasurementQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailMeasurement, execQueryDetailMeasurement, MeasurementQuery);
 	CREATE_API_FUN_BODY(addMeasurement, execAddMeasurement, MeasurementDTO);
 	CREATE_API_FUN_BODY(modifyMeasurement, execModifyMeasurement, MeasurementDTO);
-	CREATE_API_FUN_BODY(removeMeasurement, execRemoveMeasurement, MeasurementQuery);
-	CREATE_API_FUN_BODY_FILE(addFileMeasurements, execAddFileMeasurements, MeasurementDTO);
+	CREATE_API_FUN_BODY(removeMeasurement, execRemoveMeasurement, MeasurementQueryDelete);
+	CREATE_API_FUN_BODY_FILE(addFileMeasurement, execAddFileMeasurement, MeasurementDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, MeasurementQuery);
 
 private:
@@ -56,9 +56,9 @@ private:
 	//修改计量单位
 	JsonVO<PageVO<MeasurementVO>> execModifyMeasurement(const MeasurementDTO& dto);
 	//删除计量单位(通过名称删除)
-	JsonVO<PageVO<MeasurementVO>> execRemoveMeasurement(const MeasurementDTO& dto);
+	JsonVO<PageVO<MeasurementVO>> execRemoveMeasurement(const MeasurementQueryDelete& dto);
 	//文件导入
-	JsonVO<PageVO<MeasurementVO>> execAddFileMeasurements(const MeasurementDTO& dto);
+	JsonVO<PageVO<MeasurementVO>> execAddFileMeasurement(const MeasurementDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload);
 };
