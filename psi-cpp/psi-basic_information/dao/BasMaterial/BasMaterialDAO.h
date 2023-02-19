@@ -45,6 +45,6 @@ public:
 	// 修改物料
 	int update(const BasMaterialDO& uObj);
 	// 通过code编码删除物料
-	int deleteByCode(string code);
+	int deleteById(string id);
 };
 #endif // !_BASMATERIAL_DAO_

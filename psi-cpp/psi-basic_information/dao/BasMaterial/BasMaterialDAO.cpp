@@ -117,9 +117,9 @@ int BasMaterialDAO::update(const BasMaterialDO& uObj)
 	return sqlSession->executeUpdate(sql, "%s%s%s%s%i%s%s%i%s%s%s%s%s%s%s", categoryID, uObj.getCode(), uObj.getName(), uObj.getAuxName(), uObj.getIsEnabled(), uObj.getModel(), unitID, uObj.getSalePrice(), uObj.getTaxCode(), uObj.getRemark(), uObj.getUpdateBy(), uObj.getUpdateTime(), uObj.getId());
 }
 
-//删除行,通过编码还是id？？？？？
-int BasMaterialDAO::deleteByCode(string code)
+//删除行,***通过id,id隐含，不显示
+int BasMaterialDAO::deleteById(string id)
 {
-	string sql = "DELETE FROM `bas_material` WHERE `code`=?";
-	return sqlSession->executeUpdate(sql, "%ull", code);
+	string sql = "DELETE FROM `bas_material` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", id);
 }
