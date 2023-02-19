@@ -21,12 +21,13 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
+
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
-
+#include"BasMaterial/BasMaterialController.h"
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -73,6 +74,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createBasMaterialRouter();
 
 }
 
@@ -94,3 +96,12 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+void Router::createBasMaterialRouter() {
+	BIND_GET_ROUTER(server, "/get-basmaterial", &BasMaterialController::queryBasMaterial, nullptr);
+	BIND_GET_ROUTER(server, "/get-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-add", &BasMaterialController::addBasMaterial, nullptr);
+	BIND_PUT_ROUTER(server, "/put-modify", &BasMaterialController::modifyBasMaterial, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
+	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
+}

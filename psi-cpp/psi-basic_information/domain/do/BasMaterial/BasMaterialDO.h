@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: 111
- @Date: 2023/02/15 21:00
+ @Date: 2023/02/19 11:52:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,16 +17,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _BASMATERIAL_DTO_
-#define _BASMATERIAL_DTO_
-
-#include "../../GlobalInclude.h"
-#include "../FileDTO.h"
+#ifndef _BASMATERIAL_DO_
+#define _BASMATERIAL_DO_
+#include "../DoInclude.h"
 
 /**
- * 基础资料物料模块传输对象
+ * 示例数据库实体类
  */
-class BasMaterialDTO : public FileDTO
+class BasMaterialDO
 {
 	CC_SYNTHESIZE(string, id, Id);
 	// 分类 需要查另一个表
@@ -59,43 +57,25 @@ class BasMaterialDTO : public FileDTO
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	// 修改时间
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
+
 public:
-	// 绑定JSON转换方法
-	friend void from_json(const json& j, BasMaterialDTO& t) {// NOLINT
-		BIND_FROM_TO_NORMAL(j, t, id);
-	// 编码
-		BIND_FROM_TO_NORMAL(j, t, code);
-		// 名称
-		BIND_FROM_TO_NORMAL(j, t, name);
-		// 助记名
-		BIND_FROM_TO_NORMAL(j, t, auxName);
-
-		// 分类 需要查另一个表
-		BIND_FROM_TO_NORMAL(j, t, categoryId);
-		//规格型号
-		BIND_FROM_TO_NORMAL(j, t, model);
-		//主单位 需要查另一个表
-		BIND_FROM_TO_NORMAL(j, t, unitId);
-		//销售价格
-		BIND_FROM_TO_I(j, t, salePrice);
-		//税控编码
-		BIND_FROM_TO_NORMAL(j, t, taxCode);
-
-
-		// 启用
-		BIND_FROM_TO_I(j, t, isEnabled);
-		// 备注
-		BIND_FROM_TO_NORMAL(j, t, remark);
-		// 创建时间
-		BIND_FROM_TO_NORMAL(j, t, createTime);
-		// 创建人
-		BIND_FROM_TO_NORMAL(j, t, createBy);
-		// 修改时间
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
-		// 修改人
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
+	BasMaterialDO() {
+		//id = "";
+		//categoryId = "";
+		//code = "";
+		//name = "";
+		//auxName = "";
+		//isEnabled = 1;
+		//model = "";
+		//unitId = "";
+		//salePrice = 0;
+		//taxCode = "";
+		//remark = "";
+		//createBy = "";
+		//createTime = "";
+		//updateBy = "";
+		//updateTime = "";
 	}
-	BIND_TO_JSON(BasMaterialDTO,id, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
 };
 
-#endif // !_BASMATERIAL_DTO_
+#endif // !_BASMATERIAL_DO_

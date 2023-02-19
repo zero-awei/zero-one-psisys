@@ -34,11 +34,11 @@ class BasMaterialController
 {
 public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryBasMaterial, execQueryBasMaterial, BasMaterialQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailBasMaterial, execQueryDetail, DepotQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailBasMaterial, execQueryDetail, BasMaterialQuery);
 	CREATE_API_FUN_BODY(addBasMaterial, execAddBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_BODY(modifyBasMaterial, execModifyBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_BODY(removeBasMaterial, execRemoveBasMaterial, BasMaterialDTO);
-	CREATE_API_FUN_BODY_FILE(modifyBasMaterial, execModifyBasMaterial, BasMaterialDTO);
+	CREATE_API_FUN_BODY_FILE(importBasMaterial, execImportBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, BasMaterialQuery);
 private:
 	//普通查询数据
@@ -46,13 +46,13 @@ private:
 	//查看指定物料详情信息，即上述所有信息
 	JsonVO<BasMaterialVO> execQueryDetail(const BasMaterialQuery& query, const PayloadDTO& payload);
 	//新增数据
-	JsonVO<PageVO<BasMaterialVO>> execAddBasMaterial(const BasMaterialDTO& dto);
+	JsonVO<BasMaterialVO> execAddBasMaterial(const BasMaterialDTO& dto);
 	//修改数据
-	JsonVO<PageVO<BasMaterialVO>> execModifyBasMaterial(const BasMaterialDTO& dto);
+	JsonVO<BasMaterialVO> execModifyBasMaterial(const BasMaterialDTO& dto);
 	//删除数据
-	JsonVO<PageVO<BasMaterialVO>> execRemoveBasMaterial(const BasMaterialDTO& dto);
+	JsonVO<BasMaterialVO> execRemoveBasMaterial(const BasMaterialDTO& dto);
 	//导入
-	JsonVO<PageVO<BasMaterialVO>> execModifyBasMaterial(const BasMaterialDTO& dto);
+	JsonVO<PageVO<BasMaterialVO>> execImportBasMaterial(const BasMaterialDTO& dto);
 	//导出
 	JsonVO<string> execExportExecl(const BasMaterialQuery& query, const PayloadDTO& payload);
 };
