@@ -14,12 +14,12 @@ JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const Query
     return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
 }
 
-JsonVO<int> PyrkController::exeAddBillDetailed(const PyrkBillDetailDTO& addMessage) {
-    return JsonVO<int>(1, RS_SUCCESS);
+JsonVO<uint64_t> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMessage) {
+    return JsonVO<uint64_t>(1, RS_SUCCESS);
 }
 
-JsonVO<int> PyrkController::exeUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage) {
-    return JsonVO<int>(1, RS_SUCCESS);
+JsonVO<uint64_t> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage) {
+    return JsonVO<uint64_t>(1, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> PyrkController::execRemovePyrkBillById(const StringID& id)

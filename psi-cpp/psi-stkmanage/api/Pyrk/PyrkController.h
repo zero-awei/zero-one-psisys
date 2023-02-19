@@ -20,9 +20,9 @@ public:
 	// 查询单据详细信息
 	CREATE_API_FUN_QUERY(queryQueryBillDetailed, exeQueryBillDetailed, QueryPyrkBillListQuery);
 	// 新增单据详细信息
-	CREATE_API_FUN_BODY(addBillDetailed, exeAddBillDetailed, PyrkBillDetailDTO);
+	CREATE_API_FUN_JSON(addBillDetailed, execAddBillDetailed, PyrkBillDetailDTO);
 	// 修改单据详细信息
-	CREATE_API_FUN_BODY(updateBillDetailed, exeUpdateBillDetailed, PyrkBillDetailDTO);
+	CREATE_API_FUN_BODY(updateBillDetailed, execUpdateBillDetailed, PyrkBillDetailDTO);
 
 	CREATE_API_FUN_BODY(removePyrkBillById, execRemovePyrkBillById, StringID);
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPyrkBillStateToClose, execModifyPyrkBillStateToClose, StringID);
@@ -36,9 +36,9 @@ private:
 	// 查询单据详细信息
 	JsonVO<QueryPyrkDetailedBillVO> exeQueryBillDetailed(const QueryPyrkBillListQuery& query);
 	// 新增单据详细信息
-	JsonVO<int> exeAddBillDetailed(const PyrkBillDetailDTO& addMessage);
+	JsonVO<uint64_t> execAddBillDetailed(const PyrkBillDetailDTO& addMessage);
 	// 修改单据详细信息
-	JsonVO<int> exeUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage);
+	JsonVO<uint64_t> execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage);
 	//删除单据
 	JsonVO<uint64_t> execRemovePyrkBillById(const StringID& id);
 	//修改单据状态

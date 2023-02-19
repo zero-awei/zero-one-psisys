@@ -84,6 +84,9 @@
     <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\dto\Pyrk\DetailDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -318,6 +321,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Pyrk\DetailDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
