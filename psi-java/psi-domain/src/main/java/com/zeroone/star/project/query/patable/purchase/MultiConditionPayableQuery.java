@@ -1,22 +1,18 @@
-package com.zeroone.star.project.dto.payable.purchase;
+package com.zeroone.star.project.query.patable.purchase;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * <p>
- * 描述：采购应付传输数据对象
+ * 描述：分页查询应付对象
  * </p>
  * <p>版权：&copy;01星球</p>
  * <p>地址：01星球总部</p>
@@ -24,11 +20,10 @@ import java.util.Date;
  * @author chose1
  * @version 1.0.0
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-@ApiModel("采购应付传输数据对象")
-@AllArgsConstructor
-@NoArgsConstructor
-public class FinPayableDTO {
+@ApiModel("分页查询应付对象")
+public class MultiConditionPayableQuery extends PageQuery {
 
     /**
      * 单据编号
