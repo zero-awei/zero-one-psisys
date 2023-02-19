@@ -21,4 +21,7 @@ public class ClassifiedDictionaryVO {
 
     @ApiModelProperty(value = "姓名",example = "张三")
     private String name;
+
+    @ApiModelProperty(value = "编码",example = "A01")
+    private String code;
 }
