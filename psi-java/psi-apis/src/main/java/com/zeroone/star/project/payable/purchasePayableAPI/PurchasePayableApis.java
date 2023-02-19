@@ -20,14 +20,7 @@ public interface PurchasePayableApis {
      * 分页查询
      * @return 查询结果
      */
-    JsonVO<PageVO<FinPayableVO>> listAll(PageQuery query);
-
-    /**
-     * 多条件分页查询
-     * @param query 查询条件
-     * @return 查询结果
-     */
-    JsonVO<PageVO<FinPayableVO>> multiConditionSearch(MultiConditionPayableQuery query);
+    JsonVO<PageVO<FinPayableVO>> getAll(MultiConditionPayableQuery query);
 
     /**
      * 根据ID查询
