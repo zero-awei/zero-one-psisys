@@ -23,4 +23,6 @@ public interface IUserService extends IService<User> {
     void updateStatus(String id, Integer status);
 
     void modifyUser(EditUserDTO dto);
+
+    EditUserVO getUserInfo(String id);
 }

@@ -37,7 +37,6 @@ public class EditUserVO {
     @ApiModelProperty(value = "密码", example = "testPassword123456WithoutMD5")
     private String password;
 
-
     /**
      * 头像
      */
@@ -76,13 +75,6 @@ public class EditUserVO {
     private String orgCode;
 
     /**
-     * 状态(1-正常,0-冻结)
-     */
-    @ApiModelProperty(value = "修改您的状态，1为正常，0为冻结", example = "1")
-    private Integer status;
-
-
-    /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
     @ApiModelProperty(value = "同步工作流引擎，1为同步，0为不同步", example = "1")
@@ -105,7 +97,6 @@ public class EditUserVO {
      */
     @ApiModelProperty(value = "座机号", example = "87678999")
     private String telephone;
-
 
     /**
      * 更新人
@@ -130,7 +121,7 @@ public class EditUserVO {
      * 负责部门
      */
     @ApiModelProperty(value = "负责的部门", example = "市场部")
-    private String departName;
+    private String departIds;
 
     /**
      * 部门列表

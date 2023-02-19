@@ -73,4 +73,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         this.updateById(user);
     }
 
+    @Override
+    public EditUserVO getUserInfo(String id) {
+        User user = this.getById(id);
+        EditUserVO editUserVO = new EditUserVO();
+        BeanUtils.copyProperties(user, editUserVO);
+        return editUserVO;
+    }
 }

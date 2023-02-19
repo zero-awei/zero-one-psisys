@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,12 +16,14 @@ public class EditUserDTO {
     /**
      * 主键id
      */
+    @NotNull
     @ApiModelProperty(value = "id", example = "f0019fdebedb443c98dcb17d88222c38")
     private String id;
 
     /**
-     * 登录账号
+     * 登录名
      */
+    @NotBlank
     @ApiModelProperty(value = "用户名", example = "zhagnxiao")
     private String username;
 
@@ -32,6 +36,7 @@ public class EditUserDTO {
     /**
      * 密码
      */
+    @NotBlank
     @ApiModelProperty(value = "密码", example = "f898134e5e52ae11a2ffb2c3b57a4e90")
     private String password;
 
@@ -51,6 +56,7 @@ public class EditUserDTO {
     /**
      * 性别(0-默认未知,1-男,2-女)
      */
+    @NotNull
     @ApiModelProperty(value = "性别", example = "2")
     private Integer sex;
 

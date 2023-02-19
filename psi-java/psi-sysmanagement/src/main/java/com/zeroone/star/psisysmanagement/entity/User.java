@@ -87,13 +87,11 @@ public class User implements Serializable {
     /**
      * 状态(1-正常,2-冻结)
      */
-    @TableField(fill = FieldFill.INSERT)
     private Integer status;
 
     /**
      * 删除状态(0-正常,1-已删除)
      */
-    @TableField(fill = FieldFill.INSERT)
     @TableLogic(value = "0", delval = "1")
     private Integer delFlag;
 

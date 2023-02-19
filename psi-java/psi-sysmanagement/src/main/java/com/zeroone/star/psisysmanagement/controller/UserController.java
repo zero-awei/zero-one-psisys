@@ -10,6 +10,7 @@ import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
 import com.zeroone.star.project.sysmanagement.UserApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.AddUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
@@ -62,7 +63,8 @@ public class UserController implements UserApis {
     @GetMapping("/review")
     @Override
     public JsonVO<EditUserVO> review(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        return null;
+        EditUserVO editUserVO = userService.getUserInfo(id);
+        return JsonVO.create(editUserVO, ResultStatus.SUCCESS);
     }
 
     @ApiOperation(value = "添加用户")
@@ -86,9 +88,9 @@ public class UserController implements UserApis {
     @ApiOperation(value = "修改用户")
     @PutMapping("/modify")
     @Override
-    public JsonVO<String> modifyUser(EditUserDTO dto) {
+    public JsonVO<String> modifyUser(@Validated EditUserDTO dto) {
         userService.modifyUser(dto);
-        return null;
+        return JsonVO.success("修改成功");
     }
 
     @ApiOperation(value = "冻结/解冻用户")

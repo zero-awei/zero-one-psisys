@@ -10,6 +10,7 @@ import com.zeroone.star.project.vo.sysmanagement.usermanagement.AddUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.constraints.NotBlank;
@@ -58,7 +59,7 @@ public interface UserApis {
      * @param dto 数据数据内容
      * @return 修改后的用户编号
      */
-    JsonVO<String> modifyUser(EditUserDTO dto);
+    JsonVO<String> modifyUser(@Validated EditUserDTO dto);
 
     /**
      * 冻结/解冻用户
