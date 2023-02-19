@@ -23,13 +23,27 @@
 
 class AreaDO
 {
-	CC_SYNTHESIZE(std::string, areaName, AreaName);
+	//可能要查询的省份名称
+	CC_SYNTHESIZE(std::string, provincename, ProvinceName);
+	//可能要查询的城市名称
+	CC_SYNTHESIZE(std::string, cityname, CityName);
+	//可能要查询的区域名称
+	CC_SYNTHESIZE(std::string, areaname, AreaName);
+	//需要查询下辖区的区域id
 	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
 	AreaDO()
 	{
-		areaName = "";
+		areaname = "";
+		cityname = "";
+		provincename = "";
 		id = 0;
+	}
+	string getName()
+	{
+		if (!areaname.empty())return areaname;
+		if (!cityname.empty())return cityname;
+		if (!provincename.empty())return provincename;
 	}
 };
 #endif // _AREADO_H_

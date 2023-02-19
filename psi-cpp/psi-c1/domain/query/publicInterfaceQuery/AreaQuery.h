@@ -28,7 +28,11 @@
 
 class AreaQuery
 {
-	//需要查询下辖区的区域
+	//可能要查询的省份名称
+	CC_SYNTHESIZE(std::string, provincename, ProvinceName);
+	//可能要查询的城市名称
+	CC_SYNTHESIZE(std::string, cityname, CityName);
+	//可能要查询的区域名称
 	CC_SYNTHESIZE(std::string, areaname, AreaName);
 	//需要查询下辖区的区域id
 	CC_SYNTHESIZE(uint64_t, id, Id);
@@ -36,6 +40,8 @@ public:
 	// 绑定from_json
 	friend void from_json(const json& j, AreaQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, areaname);
+		BIND_FROM_TO_NORMAL(j, t, cityname);
+		BIND_FROM_TO_NORMAL(j, t, provincename);
 		BIND_FROM_TO_ULL(j, t, id);
 	}
 };
