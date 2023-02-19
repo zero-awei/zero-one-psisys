@@ -23,7 +23,7 @@
 #include <iostream>
 #include <mongocxx/exception/bulk_write_exception.hpp>
 
-// 定义一个访问集合的宏定义
+// ����һ�����ʼ��ϵĺ궨��
 #define MONGO_COLLECTION_ACCESS(__CN__, __VAR__) \
 if (!initPool()) return {}; \
 auto client = m_pool->acquire(); \
@@ -31,15 +31,15 @@ auto __VAR__ = client->database(m_db);
 
 bool MongoClient::initPool()
 {
-	// 判断是否已经初始化
+	// �ж��Ƿ��Ѿ���ʼ��
 	if (isInit) return true;
-	// 构造初始化错误安全处理
+	// �����ʼ������ȫ����
 	if (m_username == "")
 	{
 		cerr << "db connection info error" << endl;
 		return false;
 	}
-	// 初始化连接池
+	// ��ʼ�����ӳ�
 	stringstream ss;
 	ss << "mongodb://";
 	ss << m_username << ":" << m_password;
@@ -89,10 +89,10 @@ void MongoClient::setMin(int min)
 
 bool MongoClient::execute(const string& collectionName, std::function<void(mongocxx::collection*)> callfun)
 {
-	// 访问集合
+	// ���ʼ���
 	MONGO_COLLECTION_ACCESS(collectionName, db);
 	mongocxx::collection collection = db[collectionName];
-	// 呼叫函数
+	// ��к���
 	try
 	{
 		callfun(&collection);
@@ -111,10 +111,10 @@ bool MongoClient::execute(const string& collectionName, std::function<void(mongo
 
 bsoncxx::types::bson_value::view MongoClient::addOne(const string& collectionName, const bsoncxx::document::view& document)
 {
-	// 访问集合
+	// ���ʼ���
 	MONGO_COLLECTION_ACCESS(collectionName, db);
 	mongocxx::collection collection = db[collectionName];
-	// 执行添加并返回插入ID
+	// ִ����Ӳ����ز���ID
 	try
 	{
 		return collection.insert_one(document)->inserted_id();
@@ -132,10 +132,10 @@ bsoncxx::types::bson_value::view MongoClient::addOne(const string& collectionNam
 
 int32_t MongoClient::addMultiple(const string& collectionName, const std::vector<bsoncxx::document::value>& documents)
 {
-	// 访问集合
+	// ���ʼ���
 	MONGO_COLLECTION_ACCESS(collectionName, db);
 	mongocxx::collection collection = db[collectionName];
-	// 执行添加
+	// ִ�����
 	try
 	{
 		return collection.insert_many(documents)->inserted_count();

@@ -54,4 +54,8 @@ void TestRedis::testUseRedis()
 			return r->get("foo").value();
 		});
 	std::cout << val << std::endl;
+	rc.execute<bool>(
+		[](Redis* r) {
+			return r->hset("hash", std::make_pair("field", "val"));
+		});
 }

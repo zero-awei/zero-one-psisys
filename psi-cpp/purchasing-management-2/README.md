@@ -1,6 +1,7 @@
 # 示例模块
 
 ## 简介
+架构使用演示示例项目。
 
 架构使用示例项目。
 
@@ -60,3 +61,4 @@ CREATE TABLE `sample` (
   - 查询对象：`xxxQuery`，`xxx`为业务领域相关的名称。
   - 展示对象：`xxxVO`，`xxx` 一般为网页名称。
   - `POJO` 是 `DO/DTO/BO/VO/Query` 的统称，禁止命名成 `xxxPOJO`。
+
