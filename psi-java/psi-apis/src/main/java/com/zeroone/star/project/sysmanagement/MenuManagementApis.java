@@ -15,11 +15,6 @@ import java.util.List;
  */
 public interface MenuManagementApis {
 
-    /**
-     * 获取菜单数据
-     * @return 菜单数据
-     */
-    JsonVO<List<TreeNodeVO<MenuTreeVO>>> queryAll();
 
     /**
      * 查询单一菜单
