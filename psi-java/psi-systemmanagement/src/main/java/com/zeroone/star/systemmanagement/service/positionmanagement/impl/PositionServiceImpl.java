@@ -39,4 +39,15 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         }
         return "更新成功";
     }
+
+    @Override
+    public String insert(PositionDTO positionDTO) {
+        Position position = new Position();
+        BeanUtil.copyProperties(positionDTO,position);
+        int result =positionMapper.insert(position);
+        if(result == 0){
+            return "添加失败";
+        }
+        return "添加成功";
+    }
 }

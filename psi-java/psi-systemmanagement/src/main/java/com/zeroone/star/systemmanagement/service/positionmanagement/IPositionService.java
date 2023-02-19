@@ -17,4 +17,6 @@ public interface IPositionService extends IService<Position>{
     String deletePositionById(String positionId);
 
     String update(PositionDTO positionDTO);
+
+    String insert(PositionDTO positionDTO);
 }

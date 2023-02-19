@@ -41,7 +41,14 @@ public class PositionController implements PositionApis {
     @PostMapping("/addPosition")
     @Override
     public JsonVO<String> savePosition(PositionDTO positionDTO) {
-        return null;
+        if (positionDTO == null){
+            return JsonVO.fail("无法执行请求,请联系管理员！");
+        }
+        String result = iPositionService.insert(positionDTO);
+        if (result.equals("添加失败")){
+            return JsonVO.fail(result);
+        }
+        return JsonVO.success(result);
     }
 
 
