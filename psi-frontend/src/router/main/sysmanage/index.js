@@ -59,6 +59,18 @@ const routes = [
     path: '/component/center',
     name: 'center',
     component: () => import('@/components/center/index.vue')
+  },
+  {
+    path: '/pay/payable/check',
+    name: 'check',
+    component: () =>
+      import('@/views/yingfuyufukuan/payables/FinPayableCheck.vue')
+  },
+  {
+    path: '/1/2/3',
+    name: '3',
+    component: () =>
+      import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
   }
 ]
 

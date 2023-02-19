@@ -7,7 +7,7 @@
     <el-card>
       <psi-form
         :items="items"
-        :toggle-items="toggleItems"
+        :toggleItems="toggleItems"
         :formData="formData"
       />
     </el-card>
@@ -15,7 +15,7 @@
     <el-card>
       <psi-form
         :items="items2"
-        :toggle-items="toggleItems2"
+        :toggleItems="toggleItems2"
         :formData="formData2"
         @search="search"
       />

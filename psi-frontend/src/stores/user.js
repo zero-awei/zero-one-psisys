@@ -129,6 +129,35 @@ let testMenus = [
     ]
   }
 ]
+const yewuRouter = {
+  id: 998,
+  text: '应付与付款',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 2,
+      text: '应付核销',
+      href: '/pay/payable/check',
+      icon: 'IconTickets',
+      pid: 998
+    },
+    {
+      id: 3,
+      text: '测试三级菜单',
+      icon: 'IconTickets',
+      pid: 998,
+      children: [
+        {
+          id: 3,
+          text: '采购应付',
+          href: '/1/2/3',
+          icon: 'IconTickets',
+          pid: 2
+        }
+      ]
+    }
+  ]
+}
 const componentRouter = {
   id: 999,
   text: '组件封装',
@@ -227,6 +256,7 @@ export const userStore = defineStore('user', {
       this.menus = data.data
       // 在后端返回菜单列表中添加组件列表路由
       this.menus.push(componentRouter)
+      this.menus.push(yewuRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {
