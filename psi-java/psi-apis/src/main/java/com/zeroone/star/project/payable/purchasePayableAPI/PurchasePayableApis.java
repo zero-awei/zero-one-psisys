@@ -2,8 +2,10 @@ package com.zeroone.star.project.payable.purchasePayableAPI;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.payable.purchase.FinPayableDTO;
+import com.zeroone.star.project.query.patable.purchase.MultiPayableQuery;
 import com.zeroone.star.project.query.patable.purchase.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payable.purchase.FinPayableVO;
 
 /**
@@ -17,10 +19,10 @@ import com.zeroone.star.project.vo.payable.purchase.FinPayableVO;
 public interface PurchasePayableApis {
     /**
      * 分页查询
-     * @param payableDTO 查询条件
+     * @param MultiPayableQuery 查询条件
      * @return 查询结果
      */
-    JsonVO<Page<FinPayableVO>> listAll(FinPayableDTO payableDTO);
+    JsonVO<PageVO<FinPayableVO>> listAll(MultiPayableQuery query);
 
     /**
      * 根据ID查询
