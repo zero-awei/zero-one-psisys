@@ -75,6 +75,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public JsonVO<ResultStatus> deleteMenu(SingleMenuQuery singleMenuQuery) {
+
+        SysMenu sysMenu = BeanUtil.copyProperties(singleMenuQuery, SysMenu.class);
+
+        baseMapper.deleteById(sysMenu);
+
         return null;
     }
 }
