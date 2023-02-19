@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,6 +15,7 @@ public class SysRoleDTO {
 
     @ApiModelProperty(value = "角色id", example = "f6817f48af4fb3af11b9e8bf182f618b")
     private String id;
+
     @ApiModelProperty(value = "角色名称", example = "管理员")
     private String roleName;
     @ApiModelProperty(value = "角色编码", example = "admin")

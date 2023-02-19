@@ -8,7 +8,7 @@ knife4j:
   enableAggregation: true
   nacos:
     enable: true
-    serviceUrl: http://${nacos.addr}:8848/nacos/
+    serviceUrl: http://43.138.51.248:8848/nacos/
     routes:
       - name: 系统管理服务
         serviceName: ${sn.sysmanagement}
@@ -20,9 +20,9 @@ knife4j:
 #  enable-aggregation: true
 #  nacos:
 #    enable: true
-#    service-url: http://43.138.51.248:8848/nacos/
+#    service-url: http://192.168.220.128:8848/nacos/
 #    routes:
-#      - name: 系统管理服务
+#      - name: 示例服务
 #        service-name: ${sn.sample}
 #        namespace-id: ${nacos.namespace}
 #        location: /v2/api-docs?group=sample

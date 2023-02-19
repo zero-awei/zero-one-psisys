@@ -33,9 +33,9 @@ public interface RoleManagementApis {
 
     /**
      * 根据id删除角色
-     * @param id
+     * @param ids
      * @return 是否成功
      */
-    JsonVO<String> deleteById(String id);
+    JsonVO<String> deleteById(String[] ids);
 
 }
