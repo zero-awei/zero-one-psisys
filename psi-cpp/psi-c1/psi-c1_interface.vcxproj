@@ -214,12 +214,14 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
+    <ClCompile Include="dao\publicInterfaceDao\MaterialTypeTreeDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\publicInterfaceService\MaterialTypeTreeService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -267,10 +269,12 @@
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
     <ClInclude Include="dao\bankAccountDao\temp.h" />
-    <ClInclude Include="dao\publicInterfaceDao\temp.h" />
+    <ClInclude Include="dao\publicInterfaceDao\MaterialTypeTreeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDao\MaterialTypeTreeMapper.h" />
     <ClInclude Include="dao\supplierDao\temp.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialTypeTreeDO.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
     <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
@@ -333,6 +337,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\bankAccountService\temp.h" />
+    <ClInclude Include="service\publicInterfaceService\MaterialTypeTreeService.h" />
     <ClInclude Include="service\publicInterfaceService\temp.h" />
     <ClInclude Include="service\supplierService\temp.h" />
     <ClInclude Include="stdafx.h" />

@@ -43,8 +43,8 @@ bool getStartArg(int argc, char* argv[]) {
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "root";
-	std::string dbName = "mysql";
-	std::string dbHost = "192.168.124.10";
+	std::string dbName = "zopsi_sy";
+	std::string dbHost = "192.168.43.63";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
