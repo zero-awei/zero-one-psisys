@@ -1,6 +1,7 @@
 package com.zeroone.star.systemmanagement.service.positionmanagement;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionDTO;
 import com.zeroone.star.systemmanagement.entity.positionmanagement.Position;
 
 /**
@@ -14,4 +15,6 @@ public interface IPositionService extends IService<Position>{
      * @param positionId
      */
     String deletePositionById(String positionId);
+
+    String update(PositionDTO positionDTO);
 }

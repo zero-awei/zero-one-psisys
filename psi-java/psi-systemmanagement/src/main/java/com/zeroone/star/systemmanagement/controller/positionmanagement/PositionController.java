@@ -49,7 +49,14 @@ public class PositionController implements PositionApis {
     @PostMapping("updatePosition")
     @Override
     public JsonVO<String> updatePosition(PositionDTO positionDTO) {
-        return null;
+        if (positionDTO == null){
+            return JsonVO.fail("无法执行请求,请联系管理员！");
+        }
+        String result = iPositionService.update(positionDTO);
+        if (result.equals("更新失败")){
+            return JsonVO.fail(result);
+        }
+        return JsonVO.success(result);
     }
 
 
@@ -58,13 +65,13 @@ public class PositionController implements PositionApis {
     @Override
     public JsonVO<String> deletePosition(String positionId) {
         if(positionId == null){
-            return JsonVO.fail("id为空，无法执行删除请求！");
+            return JsonVO.fail("无法执行请求,请联系管理员！");
         }
         String result = iPositionService.deletePositionById(positionId);
-        if (result.equals("删除成功")){
-            return JsonVO.success(result);
+        if (result.equals("删除失败")){
+            return JsonVO.fail(result);
         }
-        return JsonVO.fail(result);
+        return JsonVO.success(result);
     }
 
     @ApiOperation(value = "查询职级")
