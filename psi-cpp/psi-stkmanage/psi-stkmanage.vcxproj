@@ -263,6 +263,7 @@
     <ClInclude Include="domain\vo\Cgrk\CgrkBillEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillListVO.h" />
+    <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h" />
     <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h" />

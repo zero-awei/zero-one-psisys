@@ -37,6 +37,7 @@
 #include "../../domain/vo/Cgrk/QueryPurOrderListVO.h"
 #include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
 #include "../../domain/vo/Cgrk/QueryPurOrderEntryVO.h"
+#include "../../domain/vo/Cgrk/QueryPurOrderEntryListVO.h"
 
 //#include "../../domain/vo/user/UserVO.h"
 

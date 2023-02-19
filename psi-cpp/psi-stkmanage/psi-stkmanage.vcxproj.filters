@@ -317,5 +317,8 @@
     <ClInclude Include="domain\vo\Pyrk\ImportPyrkFileVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

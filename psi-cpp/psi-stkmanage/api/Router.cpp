@@ -97,7 +97,7 @@ void Router::createUserDepartRouter()
 #endif
 
 
-
+//采购入库路由
 void Router::createCgrkRouter()
 {
 	BIND_GET_ROUTER(server, "/query-cgrk-bill-list", &CgrkController::queryCgrkBillList, nullptr);
@@ -112,7 +112,7 @@ void Router::createCgrkRouter()
 	BIND_POST_ROUTER(server, "/import-cgrk-file", &CgrkController::importCgrkFile, nullptr);
 	BIND_GET_ROUTER(server, "/export-cgrk-file", &CgrkController::exportCgrkFile, nullptr);
 }
-
+//涨吨入库路由
 void Router::createIncreaseTonRouter()
 {
 	BIND_GET_ROUTER(server, "/query-zdrk-bill-list", &ZdrkController::queryZdrkBillList, nullptr);
@@ -124,19 +124,19 @@ void Router::createIncreaseTonRouter()
 	BIND_POST_ROUTER(server, "/import-zdrk-file", &ZdrkController::ImportZdrkFile, nullptr);
 	BIND_GET_ROUTER(server, "/emport-zdrk-file", &ZdrkController::EmportZdrkFile, nullptr);
 }
-
+//采购退货出库路由
 void Router::createCgthckRouter()
 {
 	BIND_GET_ROUTER(server, "/query-cgthck-bill-list", &CgthckController::queryCgthcBillk, nullptr);
 	BIND_GET_ROUTER(server, "/query-cgthck-bill-details", &CgthckController::queryCgthckBillDetail, nullptr);
-	BIND_POST_ROUTER(server, "/post-cgthck-bill", &CgthckController::addCgthckBill, nullptr);
-	BIND_PUT_ROUTER(server, "/put-cgthck-bill", &CgthckController::modifyCgthckBill, nullptr);
+	BIND_POST_ROUTER(server, "/add-cgthck-bill", &CgthckController::addCgthckBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-cgthck-bill", &CgthckController::modifyCgthckBill, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-cgthck-bill-by-id", &CgthckController::deleteCgthckBill, nullptr);
 	BIND_POST_ROUTER(server, "/import-cgthck-file", &CgthckController::importCgthckFile, nullptr);
 	BIND_GET_ROUTER(server, "/export-cgthck-file", &CgthckController::exportCgthckFile, nullptr);
 }
 
-//文件上传接口示例
+//其他入库路由
 void Router::createQtrkRouter()
 {
 	
@@ -175,7 +175,7 @@ void Router::createQtrkRouter()
 	//BIND_POST_ROUTER(server, "/Qtrk/uploadFile", &QtrkController::uploadFile, nullptr);
 }
 
-
+//盘盈入库路由
 void Router::createPyrkRouter()
 {
 	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryQueryBillList, nullptr);
