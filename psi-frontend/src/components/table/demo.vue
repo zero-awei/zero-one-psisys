@@ -57,13 +57,13 @@ const status = reactive({
       label: 'Tag',
       prop: 'tag',
       width: '120'
-    },
-    {
-      type: 'slot',
-      label: '操作',
-      prop: 'operation',
-      slotName: 'operation'
     }
+    // {
+    //   type: 'slot',
+    //   label: '操作',
+    //   prop: 'operation',
+    //   slotName: 'operation'
+    // }
   ],
   // table 数据
   tableData: [

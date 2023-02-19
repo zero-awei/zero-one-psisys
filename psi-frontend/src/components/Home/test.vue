@@ -1,54 +1,74 @@
 <template>
-        <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
-        <div class="menu-wrap">
-          <el-scrollbar>
-            <el-menu
-              default-active="2"
-              class="el-menu-vertical-demo"
-              active-text-color="#1890ff"
-              text-color="#545c64"
-              background-color="#fff"
-              unique-opened
-              router
-            >
-              <el-menu-item index="/home">
-                <el-icon>
-                  <icon-menu />
-                </el-icon>
-                <span>首页</span>
-              </el-menu-item>
-              <el-sub-menu
-                v-for="item in menus"
-                :key="item.id"
-                :index="item.id + ''"
-              >
-                <template #title>
+  <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
+  <div class="menu-wrap">
+    <el-scrollbar>
+      <el-menu
+        default-active="2"
+        class="el-menu-vertical-demo"
+        active-text-color="#1890ff"
+        text-color="#545c64"
+        background-color="#fff"
+        unique-opened
+        router
+      >
+        <el-menu-item index="/home">
+          <el-icon>
+            <icon-menu />
+          </el-icon>
+          <span>首页</span>
+        </el-menu-item>
+        <el-sub-menu v-for="item in menus" :key="item.id" :index="item.id + ''">
+          <!-- 一级菜单 item-->
+          <!-- TODO 这里加div或template都会报错 -->
+          <template #title>
+            <el-icon>
+              <component :is="item.icon" />
+            </el-icon>
+            <span>{{ item.text }}</span>
+          </template>
+          <!-- <div v-if="!item.children.children"> -->
+          <el-menu-item-group>
+            <!-- 二级菜单i -->
+            <template v-for="iTwo in item.children">
+              <!-- 如果没有三级菜单 -->
+              <template v-if="!iTwo.children">
+                <el-menu-item :key="iTwo.id" :index="iTwo.href">
                   <el-icon>
-                    <component :is="item.icon" />
+                    <component :is="iTwo.icon" />
                   </el-icon>
-                  <span>{{ item.text }}</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item
-                    v-for="i in item.children"
-                    :key="i.id"
-                    :index="i.href"
-                  >
+                  <span>{{ iTwo.text }}</span>
+                </el-menu-item>
+              </template>
+              <template v-else-if="iTwo.children">
+                <el-sub-menu>
+                  <template #title>
                     <el-icon>
-                      <component :is="i.icon" />
+                      <component :is="iTwo.icon" />
                     </el-icon>
-                    {{ i.text }}
-                  </el-menu-item>
-                </el-menu-item-group>
-              </el-sub-menu>
-            </el-menu>
-          </el-scrollbar>
-        </div>
+                    <span>{{ iTwo.text }}</span>
+                  </template>
+                  <el-menu-item-group v-for="iThree in iTwo.children">
+                    <el-menu-item :key="iThree.id" :index="iThree.href">
+                      <el-icon>
+                        <component :is="iThree.icon" />
+                      </el-icon>
+                      <span>{{ iThree.text }}</span>
+                    </el-menu-item>
+                  </el-menu-item-group>
+                </el-sub-menu>
+              </template>
+            </template>
+          </el-menu-item-group>
+          <!-- </div> -->
+        </el-sub-menu>
+      </el-menu>
+    </el-scrollbar>
+  </div>
 </template>
 
 <script setup>
 import { userStore } from '@/stores/user.js'
 const store = userStore()
-    // 菜单数据
+// 菜单数据
 const menus = store.getMenus
 </script>

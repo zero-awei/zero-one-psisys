@@ -88,7 +88,7 @@ import { userStore } from '../stores/user'
 import { Fold, Expand } from '@element-plus/icons-vue'
 //导入侧边栏组件 @代表src路径
 // import AsideCom from "@/components/Home/AsideCom.vue"
-import test from '@/components/Home/test.vue'
+import test from '@/components/home/test.vue'
 //导入logo
 import File from '@/assets/1.png'
 //导入UserNameCom

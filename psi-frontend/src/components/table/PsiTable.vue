@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-13 14:25:07
- * @LastEditTime: 2023-02-15 16:44:46
+ * @LastEditTime: 2023-02-19 19:50:21
  * @LastEditors: li.ziwei
  * @Description: 
  * @FilePath: \psi-frontend\src\components\table\PsiTable.vue
@@ -57,11 +57,18 @@
           :align="item.align"
         ></el-table-column>
       </template>
-      <el-table-column fixed="right" label="Operations" width="120">
-        <template #default>
-          <el-button link type="primary" size="small">Detail</el-button>
-          <el-button link type="primary" size="small">Edit</el-button>
+      <el-table-column fixed="right" label="操作" width="120">
+        <template #default="scope">
+          <el-button link type="primary" size="small" @click="edit(scope.row)"
+            >编辑</el-button
+          >
+          <el-button link type="primary" size="small">更多</el-button>
         </template>
+        <!-- <template #default> -->
+        <!-- <slot></slot> -->
+        <!-- <el-button link type="primary" size="small">Detail</el-button>
+          <el-button link type="primary" size="small">Edit</el-button> -->
+        <!-- </template> -->
       </el-table-column>
     </el-table>
     <div class="demo-pagination-block">
@@ -72,9 +79,9 @@
         :page-sizes="pagination.pageSizes"
         :layout="pagination.layout"
         :total="pagination.total"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
       />
+      <!--  @size-change="handleSizeChange"
+        @current-change="handleCurrentChange" -->
     </div>
   </div>
 </template>
@@ -100,12 +107,12 @@ const prop = defineProps({
   }
 })
 
-const handleSizeChange = (val) => {
-  console.log(`${val} items per page`)
-}
-const handleCurrentChange = (val) => {
-  console.log(`current page: ${val}`)
-}
+// const handleSizeChange = (val) => {
+//   console.log(`${val} items per page`)
+// }
+// const handleCurrentChange = (val) => {
+//   console.log(`current page: ${val}`)
+// }
 </script>
 
 <style>
