@@ -75,6 +75,15 @@
     <ClCompile Include="api\Qtrk\QtrkController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\Pyrk\PyrkController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -279,6 +288,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\Qtrk\QtrkController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Pyrk\PyrkController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Pyrk\PyrkBillDetailDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
