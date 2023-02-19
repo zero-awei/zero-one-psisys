@@ -4,6 +4,7 @@
 #include "Zdrk/ZdrkController.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "Pyrk/PyrkController.h"
 
 #include "Cgthck/CgthckController.h"
 #include "Cgrk/CgrkController.h"
@@ -70,16 +71,11 @@ void Router::initRouter()
 	createPyrkRouter();
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createPyrkRouter();
 
 
 }
-void Router::createPyrkRouter()
-{
-	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryQueryBillList, nullptr);
-	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryQueryBillDetailed, nullptr);
-	BIND_POST_ROUTER(server, "/add-pyrk-bill", &PyrkController::addBillDetailed, nullptr);
-	BIND_PUT_ROUTER(server, "/modify-pyrk-bill", &PyrkController::updateBillDetailed, nullptr);
-}
+
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
@@ -99,6 +95,7 @@ void Router::createUserDepartRouter()
 }
 
 #endif
+
 
 
 void Router::createCgrkRouter()
@@ -176,5 +173,20 @@ void Router::createQtrkRouter()
 	//BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
 	//BIND_POST_ROUTER(server, "/json", &QtrkController::jsonSample, nullptr);
 	//BIND_POST_ROUTER(server, "/Qtrk/uploadFile", &QtrkController::uploadFile, nullptr);
+}
+
+
+void Router::createPyrkRouter()
+{
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryQueryBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryQueryBillDetailed, nullptr);
+	BIND_POST_ROUTER(server, "/add-pyrk-bill", &PyrkController::addBillDetailed, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-pyrk-bill", &PyrkController::updateBillDetailed, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-pyrk-bill-by-id", &PyrkController::removePyrkBillById, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-pyrk-bill-state-to-close", &PyrkController::modifyPyrkBillStateToClose, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-pyrk-bill-state-to-unclose", &PyrkController::modifyPyrkBillStateToUnclose, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-pyrk-bill-state-to-void", &PyrkController::modifyPyrkBillStateToVoid, nullptr);
+	BIND_POST_ROUTER(server, "/import-pyrk-file", &PyrkController::importPyrkFile, nullptr);
+	BIND_GET_ROUTER(server, "/export-pyrk-file", &PyrkController::exportPyrkFile, nullptr);
 }
 
