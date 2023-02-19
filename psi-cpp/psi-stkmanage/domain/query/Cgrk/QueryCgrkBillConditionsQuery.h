@@ -17,25 +17,26 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _QUERY_CGRK_BILL_LIST_ADVANCED_QUERY_
-#define _QUERY_CGRK_BILL_LIST_ADVANCED_QUERY_
+#ifndef _QUERY_CGRK_BILL_CONDITIONS_QUERY_
+#define _QUERY_CGRK_BILL_CONDITIONS_QUERY_
 
 #include "../PageQuery.h"
-#include "QueryCgrkBillConditionsQuery.h"
 
-class QueryCgrkBillListAdvancedQuery : public PageQuery
+class QueryCgrkBillConditionsQuery : public PageQuery
 {
-	//逻辑
-	CC_SYNTHESIZE(string, logic, Logic);
-	//条件列表
-	CC_SYNTHESIZE(list<QueryCgrkBillListQuery>, conditionsList, ConditionsList);
-
+	//条件字段
+	CC_SYNTHESIZE(string, field, Field);
+	//条件运算符
+	CC_SYNTHESIZE(string, sign, Sign);
+	//条件值
+	CC_SYNTHESIZE(string, value, Value);
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, QueryCgrkBillListAdvancedQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, logic);
-
+	friend void from_json(const json& j, QueryCgrkBillConditionsQuery& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, field);
+		BIND_FROM_TO_NORMAL(j, t, sign);
+		BIND_FROM_TO_NORMAL(j, t, value);
 	}
 };
 
-#endif // _QUERY_CGRK_BILL_LIST_ADVANCED_QUERY_
+#endif // _QUERY_CGRK_BILL_CONDITIONS_QUERY_

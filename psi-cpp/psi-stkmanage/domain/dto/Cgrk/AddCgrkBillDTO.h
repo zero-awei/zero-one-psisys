@@ -21,11 +21,13 @@
 #define _ADD_CGRK_BILL_DTO_
 
 #include "../../GlobalInclude.h"
+#include "CgrkBillEntryDTO.h"
+#include "../FileDTO.h"
 
 /**
  * 修改采购入库单（保存/审核/提交）
  */
-class AddCgrkBillDTO
+class AddCgrkBillDTO : public FileDTO
 {
 
 
@@ -44,30 +46,9 @@ class AddCgrkBillDTO
 	CC_SYNTHESIZE(string, operator1, Operator1);
 	//入库经办
 	CC_SYNTHESIZE(string, handler, Handler);
-	//明细*********
-	//分录号
-	CC_SYNTHESIZE(int, entryNo, EntryNo);
-	//物料
-	CC_SYNTHESIZE(string, materialId, MaterialId);
-	//规格型号
-	CC_SYNTHESIZE(string, model, Model);
-	//仓库
-	CC_SYNTHESIZE(string, warehouseId, WarehouseId);
-	//库存金额
-	CC_SYNTHESIZE(string, unitId, UnitId);
-	//涨吨数量
-	CC_SYNTHESIZE(double, swellQty, SwellQty);
-	//入库金额
-	CC_SYNTHESIZE(double, inCost, InCost);
-	//明细：备注
-	CC_SYNTHESIZE(string, remark, Remark);
-	//自定义1
-	CC_SYNTHESIZE(string, custom1, Custom1);
-	//自定义2
-	CC_SYNTHESIZE(string, custom2, Custom2);
 
 	//备注
-	CC_SYNTHESIZE(string, remark1, Remark1);
+	CC_SYNTHESIZE(string, remark, Remark);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 
@@ -84,7 +65,7 @@ class AddCgrkBillDTO
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
 	//核批人 
 	CC_SYNTHESIZE(string, approver, Approver);
-	//审批实例***
+	//审批实例
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
 	//制单人*******
 	CC_SYNTHESIZE(string, createBy, CreateBy);
@@ -102,6 +83,9 @@ class AddCgrkBillDTO
 	CC_SYNTHESIZE(int, isRubric, IsRubric);
 	//有应付
 	CC_SYNTHESIZE(int, hasRp, HasRp);
+
+	//单据明细
+	CC_SYNTHESIZE(list<CgrkBillEntryDTO>, entry, Entry);
 
 public:
 	// 绑定JSON转换方法

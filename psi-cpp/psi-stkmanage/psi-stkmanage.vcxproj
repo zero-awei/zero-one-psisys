@@ -181,6 +181,7 @@
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\Zdrk\ZdrkController.cpp" />
     <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp" />
+    <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\DocFileDTO.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
+    <ClInclude Include="domain\dto\Cgrk\CgrkBillEntryDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\ImportCgrkFileDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\RemoveCgrkBillDTO.h" />
@@ -212,6 +214,7 @@
     <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillDTO.h" />
     <ClInclude Include="domain\dto\Zdrk\ModifyZdrkBillStateDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillConditionsQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListAdvancedQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryCgrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListQuery.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h" />
+    <ClInclude Include="domain\vo\Cgrk\CgrkBillEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillListVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />

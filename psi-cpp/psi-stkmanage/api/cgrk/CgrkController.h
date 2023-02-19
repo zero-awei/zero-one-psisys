@@ -21,6 +21,7 @@
 #define _CGRK_CONTROLLER_
 
 #include "../../domain/query/Cgrk/QueryCgrkBillListQuery.h"
+#include "../../domain/query/Cgrk/QueryCgrkBillListAdvancedQuery.h"
 #include "../../domain/query/Cgrk/QueryCgrkBillDetailsQuery.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/Cgrk/QueryCgrkBillListVO.h"
@@ -46,7 +47,9 @@ class CgrkController
 {
 public:
 	CREATE_API_FUN_QUERY(queryCgrkBillList, execQueryCgrkBillList, QueryCgrkBillListQuery);
+	CREATE_API_FUN_QUERY(queryCgrkBillListAdvanced, execQueryCgrkBillListAdvanced, QueryCgrkBillListAdvancedQuery);
 	CREATE_API_FUN_QUERY(queryCgrkBillDetails, execQueryCgrkBillDetails, QueryCgrkBillDetailsQuery);
+
 	CREATE_API_FUN_QUERY(queryPurOrderList, execQueryPurOrderList, QueryPurOrderListQuery);
 	CREATE_API_FUN_QUERY(queryPurOrderEntry, execQueryPurOrderEntry, QueryPurOrderEntryQuery);
 
@@ -61,6 +64,8 @@ public:
 private:
 	//查询采购入库表单
 	JsonVO<PageVO<QueryCgrkBillListVO>> execQueryCgrkBillList(const QueryCgrkBillListQuery& query);
+	//高级查询采购入库表单
+	JsonVO<PageVO<QueryCgrkBillListVO>> execQueryCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query);
 	//查询单据详细信息
 	JsonVO<PageVO<QueryCgrkBillDetailsVO>> execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
 	//查询采购订单列表

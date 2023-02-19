@@ -128,6 +128,8 @@ class QueryCgrkBillListVO
 	CC_SYNTHESIZE(string, billStageDictText, BillStageDictText);
 	CC_SYNTHESIZE(string, isClosedDictText, IsClosedDictText);
 
+
+
 public:
 	QueryCgrkBillListVO() {
 		billNo = "CGRK-230101-001";

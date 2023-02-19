@@ -31,6 +31,20 @@ JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillList(const 
 	result.setRows(rows);
 	return JsonVO<PageVO<QueryCgrkBillListVO>>(result, RS_SUCCESS);
 }
+
+//高级查询单据列表
+JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query)
+{
+	PageVO<QueryCgrkBillListVO> result;
+	list<QueryCgrkBillListVO> rows;
+	rows.push_back(QueryCgrkBillListVO());
+	rows.push_back(QueryCgrkBillListVO());
+	rows.push_back(QueryCgrkBillListVO());
+	result.setRows(rows);
+	return JsonVO<PageVO<QueryCgrkBillListVO>>(result, RS_SUCCESS);
+}
+
+
 //查看指定单据详细信息
 JsonVO<PageVO<QueryCgrkBillDetailsVO>> CgrkController::execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query)
 {

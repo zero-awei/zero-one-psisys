@@ -51,6 +51,9 @@
     <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -165,6 +168,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Cgrk\CgrkBillEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgrk\CgrkBillEntryDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Cgrk\QueryCgrkBillConditionsQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

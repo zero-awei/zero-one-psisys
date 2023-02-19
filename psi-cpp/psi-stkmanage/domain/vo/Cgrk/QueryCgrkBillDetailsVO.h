@@ -21,9 +21,10 @@
 #define _QUERY_CGRK_BILL_DETAILS_VO_
 
 #include "../../GlobalInclude.h"
+#include "CgrkBillEntryVO.h"
 
 /**
- * 示例显示对象
+ * 查询单据详细信息
  */
 class QueryCgrkBillDetailsVO
 {
@@ -128,15 +129,18 @@ class QueryCgrkBillDetailsVO
 	CC_SYNTHESIZE(string, billStageDictText, BillStageDictText);
 	CC_SYNTHESIZE(string, isClosedDictText, IsClosedDictText);
 
+	CC_SYNTHESIZE(list<CgrkBillEntryVO>, entry, Entry);
+
 public:
 	QueryCgrkBillDetailsVO() {
 		billNo = "CGRK-230203-974";
+		entry.push_back(CgrkBillEntryVO());
 	}
 	// 绑定JSON转换方法
 	BIND_TO_JSON(QueryCgrkBillDetailsVO, remark, billNo, approvalResultType, updateBy, isEffective, isVoided, billType, approver, billDate, srcBillType, approvalRemark, srcNo, updateTime, isAuto,
 		isRubric, sysOrgCode, createTime, createBy, srcBillId, effectiveTime, billStage, version, attachment, sudject, id, isClosed, bpmiInstanceId, stockIoType, hasRp, hasSwell, supplierId, customerId,
 		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned, stockIoTypeDictText, hasRpDictText, hasSwellDictText, invoiceTypeDictTex, opDeptDictText, operatorDictText,
-		handlerDictText, updateByDictText, isEffectiveDictText, isVoidedDictText, srcBillTypeDictText, isAutoDictText, isRubricDictText, sysOrgCodeDictText, createByDictText, billStageDictText, isClosedDictText);
+		handlerDictText, updateByDictText, isEffectiveDictText, isVoidedDictText, srcBillTypeDictText, isAutoDictText, isRubricDictText, sysOrgCodeDictText, createByDictText, billStageDictText, isClosedDictText, entry);
 };
 
 #endif // !_QUERY_CGRK_BILL_DETAILS_VO_
