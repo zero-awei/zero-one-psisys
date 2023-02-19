@@ -48,6 +48,9 @@
     <ClCompile Include="uselib\ws\TestWs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="uselib\rocketmq\TestRocket.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="domain\do\DoInclude.h">
@@ -132,6 +135,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\StatisQuery\StatisQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="uselib\rocketmq\TestRocket.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

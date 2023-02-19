@@ -97,7 +97,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcrypto.lib;libssl.lib;mysqlcppconn.lib;xlntd.lib;yaml-cppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcrypto.lib;libssl.lib;mysqlcppconn.lib;xlntd.lib;yaml-cppd.lib;rocketmq-client-cpp.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -119,9 +119,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;
-libcrypto.lib;
-libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;yaml-cpp.lib;rocketmq-client-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -143,7 +141,7 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcrypto.lib;libssl.lib;mysqlcppconn.lib;xlntd.lib;yaml-cppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcrypto.lib;libssl.lib;mysqlcppconn.lib;xlntd.lib;yaml-cppd.lib;rocketmq-client-cpp.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -165,9 +163,7 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;
-libcrypto.lib;
-libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;yaml-cpp.lib;rocketmq-client-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -201,6 +197,7 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
     </ClCompile>
     <ClCompile Include="uselib\excel\TestExcel.cpp" />
     <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp" />
+    <ClCompile Include="uselib\rocketmq\TestRocket.cpp" />
     <ClCompile Include="uselib\ws\TestWs.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +228,7 @@ libssl.lib;xlnt.lib;yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependenci
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="uselib\excel\TestExcel.h" />
     <ClInclude Include="uselib\fastdfs\TestFastDfs.h" />
+    <ClInclude Include="uselib\rocketmq\TestRocket.h" />
     <ClInclude Include="uselib\ws\TestWs.h" />
   </ItemGroup>
   <ItemGroup>

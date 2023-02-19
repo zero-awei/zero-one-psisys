@@ -26,6 +26,7 @@
 #include "uselib/fastdfs/TestFastDfs.h"
 #include "uselib/excel/TestExcel.h"
 #include "uselib/ws/TestWs.h"
+#include "uselib/rocketmq/TestRocket.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
@@ -142,6 +143,8 @@ int main(int argc, char* argv[]) {
 	//≤‚ ‘¥˙¬Î
 	//TestFastDfs::testDfs("");
 	//TestExcel::testExcel();
+	TestRocket test;
+	test.testRocket();
 	
 
 #ifdef USE_NACOS
