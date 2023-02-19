@@ -21,12 +21,10 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
-#ifdef HTTP_SERVER_DEMO
-#include "sample/SampleController.h"
-#include "user/DepartController.h"
-#include "uselib/ws/TestWs.h"
-#endif
-
+#define PURORDER
+#include "PurOrder/PurOrderController.h"
+#include "PueReq/PurReqController.h"
+#include "PurCom/PurComController.h"
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -38,38 +36,12 @@ void Router::initRouter()
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
-#ifdef HTTP_SERVER_DEMO
-	//绑定首页页面
-	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
-		res.render_raw_view("./public/test.html");
-		}, nullptr);
+	// 绑定访问页面
 
-	//初始化一个文件上传接口示例
-	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
-			if (req.get_content_type() != content_type::multipart)
-			{
-				JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
-				nlohmann::json jvo = nlohmann::json(vo);
-				jvo.erase("data");
-				res.render_json(jvo);
-				return;
-			}
-			//获取表单参数
-			std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-			std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-			//获取文件路径
-			auto& files = req.get_upload_files();
-			std::vector<string> filePaths;
-			for (auto& file : files) {
-				filePaths.push_back(file.get_file_path().substr(1));
-				std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-			}
-			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
-		}, nullptr);
-
-	createSampleRouter();
-	createUserDepartRouter();
-	TestWs::addChatHandler(server);
+#ifdef PURORDER
+	createPurOrderRouter();
+	createPurReqRouter();
+	createPurComRouter();
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
@@ -87,10 +59,34 @@ void Router::createSampleRouter()
 	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
 	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
 }
-
-void Router::createUserDepartRouter()
-{
-	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
-	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
-}
 #endif
+
+void Router::createPurOrderRouter()
+{
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
+	// 新增数据
+	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
+	// 修改数据
+	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
+	// 删除数据
+	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
+	// 删除ById
+	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
+}
+
+void Router::createPurReqRouter() {
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purReq/list", &PurReqController::listPurReq, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purReq/queryEntryByMainId", &PurReqController::getPurReq, nullptr);
+}
+
+void Router::createPurComRouter() {
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
+}
