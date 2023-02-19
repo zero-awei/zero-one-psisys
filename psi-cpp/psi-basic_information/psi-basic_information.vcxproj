@@ -172,6 +172,7 @@
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\depot\DepotController.cpp" />
+    <ClCompile Include="api\BasMaterial\BasMaterialController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="dao\depot\DepotDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
@@ -198,6 +199,11 @@
     <ClInclude Include="domain\query\depot\DepotQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\vo\depot\DepotVO.h" />
+    <ClInclude Include="api\BasMaterial\BasMaterialController.h" />
+    <ClInclude Include="domain\do\BasMaterial\BasMaterialDO.h" />
+    <ClInclude Include="domain\dto\BasMaterial\BasMaterialDTO.h" />
+    <ClInclude Include="domain\query\BasMaterial\BasMaterialQuery.h" />
+    <ClInclude Include="domain\vo\BasMaterial\BasMaterialVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

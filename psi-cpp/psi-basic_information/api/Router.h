@@ -36,6 +36,7 @@ public:
 	void initRouter();
 	void createDepotRouter();
 private:
+	void createBasMaterialRouter();
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
 	void createSampleRouter();

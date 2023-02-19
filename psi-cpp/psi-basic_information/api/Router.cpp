@@ -22,12 +22,13 @@
 #include "domain/vo/JsonVO.h"
 #include "depot/DepotController.h"
 
+
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
-
+#include"BasMaterial/BasMaterialController.h"
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -75,6 +76,11 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 
+<<<<<<< HEAD
+=======
+	//#TIP :系统扩展路由定义，写在这个后面
+	createBasMaterialRouter();
+>>>>>>> c2-yi111
 
 }
 
@@ -98,6 +104,7 @@ void Router::createUserDepartRouter()
 
 
 #endif
+<<<<<<< HEAD
 void Router::createDepotRouter()
 {
 	BIND_GET_ROUTER(server, "/query-depot", &DepotController::queryDepot, nullptr);
@@ -110,4 +117,14 @@ void Router::createDepotRouter()
 	BIND_POST_ROUTER(server, "/add-depots", &DepotController::addDepots, nullptr);
 	BIND_GET_ROUTER(server, "/export-depots", &DepotController::exportExecl, nullptr);
 	BIND_GET_ROUTER(server, "/export-depot-by-only", &DepotController::exportExeclOnly, nullptr);
+=======
+void Router::createBasMaterialRouter() {
+	BIND_GET_ROUTER(server, "/get-basmaterial", &BasMaterialController::queryBasMaterial, nullptr);
+	BIND_GET_ROUTER(server, "/get-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-add", &BasMaterialController::addBasMaterial, nullptr);
+	BIND_PUT_ROUTER(server, "/put-modify", &BasMaterialController::modifyBasMaterial, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
+	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
+>>>>>>> c2-yi111
 }
