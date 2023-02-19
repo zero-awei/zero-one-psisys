@@ -38,6 +38,7 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	//#TIP :系统扩展路由定义，写在这个后面
 	createDepotRouter();
 
 #ifdef HTTP_SERVER_DEMO
@@ -74,7 +75,6 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 
-	//#TIP :系统扩展路由定义，写在这个后面
 
 }
 
@@ -100,14 +100,14 @@ void Router::createUserDepartRouter()
 #endif
 void Router::createDepotRouter()
 {
-	BIND_GET_ROUTER(server, "/depot-query", &DepotController::queryDepot, nullptr);
-	BIND_GET_ROUTER(server, "/depot-query-kid", &DepotController::queryKidDepot, nullptr);
-	BIND_GET_ROUTER(server, "/depot-detail", &DepotController::queryDetailDepot, nullptr);
-	BIND_GET_ROUTER(server, "/depot-action-info", &DepotController::queryActionInfolDepot, nullptr);
-	BIND_PUT_ROUTER(server, "/depot-execAddDepot", &DepotController::addDepot, nullptr);
-	BIND_PUT_ROUTER(server, "/depot-modify", &DepotController::modifyDepot, nullptr);
-	BIND_DEL_ROUTER(server, "/depot-remove", &DepotController::removeDepot, nullptr);
-	BIND_POST_ROUTER(server, "/depot-add-depots", &DepotController::addDepots, nullptr);
-	BIND_GET_ROUTER(server, "/depot-export", &DepotController::exportExecl, nullptr);
-	BIND_GET_ROUTER(server, "/depot-export-only", &DepotController::exportExeclOnly, nullptr);
+	BIND_GET_ROUTER(server, "/query-depot", &DepotController::queryDepot, nullptr);
+	BIND_GET_ROUTER(server, "/query-depot-kid", &DepotController::queryKidDepot, nullptr);
+	BIND_GET_ROUTER(server, "/query-depot-detail", &DepotController::queryDetailDepot, nullptr);
+	BIND_GET_ROUTER(server, "/query-depot-action-info", &DepotController::queryActionInfolDepot, nullptr);
+	BIND_POST_ROUTER(server, "/add-depot", &DepotController::addDepot, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-depot", &DepotController::modifyDepot, nullptr);
+	BIND_DEL_ROUTER(server, "/remove-depot", &DepotController::removeDepot, nullptr);
+	BIND_POST_ROUTER(server, "/add-depots", &DepotController::addDepots, nullptr);
+	BIND_GET_ROUTER(server, "/export-depots", &DepotController::exportExecl, nullptr);
+	BIND_GET_ROUTER(server, "/export-depot-by-only", &DepotController::exportExeclOnly, nullptr);
 }
