@@ -76,11 +76,9 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 
-<<<<<<< HEAD
-=======
 	//#TIP :系统扩展路由定义，写在这个后面
 	createBasMaterialRouter();
->>>>>>> c2-yi111
+
 
 }
 
@@ -104,7 +102,7 @@ void Router::createUserDepartRouter()
 
 
 #endif
-<<<<<<< HEAD
+
 void Router::createDepotRouter()
 {
 	BIND_GET_ROUTER(server, "/query-depot", &DepotController::queryDepot, nullptr);
@@ -117,7 +115,8 @@ void Router::createDepotRouter()
 	BIND_POST_ROUTER(server, "/add-depots", &DepotController::addDepots, nullptr);
 	BIND_GET_ROUTER(server, "/export-depots", &DepotController::exportExecl, nullptr);
 	BIND_GET_ROUTER(server, "/export-depot-by-only", &DepotController::exportExeclOnly, nullptr);
-=======
+}
+
 void Router::createBasMaterialRouter() {
 	BIND_GET_ROUTER(server, "/get-basmaterial", &BasMaterialController::queryBasMaterial, nullptr);
 	BIND_GET_ROUTER(server, "/get-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
@@ -126,5 +125,4 @@ void Router::createBasMaterialRouter() {
 	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
 	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
 	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
->>>>>>> c2-yi111
 }
