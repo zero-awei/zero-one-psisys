@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
 
     @Override
     public List<MenuQuery> showList(String RId) {

@@ -28,15 +28,15 @@ public class MenuQuery  {
     private String id; // 菜单id
 
     @ApiModelProperty(value = "父id",example = "00a2a0ae65cdca5e93209cdbde97cbe6")
-//    @NotBlank(message = "父id不能为空")
+    @NotBlank(message = "父id不能为空")
     private String parentId;
 
     @ApiModelProperty(value = "菜单名",example = "菜单1")
-//    @NotBlank(message = "菜单名不能为空")
+    @NotBlank(message = "菜单名不能为空")
     private String name; // 菜单名
 
     @ApiModelProperty(value = "url路径",example = "/main/1")
-//    @NotBlank(message = "菜单url不能为空")
+    @NotBlank(message = "菜单url不能为空")
     private String url; // url
 
     @ApiModelProperty(value = "图标")

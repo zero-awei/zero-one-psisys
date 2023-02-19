@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PermissionService extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
+public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
 
     @Override
     public List<PermissionQuery> showList(String RId) {
