@@ -232,6 +232,7 @@
     <ClInclude Include="domain\dto\Cgthck\ModifyCgthckBillDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\Pyrk\ImportPyrkFileDTO.h" />
     <ClInclude Include="domain\dto\Pyrk\PyrkBillDetailDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\AddQtrkBillDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\DeleteQtrkBillDTO.h" />
@@ -269,6 +270,7 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h" />
+    <ClInclude Include="domain\vo\Pyrk\ImportPyrkFileVO.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h" />
