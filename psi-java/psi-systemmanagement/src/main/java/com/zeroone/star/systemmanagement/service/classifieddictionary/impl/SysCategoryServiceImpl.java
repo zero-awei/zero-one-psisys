@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -48,8 +49,10 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
 
     @Override
     public String update(ClassifiedDictionaryDTO data) {
+        LocalDateTime now = LocalDateTime.now();
         SysCategory sysCategory = new SysCategory();
         BeanUtil.copyProperties(data,sysCategory);
+        sysCategory.setUpdateTime(now);
         int result = mapper.updateById(sysCategory);
         if(result == 0){
             return "更新失败";
@@ -68,8 +71,11 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
 
     @Override
     public String insert(ClassifiedDictionaryDTO data) {
+        LocalDateTime now = LocalDateTime.now();
         SysCategory sysCategory = new SysCategory();
         BeanUtil.copyProperties(data,sysCategory);
+        sysCategory.setCreateTime(now);
+        sysCategory.setUpdateTime(now);
         int result = mapper.insert(sysCategory);
         if(result == 1){
             return "添加成功";
