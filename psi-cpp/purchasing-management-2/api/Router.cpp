@@ -118,12 +118,10 @@ void Router::initRouter()
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//µº»Î
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-}
-
-
-void Router::createUserDepartRouter()
-{
 	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
+
+
+
 #endif
