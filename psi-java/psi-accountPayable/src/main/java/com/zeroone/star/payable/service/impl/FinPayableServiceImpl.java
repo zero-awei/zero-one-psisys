@@ -37,25 +37,18 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
     }
 
     @Override
-    public PageVO<OtherPayableVO> listAll(PageQuery query) {
-        // 构建分页对象
-        Page<FinPayable> finPayablePage = new Page<>(query.getPageIndex(), query.getPageSize());
-        // 构建查询条件
-        QueryWrapper<FinPayable> finPayableQueryWrapper = new QueryWrapper<>();
-        finPayableQueryWrapper.select();
-        // 执行分页查询
-        Page<FinPayable> result = baseMapper.selectPage(finPayablePage, finPayableQueryWrapper);
-        return PageVO.create(result,OtherPayableVO.class);
-    }
-
-    @Override
     public OtherPayableVO getByBillNo(String billNo) {
-        FinPayable finPayable = baseMapper.selectById(billNo);
-        if(finPayable != null){
-            OtherPayableVO finPayableVO = new OtherPayableVO();
-            BeanUtil.copyProperties(finPayable, finPayableVO);
-            return finPayableVO;
+        // 构建查询条件
+        QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
+        wrapper.eq("bill_no", billNo);
+        // 执行查询
+        FinPayable f = baseMapper.selectOne(wrapper);
+        // 返回结果
+        if(f == null){
+            return null;
         }
-        return null;
+        OtherPayableVO otherPayableVO = new OtherPayableVO();
+        BeanUtil.copyProperties(f, otherPayableVO);
+        return otherPayableVO;
     }
 }

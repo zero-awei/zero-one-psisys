@@ -29,12 +29,6 @@ public class OtherPayableController implements OtherPayableApis {
         return JsonVO.success(service.queryAll(condition));
     }
 
-    @GetMapping("list-all")
-    @ApiOperation(value = "查询所有")
-    @Override
-    public JsonVO<PageVO<OtherPayableVO>> listAllFinPayable(PageQuery condition) {
-        return JsonVO.success(service.listAll(condition));
-    }
 
     @GetMapping("query-one")
     @ApiOperation(value = "示例单据编号查询")

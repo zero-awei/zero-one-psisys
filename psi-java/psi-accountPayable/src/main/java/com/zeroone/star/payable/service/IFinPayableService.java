@@ -25,13 +25,6 @@ public interface IFinPayableService extends IService<FinPayable> {
     PageVO<OtherPayableVO> queryAll(FinPayableQuery query);
 
     /**
-     * 全部分页查询
-     * @param
-     * @return 查询结果
-     */
-    PageVO<OtherPayableVO> listAll(PageQuery query);
-
-    /**
      * 根据单据编号查询
      * @param billNo 单据编号
      * @return 查询结果

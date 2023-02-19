@@ -22,14 +22,6 @@ public interface OtherPayableApis {
      */
     JsonVO<PageVO<OtherPayableVO>> queryAll(FinPayableQuery condition);
 
-
-    /**
-     * 点击‘其他应付’查询显示所有
-     * @param condition 查询条件
-     * @return 查询结果
-     */
-    JsonVO<PageVO<OtherPayableVO>> listAllFinPayable(PageQuery condition);
-
     /**
      * 通过单据编号查询数据
      * @param billNo 单据编号
