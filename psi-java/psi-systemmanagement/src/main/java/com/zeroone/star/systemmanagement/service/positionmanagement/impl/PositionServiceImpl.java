@@ -19,7 +19,11 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     private PositionMapper positionMapper;
 
     @Override
-    public void deletePositionById(String positionId) {
-        this.removeById(positionId);
+    public String deletePositionById(String positionId) {
+        int result = positionMapper.deleteById(positionId);
+        if(result == 1){
+            return "删除成功";
+        }
+        return "删除失败";
     }
 }

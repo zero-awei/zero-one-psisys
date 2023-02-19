@@ -13,5 +13,5 @@ public interface IPositionService extends IService<Position>{
      * 根据id删除职务
      * @param positionId
      */
-    void deletePositionById(String positionId);
+    String deletePositionById(String positionId);
 }

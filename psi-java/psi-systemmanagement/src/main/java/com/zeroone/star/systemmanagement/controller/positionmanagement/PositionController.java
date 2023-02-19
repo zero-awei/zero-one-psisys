@@ -5,6 +5,7 @@ import com.zeroone.star.project.query.systemmanagement.positionmanagement.Positi
 import com.zeroone.star.project.systemmanagement.positionmanagement.PositionApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.systemmanagement.positionmanagement.PositionVO;
 import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionService;
 import io.swagger.annotations.Api;
@@ -56,9 +57,14 @@ public class PositionController implements PositionApis {
     @DeleteMapping("/deletePosition")
     @Override
     public JsonVO<String> deletePosition(String positionId) {
-        //service
-        iPositionService.deletePositionById(positionId);
-        return JsonVO.success("删除成功");
+        if(positionId == null){
+            return JsonVO.fail("id为空，无法执行删除请求！");
+        }
+        String result = iPositionService.deletePositionById(positionId);
+        if (result.equals("删除成功")){
+            return JsonVO.success(result);
+        }
+        return JsonVO.fail(result);
     }
 
     @ApiOperation(value = "查询职级")

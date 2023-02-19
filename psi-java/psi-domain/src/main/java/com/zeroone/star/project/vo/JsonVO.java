@@ -94,7 +94,7 @@ public class JsonVO<T> implements Serializable {
 
     /**
      * 静态构建处理失败数据对象
-     *
+     *›
      * @param data 数据对象
      * @param <T>  JsonVO嵌套元素类型
      * @return 返回创建的JSON VO对象
