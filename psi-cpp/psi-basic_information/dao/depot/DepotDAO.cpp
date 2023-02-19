@@ -33,7 +33,15 @@ if (!obj.getName().empty()) { \
 if (!obj.getCode().empty()) { \
 	sql << " AND `code`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getCode()); \
-} 
+}
+
+#define ONLY_FOR_KID(obj, sql) \
+SqlParams params; \
+sql<<" WHERE 1=1"; \
+if (!obj.getId().empty()) { \
+	sql << " AND `id`=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
+}
 
 uint64_t DepotDAO::count(const DepotDO& iObj)
 {
@@ -53,4 +61,23 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 	DepotMapper mapper;
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
+}
+
+uint64_t DepotDAO::countKid(const DepotDetailVO& iObj)
+{
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM bas_warehouse";
+	ONLY_FOR_KID(iObj, sql);
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
+}
+
+
+std::tuple<std::string, std::string> DepotDAO::getKidNameAndCode(const DepotDetailVO& iObj)
+{
+	stringstream sql;
+	sql << "SELECT NEXT FROM bas_warehouse";
+	ONLY_FOR_KID_SEARCH(iObj, sql);
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
 }

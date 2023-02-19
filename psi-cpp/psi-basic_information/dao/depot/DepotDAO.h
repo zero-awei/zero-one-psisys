@@ -21,6 +21,7 @@
 #define _DEPOT_DAO_
 #include "BaseDAO.h"
 #include "../../domain/do/depot/DepotDO.h"
+#include "../../domain/vo/depot/DepotVO.h"
 
 /**
  * 仓库数据库操作实现
@@ -32,5 +33,9 @@ public:
 	uint64_t count(const DepotDO& iObj);
 	// 分页查询数据
 	list<DepotDO> selectWithPage(const DepotDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	// 统计子级仓库个数
+	uint64_t countKid(const DepotDetailVO& iObj);
+	// 查询子级目录的name及code
+	std::tuple<std::string, std::string> getKidNameAndCode(const DepotDetailVO& iObj);
 };
 #endif // !_DEPOT_DAO_

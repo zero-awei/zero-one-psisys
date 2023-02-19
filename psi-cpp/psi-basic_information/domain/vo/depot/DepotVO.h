@@ -63,7 +63,7 @@ class DepotDetailVO
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
-	CC_SYNTHESIZE(string, id, Id);
+	CC_SYNTHESIZE(string, code, Code);
 	// 助记名
 	CC_SYNTHESIZE(string, auxName, AuxName);
 	// 电话

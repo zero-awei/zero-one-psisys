@@ -54,3 +54,25 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	return pages;
 }
 
+DepotVO DepotService::listKid(const OnlyValueQuery& query)
+{
+	//构建返回对象
+	DepotVO Kid;
+	DepotVO father;
+
+	//查询数据
+	DepotDetailVO obj;
+	obj.setPid(query.getID());
+
+	DepotDAO dao;
+	uint64_t count = dao.countKid(obj);
+	if (count <= 0)
+	{
+		return Kid;
+	}
+
+	Kid.setName(obj.getName());
+	Kid.setCode(obj.getCode());
+
+	return Kid;
+}

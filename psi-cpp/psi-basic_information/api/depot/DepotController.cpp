@@ -20,8 +20,12 @@ JsonVO<PageVO<DepotVO>> DepotController::execQueryDepot(const DepotQuery& query,
 
 JsonVO<DepotVO> DepotController::execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
+    //定义一个Service
+    DepotService service;
+    //查询数据
+    DepotVO result = service.listKid(query);
     // 通过Id和pid的关系，逻辑和查询差不多但没设置分页
-    return JsonVO<DepotVO>();
+    return JsonVO<DepotVO>(result, RS_SUCCESS);
 }
 
 JsonVO<DepotDetailVO> DepotController::execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload)
