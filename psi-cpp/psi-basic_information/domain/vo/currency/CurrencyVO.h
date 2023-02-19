@@ -16,7 +16,7 @@
 #ifndef _Currency_VO_
 #define _Currency_VO_
 
-#include "../GlobalInclude.h"
+#include "../../GlobalInclude.h"
 
 /**
  * 基础资料币种模块

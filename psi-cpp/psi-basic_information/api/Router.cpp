@@ -26,7 +26,7 @@
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
-#include "CurrencyController.h"
+#include "currency/CurrencyController.h"
 
 Router::Router(http_server* sever)
 {

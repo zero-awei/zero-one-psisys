@@ -16,12 +16,12 @@
 #ifndef _Currency_CONTROLLER_
 #define _Currency_CONTROLLER_
 
-#include "../domain/query/CurrencyQuery.h"
-#include "../domain/dto/CurrencyDTO.h"
-#include "../domain/dto/IDDTO.h"
-#include "../domain/vo/CurrencyVO.h"
-#include "../domain/vo/PageVO.h"
-#include "../domain/vo/JsonVO.h"
+#include "../../domain/query/currency/CurrencyQuery.h"
+#include "../../domain/dto/currency/CurrencyDTO.h"
+#include "../../domain/dto/IDDTO.h"
+#include "../../domain/vo/currency/CurrencyVO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/vo/JsonVO.h"
 // #include "../../domain/dto/FileDTO.h"
 
 /**

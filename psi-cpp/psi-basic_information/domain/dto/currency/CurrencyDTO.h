@@ -16,8 +16,8 @@
 #ifndef _CURRENCY_DTO_
 #define _CURRENCY_DTO_
 
-#include "../GlobalInclude.h"
-#include "FileDTO.h"
+#include "../../GlobalInclude.h"
+#include "../FileDTO.h"
 
 /**
  * 基础资料币种传输对象

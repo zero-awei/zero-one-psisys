@@ -16,7 +16,7 @@
 #ifndef _CURRENCY_QUERY_
 #define _CURRENCY_QUERY_
 
-#include "PageQuery.h"
+#include "../PageQuery.h"
 
 /**
  * 基础资料币种模块查询对象
