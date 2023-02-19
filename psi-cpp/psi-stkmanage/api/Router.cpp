@@ -4,9 +4,11 @@
 #include "Zdrk/ZdrkController.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+
 #include "Cgthck/CgthckController.h"
 #include "Cgrk/CgrkController.h"
 #include "Qtrk/QtrkController.h"
+#include "Pyrk/PyrkController.h"
 
 
 #ifdef HTTP_SERVER_DEMO
@@ -64,11 +66,20 @@ void Router::initRouter()
 	createIncreaseTonRouter();
 	createCgthckRouter();
 	createQtrkRouter();
+	//呼叫盘盈入库路由
+	createPyrkRouter();
+
 	//#TIP :系统扩展路由定义，写在这个后面
 
 
 }
-
+void Router::createPyrkRouter()
+{
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryQueryBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryQueryBillDetailed, nullptr);
+	BIND_POST_ROUTER(server, "/add-pyrk-bill", &PyrkController::addBillDetailed, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-cgrk-bill", &PyrkController::updateBillDetailed, nullptr);
+}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {

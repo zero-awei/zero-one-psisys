@@ -26,7 +26,6 @@ private:
 	void createUserDepartRouter();
 #endif
 
-
 	//采购入库Router
 	void createCgrkRouter();
 	//采购退货出库
@@ -35,6 +34,8 @@ private:
 	void createIncreaseTonRouter();
 	//其他入库
 	void createQtrkRouter();
+	//创建盘盈入库路由
+	void createPyrkRouter();
 
 };
 
