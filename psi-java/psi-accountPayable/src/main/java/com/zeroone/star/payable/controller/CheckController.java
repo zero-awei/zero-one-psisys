@@ -1,6 +1,6 @@
 package com.zeroone.star.payable.controller;
 
-import com.zeroone.star.project.payable.checkApis;
+import com.zeroone.star.project.payable.CheckApis;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/payable/check")
 @Api(tags = "check")
-public class checkController implements checkApis {
+public class CheckController implements CheckApis {
 
     @PostMapping("/export")
     @ApiOperation(value = "应付核销导出功能")
