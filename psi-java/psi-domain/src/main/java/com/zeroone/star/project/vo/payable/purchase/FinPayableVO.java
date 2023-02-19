@@ -50,14 +50,14 @@ public class FinPayableVO {
     /**
      * 单据主题
      */
-    @ApiModelProperty(value = "单据主题")
+    @ApiModelProperty(value = "单据主题", example = "tittle123")
     private String subject;
 
     /**
      * 是否红字
      */
     @ApiModelProperty(value = "是否红字", example = "是")
-    private String isRubricDictText;
+    private String isRubric;
 
     /**
      * 供应商
@@ -105,7 +105,7 @@ public class FinPayableVO {
      * 是否自动生成
      */
     @ApiModelProperty(value = "是否自动生成", example = "是")
-    private String isAutoDictText;
+    private String isAuto;
 
     /**
      * 处理状态
@@ -116,14 +116,14 @@ public class FinPayableVO {
     /**
      * 审核人
      */
-    @ApiModelProperty(value = "审核人")
-    private String approver;
+    @ApiModelProperty(value = "审核人", example = "管理员")
+    private String approverDictText;
 
     /**
      * 是否通过
      */
     @ApiModelProperty(value = "是否通过", example = "是")
-    private String isEffectiveDictText;
+    private String isEffective;
 
     /**
      * 核批结果类型
@@ -140,20 +140,20 @@ public class FinPayableVO {
     /**
      * 生效时间
      */
-    @ApiModelProperty(value = "生效时间")
+    @ApiModelProperty(value = "生效时间", example = "2022-11-10 22:47:19")
     private LocalDateTime effectiveTime;
 
     /**
      * 已关闭
      */
     @ApiModelProperty(value = "已关闭", example = "否")
-    private String isClosedDictText;
+    private String isClosed;
 
     /**
      * 是否作废
      */
     @ApiModelProperty(value = "是否作废", example = "否")
-    private String isVoidedDictText;
+    private String isVoided;
 
     /**
      * 创建部门
@@ -170,7 +170,7 @@ public class FinPayableVO {
     /**
      * 创建时间
      */
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "创建时间", example = "2022-11-10 22:47:19")
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
@@ -183,7 +183,7 @@ public class FinPayableVO {
     /**
      * 修改时间
      */
-    @ApiModelProperty(value = "修改时间")
+    @ApiModelProperty(value = "修改时间", example = "2022-11-10 23:29:10")
     private LocalDateTime updateTime;
 
 }
