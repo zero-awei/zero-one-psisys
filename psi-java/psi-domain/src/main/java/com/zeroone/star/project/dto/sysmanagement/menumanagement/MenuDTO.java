@@ -21,9 +21,9 @@ public class MenuDTO {
     @ApiModelProperty(value = "菜单名称", example = "获取菜单列表")
     private String name;
     @ApiModelProperty(value = "路由地址", example = "/home")
-    private String path;
+    private String url;
     @ApiModelProperty(value = "图标", example = "fa-stethoscope")
     private String icon;
     @ApiModelProperty(value = "父级菜单编号", example = "1")
-    private Integer parentMenuId;
+    private Integer parentId;
 }

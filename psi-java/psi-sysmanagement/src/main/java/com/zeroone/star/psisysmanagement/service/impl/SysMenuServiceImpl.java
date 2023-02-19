@@ -38,7 +38,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         SysMenu sysMenu = BeanUtil.copyProperties(menuDTO, SysMenu.class);
         sysMenu.setCreateTime(LocalDateTime.now());
 
-        Double sort = query().eq("id", menuDTO.getParentMenuId()).one().getSortNo();
+        Double sort = query().eq("id", menuDTO.getParentId()).one().getSortNo();
 
         int index = (String.valueOf(sort)).indexOf(".") + 1;//获取小数点的位置
         int count = (String.valueOf(sort)).length() - index;//获取小数点后的个数
@@ -64,9 +64,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Override
     public JsonVO<ResultStatus> updateMenu(MenuDTO menuDTO) {
         boolean result = update().eq("id", menuDTO.getId())
-                .set("parent_id", menuDTO.getParentMenuId())
+                .set("parent_id", menuDTO.getParentId())
                 .set("name", menuDTO.getName())
-                .set("url", menuDTO.getPath())
+                .set("url", menuDTO.getUrl())
                 .set("icon", menuDTO.getIcon())
                 .set("update_time", LocalDateTime.now()).update();
 
