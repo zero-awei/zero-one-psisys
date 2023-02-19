@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -50,8 +52,8 @@ public class SysMenuController {
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/query")
-    public MenuDTO queryMenu(int id){
-        return new MenuDTO();
+    public JsonVO<List<MenuDTO>> queryMenu(int RId){
+        return new JsonVO<List<MenuDTO>>();
     }
 
 }
