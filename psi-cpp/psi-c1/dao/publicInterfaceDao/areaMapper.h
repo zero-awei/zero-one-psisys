@@ -18,16 +18,15 @@
  limitations under the License.
 */
 #include "Mapper.h"
-#include "../../domain/do/publicInterfaceDO/areaDO.h"
+#include "../../domain/do/publicInterfaceDO/AreaQueryDO.h"
 
-class AreaMapper :public Mapper<AreaDO>
+class AreaMapper :public Mapper<AreaReturnDO>
 {
 public:
-	AreaDO mapper(ResultSet* resultSet) const override
+	AreaReturnDO mapper(ResultSet* resultSet) const override
 	{
-		AreaDO data;
-		data.setId(resultSet->getUInt64(1));
-		data.setAreaName(resultSet->getString(2));
+		AreaReturnDO data;
+		data.setAreaName(resultSet->getString(1));
 		return data;
 	}
 };

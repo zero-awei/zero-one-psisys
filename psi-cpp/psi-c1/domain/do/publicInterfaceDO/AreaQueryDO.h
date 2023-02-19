@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/11 13:40
+ @Date: 2023/2/11 17:51
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,35 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _AREAQUERY_H_
-#define _AREAQUERY_H_
-
-#include "../../GlobalInclude.h"
-
-/*
-* 查询某个区域的下辖区域的对象 用于选择区域
-*/
-
-class AreaQuery
+#ifndef _AREADO_H_
+#define _AREADO_H_
+#include "../DoInclude.h"
+#include "string"
+class AreaQueryDO
 {
-	//下辖区具体名称
+	//可能要查询的区域名称
 	CC_SYNTHESIZE(std::string, areaname, AreaName);
-	//查询下辖区的种类
+	//需要查询下辖区的区域id
 	CC_SYNTHESIZE(int, type, Type);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, AreaQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, areaname);
-		BIND_FROM_TO_I(j, t, type);
+	AreaQueryDO()
+	{
+		areaname = "";
+		type = 0;
+	}
+	//用于返回所需查询区域所需列名
+	std::string getTypeStr() const
+	{
+		if (type == 1)return std::string("province");
+		if (type == 2)return std::string("city");
+		if (type == 3)return std::string("area");
+	}
+	//用于返回查询表所需列名
+	std::string getReturnTypeStr()const
+	{
+		if (type == 1)return std::string("city");
+		if (type == 2)return std::string("area");
+		if (type == 3)return std::string("area");
 	}
 };
-
-#endif // _AREAQUERY_H_
+#endif // _AREADO_H_

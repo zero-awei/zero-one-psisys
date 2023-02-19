@@ -7,8 +7,7 @@
 JsonVO<list<AreaVO>> AreaController::execQueryArea(const AreaQuery& query, const PayloadDTO& payload)
 {
 	AreaService service;
-	service.listAll(query);
-	list<AreaVO> result;
+	list<AreaVO> result= service.listAll(query);
 	JsonVO<list<AreaVO>> rs(result, RS_SUCCESS);
 	return rs;
 }

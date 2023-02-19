@@ -20,13 +20,14 @@
 #ifndef _AREASERVICEDAO_H_
 #define _AREASERVICEDAO_H_
 #include "BaseDAO.h"
-#include "../../domain/do/publicInterfaceDO/areaDO.h"
+#include "../../domain/do/publicInterfaceDO/AreaQueryDO.h"
+#include "../../domain/do/publicInterfaceDO/AreaReturnDO.h"
 
 class AreaDAO :public BaseDAO
 {
 public:
 	//选择用户查询
-	list<AreaDO>selectArea(const AreaDO& obj);
+	list<AreaReturnDO>selectArea(const AreaQueryDO& obj);
 };
 
 

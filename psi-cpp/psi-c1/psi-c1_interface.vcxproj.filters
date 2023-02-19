@@ -30,7 +30,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\publicInterfaceController\areaController.cpp">
+    <ClCompile Include="api\publicInterfaceController\AreaController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp">
@@ -150,10 +150,10 @@
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\publicInterfaceService\areaService.cpp">
+    <ClCompile Include="service\publicInterfaceService\AreaService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dao\publicInterfaceDao\areaDAO.cpp">
+    <ClCompile Include="dao\publicInterfaceDao\AreaDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -203,10 +203,10 @@
     <ClInclude Include="domain\query\publicInterfaceQuery\AreaQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h">
+    <ClInclude Include="domain\do\publicInterfaceDO\AreaQueryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\publicInterfaceController\areaController.h">
+    <ClInclude Include="api\publicInterfaceController\AreaController.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\publicInterfaceVO\UserVO.h">
@@ -494,13 +494,16 @@
     <ClInclude Include="service\supplierService\temp.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\publicInterfaceService\areaService.h">
+    <ClInclude Include="service\publicInterfaceService\AreaService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\publicInterfaceDao\areaDAO.h">
+    <ClInclude Include="dao\publicInterfaceDao\AreaDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\publicInterfaceDAO\areaMapper.h">
+    <ClInclude Include="dao\publicInterfaceDAO\AreaMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\AreaReturnDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

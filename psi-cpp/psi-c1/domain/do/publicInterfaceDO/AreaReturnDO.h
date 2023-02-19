@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/11 17:51
+ @Date: 2023/2/19 22:02
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,33 +17,20 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _AREADO_H_
-#define _AREADO_H_
+#ifndef _AREARETURNDO_H_
+#define _AREARETURNDO_H_
+
 #include "../DoInclude.h"
 
-class AreaDO
+//接收查询数据的DO
+class AreaReturnDO
 {
-	//可能要查询的省份名称
-	CC_SYNTHESIZE(std::string, provincename, ProvinceName);
-	//可能要查询的城市名称
-	CC_SYNTHESIZE(std::string, cityname, CityName);
-	//可能要查询的区域名称
 	CC_SYNTHESIZE(std::string, areaname, AreaName);
-	//需要查询下辖区的区域id
-	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
-	AreaDO()
+	AreaReturnDO()
 	{
 		areaname = "";
-		cityname = "";
-		provincename = "";
-		id = 0;
-	}
-	string getName()
-	{
-		if (!areaname.empty())return areaname;
-		if (!cityname.empty())return cityname;
-		if (!provincename.empty())return provincename;
 	}
 };
-#endif // _AREADO_H_
+
+#endif // _AREARETURNDO_H_

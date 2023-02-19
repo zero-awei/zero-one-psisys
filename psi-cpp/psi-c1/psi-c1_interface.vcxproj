@@ -176,7 +176,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="api\publicInterfaceController\areaController.cpp" />
+    <ClCompile Include="api\publicInterfaceController\AreaController.cpp" />
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\bankAccountController\AddAccountController.cpp" />
     <ClCompile Include="api\bankAccountController\BankAccountController.cpp" />
@@ -214,14 +214,14 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
-    <ClCompile Include="dao\publicInterfaceDao\areaDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDao\AreaDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="service\publicInterfaceService\areaService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\AreaService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -230,7 +230,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\publicInterfaceController\areaController.h" />
+    <ClInclude Include="api\publicInterfaceController\AreaController.h" />
     <ClInclude Include="api\bankAccountController\AddAccountController.h" />
     <ClInclude Include="api\bankAccountController\BankAccountController.h" />
     <ClInclude Include="api\bankAccountController\DeleteAccountController.h" />
@@ -269,12 +269,13 @@
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
     <ClInclude Include="dao\bankAccountDAO\temp.h" />
-    <ClInclude Include="dao\publicInterfaceDAO\areaMapper.h" />
-    <ClInclude Include="dao\publicInterfaceDao\areaDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\AreaMapper.h" />
+    <ClInclude Include="dao\publicInterfaceDao\AreaDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\temp.h" />
     <ClInclude Include="dao\supplierDAO\temp.h" />
-    <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\AreaQueryDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\AreaReturnDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\DepartNameDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\MaterialDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\UserDO.h" />
@@ -341,7 +342,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\bankAccountService\temp.h" />
-    <ClInclude Include="service\publicInterfaceService\areaService.h" />
+    <ClInclude Include="service\publicInterfaceService\AreaService.h" />
     <ClInclude Include="service\publicInterfaceService\temp.h" />
     <ClInclude Include="service\supplierService\temp.h" />
     <ClInclude Include="stdafx.h" />

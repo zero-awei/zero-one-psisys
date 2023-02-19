@@ -27,18 +27,15 @@
 */
 class AreaVO
 {
-	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 姓名
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	AreaVO()
 	{
-		id = 1;
 		name = "Beijin";
 	}
 	//绑定json转换方法
-	BIND_TO_JSON(AreaVO, name, id);
+	BIND_TO_JSON(AreaVO, name);
 
 };
 
