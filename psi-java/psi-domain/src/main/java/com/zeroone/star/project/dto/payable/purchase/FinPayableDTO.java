@@ -12,7 +12,14 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * @author chosen1
+ * <p>
+ * 描述：采购应付传输数据对象
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ *
+ * @author chose1
+ * @version 1.0.0
  */
 @Data
 @ApiModel("采购应付传输数据对象")

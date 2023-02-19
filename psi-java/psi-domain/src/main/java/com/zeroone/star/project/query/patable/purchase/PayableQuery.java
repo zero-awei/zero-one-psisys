@@ -7,7 +7,14 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @author chosen1
+ * <p>
+ * 描述：根据单据编号查询
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ *
+ * @author chose1
+ * @version 1.0.0
  */
 @Data
 @ApiModel("根据单据编号查询")
