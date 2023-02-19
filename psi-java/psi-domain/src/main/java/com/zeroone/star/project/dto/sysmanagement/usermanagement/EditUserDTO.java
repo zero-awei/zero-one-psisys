@@ -10,6 +10,13 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+/**
+ * <p>
+ * 描述：编辑用户的数据传输对象
+ * </p>
+ *
+ * @author dan
+ */
 @Data
 @ApiModel("用户管理中编辑的数据传输对象")
 public class EditUserDTO {
@@ -30,6 +37,7 @@ public class EditUserDTO {
     /**
      * 真实姓名
      */
+    @NotBlank
     @ApiModelProperty(value = "真实名字", example = "张小红")
     private String realname;
 
@@ -49,6 +57,7 @@ public class EditUserDTO {
     /**
      * 生日
      */
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "生日", example = "2019-04-01 00:00:00")
     private Date birthday;
@@ -63,42 +72,49 @@ public class EditUserDTO {
     /**
      * 电子邮件
      */
+    @NotBlank
     @ApiModelProperty(value = "电子邮件", example = "123@qq.com")
     private String email;
 
     /**
      * 电话
      */
+    @NotBlank
     @ApiModelProperty(value = "电话", example = "18611783333")
     private String phone;
 
     /**
      * 登录会话的机构编码
      */
+    @NotBlank
     @ApiModelProperty(value = "登录会话的机构编码", example = "A01A01")
     private String orgCode;
 
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
+    @NotNull
     @ApiModelProperty(value = "同步工作流引擎", example = "1")
     private Integer activitiSync;
 
     /**
      * 工号，唯一键
      */
+    @NotBlank
     @ApiModelProperty(value = "工号", example = "3")
     private String workNo;
 
     /**
      * 职务，关联职务表
      */
+    @NotBlank
     @ApiModelProperty(value = "职务", example = "manager")
     private String post;
 
     /**
      * 座机号
      */
+    @NotBlank
     @ApiModelProperty(value = "座机号", example = "87678999")
     private String telephone;
 
@@ -106,24 +122,28 @@ public class EditUserDTO {
     /**
      * 身份（1普通成员 2上级）
      */
+    @NotNull
     @ApiModelProperty(value = "身份", example = "1")
     private Integer userIdentity;
 
     /**
      * 负责部门
      */
+    @NotBlank
     @ApiModelProperty(value = "负责部门", example = "6")
     private String departIds;
 
     /**
      * 多租户标识
      */
+    @NotBlank
     @ApiModelProperty(value = "多租户标识", example = "1")
     private String relTenantIds;
 
     /**
      * 设备ID
      */
+    @NotBlank
     @ApiModelProperty(value = "设备ID", example = "1")
     private String clientId;
 

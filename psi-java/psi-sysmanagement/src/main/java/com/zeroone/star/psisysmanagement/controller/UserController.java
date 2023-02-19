@@ -34,7 +34,13 @@ import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * <p>
+ * 系统管理 用户管理接口实现
+ * </p>
+ *
+ * @author dan
+ */
 @Slf4j
 @RestController
 @RequestMapping("/sysmanagement/usermanagement")
@@ -78,18 +84,15 @@ public class UserController implements UserApis {
     @DeleteMapping("/delete")
     @Override
     public JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        boolean success = userService.removeById(id);
-        if (success) {
-            return JsonVO.success("删除成功");
-        }
-        return JsonVO.fail("请勿重复删除");
+        userService.removeById(id);
+        return JsonVO.success("删除成功");
     }
 
     @ApiOperation(value = "修改用户")
     @PutMapping("/modify")
     @Override
     public JsonVO<String> modifyUser(@Validated EditUserDTO dto) {
-        userService.modifyUser(dto);
+        userService.updateUser(dto);
         return JsonVO.success("修改成功");
     }
 

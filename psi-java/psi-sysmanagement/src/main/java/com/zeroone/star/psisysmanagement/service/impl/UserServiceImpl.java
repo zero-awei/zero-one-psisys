@@ -42,13 +42,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @SneakyThrows
     @Override
     public ResponseEntity<byte[]> getExcel(List<User> users) {
-        // 导出Excel
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        excel.export("测试", out, User.class, users);
-        // 创建响应头
+        excel.export("用户", out, User.class, users);
         HttpHeaders headers = new HttpHeaders();
-        // 构建一个下载的文件名称
-        String fileName = "test-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
+        String fileName = "user-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
         fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
         headers.setContentDispositionFormData("attachment", fileName);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
@@ -66,7 +63,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public void modifyUser(EditUserDTO dto) {
+    public void updateUser(EditUserDTO dto) {
         User user = new User();
         BeanUtils.copyProperties(dto, user);
         log.info("user = {}", user);

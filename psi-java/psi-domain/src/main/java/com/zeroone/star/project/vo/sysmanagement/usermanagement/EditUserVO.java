@@ -9,7 +9,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * <p>
+ * 描述：用户编辑的显示对象
+ * </p>
+ *
+ * @author dan
+ */
 @Data
 @ApiModel("用户管理中编辑的显示对象")
 public class EditUserVO {
