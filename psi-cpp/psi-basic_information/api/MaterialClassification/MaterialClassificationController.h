@@ -55,12 +55,12 @@ private:
 	JsonVO<MaterialClassificationDetailVO> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 
 
-	//新增分类 ,添加、修改、删除下级应该也可以用这种方式
-	JsonVO<AddMaterialClassificationVO> execAddMaterialClassification(const MaterialClassificationDTO& dto);
+	//新增分类 ,添加、修改、删除下级应该也可以用这种方式  #返回的是id
+	JsonVO<uint64_t> execAddMaterialClassification(const MaterialClassificationDTO& dto);
 	//修改分类
-	JsonVO<MaterialClassificationBaseVO> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<string> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
 	//删除分类
-	JsonVO<MaterialClassificationBaseVO> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<string> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
 	
 	//文件导入
 	JsonVO<PageVO<MaterialClassificationBaseVO>> execImportMaterialClassification(const MaterialClassificationDTO& dto);

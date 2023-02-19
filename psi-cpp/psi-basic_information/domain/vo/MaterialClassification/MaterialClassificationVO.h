@@ -48,10 +48,10 @@ class MaterialClassificationBaseVO{
 	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, updateTime);
+	CC_SYNTHESIZE(string, update_time, UpdateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, update_by, updateBy);
+	CC_SYNTHESIZE(string, update_by, UpdateBy);
 
 public:
 
@@ -85,10 +85,10 @@ class MaterialClassificationChildVO {
 	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, updateTime);
+	CC_SYNTHESIZE(string, update_time, UpdateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, update_by, updateBy);
+	CC_SYNTHESIZE(string, update_by, UpdateBy);
 
 
 
@@ -125,10 +125,10 @@ class MaterialClassificationDetailVO {
 	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, updateTime);
+	CC_SYNTHESIZE(string, update_time, UpdateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, update_by, updateBy);
+	CC_SYNTHESIZE(string, update_by, UpdateBy);
 
 
 public:
@@ -161,10 +161,10 @@ class AddMaterialClassificationVO {
 	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, updateTime);
+	CC_SYNTHESIZE(string, update_time, UpdateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, update_by, updateBy);
+	CC_SYNTHESIZE(string, update_by, UpdateBy);
 
 
 public:
@@ -198,11 +198,10 @@ class ModifyMaterialClassificationVO {
 	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, updateTime);
+	CC_SYNTHESIZE(string, update_time, UpdateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, update_by, updateBy);
-
+	CC_SYNTHESIZE(string, update_by, UpdateBy);
 
 public:
 

@@ -204,7 +204,7 @@
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
-    <ClInclude Include="service\MaterialClassification\SampleService.h" />
+    <ClInclude Include="service\MaterialClassification\MaterialClassificationService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

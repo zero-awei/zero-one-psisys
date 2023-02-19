@@ -57,10 +57,10 @@ class MaterialClassificationDTO :public FileDTO {
 	CC_SYNTHESIZE(string, create_by, CreateBy);
 
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, updateTime);
+	CC_SYNTHESIZE(string, update_time, UpdateTime);
 
 	//修改人
-	CC_SYNTHESIZE(string, update_by, updateBy);
+	CC_SYNTHESIZE(string, update_by, UpdateBy);
 
 	//版本 #在数据库中是空的，不知道有什么作用
 	CC_SYNTHESIZE(int, version, Version);
