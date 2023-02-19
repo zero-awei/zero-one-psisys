@@ -30,11 +30,14 @@ public class PositionController implements PositionApis {
     @Autowired
     IPositionService iPositionService;
 
-    @ApiOperation("查询所有职务")
+    @ApiOperation("查询职务列表")
     @GetMapping("/queryall")
     @Override
     public JsonVO<PageVO<PositionVO>> listPositionByPageAndCondition(PositionQuery positionQuery) {
-        return null;
+        if(positionQuery == null){
+            return JsonVO.create(null,ResultStatus.FAIL);
+        }
+        return JsonVO.success(iPositionService.queryAll(positionQuery));
     }
 
     @ApiOperation("添加职务（返回值data值表示插入成功与否）")
