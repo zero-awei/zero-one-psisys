@@ -97,16 +97,10 @@ const handleClose = (done) => {
     :title="attrs.title"
     :width="attrs.width"
     :before-close="handleClose"
-<<<<<<< HEAD
-  >
-    <!-- :fullscreen="attrs.fullscreen" -->
-    <!-- <template #header="{ close, titleId, titleClass }">
-=======
     custom-class="my-dialog"
   > -->
 <!-- :fullscreen="attrs.fullscreen" -->
 <!-- <template #header="{ close, titleId, titleClass }">
->>>>>>> f1
       <div class="my-header">
         <h4 :id="titleId" :class="titleClass">{{ attrs.title }}</h4>
         <div class="icon" style="margin-right: 20px">
@@ -125,13 +119,8 @@ const handleClose = (done) => {
         </el-button>
       </div>
     </template> -->
-<<<<<<< HEAD
-    <!-- :before-close="handleClose" -->
-    <slot></slot>
-=======
 <!-- :before-close="handleClose" -->
 <!-- <slot></slot>
->>>>>>> f1
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="visible = false">取消</el-button>
@@ -139,15 +128,9 @@ const handleClose = (done) => {
       </span>
     </template>
   </el-dialog>
-<<<<<<< HEAD
-</template>
-
-<script setup>
-=======
 </template> -->
 
 <!-- <script setup>
->>>>>>> f1
 import { ref } from 'vue'
 import { computed } from 'vue'
 
@@ -182,11 +165,6 @@ const handleClose = (done) => {
       // catch error
     })
 }
-<<<<<<< HEAD
-</script>
-
-<style lang="scss" scoped>
-=======
 </script> -->
 
 <!-- 
@@ -196,7 +174,6 @@ const handleClose = (done) => {
 }
 </style> -->
 <!-- <style lang="scss" scoped>
->>>>>>> f1
 .my-header {
   display: flex;
   flex-direction: row;
@@ -206,17 +183,9 @@ const handleClose = (done) => {
 //   width: 38px;
 //   height: 61px;
 // }
-<<<<<<< HEAD
-:deep(.el-dialog__headerbtn) {
-  width: 38px;
-  height: 61px;
-}
-</style>
-=======
 
 :deep(.el-dialog__body) {
   width: 38px;
   height: 61px;
 }
 </style> -->
->>>>>>> f1
