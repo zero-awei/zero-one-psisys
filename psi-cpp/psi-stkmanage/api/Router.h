@@ -22,30 +22,41 @@
 
 #include "api/ApiHelper.h"
 
+
 /**
- * å‰ç«¯è®¿é—®æœåŠ¡å™¨è·¯ç”±ç»‘å®šï¼Œç”¨äºå®šä¹‰å‰ç«¯è®¿é—®åç«¯æ¥å£å’Œè®¿é—®è·¯å¾„ç»‘å®š
+ * Ç°¶Ë·ÃÎÊ·şÎñÆ÷Â·ÓÉ°ó¶¨£¬ÓÃÓÚ¶¨ÒåÇ°¶Ë·ÃÎÊºó¶Ë½Ó¿ÚºÍ·ÃÎÊÂ·¾¶°ó¶¨
  */
 class Router
 {
 private:
 	http_server* server;
 public:
-	//æ„é€ åˆå§‹åŒ–
+	//¹¹Ôì³õÊ¼»¯
 	explicit Router(http_server* sever);
-	//å‘¼å«åˆå§‹åŒ–
+	//ºô½Ğ³õÊ¼»¯
 	void initRouter();
 private:
 #ifdef HTTP_SERVER_DEMO
-	//åˆ›å»ºæ¼”ç¤ºè·¯ç”±
+	//´´½¨ÑİÊ¾Â·ÓÉ
 	void createSampleRouter();
-	//åˆ›å»ºç”¨æˆ·ç®¡ç†-éƒ¨é—¨ç®¡ç†è·¯ç”±
+	//´´½¨ÓÃ»§¹ÜÀí-²¿ÃÅ¹ÜÀíÂ·ÓÉ
 	void createUserDepartRouter();
 #endif
 
-	//é‡‡è´­å…¥åº“Router
+	//²É¹ºÈë¿âRouter
 	void createCgrkRouter();
-	//æ¶¨å¨å…¥åº“Router
+	//²É¹ºÍË»õ³ö¿â
+	void createCgthckRouter();
+	//ÕÇ¶ÖÈë¿âRouter
+	void createIncreaseTonRouter();<<<<<<< .mine
+	void createCgrkRouter();
+	//ÕÇ¶ÖÈë¿âRouter
 	void createIncreaseTonRouter();
+=======
+
+
+
+>>>>>>> .theirs
 };
 
 #endif // !_ROUTER_

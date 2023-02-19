@@ -1,0 +1,8 @@
+// 提示文件帮助 Visual Studio IDE 解释 Visual C++ 标识符,
+// 如函数和宏的名称。
+// 有关详细信息，请参见 https://go.microsoft.com/fwlink/?linkid=865984
+#define CC_SYNTHESIZE(varType, varName, funName) protected: varType varName;public: varType get##funName(void) const { return varName; }public: void set##funName(varType var){ varName = var; }
+#define BIND_TO_JSON(Type, __VA_ARGS__) friend void to_json(nlohmann::json& nlohmann_json_j, const Type& nlohmann_json_t) { NLOHMANN_JSON_EXPAND(NLOHMANN_JSON_PASTE(NLOHMANN_JSON_TO, __VA_ARGS__)) }
+#define CREATE_API_FUN_QUERY_PAYLOAD(__FUN_NAME__, __EXEC_FUN__, __DATA_TYPE__) API_FUN_BEGIN(__FUN_NAME__) API_QUERY_PARAM(__DATA_TYPE__) API_EXEC_FUN_PAYLOAD(__EXEC_FUN__) API_FUN_END
+#define CREATE_API_FUN_QUERY(__FUN_NAME__, __EXEC_FUN__, __DATA_TYPE__) API_FUN_BEGIN(__FUN_NAME__) API_QUERY_PARAM(__DATA_TYPE__) API_EXEC_FUN(__EXEC_FUN__) API_FUN_END
+#define CREATE_API_FUN_BODY(__FUN_NAME__, __EXEC_FUN__, __DATA_TYPE__) API_FUN_BEGIN(__FUN_NAME__) API_BODY_PARAM(__DATA_TYPE__) API_EXEC_FUN(__EXEC_FUN__) API_FUN_END

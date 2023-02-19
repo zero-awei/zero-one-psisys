@@ -21,6 +21,7 @@
 #include "Zdrk/ZdrkController.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "api/Cgthck/CgthckController.h"
 #include "Cgrk/CgrkController.h"
 
 #ifdef HTTP_SERVER_DEMO
@@ -76,8 +77,8 @@ void Router::initRouter()
 	createCgrkRouter();
 	createIncreaseTonRouter();
 
-	
-
+	//#TIP :系统扩展路由定义，写在这个后面
+	createCgthckRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -125,4 +126,15 @@ void Router::createIncreaseTonRouter()
 	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state", &ZdrkController::modifyZdrkBillState, nullptr);
 	BIND_POST_ROUTER(server, "/import-zdrk-file", &ZdrkController::ImportZdrkFile, nullptr);
 	BIND_GET_ROUTER(server, "/emport-zdrk-file", &ZdrkController::EmportZdrkFile, nullptr);
+}
+
+void Router::createCgthckRouter()
+{
+	BIND_GET_ROUTER(server, "/get-cgthck-bill-list", &CgthckController::queryCgthcBillk, nullptr);
+	BIND_GET_ROUTER(server, "/get-cgthck-bill-details", &CgthckController::queryCgthckBillDetail, nullptr);
+	BIND_POST_ROUTER(server, "/post-cgthck-bill", &CgthckController::addCgthckBill, nullptr);
+	BIND_PUT_ROUTER(server, "/put-cgthck-bill", &CgthckController::modifyCgthckBill, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-cgthck-bill-by-id", &CgthckController::deleteCgthckBill, nullptr);
+	BIND_POST_ROUTER(server, "/import-cgthck-file", &CgthckController::importCgthckFile, nullptr);
+	BIND_GET_ROUTER(server, "/export-cgthck-file", &CgthckController::exportCgthckFile, nullptr);
 }
