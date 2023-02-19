@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BasMaterialController.h"
-/*
+
 //普通查询数据
 JsonVO<PageVO<BasMaterialVO>> execQueryBasMaterial(const BasMaterialQuery& query, const PayloadDTO& payload) {
 
@@ -42,7 +42,7 @@ JsonVO<string> execExportExecl(const BasMaterialQuery& query, const PayloadDTO& 
 	JsonVO <string> result;
 	return result;
 }
-*/
+
 
 JsonVO<PageVO<BasMaterialVO>> BasMaterialController::execQueryBasMaterial(const BasMaterialQuery& query, const PayloadDTO& payload)
 {

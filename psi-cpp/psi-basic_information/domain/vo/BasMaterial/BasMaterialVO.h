@@ -60,7 +60,7 @@ class BasMaterialVO
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(BasMaterialVO, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, update_by);
+	BIND_TO_JSON(BasMaterialVO, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
 };
 
 #endif // !_SAMPLE_VO_
