@@ -19,15 +19,39 @@ import java.util.List;
  * @since 2023-02-11
  */
 public interface ISysCategoryService extends IService<SysCategory> {
-
+    /**
+     * 查询所有
+     * @param condition
+     * @return 查询结果
+     */
     PageVO<ClassifiedDictionaryVO> queryAll(PageQuery condition);
 
+    /**
+     * 根据pid查询子节点
+     * @param condition
+     * @return 查询结果
+     */
     PageVO<ClassifiedDictionaryVO> queryOne(String condition);
 
+    /**
+     * 更新操作
+     * @param data
+     * @return 更新结果
+     */
     String update(ClassifiedDictionaryDTO data);
 
+    /**
+     * 根据id删除
+     * @param id
+     * @return 删除结果
+     */
     String delete(String id);
 
+    /**
+     * 插入操作
+     * @param data
+     * @return 插入结果
+     */
     String insert(ClassifiedDictionaryDTO data);
 
 }
