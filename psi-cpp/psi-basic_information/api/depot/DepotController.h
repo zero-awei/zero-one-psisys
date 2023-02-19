@@ -22,40 +22,46 @@
 #include "../../domain/vo/depot/DepotVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
+#include "service/depot/DepotService.h"
+// #include "../../domain/dto/FileDTO.h"
 
 /**
- * åŸºç¡€èµ„æ–™ä»“åº“æ¨¡å—æ¥å£
+ * »ù´¡×ÊÁÏ²Ö¿âÄ£¿é½Ó¿Ú
  */
 class DepotController
 {
 public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDepot, execQueryDepot, DepotQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryKidDepot, execQueryKidDepot, DepotQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailDepot, execQueryDetail, DepotQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolDepot, execQueryActionInfo, DepotQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryKidDepot, execQueryKidDepot, OnlyValueQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailDepot, execQueryDetail, OnlyValueQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolDepot, execQueryActionInfo, OnlyValueQuery);
 	CREATE_API_FUN_BODY(addDepot, execAddDepot, DepotDTO);
 	CREATE_API_FUN_BODY(modifyDepot, execModifyDepot, DepotDTO);
-	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, DepotDTO);
-	CREATE_API_FUN_BODY_FILE(modifyDepots, execModifyDepots, DepotDTO);
+	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, OnlyValueQuery);
+	// ÕâÀïÖ±½ÓÓÃFileDTO±¨´í
+	CREATE_API_FUN_BODY_FILE(addDepots, execAddDepots, DepotDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, DepotQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueQuery);
 private:
-	//é»˜è®¤æŸ¥è¯¢æ•°æ®
+	//Ä¬ÈÏ²éÑ¯Êı¾İ
 	JsonVO<PageVO<DepotVO>> execQueryDepot(const DepotQuery& query, const PayloadDTO& payload);
-	//æŸ¥è¯¢å­çº§åˆ—è¡¨ # è¿™é‡Œåº”è¯¥ä¼ ä¸ªå”¯ä¸€å€¼å°±è¡Œ è¦ä¸è¦åˆ†é¡µçš„é—®é¢˜ä¹‹åæµ‹è¯•äº†å†è¯´
-	JsonVO<DepotVO> execQueryKidDepot(const DepotQuery& query, const PayloadDTO& payload);
-	// æŸ¥è¯¢è¯¦æƒ… # è¿™é‡Œåº”è¯¥ä¼ ä¸ªå”¯ä¸€å€¼å°±è¡Œ
-	JsonVO<DepotDetailVO> execQueryDetail(const DepotQuery& query, const PayloadDTO& payload);
-	JsonVO<DepotActionInfoVO> execQueryActionInfo(const DepotQuery& query, const PayloadDTO& payload);
-	//æ–°å¢ä»“åº“ # æ·»åŠ ä¸‹çº§åº”è¯¥å¯ä»¥é€šè¿‡è¿™ä¸ªæ¥å®ç°ï¼Œå°±å…ˆä¸å†™
+	//²éÑ¯×Ó¼¶ÁĞ±í
+	JsonVO<DepotVO> execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload);
+	// ²éÑ¯ÏêÇé
+	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
+	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
+	//ĞÂÔö²Ö¿â
 	JsonVO<PageVO<DepotVO>> execAddDepot(const DepotDTO& dto);
-	//ä¿®æ”¹ä»“åº“
+	//ĞŞ¸Ä²Ö¿â
 	JsonVO<PageVO<DepotVO>> execModifyDepot(const DepotDTO& dto);
-	//åˆ é™¤ä»“åº“ # è¿™é‡Œåº”è¯¥ä¼ ä¸ªå”¯ä¸€å€¼å°±è¡Œï¼Œåæ­£æ˜¯å¯¹åº”åˆ é™¤çš„
-	JsonVO<PageVO<DepotVO>> execRemoveDepot(const DepotDTO& dto);
-	//æ–‡ä»¶å¯¼å…¥
-	JsonVO<PageVO<DepotVO>> execModifyDepots(const DepotDTO& dto);
-	//æ–‡ä»¶å¯¼å‡º
+	//É¾³ı²Ö¿â 
+	JsonVO<PageVO<DepotVO>> execRemoveDepot(const OnlyValueQuery& query);
+	//ÎÄ¼şµ¼Èë
+	JsonVO<PageVO<DepotVO>> execAddDepots(const DepotDTO& dto);
+	//ÎÄ¼şµ¼³ö
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
+	// Í¨¹ıÎ¨Ò»ÖµÅúÁ¿µ¼³ö
+	JsonVO<string> execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload);
 };
 
 #endif // _DEPOT_CONTROLLER_

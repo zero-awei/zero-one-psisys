@@ -27,12 +27,14 @@
  */
 class DepotVO
 {
+	// 唯一值：id
+	CC_SYNTHESIZE(string, id, Id);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
-	CC_SYNTHESIZE(string, id, Id);
+	CC_SYNTHESIZE(string, code, Code);
 	// 助记名
-	CC_SYNTHESIZE(string, helpName, HelpName);
+	CC_SYNTHESIZE(string, auxName, AuxName);
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
@@ -49,21 +51,21 @@ class DepotVO
 	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(DepotVO, name, id, helpName, phone,start,remarks,creationTime, creationPeo, modiTime, modiPeo);
+	BIND_TO_JSON(DepotVO, id, name, code, auxName, phone,start,remarks,creationTime, creationPeo, modiTime, modiPeo);
 };
 
 class DepotDetailVO
 {
 	// 上级
-	CC_SYNTHESIZE(int, previous, Previous);
+	CC_SYNTHESIZE(string, pid, Pid);
 	// 下级
-	CC_SYNTHESIZE(int, next, Next);
+	CC_SYNTHESIZE(string, next, Next);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
 	CC_SYNTHESIZE(string, id, Id);
 	// 助记名
-	CC_SYNTHESIZE(string, helpName, HelpName);
+	CC_SYNTHESIZE(string, auxName, AuxName);
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
@@ -72,7 +74,7 @@ class DepotDetailVO
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(DepotDetailVO, previous, next, name, helpName, phone, start, remarks);
+	BIND_TO_JSON(DepotDetailVO, pid, next, name, auxName, phone, start, remarks);
 };
 
 class DepotActionInfoVO
