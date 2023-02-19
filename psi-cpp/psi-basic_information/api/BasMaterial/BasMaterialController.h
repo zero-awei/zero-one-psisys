@@ -43,7 +43,7 @@ public:
 private:
 	//普通查询数据
 	JsonVO<PageVO<BasMaterialVO>> execQueryBasMaterial(const BasMaterialQuery& query, const PayloadDTO& payload);
-	//查看指定物料详情信息，即上述所有信息
+	//查看指定物料详情信息
 	JsonVO<BasMaterialVO> execQueryDetail(const BasMaterialQuery& query, const PayloadDTO& payload);
 	//新增数据
 	JsonVO<BasMaterialVO> execAddBasMaterial(const BasMaterialDTO& dto);

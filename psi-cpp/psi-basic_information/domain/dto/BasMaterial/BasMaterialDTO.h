@@ -31,6 +31,8 @@ class BasMaterialDTO : public FileDTO
 	CC_SYNTHESIZE(string, id, Id);
 	// 分类 需要查另一个表
 	CC_SYNTHESIZE(string, categoryId, CategoryId);
+	////分类name
+	//CC_SYNTHESIZE(string, categoryId, CategoryId);
 	// 编码
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称
@@ -44,6 +46,9 @@ class BasMaterialDTO : public FileDTO
 	CC_SYNTHESIZE(string, model, Model);
 	//主单位 需要查另一个表
 	CC_SYNTHESIZE(string, unitId, UnitId);
+
+	////主单位name
+//CC_SYNTHESIZE(string, unit, Unit);
 	//销售价格
 	CC_SYNTHESIZE(int, salePrice, SalePrice);
 	//税控编码
@@ -61,41 +66,9 @@ class BasMaterialDTO : public FileDTO
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, BasMaterialDTO& t) {// NOLINT
-		BIND_FROM_TO_NORMAL(j, t, id);
-	// 编码
-		BIND_FROM_TO_NORMAL(j, t, code);
-		// 名称
-		BIND_FROM_TO_NORMAL(j, t, name);
-		// 助记名
-		BIND_FROM_TO_NORMAL(j, t, auxName);
-
-		// 分类 需要查另一个表
-		BIND_FROM_TO_NORMAL(j, t, categoryId);
-		//规格型号
-		BIND_FROM_TO_NORMAL(j, t, model);
-		//主单位 需要查另一个表
-		BIND_FROM_TO_NORMAL(j, t, unitId);
-		//销售价格
-		BIND_FROM_TO_I(j, t, salePrice);
-		//税控编码
-		BIND_FROM_TO_NORMAL(j, t, taxCode);
-
-
-		// 启用
-		BIND_FROM_TO_I(j, t, isEnabled);
-		// 备注
-		BIND_FROM_TO_NORMAL(j, t, remark);
-		// 创建时间
-		BIND_FROM_TO_NORMAL(j, t, createTime);
-		// 创建人
-		BIND_FROM_TO_NORMAL(j, t, createBy);
-		// 修改时间
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
-		// 修改人
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
-	}
-	BIND_TO_JSON(BasMaterialDTO,id, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
+	friend void from_json(const json& j, BasMaterialDTO& t);// NOLINT
+	/*BIND_TO_JSON(BasMaterialDTO, id, code, name, auxName, categoryId, category, model, unitId, unit, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);*/
+	BIND_TO_JSON(BasMaterialDTO, id, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
 };
 
 #endif // !_BASMATERIAL_DTO_

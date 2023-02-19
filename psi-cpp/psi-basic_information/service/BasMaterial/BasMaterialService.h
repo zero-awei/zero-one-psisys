@@ -38,7 +38,7 @@ public:
 	// 修改数据
 	bool updateData(const BasMaterialDTO& dto);
 	// 通过code编码删除数据
-	bool removeData(string code);
+	bool removeData(string id);
 };
 
 #endif // !_BASMATERIAL_SERVICE_

@@ -116,8 +116,8 @@ bool BasMaterialService::updateData(const BasMaterialDTO& dto)
 	return dao.update(data) == 1;
 }
 
-bool BasMaterialService::removeData(string code)
+bool BasMaterialService::removeData(string id)
 {
 	BasMaterialDAO dao;
-	return dao.deleteByCode(code) == 1;
+	return dao.deleteById(id) == 1;
 }

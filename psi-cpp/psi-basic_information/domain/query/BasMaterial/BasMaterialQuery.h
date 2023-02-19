@@ -27,6 +27,7 @@
  */
 class BasMaterialQuery : public PageQuery
 {
+	CC_SYNTHESIZE(string, id, Id);
 	// ±àºÅ
 	CC_SYNTHESIZE(string, code, Code);
 	// Ãû³Æ
@@ -38,6 +39,7 @@ public:
 	friend void from_json(const json& j, BasMaterialQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
+		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, categoryId);
