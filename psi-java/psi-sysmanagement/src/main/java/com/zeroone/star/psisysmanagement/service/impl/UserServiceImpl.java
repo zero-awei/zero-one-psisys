@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
  * 用户表 服务实现类
  * </p>
  *
- * @author axin
+ * @author  axin
  * @since 2023-02-12
  */
 @Service
@@ -39,7 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
 //    模糊查询用户 finished tested
     @Override
-    public PageVO<UserVO> queryUser(FindUserQuery query) {
+    public PageVO<UserVO> listUser(FindUserQuery query) {
         //        创建分页对象
         Page<User> userPage = new Page<>(query.getPageIndex(), query.getPageSize());
 //        创建查询条件
@@ -56,23 +56,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
       return null;
     }
 
-    @Override
-    public void insert(UserDTO dto) {
-        baseMapper.insert(null);
-    }
-
-    @Override
-    public void deleteUser(String id) {
-
-    }
-
-    @Override
-    public void modifyUser(UserDTO dto) {
-
-    }
-
-    @Override
-    public void modifyStatus(String id) {
-
-    }
 }

@@ -32,6 +32,16 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * <p>
+ * 用户表 控制层
+ * </p>
+ *
+ * @author axin
+ * @since 2023-02-18
+ */
+
 @Slf4j
 @RestController
 @RequestMapping("/sysmanagement/usermanagement")
@@ -57,8 +67,8 @@ public class UserController implements UserApis {
     @ApiOperation(value = "模糊查询用户")
     @GetMapping("/query-user")
     @Override
-    public JsonVO<PageVO<UserVO>> queryUser(@Validated FindUserQuery query) {
-        return JsonVO.success(iUserService.queryUser(query));
+    public JsonVO<PageVO<UserVO>> listUser(@Validated FindUserQuery query) {
+        return JsonVO.success(iUserService.listUser(query));
     }
 
     @ApiOperation(value = "修改用户时的信息回显")
@@ -73,7 +83,6 @@ public class UserController implements UserApis {
     @PostMapping("/add")
     @Override
     public JsonVO<String> addUser(UserDTO dto) {
-        iUserService.insert(dto);
         return JsonVO.success("添加成功");
     }
 
@@ -82,7 +91,6 @@ public class UserController implements UserApis {
     @Override
     public JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") @RequestParam String id) {
         log.info("id = {}", id);
-        iUserService.deleteUser(id);
         return JsonVO.success("删除成功");
     }
 
@@ -90,7 +98,6 @@ public class UserController implements UserApis {
     @PutMapping("/modify")
     @Override
     public JsonVO<String> modifyUser(UserDTO dto) {
-        iUserService.modifyUser(dto);
         return JsonVO.success("修改成功");
     }
 
@@ -98,7 +105,6 @@ public class UserController implements UserApis {
     @PutMapping("/status")
     @Override
     public JsonVO<String> modifyStatus(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        iUserService.modifyStatus(id);
         return JsonVO.success("状态修改成功");
     }
 
@@ -106,7 +112,6 @@ public class UserController implements UserApis {
     @PostMapping("/upload")
     @Override
     public JsonVO<String> upload() {
-
         return JsonVO.success("导入成功");
     }
 

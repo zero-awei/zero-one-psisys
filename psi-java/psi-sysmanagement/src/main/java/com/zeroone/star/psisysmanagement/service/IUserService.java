@@ -16,7 +16,7 @@ import com.zeroone.star.psisysmanagement.entity.User;
  * </p>
  *
  * @author axin
- * @since 2023-02-12
+ * @since 2023-02-18
  */
 public interface IUserService extends IService<User> {
 
@@ -24,22 +24,22 @@ public interface IUserService extends IService<User> {
     PageVO<UserVO> listAllUsers(UserQuery query);
 
 //    查询用户信息（通过FindUserQuery中的name属性）
-    PageVO<UserVO> queryUser(FindUserQuery query);
+    PageVO<UserVO> listUser(FindUserQuery query);
 
-//    回显出用户信息（通过id）
+////    回显出用户信息（通过id）
     JsonVO<EditUserVO> review(String id);
-
-//    添加用户（通过UserDTO）
-     void insert(UserDTO dto);
-
-//    通过id删除用户（通过id）
-    void deleteUser(String id);
-
-//    修改用户（通过UserDTO）
-    void modifyUser(UserDTO dto);
-
-//    修改冻结状态（通过id）
-    void modifyStatus(String id);
+//
+////    添加用户（通过UserDTO）
+//     void insert(UserDTO dto);
+//
+////    通过id删除用户（通过id）
+//    void deleteUser(String id);
+//
+////    修改用户（通过UserDTO）
+//    void modifyUser(UserDTO dto);
+//
+////    修改冻结状态（通过id）
+//    void modifyStatus(String id);
 
 
 }
