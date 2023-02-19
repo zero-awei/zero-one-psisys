@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-02-14
  */
 @RestController
-@RequestMapping("/jeecg-boot/finance/finPayable/")
+@RequestMapping("payable/")
 @Api(tags = "采购预付")
 @Validated
 public class PurchasePayableController implements PurchasePayableApis {
@@ -35,21 +35,14 @@ public class PurchasePayableController implements PurchasePayableApis {
     private IFinPayableService service;
 
     @ApiOperation("分页查询所有单据")
-    @GetMapping("list/all")
+    @GetMapping("query/list/select")
     @Override
-    public JsonVO<PageVO<FinPayableVO>> listAll(PageQuery query) {
-        return JsonVO.success(service.listAll(query));
-    }
-
-    @ApiOperation("分页查询所有单据")
-    @GetMapping("list/multi")
-    @Override
-    public JsonVO<PageVO<FinPayableVO>> multiConditionSearch(MultiConditionPayableQuery query) {
-        return JsonVO.success(service.multiConditionSearch(query));
+    public JsonVO<PageVO<FinPayableVO>> getAll(MultiConditionPayableQuery query) {
+        return JsonVO.success(service.getAll(query));
     }
 
     @ApiOperation("查询单据详情")
-    @GetMapping("query")
+    @GetMapping("query/get/select")
     @Override
     public JsonVO<FinPayableVO> getById(@Validated PayableQuery query) {
         return JsonVO.success(service.getById(query));

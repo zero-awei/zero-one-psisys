@@ -16,14 +16,12 @@ import org.springframework.validation.annotation.Validated;
  * 应付单 服务类
  * </p>
  *
- * @author j3
+ * @author chosen1
  * @since 2023-02-14
  */
 public interface IFinPayableService extends IService<FinPayable> {
 
-    public PageVO<FinPayableVO> listAll(PageQuery query);
-
-    public PageVO<FinPayableVO> multiConditionSearch(MultiConditionPayableQuery query);
+    public PageVO<FinPayableVO> getAll(MultiConditionPayableQuery query);
 
     public FinPayableVO getById(@Validated PayableQuery query);
 }

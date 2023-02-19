@@ -22,22 +22,14 @@ import java.util.List;
  * 应付单 服务实现类
  * </p>
  *
- * @author j3
+ * @author chosen1
  * @since 2023-02-14
  */
 @Service
 public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPayable> implements IFinPayableService {
 
     @Override
-    public PageVO<FinPayableVO> listAll(PageQuery query) {
-        Page<FinPayable> payablePage = new Page<>(query.getPageIndex(), query.getPageSize());
-        Page<FinPayable> result = baseMapper.selectPage(payablePage, null);
-        // TODO 待完成、mapper
-        return PageVO.create(result, FinPayableVO.class);
-    }
-
-    @Override
-    public PageVO<FinPayableVO> multiConditionSearch(MultiConditionPayableQuery query) {
+    public PageVO<FinPayableVO> getAll(MultiConditionPayableQuery query) {
         Page<FinPayable> payablePage = new Page<>(query.getPageIndex(), query.getPageSize());
         QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
         // TODO 编写wrapper、mapper
