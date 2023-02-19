@@ -56,7 +56,7 @@ public class FinPayableVO {
     /**
      * 是否红字
      */
-    @ApiModelProperty(value = "是否红字", example = "是")
+    @ApiModelProperty(value = "是否红字", example = "1")
     private String isRubric;
 
     /**
@@ -104,7 +104,7 @@ public class FinPayableVO {
     /**
      * 是否自动生成
      */
-    @ApiModelProperty(value = "是否自动生成", example = "是")
+    @ApiModelProperty(value = "是否自动生成", example = "1")
     private String isAuto;
 
     /**
@@ -122,7 +122,7 @@ public class FinPayableVO {
     /**
      * 是否通过
      */
-    @ApiModelProperty(value = "是否通过", example = "是")
+    @ApiModelProperty(value = "是否通过", example = "1")
     private String isEffective;
 
     /**
@@ -146,13 +146,13 @@ public class FinPayableVO {
     /**
      * 已关闭
      */
-    @ApiModelProperty(value = "已关闭", example = "否")
+    @ApiModelProperty(value = "已关闭", example = "0")
     private String isClosed;
 
     /**
      * 是否作废
      */
-    @ApiModelProperty(value = "是否作废", example = "否")
+    @ApiModelProperty(value = "是否作废", example = "0")
     private String isVoided;
 
     /**
