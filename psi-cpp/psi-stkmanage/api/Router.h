@@ -48,15 +48,7 @@ private:
 	//采购退货出库
 	void createCgthckRouter();
 	//涨吨入库Router
-	void createIncreaseTonRouter();<<<<<<< .mine
-	void createCgrkRouter();
-	//涨吨入库Router
 	void createIncreaseTonRouter();
-=======
-
-
-
->>>>>>> .theirs
 };
 
 #endif // !_ROUTER_

@@ -54,6 +54,9 @@
     <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\Cgthck\CgthckController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -177,6 +180,39 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\Cgrk\QueryCgrkBillConditionsQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Cgthck\CgthckController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\CgthckDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgthck\AddCgthckBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgthck\DeleteCgthckBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgthck\ExportCgthckFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgthck\ImportCgthckFileDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\Cgthck\ModifyCgthckBillDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
