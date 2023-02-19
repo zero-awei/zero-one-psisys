@@ -78,8 +78,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
         SysMenu sysMenu = BeanUtil.copyProperties(singleMenuQuery, SysMenu.class);
 
-        baseMapper.deleteById(sysMenu);
+        int num = baseMapper.deleteById(sysMenu);
 
-        return null;
+        return num >=1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
     }
 }
