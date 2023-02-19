@@ -3,6 +3,13 @@ package com.zeroone.star.payable.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.payable.entity.FinPayable;
+import com.zeroone.star.project.query.PageQuery;
+import com.zeroone.star.project.query.patable.purchase.MultiConditionPayableQuery;
+import com.zeroone.star.project.query.patable.purchase.PayableQuery;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payable.purchase.FinPayableVO;
+import org.springframework.validation.annotation.Validated;
 
 /**
  * <p>
@@ -14,4 +21,9 @@ import com.zeroone.star.payable.entity.FinPayable;
  */
 public interface IFinPayableService extends IService<FinPayable> {
 
+    public PageVO<FinPayableVO> listAll(PageQuery query);
+
+    public PageVO<FinPayableVO> multiConditionSearch(MultiConditionPayableQuery query);
+
+    public FinPayableVO getById(@Validated PayableQuery query);
 }
