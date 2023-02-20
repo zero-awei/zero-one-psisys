@@ -21,7 +21,7 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 #include "depot/DepotController.h"
-
+#include "Measurement/MeasurementController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -82,17 +82,20 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+
 	createCurrencyRouter();
 
 	createBasMaterialRouter();
 
-	createMaterialClassificationRouter(); //
+	createMaterialClassificationRouter();
+
+	createMeasurementRouter();
 
 
 }
 
 #ifdef HTTP_SERVER_DEMO
-void Router::createSampleRouter()
+void Router::createMeasurementRouter()
 {
 	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
 	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
@@ -111,6 +114,7 @@ void Router::createUserDepartRouter()
 
 
 #endif
+
 
 void Router::createDepotRouter()
 {
@@ -160,4 +164,19 @@ void Router::createCurrencyRouter()
 	BIND_POST_ROUTER(server, "/currency-add-Currencys", &CurrencyController::addCurrencys, nullptr);
 	BIND_GET_ROUTER(server, "/currency-export", &CurrencyController::exportExecl, nullptr);
 	BIND_GET_ROUTER(server, "/currency-export-only", &CurrencyController::exportExeclOnly, nullptr);
+}
+
+void Router::createMeasurementRouter()
+{
+	BIND_GET_ROUTER(server, "/Measurement-get", &MeasurementController::queryMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-get-kid", &MeasurementController::queryKidMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-get-detail", &MeasurementController::queryDetailMeasurement, nullptr);
+	BIND_POST_ROUTER(server, "/Measurement-post", &MeasurementController::addMeasurement, nullptr);
+	BIND_PUT_ROUTER(server, "/Measurement-put", &MeasurementController::modifyMeasurement, nullptr);
+	BIND_DEL_ROUTER(server, "/Measurement-delete", &MeasurementController::removeMeasurement, nullptr);
+	BIND_POST_ROUTER(server, "/Measurement-addfile", &MeasurementController::queryMeasurement, nullptr);
+	BIND_GET_ROUTER(server, "/Measurement-export", &MeasurementController::addFileMeasurement, nullptr);
+	//BIND_DEL_ROUTER(server, "/delete-by-id", &MeasurementController::removeById, nullptr);
+	//BIND_POST_ROUTER(server, "/json", &MeasurementController::jsonSample, nullptr);
+	//BIND_POST_ROUTER(server, "/modify-user-info", &MeasurementController::modifyUserInfo, nullptr);
 }
