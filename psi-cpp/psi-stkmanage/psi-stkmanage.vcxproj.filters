@@ -251,12 +251,6 @@
     <ClInclude Include="domain\dto\Qtrk\ModifyQtrkBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -308,13 +302,16 @@
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\SampleDO.h">
+    <ClInclude Include="domain\do\Qtrk\AddQtrkBillDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dao\Qtrk\QtrkDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dao\Qtrk\QtrkMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
