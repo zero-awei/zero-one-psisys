@@ -2,9 +2,7 @@ package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
-import com.zeroone.star.psisysmanagement.entity.SysPermission;
 import com.zeroone.star.psisysmanagement.mapper.PermissionMapper;
 import com.zeroone.star.psisysmanagement.service.IPermissionService;
 import org.springframework.stereotype.Service;
