@@ -35,14 +35,14 @@ public class PurchasePayableController implements PurchasePayableApis {
     private IFinPayableService service;
 
     @ApiOperation("分页查询所有单据")
-    @GetMapping("query/list/select")
+    @GetMapping("query/list/select/purchase/all")
     @Override
     public JsonVO<PageVO<FinPayableVO>> getAll(MultiConditionPayableQuery query) {
         return JsonVO.success(service.getAll(query));
     }
 
     @ApiOperation("查询单据详情")
-    @GetMapping("query/get/select")
+    @GetMapping("query/get/select/purchase/detail")
     @Override
     public JsonVO<FinPayableVO> getById(@Validated PayableQuery query) {
         return JsonVO.success(service.getById(query));
