@@ -18,7 +18,7 @@
                 >
                 <!-- element表单 -->
 
-                    <el-form-item :label=n.message v-for="n in names">
+                    <el-form-item :label=item v-for="item in items">
                         <!-- 输入 -->
                         <el-input/>
                     </el-form-item>
@@ -39,8 +39,10 @@
 import { ref } from 'vue'
 
 
-// 这里用于渲染文字，不知道是从后台传过来还是前台自己做
-const names = ref([{message: "开票信息"}, {message: "办款资料"}, {message: "收件信息"}]) 
+// 用一个props接收根组件传来的后台数据
+const names = defineProps({
+  items: Array
+})
 
 
 

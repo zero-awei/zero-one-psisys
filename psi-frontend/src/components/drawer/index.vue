@@ -9,8 +9,10 @@
 -->
 <template>
   <div>
-    <psi-drawer :title="attrs.title" />
-    <psi-popover :items="items" />
+    <psi-drawer 
+    :title="attrs.title" 
+    :items="items.arr"
+    />
   </div>
 </template>
 
@@ -21,31 +23,13 @@ const attrs = reactive({
   title: '抽屉标题'
 })
 
-const status = reactive({
-  items: [
-    {
-      label: 'option1',
-      value: 1
-    },
-    {
-      label: 'option2',
-      value: 2
-    },
-    {
-      label: 'option3',
-      value: 3
-    },
-    {
-      label: 'option4',
-      value: 4
-    },
-    {
-      label: 'option5',
-      value: 5
-    }
-  ]
-})
-const { items } = toRefs(status)
+const items = reactive({
+  // 后台接收的数据放到这里，就可以传值了
+  arr: ["开票信息", "办款资料", "收件信息"]
+  })
+  
+
+// const { items } = toRefs(status)
 </script>
 
 <style></style>

@@ -1,6 +1,7 @@
 <template>
   <!-- 应付核销界面 -->
   <div>
+    <!-- 查询 -->
     <psi-form
       :items="items"
       :formData="formData"
@@ -9,6 +10,7 @@
       @reset="doReset"
     ></psi-form>
     <br />
+    <!-- 表格数据 -->
     <psi-table
       :items="tableItems"
       :tableData="tableData"
@@ -17,6 +19,7 @@
     >
     </psi-table>
 
+    <!-- 弹出框 -->
     <psi-dialog
       ref="editDialog"
       v-model="editDialogVisible"
@@ -53,6 +56,7 @@ const formState = reactive({
       endPlaceholder: '结束日期'
     }
   ],
+  // 查询表单折叠项的配置
   toggleItems: [
     {
       type: 'input',

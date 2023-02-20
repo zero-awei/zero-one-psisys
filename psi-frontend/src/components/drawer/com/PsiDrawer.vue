@@ -19,7 +19,7 @@
 <template>
   <div>
     <el-drawer v-model="drawer" :title="title" size="40%">
-      <psi-drawer-collapse></psi-drawer-collapse>
+      <psi-drawer-collapse :items="items"></psi-drawer-collapse>
     </el-drawer>
 
     <el-button
@@ -43,7 +43,9 @@ const props = defineProps({
     default: () => {
       return ''
     }
-  }
+  },
+  items: Array //传给子组件的数据
 })
 const drawer = ref(false)
+
 </script>
