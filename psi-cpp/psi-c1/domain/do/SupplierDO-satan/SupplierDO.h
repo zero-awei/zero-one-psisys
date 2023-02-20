@@ -8,15 +8,15 @@
 #include "../DoInclude.h"
 
 /**
- * 示例数据库实体类
+ * 数据库实体类——将数据库的所有字段都填到这里
  */
 class SupplierDO
 {
 	/*供应商信息*/
 	//ID
-	CC_SYNTHESIZE(uint64_t, id, ID);
+	CC_SYNTHESIZE(string, id, ID);
 	// 编号-1
-	CC_SYNTHESIZE(uint64_t, code, Code);
+	CC_SYNTHESIZE(string, code, Code);
 	// 名称 2
 	CC_SYNTHESIZE(string, name, Name);
 	// 简称——查询指定供应商的信息中其他信息里面的字段
@@ -89,11 +89,11 @@ class SupplierDO
 	//Zip邮编
 	CC_SYNTHESIZE(string, recv_postcode, Recv_Postcode);
 	//上传附件（还不确定要不要）
-	//CC_SYNTHESIZE(string, attachment, attachment);
+	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备选供应商 12
 	CC_SYNTHESIZE(string, alter_suppliers, Alter_Suppliers);
 	//是否启用 13
-	CC_SYNTHESIZE(string, is_enabled, Is_Enabled);
+	CC_SYNTHESIZE(int, is_enabled, Is_Enabled);
 	//备注  14
 	CC_SYNTHESIZE(string, remark, Remark);
 	/*操作信息*/
@@ -106,15 +106,15 @@ class SupplierDO
 	//修改人 17
 	CC_SYNTHESIZE(string, update_by, Update_By);
 	//版本---增加供应商的时候不需要这个信息
-	CC_SYNTHESIZE(string, version, Version);
+	CC_SYNTHESIZE(int, version, Version);
 
 
 public:
 	SupplierDO() {
-		id = 0;
+		id ="";
 		name = "";
 		aux_name = "";
-		is_enabled = "yes";
+		is_enabled = 1;
 
 	}
 };

@@ -214,7 +214,7 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
-    <ClCompile Include="dao-Supplier-satan\SupplierDAO.cpp" />
+    <ClCompile Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
@@ -268,8 +268,8 @@
     <ClInclude Include="api\publicInterfaceController\TaxScaleController.h" />
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
-    <ClInclude Include="dao-Supplier-satan\SupplierDAO.h" />
-    <ClInclude Include="dao-Supplier-satan\SupplierMapper.h" />
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.h" />
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierMapper.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\SupplierDO-satan\SupplierDO.h" />

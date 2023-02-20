@@ -1,30 +1,33 @@
 #include "stdafx.h"
 #include "SupplierController.h"
 
-JsonVO<PageVO<AdvancedQueryVO>>  SupplierController::execAdvancedQuerySupplier(const AdvancedQuery& query)
+JsonVO<PageVO<AdvancedQueryVO>>  SupplierController::execAdvancedQuerySupplier(const AdvancedQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	//SampleService service;
 	//查询数据
 	//PageVO<SampleVO> result = service.listAll(query);
 	//响应结果
-	
-	
 	PageVO< AdvancedQueryVO> data;
-
 	JsonVO<PageVO<AdvancedQueryVO>> result;
+	list< AdvancedQueryVO> rows;
+	rows.push_back(AdvancedQueryVO());
+	rows.push_back(AdvancedQueryVO());
+	rows.push_back(AdvancedQueryVO());
+	data.setRows(rows);
 	result.success(data);
 	return result;
 
 }
 
-//这里返回值错了，头文件的返回值也错了，就这些；ok等等我理一理
+
 JsonVO<SpecifiedSupplierDataQueryVO> SupplierController::execSpecifiedQuerySupplier(const SpecifiedSupplierDataQuery& query)
 {
-	
+	SpecifiedSupplierDataQueryVO a;
 
 
-	JsonVO<SpecifiedSupplierDataQueryVO> result;  
+	JsonVO<SpecifiedSupplierDataQueryVO> result;
+	result.success(a);
 	return result;
 }
 
@@ -36,6 +39,10 @@ JsonVO<uint64_t> SupplierController::execAddSupplier(const AddSupplierDTO& dto)
 	string alias = dto.getAlias();
 	string enable = dto.getEnable();
 	string accessibleName = dto.getAccessibleName();
+	//输出测试上传文件路径列表
+	for (auto file : dto.getFiles()) {
+		std::cout << "path " << file << std::endl;
+	}
 	if (code == NULL||name==NULL|| alias==NULL||enable==NULL||accessibleName==NULL)
 	{
 		JsonVO<uint64_t> result; 

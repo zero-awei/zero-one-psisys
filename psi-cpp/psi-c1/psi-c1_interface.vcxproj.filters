@@ -153,7 +153,7 @@
     <ClCompile Include="service\service-supplier-satan\SupplierServiceSatan.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dao-Supplier-satan\SupplierDAO.cpp">
+    <ClCompile Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -470,10 +470,10 @@
     <ClInclude Include="domain\do\SupplierDO-satan\SupplierDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao-Supplier-satan\SupplierDAO.h">
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao-Supplier-satan\SupplierMapper.h">
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

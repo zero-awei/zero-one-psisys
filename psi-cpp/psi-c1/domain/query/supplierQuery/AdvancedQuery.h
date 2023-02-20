@@ -3,8 +3,9 @@
 #ifndef _ADVANCED_QUERY_
 #define _ADVANCED_QUERY_
 #include "../../GlobalInclude.h"
+#include "../PageQuery.h"
 
-class AdvancedQuery
+class AdvancedQuery:public PageQuery
 {
 	// ¹ýÂËÆ¥ÅäÌõ¼þ
 	CC_SYNTHESIZE(string, rule, Rule);

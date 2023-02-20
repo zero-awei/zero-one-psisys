@@ -37,6 +37,7 @@ if (obj.getAge() != -1) { \
 	sql << " AND age=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAge()); \
 }
+//上面的SQLPARAMS_PUSH的第二个参数是标识我们到底是int类型还是string类型的，主要是因为c++ 没有反射无法识别数据类型
 
 uint64_t SampleDAO::count(const SampleDO& iObj)
 {
