@@ -21,3 +21,17 @@ PageVO<QueryPyrkBillListVO> PyrkService::queryAllFitBill(const QueryPyrkBillList
 	//SampleDAO dao;
 	return pages;
 }
+
+uint64_t PyrkService::saveData(const PyrkBillDetailDTO& dto)
+{
+	// 组装数据
+
+	// 执行数据添加
+
+	return 999;
+}
+
+uint64_t PyrkService::updateApproval(const ApprovalDTO& dto)
+{
+	return uint64_t();
+}

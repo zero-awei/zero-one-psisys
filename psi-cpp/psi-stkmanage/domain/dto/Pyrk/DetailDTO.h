@@ -4,6 +4,9 @@
 
 #include "../../GlobalInclude.h"
 
+/*
+* 单据明细DTO
+*/
 class DetailDTO {
 	// # (分录号)
 	CC_SYNTHESIZE(int, entryNo, EntryNo);

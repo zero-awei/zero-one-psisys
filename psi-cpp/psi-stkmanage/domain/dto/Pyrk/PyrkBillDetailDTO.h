@@ -9,7 +9,7 @@
 /*
 * 前端传入单据详细信息
 */
-class PyrkBillDetailDTO : public  FileDTO {
+class PyrkBillDetailDTO : public FileDTO {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期

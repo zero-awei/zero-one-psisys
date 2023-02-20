@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyrkController.h"
+#include "../../service/Pyrk/PyrkService.h"
 
 
 
@@ -14,12 +15,40 @@ JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const Query
     return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
 }
 
-JsonVO<uint64_t> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMessage) {
-    return JsonVO<uint64_t>(1, RS_SUCCESS);
+JsonVO<uint64_t> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload) 
+{
+	JsonVO<uint64_t> result;
+	// 定义一个Service
+	PyrkService service;
+	// 执行新增数据
+	uint64_t id = service.saveData(addMessage);
+	if (id > 0) {
+		result.success(id);
+	}
+	else {
+		result.fail(id);
+	}
+	return result;
 }
 
-JsonVO<uint64_t> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage) {
-    return JsonVO<uint64_t>(1, RS_SUCCESS);
+JsonVO<uint64_t> PyrkController::execModifyBillApproval(const ApprovalDTO& approval, const PayloadDTO& payload)
+{
+	JsonVO<uint64_t> result;
+	// 定义一个Service
+	PyrkService service;
+	// 执行修改数据(审核)
+	uint64_t id = service.updateApproval(approval);
+	if (id > 0) {
+		result.success(id);
+	}
+	else {
+		result.fail(id);
+	}
+	return result;
+}
+
+JsonVO<uint64_t> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload) {
+    return JsonVO<uint64_t>(0, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> PyrkController::execRemovePyrkBillById(const StringID& id)
