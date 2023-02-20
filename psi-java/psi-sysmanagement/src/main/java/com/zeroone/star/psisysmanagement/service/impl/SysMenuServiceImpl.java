@@ -29,7 +29,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public JsonVO<MenuVO> querySingle(SingleMenuQuery singleMenuQuery) {
-        return null;
+        SysMenu sysMenu = baseMapper.selectById(singleMenuQuery.getId());
+        MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
+
+        return menuVO == null ?
+                JsonVO.create(null, ResultStatus.FAIL) : JsonVO.create(menuVO, ResultStatus.SUCCESS);
     }
 
     @Override
