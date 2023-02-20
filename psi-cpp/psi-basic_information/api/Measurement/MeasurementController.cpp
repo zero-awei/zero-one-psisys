@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "MeasurementController.h"
 #include "../../service/Measurement/MeasurementService.h"
+#include <list>
 
 /*
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
@@ -118,43 +119,98 @@ JsonVO<UserVO> MeasurementController::execModifyUserInfo(const UserDTO& dto)
 }
 */
 
+//普通查询
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
-	return JsonVO<PageVO<MeasurementVO>>();
+	JsonVO<PageVO<MeasurementVO>> js;
+	PageVO<MeasurementVO> data;
+	list<MeasurementVO> rows;
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	data.setRows(rows);
+	js.success(data);
+	return js;
 }
+
 //查询指定单位子级列表
 JsonVO<MeasurementVO> MeasurementController::execQueryKidMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
-	return JsonVO<MeasurementVO>();
+	JsonVO<MeasurementVO> js;
+	//js.push_back(MeasurmentVO());
+	js.success(MeasurementVO());
+	return js;
 }
+
 //查询指定单位详细信息
 JsonVO<MeasurementVO> MeasurementController::execQueryDetailMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
 {
-	return JsonVO<MeasurementVO>();
+	JsonVO<MeasurementVO> js;
+	//js.push_back(MeasurmentVO());
+	js.success(MeasurementVO());
+	return js;
 }
+
 //添加计量单位
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execAddMeasurement(const MeasurementDTO& dto)
 {
-	return JsonVO<PageVO<MeasurementVO>>();
+	JsonVO<PageVO<MeasurementVO>> js;
+	PageVO<MeasurementVO> data;
+	list<MeasurementVO> rows;
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	data.setRows(rows);
+	js.success(data);
+	return js;
 }
+
 //修改计量单位
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execModifyMeasurement(const MeasurementDTO& dto)
 {
-	return JsonVO<PageVO<MeasurementVO>>();
+	JsonVO<PageVO<MeasurementVO>> js;
+	PageVO<MeasurementVO> data;
+	list<MeasurementVO> rows;
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	data.setRows(rows);
+	js.success(data);
+	return js;
 }
+
 //删除计量单位(通过名称删除)
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execRemoveMeasurement(const MeasurementQueryDelete& dto)
 {
-	return JsonVO<PageVO<MeasurementVO>>();
+	JsonVO<PageVO<MeasurementVO>> js;
+	PageVO<MeasurementVO> data;
+	list<MeasurementVO> rows;
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	data.setRows(rows);
+	js.success(data);
+	return js;
 }
-//JsonVO<PageVO<MeasurementVO>> execRemoveById(const IntID& id);
+
 //文件导入
 JsonVO<PageVO<MeasurementVO>> MeasurementController::execAddFileMeasurement(const MeasurementDTO& dto)
 {
-	return JsonVO<PageVO<MeasurementVO>>();
+	JsonVO<PageVO<MeasurementVO>> js;
+	PageVO<MeasurementVO> data;
+	list<MeasurementVO> rows;
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	rows.push_back(MeasurementVO());
+	data.setRows(rows);
+	js.success(data);
+	return js;
 }
+
 //文件导出
 JsonVO<string> MeasurementController::execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload)
 {
-	return JsonVO<string>();
+	JsonVO<string> js;
+	//js.success();
+	return js;
 }

@@ -44,6 +44,18 @@ class MeasurementVO
 	// 修改人
 	CC_SYNTHESIZE(string, riviser, Riviser);
 public:
+	MeasurementVO()
+	{
+		name = "m";
+		sign = "m";
+		scale = 1;
+		enable = "yes";
+		ctime = "2023-2-20";
+		creater = "gly";
+		rtime = "2023-2-20";
+		riviser = "gly";
+	}
+
 	// 绑定JSON转换方法
 	BIND_TO_JSON(MeasurementVO, name, sign, scale, enable, ctime, creater, rtime, riviser);
 };
@@ -59,6 +71,14 @@ class MeasurementDetailVO
 	// 启用
 	CC_SYNTHESIZE(string, enable, Enable);
 public:
+	MeasurementDetailVO()
+	{
+		name = "m";
+		sign = "m";
+		scale = 1;
+		enable = "yes";
+	}
+
 	// 绑定JSON转换方法
 	BIND_TO_JSON(MeasurementDetailVO, name, sign, scale, enable);
 };
@@ -74,6 +94,14 @@ class MeasurementActionInfoVO
 	// 修改人
 	CC_SYNTHESIZE(string, riviser, Riviser);
 public:
+	MeasurementActionInfoVO()
+	{
+		ctime = "2023-2-20";
+		creater = "gly";
+		rtime = "2023-2-20";
+		riviser = "gly";
+	}
+
 	// 绑定JSON转换方法
 	BIND_TO_JSON(MeasurementActionInfoVO, ctime, creater, rtime, riviser);
 };

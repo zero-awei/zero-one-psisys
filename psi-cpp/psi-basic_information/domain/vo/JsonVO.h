@@ -31,10 +31,10 @@ class JsonVO
 {
 	// 状态码
 	CC_SYNTHESIZE(int, code, Code);
-	// 提示消息
-	CC_SYNTHESIZE(string, message, Message);
 	// 数据对象
 	CC_SYNTHESIZE(T, data, Data);
+	// 提示消息
+	CC_SYNTHESIZE(string, message, Message);
 public:
 	JsonVO() {
 		this->message = "";
