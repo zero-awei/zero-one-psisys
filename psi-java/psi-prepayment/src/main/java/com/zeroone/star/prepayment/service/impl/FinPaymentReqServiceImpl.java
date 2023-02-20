@@ -32,9 +32,13 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
         //分页对象
         Page<FinPaymentReq> page = new Page<>(condition.getPageIndex(),condition.getPageSize());
         QueryWrapper<FinPaymentReq> wrapper = new QueryWrapper<>();
-        wrapper.eq("payment_type",condition.getSelf_payment_type())
-                .eq("is_closed",condition.getSelf_is_closed())
-                .eq("supplier_id",condition.getSelf_supplier_id());
+        wrapper.eq("supplier_id",condition.getSelf_supplier_id());
+        if (condition.getSelf_payment_type()!=null){
+            wrapper.eq("payment_type",condition.getSelf_payment_type());
+        }
+        if (condition.getSelf_is_closed()!=null){
+            wrapper.eq("is_closed",condition.getSelf_payment_type());
+        }
         //执行分页查询
         Page<FinPaymentReq> res = finPaymentReqMapper.selectPage(page, wrapper);
         return PageVO.create(res,FinPaymentReqVO.class);

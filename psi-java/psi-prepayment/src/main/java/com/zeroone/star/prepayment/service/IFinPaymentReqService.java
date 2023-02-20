@@ -17,7 +17,7 @@ import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 public interface IFinPaymentReqService {
 
     /**
-     * 获取
+     * 获取有申请采购单（分页）
      * @param purchaseListQuery
      * @return
      */

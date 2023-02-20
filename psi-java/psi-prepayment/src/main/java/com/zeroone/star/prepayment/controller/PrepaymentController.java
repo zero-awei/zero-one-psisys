@@ -55,6 +55,9 @@ public class PrepaymentController implements PrepaymentApis {
     IFinPaymentService finPaymentService;
     @Autowired
     IFinPaymentEntryService finPaymentEntryService;
+    @Autowired
+    IPurOrderService purOrderService;
+
 
     /**
      * 修改采购预付单功能
@@ -141,6 +144,7 @@ public class PrepaymentController implements PrepaymentApis {
         return JsonVO.success("删除成功");
     }
 
+    //附件上传
     /**
      * 添加
      * author 空
@@ -167,31 +171,32 @@ public class PrepaymentController implements PrepaymentApis {
         }
     }
 
-    //TODO 获取采购项目清单（有申请）
-    /**
-     * 获取采购项目清单（有申请）
-     * author 空
-     * since 2023-02-13
-     */
-//    @GetMapping("list-appliedpurhcaserequisitions")
-//    @ApiOperation(value = "获取采购清单（有申请）")
-//    @Override
-//    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-//        return null;
-//    }
-
     /**
      * 获取采购项目清单（无申请）
      * author 空
      * since 2023-02-13
      */
     @GetMapping("list-purhcaserequisitions")
-    @ApiOperation(value = "获取采购清单")
+    @ApiOperation(value = "获取采购清单（无申请）")
+    @Override
+    public JsonVO<PageVO<PurOrderVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+        PageVO<PurOrderVO> purOrder = purOrderService.getPurOrder(purchaseListQuery);
+        return JsonVO.success(purOrder);
+    }
+
+    /**
+     * 获取采购项目清单（有申请）
+     * author 空
+     * since 2023-02-13
+     */
+    @GetMapping("list-appliedpurhcaserequisitions")
+    @ApiOperation(value = "获取采购清单（有申请）")
     @Override
     public JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
         PageVO<FinPaymentReqVO> finPaymentReq = finPaymentReqService.getFinPaymentReq(purchaseListQuery);
         return JsonVO.success(finPaymentReq);
     }
+
 
     /**
      * 获取供应商列表

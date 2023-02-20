@@ -10,8 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Author: Kong
@@ -72,5 +72,8 @@ public class PrepaymentDTO {
 
     @ApiModelProperty(value = "采购明细单",example = "")
     private List<FinPaymentEntryDTO> finPaymentEntryList;
+
+    @ApiModelProperty(value = "附件",example = "")
+    private MultipartFile file;
 
 }

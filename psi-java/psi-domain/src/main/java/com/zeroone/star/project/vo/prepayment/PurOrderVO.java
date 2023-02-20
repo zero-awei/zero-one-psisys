@@ -19,15 +19,21 @@ import java.time.LocalDateTime;
 @ApiModel("采购订单对象")
 public class PurOrderVO {
     /**
+     * id
+     */
+    @ApiModelProperty(value = "id",example = "1590710155252645889")
+    private String id;
+
+    /**
      * 单据编号
      */
-    @ApiModelProperty(value = "单据编号",example = "CGFKSQ-230211-004")
+    @ApiModelProperty(value = "单据编号",example = "CGDD-221110-001")
     private String billNo;
 
     /**
      * 单据日期
      */
-    @ApiModelProperty(value = "单据日期",example = "2023-02-11")
+    @ApiModelProperty(value = "单据日期",example = "2022-01-13")
     private LocalDate billDate;
 
     /**
@@ -45,27 +51,27 @@ public class PurOrderVO {
     /**
      * 采购类型
      */
-    @ApiModelProperty(value = "采购类型",example = "")
+    @ApiModelProperty(value = "采购类型",example = "2")
     private String purType;
     /**
      * 金额
      */
-    @ApiModelProperty(value = "采购金额",example = "")
+    @ApiModelProperty(value = "采购金额",example = "142000.00")
     private BigDecimal amt;
     /**
      * 预付款余额
      */
-    @ApiModelProperty(value = "预付余额",example = "")
+    @ApiModelProperty(value = "预付余额",example = "0.00")
     private BigDecimal prepaymentBal;
     /**
      * 结算金额
      */
-    @ApiModelProperty(value = "结算金额",example = "")
+    @ApiModelProperty(value = "结算金额",example = "142000.00")
     private BigDecimal settleAmt;
     /**
      * 已结算金额
      */
-    @ApiModelProperty(value = "已结算金额",example = "")
+    @ApiModelProperty(value = "已结算金额",example = "142000.00")
     private BigDecimal settledAmt;
     /**
      * 付款方式

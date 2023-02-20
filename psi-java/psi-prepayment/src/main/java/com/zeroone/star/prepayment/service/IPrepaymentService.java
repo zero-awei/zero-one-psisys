@@ -80,7 +80,6 @@ public interface IPrepaymentService {
      */
     JsonVO<String> deleteById(DeleteDTO deleteDTO);
 
-    //TODO 附件上传
     /**
      * 采购预付款操作
      * param prepaymentDTO
