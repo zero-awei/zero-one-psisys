@@ -4,6 +4,7 @@ import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
+import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.service.ISysMenuService;
 import io.swagger.annotations.Api;
@@ -77,8 +78,12 @@ public class SysMenuController {
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/query")
-    public JsonVO<List<MenuDTO>> queryMenu(int RId) {
-        return new JsonVO<List<MenuDTO>>();
+    public JsonVO<MenuVO> queryMenu(int id) {
+
+        SingleMenuQuery singleMenuQuery = new SingleMenuQuery();
+        singleMenuQuery.setId(String.valueOf(id));
+
+        return iSysMenuService.querySingle(singleMenuQuery);
     }
 
 }
