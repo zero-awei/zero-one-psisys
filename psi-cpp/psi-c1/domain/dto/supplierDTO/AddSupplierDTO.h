@@ -12,7 +12,7 @@ class AddSupplierDTO : public FileDTO
 {
 	/*供应商信息*/
 	// 编号
-	CC_SYNTHESIZE(int, code, Code);
+	CC_SYNTHESIZE(string, code, Code);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	//助记名

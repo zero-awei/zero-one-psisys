@@ -34,11 +34,11 @@ private:
 	//查询指定供应商数据--不是分页查询
 	JsonVO<SpecifiedSupplierDataQueryVO> execSpecifiedQuerySupplier(const SpecifiedSupplierDataQuery& query);//就是这一行
 	//新增数据
-	JsonVO<uint64_t> execAddSupplier(const AddSupplierDTO& dto);
+	JsonVO<string> execAddSupplier(const AddSupplierDTO& dto);
 	//修改数据
-	JsonVO<uint64_t> execModifySupplier(const ModifySupplierDTO& dto);
+	JsonVO<string> execModifySupplier(const ModifySupplierDTO& dto);
 	//删除数据
-	JsonVO<uint64_t> execDeleteSupplier(const DeleteSupplierDTO& dto);
+	JsonVO<string> execDeleteSupplier(const DeleteSupplierDTO& dto);
 
 };
 

@@ -32,9 +32,9 @@ JsonVO<SpecifiedSupplierDataQueryVO> SupplierController::execSpecifiedQuerySuppl
 }
 
 
-JsonVO<uint64_t> SupplierController::execAddSupplier(const AddSupplierDTO& dto)
+JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)
 {
-	int code = dto.getCode();
+	string code = dto.getCode();
 	string name = dto.getName();
 	string alias = dto.getAlias();
 	string enable = dto.getEnable();
@@ -45,30 +45,30 @@ JsonVO<uint64_t> SupplierController::execAddSupplier(const AddSupplierDTO& dto)
 	}
 	if (code == NULL||name==NULL|| alias==NULL||enable==NULL||accessibleName==NULL)
 	{
-		JsonVO<uint64_t> result; 
+		JsonVO<string> result;
 		result.fail(code);//Ê¹ÓÃ×´Ì¬Âë
 		return result;
 	}
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	return result;
 
 }
 
-JsonVO<uint64_t> SupplierController::execModifySupplier(const ModifySupplierDTO& dto)
+JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& dto)
 {
 
 
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	return result;
 
 }
 
-JsonVO<uint64_t> SupplierController::execDeleteSupplier(const DeleteSupplierDTO& dto)
+JsonVO<string> SupplierController::execDeleteSupplier(const DeleteSupplierDTO& dto)
 {
 
 
 
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	return result;
 
 }
