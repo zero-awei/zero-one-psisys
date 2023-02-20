@@ -19,7 +19,7 @@ if (!obj.getName().empty()) { \
 list<ExportSupplierDO> ExportSupplierDAO::selectSupplier(const ExportSupplierDO& obj)
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_currency";
+	sql << "SELECT * FROM bas_supplier";
 	SAMPLE_TERAM_PARSE(obj, sql);
 	ExportSupplierMapper mapper;
 	string sqlStr = sql.str();

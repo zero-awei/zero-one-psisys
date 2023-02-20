@@ -14,8 +14,8 @@ public:
 	ExportSupplierDO mapper(ResultSet* resultSet) const override
 	{
 		ExportSupplierDO data;
-		data.setCode(resultSet->getString(1));
-		data.setName(resultSet->getString(2));
+		data.setCode(resultSet->getString(2));
+		data.setName(resultSet->getString(3));
 		return data;
 	}
 };

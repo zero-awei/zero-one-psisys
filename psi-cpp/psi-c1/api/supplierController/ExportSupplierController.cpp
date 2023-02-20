@@ -9,6 +9,11 @@ using namespace std;
 JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSupplierQuery& query, const PayloadDTO& payload)
 {
 	vector<vector<std::string>> data;
+	vector<std::string> header{
+		CharsetConvertHepler::ansiToUtf8("编号"),
+		CharsetConvertHepler::ansiToUtf8("供应商名称"),
+	};
+	data.push_back(header);
 	stringstream ss;
 
 	ExportSupplierService service;
