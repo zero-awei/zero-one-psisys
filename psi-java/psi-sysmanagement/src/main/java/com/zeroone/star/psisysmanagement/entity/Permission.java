@@ -1,20 +1,20 @@
 package com.zeroone.star.psisysmanagement.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
-import java.io.Serializable;
-
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+/**
+ * @Description 权限类
+ * @Author Freasy
+ * @Date 2023-02-18
+ * @Version 1.0
+ */
 @Getter
 @Setter
-public class Permission implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName("permission")
+public class Permission {
     /**
-     * 权限编号
+     * 权限id
      */
     private String permissionId;
 
@@ -24,22 +24,22 @@ public class Permission implements Serializable {
     private String permissionName;
 
     /**
-     * 权限对应的url
+     * 权限对应的路径
      */
     private String url;
 
     /**
-     * 父权限id
+     * 父权限的id
      */
     private String fatherPermissionId;
 
     /**
-     * 权限类型；0表示系统权限，有且只有一个。1一级权限，2二级权限，3三级权限
+     * 权限类型
      */
     private Integer permissionType;
 
     /**
-     * 权限介绍
+     * 权限说明
      */
     private String instruction;
 }
