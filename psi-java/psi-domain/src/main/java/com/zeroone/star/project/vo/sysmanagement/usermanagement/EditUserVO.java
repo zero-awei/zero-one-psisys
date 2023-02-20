@@ -10,6 +10,16 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+
+
+/**
+ * <p>
+ * 用户表 用户管理中编辑的显示对象
+ * </p>
+ *
+ * @author axin
+ * @since 2023-02-18
+ */
 @Data
 @ApiModel("用户管理中编辑的显示对象")
 public class EditUserVO {

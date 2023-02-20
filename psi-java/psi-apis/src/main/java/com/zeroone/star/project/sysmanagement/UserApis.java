@@ -27,7 +27,7 @@ public interface UserApis {
      * @param query 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<UserVO>> queryUser(FindUserQuery query);
+    JsonVO<PageVO<UserVO>> listUser(FindUserQuery query);
 
     /**
      * 数据回显

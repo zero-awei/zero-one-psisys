@@ -8,6 +8,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * <p>
+ * 用户表 用户管理中下拉框部门显示对象
+ * </p>
+ *
+ * @author axin
+ * @since 2023-02-18
+ */
 @Data
 @ApiModel("用户管理中下拉框部门显示对象")
 public class AddUserVO {
