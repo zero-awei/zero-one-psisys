@@ -59,9 +59,10 @@ JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(co
 
 }
 
+
+
 //查询指定单据列表
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
-
 	//构建一个测试VO
 	PurQuotFindDetailBillVO vo;
 	//响应结果
@@ -84,3 +85,4 @@ JsonVO<PurQuotDividedListVO> PurQuotController::execQueryPurQuotDividedList(cons
 	//响应结果
 	return JsonVO<PurQuotDividedListVO>(vo, RS_SUCCESS);
 }
+

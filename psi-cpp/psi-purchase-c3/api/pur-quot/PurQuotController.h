@@ -69,19 +69,20 @@ private:
 	JsonVO<PageVO<PurQuotFindBillVO>> execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload);
 	//查询指定单据列表
 	JsonVO<PurQuotFindDetailBillVO> execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload);
-	//导出
-	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
-	//导入
-	JsonVO<PurQuotIntoVO> execPurQuotInto(const PurQuotIntoDTO& dto);
 	// 查询询价单列表
 	JsonVO<PurQuotListVO> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
 	// 查询询价单分录列表
 	JsonVO<PurQuotDividedListVO> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
+	//导出
+	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
+	//导入
+	JsonVO<PurQuotIntoVO> execPurQuotInto(const PurQuotIntoDTO& dto);
 
 };
 
 
 #endif // _PUI_QUOT_CONTROLLER_
+
 
 
 

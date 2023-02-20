@@ -27,7 +27,7 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
 	std::string dbName = "test";
-	std::string dbHost = "localhost";
+	std::string dbHost = "l92.168.82.196";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
