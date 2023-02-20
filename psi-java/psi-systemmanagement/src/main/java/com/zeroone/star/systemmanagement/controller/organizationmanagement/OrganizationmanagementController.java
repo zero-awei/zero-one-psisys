@@ -8,8 +8,10 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationTreeVO;
+import com.zeroone.star.systemmanagement.service.organizationmanagement.OrganizationmanagementService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -25,16 +27,19 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "组织机构")
 public class OrganizationmanagementController implements OrganizationManagementApis {
 
+    @Autowired
+    private OrganizationmanagementService service;
     /**
      * 查询组织列表
      * @param condition 查询条件
      * @return
      */
     @ApiOperation("查询组织列表")
-    @GetMapping("/query-all") // query-list
+    @GetMapping("/query-all")
     @Override
     public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
-        return null;
+        PageVO<OrganizationListVO> pageVO = service.queryList(condition);
+        return JsonVO.success(pageVO);
     }
 
     /**
@@ -43,10 +48,10 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("查询指定结构树")
-    @GetMapping("query-one") // query-tree
+    @GetMapping("query-tree")
     @Override
     public JsonVO<OrganizationTreeVO> queryTree(String departName) {
-        return null;
+        return service.queryTree(departName);
     }
 
     /**
@@ -56,10 +61,14 @@ public class OrganizationmanagementController implements OrganizationManagementA
      */
 
     @ApiOperation("新增组织结构（返回值data值表示插入成功与否）")
-    @PostMapping("insert") // add
+    @PostMapping("add") // add
     @Override
     public JsonVO<String> add(OrganizationManagementDTO data) {
-        return null;
+        String s = service.add(data);
+        if (s.equals("新增成功")) {
+            return JsonVO.success(s);
+        }
+        else return JsonVO.fail(s);
     }
 
     /**
@@ -68,10 +77,14 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("修改组织结构（返回值data值表示更新成功与否）")
-    @PutMapping("update") //modify
+    @PutMapping("modify")
     @Override
     public JsonVO<String> modify(OrganizationManagementDTO data) {
-        return null;
+        String s = service.modify(data);
+        if (s.equals("修改成功")) {
+            return JsonVO.success(s);
+        }
+        else return JsonVO.fail(s);
     }
 
     /**
@@ -80,10 +93,14 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
     @ApiOperation("删除组织结构（返回值data值表示删除成功与否）")
-    @DeleteMapping("delete")
+    @DeleteMapping("remove")
     @Override
-    public JsonVO<String> delete(String id) {
-        return null;
+    public JsonVO<String> remove(String id) {
+        String s = service.remove(id);
+        if (s.equals("删除成功")) {
+            return JsonVO.success(s);
+        }
+        else return JsonVO.fail(s);
     }
 }
 

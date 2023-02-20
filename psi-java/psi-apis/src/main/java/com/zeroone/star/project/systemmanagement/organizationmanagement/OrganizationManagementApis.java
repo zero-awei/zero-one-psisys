@@ -23,7 +23,7 @@ public interface OrganizationManagementApis {
     /**
      * 查询指定组织结构树
      * @param departName 部门名称
-     * @return
+     * @return 查询到的结构树属性
      */
     JsonVO<OrganizationTreeVO> queryTree(String departName);
 
@@ -31,14 +31,14 @@ public interface OrganizationManagementApis {
      * 新增组织结构
      *
      * @param data 数据
-     * @return
+     * @return 是否添加成功
      */
     JsonVO<String> add(OrganizationManagementDTO data);
 
     /**
      * 修改组织结构
      * @param data 数据
-     * @return
+     * @return 是否更新成功
      */
     JsonVO<String> modify(OrganizationManagementDTO data);
 
@@ -46,8 +46,8 @@ public interface OrganizationManagementApis {
      * 删除指定组织结构
      *
      * @param id 部门id
-     * @return
+     * @return 是否删除成功
      */
-    JsonVO<String> delete(String id);
+    JsonVO<String> remove(String id);
 
 }

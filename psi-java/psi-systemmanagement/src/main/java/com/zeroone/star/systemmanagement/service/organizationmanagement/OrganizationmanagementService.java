@@ -17,11 +17,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Morrangee
  * @since 2023-02-13
  */
-public interface IOrganizationmanagementService extends IService<SysDepart> {
+public interface OrganizationmanagementService extends IService<SysDepart> {
 
     public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition);
     public JsonVO<OrganizationTreeVO> queryTree(String departName);
     public String add(OrganizationManagementDTO data);
     public String modify(OrganizationManagementDTO data);
-    public String delete(String id);
+    public String remove(String id);
 }
