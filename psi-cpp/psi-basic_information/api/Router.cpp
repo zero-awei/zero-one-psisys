@@ -28,7 +28,10 @@
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
+
 #include"BasMaterial/BasMaterialController.h"
+#include "MaterialClassification/MaterialClassificationController.h"
+
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -42,6 +45,7 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 	createDepotRouter();
 
+	
 #ifdef HTTP_SERVER_DEMO
 		//绑定首页页面
 		BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
@@ -77,7 +81,10 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+
 	createBasMaterialRouter();
+
+	createMaterialClassificationRouter(); //
 
 
 }
@@ -125,4 +132,14 @@ void Router::createBasMaterialRouter() {
 	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
 	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
 	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
+
+void Router::createMaterialClassificationRouter() {
+	BIND_GET_ROUTER(server, "/get-base", &MaterialClassificationController::queryMaterialClassification, nullptr);
+	BIND_GET_ROUTER(server, "/get-children", &MaterialClassificationController::queryMaterialClassificationChild, nullptr);
+	BIND_GET_ROUTER(server, "/get-detail", &MaterialClassificationController::queryMaterialClassificationDetail, nullptr);
+	BIND_POST_ROUTER(server, "/post-add", &MaterialClassificationController::addMaterialClassification, nullptr);
+	BIND_PUT_ROUTER(server, "/put-modify", &MaterialClassificationController::modifyMaterialClassification, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &MaterialClassificationController::removeMaterialClassification, nullptr);
+	BIND_POST_ROUTER(server, "/post-import", &MaterialClassificationController::importMaterialClassification, nullptr);
+	BIND_GET_ROUTER(server, "/get-export", &MaterialClassificationController::exportMaterialClassification, nullptr);
 }

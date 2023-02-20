@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
  
- @Author: awei
- @Date: 2022/10/24 23:36:43
+ @Author: shiyi
+ @Date: 2023/2/15 20:36:07
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -36,13 +36,22 @@ public:
 	void initRouter();
 	void createDepotRouter();
 private:
+
 	void createBasMaterialRouter();
+
+	//创建物料分类路由
+	void createMaterialClassificationRouter();
+
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
 	void createSampleRouter();
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
+
+
+
+
 };
 
 #endif // !_ROUTER_

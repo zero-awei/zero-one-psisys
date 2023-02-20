@@ -49,6 +49,7 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string dbPassword = "123456";
 	std::string dbName = "zopsi_sys";
 	std::string dbHost = "192.168.254.129";
+
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
@@ -190,6 +191,7 @@ int main(int argc, char* argv[]) {
 	int code = HttpServer::startServer(ServerInfo::getInstance().getServerPort(),
 		[=](http_server* server) {
 			Router router(server);
+			
 			router.initRouter();
 		}
 	);

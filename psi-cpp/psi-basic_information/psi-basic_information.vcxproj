@@ -178,6 +178,9 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\depot\depotService.cpp" />
+    <ClCompile Include="api\MaterialClassification\MaterialClassificationController.cpp" />
+    <ClCompile Include="dao\MaterialClassification\MaterialClassificationDAO.cpp" />
+    <ClCompile Include="service\MaterialClassification\MaterialClassificationService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -197,6 +200,12 @@
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\depot\DepotQuery.h" />
+    <ClInclude Include="api\MaterialClassification\MaterialClassificationController.h" />
+    <ClInclude Include="dao\MaterialClassification\MaterialClassificationDAO.h" />
+    <ClInclude Include="dao\MaterialClassification\MaterialClassificationMapper.h" />
+    <ClInclude Include="domain\do\MaterialClassification\MaterialClassificationDO.h" />
+    <ClInclude Include="domain\dto\MaterialClassification\MaterialClassificationDTO.h" />
+    <ClInclude Include="domain\query\MaterialClassification\MaterialClassificationQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\vo\depot\DepotVO.h" />
     <ClInclude Include="api\BasMaterial\BasMaterialController.h" />
@@ -205,12 +214,14 @@
     <ClInclude Include="domain\query\BasMaterial\BasMaterialQuery.h" />
     <ClInclude Include="domain\vo\BasMaterial\BasMaterialVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\MaterialClassification\MaterialClassificationVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\depot\DepotService.h" />
+    <ClInclude Include="service\MaterialClassification\MaterialClassificationService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
