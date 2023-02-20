@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: yunjj
- @Date: 2023/2/13 15:36
+ @Author:yunjj
+ @Date: 2023/2/20 20:51
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _USERQUERY_H_
-#define _USERQUERY_H_
+#include "Mapper.h"
 
-#include "../../GlobalInclude.h"
-#include "../PageQuery.h"
-
-class UserQuery : public PageQuery
+class UserChoiceMapper :public Mapper<UserChoiceReturnDO>
 {
-	//查询用户数据时用的用户账号名称
-	CC_SYNTHESIZE(std::string, username, UserName);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, UserQuery& t) { // NOLINT
-		BIND_FROM_TO_ULL(j, t, pageIndex);
-		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, username);
+	UserChoiceReturnDO mapper(ResultSet* resultSet) const override
+	{
+		UserChoiceReturnDO data;
+		data.setId(resultSet->getString(1));
+		data.setUserName(resultSet->getString(2));
+		data.setSex(resultSet->getString(3));
+		data.setPhone(resultSet->getString(4));
+		data.setDepartMent(resultSet->getString(5));
+		return data;
 	}
 };
-
-#endif // _USERQUERY_H_

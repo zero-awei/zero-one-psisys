@@ -25,24 +25,27 @@
 class UserVO
 {
 	//用户id
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(std::string, id, Id);
 	//用户账号姓名
 	CC_SYNTHESIZE(std::string, username,UserName);
 	//用户真实姓名
 	CC_SYNTHESIZE(std::string, realname, RealName);
 	//用户性别
 	CC_SYNTHESIZE(std::string, sex, Sex);
+	//用户电话号码
+	CC_SYNTHESIZE(std::string, phone, Phone);
 	//用户所属部门
-	CC_SYNTHESIZE(std::string, department, Department);
+	CC_SYNTHESIZE(std::string, department, DepartMent);
 public:
-	BIND_TO_JSON(UserVO, id, username,realname,sex,department);
+	BIND_TO_JSON(UserVO, id, username,realname,sex,phone,department);
 	UserVO()
 	{
-		id = 1;
-		username = "awei";
-		realname = "awei";
-		sex = "man";
-		department = "naowubu";
+		id = "";
+		username = "";
+		realname = "";
+		sex = "";
+		phone = "";
+		department = "";
 	}
 };
 
