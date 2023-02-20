@@ -1,27 +1,29 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.MenusQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
+import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
-import com.zeroone.star.project.vo.login.MenuTreeVO;
+import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.service.ISysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
-import lombok.val;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.awt.*;
 import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
- * @author 归、深夜梦想家 
+ * @author 归、深夜梦想家
  * @since 2023-02-14
  */
 
@@ -34,49 +36,67 @@ public class SysMenuController {
     private ISysMenuService iSysMenuService;
     @Resource
     private SingleMenuQuery singleMenuQuery;
+    @Resource
+    private MenusQuery menusQuery;
 
     @ResponseBody
     @SneakyThrows
     @ApiOperation(value = "新增菜单")
     @PostMapping("/add")
     public JsonVO<String> addMenu(MenuDTO menuDTO) {
-        JsonVO<ResultStatus> resultStatus=iSysMenuService.addMenu(menuDTO);
-        if (resultStatus.getData().getCode()==9999){
-            return JsonVO.create("增加失败",ResultStatus.FAIL);
-        }
-        return JsonVO.create("增加成功",ResultStatus.SUCCESS);
+
+        JsonVO<ResultStatus> resultStatus = iSysMenuService.addMenu(menuDTO);
+
+        return resultStatus.getData().getCode() == 9999
+                ? JsonVO.create("增加失败", ResultStatus.FAIL)
+                : JsonVO.create("新增成功", ResultStatus.SUCCESS);
     }
 
     @SneakyThrows
     @ApiOperation(value = "修改菜单")
     @PutMapping("/update")
-    public JsonVO<String> updateMenu(MenuDTO menuDTO){
-        JsonVO<ResultStatus> resultStatus=iSysMenuService.updateMenu(menuDTO);
-        if (resultStatus.getData().getCode()==9999){
-            return JsonVO.create("修改失败",ResultStatus.FAIL);
-        }
-        return JsonVO.create("修改成功",ResultStatus.SUCCESS);
+    public JsonVO<String> updateMenu(MenuDTO menuDTO) {
+
+        JsonVO<ResultStatus> resultStatus = iSysMenuService.updateMenu(menuDTO);
+
+        return resultStatus.getData().getCode() == 9999
+                ? JsonVO.create("修改失败", ResultStatus.FAIL)
+                : JsonVO.create("修改成功", ResultStatus.SUCCESS);
     }
 
     @ResponseBody
     @SneakyThrows
     @ApiOperation(value = "删除菜单")
     @DeleteMapping("/delete")
-    public JsonVO<String> deleteMenu(int id){
-        singleMenuQuery.setId(String.valueOf(id));
-        JsonVO<ResultStatus> resultStatus=iSysMenuService.deleteMenu(singleMenuQuery);
-        if (resultStatus.getData().getCode()==9999){
-            return JsonVO.create("修改失败",ResultStatus.FAIL);
-        }
-        return JsonVO.create("修改成功",ResultStatus.SUCCESS);
-    }
+    public JsonVO<String> deleteMenu(int id) {
 
+        singleMenuQuery.setId(String.valueOf(id));
+        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(singleMenuQuery);
+
+        return resultStatus.getData().getCode() == 9999
+                ? JsonVO.create("删除失败", ResultStatus.FAIL)
+                : JsonVO.create("删除成功", ResultStatus.SUCCESS);
+    }
 
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/query")
-    public JsonVO<List<MenuDTO>> queryMenu(int id){
-        return new JsonVO<List<MenuDTO>>();
+    public JsonVO<MenuVO> queryMenu(int id) {
+
+        singleMenuQuery.setId(String.valueOf(id));
+
+        return iSysMenuService.querySingle(singleMenuQuery);
+    }
+
+    @SneakyThrows
+    @ApiOperation(value = "查询菜单")
+    @GetMapping("/queryMenus")
+    public JsonVO<List<MenuVO>> queryMenus(int parentId) {
+        //一级菜单parentId为0
+        menusQuery.setParentId(String.valueOf(parentId));
+
+        return null;
+
     }
 
 }
