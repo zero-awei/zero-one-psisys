@@ -36,12 +36,12 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, name);
 	}
 };
-class OnlyValueQuery
+class OnlyValueCurrencyQuery
 {
 	CC_SYNTHESIZE(string, id, ID);
 public:
 	// °ó¶¨from_json
-	friend void from_json(const json& j, OnlyValueQuery& t) { // NOLINT
+	friend void from_json(const json& j, OnlyValueCurrencyQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, id);
 	}
 };

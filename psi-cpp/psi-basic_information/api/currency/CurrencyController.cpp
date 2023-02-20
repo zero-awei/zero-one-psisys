@@ -6,12 +6,12 @@ JsonVO<PageVO<CurrencyVO>> CurrencyController::execQueryCurrency(const CurrencyQ
     return JsonVO<PageVO<CurrencyVO>>();
 }
 
-JsonVO<CurrencyDetailVO> CurrencyController::execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<CurrencyDetailVO> CurrencyController::execQueryDetail(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload)
 {
     return JsonVO<CurrencyDetailVO>();
 }
 
-JsonVO<CurrencyActionInfoVO> CurrencyController::execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<CurrencyActionInfoVO> CurrencyController::execQueryActionInfo(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload)
 {
     return JsonVO<CurrencyActionInfoVO>();
 }
@@ -26,7 +26,7 @@ JsonVO<PageVO<CurrencyVO>> CurrencyController::execModifyCurrency(const Currency
     return JsonVO<PageVO<CurrencyVO>>();
 }
 
-JsonVO<PageVO<CurrencyVO>> CurrencyController::execRemoveCurrency(const OnlyValueQuery& query)
+JsonVO<PageVO<CurrencyVO>> CurrencyController::execRemoveCurrency(const OnlyValueCurrencyQuery& query)
 {
     return JsonVO<PageVO<CurrencyVO>>();
 }
@@ -41,7 +41,7 @@ JsonVO<string> CurrencyController::execExportExecl(const CurrencyQuery& query, c
     return JsonVO<string>();
 }
 
-JsonVO<string> CurrencyController::execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<string> CurrencyController::execExportExeclOnly(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload)
 {
     return JsonVO<string>();
 }
