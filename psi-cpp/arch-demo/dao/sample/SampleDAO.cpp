@@ -38,9 +38,17 @@ if (obj.getAge() != -1) { \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAge()); \
 }
 
+uint64_t SampleDAO::count(const SampleDO& iObj)
+{
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM sample";
+	SAMPLE_TERAM_PARSE(iObj, sql);
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
+}
+
 std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
-
 	stringstream sql;
 	sql << "SELECT * FROM sample";
 	SAMPLE_TERAM_PARSE(obj, sql);

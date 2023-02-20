@@ -35,12 +35,12 @@
 class SampleController
 {
 public:
+	CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);
 	CREATE_API_FUN_BODY(addSample, execAddSample, SampleDTO);
 	CREATE_API_FUN_BODY(modifySample, execModifySample, SampleDTO);
 	CREATE_API_FUN_BODY(removeSample, execRemoveSample, SampleDTO);
 	CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
 	CREATE_API_FUN_JSON(jsonSample, execJsonSample, SampleDTO);
-	CREATE_API_FUN_QUERY_PAYLOAD(querySample, execQuerySample, SampleQuery);
 	CREATE_API_FUN_BODY_FILE(modifyUserInfo, execModifyUserInfo, UserDTO);
 private:
 	//演示查询数据
@@ -59,6 +59,3 @@ private:
 };
 
 #endif // _SAMPLE_CONTROLLER_
-
-
-

@@ -1,6 +1,6 @@
 
-#ifndef _PUR_QUOT_H_
-#define _PUR_QUOT_H_
+#ifndef _PUR_QUOT_DAO_H_
+#define _PUR_QUOT_DAO_H_
 #include "BaseDAO.h"
 #include "../../domain/do/pur-quot/PurQuotFindBillDO.h"
 

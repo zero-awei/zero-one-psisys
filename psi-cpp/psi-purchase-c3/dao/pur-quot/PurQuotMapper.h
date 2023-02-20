@@ -16,7 +16,7 @@ public:
 		PurQuotFindBillDO data;
 		data.setBill_no(resultSet->getString(1));
 		data.setBill_date(resultSet->getString(2));
-		data.setSubject(resultSet->getString("3"));
+		data.setSubject(resultSet->getString(3));
 		return data;
 	}
 };

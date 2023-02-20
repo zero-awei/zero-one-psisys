@@ -190,7 +190,10 @@
   <ItemGroup>
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotDAO.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotFindBillDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
@@ -219,16 +222,19 @@
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\pur-inquiry\PurInquiryService.h" />
     <ClInclude Include="service\pur-req\PurReqService.h" />
+    <ClInclude Include="service\pur-quot\PurQuotService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\pur-quot\PurQuotDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\pur-inquiry\PurInquiryService.cpp" />
     <ClCompile Include="service\pur-req\PurReqService.cpp" />
+    <ClCompile Include="service\pur-quot\PurQuotService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

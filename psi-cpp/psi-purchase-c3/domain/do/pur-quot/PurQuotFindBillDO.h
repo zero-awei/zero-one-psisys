@@ -63,9 +63,9 @@ class PurQuotFindBillDO
 public:
 	// 绑定JSON转换方法
 	PurQuotFindBillDO() {
-		bill_no = "123456789";
-		bill_date = "2023-2-20";
-		subject = "这是阿坤测试";
+		bill_no = "59619";
+		bill_date = "2023-02-17";
+		subject = "";
 	}
 };
 #endif // !_PUR_QUOT_FIND_DETAIL_BILL_VO_H_

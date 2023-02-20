@@ -19,7 +19,6 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBill(const PurQuotFindB
 	{
 		return pages;
 	}
-
 	//分页查询数据
 	pages.setTotal(count);
 	pages.calcPages();

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PurQuotController.h"
-
+#include "../../service/pur-quot/PurQuotService.h"
 
 //添加供应报价——演示，尚未实现
 JsonVO<uint64_t> PurQuotController::execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload)
@@ -51,10 +51,11 @@ JsonVO<PurQuotIntoVO> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& d
 
 //查询单据列表
 JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload) {
-	PurQuotFindBillVO test;
-	list<PurQuotFindBillVO> ls;
-	ls.push_back(test);
-	PageVO<PurQuotFindBillVO> result(1, 2, 0, 0, ls);
+	//定义一个Service
+	PurQuotService service;
+	//查询数据
+	PageVO<PurQuotFindBillVO> result = service.listPurQuotFindBill(query);
+	//响应结果
 	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
 
 }
