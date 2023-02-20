@@ -111,21 +111,6 @@
     <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\pur-quot\PurQuotService.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\pur-quot\PurQuotFindBillDo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\pur-quot\PurQuotDAO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\pur-quot\PurQuotMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="service\pur-quot\PurQuotService.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -150,15 +135,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\pur-quot\PurQuotController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\pur-quot\PurQuotService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="dao\pur-quot\PurQuotDAO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\pur-quot\PurQuotService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
