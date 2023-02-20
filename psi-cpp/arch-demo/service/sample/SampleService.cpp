@@ -32,7 +32,7 @@ PageVO<SampleVO> SampleService::listAll(const SampleQuery& query)
 	obj.setName(query.getName());
 	obj.setSex(query.getSex());
 	SampleDAO dao;
-	uint64_t count = dao.count(obj);
+	uint64_t count =dao.count
 	if (count <= 0)
 	{
 		return pages;

@@ -21,7 +21,7 @@
 #define _PURREQ_SERVICE_
 //#include <list>
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/dto/pur-req/PurReqIntoDTO.h"
+//#include "../../domain/dto/pur-req/PurReqIntoDTO.h"
 
 /**
  * 示例服务实现
