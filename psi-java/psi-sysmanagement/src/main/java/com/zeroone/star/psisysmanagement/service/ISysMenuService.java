@@ -2,13 +2,16 @@ package com.zeroone.star.psisysmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.MenusQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
+import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import org.apache.commons.math3.analysis.function.Sin;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -28,6 +31,13 @@ public interface ISysMenuService extends IService<SysMenu> {
      * @return
      */
     JsonVO<MenuVO> querySingle(SingleMenuQuery singleMenuQuery);
+
+    /**
+     * 查询父节点下菜单组
+     * @param menusQuery
+     * @return
+     */
+    JsonVO<List<MenuVO>> queryMenus(MenusQuery menusQuery);
 
     /**
      * 新增菜单

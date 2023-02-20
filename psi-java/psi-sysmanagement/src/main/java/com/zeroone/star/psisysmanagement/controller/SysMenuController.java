@@ -1,7 +1,9 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.MenusQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
+import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
@@ -34,6 +36,8 @@ public class SysMenuController {
     private ISysMenuService iSysMenuService;
     @Resource
     private SingleMenuQuery singleMenuQuery;
+    @Resource
+    private MenusQuery menusQuery;
 
     @ResponseBody
     @SneakyThrows
@@ -74,16 +78,25 @@ public class SysMenuController {
                 : JsonVO.create("删除成功", ResultStatus.SUCCESS);
     }
 
-
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/query")
     public JsonVO<MenuVO> queryMenu(int id) {
 
-        SingleMenuQuery singleMenuQuery = new SingleMenuQuery();
         singleMenuQuery.setId(String.valueOf(id));
 
         return iSysMenuService.querySingle(singleMenuQuery);
+    }
+
+    @SneakyThrows
+    @ApiOperation(value = "查询菜单")
+    @GetMapping("/queryMenus")
+    public JsonVO<List<MenuVO>> queryMenus(int parentId) {
+        //一级菜单parentId为0
+        menusQuery.setParentId(String.valueOf(parentId));
+
+        return null;
+
     }
 
 }

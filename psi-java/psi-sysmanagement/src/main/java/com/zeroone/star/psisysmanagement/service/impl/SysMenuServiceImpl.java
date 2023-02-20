@@ -1,9 +1,11 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.MenusQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -37,6 +41,22 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     }
 
     @Override
+    public JsonVO<List<MenuVO>> queryMenus(MenusQuery menusQuery) {
+
+        QueryWrapper<SysMenu> menuDTOQueryWrapper = new QueryWrapper<>();
+        menuDTOQueryWrapper.eq("parent_id", menusQuery.getParentId());
+
+        List<SysMenu> sysMenus = baseMapper.selectList(menuDTOQueryWrapper);
+        ArrayList<MenuVO> menuVOS = new ArrayList<>();
+        for (SysMenu sysMenu : sysMenus) {
+            MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
+            menuVOS.add(menuVO);
+        }
+
+        return JsonVO.create(menuVOS, ResultStatus.SUCCESS);
+    }
+
+    @Override
     @Transactional
     public JsonVO<ResultStatus> addMenu(MenuDTO menuDTO) {
 
@@ -45,7 +65,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
         //获取父节点id
         String parentId = menuDTO.getParentId();
-        if (parentId.isEmpty()) {
+        if (parentId.equals("0")) {
 
             double sort = 1.00;
             //没有父节点时
