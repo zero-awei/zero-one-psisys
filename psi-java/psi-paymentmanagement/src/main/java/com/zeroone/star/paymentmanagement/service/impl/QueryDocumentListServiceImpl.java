@@ -1,4 +1,4 @@
-package com.zeroone.star.paymentmanagement.service.Impl;
+package com.zeroone.star.paymentmanagement.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

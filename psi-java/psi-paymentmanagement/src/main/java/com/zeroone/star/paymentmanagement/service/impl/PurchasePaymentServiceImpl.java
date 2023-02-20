@@ -1,4 +1,4 @@
-package com.zeroone.star.paymentmanagement.service.Impl;
+package com.zeroone.star.paymentmanagement.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.paymentmanagement.entity.PurchasePaymentEntity;
