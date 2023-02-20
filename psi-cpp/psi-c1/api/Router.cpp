@@ -116,6 +116,7 @@ void Router::initRouter()
 	initCurrencyType();
 	initDeliveryType();
 	initWarehouse();
+	initSupplier();
 
 #ifdef HTTP_SERVER_DEMO
 	//绑定首页页面
@@ -311,7 +312,7 @@ void Router::initSupplier()
 	BIND_DEL_ROUTER(server, "/delete-supplier", &SupplierController::deleteSupplier, nullptr);
 	//修改
 	BIND_PUT_ROUTER(server, "/modify-supplier", &SupplierController::modifySupplier, nullptr);
-	//供应商导入
+	//供应商导入导出
 	BIND_POST_ROUTER(server, "/import-supplier", &ImportSupplierController::importSupplier, nullptr);
 	BIND_GET_ROUTER(server, "/export-supplier", &ExportSupplierController::exportSupplier, nullptr);
 	//供应商等级下拉列表

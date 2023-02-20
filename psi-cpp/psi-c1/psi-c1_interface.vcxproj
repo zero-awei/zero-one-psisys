@@ -120,7 +120,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -168,7 +168,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -214,12 +214,20 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
+    <ClCompile Include="dao\publicInterfaceDao\CurrencyTypeDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDao\WarehouseDAO.cpp" />
+    <ClCompile Include="dao\supplierDao\ExportSupplierDAO.cpp" />
+    <ClCompile Include="dao\supplierDao\ImportSupplierDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\publicInterfaceService\CurrencyTypeService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\WarehouseService.cpp" />
+    <ClCompile Include="service\supplierService\ExportSupplierService.cpp" />
+    <ClCompile Include="service\supplierService\ImportSupplierService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -267,10 +275,19 @@
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
     <ClInclude Include="dao\bankAccountDao\temp.h" />
-    <ClInclude Include="dao\publicInterfaceDao\temp.h" />
-    <ClInclude Include="dao\supplierDao\temp.h" />
+    <ClInclude Include="dao\publicInterfaceDao\CurrencyTypeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDao\CurrencyTypeMapper.h" />
+    <ClInclude Include="dao\publicInterfaceDao\WarehouseDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDao\WarehouseMapper.h" />
+    <ClInclude Include="dao\supplierDao\ExportSupplierDAO.h" />
+    <ClInclude Include="dao\supplierDao\ExportSupplierMapper.h" />
+    <ClInclude Include="dao\supplierDao\ImportSupplierDAO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\CurrencyTypeDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\WarehouseDO.h" />
+    <ClInclude Include="domain\do\supplierDO\ExportSupplierDO.h" />
+    <ClInclude Include="domain\do\supplierDO\ImportSupplierDO.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
     <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
@@ -284,6 +301,7 @@
     <ClInclude Include="domain\query\bankAccountQuery\SpecifiedBankAccountQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\BasWareHouseItemQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\DepartNameQuery.h" />
+    <ClInclude Include="domain\query\supplierQuery\ExportSupplierQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\MaterialQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\MaterialTypeItemQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
@@ -333,8 +351,10 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\bankAccountService\temp.h" />
-    <ClInclude Include="service\publicInterfaceService\temp.h" />
-    <ClInclude Include="service\supplierService\temp.h" />
+    <ClInclude Include="service\publicInterfaceService\CurrencyTypeService.h" />
+    <ClInclude Include="service\publicInterfaceService\WarehouseService.h" />
+    <ClInclude Include="service\supplierService\ExportSupplierService.h" />
+    <ClInclude Include="service\supplierService\ImportSupplierService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
