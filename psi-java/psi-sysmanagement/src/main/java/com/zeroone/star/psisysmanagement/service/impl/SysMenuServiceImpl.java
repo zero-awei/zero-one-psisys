@@ -1,6 +1,7 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
@@ -38,23 +39,68 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         SysMenu sysMenu = BeanUtil.copyProperties(menuDTO, SysMenu.class);
         sysMenu.setCreateTime(LocalDateTime.now());
 
-        Double sort = query().eq("id", menuDTO.getParentId()).one().getSortNo();
+        //获取父节点id
+        String parentId = menuDTO.getParentId();
+        if (parentId.isEmpty()) {
 
-        int index = (String.valueOf(sort)).indexOf(".") + 1;//获取小数点的位置
-        int count = (String.valueOf(sort)).length() - index;//获取小数点后的个数
-        int temp = 1;
-        if (count == 1) {
-            temp = temp * 10;
-        } else if (count == 2) {
-            temp = temp * 100;
+            double sort = 1.00;
+            //没有父节点时
+            while (true) {
+                //查询表中是否已有与sort等值的sort_no
+                QueryChainWrapper<SysMenu> menuEntity = query().eq("sort_no", sort);
+                if (menuEntity.isEmptyOfEntity()) {
+                    //如果没有就将sort值赋给新的menu的sort_no
+                    sysMenu.setSortNo(sort);
+                    break;
+                }
+                sort += 1.00;
+            }
+
         } else {
-            temp = temp * 1000;
+
+            //有父节点时，获取父节点的sort_no
+            double parentSort = query().eq("id", parentId).one().getSortNo();
+            //将sort转换为字符串并去除小数点
+            String sortString = Double.toString(parentSort).replace(".", "");
+            //准备int数组sortArray
+            int[] sortArray = new int[sortString.length()];
+            //将sortString每个数字传入数组
+            for (int i = 0; i < sortArray.length; i++) {
+                sortArray[i] = sortString.charAt(i) - '0';
+            }
+
+            if (sortArray[1] == 0) {
+
+                //当父节点的Sort_no小数点后一位为0时，说明父节点为一级菜单，小数点第二位也必定为0，如1.00
+                double sort = parentSort + 0.10;
+                while (true) {
+                    //尝试查询数据库中是否含有sort等值的sort_no
+                    QueryChainWrapper<SysMenu> menuEntity = query().eq("sort_no", sort);
+                    if (menuEntity.isEmptyOfEntity()) {
+                        //如果没有就将sort值赋给新的menu的sort_no
+                        sysMenu.setSortNo(sort);
+                        break;
+                    }
+                    sort += 0.10;
+                }
+            } else {
+
+                //如果小数点后第一位不为0，即父节点为二级菜单，如1.10；
+                //由于限制只能创建到三级菜单，所以父节点只有三种情况，为空，一级菜单，二级菜单
+                //故父节点sort_no小数点后第二位没有判断的必要
+                double sort = parentSort + 0.01;
+                while (true) {
+                    //尝试查询数据库中是否含有sort等值的sort_no
+                    QueryChainWrapper<SysMenu> menuEntity = query().eq("sort_no", sort);
+                    if (menuEntity.isEmptyOfEntity()) {
+                        //如果没有就将sort值赋给新的menu的sort_no
+                        sysMenu.setSortNo(sort);
+                        break;
+                    }
+                    sort += 0.01;
+                }
+            }
         }
-        //获取下一个父节点sort_no
-        double d = sort + (double) 1 / temp;
-        //查询该父节点当中子节点个数
-        Long con = query().gt("sort_no", sort).lt("sort_no", d).count();
-        sysMenu.setSortNo(sort + (double) (con + 1) / (temp * 10));
 
         return save(sysMenu) ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
 
@@ -80,6 +126,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
         int num = baseMapper.deleteById(sysMenu);
 
-        return num >=1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
+        return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
     }
 }
