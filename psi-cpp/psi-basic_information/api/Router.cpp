@@ -132,6 +132,7 @@ void Router::createBasMaterialRouter() {
 	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
 	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
 	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
+}
 
 void Router::createMaterialClassificationRouter() {
 	BIND_GET_ROUTER(server, "/get-base", &MaterialClassificationController::queryMaterialClassification, nullptr);
