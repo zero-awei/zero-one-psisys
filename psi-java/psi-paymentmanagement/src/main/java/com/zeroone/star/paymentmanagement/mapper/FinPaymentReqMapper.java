@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 付款申请单 Mapper 接口
  * </p>
  *
- * @author achuan
- * @since 2023-02-13
+ * @author pyramid
+ * @since 2023-02-15
  */
 @Mapper
 public interface FinPaymentReqMapper extends BaseMapper<FinPaymentReq> {

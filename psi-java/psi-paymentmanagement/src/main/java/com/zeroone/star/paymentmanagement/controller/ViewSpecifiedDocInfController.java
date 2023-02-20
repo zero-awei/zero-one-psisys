@@ -9,7 +9,10 @@ import io.swagger.annotations.ApiModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * @author achuan
+ * @Date 2023/2/18 22:22
+ */
 @RestController
 @RequestMapping("/paymentmanagement/viewspecifieddocinf")
 @ApiModel("查看指定单据信息")

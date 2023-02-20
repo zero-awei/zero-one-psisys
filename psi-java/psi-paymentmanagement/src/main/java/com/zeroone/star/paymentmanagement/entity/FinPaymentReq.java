@@ -15,8 +15,8 @@ import lombok.Setter;
  * 付款申请单
  * </p>
  *
- * @author achuan
- * @since 2023-02-13
+ * @author pyramid
+ * @since 2023-02-15
  */
 @Getter
 @Setter

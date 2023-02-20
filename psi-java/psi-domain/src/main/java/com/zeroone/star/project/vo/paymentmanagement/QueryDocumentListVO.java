@@ -1,6 +1,5 @@
 package com.zeroone.star.project.vo.paymentmanagement;
 
-import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 */
 @Data
 @ApiModel("查询单据列表VO")
-public class QueryDocumentListVO extends FinPaymentReq {
+public class QueryDocumentListVO  {
     /**
      * 单据编号
      */

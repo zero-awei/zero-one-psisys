@@ -1,0 +1,9 @@
+server:
+  port: ${sp.paymentmanagement}
+spring:
+  application:
+    name: ${sn.paymentmanagement}
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml

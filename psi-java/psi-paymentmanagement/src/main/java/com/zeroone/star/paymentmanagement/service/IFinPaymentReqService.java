@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * 付款申请单 服务类
  * </p>
  *
- * @author achuan
- * @since 2023-02-13
+ * @author pyramid
+ * @since 2023-02-15
  */
 public interface IFinPaymentReqService extends IService<FinPaymentReq> {
 
