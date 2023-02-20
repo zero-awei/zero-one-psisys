@@ -1,46 +1,69 @@
 #include "stdafx.h"
 #include "ZdrkController.h"
 
-JsonVO<QueryZdrkBillDetailsVO> ZdrkController::execQueryZdrkBillDetails(const QueryZdrkBillDetailsQuery& query)
+JsonVO<PageVO<QueryZdrkBillDetailsVO>> ZdrkController::execQueryZdrkBillDetails(const QueryZdrkBillDetailsQuery& query)
 {
-    return JsonVO<QueryZdrkBillDetailsVO>();
+    PageVO<QueryZdrkBillDetailsVO> result;
+    list<QueryZdrkBillDetailsVO> rows;
+    rows.push_back(QueryZdrkBillDetailsVO());
+    result.setRows(rows);
+    return JsonVO<PageVO<QueryZdrkBillDetailsVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<PageVO<QueryZdrkBillListVO>> ZdrkController::execQueryZdrkBillList(const QueryZdrkBillListQuery& query)
 {
-    return JsonVO<PageVO<QueryZdrkBillListVO>>();
+    PageVO<QueryZdrkBillListVO> result;
+    list<QueryZdrkBillListVO> rows;
+    rows.push_back(QueryZdrkBillListVO());
+    rows.push_back(QueryZdrkBillListVO());
+    rows.push_back(QueryZdrkBillListVO());
+    result.setRows(rows);
+    return JsonVO<PageVO<QueryZdrkBillListVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> ZdrkController::execAddZdrkBill(const AddZdrkBillDTO& dto)
 {
-    return JsonVO<uint64_t>();
+
+    JsonVO<uint64_t> result;
+    result.success(1);
+    return result;
 }
 
 JsonVO<uint64_t> ZdrkController::execModifyZdrkBill(const ModifyZdrkBillDTO& dto)
 {
-    return JsonVO<uint64_t>();
+    JsonVO<uint64_t> result;
+    result.success(1);
+    return result;
 }
 
 JsonVO<uint64_t> ZdrkController::execRemoveZdrkBill(const StringID& dto)
 {
-    return JsonVO<uint64_t>();
+    JsonVO<uint64_t> result;
+    result.success(1);
+    return result;
 }
 
 JsonVO<uint64_t> ZdrkController::execModifyZdrkBillState(const ModifyZdrkBillStateDTO& dto)
 {
-    return JsonVO<uint64_t>();
+    JsonVO<uint64_t> result;
+    result.success(1);
+    return result;
 }
 
 JsonVO<uint64_t> ZdrkController::execImportZdrkFile(const ImportZdrkFileDTO& dto)
 {
-    return JsonVO<uint64_t>();
+    JsonVO<uint64_t> result;
+    result.success(1);
+    return result;
 }
 
 
 
 JsonVO<std::string> ZdrkController::execEmportZdrkFile()
 {
-    return JsonVO<std::string>();
+    JsonVO<std::string> result;
+    result.success("1");
+    return result;
 }
 
 

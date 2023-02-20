@@ -31,7 +31,7 @@ public:
 	CREATE_API_FUN_QUERY3(EmportZdrkFile, execEmportZdrkFile);
 private:
 	//查询单据详细信息
-	JsonVO<QueryZdrkBillDetailsVO> execQueryZdrkBillDetails(const QueryZdrkBillDetailsQuery& query);
+	JsonVO<PageVO<QueryZdrkBillDetailsVO>> execQueryZdrkBillDetails(const QueryZdrkBillDetailsQuery& query);
 	//查询单据列表
 	JsonVO<PageVO<QueryZdrkBillListVO>> execQueryZdrkBillList(const QueryZdrkBillListQuery& query);//**?负载信息
 	//添加单据

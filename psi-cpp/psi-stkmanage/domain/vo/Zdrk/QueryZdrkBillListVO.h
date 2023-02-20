@@ -44,6 +44,25 @@ class QueryZdrkBillListVO
 	//修改人     
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 public:
+	QueryZdrkBillListVO() {
+		billNo = "1";
+		billDate = "2002-12-12"; 
+		billStage = "32";
+		isEffective = 1;
+		isClosed = 0;
+		isVoided = 0;
+		effectiveTime= "2002-12-12"; 
+		approver = "awei";
+		createBy = "awei";
+		createTime = "2002-12-12";
+		sysOrgCode = "12";  
+		updateTime= "2002-12-12"; 
+		updateBy = "awei";
+		isAuto = 1; 
+		opDept = "yinyebu";
+		operatoR = "awei"; 
+		remark="";
+	}
 	// 绑定JSON转换方法    
 	BIND_TO_JSON(QueryZdrkBillListVO, billNo, billDate, billStage, isEffective, isClosed, isVoided, effectiveTime, approver, createBy, createTime, sysOrgCode, updateTime, updateBy, isAuto, opDept, operatoR, remark);
 };
