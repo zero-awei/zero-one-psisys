@@ -49,8 +49,7 @@ private:
 	void createUserDepartRouter();
 #endif
 
-
-
+	void createCurrencyRouter();
 
 };
 
