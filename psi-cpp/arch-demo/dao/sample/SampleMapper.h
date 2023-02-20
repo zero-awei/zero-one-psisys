@@ -30,6 +30,11 @@ class SampleMapper : public Mapper<SampleDO>
 {
 public:
 	SampleDO mapper(ResultSet* resultSet) const override
+		//const加在函数前表示函数返回值为const，加在函数后表示不可修改class的所有成员变量,此时const修饰this指针。
+		//override关键字表示重写父类的虚函数
+		//const加在函数后面表示此函数“只读”。
+
+
 	{
 		SampleDO data;
 		data.setId(resultSet->getUInt64(1));

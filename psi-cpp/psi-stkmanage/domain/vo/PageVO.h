@@ -23,7 +23,7 @@
 #include <list>
 
 /**
- * 分页数据实体
+ * 分页数据实体（service->web）
  */
 template <class T>
 class PageVO
