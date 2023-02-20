@@ -1,13 +1,20 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
+import com.zeroone.star.project.vo.login.MenuTreeVO;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
+import com.zeroone.star.psisysmanagement.service.ISysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
+import lombok.val;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -23,19 +30,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/sysmanagement/menumanagement/sys-menu")
 public class SysMenuController {
 
+    @Resource
+    private ISysMenuService iSysMenuService;
+    @Resource
+    private SingleMenuQuery singleMenuQuery;
+
     @ResponseBody
     @SneakyThrows
     @ApiOperation(value = "新增菜单")
     @PostMapping("/add")
-    public JsonVO<String> addMenu(SysMenu sysMenu){
-        return JsonVO.create("新增成功", ResultStatus.SUCCESS);
+    public JsonVO<String> addMenu(MenuDTO menuDTO) {
+        JsonVO<ResultStatus> resultStatus=iSysMenuService.addMenu(menuDTO);
+        if (resultStatus.getData().getCode()==9999){
+            return JsonVO.create("增加失败",ResultStatus.FAIL);
+        }
+        return JsonVO.create("增加成功",ResultStatus.SUCCESS);
     }
 
     @SneakyThrows
     @ApiOperation(value = "修改菜单")
     @PutMapping("/update")
-    public JsonVO<String> updateMenu(int id){
-        return JsonVO.create("修改成功", ResultStatus.SUCCESS);
+    public JsonVO<String> updateMenu(MenuDTO menuDTO){
+        JsonVO<ResultStatus> resultStatus=iSysMenuService.updateMenu(menuDTO);
+        if (resultStatus.getData().getCode()==9999){
+            return JsonVO.create("修改失败",ResultStatus.FAIL);
+        }
+        return JsonVO.create("修改成功",ResultStatus.SUCCESS);
     }
 
     @ResponseBody
@@ -43,15 +63,20 @@ public class SysMenuController {
     @ApiOperation(value = "删除菜单")
     @DeleteMapping("/delete")
     public JsonVO<String> deleteMenu(int id){
-        return JsonVO.create("删除成功", ResultStatus.SUCCESS);
+        singleMenuQuery.setId(String.valueOf(id));
+        JsonVO<ResultStatus> resultStatus=iSysMenuService.deleteMenu(singleMenuQuery);
+        if (resultStatus.getData().getCode()==9999){
+            return JsonVO.create("修改失败",ResultStatus.FAIL);
+        }
+        return JsonVO.create("修改成功",ResultStatus.SUCCESS);
     }
 
 
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/query")
-    public MenuDTO queryMenu(int id){
-        return new MenuDTO();
+    public JsonVO<List<MenuDTO>> queryMenu(int id){
+        return new JsonVO<List<MenuDTO>>();
     }
 
 }
