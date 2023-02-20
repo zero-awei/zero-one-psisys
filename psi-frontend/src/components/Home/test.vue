@@ -1,3 +1,12 @@
+<!--
+ * @Author: li.ziwei
+ * @Date: 2023-02-19 21:06:50
+ * @LastEditTime: 2023-02-20 16:13:02
+ * @LastEditors: li.ziwei
+ * @Description: 
+ * @FilePath: \psi-frontend\src\components\home\test.vue
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
 <template>
   <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
   <div class="menu-wrap">
@@ -40,7 +49,7 @@
                 </el-menu-item>
               </template>
               <template v-else-if="iTwo.children">
-                <el-sub-menu>
+                <el-sub-menu :key="item.id" :index="item.id + ''">
                   <template #title>
                     <el-icon>
                       <component :is="iTwo.icon" />

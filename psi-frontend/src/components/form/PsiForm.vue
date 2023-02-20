@@ -81,7 +81,7 @@
                   :prop="item.prop"
                 >
                   <el-input
-                    :placeholder="item.placeholder"
+                    :placeholder="item.placeholder ?? '请输入'"
                     v-model="formData[item.prop]"
                   />
                 </el-form-item>
@@ -93,7 +93,7 @@
                 >
                   <el-select
                     v-model="formData[item.prop]"
-                    :placeholder="item.placeholder"
+                    :placeholder="item.placeholder ?? '请选择'"
                   >
                     <el-option
                       v-for="option in item.options"
@@ -112,7 +112,7 @@
                   <el-date-picker
                     v-model="formData[item.prop]"
                     type="date"
-                    :placeholder="item.placeholder"
+                    :placeholder="item.placeholder ?? '请选择'"
                   />
                 </el-form-item>
               </el-col>
@@ -142,7 +142,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, toRefs } from 'vue'
 const props = defineProps({
   items: {
     type: Array,
@@ -164,12 +164,15 @@ const props = defineProps({
   }
 })
 
+const { formData } = toRefs(props)
 let toggleSearchStatus = ref(false)
 
-const emit = defineEmits(['search', 'reset'])
+const emit = defineEmits(['query', 'reset'])
 function onSubmit() {
-  console.log('子组件emit')
-  emit('query', formData)
+  // console.log('=============')
+  // console.log(formData)
+  // console.log(props.formData)
+  emit('query', props.formData)
 }
 
 const searchRef = ref(null)

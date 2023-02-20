@@ -20,13 +20,13 @@
     <psi-dialog
       ref="editDialog"
       v-model="editDialogVisible"
-      :attrs="editDialogVisible"
+      :attrs="editDialogAttrs"
     >
     </psi-dialog>
     <psi-dialog
       ref="editDialog"
       v-model="examineDialogVisible"
-      :attrs="examineDialogVisible"
+      :attrs="examineDialogAttrs"
     >
     </psi-dialog>
   </div>
@@ -35,6 +35,7 @@
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { getTableList, query } from './methods.js'
+import { format } from '@/apis/date/index.js'
 // 查询表单相关数据及方法
 const formState = reactive({
   // 查询表单每一项的配置
@@ -62,7 +63,7 @@ const formState = reactive({
       type: 'select',
       label: '供应商',
       prop: 'supplierId',
-      placeholder: '请选择性别',
+      placeholder: '请选择',
       options: [
         {
           label: '供应商1',
@@ -78,7 +79,7 @@ const formState = reactive({
       type: 'select',
       label: '单据阶段',
       prop: 'billStage',
-      placeholder: '请选择性别',
+      placeholder: '请选择',
       options: [
         {
           label: '阶段1',
@@ -141,7 +142,7 @@ const formState = reactive({
   formData: {
     billNo: '',
     billStage: '',
-    daterange: '',
+    daterange: [],
     isClosed: 0,
     isEffective: 0,
     isVoided: 0,
@@ -156,8 +157,25 @@ function doReset() {
   doGetTableList()
 }
 // 7.5 普通查询
-function doQuery(params) {
-  // params是子组件返回的参数
+function doQuery(data) {
+  // console.log('父组件接收')
+  // console.log('params--', params.daterange)
+  console.log('data.daterange[0]', data.daterange[0])
+  console.log('data.daterange[1]', data.daterange[1])
+  console.log('typeof', typeof data.daterange[1])
+  // 处理表单数据 主要是开始日期和结束日期
+  let params = {}
+  params.billNo = data.billNo
+  params.billStage = data.billStage
+  params.billStage = data.billStage
+  params.isClosed = data.isClosed
+  params.isEffective = data.isEffective
+  params.isVoided = data.isVoided
+  params.subject = data.subject
+  params.supplierId = data.supplierId
+  params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
+  params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
+  console.log('params', params)
   query(
     {
       params
@@ -241,7 +259,9 @@ const tableState = reactive({
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true
+    border: true,
+    maxHeight: '400',
+    height: '400'
   }
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)
@@ -301,7 +321,7 @@ const examineDialogState = reactive({
     width: '80%'
   }
 })
-const { examineDialogAttrs } = toRefs(editdialogState)
+const { examineDialogAttrs } = toRefs(examineDialogState)
 // function edit(data){
 //   editDialogVisible=true
 //   // 弹出框内的表格数据和data配置
