@@ -9,8 +9,10 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.AddUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.constraints.NotBlank;
@@ -26,12 +28,9 @@ public interface UserApis {
      */
     JsonVO<PageVO<UserVO>> listAllUsers(UserQuery query);
 
-    /**
-     * 查询用户
-     * @param query 查询条件
-     * @return 查询结果
-     */
-    JsonVO<PageVO<UserVO>> listUser(FindUserQuery query);
+    @ApiOperation(value = "查询用户")
+    @GetMapping("/query-user")
+    JsonVO<PageVO<UserVO>> queryUser(@Validated FindUserQuery query);
 
     /**
      * 数据回显
