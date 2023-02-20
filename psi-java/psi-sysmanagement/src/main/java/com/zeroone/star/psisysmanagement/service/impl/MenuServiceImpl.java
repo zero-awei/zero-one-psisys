@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
 
     @Override
     public List<MenuQuery> showList(String RId) {
@@ -21,14 +21,11 @@ public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMe
         listMenu.eq("parent_id",RId);
         List<SysMenu> menus = baseMapper.selectList(listMenu);
         List<MenuQuery> list = new ArrayList<>();
-        System.out.println("==============================");
         for (SysMenu menu : menus) {
             MenuQuery menuQuery = new MenuQuery();
             BeanUtil.copyProperties(menu,menuQuery);
-            System.out.println(menuQuery);
             list.add(menuQuery);
         }
-        System.out.println("========================");
         return list;
     }
 
@@ -41,11 +38,8 @@ public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMe
     public Boolean addMenuOrPermission(MenuQuery menu) { // 添加菜单
         SysMenu sysMenu = new SysMenu();
         BeanUtil.copyProperties(menu,sysMenu);
-        QueryWrapper<SysMenu> wrapper = new QueryWrapper<>();
         int num = baseMapper.insert(sysMenu);
         if (num >= 1){
-            System.out.println("+++++++++++++"+num+"+++++++++++");
-            System.out.println(sysMenu);
             return true;
         }
         return false;
@@ -60,9 +54,6 @@ public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements IMe
     public Boolean deleteMenuOrPermission(String Id) {
         int num = baseMapper.deleteById(Id);
         if (num >= 1) {
-            System.out.println("++++++++++++++++++++++++++++++++++++++");
-            System.out.println(num);
-            System.out.println("++++++++++++++++++++++++++++++++++++++");
             return true;
         }
         return false;
