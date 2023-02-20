@@ -1,11 +1,15 @@
 package com.zeroone.star.project.vo.sysmanagement.menumanagement;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author xiaoyolee
  * @version 1.0
  */
+@Getter
+@Setter
 public class MenuVO {
     @ApiModelProperty(value = "序号", example = "1")
     private Integer id;
