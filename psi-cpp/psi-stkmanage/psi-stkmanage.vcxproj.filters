@@ -335,5 +335,8 @@
     <ClInclude Include="domain\dto\Pyrk\ApprovalDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\SysDictItemDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
