@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPayment> implements IFinPaymentService {
     @Override
-    public FinPayment selectByBillNo(String billNo) {
+    public FinPayment getByBillNo(String billNo) {
         QueryWrapper<FinPayment> FinQueryWrapper = new QueryWrapper<>();
         FinQueryWrapper.eq("bill_no", billNo);
         FinPayment finPayment = baseMapper.selectOne(FinQueryWrapper);

@@ -17,29 +17,8 @@ import java.math.BigDecimal;
 @Data
 @ApiModel("明细源单对象")
 public class FinPaymentEntryVO {
-    @ApiModelProperty(value = "ID")
-    private String id;
-
-    @ApiModelProperty(value = "主表")
-    private String mid;
-
-    @ApiModelProperty(value = "单据编号")
-    private String billNo;
-
-    @ApiModelProperty(value = "分录号",example = "10")
-    private Integer entryNo;
-
-    @ApiModelProperty(value = "源单类型")
-    private String srcBillType;
-
     @ApiModelProperty(value = "源单号",example = "CGFKSQ-230211-004")
-    private String srcBillId;
-
-    @ApiModelProperty(value = "源单分录id")
-    private String srcEntryId;
-
-    @ApiModelProperty(value = "源单分录号")
-    private String srcNo;
+    private String srcBillNo;
 
     @ApiModelProperty(value = "结算方式",example = "")
     private String settleMethod;
@@ -58,8 +37,5 @@ public class FinPaymentEntryVO {
 
     @ApiModelProperty(value = "自定义2",example = "")
     private String custom2;
-
-    @ApiModelProperty(value = "版本")
-    private Integer version;
 }
 

@@ -13,5 +13,5 @@ public interface IFinPaymentService {
      * @param billNo 单据编号
      * @return 查询结果
      */
-    FinPayment selectByBillNo(String billNo);
+    FinPayment getByBillNo(String billNo);
 }

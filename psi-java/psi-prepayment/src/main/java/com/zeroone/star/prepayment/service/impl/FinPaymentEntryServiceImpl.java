@@ -20,10 +20,10 @@ import java.util.List;
 @Service
 public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMapper, FinPaymentEntry> implements IFinPaymentEntryService {
     @Override
-    public FinPaymentEntry selectByBillNo(String billNo) {
+    public List<FinPaymentEntry> listBySrcBillId(String srcBillId) {
         QueryWrapper<FinPaymentEntry> FinEntryQueryWrapper = new QueryWrapper<>();
-        FinEntryQueryWrapper.eq("bill_no",billNo);
-        FinPaymentEntry finPaymentEntry = baseMapper.selectOne(FinEntryQueryWrapper);
-        return finPaymentEntry;
+        FinEntryQueryWrapper.eq("src_bill_id",srcBillId);
+        List<FinPaymentEntry> finPaymentEntryList = baseMapper.selectList(FinEntryQueryWrapper);
+        return finPaymentEntryList;
     }
 }

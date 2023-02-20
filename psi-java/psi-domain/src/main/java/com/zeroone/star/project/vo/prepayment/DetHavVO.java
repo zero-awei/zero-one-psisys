@@ -23,7 +23,7 @@ public class DetHavVO {
     /**
      * 单据编号
      */
-    @ApiModelProperty(value = "单据编号",example = "CGYF-230211-022")
+    @ApiModelProperty(value = "单据编号",example = "CGFK-221110-001")
     private String billNo;
 
     /**
