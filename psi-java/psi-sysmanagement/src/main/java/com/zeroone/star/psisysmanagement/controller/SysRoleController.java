@@ -21,6 +21,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * 系统管理-用户管理模块
+ * 前端控制器
  * @author Gerins
  * @since 2023-02-16
  */
@@ -44,8 +46,8 @@ public class SysRoleController implements RoleManagementApis {
     @PutMapping("/update")
     @Override
     public JsonVO<String> updateById(@RequestBody SysRoleDTO sysRoleDTO) {
-        Boolean isUpdate = roleService.update(sysRoleDTO);
-        if (isUpdate == true) {
+        Boolean isModify = roleService.modify(sysRoleDTO);
+        if (isModify == true) {
             return JsonVO.success("修改成功！");
         }
         return JsonVO.fail("修改失败！");
@@ -56,12 +58,11 @@ public class SysRoleController implements RoleManagementApis {
     @PostMapping("/insert")
     @Override
     public JsonVO<String> insert(@RequestBody SysRoleDTO sysRoleDTO) {
-        Boolean isInsert = roleService.insert(sysRoleDTO);
-        if (isInsert == true) {
+        Boolean isSave = roleService.save(sysRoleDTO);
+        if (isSave == true) {
             return JsonVO.success("新增成功！");
         }
         return JsonVO.fail("新增失败！");
-
     }
 
     @Transactional(rollbackFor = Exception.class, isolation = Isolation.REPEATABLE_READ, timeout = 600)
@@ -69,8 +70,8 @@ public class SysRoleController implements RoleManagementApis {
     @DeleteMapping("/delete")
     @Override
     public JsonVO<String> deleteById(@RequestBody String ids[]) {
-        Boolean isDelete = roleService.delete(ids);
-        if (isDelete == true) {
+        Boolean isRemove = roleService.remove(ids);
+        if (isRemove == true) {
             return JsonVO.success("删除成功！");
         }
         return JsonVO.fail("删除失败！");

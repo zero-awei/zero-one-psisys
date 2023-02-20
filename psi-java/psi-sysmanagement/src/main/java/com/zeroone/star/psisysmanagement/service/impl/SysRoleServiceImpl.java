@@ -55,7 +55,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * @return 修改是否成功
      */
     @Override
-    public Boolean update(SysRoleDTO sysRoleDTO) {
+    public Boolean modify(SysRoleDTO sysRoleDTO) {
         // 先判断id是否传过来
         String roleDTOId = sysRoleDTO.getId();
         if (Strings.isBlank(roleDTOId)) {
@@ -83,7 +83,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * @return 新增是否成功
      */
     @Override
-    public Boolean insert(SysRoleDTO sysRoleDTO) {
+    public Boolean save(SysRoleDTO sysRoleDTO) {
         // 先查询是否存在该角色
         String roleDTOId = sysRoleDTO.getId();
         SysRole sysRole = baseMapper.selectById(roleDTOId);
@@ -106,7 +106,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * @return 删除是否成功
      */
     @Override
-    public Boolean delete(String[] ids) {
+    public Boolean remove(String[] ids) {
         baseMapper.deleteBatchIds(Arrays.asList(ids));
         return true;
     }

@@ -29,19 +29,19 @@ public interface ISysRoleService extends IService<SysRole> {
      * @param sysRoleDTO
      * @return 修改是否成功
      */
-    Boolean update(SysRoleDTO sysRoleDTO);
+    Boolean modify(SysRoleDTO sysRoleDTO);
 
     /**
      * 新增角色
      * @param sysRoleDTO
      * @return 新增是否成功
      */
-    Boolean insert(SysRoleDTO sysRoleDTO);
+    Boolean save(SysRoleDTO sysRoleDTO);
 
     /**
      * 删除角色
      * @param ids
      * @return 删除是否成功
      */
-    Boolean delete(String[] ids);
+    Boolean remove(String[] ids);
 }

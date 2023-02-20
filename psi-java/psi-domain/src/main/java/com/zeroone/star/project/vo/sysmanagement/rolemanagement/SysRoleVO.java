@@ -21,6 +21,7 @@ public class SysRoleVO {
     private String roleCode;
     @ApiModelProperty(value = "描述", example = "管理员")
     private String description;
+
     @ApiModelProperty(value = "创建人", example = "admin")
     private String createBy;
 

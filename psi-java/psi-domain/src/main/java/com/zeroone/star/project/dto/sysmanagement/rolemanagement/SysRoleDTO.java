@@ -16,13 +16,17 @@ public class SysRoleDTO {
     @ApiModelProperty(value = "角色id", example = "f6817f48af4fb3af11b9e8bf182f618b")
     private String id;
 
+    @NotBlank
     @ApiModelProperty(value = "角色名称", example = "管理员")
     private String roleName;
+
+    @NotBlank
     @ApiModelProperty(value = "角色编码", example = "admin")
     private String roleCode;
     @ApiModelProperty(value = "描述", example = "管理员")
     private String description;
 
+    @NotBlank
     @ApiModelProperty(value = "创建人", example = "admin")
     private String createBy;
 
@@ -30,6 +34,7 @@ public class SysRoleDTO {
     @ApiModelProperty(value = "创建时间", example = "2018-12-21 18:03:39")
     private Date createTime;
 
+    @NotBlank
     @ApiModelProperty(value = "更新人", example = "admin")
     private String updateBy;
 
