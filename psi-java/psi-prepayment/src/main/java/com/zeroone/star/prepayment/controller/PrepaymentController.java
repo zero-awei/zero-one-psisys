@@ -3,6 +3,7 @@ package com.zeroone.star.prepayment.controller;
 import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
+import com.zeroone.star.project.components.jwt.PayloadDTO;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
 import com.zeroone.star.project.query.prepayment.IdQuery;
@@ -36,13 +37,7 @@ import javax.annotation.Resource;
 public class PrepaymentController implements PrepaymentApis {
 
     @Resource
-    IPrepaymentService service;
-
-    @Resource
-    IFinPaymentService finPaymentService;
-
-    @Resource
-    IFinPaymentEntryService finPaymentEntryService;
+    IPrepaymentService prepaymentService;
 
     /**
      * 修改采购预付单功能
@@ -53,7 +48,7 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "修改采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        return finPaymentEntryService.modifyById(modifyDTO);
+        return prepaymentService.modifyById(modifyDTO);
     }
 
     /**
@@ -64,8 +59,8 @@ public class PrepaymentController implements PrepaymentApis {
     @PutMapping("audit")
     @ApiOperation(value = "审核采购预付单功能（返回值data值表示更新成功与否）")
     @Override
-    public JsonVO<String> auditById(AuditDTO auditDTO) {
-        return finPaymentService.auditById(auditDTO);
+    public JsonVO<String> auditById(AuditDTO auditDTO,PayloadDTO payloadDTO) {
+        return prepaymentService.auditById(auditDTO);
     }
 
     /**

@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -29,49 +30,31 @@ import java.util.stream.Collectors;
  */
 @Service
 public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMapper, FinPaymentEntry> implements IFinPaymentEntryService {
-
-    @Resource
-    private FinPaymentMapper finPaymentMapper;
     /**
-     * 修改采购预付单
-     * 步骤：
-     *  1、finPayment表   数据修改
-     *  2、finPaymentEntry表 根据id删除所有相关数据
-     *  3、finPaymentEntry表 插入数据列表
-     *  4、判断是否成功，如果成功
-     *  5、如果失败
-     * param modifyDTO 修改DTO
-     * return
+     * 修改付款单明细
      * author forever爱
      */
     @Override
-    @Transactional
-    public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        //1、finPayment表中数据修改
-        FinPayment finPayment = new FinPayment();
-        BeanUtil.copyProperties(modifyDTO, finPayment);
-        int i = finPaymentMapper.updateById(finPayment);
-
-        // 2、根据id删除所有相关数据
+    public boolean updateById(ModifyDTO modifyDTO) {
         QueryWrapper<FinPaymentEntry> queryWrapper = new QueryWrapper();
         queryWrapper.eq("mid", modifyDTO.getId());
         baseMapper.delete(queryWrapper);
         List<FinPaymentEntryDTO> entryDTOList = modifyDTO.getEntryDTOList();
-        //2.1使用java8 stream流的特性，将List<FinPaymentEntryDTO>转化为List<FinPaymentEntry>
+        //使用java8 stream流的特性，将List<FinPaymentEntryDTO>转化为List<FinPaymentEntry>
         List<FinPaymentEntry> finPaymentEntryList = entryDTOList.stream().map(
                 dto -> {
+                    //生成19位id
+                    long timestamp = System.currentTimeMillis(); // 毫秒级时间戳
+                    int randNum = new Random().nextInt(1000000000); // 生成9位随机数
+                    String uniqueId = timestamp + String.format("%09d", randNum); // 将时间戳和随机数拼接起来
+                    String id = uniqueId.substring(0, 19);// 截取前19位作为最终的唯一ID
                     FinPaymentEntry entity = new FinPaymentEntry();
+                    entity.setId(id);
                     BeanUtils.copyProperties(dto, entity);
                     return entity;
                 }
         ).collect(Collectors.toList());
-        boolean flag = saveBatch(finPaymentEntryList);
-        //3、判断如果成功，返回“成功”
-        if (flag){
-            return JsonVO.success("修改成功");
-        }
-        //4、判断如果失败，返回“失败”
-        return JsonVO.fail("修改失败");
+        return saveBatch(finPaymentEntryList);
     }
 
 }

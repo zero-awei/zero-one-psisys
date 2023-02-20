@@ -23,8 +23,8 @@ import java.util.List;
 @Data
 @ApiModel("修改采购预付单功能")
 public class ModifyDTO {
-    @ApiModelProperty(value = "id",example = "111")
-    private Integer id;
+    @ApiModelProperty(value = "id",example = "1626949545251745795")
+    private String id;
 
     @ApiModelProperty(value = "金额",example = "1000.00")
     private BigDecimal amt;
@@ -33,20 +33,20 @@ public class ModifyDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
-    @ApiModelProperty(value = "单据编号",example = "CGYF-202302-002")
+    @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
     private String billNo;
 
-    @ApiModelProperty(value = "备注",example = "remark..")
+    @ApiModelProperty(value = "备注",example = "测试用")
     private String remark;
 
-    @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")
-    private String srcBillType;
-
-    @ApiModelProperty(value = "源单id",example = "1594317750844637186")
-    private String srcBillId;
-
-    @ApiModelProperty(value = "源单号",example = "CGYFSQ-202302-001")
-    private String srcNo;
+//    @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")
+//    private String srcBillType;
+//
+//    @ApiModelProperty(value = "源单id",example = "1594317750844637186")
+//    private String srcBillId;
+//
+//    @ApiModelProperty(value = "源单号",example = "TESTSQ-202302-002")
+//    private String srcNo;
 
     @ApiModelProperty(value = "单据主题",example = "tittle")
     private String subject;

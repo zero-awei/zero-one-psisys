@@ -6,6 +6,7 @@ import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.prepayment.AuditDTO;
+import com.zeroone.star.project.dto.prepayment.ModifyDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,17 @@ import java.util.Date;
  */
 @Service
 public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPayment> implements IFinPaymentService {
+
+    /**
+     * 修改付款单
+     * author forever爱
+     */
+    @Override
+    public boolean updateById(ModifyDTO modifyDTO) {
+        FinPayment finPayment = new FinPayment();
+        BeanUtil.copyProperties(modifyDTO, finPayment);
+        return updateById(finPayment);
+    }
 
     /**
      * 审核采购预付单功能

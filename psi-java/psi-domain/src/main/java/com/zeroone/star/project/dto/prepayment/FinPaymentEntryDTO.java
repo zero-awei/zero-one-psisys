@@ -29,14 +29,10 @@ public class FinPaymentEntryDTO {
     @ApiModelProperty(value = "自定义2",example = "")
     private String custom2;
 
-    //TODO 是否自动生成
-    @ApiModelProperty(value = "id",example = "222")
-    private String id;
-
-    @ApiModelProperty(value = "mid",example = "111")
+    @ApiModelProperty(value = "mid",example = "1626949545251745795")
     private String mid;
 
-    @ApiModelProperty(value = "单据编号",example = "CGYF-202302-002")
+    @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
     private String billNo;
 
     @ApiModelProperty(value = "分录号",example = "10")
@@ -45,7 +41,7 @@ public class FinPaymentEntryDTO {
     @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")
     private String srcBillType;
 
-    @ApiModelProperty(value = "源单号",example = "CGYFSQ-202302-001")
+    @ApiModelProperty(value = "源单号",example = "TESTSQ-202302-002")
     private String srcNo;
 
     @ApiModelProperty(value = "源单id",example = "123456")

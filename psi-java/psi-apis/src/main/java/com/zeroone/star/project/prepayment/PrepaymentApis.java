@@ -1,5 +1,6 @@
 package com.zeroone.star.project.prepayment;
 
+import com.zeroone.star.project.components.jwt.PayloadDTO;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -47,7 +48,7 @@ public interface PrepaymentApis {
      * return 查询结果
      * author forever爱
      */
-    JsonVO<String> auditById(AuditDTO auditDTO);
+    JsonVO<String> auditById(AuditDTO auditDTO, PayloadDTO payloadDTO);
 
 
     /**

@@ -6,6 +6,9 @@ import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
 import com.zeroone.star.prepayment.mapper.FinPaymentEntryMapper;
 import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
+import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
+import com.zeroone.star.prepayment.service.IFinPaymentReqService;
+import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
@@ -33,13 +36,17 @@ import java.util.stream.Collectors;
 public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPaymentEntry> implements IPrepaymentService {
 
     @Resource
-    private FinPaymentMapper finPaymentMapper;
-
+    IFinPaymentService finPaymentService;
+    @Resource
+    IFinPaymentReqService finPaymentReqService;
+    @Resource
+    IFinPaymentEntryService finPaymentEntryService;
     /**
      * 修改采购预付单
      * 步骤：
      *  1、finPayment表   数据修改
-     *  2、finPaymentEntry表 根据id删除所有相关数据
+     *  2、finPaymentEntry表 数据修改
+     *  3、判断是
      *  3、finPaymentEntry表 插入数据列表
      *  4、判断是否成功，如果成功
      *  5、如果失败
@@ -50,9 +57,22 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
     @Override
     @Transactional
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        return null;
+        //1、finPayment表中数据修改
+        finPaymentService.updateById(modifyDTO);
+        //2、finPaymentEntry表中数据修改
+        boolean flag = finPaymentEntryService.updateById(modifyDTO);
+        //3、判断成功还是失败
+        if (flag){
+            return JsonVO.success("修改成功");
+        }
+        return JsonVO.fail("修改失败");
     }
 
+    /**
+     * 审核采购预付单功能
+     * author forever爱
+     * since 2023-02-13
+     */
     @Override
     public JsonVO<String> auditById(AuditDTO auditDTO) {
         return null;

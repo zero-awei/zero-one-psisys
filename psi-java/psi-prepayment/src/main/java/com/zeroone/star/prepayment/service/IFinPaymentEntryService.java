@@ -1,5 +1,6 @@
 package com.zeroone.star.prepayment.service;
 
+import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
@@ -14,10 +15,9 @@ import com.zeroone.star.project.vo.JsonVO;
  * @since 2023-02-18
  */
 public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
-
     /**
-     * 修改采购预付单
+     * 修改付款单明细
      * author forever爱
      */
-    public JsonVO<String> modifyById(ModifyDTO modifyDTO);
+    public boolean updateById(ModifyDTO modifyDTO);
 }
