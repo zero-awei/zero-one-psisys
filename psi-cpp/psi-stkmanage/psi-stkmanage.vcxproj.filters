@@ -314,5 +314,11 @@
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\Stkio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\SysUserDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

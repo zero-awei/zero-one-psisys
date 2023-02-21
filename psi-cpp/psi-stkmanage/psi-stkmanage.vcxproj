@@ -214,10 +214,12 @@
     <ClInclude Include="dao\Qtrk\QtrkDAO.h" />
     <ClInclude Include="dao\Qtrk\QtrkMapper.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
+    <ClInclude Include="domain\do\Cgthck\Stkio.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
     <ClInclude Include="domain\do\Qtrk\AddQtrkBillDO.h" />
+    <ClInclude Include="domain\do\SysUserDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
