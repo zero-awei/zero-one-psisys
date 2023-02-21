@@ -85,10 +85,9 @@ public class PositionController implements PositionApis {
     }
 
     @ApiOperation(value = "查询职级")
-    @DeleteMapping("/queryPostRank")
+    @GetMapping("/queryPostRank")
     @Override
     public JsonVO<List<String>> queryPostRank() {
-        //service
-        return null;
+        return JsonVO.success(iPositionService.listPostRank());
     }
 }

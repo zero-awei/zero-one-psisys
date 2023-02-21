@@ -32,4 +32,6 @@ public interface IPositionService extends IService<Position> {
     List<Position> listPosition();
 
     void insertOne(Position position);
+
+    List<String> listPostRank();
 }

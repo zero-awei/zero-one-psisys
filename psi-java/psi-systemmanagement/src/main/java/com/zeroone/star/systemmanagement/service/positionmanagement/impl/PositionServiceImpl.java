@@ -1,6 +1,8 @@
 package com.zeroone.star.systemmanagement.service.positionmanagement.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.lang.hash.Hash;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,7 +16,11 @@ import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionSer
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Description
@@ -29,7 +35,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     @Override
     public String deletePositionById(String positionId) {
         int result = positionMapper.deleteById(positionId);
-        if(result == 0){
+        if (result == 0) {
             return "删除失败";
         }
         return "删除成功";
@@ -38,9 +44,9 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     @Override
     public String update(PositionDTO positionDTO) {
         Position position = new Position();
-        BeanUtil.copyProperties(positionDTO,position);
-        int result =positionMapper.updateById(position);
-        if(result == 0){
+        BeanUtil.copyProperties(positionDTO, position);
+        int result = positionMapper.updateById(position);
+        if (result == 0) {
             return "更新失败";
         }
         return "更新成功";
@@ -49,9 +55,9 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     @Override
     public String insert(PositionDTO positionDTO) {
         Position position = new Position();
-        BeanUtil.copyProperties(positionDTO,position);
-        int result =positionMapper.insert(position);
-        if(result == 0){
+        BeanUtil.copyProperties(positionDTO, position);
+        int result = positionMapper.insert(position);
+        if (result == 0) {
             return "添加失败";
         }
         return "添加成功";
@@ -59,19 +65,41 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public PageVO<PositionVO> queryAll(PositionQuery positionQuery) {
-        Page<Position> page = new Page<>(positionQuery.getPageIndex(),positionQuery.getPageSize());
+        Page<Position> page = new Page<>(positionQuery.getPageIndex(), positionQuery.getPageSize());
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
-        Page<Position> result = positionMapper.selectPage(page,wrapper);
+        Page<Position> result = positionMapper.selectPage(page, wrapper);
         return PageVO.create(result, PositionVO.class);
     }
 
     @Override
     public List<Position> listPosition() {
-        return  baseMapper.selectList(null);
+        return baseMapper.selectList(null);
     }
 
     @Override
     public void insertOne(Position position) {
         baseMapper.insert(position);
+    }
+
+    @Override
+    public List<String> listPostRank() {
+        LambdaQueryWrapper<Position> wrapper = new LambdaQueryWrapper<>();
+        wrapper.select(Position::getPostRank);
+        List<Position> position_onlyPostRank = positionMapper.selectList(wrapper);
+        Set<String> postRanks = new HashSet<>();
+        for (Position position : position_onlyPostRank) {
+            if(position.getPostRank().equals("1")){
+                postRanks.add("员级");
+            }else if(position.getPostRank().equals("2")){
+                postRanks.add("助级");
+            }else if(position.getPostRank().equals("3")){
+                postRanks.add("中级");
+            }else if(position.getPostRank().equals("4")){
+                postRanks.add("副高级");
+            }else if(position.getPostRank().equals("5")){
+                postRanks.add("正高级");
+            }
+        }
+        return new ArrayList<>(postRanks);
     }
 }
