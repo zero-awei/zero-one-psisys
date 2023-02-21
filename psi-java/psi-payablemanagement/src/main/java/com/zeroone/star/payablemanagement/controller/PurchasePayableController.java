@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-02-14
  */
 @RestController
-@RequestMapping("payable/")
-@Api(tags = "采购预付")
+@RequestMapping("payablemanagement/purchasemanagement")
+@Api(tags = "应付管理-采购预付")
 @Validated
 public class PurchasePayableController implements PurchasePayableApis {
 
