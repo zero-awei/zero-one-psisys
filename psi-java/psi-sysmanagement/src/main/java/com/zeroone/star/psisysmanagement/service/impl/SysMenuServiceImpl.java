@@ -5,8 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
-import com.zeroone.star.project.query.sysmanagement.menumanagement.MenusQuery;
-import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
@@ -32,8 +31,8 @@ import java.util.List;
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements ISysMenuService {
 
     @Override
-    public JsonVO<MenuVO> querySingle(SingleMenuQuery singleMenuQuery) {
-        SysMenu sysMenu = baseMapper.selectById(singleMenuQuery.getId());
+    public JsonVO<MenuVO> querySingle(SysMenuQuery sysMenuQuery) {
+        SysMenu sysMenu = baseMapper.selectById(sysMenuQuery.getId());
         MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
 
         return menuVO == null ?
@@ -41,10 +40,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     }
 
     @Override
-    public JsonVO<List<MenuVO>> queryMenus(MenusQuery menusQuery) {
+    public JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery) {
 
         QueryWrapper<SysMenu> menuDTOQueryWrapper = new QueryWrapper<>();
-        menuDTOQueryWrapper.eq("parent_id", menusQuery.getParentId());
+        menuDTOQueryWrapper.eq("parent_id", sysMenuQuery.getParentId());
 
         List<SysMenu> sysMenus = baseMapper.selectList(menuDTOQueryWrapper);
         ArrayList<MenuVO> menuVOS = new ArrayList<>();
@@ -144,9 +143,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     }
 
     @Override
-    public JsonVO<ResultStatus> deleteMenu(SingleMenuQuery singleMenuQuery) {
+    public JsonVO<ResultStatus> deleteMenu(SysMenuQuery sysMenuQuery) {
 
-        SysMenu sysMenu = BeanUtil.copyProperties(singleMenuQuery, SysMenu.class);
+        SysMenu sysMenu = BeanUtil.copyProperties(sysMenuQuery, SysMenu.class);
 
         int num = baseMapper.deleteById(sysMenu);
 
