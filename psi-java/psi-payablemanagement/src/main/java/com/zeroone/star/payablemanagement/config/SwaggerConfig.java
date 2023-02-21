@@ -21,7 +21,7 @@ public class SwaggerConfig {
     @Bean
     Docket sampleApi() {
         return SwaggerCore.defaultDocketBuilder("应付管理模块",
-                "com.zeroone.star.payable.controller",
+                "com.zeroone.star.payablemanagement.controller",
                 "payable");
     }
 }
