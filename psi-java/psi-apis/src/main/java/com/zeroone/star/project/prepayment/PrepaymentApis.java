@@ -1,24 +1,20 @@
 package com.zeroone.star.project.prepayment;
 
 import com.zeroone.star.project.dto.prepayment.*;
+import com.zeroone.star.project.query.prepayment.FinPaymentReqQuery;
 import com.zeroone.star.project.vo.JsonVO;
 
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.DocListVO;
+import com.zeroone.star.project.vo.prepayment.*;
 
 
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
-import com.zeroone.star.project.vo.prepayment.DetHavVO;
-import com.zeroone.star.project.vo.prepayment.DetNoVO;
 
 import org.springframework.http.ResponseEntity;
 
-import com.zeroone.star.project.vo.prepayment.SupplierVO;
-
 import java.util.List;
 
-import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -131,7 +127,7 @@ public interface PrepaymentApis {
      * 导入功能
      * author 内鬼
      */
-    JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo);
+    JsonVO<PageVO<FinPaymentReqVO>> queryAllReq(FinPaymentReqQuery query);
     JsonVO<String> excelImport(MultipartFile file);
 
     /**

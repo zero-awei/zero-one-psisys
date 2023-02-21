@@ -55,6 +55,9 @@ public class FinPaymentReq implements Serializable {
      */
     private String srcNo;
 
+    /**
+     * 单据主题
+     */
     private String subject;
 
     /**

@@ -1,14 +1,20 @@
 package com.zeroone.star.prepayment.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
 import com.zeroone.star.prepayment.entity.FinPaymentReq;
+import com.zeroone.star.prepayment.entity.FinPaymentReqEntry;
 import com.zeroone.star.prepayment.mapper.FinPaymentEntryMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.FinPaymentEntryVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName FinPaymentEntryServiceImpl
@@ -25,5 +31,6 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
         FinEntryQueryWrapper.eq("src_bill_id",srcBillId);
         List<FinPaymentEntry> finPaymentEntryList = baseMapper.selectList(FinEntryQueryWrapper);
         return finPaymentEntryList;
+
     }
 }

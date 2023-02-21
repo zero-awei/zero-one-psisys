@@ -1,27 +1,26 @@
 package com.zeroone.star.prepayment.controller;
 
+import com.zeroone.star.prepayment.service.IFinPaymentReqService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
+import com.zeroone.star.project.query.prepayment.FinPaymentReqQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.DetHavVO;
-import com.zeroone.star.project.vo.prepayment.DetNoVO;
+import com.zeroone.star.project.vo.prepayment.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
-import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.zeroone.star.project.vo.prepayment.SupplierVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
-import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -34,6 +33,9 @@ public class PrepaymentController implements PrepaymentApis {
 
     @Resource
     IPrepaymentService service;
+
+    @Resource
+    IFinPaymentReqService paymentReqService;
 
     /**
      * 修改采购预付单功能
@@ -158,15 +160,16 @@ public class PrepaymentController implements PrepaymentApis {
 
     /**
      * 付款申请单分录明细列表查询
-     * param billNo 分录单号
+     * param supplierName 供应商名
      * return 分录明细列表
      * author 内鬼
      */
-    @GetMapping("query-all-by-billno")
+    @GetMapping("query-all-paymentReq")
     @Override
     @ApiOperation("付款申请单分录列表查询")
-    public JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo) {
-        return null;
+    public JsonVO<PageVO<FinPaymentReqVO>> queryAllReq(FinPaymentReqQuery query) {
+        PageVO<FinPaymentReqVO> paymentReqEntryPage = paymentReqService.listFinPaymentReq(query);
+        return JsonVO.success(paymentReqEntryPage);
     }
 
     /**
