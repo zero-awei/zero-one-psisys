@@ -52,7 +52,7 @@ class SupplierDO
 	CC_SYNTHESIZE(string, financial_phone, Financial_Phone);
 
 	/*发票信息*/
-//单位名称
+    //单位名称
 	CC_SYNTHESIZE(string, invoice_company, Invoice_Company);
 	//税号
 	CC_SYNTHESIZE(string, invoice_tax_code, Invoice_Tax_Code);

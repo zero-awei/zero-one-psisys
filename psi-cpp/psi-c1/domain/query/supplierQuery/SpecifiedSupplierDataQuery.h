@@ -8,12 +8,12 @@
 class SpecifiedSupplierDataQuery 
 {
 	// ±àºÅ
-	CC_SYNTHESIZE(uint64_t, code, Code);
+	CC_SYNTHESIZE(string, code, Code);
 	
 public:
 	// °ó¶¨from_json
 	friend void from_json(const json& j, SpecifiedSupplierDataQuery& t) { // NOLINT
-		BIND_FROM_TO_ULL(j, t, code);
+		BIND_FROM_TO_NORMAL(j, t, code);
 	}
 };
 

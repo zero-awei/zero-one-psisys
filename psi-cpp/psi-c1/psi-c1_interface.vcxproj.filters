@@ -150,7 +150,7 @@
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\service-supplier-satan\SupplierServiceSatan.cpp">
+    <ClCompile Include="service\supplierService\service-supplier-satan\SupplierServiceSatan.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.cpp">
@@ -464,7 +464,7 @@
     <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\service-supplier-satan\SupplierServiceSatan.h">
+    <ClInclude Include="service\supplierService\service-supplier-satan\SupplierServiceSatan.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\SupplierDO-satan\SupplierDO.h">

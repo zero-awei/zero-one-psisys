@@ -27,7 +27,7 @@ PageVO<SampleVO> SampleService::listAll(const SampleQuery& query)
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//查询数据总条数
+	//查询数据总条数（如果不是分页的话这些都不需要）
 	SampleDO obj;
 	obj.setName(query.getName());
 	obj.setSex(query.getSex());

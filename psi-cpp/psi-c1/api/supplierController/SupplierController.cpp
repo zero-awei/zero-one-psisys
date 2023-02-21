@@ -36,14 +36,15 @@ JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)
 {
 	string code = dto.getCode();
 	string name = dto.getName();
-	string alias = dto.getAlias();
-	string enable = dto.getEnable();
-	string accessibleName = dto.getAccessibleName();
+	string alias = dto.getAux_Name();
+
+	int enable = dto.getIs_Enabled();
+	
 	//输出测试上传文件路径列表
 	for (auto file : dto.getFiles()) {
 		std::cout << "path " << file << std::endl;
 	}
-	if (code == NULL||name==NULL|| alias==NULL||enable==NULL||accessibleName==NULL)
+	if (code == NULL||name==NULL|| alias==NULL||enable==NULL)
 	{
 		JsonVO<string> result;
 		result.fail(code);//使用状态码
