@@ -78,9 +78,7 @@ class PurQuotFindDetailBillDO
 	//自定义2
 	CC_SYNTHESIZE(string, entry_custom2, Entry_custom2);
 public:
-	// 绑定JSON转换方法
 	PurQuotFindDetailBillDO() {
-
 	}
 };
 #endif // !_PUR_QUOT_FIND_DETAIL_BILL_VO_H_
