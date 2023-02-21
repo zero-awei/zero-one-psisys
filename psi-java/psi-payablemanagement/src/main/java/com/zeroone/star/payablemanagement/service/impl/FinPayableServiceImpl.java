@@ -40,7 +40,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
             finPayableQueryWrapper.ge("bill_date", query.getBillDate_begin());
         }
         if(query.getBillDate_end() != null){
-            finPayableQueryWrapper.le("bill_date", query.getBillDate_begin());
+            finPayableQueryWrapper.le("bill_date", query.getBillDate_end());
         }
         // 3.单据主题查询
         finPayableQueryWrapper.eq(StringUtils.hasText(query.getSubject()), "subject", query.getSubject());
