@@ -41,6 +41,9 @@ PageVO<QueryCgthckBillVO> CgthckService::listAll(const QueryCgthckBillQuery& que
 
 uint64_t CgthckService::saveData(const AddCgthckBillDTO& dto)
 {
+    // 组装数据
+    CgthckDO data;
+    data.setBillNo(dto.getBillNo());
     return uint64_t();
 }
 

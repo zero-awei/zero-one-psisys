@@ -39,15 +39,15 @@ list<CgthckDO> CgthckDAO::selectById(const string& id)
 uint64_t CgthckDAO::insert(const CgthckDO& iobj)
 {
 	string sql{""};
-	sql += "INSERT INTO " + string{DATABASE} + " (`bill_no`, `bill_date`, `supplier_id`) VALUES (?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s", iobj.getBillNo(), iobj.getBillNo(), iobj.getBillDate(), iobj.getSupplierId());
+	sql += "INSERT INTO " + string{ DATABASE } + " (`bill_no`, `bill_date`, `supplier_id`) VALUES (?, ?, ?)";
+	return sqlSession->executeInsert(sql, "%s%s%s", iobj.getBillNo(), iobj.getBillDate(), iobj.getSupplierId());
 }
 
 int CgthckDAO::update(const CgthckDO& iobj)
 {
 	string sql{ "" };
 	sql += "UPDATE " + string{ DATABASE } + " SET `bill_date`=?, `supplier_id`=? WHERE `bill_no`=?";
-	return sqlSession->executeInsert(sql, "%s%s%s", iobj.getBillNo(), iobj.getBillNo(), iobj.getBillDate(), iobj.getSupplierId());
+	return sqlSession->executeInsert(sql, "%s%s%s", iobj.getBillDate(), iobj.getSupplierId(), iobj.getBillNo());
 }
 
 int CgthckDAO::deleteById(const CgthckDO& iobj)
