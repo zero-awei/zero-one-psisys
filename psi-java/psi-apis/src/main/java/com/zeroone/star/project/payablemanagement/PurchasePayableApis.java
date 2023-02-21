@@ -1,4 +1,4 @@
-package com.zeroone.star.project.oauth.payablemanagement;
+package com.zeroone.star.project.payablemanagement;
 
 import com.zeroone.star.project.vo.JsonVO;
 

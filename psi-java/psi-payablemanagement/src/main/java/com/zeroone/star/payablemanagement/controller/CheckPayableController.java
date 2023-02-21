@@ -1,6 +1,6 @@
 package com.zeroone.star.payablemanagement.controller;
 
-import com.zeroone.star.project.oauth.payablemanagement.CheckPayableApis;
+import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,11 +1,11 @@
-package com.zeroone.star.project.oauth.payablemanagement;
+package com.zeroone.star.project.payablemanagement;
 
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
- * 描述：应付核销接口定义
+ * 描述：其他应付模块接口定义
  * </p>
  * <p>版权：&copy;01星球</p>
  * <p>地址：01星球总部</p>
@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author naturezh
  * @version 1.0.0
  */
-public interface CheckPayableApis {
+public interface OtherPayableApis {
 
     /**
      * 文件导出
