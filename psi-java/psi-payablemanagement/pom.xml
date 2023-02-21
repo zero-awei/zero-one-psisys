@@ -8,7 +8,7 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>psi-accountPayable</artifactId>
+    <artifactId>psi-payablemanagement</artifactId>
     <dependencies>
         <!-- spring mvc -->
         <dependency>
@@ -60,7 +60,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.payablemanagement.AccountPayableApplication</mainClass>
+                    <mainClass>com.zeroone.star.payablemanagement.PayableManagementApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

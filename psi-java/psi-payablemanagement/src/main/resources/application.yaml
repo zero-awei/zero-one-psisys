@@ -1,8 +1,8 @@
 server:
-  port: ${sp.accountpayable}
+  port: ${sp.payablemanagement}
 spring:
   application:
-    name: ${sn.accountpayable}
+    name: ${sn.payablemanagement}
   datasource:
     url: jdbc:mysql://localhost:3306/payable_management?serverTimezone=UTC&characterEncoding=utf8&useUnicode=ture&useSSL=false
     username: root
