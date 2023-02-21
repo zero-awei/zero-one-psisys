@@ -1,7 +1,8 @@
 package com.zeroone.star.payablemanagement.mapper;
 
-import entity.FinPayableSum;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zeroone.star.payablemanagement.entity.FinPayableSum;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

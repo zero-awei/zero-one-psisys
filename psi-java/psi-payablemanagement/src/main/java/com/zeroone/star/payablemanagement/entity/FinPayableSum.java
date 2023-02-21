@@ -1,4 +1,4 @@
-package entity;
+package com.zeroone.star.payablemanagement.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -71,13 +71,13 @@ public class FinPayableSum implements Serializable {
         }
         FinPayableSum other = (FinPayableSum) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getYear() == null ? other.getYear() == null : this.getYear().equals(other.getYear()))
-            && (this.getMonth() == null ? other.getMonth() == null : this.getMonth().equals(other.getMonth()))
-            && (this.getSupplierId() == null ? other.getSupplierId() == null : this.getSupplierId().equals(other.getSupplierId()))
-            && (this.getBeginCreditBal() == null ? other.getBeginCreditBal() == null : this.getBeginCreditBal().equals(other.getBeginCreditBal()))
-            && (this.getDebitAmt() == null ? other.getDebitAmt() == null : this.getDebitAmt().equals(other.getDebitAmt()))
-            && (this.getCreditAmt() == null ? other.getCreditAmt() == null : this.getCreditAmt().equals(other.getCreditAmt()))
-            && (this.getCreditBal() == null ? other.getCreditBal() == null : this.getCreditBal().equals(other.getCreditBal()));
+                && (this.getYear() == null ? other.getYear() == null : this.getYear().equals(other.getYear()))
+                && (this.getMonth() == null ? other.getMonth() == null : this.getMonth().equals(other.getMonth()))
+                && (this.getSupplierId() == null ? other.getSupplierId() == null : this.getSupplierId().equals(other.getSupplierId()))
+                && (this.getBeginCreditBal() == null ? other.getBeginCreditBal() == null : this.getBeginCreditBal().equals(other.getBeginCreditBal()))
+                && (this.getDebitAmt() == null ? other.getDebitAmt() == null : this.getDebitAmt().equals(other.getDebitAmt()))
+                && (this.getCreditAmt() == null ? other.getCreditAmt() == null : this.getCreditAmt().equals(other.getCreditAmt()))
+                && (this.getCreditBal() == null ? other.getCreditBal() == null : this.getCreditBal().equals(other.getCreditBal()));
     }
 
     @Override

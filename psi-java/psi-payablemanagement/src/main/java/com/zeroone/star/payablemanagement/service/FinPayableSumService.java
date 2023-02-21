@@ -1,7 +1,8 @@
 package com.zeroone.star.payablemanagement.service;
 
-import entity.FinPayableSum;
+
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.payablemanagement.entity.FinPayableSum;
 
 /**
 * @author iceberg-work
