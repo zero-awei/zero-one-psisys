@@ -1,7 +1,12 @@
 #include "stdafx.h"
 #include "PurQuotDAO.h"
-#include "PurQuotMapper.h"
 #include <sstream>
+//mapper
+#include "PurQuotFindBillMapper.h"
+#include "PurQuotFindDetailBillMapper.h"
+#include "PurQuotListMapper.h"
+#include "PurQuotDividedListMapper.h"
+
 
 
 #define PUR_QUOT_TERAM_PARSE(obj, sql) \

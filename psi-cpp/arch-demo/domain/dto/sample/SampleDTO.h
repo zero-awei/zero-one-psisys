@@ -37,8 +37,12 @@ class SampleDTO
 	CC_SYNTHESIZE(string, sex, Sex);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, SampleDTO& t); // NOLINT
-	BIND_TO_JSON(SampleDTO, id, name, age, sex);
+	friend void from_json(const json& j, SampleDTO& t) { // NOLINT
+		BIND_FROM_TO_ULL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, name);
+		BIND_FROM_TO_I(j, t, age);
+		BIND_FROM_TO_NORMAL(j, t, sex);
+	}
 };
 
 #endif // !_SAMPLE_DTO_

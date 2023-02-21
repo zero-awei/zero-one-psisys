@@ -1,0 +1,34 @@
+#pragma once
+#ifndef _PUR_QUOT_DIVIDED_LIST_DO_H_
+#define _PUR_QUOT_DIVIDED_LIST_DO_H_
+#include "../../GlobalInclude.h"
+class PurQuotDividedListDO
+{
+	//单据编号
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	//物料
+	CC_SYNTHESIZE(string, material_id, Material_id);
+	//规格型号
+	//单位
+	CC_SYNTHESIZE(string, unit_id, Unit_id);
+	//数量
+	CC_SYNTHESIZE(string, qty, Qty);
+	//税率
+	CC_SYNTHESIZE(string, tax_rate, Tax_rate);
+	//含税单价
+	CC_SYNTHESIZE(string, price, Price);
+	//含税金额
+	CC_SYNTHESIZE(string, amt, Amt);
+	//备注
+	CC_SYNTHESIZE(string, remark, Remark);
+	//自定义1
+	CC_SYNTHESIZE(string, custom1, Custom1);
+	//自定义2
+	CC_SYNTHESIZE(string, custom2, Custom2);
+public:
+	// 绑定JSON转换方法
+	PurQuotDividedListDO() {
+
+	}
+};
+#endif

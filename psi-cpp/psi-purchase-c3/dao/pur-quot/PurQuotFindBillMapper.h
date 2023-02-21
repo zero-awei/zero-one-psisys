@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _PUR_QUOT_MAPPER_H_
-#define _PUR_QUOT_MAPPER_H_
+#ifndef _PUR_QUOT_FIND_BILL_MAPPER_H_
+#define _PUR_QUOT_FIND_BILL_MAPPER_H_
 
 #include "Mapper.h"
 #include "../../domain/do/pur-quot/PurQuotFindBillDO.h"
@@ -21,4 +21,4 @@ public:
 	}
 };
 
-#endif // !_SAMPLE_MAPPER_
+#endif

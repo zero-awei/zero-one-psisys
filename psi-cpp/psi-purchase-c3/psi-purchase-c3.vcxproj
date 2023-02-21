@@ -191,9 +191,15 @@
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="dao\pur-quot\PurQuotDAO.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotDividedListMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotFindDetailBillMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotListMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotDividedListDO.h" />
     <ClInclude Include="domain\do\pur-quot\PurQuotFindBillDO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotFindDetailBillDO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotListDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
