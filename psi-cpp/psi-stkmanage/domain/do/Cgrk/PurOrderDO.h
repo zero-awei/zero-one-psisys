@@ -24,8 +24,7 @@
 /**
  * pur_order数据库实体类
  */
-class PurOrderDO
-{
+class PurOrderDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
