@@ -338,5 +338,8 @@
     <ClInclude Include="dao\Cgthck\CgthckDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\SysDepart.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -223,6 +223,7 @@
     <ClInclude Include="domain\do\Cgthck\ImportCgthckFileDTO.h" />
     <ClInclude Include="domain\do\Cgthck\ModifyCgthckBillDTO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\SysDepart.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\CgrkBillEntryDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\ImportCgrkFileDTO.h" />
