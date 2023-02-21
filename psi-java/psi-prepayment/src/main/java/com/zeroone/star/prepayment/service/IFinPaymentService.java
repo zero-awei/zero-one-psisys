@@ -14,9 +14,9 @@ import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 public interface IFinPaymentService {
 
     /**
-     * 插入数据
-     * @param prepaymentDTO 数据传输对象
+     * 预付操作
+     * @param prepaymentDTO
      * @return
      */
-    public int insert(PrepaymentDTO prepaymentDTO);
+    public int prepay(PrepaymentDTO prepaymentDTO);
 }

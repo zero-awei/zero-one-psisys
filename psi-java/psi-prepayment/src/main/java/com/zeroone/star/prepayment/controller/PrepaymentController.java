@@ -154,17 +154,8 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "添加采购预付单功能（返回值data值表示创建成功与否）")
     @Override
     public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
-        int res = finPaymentService.insert(prepaymentDTO);
-        int count=0;
-        for (FinPaymentEntryDTO finPaymentEntryDTO:prepaymentDTO.getFinPaymentEntryList()){
-            FinPaymentEntry finPaymentEntry = new FinPaymentEntry();
-            BeanUtils.copyProperties(finPaymentEntryDTO,finPaymentEntry);
-            finPaymentEntry.setBillNo(prepaymentDTO.getBillNo());//获取单号
-            int i = finPaymentEntryService.insert(finPaymentEntry);
-            if(i==1) count++;
-        }
-
-        if (res==1 && count==prepaymentDTO.getFinPaymentEntryList().size()){
+        int res = finPaymentService.prepay(prepaymentDTO);
+        if (res==1){
             return JsonVO.success("添加成功");
         }else {
             return JsonVO.fail("添加失败");
