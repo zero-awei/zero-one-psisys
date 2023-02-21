@@ -2,6 +2,7 @@ package com.zeroone.star.project.paymentmanagement;
 
 import com.zeroone.star.project.dto.paymentmanagement.AddPurchasePaymentDto;
 import com.zeroone.star.project.dto.paymentmanagement.UpdatePurchasePaymentDto;
+import com.zeroone.star.project.dto.paymentmanagement.yf.PurchasePaymentDeleteYfDto;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,10 +28,10 @@ public interface PurchasePayment {
 
     /**
      * 删除单据
-     * @param dillId
+     * @param purchasePaymentDeleteYfDto
      * @return
      */
-    JsonVO<String> deletePurchasePayment(String dillId);
+    JsonVO<String> deletePurchasePayment(PurchasePaymentDeleteYfDto purchasePaymentDeleteYfDto);
 
     /**
      * 上传文件
