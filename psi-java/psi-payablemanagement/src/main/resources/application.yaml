@@ -1,0 +1,6 @@
+server:
+  port: ${sp.payable}
+spring:
+  application:
+    name: ${sn.payable}
+
