@@ -33,12 +33,15 @@ class BasMaterialService
 public:
 	// 分页查询所有数据
 	PageVO<BasMaterialVO> listAll(const BasMaterialQuery& query);
+	//id查询
+	BasMaterialVO getData(const BasMaterialQuery& query);
+
 	// 保存数据
 	uint64_t saveData(const BasMaterialDTO& dto);
 	// 修改数据
 	bool updateData(const BasMaterialDTO& dto);
 	// 通过code编码删除数据
-	bool removeData(string id);
+	bool removeData(uint64_t id);
 };
 
 #endif // !_BASMATERIAL_SERVICE_

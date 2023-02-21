@@ -27,13 +27,9 @@
 class BasMaterialDO
 {
 	//id
-	CC_SYNTHESIZE(string, id, Id);
+	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 分类 id
 	CC_SYNTHESIZE(string, categoryId, CategoryId);
-
-	////分类name
-	//CC_SYNTHESIZE(string, categoryId, CategoryId);
-
 	// 编码
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称
@@ -48,20 +44,17 @@ class BasMaterialDO
 	//主单位id
 	CC_SYNTHESIZE(string, unitId, UnitId);
 
-	////主单位name
-	//CC_SYNTHESIZE(string, unit, Unit);
-
 	//销售价格
-	CC_SYNTHESIZE(int, salePrice, SalePrice);
+	CC_SYNTHESIZE(double, salePrice, SalePrice);
 	//税控编码
 	CC_SYNTHESIZE(string, taxCode, TaxCode);
 
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
-	// 创建时间
-	CC_SYNTHESIZE(string, createTime, CreateTime);
 	// 创建人
 	CC_SYNTHESIZE(string, createBy, CreateBy);
+	// 创建时间
+	CC_SYNTHESIZE(string, createTime, CreateTime);
 	// 修改人
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	// 修改时间
@@ -69,21 +62,21 @@ class BasMaterialDO
 
 public:
 	BasMaterialDO() {
-		//id = "";
-		//categoryId = "";
-		//code = "";
-		//name = "";
-		//auxName = "";
-		//isEnabled = 1;
-		//model = "";
-		//unitId = "";
-		//salePrice = 0;
-		//taxCode = "";
-		//remark = "";
-		//createBy = "";
-		//createTime = "";
-		//updateBy = "";
-		//updateTime = "";
+		id = 1;
+		categoryId = "";
+		code = "";
+		name = "";
+		auxName = "";
+		isEnabled = 1;
+		model = "";
+		unitId = "";
+		salePrice = 0;
+		taxCode = "";
+		remark = "";
+		createBy = "";
+		createTime = "";
+		updateBy = "";
+		updateTime = "";
 	}
 };
 

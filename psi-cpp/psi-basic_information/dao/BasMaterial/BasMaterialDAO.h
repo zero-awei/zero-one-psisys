@@ -32,19 +32,19 @@ public:
 	uint64_t count(const BasMaterialDO& iObj);
 	// 分页查询数据
 	list<BasMaterialDO> selectWithPage(const BasMaterialDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	
-	// 通过名称查询数据
-	list<BasMaterialDO> selectByName(const string& name);
-	// 通过编码查询数据
-	list<BasMaterialDO> selectByCode(const string& code);
-	// 通过物料分类查询数据
-	list<BasMaterialDO> selectByCategoryId(const string& categoryId);
+	list<BasMaterialDO> selectById(const uint64_t& id);
+	//// 通过名称查询数据
+	//list<BasMaterialDO> selectByName(const string& name);
+	//// 通过编码查询数据
+	//list<BasMaterialDO> selectByCode(const string& code);
+	//// 通过物料分类查询数据
+	//list<BasMaterialDO> selectByCategoryId(const string& categoryId);
 
 	// 新建物料
 	uint64_t insert(const BasMaterialDO& iObj);
 	// 修改物料
 	int update(const BasMaterialDO& uObj);
 	// 通过code编码删除物料
-	int deleteById(string id);
+	int deleteById(uint64_t  id);
 };
 #endif // !_BASMATERIAL_DAO_

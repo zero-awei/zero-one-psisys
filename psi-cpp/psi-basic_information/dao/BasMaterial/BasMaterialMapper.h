@@ -32,7 +32,7 @@ public:
 	BasMaterialDO mapper(ResultSet* resultSet) const override
 	{
 		BasMaterialDO data;
-		data.setId(resultSet->getString(1));
+		data.setId(resultSet->getUInt64(1));
 		data.setCategoryId(resultSet->getString(2));
 		data.setCode(resultSet->getString(3));
 		data.setName(resultSet->getString(4));
@@ -40,11 +40,11 @@ public:
 		data.setIsEnabled(resultSet->getInt(6));
 		data.setModel(resultSet->getString(7));
 		data.setUnitId(resultSet->getString(8));
-		data.setSalePrice(resultSet->getInt(9));
+		data.setSalePrice(resultSet->getDouble(9));
 		data.setTaxCode(resultSet->getString(10));
 		data.setRemark(resultSet->getString(11));
-		data.setCreateTime(resultSet->getString(12));
-		data.setCreateBy(resultSet->getString(13));
+		data.setCreateBy(resultSet->getString(12));
+		data.setCreateTime(resultSet->getString(13));
 		data.setUpdateBy(resultSet->getString(14));
 		data.setUpdateTime(resultSet->getString(15));
 

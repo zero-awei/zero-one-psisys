@@ -19,7 +19,7 @@
 #include "stdafx.h"
 #include "BasMaterialDTO.h"
 void from_json(const json& j, BasMaterialDTO& t) { // NOLINT
-	BIND_FROM_TO_NORMAL(j, t, id);
+	BIND_FROM_TO_ULL(j, t, id);
 	// 编码
 	BIND_FROM_TO_NORMAL(j, t, code);
 	// 名称
@@ -33,22 +33,22 @@ void from_json(const json& j, BasMaterialDTO& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, model);
 	//主单位 需要查另一个表
 	BIND_FROM_TO_NORMAL(j, t, unitId);
-	//销售价格
-	BIND_FROM_TO_I(j, t, salePrice);
+	//销售价格,double
+	BIND_FROM_TO_D(j, t, salePrice);
 	//税控编码
 	BIND_FROM_TO_NORMAL(j, t, taxCode);
 
 
-	// 启用
+	// 启用,1/0
 	BIND_FROM_TO_I(j, t, isEnabled);
 	// 备注
 	BIND_FROM_TO_NORMAL(j, t, remark);
-	// 创建时间
-	BIND_FROM_TO_NORMAL(j, t, createTime);
-	// 创建人
-	BIND_FROM_TO_NORMAL(j, t, createBy);
-	// 修改时间
-	BIND_FROM_TO_NORMAL(j, t, updateTime);
-	// 修改人
-	BIND_FROM_TO_NORMAL(j, t, updateBy);
+	//// 创建时间
+	//BIND_FROM_TO_NORMAL(j, t, createTime);
+	//// 创建人
+	//BIND_FROM_TO_NORMAL(j, t, createBy);
+	//// 修改时间
+	//BIND_FROM_TO_NORMAL(j, t, updateTime);
+	//// 修改人
+	//BIND_FROM_TO_NORMAL(j, t, updateBy);
 }

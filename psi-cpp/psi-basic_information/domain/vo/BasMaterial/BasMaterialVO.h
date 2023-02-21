@@ -27,12 +27,10 @@
  */
 class BasMaterialVO
 {
-	CC_SYNTHESIZE(string, id, Id);
-	// 分类 需要查另一个表
+	//id
+	CC_SYNTHESIZE(uint64_t, id, Id);
+	// 分类id
 	CC_SYNTHESIZE(string, categoryId, CategoryId);
-	////分类name
-//CC_SYNTHESIZE(string, categoryId, CategoryId);
-
 	// 编码
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称
@@ -44,16 +42,12 @@ class BasMaterialVO
 
 	//规格型号
 	CC_SYNTHESIZE(string, model, Model);
-	//主单位 需要查另一个表
+	//主单位id
 	CC_SYNTHESIZE(string, unitId, UnitId);
-	////主单位name
-	//CC_SYNTHESIZE(string, unit, Unit);
-	
 	//销售价格
 	CC_SYNTHESIZE(int, salePrice, SalePrice);
 	//税控编码
 	CC_SYNTHESIZE(string, taxCode, TaxCode);
-
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 创建时间
@@ -66,7 +60,7 @@ class BasMaterialVO
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(BasMaterialVO, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
+	BIND_TO_JSON(BasMaterialVO, id, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
 	//BIND_TO_JSON(BasMaterialVO, code, name, auxName, categoryId,category, model, unitId, unit
 	//	,salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy)
 };

@@ -67,12 +67,18 @@ PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 	pages.setRows(vr);
 	return pages;
 }
-
+BasMaterialVO BasMaterialService::getData(const BasMaterialQuery& query) {
+	BasMaterialVO result;
+	BasMaterialDO obj;
+	obj.setId(query.getId());
+	BasMaterialDAO dao;
+	return result;
+}
 uint64_t BasMaterialService::saveData(const BasMaterialDTO& dto)
 {
 	//组装数据
 	BasMaterialDO data;
-	data.setId(dto.getId());
+	//data.setId(dto.getId());
 	data.setCategoryId(dto.getCategoryId());
 	data.setCode(dto.getCode());
 	data.setName(dto.getName());
@@ -83,10 +89,16 @@ uint64_t BasMaterialService::saveData(const BasMaterialDTO& dto)
 	data.setSalePrice(dto.getSalePrice());
 	data.setTaxCode(dto.getTaxCode());
 	data.setRemark(dto.getRemark());
-	data.setCreateTime(dto.getCreateTime());
-	data.setCreateBy(dto.getCreateBy());
-	data.setUpdateBy(dto.getUpdateBy());
-	data.setUpdateTime(dto.getUpdateTime());
+
+	//创建人 ，创建时间
+	time_t now = time(0);
+	tm* ltm = localtime(&now);
+	string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
+	string currentTime = time;
+	data.setCreateTime(currentTime);
+	data.setCreateBy("admin");
+	//data.setUpdateBy(dto.getUpdateBy());
+	//data.setUpdateTime(dto.getUpdateTime());
 	//执行数据添加
 	BasMaterialDAO dao;
 	return dao.insert(data);
@@ -107,16 +119,21 @@ bool BasMaterialService::updateData(const BasMaterialDTO& dto)
 	data.setSalePrice(dto.getSalePrice());
 	data.setTaxCode(dto.getTaxCode());
 	data.setRemark(dto.getRemark());
-	data.setCreateTime(dto.getCreateTime());
-	data.setCreateBy(dto.getCreateBy());
-	data.setUpdateBy(dto.getUpdateBy());
-	data.setUpdateTime(dto.getUpdateTime());
+	//data.setCreateTime(dto.getCreateTime());
+	//data.setCreateBy(dto.getCreateBy());
+	//修改时间，修改人
+	time_t now = time(0);
+	tm* ltm = localtime(&now);
+	string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
+	string currentTime = time;
+	data.setUpdateBy("admin");
+	data.setUpdateTime(currentTime);
 	//执行数据修改
 	BasMaterialDAO dao;
 	return dao.update(data) == 1;
 }
 
-bool BasMaterialService::removeData(string id)
+bool BasMaterialService::removeData(uint64_t  id)
 {
 	BasMaterialDAO dao;
 	return dao.deleteById(id) == 1;
