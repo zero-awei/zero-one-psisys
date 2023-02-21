@@ -75,7 +75,4 @@ public class CheckPayableController implements CheckPayableApis {
         return null;
     }
 
-        return null;
-    }
-
 }
