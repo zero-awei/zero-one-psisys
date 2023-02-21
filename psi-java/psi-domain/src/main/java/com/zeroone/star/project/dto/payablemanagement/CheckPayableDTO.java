@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author spk
@@ -132,4 +133,8 @@ public class CheckPayableDTO {
 
     @ApiModelProperty(value = "版本", example = "")
     private Integer version;
+
+    @ApiModelProperty(value = "往来核销明细")
+    private List<CheckPayableEntryDTO> checkPayableEntryList;
+
 }

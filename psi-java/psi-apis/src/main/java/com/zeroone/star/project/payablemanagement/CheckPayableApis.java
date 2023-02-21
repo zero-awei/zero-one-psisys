@@ -11,11 +11,15 @@ import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import org.springframework.web.multipart.MultipartFile;
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
+import com.zeroone.star.project.vo.JsonVO;
 
+import java.util.List;
 /**
- * @author spk, naturezh
+ * @author spk, naturezh, the end
  * @description 应付核销接口
- */
+*/
+
 public interface CheckPayableApis {
 
     /**
@@ -45,7 +49,7 @@ public interface CheckPayableApis {
      * @param condition 查询条件
      */
     JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition);
-    
+
     /**
     * 文件导出
     * return 返回下载路径
@@ -59,5 +63,40 @@ public interface CheckPayableApis {
      * author naturezh
      */
     JsonVO<String> fileImport(MultipartFile file);
+
+    /**
+    * 新增应付核销单
+    */
+    JsonVO<Void> addPayableCheck(CheckPayableDTO dto);
+
+    /**
+     * 修改应付核销单
+     */
+    JsonVO<Void> modifyPayableCheck(CheckPayableDTO dto);
+
+    /**
+     * 关闭应付核销单（批量）
+     */
+    JsonVO<Void> closePayableCheck(List<String> ids);
+
+    /**
+     * 反关闭应付核销单（批量）
+     */
+    JsonVO<Void> unclosePayableCheck(List<String> ids);
+
+    /**
+     * 删除应付核销单（批量）
+     */
+    JsonVO<Void> deletePayableCheck(List<String> ids);
+
+    /**
+     * 审核应付核销单
+     */
+    JsonVO<Void> checkPayableCheck(String id, String approvalResultType, String approvalRemark);
+
+    /**
+     * 作废应付核销单
+     */
+    JsonVO<Void> voidPayableCheck(String id);
 
 }

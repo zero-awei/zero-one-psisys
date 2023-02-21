@@ -2,17 +2,17 @@ server:
   port: ${sp.payable}
 spring:
   application:
-    name: ${sn.payable}
-#  cloud:
-#    sentinel:
-#      transport:
-#        # 控制台地址
-#        dashboard: ${sentinel.dashboard}
-#        port: 8720
-#      eager: true
-#
-## 开启sentinel声明式服务熔断
-#feign:
-#  sentinel:
-#    enabled: true
+    name: ${sn.login}
+  cloud:
+    sentinel:
+      transport:
+        # 控制台地址
+        dashboard: ${sentinel.dashboard}
+        port: 8720
+      eager: true
+
+# 开启sentinel声明式服务熔断
+feign:
+  sentinel:
+    enabled: true
 

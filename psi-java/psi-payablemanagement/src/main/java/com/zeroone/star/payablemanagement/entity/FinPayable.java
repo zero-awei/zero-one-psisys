@@ -16,7 +16,7 @@ import lombok.Setter;
  * 应付单
  * </p>
  *
- * @author chosen1, G.
+ * @author j3
  * @since 2023-02-14
  */
 @Getter
