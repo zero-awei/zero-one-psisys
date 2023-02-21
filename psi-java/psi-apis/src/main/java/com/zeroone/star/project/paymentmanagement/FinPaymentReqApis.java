@@ -1,8 +1,8 @@
 package com.zeroone.star.project.paymentmanagement;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.query.paymentmanagement.FinPaymentReqQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.paymentmanagement.FinPaymentReqVO;
 
 /**
@@ -17,5 +17,5 @@ public interface FinPaymentReqApis {
      * @return 查询结果
      * @author 白也
      */
-    JsonVO<PageVO<FinPaymentReqVO>> queryAll(FinPaymentReqQuery finPayment);
+    JsonVO<Page<FinPaymentReqVO>> queryAll(FinPaymentReqQuery finPayment);
 }
