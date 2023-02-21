@@ -19,9 +19,9 @@
 #include "stdafx.h"
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
+#include "../../domain/vo/JsonVO.h"
 
-
-//可能vo不需要分父类子类...
+//可能vo不需要分父类子类
 
 
 PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(const MaterialClassificationQuery& query)
@@ -42,7 +42,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 		return pages;
 	}
 
-	//分页查询数据 #应该还要弄个不分页的
+	//分页查询数据 #可能还要弄个不分页的，或者弄子类列表
 	pages.setTotal(count);
 	pages.calcPages();
 	list<MaterialClassificationDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
@@ -54,15 +54,22 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 		vo.setCode(sub.getCode());
 		vo.setFullname(sub.getFullname());
 		vo.setIsEnabled(sub.getIsEnabled());
-		vo.setCreateBy(sub.getCreateBy());
 		vo.setCreateTime(sub.getCreateTime());
-		vo.setUpdateBy(sub.getUpdateBy());
+		vo.setCreateBy(sub.getCreateBy());
 		vo.setUpdateTime(sub.getUpdateTime());
+		vo.setUpdateBy(sub.getUpdateBy());
 
 		vr.push_back(vo);
 	}
 	pages.setRows(vr);
 	return pages;
+}
+
+//查询子级列表
+JsonVO<MaterialClassificationChildVO> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload) {
+	
+
+
 }
 
 uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)

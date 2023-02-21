@@ -25,10 +25,6 @@
 #define MATERIALCLASSIFICATION_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
-if (obj.getId().empty()) { \
-	sql << " AND id=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
-} \
 if (!obj.getName().empty()) { \
 	sql << " AND `name`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getName()); \
@@ -49,7 +45,7 @@ uint64_t MaterialClassificationDAO::count(const MaterialClassificationDO& iObj)
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-//分页查找
+//分页查找 #需要名称和编码
 std::list<MaterialClassificationDO> MaterialClassificationDAO::selectWithPage(const MaterialClassificationDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
@@ -61,7 +57,7 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectWithPage(co
 	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sqlStr, mapper, params);
 }
 
-//按姓名查找 #显示找子类应该也可以直接用 
+//按姓名查找 
 std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByName(const string& name)
 {
 	string sql = "SELECT name,code,fullname,is_enabled,create_time,create_by,update_time,update_by FROM bas_material_category WHERE `name` LIKE CONCAT('%',?,'%')";
@@ -77,7 +73,7 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByCode(cons
 	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sql, mapper, "%s", code);
 }
 
-//按父节点查询
+//按父节点查询 #用来找子级
 std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByPid(const string& pid)
 {
 	string sql = "SELECT name,code,fullname,is_enabled,create_time,create_by,update_time,update_by FROM bas_material_category WHERE `pid` LIKE CONCAT('%',?,'%')";

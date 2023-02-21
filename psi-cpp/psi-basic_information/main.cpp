@@ -47,7 +47,7 @@ bool getStartArg(int argc, char* argv[]) {
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "";
-	std::string dbName = "mydb";
+	std::string dbName = "zopsi_sys";
 	std::string dbHost = "localhost";
 	int dbPort = 3306;
 	int dbMax = 25;

@@ -38,7 +38,7 @@ public:
 	// 通过编码查询数据 #后面再加
 	list<MaterialClassificationDO> selectByCode(const string& code);
 
-	// 通过父节点查询数据,可以用法查询子级列表
+	// 通过父节点查询数据,可以用来查询子级列表
 	list<MaterialClassificationDO> selectByPid(const string& code);
 
 	// 插入数据

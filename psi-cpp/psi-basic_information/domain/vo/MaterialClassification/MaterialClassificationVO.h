@@ -67,6 +67,8 @@ public:
 //查询指定分类子级列表对象
 class MaterialClassificationChildVO {
 
+
+
 	// 编码
 	CC_SYNTHESIZE(string, code, Code);
 	//名称

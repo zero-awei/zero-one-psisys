@@ -79,8 +79,7 @@ bool SqlSession::execute(const string& sql)
 	bool result = false;
 	TryFinally(
 		[&] {
-			stmt = conn->createStatement();
-			result = stmt->execute(sql);
+			stmt = conn->createStatement();			result = stmt->execute(sql);
 		},
 		[](const std::exception e) {
 			printf("Execute Exception. %s\n", e.what());

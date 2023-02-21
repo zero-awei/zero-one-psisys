@@ -37,12 +37,21 @@ public:
 	{
 		MaterialClassificationDO data;
 
-		//不明白里面的参数表示什么
-		data.setName(resultSet->getString(1));
-		data.setCode(resultSet->getString(2));
-		data.setFullname(resultSet->getString(3));
+		//不明白里面的参数表示什么,好像是列号？
+		data.setId(resultSet->getString(1));
+		data.setPid(resultSet->getString(2));
+		data.setHasChild(resultSet->getString(3));
+		data.setCode(resultSet->getString(4));
+		data.setName(resultSet->getString(5));
+		data.setFullname(resultSet->getString(6));
+		data.setIsEnabled(resultSet->getInt(7));
+		data.setCreateTime(resultSet->getString(8));
+		data.setCreateBy(resultSet->getString(9));
+		data.setUpdateTime(resultSet->getString(10));
+		data.setUpdateBy(resultSet->getString(11));
+		data.setVersion(resultSet->getInt(12));
 		return data;
 	}
 };
 
-#endif // !_SAMPLE_MAPPER_
+#endif // 
