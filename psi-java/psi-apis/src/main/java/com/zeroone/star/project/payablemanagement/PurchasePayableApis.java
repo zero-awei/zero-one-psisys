@@ -1,6 +1,5 @@
-package com.zeroone.star.project.payable.purchasePayableAPI;
+package com.zeroone.star.project.payablemanagement;
 
-import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.patable.purchase.MultiConditionPayableQuery;
 import com.zeroone.star.project.query.patable.purchase.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
