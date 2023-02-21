@@ -17,7 +17,7 @@ if (!obj.getBill_no().empty()) { \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
 } \
 if (!obj.getBill_date().empty()) { \
-	sql << " AND bill_date=?"; \
+	sql << " AND `bill_date`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_date()); \
 } \
 if (obj.getSubject().empty()) { \
