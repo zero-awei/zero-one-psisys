@@ -4,13 +4,20 @@
 
 
 JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryBillList(const QueryPyrkBillListQuery& query)
-{
-    PageVO<QueryPyrkBillListVO> result;
-    return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+{	
+	PageVO<QueryPyrkBillListVO> result;   // ≤‚ ‘ 
+	list<QueryPyrkBillListVO> rows;
+	rows.push_back(QueryPyrkBillListVO());
+	result.setRows(rows);
+	return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+
+
+    //geVO<QueryPyrkBillListVO> result;    
+    //turn JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const QueryPyrkBillListQuery& query) {
-    QueryPyrkDetailedBillVO result;
+	QueryPyrkDetailedBillVO result;
     return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
 }
 
@@ -47,7 +54,7 @@ JsonVO<uint64_t> PyrkController::execModifyPyrkBillStateToUnclose(const StringID
 }
 
 JsonVO<uint64_t> PyrkController::execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload)
-{
+{ 
 	JsonVO<uint64_t> result;
 	uint64_t data = 0;
 	result.success(data);

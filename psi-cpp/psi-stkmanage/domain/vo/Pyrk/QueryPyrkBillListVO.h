@@ -47,6 +47,16 @@ public:
 	BIND_TO_JSON(QueryPyrkBillListVO, id, data, theme, resourceId, handing, stage, isEffective,
 		isClosed, isVoided, remarks, isAuto, effectiveData, checkPerson, makePerson, makeData,
 		department, modifyData, modifyPerson);
+	
+	//≤‚ ‘
+	/*QueryPyrkBillListVO() {
+		id = "123",
+			data = "2022221",
+			theme = "asd",
+			resourceId = "123",
+			handing = "asd",
+			stage = 1;
+	}*/
 };
 
 

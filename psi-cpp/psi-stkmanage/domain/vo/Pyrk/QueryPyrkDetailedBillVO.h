@@ -84,6 +84,19 @@ public:
 		department, modifyData, modifyPerson, checkInstanceId, hasYF, redBill, sourceBillType,
 		sourceBillId, materialId, model, warehouse, unit, inNum, inMoney, custom1, custom2);
 
+
+	//≤‚ ‘
+	QueryPyrkDetailedBillVO() {
+		id = "Pyrk_12312";
+		data = "20201123";
+		theme = "jintian";
+		resourceId = "123";
+		handing = "123";
+		stage = 1;
+		isEffective = 1;
+		isClosed = 2;
+		isVoided = 1;
+	}
 };
 
 
