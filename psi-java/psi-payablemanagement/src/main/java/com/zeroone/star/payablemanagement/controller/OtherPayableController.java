@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/payablemanagement/otherPayable")
-@Api(tags = "其他应付单CURD操作处理")
+@Api(tags = "应付管理-其他应付")
 public class OtherPayableController implements OtherPayableApis {
     @Resource
     IFinPayableService service;

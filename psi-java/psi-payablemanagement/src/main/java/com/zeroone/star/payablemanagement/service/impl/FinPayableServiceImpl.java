@@ -43,6 +43,8 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
         PayableVO payableVO = new PayableVO();
         // TODO 待完成 编写wrapper mapper
         BeanUtil.copyProperties(finPayable, payableVO);
+        return payableVO;
+    }
 
         
     public PageVO<PayableVO> queryAll(PayableQuery query) {
@@ -51,16 +53,16 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
         // 构建查询条件
         QueryWrapper<FinPayable> finPayableQueryWrapper = new QueryWrapper<>();
         // 1.单据编号查询
-        finPayableQueryWrapper.eq(StringUtils.hasText(query.getBill_no()), "bill_no", query.getBill_no());
+        finPayableQueryWrapper.eq(StringUtils.hasText(query.getBillNo()), "bill_no", query.getBillNo());
         // 2.单据日期查询
-        if(query.getBillDate_begin() != null){
+        if(query.getBillDateBegin() != null){
             // 条件为空时，报空指针异常，换为if判断
             //finPayableQueryWrapper.ge(StringUtils.hasText(query.getBillDate_begin().toString()),"bill_date", query.getBillDate_begin());
             //finPayableQueryWrapper.le(StringUtils.hasText(query.getBillDate_end().toString()),"bill_date", query.getBillDate_end());
-            finPayableQueryWrapper.ge("bill_date", query.getBillDate_begin());
+            finPayableQueryWrapper.ge("bill_date", query.getBillDateBegin());
         }
-        if(query.getBillDate_end() != null){
-            finPayableQueryWrapper.le("bill_date", query.getBillDate_end());
+        if(query.getBillDateEnd() != null){
+            finPayableQueryWrapper.le("bill_date", query.getBillDateEnd());
         }
         // 3.单据主题查询
         finPayableQueryWrapper.eq(StringUtils.hasText(query.getSubject()), "subject", query.getSubject());

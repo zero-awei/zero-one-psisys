@@ -1,13 +1,10 @@
 package com.zeroone.star.payablemanagement.entity;
 
-<<<<<<< HEAD
 import com.baomidou.mybatisplus.annotation.*;
 
-=======
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
->>>>>>> j3-G
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

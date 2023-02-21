@@ -1,6 +1,7 @@
 package com.zeroone.star.payablemanagement.controller;
 
-import com.zeroone.star.payablemanagement.service.FinPayableCheckService;
+
+import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
@@ -32,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class CheckPayableController implements CheckPayableApis {
     @Autowired
-    FinPayableCheckService finPayableCheck;
+    IFinPayableCheckService finPayableCheck;
 
     @Override
     @GetMapping("entry")
