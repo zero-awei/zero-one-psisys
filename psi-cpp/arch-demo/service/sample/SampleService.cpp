@@ -23,6 +23,8 @@ PageVO<SampleVO> SampleService::listAll(const SampleQuery& query)
 	pages.setTotal(count);
 	pages.calcPages();
 	list<SampleDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
+
+
 	list<SampleVO> vr;
 	for (SampleDO sub : result)
 	{
