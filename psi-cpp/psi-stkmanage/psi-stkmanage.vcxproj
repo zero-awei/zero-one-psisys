@@ -289,6 +289,7 @@
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\Cgthck\CgthckMapper.h" />
     <ClInclude Include="service\Cgthck\CgthckService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

@@ -69,6 +69,20 @@ class CgthckBillListDO
 	CC_SYNTHESIZE(std::string, apvRemark, ApvRemark);
 	// 核批结果类型
 	CC_SYNTHESIZE(std::string, apvResType, ApvResType);
+public:
+	CgthckBillListDO()
+	{
+		billNo = "";
+		billDate = "";
+		billStage = "";
+		isEff = true;
+		isClosed = false;
+		isVoided = false;
+		isAuto = false;
+		isRubric = true;
+		hasRp = true;
+		hasSwell = false;
+	}
 };
 
 /**
