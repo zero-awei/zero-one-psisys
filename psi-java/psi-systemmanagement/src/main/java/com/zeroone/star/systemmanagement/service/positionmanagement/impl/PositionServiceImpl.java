@@ -14,6 +14,7 @@ import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionSer
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Description
@@ -62,5 +63,15 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
         Page<Position> result = positionMapper.selectPage(page,wrapper);
         return PageVO.create(result, PositionVO.class);
+    }
+
+    @Override
+    public List<Position> listPosition() {
+        return  baseMapper.selectList(null);
+    }
+
+    @Override
+    public void insertOne(Position position) {
+        baseMapper.insert(position);
     }
 }
