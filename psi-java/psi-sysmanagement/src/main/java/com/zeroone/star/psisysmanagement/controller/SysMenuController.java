@@ -34,9 +34,9 @@ public class SysMenuController {
 
     @Resource
     private ISysMenuService iSysMenuService;
-    @Resource
+    //@Resource
     private SingleMenuQuery singleMenuQuery;
-    @Resource
+    //@Resource
     private MenusQuery menusQuery;
 
     @ResponseBody

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
 @Validated
 public class RoleMenuController implements RoleApis<MenuQuery> {
 
-    @Autowired
+    @Resource
     private IMenuService service;
 
     @GetMapping("/list")
@@ -32,18 +33,17 @@ public class RoleMenuController implements RoleApis<MenuQuery> {
     }
 
 
-
     @PostMapping("/add")
     @ApiOperation(value = "新增菜单")
     @Override
-    public JsonVO<Boolean> addMenuOrPermission( MenuQuery menu) {
+    public JsonVO<Boolean> addMenuOrPermission(MenuQuery menu) {
         return JsonVO.success(service.addMenuOrPermission(menu));
     }
 
     @DeleteMapping("/delete")
     @ApiOperation(value = "删除菜单")
     @Override
-    public JsonVO<Boolean> deleteMenuOrPermission( String Id) {
+    public JsonVO<Boolean> deleteMenuOrPermission(String Id) {
         return JsonVO.success(service.deleteMenuOrPermission(Id));
     }
 
