@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -58,11 +59,10 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 系统收支概况，如果失败返回的数据为null
      */
     @ApiOperation("查询系统收支概况")
-    @GetMapping("/query-Sys")
+    @PostMapping("/query-Sys")
     @Override
     @ResponseBody
-    public JsonVO<List<SystemRevenueAndExpenditureInformationVO>>
-    querySystemInfo() {
+    public JsonVO<List<SystemRevenueAndExpenditureInformationVO>> querySystemInfo() {
         SystemRevenueAndExpenditureInformationVO inventoryVO = stkInventoryService.getInventoryVO();
         SystemRevenueAndExpenditureInformationVO customerDebtVO = receivableBalService.getCustomerDebtVO();
         SystemRevenueAndExpenditureInformationVO myDebtVO = payableBalService.getMyDebtVO();
@@ -77,7 +77,7 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 销售概况视图对象，如果未能查到数据返回的数据为null
      */
     @ApiOperation("查询销售概况")
-    @GetMapping("/query-Sale")
+    @PostMapping("/query-Sale")
     @Override
     @ResponseBody
     public JsonVO<List<SaleInformationVO>> querySaleInfo() {
@@ -105,7 +105,7 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 采购概况视图对象，如果未能查到数据返回的数据为null
      */
     @ApiOperation("查询采购概况")
-    @GetMapping("/query-Purchase")
+    @PostMapping("/query-Purchase")
     @Override
     @ResponseBody
     public JsonVO<List<PurchaseInformationVO>> queryPurchaseInfo() {
@@ -133,7 +133,7 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 客户数量视图对象
      */
     @ApiOperation("查询客户数量概况")
-    @GetMapping("/query-Customer")
+    @PostMapping("/query-Customer")
     @Override
     @ResponseBody
     public JsonVO<List<CustomerInformationVO>> queryCustomerInfo() {
@@ -154,7 +154,7 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 销售金额视图对象
      */
     @ApiOperation("查询销售金额概况")
-    @GetMapping("/query-SalesAmount")
+    @PostMapping("/query-SalesAmount")
     @Override
     @ResponseBody
     public JsonVO<List<SalesAmountInformationVO>> querySalesAmountInfo() {
