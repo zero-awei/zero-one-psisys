@@ -5,7 +5,7 @@
 #include "./DoInclude.h"
 
 /**
- * SysUser数据库实体类
+ * SysRole数据库实体类
  */
 class SysRoleDO {
 	// 角色ID

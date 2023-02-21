@@ -217,6 +217,7 @@
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h" />
+    <ClInclude Include="domain\do\SysRoleDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
