@@ -34,7 +34,9 @@ uint64_t PurQuotDAO::count(const PurQuotFindBillDO & iObj) {
 }
 list<PurQuotFindBillDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotFindBillDO& obj, uint64_t pageIndex, uint64_t pageSize) {
 	stringstream sql;
-	sql << "SELECT * FROM pur_quot";
+	sql << "SELECT bill_no, bill_date, subject,src_no,supplier_name, delivery_time,qty,amt,bill_stage, is_effective, is_closed, is_voided, \
+		payment_method, delivery_place, contact,phone, fax, email, remark, is_auto, is_rubric, effective_time, approver, create_time, \
+		create_by, sys_org_code, update_time, update_by FROM pur_quot";
 	PUR_QUOT_TERAM_PARSE(obj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurQuotMapper mapper;
