@@ -26,13 +26,17 @@ class BankAccountListVO
 	// 币种
 	CC_SYNTHESIZE(string, currency_dictText, Currency_dictText);
 	//启用
-	CC_SYNTHESIZE(string, isEnabled_dictText, IsEnabled_dictText);
+	CC_SYNTHESIZE(int, isEnabled_dictText, IsEnabled_dictText);
 	//账户管理员
 	CC_SYNTHESIZE(string, manager_dictText, Manager_dictText);
 	//账户名
 	CC_SYNTHESIZE(string, name, Name);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
+	//updateBy
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	//updateTime
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 
 	//这些是列表里看不到的
 	//id
@@ -49,16 +53,13 @@ class BankAccountListVO
 	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
 	//manager
 	CC_SYNTHESIZE(string, manager, Manager);
-	//updateBy
-	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	//updateTime
-	CC_SYNTHESIZE(string, updateTime, UpdateTime);
+	
 	//version
 	CC_SYNTHESIZE(string, version, Version);
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(BankAccountListVO, accountNo, bankAddress, bankNo, createBy_dictText, createTime, currency_dictText, isEnabled_dictText, manager_dictText, name, remark);
+	BIND_TO_JSON(BankAccountListVO, updateBy, updateTime, accountNo, bankAddress, bankNo, createBy_dictText, createTime, currency_dictText, isEnabled_dictText, manager_dictText, name, remark);
 	/*
 	BIND_TO_JSON(BankAccountListVO, accountNo, bankAddress, bankNo, createBy_dictText, createTime, currency_dictText, isEnabled_dictText, manager_dictText, name, remark, id, attachment, createBy, currency, initBalisEnabled, manager, updateBy, updateTime, version);
 	*/
