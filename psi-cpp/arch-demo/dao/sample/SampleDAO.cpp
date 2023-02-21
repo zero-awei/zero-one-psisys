@@ -47,8 +47,7 @@ uint64_t SampleDAO::count(const SampleDO& iObj)
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize)
-{
+std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize){
 	stringstream sql;
 	sql << "SELECT * FROM sample";
 	SAMPLE_TERAM_PARSE(obj, sql);
