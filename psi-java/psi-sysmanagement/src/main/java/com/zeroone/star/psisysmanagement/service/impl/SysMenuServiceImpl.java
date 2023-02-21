@@ -62,6 +62,18 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         SysMenu sysMenu = BeanUtil.copyProperties(menuDTO, SysMenu.class);
         sysMenu.setCreateTime(LocalDateTime.now());
 
+        setSortNo(menuDTO, sysMenu);
+
+        return save(sysMenu) ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
+
+    }
+
+    /**
+     * 根据menuDTO中的parentId，给sysMenu的sort_no赋值
+     * @param menuDTO
+     * @param sysMenu
+     */
+    private void setSortNo(MenuDTO menuDTO, SysMenu sysMenu) {
         //获取父节点id
         String parentId = menuDTO.getParentId();
         if (parentId.equals("0")) {
@@ -124,9 +136,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
                 }
             }
         }
-
-        return save(sysMenu) ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
-
     }
 
     @Transactional
