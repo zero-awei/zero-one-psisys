@@ -47,8 +47,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "源单类型", example = "")
     private String srcBillType;
 
-    @ApiModelProperty(value = "源单类型",example = "")
-    private String srcBillTypeDictText;
 
     /**
      * 源单id
@@ -74,17 +72,12 @@ public class PaymentDTO {
     @ApiModelProperty(value = "是否红字", example = "0")
     private Integer isRubric;
 
-    @ApiModelProperty(value = "是否红字", example = "否")
-    private String isRubricDictText;
-
     /**
      * 付款类型
      */
     @ApiModelProperty(value = "付款类型", example = "2011")
     private String paymentType;
 
-    @ApiModelProperty(value = "付款类型", example = "采购预付(有申请)")
-    private String payableTypeDictText;
 
     /**
      * 供应商
@@ -92,8 +85,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "供应商", example = "1623573890197659650")
     private String supplierId;
 
-    @ApiModelProperty(value = "供应商", example = "光缆厂家1")
-    private String supplierIdDicText;
 
     /**
      * 金额
@@ -131,8 +122,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "是否自动单据", example = "0")
     private Integer isAuto;
 
-    @ApiModelProperty(value = "是否自动单据", example = "否")
-    private String isAutoDictText;
 
     /**
      * 处理状态
@@ -140,8 +129,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "处理状态", example = "32")
     private String billStage;
 
-    @ApiModelProperty(value = "处理状态", example = "执行中")
-    private String billStageDictText;
 
     /**
      * 审核人
@@ -149,8 +136,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "审核人", example = "psi")
     private String approver;
 
-    @ApiModelProperty(value = "审核人", example = "管理员")
-    private String approverDictText;
 
     /**
      * 流程id
@@ -164,8 +149,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "核批结果类型", example = "1")
     private String approvalResultType;
 
-    @ApiModelProperty(value = "核批结果类型", example = "通过")
-    private String approvalResultTypeDictText;
 
 
     /**
@@ -180,8 +163,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "是否通过", example = "1")
     private Integer isEffective;
 
-    @ApiModelProperty(value = "是否通过", example = "是")
-    private String isEffectiveDictText;
 
     /**
      * 生效时间
@@ -195,8 +176,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "已关闭", example = "0")
     private Integer isClosed;
 
-    @ApiModelProperty(value = "已关闭", example = "否")
-    private String isClosedDictText;
 
     /**
      * 是否作废
@@ -204,8 +183,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "是否作废", example = "0")
     private Integer isVoided;
 
-    @ApiModelProperty(value = "是否作废", example = "否")
-    private String isVoidedDictText;
 
     /**
      * 创建部门
@@ -213,8 +190,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "创建部门", example = "A01A05")
     private String sysOrgCode;
 
-    @ApiModelProperty(value = "创建部门", example = "研发部")
-    private String sysOrgCodeDictText;
 
     /**
      * 创建人
@@ -222,8 +197,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "创建人", example = "psi")
     private String createBy;
 
-    @ApiModelProperty(value = "创建人", example = "管理员")
-    private String createByDictText;
 
     /**
      * 创建时间
@@ -238,8 +211,6 @@ public class PaymentDTO {
     @ApiModelProperty(value = "修改人", example = "psi")
     private String updateBy;
 
-    @ApiModelProperty(value = "修改人", example = "管理员")
-    private String updateByDictText;
 
     /**
      * 修改时间
