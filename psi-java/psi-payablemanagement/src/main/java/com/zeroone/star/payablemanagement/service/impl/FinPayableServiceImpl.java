@@ -12,6 +12,7 @@ import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 /**
