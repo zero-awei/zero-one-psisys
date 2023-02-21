@@ -60,7 +60,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.payable.AccountPayableApplication</mainClass>
+                    <mainClass>com.zeroone.star.payablemanagement.AccountPayableApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
