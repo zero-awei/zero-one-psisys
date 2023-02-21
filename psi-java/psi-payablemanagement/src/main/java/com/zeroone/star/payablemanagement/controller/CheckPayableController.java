@@ -20,12 +20,13 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- * @author spk
+ * @author spk, naturezh
  * @since 2023-02-13 19:48
- * @description
+ * @description 应付核销模块
  */
 @RestController
 @RequestMapping("payablemanagement/checkmanagement")
@@ -59,6 +60,21 @@ public class CheckPayableController implements CheckPayableApis {
     @GetMapping("queryPaymentBySupplier")
     @ApiOperation("根据供应商ID查询付款单")
     public JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
+        return null;
+    }
+
+    @PostMapping("/export")
+    @ApiOperation(value = "应付核销导出功能")
+    public JsonVO<String> fileExport() {
+        return null;
+    }
+
+    @PostMapping("/import")
+    @ApiOperation(value = "应付核销导入功能")
+    public JsonVO<String> fileImport(MultipartFile file) {
+        return null;
+    }
+
         return null;
     }
 

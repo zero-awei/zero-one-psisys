@@ -8,10 +8,10 @@ import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 
 /**
  * <p>
- * 应付单 服务类
+ * 应付单 服务类 采购应付模块接口定义
  * </p>
- *
- * @author chosen1
+ * 
+ * @author chosen1, naturezh
  * @since 2023-02-13
  */
 public interface PurchasePayableApis {
@@ -27,4 +27,12 @@ public interface PurchasePayableApis {
      * @return 查询结果
      */
     JsonVO<PayableVO> getById(PayableBillNoQuery query);
+
+    /**
+     * 文件导出
+     * return 返回下载路径
+     * author naturezh
+     */
+    JsonVO<String> fileExport();
+
 }
