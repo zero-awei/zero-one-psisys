@@ -48,6 +48,16 @@ public class PayableQuery extends PageQuery {
     @ApiModelProperty(value = "单据终止日期", example = "2023-02-16")
     private Date billDateEnd;
 
+    // @JsonFormat
+    // @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    // @ApiModelProperty(value = "单据开始日期", example = "2022-01-13 00:00:00")
+    // private Date billDate_begin;
+
+    // @JsonFormat
+    // @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    // @ApiModelProperty(value = "单据结束日期", example = "2022-01-13 00:00:00")
+    // private Date billDate_end;
+
 
     // ---展开后---
 

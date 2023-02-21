@@ -1,51 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zeroone.star.accountpayable.mapper.FinPayableCheckMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.payablemanagement.mapper.FinPayableCheckMapper">
 
-    <resultMap id="BaseResultMap" type="entity.FinPayableCheck">
-            <id property="id" column="id" jdbcType="VARCHAR"/>
-            <result property="billNo" column="bill_no" jdbcType="VARCHAR"/>
-            <result property="billDate" column="bill_date" jdbcType="DATE"/>
-            <result property="srcBillType" column="src_bill_type" jdbcType="VARCHAR"/>
-            <result property="srcBillId" column="src_bill_id" jdbcType="VARCHAR"/>
-            <result property="srcNo" column="src_no" jdbcType="VARCHAR"/>
-            <result property="subject" column="subject" jdbcType="VARCHAR"/>
-            <result property="isRubric" column="is_rubric" jdbcType="INTEGER"/>
-            <result property="payableCheckType" column="payable_check_type" jdbcType="VARCHAR"/>
-            <result property="supplierId" column="supplier_id" jdbcType="VARCHAR"/>
-            <result property="amt" column="amt" jdbcType="DECIMAL"/>
-            <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
-            <result property="remark" column="remark" jdbcType="VARCHAR"/>
-            <result property="isAuto" column="is_auto" jdbcType="INTEGER"/>
-            <result property="billStage" column="bill_stage" jdbcType="VARCHAR"/>
-            <result property="approver" column="approver" jdbcType="VARCHAR"/>
-            <result property="bpmiInstanceId" column="bpmi_instance_id" jdbcType="VARCHAR"/>
-            <result property="approvalResultType" column="approval_result_type" jdbcType="VARCHAR"/>
-            <result property="approvalRemark" column="approval_remark" jdbcType="VARCHAR"/>
-            <result property="isEffective" column="is_effective" jdbcType="TINYINT"/>
-            <result property="effectiveTime" column="effective_time" jdbcType="TIMESTAMP"/>
-            <result property="isClosed" column="is_closed" jdbcType="INTEGER"/>
-            <result property="isVoided" column="is_voided" jdbcType="TINYINT"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
-            <result property="sysOrgCode" column="sys_org_code" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
-            <result property="version" column="version" jdbcType="INTEGER"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        id,bill_no,bill_date,
-        src_bill_type,src_bill_id,src_no,
-        subject,is_rubric,payable_check_type,
-        supplier_id,amt,attachment,
-        remark,is_auto,bill_stage,
-        approver,bpmi_instance_id,approval_result_type,
-        approval_remark,is_effective,effective_time,
-        is_closed,is_voided,create_time,
-        create_by,sys_org_code,update_time,
-        update_by,version
-    </sql>
 </mapper>
