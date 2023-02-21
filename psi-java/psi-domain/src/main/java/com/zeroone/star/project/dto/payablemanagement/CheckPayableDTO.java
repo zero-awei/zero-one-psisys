@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Data
 @ApiModel("应付核销单")
-public class CheckPayableDto {
+public class CheckPayableDTO {
 
     /**
      * 单据编号
@@ -149,7 +149,7 @@ public class CheckPayableDto {
     private Boolean isVoided;
 
     @ApiModelProperty(value = "往来核销明细")
-    private List<CheckPayableEntryDto> checkPayableEntryList;
+    private List<CheckPayableEntryDTO> checkPayableEntryList;
 
 
 }

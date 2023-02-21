@@ -1,7 +1,7 @@
 package com.zeroone.star.payablemanagement.controller;
 
 
-import com.zeroone.star.project.dto.payablemanagement.CheckPayableDto;
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
@@ -27,14 +27,14 @@ public class CheckPayableController implements CheckPayableApis {
     @ApiOperation("新增应付核销单")
     @PostMapping("/save")
     @Override
-    public JsonVO<Void> addPayableCheck(@RequestBody CheckPayableDto dto) {
+    public JsonVO<Void> addPayableCheck(@RequestBody CheckPayableDTO dto) {
         return null;
     }
 
-    @ApiOperation("编辑应付核销单")
-    @PutMapping("/edit")
+    @ApiOperation("修改应付核销单")
+    @PutMapping("/modify")
     @Override
-    public JsonVO<Void> modifyPayableCheck(@RequestBody CheckPayableDto dto) {
+    public JsonVO<Void> modifyPayableCheck(@RequestBody CheckPayableDTO dto) {
         return null;
     }
 

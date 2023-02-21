@@ -1,6 +1,6 @@
 package com.zeroone.star.project.payablemanagement;
 
-import com.zeroone.star.project.dto.payablemanagement.CheckPayableDto;
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
 import java.util.List;
@@ -14,12 +14,12 @@ public interface CheckPayableApis {
     /**
      * 新增应付核销单
      */
-    JsonVO<Void> addPayableCheck(CheckPayableDto dto);
+    JsonVO<Void> addPayableCheck(CheckPayableDTO dto);
 
     /**
-     * 新增应付核销单
+     * 修改应付核销单
      */
-    JsonVO<Void> modifyPayableCheck(CheckPayableDto dto);
+    JsonVO<Void> modifyPayableCheck(CheckPayableDTO dto);
 
     /**
      * 关闭应付核销单（批量）

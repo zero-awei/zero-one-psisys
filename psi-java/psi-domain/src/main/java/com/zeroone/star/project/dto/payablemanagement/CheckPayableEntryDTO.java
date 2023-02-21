@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  */
 @Data
 @ApiModel("往来核销明细")
-public class CheckPayableEntryDto {
+public class CheckPayableEntryDTO {
 
     /**
      * 分录号
