@@ -7,8 +7,6 @@ import com.zeroone.star.prepayment.mapper.FinPaymentReqMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentReqService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @ClassName FinPaymentReqServiceImpl
  * @Description IFinPaymentReqService服务类的实现
@@ -19,10 +17,12 @@ import java.util.List;
 @Service
 public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, FinPaymentReq> implements IFinPaymentReqService {
     @Override
-    public List<FinPaymentReq> listBySrcBillId(String srcBillID) {
+    public FinPaymentReq getBySrcBillId(String srcBillId) {
         QueryWrapper<FinPaymentReq> FinReqQueryWrapper = new QueryWrapper<>();
-        FinReqQueryWrapper.eq("src_bill_id",srcBillID);
-        List<FinPaymentReq> finPaymentReqList = baseMapper.selectList(FinReqQueryWrapper);
-        return finPaymentReqList;
+        FinReqQueryWrapper.eq("id",srcBillId);
+        FinPaymentReq finPaymentReq = baseMapper.selectOne(FinReqQueryWrapper);
+        if(finPaymentReq!=null)
+            return finPaymentReq;
+        return null;
     }
 }

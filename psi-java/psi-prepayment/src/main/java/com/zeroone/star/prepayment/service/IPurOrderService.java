@@ -2,7 +2,6 @@ package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.PurOrder;
 
-import java.util.List;
 
 /**
  * PurOrder 服务类
@@ -12,9 +11,10 @@ import java.util.List;
 public interface IPurOrderService {
 
     /**
-     * 根据源单ID查询对应单据列表
-     * @param srcBillID 源单ID
+     * 根据明细的源单id查询对应采购单
+     * @param srcBillId 源单ID
      * @return 查询结果
      */
-    List<PurOrder> listBySrcBillId(String srcBillID);
+    PurOrder getBySrcBillId(String srcBillId);
+
 }

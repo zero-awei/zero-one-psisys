@@ -1,7 +1,6 @@
 package com.zeroone.star.prepayment.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
@@ -15,13 +14,11 @@ import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.*;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,29 +59,36 @@ public class PrepaymentService extends ServiceImpl<FinPaymentMapper,FinPayment> 
     public DetHavVO queryByBillHav(PreDetQuery condition) {
         //根据查询条件里的单据编号去fin_payment查询对应付款单据
         FinPayment finPayment = finPaymentService.getByBillNo(condition.getBillNo());
-        //根据对应付款单据查询所属付款申请单
-        List<FinPaymentReq> finPaymentReqs = finPaymentReqService.listBySrcBillId(finPayment.getId());
-        //创建返回参数中的对应申请单列表和明细列表
-        List<FinPaymentReqVO> finPaymentReqVOList = new ArrayList<>();
-        List<FinPaymentEntryVO> finPaymentEntryVOList = new ArrayList<>();
-        //遍历每一个所属申请单去查询申请单对应明细
-        for (FinPaymentReq finPaymentReq : finPaymentReqs) {
-            List<FinPaymentEntry> finPaymentEntryList = finPaymentEntryService.listBySrcBillId(finPaymentReq.getId());
-            //创建VO对象并将对应属性值拷贝
-            FinPaymentReqVO finPaymentReqVO = new FinPaymentReqVO();
+        //根据fin_payment_entry表mid对应fin_payment中id查询对应明细,且对应fin_payment_req表
+        FinPaymentEntry finPaymentEntry = finPaymentEntryService.getByMid(finPayment.getId(),"FinPaymentReq");
+        //判空
+        if(finPaymentEntry==null){
+            DetHavVO detHavVO = new DetHavVO();
+            BeanUtil.copyProperties(finPayment,detHavVO);
+            return detHavVO;
+        }
+        //明细单中的src_bill_id对应申请单中的id查询对应申请单
+        FinPaymentReq finPaymentReq = finPaymentReqService.getBySrcBillId(finPaymentEntry.getSrcBillId());
+        FinPaymentReqVO finPaymentReqVO;
+        FinPaymentEntryVO finPaymentEntryVO;
+        //判空
+        if(finPaymentReq==null){
+            //将明细单传入VO
+            finPaymentEntryVO = new FinPaymentEntryVO();
+            BeanUtil.copyProperties(finPaymentEntry,finPaymentEntryVO);
+            finPaymentReqVO=null;
+        }else{
+            //将对应参数拷贝到VO中
+            finPaymentReqVO = new FinPaymentReqVO();
             BeanUtil.copyProperties(finPaymentReq,finPaymentReqVO);
-            finPaymentReqVOList.add(finPaymentReqVO);
-            for (FinPaymentEntry finPaymentEntry : finPaymentEntryList) {
-                FinPaymentEntryVO finPaymentEntryVO = new FinPaymentEntryVO();
-                BeanUtil.copyProperties(finPaymentEntry,finPaymentEntryVO);
-                finPaymentEntryVO.setSrcBillNo(finPaymentReq.getBillNo());
-                finPaymentEntryVOList.add(finPaymentEntryVO);
-            }
+            finPaymentEntryVO = new FinPaymentEntryVO();
+            BeanUtil.copyProperties(finPaymentEntry,finPaymentEntryVO);
+            finPaymentEntryVO.setSrcBillNo(finPaymentReq.getBillNo());
         }
         DetHavVO detHavVO = new DetHavVO();
         BeanUtil.copyProperties(finPayment,detHavVO);
-        detHavVO.setListReq(finPaymentReqVOList);
-        detHavVO.setListDetail(finPaymentEntryVOList);
+        detHavVO.setReq(finPaymentReqVO);
+        detHavVO.setDetail(finPaymentEntryVO);
         return detHavVO;
     }
 
@@ -94,29 +98,36 @@ public class PrepaymentService extends ServiceImpl<FinPaymentMapper,FinPayment> 
     public DetNoVO queryByBillNo(PreDetQuery condition) {
         //根据查询条件里的单据编号去fin_payment查询对应付款单据
         FinPayment finPayment = finPaymentService.getByBillNo(condition.getBillNo());
-        //根据对应付款单据查询所属采购订单
-        List<PurOrder> purOrders = purOrderService.listBySrcBillId(finPayment.getId());
-        //创建返回参数中的对应采购订单列表和明细列表
-        List<PurOrderVO> purOrderVOList = new ArrayList<>();
-        List<FinPaymentEntryVO> finPaymentEntryVOList = new ArrayList<>();
-        //遍历每一个所属采购订单去查询订单对应明细
-        for (PurOrder purOrder : purOrders) {
-            List<FinPaymentEntry> finPaymentEntryList = finPaymentEntryService.listBySrcBillId(purOrder.getId());
-            //创建VO对象并将对应属性值拷贝
-            PurOrderVO purOrderVO = new PurOrderVO();
+        //根据fin_payment_entry表mid对应fin_payment中id查询对应明细，且对应Pur_Order
+        FinPaymentEntry finPaymentEntry = finPaymentEntryService.getByMid(finPayment.getId(),"PurOrder");
+        //判空
+        if(finPaymentEntry==null){
+            DetNoVO detNoVO = new DetNoVO();
+            BeanUtil.copyProperties(finPayment,detNoVO);
+            return detNoVO;
+        }
+        //明细单中的src_bill_id对应申请单中的id查询对应采购单
+        PurOrder purOrder = purOrderService.getBySrcBillId(finPaymentEntry.getSrcBillId());
+        PurOrderVO purOrderVO;
+        FinPaymentEntryVO finPaymentEntryVO;
+        //判空
+        if(purOrder==null){
+            //将明细单传入VO
+            finPaymentEntryVO = new FinPaymentEntryVO();
+            BeanUtil.copyProperties(finPaymentEntry,finPaymentEntryVO);
+            purOrderVO=null;
+        }else {
+            //将对应参数拷贝到VO中
+            purOrderVO = new PurOrderVO();
             BeanUtil.copyProperties(purOrder,purOrderVO);
-            purOrderVOList.add(purOrderVO);
-            for (FinPaymentEntry finPaymentEntry : finPaymentEntryList) {
-                FinPaymentEntryVO finPaymentEntryVO = new FinPaymentEntryVO();
-                BeanUtil.copyProperties(finPaymentEntry,finPaymentEntryVO);
-                finPaymentEntryVO.setSrcBillNo(purOrder.getBillNo());
-                finPaymentEntryVOList.add(finPaymentEntryVO);
-            }
+            finPaymentEntryVO = new FinPaymentEntryVO();
+            BeanUtil.copyProperties(finPaymentEntry,finPaymentEntryVO);
+            finPaymentEntryVO.setSrcBillNo(purOrder.getBillNo());
         }
         DetNoVO detNoVO = new DetNoVO();
         BeanUtil.copyProperties(finPayment,detNoVO);
-        detNoVO.setListPurOrder(purOrderVOList);
-        detNoVO.setListDetail(finPaymentEntryVOList);
+        detNoVO.setDetail(finPaymentEntryVO);
+        detNoVO.setPurOrder(purOrderVO);
         return detNoVO;
     }
 

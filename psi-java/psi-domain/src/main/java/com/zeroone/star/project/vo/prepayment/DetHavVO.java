@@ -7,7 +7,6 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @ClassName DetHavVO
@@ -153,8 +152,8 @@ public class DetHavVO {
     private String updateBy;
 
     @ApiModelProperty(value = "明细",example = "")
-    private List<FinPaymentEntryVO> listDetail;
+    private  FinPaymentEntryVO detail;
 
     @ApiModelProperty(value = "采购预付申请单",example = "")
-    private  List<FinPaymentReqVO> listReq;
+    private  FinPaymentReqVO req;
 }

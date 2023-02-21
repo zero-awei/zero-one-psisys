@@ -2,7 +2,6 @@ package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.FinPaymentReq;
 
-import java.util.List;
 
 /**
  * FinPaymentReq 服务类
@@ -10,10 +9,11 @@ import java.util.List;
  * since 2023-02-18
  */
 public interface IFinPaymentReqService {
+
     /**
-     * 根据源单ID查询对应单据列表
-     * @param srcBillID 源单ID
+     * 根据明细的源单id查询对应申请单
+     * @param srcBillId 源单id
      * @return 查询结果
      */
-    List<FinPaymentReq> listBySrcBillId(String srcBillID);
+    FinPaymentReq getBySrcBillId(String srcBillId);
 }

@@ -7,8 +7,6 @@ import com.zeroone.star.prepayment.mapper.PurOrderMapper;
 import com.zeroone.star.prepayment.service.IPurOrderService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @ClassName PurOrderServiceImpl
  * @Description IPurOrderService服务类的实现
@@ -19,10 +17,12 @@ import java.util.List;
 @Service
 public class PurOrderServiceImpl extends ServiceImpl<PurOrderMapper, PurOrder> implements IPurOrderService {
     @Override
-    public List<PurOrder> listBySrcBillId(String srcBillID) {
+    public PurOrder getBySrcBillId(String srcBillId) {
         QueryWrapper<PurOrder> PurOrderQueryWrapper = new QueryWrapper<>();
-        PurOrderQueryWrapper.eq("src_bill_id",srcBillID);
-        List<PurOrder> purOrderList = baseMapper.selectList(PurOrderQueryWrapper);
-        return purOrderList;
+        PurOrderQueryWrapper.eq("id",srcBillId);
+        PurOrder purOrder = baseMapper.selectOne(PurOrderQueryWrapper);
+        if(purOrder!=null)
+            return purOrder;
+        return null;
     }
 }
