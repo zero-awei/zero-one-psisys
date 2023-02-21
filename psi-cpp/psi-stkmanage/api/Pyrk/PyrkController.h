@@ -39,7 +39,7 @@ private:
 	// 查询单据详细信息
 	JsonVO<QueryPyrkDetailedBillVO> exeQueryBillDetailed(const QueryPyrkBillListQuery& query);
 	// 新增单据详细信息
-	JsonVO<uint64_t> execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload);
+	JsonVO<int> execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload);
 	// 审核单据
 	JsonVO<uint64_t> execModifyBillApproval(const ApprovalDTO& approval, const PayloadDTO& payload);
 	// 修改单据详细信息

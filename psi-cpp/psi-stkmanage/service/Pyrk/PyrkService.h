@@ -18,9 +18,9 @@ public:
 	// 分页查询单据列表
 	PageVO<QueryPyrkBillListVO> queryAllFitBill(const QueryPyrkBillListQuery& query);
 	// 保存数据
-	uint64_t saveData(const PyrkBillDetailDTO& dto);
+	int saveData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload);
 	// 修改单据审核信息
-	uint64_t updateApproval(const ApprovalDTO& dto);
+	int updateApproval(const ApprovalDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // !_PYRK_SERVICE_

@@ -15,15 +15,19 @@ JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const Query
     return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
 }
 
-JsonVO<uint64_t> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload) 
+JsonVO<int> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload) 
 {
-	JsonVO<uint64_t> result;
+	JsonVO<int> result;
 	// 定义一个Service
 	PyrkService service;
 	// 执行新增数据
-	uint64_t id = service.saveData(addMessage);
+	int id = service.saveData(addMessage, payload);
 	if (id > 0) {
 		result.success(id);
+	}
+	else if (id <= 0) {
+		result.setData(id);
+		result.setStatus(RS_PARAMS_INVALID);
 	}
 	else {
 		result.fail(id);
@@ -37,7 +41,7 @@ JsonVO<uint64_t> PyrkController::execModifyBillApproval(const ApprovalDTO& appro
 	// 定义一个Service
 	PyrkService service;
 	// 执行修改数据(审核)
-	uint64_t id = service.updateApproval(approval);
+	uint64_t id = service.updateApproval(approval, payload);
 	if (id > 0) {
 		result.success(id);
 	}

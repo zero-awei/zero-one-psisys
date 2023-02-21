@@ -90,6 +90,9 @@
     <ClCompile Include="service\Pyrk\PyrkService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -336,6 +339,33 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\SysDictItemDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\PurOrderDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\PurOrderEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\StkIoDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\SysUserRoleDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\SysUserDepartDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\StringMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
