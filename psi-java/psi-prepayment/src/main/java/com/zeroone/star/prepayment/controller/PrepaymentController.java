@@ -1,15 +1,14 @@
 package com.zeroone.star.prepayment.controller;
 
-import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
-import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
-import com.zeroone.star.project.components.jwt.PayloadDTO;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
-import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.prepayment.DetHavVO;
 import com.zeroone.star.project.vo.prepayment.DetNoVO;
 import io.swagger.annotations.Api;
@@ -38,6 +37,8 @@ public class PrepaymentController implements PrepaymentApis {
 
     @Resource
     IPrepaymentService prepaymentService;
+    @Resource
+    UserHolder userHolder;
 
     /**
      * 修改采购预付单功能
@@ -48,7 +49,17 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "修改采购预付单功能（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
-        return prepaymentService.modifyById(modifyDTO);
+        //获取用户信息
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.modifyById(modifyDTO,currentUser);
     }
 
     /**
@@ -59,8 +70,17 @@ public class PrepaymentController implements PrepaymentApis {
     @PutMapping("audit")
     @ApiOperation(value = "审核采购预付单功能（返回值data值表示更新成功与否）")
     @Override
-    public JsonVO<String> auditById(AuditDTO auditDTO,PayloadDTO payloadDTO) {
-        return prepaymentService.auditById(auditDTO);
+    public JsonVO<String> auditById(AuditDTO auditDTO) {
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.auditById(auditDTO,currentUser);
     }
 
     /**

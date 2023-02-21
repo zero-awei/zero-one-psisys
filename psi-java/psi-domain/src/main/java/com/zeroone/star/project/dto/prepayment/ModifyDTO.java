@@ -26,15 +26,15 @@ public class ModifyDTO {
     @ApiModelProperty(value = "id",example = "1626949545251745795")
     private String id;
 
-    @ApiModelProperty(value = "金额",example = "1000.00")
-    private BigDecimal amt;
+//    @ApiModelProperty(value = "金额",example = "1000.00")
+//    private BigDecimal amt;
 
     @ApiModelProperty(value = "单据日期",example = "2022-01-14")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
-    @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
-    private String billNo;
+//    @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
+//    private String billNo;
 
     @ApiModelProperty(value = "备注",example = "测试用")
     private String remark;

@@ -48,7 +48,7 @@ public interface PrepaymentApis {
      * return 查询结果
      * author forever爱
      */
-    JsonVO<String> auditById(AuditDTO auditDTO, PayloadDTO payloadDTO);
+    JsonVO<String> auditById(AuditDTO auditDTO);
 
 
     /**

@@ -1,5 +1,6 @@
 package com.zeroone.star.prepayment.service;
 
+import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.IdQuery;
@@ -24,7 +25,7 @@ public interface IPrepaymentService {
      * return 查询结果
      * author forever爱
      */
-    JsonVO<String> modifyById(ModifyDTO modifyDTO);
+    JsonVO<String> modifyById(ModifyDTO modifyDTO, UserDTO userDTO);
 
     /**
      * 审核采购预付单功能
@@ -32,7 +33,7 @@ public interface IPrepaymentService {
      * return 查询结果
      * author forever爱
      */
-    JsonVO<String> auditById(AuditDTO auditDTO);
+    JsonVO<String> auditById(AuditDTO auditDTO, UserDTO userDTO);
 
     /**
      * 单据列表查询

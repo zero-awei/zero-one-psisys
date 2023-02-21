@@ -5,11 +5,13 @@ import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.AuditDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.stereotype.Service;
 
+import javax.jws.soap.SOAPBinding;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -29,9 +31,13 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
      * author forever爱
      */
     @Override
-    public boolean updateById(ModifyDTO modifyDTO) {
+    public boolean updateById(ModifyDTO modifyDTO, UserDTO userDTO) {
         FinPayment finPayment = new FinPayment();
         BeanUtil.copyProperties(modifyDTO, finPayment);
+        //时间
+        finPayment.setUpdateTime(LocalDateTime.now());
+        //用户信息
+        finPayment.setUpdateBy(userDTO.getUsername());
         return updateById(finPayment);
     }
 
@@ -42,14 +48,16 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
      * author forever爱
      */
     @Override
-    public JsonVO<String> auditById(AuditDTO auditDTO) {
-
+    public JsonVO<String> auditById(AuditDTO auditDTO, UserDTO userDTO) {
         FinPayment finPayment = new FinPayment();
         BeanUtil.copyProperties(auditDTO, finPayment);
-        //时间
+        //审核生效时间、修改时间
         finPayment.setUpdateTime(LocalDateTime.now());
+        finPayment.setEffectiveTime(LocalDateTime.now());
+        //审核人、修改人信息
+        finPayment.setApprover(userDTO.getUsername());
+        finPayment.setUpdateBy(userDTO.getUsername());
         boolean flag = updateById(finPayment);
-        //TODO 如何更新 修改人 如何获得？？
         if (flag){
             return JsonVO.success("修改成功");
         }

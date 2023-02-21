@@ -9,6 +9,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -32,7 +34,7 @@ public class UserHolder {
      */
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     public UserDTO getCurrentUser() throws Exception {
-        //从Header中获取用户信息
+//        从Header中获取用户信息
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (servletRequestAttributes == null) {
             return null;
@@ -52,5 +54,9 @@ public class UserHolder {
                 .isEnabled(Convert.toByte(1))
                 .roles(Convert.toList(String.class, userJsonObject.get("authorities")))
                 .build();
+//        //测试用用户信息
+//        List list = new ArrayList();
+//        list.add("111");
+//        return new UserDTO(111,"admin", (byte) 1,list);
     }
 }

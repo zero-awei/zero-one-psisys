@@ -19,7 +19,7 @@ import lombok.Data;
 @ApiModel("审核功能")
 public class AuditDTO {
 
-    @ApiModelProperty(value = "id",example = "id")
+    @ApiModelProperty(value = "id",example = "1626949545251745795")
     private String id;
 
     @ApiModelProperty(value = "核批结果类型",example = "1（通过）")
@@ -27,6 +27,4 @@ public class AuditDTO {
 
     @ApiModelProperty(value = "核批意见",example = "xxx")
     private String approvalRemark;
-
-    //TODO 是否增加核批人、修改时间、修改人等参数？？？？
 }

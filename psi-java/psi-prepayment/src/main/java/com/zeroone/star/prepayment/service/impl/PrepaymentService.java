@@ -10,6 +10,7 @@ import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
 import com.zeroone.star.prepayment.service.IFinPaymentReqService;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
+import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.IdQuery;
@@ -56,9 +57,9 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
      */
     @Override
     @Transactional
-    public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
+    public JsonVO<String> modifyById(ModifyDTO modifyDTO, UserDTO userDTO) {
         //1、finPayment表中数据修改
-        finPaymentService.updateById(modifyDTO);
+        finPaymentService.updateById(modifyDTO,userDTO);
         //2、finPaymentEntry表中数据修改
         boolean flag = finPaymentEntryService.updateById(modifyDTO);
         //3、判断成功还是失败
@@ -74,8 +75,8 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
      * since 2023-02-13
      */
     @Override
-    public JsonVO<String> auditById(AuditDTO auditDTO) {
-        return null;
+    public JsonVO<String> auditById(AuditDTO auditDTO, UserDTO userDTO) {
+        return finPaymentService.auditById(auditDTO,userDTO);
     }
 
     @Override
