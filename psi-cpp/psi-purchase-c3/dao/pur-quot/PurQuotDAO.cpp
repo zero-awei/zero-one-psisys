@@ -27,15 +27,7 @@ list<PurQuotFindBillDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotFindBil
 		sql << " AND `bill_no`=?"; 
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); 
 	}
-	////日期这块存疑, 暂时先不写
-	//if (!obj.getBill_date().empty()) { 
-	//	sql << " AND Date(bill_date_begin) <=?"; 
-	//	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_date()); 
-	//} 
-	//if (obj.getBill_date().empty()) { 
-	//	sql << " AND Date(bill_date_end) >="; 
-	//	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_date()); 
-	//}
+	//日期存疑, 暂时不写
 	if (obj.getSubject().empty()) { 
 		sql << " AND subject=?"; 
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getSubject()); 
@@ -44,17 +36,17 @@ list<PurQuotFindBillDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotFindBil
 		sql << " AND bill_stage=?";
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_stage());
 	}
-	if (obj.getIs_effective() != -1) {
+	if (obj.getIs_effective().empty()) {
 		sql << " AND is_effective=?";
-		SQLPARAMS_PUSH(params, "i", int, obj.getIs_effective());
+		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_effective());
 	}
-	if (obj.getIs_closed() != -1) {
+	if (obj.getIs_closed().empty()) {
 		sql << " AND is_closed=?";
-		SQLPARAMS_PUSH(params, "i", int, obj.getIs_closed());
+		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_closed());
 	}
-	if (obj.getIs_voided() != -1) {
+	if (obj.getIs_voided().empty()) {
 		sql << " AND is_voided=?";
-		SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided());
+		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_voided());
 	}
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurQuotMapper mapper;

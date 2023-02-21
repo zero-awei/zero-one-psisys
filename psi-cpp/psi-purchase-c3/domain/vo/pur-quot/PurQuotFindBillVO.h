@@ -18,17 +18,17 @@ class PurQuotFindBillVO
 	//交货日期
 	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
 	//数量
-	CC_SYNTHESIZE(double, qty, Qty);
+	CC_SYNTHESIZE(string, qty, Qty);
 	//金额
-	CC_SYNTHESIZE(double, amt, Amt);
+	CC_SYNTHESIZE(string, amt, Amt);
 	//单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//已生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
+	CC_SYNTHESIZE(string, is_effective, Is_effective);
 	//已关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	CC_SYNTHESIZE(string, is_closed, Is_closed);
 	//已作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	CC_SYNTHESIZE(string, is_voided, Is_voided);
 	//付款方式
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
 	//交货地点

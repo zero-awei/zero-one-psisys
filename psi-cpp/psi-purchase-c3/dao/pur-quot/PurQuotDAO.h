@@ -11,7 +11,7 @@ class PurQuotDAO : public BaseDAO {
 public:
 	//统计数据条数
 	uint64_t count(const PurQuotFindBillDO& iObj);
-	//查询单据列表
+	//查询单据列表(开始日期, 截止日期)
 	list<PurQuotFindBillDO> selectPurQuotFindBillDO(const PurQuotFindBillDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	//查询指定单据详细信息
 	list<PurQuotFindDetailBillDO> selectPurQuotFindDetailBillDO(const PurQuotFindDetailBillDO& obj);

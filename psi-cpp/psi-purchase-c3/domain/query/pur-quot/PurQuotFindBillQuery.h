@@ -32,8 +32,5 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, is_closed);
 		BIND_FROM_TO_NORMAL(j, t, is_voided);
 	}
-	void GetCode() {
-
-	}
 };
 #endif
