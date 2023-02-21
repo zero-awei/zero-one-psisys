@@ -20,12 +20,7 @@ JsonVO<PageVO<DepotVO>> DepotController::execQueryDepot(const DepotQuery& query,
 
 JsonVO<DepotVO> DepotController::execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
-    //定义一个Service
-    DepotService service;
-    //查询数据
-    DepotVO result = service.listKid(query);
-    // 通过Id和pid的关系，逻辑和查询差不多但没设置分页
-    return JsonVO<DepotVO>(result, RS_SUCCESS);
+    return JsonVO<DepotVO>();
 }
 
 JsonVO<DepotDetailVO> DepotController::execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload)
@@ -40,7 +35,15 @@ JsonVO<DepotActionInfoVO> DepotController::execQueryActionInfo(const OnlyValueQu
 
 JsonVO<PageVO<DepotVO>> DepotController::execAddDepot(const DepotDTO& dto)
 {
-    return JsonVO<PageVO<DepotVO>>();
+    //定义一个Service
+    DepotService service;
+    //保存数据
+    cout << service.saveData(dto) << endl;
+    //查询数据
+    DepotQuery query;
+    PageVO<DepotVO> result = service.listAll(query);
+    //响应结果
+    return JsonVO<PageVO<DepotVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<PageVO<DepotVO>> DepotController::execModifyDepot(const DepotDTO& dto)
@@ -50,7 +53,17 @@ JsonVO<PageVO<DepotVO>> DepotController::execModifyDepot(const DepotDTO& dto)
 
 JsonVO<PageVO<DepotVO>> DepotController::execRemoveDepot(const OnlyValueQuery& query)
 {
-    return JsonVO<PageVO<DepotVO>>();
+    //定义一个Service
+    DepotService service;
+    //删除数据
+    service.removeData(query);
+    //查询数据
+    DepotQuery q;
+    q.setPageIndex(query.getPageIndex());
+    q.setPageSize(query.getPageSize());
+    PageVO<DepotVO> result = service.listAll(q);
+    //响应结果
+    return JsonVO<PageVO<DepotVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<PageVO<DepotVO>> DepotController::execAddDepots(const DepotDTO& dto)

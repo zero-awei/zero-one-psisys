@@ -23,8 +23,7 @@
 
 
 //定义条件解析宏，减少重复代码
-#define SAMPLE_TERAM_PARSE(obj, sql) \
-SqlParams params; \
+#define SAMPLE_TERAM_PARSE(obj, sql, params) \
 sql<<" WHERE 1=1"; \
 if (!obj.getName().empty()) { \
 	sql << " AND `name`=?"; \
@@ -35,19 +34,22 @@ if (!obj.getCode().empty()) { \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getCode()); \
 }
 
-#define ONLY_FOR_KID(obj, sql) \
-SqlParams params; \
+#define ONLY_FOR_KID(obj, sql, params) \
 sql<<" WHERE 1=1"; \
-if (!obj.getId().empty()) { \
-	sql << " AND `id`=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
-}
+sql << " AND `pid`=?"; \
+SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
 
 uint64_t DepotDAO::count(const DepotDO& iObj)
 {
 	stringstream sql;
+	SqlParams params;
 	sql << "SELECT COUNT(*) FROM bas_warehouse";
-	SAMPLE_TERAM_PARSE(iObj, sql);
+	if (!iObj.getId().empty()) {
+		ONLY_FOR_KID(iObj, sql, params);
+	}
+	else {
+		SAMPLE_TERAM_PARSE(iObj, sql, params);
+	}
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
@@ -55,29 +57,27 @@ uint64_t DepotDAO::count(const DepotDO& iObj)
 std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
+	SqlParams params; 
+	// * 没改
 	sql << "SELECT * FROM bas_warehouse";
-	SAMPLE_TERAM_PARSE(obj, sql);
+	SAMPLE_TERAM_PARSE(obj, sql, params);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	DepotMapper mapper;
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
 }
 
-uint64_t DepotDAO::countKid(const DepotDetailVO& iObj)
+
+uint64_t DepotDAO::insertDepot(const DepotDO& iObj)
 {
-	stringstream sql;
-	sql << "SELECT COUNT(*) FROM bas_warehouse";
-	ONLY_FOR_KID(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
+	string sql = "INSERT INTO `bas_warehouse` (`name`, `code`, `aux_name`, `phone`, `remark`) VALUES (?, ?, ?, ?, ?)";
+	return sqlSession->executeInsert(sql, "%s%s%s%i%s", iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getRemarks());
+	return uint64_t();
 }
 
 
-std::tuple<std::string, std::string> DepotDAO::getKidNameAndCode(const DepotDetailVO& iObj)
+int DepotDAO::deleteDepot(const DepotDO& iObj)
 {
-	stringstream sql;
-	sql << "SELECT NEXT FROM bas_warehouse";
-	ONLY_FOR_KID_SEARCH(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
+	string sql = "DELETE FROM `bas_warehouse` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", iObj.getId());
 }

@@ -54,25 +54,21 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	return pages;
 }
 
-DepotVO DepotService::listKid(const OnlyValueQuery& query)
+uint64_t DepotService::saveData(const DepotDTO& dto)
 {
-	//构建返回对象
-	DepotVO Kid;
-	DepotVO father;
-
-	//查询数据
-	DepotDetailVO obj;
-	obj.setPid(query.getID());
-
+	//组装数据
+	DepotDO data;
+	data.setName(dto.getName());
+	data.setCode(dto.getCode());
+	//执行数据添加
 	DepotDAO dao;
-	uint64_t count = dao.countKid(obj);
-	if (count <= 0)
-	{
-		return Kid;
-	}
+	return dao.insertDepot(data);
+}
 
-	Kid.setName(obj.getName());
-	Kid.setCode(obj.getCode());
-
-	return Kid;
+bool DepotService::removeData(const OnlyValueQuery& query)
+{
+	DepotDO id;
+	id.setId(query.getId());
+	DepotDAO dao;
+	return dao.deleteDepot(id);
 }

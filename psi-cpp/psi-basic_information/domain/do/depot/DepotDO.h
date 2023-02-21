@@ -26,13 +26,31 @@
  */
 class DepotDO
 {
+	// ID
+	CC_SYNTHESIZE(string, id, Id);
 	// 姓名
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
 	CC_SYNTHESIZE(string, code, Code);
-	// 这里和下面要补充对应的VO的属性
+	// 助记名
+	CC_SYNTHESIZE(string, auxName, AuxName);
+	// 电话
+	CC_SYNTHESIZE(int, phone, Phone);
+	// 启用
+	CC_SYNTHESIZE(string, start, Start);
+	// 备注
+	CC_SYNTHESIZE(string, remarks, Remarks);
+	// 创建时间
+	CC_SYNTHESIZE(string, creationTime, CreationTime);
+	// 创建人
+	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
+	// 修改时间
+	CC_SYNTHESIZE(string, modiTime, ModiTime);
+	// 修改人
+	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	DepotDO() {
+		id = "";
 		name = "Depot";
 		code = "12345678910";
 	}
