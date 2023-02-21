@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
  * <p>版权：&copy;01星球</p>
  * <p>地址：01星球总部</p>
  *
- * @author chose1
+ * @author chose1, spk
  * @version 1.0.0
  */
-@ApiModel("采购应付显示对象")
+@ApiModel("应付显示对象")
 @Data
 public class PayableVO {
 
@@ -58,6 +58,8 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "是否红字", example = "1")
     private String isRubric;
+    @ApiModelProperty(value = "是否红字", example = "是")
+    private String isRubricDictText;
 
     /**
      * 供应商
@@ -106,6 +108,8 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "是否自动生成", example = "1")
     private String isAuto;
+    @ApiModelProperty(value = "是否自动生成", example = "是")
+    private String isAutoDictText;
 
     /**
      * 处理状态
@@ -124,12 +128,15 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "是否通过", example = "1")
     private String isEffective;
+    @ApiModelProperty(value = "是否通过", example = "是")
+    private String isEffectiveDictText;
 
     /**
      * 核批结果类型
      */
     @ApiModelProperty(value = "核批结果类型")
     private String approvalResultType;
+    private String approvalResultTypeDictText;
 
     /**
      * 核批意见
@@ -148,12 +155,16 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "已关闭", example = "0")
     private String isClosed;
+    @ApiModelProperty(value = "已关闭", example = "否")
+    private String isClosedDictText;
 
     /**
      * 是否作废
      */
     @ApiModelProperty(value = "是否作废", example = "0")
     private String isVoided;
+    @ApiModelProperty(value = "是否作废", example = "否")
+    private String isVoidedDictText;
 
     /**
      * 创建部门
