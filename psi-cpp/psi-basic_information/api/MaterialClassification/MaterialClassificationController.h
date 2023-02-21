@@ -49,7 +49,7 @@ private:
 	JsonVO<PageVO<MaterialClassificationBaseVO>> execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 
 	//查询子级列表   暂时先不分页显示
-	JsonVO<MaterialClassificationChildVO> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload);
+	JsonVO<list<MaterialClassificationChildVO>> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 	
 	//查询指定分类详细信息
 	JsonVO<MaterialClassificationDetailVO> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload);

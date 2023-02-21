@@ -38,18 +38,18 @@ JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::e
 
 }
 
-JsonVO<MaterialClassificationChildVO> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	MaterialClassificationService service;
 
 	//查询子级数据
 
-	MaterialClassificationChildVO result = service;
+	JsonVO<list<MaterialClassificationChildVO>> result = service.listChildren(query);
 	//响应结果
 
 
-	return JsonVO<MaterialClassificationChildVO>(result, RS_SUCCESS);
+	return result;
 }
 
 JsonVO<MaterialClassificationDetailVO> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload)
@@ -68,20 +68,20 @@ JsonVO<MaterialClassificationDetailVO> MaterialClassificationController::execQue
 JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto)
 {
 	JsonVO<uint64_t> result;
-	//MaterialClassificationService service;
-	////执行数据新增 #返回的是行号？
-	//uint64_t id = service.saveData(dto);
-	//if (id > 0) {
-	//	result.success(id);
-	//}
-	//else
-	//{
-	//	result.fail(id);
-	//}
-	////响应结果
+	MaterialClassificationService service;
+	//执行数据新增 #返回的是行号？
+	uint64_t id = service.saveData(dto);
+	if (id > 0) {
+		result.success(id);
+	}
+	else
+	{
+		result.fail(id);
+	}
+	//响应结果
 
-	//if (dto.getCode() == "")
-	//	return JsonVO<uint64_t>({}, RS_PARAMS_INVALID);
+	if (dto.getCode() == "")
+		return JsonVO<uint64_t>({}, RS_PARAMS_INVALID);
 	return result;
 }
 

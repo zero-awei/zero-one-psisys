@@ -19,7 +19,7 @@
 #include "stdafx.h"
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
-#include "../../domain/vo/JsonVO.h"
+
 
 //可能vo不需要分父类子类
 
@@ -65,11 +65,32 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	return pages;
 }
 
-//查询子级列表
-JsonVO<MaterialClassificationChildVO> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload) {
+//查询子类列表
+JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
+	MaterialClassificationDO obj;
+	obj.setPid(query.getPid());
+	MaterialClassificationDAO dao;
+	list<MaterialClassificationDO> result = dao.selectByPid(obj.getPid());
+	list<MaterialClassificationChildVO> vr;
+	for (MaterialClassificationDO sub : result)
+	{
+		MaterialClassificationChildVO vo;
+		vo.setName(sub.getName());
+		vo.setCode(sub.getCode());
+		vo.setFullname(sub.getFullname());
+		vo.setIsEnabled(sub.getIsEnabled());
+		vo.setCreateTime(sub.getCreateTime());
+		vo.setCreateBy(sub.getCreateBy());
+		vo.setUpdateTime(sub.getUpdateTime());
+		vo.setUpdateBy(sub.getUpdateBy());
+
+		vr.push_back(vo);
+
+	}
+	JsonVO<list<MaterialClassificationChildVO>> r;
+	r.setData(vr);//把数据放入JsonVO中
+	return r;
 	
-
-
 }
 
 uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)

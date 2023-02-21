@@ -24,7 +24,7 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/MaterialClassification/MaterialClassificationQuery.h"
 #include "../../domain/dto/MaterialClassification/MaterialClassificationDTO.h"
-
+#include "../../domain/vo/JsonVO.h"
 /**
  * 物料分类服务实现，演示基础的示例服务实现
  */
@@ -34,8 +34,8 @@ public:
 	// 分页查询所有数据 #计划在父类里面嵌套子类
 	PageVO<MaterialClassificationBaseVO> listAll(const MaterialClassificationQuery& query);
 
-	//查询子类？查询详细信息？
-
+	//查询子类列表
+	JsonVO<list<MaterialClassificationChildVO>> listChildren(const MaterialClassificationQuery& query);
 
 
 	// 保存数据
