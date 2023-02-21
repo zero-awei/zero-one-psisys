@@ -10,6 +10,8 @@
  */
 class PrepaymentBillVO
 {
+	// 编号
+	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
@@ -53,12 +55,8 @@ class PrepaymentBillVO
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PrepaymentBillVO, bill_no, bill_date, subject, supplier_id, od_dept, op, amt, paid_amt, bill_stage,
+	BIND_TO_JSON(PrepaymentBillVO, id, bill_no, bill_date, subject, supplier_id, od_dept, op, amt, paid_amt, bill_stage,
 		is_effective, is_closed, is_voided, remark, effective_time, approver, create_time, create_by, sys_org_code, update_time, update_by);
-public:
-	PrepaymentBillVO() {
-		bill_no = "test";
-		bill_date = "test";
-	}
+
 };
 #endif // !_PREPAYMENT_BILL_VO_

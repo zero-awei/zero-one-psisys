@@ -42,9 +42,6 @@
     <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\query\prepaymentbill\PrepayExportQuery.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="api\prepayment\PrePayController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -129,6 +126,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\prepayment\PrePayController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\prepayment\PrePayService.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

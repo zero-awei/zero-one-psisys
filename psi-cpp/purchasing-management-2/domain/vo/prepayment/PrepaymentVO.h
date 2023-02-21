@@ -40,11 +40,11 @@ class PrepaymentVO
 	// 单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	// 已生效
-	CC_SYNTHESIZE(bool, is_effective, Is_effective);
+	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	// 已关闭
-	CC_SYNTHESIZE(bool, is_closed, Is_closed);
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	// 已作废
-	CC_SYNTHESIZE(bool, is_voided, Is_voided);
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
 
 public:
 	// 绑定JSON转换方法
