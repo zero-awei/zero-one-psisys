@@ -5,7 +5,6 @@
 
 JsonVO<PageVO<UserVO>> UserChoiceController::execQueryUser(const UserQuery& query, const PayloadDTO& payload)
 {
-	JsonVO<PageVO<UserVO>>rs;
 	UserChoiceService service;
 	PageVO<UserVO> result = service.listAll(query);
 	//ÏìÓ¦½á¹û

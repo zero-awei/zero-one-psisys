@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author:yunjj
- @Date: 2023/2/20 20:51
+ @Author: yunjj
+ @Date: 2023/2/21 22:17
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,25 +17,20 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+#ifndef _MATERIALDAO_H_
+#define _MATERIALDAO_H_
 
-#ifndef _USERCHOICEMAPPER_H_
-#define _USERCHOICEMAPPER_H_
+#include "BaseDAO.h"
+#include "../../domain/do/publicInterfaceDO/MaterialReturnDO.h"
+#include "../../domain/do/publicInterfaceDO/MaterialQueryDO.h"
 
-#include "Mapper.h"
-
-class UserChoiceMapper :public Mapper<UserChoiceReturnDO>
+class MaterialDAO :public BaseDAO
 {
 public:
-	UserChoiceReturnDO mapper(ResultSet* resultSet) const override
-	{
-		UserChoiceReturnDO data;
-		data.setId(resultSet->getString(1));
-		data.setUserName(resultSet->getString(2));
-		data.setSex(resultSet->getString(3));
-		data.setPhone(resultSet->getString(4));
-		data.setDepartMent(resultSet->getString(5));
-		return data;
-	}
+	//查询物料信息
+	list<MaterialReturnDO>selecMaterialWithPage(const MaterialQueryDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	//用于统计一个查询里可以返回的表项数量
+	uint64_t count(const MaterialQueryDO& iObj);
 };
 
-#endif // _USERCHOICEMAPPER_H_
+#endif // _MATERIALDAO_H_

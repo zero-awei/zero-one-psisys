@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author:yunjj
- @Date: 2023/2/20 20:51
+ @Author: yunjj
+ @Date: 2023/2/21 20:40
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -18,24 +18,18 @@
  limitations under the License.
 */
 
-#ifndef _USERCHOICEMAPPER_H_
-#define _USERCHOICEMAPPER_H_
+#ifndef _MATERIALSERVICE_H_
+#define _MATERIALSERVICE_H_
 
-#include "Mapper.h"
+#include "../../domain/vo/publicInterfaceVO/MaterialVO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/query/publicInterfaceQuery/MaterialQuery.h"
 
-class UserChoiceMapper :public Mapper<UserChoiceReturnDO>
+class MaterialService
 {
 public:
-	UserChoiceReturnDO mapper(ResultSet* resultSet) const override
-	{
-		UserChoiceReturnDO data;
-		data.setId(resultSet->getString(1));
-		data.setUserName(resultSet->getString(2));
-		data.setSex(resultSet->getString(3));
-		data.setPhone(resultSet->getString(4));
-		data.setDepartMent(resultSet->getString(5));
-		return data;
-	}
+	// 分页查询所有数据
+	PageVO<MaterialVO> listAll(const MaterialQuery& query);
 };
 
-#endif // _USERCHOICEMAPPER_H_
+#endif // _MATERIALSERVICE_H_

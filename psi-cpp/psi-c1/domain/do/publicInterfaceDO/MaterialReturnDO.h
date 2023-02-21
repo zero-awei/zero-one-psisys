@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/13 15:13
+ @Date: 2023/2/21 20:33
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,13 +17,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _MATERIALVO_
-#define _MATERIALVO
+#ifndef _MATERIALRETURNDO_H_
+#define _MATERIALRETURNDO_H_
 
 #include "../../GlobalInclude.h"
 
-
-class MaterialVO
+class MaterialReturnDO
 {
 	//物料的id
 	CC_SYNTHESIZE(std::string, id, Id);
@@ -58,7 +57,7 @@ class MaterialVO
 	//修改人
 	CC_SYNTHESIZE(std::string, updateBy, UpdateBy);
 public:
-	MaterialVO()
+	MaterialReturnDO()
 	{
 		id = "";
 		code = "";
@@ -73,9 +72,6 @@ public:
 		remark = "";
 		createBy = "";
 	}
-	BIND_TO_JSON(MaterialVO, id,code,name,auxName, categoryId, categoryIdDictText, model, unitIdDictText, 
-		price, taxCode, isEnabledDictText, remark, createTime, createBy, updateTime, updateBy);
-
 };
 
-#endif //!_MATERIALVO_
+#endif // _MATERIALRETURNDO_H_

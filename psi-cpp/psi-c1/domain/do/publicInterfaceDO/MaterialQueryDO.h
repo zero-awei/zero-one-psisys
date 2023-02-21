@@ -2,14 +2,14 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author:yunjj
- @Date: 2023/2/20 20:51
+ @Author: yunjj
+ @Date: 2023/2/21 20:29
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+      https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,25 +17,29 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+#ifndef _MATERIALQUERYDO_H_
+#define _MATERIALQUERYDO_H_
 
-#ifndef _USERCHOICEMAPPER_H_
-#define _USERCHOICEMAPPER_H_
+#include "../DoInclude.h"
 
-#include "Mapper.h"
-
-class UserChoiceMapper :public Mapper<UserChoiceReturnDO>
+class MaterialQueryDO
 {
+	//物料的编码
+	CC_SYNTHESIZE(std::string, code, Code);
+	//物料的名称
+	CC_SYNTHESIZE(std::string, name, Name);
+	//物料的分类
+	CC_SYNTHESIZE(std::string, type, Type);
+	//税控编码
+	CC_SYNTHESIZE(std::string, taxCode, TaxCode);
 public:
-	UserChoiceReturnDO mapper(ResultSet* resultSet) const override
+	MaterialQueryDO()
 	{
-		UserChoiceReturnDO data;
-		data.setId(resultSet->getString(1));
-		data.setUserName(resultSet->getString(2));
-		data.setSex(resultSet->getString(3));
-		data.setPhone(resultSet->getString(4));
-		data.setDepartMent(resultSet->getString(5));
-		return data;
+		code = "";
+		name = "";
+		type = "";
+		taxCode = "";
 	}
 };
 
-#endif // _USERCHOICEMAPPER_H_
+#endif // _MATERIALQUERYDO_H_
