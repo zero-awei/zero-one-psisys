@@ -1,4 +1,4 @@
-package com.zeroone.star.project.vo.payable.purchase;
+package com.zeroone.star.project.vo.payablemanagement;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
  */
 @ApiModel("采购应付显示对象")
 @Data
-public class FinPayableVO {
+public class PayableVO {
 
     /**
      * 单据编号

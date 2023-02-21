@@ -1,4 +1,4 @@
-package com.zeroone.star.project.query.patable.purchase;
+package com.zeroone.star.project.query.payablemanagement;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zeroone.star.project.query.PageQuery;
@@ -23,7 +23,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ApiModel("分页查询应付对象")
-public class MultiConditionPayableQuery extends PageQuery {
+public class PayableQuery extends PageQuery {
 
     /**
      * 单据编号

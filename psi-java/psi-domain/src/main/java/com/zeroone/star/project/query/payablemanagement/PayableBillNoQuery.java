@@ -1,4 +1,4 @@
-package com.zeroone.star.project.query.patable.purchase;
+package com.zeroone.star.project.query.payablemanagement;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -18,7 +18,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @ApiModel("根据单据编号查询")
-public class PayableQuery {
+public class PayableBillNoQuery {
     @NotBlank(message = "单据编号不能为空")
     @ApiModelProperty(value = "单据编号", example = "CGAP-221110-001")
     private String billNO;

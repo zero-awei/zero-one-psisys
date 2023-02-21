@@ -1,7 +1,5 @@
-package com.zeroone.star.project.dto.payable.purchase;
+package com.zeroone.star.project.dto.payablemanagement;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,8 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -28,7 +24,7 @@ import java.util.Date;
 @ApiModel("采购应付传输数据对象")
 @AllArgsConstructor
 @NoArgsConstructor
-public class FinPayableDTO {
+public class PayableDTO {
 
     /**
      * 单据编号
