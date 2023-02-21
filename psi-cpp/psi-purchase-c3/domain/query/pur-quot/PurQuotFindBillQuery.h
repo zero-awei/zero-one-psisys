@@ -5,7 +5,7 @@
 class PurQuotFindBillQuery : public PageQuery{
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//单据日期--开始, 数据库里面没有这个字段
+	//单据日期--开始
 	CC_SYNTHESIZE(string, bill_date_begin, Bill_date_begin);
 	//单据日期--结束
 	CC_SYNTHESIZE(string, bill_date_end, Bill_date_end);

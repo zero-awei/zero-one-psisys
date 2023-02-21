@@ -8,7 +8,6 @@ class PurQuotListDO
 	CC_SYNTHESIZE(string, src_no, Src_no);
 	//物料
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	//规格型号
 	//单位
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
 	//数量
