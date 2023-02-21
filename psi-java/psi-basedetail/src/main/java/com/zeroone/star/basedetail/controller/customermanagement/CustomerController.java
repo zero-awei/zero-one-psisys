@@ -55,8 +55,11 @@ public class CustomerController implements CustomerApis {
     @Override
     @GetMapping("query-advancedcondition")
     @ApiOperation(value = "高级条件分页查询")
-    public JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery,PageQuery pageQuery) {
-        return null;
+    public JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery) {
+        if(customerService.getByAdvancedCondition(CustomerCdvancedQuery)!=null){
+            return JsonVO.success(customerService.getByAdvancedCondition(CustomerCdvancedQuery));
+        }
+        return JsonVO.fail(null);
     }
 
     @Override
