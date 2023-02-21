@@ -2,6 +2,7 @@ package com.zeroone.star.project.paymentManager;
 
 import cn.hutool.json.JSON;
 import com.zeroone.star.project.dto.paymentManager.ChosenExportDto;
+import com.zeroone.star.project.dto.paymentManager.UpdateBillStageDto;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.paymentManager.ChosenExportVo;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,7 @@ public interface PaymentManagerApis {
 
     JsonVO importAll(MultipartFile file);
 
-    JsonVO updateBillStage(Integer id);
+    JsonVO updateBillStage(UpdateBillStageDto updateBillStageDto);
 
     JsonVO chosenExport(ChosenExportDto chosenExportDto);
 }
