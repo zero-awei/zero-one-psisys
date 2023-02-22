@@ -1,4 +1,4 @@
-
+package com.zeroone.star.prepayment.service;
 import com.zeroone.star.prepayment.entity.PurOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
@@ -8,6 +8,7 @@ import com.zeroone.star.project.vo.prepayment.PurOrderVO;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.PurOrderVO;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -17,6 +18,7 @@ import com.zeroone.star.project.vo.prepayment.PurOrderVO;
  * @author zhd
  * @since 2023-02-18
  */
+@Component
 public interface IPurOrderService extends IService<PurOrder> {
 
     /**

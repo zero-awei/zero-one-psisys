@@ -1,4 +1,4 @@
-
+package com.zeroone.star.prepayment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.prepayment.entity.FinPayment;
@@ -9,6 +9,7 @@ import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.prepayment.FinPaymentEntryDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
+import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,15 +59,28 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
     }
 
     /**
+     * 添加
      * Author: Kong
      */
-    @Autowired
-    FinPaymentEntryMapper finPaymentEntryMapper;
-
     @Override
-    public int insert(FinPaymentEntry finPaymentEntry) {
-        int insert = finPaymentEntryMapper.insert(finPaymentEntry);
-        return insert==1?1:0;
+    public int insert(PrepaymentDTO prepaymentDTO) {
+        //获取主表id
+        String id1 = prepaymentDTO.getId();
+        int res = 0;
+        for (FinPaymentEntryDTO finPaymentEntryDTO:prepaymentDTO.getFinPaymentEntryList()){
+            //生成明细表id
+            long timestamp2 = System.currentTimeMillis(); // 毫秒级时间戳
+            int randNum2 = new Random().nextInt(1000000000); // 生成9位随机数
+            String uniqueId2 = timestamp2 + String.format("%09d", randNum2); // 将时间戳和随机数拼接起来
+            String id2 = uniqueId2.substring(0, 19);// 截取前19位作为最终的唯一ID
+            FinPaymentEntry finPaymentEntry = new FinPaymentEntry();
+            BeanUtils.copyProperties(finPaymentEntryDTO,finPaymentEntry);
+            finPaymentEntry.setId(id2);
+            finPaymentEntry.setMid(id1);//将主表id放入mid
+            finPaymentEntry.setBillNo(prepaymentDTO.getBillNo());//获取单号
+            res = baseMapper.insert(finPaymentEntry);
+        }
+        return res;
     }
 
 }

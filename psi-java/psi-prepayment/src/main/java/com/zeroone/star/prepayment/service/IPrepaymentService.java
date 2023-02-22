@@ -88,7 +88,7 @@ public interface IPrepaymentService {
      * return
      * author 空
      */
-    public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO);
+    public JsonVO<String> prepay(PrepaymentDTO prepaymentDTO,UserDTO userDTO);
 
     /**
      * 获取供应商列表

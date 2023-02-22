@@ -26,6 +26,9 @@ import org.springframework.web.multipart.MultipartFile;
 @ApiModel("预付款信息")
 public class PrepaymentDTO {
 
+//    @ApiModelProperty(value = "id",example = "1626949545251745795")
+    private String id;
+
     @ApiModelProperty(value = "金额",example = "1000.00")
     private BigDecimal amt;
 

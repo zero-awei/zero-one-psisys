@@ -26,40 +26,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
-import com.zeroone.star.prepayment.entity.FinPaymentEntry;
-import com.zeroone.star.prepayment.entity.FinPaymentReqEntry;
 import com.zeroone.star.prepayment.service.*;
-import com.zeroone.star.project.dto.prepayment.*;
-import com.zeroone.star.project.prepayment.PrepaymentApis;
-import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
-import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
-import com.zeroone.star.project.query.prepayment.DocListQuery;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.annotation.Resource;
-import javax.json.Json;
-
 
 @RestController
 @RequestMapping("prepayment")
@@ -71,23 +42,16 @@ public class PrepaymentController implements PrepaymentApis {
     @Resource
     UserHolder userHolder;
     @Resource
-    IPrepaymentService service;
-
-    @Autowired
     ISysDepartService departService;
-    @Autowired
+    @Resource
     IBasBankAccountService basBankAccountService;
-    @Autowired
+    @Resource
     ISysUserService userService;
-    @Autowired
+    @Resource
     IBasSupplierService supplierService;
-    @Autowired
+    @Resource
     IFinPaymentReqService finPaymentReqService;
-    @Autowired
-    IFinPaymentService finPaymentService;
-    @Autowired
-    IFinPaymentEntryService finPaymentEntryService;
-    @Autowired
+    @Resource
     IPurOrderService purOrderService;
     /**
      * 修改采购预付单功能
@@ -203,12 +167,17 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "添加采购预付单功能（返回值data值表示创建成功与否）")
     @Override
     public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
-        int res = finPaymentService.prepay(prepaymentDTO);
-        if (res==1){
-            return JsonVO.success("添加成功");
-        }else {
-            return JsonVO.fail("添加失败");
+        //获取用户信息
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
         }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.prepay(prepaymentDTO,currentUser);
     }
 
     /**

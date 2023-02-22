@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -38,8 +39,6 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
 
     @Resource
     IFinPaymentService finPaymentService;
-    @Resource
-    IFinPaymentReqService finPaymentReqService;
     @Resource
     IFinPaymentEntryService finPaymentEntryService;
     /**
@@ -109,10 +108,29 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         return null;
     }
 
+    /**
+     * 采购预付款操作
+     * param prepaymentDTO
+     * return
+     * author 空
+     */
     @Override
-    public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
-        return null;
+    @Transactional
+    public JsonVO<String> prepay(PrepaymentDTO prepaymentDTO,UserDTO userDTO) {
+        //生成19位id
+        long timestamp1 = System.currentTimeMillis(); // 毫秒级时间戳
+        int randNum1 = new Random().nextInt(1000000000); // 生成9位随机数
+        String uniqueId1 = timestamp1 + String.format("%09d", randNum1); // 将时间戳和随机数拼接起来
+        String id1 = uniqueId1.substring(0, 19);// 截取前19位作为最终的唯一ID
+        prepaymentDTO.setId(id1);
+        finPaymentService.insert(prepaymentDTO,userDTO);
+        int res = finPaymentEntryService.insert(prepaymentDTO);
+        if (res == 1){
+            return JsonVO.success("修改成功");
+        }
+        return JsonVO.fail("修改失败");
     }
+
 
     @Override
     public JsonVO<List<SupplierVO>> querySupplierList() {
