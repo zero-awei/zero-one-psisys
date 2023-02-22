@@ -61,14 +61,7 @@ class MaterialClassificationDO  {
 	//°æ±¾
 	CC_SYNTHESIZE(int, version, Version);
 public:
-	MaterialClassificationDO() {
-		pid = "11";
-		id = "0";
-		name = "anan";
-		has_child = "0";
-		code = "000";
-		is_enabled = 0;
-	}
+	
 };
 
 #endif 

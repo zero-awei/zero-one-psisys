@@ -86,8 +86,8 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByPid(const
 //插入数据 #时间用string，这个返回值好像返回的是id，但是数据库中的id是varchar
 uint64_t MaterialClassificationDAO::insert(const MaterialClassificationDO& iObj)
 {
-	string sql = "INSERT INTO `bas_material_category` (`name`,`code`,`fullname`,`is_enabled`,`create_time`,`create_by`,`update_time`,`update_by`) VALUES (?, ?, ?, ?, ?, ?, ?. ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%i", iObj.getName(), iObj.getCode(), iObj.getFullname(),iObj.getIsEnabled());
+	string sql = "INSERT INTO `bas_material_category` (`id`,`pid`, `name`,`code`,`fullname`,`is_enabled`,`create_time`,`create_by`,`update_time`,`update_by`) VALUES (?, 0, ?, ?, ?, ?, ?, ?, ?. ?)";
+	return sqlSession->executeInsert(sql, "%s%s%s%i", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getFullname(),iObj.getIsEnabled());
 }
 
 //修改数据 #同上 返回的是行数

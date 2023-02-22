@@ -52,7 +52,7 @@ private:
 	JsonVO<list<MaterialClassificationChildVO>> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 	
 	//查询指定分类详细信息
-	JsonVO<MaterialClassificationDetailVO> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload);
+	JsonVO<list<MaterialClassificationDetailVO>> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 
 
 	//新增分类 ,添加、修改、删除下级应该也可以用这种方式  #返回的是id,但是数据库用的是varchar

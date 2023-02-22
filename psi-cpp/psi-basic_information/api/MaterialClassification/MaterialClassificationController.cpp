@@ -38,6 +38,7 @@ JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::e
 
 }
 
+//查询子类列表
 JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
@@ -48,21 +49,21 @@ JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::ex
 	JsonVO<list<MaterialClassificationChildVO>> result = service.listChildren(query);
 	//响应结果
 
-
+	
 	return result;
 }
 
-JsonVO<MaterialClassificationDetailVO> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
 
-	////定义一个Service
-	//MaterialClassificationService service;
+	//定义一个Service
+	MaterialClassificationService service;
 
 	//查询详细数据（感觉就是编辑那里）
-	MaterialClassificationDetailVO result;
+	JsonVO<list<MaterialClassificationDetailVO>> result = service.listDetail(query);
 
 	//响应结果
-	return JsonVO<MaterialClassificationDetailVO>(result, RS_SUCCESS);
+	return result;
 }
 
 JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto)

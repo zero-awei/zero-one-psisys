@@ -55,7 +55,7 @@ class MaterialClassificationBaseVO{
 
 public:
 
-	MaterialClassificationBaseVO() : name("nanan"), code("11") {}
+	
 	
 
 	// 绑定JSON转换方法

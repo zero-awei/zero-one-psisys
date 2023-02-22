@@ -36,20 +36,25 @@ public:
 	MaterialClassificationDO mapper(ResultSet* resultSet) const override
 	{
 		MaterialClassificationDO data;
+		//
+		data.setCode(resultSet->getString(2));
+		data.setName(resultSet->getString(1));
+		data.setFullname(resultSet->getString(3));
+		data.setIsEnabled(resultSet->getInt(4));
+		data.setCreateTime(resultSet->getString(5));
+		data.setCreateBy(resultSet->getString(6));
+		data.setUpdateTime(resultSet->getString(7));
+		data.setUpdateBy(resultSet->getString(8));
+		/*data.setId(resultSet->getString(9));
+		data.setPid(resultSet->getString(10));
+		data.setHasChild(resultSet->getString(11))*/;
+		//不明白里面的参数表示什么,好像是列号？是dao里面写的sql语句中select后面参数的顺序，所以select语句中的查询顺序应要一致
+		/*
+		
+		
 
-		//不明白里面的参数表示什么,好像是列号？
-		data.setId(resultSet->getString(1));
-		data.setPid(resultSet->getString(2));
-		data.setHasChild(resultSet->getString(3));
-		data.setCode(resultSet->getString(4));
-		data.setName(resultSet->getString(5));
-		data.setFullname(resultSet->getString(6));
-		data.setIsEnabled(resultSet->getInt(7));
-		data.setCreateTime(resultSet->getString(8));
-		data.setCreateBy(resultSet->getString(9));
-		data.setUpdateTime(resultSet->getString(10));
-		data.setUpdateBy(resultSet->getString(11));
-		data.setVersion(resultSet->getInt(12));
+		
+		data.setVersion(resultSet->getInt(12));*/
 		return data;
 	}
 };

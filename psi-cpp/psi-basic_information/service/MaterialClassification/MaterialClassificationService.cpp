@@ -93,10 +93,40 @@ JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listC
 	
 }
 
+
+JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::listDetail(const MaterialClassificationQuery& query) {
+	MaterialClassificationDO obj;
+	obj.setName(query.getName());
+	obj.setCode(query.getCode());
+	MaterialClassificationDAO dao;
+	list<MaterialClassificationDO> result = dao.selectByCode(obj.getCode());
+	list<MaterialClassificationDetailVO> vr;
+	for (MaterialClassificationDO sub : result)
+	{
+		MaterialClassificationDetailVO vo;
+		vo.setPid(sub.getPid());
+		vo.setHasChild(sub.getHasChild());
+		vo.setName(sub.getName());
+		vo.setCode(sub.getCode());
+		vo.setFullname(sub.getFullname());
+		vo.setIsEnabled(sub.getIsEnabled());
+		vo.setCreateTime(sub.getCreateTime());
+		vo.setCreateBy(sub.getCreateBy());
+		vo.setUpdateTime(sub.getUpdateTime());
+		vo.setUpdateBy(sub.getUpdateBy());
+
+		vr.push_back(vo);
+	}
+	JsonVO<list<MaterialClassificationDetailVO>> r;
+	r.setData(vr);//把数据放入JsonVO中
+	return  r;
+}
+
 uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)
 {
 	//组装数据
 	MaterialClassificationDO data;
+	data.setId(dto.getId());
 	data.setPid(dto.getPid());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
@@ -116,6 +146,7 @@ bool MaterialClassificationService::updateData(const MaterialClassificationDTO& 
 {
 	//组装传输数据
 	MaterialClassificationDO data;
+	data.setId(dto.getId());
 	data.setPid(dto.getPid());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());

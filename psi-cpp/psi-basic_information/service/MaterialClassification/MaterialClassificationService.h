@@ -37,7 +37,8 @@ public:
 	//查询子类列表
 	JsonVO<list<MaterialClassificationChildVO>> listChildren(const MaterialClassificationQuery& query);
 
-
+	//查询指定分类详细信息
+	JsonVO<list<MaterialClassificationDetailVO>> listDetail(const MaterialClassificationQuery& query);
 	// 保存数据
 	uint64_t saveData(const MaterialClassificationDTO& dto);
 	// 修改数据
