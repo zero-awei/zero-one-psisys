@@ -47,7 +47,7 @@ private:
 	//查询子级列表
 	//JsonVO<CurrencyVO> execQueryKidCurrency(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 	// 查询详情
-	JsonVO<CurrencyDetailVO> execQueryDetail(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
+	JsonVO<CurrencyVO> execQueryDetail(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 	JsonVO<CurrencyActionInfoVO> execQueryActionInfo(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 	//新增仓库
 	JsonVO<PageVO<CurrencyVO>> execAddCurrency(const CurrencyDTO& dto);

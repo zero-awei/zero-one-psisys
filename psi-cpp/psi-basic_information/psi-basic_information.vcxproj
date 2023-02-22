@@ -185,6 +185,8 @@
     <ClCompile Include="dao\MaterialClassification\MaterialClassificationDAO.cpp" />
     <ClCompile Include="service\MaterialClassification\MaterialClassificationService.cpp" />
     <ClCompile Include="service\Measurement\MeasurementService.cpp" />
+    <ClCompile Include="dao\currency\CurrencyDAO.cpp" />
+    <ClCompile Include="service\currency\CurrencyService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -202,6 +204,9 @@
     <ClInclude Include="dao\Measurement\MeasurementDAO.h" />
     <ClInclude Include="dao\Measurement\MeasurementMapper.h" />
     <ClInclude Include="domain\do\depot\DepotDO.h" />
+    <ClInclude Include="dao\currency\CurrencyDAO.h" />
+    <ClInclude Include="dao\currency\CurrencyMapper.h" />
+    <ClInclude Include="domain\do\currency\CurrencyDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\depot\DepotDTO.h" />
     <ClInclude Include="domain\dto\CurrencyDTO.h" />
@@ -240,6 +245,7 @@
     <ClInclude Include="service\depot\DepotService.h" />
     <ClInclude Include="service\MaterialClassification\MaterialClassificationService.h" />
     <ClInclude Include="service\Measurement\MeasurementService.h" />
+    <ClInclude Include="service\currency\CurrencyService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 /*
  Copyright Zero One Star. All rights reserved.
  @Author: douhao
- @Date: 2023/2/14 15:18:04
+ @Date: 2023/2/21 21:46:32
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,50 +13,45 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _CURRENCY_DTO_
-#define _CURRENCY_DTO_
-
-#include "../../GlobalInclude.h"
-#include "../FileDTO.h"
+#ifndef _CURRENCY_DO_
+#define _CURRENCY_DO_
+#include "../DoInclude.h"
 
 /**
- * 基础资料币种传输对象
+ * 示例数据库实体类
  */
-class CurrencyDTO : public FileDTO
+class CurrencyDO
 {
-	// 代码 
+	// 代码 Code
 	CC_SYNTHESIZE(string, code, Code);
-	// 名称 
+	// 名称 name
 	CC_SYNTHESIZE(string, name, Name);
-	// 本币 
+	// 本币 isFunctional
 	CC_SYNTHESIZE(string, isFunctional, IsFunctional);
-	// 启用 
+	// 启用 isEnabled
 	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
-	// 创建人 
+	// 创建人 createBy
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	// 创建时间 
+	// 创建时间 createTime
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// 修改人 
+	// 修改人 updateBy
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	// 修改时间
+	// 修改时间 updateTime
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
-	// 绑定JSON转换方法
-	friend void from_json(const json& j, CurrencyDTO& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, code);
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, isFunctional);
-		BIND_FROM_TO_NORMAL(j, t, isEnabled);
-		BIND_FROM_TO_NORMAL(j, t, createBy);
-		BIND_FROM_TO_NORMAL(j, t, createTime);
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
-		BIND_FROM_TO_NORMAL(j, t, remarks);
+	CurrencyDO() {
+		code = "1";
+		name = "";
+		isFunctional = "1";
+		isEnabled = "1";
+		remarks = "";
+		createTime = "";
+		createBy = "";
+		updateTime = "";
+		updateBy = "";
 	}
-
-	BIND_TO_JSON(CurrencyDTO, code, name, isFunctional, isEnabled, createBy, createTime, updateBy, updateTime, remarks);
 };
 
-#endif // !_CURRENCY_DTO_
+#endif // !_CURRENCY_DO_
