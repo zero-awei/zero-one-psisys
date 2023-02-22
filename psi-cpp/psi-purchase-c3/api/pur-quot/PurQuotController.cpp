@@ -51,20 +51,25 @@ JsonVO<PurQuotIntoVO> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& d
 
 //查询单据列表
 JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload) {
+	//暂未开始数据校验
+
 	//定义一个Service
 	PurQuotService service;
-	//查询数据
-	PageVO<PurQuotFindBillVO> result = service.listPurQuotFindBillVO(query);
+	//构建返回对象
+	PageVO<PurQuotFindBillVO> result	= service.listPurQuotFindBillVO(query);
 	//响应结果
 	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
-
 }
 
 
 
 //查询指定单据列表
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
-	//构建一个测试VO
+	//暂时未进行数据校验
+
+
+
+	
 	PurQuotFindDetailBillVO vo;
 	//响应结果
 	return JsonVO<PurQuotFindDetailBillVO>(vo, RS_SUCCESS);

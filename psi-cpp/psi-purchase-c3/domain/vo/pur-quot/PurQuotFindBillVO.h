@@ -64,7 +64,7 @@ class PurQuotFindBillVO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurQuotFindBillVO, bill_no, bill_date, bill_date, subject, src_no, supplier_id,
+	BIND_TO_JSON(PurQuotFindBillVO, bill_no, bill_date, subject, src_no, supplier_id,
 		supplier_name, delivery_time, qty, amt, bill_stage, is_effective, is_closed, is_voided,
 		payment_method, delivery_place, contact, phone, fax, email, remark, is_auto, is_rubric,
 		effective_time, approver, create_time, create_by, sys_org_code, update_time, update_by);

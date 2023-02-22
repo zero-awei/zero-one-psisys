@@ -33,7 +33,6 @@ uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 		sql << " AND is_voided=?";
 		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_voided());
 	}
-	SqlParams params;
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
