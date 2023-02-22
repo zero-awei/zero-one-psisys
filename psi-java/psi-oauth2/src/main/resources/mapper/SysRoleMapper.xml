@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.oauth2.mapper.SysRoleMapper">
+
+    <resultMap id="BaseResultMap" type="com.zeroone.star.oauth2.entity.SysRole">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+        <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+    </resultMap>
+
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT id, role_name, role_code, description FROM sys_role WHERE id IN
+            (select role_id from sys_user_role where user_id=#{userId});
+    </select>
+
+    <select id="selectByMenuPath" resultMap="BaseResultMap">
+        select id, role_code from sys_role where id
+            in (select role_id from sys_role_menu where menu_id=(
+                select id from sys_menu where url=#{path}))
+    </select>
+</mapper>

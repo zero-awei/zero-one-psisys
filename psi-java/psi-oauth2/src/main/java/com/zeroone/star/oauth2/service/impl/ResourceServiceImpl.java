@@ -1,9 +1,9 @@
 package com.zeroone.star.oauth2.service.impl;
 
-import com.zeroone.star.oauth2.entity.Menu;
-import com.zeroone.star.oauth2.entity.Role;
-import com.zeroone.star.oauth2.service.IMenuService;
-import com.zeroone.star.oauth2.service.IRoleService;
+import com.zeroone.star.oauth2.entity.SysMenu;
+import com.zeroone.star.oauth2.entity.SysRole;
+import com.zeroone.star.oauth2.service.ISysMenuService;
+import com.zeroone.star.oauth2.service.ISysRoleService;
 import com.zeroone.star.project.constant.RedisConstant;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ import java.util.TreeMap;
  * <p>版权：&copy;01星球</p>
  * <p>地址：01星球总部</p>
  *
- * @author 阿伟学长
+ * @author Gerins
  * @version 1.0.0
  */
 @Service
@@ -30,22 +30,22 @@ public class ResourceServiceImpl {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
     @Resource
-    private IMenuService menuService;
+    private ISysMenuService menuService;
     @Resource
-    private IRoleService roleService;
+    private ISysRoleService roleService;
 
     @PostConstruct
     public void init() {
         // 定义缓存map
         Map<String, List<String>> resourceRolesMap = new TreeMap<>();
         // 1 获取所有菜单
-        List<Menu> tMenus = menuService.listAllLinkUrl();
+        List<SysMenu> tMenus = menuService.listAllLinkUrl();
         tMenus.forEach(menu -> {
             // 2 获取菜单对应的角色
-            List<Role> rolesMenu = roleService.listRoleByMenuPath(menu.getLinkUrl());
+            List<SysRole> rolesMenu = roleService.listRoleByMenuPath(menu.getUrl());
             List<String> roles = new ArrayList<>();
-            rolesMenu.forEach(role -> roles.add(role.getKeyword()));
-            resourceRolesMap.put(menu.getLinkUrl(), roles);
+            rolesMenu.forEach(role -> roles.add(role.getRoleCode()));
+            resourceRolesMap.put(menu.getUrl(), roles);
         });
 
         //将资源缓存到redis
