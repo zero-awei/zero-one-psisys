@@ -72,23 +72,17 @@ public class SysMenuController {
     }
 
     @SneakyThrows
-    @ApiOperation(value = "查询单一菜单")
-    @GetMapping("/query")
-    public JsonVO<MenuVO> queryMenu(String id) {
-
-        SysMenuQuery sysMenuQuery = new SysMenuQuery();
-        sysMenuQuery.setId(id);
-
-        return iSysMenuService.querySingle(sysMenuQuery);
-    }
-
-    @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/queryMenus")
-    public JsonVO<List<MenuVO>> queryMenus(String parentId) {
+    public JsonVO<List<MenuVO>> queryMenus(String id, String parentId) {
         //一级菜单parentId为0
         SysMenuQuery sysMenuQuery = new SysMenuQuery();
-        sysMenuQuery.setParentId(parentId);
+        if (id != null){
+            sysMenuQuery.setId(id);
+        }
+        if (parentId != null){
+            sysMenuQuery.setParentId(parentId);
+        }
 
         return iSysMenuService.queryMenus(sysMenuQuery);
 

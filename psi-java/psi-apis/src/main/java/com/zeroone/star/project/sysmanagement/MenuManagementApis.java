@@ -4,6 +4,9 @@ import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
+import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
+
+import java.util.List;
 
 /**
  * 菜单管理
@@ -14,11 +17,11 @@ public interface MenuManagementApis {
 
 
     /**
-     * 查询单一菜单
+     * 查询菜单
      * @param sysMenuQuery
      * @return
      */
-    JsonVO<MenuTreeVO> querySingle(SysMenuQuery sysMenuQuery);
+    JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery);
 
     /**
      * 新增菜单

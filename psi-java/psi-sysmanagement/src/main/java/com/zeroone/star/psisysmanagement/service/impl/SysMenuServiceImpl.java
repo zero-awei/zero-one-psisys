@@ -33,29 +33,32 @@ import java.util.function.DoubleBinaryOperator;
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements ISysMenuService {
 
     @Override
-    public JsonVO<MenuVO> querySingle(SysMenuQuery sysMenuQuery) {
-        SysMenu sysMenu = baseMapper.selectById(sysMenuQuery.getId());
-
-        MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
-
-        return menuVO == null ?
-                JsonVO.create(null, ResultStatus.FAIL) : JsonVO.create(menuVO, ResultStatus.SUCCESS);
-    }
-
-    @Override
     public JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery) {
 
-        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("parent_id", sysMenuQuery.getParentId());
-
-        List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
         ArrayList<MenuVO> menuVOS = new ArrayList<>();
-        for (SysMenu sysMenu : sysMenus) {
+        String id = sysMenuQuery.getId();
+        String parentId = sysMenuQuery.getParentId();
+
+        //传入的参数有id时，返回该id对应的菜单
+        if (id != null) {
+            SysMenu sysMenu = baseMapper.selectById(id);
             MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
             menuVOS.add(menuVO);
         }
 
-        return JsonVO.create(menuVOS, ResultStatus.SUCCESS);
+        //传入的参数有parentId时，返回该parentId对应的子id(次级子节点，非全部子节点)
+        if (parentId != null) {
+            QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("parent_id", sysMenuQuery.getParentId());
+            List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
+            for (SysMenu sysMenu : sysMenus) {
+                MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
+                menuVOS.add(menuVO);
+            }
+        }
+
+        return menuVOS.size() == 0 ?
+                JsonVO.create(null, ResultStatus.FAIL) : JsonVO.create(menuVOS, ResultStatus.SUCCESS);
     }
 
     @Override
