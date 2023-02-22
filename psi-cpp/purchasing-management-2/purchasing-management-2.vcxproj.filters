@@ -134,5 +134,17 @@
     <ClInclude Include="api\PurCom\PurComController.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\PurCom\PurComEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurCom\PurComDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurInquiry\PurInquiryEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
