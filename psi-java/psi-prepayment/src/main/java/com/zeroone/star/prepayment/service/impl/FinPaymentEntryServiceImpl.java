@@ -1,4 +1,3 @@
-package com.zeroone.star.prepayment.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -12,6 +11,7 @@ import com.zeroone.star.project.dto.prepayment.FinPaymentEntryDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +55,18 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
                 }
         ).collect(Collectors.toList());
         return saveBatch(finPaymentEntryList);
+    }
+
+    /**
+     * Author: Kong
+     */
+    @Autowired
+    FinPaymentEntryMapper finPaymentEntryMapper;
+
+    @Override
+    public int insert(FinPaymentEntry finPaymentEntry) {
+        int insert = finPaymentEntryMapper.insert(finPaymentEntry);
+        return insert==1?1:0;
     }
 
 }

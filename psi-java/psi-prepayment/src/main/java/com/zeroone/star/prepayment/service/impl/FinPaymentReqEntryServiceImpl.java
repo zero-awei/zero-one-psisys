@@ -1,4 +1,3 @@
-package com.zeroone.star.prepayment.service.impl;
 
 import com.zeroone.star.prepayment.entity.FinPaymentReqEntry;
 import com.zeroone.star.prepayment.mapper.FinPaymentReqEntryMapper;

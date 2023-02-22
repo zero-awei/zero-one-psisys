@@ -1,10 +1,10 @@
-package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.AuditDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
+import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
 /**
@@ -31,4 +31,10 @@ public interface IFinPaymentService extends IService<FinPayment> {
      */
     JsonVO<String> auditById(AuditDTO auditDTO, UserDTO userDTO);
 
+    /**
+     * 预付操作
+     * @param prepaymentDTO
+     * @return
+     */
+    public int prepay(PrepaymentDTO prepaymentDTO);
 }

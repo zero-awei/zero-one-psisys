@@ -1,8 +1,6 @@
 package com.zeroone.star.project.prepayment;
 
-import com.zeroone.star.project.components.jwt.PayloadDTO;
 import com.zeroone.star.project.dto.prepayment.*;
-import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.vo.JsonVO;
 
 import com.zeroone.star.project.query.prepayment.DocListQuery;
@@ -21,6 +19,17 @@ import com.zeroone.star.project.vo.prepayment.SupplierVO;
 import java.util.List;
 
 import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.zeroone.star.project.dto.prepayment.*;
+import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.query.prepayment.DocListQuery;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.*;
+import com.zeroone.star.project.query.prepayment.PreDetQuery;
+import org.springframework.http.ResponseEntity;
+import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -49,7 +58,6 @@ public interface PrepaymentApis {
      * author forever爱
      */
     JsonVO<String> auditById(AuditDTO auditDTO);
-
 
     /**
      * 单据列表查询
@@ -114,13 +122,14 @@ public interface PrepaymentApis {
      */
     public JsonVO<List<SupplierVO>> querySupplierList();
 
+
     /**
-     * 获取采购项目清单（无申请）
+     * 获取采购项目清单
      * param purchaseListQuery
      * return 采购项目清单
      * author 空
      */
-//    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+    public JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
     /**
      * 获取采购项目清单（有申请）
@@ -128,7 +137,29 @@ public interface PrepaymentApis {
      * return 采购项目清单
      * author 空
      */
-//    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+    public JsonVO<PageVO<PurOrderVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+
+
+    /**
+     * 获取系统用户列表
+     * @return
+     * author 空
+     */
+    public JsonVO<List<SysUserVO>> getSysUsersName();
+
+    /**
+     * 获取组织机构表
+     * @return
+     * author 空
+     */
+    public JsonVO<List<SysDepartVO>> getSysDepart();
+
+    /**
+     * 获取银行账户列表
+     * @return
+     * author 空
+     */
+    public JsonVO<List<BasBankAccountVO>> getBankAccount();
 
     /**
      * 导入功能

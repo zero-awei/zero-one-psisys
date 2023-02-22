@@ -2,19 +2,21 @@ package com.zeroone.star.project.vo.prepayment;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
 /**
- * Author: Kong
- * icense: (C) Copyright 2005-2019, xxx Corporation Limited.
- * Contact: xxx@xxx.com
- * Date: 2023-02-11 21:20
- * Version: 1.0
- * Description:
+ * @Author: Kong
+ * @License: (C) Copyright 2005-2019, xxx Corporation Limited.
+ * @Contact: xxx@xxx.com
+ * @Date: 2023-02-11 21:20
+ * @Version: 1.0
+ * @Description:
  */
 @Data
-@ApiModel("供应商列表")
+@AllArgsConstructor
+@ApiModel("供应商显示对象")
 public class SupplierVO {
     /**
      * id
@@ -27,5 +29,8 @@ public class SupplierVO {
      */
     @ApiModelProperty(value = "助记名",example = "00001 公交卡")
     private String aux_name;
+
+
+
 
 }

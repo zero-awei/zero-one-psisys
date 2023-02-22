@@ -1,9 +1,8 @@
 package com.zeroone.star.project.vo.prepayment;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -16,8 +15,8 @@ import java.time.LocalDateTime;
  * @author Kong
  * @since 2023-02-11
  */
-@Getter
-@Setter
+@Data
+@ApiModel("采购明细对象")
 public class PurOrderEntryVO{
 //TODO billDate需要单独传
     /**

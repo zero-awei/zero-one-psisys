@@ -1,7 +1,13 @@
-package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.PurOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.PurOrderVO;
+
+import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.PurOrderVO;
 
 /**
  * <p>
@@ -13,4 +19,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IPurOrderService extends IService<PurOrder> {
 
+    /**
+     * 获取无申请采购单（分页）
+     * @param condition 查询条件
+     * @return 无申请采购单
+     */
+    public PageVO<PurOrderVO> getPurOrder(PurchaseListQuery condition);
 }

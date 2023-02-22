@@ -44,14 +44,15 @@ public class FinPaymentEntryDTO {
     @ApiModelProperty(value = "源单号",example = "TESTSQ-202302-002")
     private String srcNo;
 
-    @ApiModelProperty(value = "源单id",example = "123456")
-    private String srcBillId;
-
     @ApiModelProperty(value = "备注",example = "备注")
     private String remark;
 
-    @ApiModelProperty(value = "结算方式",example = "31 （银行代扣）")
+    @ApiModelProperty(value = "结算方式",example = "31")
     private String settleMethod;
+
+    @ApiModelProperty(value = "源单id",example = "1594317750844637186")
+    private String srcBillId;
+
 
 
 

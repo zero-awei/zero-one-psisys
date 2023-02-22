@@ -1,4 +1,3 @@
-package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
@@ -20,4 +19,11 @@ public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
      * author forever爱
      */
     public boolean updateById(ModifyDTO modifyDTO);
+
+    /**
+     * 插入
+     * @param finPaymentEntry
+     * @return
+     */
+    public int insert(FinPaymentEntry finPaymentEntry);
 }

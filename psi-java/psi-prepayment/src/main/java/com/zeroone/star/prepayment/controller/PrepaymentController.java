@@ -28,6 +28,37 @@ import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import com.zeroone.star.prepayment.entity.FinPaymentEntry;
+import com.zeroone.star.prepayment.entity.FinPaymentReqEntry;
+import com.zeroone.star.prepayment.service.*;
+import com.zeroone.star.project.dto.prepayment.*;
+import com.zeroone.star.project.prepayment.PrepaymentApis;
+import com.zeroone.star.project.query.prepayment.PreDetQuery;
+import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
+import com.zeroone.star.project.query.prepayment.DocListQuery;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
+import javax.json.Json;
 
 
 @RestController
@@ -39,7 +70,25 @@ public class PrepaymentController implements PrepaymentApis {
     IPrepaymentService prepaymentService;
     @Resource
     UserHolder userHolder;
+    @Resource
+    IPrepaymentService service;
 
+    @Autowired
+    ISysDepartService departService;
+    @Autowired
+    IBasBankAccountService basBankAccountService;
+    @Autowired
+    ISysUserService userService;
+    @Autowired
+    IBasSupplierService supplierService;
+    @Autowired
+    IFinPaymentReqService finPaymentReqService;
+    @Autowired
+    IFinPaymentService finPaymentService;
+    @Autowired
+    IFinPaymentEntryService finPaymentEntryService;
+    @Autowired
+    IPurOrderService purOrderService;
     /**
      * 修改采购预付单功能
      * author forever爱
@@ -154,31 +203,93 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "添加采购预付单功能（返回值data值表示创建成功与否）")
     @Override
     public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO) {
-        return null;
+        int res = finPaymentService.prepay(prepaymentDTO);
+        if (res==1){
+            return JsonVO.success("添加成功");
+        }else {
+            return JsonVO.fail("添加失败");
+        }
     }
 
+    /**
+     * 获取采购项目清单（无申请）
+     * author 空
+     * since 2023-02-13
+     */
+    @GetMapping("list-purhcaserequisitions")
+    @ApiOperation(value = "获取采购清单（无申请）")
+    @Override
+    public JsonVO<PageVO<PurOrderVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+        PageVO<PurOrderVO> purOrder = purOrderService.getPurOrder(purchaseListQuery);
+        return JsonVO.success(purOrder);
+    }
+
+    /**
+     * 获取采购项目清单（有申请）
+     * author 空
+     * since 2023-02-13
+     */
+    @GetMapping("list-appliedpurhcaserequisitions")
+    @ApiOperation(value = "获取采购清单（有申请）")
+    @Override
+    public JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
+        PageVO<FinPaymentReqVO> finPaymentReq = finPaymentReqService.getFinPaymentReq(purchaseListQuery);
+        return JsonVO.success(finPaymentReq);
+    }
+
+
+    /**
+     * 获取供应商列表
+     * author 空
+     * since 2023-02-13
+     */
     @GetMapping("getSuppliers")
     @ApiOperation(value = "获取供应商列表")
     @Override
     public JsonVO<List<SupplierVO>> querySupplierList() {
-        return null;
+        List<SupplierVO> supplierList = supplierService.getSupplierList();
+        return JsonVO.success(supplierList);
     }
 
+    /**
+     * 获取系统用户列表
+     * author 空
+     * since 2023-02-13
+     */
+    @GetMapping("sys_user,realname,username")
+    @ApiOperation(value = "获取用户字典")
+    @Override
+    public JsonVO<List<SysUserVO>> getSysUsersName() {
+        List<SysUserVO> sysUserList = userService.getSysUserList();
+        return JsonVO.success(sysUserList);
+    }
 
+    /**
+     * 获取组织机构表
+     * author 空
+     * since 2023-02-13
+     */
+    @GetMapping("sys_depart,depart_name,org_code")
+    @ApiOperation(value = "获取部门字典")
+    @Override
+    public JsonVO<List<SysDepartVO>> getSysDepart() {
+        List<SysDepartVO> departs = departService.getDeparts();
+        return JsonVO.success(departs);
+    }
 
-//    @GetMapping("list-purhcaserequisitions")
-//    @ApiOperation(value = "获取采购清单（有申请）")
-//    @Override
-//    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-//        return null;
-//    }
-//
-//    @GetMapping("list-purhcaserequisitions")
-//    @ApiOperation(value = "获取采购清单（无申请）")
-//    @Override
-//    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery) {
-//        return null;
-//    }
+    /**
+     * 获取银行账户列表
+     * author 空
+     * since 2023-02-13
+     */
+    @GetMapping("bas_bank_account,account_no,id")
+    @ApiOperation(value = "获取银行账户列表")
+    @Override
+    public JsonVO<List<BasBankAccountVO>> getBankAccount() {
+        List<BasBankAccountVO> basBankAccountList = basBankAccountService.getBasBankAccountList();
+        return JsonVO.success(basBankAccountList);
+    }
+
 
     /**
      * 付款申请单分录明细列表查询
