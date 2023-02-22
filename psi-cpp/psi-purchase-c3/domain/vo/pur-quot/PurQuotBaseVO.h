@@ -84,7 +84,4 @@ public:
 		contact, phone, fax, email, remark, approval_remark, attachment, approval_result_type, effective_time,
 		approver, bpmi_instance_id, bpmi_instance_id, sys_org_code, create_by, update_time, update_by, is_auto, is_rubric, src_bill_type);
 };
-
-
-
 #endif
