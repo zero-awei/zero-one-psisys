@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "BasMaterialController.h"
-#include <service/BasMaterial/BasMaterialService.h>
-
+#include "../../service/BasMaterial/BasMaterialService.h"
+/*
 //普通查询数据
 JsonVO<PageVO<BasMaterialVO>> execQueryBasMaterial(const BasMaterialQuery& query, const PayloadDTO& payload) {
 
