@@ -71,6 +71,21 @@ const routes = [
     name: '3',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
+  },
+  {
+    path: '/sysmanagement/rolemanagement',
+    name: 'rolemanagement',
+    component: () => import('@/views/sysmanage/RoleManage.vue')
+  },
+  {
+    path: '/sysmanagement/menumanagement',
+    name: 'menumanagement',
+    component: () => import('@/views/sysmanage/MenuManage.vue')
+  },
+  {
+    path: '/sysmanagement/usermanagement',
+    name: 'usermanagement',
+    component: () => import('@/views/sysmanage/UserManage.vue')
   }
 ]
 

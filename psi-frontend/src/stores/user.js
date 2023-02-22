@@ -9,38 +9,52 @@ let testMenus = [
     children: [
       {
         id: 2,
-        text: '系统管理1',
-        href: '/un-1',
+        text: '角色管理',
+        href: '/sysmanagement/rolemanagement',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 3,
-        text: '系统管理2',
-        href: '/un-2',
+        text: '菜单管理',
+        href: '/sysmanagement/menumanagement',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 4,
-        text: '系统管理3',
-        href: '/un-3',
+        text: '用户管理',
+        href: '/sysmanagement/usermanagement',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 5,
-        text: '系统管理4',
+        text: '部门管理',
         href: '/un-4',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 6,
-        text: '系统管理5',
+        text: '组织结构管理',
         href: '/un-5',
         icon: 'IconSetting',
         pid: 1
+      },
+      {
+        id: 1,
+        text: '分类字典',
+        icon: 'IconTickets',
+        pid: 997,
+        href: '/pay/payable/check'
+      },
+      {
+        id: 1,
+        text: '通讯录',
+        icon: 'IconTickets',
+        pid: 997,
+        href: '/pay/payable/check'
       }
     ]
   },
@@ -254,7 +268,8 @@ export const userStore = defineStore('user', {
         '/login/get-menus',
         null
       )
-      this.menus = data.data
+      // this.menus = data.data
+      this.menus = testMenus
       // 在后端返回菜单列表中添加组件列表路由
       this.menus.push(componentRouter)
       this.menus.push(yewuRouter)
