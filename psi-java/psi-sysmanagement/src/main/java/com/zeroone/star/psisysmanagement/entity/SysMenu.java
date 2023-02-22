@@ -1,24 +1,17 @@
 package com.zeroone.star.psisysmanagement.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
- * <p>
- * 
- * </p>
- *
- * @author 归、深夜梦想家 
- * @since 2023-02-14
- */
+*
+* @Author:阿狸
+* @Version:1.1
+*/
 @Getter
 @Setter
 @TableName("sys_menu")

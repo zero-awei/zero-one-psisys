@@ -12,11 +12,17 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+*
+* @Author:阿狸
+* @Version:1.1
+*/
 @Service
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
 
+
     @Override
-    public List<MenuQuery> showList(String RId) {
+    public List<MenuQuery> listAll(String RId) {
         QueryWrapper<SysMenu> listMenu = new QueryWrapper<>();
         listMenu.eq("parent_id",RId);
         List<SysMenu> menus = baseMapper.selectList(listMenu);
@@ -35,7 +41,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
      * @return
      */
     @Override
-    public Boolean addMenuOrPermission(MenuQuery menu) { // 添加菜单
+    public Boolean saveMenuOrPermission(MenuQuery menu) { // 添加菜单
         SysMenu sysMenu = new SysMenu();
         BeanUtil.copyProperties(menu,sysMenu);
         int num = baseMapper.insert(sysMenu);

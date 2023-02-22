@@ -6,11 +6,31 @@ import com.zeroone.star.psisysmanagement.entity.Permission;
 
 import java.util.List;
 
+/**
+*
+* @Author:阿狸
+* @Version:1.1
+*/
 public interface IPermissionService extends IService<Permission> {
 
-    List<PermissionQuery> showList(String RId);
+    /**
+     * 查询角色权限
+     * @param RId
+     * @return 角色的含有的相关权限列表
+     */
+    List<PermissionQuery> listAll(String RId);
 
-    Boolean addMenuOrPermission(PermissionQuery permission) ;
+    /**
+     * 添加权限
+     * @param permission
+     * @return 是否添加成功
+     */
+    Boolean saveMenuOrPermission(PermissionQuery permission) ;
 
+    /**
+     * 删除权限
+     * @param permissionId
+     * @return 权限是否删除成功
+     */
     Boolean deleteMenuOrPermission(String permissionId) ;
 }

@@ -1,7 +1,6 @@
 package com.zeroone.star.project.query.sysmanagement.rolemanagement;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,6 +12,11 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+/**
+*
+* @Author:阿狸
+* @Version:1.1
+*/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
