@@ -51,10 +51,17 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
     //用于匹配大写字母
     private static Pattern humpPattern = Pattern.compile("[A-Z]");
     //匹配查询条件
-    private static Map<String,String> advanceQuery ;
+    /*private static Map<String,String> advanceQuery ;
     static {
+        advanceQuery.put("编码","code");
+        advanceQuery.put("名称","name");
 
     }
+
+    public static void setAdvanceQuery(Map<String, String> advanceQuery) {
+        CustomerServiceImpl.advanceQuery = advanceQuery;
+    }*/
+
     @Override
     /**
     查询指定的客户
@@ -62,15 +69,6 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
      @return CustomerVO
     */
     public CustomerShowVO getById(String id) {
-        /*多表查询的方法*/
-        /*Customer customer = customerMapper.getCustomerById(id);
-        if(customer!=null){
-            System.out.println(customer.toString());
-            //CustomerVO customervo = BeanUtil.copyProperties(customer, CustomerVO.class);
-            CustomerVO customervo = copyCustomerToCutomerVO(customer);
-            System.out.println(customervo.toString());
-            return customervo;
-        }*/
         Customer customer = customerMapper.selectById(id);
         //要判断是否为空，虽然正常不可能传输错误（因为是点击，用户没有办法乱输入），但是怕前端传输数据失败（错误），防止程序崩溃
         if(customer!=null){
@@ -110,11 +108,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
         if(cusmap.size()==0){
             return null;
         }
-        //使用List来接受查询level和cate对象
-        List<CusCategory> cusCategoryList = cusCategoryMapper.selectList(null);
-        List<CusLevel> cusLevelList = cusLevelMapper.selectList(null);
-        Map<String,String> cusCategorymap= cusCategoryList.stream().collect(Collectors.toMap(CusCategory::getId,CusCategory::getName));
-        Map<String,String> cuslevelmap = cusLevelList.stream().collect(Collectors.toMap(CusLevel::getId,CusLevel::getName));
+
         //构造page<Customer>对象
         Page<Customer> customerVOPage = new Page<>(query.getPageIndex(), query.getPageSize());
         //构造条件查询对象
@@ -130,20 +124,15 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
         //空的话就会报错
         Page<Customer> customerList = customerMapper.selectPage(customerVOPage,customerQueryWrapper);
         List<Customer> customerListnew =  customerList.getRecords();
-        for(Customer c:customerListnew){
-                if(c.getCustomerCategory()!=null){
-                    c.setCustomerCategory(cusCategorymap.get(c.getCustomerCategory()));
-                }
-                if(c.getCustomerLevel()!=null){
-                    c.setCustomerLevel(cuslevelmap.get(c.getCustomerLevel()));
-                }
-        }
-        //customerList.setRecords(customerListnew);
-        PageVO<CustomerShowVO> customerVOPageVO = PageVO.create(customerList,CustomerShowVO.class);
-        return customerVOPageVO;
+        //处理客户等级和客户
+        codeToname(customerListnew);
+        //返回PageVO对象
+        return PageVO.create(customerList,CustomerShowVO.class);
 
     }
-
+    /**
+     *
+     * */
     @Override
     public PageVO<CustomerShowVO> getByAdvancedCondition(CustomerCdvancedQuery customerCdvancedQuery) {
         //生成一个条件查询
@@ -154,16 +143,10 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
             Page<Customer> customerVOPage = new Page<>(customerCdvancedQuery.getPageIndex(), customerCdvancedQuery.getPageSize());
             Page<Customer> customerList = customerMapper.selectPage(customerVOPage,wrapper);
             List<Customer> customerListnew =  customerList.getRecords();
-            /*for(Customer c:customerListnew){
-                if(c.getCustomerCategory()!=null){
-                    c.setCustomerCategory(cusCategorymap.get(c.getCustomerCategory()));
-                }
-                if(c.getCustomerLevel()!=null){
-                    c.setCustomerLevel(cuslevelmap.get(c.getCustomerLevel()));
-                }
-            }*/
-            PageVO<CustomerShowVO> customerVOPageVO = PageVO.create(customerList,CustomerShowVO.class);
-            return customerVOPageVO;
+            //处理客户等级和客户
+            codeToname(customerListnew);
+            //返回PageVO对象
+            return PageVO.create(customerList,CustomerShowVO.class);
         }
         return null;
     }
@@ -281,16 +264,8 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
     public static boolean toWrapper(String name, String condition, String value, QueryWrapper<Customer> wrapper){
         if(name.equals("tax_scale")){
             //判断value值是否全是数字（如果包含有其他就直接是非法查询）
-            String bigStr;
-            try {
-                /** 先将str转成BigDecimal，然后在转成String */
-                bigStr = new BigDecimal(value).toString();
-            } catch (Exception e) {
-                /** 如果转换数字失败，说明该str并非全部为数字 */
 
-                return false;
-            }
-            //转换成数值类型
+
 
         }
         //等于查询
@@ -341,7 +316,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
         }
         //在...之中查询
         if(condition.equals("在之中")){
-            //要处理value先，先检查是不是以逗号的形式分隔
+            //要处理value先，先检查是不是以逗号的形式分隔（如果不存在，就是非法查询）
             StringBuilder s = new StringBuilder();
 
             //wrapper
@@ -351,9 +326,24 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
     }
     /**
      * 把客户对象中的等级和分类的编码转换成名称
-     * @param customer 客户对象
+     * @param  customerListnew 客户对象数组
      * */
-    private static void codeToname(Customer customer){
+    private  void codeToname(List<Customer> customerListnew){
+        //使用List来接受查询level和cate对象
+        List<CusCategory> cusCategoryList = cusCategoryMapper.selectList(null);
+        List<CusLevel> cusLevelList = cusLevelMapper.selectList(null);
+        //map<CusCategory.getId,CusCategory.getName>
+        Map<String,String> cusCategorymap= cusCategoryList.stream().collect(Collectors.toMap(CusCategory::getId,CusCategory::getName));
+        Map<String,String> cuslevelmap = cusLevelList.stream().collect(Collectors.toMap(CusLevel::getId,CusLevel::getName));
+        //对每一个customer进行客户种类和客户等级的赋值
+        for(Customer c:customerListnew){
+            if(c.getCustomerCategory()!=null){
+                c.setCustomerCategory(cusCategorymap.get(c.getCustomerCategory()));
+            }
+            if(c.getCustomerLevel()!=null){
+                c.setCustomerLevel(cuslevelmap.get(c.getCustomerLevel()));
+            }
+        }
 
     }
 }
