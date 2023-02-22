@@ -11,8 +11,9 @@ import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.Organ
 import com.zeroone.star.systemmanagement.service.organizationmanagement.OrganizationmanagementService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "组织机构")
 public class OrganizationmanagementController implements OrganizationManagementApis {
 
-    @Autowired
+    @Resource
     private OrganizationmanagementService service;
     /**
      * 查询组织列表
@@ -60,7 +61,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @return
      */
 
-    @ApiOperation("新增组织结构（返回值data值表示插入成功与否）")
+    @ApiOperation("新增组织结构")
     @PostMapping("add") // add
     @Override
     public JsonVO<String> add(OrganizationManagementDTO data) {
@@ -76,7 +77,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @param data 数据
      * @return
      */
-    @ApiOperation("修改组织结构（返回值data值表示更新成功与否）")
+    @ApiOperation("修改组织结构")
     @PutMapping("modify")
     @Override
     public JsonVO<String> modify(OrganizationManagementDTO data) {
@@ -92,7 +93,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
      * @param id 部门id
      * @return
      */
-    @ApiOperation("删除组织结构（返回值data值表示删除成功与否）")
+    @ApiOperation("删除组织结构")
     @DeleteMapping("remove")
     @Override
     public JsonVO<String> remove(String id) {

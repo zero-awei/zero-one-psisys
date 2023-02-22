@@ -130,6 +130,4 @@ public class SysDepart implements Serializable {
      * 更新日期
      */
     private Date updateTime;
-
-
 }
