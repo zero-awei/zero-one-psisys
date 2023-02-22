@@ -50,7 +50,7 @@ public class FinPaymentEntryDTO {
     @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")
     private String srcBillType;
 
-    @ApiModelProperty(value = "源单号",example = "CGYFSQ-221120-001")
+    @ApiModelProperty(value = "源单号",example = "TESTSQ-221120-001")
     private String srcNo;
 
 

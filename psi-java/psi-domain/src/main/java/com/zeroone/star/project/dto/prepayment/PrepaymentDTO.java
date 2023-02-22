@@ -37,7 +37,7 @@ public class PrepaymentDTO {
     @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     private LocalDate billDate;
 
-    @ApiModelProperty(value = "单据编号",example = "CGYF-221120-002")
+    @ApiModelProperty(value = "单据编号",example = "TEST-221120-002")
     private String billNo;
 
     @ApiModelProperty(value = "已核销金额",example = "1000.00")
@@ -55,14 +55,14 @@ public class PrepaymentDTO {
     @ApiModelProperty(value = "备注",example = "remark..")
     private String remark;
 
-    @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")
-    private String srcBillType;
-
-    @ApiModelProperty(value = "源单id",example = "1594317750844637186")
-    private String srcBillId;
-
-    @ApiModelProperty(value = "源单号",example = "CGYFSQ-221120-001")
-    private String srcNo;
+//    @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")
+//    private String srcBillType;
+//
+//    @ApiModelProperty(value = "源单id",example = "1594317750844637186")
+//    private String srcBillId;
+//
+//    @ApiModelProperty(value = "源单号",example = "TESTSQ-221120-001")
+//    private String srcNo;
 
     @ApiModelProperty(value = "单据主题",example = "tittle")
     private String subject;
@@ -72,8 +72,5 @@ public class PrepaymentDTO {
 
     @ApiModelProperty(value = "采购明细单",example = "")
     private List<FinPaymentEntryDTO> finPaymentEntryList;
-
-    @ApiModelProperty(value = "附件",example = "")
-    private MultipartFile file;
 
 }
