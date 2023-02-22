@@ -19,6 +19,9 @@
         background-color="#fff"
         unique-opened
         router
+         :collapse="props.label"
+          @open="handleOpen"
+          @close="handleClose"
       >
         <el-menu-item index="/home">
           <el-icon>
@@ -77,7 +80,23 @@
 
 <script setup>
 import { userStore } from '@/stores/user.js'
+import { ref } from 'vue'
 const store = userStore()
 // 菜单数据
 const menus = store.getMenus
+
+const props = defineProps({
+  label:{
+    type:Boolean,
+    default: () => []
+}
+})
+// console.log(props.label)
+
+const handleOpen = (key, keyPath) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key, keyPath) => {
+  console.log(key, keyPath)
+}
 </script>
