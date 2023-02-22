@@ -23,12 +23,12 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	//检查查询到的数据总数
 	PurQuotDAO dao;
 	uint64_t count = dao.count(obj);
-	//数据量小于等于0, 直接返回pages
+	//数据总数小于等于0, 直接返回pages
 	if (count <= 0)
 	{
 		return pages;
 	}
-	//数据量大于0, 返回分页查询到的VO
+	//数据总数大于0, 返回分页查询到的VO
 	pages.setTotal(count);
 	pages.calcPages();
 	//接收查询到的DO

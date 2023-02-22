@@ -117,7 +117,7 @@
     <ClInclude Include="dao\pur-quot\PurQuotDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-quot\PurQuotEntryBillVO.h">
+    <ClInclude Include="domain\vo\pur-quot\PurQuotBaseVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\pur-quot\PurQuotDO.h">
