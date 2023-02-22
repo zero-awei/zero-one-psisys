@@ -51,9 +51,9 @@ private:
 	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
 	// 新增仓库
-	JsonVO<string> execAddDepot(const DepotDTO& dto);
+	JsonVO<bool> execAddDepot(const DepotDTO& dto);
 	//修改仓库
-	JsonVO<string> execModifyDepot(const DepotDTO& dto);
+	JsonVO<bool> execModifyDepot(const DepotDTO& dto);
 	//删除仓库 
 	JsonVO<bool> execRemoveDepot(const OnlyValueQuery& query);
 	//文件导入

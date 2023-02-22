@@ -36,9 +36,10 @@ public:
 	// 分页查询所有数据
 	PageVO<DepotVO> listAll(const DepotQuery& query);
 	// 保存数据
-	uint64_t saveData(const DepotDTO& dto);
+	int saveData(const DepotDTO& dto);
 	// 删除数据
 	bool removeData(const OnlyValueQuery& query);
+	int modifyDepot(const DepotDTO& dto);
 };
 
 #endif // !_DEPOT_SERVICE_

@@ -29,6 +29,8 @@
  */
 class DepotDTO : public FileDTO
 {
+	// ID
+	CC_SYNTHESIZE(string, id, Id);
 	// 上级
 	CC_SYNTHESIZE(string, pid, Pid);
 	// 名称
@@ -54,6 +56,7 @@ class DepotDTO : public FileDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DepotDTO& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, pid);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);

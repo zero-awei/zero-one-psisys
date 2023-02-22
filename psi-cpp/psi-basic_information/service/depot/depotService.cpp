@@ -21,7 +21,7 @@
 #include "../../../lib-common/include/SnowFlake.h"
 
 const int datacenterId = 1;
-const int machineId = 1;
+const int machineId = 2;
 
 PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 {
@@ -58,7 +58,7 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	return pages;
 }
 
-uint64_t DepotService::saveData(const DepotDTO& dto)
+int DepotService::saveData(const DepotDTO& dto)
 {
 	//组装数据
 	DepotDO data;
@@ -82,4 +82,20 @@ bool DepotService::removeData(const OnlyValueQuery& query)
 	id.setId(query.getId());
 	DepotDAO dao;
 	return dao.deleteDepot(id);
+}
+
+int DepotService::modifyDepot(const DepotDTO& dto)
+{
+	//组装数据
+	DepotDO data;
+	data.setId(dto.getId());
+	data.setName(dto.getName());
+	data.setCode(dto.getCode());
+	data.setAuxName(dto.getAuxName());
+	data.setPhone(dto.getPhone());
+	data.setStart(dto.getStart());
+	data.setRemarks(dto.getRemarks());
+	//执行数据添加
+	DepotDAO dao;
+	return dao.update(data);
 }

@@ -68,10 +68,10 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 }
 
 
-uint64_t DepotDAO::insertDepot(const DepotDO& iObj)
+int DepotDAO::insertDepot(const DepotDO& iObj)
 {
 	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
 }
 
 
@@ -79,4 +79,11 @@ int DepotDAO::deleteDepot(const DepotDO& iObj)
 {
 	string sql = "DELETE FROM `bas_warehouse` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s", iObj.getId());
+}
+
+int DepotDAO::update(const DepotDO& uObj)
+{
+	// 缺了修改人和修改时间
+	string sql = "UPDATE `bas_warehouse` SET `name`=?, `code`=?, `aux_name`=?, `phone`=?, `is_enabled`=?, `remark`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%i%s%s", uObj.getName(), uObj.getCode(), uObj.getAuxName(), uObj.getPhone(), uObj.getStart(), uObj.getRemarks(), uObj.getId());
 }

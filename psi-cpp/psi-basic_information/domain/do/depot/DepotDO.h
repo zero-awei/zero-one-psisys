@@ -30,6 +30,8 @@ class DepotDO
 	CC_SYNTHESIZE(string, id, Id);
 	// Pid
 	CC_SYNTHESIZE(string, pid, Pid);
+	// ×Ó¼¶
+	CC_SYNTHESIZE(string, hasChild, HasChild);
 	// ÐÕÃû
 	CC_SYNTHESIZE(string, name, Name);
 	// ±àºÅ

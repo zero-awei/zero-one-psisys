@@ -35,27 +35,34 @@ JsonVO<DepotActionInfoVO> DepotController::execQueryActionInfo(const OnlyValueQu
     return JsonVO<DepotActionInfoVO>();
 }
 
-JsonVO<string> DepotController::execAddDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto)
 {
-    JsonVO<string> result;
+    JsonVO<bool> result;
     //定义一个Service
     DepotService service;
     //保存数据
-    uint64_t id = service.saveData(dto);
-    if (id > 0) {
-        result.success(to_string(id));
+    if (service.saveData(dto)) {
+        result.success(true);
     }
     else {
-        result.fail(to_string(id));
+        result.fail(false);
     }
     return result;
 }
 
-JsonVO<string> DepotController::execModifyDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto)
 {
+    JsonVO<bool> result;
     //定义一个Service
     DepotService service;
-    return JsonVO<string>();
+    if (service.modifyDepot(dto)) {
+        result.success(true);
+    }
+    else
+    {
+        result.fail(false);
+    }
+    return result;
 }
 
 JsonVO<bool> DepotController::execRemoveDepot(const OnlyValueQuery& query)
