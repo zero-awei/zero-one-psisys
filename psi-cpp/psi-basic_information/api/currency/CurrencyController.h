@@ -31,36 +31,36 @@ class CurrencyController
 {
 public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryCurrency, execQueryCurrency, CurrencyQuery);
-	//CREATE_API_FUN_QUERY_PAYLOAD(queryKidCurrency, execQueryKidCurrency, OnlyValueQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailCurrency, execQueryDetail, OnlyValueQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolCurrency, execQueryActionInfo, OnlyValueQuery);
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryKidCurrency, execQueryKidCurrency, OnlyValueCurrencyQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailCurrency, execQueryDetail, OnlyValueCurrencyQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolCurrency, execQueryActionInfo, OnlyValueCurrencyQuery);
 	CREATE_API_FUN_BODY(addCurrency, execAddCurrency, CurrencyDTO);
 	CREATE_API_FUN_BODY(modifyCurrency, execModifyCurrency, CurrencyDTO);
-	CREATE_API_FUN_BODY(removeCurrency, execRemoveCurrency, OnlyValueQuery);
+	CREATE_API_FUN_BODY(removeCurrency, execRemoveCurrency, OnlyValueCurrencyQuery);
 	// 这里直接用FileDTO报错
 	CREATE_API_FUN_BODY_FILE(addCurrencys, execAddCurrencys, CurrencyDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, CurrencyQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueCurrencyQuery);
 private:
 	//默认查询数据
 	JsonVO<PageVO<CurrencyVO>> execQueryCurrency(const CurrencyQuery& query, const PayloadDTO& payload);
 	//查询子级列表
-	//JsonVO<CurrencyVO> execQueryKidCurrency(const OnlyValueQuery& query, const PayloadDTO& payload);
+	//JsonVO<CurrencyVO> execQueryKidCurrency(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 	// 查询详情
-	JsonVO<CurrencyDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
-	JsonVO<CurrencyActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
+	JsonVO<CurrencyVO> execQueryDetail(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
+	JsonVO<CurrencyActionInfoVO> execQueryActionInfo(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 	//新增仓库
 	JsonVO<PageVO<CurrencyVO>> execAddCurrency(const CurrencyDTO& dto);
 	//修改仓库
 	JsonVO<PageVO<CurrencyVO>> execModifyCurrency(const CurrencyDTO& dto);
 	//删除仓库 
-	JsonVO<PageVO<CurrencyVO>> execRemoveCurrency(const OnlyValueQuery& query);
+	JsonVO<PageVO<CurrencyVO>> execRemoveCurrency(const OnlyValueCurrencyQuery& query);
 	//文件导入
 	JsonVO<PageVO<CurrencyVO>> execAddCurrencys(const CurrencyDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const CurrencyQuery& query, const PayloadDTO& payload);
 	// 通过唯一值批量导出
-	JsonVO<string> execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload);
+	JsonVO<string> execExportExeclOnly(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 };
 
 #endif // _Currency_CONTROLLER_

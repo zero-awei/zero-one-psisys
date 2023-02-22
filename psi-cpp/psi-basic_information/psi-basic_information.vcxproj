@@ -173,8 +173,10 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\currency\CurrencyController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\currency\CurrencyDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\currency\CurrencyService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -186,6 +188,9 @@
     <ClInclude Include="api\CurrencyController.h" />
     <ClInclude Include="api\currency\CurrencyController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\currency\CurrencyDAO.h" />
+    <ClInclude Include="dao\currency\CurrencyMapper.h" />
+    <ClInclude Include="domain\do\currency\CurrencyDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\CurrencyDTO.h" />
     <ClInclude Include="domain\dto\currency\CurrencyDTO.h" />
@@ -203,6 +208,7 @@
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\currency\CurrencyService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

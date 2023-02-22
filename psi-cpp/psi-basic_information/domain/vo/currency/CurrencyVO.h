@@ -48,10 +48,7 @@ public:
 
 class CurrencyDetailVO
 {
-	// 上级
-	CC_SYNTHESIZE(int, previous, Previous);
-	// 下级
-	CC_SYNTHESIZE(int, next, Next);
+
 	// 代码
 	CC_SYNTHESIZE(string, id, Id);
 	// 名称
@@ -64,7 +61,7 @@ class CurrencyDetailVO
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(CurrencyDetailVO, previous, next, id, name, localCurrency, start, remarks);
+	BIND_TO_JSON(CurrencyDetailVO, id, name, localCurrency, start, remarks);
 };
 
 class CurrencyActionInfoVO

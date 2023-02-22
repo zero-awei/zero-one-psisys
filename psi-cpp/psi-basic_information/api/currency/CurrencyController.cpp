@@ -1,17 +1,26 @@
 #include "stdafx.h"
 #include "CurrencyController.h"
+#include "../../service/currency/CurrencyService.h"
 
 JsonVO<PageVO<CurrencyVO>> CurrencyController::execQueryCurrency(const CurrencyQuery& query, const PayloadDTO& payload)
 {
-    return JsonVO<PageVO<CurrencyVO>>();
+    //定义一个Service
+    CurrencyService service;
+    //查询数据
+    PageVO<CurrencyVO> result = service.listAll(query);
+    //响应结果
+    return JsonVO<PageVO<CurrencyVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<CurrencyDetailVO> CurrencyController::execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<CurrencyVO> CurrencyController::execQueryDetail(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload)
 {
-    return JsonVO<CurrencyDetailVO>();
+    CurrencyService service;
+    //查询数据
+    CurrencyVO result = service.listByName(query);
+    return JsonVO<CurrencyVO>(result, RS_SUCCESS);
 }
 
-JsonVO<CurrencyActionInfoVO> CurrencyController::execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<CurrencyActionInfoVO> CurrencyController::execQueryActionInfo(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload)
 {
     return JsonVO<CurrencyActionInfoVO>();
 }
@@ -26,7 +35,7 @@ JsonVO<PageVO<CurrencyVO>> CurrencyController::execModifyCurrency(const Currency
     return JsonVO<PageVO<CurrencyVO>>();
 }
 
-JsonVO<PageVO<CurrencyVO>> CurrencyController::execRemoveCurrency(const OnlyValueQuery& query)
+JsonVO<PageVO<CurrencyVO>> CurrencyController::execRemoveCurrency(const OnlyValueCurrencyQuery& query)
 {
     return JsonVO<PageVO<CurrencyVO>>();
 }
@@ -41,7 +50,7 @@ JsonVO<string> CurrencyController::execExportExecl(const CurrencyQuery& query, c
     return JsonVO<string>();
 }
 
-JsonVO<string> CurrencyController::execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<string> CurrencyController::execExportExeclOnly(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload)
 {
     return JsonVO<string>();
 }
