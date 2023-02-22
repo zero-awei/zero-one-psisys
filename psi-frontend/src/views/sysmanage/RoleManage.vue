@@ -10,7 +10,7 @@
         @selectionChange="selectionChange" @add="addRole">
         <!-- 头部操作行插槽，会渲染在新增、导入、导出的后面 -->
         <template v-slot:batchOperation>
-          <el-button type="primary" @click="batchOperation">批量删除</el-button>
+          <el-button type="primary" @click="batchDeleteRole">批量删除</el-button>
         </template>
         <!-- // 表格列 el-table-column 插槽 -->
         <template v-slot:menuOperation="slot">
@@ -31,7 +31,8 @@
 
     <!-- 对话框 -->
     <!-- 新增 对话框 -->
-    <psi-dialog ref="menuEditDialog" v-model="addDialogVisible" :attrs="addDialogAttrs">
+    <psi-dialog ref="menuEditDialog" v-model="addDialogVisible" :attrs="addDialogAttrs" @determine="determine">
+      <psi-form :items="addRoleItems" :formData="addRoleFormData" :buttonShow="false"></psi-form>
     </psi-dialog>
     <!-- 菜单编辑对话框 -->
     <psi-dialog ref="menuEditDialog" v-model="menuEditDialogVisible" :attrs="menuEditDialogAttrs">
@@ -49,6 +50,8 @@
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { getTableList } from './api/role.js'
 import { format } from '@/apis/date/index.js'
+import { userStore } from '@/stores/user.js'
+const store = userStore()
 // 查询表单相关数据及方法
 const formState = reactive({
   // 查询表单每一项的配置
@@ -253,28 +256,93 @@ onMounted(() => {
   doGetTableList()
 })
 
-// 新增角色
+// 新增角色模块
+const addRoleFormState = reactive({
+  // 查询表单每一项的配置
+  addRoleItems: [
+    {
+      type: 'input',
+      label: '角色名称',
+      prop: 'roleName'
+    },
+    // {
+    //   type: 'input',
+    //   label: '创建人',
+    //   prop: 'createBy'
+    // },
+    // {
+    //   type: 'datePicker',
+    //   label: '创建时间',
+    //   prop: 'createTime',
+    // },
+    {
+      type: 'input',
+      label: '描述',
+      prop: 'description',
+    },
+    // {
+    //   type: 'input',
+    //   label: '角色id',
+    //   prop: 'id',
+    // },
+    // {
+    //   type: 'input',
+    //   label: '角色编码',
+    //   prop: 'roleCode',
+    // },
+    //   type: 'input',
+    //   label: '更新人',
+    //   prop: 'roleCode',
+    // },
+    //   type: 'datePicker',
+    //   label: '更新时间',
+    //   prop: 'dateTime',
+    // },
+  ],
+
+  // 配置数据绑定的字段
+  addRoleFormData: {
+    roleName: '',
+    description: '',
+  },
+})
+const { addRoleItems, addRoleFormData, } = toRefs(addRoleFormState)
+// 新增角色打开对话框
 function addRole() {
   addDialogVisible.value = true
 }
 // 删除角色
 function deleteRole() {
+  // TODO 前后端接口
 
 }
-// 多选
-function selectionChange(val) {
 
-}
-// addDialog配置
+
+
+// 新增角色对话框配置
 
 let addDialogVisible = ref(false)
 const addDialogState = reactive({
   addDialogAttrs: {
     title: '用户新增',
-    width: '50%'
+    width: '50%',
+    determine: true,
   }
 })
 const { addDialogAttrs } = toRefs(addDialogState)
+// 新增角色调用接口
+function determine() {
+  // 前后端联调
+  console.log("pinia00000000", store.getUser)
+  const param = {}
+  param.roleName = addRoleFormData.roleName
+  param.description = addRoleFormData.description
+  const nDate = new Date()
+  param.createTime = format(nDate, 'yyyy-MM-dd hh:mm:ss')
+  param.createBy = store.getUser.roles[0]
+  // param.id =
+
+}
 // menuEditDialog配置
 
 let menuEditDialogVisible = ref(false)
@@ -316,6 +384,17 @@ const { roleEditDialogAttrs } = toRefs(roleEditDialogState)
 //   // 弹出框内的表格数据和data配置
 
 // }
+
+// 多选
+const changeList = ref([])
+function selectionChange(val) {
+  // TODO 写个函数防抖
+  changeList = val
+}
+// 批量删除角色
+function batchDeleteRole() {
+  // TODO 前后端接口
+}
 </script>
 
 <style></style>

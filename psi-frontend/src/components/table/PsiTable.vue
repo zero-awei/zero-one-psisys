@@ -13,16 +13,17 @@
       <el-col :span="12">
         <el-button v-if="attributes.headOperation.indexOf('add') >= 0" type="primary" @click="add"> 新增 </el-button>
         <el-button v-if="attributes.headOperation.indexOf('importData') >= 0" type="primary" @click="importData"> 导入
-    </el-button>
+        </el-button>
         <el-button v-if="attributes.headOperation.indexOf('exportData') >= 0" type="primary" @click="exportData"> 导出
-       </el-button>
+        </el-button>
         <el-button link v-if="attributes.headOperation.indexOf('select') >= 0">
           已选择 &nbsp;<span style="color: #409eff">
             {{ selectNum }} &nbsp;
-      
+
           </span>
           项
         </el-button>
+        <!-- 批量操作插槽 -->
         <slot name="batchOperation">
 
         </slot>
@@ -94,7 +95,7 @@
       <el-pagination v-model:current-page="pagination.currentPage" v-model:page-size="pagination.pageSize"
         :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total" />
       <!--  @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange" -->
+                              @current-change="handleCurrentChange" -->
     </div>
   </div>
 </template>
