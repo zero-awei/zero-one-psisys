@@ -64,13 +64,15 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
         SysMenu sysMenu = BeanUtil.copyProperties(menuDTO, SysMenu.class);
         sysMenu.setCreateTime(LocalDateTime.now());
+        String parentId = menuDTO.getParentId();
 
         //判断是否在二级菜单下继续新增菜单
-        String parentId = menuDTO.getParentId();
-        double parentSort = query().eq("id", parentId).one().getSortNo();
-        String sortString = Double.toString(parentSort);
-        if(sortString.length() == 4 && !sortString.endsWith("0")){
-            return JsonVO.fail(ResultStatus.FAIL);
+        if (!parentId.equals("0")) {
+            double parentSort = query().eq("id", parentId).one().getSortNo();
+            String sortString = Double.toString(parentSort);
+            if (sortString.length() == 4 && !sortString.endsWith("0")) {
+                return JsonVO.fail(ResultStatus.FAIL);
+            }
         }
 
         setSortNo(menuDTO, sysMenu);
@@ -174,11 +176,29 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Transactional
     @Override
     public JsonVO<ResultStatus> updateMenu(MenuDTO menuDTO) {
-        boolean result = update().eq("id", menuDTO.getId())
-                .set("parent_id", menuDTO.getParentId())
-                .set("name", menuDTO.getName())
-                .set("url", menuDTO.getUrl())
-                .set("icon", menuDTO.getIcon())
+
+        SysMenu sysMenu = BeanUtil.copyProperties(menuDTO, SysMenu.class);
+        //判断id与parentId是否重复
+        String parentId = sysMenu.getParentId();
+        if (sysMenu.getId().equals(parentId)) {
+            return JsonVO.fail(ResultStatus.FAIL);
+        }
+        //判断是否在二级菜单下继续新增菜单
+        if (!parentId.equals("0")) {
+            double parentSort = query().eq("id", parentId).one().getSortNo();
+            String sortString = Double.toString(parentSort);
+            if (sortString.length() == 4 && !sortString.endsWith("0")) {
+                return JsonVO.fail(ResultStatus.FAIL);
+            }
+        }
+        setSortNo(menuDTO, sysMenu);
+
+        boolean result = update().eq("id", sysMenu.getId())
+                .set("parent_id", sysMenu.getParentId())
+                .set("name", sysMenu.getName())
+                .set("url", sysMenu.getUrl())
+                .set("icon", sysMenu.getIcon())
+                .set("sort_no", sysMenu.getSortNo())
                 .set("update_time", LocalDateTime.now()).update();
 
         return result ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
