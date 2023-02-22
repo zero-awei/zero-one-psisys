@@ -22,6 +22,9 @@
 #define __PURORDERENTRYDO_H__
 #include "../DoInclude.h"
 
+/**
+* 供应报价明细表DO领域模型
+*/
 class PurOrderEntryDO
 {
 private:
