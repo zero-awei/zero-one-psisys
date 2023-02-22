@@ -39,7 +39,7 @@ std::unique_ptr<std::string> RSA_PUB_KEY = nullptr;
 #ifndef CHECK_TOKEN
 
 //开启凭证检查，解开下一行注释即可
-#define CHECK_TOKEN
+//#define CHECK_TOKEN
 
 #endif
 

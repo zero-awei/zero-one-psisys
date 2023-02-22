@@ -52,7 +52,7 @@ bool getStartArg(int argc, char* argv[]) {
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
-	std::string dbName = "test";
+	std::string dbName = "zopsi_sys";
 	std::string dbHost = "8.130.29.125";
 	int dbPort = 3306;
 	int dbMax = 25;
@@ -146,8 +146,8 @@ int main(int argc, char* argv[]) {
 	//测试代码
 	//TestFastDfs::testDfs("");
 	//TestExcel::testExcel();
-	TestRocket test;
-	test.testRocket();
+	//TestRocket test;
+	//test.testRocket();
 	
 
 // 	// 编写一些测试示例
@@ -175,51 +175,6 @@ int main(int argc, char* argv[]) {
 // 	{
 // 		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
 // 	}
-
-	//创建测试数据
-	vector<vector<std::string>> data;
-	vector<std::string> header{ 
-		CharsetConvertHepler::ansiToUtf8("一"),
-		CharsetConvertHepler::ansiToUtf8("二"),
-		CharsetConvertHepler::ansiToUtf8("三"),
-		CharsetConvertHepler::ansiToUtf8("四"),
-		CharsetConvertHepler::ansiToUtf8("五"),
-	};
-	data.push_back(header);
-	stringstream ss;
-	for (int i = 1; i <= 10; i++)
-	{
-		vector<std::string> row;
-		for (int j = 1; j <= 5; j++)
-		{
-			ss.clear();
-			ss
-				<< CharsetConvertHepler::ansiToUtf8("单元格坐标：(") << i
-				<< CharsetConvertHepler::ansiToUtf8(",") << j << ")";
-			row.push_back(ss.str());
-			ss.str("");
-		}
-		data.push_back(row);
-	}
-
-	//定义保存数据位置和页签名称
-	std::string fileName = "./public/excel/1.xlsx";
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("数据表");
-
-	//保存到文件
-	ExcelComponent excel;
-	excel.writeVectorToFile(fileName, sheetName, data);
-
-	//从文件中读取
-	auto readData = excel.readIntoVector(fileName, sheetName);
-	for (auto row : readData)
-	{
-		for (auto cellVal : row)
-		{
-			cout << CharsetConvertHepler::utf8ToAnsi(cellVal) << ",";
-		}
-		cout << endl;
-	}
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
