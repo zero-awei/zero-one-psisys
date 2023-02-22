@@ -3,17 +3,17 @@
 #define _PUR_QUOT_LIST_MAPPER_H_
 
 #include "Mapper.h"
-#include "../../domain/do/pur-quot/PurQuotListDO.h"
+#include "../../domain/do/pur-quot/PurQuotEntryDO.h"
 
 /**
  * Ê¾Àý±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
-class PurQuotListMapper : public Mapper<PurQuotListDO>
+class PurQuotListMapper : public Mapper<PurQuotEntryDO>
 {
 public:
-	PurQuotListDO mapper(ResultSet* resultSet) const override
+	PurQuotEntryDO mapper(ResultSet* resultSet) const override
 	{
-		PurQuotListDO data;
+		PurQuotEntryDO data;
 		data.setSrc_no(resultSet->getString(1));
 		data.setMaterial_id(resultSet->getString(2));
 		data.setUnit_id(resultSet->getString(3));

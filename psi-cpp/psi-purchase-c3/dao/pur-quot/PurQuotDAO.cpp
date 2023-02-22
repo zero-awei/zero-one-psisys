@@ -8,7 +8,7 @@
 #include "PurQuotDividedListMapper.h"
 
 
-uint64_t PurQuotDAO::count(const PurQuotFindBillDO & iObj) {
+uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_quot";
 	//PUR_QUOT_TERAM_PARSE(iObj, sql);
@@ -16,8 +16,9 @@ uint64_t PurQuotDAO::count(const PurQuotFindBillDO & iObj) {
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
-//返回多个PurQuotFindBillDO对象
-list<PurQuotFindBillDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotFindBillDO& obj, uint64_t pageIndex, uint64_t pageSize) {
+
+//获取多个PurQuotFindBillDO对象
+list<PurQuotDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize) {
 	stringstream sql;
 	sql << "SELECT bill_no, bill_date, subject,src_no,supplier_name, delivery_time,qty,amt,bill_stage, is_effective, is_closed, is_voided, \
 	payment_method, delivery_place, contact,phone, fax, email, remark, is_auto, is_rubric, effective_time, approver, create_time, \
@@ -50,8 +51,8 @@ list<PurQuotFindBillDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotFindBil
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_voided());
 	}
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	PurQuotMapper mapper;
+	PurQuotFindBillMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<PurQuotFindBillDO, PurQuotMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<PurQuotDO, PurQuotFindBillMapper>(sqlStr, mapper, params);
 }
 

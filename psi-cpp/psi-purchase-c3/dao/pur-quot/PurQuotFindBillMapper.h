@@ -3,16 +3,16 @@
 #define _PUR_QUOT_FIND_BILL_MAPPER_H_
 
 #include "Mapper.h"
-#include "../../domain/do/pur-quot/PurQuotFindBillDO.h"
+#include "../../domain/do/pur-quot/PurQuotDO.h"
 
 /**
  * Ê¾Àý±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
-class PurQuotMapper : public Mapper<PurQuotFindBillDO>
+class PurQuotFindBillMapper : public Mapper<PurQuotDO>
 {
 public:
-	PurQuotFindBillDO mapper(ResultSet* resultSet) const override{
-		PurQuotFindBillDO data;
+	PurQuotDO mapper(ResultSet* resultSet) const override{
+		PurQuotDO data;
 		data.setBill_no(resultSet->getString(1));
 		data.setBill_date(resultSet->getString(2));
 		data.setSubject(resultSet->getString(3));

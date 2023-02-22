@@ -54,7 +54,7 @@ JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(co
 	//定义一个Service
 	PurQuotService service;
 	//查询数据
-	PageVO<PurQuotFindBillVO> result = service.listPurQuotFindBill(query);
+	PageVO<PurQuotFindBillVO> result = service.listPurQuotFindBillVO(query);
 	//响应结果
 	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
 

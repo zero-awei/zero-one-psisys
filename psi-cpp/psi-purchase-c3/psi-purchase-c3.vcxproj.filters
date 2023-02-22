@@ -129,9 +129,6 @@
     <ClInclude Include="dao\pur-quot\PurQuotDividedListMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\pur-quot\PurQuotEntryMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>

@@ -12,8 +12,8 @@
 class PurQuotService
 {
 public:
-	// 分页查询所有数据
-	PageVO<PurQuotFindBillVO> listPurQuotFindBill(const PurQuotFindBillQuery& query);
+	//获取多个PurQuotFindBillVO对象
+	PageVO<PurQuotFindBillVO> listPurQuotFindBillVO(const PurQuotFindBillQuery& query);
 
 };
 
