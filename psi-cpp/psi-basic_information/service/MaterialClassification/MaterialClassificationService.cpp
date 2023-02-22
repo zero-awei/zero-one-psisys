@@ -68,9 +68,14 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 //查询子类列表
 JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
-	obj.setPid(query.getPid());
+	obj.setCode(query.getCode());//父类编码
 	MaterialClassificationDAO dao;
-	list<MaterialClassificationDO> result = dao.selectByPid(obj.getPid());
+	list<MaterialClassificationDO> father = dao.selectByCode(obj.getCode());//返回的是list
+	MaterialClassificationDO f;
+	for (MaterialClassificationDO sub : father) {
+		f.setId(sub.getId());
+	}
+	list<MaterialClassificationDO> result = dao.selectByPid(f.getId());
 	list<MaterialClassificationChildVO> vr;
 	for (MaterialClassificationDO sub : result)
 	{
@@ -90,13 +95,12 @@ JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listC
 	JsonVO<list<MaterialClassificationChildVO>> r;
 	r.setData(vr);//把数据放入JsonVO中
 	return r;
-	
+
 }
 
 
 JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::listDetail(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
-	obj.setName(query.getName());
 	obj.setCode(query.getCode());
 	MaterialClassificationDAO dao;
 	list<MaterialClassificationDO> result = dao.selectByCode(obj.getCode());
@@ -136,7 +140,7 @@ uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO
 	data.setCreateTime(dto.getCreateTime());
 	data.setUpdateBy(dto.getUpdateBy());
 	data.setUpdateTime(dto.getUpdateTime());
-	
+
 	//执行数据添加
 	MaterialClassificationDAO dao;
 	return dao.insert(data);

@@ -25,6 +25,9 @@
 /**
  * 示例表数据库操作实现
  */
+ /**
+  * 示例表数据库操作实现
+  */
 class MaterialClassificationDAO : public BaseDAO
 {
 public:
