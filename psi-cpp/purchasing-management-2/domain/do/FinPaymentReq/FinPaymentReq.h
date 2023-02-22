@@ -1,9 +1,11 @@
 #pragma once
+
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: originate from c3 modified by qingyu
- @Date: 2023/02/22 12:02:32
+ @Author: qingyu
+ @Date: 2023/02/22 22:02:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -18,11 +20,11 @@
  limitations under the License.
 */
 
-#ifndef _PUR_INQUIRY_DO_
-#define _PUR_INQUIRY_DO_
+#ifndef _FIN_PAYMENT_REQ_
+#define _FIN_PAYMENT_REQ_
 #include "../DoInclude.h"
 
-class PurInquiryDO
+class FinPaymentReq
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -36,30 +38,22 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 	//源单号
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//主题
+	//
 	CC_SYNTHESIZE(string, subject, Subject);
 	//是否红字
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//付款方式
-	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	//交货地点
-	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	//交货时间
-	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
-	//联系人
-	CC_SYNTHESIZE(string, contact, Contact);
-	//联系电话
-	CC_SYNTHESIZE(string, phone, Phone);
-	//fax
-	CC_SYNTHESIZE(string, fax, Fax);
-	//email
-	CC_SYNTHESIZE(string, email, Email);
-	//数量
-	CC_SYNTHESIZE(double, qty, Qty);
-	//参考金额
+	//付款类型
+	CC_SYNTHESIZE(string, payment_type, Payment_type);
+	//供应商
+	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
+	//业务部门
+	CC_SYNTHESIZE(string, op_dept, Op_dept);
+	//业务员
+	CC_SYNTHESIZE(string, operator, Operator);
+	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
-	//生效的报价单数
-	CC_SYNTHESIZE(int, quot_count, Quot_count);
+	//已付金额
+	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -96,14 +90,12 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
-
-
 public:
-	PurInquiryDO()
+	FinPaymentReq()
 	{
 
 	}
 
 };
 
-#endif  //_PUR_INQUIRY_DO_
+#endif //!_FIN_PAYMENT_REQ_

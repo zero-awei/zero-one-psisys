@@ -214,6 +214,7 @@
     <ClInclude Include="api\statis\StatisController.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
     <ClInclude Include="domain\do\PurOrder\PurOrderDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />

@@ -215,6 +215,9 @@
     <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
