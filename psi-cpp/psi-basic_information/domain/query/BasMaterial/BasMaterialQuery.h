@@ -23,10 +23,12 @@
 #include "../PageQuery.h"
 
 /**
- * 物料查询对象：编号，名称，物料分类
+ * 物料查询对象
  */
 class BasMaterialQuery : public PageQuery
 {
+	//id
+	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 编号
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称
@@ -38,6 +40,7 @@ public:
 	friend void from_json(const json& j, BasMaterialQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
+		BIND_FROM_TO_ULL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, categoryId);

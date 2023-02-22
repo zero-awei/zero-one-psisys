@@ -28,7 +28,7 @@
  */
 class BasMaterialDTO : public FileDTO
 {
-	CC_SYNTHESIZE(string, id, Id);
+	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 分类 需要查另一个表
 	CC_SYNTHESIZE(string, categoryId, CategoryId);
 	// 编码
@@ -44,58 +44,26 @@ class BasMaterialDTO : public FileDTO
 	CC_SYNTHESIZE(string, model, Model);
 	//主单位 需要查另一个表
 	CC_SYNTHESIZE(string, unitId, UnitId);
+
 	//销售价格
-	CC_SYNTHESIZE(int, salePrice, SalePrice);
+	CC_SYNTHESIZE(double, salePrice, SalePrice);
 	//税控编码
 	CC_SYNTHESIZE(string, taxCode, TaxCode);
 
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
-	// 创建时间
-	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// 创建人
-	CC_SYNTHESIZE(string, createBy, CreateBy);
-	// 修改人
-	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	// 修改时间
-	CC_SYNTHESIZE(string, updateTime, UpdateTime);
+	//// 创建时间
+	//CC_SYNTHESIZE(string, createTime, CreateTime);
+	//// 创建人
+	//CC_SYNTHESIZE(string, createBy, CreateBy);
+	//// 修改人
+	//CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	//// 修改时间
+	//CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, BasMaterialDTO& t) {// NOLINT
-		BIND_FROM_TO_NORMAL(j, t, id);
-	// 编码
-		BIND_FROM_TO_NORMAL(j, t, code);
-		// 名称
-		BIND_FROM_TO_NORMAL(j, t, name);
-		// 助记名
-		BIND_FROM_TO_NORMAL(j, t, auxName);
-
-		// 分类 需要查另一个表
-		BIND_FROM_TO_NORMAL(j, t, categoryId);
-		//规格型号
-		BIND_FROM_TO_NORMAL(j, t, model);
-		//主单位 需要查另一个表
-		BIND_FROM_TO_NORMAL(j, t, unitId);
-		//销售价格
-		BIND_FROM_TO_I(j, t, salePrice);
-		//税控编码
-		BIND_FROM_TO_NORMAL(j, t, taxCode);
-
-
-		// 启用
-		BIND_FROM_TO_I(j, t, isEnabled);
-		// 备注
-		BIND_FROM_TO_NORMAL(j, t, remark);
-		// 创建时间
-		BIND_FROM_TO_NORMAL(j, t, createTime);
-		// 创建人
-		BIND_FROM_TO_NORMAL(j, t, createBy);
-		// 修改时间
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
-		// 修改人
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
-	}
-	BIND_TO_JSON(BasMaterialDTO,id, code, name, auxName, categoryId, model, unitId, salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy);
+	friend void from_json(const json& j, BasMaterialDTO& t);// NOLINT
+	BIND_TO_JSON(BasMaterialDTO, id, categoryId,code, name, auxName, isEnabled, model, unitId, salePrice, taxCode, isEnabled, remark);
 };
 
 #endif // !_BASMATERIAL_DTO_
