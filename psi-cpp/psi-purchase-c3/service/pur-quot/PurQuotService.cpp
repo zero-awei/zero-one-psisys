@@ -33,11 +33,11 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	pages.calcPages();
 	//接收查询到的DO
 	list<PurQuotDO> result = dao.selectPurQuotFindBillDO(obj, query.getPageIndex(), query.getPageSize());
-	//去除返回的DO里面的其他多余的字段
-	list<PurQuotFindBillVO> vr;  //vr是去除了DO里面多余字段的VO对象
+	//vr是接收DO的VO对象
+	list<PurQuotFindBillVO> vr; 
 	for (PurQuotDO sub : result) {
 		PurQuotFindBillVO vo;
-		vo.setBill_no(sub.getBill_no());	//
+		vo.setBill_no(sub.getBill_no());
 		vo.setBill_date(sub.getBill_date());
 		vo.setSubject(sub.getSrc_no());
 		vo.setSupplier_id(sub.getSupplier_id());
