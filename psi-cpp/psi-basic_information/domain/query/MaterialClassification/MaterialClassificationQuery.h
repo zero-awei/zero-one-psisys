@@ -26,6 +26,12 @@
 */
 class MaterialClassificationQuery : public PageQuery {
 
+	//ID
+	CC_SYNTHESIZE(string, id, Id);
+
+	//¸¸½Úµã
+	CC_SYNTHESIZE(string, pid, Pid);
+
 	//Ãû³Æ
 	CC_SYNTHESIZE(string, name, Name);
 
@@ -41,8 +47,6 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, code);
 	}
 };
-
-
 
 #endif
 

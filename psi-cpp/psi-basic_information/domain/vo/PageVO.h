@@ -66,6 +66,7 @@ public:
 
 	// ¼ÆËã×ÜÒ³Êı
 	void calcPages() {
+		if (!pageSize) return;
 		this->pages = total / pageSize;
 		this->pages = total % pageSize == 0 ? this->pages : this->pages + 1;
 	}

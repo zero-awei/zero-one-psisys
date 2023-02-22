@@ -21,54 +21,56 @@
 #include "MaterialClassificationController.h"
 #include"../../service/MaterialClassification/MaterialClassificationService.h"
 
-
+//payload是使用者的信息
 JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	MaterialClassificationService service;
 	//查询数据
-	PageVO<MaterialClassificationBaseVO> result = service.listAll(query);
+	PageVO<MaterialClassificationBaseVO> result= service.listAll(query);
 	//响应结果
 	
 	//数据校验
 	if (query.getCode() == "") 
 		return JsonVO<PageVO< MaterialClassificationBaseVO>>({}, RS_PARAMS_INVALID);
 	
-	return JsonVO<PageVO< MaterialClassificationBaseVO>>(result, RS_SUCCESS);
+	return JsonVO<PageVO<MaterialClassificationBaseVO>>(result, RS_SUCCESS);
 
 }
 
-JsonVO<MaterialClassificationChildVO> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+//查询子类列表
+JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	MaterialClassificationService service;
 
 	//查询子级数据
-	JsonVO<MaterialClassificationChildVO> result;
+
+	JsonVO<list<MaterialClassificationChildVO>> result = service.listChildren(query);
 	//响应结果
 
-
-	return JsonVO<MaterialClassificationChildVO>(result);
+	
+	return result;
 }
 
-JsonVO<MaterialClassificationDetailVO> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload)
 {
 
 	//定义一个Service
 	MaterialClassificationService service;
 
 	//查询详细数据（感觉就是编辑那里）
-	JsonVO<MaterialClassificationChildVO> result;
+	JsonVO<list<MaterialClassificationDetailVO>> result = service.listDetail(query);
 
 	//响应结果
-	return JsonVO<MaterialClassificationDetailVO>();
+	return result;
 }
 
 JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto)
 {
 	JsonVO<uint64_t> result;
 	MaterialClassificationService service;
-	//执行数据新增
+	//执行数据新增 #返回的是行号？
 	uint64_t id = service.saveData(dto);
 	if (id > 0) {
 		result.success(id);
@@ -87,18 +89,18 @@ JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification
 JsonVO<string> MaterialClassificationController::execModifyMaterialClassification(const MaterialClassificationDTO& dto)
 {
 	
-	MaterialClassificationService service;
+	//MaterialClassificationService service;
 	JsonVO<string> result;
-	if (service.updateData(dto)) {
-		result.success(dto.getId());
-	}
-	else
-	{
-		result.fail(dto.getId());
-	}
+	//if (service.updateData(dto)) {
+	//	result.success(dto.getId());
+	//}
+	//else
+	//{
+	//	result.fail(dto.getId());
+	//}
 
-	if (dto.getCode() == "")
-		return JsonVO<string>({}, RS_PARAMS_INVALID);
+	//if (dto.getCode() == "")
+	//	return JsonVO<string>({}, RS_PARAMS_INVALID);
 	return result;
 	
 }
@@ -106,19 +108,19 @@ JsonVO<string> MaterialClassificationController::execModifyMaterialClassificatio
 JsonVO<string> MaterialClassificationController::execRemoveMaterialClassification(const MaterialClassificationDTO& dto)
 {
 	
-	MaterialClassificationService service;
+	//MaterialClassificationService service;
 	JsonVO<string> result;
-	//执行数据删除
-	if (service.removeData(dto.getId())) {
-		result.success(dto.getId());
-	}
-	else
-	{
-		result.fail(dto.getId());
-	}
-	//响应结果
-	if (dto.getCode() == "")
-		return JsonVO<string>({}, RS_PARAMS_INVALID);
+	////执行数据删除
+	//if (service.removeData(dto.getId())) {
+	//	result.success(dto.getId());
+	//}
+	//else
+	//{
+	//	result.fail(dto.getId());
+	//}
+	////响应结果
+	//if (dto.getCode() == "")
+	//	return JsonVO<string>({}, RS_PARAMS_INVALID);
 	return result;
 	
 }

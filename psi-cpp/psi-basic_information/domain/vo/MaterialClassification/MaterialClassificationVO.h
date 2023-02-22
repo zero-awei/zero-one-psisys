@@ -55,7 +55,7 @@ class MaterialClassificationBaseVO{
 
 public:
 
-	MaterialClassificationBaseVO() : name("nanan"), code("11") {}
+	
 	
 
 	// 绑定JSON转换方法
@@ -66,6 +66,8 @@ public:
 
 //查询指定分类子级列表对象
 class MaterialClassificationChildVO {
+
+
 
 	// 编码
 	CC_SYNTHESIZE(string, code, Code);

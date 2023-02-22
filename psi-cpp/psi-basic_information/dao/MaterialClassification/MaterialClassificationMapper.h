@@ -36,13 +36,27 @@ public:
 	MaterialClassificationDO mapper(ResultSet* resultSet) const override
 	{
 		MaterialClassificationDO data;
-
-		//不明白里面的参数表示什么
-		data.setName(resultSet->getString(1));
+		//
 		data.setCode(resultSet->getString(2));
+		data.setName(resultSet->getString(1));
 		data.setFullname(resultSet->getString(3));
+		data.setIsEnabled(resultSet->getInt(4));
+		data.setCreateTime(resultSet->getString(5));
+		data.setCreateBy(resultSet->getString(6));
+		data.setUpdateTime(resultSet->getString(7));
+		data.setUpdateBy(resultSet->getString(8));
+		/*data.setId(resultSet->getString(9));
+		data.setPid(resultSet->getString(10));
+		data.setHasChild(resultSet->getString(11))*/;
+		//不明白里面的参数表示什么,好像是列号？是dao里面写的sql语句中select后面参数的顺序，所以select语句中的查询顺序应要一致
+		/*
+		
+		
+
+		
+		data.setVersion(resultSet->getInt(12));*/
 		return data;
 	}
 };
 
-#endif // !_SAMPLE_MAPPER_
+#endif // 

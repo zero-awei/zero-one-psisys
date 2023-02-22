@@ -46,9 +46,10 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "123456";
+	std::string dbPassword = "";
 	std::string dbName = "zopsi_sys";
-	std::string dbHost = "192.168.126.128";
+	std::string dbHost = "localhost";
+>>>>>>> origin/c2-shiyi
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
