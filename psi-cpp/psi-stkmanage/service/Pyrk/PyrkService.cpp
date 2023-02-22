@@ -3,6 +3,7 @@
 #include "../../dao/Pyrk/PyrkDao.h"
 #include"domain/do/Pyrk/QueryPyrkBillListDo.h"
 #include <ctime>
+#include "../../../lib-common/include/SnowFlake.h"
 //#include "../../dao/sample/SampleDAO.h"
 PageVO<QueryPyrkBillListVO> PyrkService::queryAllFitBill(const QueryPyrkBillListQuery& query) {
 	//构建返回对象
@@ -24,7 +25,7 @@ PageVO<QueryPyrkBillListVO> PyrkService::queryAllFitBill(const QueryPyrkBillList
 	return pages;
 }
 
-int PyrkService::saveData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload)
+int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload)
 {
 	// 数据校验辅助函数
 	auto f = [](const PyrkBillDetailDTO& dto) {
@@ -52,11 +53,16 @@ int PyrkService::saveData(const PyrkBillDetailDTO& dto, const PayloadDTO& payloa
 			attachment += fileName;
 			attachment += ",";
 		}
+		else {
+			return -4;
+		}
 	}
 	int n = attachment.size();
 
 	// 组装数据
 	StkIoDO data1;
+	SnowFlake sf(1, 5);
+	data1.setId(to_string(sf.nextId()));
 	data1.setBillNo(dto.getBillNo());
 	data1.setBillDate(dto.getBillDate());
 	data1.setSubject(dto.getSubject());
@@ -75,16 +81,22 @@ int PyrkService::saveData(const PyrkBillDetailDTO& dto, const PayloadDTO& payloa
 	info = localtime(&rawtime);
 	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
 	data1.setCreateTime(string(buffer));
+	// 事务开始
+	dao.getSqlSession()->beginTransaction();
 	// 执行数据添加
 	uint64_t id = dao.insert(data1);
 	if (id == 0) {
+		// 回滚
+		dao.getSqlSession()->rollbackTransaction();
 		return -2;
 	}
 	// 组装明细数据
 	StkIoEntryDO data2;
 	string mid = dao.selectBillIdByBillNo(dto.getBillNo());
 	for (auto& entry : dto.getDetail()) {
+		data2.setId(to_string(sf.nextId()));
 		data2.setMid(mid);
+		data2.setBillNo(dto.getBillNo());
 		data2.setEntryNo(to_string(entry.getEntryNo()));
 		data2.setMaterialId(entry.getMaterialId());
 		data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
@@ -96,15 +108,26 @@ int PyrkService::saveData(const PyrkBillDetailDTO& dto, const PayloadDTO& payloa
 		data2.setRemark(entry.getRemark());
 		data2.setCustom1(entry.getCustom1());
 		data2.setCustom2(entry.getCustom2());
-		if (dao.insert(data2) <= 0) {
+		if (dao.insert(data2) == 0) {
+			// 回滚
+			dao.getSqlSession()->rollbackTransaction();
 			return -3;
 		}
 	}
-	
+	// 提交
+	dao.getSqlSession()->commitTransaction();
 	return id;
 }
 
 int PyrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payload)
 {
+	// 数据校验
+	if (dto.getApprovalResultType() != 1 && dto.getApprovalResultType() != 2) {
+		return -1;
+	}
+	StkIoDO data;
+	data.setApprovalResultType(to_string(dto.getApprovalResultType()));
+	data.setApprovalRemark(dto.getApprovalRemark());
+	data.setApprover(payload.getUsername());
 	return int();
 }

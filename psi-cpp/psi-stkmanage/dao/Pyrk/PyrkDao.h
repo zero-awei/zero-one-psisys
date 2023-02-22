@@ -18,6 +18,9 @@ public:
 	uint64_t insert(const StkIoEntryDO& iObj);
 	// 上传文件
 	string insertFile(const string& fileName);
+	// 修改数据
+	uint64_t update(const StkIoDO& iObj);
+	uint64_t update(const StkIoEntryDO& iObj);
 };
 
 

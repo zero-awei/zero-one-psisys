@@ -21,7 +21,7 @@ JsonVO<int> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMess
 	// 定义一个Service
 	PyrkService service;
 	// 执行新增数据
-	int id = service.saveData(addMessage, payload);
+	int id = service.saveBillData(addMessage, payload);
 	if (id > 0) {
 		result.success(id);
 	}
