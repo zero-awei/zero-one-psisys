@@ -1,16 +1,12 @@
-#pragma once
+Ôªø#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
  @Author: Linsky
  @Date: 2023/2/13 20:31:04
-
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
 	  https://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,29 +19,33 @@
 #include "../PageQuery.h"
 
 /**
- * ª˘¥°◊ ¡œ≤÷ø‚ƒ£øÈ≤È—Ø∂‘œÛ
+ * Âü∫Á°ÄËµÑÊñô‰ªìÂ∫ìÊ®°ÂùóÊü•ËØ¢ÂØπË±°
  */
 class DepotQuery : public PageQuery
 {
-	// √˚≥∆
+	// ÂêçÁß∞
 	CC_SYNTHESIZE(string, name, Name);
-	// ±‡∫≈
+	// ÁºñÂè∑
 	CC_SYNTHESIZE(string, code, Code);
 public:
-	// ∞Û∂®from_json
+	// ÁªëÂÆöfrom_json
 	friend void from_json(const json& j, DepotQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);
 	}
+	DepotQuery() {
+		pageIndex = 1;
+		pageSize = 20;
+	}
 };
 
 class OnlyValueQuery
 {
-	CC_SYNTHESIZE(string, id, ID);
+	CC_SYNTHESIZE(string, id, Id);
 public:
-	// ∞Û∂®from_json
+	// ÁªëÂÆöfrom_json
 	friend void from_json(const json& j, OnlyValueQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, id);
 	}

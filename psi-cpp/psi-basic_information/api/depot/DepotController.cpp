@@ -2,9 +2,11 @@
 #include "DepotController.h"
 
 /*
-* 流程大约是：这里->Service->dao 然后 Service要用到Do,dao的实现要用到Mapper
-* 其中Service的功能大概就是不同对象之间数据的绑定和调用DAO和数据库交互
-* DAO负责直接和数据库交互，但要依靠Mapper将字段和对象属性关联起来
+* 数据校验
+* 改接口返回值
+* 操作信息后台 PayloadDTO获得创建人，修改人
+* ID生成器在com-雪花
+* 成功示例，失败示例
 * 
 */
 
@@ -20,7 +22,6 @@ JsonVO<PageVO<DepotVO>> DepotController::execQueryDepot(const DepotQuery& query,
 
 JsonVO<DepotVO> DepotController::execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
-    // 通过Id和pid的关系，逻辑和查询差不多但没设置分页
     return JsonVO<DepotVO>();
 }
 
@@ -34,24 +35,55 @@ JsonVO<DepotActionInfoVO> DepotController::execQueryActionInfo(const OnlyValueQu
     return JsonVO<DepotActionInfoVO>();
 }
 
-JsonVO<PageVO<DepotVO>> DepotController::execAddDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto)
 {
-    return JsonVO<PageVO<DepotVO>>();
+    JsonVO<bool> result;
+    //定义一个Service
+    DepotService service;
+    //保存数据
+    if (service.saveData(dto)) {
+        result.success(true);
+    }
+    else {
+        result.fail(false);
+    }
+    return result;
 }
 
-JsonVO<PageVO<DepotVO>> DepotController::execModifyDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto)
 {
-    return JsonVO<PageVO<DepotVO>>();
+    JsonVO<bool> result;
+    //定义一个Service
+    DepotService service;
+    if (service.modifyDepot(dto)) {
+        result.success(true);
+    }
+    else
+    {
+        result.fail(false);
+    }
+    return result;
 }
 
-JsonVO<PageVO<DepotVO>> DepotController::execRemoveDepot(const OnlyValueQuery& query)
+JsonVO<bool> DepotController::execRemoveDepot(const OnlyValueQuery& query)
 {
-    return JsonVO<PageVO<DepotVO>>();
+    JsonVO<bool> result;
+    //定义一个Service
+    DepotService service;
+    //删除数据
+    if (service.removeData(query)) {
+        result.success(true);
+    }
+    else
+    {
+        result.fail(false);
+    }
+    return result;
 }
 
-JsonVO<PageVO<DepotVO>> DepotController::execAddDepots(const DepotDTO& dto)
+JsonVO<int> DepotController::execAddDepots(const DepotDTO& dto)
 {
-    return JsonVO<PageVO<DepotVO>>();
+    return JsonVO<int>();
 }
 
 JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const PayloadDTO& payload)

@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_SERVICE_
-#define _SAMPLE_SERVICE_
+#ifndef _DEPOT_SERVICE_
+#define _DEPOT_SERVICE_
 #include <list>
 #include "../../domain/vo/depot/DepotVO.h"
 #include "../../domain/vo/PageVO.h"
@@ -35,13 +35,12 @@ class DepotService
 public:
 	// 分页查询所有数据
 	PageVO<DepotVO> listAll(const DepotQuery& query);
-	//// 保存数据
-	//uint64_t saveData(const DepotDTO& dto);
-	//// 修改数据
-	//bool updateData(const DepotDTO& dto);
-	//// 通过ID删除数据
-	//bool removeData(uint64_t id);
+	// 保存数据
+	int saveData(const DepotDTO& dto);
+	// 删除数据
+	bool removeData(const OnlyValueQuery& query);
+	int modifyDepot(const DepotDTO& dto);
 };
 
-#endif // !_SAMPLE_SERVICE_
+#endif // !_DEPOT_SERVICE_
 

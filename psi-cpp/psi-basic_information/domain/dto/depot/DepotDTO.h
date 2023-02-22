@@ -29,6 +29,8 @@
  */
 class DepotDTO : public FileDTO
 {
+	// ID
+	CC_SYNTHESIZE(string, id, Id);
 	// 上级
 	CC_SYNTHESIZE(string, pid, Pid);
 	// 名称
@@ -40,34 +42,35 @@ class DepotDTO : public FileDTO
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	CC_SYNTHESIZE(int, start, Start);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
-	// 创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
-	// 创建人
-	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
-	// 修改时间
-	CC_SYNTHESIZE(string, modiTime, ModiTime);
-	// 修改人
-	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
+	//// 创建时间
+	//CC_SYNTHESIZE(string, creationTime, CreationTime);
+	//// 创建人
+	//CC_SYNTHESIZE(string, creationPeo, CreationPeo);
+	//// 修改时间
+	//CC_SYNTHESIZE(string, modiTime, ModiTime);
+	//// 修改人
+	//CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DepotDTO& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, pid);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, auxName);
 		BIND_FROM_TO_I(j, t, phone);
-		BIND_FROM_TO_NORMAL(j, t, start);
+		BIND_FROM_TO_I(j, t, start);
 		BIND_FROM_TO_NORMAL(j, t, remarks);
-		BIND_FROM_TO_NORMAL(j, t, creationTime);
+		/*BIND_FROM_TO_NORMAL(j, t, creationTime);
 		BIND_FROM_TO_NORMAL(j, t, creationPeo);
 		BIND_FROM_TO_NORMAL(j, t, modiTime);
-		BIND_FROM_TO_NORMAL(j, t, modiPeo);
+		BIND_FROM_TO_NORMAL(j, t, modiPeo);*/
 	}
 
-	BIND_TO_JSON(DepotDTO, pid, name, code, auxName, phone, start, remarks, creationTime, creationPeo, modiTime, modiPeo);
+	BIND_TO_JSON(DepotDTO, pid, name, code, auxName, phone, start, remarks);
 };
 
 #endif // !_DEPOT_DTO_

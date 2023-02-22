@@ -1,16 +1,12 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
  @Author: Linsky
  @Date: 2023/2/13 20:31:04
-
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
 	  https://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -54,14 +50,14 @@ private:
 	// 查询详情
 	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
-	//新增仓库
-	JsonVO<PageVO<DepotVO>> execAddDepot(const DepotDTO& dto);
+	// 新增仓库
+	JsonVO<bool> execAddDepot(const DepotDTO& dto);
 	//修改仓库
-	JsonVO<PageVO<DepotVO>> execModifyDepot(const DepotDTO& dto);
+	JsonVO<bool> execModifyDepot(const DepotDTO& dto);
 	//删除仓库 
-	JsonVO<PageVO<DepotVO>> execRemoveDepot(const OnlyValueQuery& query);
+	JsonVO<bool> execRemoveDepot(const OnlyValueQuery& query);
 	//文件导入
-	JsonVO<PageVO<DepotVO>> execAddDepots(const DepotDTO& dto);
+	JsonVO<int> execAddDepots(const DepotDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
 	// 通过唯一值批量导出
