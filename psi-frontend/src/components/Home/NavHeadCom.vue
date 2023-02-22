@@ -1,5 +1,4 @@
 <template>
-  <div style = "height:60px;">
     <el-breadcrumb separator="/home">
     <el-breadcrumb-item :to="{ path: '/home' }">homepage</el-breadcrumb-item>
     <el-breadcrumb-item
@@ -8,5 +7,10 @@
     <el-breadcrumb-item>promotion list</el-breadcrumb-item>
     <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
   </el-breadcrumb>
-  </div>
 </template>
+
+<style lang="scss" scoped>
+  .el-breadcrumb{
+    margin-bottom:30px;
+  }
+</style>

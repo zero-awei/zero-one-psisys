@@ -1,6 +1,16 @@
 <template>
   <div>
-    <div id="div1" style="width: 700px;height:300px;float: left;margin:20px"></div>
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <span>销售金额</span>
+          <el-icon style="color:blue; top:-15px;"
+          @click=""><Refresh /></el-icon>
+        </div>
+      </template>
+      <div id="div1" style="width:273px;height:176px;float: left;"></div>
+   </el-card>
+
     <!-- <div id="div2" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div3" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div4" style="width: 700px;height:300px;float: left;margin:20px"></div> -->
@@ -16,7 +26,7 @@ import axios from "axios"
 // import option1 from "@/static/option.js"
 // import option2 from  "@/static/option.js"
 // import option3 from  "@/static/option.js"
-/* // import option4 from  "@/static/option.js"
+// import option4 from  "@/static/option.js"
   const datalist = {
     "month": [
         "3月",
@@ -43,9 +53,7 @@ import axios from "axios"
         2133
         
     ]
-} */
-
- let datalist
+} 
 
 export default {
   mounted(){
@@ -175,5 +183,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+*{
+  margin:0;
+}
+div{
+  top:15px;
+  left:-3px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-header span{
+    top:-15px;
+    display: inline-block;
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: black;
+    font-size: 16px;
+}
 </style>

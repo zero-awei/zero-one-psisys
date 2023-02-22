@@ -2,7 +2,7 @@
         <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
         <div class="menu-wrap">
           <el-scrollbar>
-            <el-menu
+            <el-menu 
               default-active="2"
               class="el-menu-vertical-demo"
               active-text-color="#1890ff"
@@ -15,8 +15,8 @@
                 <el-icon>
                   <icon-menu />
                 </el-icon>
-                <span >首页</span>
-              </el-menu-item>
+                <span>首页</span>
+              </el-menu-item >
               <el-sub-menu
                 v-for="item in menus"
                 :key="item.id"

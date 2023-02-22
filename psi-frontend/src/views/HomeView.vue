@@ -1,7 +1,6 @@
 <template>
   <div class="layout-container">
     <el-container>
-
       <!-- 左侧侧边栏 -->
       <el-aside >
        <div class="logo-box" style="background-color:#1890ff">
@@ -24,8 +23,10 @@
           </el-icon>
        <!-- <el-icon style="color:white;top=8px;left:100px;"><Search /></el-icon> -->
           <HeadSideCom />
-
         </el-header>
+
+        <div class="tag"><NavHeadCom /></div >
+
         <el-main>
           <!-- 布局路由 -->
           <router-view />
@@ -65,6 +66,9 @@
       }
     }
     }
+    .tag{
+      padding-top:30px;
+    }
 }
   .el-header{
     background-color: #1890ff;
@@ -96,6 +100,8 @@ import test from "@/components/Home/test.vue"
 import File from "@/assets/1.png"
 //导入UserNameCom
 import HeadSideCom from "@/components/Home/HeadSideCom.vue"
+//导入面包屑 
+import NavHeadCom from "@/components/Home/NavHeadCom.vue"
 
 const store = userStore()
 export default {
@@ -111,7 +117,7 @@ export default {
       return this.collapse ? 'Fold' : 'Expand'
     },
     asideWidth () {
-      return this.collapse ? "200px" :"50px"
+      return this.collapse ? "200px" :"80px"
     }
   },
   //注册组件
@@ -120,7 +126,8 @@ export default {
     Expand,
     // AsideCom,
     test,
-    HeadSideCom
+    HeadSideCom,
+    NavHeadCom
   }
 }
 

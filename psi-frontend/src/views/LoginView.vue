@@ -15,12 +15,13 @@
   </el-card>
 
   <!-- 验证码组件 -->
-  <Verify
+  <!-- <Verify
     mode="pop"
     :captchaType="captchaType"
     :imgSize="{ width: '400px', height: '200px' }"
     ref="verify"
-    @success="handleSuccess"></Verify>
+    @success="handleSuccess">
+  </Verify> -->
 </template>
 
 <script setup>
@@ -124,7 +125,7 @@ function handleSuccess(res) {
 <style>
 .box-card {
   width: 480px;
-  margin: 50px auto;
+  margin: 180px auto;
   padding: 20px;
 }
 </style>
