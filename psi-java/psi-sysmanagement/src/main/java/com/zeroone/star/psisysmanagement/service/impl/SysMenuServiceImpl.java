@@ -215,9 +215,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         int num = baseMapper.deleteById(sysMenu);
 
         //将该节点的子项删除
-        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("parent_id", sysMenu.getId());
-        List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
+        QueryWrapper<SysMenu> querySub = new QueryWrapper<>();
+        querySub.eq("parent_id", sysMenu.getId());
+        List<SysMenu> sysMenus = baseMapper.selectList(querySub);
         if (!sysMenus.isEmpty()) {
             for (SysMenu menu : sysMenus) {
                 SysMenuQuery menuQuery = BeanUtil.copyProperties(menu, SysMenuQuery.class);
