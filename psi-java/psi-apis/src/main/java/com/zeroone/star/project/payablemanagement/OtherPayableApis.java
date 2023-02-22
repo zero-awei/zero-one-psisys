@@ -4,6 +4,7 @@ import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
+import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -40,5 +41,32 @@ public interface OtherPayableApis {
      * author naturezh
      */
     JsonVO<String> fileImport(MultipartFile file);
+
+    /**
+     * 添加应付单
+     * @param PayableDTO 应付单DTO
+     */
+    JsonVO<PayableVO> addOtherPayable(PayableDTO PayableDTO);
+
+    /**
+     * 修改应付单
+     * @param PayableDTO 应付单DTO
+     */
+    JsonVO<PayableVO> updateOtherPayable(PayableDTO PayableDTO);
+
+    /**
+     * 删除应付单
+     * @param otherPayableId 应付单ID
+     */
+    JsonVO<PayableVO> deleteOtherPayable(Integer otherPayableId);
+
+
+    /**
+     * 修改单据状态
+     * @param otherPayableId 应付单ID
+     * @param status 单据状态（关闭/作废/反关闭）
+     */
+    JsonVO<PayableVO> updateOtherPayableStatus(Integer otherPayableId, String status);
+    
 
 }

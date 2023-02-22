@@ -98,7 +98,7 @@ public class PayableDTO {
     private String supplierId;
 
     /**
-     * 单据阶段
+     * 单据阶段 1 编制中， 2编制完，3执行中 4.执行止 5执行完
      */
     @ApiModelProperty(value = "单据阶段", example = "34")
     private String billStage;

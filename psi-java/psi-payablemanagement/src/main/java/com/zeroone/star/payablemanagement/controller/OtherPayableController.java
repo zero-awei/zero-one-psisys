@@ -1,6 +1,7 @@
 package com.zeroone.star.payablemanagement.controller;
 
 import com.zeroone.star.payablemanagement.service.IFinPayableService;
+import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
 import com.zeroone.star.project.payablemanagement.OtherPayableApis;
 import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -8,11 +9,8 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
 
@@ -49,5 +47,37 @@ public class OtherPayableController implements OtherPayableApis {
     public JsonVO<String> fileImport(MultipartFile file) {
         return null;
     }
+
+    @Resource
+    IFinPayableService finPayableService;
+
+    @PostMapping(value = "addOtherPayable")
+    @ApiOperation(value = "添加其他应付单")
+    @Override
+    public JsonVO<PayableVO> addOtherPayable(PayableDTO PayableDTO) {
+        return null;
+    }
+
+    @PutMapping(value = "updateOtherPayable")
+    @ApiOperation(value = "修改其他应付单")
+    @Override
+    public JsonVO<PayableVO> updateOtherPayable(PayableDTO PayableDTO) {
+        return null;
+    }
+
+    @DeleteMapping("/{otherPayableId}")
+    @ApiOperation(value = "删除其他应付单")
+    @Override
+    public JsonVO<PayableVO> deleteOtherPayable(Integer otherPayableId) {
+        return null;
+    }
+
+    @PutMapping(value = "updateOtherPayableStatus")
+    @ApiOperation(value = "更新其他应付单状态")
+    @Override
+    public JsonVO<PayableVO> updateOtherPayableStatus(Integer otherPayableId, String status) {
+        return null;
+    }
+
 
 }
