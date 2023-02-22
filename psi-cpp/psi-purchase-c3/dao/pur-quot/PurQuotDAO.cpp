@@ -13,23 +13,23 @@ uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	sql << "SELECT COUNT(*) FROM pur_quot";
 	SqlParams params;
 	sql << " WHERE 1=1";
-	if (iObj.getSubject().empty()) {
+	if (! iObj.getSubject().empty()) {
 		sql << " AND subject=?";
 		SQLPARAMS_PUSH(params, "s", std::string, iObj.getSubject());
 	}
-	if (iObj.getBill_stage().empty()) {
+	if (! iObj.getBill_stage().empty()) {
 		sql << " AND bill_stage=?";
 		SQLPARAMS_PUSH(params, "s", std::string, iObj.getBill_stage());
 	}
-	if (iObj.getIs_effective().empty()) {
+	if (iObj.getIs_effective() != -1) {
 		sql << " AND is_effective=?";
 		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_effective());
 	}
-	if (iObj.getIs_closed().empty()) {
+	if (iObj.getIs_closed() != -1) {
 		sql << " AND is_closed=?";
 		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_closed());
 	}
-	if (iObj.getIs_voided().empty()) {
+	if (iObj.getIs_voided() != -1) {
 		sql << " AND is_voided=?";
 		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_voided());
 	}
@@ -45,28 +45,28 @@ list<PurQuotDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotDO& obj, uint64
 	create_by, sys_org_code, update_time, update_by FROM pur_quot";
 	SqlParams params; 
 	sql<<" WHERE 1=1"; 
-	if (!obj.getBill_no().empty()) { 
+	if (! obj.getBill_no().empty()) { 
 		sql << " AND `bill_no`=?"; 
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); 
 	}
 	//日期存疑, 暂时不写
-	if (obj.getSubject().empty()) { 
+	if (! obj.getSubject().empty()) { 
 		sql << " AND subject=?"; 
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getSubject()); 
 	}
-	if (obj.getBill_stage().empty()) {
+	if (! obj.getBill_stage().empty()) {
 		sql << " AND bill_stage=?";
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_stage());
 	}
-	if (obj.getIs_effective().empty()) {
+	if (obj.getIs_effective() != -1) {
 		sql << " AND is_effective=?";
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_effective());
 	}
-	if (obj.getIs_closed().empty()) {
+	if (obj.getIs_closed() != -1) {
 		sql << " AND is_closed=?";
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_closed());
 	}
-	if (obj.getIs_voided().empty()) {
+	if (obj.getIs_voided() != -1) {
 		sql << " AND is_voided=?";
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_voided());
 	}
