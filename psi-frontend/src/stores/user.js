@@ -9,38 +9,52 @@ let testMenus = [
     children: [
       {
         id: 2,
-        text: '系统管理1',
-        href: '/un-1',
+        text: '角色管理',
+        href: '/sysmanagement/rolemanagement',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 3,
-        text: '系统管理2',
-        href: '/un-2',
+        text: '菜单管理',
+        href: '/sysmanagement/menumanagement',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 4,
-        text: '系统管理3',
-        href: '/un-3',
+        text: '用户管理',
+        href: '/sysmanagement/usermanagement',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 5,
-        text: '系统管理4',
+        text: '部门管理',
         href: '/un-4',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 6,
-        text: '系统管理5',
+        text: '组织结构管理',
         href: '/un-5',
         icon: 'IconSetting',
         pid: 1
+      },
+      {
+        id: 1,
+        text: '分类字典',
+        icon: 'IconTickets',
+        pid: 997,
+        href: '/pay/payable/check'
+      },
+      {
+        id: 1,
+        text: '通讯录',
+        icon: 'IconTickets',
+        pid: 997,
+        href: '/pay/payable/check'
       }
     ]
   },
@@ -127,9 +141,38 @@ let testMenus = [
         pid: 3
       }
     ]
-  },
-  
+  }
 ]
+// 业务路由配置
+const yewuRouter = {
+  id: 998,
+  text: '应付与付款',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 2,
+      text: '应付核销',
+      href: '/pay/payable/check',
+      icon: 'IconTickets',
+      pid: 998
+    },
+    {
+      id: 3,
+      text: '测试三级菜单',
+      icon: 'IconTickets',
+      pid: 998,
+      children: [
+        {
+          id: 3,
+          text: '采购应付',
+          href: '/1/2/3',
+          icon: 'IconTickets',
+          pid: 2
+        }
+      ]
+    }
+  ]
+}
 const componentRouter = {
   id: 999,
   text: '组件封装',
@@ -137,8 +180,8 @@ const componentRouter = {
   children: [
     {
       id: 2,
-      text: '查询组件',
-      href: '/component/search',
+      text: '表单组件',
+      href: '/component/form',
       icon: 'IconTickets',
       pid: 3
     },
@@ -225,9 +268,11 @@ export const userStore = defineStore('user', {
         '/login/get-menus',
         null
       )
-       this.menus = data.data
-       // 在后端返回菜单列表中添加组件列表路由
-       this.menus.push(componentRouter)
+      // this.menus = data.data
+      this.menus = testMenus
+      // 在后端返回菜单列表中添加组件列表路由
+      this.menus.push(componentRouter)
+      this.menus.push(yewuRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {

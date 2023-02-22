@@ -30,25 +30,25 @@ const routes = [
     component: () => import('@/views/status/403.vue')
   },
   {
-    path: '/component/search',
+    path: '/component/form',
     name: 'search',
-    // component: () => import('@/components/search/index.vue')
-    component: () => import('../../../components/search/index.vue')
+    component: () => import('@/components/form/demo.vue')
+    // component: () => import('../../../components/psiSearch/demo.vue')
   },
   {
     path: '/component/table',
     name: 'table',
-    component: () => import('@/components/table/index.vue')
+    component: () => import('@/components/table/demo.vue')
   },
   {
     path: '/component/dialog',
     name: 'dialog',
-    component: () => import('@/components/dialog/index.vue')
+    component: () => import('@/components/dialog/demo.vue')
   },
   {
     path: '/component/drawer',
     name: 'drawer',
-    component: () => import('@/components/drawer/index.vue')
+    component: () => import('@/components/drawer/demo.vue')
   },
   {
     path: '/component/custom',
@@ -59,6 +59,33 @@ const routes = [
     path: '/component/center',
     name: 'center',
     component: () => import('@/components/center/index.vue')
+  },
+  {
+    path: '/pay/payable/check',
+    name: 'check',
+    component: () =>
+      import('@/views/yingfuyufukuan/payables/FinPayableCheck.vue')
+  },
+  {
+    path: '/1/2/3',
+    name: '3',
+    component: () =>
+      import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
+  },
+  {
+    path: '/sysmanagement/rolemanagement',
+    name: 'rolemanagement',
+    component: () => import('@/views/sysmanage/RoleManage.vue')
+  },
+  {
+    path: '/sysmanagement/menumanagement',
+    name: 'menumanagement',
+    component: () => import('@/views/sysmanage/MenuManage.vue')
+  },
+  {
+    path: '/sysmanagement/usermanagement',
+    name: 'usermanagement',
+    component: () => import('@/views/sysmanage/UserManage.vue')
   }
 ]
 

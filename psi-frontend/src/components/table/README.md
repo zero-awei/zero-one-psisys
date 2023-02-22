@@ -1,22 +1,18 @@
-<!--
- * @Author: li.ziwei
- * @Date: 2023-02-13 14:21:13
- * @LastEditTime: 2023-02-14 14:52:25
- * @LastEditors: li.ziwei
- * @Description: 
- * @FilePath: \psi-frontend\src\components\table\index.vue
- * 可以输入预定的版权声明、个性签名、空行等
--->
+#table 表格组件
+
+## 第一版(尚未完善)
+
+### 示例 (演示路径 /component/table)
+
+```javascript
 <template>
   <div class="main">
-    <el-card>
-      <psi-table
-        :items="items"
-        :tableData="tableData"
-        :attributes="attributes"
-        :pagination="pagination"
-      />
-    </el-card>
+    <psi-table
+      :items="items"
+      :tableData="tableData"
+      :attributes="attributes"
+      :pagination="pagination"
+    />
   </div>
 </template>
 
@@ -31,7 +27,6 @@ const status = reactive({
       width: '120',
       align: 'center',
       type: 'function',
-      fixed: true,
       // ES6 的 Template Strings 模版字符串
       callback: (data) => {
         return `<span style="color:#409eff"> ${data.name}</span>`
@@ -134,3 +129,39 @@ const pagination = reactive({
 </script>
 
 <style></style>
+```
+
+## 属性
+
+| 属性名       | 说明                                                   | 类型                              | 默认 |
+| ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| tableData     | 表格数据| Object                        | ——       |
+| items        |  表格列的标题及相关配置 |Object|——
+| pagination        |  分页相关配置|Object|——
+
+## items 属性
+
+| 属性名       | 说明                                                   | 类型                              | 默认 |
+| ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| label     | 表格列名 | string                        | ——
+| prop      | model 的键名          | string       |——
+| width     |  表格列宽度          |string       |50
+| align     |  表格列对齐方式(left / center / right)          |string       |left
+| fixed     |  表格列固定方式          |string(left/right)       |——
+
+## [pagination分页相关配置](https://element-plus.gitee.io/zh-CN/component/pagination.html)
+
+| 属性名       | 说明                                                   | 类型                              | 默认 |
+| ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| currentPage     | 当前页 | number                        | ——
+| pageSize      | 每页数据量          | string       |——
+| pageSizes     |  可选择的每页展示量          |Array       |——
+| total     |  数据总量          |number       |——
+| layout     |  表示需要显示的内容          |string       | prev, pager, next, jumper, ->, total
+
+## 第二版需要提供功能
+
+1.表单项的配置
+2.表单的总体配置
+3.分页功能交互
+4.共选择了xx项
