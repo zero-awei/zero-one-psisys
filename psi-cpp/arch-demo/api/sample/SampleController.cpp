@@ -21,7 +21,8 @@
 #include "../../service/sample/SampleService.h"
 
 JsonVO<PageVO<SampleVO>> SampleController::execQuerySample(const SampleQuery& query, const PayloadDTO& payload)
-{
+{	
+	//数据校验
 	//定义一个Service
 	SampleService service;
 	//查询数据
