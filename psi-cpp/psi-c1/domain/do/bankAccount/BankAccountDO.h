@@ -11,42 +11,45 @@
 
 class BankAccountDO
 {
+	//id
+	CC_SYNTHESIZE(string, id, Id);
 	// 账号
 	CC_SYNTHESIZE(string, accountNo, AccountNo);
-	// 银行地址
-	CC_SYNTHESIZE(string, bankAddress, BankAddress);
+	//账户名
+	CC_SYNTHESIZE(string, name, Name);
+	// 币种
+	CC_SYNTHESIZE(string, currency_dictText, Currency_dictText);
 	//行号
 	CC_SYNTHESIZE(string, bankNo, BankNo);
+	// 银行地址
+	CC_SYNTHESIZE(string, bankAddress, BankAddress);
+	//账户管理员
+	CC_SYNTHESIZE(string, manager_dictText, Manager_dictText);
+	//备注
+	CC_SYNTHESIZE(string, remark, Remark);
+	//启用
+	CC_SYNTHESIZE(int, isEnabled_dictText, IsEnabled_dictText);
 	//创建人
 	CC_SYNTHESIZE(string, createBy_dictText, CreateBy_dictText);
 	//创建时间
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// 币种
-	CC_SYNTHESIZE(string, currency_dictText, Currency_dictText);
-	//启用
-	CC_SYNTHESIZE(int, isEnabled_dictText, IsEnabled_dictText);
-	//账户管理员
-	CC_SYNTHESIZE(string, manager_dictText, Manager_dictText);
-	//账户名
-	CC_SYNTHESIZE(string, name, Name);
-	//备注
-	CC_SYNTHESIZE(string, remark, Remark);
 	//updateBy
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//updateTime
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	BankAccountDO() {
+		//id = "";
 		accountNo = "";
-		bankAddress = "";
+		name = "";
+		currency_dictText = "";
 		bankNo = "";
+		bankAddress = "";
+		manager_dictText = "";
+		remark = "";
+		isEnabled_dictText = 1;
 		createBy_dictText = "";
 		createTime = "";
-		currency_dictText = "";
-		isEnabled_dictText = 1;
-		manager_dictText = "";
-		name = "";
-		remark = "";
 		updateBy = "";
 		updateTime = "";
 	}

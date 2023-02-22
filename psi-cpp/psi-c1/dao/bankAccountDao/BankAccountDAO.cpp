@@ -40,7 +40,7 @@ uint64_t BankAccountDAO::count()
 std::list<BankAccountDO> BankAccountDAO::selectWithPage(uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_bank_account";
+	sql << "SELECT account_no,name,currency,bank_no,bank_address,manager,remark,is_enabled,create_by,create_time,update_by,update_time FROM bas_bank_account";
 	//SAMPLE_TERAM_PARSE(obj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	BankAccountMapper mapper;

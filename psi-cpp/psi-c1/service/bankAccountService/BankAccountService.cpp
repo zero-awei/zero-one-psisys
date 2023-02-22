@@ -36,17 +36,18 @@ PageVO<BankAccountListVO> BankAccountService::listAll(const BankAccountQuery& qu
 	list<BankAccountListVO> vr;
 	for (BankAccountDO sub : result)
 	{
-		BankAccountListVO vo;		
+		BankAccountListVO vo;	
+		//vo.setId(sub.getId());
 		vo.setAccountNo(sub.getAccountNo());
-		vo.setBankAddress(sub.getBankAddress());
+		vo.setName(sub.getName());
+		vo.setCurrency_dictText(sub.getCurrency_dictText());
 		vo.setBankNo(sub.getBankNo());
+		vo.setBankAddress(sub.getBankAddress());
+		vo.setManager_dictText(sub.getManager_dictText());
+		vo.setRemark(sub.getRemark());
+		vo.setIsEnabled_dictText(sub.getIsEnabled_dictText());
 		vo.setCreateBy_dictText(sub.getCreateBy_dictText());
 		vo.setCreateTime(sub.getCreateTime());
-		vo.setCurrency_dictText(sub.getCurrency_dictText());
-		vo.setIsEnabled_dictText(sub.getIsEnabled_dictText());
-		vo.setManager_dictText(sub.getManager_dictText());
-		vo.setName(sub.getName());
-		vo.setRemark(sub.getRemark());
 		vo.setUpdateBy(sub.getUpdateBy());
 		vo.setUpdateTime(sub.getUpdateTime());
 		vr.push_back(vo);
