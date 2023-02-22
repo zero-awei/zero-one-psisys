@@ -182,6 +182,7 @@
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
+    <ClCompile Include="dao\PurQuot\PurQuotDAO.cpp" />
     <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp" />
@@ -202,9 +203,11 @@
     <ClInclude Include="dao\DoInclude.h" />
     <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
-    <ClInclude Include="dao\PurQuto\PurQuotDO.h" />
+    <ClInclude Include="dao\PurQuot\PurQuotDAO.h" />
+    <ClInclude Include="dao\PurQuot\PurQuotMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
+    <ClInclude Include="domain\do\PurQuot\PurQuotDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />

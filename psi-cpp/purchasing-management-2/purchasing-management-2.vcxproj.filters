@@ -51,6 +51,9 @@
     <ClCompile Include="service\prepayment\PrePayService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dao\PurQuot\PurQuotDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="domain\do\DoInclude.h">
@@ -146,10 +149,16 @@
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\PurQuto\PurQuotDO.h">
+    <ClInclude Include="dao\PurQuot\PurQuotDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dao\DoInclude.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\PurQuot\PurQuotMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurQuot\PurQuotDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
