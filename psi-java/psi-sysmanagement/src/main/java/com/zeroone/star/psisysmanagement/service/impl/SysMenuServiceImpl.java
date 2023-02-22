@@ -78,7 +78,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             }
         }
 
-        setSortNo(menuDTO, sysMenu);
+        setSortNo(sysMenu);
 
         return save(sysMenu) ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
 
@@ -87,12 +87,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     /**
      * 根据menuDTO中的parentId，给sysMenu的sort_no赋值
      *
-     * @param menuDTO
      * @param sysMenu
      */
-    private void setSortNo(MenuDTO menuDTO, SysMenu sysMenu) {
+    private void setSortNo(SysMenu sysMenu) {
         //获取父节点id
-        String parentId = menuDTO.getParentId();
+        String parentId = sysMenu.getParentId();
         if (parentId.equals("0")) {
 
             int temp = 1;
@@ -194,7 +193,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
                 return JsonVO.fail(ResultStatus.FAIL);
             }
         }
-        setSortNo(menuDTO, sysMenu);
+        setSortNo(sysMenu);
 
         boolean result = update().eq("id", sysMenu.getId())
                 .set("parent_id", sysMenu.getParentId())
