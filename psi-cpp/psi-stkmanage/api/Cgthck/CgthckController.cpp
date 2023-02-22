@@ -22,7 +22,17 @@ JsonVO<PageVO<QueryCgthckBillDetailVO>> CgthckController::execQueryCgthckBillDet
 JsonVO<uint64_t> CgthckController::execAddCgthckBill(const AddCgthckBillDTO& dto)
 {
     JsonVO<uint64_t> result;
-    result.success(1);
+    CgthckService service;
+    // 执行数据新增
+    uint64_t id = service.saveData(dto);
+    if (id > 0)
+    {
+        result.success(id);
+    }
+    else
+    {
+        result.fail(id);
+    }
     return result;
 }
 

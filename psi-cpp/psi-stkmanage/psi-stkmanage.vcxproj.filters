@@ -344,5 +344,11 @@
     <ClInclude Include="service\Cgthck\CgthckMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\StkIoDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,8 @@
 class CgthckBillEntryDTO
 {
 	/***可填***/
+	// 分录号
+	CC_SYNTHESIZE(uint64_t, entryNo, EntryNo);
 	// 结算数量
 	CC_SYNTHESIZE(double, settleQty, SettleQty);
 	// 税额
@@ -17,8 +19,6 @@ class CgthckBillEntryDTO
 	CC_SYNTHESIZE(double, settleAmt, SettleAmt);
 	// 采购费用
 	CC_SYNTHESIZE(double, cost, Cost);
-	// 序号
-	CC_SYNTHESIZE(uint64_t, batchNo, BatchNo);
 
 	/***不可填***/
 	// 源单分录号
@@ -54,11 +54,11 @@ public:
 	// 绑定Json转换方法
 	friend void from_json(const json& j, CgthckBillEntryDTO& t)
 	{
+		BIND_FROM_TO_I(j, t, entryNo);
 		BIND_FROM_TO_D(j, t, settleQty);
 		BIND_FROM_TO_D(j, t, tax);
 		BIND_FROM_TO_D(j, t, settleAmt);
 		BIND_FROM_TO_D(j, t, cost);
-		BIND_FROM_TO_I(j, t, batchNo);
 		BIND_FROM_TO_D(j, t, taxRate);
 		BIND_FROM_TO_D(j, t, price);
 		BIND_FROM_TO_D(j, t, discountRate);

@@ -13,8 +13,6 @@
 #include "../../domain/dto/Cgthck/ImportCgthckFileDTO.h"
 #include "../../domain/dto/Cgthck/ModifyCgthckBillDTO.h"
 
-using CgthckDO = CgthckBillListDO;
-
 class CgthckService
 {
 public:

@@ -4,8 +4,8 @@
 
 #include "Mapper.h"
 #include "../../domain/do/Cgthck/CgthckDO.h"
-using CgthckDO = CgthckBillListDO;
-
+using CgthckDO = StkIoDO;
+using CgthckEntryDO = StkIoEntryDO;
 /**
 * 采购退货出库字段匹配映射类
 */

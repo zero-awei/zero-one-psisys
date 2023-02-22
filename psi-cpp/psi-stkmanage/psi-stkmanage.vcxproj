@@ -215,6 +215,8 @@
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="dao\Cgthck\CgthckDAO.h" />
+    <ClInclude Include="domain\do\Cgrk\StkIoDO.h" />
+    <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h" />
     <ClInclude Include="domain\do\Cgthck\AddCgthckBillDTO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckBillEntryDTO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />

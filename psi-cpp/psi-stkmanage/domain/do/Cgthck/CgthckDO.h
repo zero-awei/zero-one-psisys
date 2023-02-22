@@ -88,7 +88,7 @@ public:
 /**
 * 采购退货出库(红入), 查询单据列表明细数据库实体类
 */
-class CgthckBillDetailDO : public CgthckBillListDO
+class CgthckBillDetailDO
 {
 	// 源单分录号
 	CC_SYNTHESIZE(std::string, srcNo, SrcNo);
