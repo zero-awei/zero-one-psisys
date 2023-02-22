@@ -3,27 +3,9 @@
          <el-icon
          ><Search @click="handleSearch"/></el-icon>
         <SearchCom :panelShow="panelShow"/>
-        <!--  :panelShow.sync="panelShow" -->
-
-<!-- <div v-show="show">
-      <el-select :v-show="panelShow" v-model="value" filterable placeholder="搜索菜单">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select> -->
-   </div >
-
-
-
-
-
             {{ userInfo }}
             <span style="margin:0px 8px;" >当前月度:2023-2</span>
     </div>
-
 </template>
 
 <style lang="scss" scoped>

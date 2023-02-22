@@ -1,6 +1,6 @@
 <template>
    <!-- <div v-show="show"> -->
-      <el-select :v-show="panelShow" v-model="value" filterable placeholder="搜索菜单">
+      <el-select :v-show="props.panelShow" v-model="value" filterable placeholder="搜索菜单">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -14,6 +14,12 @@
 <script setup>
 import { ref} from 'vue'
 const value = ref('')
+const props = defineProps({
+  panelShow:{
+    type:Boolean,
+    default: () => false
+}
+})
 // let show = true
 /* const panelShow = defineProps({
   panelShow
