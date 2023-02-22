@@ -17,7 +17,7 @@
 /**
  * 采购申请功能点
  */
-class PurReqController
+class PayReqController
 {
 public:
 	//查询列表
