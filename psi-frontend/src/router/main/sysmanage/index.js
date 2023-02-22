@@ -28,6 +28,37 @@ const routes = [
     path: '/un-6',
     name: 'UN6',
     component: () => import('@/views/status/403.vue')
+  },
+  {
+    path: '/component/search',
+    name: 'search',
+    // component: () => import('@/components/search/index.vue')
+    component: () => import('../../../components/search/index.vue')
+  },
+  {
+    path: '/component/table',
+    name: 'table',
+    component: () => import('@/components/table/index.vue')
+  },
+  {
+    path: '/component/dialog',
+    name: 'dialog',
+    component: () => import('@/components/dialog/index.vue')
+  },
+  {
+    path: '/component/drawer',
+    name: 'drawer',
+    component: () => import('@/components/drawer/index.vue')
+  },
+  {
+    path: '/component/custom',
+    name: 'custom',
+    component: () => import('@/components/custom/index.vue')
+  },
+  {
+    path: '/component/center',
+    name: 'center',
+    component: () => import('@/components/center/index.vue')
   }
 ]
 

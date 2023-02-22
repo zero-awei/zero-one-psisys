@@ -25,3 +25,11 @@ installHttp(router)
 // 安装ElIcon
 import installElIcon from './plugins/el-icon'
 installElIcon(app)
+
+// 注册全局组件
+import PsiSearch from './components/search/PsiSearch.vue'
+import PsiTable from './components/table/PsiTable.vue'
+import PsiDialog from './components/dialog/PsiDialog.vue'
+app.component('PsiSearch', PsiSearch)
+app.component('PsiTable', PsiTable)
+app.component('PsiDialog', PsiDialog)
