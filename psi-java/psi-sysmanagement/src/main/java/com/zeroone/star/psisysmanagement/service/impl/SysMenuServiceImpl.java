@@ -211,6 +211,17 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
         int num = baseMapper.deleteById(sysMenu);
 
+        //将该节点的子项删除
+        QueryWrapper<SysMenu> query = new QueryWrapper<>();
+        query.eq("parent_id", sysMenu.getId());
+        List<SysMenu> sysMenus = baseMapper.selectList(query);
+        if (!sysMenus.isEmpty()) {
+            for (SysMenu menu : sysMenus) {
+                SysMenuQuery menuQuery = BeanUtil.copyProperties(menu, SysMenuQuery.class);
+                deleteMenu(menuQuery);
+            }
+        }
+
         return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
     }
 }
