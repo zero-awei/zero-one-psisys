@@ -7,6 +7,8 @@ import com.zeroone.star.prepayment.mapper.FinPaymentEntryMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @ClassName FinPaymentEntryServiceImpl
  * @Description IFinPaymentEntryService服务类的实现
@@ -17,13 +19,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMapper, FinPaymentEntry> implements IFinPaymentEntryService {
     @Override
-    public FinPaymentEntry getByMid(String mid,String srcBillType) {
+    public List<FinPaymentEntry> listByMid(String mid, String srcBillType) {
         QueryWrapper<FinPaymentEntry> FinEntryQueryWrapper = new QueryWrapper<>();
         FinEntryQueryWrapper.eq("mid",mid);
         FinEntryQueryWrapper.like("src_bill_type",srcBillType);
-        FinPaymentEntry finPaymentEntry = baseMapper.selectOne(FinEntryQueryWrapper);
-        if(finPaymentEntry!=null)
-            return finPaymentEntry;
+        List<FinPaymentEntry> finPaymentEntries = baseMapper.selectList(FinEntryQueryWrapper);
+        if(finPaymentEntries!=null)
+            return finPaymentEntries;
         return null;
     }
 }

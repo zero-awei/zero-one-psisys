@@ -2,6 +2,8 @@ package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
 
+import java.util.List;
+
 /**
  * FinPaymentEntry 服务类
  * author 狂踹瘸子那条好腿
@@ -14,5 +16,5 @@ public interface IFinPaymentEntryService {
      * @param srcBillType 源单类型（ FinPaymentEntry  /  PurOrder ）
      * @return 查询结果
      */
-    FinPaymentEntry getByMid(String mid,String srcBillType);
+    List<FinPaymentEntry> listByMid(String mid, String srcBillType);
 }
