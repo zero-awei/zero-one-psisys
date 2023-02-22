@@ -65,6 +65,14 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         SysMenu sysMenu = BeanUtil.copyProperties(menuDTO, SysMenu.class);
         sysMenu.setCreateTime(LocalDateTime.now());
 
+        //判断是否在二级菜单下继续新增菜单
+        String parentId = menuDTO.getParentId();
+        double parentSort = query().eq("id", parentId).one().getSortNo();
+        String sortString = Double.toString(parentSort);
+        if(sortString.length() == 4 && !sortString.endsWith("0")){
+            return JsonVO.fail(ResultStatus.FAIL);
+        }
+
         setSortNo(menuDTO, sysMenu);
 
         return save(sysMenu) ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
@@ -146,6 +154,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     /**
      * setSortNo方法中判断数据库中是否有重复sort_no
+     *
      * @param sysMenu
      * @param sort
      * @return
