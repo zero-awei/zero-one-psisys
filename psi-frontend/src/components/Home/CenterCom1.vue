@@ -1,6 +1,5 @@
 <template>
  <div class="top">
-    <div style = "height:60px;"></div>
     <div class="head">
       <el-row>
         <el-col :span="12">

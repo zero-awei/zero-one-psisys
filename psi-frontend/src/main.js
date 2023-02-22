@@ -6,7 +6,8 @@ import router from './router'
 import 'element-plus/theme-chalk/src/message.scss'
 // import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './assets/main.css'
-// import Vue from 'vue'
+import * as echarts from "echarts"
+
 
 const app = createApp(App)
 app.use(createPinia())
