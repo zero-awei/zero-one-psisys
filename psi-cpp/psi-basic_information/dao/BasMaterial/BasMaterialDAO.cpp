@@ -117,15 +117,15 @@ uint64_t BasMaterialDAO::insert(const BasMaterialDO& iObj)
 	//list unitID = sqlSession->executeQuery<BasMaterialDO, BasMaterialMapper>(sql_unit, mapper, "%s", iObj.getUnitId());
 	////list和string怎么转换？？？？？？？
 
-	string sql = "INSERT INTO `bas_material` (`category_id`, `code`, `name`, `aux_name`, `is_enabled`, `model`, `unit_id`, `sale_price`, `tax_code`, `remark`, `create_by`, `create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%s%i%s%s%%lf%s%s%s%s%s%s%s", iObj.getCategoryId(), iObj.getCode(), iObj.getName(), iObj.getAuxName(), iObj.getIsEnabled(), iObj.getModel(), iObj.getUnitId(), iObj.getSalePrice(), iObj.getTaxCode(), iObj.getRemark(), iObj.getCreateBy(), iObj.getCreateTime());
+	string sql = "INSERT INTO `bas_material` (`category_id`, `code`, `name`, `aux_name`, `is_enabled`, `model`, `unit_id`, `sale_price`, `tax_code`, `remark`, `create_by`, `create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeInsert(sql, "%s%s%s%s%i%s%s%d%s%s%s%s%s%s%s", iObj.getCategoryId(), iObj.getCode(), iObj.getName(), iObj.getAuxName(), iObj.getIsEnabled(), iObj.getModel(), iObj.getUnitId(), iObj.getSalePrice(), iObj.getTaxCode(), iObj.getRemark(), iObj.getCreateBy(), iObj.getCreateTime());
 }
 
 //更新行，与新增行，相同
 int BasMaterialDAO::update(const BasMaterialDO& uObj)
 {
 	string sql = "UPDATE `bas_material` SET `category_id`=?, `code`=?, `name`=?, `aux_name`=?, `is_enabled`=?, `model`=?, `unit_id`=?, `sale_price`=?, `tax_code`=?, `remark`=?, `update_by`=?, `update_time`=?  WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%i%s%s%i%s%s%s%s%s%s%ull", uObj.getCategoryId(), uObj.getCode(), uObj.getName(), uObj.getAuxName(), uObj.getIsEnabled(), uObj.getModel(), uObj.getUnitId(), uObj.getSalePrice(), uObj.getTaxCode(), uObj.getRemark(), uObj.getUpdateBy(), uObj.getUpdateTime(), uObj.getId());
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%i%s%s%d%s%s%s%s%ull", uObj.getCategoryId(), uObj.getCode(), uObj.getName(), uObj.getAuxName(), uObj.getIsEnabled(), uObj.getModel(), uObj.getUnitId(), uObj.getSalePrice(), uObj.getTaxCode(), uObj.getRemark(), uObj.getUpdateBy(), uObj.getUpdateTime(), uObj.getId());
 }
 
 //删除行,***通过id删除,页面中id隐含，不显示
