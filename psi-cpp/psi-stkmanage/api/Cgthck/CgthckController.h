@@ -6,12 +6,14 @@
 #include "../psi-stkmanage/domain/vo/PageVO.h"
 #include "../../service/Cgthck/CgthckService.h"
 #include "../psi-stkmanage/domain/query/Cgthck/QueryCgthckBillQuery.h"
+#include "../psi-stkmanage/domain/query/Cgthck/QueryCgrkBillQuery.h"
 #include "../psi-stkmanage/domain/dto/Cgthck//AddCgthckBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/DeleteCgthckBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ExportCgthckFileDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ModifyCgthckBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ImportCgthckFileDTO.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgthckBillVO.h"
+#include "../psi-stkmanage/domain/vo/Cgthck/QueryCgrkBillListsVO.h"
 /**
 * 控制器, 采购退货出库接口的使用
 */
@@ -37,6 +39,8 @@ private:
 	JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
 	// 测试查询详细数据
 	JsonVO<PageVO<QueryCgthckBillDetailVO>> execQueryCgthckBillDetail(const QueryCgthckBillQuery& query);
+	// 测试分录查询采购入库单列表	
+	JsonVO<PageVO<QueryCgrkBillListsVO>> execQueryCgrkBillList(const QueryCgrkBillQuery& query);
 	// 测试添加数据
 	JsonVO<uint64_t> execAddCgthckBill(const AddCgthckBillDTO& dto);
 	// 测试修改数据

@@ -225,7 +225,7 @@
     <ClInclude Include="domain\do\Cgthck\ImportCgthckFileDTO.h" />
     <ClInclude Include="domain\do\Cgthck\ModifyCgthckBillDTO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\SysDepart.h" />
+    <ClInclude Include="domain\do\SysDepartDO.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\CgrkBillEntryDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\ImportCgrkFileDTO.h" />
@@ -261,6 +261,7 @@
     <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryPurOrderEntryQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryPurOrderListQuery.h" />
+    <ClInclude Include="domain\query\Cgthck\QueryCgrkBillQuery.h" />
     <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h" />
@@ -274,6 +275,7 @@
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\QueryCgrkBillListsVO.h" />
     <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />

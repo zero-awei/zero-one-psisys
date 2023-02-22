@@ -338,7 +338,7 @@
     <ClInclude Include="dao\Cgthck\CgthckDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\SysDepart.h">
+    <ClInclude Include="domain\do\SysDepartDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="service\Cgthck\CgthckMapper.h">
@@ -348,6 +348,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Cgthck\QueryCgrkBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Cgthck\QueryCgrkBillListsVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
