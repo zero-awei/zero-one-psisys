@@ -29,11 +29,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -139,7 +141,11 @@ public class BasCustomerController implements CustomerApis {
     @ApiOperation("添加客户")
     @PostMapping("add-Customer")
     @Override
-    public JsonVO<String> addCustomer(CustomerAddDTO customerAddDTO) {
+    public JsonVO<String> addCustomer(@Valid @RequestBody CustomerAddDTO customerAddDTO,
+                                      BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return JsonVO.fail(bindingResult.getFieldError().getDefaultMessage());
+        }
         BasCustomer basCustomer = basCustomerService.insertIntoCustomerEntity(customerAddDTO);
         basCustomerService.save(basCustomer);
         return JsonVO.success("添加成功");
@@ -153,7 +159,10 @@ public class BasCustomerController implements CustomerApis {
     @ApiOperation("修改客户信息")
     @PostMapping("update-Customer")
     @Override
-    public JsonVO<String> updateCustomer(CustomerAddDTO customerAddDTO) {
+    public JsonVO<String> updateCustomer(CustomerAddDTO customerAddDTO, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return JsonVO.fail(bindingResult.getFieldError().getDefaultMessage());
+        }
         BasCustomer basCustomer = basCustomerService.insertIntoCustomerEntity(customerAddDTO);
         QueryWrapper<BasCustomer> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("code", customerAddDTO.getCode());

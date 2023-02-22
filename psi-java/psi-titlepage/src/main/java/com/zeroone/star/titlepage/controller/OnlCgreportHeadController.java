@@ -22,9 +22,8 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ *  首页信息获取
  * </p>
- *
  * @author yx
  * @since 2023-02-11
  */
@@ -56,7 +55,7 @@ public class OnlCgreportHeadController implements InformationApis {
 
     /**
      * 查询系统收支概况
-     * @return 系统收支概况，如果失败返回的数据为null
+     * @return 系统收支概况，如果未能查到数据返回的数据null
      */
     @ApiOperation("查询系统收支概况")
     @PostMapping("/query-Sys")

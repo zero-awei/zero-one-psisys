@@ -39,7 +39,7 @@ public class MyTest {
         customerAddDTO.setCode("0056");
         customerAddDTO.setAuxName("dfsf");
         customerAddDTO.setIsEnabled(1);
-        System.out.println(controller.addCustomer(customerAddDTO));
+//        System.out.println(controller.addCustomer(customerAddDTO));
     }
 
     @Test
@@ -49,6 +49,6 @@ public class MyTest {
         customerAddDTO.setCode("0056");
         customerAddDTO.setAuxName("dfsf111");
         customerAddDTO.setIsEnabled(1);
-        System.out.println(controller.updateCustomer(customerAddDTO));
+//        System.out.println(controller.updateCustomer(customerAddDTO));
     }
 }

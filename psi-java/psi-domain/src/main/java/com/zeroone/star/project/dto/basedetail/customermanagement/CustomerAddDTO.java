@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
@@ -19,12 +20,16 @@ import java.util.Date;
 @Data
 @ApiModel("添加客户")
 public class CustomerAddDTO {
+
+    @NotBlank(message = "请输入编码!")
     @ApiModelProperty(value = "客户编码",example = "003")
     private String code;
 
+    @NotBlank(message = "请输入名称!")
     @ApiModelProperty(value = "客户名称",example = "Microsoft Corporation")
     private String name;
 
+    @NotBlank(message = "请输入助记名!")
     @ApiModelProperty(value = "助记名", example = "微软")
     private String auxName;
 
@@ -106,6 +111,7 @@ public class CustomerAddDTO {
     @ApiModelProperty(value = "简称", example = "baidu")
     private String shortName;
 
+    @NotBlank(message = "请输入助记名!")
     @ApiModelProperty(value = "辅助名称", example = "百度")
     private String auxiliaryName;
 

@@ -8,6 +8,7 @@ import com.zeroone.star.project.query.basedetail.customermanagement.CustomerByNa
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerBaseInfoVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerExistVO;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -55,12 +56,12 @@ public interface CustomerApis {
      * @param customerAddDTO 包含客户的全部信息
      * @return 是否添加成功
      */
-    JsonVO<String> addCustomer(CustomerAddDTO customerAddDTO);
+    JsonVO<String> addCustomer(CustomerAddDTO customerAddDTO, BindingResult bindingResult);
 
     /**
      *修改客户信息
      * @param customerAddDTO 包含客户的全部信息
      * @return 是否添加成功
      */
-    JsonVO<String> updateCustomer(CustomerAddDTO customerAddDTO);
+    JsonVO<String> updateCustomer(CustomerAddDTO customerAddDTO, BindingResult bindingResult);
 }
