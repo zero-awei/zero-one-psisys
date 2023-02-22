@@ -1,3 +1,11 @@
+/*
+ * @Author: Kyle5 nnkyle@163.com
+ * @Date: 2023-02-20 18:51:04
+ * @LastEditors: Kyle5 nnkyle@163.com
+ * @LastEditTime: 2023-02-21 22:58:39
+ * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 const routes = [
   {
     path: '/un-1',
@@ -71,7 +79,31 @@ const routes = [
     name: '3',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
-  }
+  },
+  {
+    path: '/client',
+    name: 'client',
+    component: () =>
+      import('@/views/jichuziliao/ClientCheck.vue')
+  },
+  {
+    path: '/Provider',
+    name: 'Provider',
+    component: () =>
+      import('@/views/jichuziliao/ProviderCheck.vue')
+  },
+  {
+    path: '/Store',
+    name: 'Store',
+    component: () =>
+      import('@/views/jichuziliao/StoreCheck.vue')
+  },
+  {
+    path: '/MaterialSort',
+    name: 'MaterialSort',
+    component: () =>
+      import('@/views/jichuziliao/MaterialSortCheck.vue')
+  },
 ]
 
 export default routes

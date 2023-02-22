@@ -156,7 +156,7 @@ const yewuRouter = {
           pid: 2
         }
       ]
-    }
+    },
   ]
 }
 const componentRouter = {
@@ -205,6 +205,63 @@ const componentRouter = {
       href: '/component/center',
       icon: 'IconTickets',
       pid: 3
+    }
+  ]
+}
+
+const baseDataRouter = {
+  id: 800,
+  text: "基础资料",
+  icon: "IconTickets",
+  children: [
+    {
+      id: 801,
+      text: "客户",
+      href: '/Client',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 802,
+      text: "供应商",
+      href: '/Provider',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 803,
+      text: "仓库",
+      href: '',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 804,
+      text: "物料分类",
+      href: '',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 805,
+      text: "物料",
+      href: '',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 806,
+      text: "计量单位",
+      href: '',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 807,
+      text: "币种",
+      href: '',
+      icon: 'IconTickets',
+      pid: 4
     }
   ]
 }
@@ -258,6 +315,7 @@ export const userStore = defineStore('user', {
       // 在后端返回菜单列表中添加组件列表路由
       this.menus.push(componentRouter)
       this.menus.push(yewuRouter)
+      this.menus.push(baseDataRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {
