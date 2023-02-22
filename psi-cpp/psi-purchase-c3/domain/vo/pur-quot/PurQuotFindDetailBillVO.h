@@ -16,16 +16,16 @@ class PurQuotFindDetailBillVO
 	//单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//已生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
+	CC_SYNTHESIZE(string, is_effective, Is_effective);
 	//已关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	CC_SYNTHESIZE(string, is_closed, Is_closed);
 	//已作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	CC_SYNTHESIZE(string, is_voided, Is_voided);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//采购询价单
 	//是否临时供应商
-	CC_SYNTHESIZE(int, is_temp_supplier, Is_temp_supplier);
+	CC_SYNTHESIZE(string, is_temp_supplier, Is_temp_supplier);
 	//供应商
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
 	//临时供应商名称

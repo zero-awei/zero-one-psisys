@@ -15,9 +15,9 @@ class PurQuotDividedListVO
 	CC_SYNTHESIZE(string, qty, Qty);
 	//税率
 	CC_SYNTHESIZE(string, tax_rate, Tax_rate);
-	//含税单价
+	//参考含税单价
 	CC_SYNTHESIZE(string, price, Price);
-	//含税金额
+	//参考含税金额
 	CC_SYNTHESIZE(string, amt, Amt);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);

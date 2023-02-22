@@ -16,6 +16,7 @@ uint64_t PurQuotDAO::count(const PurQuotFindBillDO & iObj) {
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
+//返回多个PurQuotFindBillDO对象
 list<PurQuotFindBillDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotFindBillDO& obj, uint64_t pageIndex, uint64_t pageSize) {
 	stringstream sql;
 	sql << "SELECT bill_no, bill_date, subject,src_no,supplier_name, delivery_time,qty,amt,bill_stage, is_effective, is_closed, is_voided, \

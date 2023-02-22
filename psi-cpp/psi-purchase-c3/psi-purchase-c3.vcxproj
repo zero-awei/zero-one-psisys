@@ -196,10 +196,8 @@
     <ClInclude Include="dao\pur-quot\PurQuotFindDetailBillMapper.h" />
     <ClInclude Include="dao\pur-quot\PurQuotListMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotDividedListDO.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotFindBillDO.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotFindDetailBillDO.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotListDO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotDO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotEntryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
@@ -218,6 +216,7 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotEntryBillVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotFindDetailBillVO.h" />

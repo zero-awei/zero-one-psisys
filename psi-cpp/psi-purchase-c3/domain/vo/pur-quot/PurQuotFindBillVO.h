@@ -2,7 +2,6 @@
 #ifndef _PUR_QUOT_FIND_BILL_VO_H_
 #define _PUR_QUOT_FIND_BILL_VO_H_
 #include "../../GlobalInclude.h"
-
 class PurQuotFindBillVO 
 {
 	//单据编号
@@ -13,7 +12,9 @@ class PurQuotFindBillVO
 	CC_SYNTHESIZE(string, subject, Subject);
 	//源单号
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//供应商/临时供应商名称
+	//供应商
+	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
+	//临时供应商名称
 	CC_SYNTHESIZE(string, supplier_name, Supplier_name);
 	//交货日期
 	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
@@ -63,7 +64,7 @@ class PurQuotFindBillVO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurQuotFindBillVO, bill_no, bill_date, bill_date, subject, src_no,
+	BIND_TO_JSON(PurQuotFindBillVO, bill_no, bill_date, bill_date, subject, src_no, supplier_id,
 		supplier_name, delivery_time, qty, amt, bill_stage, is_effective, is_closed, is_voided,
 		payment_method, delivery_place, contact, phone, fax, email, remark, is_auto, is_rubric,
 		effective_time, approver, create_time, create_by, sys_org_code, update_time, update_by);
