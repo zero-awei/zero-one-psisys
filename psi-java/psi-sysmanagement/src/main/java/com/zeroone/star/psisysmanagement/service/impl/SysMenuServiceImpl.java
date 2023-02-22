@@ -45,10 +45,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Override
     public JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery) {
 
-        QueryWrapper<SysMenu> menuDTOQueryWrapper = new QueryWrapper<>();
-        menuDTOQueryWrapper.eq("parent_id", sysMenuQuery.getParentId());
+        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("parent_id", sysMenuQuery.getParentId());
 
-        List<SysMenu> sysMenus = baseMapper.selectList(menuDTOQueryWrapper);
+        List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
         ArrayList<MenuVO> menuVOS = new ArrayList<>();
         for (SysMenu sysMenu : sysMenus) {
             MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
@@ -162,10 +162,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
      * @return
      */
     private boolean checking(SysMenu sysMenu, double sort) {
-        QueryWrapper<SysMenu> query = new QueryWrapper<>();
-        query.select("sort_no").eq("sort_no", sort);
-        baseMapper.selectOne(query);
-        if (baseMapper.selectOne(query) == null) {
+        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("sort_no").eq("sort_no", sort);
+        baseMapper.selectOne(queryWrapper);
+        if (baseMapper.selectOne(queryWrapper) == null) {
             //如果没有就将sort值赋给新的menu的sort_no
             sysMenu.setSortNo(sort);
             return true;
@@ -212,9 +212,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         int num = baseMapper.deleteById(sysMenu);
 
         //将该节点的子项删除
-        QueryWrapper<SysMenu> query = new QueryWrapper<>();
-        query.eq("parent_id", sysMenu.getId());
-        List<SysMenu> sysMenus = baseMapper.selectList(query);
+        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("parent_id", sysMenu.getId());
+        List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
         if (!sysMenus.isEmpty()) {
             for (SysMenu menu : sysMenus) {
                 SysMenuQuery menuQuery = BeanUtil.copyProperties(menu, SysMenuQuery.class);
