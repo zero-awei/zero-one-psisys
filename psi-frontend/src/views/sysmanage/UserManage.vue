@@ -1,175 +1,71 @@
-<!--
- * @Author: Kyle5 nnkyle@163.com
- * @Date: 2023-02-20 18:51:04
- * @LastEditors: Kyle5 nnkyle@163.com
- * @LastEditTime: 2023-02-22 12:28:29
- * @FilePath: \psi-frontend\src\views\yingfuyufukuan\payables\FinPayableCheck.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template>
-  <!-- 应付核销界面 -->
   <div>
     <!-- 查询 -->
-    <psi-form
-      :items="items"
-      :formData="formData"
-      :toggleItems="toggleItems"
-      @query="doQuery"
-      @reset="doReset"
-    ></psi-form>
-    <br />
+    <psi-form :items="items" :formData="formData" @query="doQuery" @reset="doReset"></psi-form>
     <!-- 表格数据 -->
-    <psi-table
-      :items="tableItems"
-      :tableData="tableData"
-      :attributes="attributes"
-      :pagination="pagination"
-    >
+    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
     </psi-table>
 
     <!-- 弹出框 -->
-    <psi-dialog
-      ref="editDialog"
-      v-model="editDialogVisible"
-      :attrs="editDialogVisible"
-    >
+    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogAttrs">
     </psi-dialog>
-    <psi-dialog
-      ref="editDialog"
-      v-model="examineDialogVisible"
-      :attrs="examineDialogVisible"
-    >
+    <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogAttrs">
     </psi-dialog>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { getTableList, query } from './methods.js'
+import { getTableList } from './api/user.js'
+import { format } from '@/apis/date/index.js'
 // 查询表单相关数据及方法
 const formState = reactive({
   // 查询表单每一项的配置
   items: [
     {
       type: 'input',
-      label: '单据编号',
-      prop: 'billNo'
+      label: '角色名',
+      prop: 'roleName'
     },
-    {
-      type: 'daterange',
-      label: '单据日期',
-      prop: 'daterange',
-      startPlaceholder: '开始日期',
-      endPlaceholder: '结束日期'
-    }
-  ],
-  // 查询表单折叠项的配置
-  toggleItems: [
     {
       type: 'input',
-      label: '单据主题',
-      prop: 'subject'
-    },
-    {
-      type: 'select',
-      label: '供应商',
-      prop: 'supplierId',
-      placeholder: '请选择性别',
-      options: [
-        {
-          label: '供应商1',
-          value: 0
-        },
-        {
-          label: '供应商2',
-          value: 1
-        }
-      ]
-    },
-    {
-      type: 'select',
-      label: '单据阶段',
-      prop: 'billStage',
-      placeholder: '请选择性别',
-      options: [
-        {
-          label: '阶段1',
-          value: 0
-        },
-        {
-          label: '阶段2',
-          value: 1
-        }
-      ]
-    },
-    {
-      type: 'select',
-      label: '已生效',
-      prop: 'isEffective',
-      options: [
-        {
-          label: '是',
-          value: 0
-        },
-        {
-          label: '否',
-          value: 1
-        }
-      ]
-    },
-    {
-      type: 'select',
-      label: '已关闭',
-      prop: 'isClosed',
-      options: [
-        {
-          label: '是',
-          value: 0
-        },
-        {
-          label: '否',
-          value: 1
-        }
-      ]
-    },
-    {
-      type: 'select',
-      label: '已作废',
-      prop: 'isVoided',
-      options: [
-        {
-          label: '是',
-          value: 0
-        },
-        {
-          label: '否',
-          value: 1
-        }
-      ]
+      label: '角色编码',
+      prop: 'roleCode',
     }
   ],
 
   // 配置数据绑定的字段
   formData: {
-    billNo: '',
-    billStage: '',
-    daterange: '',
-    isClosed: 0,
-    isEffective: 0,
-    isVoided: 0,
-    subject: '',
-    supplierId: ''
+    roleName: '',
+    roleCode: '',
   }
 })
-const { items, toggleItems, formData } = toRefs(formState)
+const { items, formData } = toRefs(formState)
 // 表单重置
 function doReset() {
   //查询表单重置，表格也要刷新
   doGetTableList()
 }
 // 7.5 普通查询
-function doQuery(params) {
-  // params是子组件返回的参数
+function doQuery(data) {
+  // console.log('父组件接收')
+  // console.log('params--', params.daterange)
+  console.log('data.daterange[0]', data.daterange[0])
+  console.log('data.daterange[1]', data.daterange[1])
+  console.log('typeof', typeof data.daterange[1])
+  // 处理表单数据 主要是开始日期和结束日期
+  let params = {}
+  params.billNo = data.billNo
+  params.billStage = data.billStage
+  params.billStage = data.billStage
+  params.isClosed = data.isClosed
+  params.isEffective = data.isEffective
+  params.isVoided = data.isVoided
+  params.subject = data.subject
+  params.supplierId = data.supplierId
+  params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
+  params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
+  console.log('params', params)
   query(
     {
       params
@@ -253,7 +149,10 @@ const tableState = reactive({
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true
+    border: true,
+    maxHeight: '400',
+    height: '400',
+    headOperation: false
   }
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)
@@ -313,7 +212,7 @@ const examineDialogState = reactive({
     width: '80%'
   }
 })
-const { examineDialogAttrs } = toRefs(editdialogState)
+const { examineDialogAttrs } = toRefs(examineDialogState)
 // function edit(data){
 //   editDialogVisible=true
 //   // 弹出框内的表格数据和data配置

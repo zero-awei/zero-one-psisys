@@ -1,11 +1,3 @@
-<!--
- * @Author: Kyle5 nnkyle@163.com
- * @Date: 2023-02-21 02:03:55
- * @LastEditors: Kyle5 nnkyle@163.com
- * @LastEditTime: 2023-02-21 22:08:24
- * @FilePath: \psi-frontend\src\views\jichuziliao\ClientCheck.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template>
   <div>
     <psi-form
@@ -15,59 +7,66 @@
       @query="doQuery"
       @reset="doReset"
     ></psi-form>
+
     <!-- 表格数据 -->
-    <psi-table
+    <!-- 修改点1 -->
+    <div style="margin-top:10px">
+      <psi-table
       :items="tableItems"
       :tableData="tableData"
       :attributes="attributes"
-      :pagination="pagination"
+      :pagination="pagination" 
+      @add="addClient"
     >
+      <template v-slot:basicOperation="slot">
+      <!-- 修改点2 -->
+        <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+
+        <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+      </template>
+  
     </psi-table>
-    <!-- 弹出框 -->
-    <!-- <psi-dialog
-      ref="editDialog"
-      v-model="editDialogVisible"
-      :attrs="editDialogVisible"
-    >
-    </psi-dialog>
-    <psi-dialog
-      ref="editDialog"
-      v-model="examineDialogVisible"
-      :attrs="examineDialogVisible"
-    >
-    </psi-dialog> -->
+    </div>
+
   </div>
 </template>
     
 <script setup>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
+
+// 编辑删除
+// 修改点3~5
+function addClient() {
+  addDialogVisible.value = true
+  // addDrawerVisible.value = true
+}
+let clientEditDialogVisible = ref(false)
+
+// const { clientEditDialogAttrs } = toRefs(clientEditDialogState)
+
 
 const formState = reactive({
   // 查询表单每一项的配置
+  // 修改点6
   items: [
     {
       type: 'input',
-      label: '单据编号',
-      prop: 'billNo',
-      placeholder: '请输入'
+      label: '编码',
+      prop: 'code',
+      placeholder: '请输入编码'
     },
     {
-      type: 'daterange',
-      label: '单据日期',
-      prop: 'daterange',
-      startPlaceholder: '开始日期',
-      endPlaceholder: '结束日期'
+      type: 'input',
+      label: '名称',
+      prop: 'name',
+      placeholder: '请输入名称'
     }
   ],
+  // 传给后台的查询数据，由输入框传来
+  // 修改点7
   formData: {
-    billNo: '',
-    billStage: '',
-    daterange: '',
-    isClosed: 0,
-    isEffective: 0,
-    isVoided: 0,
-    subject: '',
-    supplierId: ''
+    code: '',
+    name: '',
   }
 })
 
@@ -116,11 +115,13 @@ const status = reactive({
       prop: 'tag',
       width: '120'
     },
+    // 表格右侧固定的编辑和删除
     {
       type: 'slot',
       label: '操作',
-      prop: 'operation',
-      slotName: 'operation'
+      width: '120',
+      slotName: 'basicOperation',
+      fixed: 'right'
     }
   ],
   // table 数据
@@ -166,13 +167,19 @@ const status = reactive({
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true
+    border: true,
+    maxHeight: '400',
+    height: '400',
+    // 待后续修改1
+    headOperation: ['add', 'select'],
+    // rightOperation: true
   }
 })
 
 const { tableItems, tableData, attributes } = toRefs(status)
 
 // 分页相关配置
+// 待后续修改2
 const pagination = reactive({
   currentPage: 2, // 当前页
   pageSize: 100, // 每页数据量
@@ -180,8 +187,6 @@ const pagination = reactive({
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
-    
-    
 </script>
     
 <style lang='stylus' scoped></style>

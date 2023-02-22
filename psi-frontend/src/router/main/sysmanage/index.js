@@ -2,7 +2,7 @@
  * @Author: Kyle5 nnkyle@163.com
  * @Date: 2023-02-20 18:51:04
  * @LastEditors: Kyle5 nnkyle@163.com
- * @LastEditTime: 2023-02-21 22:58:39
+ * @LastEditTime: 2023-02-22 23:52:18
  * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -80,6 +80,7 @@ const routes = [
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
   },
+  // 基础资料
   {
     path: '/client',
     name: 'client',
@@ -93,10 +94,10 @@ const routes = [
       import('@/views/jichuziliao/ProviderCheck.vue')
   },
   {
-    path: '/Store',
-    name: 'Store',
+    path: '/Currency',
+    name: 'Currency',
     component: () =>
-      import('@/views/jichuziliao/StoreCheck.vue')
+      import('@/views/jichuziliao/CurrencyCheck.vue')
   },
   {
     path: '/MaterialSort',
@@ -104,6 +105,46 @@ const routes = [
     component: () =>
       import('@/views/jichuziliao/MaterialSortCheck.vue')
   },
+  {
+    path: '/Material',
+    name: 'Material',
+    component: () =>
+      import('@/views/jichuziliao/MaterialCheck.vue')
+  },
+  {
+    path: '/Measurement',
+    name: 'Measurement',
+    component: () =>
+      import('@/views/jichuziliao/MeasurementCheck.vue')
+  },
+  {
+    path: '/Account',
+    name: 'Account',
+    component: () =>
+      import('@/views/jichuziliao/AccountCheck.vue')
+  },
+  {
+    path: '/Store',
+    name: 'Store',
+    component: () =>
+      import('@/views/jichuziliao/StoreCheck.vue')
+  },
+
+  {
+    path: '/sysmanagement/rolemanagement',
+    name: 'rolemanagement',
+    component: () => import('@/views/sysmanage/RoleManage.vue')
+  },
+  {
+    path: '/sysmanagement/menumanagement',
+    name: 'menumanagement',
+    component: () => import('@/views/sysmanage/MenuManage.vue')
+  },
+  {
+    path: '/sysmanagement/usermanagement',
+    name: 'usermanagement',
+    component: () => import('@/views/sysmanage/UserManage.vue')
+  }
 ]
 
 export default routes
