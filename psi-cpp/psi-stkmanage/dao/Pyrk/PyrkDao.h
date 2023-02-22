@@ -18,13 +18,10 @@ public:
 	uint64_t insert(const StkIoEntryDO& iObj);
 	// 上传文件
 	string insertFile(const string& fileName);
+	// 审核单据更新数据
+	uint64_t updateApproval(const StkIoDO& iObj);
 	// 修改数据
 	uint64_t update(const StkIoDO& iObj);
 	uint64_t update(const StkIoEntryDO& iObj);
 };
-
-
-
-
-
 #endif

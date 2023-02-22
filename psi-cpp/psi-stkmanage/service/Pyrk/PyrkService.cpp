@@ -66,10 +66,10 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	data1.setBillNo(dto.getBillNo());
 	data1.setBillDate(dto.getBillDate());
 	data1.setSubject(dto.getSubject());
-	data1.setStockIoType("102");
+	data1.setStockIoType("102"); // "102":盘盈入库
 	data1.setHandler(dto.getHandler());
 	data1.setRemark(dto.getRemark());
-	data1.setBillStage((dto.getSave() == 0 ? "12" : "14"));
+	data1.setBillStage((dto.getSave() == 0 ? "12" : "14")); // "12":编制中, "14":编制完
 	data1.setAttachment((n != 0 ? attachment.substr(0, n - 1) : ""));
 	data1.setSysOrgCode(dao.selectOrgCodeByUsername(payload.getUsername()));
 	data1.setCreateBy(payload.getUsername());
@@ -80,12 +80,13 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	time(&rawtime);
 	info = localtime(&rawtime);
 	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
 	data1.setCreateTime(string(buffer));
 	// 事务开始
 	dao.getSqlSession()->beginTransaction();
 	// 执行数据添加
-	uint64_t id = dao.insert(data1);
-	if (id == 0) {
+	uint64_t row = dao.insert(data1);
+	if (row == 0) {
 		// 回滚
 		dao.getSqlSession()->rollbackTransaction();
 		return -2;
@@ -116,7 +117,7 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	}
 	// 提交
 	dao.getSqlSession()->commitTransaction();
-	return id;
+	return row;
 }
 
 int PyrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payload)
@@ -125,9 +126,39 @@ int PyrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payloa
 	if (dto.getApprovalResultType() != 1 && dto.getApprovalResultType() != 2) {
 		return -1;
 	}
+	// 组装数据
 	StkIoDO data;
 	data.setApprovalResultType(to_string(dto.getApprovalResultType()));
 	data.setApprovalRemark(dto.getApprovalRemark());
 	data.setApprover(payload.getUsername());
-	return int();
+	data.setUpdateBy(payload.getUsername());
+	// 生成当前时间
+	time_t rawtime;
+	struct tm* info;
+	char buffer[80];
+	time(&rawtime);
+	info = localtime(&rawtime);
+	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+	data.setUpdateTime(string(buffer));
+	if (dto.getApprovalResultType() == 1) { // 审核通过
+		data.setIsEffective(1);
+		data.setEffectiveTime(string(buffer));
+		data.setIsClosed(1);
+		data.setBillStage("34"); // "34":执行完
+	}
+	else { // 审核拒绝
+		data.setBillStage("24"); // "24":核批完
+	}
+
+	// 定义DAO层对象
+	PyrkDao dao;
+	//// 事务开始
+	//dao.getSqlSession()->beginTransaction();
+	// 执行更新数据
+	uint64_t row = dao.updateApproval(data);
+	if (row == 0) {
+		return -2;
+	}
+	return row;
 }

@@ -65,6 +65,11 @@ string PyrkDao::insertFile(const string& fileName)
     return client.uploadFile(fileName);
 }
 
+uint64_t PyrkDao::updateApproval(const StkIoDO& iObj)
+{
+    return uint64_t();
+}
+
 uint64_t PyrkDao::update(const StkIoDO& iObj)
 {
     return uint64_t();
