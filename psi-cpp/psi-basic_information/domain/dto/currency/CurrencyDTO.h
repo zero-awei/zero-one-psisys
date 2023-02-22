@@ -24,39 +24,39 @@
  */
 class CurrencyDTO : public FileDTO
 {
-	// 代码
-	CC_SYNTHESIZE(string, id, Id);
-	// 名称
+	// 代码 
+	CC_SYNTHESIZE(string, code, Code);
+	// 名称 
 	CC_SYNTHESIZE(string, name, Name);
-	// 本币
-	CC_SYNTHESIZE(string, localCurrency, LocalCurrency);
-	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	// 本币 
+	CC_SYNTHESIZE(string, isFunctional, IsFunctional);
+	// 启用 
+	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
+	// 创建人 
+	CC_SYNTHESIZE(string, createBy, CreateBy);
+	// 创建时间 
+	CC_SYNTHESIZE(string, createTime, CreateTime);
+	// 修改人 
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	// 修改时间
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
-	// 创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
-	// 创建人
-	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
-	// 修改时间
-	CC_SYNTHESIZE(string, modiTime, ModiTime);
-	// 修改人
-	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, CurrencyDTO& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, localCurrency);
-		BIND_FROM_TO_NORMAL(j, t, start);
+		BIND_FROM_TO_NORMAL(j, t, isFunctional);
+		BIND_FROM_TO_NORMAL(j, t, isEnabled);
+		BIND_FROM_TO_NORMAL(j, t, createBy);
+		BIND_FROM_TO_NORMAL(j, t, createTime);
+		BIND_FROM_TO_NORMAL(j, t, updateBy);
+		BIND_FROM_TO_NORMAL(j, t, updateTime);
 		BIND_FROM_TO_NORMAL(j, t, remarks);
-		BIND_FROM_TO_NORMAL(j, t, creationTime);
-		BIND_FROM_TO_NORMAL(j, t, creationPeo);
-		BIND_FROM_TO_NORMAL(j, t, modiTime);
-		BIND_FROM_TO_NORMAL(j, t, modiPeo);
 	}
 
-	BIND_TO_JSON(CurrencyDTO, id, name, localCurrency, start, remarks, creationTime, creationPeo, modiTime, modiPeo);
+	BIND_TO_JSON(CurrencyDTO, code, name, isFunctional, isEnabled, createBy, createTime, updateBy, updateTime, remarks);
 };
 
 #endif // !_CURRENCY_DTO_

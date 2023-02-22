@@ -30,7 +30,7 @@ PageVO<CurrencyVO> CurrencyService::listAll(const CurrencyQuery& query)
 	//查询数据总条数
 	CurrencyDO obj;
 	obj.setName(query.getName());
-	obj.setId(query.getId());
+	obj.setCode(query.getCode());
 	CurrencyDAO dao;
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
@@ -46,17 +46,18 @@ PageVO<CurrencyVO> CurrencyService::listAll(const CurrencyQuery& query)
 	list<CurrencyVO> vr;
 	for (CurrencyDO sub : result)
 	{
-		cout << sub.getId() << endl;
+		cout << sub.getCode() << endl;
 		CurrencyVO vo;
-		vo.setId(sub.getId());
+		vo.setCode(sub.getCode());
 		vo.setName(sub.getName());
-		vo.setLocalCurrency(sub.getLocalCurrency());
-		vo.setStart(sub.getStart());
+		vo.setIsFunctional(sub.getIsFunctional());
+		vo.setIsEnabled(sub.getIsEnabled());
+		
+		vo.setCreateBy(sub.getCreateBy());
+		vo.setCreateTime(sub.getCreateTime());
+		vo.setUpdateBy(sub.getUpdateBy());
+		vo.setUpdateTime(sub.getUpdateTime());
 		vo.setRemarks(sub.getRemarks());
-		vo.setCreationTime(sub.getCreationTime());
-		vo.setCreationPeo(sub.getCreationPeo());
-		vo.setModiTime(sub.getModiTime());
-		vo.setModiPeo(sub.getModiPeo());
 
 		vr.push_back(vo);
 	}
@@ -73,15 +74,15 @@ CurrencyVO CurrencyService::listByName(const OnlyValueCurrencyQuery& query)
 	
 
 	//cout << sub.getId() << endl;
-	vr.setId(sub.getId());
+	vr.setCode(sub.getCode());
 	vr.setName(sub.getName());
-	vr.setLocalCurrency(sub.getLocalCurrency());
-	vr.setStart(sub.getStart());
+	vr.setIsFunctional(sub.getIsFunctional());
+	vr.setIsEnabled(sub.getIsEnabled());
+	vr.setCreateBy(sub.getCreateBy());
+	vr.setCreateTime(sub.getCreateTime());
+	vr.setUpdateBy(sub.getUpdateBy());
+	vr.setUpdateTime(sub.getUpdateTime());
 	vr.setRemarks(sub.getRemarks());
-	vr.setCreationTime(sub.getCreationTime());
-	vr.setCreationPeo(sub.getCreationPeo());
-	vr.setModiTime(sub.getModiTime());
-	vr.setModiPeo(sub.getModiPeo());
 	//pages.setRows(vr);
 	return vr;
 }

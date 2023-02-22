@@ -23,60 +23,60 @@
  */
 class CurrencyVO
 {
-	// 代码
-	CC_SYNTHESIZE(string, id, Id);
-	// 名称
+	// 代码 
+	CC_SYNTHESIZE(string, code, Code);
+	// 名称 
 	CC_SYNTHESIZE(string, name, Name);
-	// 本币
-	CC_SYNTHESIZE(string, localCurrency, LocalCurrency);
-	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	// 本币 
+	CC_SYNTHESIZE(string, isFunctional, IsFunctional);
+	// 启用 
+	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
+	// 创建人 
+	CC_SYNTHESIZE(string, createBy, CreateBy);
+	// 创建时间 
+	CC_SYNTHESIZE(string, createTime, CreateTime);
+	// 修改人 
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	// 修改时间
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
-	// 创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
-	// 创建人
-	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
-	// 修改时间
-	CC_SYNTHESIZE(string, modiTime, ModiTime);
-	// 修改人
-	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(CurrencyVO, id, name, localCurrency, start, remarks, creationTime, creationPeo, modiTime, modiPeo);
+	BIND_TO_JSON(CurrencyVO, code, name, isFunctional, isEnabled, createBy, createTime, updateBy, updateTime, remarks);
 };
 
 class CurrencyDetailVO
 {
 
-	// 代码
-	CC_SYNTHESIZE(string, id, Id);
-	// 名称
+	// 代码 
+	CC_SYNTHESIZE(string, code, Code);
+	// 名称 
 	CC_SYNTHESIZE(string, name, Name);
-	// 本币
-	CC_SYNTHESIZE(string, localCurrency, LocalCurrency);
-	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	// 本币 
+	CC_SYNTHESIZE(string, isFunctional, IsFunctional);
+	// 启用 
+	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(CurrencyDetailVO, id, name, localCurrency, start, remarks);
+	BIND_TO_JSON(CurrencyDetailVO, code, name, isFunctional, isEnabled, remarks);
 };
 
 class CurrencyActionInfoVO
 {
-	// 创建时间
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
-	// 创建人
-	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
+	// 创建人 
+	CC_SYNTHESIZE(string, createBy, CreateBy);
+	// 创建时间 
+	CC_SYNTHESIZE(string, createTime, CreateTime);
+	// 修改人 
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	// 修改时间
-	CC_SYNTHESIZE(string, modiTime, ModiTime);
-	// 修改人
-	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(CurrencyActionInfoVO, creationTime, creationPeo, modiTime, modiPeo);
+	BIND_TO_JSON(CurrencyActionInfoVO, createBy, createTime, updateBy, updateTime);
 };
 
 #endif // !_Currency_VO_

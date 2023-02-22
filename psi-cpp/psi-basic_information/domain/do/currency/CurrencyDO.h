@@ -22,35 +22,35 @@
  */
 class CurrencyDO
 {
+	// 代码 Code
+	CC_SYNTHESIZE(string, code, Code);
 	// 名称 name
 	CC_SYNTHESIZE(string, name, Name);
-	// 代码 code
-	CC_SYNTHESIZE(string, id, Id);
-	// 本币 is_functional
-	CC_SYNTHESIZE(string, localCurrency, LocalCurrency);
-	// 启用 is_enabled
-	CC_SYNTHESIZE(string, start, Start);
-	// 创建人 create_by
-	CC_SYNTHESIZE(string, creationPeo, CreationPeo);
-	// 创建时间 create_time
-	CC_SYNTHESIZE(string, creationTime, CreationTime);
-	// 修改人 update_by
-	CC_SYNTHESIZE(string, modiPeo, ModiPeo);
-	// 修改时间 update_time
-	CC_SYNTHESIZE(string, modiTime, ModiTime);
+	// 本币 isFunctional
+	CC_SYNTHESIZE(string, isFunctional, IsFunctional);
+	// 启用 isEnabled
+	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
+	// 创建人 createBy
+	CC_SYNTHESIZE(string, createBy, CreateBy);
+	// 创建时间 createTime
+	CC_SYNTHESIZE(string, createTime, CreateTime);
+	// 修改人 updateBy
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	// 修改时间 updateTime
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
 	CurrencyDO() {
-		id = "1";
+		code = "1";
 		name = "";
-		localCurrency = "1";
-		start = "1";
+		isFunctional = "1";
+		isEnabled = "1";
 		remarks = "";
-		creationTime = "";
-		creationPeo = "";
-		modiTime = "";
-		modiPeo = "";
+		createTime = "";
+		createBy = "";
+		updateTime = "";
+		updateBy = "";
 	}
 };
 

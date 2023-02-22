@@ -29,9 +29,9 @@ if (!obj.getName().empty()) { \
 	sql << " AND `name`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getName()); \
 }\
-if (!obj.getId().empty()) { \
+if (!obj.getCode().empty()) { \
 	sql << " AND `code`=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getCode()); \
 }
 
 uint64_t CurrencyDAO::count(const CurrencyDO& iObj)

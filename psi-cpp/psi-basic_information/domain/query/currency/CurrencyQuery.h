@@ -23,21 +23,22 @@
  */
 class CurrencyQuery : public PageQuery
 {
-	// 代码
-	CC_SYNTHESIZE(string, id, Id);
-	// 名称
+	// 代码 
+	CC_SYNTHESIZE(string, code, Code);
+	// 名称 
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, CurrencyQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, name);
 	}
 };
 class OnlyValueCurrencyQuery
 {
+	// 名称 
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	// 绑定from_json

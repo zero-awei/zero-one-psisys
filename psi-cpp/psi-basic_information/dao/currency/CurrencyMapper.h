@@ -32,14 +32,14 @@ public:
 	CurrencyDO mapper(ResultSet* resultSet) const override
 	{
 		CurrencyDO data;
-		data.setId(resultSet->getString(2));
+		data.setCode(resultSet->getString(2));
 		data.setName(resultSet->getString(3));
-		data.setLocalCurrency(resultSet->getString(4));
-		data.setStart(resultSet->getString(5));
-		data.setCreationPeo(resultSet->getString(6));
-		data.setCreationTime(resultSet->getString(7));
-		data.setModiPeo(resultSet->getString(8));
-		data.setModiTime(resultSet->getString(9));
+		data.setIsFunctional(resultSet->getString(4));
+		data.setIsEnabled(resultSet->getString(5));
+		data.setCreateBy(resultSet->getString(6));
+		data.setCreateTime(resultSet->getString(7));
+		data.setUpdateBy(resultSet->getString(8));
+		data.setUpdateTime(resultSet->getString(9));
 		data.setRemarks(resultSet->getString(10));
 
 		return data;
