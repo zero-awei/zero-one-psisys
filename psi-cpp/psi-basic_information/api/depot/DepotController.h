@@ -50,14 +50,14 @@ private:
 	// 查询详情
 	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
-	//新增仓库
-	JsonVO<PageVO<DepotVO>> execAddDepot(const DepotDTO& dto);
+	// 新增仓库
+	JsonVO<string> execAddDepot(const DepotDTO& dto);
 	//修改仓库
-	JsonVO<PageVO<DepotVO>> execModifyDepot(const DepotDTO& dto);
+	JsonVO<string> execModifyDepot(const DepotDTO& dto);
 	//删除仓库 
-	JsonVO<PageVO<DepotVO>> execRemoveDepot(const OnlyValueQuery& query);
+	JsonVO<bool> execRemoveDepot(const OnlyValueQuery& query);
 	//文件导入
-	JsonVO<PageVO<DepotVO>> execAddDepots(const DepotDTO& dto);
+	JsonVO<int> execAddDepots(const DepotDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
 	// 通过唯一值批量导出

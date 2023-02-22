@@ -70,9 +70,8 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 
 uint64_t DepotDAO::insertDepot(const DepotDO& iObj)
 {
-	string sql = "INSERT INTO `bas_warehouse` (`name`, `code`, `aux_name`, `phone`, `remark`) VALUES (?, ?, ?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%i%s", iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getRemarks());
-	return uint64_t();
+	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeInsert(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
 }
 
 

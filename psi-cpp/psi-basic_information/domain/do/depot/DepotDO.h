@@ -28,6 +28,8 @@ class DepotDO
 {
 	// ID
 	CC_SYNTHESIZE(string, id, Id);
+	// Pid
+	CC_SYNTHESIZE(string, pid, Pid);
 	// 姓名
 	CC_SYNTHESIZE(string, name, Name);
 	// 编号
@@ -37,7 +39,7 @@ class DepotDO
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	CC_SYNTHESIZE(int, start, Start);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 	// 创建时间
@@ -51,6 +53,7 @@ class DepotDO
 public:
 	DepotDO() {
 		id = "";
+		pid = "";
 		name = "Depot";
 		code = "12345678910";
 	}
