@@ -18,14 +18,14 @@
  limitations under the License.
 */
 
-#ifndef __PURORDERENTRYDO_H__
-#define __PURORDERENTRYDO_H__
+#ifndef __PURQUOTENTRYDO_H__
+#define __PURQUOTENTRYDO_H__
 #include "../DoInclude.h"
 
 /**
 * 供应报价明细表DO领域模型
 */
-class PurOrderEntryDO
+class PurQuotEntryDO
 {
 private:
 	// id
