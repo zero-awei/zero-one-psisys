@@ -59,6 +59,8 @@
 #include "bankAccountController/EditAccountController.h"
 #include "bankAccountController/DeleteAccountController.h"
 #include "bankAccountController/ImportAccountController.h"
+#include "bankAccountController/ExportAccountController.h"
+
 
 
 #ifdef HTTP_SERVER_DEMO
@@ -227,6 +229,7 @@ void Router::initBankAccount()
 	BIND_PUT_ROUTER(server, "/put-account", &EditAccountController::modifyBankAccount, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-account", &DeleteAccountController::removeBankAccount, nullptr);
 	BIND_POST_ROUTER(server, "/import-account", &ImportAccountController::modifyAccountInfo, nullptr);
+	BIND_GET_ROUTER(server, "/export-account", &ExportAccountController::exportAccountExecl, nullptr);
 }
 
 void Router::initSuppliersSetting()

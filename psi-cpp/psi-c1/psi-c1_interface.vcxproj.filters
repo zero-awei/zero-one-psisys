@@ -150,6 +150,33 @@
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="api\bankAccountController\ExportAccountController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\service\bankAccountService\ExportAccountService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\bankAccountDAO\ExportAccountDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\service\bankAccountService\ImportAccountService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\bankAccountDAO\ImportAccountDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\service\bankAccountService\AddAccountService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\bankAccountDAO\BankAccountDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\service\bankAccountService\ModifyAccountService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\service\bankAccountService\DeleteAccountService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -456,6 +483,42 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\service\bankAccountService\ExportAccountService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\bankAccountDO\ExportAccountDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\bankAccountDAO\ExportAccountDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\bankAccountDAO\ExportAccountMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\service\bankAccountService\ImportAccountService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\bankAccountDO\ImportAccountDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\bankAccountDAO\ImportAccountDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\service\bankAccountService\AddAccountService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\bankAccountDO\BankAccountDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\bankAccountDAO\BankAccountDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\service\bankAccountService\ModifyAccountService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\service\bankAccountService\DeleteAccountService.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

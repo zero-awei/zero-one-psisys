@@ -120,7 +120,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -168,7 +168,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -176,6 +176,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="api\bankAccountController\ExportAccountController.cpp" />
     <ClCompile Include="api\publicInterfaceController\areaController.cpp" />
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\bankAccountController\AddAccountController.cpp" />
@@ -214,10 +215,18 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\BankAccountDAO.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\ExportAccountDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\ImportAccountDAO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\AddAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\DeleteAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\ExportAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\ImportAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\ModifyAccountService.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -266,9 +275,16 @@
     <ClInclude Include="api\publicInterfaceController\TaxScaleController.h" />
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
+    <ClInclude Include="dao\bankAccountDAO\BankAccountDAO.h" />
+    <ClInclude Include="dao\bankAccountDAO\ExportAccountDAO.h" />
+    <ClInclude Include="dao\bankAccountDAO\ExportAccountMapper.h" />
+    <ClInclude Include="domain\do\bankAccountDO\BankAccountDO.h" />
+    <ClInclude Include="domain\do\bankAccountDO\ExportAccountDO.h" />
+    <ClInclude Include="domain\do\bankAccountDO\ImportAccountDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
+    <ClInclude Include="dao\bankAccountDAO\ImportAccountDAO.h" />
     <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
@@ -289,6 +305,11 @@
     <ClInclude Include="domain\query\supplierQuery\AdvancedQuery.h" />
     <ClInclude Include="domain\query\supplierQuery\SpecifiedSupplierDataQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\UserQuery.h" />
+    <ClInclude Include="domain\service\bankAccountService\AddAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\DeleteAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\ExportAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\ImportAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\ModifyAccountService.h" />
     <ClInclude Include="domain\vo\publicInterfaceVO\AreaVO.h" />
     <ClInclude Include="domain\vo\bankAccountVO\BankAccountListVO.h" />
     <ClInclude Include="domain\vo\bankAccountVO\IsEnabledVO.h" />

@@ -13,11 +13,9 @@ void from_json(const json& j, BankAccountDTO& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, bankNo);
 	BIND_FROM_TO_NORMAL(j, t, bankAddress);
 	BIND_FROM_TO_NORMAL(j, t, manager);
-	BIND_FROM_TO_NORMAL(j, t, isEnabled);
+	BIND_FROM_TO_I(j, t, isEnabled);
 	BIND_FROM_TO_NORMAL(j, t, remark);
 	BIND_FROM_TO_NORMAL(j, t, createBy);
-	BIND_FROM_TO_NORMAL(j, t, createTime);
 	BIND_FROM_TO_NORMAL(j, t, updateBy);
-	BIND_FROM_TO_NORMAL(j, t, updateTime);
 }
 

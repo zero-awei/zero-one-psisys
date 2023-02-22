@@ -24,23 +24,18 @@ class BankAccountDTO
 	// 账户管理员
 	CC_SYNTHESIZE(string, manager, Manager);
 	// 是否启用
-	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
+	CC_SYNTHESIZE(int, isEnabled, IsEnabled);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 创建者
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	// 创建时间
-	CC_SYNTHESIZE(string, createTime, CreateTime);
 	// 修改者
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	// 修改时间
-	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, BankAccountDTO& t); // NOLINT
 	BIND_TO_JSON(BankAccountDTO, accountNo, name, currency, bankNo,
-		bankAddress, manager, isEnabled, remark, createBy, createTime,
-		updateBy, updateTime);
+		bankAddress, manager, isEnabled, remark, createBy, updateBy);
 };
 
 #endif // _BANKACCOUNTDTO_H_
