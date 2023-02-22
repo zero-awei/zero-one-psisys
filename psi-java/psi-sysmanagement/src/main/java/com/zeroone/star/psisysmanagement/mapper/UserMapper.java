@@ -1,7 +1,6 @@
 package com.zeroone.star.psisysmanagement.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.psisysmanagement.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 

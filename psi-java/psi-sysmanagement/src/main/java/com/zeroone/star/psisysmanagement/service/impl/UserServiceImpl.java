@@ -1,6 +1,7 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.date.DateTime;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,8 +14,10 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
+import com.zeroone.star.psisysmanagement.entity.Depart;
 import com.zeroone.star.psisysmanagement.entity.User;
 import com.zeroone.star.psisysmanagement.mapper.UserMapper;
+import com.zeroone.star.psisysmanagement.service.DepartService;
 import com.zeroone.star.psisysmanagement.service.IUserService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +49,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Resource
     EasyExcelComponent excel;
 
+    @Resource
+    DepartService departService;
+
     // axin
     //    展示用户列表 finished tested（传id的情况下）
     @Override
@@ -70,12 +76,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        执行分页查询
         Page<User> result = baseMapper.selectPage(userPage, userQueryWrapper);
         return PageVO.create(result, UserVO.class);
-    }
-
-    // axin
-    @Override
-    public JsonVO<EditUserVO> review(String id) {
-        return null;
     }
 
     // dan
@@ -118,6 +118,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         User user = this.getById(id);
         EditUserVO editUserVO = new EditUserVO();
         BeanUtils.copyProperties(user, editUserVO);
+        Depart depart = departService.getById(user.getDepartIds());
+        editUserVO.setDepartName(depart.getDepartName());
         return editUserVO;
     }
 

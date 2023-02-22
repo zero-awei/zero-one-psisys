@@ -11,14 +11,17 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.AddUserVO;
+import com.zeroone.star.project.vo.sysmanagement.usermanagement.DepartVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import com.zeroone.star.psisysmanagement.entity.User;
+import com.zeroone.star.psisysmanagement.service.DepartService;
 import com.zeroone.star.psisysmanagement.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +30,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
@@ -36,6 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -55,7 +60,7 @@ import java.util.List;
 public class UserController implements UserApis {
 
     @Resource
-    EasyExcelComponent excel;
+    private DepartService departService;
 
     @Resource
     private IUserService iUserService;
@@ -117,8 +122,6 @@ public class UserController implements UserApis {
             @ApiImplicitParam(name = "id", value = "用户id",dataType = "String", required = true),
             @ApiImplicitParam(name = "status", value = "状态码(1为正常/2为冻结)",dataType = "String", required = true)
     })
-
-
     @PutMapping("/status")
     @Override
     public JsonVO<String> modifyStatus(
@@ -135,50 +138,20 @@ public class UserController implements UserApis {
         return JsonVO.success("导入成功");
     }
 
-    //    axin
+    // dan
     @SneakyThrows
     @ApiOperation(value = "导出用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "ids", value = "用户id(多选)", allowMultiple = true, dataType = "String",required = true),
+    })
     @GetMapping(value = "/get-user", produces = "application/octet-stream")
     @Override
-    public ResponseEntity<byte[]> download(@NotEmpty(message = "导出用户必须大于0") @RequestParam(value = "id") List<String> id) {
-        log.info("id = {}", id);
-        List<User> users = new ArrayList<>();
-        for (int i = 1; i <= 50; i++) {
-            User u = new User();
-            u.setId(i + "");
-            u.setUsername("用户" + i);
-            u.setPhone("1234567" + i);
-            users.add(u);
-        }
-        // 导出Excel
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        excel.export("测试", out, User.class, users);
-        // 创建响应头
-        HttpHeaders headers = new HttpHeaders();
-        // 构建一个下载的文件名称
-        String fileName = "test-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
-        fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
-        headers.setContentDispositionFormData("attachment", fileName);
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        ResponseEntity<byte[]> result = new ResponseEntity<>(out.toByteArray(), headers, HttpStatus.CREATED);
-        out.close();
-        return result;
+    public ResponseEntity<byte[]> download(
+            @NotEmpty(message = "导出用户必须大于0")
+            @RequestParam(value = "ids") List<String> ids) {
+        List<User> users = iUserService.listByIds(ids);
+        return iUserService.getExcel(users);
     }
-
-    // dan
-//    @SneakyThrows
-//    @ApiOperation(value = "导出用户")
-//    @ApiImplicitParams(value = {
-//            @ApiImplicitParam(name = "ids", value = "用户id(多选)", allowMultiple = true, dataType = "String",required = true),
-//    })
-//    @GetMapping(value = "/get-user", produces = "application/octet-stream")
-//    @Override
-//    public ResponseEntity<byte[]> download(
-//            @NotEmpty(message = "导出用户必须大于0")
-//            @RequestParam(value = "ids") List<String> ids) {
-//        List<User> users = iUserService.listByIds(ids);
-//        return iUserService.getExcel(users);
-//    }
 
     // dan
     @SneakyThrows
@@ -193,7 +166,8 @@ public class UserController implements UserApis {
     @ApiOperation(value = "下拉框获取部门列表")
     @GetMapping("/list-depart")
     @Override
-    public JsonVO<List<AddUserVO>> listDepartment() {
-        return null;
+    public JsonVO<List<DepartVO>> listDepartment() {
+        return JsonVO.success(departService.listDepart());
     }
+
 }

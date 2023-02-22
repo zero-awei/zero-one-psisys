@@ -32,10 +32,6 @@ public interface IUserService extends IService<User> {
     //    查询用户信息（通过FindUserQuery中的name属性）
     PageVO<UserVO> listUser(FindUserQuery query);
 
-    // axin
-    ////    回显出用户信息（通过id）
-    JsonVO<EditUserVO> review(String id);
-
 
     // dan
     ResponseEntity<byte[]> getExcel(List<User> users);
@@ -45,19 +41,5 @@ public interface IUserService extends IService<User> {
     void updateUser(EditUserDTO dto);
     // dan
     EditUserVO getUserInfo(String id);
-
-//
-////    添加用户（通过UserDTO）
-//     void insert(UserDTO dto);
-//
-////    通过id删除用户（通过id）
-//    void deleteUser(String id);
-//
-////    修改用户（通过UserDTO）
-//    void modifyUser(UserDTO dto);
-//
-////    修改冻结状态（通过id）
-//    void modifyStatus(String id);
-
 
 }
