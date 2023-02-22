@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
@@ -35,7 +36,7 @@ import java.util.List;
  * 用户表 服务实现类
  * </p>
  *
- * @author  axin
+ * @author  dan axin
  * @since 2023-02-12
  */
 @Slf4j
@@ -72,11 +73,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return PageVO.create(result, UserVO.class);
     }
 
-    // axin
+//    axin
+//       新增用户
     @Override
-    public JsonVO<EditUserVO> review(String id) {
-        return null;
+    public void saveUser(AddUserDTO dto) {
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
+        log.info("user = {}", user);
+        this.save(user);
     }
+
 
     // dan
     @SneakyThrows
@@ -120,5 +126,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         BeanUtils.copyProperties(user, editUserVO);
         return editUserVO;
     }
-
 }

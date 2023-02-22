@@ -1,5 +1,6 @@
 package com.zeroone.star.project.sysmanagement;
 
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
@@ -45,7 +46,7 @@ public interface UserApis {
      * @param dto 数据对象
      * @return 新增用户的编号
      */
-    JsonVO<String> addUser(UserDTO dto);
+    JsonVO<String> addUser(AddUserDTO dto);
 
     /**
      * 删除用户

@@ -2,6 +2,7 @@ package com.zeroone.star.psisysmanagement.controller;
 
 import cn.hutool.core.date.DateTime;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
@@ -43,7 +44,7 @@ import java.util.List;
  * 用户表 控制层
  * </p>
  *
- * @author axin
+ * @author dan axin
  * @since 2023-02-18
  */
 
@@ -89,7 +90,8 @@ public class UserController implements UserApis {
     @ApiOperation(value = "添加用户")
     @PostMapping("/add")
     @Override
-    public JsonVO<String> addUser(UserDTO dto) {
+    public JsonVO<String> addUser(@Validated AddUserDTO dto) {
+        iUserService.saveUser(dto);
         return JsonVO.success("添加成功");
     }
 
@@ -135,50 +137,20 @@ public class UserController implements UserApis {
         return JsonVO.success("导入成功");
     }
 
-    //    axin
+//     dan
     @SneakyThrows
     @ApiOperation(value = "导出用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "ids", value = "用户id(多选)", allowMultiple = true, dataType = "String",required = true),
+    })
     @GetMapping(value = "/get-user", produces = "application/octet-stream")
     @Override
-    public ResponseEntity<byte[]> download(@NotEmpty(message = "导出用户必须大于0") @RequestParam(value = "id") List<String> id) {
-        log.info("id = {}", id);
-        List<User> users = new ArrayList<>();
-        for (int i = 1; i <= 50; i++) {
-            User u = new User();
-            u.setId(i + "");
-            u.setUsername("用户" + i);
-            u.setPhone("1234567" + i);
-            users.add(u);
-        }
-        // 导出Excel
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        excel.export("测试", out, User.class, users);
-        // 创建响应头
-        HttpHeaders headers = new HttpHeaders();
-        // 构建一个下载的文件名称
-        String fileName = "test-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".xlsx";
-        fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
-        headers.setContentDispositionFormData("attachment", fileName);
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        ResponseEntity<byte[]> result = new ResponseEntity<>(out.toByteArray(), headers, HttpStatus.CREATED);
-        out.close();
-        return result;
+    public ResponseEntity<byte[]> download(
+            @NotEmpty(message = "导出用户必须大于0")
+            @RequestParam(value = "ids") List<String> ids) {
+        List<User> users = iUserService.listByIds(ids);
+        return iUserService.getExcel(users);
     }
-
-    // dan
-//    @SneakyThrows
-//    @ApiOperation(value = "导出用户")
-//    @ApiImplicitParams(value = {
-//            @ApiImplicitParam(name = "ids", value = "用户id(多选)", allowMultiple = true, dataType = "String",required = true),
-//    })
-//    @GetMapping(value = "/get-user", produces = "application/octet-stream")
-//    @Override
-//    public ResponseEntity<byte[]> download(
-//            @NotEmpty(message = "导出用户必须大于0")
-//            @RequestParam(value = "ids") List<String> ids) {
-//        List<User> users = iUserService.listByIds(ids);
-//        return iUserService.getExcel(users);
-//    }
 
     // dan
     @SneakyThrows
