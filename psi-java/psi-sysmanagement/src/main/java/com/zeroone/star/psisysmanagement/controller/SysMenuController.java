@@ -34,7 +34,7 @@ public class SysMenuController {
 
     @Resource
     private ISysMenuService iSysMenuService;
-    //@Resource
+//    @Resource
     private SingleMenuQuery singleMenuQuery;
     //@Resource
     private MenusQuery menusQuery;
@@ -69,9 +69,9 @@ public class SysMenuController {
     @ApiOperation(value = "删除菜单")
     @DeleteMapping("/delete")
     public JsonVO<String> deleteMenu(int id) {
-
-        singleMenuQuery.setId(String.valueOf(id));
-        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(singleMenuQuery);
+        SingleMenuQuery singleMenuQuery1=new SingleMenuQuery();
+        singleMenuQuery1.setId(String.valueOf(id));
+        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(singleMenuQuery1);
 
         return resultStatus.getData().getCode() == 9999
                 ? JsonVO.create("删除失败", ResultStatus.FAIL)
@@ -81,23 +81,13 @@ public class SysMenuController {
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/query")
-    public JsonVO<MenuVO> queryMenu(int id) {
-
-        singleMenuQuery.setId(String.valueOf(id));
-
-        return iSysMenuService.querySingle(singleMenuQuery);
+    public JsonVO<List<MenuVO>> queryMenu(String id) {
+        SingleMenuQuery singleMenuQuery1=new SingleMenuQuery();
+        singleMenuQuery1.setId(id);
+        return iSysMenuService.querySingle(singleMenuQuery1);
     }
 
-    @SneakyThrows
-    @ApiOperation(value = "查询菜单")
-    @GetMapping("/queryMenus")
-    public JsonVO<List<MenuVO>> queryMenus(int parentId) {
-        //一级菜单parentId为0
-        menusQuery.setParentId(String.valueOf(parentId));
 
-        return null;
-
-    }
 
 }
 

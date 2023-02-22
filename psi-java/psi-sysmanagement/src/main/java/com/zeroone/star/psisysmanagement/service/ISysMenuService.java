@@ -30,14 +30,9 @@ public interface ISysMenuService extends IService<SysMenu> {
      * @param singleMenuQuery
      * @return
      */
-    JsonVO<MenuVO> querySingle(SingleMenuQuery singleMenuQuery);
+    JsonVO<List<MenuVO>> querySingle(SingleMenuQuery singleMenuQuery);
 
-    /**
-     * 查询父节点下菜单组
-     * @param menusQuery
-     * @return
-     */
-    JsonVO<List<MenuVO>> queryMenus(MenusQuery menusQuery);
+
 
     /**
      * 新增菜单
