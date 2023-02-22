@@ -13,7 +13,7 @@
 class SuppliersName
 {
 
-	CC_SYNTHESIZE(std::string, id, ID);
+	CC_SYNTHESIZE(uint64_t, id, ID);
 	CC_SYNTHESIZE(std::string, name, Name);
 
 public:

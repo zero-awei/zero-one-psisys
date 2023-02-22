@@ -214,14 +214,20 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
+    <ClCompile Include="dao\publicInterfaceDao\DeliveryMethodTypeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDao\MaterialTypeDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDao\PayMethodTypeDAO.cpp" />
+    <ClCompile Include="dao\supplierDao\SuppliersNameDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\publicInterfaceService\DeliveryMethodTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\MaterialTypeService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\PayMethodTypeService.cpp" />
+    <ClCompile Include="service\supplierService\SuppliersNameService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -269,9 +275,14 @@
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
     <ClInclude Include="dao\bankAccountDao\temp.h" />
+    <ClInclude Include="dao\publicInterfaceDao\DeliveryMethodTypeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDao\DeliveryMethodTypeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDao\MaterialTypeDAO.h" />
     <ClInclude Include="dao\publicInterfaceDao\MaterialTypeMapper.h" />
-    <ClInclude Include="dao\supplierDao\temp.h" />
+    <ClInclude Include="dao\publicInterfaceDao\PayMethodTypeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDao\PayMethodTypeMapper.h" />
+    <ClInclude Include="dao\supplierDao\SuppliersNameDAO.h" />
+    <ClInclude Include="dao\supplierDao\SuppliersNameMapper.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\DeliveryMethodTypeDO.h" />
@@ -340,8 +351,10 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\bankAccountService\temp.h" />
+    <ClInclude Include="service\publicInterfaceService\DeliveryMethodTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\MaterialTypeService.h" />
-    <ClInclude Include="service\supplierService\temp.h" />
+    <ClInclude Include="service\publicInterfaceService\PayMethodTypeService.h" />
+    <ClInclude Include="service\supplierService\SuppliersNameService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
