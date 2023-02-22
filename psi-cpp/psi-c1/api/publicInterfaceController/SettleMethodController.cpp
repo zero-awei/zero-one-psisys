@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SettleMethodController.h"
+#include "../../service/publicInterfaceService/SettleMethodService.h"
 
 /**
  *Author c1-ruizi
@@ -9,12 +10,8 @@
 
 JsonVO<list<SettleMethodVO>> SettleMethodController::executequerySettleMethod()
 {
-	list<SettleMethodVO> data;
-	SettleMethodVO vo;
-	vo.setId(1);
-	vo.setName(u8"…Û∫À÷–");
-	data.push_back(vo);
-	JsonVO<list<SettleMethodVO>> res;
-	res.success(data);
-	return res;
+	SettleMethodService service;
+	list<SettleMethodVO> data = service.listAll();
+	//JsonVO<list<SettleMethodVO>> res;
+	return JsonVO<list<SettleMethodVO>>(data, RS_SUCCESS);
 }

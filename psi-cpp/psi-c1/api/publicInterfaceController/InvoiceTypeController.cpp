@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "InvoiceTypeController.h"
+#include "../../service/publicInterfaceService/InvoiceTypeService.h"
 
 /**
  *Author c1-ruizi
@@ -9,12 +10,8 @@
 
 JsonVO<list<InvoiceTypeVO>> InvoiceTypeController::executequeryInvoiceType()
 {
-	list<InvoiceTypeVO> data;
-	InvoiceTypeVO vo;
-	vo.setId(1);
-	vo.setName(u8"…Û∫À÷–");
-	data.push_back(vo);
-	JsonVO<list<InvoiceTypeVO>> res;
-	res.success(data);
-	return res;
+	InvoiceTypeService service;
+	list<InvoiceTypeVO> data = service.listAll();
+	//JsonVO<list<SettleMethodVO>> res;
+	return JsonVO<list<InvoiceTypeVO>>(data, RS_SUCCESS);
 }
