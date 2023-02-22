@@ -11,7 +11,28 @@
 uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_quot";
-	//PUR_QUOT_TERAM_PARSE(iObj, sql);
+	SqlParams params;
+	sql << " WHERE 1=1";
+	if (iObj.getSubject().empty()) {
+		sql << " AND subject=?";
+		SQLPARAMS_PUSH(params, "s", std::string, iObj.getSubject());
+	}
+	if (iObj.getBill_stage().empty()) {
+		sql << " AND bill_stage=?";
+		SQLPARAMS_PUSH(params, "s", std::string, iObj.getBill_stage());
+	}
+	if (iObj.getIs_effective().empty()) {
+		sql << " AND is_effective=?";
+		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_effective());
+	}
+	if (iObj.getIs_closed().empty()) {
+		sql << " AND is_closed=?";
+		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_closed());
+	}
+	if (iObj.getIs_voided().empty()) {
+		sql << " AND is_voided=?";
+		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_voided());
+	}
 	SqlParams params;
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);

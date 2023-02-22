@@ -215,6 +215,7 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotAllDO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotEntryBillVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />

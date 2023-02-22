@@ -138,6 +138,9 @@
     <ClInclude Include="dao\pur-quot\PurQuotListMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\pur-quot\PurQuotAllDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
