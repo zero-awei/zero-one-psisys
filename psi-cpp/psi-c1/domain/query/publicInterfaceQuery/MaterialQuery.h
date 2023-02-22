@@ -40,6 +40,8 @@ public:
         BIND_FROM_TO_NORMAL(j, t, type);
         BIND_FROM_TO_NORMAL(j, t, taxCode);
         BIND_FROM_TO_NORMAL(j, t, code);
+		BIND_FROM_TO_ULL(j, t, pageIndex);
+		BIND_FROM_TO_ULL(j, t, pageSize);
     }
 
 };

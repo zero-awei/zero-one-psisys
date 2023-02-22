@@ -19,6 +19,7 @@ PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)
 	obj.setTaxCode(query.getTaxCode());
 
 	MaterialDAO dao;
+	
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
 	{
@@ -50,7 +51,8 @@ PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)
 		vo.setCreateBy(sub.getCreateBy());
 		vo.setUpdateTime(sub.getUpdateTime());
 		vo.setUpdateBy(sub.getUpdateBy());
+		vr.push_back(vo);
 	}
-	rs.setRows(vr);
+  	rs.setRows(vr);
 	return rs;
 }
