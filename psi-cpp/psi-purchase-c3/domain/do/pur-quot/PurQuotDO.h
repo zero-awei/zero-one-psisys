@@ -90,8 +90,8 @@ public:
     src_bill_id = "";
     src_no = "";
     subject = "";
-    is_rubric = "";
-    is_temp_supplier = "";
+    is_rubric = -1;
+    is_temp_supplier = -1;
     supplier_id = "";
     supplier_name = "";
     payment_method = "";
@@ -101,26 +101,26 @@ public:
     phone = "";
     fax = "";
     email = "";
-    qty = "";
-    amt = "";
-    attachment = "";
+    qty = -1;
+    amt = -1;
+    attachment = -1;
     remark = "";
-    is_auto = "";
-    bill_stage = "";
+    is_auto = -1;
+    bill_stage = -1;
     approver = "";
     bpmi_instance_id = "";
     approval_result_type = "";
     approval_remark = "";
-    is_effective = "";
+    is_effective = -1;
     effective_time = "";
-    is_closed = "";
-    is_voided = "";
+    is_closed = -1;
+    is_voided = -1;
     sys_org_code = "";
     create_by = "";
     create_time = "";
     update_by = "";
     update_time = "";
-    version = "";
+    version = -1;
   }
 };
 

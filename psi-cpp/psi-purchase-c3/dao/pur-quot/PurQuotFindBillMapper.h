@@ -20,12 +20,12 @@ public:
 		data.setSupplier_id(resultSet->getString(5));
 		data.setSupplier_name(resultSet->getString(6));
 		data.setDelivery_time(resultSet->getString(7));
-		data.setQty(resultSet->getString(8));
-		data.setAmt(resultSet->getString(9));
+		data.setQty(resultSet->getInt(8));
+		data.setAmt(resultSet->getInt(9));
 		data.setBill_stage(resultSet->getString(10));
-		data.setIs_effective(resultSet->getString(11));
-		data.setIs_closed(resultSet->getString(12));
-		data.setIs_voided(resultSet->getString(13));
+		data.setIs_effective(resultSet->getInt(11));
+		data.setIs_closed(resultSet->getInt(12));
+		data.setIs_voided(resultSet->getInt(13));
 		data.setPayment_method(resultSet->getString(14));
 		data.setDelivery_place(resultSet->getString(15));
 		data.setContact(resultSet->getString(16));
@@ -33,8 +33,8 @@ public:
 		data.setFax(resultSet->getString(18));
 		data.setEmail(resultSet->getString(19));
 		data.setRemark(resultSet->getString(20));
-		data.setIs_auto(resultSet->getString(21));
-		data.setIs_rubric(resultSet->getString(22));
+		data.setIs_auto(resultSet->getInt(21));
+		data.setIs_rubric(resultSet->getInt(22));
 		data.setEffective_time(resultSet->getString(23));
 		data.setApprover(resultSet->getString(24));
 		data.setCreate_time(resultSet->getString(25));
