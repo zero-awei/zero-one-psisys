@@ -50,8 +50,6 @@ uint64_t SampleDAO::count(const SampleDO& iObj)
 std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize){
 	stringstream sql;
 	sql << "SELECT * FROM sample";;
-+6
-
 	SAMPLE_TERAM_PARSE(obj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	SampleMapper mapper;
