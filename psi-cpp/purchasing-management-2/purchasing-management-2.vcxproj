@@ -199,8 +199,10 @@
   <ItemGroup>
     <ClInclude Include="api\prepayment\PrePayController.h" />
     <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\DoInclude.h" />
     <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
+    <ClInclude Include="dao\PurQuto\PurQuotDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />

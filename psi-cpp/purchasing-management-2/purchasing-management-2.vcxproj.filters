@@ -45,6 +45,12 @@
     <ClCompile Include="api\prepayment\PrePayController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\prepayment\PrePayService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="domain\do\DoInclude.h">
@@ -129,6 +135,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="service\prepayment\PrePayService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\prepayment\PrepaymentDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\prepayment\PrepaymentMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\prepayment\PrepaymentDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\PurQuto\PurQuotDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\DoInclude.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
