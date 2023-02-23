@@ -212,13 +212,21 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         SysMenu sysMenu = BeanUtil.copyProperties(sysMenuQuery, SysMenu.class);
         //从数据库中获取该对象，可拥有更多属性
         SysMenu selectFromDB = baseMapper.selectById(sysMenu.getId());
+        //删除id对应的菜单及其所有子节点
         int num = deleteSub(sysMenu);
+        //对未删除的菜单重新排序
         resetSortNo(selectFromDB.getParentId());
 
         return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
     }
 
+    /**
+     * deleteMenu中删除id对应菜单及其所有子节点
+     * @param sysMenu
+     * @return
+     */
     private int deleteSub(SysMenu sysMenu) {
+        //先将sysMenu中对应id的菜单删除
         int num = baseMapper.deleteById(sysMenu);
         //将该节点的子项删除
         QueryWrapper<SysMenu> querySub = new QueryWrapper<>();
@@ -232,10 +240,16 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         return num;
     }
 
+    /**
+     * 对未删除的菜单重新排序
+     * @param parentId
+     */
     private void resetSortNo(String parentId) {
+        //获取所有同级菜单
         QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("parent_id", parentId);
         List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
+        //若有同级菜单，将同级菜单的sort_no先重置后重新赋值
         if (!sysMenus.isEmpty()) {
             //将同级其他节点排序重置
             for (SysMenu menu : sysMenus) {
@@ -247,6 +261,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             for (SysMenu menu : menus) {
                 MenuDTO menuDTO = BeanUtil.copyProperties(menu, MenuDTO.class);
                 updateMenu(menuDTO);
+                //对每个子节点的子节点组也更新sort_no
                 resetSortNo(menu.getId());
             }
         }
