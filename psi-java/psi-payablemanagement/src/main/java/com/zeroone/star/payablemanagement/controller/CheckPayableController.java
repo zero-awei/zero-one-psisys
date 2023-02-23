@@ -1,7 +1,9 @@
 package com.zeroone.star.payablemanagement.controller;
 
 
+import com.zeroone.star.payablemanagement.service.IFinPayableCheckEntryService;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
+import com.zeroone.star.payablemanagement.service.IFinPayableService;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
@@ -35,6 +37,10 @@ import java.util.List;
 public class CheckPayableController implements CheckPayableApis {
     @Autowired
     IFinPayableCheckService finPayableCheck;
+    @Autowired
+    IFinPayableService finPayable;
+    @Autowired
+    IFinPayableCheckEntryService finPayableCheckEntry;
 
     @Override
     @GetMapping("entry")
@@ -45,21 +51,21 @@ public class CheckPayableController implements CheckPayableApis {
 
     @GetMapping("list")
     @ApiOperation("查询单据列表")
-    public JsonVO<PageVO<CheckPayableVO>> listFinPayableCheck(CheckPayableQuery condition) {
-        return null;
+    public JsonVO<PageVO<CheckPayableVO>> queryAll(CheckPayableQuery condition) {
+        return  JsonVO.success(finPayableCheck.queryAll(condition));
     }
 
     @Override
     @GetMapping("queryPayableBySupplier")
     @ApiOperation("根据供应商ID查询应付单")
-    public JsonVO<PageVO<PayableVO>> listFinPayableBySupplier(PayableBySupplierQuery condition) {
+    public JsonVO<PageVO<PayableVO>> listPayableBySupplier(PayableBySupplierQuery condition) {
         return null;
     }
 
     @Override
     @GetMapping("queryPaymentBySupplier")
     @ApiOperation("根据供应商ID查询付款单")
-    public JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
+    public JsonVO<PageVO<PaymentVO>> listPaymentBySupplier(PaymentBySupplierQuery condition) {
         return null;
     }
 

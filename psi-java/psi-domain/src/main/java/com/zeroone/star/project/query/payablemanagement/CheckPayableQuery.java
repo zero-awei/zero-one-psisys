@@ -1,9 +1,11 @@
 package com.zeroone.star.project.query.payablemanagement;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -13,9 +15,10 @@ import java.util.Date;
  * @since 2023-02-13 08:43
  * @description 应付核销上的Query。在应付核销页面查询按钮左侧和上侧用到的字段。
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ApiModel("应付核销单自定义查询")
-public class CheckPayableQuery {
+public class CheckPayableQuery extends PageQuery {
     // ---展开前---
 
     /**

@@ -7,6 +7,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -42,7 +44,7 @@ public class CheckPayableVO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
-    private Date billDate;
+    private LocalDate billDate;
 
     @ApiModelProperty(value = "单据编号", example = "YFHX-230209-009")
     private String billNo;
@@ -53,8 +55,8 @@ public class CheckPayableVO {
     /* 既不在网页上出现，也不在数据库中出现
      * billType: "FinPayableCheck:2"
      */
-    @ApiModelProperty(value = "账单类型", example = "FinPayableCheck:2")
-    private String billType;
+//    @ApiModelProperty(value = "账单类型", example = "FinPayableCheck:2")
+//    private String billType;
 
 //    @ApiModelProperty(value = "流程id", example = "")
 //    private String bpmiInstanceId;
@@ -65,30 +67,30 @@ public class CheckPayableVO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
-    private Date effectiveTime;
+    private LocalDateTime effectiveTime;
 
 //    @ApiModelProperty(value = "ID", example = "1623386325943361538")
 //    private String id;
 
     @ApiModelProperty(value = "自动单据", example = "否")
-    private Integer isAutoDictText;
+    private String isAutoDictText;
 
     @ApiModelProperty(value = "已关闭", example = "是")
-    private Integer isClosedDictText;
+    private String isClosedDictText;
 
     @ApiModelProperty(value = "已生效", example = "是")
-    private Integer isEffectiveDictText;
+    private String isEffectiveDictText;
 
     @ApiModelProperty(value = "红字单据", example = "否")
-    private Integer isRubricDictText;
+    private String isRubricDictText;
 
     @ApiModelProperty(value = "已作废", example = "否")
-    private Integer isVoidedDictText;
+    private String isVoidedDictText;
 
     @ApiModelProperty(value = "核销类型", example = "应付核销")
     private String payableCheckTypeDictText;
@@ -119,7 +121,7 @@ public class CheckPayableVO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
 //    @ApiModelProperty(value = "版本", example = "")
 //    private Integer version;
