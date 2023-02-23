@@ -10,6 +10,7 @@
 #include "../../domain/query/PaymentBillImpl/PaymentBillQuery.h"
 #include "../../domain/query/PaymentBillImpl/PaymentBillDetailQuery.h"
 #include "../../domain/vo/PaymentBillImpl/PaymentBillVO.h"
+#include "../../domain/vo/PaymentBillImpl/PaymentBillDetailVO.h"
 #include "../../domain/dto/PaymentBillImpl/AddPayApplyDTO.h"
 #include "../../domain/dto/PaymentBillImpl/ModPayApplyDTO.h"
 
@@ -17,7 +18,7 @@
 /**
  * 采购申请功能点
  */
-class PayReqController
+class PayApplyControlle
 {
 public:
 	//查询列表
@@ -25,15 +26,15 @@ public:
 	//查询详细数据
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPaymentDetailBill, execQueryPayDetailBill, PaymentBillDetailQuery);
 	//添加
-	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPayApply, execAddPayHandle , AddPayApplyDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPayApply, execAddPayHandle, AddPayApplyDTO);
 	//修改
-	CREATE_API_FUN_BODY_PAYLOAD_FILE(modPayReqApply, execModPayHandle , ModPayApplyDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(modPayReqApply, execModPayHandle, ModPayApplyDTO);
 
 private:
 	//查询列表
-	JsonVO<PageVO<PaymentBillQuery>> execQueryPayBill(const PaymentBillQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<PaymentBillVO>> execQueryPayBill(const PaymentBillQuery& query, const PayloadDTO& payload);
 	//查询详细数据
-	JsonVO<PaymentBillDetailQuery> execQueryPayDetailBill(const PaymentBillDetailQuery& query, const PayloadDTO& payload);
+	JsonVO<PaymentBillDetailVO> execQueryPayDetailBill(const PaymentBillDetailQuery& query, const PayloadDTO& payload);
 	//添加
 	JsonVO<uint64_t> execAddPayHandle(const AddPayApplyDTO& dto, const PayloadDTO& payload);
 	//修改

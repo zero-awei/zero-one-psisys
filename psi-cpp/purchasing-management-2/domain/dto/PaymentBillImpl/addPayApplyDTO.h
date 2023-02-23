@@ -70,12 +70,14 @@ public:
 		BIND_FROM_TO_ULL(j, apt, opDept);
 		BIND_FROM_TO_ULL(j, apt, operator1);
 		BIND_FROM_TO_ULL(j, apt, paymentType);
-		BIND_FROM_TO_D(j, apt, amt);
 		BIND_FROM_TO_ULL(j, apt, remark);
-		BIND_FROM_TO_I(j, apt, isAuto);
 		BIND_FROM_TO_ULL(j, apt, billStage);
-		BIND_FROM_TO_I(j, apt, isEffective);
 		BIND_FROM_TO_ULL(j, apt, effectiveTime);
+
+		BIND_FROM_TO_D(j, apt, amt);
+
+		BIND_FROM_TO_I(j, apt, isAuto);
+		BIND_FROM_TO_I(j, apt, isEffective);
 		BIND_FROM_TO_I(j, apt, isClosed);
 		BIND_FROM_TO_I(j, apt, isVoided);
 	}

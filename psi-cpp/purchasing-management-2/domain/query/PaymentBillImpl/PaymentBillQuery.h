@@ -1,4 +1,3 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
  @Author: Papillon
@@ -39,15 +38,15 @@ class PaymentBillQuery : public PageQuery {
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PaymentBillQuery& pbq) {
-		BIND_FROM_TO_ULL(j, pbq, billNo);
-		BIND_FROM_TO_ULL(j, pbq, billDate);
-		BIND_FROM_TO_ULL(j, pbq, subject);
-		BIND_FROM_TO_ULL(j, pbq, supplierId);
-		BIND_FROM_TO_ULL(j, pbq, billStage);
-		BIND_FROM_TO_I(j, pbq, isEffective);
-		BIND_FROM_TO_I(j, pbq, isClosed);
-		BIND_FROM_TO_I(j, pbq, isVoided);
+	friend void from_json(const json& j, PaymentBillQuery& t) {
+		BIND_FROM_TO_ULL(j, t, billNo);
+		BIND_FROM_TO_ULL(j, t, billDate);
+		BIND_FROM_TO_ULL(j, t, subject);
+		BIND_FROM_TO_ULL(j, t, supplierId);
+		BIND_FROM_TO_ULL(j, t, billStage);
+		BIND_FROM_TO_I(j, t, isEffective);
+		BIND_FROM_TO_I(j, t, isClosed);
+		BIND_FROM_TO_I(j, t, isVoided);
 	}
 };
 #endif

@@ -13,15 +13,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_DETAIL_QUERY_
-#define _PAYMENT_BILL_DETAIL_QUERY_
+#ifndef _PAYMENT_BILL_DETAIL_VO_
+#define _PAYMENT_BILL_DETAIL_VO_
 
+#include "../../GlobalInclude.h"
+#include "PaymentBillVO.h"
 
-#include "../PageQuery.h"
 /*
 查询单据列表
 */
-class PaymentBillDetailQuery {
+class PaymentBillDetailVO:public PaymentBillVO {
 	//源单号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//申请金额
@@ -37,14 +38,10 @@ class PaymentBillDetailQuery {
 
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PaymentBillDetailQuery& t) {
-		BIND_FROM_TO_ULL(j, t, srcNo);
-		BIND_FROM_TO_ULL(j, t, remark);
-		BIND_FROM_TO_ULL(j, t, custom1);
-		BIND_FROM_TO_ULL(j, t, custom2);
-		BIND_FROM_TO_D(j, t, amt);
-		BIND_FROM_TO_D(j, t, paidAmt);
-	}
+	BIND_TO_JSON(PaymentBillDetailVO, billNo, billDate, subject, supplierId, opDept,
+		operator_, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
+		isAuto, isRubric, remark, effectiveTime,
+		approver, createTime, createBy, sysOrgCode, updateTime, updateBy, custom1, custom2);
 };
 
 #endif
