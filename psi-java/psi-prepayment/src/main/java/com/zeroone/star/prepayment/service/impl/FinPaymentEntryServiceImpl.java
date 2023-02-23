@@ -64,18 +64,18 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
      */
     @Override
     public int insert(PrepaymentDTO prepaymentDTO) {
-        //获取主表id
+        //获取主表id TODO MP自动生成的ID如何获取
         String id1 = prepaymentDTO.getId();
         int res = 0;
         for (FinPaymentEntryDTO finPaymentEntryDTO:prepaymentDTO.getFinPaymentEntryList()){
             //生成明细表id
-            long timestamp2 = System.currentTimeMillis(); // 毫秒级时间戳
-            int randNum2 = new Random().nextInt(1000000000); // 生成9位随机数
-            String uniqueId2 = timestamp2 + String.format("%09d", randNum2); // 将时间戳和随机数拼接起来
-            String id2 = uniqueId2.substring(0, 19);// 截取前19位作为最终的唯一ID
+//            long timestamp2 = System.currentTimeMillis(); // 毫秒级时间戳
+//            int randNum2 = new Random().nextInt(1000000000); // 生成9位随机数
+//            String uniqueId2 = timestamp2 + String.format("%09d", randNum2); // 将时间戳和随机数拼接起来
+//            String id2 = uniqueId2.substring(0, 19);// 截取前19位作为最终的唯一ID
             FinPaymentEntry finPaymentEntry = new FinPaymentEntry();
             BeanUtils.copyProperties(finPaymentEntryDTO,finPaymentEntry);
-            finPaymentEntry.setId(id2);
+//            finPaymentEntry.setId(id2);
             finPaymentEntry.setMid(id1);//将主表id放入mid
             finPaymentEntry.setBillNo(prepaymentDTO.getBillNo());//获取单号
             res = baseMapper.insert(finPaymentEntry);

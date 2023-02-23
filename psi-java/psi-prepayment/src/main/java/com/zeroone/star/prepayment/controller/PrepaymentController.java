@@ -1,6 +1,8 @@
 package com.zeroone.star.prepayment.controller;
 
 import com.zeroone.star.prepayment.service.IPrepaymentService;
+import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
+import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.prepayment.*;
@@ -13,6 +15,8 @@ import com.zeroone.star.project.vo.prepayment.DetHavVO;
 import com.zeroone.star.project.vo.prepayment.DetNoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
@@ -27,6 +31,8 @@ import java.util.List;
 import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
+import javax.json.Json;
+
 import com.zeroone.star.prepayment.service.*;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.prepayment.*;
@@ -36,7 +42,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequestMapping("prepayment")
 @Api(tags = "预付模块")
 public class PrepaymentController implements PrepaymentApis {
-
     @Resource
     IPrepaymentService prepaymentService;
     @Resource
@@ -53,6 +58,8 @@ public class PrepaymentController implements PrepaymentApis {
     IFinPaymentReqService finPaymentReqService;
     @Resource
     IPurOrderService purOrderService;
+
+
     /**
      * 修改采购预付单功能
      * author forever爱
@@ -95,6 +102,7 @@ public class PrepaymentController implements PrepaymentApis {
         }
         return prepaymentService.auditById(auditDTO,currentUser);
     }
+
 
     /**
      * 单据查询 前端控制器
