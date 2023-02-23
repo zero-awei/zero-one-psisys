@@ -11,6 +11,9 @@ class PurQuotFindDetailBillVO{
 	CC_SYNTHESIZE(list<PurQuotDetailVO>, detail_vo, Detail_vo);
 public:
 	BIND_TO_JSON(PurQuotFindDetailBillVO, base_vo, detail_vo);
+	//默认构造函数
+	PurQuotFindDetailBillVO() {}
+	PurQuotFindDetailBillVO(PurQuotBaseVO &b_vo, list<PurQuotDetailVO> &entry_vo) :base_vo(b_vo), detail_vo(entry_vo){}
 };
 
 #endif

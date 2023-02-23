@@ -142,7 +142,7 @@ PurQuotFindDetailBillVO PurQuotService::getPurQuotFindDetailBillVO(const PurQuot
 	//接收查询到的DO
 	PurQuotDAO dao;
 	list<PurQuotDO> result = dao.selectPurQuotBase(obj); //一个Base对象
-	
+	//构建BaseVO对象
 	PurQuotBaseVO vo;
 	if (!result.empty()) {
 		auto sub = result.front();
@@ -178,21 +178,34 @@ PurQuotFindDetailBillVO PurQuotService::getPurQuotFindDetailBillVO(const PurQuot
 		vo.setIs_rubric(sub.getIs_rubric());
 		vo.setSrc_bill_type(sub.getSrc_bill_type());
 	}
-
-
-
 //---------对于DetailVO
+	//设置查询条件
 	PurQuotEntryDO entry_obj;
 	entry_obj.setBill_no(query.getBill_no());
+	//接收查询到的DO
 	list<PurQuotEntryDO> entry_result = dao.selectPurQuotDetail(entry_obj); //多个Base对象
 	PurQuotDetailVO entry_vo;
 
-	
+	//构建DetailVO对象
+	list<PurQuotDetailVO> entry_vr;
+	for (PurQuotEntryDO sub : entry_result) {
+		PurQuotDetailVO entry_vo;
+		entry_vo.setEntry_src_no(sub.getSrc_no());
+		entry_vo.setEntry_material_id(sub.getMaterial_id());
+		entry_vo.setEntry_unit_id(sub.getUnit_id());
+		entry_vo.setEntry_qty(sub.getQty());
+		entry_vo.setEntry_tax_rate(sub.getTax_rate());
+		entry_vo.setEntry_price(sub.getPrice());
+		entry_vo.setEntry_discount_rate(sub.getDiscount_rate());
+		entry_vo.setEntry_amt(sub.getAmt());
+		entry_vo.setEntry_remark(sub.getRemark());
+		entry_vo.setEntry_custom1(sub.getCustom1());
+		entry_vo.setEntry_custom2(sub.getCustom2());
+		entry_vr.push_back(entry_vo);
+	}
 	
 	//构建返回对象
-	PurQuotFindDetailBillVO vr;
-	
-
-
+	PurQuotFindDetailBillVO vr(vo, entry_vr);
+	return vr;
 }
 

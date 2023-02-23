@@ -65,10 +65,13 @@ JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(co
 
 //查询指定单据列表
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
+	PurQuotFindDetailBillVO result;
 	//暂时未进行数据校验
-	PurQuotFindDetailBillVO vo;
+	if(query.getBill_no() == "") return JsonVO<PurQuotFindDetailBillVO>(result, RS_PARAMS_INVALID);
+	PurQuotService service;
+	result = service.getPurQuotFindDetailBillVO(query);
 	//响应结果
-	return JsonVO<PurQuotFindDetailBillVO>(vo, RS_SUCCESS);
+	return JsonVO<PurQuotFindDetailBillVO>(result, RS_SUCCESS);
 }
 
 //询价单列表
