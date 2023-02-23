@@ -1,7 +1,7 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
- 
+
  @Author: awei
  @Date: 2022/10/24 23:36:43
  
@@ -34,6 +34,7 @@ public:
 	explicit Router(http_server* sever);
 	//∫ÙΩ–≥ı ºªØ
 	void initRouter();
+
 private:
 	void createPaymentRouter();
 #ifdef HTTP_SERVER_DEMO
@@ -46,6 +47,7 @@ private:
 	void createPurOrderRouter();
 	void createPurReqRouter();
 	void createPurComRouter();
+	void createPayApplyRouter();
 };
 
 #endif // !_ROUTER_
