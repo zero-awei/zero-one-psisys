@@ -21,6 +21,9 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
+#include "payment/PaymentController.h"
+
+
 #define PURORDER
 #include "PurOrder/PurOrderController.h"
 #include "prepayment/PrePayController.h"
@@ -134,6 +137,7 @@ void Router::initRouter()
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
+	createPaymentRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -202,4 +206,12 @@ void Router::createPurComRouter() {
 	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
 	// 单个数据
 	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
+}
+
+void Router::createPaymentRouter()
+{
+	BIND_PUT_ROUTER(server, "/payment-change", &PaymentController::changePayment, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-by-id", &PaymentController::deleteById, nullptr);
+	BIND_POST_ROUTER(server, "/payment-export", &PaymentController::exportPayment, nullptr);
+	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
 }
