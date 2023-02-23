@@ -18,18 +18,15 @@
  limitations under the License.
 */
 
-#ifndef _MATERIALTYPETREEDAO_H_
-#define _MATERIALTYPETREEDAO_H_
+#ifndef _BASWAREHOUSETREEDDAO_H_
+#define _BASWAREHOUSETREEDDAO_H_
 #include"./BaseDAO.h"
-#include"../../domain/do/publicInterfaceDO/MaterialTypeTreeDO.h"
-class MaterialTypeTreeDAO:public BaseDAO{
+#include"./domain/do/publicInterfaceDO/BasWareHouseTreeDO.h"
+class BasWareHouseTreeDAO :public BaseDAO {
 public:
-    uint64_t count(const MaterialTypeTreeDO& iObj);
+    uint64_t count(const BasWareHouseTreeDO& iObj);
 
-    list<MaterialTypeTreeDO> selectWithPage(const MaterialTypeTreeDO& obj, uint64_t pageIndex, uint64_t pageSize);
-
+    list<BasWareHouseTreeDO> selectWithPage(const BasWareHouseTreeDO& obj, uint64_t pageIndex, uint64_t pageSize);
 };
-
-
 
 #endif

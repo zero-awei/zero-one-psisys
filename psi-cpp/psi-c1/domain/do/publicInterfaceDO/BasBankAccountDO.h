@@ -3,13 +3,13 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: kiva
- @Date: 2022/10/25 11:17:48
+ @Date: 2023/2/18 19:53
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-      https://www.apache.org/licenses/LICENSE-2.0
+	  https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,18 +18,19 @@
  limitations under the License.
 */
 
-#ifndef _MATERIALTYPETREEDAO_H_
-#define _MATERIALTYPETREEDAO_H_
-#include"./BaseDAO.h"
-#include"../../domain/do/publicInterfaceDO/MaterialTypeTreeDO.h"
-class MaterialTypeTreeDAO:public BaseDAO{
-public:
-    uint64_t count(const MaterialTypeTreeDO& iObj);
+#ifndef _BASBANKACCOUNTDO_H_
+#define _BASBANKACCOUNTDO_H_
+#include"../DoInclude.h"
+class BasBankAccountDO {
+	CC_SYNTHESIZE(string, id, Id);
 
-    list<MaterialTypeTreeDO> selectWithPage(const MaterialTypeTreeDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	CC_SYNTHESIZE(std::string, value, Value);
+
+public:
+	BasBankAccountDO() {
+		id = "";
+		value = "";
+	}
 
 };
-
-
-
 #endif

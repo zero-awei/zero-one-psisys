@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "MaterialTypeTreeDAO.h"
-#include "./MaterialTypeTreeMapper.h"
+#include "BasWareHouseTreeDAO.h"
 #include <sstream>
+#include "./BasWareHouseTreeMapper.h"
 
 
 //定义条件解析宏，减少重复代码
@@ -17,25 +17,22 @@ if (!obj.getName().empty()) {\
 		SQLPARAMS_PUSH(params, "s", std::string, obj.getName()); \
 }\
 
-uint64_t MaterialTypeTreeDAO::count(const MaterialTypeTreeDO & iObj)
+uint64_t BasWareHouseTreeDAO::count(const BasWareHouseTreeDO& iObj)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM bas_material_category";
+	sql << "SELECT COUNT(*) FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(iObj, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-list<MaterialTypeTreeDO> MaterialTypeTreeDAO::selectWithPage(const MaterialTypeTreeDO& obj, uint64_t pageIndex, uint64_t pageSize)
+list<BasWareHouseTreeDO> BasWareHouseTreeDAO::selectWithPage(const BasWareHouseTreeDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_material_category";
+	sql << "SELECT * FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	MaterialTypeTreeMapper mapper;
+	BasWareHouseTreeMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<MaterialTypeTreeDO, MaterialTypeTreeMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<BasWareHouseTreeDO, BasWareHouseTreeMapper>(sqlStr, mapper, params);
 }
-
-
-

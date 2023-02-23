@@ -18,36 +18,39 @@
  limitations under the License.
 */
 
-#ifndef _MATERIALTYPETREEVO_H_
-#define _MATERIALTYPETREEVO_H_
+#ifndef _BASWAREHOUSETREEDO_H_
+#define _BASWAREHOUSETREEDO_H_
 #include"../DoInclude.h"
-#include"../../vo/publicInterfaceVO/MaterialTypeTreeListVO.h"
-class MaterialTypeTreeDO {
+
+class BasWareHouseTreeDO {
+	CC_SYNTHESIZE(std::string, auxName, AuxName);
 	CC_SYNTHESIZE(std::string, code, Code);
 	CC_SYNTHESIZE(std::string, createBy, CreateBy);
 	CC_SYNTHESIZE(std::string, createTime, CreateTime);
-	CC_SYNTHESIZE(std::string, fullname, Fullname);
 	CC_SYNTHESIZE(std::string, hasChild, HasChild);
 	CC_SYNTHESIZE(std::string, id, Id);
 	CC_SYNTHESIZE(int, isEnabled, IsEnabled);
 	CC_SYNTHESIZE(std::string, name, Name);
+	CC_SYNTHESIZE(std::string, phone, Phone);
 	CC_SYNTHESIZE(std::string, pid, Pid);
+	CC_SYNTHESIZE(std::string, remark, Remark);
 	CC_SYNTHESIZE(std::string, updateBy, UpdateBy);
 	CC_SYNTHESIZE(std::string, updateTime, UpdateTime);
 	CC_SYNTHESIZE(std::string, version, Version);
-	CC_SYNTHESIZE(std::vector<MaterialTypeTreeListVO>, children, Children);
 
 public:
-	MaterialTypeTreeDO() {
+	BasWareHouseTreeDO() {
+		auxName = "";
 		code = "";
 		createBy = "";
 		createTime = "";
-		fullname = "";
 		hasChild = "";
 		id = "";
 		isEnabled = -1;
 		name = "";
+		phone = "";
 		pid = "";
+		remark = "";
 		updateBy = "";
 		updateTime = "";
 		version = "";

@@ -1,14 +1,13 @@
 #include "stdafx.h"
 #include "BasBankAccountController.h"
+#include"../../service/publicInterfaceService/BasBankAccountService.h"
 
 JsonVO<std::list<BasBankAccountVO>> BasBankAccountController::execQueryBasBankAccount()
 {
     list<BasBankAccountVO> data;
-    BasBankAccountVO vo;
-    //vo.setId(1);
-    //vo.setValue(u8"1584913699556106242");
-    data.push_back(vo);
-    JsonVO<list<BasBankAccountVO>> res;
-    res.success(data);
-    return res;
+	BasBankAccountService service;
+	//查询数据
+	list<BasBankAccountVO> result = service.listAll();
+	//响应结果
+	return JsonVO<list<BasBankAccountVO>>(result, RS_SUCCESS);
 }

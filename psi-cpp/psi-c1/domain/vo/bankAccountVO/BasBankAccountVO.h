@@ -5,7 +5,7 @@
 
 class BasBankAccountVO {
 	
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 
 	CC_SYNTHESIZE(std::string, value, Value);
 
@@ -14,7 +14,7 @@ public:
 	BIND_TO_JSON(BasBankAccountVO, id,value);
 
 	BasBankAccountVO() {
-		id = 1;
+		id = "111";
 		value = u8"1584913699556106242";
 	}
 
