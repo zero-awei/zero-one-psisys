@@ -5,6 +5,8 @@
 #include "PurQuotFindBillMapper.h"
 #include "PurQuotListMapper.h"
 #include "PurQuotDividedListMapper.h"
+#include "PurQuotBaseMapper.h"
+#include "PurQuotDetailMapper.h"
 
 
 //和PurQuotDO相关的宏
@@ -40,10 +42,9 @@ if (obj.getIs_voided() != -1) {  \
 #define PUR_QUOT_ENTRY_TERAM_PARSE(obj, sql) \
 SqlParams params;  \
 sql << " WHERE 1=1"; \
-if (!obj.getBill_no().empty()) { \
-	sql << " AND bill_no=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
-} 
+sql << " AND bill_no=?"; \
+SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); 
+
 
 uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	stringstream sql;
@@ -98,4 +99,12 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDividedList(const PurQuotEntryDO& 
 
 
 
-
+PurQuotDO PurQuotDAO::selectPurQuotBase(const PurQuotDO& obj) {
+	stringstream sql;
+	sql << "SELECT bill_no, material_id, unit_id, qty, tax_rate, price, \
+	amt, remark, custom1, custom2 FROM pur_quot_entry";
+	PUR_QUOT_ENTRY_TERAM_PARSE(obj, sql);
+	PurQuotBaseMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurQuotDO, PurQuotBaseMapper>(sqlStr, mapper, params);
+}

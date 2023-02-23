@@ -32,7 +32,7 @@ public:
 	SampleDO mapper(ResultSet* resultSet) const override
 	{
 		SampleDO data;
-		data.getAge
+		data.getAge;
 		data.setId(resultSet->getUInt64(1));
 		data.setName(resultSet->getString(2));
 		data.setSex(resultSet->getString(3));
