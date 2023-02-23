@@ -10,6 +10,8 @@ class PurQuotDAO : public BaseDAO {
 public:
 	//统计数据条数
 	uint64_t count(const PurQuotDO& iObj);
+	uint64_t count(const PurQuotEntryDO& iObj);
+
 	//查询单据列表,返回多个对象
 	list<PurQuotDO> selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	//报价单列表(多个对象)

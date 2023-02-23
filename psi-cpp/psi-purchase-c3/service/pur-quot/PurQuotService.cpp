@@ -72,7 +72,78 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 }
 
 
+//获取多个PurQuotList对象
+list<PurQuotListVO> PurQuotService::listPurQuotListVO(const PurQuotListQuery& query) {
+	//构建返回对象
+	list<PurQuotListVO> pages;
+	//设置查询条件
+	PurQuotEntryDO obj;
+	obj.setBill_no(query.getBill_no());
+
+	//检查查询到的数据总数
+	PurQuotDAO dao;
+	uint64_t count = dao.count(obj);
+	//数据总数小于等于0, 直接返回pages
+	if (count <= 0)
+	{
+		return pages;
+	}
+	//接收查询到的DO
+	list<PurQuotEntryDO> result = dao.selectPurQuotList(obj);
+	//vr是接收DO的VO对象
+	list<PurQuotListVO> vr;
+	for (PurQuotEntryDO sub : result) {
+		PurQuotListVO vo;
+		vo.setSrc_no(sub.getSrc_no());
+		vo.setMaterial_id(sub.getMaterial_id());
+		vo.setUnit_id(sub.getUnit_id());
+		vo.setQty(sub.getQty());
+		vo.setTax_rate(sub.getTax_rate());
+		vo.setPrice(sub.getPrice());
+		vo.setDiscount_rate(sub.getDiscount_rate());
+		vo.setAmt(sub.getAmt());
+		vo.setRemark(sub.getRemark());
+		vo.setCustom1(sub.getCustom1());
+		vo.setCustom2(sub.getCustom2());
+		vr.push_back(vo);
+	}
+	return pages;
+}
 
 
+//获取多个PurQuotDividedListVO对象
+list<PurQuotDividedListVO> PurQuotService::listPurQuotFindBillVO(const PurQuotDividedListQuery& query) {
+	//构建返回对象
+	list<PurQuotDividedListVO> pages;
+	//设置查询条件
+	PurQuotEntryDO obj;
+	obj.setBill_no(query.getBill_no());
 
-
+	//检查查询到的数据总数
+	PurQuotDAO dao;
+	uint64_t count = dao.count(obj);
+	//数据总数小于等于0, 直接返回pages
+	if (count <= 0)
+	{
+		return pages;
+	}
+	//接收查询到的DO
+	list<PurQuotEntryDO> result = dao.selectPurQuotList(obj);
+	//vr是接收DO的VO对象
+	list<PurQuotDividedListVO> vr;
+	for (PurQuotEntryDO sub : result) {
+		PurQuotDividedListVO vo;
+		vo.setBill_no(sub.getBill_no());
+		vo.setMaterial_id(sub.getMaterial_id());
+		vo.setUnit_id(sub.getUnit_id());
+		vo.setQty(sub.getQty());
+		vo.setTax_rate(sub.getTax_rate());
+		vo.setPrice(sub.getPrice());
+		vo.setAmt(sub.getAmt());
+		vo.setRemark(sub.getRemark());
+		vo.setCustom1(sub.getCustom1());
+		vo.setCustom2(sub.getCustom2());
+		vr.push_back(vo);
+	}
+	return pages;
+}

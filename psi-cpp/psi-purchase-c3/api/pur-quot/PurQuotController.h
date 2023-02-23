@@ -70,9 +70,9 @@ private:
 	//查询指定单据列表
 	JsonVO<PurQuotFindDetailBillVO> execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload);
 	// 查询询价单列表
-	JsonVO<PurQuotListVO> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
+	JsonVO<list<PurQuotListVO>> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
 	// 查询询价单分录列表
-	JsonVO<PurQuotDividedListVO> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
+	JsonVO<list<PurQuotDividedListVO>> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
 	//导出
 	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
 	//导入
