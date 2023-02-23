@@ -23,7 +23,7 @@ public class DetHavVO {
     /**
      * 单据编号
      */
-    @ApiModelProperty(value = "单据编号",example = "CGYF-230211-022")
+    @ApiModelProperty(value = "单据编号",example = "CGFK-221110-001")
     private String billNo;
 
     /**
@@ -156,5 +156,5 @@ public class DetHavVO {
     private List<FinPaymentEntryVO> listDetail;
 
     @ApiModelProperty(value = "采购预付申请单",example = "")
-    private  List<FinPaymentReqVO> listReq;
+    private  FinPaymentReqVO req;
 }

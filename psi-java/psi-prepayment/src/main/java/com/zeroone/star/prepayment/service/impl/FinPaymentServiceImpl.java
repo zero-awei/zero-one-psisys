@@ -1,5 +1,6 @@
 package com.zeroone.star.prepayment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
@@ -96,4 +97,18 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         return finPaymentMapper.insert(finPayment);
     }
 
+    /**
+     * ClassName FinPaymentServiceImpl
+     * Description IFinPaymentService服务类的实现
+     * Author HZP
+     * Date 2023/2/18 21:48
+     * Version 1.0
+     **/
+    @Override
+    public FinPayment getByBillNo(String billNo) {
+        QueryWrapper<FinPayment> FinQueryWrapper = new QueryWrapper<>();
+        FinQueryWrapper.eq("bill_no", billNo);
+        FinPayment finPayment = baseMapper.selectOne(FinQueryWrapper);
+        return finPayment;
+    }
 }

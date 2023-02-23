@@ -1,4 +1,4 @@
-package com.zeroone.star.prepayment.service.impl;
+
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.prepayment.entity.FinPayment;
@@ -20,6 +20,14 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.prepayment.entity.FinPaymentEntry;
+import com.zeroone.star.prepayment.mapper.FinPaymentEntryMapper;
+import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -81,6 +89,16 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
             res = baseMapper.insert(finPaymentEntry);
         }
         return res;
+    }
+    @Override
+    public List<FinPaymentEntry> listByMid(String mid, String srcBillType) {
+        QueryWrapper<FinPaymentEntry> FinEntryQueryWrapper = new QueryWrapper<>();
+        FinEntryQueryWrapper.eq("mid",mid);
+        FinEntryQueryWrapper.like("src_bill_type",srcBillType);
+        List<FinPaymentEntry> finPaymentEntries = baseMapper.selectList(FinEntryQueryWrapper);
+        if(finPaymentEntries!=null)
+            return finPaymentEntries;
+        return null;
     }
 
 }

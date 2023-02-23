@@ -7,6 +7,8 @@ import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * <p>
  * 付款单明细 服务类
@@ -28,4 +30,12 @@ public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
      * author kong
      */
     public int insert(PrepaymentDTO prepaymentDTO);
+
+    /**
+     * 根据mid查询对应明细
+     * @param mid 主表ID
+     * @param srcBillType 源单类型（ FinPaymentEntry  /  PurOrder ）
+     * @return 查询结果
+     */
+    List<FinPaymentEntry> listByMid(String mid, String srcBillType);
 }

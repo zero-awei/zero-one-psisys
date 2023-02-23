@@ -28,4 +28,11 @@ public interface IFinPaymentReqService extends IService<FinPaymentReq> {
      */
     public PageVO<FinPaymentReqVO> getFinPaymentReq(PurchaseListQuery purchaseListQuery);
 
+    /**
+     * 根据明细的源单id查询对应申请单
+     * @param srcBillId 源单id
+     * @return 查询结果
+     */
+    FinPaymentReq getBySrcBillId(String srcBillId);
+
 }

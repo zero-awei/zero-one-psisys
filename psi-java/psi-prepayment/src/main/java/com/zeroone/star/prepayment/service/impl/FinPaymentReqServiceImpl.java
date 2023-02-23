@@ -11,6 +11,12 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.prepayment.entity.FinPaymentReq;
+import com.zeroone.star.prepayment.mapper.FinPaymentReqMapper;
+import com.zeroone.star.prepayment.service.IFinPaymentReqService;
+import org.springframework.stereotype.Service;
 
 /**
  * @Author: Kong
@@ -39,5 +45,14 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
         return PageVO.create(res,FinPaymentReqVO.class);
     }
 
+    @Override
+    public FinPaymentReq getBySrcBillId(String srcBillId) {
+        QueryWrapper<FinPaymentReq> FinReqQueryWrapper = new QueryWrapper<>();
+        FinReqQueryWrapper.eq("id",srcBillId);
+        FinPaymentReq finPaymentReq = baseMapper.selectOne(FinReqQueryWrapper);
+        if(finPaymentReq!=null)
+            return finPaymentReq;
+        return null;
+    }
 
 }

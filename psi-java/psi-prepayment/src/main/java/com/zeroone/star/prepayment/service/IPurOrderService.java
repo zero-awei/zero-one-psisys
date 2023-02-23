@@ -23,8 +23,18 @@ public interface IPurOrderService extends IService<PurOrder> {
 
     /**
      * 获取无申请采购单（分页）
-     * @param condition 查询条件
-     * @return 无申请采购单
+     * param condition 查询条件
+     * return 无申请采购单
+     * author KONG
      */
     public PageVO<PurOrderVO> getPurOrder(PurchaseListQuery condition);
+
+    /**
+     * 根据明细的源单id查询对应采购单
+     * param srcBillId 源单ID
+     * return 查询结果
+     * author hzp
+     */
+    PurOrder getBySrcBillId(String srcBillId);
+
 }

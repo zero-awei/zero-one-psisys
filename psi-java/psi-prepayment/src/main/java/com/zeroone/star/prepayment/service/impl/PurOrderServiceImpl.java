@@ -41,4 +41,18 @@ public class PurOrderServiceImpl extends ServiceImpl<PurOrderMapper, PurOrder> i
         Page<PurOrder> purOrder= purOrderMapper.selectPage(purOrderPage, wrapper);
         return PageVO.create(purOrder,PurOrderVO.class);
     }
+    /**
+     * ClassName PurOrderServiceImpl
+     * Description IPurOrderService服务类的实现
+     * Author HZP
+     **/
+    @Override
+    public PurOrder getBySrcBillId(String srcBillId) {
+        QueryWrapper<PurOrder> PurOrderQueryWrapper = new QueryWrapper<>();
+        PurOrderQueryWrapper.eq("id",srcBillId);
+        PurOrder purOrder = baseMapper.selectOne(PurOrderQueryWrapper);
+        if(purOrder!=null)
+            return purOrder;
+        return null;
+    }
 }

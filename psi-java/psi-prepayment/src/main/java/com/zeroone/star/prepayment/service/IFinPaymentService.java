@@ -40,6 +40,15 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * 添加付款单
      * param prepaymentDTO
      * return
+     * author KONG
      */
     public int insert(PrepaymentDTO prepaymentDTO, UserDTO userDTO);
+
+    /**
+     * 根据单据编号查询指定付款单
+     * param billNo 单据编号
+     * return 查询结果
+     * author hzp
+     */
+    FinPayment getByBillNo(String billNo);
 }
