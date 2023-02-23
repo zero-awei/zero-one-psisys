@@ -3,6 +3,7 @@
 #define _CGTHCK_DAO_
 
 #include "BaseDAO.h"
+#include "FastDfsClient.h"
 #include "../../domain/do/Cgrk/StkIoDO.h"
 #include "../../domain/do/Cgrk/StkIoEntryDO.h"
 #include "../../service/Cgthck/CgthckMapper.h"
@@ -22,8 +23,10 @@ public:
 	list<CgthckDO> selectById(const string& id);
 	// 插入单据数据
 	uint64_t insertIntoBill(const CgthckDO& iobj);
-	// 插入明细
+	// 插入单据明细
 	int insertIntoEntry(const CgthckEntryDO& iobj);
+	// 插入文件
+	string insertFile(const string& fileName);
 	// 修改数据
 	int update(const CgthckDO& iobj);
 	// 删除通过单号数据

@@ -21,6 +21,19 @@ if (!obj.getSupplierId().empty()) { \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getSupplierId()); \
 }
 
+
+string CgthckDAO::insertFile(const string & fileName)
+{
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+	return client.uploadFile(fileName);
+}
+
 uint64_t CgthckDAO::count(const CgthckDO& iobj)
 {
 	stringstream sql;
@@ -39,27 +52,20 @@ list<CgthckDO> CgthckDAO::selectById(const string& id)
 
 uint64_t CgthckDAO::insertIntoBill(const CgthckDO& iobj)
 {
-	// 生成ID
-	SnowFlake sf(1, 5);
-	uint64_t id = sf.nextId();
-	string strId = to_string(id);
-
-	string sql = "INSERT INTO " + string{ DATABASE1 } + " (`id`, `bill_no`, `bill_date`, `supplier_id`, `stock_io_type`) VALUES (?, ?, ?, ?, ?)";
-	sqlSession->executeInsert(sql, "%s%s%s%s%s", strId, iobj.getBillNo(), iobj.getBillDate(), iobj.getSupplierId(), iobj.getSrcBillType());
-	return id;
+	string sql = "INSERT INTO " + string{ DATABASE1 } + " (`id`, `bill_no`, `bill_date`, `supplier_id`, `src_bill_type`, `stock_io_type`, `src_no`, `is_effective`, `is_closed`, `is_voided`, `op_dept`, `subject`, `invoice_type`, `handler`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	sqlSession->executeInsert(sql, "%s%s%s%s%s%s%s%i%i%i%s%s%s%s", iobj.getId(), iobj.getBillNo(), iobj.getBillDate(), iobj.getSupplierId(), iobj.getSrcBillType(), iobj.getStockIoType(), iobj.getSrcNo(), iobj.getIsEffective(), iobj.getIsClosed(), iobj.getIsVoided(), iobj.getOpDept(), iobj.getSubject(), iobj.getInvoiceType(), iobj.getHandler());
+	return stoull(iobj.getId());
 }
 
 int CgthckDAO::insertIntoEntry(const CgthckEntryDO& iobj)
 {
-	string sql = "INSERT INTO" + string{ DATABASE2 } + " (`mid`, `entry_no`, `material_id`, `batch_no`, `warehouse_id`, `stock_io_direction`) VALUES (?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s", iobj.getMid(), iobj.getEntryNo(), iobj.getMaterialId(), iobj.getBatchNo(), iobj.getWarehouseId(), iobj.getStockIoDirection());
+	string sql = "INSERT INTO " + string{ DATABASE2 } + " (`id`, `mid`, `bill_no`, `entry_no`, `material_id`, `batch_no`, `warehouse_id`, `stock_io_direction`, `unit_id`, `settle_qty`, `tax_rate`, `price`, `discount_rate`, `tax`, `settle_amt`, `qty`, `cost`, `invoiced_amt`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d", iobj.getId(), iobj.getMid(), iobj.getBillNo(), iobj.getEntryNo(), iobj.getMaterialId(), iobj.getBatchNo(), iobj.getWarehouseId(), iobj.getStockIoDirection(), iobj.getUnitId(), iobj.getSettleQty(), iobj.getTaxRate(), iobj.getPrice(), iobj.getDiscountRate(), iobj.getTax(), iobj.getSettleAmt(), iobj.getQty(), iobj.getCost(), iobj.getInvoicedAmt());
 }
 
 int CgthckDAO::update(const CgthckDO& iobj)
 {
-	string sql{ "" };
-	sql += "UPDATE " + string{ DATABASE1 } + " SET `bill_date`=?, `supplier_id`=? WHERE `bill_no`=?";
-	return sqlSession->executeInsert(sql, "%s%s%s", iobj.getBillDate(), iobj.getSupplierId(), iobj.getBillNo());
+	return 0;
 }
 
 int CgthckDAO::deleteById(const CgthckDO& iobj)

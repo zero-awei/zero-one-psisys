@@ -25,7 +25,7 @@ public:
 	// 查询指定单据明细接口
 	CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, QueryCgthckBillQuery);
 	// 添加采购退货出库(红入)单据接口
-	CREATE_API_FUN_BODY(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
+	CREATE_API_FUN_JSON(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
 	// 修改采购退货出库(红入)单据接口
 	CREATE_API_FUN_BODY(modifyCgthckBill, execModifyCgthckBill, ModifyCgthckBillDTO);
 	// 删除采购退货出库(红入)单据接口

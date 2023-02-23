@@ -1,12 +1,13 @@
 #ifndef ADD_CGTHCK_BILL_DTO_
 #define ADD_CGTHCK_BILL_DTO_
 
+#include "../FileDTO.h"
 #include "../../GlobalInclude.h"
 #include "./CgthckBillEntryDTO.h"
 /**
 * 采购退货出库(红入), 添加采购退货出库单数据传输对象
 */
-class AddCgthckBillDTO
+class AddCgthckBillDTO : public FileDTO
 {
 	/***必填***/
 	// 单据编号
@@ -99,7 +100,16 @@ public:
 		BIND_FROM_TO_I(j, t, hasSwell);
 		BIND_FROM_TO_NORMAL(j, t, srcBillType);
 		BIND_FROM_TO_NORMAL(j, t, invoiceType);
+		BIND_FROM_TO_OBJ(j, t, entry, std::list<CgthckBillEntryDTO>);
+		BIND_FROM_TO_OBJ(j, t, files, std::list<std::string>);
 	}
+	//BIND_TO_JSON
+	//(
+	//	AddCgthckBillDTO, billNo, billDate, subject, srcOperator, opDept, supplierId, srcNo,
+	//	handler, isEff, isClosed, isVoided, effTime, approver, bpmiInstanceId, createTime,
+	//	sysOrgCode, createBy, updateTime, updateBy, isAuto, isRubric, hasRp, hasSwell,
+	//	srcBillType, invoiceType
+	//);
 };
 
 #endif // !ADD_CGTHCK_BILL_DTO_
