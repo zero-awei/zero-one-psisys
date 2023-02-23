@@ -21,10 +21,10 @@ import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerVO;
 public interface ICustomerService extends IService<Customer> {
         /**
          * 根据ID查询
-         * @param id 编号
+         * @param code 编号
          * @return 查询结果
          */
-        CustomerShowVO getById(String id);
+        CustomerShowVO getByCode(String code);
         /**
          * 根据条件进行分页查询
          * @param customerQuery 查询条件

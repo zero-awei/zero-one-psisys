@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -81,8 +82,8 @@ public class CustomerController implements CustomerApis {
     @Override
     @GetMapping("getcustomerbyid")
     @ApiOperation(value = "查询指定id客户")
-    public JsonVO<CustomerShowVO> specifiedcustomer(String id) {
-        CustomerShowVO customervo = customerService.getById(id);
+    public JsonVO<CustomerShowVO> specifiedcustomer(@RequestParam(required = false)String code) {
+        CustomerShowVO customervo = customerService.getByCode(code);
         if(customervo!=null){
             return JsonVO.success(customervo);
         }

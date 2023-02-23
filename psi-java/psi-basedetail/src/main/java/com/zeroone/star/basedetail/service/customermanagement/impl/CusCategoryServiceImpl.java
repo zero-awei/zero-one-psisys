@@ -28,7 +28,9 @@ public  class CusCategoryServiceImpl extends ServiceImpl<CusCategoryMapper,CusCa
     @Autowired
     private CusCategoryMapper cusCategoryMapper;
     @Override
+
     public List<CustomerCategoryVO> listAllCusCategory() {
+        //觉得这个可以使用redis来改进一下
         List<CusCategory> customercategorys = cusCategoryMapper.selectList(null);
         if(customercategorys.size()==0){
             return null;
