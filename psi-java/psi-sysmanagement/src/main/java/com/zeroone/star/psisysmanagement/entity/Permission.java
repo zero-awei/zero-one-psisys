@@ -1,5 +1,6 @@
 package com.zeroone.star.psisysmanagement.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class Permission implements Serializable {
     /**
      * 权限id
      */
+    @TableId
     private String permissionId;
 
     /**

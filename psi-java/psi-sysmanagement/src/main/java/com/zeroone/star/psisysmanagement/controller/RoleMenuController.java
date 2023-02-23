@@ -39,6 +39,10 @@ public class RoleMenuController implements RoleMenuApis {
     @ApiOperation(value = "查询菜单")
     @Override
     public JsonVO<List<MenuQuery>> listAll(String RId) {
+        List<MenuQuery> list = service.listAll(RId);
+        if (list.size() == 0){
+            return JsonVO.fail(list);
+        }
         return JsonVO.success(service.listAll(RId));
     }
 

@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,6 +38,10 @@ public class RolePermissionController implements RolePermissionApis {
     @ApiOperation(value = "查询权限")
     @Override
     public JsonVO<List<PermissionQuery>> listAll(String RId) {
+        List<PermissionQuery> list = service.listAll(RId);
+        if (list.size() == 0){
+            return JsonVO.fail(list);
+        }
         return JsonVO.success(service.listAll(RId));
     }
     /**
@@ -60,7 +67,7 @@ public class RolePermissionController implements RolePermissionApis {
     @DeleteMapping("/delete")
     @ApiOperation(value = "删除权限")
     @Override
-    public JsonVO<Boolean> deletePermission(String permissionId) {
+    public JsonVO<Boolean> deletePermission( String permissionId) {
         if (service.deletePermission(permissionId)){
             return JsonVO.success(true);
         }
