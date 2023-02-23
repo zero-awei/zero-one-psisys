@@ -7,32 +7,38 @@
 #include "PurQuotListMapper.h"
 #include "PurQuotDividedListMapper.h"
 
+#define PUR_QUOT_TERAM_PARSE(obj, sql) \
+SqlParams params;  \
+sql << " WHERE 1=1"; \
+if (!obj.getBill_no().empty()) { \
+	sql << " AND bill_no=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
+} \
+if (!obj.getSubject().empty()) { \
+	sql << " AND `subject`=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getSubject()); \
+} \
+if (!obj.getBill_stage().empty()) { \
+	sql << " AND bill_stage=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_stage()); \
+} \
+if (obj.getIs_effective() != -1) { \
+	sql << " AND is_effective=?"; \
+	SQLPARAMS_PUSH(params, "i", int, obj.getIs_effective()); \
+} \
+if (obj.getIs_closed() != -1) { \
+	sql << " AND is_closed=?"; \
+	SQLPARAMS_PUSH(params, "i", int, obj.getIs_closed()); \
+} \
+if (obj.getIs_voided() != -1) { \
+	sql << " AND is_voided=?"; \
+	SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
+} \
 
 uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_quot";
-	SqlParams params;
-	sql << " WHERE 1=1";
-	if (! iObj.getSubject().empty()) {
-		sql << " AND subject=?";
-		SQLPARAMS_PUSH(params, "s", std::string, iObj.getSubject());
-	}
-	if (! iObj.getBill_stage().empty()) {
-		sql << " AND bill_stage=?";
-		SQLPARAMS_PUSH(params, "s", std::string, iObj.getBill_stage());
-	}
-	if (iObj.getIs_effective() != -1) {
-		sql << " AND is_effective=?";
-		SQLPARAMS_PUSH(params, "i", int, iObj.getIs_effective());
-	}
-	if (iObj.getIs_closed() != -1) {
-		sql << " AND is_closed=?";
-		SQLPARAMS_PUSH(params, "i", int, iObj.getIs_closed());
-	}
-	if (iObj.getIs_voided() != -1) {
-		sql << " AND is_voided=?";
-		SQLPARAMS_PUSH(params, "i", int, iObj.getIs_voided());
-	}
+	PUR_QUOT_TERAM_PARSE(iObj, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
@@ -43,33 +49,7 @@ list<PurQuotDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotDO& obj, uint64
 	sql << "SELECT bill_no, bill_date, subject,src_no,supplier_name, delivery_time,qty,amt,bill_stage, is_effective, is_closed, is_voided, \
 	payment_method, delivery_place, contact,phone, fax, email, remark, is_auto, is_rubric, effective_time, approver, create_time, \
 	create_by, sys_org_code, update_time, update_by FROM pur_quot";
-	SqlParams params; 
-	sql<<" WHERE 1=1"; 
-	if (! obj.getBill_no().empty()) { 
-		sql << " AND `bill_no`=?"; 
-		SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); 
-	}
-	//日期存疑, 暂时不写
-	if (! obj.getSubject().empty()) { 
-		sql << " AND subject=?"; 
-		SQLPARAMS_PUSH(params, "s", std::string, obj.getSubject()); 
-	}
-	if (! obj.getBill_stage().empty()) {
-		sql << " AND bill_stage=?";
-		SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_stage());
-	}
-	if (obj.getIs_effective() != -1) {
-		sql << " AND is_effective=?";
-		SQLPARAMS_PUSH(params, "i", int, obj.getIs_effective());
-	}
-	if (obj.getIs_closed() != -1) {
-		sql << " AND is_closed=?";
-		SQLPARAMS_PUSH(params, "i", int, obj.getIs_closed());
-	}
-	if (obj.getIs_voided() != -1) {
-		sql << " AND is_voided=?";
-		SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided());
-	}
+	PUR_QUOT_TERAM_PARSE(obj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurQuotFindBillMapper mapper;
 	string sqlStr = sql.str();

@@ -14,11 +14,11 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	PurQuotDO obj;
 	obj.setBill_no(query.getBill_no());
 	//日期存疑,暂时不搞
-	obj.setSubject(query.getSubject());
-	obj.setBill_stage(query.getBill_stage());
-	obj.setIs_effective(query.getIs_effective());
-	obj.setIs_closed(query.getIs_closed());
-	obj.setIs_voided(query.getIs_voided());
+	//obj.setSubject(query.getSubject());
+	//obj.setBill_stage(query.getBill_stage());
+	//obj.setIs_effective(query.getIs_effective());
+	//obj.setIs_closed(query.getIs_closed());
+	//obj.setIs_voided(query.getIs_voided());
 	
 	//检查查询到的数据总数
 	PurQuotDAO dao;
