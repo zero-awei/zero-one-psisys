@@ -10,8 +10,8 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSup
 {
 	vector<vector<std::string>> data;
 	vector<std::string> header{
-		CharsetConvertHepler::ansiToUtf8("编号"),
-		CharsetConvertHepler::ansiToUtf8("供应商名称"),
+		CharsetConvertHepler::ansiToUtf8("code"),
+		CharsetConvertHepler::ansiToUtf8("supplierName"),
 	};
 	data.push_back(header);
 	stringstream ss;
@@ -48,7 +48,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSup
 
 	//定义保存数据位置和页签名称
 	std::string fileName = "./public/excel/1.xlsx";
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("供应商");
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("supplier");
 
 	//保存到文件
 	ExcelComponent excel;

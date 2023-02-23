@@ -6,7 +6,7 @@
 list<WarehouseDO> WarehouseDAO::selectWarehouse()
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_warehouse";
+	sql << "SELECT id,aux_name FROM bas_warehouse";
 	string sqlStr = sql.str();
 	WarehouseMapper mapper;
 	return sqlSession->executeQuery<WarehouseDO, WarehouseMapper>(sqlStr, mapper);

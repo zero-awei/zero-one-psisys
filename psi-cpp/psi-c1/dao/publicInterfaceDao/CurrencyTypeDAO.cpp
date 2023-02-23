@@ -7,7 +7,7 @@
 list<CurrencyTypeDO> CurrencyTypeDAO::selectCurrencyType()
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_currency";
+	sql << "SELECT id,name FROM bas_currency";
 	string sqlStr = sql.str();
 	CurrencyTypeMapper mapper;
 	return sqlSession->executeQuery<CurrencyTypeDO, CurrencyTypeMapper>(sqlStr, mapper);

@@ -7,7 +7,7 @@
 
 class CurrencyTypeVO
 {
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	BIND_TO_JSON(CurrencyTypeVO, id, name);

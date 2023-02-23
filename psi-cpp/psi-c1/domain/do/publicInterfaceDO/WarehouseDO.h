@@ -9,12 +9,12 @@
 class WarehouseDO
 {
 	// ±àºÅ
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// ²Ö¿âÃû
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	WarehouseDO() {
-		id = 0;
+		id = "";
 		name = "";
 	}
 };

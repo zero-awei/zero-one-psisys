@@ -14,8 +14,8 @@ public:
 	WarehouseDO mapper(ResultSet* resultSet) const override
 	{
 		WarehouseDO data;
-		data.setId(resultSet->getUInt64(1));
-		data.setName(resultSet->getString(5));
+		data.setId(resultSet->getString(1));
+		data.setName(resultSet->getString(2));
 		return data;
 	}
 };

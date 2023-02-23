@@ -6,7 +6,7 @@
 
 class WarehouseVO
 {
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	BIND_TO_JSON(WarehouseVO, id, name);

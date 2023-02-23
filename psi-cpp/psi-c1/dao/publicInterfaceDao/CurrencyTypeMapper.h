@@ -14,8 +14,8 @@ public:
 	CurrencyTypeDO mapper(ResultSet* resultSet) const override
 	{
 		CurrencyTypeDO data;
-		data.setId(resultSet->getUInt64(1));
-		data.setName(resultSet->getString(3));
+		data.setId(resultSet->getString(1));
+		data.setName(resultSet->getString(2));
 		return data;
 	}
 };

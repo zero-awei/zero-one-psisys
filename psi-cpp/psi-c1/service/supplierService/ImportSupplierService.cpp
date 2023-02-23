@@ -12,7 +12,7 @@ uint64_t ImportSupplierService::saveData(const FileDTO& dto)
 		std::cout << "path " << file << std::endl;
 		//从文件中读取
 		ImportSupplierDO data;
-		std::string sheetName = CharsetConvertHepler::ansiToUtf8("供应商");
+		std::string sheetName = CharsetConvertHepler::ansiToUtf8("supplier");
 		auto readData = excel.readIntoVector(file, sheetName);
 		for (auto row : readData)
 		{
