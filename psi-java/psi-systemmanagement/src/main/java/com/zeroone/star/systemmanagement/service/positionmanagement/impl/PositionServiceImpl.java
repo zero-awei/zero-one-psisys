@@ -1,11 +1,12 @@
 package com.zeroone.star.systemmanagement.service.positionmanagement.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.lang.hash.Hash;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionDTO;
 import com.zeroone.star.project.query.systemmanagement.positionmanagement.PositionQuery;
 import com.zeroone.star.project.vo.PageVO;
@@ -16,7 +17,6 @@ import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionSer
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,6 +32,9 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     @Resource
     private PositionMapper positionMapper;
 
+    @Resource
+    private UserHolder userHolder;
+
     @Override
     public String deletePositionById(String positionId) {
         int result = positionMapper.deleteById(positionId);
@@ -45,6 +48,13 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     public String update(PositionDTO positionDTO) {
         Position position = new Position();
         BeanUtil.copyProperties(positionDTO, position);
+        //获取操作者信息
+        try {
+            UserDTO user = userHolder.getCurrentUser();
+            position.setCreateBy(user.getUsername());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         int result = positionMapper.updateById(position);
         if (result == 0) {
             return "更新失败";
@@ -56,6 +66,12 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     public String insert(PositionDTO positionDTO) {
         Position position = new Position();
         BeanUtil.copyProperties(positionDTO, position);
+        try {
+            UserDTO user = userHolder.getCurrentUser();
+            position.setUpdateBy(user.getUsername());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         int result = positionMapper.insert(position);
         if (result == 0) {
             return "添加失败";

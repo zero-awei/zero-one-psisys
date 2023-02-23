@@ -28,7 +28,7 @@ import java.util.List;
 public class PositionController implements PositionApis {
 
     @Autowired
-    IPositionService iPositionService;
+    private IPositionService iPositionService;
 
     @ApiOperation("查询职务列表")
     @GetMapping("/queryall")
