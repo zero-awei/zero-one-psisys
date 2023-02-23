@@ -18,5 +18,5 @@ import lombok.Data;
 @ApiModel("删除数据传输对象")
 public class DeleteDTO {
     @ApiModelProperty(value = "id", example = "10086")
-    private Integer id;
+    private String id;
 }

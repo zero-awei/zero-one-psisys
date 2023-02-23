@@ -86,7 +86,7 @@ public class PrepaymentService implements IPrepaymentService {
 //            return JsonVO.fail("单据不能做该操作，可能被其他用户改变了状态！");
 //        }
         int i = finPaymentMapper.deleteById(deleteDTO.getId());
-        int mid = finPaymentEntryMapper.delete(new QueryWrapper<FinPaymentEntry>().eq("mid", deleteDTO.getId().toString()));
+        int mid = finPaymentEntryMapper.delete(new QueryWrapper<FinPaymentEntry>().eq("mid", deleteDTO.getId()));
         if (i > 0&&mid > 0){
             return JsonVO.success("删除成功！");
         }else {
