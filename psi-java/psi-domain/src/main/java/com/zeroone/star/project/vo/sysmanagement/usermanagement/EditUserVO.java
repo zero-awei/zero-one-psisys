@@ -65,7 +65,7 @@ public class EditUserVO {
     /**
      * 电子邮件
      */
-    @ApiModelProperty(value = "电子邮件", example = "123@qq.com")
+    @ApiModelProperty(value = "电子邮件", example = "zhangxiaohon@qq.com")
     private String email;
 
     /**
@@ -124,10 +124,16 @@ public class EditUserVO {
     private Integer userIdentity;
 
     /**
+     * 部门编号
+     */
+    @ApiModelProperty(value = "负责的部门", example = "4f1765520d6346f9bd9c79e2479e5b12")
+    private String departIds;
+
+    /**
      * 负责部门
      */
     @ApiModelProperty(value = "负责的部门", example = "市场部")
-    private String departIds;
+    private String departName;
 
     /**
      * 部门列表
