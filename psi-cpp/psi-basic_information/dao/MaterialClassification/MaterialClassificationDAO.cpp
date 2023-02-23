@@ -80,7 +80,7 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectWithPage(co
 std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByName(const string& name)
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_material_category";
+	sql << "SELECT id,pid,has_child,code,name,fullname,is_enabled,create_by,create_time,update_by,update_time,version FROM bas_material_category";
 	MATERIALCLASSIFICATION_NAME_PARSE(name, sql);
 	MaterialClassificationMapper mapper;
 	string sqlStr = sql.str();
@@ -91,7 +91,7 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByName(cons
 std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByCode(const string& code)
 {
 	stringstream sql;
-	sql << "SELECT * FROM bas_material_category";
+	sql << "SELECT id,pid,has_child,code,name,fullname,is_enabled,create_by,create_time,update_by,update_time,version FROM bas_material_category";
 	MATERIALCLASSIFICATION_CODE_PARSE(code, sql);
 	MaterialClassificationMapper mapper;
 	string sqlStr = sql.str();
@@ -101,27 +101,26 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByCode(cons
 //按父节点查询 #用来找子级
 std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByPid(const string& pid)
 {
-	string sql = "SELECT * FROM bas_material_category WHERE `pid` =?";
+	string sql = "SELECT id,pid,has_child,code,name,fullname,is_enabled,create_by,create_time,update_by,update_time,version FROM bas_material_category WHERE `pid` =?";
 	MaterialClassificationMapper mapper;
 	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sql, mapper, "%s", pid);
 }
 
 
 
-//插入数据 #时间用string，这个返回值好像返回的是id，但是数据库中的id是varchar
+//插入数据 #时间用string？
 uint64_t MaterialClassificationDAO::insert(const MaterialClassificationDO& iObj)
 {
-	string sql = "INSERT INTO `bas_material_category` (`id`,`pid`, `name`,`code`,`fullname`,`is_enabled`,`create_time`,`create_by`,`update_time`,`update_by`) VALUES (?, 0, ?, ?, ?, ?, ?, ?, ?. ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%i", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getFullname(), iObj.getIsEnabled());
+	string sql = "INSERT INTO `bas_material_category` (`id`,`pid`,`has_child`,`code`,`name`,`fullname`,`is_enabled`,`create_by`,`update_by`,`version`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+	return sqlSession->executeUpdate(sql,"%s%s%s%s%s%s%i%s%s%i", iObj.getId(),iObj.getPid(),iObj.getHasChild(),iObj.getCode(),iObj.getName(),iObj.getFullname(),iObj.getIsEnabled(), iObj.getCreateBy(), iObj.getUpdateBy(), iObj.getVersion());
 }
 
-//修改数据 #同上 返回的是行数
-int MaterialClassificationDAO::update(const MaterialClassificationDO& uObj)
+//修改数据 
+int MaterialClassificationDAO::update(const MaterialClassificationDO& iObj)
 {
-	string sql = "UPDATE `bas_material_category` SET `name`= ?,`code`= ?,`fullname`= ?,`is_enabled`= ?,`create_time`= ?,`create_by`= ?,`update_time`= ?,`update_by` = ? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s", uObj.getName(), uObj.getCode(), uObj.getFullname(), uObj.getId());
+	string sql = "UPDATE `bas_material_category` SET `name`= ?,`code`=?,`fullname`=?,`is_enabled`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%s", iObj.getName(), iObj.getCode(), iObj.getFullname(),iObj.getIsEnabled(),iObj.getId());
 }
-
 //通过id删除数据 #删除数据后，如果是某个父类是否应该把子类一并删除；如果是子类应该要同时修改对应父类的has_child
 
 //如果要同时删除子类，则可以删除pid=id的数据；如果是修改父类，可以用count统计pid=id的个数

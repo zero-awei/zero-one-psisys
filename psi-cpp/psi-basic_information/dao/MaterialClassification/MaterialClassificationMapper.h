@@ -48,7 +48,6 @@ public:
 		data.setCreateTime(resultSet->getString(9));
 		data.setUpdateBy(resultSet->getString(10));
 		data.setUpdateTime(resultSet->getString(11));
-		data.setHasChild(resultSet->getString(11));
 		data.setVersion(resultSet->getInt(12));
 
 		//不明白里面的参数表示什么,好像是列号？是dao里面写的sql语句中select后面参数的顺序，所以select语句中的查询顺序应要一致

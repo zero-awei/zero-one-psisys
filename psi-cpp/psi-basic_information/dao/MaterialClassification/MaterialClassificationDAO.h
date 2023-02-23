@@ -50,5 +50,7 @@ public:
 	int update(const MaterialClassificationDO& uObj);
 	// 通过ID删除数据
 	int deleteById(string id);
+
+	//应该还有个导入数据
 };
 #endif 

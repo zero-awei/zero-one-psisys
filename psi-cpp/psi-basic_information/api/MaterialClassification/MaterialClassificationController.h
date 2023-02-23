@@ -58,9 +58,9 @@ private:
 	//新增分类 ,添加、修改、删除下级应该也可以用这种方式  #返回的是id,但是数据库用的是varchar
 	JsonVO<uint64_t> execAddMaterialClassification(const MaterialClassificationDTO& dto);
 	//修改分类
-	JsonVO<string> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<uint64_t> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
 	//删除分类
-	JsonVO<string> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<uint64_t> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
 	
 	//文件导入
 	JsonVO<PageVO<MaterialClassificationBaseVO>> execImportMaterialClassification(const MaterialClassificationDTO& dto);

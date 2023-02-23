@@ -67,19 +67,20 @@ class MaterialClassificationDTO :public FileDTO {
 	
 
 	//子级节点的DTO对象,数据库中没有，先设置看看
-	CC_SYNTHESIZE(list<MaterialClassificationDTO>, children, Children);
+	//CC_SYNTHESIZE(list<MaterialClassificationDTO>, children, Children);
 
 	
 public:
 	
 
-	friend void from_json(const json& j, MaterialClassificationDTO& t) { // NOLINT
+	friend void from_json(const json& j, MaterialClassificationDTO& t) { // 
+		
+		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, pid);
-		BIND_FROM_TO_NORMAL(j, t, id);
-		BIND_FROM_TO_OBJ(j, t, children, list<MaterialClassificationDTO>);
+		//BIND_FR	OM_TO_OBJ(j, t, children, list<MaterialClassificationDTO>);
 		BIND_FROM_TO_NORMAL(j, t, has_child);
+		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, fullname);
 		BIND_FROM_TO_I(j, t, is_enabled);
 		BIND_FROM_TO_NORMAL(j, t, create_time);
@@ -89,8 +90,8 @@ public:
 		BIND_FROM_TO_I(j, t, version);
 	}
 
-	BIND_TO_JSON(MaterialClassificationDTO,id, pid, has_child, name, code,
-		fullname, is_enabled, create_time, create_by, update_time, update_by);
+	BIND_TO_JSON(MaterialClassificationDTO,id, pid, has_child, code, name,
+		fullname, is_enabled, create_time, create_by, update_time, update_by,version);
 
 };
 

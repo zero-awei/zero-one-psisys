@@ -66,7 +66,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 }
 
 //查询子类列表
-JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
+list<MaterialClassificationChildVO> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
 	obj.setCode(query.getCode());//父类编码
 	MaterialClassificationDAO dao;
@@ -92,14 +92,13 @@ JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listC
 		vr.push_back(vo);
 
 	}
-	JsonVO<list<MaterialClassificationChildVO>> r;
-	r.setData(vr);//把数据放入JsonVO中
-	return r;
+
+	return vr;
 
 }
 
 
-JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::listDetail(const MaterialClassificationQuery& query) {
+list<MaterialClassificationDetailVO> MaterialClassificationService::listDetail(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
 	obj.setCode(query.getCode());
 	MaterialClassificationDAO dao;
@@ -121,17 +120,21 @@ JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::list
 
 		vr.push_back(vo);
 	}
-	JsonVO<list<MaterialClassificationDetailVO>> r;
-	r.setData(vr);//把数据放入JsonVO中
-	return  r;
+
+	return  vr;
 }
 
-uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)
+int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)
 {
 	//组装数据
 	MaterialClassificationDO data;
-	data.setId(dto.getId());
-	data.setPid(dto.getPid());
+	//应该是在这里生成id
+	SnowFlake sf(1, 2);
+	data.setId(to_string(sf.nextId()));
+
+	//添加下级的时候要获得pid，如果父类一开始没有下级，则还要修改父类的has_child,可能要另外写一个添加子类的接口
+	data.setPid(dto.getPid()==""? "0":dto.getPid());
+	data.setHasChild(dto.getHasChild()==""? "0":dto.getHasChild());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
@@ -140,18 +143,22 @@ uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO
 	data.setCreateTime(dto.getCreateTime());
 	data.setUpdateBy(dto.getUpdateBy());
 	data.setUpdateTime(dto.getUpdateTime());
-
+	data.setVersion(dto.getVersion());
 	//执行数据添加
 	MaterialClassificationDAO dao;
 	return dao.insert(data);
 }
 
-bool MaterialClassificationService::updateData(const MaterialClassificationDTO& dto)
+int MaterialClassificationService::updateData(const MaterialClassificationDTO& dto)
 {
+
+	//修改数据要先拿到id
+
 	//组装传输数据
 	MaterialClassificationDO data;
 	data.setId(dto.getId());
 	data.setPid(dto.getPid());
+	data.setHasChild(dto.getHasChild());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
@@ -160,12 +167,13 @@ bool MaterialClassificationService::updateData(const MaterialClassificationDTO& 
 	data.setCreateTime(dto.getCreateTime());
 	data.setUpdateBy(dto.getUpdateBy());
 	data.setUpdateTime(dto.getUpdateTime());
+	data.setVersion(dto.getVersion());
 	//执行数据修改
 	MaterialClassificationDAO dao;
 	return dao.update(data) == 1;
 }
 
-bool MaterialClassificationService::removeData(string id)
+int MaterialClassificationService::removeData(string id)
 {
 	MaterialClassificationDAO dao;
 	return dao.deleteById(id) == 1;
