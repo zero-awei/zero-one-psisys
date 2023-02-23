@@ -13,9 +13,9 @@ import java.time.LocalDate;
 @Data
 @ApiModel("申请单查询对象")
 public class FinPaymentReqQuery extends PageQuery {
-    @NotBlank(message = "供应商助记名不能为空")
-    @ApiModelProperty(value = "供应商助记名", example = "001 广州xx公司")
-    private String auxName;
+    @NotBlank(message = "供应商id")
+    @ApiModelProperty(value = "供应商id", example = "1584950950470164481")
+    private String supplierId;
 
     @ApiModelProperty(value = "单据编号", example = "CGYFSQ-230210-007")
     private String billNo;

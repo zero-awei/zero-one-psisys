@@ -11,7 +11,10 @@ import com.zeroone.star.project.query.prepayment.FinPaymentReqQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
 
 
 /**
@@ -24,19 +27,16 @@ import java.time.LocalDate;
 @Service
 public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, FinPaymentReq> implements IFinPaymentReqService {
 
-
     @Override
     public PageVO<FinPaymentReqVO> listFinPaymentReq(FinPaymentReqQuery query) {
         // 构建分页对象
         Page<FinPaymentReq> paymentReqPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件
         QueryWrapper<FinPaymentReq> paymentReqQueryWrapper = new QueryWrapper<>();
-        // TODO: 根据助记名查询相关供应商
-        String auxName = query.getAuxName();
-        if (StrUtil.isBlank(auxName)) {
-            paymentReqQueryWrapper.eq("aux_name", auxName);
-        } else {
-            // TODO: 若助记名为空，则如何处理？
+        // 获取供应商id
+        String supplierId = query.getSupplierId();
+        if (StrUtil.isNotBlank(supplierId)) {
+            paymentReqQueryWrapper.eq("supplier_id", supplierId);
         }
         // 约束单据日期
         LocalDate stDate = query.getStartDate();
@@ -51,6 +51,11 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
         // 执行分页查询
         Page<FinPaymentReq> resPage = baseMapper.selectPage(paymentReqPage, paymentReqQueryWrapper);
         return PageVO.create(resPage, FinPaymentReqVO.class);
+    }
+
+    @Override
+    public List<FinPaymentReq> listBySrcBillId(String id) {
+        return null;
     }
 
 }

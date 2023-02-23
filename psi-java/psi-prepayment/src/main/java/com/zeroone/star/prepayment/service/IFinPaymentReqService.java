@@ -6,6 +6,8 @@ import com.zeroone.star.project.query.prepayment.FinPaymentReqQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 
+import java.util.List;
+
 /**
  * FinPaymentReq 服务类
  * author 狂踹瘸子那条好腿
@@ -14,4 +16,6 @@ import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 public interface IFinPaymentReqService extends IService<FinPaymentReq> {
 
     PageVO<FinPaymentReqVO> listFinPaymentReq(FinPaymentReqQuery query);
+
+    List<FinPaymentReq> listBySrcBillId(String id);
 }

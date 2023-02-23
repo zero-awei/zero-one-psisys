@@ -1,6 +1,7 @@
 package com.zeroone.star.prepayment.controller;
 
 import com.zeroone.star.prepayment.service.IFinPaymentReqService;
+import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
@@ -36,6 +37,9 @@ public class PrepaymentController implements PrepaymentApis {
 
     @Resource
     IFinPaymentReqService paymentReqService;
+
+    @Resource
+    IFinPaymentService paymentService;
 
     /**
      * 修改采购预付单功能
@@ -164,8 +168,9 @@ public class PrepaymentController implements PrepaymentApis {
      * return 分录明细列表
      * author 内鬼
      */
-    @GetMapping("query-all-paymentReq")
     @Override
+    @GetMapping("query-all-paymentReq")
+    @ResponseBody
     @ApiOperation("付款申请单分录列表查询")
     public JsonVO<PageVO<FinPaymentReqVO>> queryAllReq(FinPaymentReqQuery query) {
         PageVO<FinPaymentReqVO> paymentReqEntryPage = paymentReqService.listFinPaymentReq(query);
@@ -179,11 +184,17 @@ public class PrepaymentController implements PrepaymentApis {
      * author 内鬼
      */
     @Override
-    @PostMapping("import")
+    @PostMapping("import-payments-excel")
     @ResponseBody
     @ApiOperation("导入功能（返回值data值表示导入成功与否）")
     public JsonVO<String> excelImport(@RequestParam("file") MultipartFile file) {
-        return JsonVO.success("文件上传成功！");
+        try {
+            paymentService.importExcelOfPayment(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonVO.fail("文件导入失败");
+        }
+        return JsonVO.success("文件导入成功！");
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.zeroone.star.prepayment.service;
 
 import com.zeroone.star.prepayment.entity.FinPayment;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * FinPayment 服务类
@@ -14,4 +15,6 @@ public interface IFinPaymentService {
      * @return 查询结果
      */
     FinPayment getByBillNo(String billNo);
+
+    void importExcelOfPayment(MultipartFile file) throws Exception;
 }

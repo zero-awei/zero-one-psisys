@@ -179,6 +179,7 @@ public class FinPaymentReq implements Serializable {
     /**
      * 修改时间
      */
+    @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;
 
     /**
