@@ -132,19 +132,19 @@
     <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\pur-quot\PurQuotFindDetailBillMapper.h">
+    <ClInclude Include="dao\pur-quot\PurQuotDetailMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dao\pur-quot\PurQuotListMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\pur-quot\PurQuotAllDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-quot\PurQuotAllVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-quot\PurQuotDetailVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-quot\PurQuotBaseMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

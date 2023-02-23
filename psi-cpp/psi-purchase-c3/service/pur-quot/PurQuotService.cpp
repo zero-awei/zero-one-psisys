@@ -32,7 +32,7 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	pages.setTotal(count);
 	pages.calcPages();
 	//接收查询到的DO
-	list<PurQuotDO> result = dao.selectPurQuotFindBillDO(obj, query.getPageIndex(), query.getPageSize());
+	list<PurQuotDO> result = dao.selectPurQuotFindBill(obj, query.getPageIndex(), query.getPageSize());
 	//vr是接收DO的VO对象
 	list<PurQuotFindBillVO> vr; 
 	for (PurQuotDO sub : result) {
@@ -70,6 +70,9 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	pages.setRows(vr);
 	return pages;
 }
+
+
+
 
 
 

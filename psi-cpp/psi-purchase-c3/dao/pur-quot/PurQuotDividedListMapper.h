@@ -13,16 +13,16 @@ public:
 	PurQuotEntryDO mapper(ResultSet* resultSet) const override
 	{
 		PurQuotEntryDO data;
-		data.setBill_no(resultSet->getString(1));
-		data.setMaterial_id(resultSet->getString(2));
-		data.setUnit_id(resultSet->getString(3));
-		data.setQty(resultSet->getDouble(4));
-		data.setTax_rate(resultSet->getDouble(5));
-		data.setPrice(resultSet->getDouble(6));
-		data.setAmt(resultSet->getDouble(7));
-		data.setRemark(resultSet->getString(8));
-		data.setCustom1(resultSet->getString(9));
-		data.setCustom2(resultSet->getString(10));
+		data.setBill_no(resultSet->getString("bill_no"));
+		data.setMaterial_id(resultSet->getString("material_id"));
+		data.setUnit_id(resultSet->getString("unit_id"));
+		data.setQty(resultSet->getDouble("qty"));
+		data.setTax_rate(resultSet->getDouble("tax_rate"));
+		data.setPrice(resultSet->getDouble("price"));
+		data.setAmt(resultSet->getDouble("amt"));
+		data.setRemark(resultSet->getString("remark"));
+		data.setCustom1(resultSet->getString("custom1"));
+		data.setCustom2(resultSet->getString("custom2"));
 		return data;
 	}
 };

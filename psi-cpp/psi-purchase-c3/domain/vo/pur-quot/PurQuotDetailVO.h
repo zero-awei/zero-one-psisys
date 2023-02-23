@@ -14,15 +14,15 @@ class PurQuotDetailVO {
 	//单位
 	CC_SYNTHESIZE(string, entry_unit_id, Entry_unit_id);
 	//数量
-	CC_SYNTHESIZE(string, entry_qty, Entry_qty);
+	CC_SYNTHESIZE(double, entry_qty, Entry_qty);
 	//税率
-	CC_SYNTHESIZE(string, entry_tax_rate, Entry_tax_rate);
+	CC_SYNTHESIZE(double, entry_tax_rate, Entry_tax_rate);
 	//含税单价
-	CC_SYNTHESIZE(string, entry_price, Entry_price);
+	CC_SYNTHESIZE(double, entry_price, Entry_price);
 	//折扣率
-	CC_SYNTHESIZE(string, entry_discount_rate, Entry_discount_rate);
+	CC_SYNTHESIZE(double, entry_discount_rate, Entry_discount_rate);
 	//含税金额
-	CC_SYNTHESIZE(string, entry_amt, Entry_amt);
+	CC_SYNTHESIZE(double, entry_amt, Entry_amt);
 	//备注
 	CC_SYNTHESIZE(string, entry_remark, Entry_remark);
 	//自定义1

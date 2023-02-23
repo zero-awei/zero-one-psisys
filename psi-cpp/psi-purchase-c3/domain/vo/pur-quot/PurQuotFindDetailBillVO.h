@@ -7,7 +7,6 @@
 
 //指定单据明细列表的VO
 class PurQuotFindDetailBillVO{
-
 	CC_SYNTHESIZE(PurQuotBaseVO, base_vo, Base_vo);
 	CC_SYNTHESIZE(list<PurQuotDetailVO>, detail_vo, Detail_vo);
 public:

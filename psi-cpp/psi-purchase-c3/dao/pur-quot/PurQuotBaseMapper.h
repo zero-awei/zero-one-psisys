@@ -1,19 +1,16 @@
 #pragma once
-#ifndef _PUR_QUOT_FIND_DETAIL_BILL_MAPPER_H_
-#define _PUR_QUOT_FIND_DETAIL_BILL_MAPPER_H_
+#ifndef _PUR_QUOT_BASE_MAPPER_H_
+#define _PUR_QUOT_BASE_MAPPER_H_
 
 #include "Mapper.h"
 #include "../../domain/do/pur-quot/PurQuotDO.h"
-#include "../../domain/do/pur-quot/PurQuotEntryDO.h"
 
 /**
  * Ê¾Àý±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
-class PurQuotFindDetailBillMapper : public Mapper<PurQuotDO>
-{
+class PurQuotBaseMapper : public Mapper<PurQuotDO>{
 public:
-	PurQuotDO mapper(ResultSet* resultSet) const override
-	{
+	PurQuotDO mapper(ResultSet* resultSet) const override{
 		PurQuotDO data;
 		data.setBill_no(resultSet->getString(1));
 		data.setBill_date(resultSet->getString(2));
@@ -35,18 +32,7 @@ public:
 		data.setApproval_remark(resultSet->getString(18));
 		data.setAttachment(resultSet->getString(19));
 		data.setApproval_result_type(resultSet->getString(20));
-//Ã÷Ï¸×Ö¶Î
-		//data.setEntry_src_no(resultSet->getString(21));
-		//data.setEntry_material_id(resultSet->getString(22));
-		//data.setEntry_unit_id(resultSet->getString(23));
-		//data.setEntry_qty(resultSet->getString(24));
-		//data.setEntry_tax_rate(resultSet->getString(25));
-		//data.setEntry_price(resultSet->getString(26));
-		//data.setEntry_discount_rate(resultSet->getString(27));
-		//data.setEntry_amt(resultSet->getString(28));
-		//data.setEntry_remark(resultSet->getString(29));
-		//data.setEntry_custom1(resultSet->getString(30));
-		//data.setEntry_custom2(resultSet->getString(31));
+		//Ã÷Ï¸×Ö¶Î
 		return data;
 	}
 };

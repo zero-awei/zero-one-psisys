@@ -11,14 +11,17 @@ public:
 	//统计数据条数
 	uint64_t count(const PurQuotDO& iObj);
 	//查询单据列表,返回多个对象
-	list<PurQuotDO> selectPurQuotFindBillDO(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	list<PurQuotDO> selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	//报价单列表(多个对象)
+	list<PurQuotEntryDO> selectPurQuotList(const PurQuotEntryDO& obj);
+	//报价单分录列表(多个对象)
+	list<PurQuotEntryDO> selectPurQuotDividedList(const PurQuotEntryDO& obj);
 
-	////查询指定单据详细信息
-	//list<xx> selectPurQuotFindDetailBillDO(const PurQuotFindDetailBillDO& obj);
-	////报价单列表
-	//list<PurQuotListDO> selectPurQuotListDO(const PurQuotListDO& obj);
-	////报价单分录列表
-	//list<PurQuotDividedListDO> selectPurQuotDividedListDO(const PurQuotDividedListDO& obj);
+	//此DO用于填充BaseVO
+	list<PurQuotEntryDO> selectPurQuotBase(const PurQuotEntryDO& obj);
+
+	//此DO用于填充DetailVO
+	
 	
 };
 
