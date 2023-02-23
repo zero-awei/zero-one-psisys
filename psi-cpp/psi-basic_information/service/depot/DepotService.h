@@ -35,6 +35,8 @@ class DepotService
 public:
 	// 分页查询所有数据
 	PageVO<DepotVO> listAll(const DepotQuery& query);
+	// 查询所以子级
+	std::list<DepotVO> getKid(const OnlyValueQuery& query);
 	// 保存数据
 	int saveData(const DepotDTO& dto);
 	// 删除数据

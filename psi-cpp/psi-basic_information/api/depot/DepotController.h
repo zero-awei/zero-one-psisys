@@ -46,7 +46,7 @@ private:
 	//默认查询数据
 	JsonVO<PageVO<DepotVO>> execQueryDepot(const DepotQuery& query, const PayloadDTO& payload);
 	//查询子级列表
-	JsonVO<DepotVO> execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload);
+	JsonVO<std::list<DepotVO>> execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload);
 	// 查询详情
 	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);

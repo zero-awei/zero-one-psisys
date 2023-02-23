@@ -67,6 +67,17 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
 }
 
+std::list<DepotDO> DepotDAO::selectKid(const DepotDO& obj)
+{
+	stringstream sql;
+	SqlParams params;
+	sql << "SELECT id, pid, has_child, code, name, aux_name, phone, is_enabled, remark, create_by, create_time, update_by, update_time, version FROM bas_warehouse";
+	SAMPLE_TERAM_PARSE(obj, sql, params);
+	DepotMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
+}
+
 
 int DepotDAO::insertDepot(const DepotDO& iObj)
 {

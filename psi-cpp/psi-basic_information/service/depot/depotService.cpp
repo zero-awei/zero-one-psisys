@@ -58,6 +58,26 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	return pages;
 }
 
+std::list<DepotVO> DepotService::getKid(const OnlyValueQuery& query)
+{
+	// 获取父级id
+	DepotDO id;
+	id.setPid(query.getId());
+	// 获取子级仓库DO
+	DepotDAO dao;
+	std::list<DepotDO> result =  dao.selectKid(id);
+	std::list<DepotVO> vr;
+	for (DepotDO sub : result)
+	{
+		DepotVO vo;
+		vo.setName(sub.getName());
+		vo.setCode(sub.getCode());
+		// 剩下的属性
+		vr.push_back(vo);
+	}
+	return vr;
+}
+
 int DepotService::saveData(const DepotDTO& dto)
 {
 	//组装数据
