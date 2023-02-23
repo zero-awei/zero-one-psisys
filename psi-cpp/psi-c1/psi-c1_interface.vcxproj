@@ -215,6 +215,7 @@
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
     <ClCompile Include="dao\publicInterfaceDao\AreaDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDAO\DepartNameDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\MaterialDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\UserChoiceDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
@@ -224,6 +225,7 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\publicInterfaceService\AreaService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\DepartNameService.cpp" />
     <ClCompile Include="service\publicInterfaceService\MaterialService.cpp" />
     <ClCompile Include="service\publicInterfaceService\UserChoiceService.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -275,6 +277,8 @@
     <ClInclude Include="dao\bankAccountDAO\temp.h" />
     <ClInclude Include="dao\publicInterfaceDAO\AreaMapper.h" />
     <ClInclude Include="dao\publicInterfaceDao\AreaDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\DepartNameDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\DepartNameMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\MaterialDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\MaterialMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\temp.h" />
@@ -283,7 +287,8 @@
     <ClInclude Include="domain\do\publicInterfaceDO\AreaQueryDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\AreaReturnDO.h" />
-    <ClInclude Include="domain\do\publicInterfaceDO\DepartNameDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\DepartQueryDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\DepartReturnDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\MaterialDO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\UserChoiceDAO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\MaterialQueryDO.h" />
@@ -355,6 +360,7 @@
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\bankAccountService\temp.h" />
     <ClInclude Include="service\publicInterfaceService\AreaService.h" />
+    <ClInclude Include="service\publicInterfaceService\DepartNameService.h" />
     <ClInclude Include="service\publicInterfaceService\MaterialService.h" />
     <ClInclude Include="service\publicInterfaceService\temp.h" />
     <ClInclude Include="service\publicInterfaceService\UserChoiceService.h" />

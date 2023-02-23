@@ -18,21 +18,23 @@
  limitations under the License.
 */
 
-#ifndef _DEPARTNAMEDO_H_
-#define _DEPARTNAMEDO_H_
+#ifndef _DEPARTQUERYDO_H_
+#define _DEPARTQUERYDO_H_
 
-class DepartNameDO
+#include "../DoInclude.h"
+
+class DepartQueryDO
 {
 	//要查询部门的名字
 	CC_SYNTHESIZE(std::string, departname, DepartName);
 	//要查询部门的id
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(std::string, id, Id);
 public:
-	DepartNameDO()
+	DepartQueryDO()
 	{
 		departname = "";
-		id = 0;
+		id = "";
 	}
 };
 
-#endif // _DEPARTNAMEDO_H_
+#endif // _DEPARTQUERYDO_H_

@@ -2,14 +2,14 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: yunjj
- @Date: 2023/2/13 16:18
+ @Author:yunjj
+ @Date: 2023/2/22 21:55
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-      https://www.apache.org/licenses/LICENSE-2.0
+	  https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,21 +17,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DEPARTNAMEQUERY_H_
-#define _DEPARTNAMEQUERY_H_
-#include "../../GlobalInclude.h"
+#include "Mapper.h"
 
-class DepartNameQuery
+class DepartNameMapper :public Mapper<DepartReturnDO>
 {
-    //要查询部门的名字
-    CC_SYNTHESIZE(std::string, departname, DepartName);
-    //要查询部门的id
-    CC_SYNTHESIZE(std::string, id, Id);
 public:
-	friend void from_json(const json& j, DepartNameQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, departname);
-		BIND_FROM_TO_NORMAL(j, t, id);
+	DepartReturnDO mapper(ResultSet* resultSet) const override
+	{
+		DepartReturnDO data;
+		data.setId(resultSet->getString(1));
+		data.setDepartName(resultSet->getString(2));
+		return data;
 	}
 };
-
-#endif // _DEPARTNAMEQUERY_H_

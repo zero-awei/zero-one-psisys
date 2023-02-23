@@ -1,14 +1,12 @@
 #include"stdafx.h"
 #include"DepartChoiceController.h"
+#include "../../service/publicInterfaceService/DepartNameService.h"
+
 
 JsonVO<list<DepartVO>> DepartChoiceController::execQueryDepart(const DepartNameQuery& query, const PayloadDTO& payload)
 {
-	JsonVO<list<DepartVO>>rs;
-	list<DepartVO>data;
-	data.push_back(DepartVO());
-	data.push_back(DepartVO());
-	data.push_back(DepartVO());
-	data.push_back(DepartVO());
-	rs.success(data);
+	DepartNameService service;
+	list<DepartVO> result = service.listAll(query);
+	JsonVO<list<DepartVO>> rs(result, RS_SUCCESS);
 	return rs;
 }

@@ -6,7 +6,7 @@
 std::list<AreaVO> AreaService::listAll(const AreaQuery& query)
 {
 	//构建返回对象
-	list<AreaVO>rs;
+	list<AreaVO> vr;
 	//构建查询对象
 	AreaQueryDO obj;
 	obj.setAreaName(query.getAreaName());
@@ -14,7 +14,6 @@ std::list<AreaVO> AreaService::listAll(const AreaQuery& query)
 	//定义dao层
 	AreaDAO dao;
 	list<AreaReturnDO> result  = dao.selectArea(obj);
-	list<AreaVO> vr;
 	for (AreaReturnDO sub : result)
 	{
 		AreaVO vo;
