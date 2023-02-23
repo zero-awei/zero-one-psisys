@@ -36,6 +36,9 @@
     <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillDetailQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\PurCompare\PurCompare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp">

@@ -178,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h" />
+    <ClInclude Include="domain\do\PurCompare\PurCompare.h" />
     <ClInclude Include="domain\dto\PaymentBillImpl\AddPayApplyDTO.h" />
     <ClInclude Include="domain\dto\PaymentBillImpl\ModPayApplyDTO.h" />
     <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillQuery.h" />
