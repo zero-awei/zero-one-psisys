@@ -203,12 +203,9 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 
 	// 组装数据
 	StkIoDO data1;
-	SnowFlake sf(1, 5);
-	data1.setId(to_string(sf.nextId()));
 	data1.setBillNo(dto.getBillNo());
 	data1.setBillDate(dto.getBillDate());
 	data1.setSubject(dto.getSubject());
-	data1.setStockIoType("102"); // "102":盘盈入库
 	data1.setHandler(dto.getHandler());
 	data1.setRemark(dto.getRemark());
 	data1.setBillStage((dto.getSave() == 0 ? "12" : "14")); // "12":编制中, "14":编制完
@@ -241,7 +238,6 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		}
 		return result;
 	}(dto.getFiles()));
-	data1.setSysOrgCode(dao.selectOrgCodeByUsername(payload.getUsername()));
 	data1.setUpdateBy(payload.getUsername());
 
 	// 生成当前时间
@@ -266,34 +262,33 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		}
 		return -2;
 	}
-	// 组装明细数据
-	StkIoEntryDO data2;
-	string mid = dao.selectBillIdByBillNo(dto.getBillNo());
-	for (auto& entry : dto.getDetail()) {
-		data2.setId(to_string(sf.nextId()));
-		data2.setMid(mid);
-		data2.setBillNo(dto.getBillNo());
-		data2.setEntryNo(to_string(entry.getEntryNo()));
-		data2.setMaterialId(dao.selectMaterialIdByAuxName(entry.getMaterial()));
-		data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
-		data2.setWarehouseId(dao.selectWarehouseIdByAuxName(entry.getWarehouse()));
-		data2.setStockIoDirection("1");
-		data2.setUnitId(dao.selectUnitIdByName(entry.getUnit()));
-		data2.setQty(entry.getQty());
-		data2.setCost(entry.getCost());
-		data2.setRemark(entry.getRemark());
-		data2.setCustom1(entry.getCustom1());
-		data2.setCustom2(entry.getCustom2());
-		if (dao.update(data2) == 0) {
-			// 回滚
-			dao.getSqlSession()->rollbackTransaction();
-			// 删除新增的附件
-			for (const auto& file : needUploadFile) {
-				dao.deleteAttachment(file);
+
+	if (!dto.getDetail().empty()) {
+		// 组装明细数据
+		StkIoEntryDO data2;
+		for (auto& entry : dto.getDetail()) {
+			data2.setEntryNo(to_string(entry.getEntryNo()));
+			data2.setMaterialId(dao.selectMaterialIdByAuxName(entry.getMaterial()));
+			data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
+			data2.setWarehouseId(dao.selectWarehouseIdByAuxName(entry.getWarehouse()));
+			data2.setUnitId(dao.selectUnitIdByName(entry.getUnit()));
+			data2.setQty(entry.getQty());
+			data2.setCost(entry.getCost());
+			data2.setRemark(entry.getRemark());
+			data2.setCustom1(entry.getCustom1());
+			data2.setCustom2(entry.getCustom2());
+			if (dao.update(data2) == 0) {
+				// 回滚
+				dao.getSqlSession()->rollbackTransaction();
+				// 删除新增的附件
+				for (const auto& file : needUploadFile) {
+					dao.deleteAttachment(file);
+				}
+				return -3;
 			}
-			return -3;
 		}
 	}
+	
 	// 提交
 	dao.getSqlSession()->commitTransaction();
 	// 删除需要删除的附件

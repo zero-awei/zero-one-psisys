@@ -89,7 +89,7 @@ SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
 // 定义条件解析宏，解析UPDATE stk_io_entry 的条件，减少重复代码
 #define UPDATE_STKIOENTRY_TEARM_PARSE(obj, sql) \
 sql << "UPDATE `stk_io_entry` SET `update_by`=?,`update_time`=?"; \
-SqlParams params; \
+SqlParams params; 
 
 string PyrkDao::selectOrgCodeByUsername(const string& username)
 {
