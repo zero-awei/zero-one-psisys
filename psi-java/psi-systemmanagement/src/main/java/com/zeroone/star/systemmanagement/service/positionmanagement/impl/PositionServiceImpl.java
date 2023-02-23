@@ -51,7 +51,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         //获取操作者信息
         try {
             UserDTO user = userHolder.getCurrentUser();
-            position.setCreateBy(user.getUsername());
+            position.setUpdateBy(user.getUsername());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -68,6 +68,7 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         BeanUtil.copyProperties(positionDTO, position);
         try {
             UserDTO user = userHolder.getCurrentUser();
+            position.setCreateBy(user.getUsername());
             position.setUpdateBy(user.getUsername());
         } catch (Exception e) {
             throw new RuntimeException(e);

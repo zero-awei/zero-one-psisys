@@ -3,11 +3,10 @@ package com.zeroone.star.systemmanagement.entity.positionmanagement;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @Description
@@ -50,7 +49,7 @@ public class Position implements Serializable {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 修改人
@@ -61,7 +60,7 @@ public class Position implements Serializable {
      * 修改时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     /**
      * 组织机构编码
