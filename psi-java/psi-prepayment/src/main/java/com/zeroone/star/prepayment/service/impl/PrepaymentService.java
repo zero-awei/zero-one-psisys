@@ -68,6 +68,10 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
     IFinPaymentReqService finPaymentReqService;
     @Resource
     IPurOrderService purOrderService;
+    @Resource
+    FinPaymentMapper finPaymentMapper;
+    @Resource
+    FinPaymentEntryMapper finPaymentEntryMapper;
 
     /**
      * 修改采购预付单
@@ -191,22 +195,27 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         return null;
     }
 
+    /**
+     * 删除功能
+     * author 出运费
+     */
     @Override
+    @Transactional
     public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
-
 //        //(不清楚具体数字代表什么处理状态 所以这一步先省略)
 //        //获取处理状态
-//        String billStage = finPaymentMapper.selectById(deleteDTO.getId()).getBillStage();
-//        if (billStage != "编制中"){
-//            return JsonVO.fail("单据不能做该操作，可能被其他用户改变了状态！");
-//        }
-        int i = finPaymentMapper.deleteById(deleteDTO.getId());
-        int mid = finPaymentEntryMapper.delete(new QueryWrapper<FinPaymentEntry>().eq("mid", deleteDTO.getId()));
-        if (i > 0&&mid > 0){
-            return JsonVO.success("删除成功！");
-        }else {
-            throw new Exception("删除失败！");
+        String billStage = finPaymentMapper.selectById(deleteDTO.getId()).getBillStage();
+        //只有编制中的可以删除
+        if ("12".equals(billStage)){
+            int i = finPaymentMapper.deleteById(deleteDTO.getId());
+            int mid = finPaymentEntryMapper.delete(new QueryWrapper<FinPaymentEntry>().eq("mid", deleteDTO.getId()));
+            if (i > 0&&mid > 0){
+                return JsonVO.success("删除成功！");
+            }else {
+                return JsonVO.fail("删除失败！");
+            }
         }
+        return JsonVO.fail("删除失败！");
     }
 
     /**
