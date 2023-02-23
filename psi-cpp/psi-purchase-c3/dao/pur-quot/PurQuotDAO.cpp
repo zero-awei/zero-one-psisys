@@ -33,7 +33,7 @@ if (obj.getIs_closed() != -1) { \
 if (obj.getIs_voided() != -1) { \
 	sql << " AND is_voided=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
-} \
+} 
 
 uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	stringstream sql;
