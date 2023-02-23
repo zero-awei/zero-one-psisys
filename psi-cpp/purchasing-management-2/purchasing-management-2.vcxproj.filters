@@ -177,6 +177,33 @@
     <ClInclude Include="api\prepayment\PrePayController.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\PueReq\PurReqController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\PurCom\PurComController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\PurCom\PurComQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\PurReq\PurReqQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurCom\PurComVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurReq\PurReqVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurCom\PurComDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurCom\PurComEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurInquiry\PurInquiryEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -228,6 +255,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\prepayment\PrePayController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\PueReq\PurReqController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\PurCom\PurComController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

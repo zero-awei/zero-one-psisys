@@ -179,6 +179,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\prepayment\PrePayController.h" />
+    <ClInclude Include="api\PueReq\PurReqController.h" />
+    <ClInclude Include="api\PurCom\PurComController.h" />
     <ClInclude Include="api\PurOrder\PurOrderController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\statis\StatisController.h" />
@@ -192,7 +194,10 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
+    <ClInclude Include="domain\do\PurCom\PurComDO.h" />
+    <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
     <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h" />
+    <ClInclude Include="domain\do\PurInquiry\PurInquiryEntryDO.h" />
     <ClInclude Include="domain\do\PurOrder\PurOrderDO.h" />
     <ClInclude Include="domain\do\PurOrder\PurOrderEntryDO.h" />
     <ClInclude Include="domain\do\PurQuot\PurQuotDO.h" />
@@ -211,7 +216,9 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h" />
+    <ClInclude Include="domain\query\PurCom\PurComQuery.h" />
     <ClInclude Include="domain\query\PurOrder\PurOrderQuery.h" />
+    <ClInclude Include="domain\query\PurReq\PurReqQuery.h" />
     <ClInclude Include="domain\query\StatisQuery\ExeStatusQuery.h" />
     <ClInclude Include="domain\query\StatisQuery\StatisQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
@@ -222,7 +229,9 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
+    <ClInclude Include="domain\vo\PurCom\PurComVO.h" />
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h" />
+    <ClInclude Include="domain\vo\PurReq\PurReqVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="domain\vo\StatisVO\ExeStatusVO.h" />
     <ClInclude Include="domain\vo\StatisVO\MaterialVO.h" />
@@ -236,6 +245,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
+    <ClCompile Include="api\PueReq\PurReqController.cpp" />
+    <ClCompile Include="api\PurCom\PurComController.cpp" />
     <ClCompile Include="api\PurOrder\PurOrderController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
