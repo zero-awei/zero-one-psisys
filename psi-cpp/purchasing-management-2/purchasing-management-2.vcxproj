@@ -178,6 +178,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\payment\PaymentController.h" />
     <ClInclude Include="api\prepayment\PrePayController.h" />
     <ClInclude Include="api\PueReq\PurReqController.h" />
     <ClInclude Include="api\PurCom\PurComController.h" />
@@ -202,8 +203,11 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\PurOrder\PurOrderEntryDO.h" />
     <ClInclude Include="domain\do\PurQuot\PurQuotDO.h" />
     <ClInclude Include="domain\do\PurQuot\PurQuotEntryDO.h" />
+    <ClInclude Include="domain\do\PurReqEntry\PurReqEntryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h" />
+    <ClInclude Include="domain\dto\payment\PaymentImportDTO.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
     <ClInclude Include="domain\dto\prepayment\DePayDTO.h" />
     <ClInclude Include="domain\dto\prepayment\PayIntoDTO.h" />
@@ -224,6 +228,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\payment\PaymentVO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h" />
     <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
@@ -239,11 +244,14 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\prepayment\PrePayService.h" />
+    <ClInclude Include="service\PurCom\PurComService.h" />
     <ClInclude Include="service\PurOrder\PurOrderService.h" />
+    <ClInclude Include="service\PurReq\PurReqService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\payment\PaymentController.cpp" />
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
     <ClCompile Include="api\PueReq\PurReqController.cpp" />
     <ClCompile Include="api\PurCom\PurComController.cpp" />
@@ -260,7 +268,9 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\prepayment\PrePayService.cpp" />
+    <ClCompile Include="service\PurCom\PurComService.cpp" />
     <ClCompile Include="service\PurOrder\PurOrderService.cpp" />
+    <ClCompile Include="service\PurReq\PurReqService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

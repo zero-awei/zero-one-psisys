@@ -204,6 +204,27 @@
     <ClInclude Include="domain\do\PurInquiry\PurInquiryEntryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\payment\PaymentController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurReqEntry\PurReqEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\payment\PaymentImportDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\payment\PaymentVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\PurCom\PurComService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\PurReq\PurReqService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -261,6 +282,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\PurCom\PurComController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\payment\PaymentController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\PurCom\PurComService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\PurReq\PurReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
