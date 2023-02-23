@@ -209,7 +209,7 @@
     <ClCompile Include="api\supplierController\ExportSupplierController.cpp" />
     <ClCompile Include="api\supplierController\ImportSupplierController.cpp" />
     <ClCompile Include="api\supplierController\SupplierController.cpp" />
-    <ClCompile Include="api\supplierController\SuppliserCategoryController.cpp" />
+    <ClCompile Include="api\supplierController\SupplierCategoryController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TaxRateController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
@@ -218,6 +218,7 @@
     <ClCompile Include="dao\publicInterfaceDAO\DepartNameDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\MaterialDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\UserChoiceDAO.cpp" />
+    <ClCompile Include="dao\supplierDAO\SupplierCategoryDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
@@ -228,6 +229,7 @@
     <ClCompile Include="service\publicInterfaceService\DepartNameService.cpp" />
     <ClCompile Include="service\publicInterfaceService\MaterialService.cpp" />
     <ClCompile Include="service\publicInterfaceService\UserChoiceService.cpp" />
+    <ClCompile Include="service\supplierService\SupplierCategoryService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -283,6 +285,8 @@
     <ClInclude Include="dao\publicInterfaceDAO\MaterialMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\temp.h" />
     <ClInclude Include="dao\publicInterfaceDAO\UserChoiceMapper.h" />
+    <ClInclude Include="dao\supplierDAO\SupplierCategoryDAO.h" />
+    <ClInclude Include="dao\supplierDAO\SupplierCategoryMapper.h" />
     <ClInclude Include="dao\supplierDAO\temp.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\AreaQueryDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
@@ -297,6 +301,8 @@
     <ClInclude Include="domain\do\publicInterfaceDO\UserChoiceReturnDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\UserDO.h" />
     <ClInclude Include="domain\do\supplierDO\SupplierCategoryDO.h" />
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryQuery.h" />
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryReturnDO.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
     <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
@@ -313,8 +319,8 @@
     <ClInclude Include="domain\query\publicInterfaceQuery\MaterialQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\MaterialTypeItemQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\supplierQuery\SuppliersNomalQuery.h" />
     <ClInclude Include="domain\query\supplierQuery\SupplierCategoryQuery.h" />
+    <ClInclude Include="domain\query\supplierQuery\SuppliersNomalQuery.h" />
     <ClInclude Include="domain\query\supplierQuery\AdvancedQuery.h" />
     <ClInclude Include="domain\query\supplierQuery\SpecifiedSupplierDataQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\UserQuery.h" />
@@ -348,7 +354,7 @@
     <ClInclude Include="domain\vo\supplierVO\SuppliersNameVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="domain\vo\publicInterfaceVO\SettleMethodVO.h" />
-    <ClInclude Include="domain\vo\supplierVO\SupplierCategoruVO.h" />
+    <ClInclude Include="domain\vo\supplierVO\SupplierCategoryVO.h" />
     <ClInclude Include="domain\vo\supplierVO\AdvancedQueryVO.h" />
     <ClInclude Include="domain\vo\supplierVO\SpecifiedSupplierDataQueryVO.h" />
     <ClInclude Include="domain\vo\publicInterfaceVO\TaxRateVO.h" />
@@ -364,6 +370,7 @@
     <ClInclude Include="service\publicInterfaceService\MaterialService.h" />
     <ClInclude Include="service\publicInterfaceService\temp.h" />
     <ClInclude Include="service\publicInterfaceService\UserChoiceService.h" />
+    <ClInclude Include="service\supplierService\SupplierCategoryService.h" />
     <ClInclude Include="service\supplierService\temp.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

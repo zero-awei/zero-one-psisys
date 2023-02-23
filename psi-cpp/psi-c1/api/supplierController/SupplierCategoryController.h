@@ -20,8 +20,9 @@
 #ifndef SUPPLIER_CATEGORY_CONTROLLER_
 #define SUPPLIER_CATEGORY_CONTROLLER_
 #include"../../domain/query/supplierQuery/SupplierCategoryQuery.h"
-#include"../../domain/vo/supplierVO/SupplierCategoruVO.h"
+#include"../../domain/vo/supplierVO/SupplierCategoryVO.h"
 #include "../../domain/vo/JsonVO.h"
+#include <list>
 
 class SupplierCategoryController
 {

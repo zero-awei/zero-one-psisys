@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/14 17:01
+ @Date: 2023/2/23 20:46
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SUPPLIER_CATEGORY_QUERY_
-#define _SUPPLIER_CATEGORY_QUERY_
+#ifndef _SUPPLIERCATEGORYSERVICE_H_
+#define _SUPPLIERCATEGORYSERVICE_H_
 
-#include "../../GlobalInclude.h"
-
-class SupplierCategoryQuery
+#include "../../domain/vo/supplierVO/SupplierCategoryVO.h"
+#include "../../domain/query/supplierQuery/SupplierCategoryQuery.h"
+class SupplierCategoryService
 {
-	//供应商名字
-	CC_SYNTHESIZE(std::string, name, Name);
-	//供应商id
-	CC_SYNTHESIZE(std::string,id,Id);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, SupplierCategoryQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
-	}
+	//列表返回查询数据
+	list<SuppliersCategoryVO>listAll(const SupplierCategoryQuery& query);
 };
 
-#endif // !_SUPPLIER_QUERY_
+#endif // _SUPPLIERCATEGORYSERVICE_H_

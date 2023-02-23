@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/14 18:41
+ @Date: 2023/2/23 20:42
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,20 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SUPPLIERS_CATEGORY_VO_
-#define _SUPPLIERS_CATEGORY_VO_
+#ifndef _SUPPLIERCATEGORYRETURNDO_H_
+#define _SUPPLIERCATEGORYRETURNDO_H_
+
 #include"../../GlobalInclude.h"
 
-class SuppliersCategoryVO
+class SupplierCategoryReturnDO
 {
 	//供应商类型名字
 	CC_SYNTHESIZE(std::string, name, Name);
-	//供应商类型对应id
-	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
-	SuppliersCategoryVO()
+	SupplierCategoryReturnDO()
 	{
-		name = "windows";
-		id = 0;
+		name = "";
 	}
-	//绑定json转换方法
-	BIND_TO_JSON(SuppliersCategoryVO, name, id);
 };
-#endif//!_SUPPLIERS_VO_
+
+#endif // _SUPPLIERCATEGORYRETURNDO_H_
