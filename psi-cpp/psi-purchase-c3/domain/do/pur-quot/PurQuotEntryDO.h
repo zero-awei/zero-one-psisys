@@ -11,7 +11,7 @@ class PurQuotEntryDO {
   //单据号
   CC_SYNTHESIZE(string, bill_no, Bill_no);
   //分录号
-  CC_SYNTHESIZE(string, entry_no, Entry_no);
+  CC_SYNTHESIZE(int, entry_no, Entry_no);
   //源单类型
   CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
   //源单ID
@@ -25,15 +25,15 @@ class PurQuotEntryDO {
   //计量单位
    CC_SYNTHESIZE(string, unit_id, Unit_id);
   //数量
-   CC_SYNTHESIZE(string, qty, Qty);
+   CC_SYNTHESIZE(double, qty, Qty);
   //税率
-   CC_SYNTHESIZE(string, tax_rate, Tax_rate);
+   CC_SYNTHESIZE(double, tax_rate, Tax_rate);
   //含税单价
-   CC_SYNTHESIZE(string, price, Price);
+   CC_SYNTHESIZE(double, price, Price);
   //折扣率
-   CC_SYNTHESIZE(string, discount_rate, Discount_rate);
+   CC_SYNTHESIZE(double, discount_rate, Discount_rate);
   //含税金额
-   CC_SYNTHESIZE(string, amt, Amt);
+   CC_SYNTHESIZE(double, amt, Amt);
   //备注
    CC_SYNTHESIZE(string, remark, Remark);
   //自定义1
@@ -48,18 +48,18 @@ public:
     id = "";
     mid = "";
     bill_no = "";
-    entry_no = "";
+    entry_no = -1;
     src_bill_type = "";
     src_bill_id = "";
     src_entry_id = "";
     src_no = "";
     material_id = "";
     unit_id = "";
-    qty = "";
-    tax_rate = "";
-    price = "";
-    discount_rate = "";
-    amt = "";
+    qty = -1.0;
+    tax_rate = -1.0;
+    price = -1.0;
+    discount_rate = -1.0;
+    amt = -1.0;
     remark = "";
     custom1 = "";
     custom2 = "";

@@ -14,11 +14,11 @@ class PurQuotFindBillQuery : public PageQuery{
 	// 单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	// 已生效
-	CC_SYNTHESIZE(string, is_effective, Is_effective);
+	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	// 已关闭
-	CC_SYNTHESIZE(string, is_closed, Is_closed);
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	// 已作废
-	CC_SYNTHESIZE(string, is_voided, Is_voided);
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
 public:
 	friend void from_json(const json& j, PurQuotFindBillQuery& t) {
 		BIND_FROM_TO_I(j, t, pageIndex);
@@ -28,9 +28,9 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, bill_date_end);
 		BIND_FROM_TO_NORMAL(j, t, subject);
 		BIND_FROM_TO_NORMAL(j, t, bill_stage);
-		BIND_FROM_TO_NORMAL(j, t, is_effective);
-		BIND_FROM_TO_NORMAL(j, t, is_closed);
-		BIND_FROM_TO_NORMAL(j, t, is_voided);
+		BIND_FROM_TO_I(j, t, is_effective);
+		BIND_FROM_TO_I(j, t, is_closed);
+		BIND_FROM_TO_I(j, t, is_voided);
 	}
 };
 #endif

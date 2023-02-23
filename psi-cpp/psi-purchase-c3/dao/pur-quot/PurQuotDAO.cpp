@@ -23,15 +23,15 @@ uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	}
 	if (iObj.getIs_effective() != -1) {
 		sql << " AND is_effective=?";
-		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_effective());
+		SQLPARAMS_PUSH(params, "i", int, iObj.getIs_effective());
 	}
 	if (iObj.getIs_closed() != -1) {
 		sql << " AND is_closed=?";
-		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_closed());
+		SQLPARAMS_PUSH(params, "i", int, iObj.getIs_closed());
 	}
 	if (iObj.getIs_voided() != -1) {
 		sql << " AND is_voided=?";
-		SQLPARAMS_PUSH(params, "s", std::string, iObj.getIs_voided());
+		SQLPARAMS_PUSH(params, "i", int, iObj.getIs_voided());
 	}
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
@@ -60,15 +60,15 @@ list<PurQuotDO> PurQuotDAO::selectPurQuotFindBillDO(const PurQuotDO& obj, uint64
 	}
 	if (obj.getIs_effective() != -1) {
 		sql << " AND is_effective=?";
-		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_effective());
+		SQLPARAMS_PUSH(params, "i", int, obj.getIs_effective());
 	}
 	if (obj.getIs_closed() != -1) {
 		sql << " AND is_closed=?";
-		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_closed());
+		SQLPARAMS_PUSH(params, "i", int, obj.getIs_closed());
 	}
 	if (obj.getIs_voided() != -1) {
 		sql << " AND is_voided=?";
-		SQLPARAMS_PUSH(params, "s", std::string, obj.getIs_voided());
+		SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided());
 	}
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurQuotFindBillMapper mapper;

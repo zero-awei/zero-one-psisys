@@ -20,8 +20,8 @@ public:
 		data.setSupplier_id(resultSet->getString(5));
 		data.setSupplier_name(resultSet->getString(6));
 		data.setDelivery_time(resultSet->getString(7));
-		data.setQty(resultSet->getInt(8));
-		data.setAmt(resultSet->getInt(9));
+		data.setQty(resultSet->getDouble(8));
+		data.setAmt(resultSet->getDouble(9));
 		data.setBill_stage(resultSet->getString(10));
 		data.setIs_effective(resultSet->getInt(11));
 		data.setIs_closed(resultSet->getInt(12));

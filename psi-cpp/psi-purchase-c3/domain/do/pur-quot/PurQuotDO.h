@@ -101,8 +101,8 @@ public:
     phone = "";
     fax = "";
     email = "";
-    qty = -1;
-    amt = -1;
+    qty = -1.0; //double
+    amt = -1.0; //double
     attachment = -1;
     remark = "";
     is_auto = -1;
