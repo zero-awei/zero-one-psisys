@@ -215,13 +215,14 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         //删除id对应的菜单及其所有子节点
         int num = deleteSub(sysMenu);
         //对未删除的菜单重新排序
-        resetSortNo(selectFromDB.getParentId());
+        resetSortNo(selectFromDB.getSortNo(), selectFromDB.getParentId());
 
         return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
     }
 
     /**
      * deleteMenu中删除id对应菜单及其所有子节点
+     *
      * @param sysMenu
      * @return
      */
@@ -242,9 +243,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     /**
      * 对未删除的菜单重新排序
+     * @param sortNo
      * @param parentId
      */
-    private void resetSortNo(String parentId) {
+    private void resetSortNo(Double sortNo, String parentId) {
         //获取所有同级菜单
         QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("parent_id", parentId);
@@ -253,16 +255,22 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         if (!sysMenus.isEmpty()) {
             //将同级其他节点排序重置
             for (SysMenu menu : sysMenus) {
-                menu.setSortNo(0.00);
-                update().eq("id", menu.getId()).set("sort_no", menu.getSortNo()).update();
+                //只对被删除节点之后的同级节点重置sortNo
+                if (menu.getSortNo() > sortNo) {
+                    menu.setSortNo(0.00);
+                    update().eq("id", menu.getId()).set("sort_no", menu.getSortNo()).update();
+                }
             }
             //将同级其他节点重新赋Sort_no
             List<SysMenu> menus = baseMapper.selectList(queryWrapper);
             for (SysMenu menu : menus) {
-                MenuDTO menuDTO = BeanUtil.copyProperties(menu, MenuDTO.class);
-                updateMenu(menuDTO);
-                //对每个子节点的子节点组也更新sort_no
-                resetSortNo(menu.getId());
+                //只对被重置后的节点重新赋值
+                if (menu.getSortNo() == 0.00) {
+                    MenuDTO menuDTO = BeanUtil.copyProperties(menu, MenuDTO.class);
+                    updateMenu(menuDTO);
+                    //对每个子节点的子节点组也更新sort_no
+                    resetSortNo(sortNo, menu.getId());
+                }
             }
         }
     }
