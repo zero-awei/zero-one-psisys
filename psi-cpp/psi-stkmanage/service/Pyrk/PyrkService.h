@@ -21,6 +21,8 @@ public:
 	int saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload);
 	// 审核单据
 	int updateApproval(const ApprovalDTO& dto, const PayloadDTO& payload);
+	// 修改单据
+	int updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // !_PYRK_SERVICE_

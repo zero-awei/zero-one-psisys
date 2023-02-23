@@ -56,7 +56,22 @@ JsonVO<int> PyrkController::execModifyBillApproval(const ApprovalDTO& approval, 
 }
 
 JsonVO<int> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload) {
-    return JsonVO<int>(0, RS_SUCCESS);
+	JsonVO<int> result;
+	// 定义一个Service
+	PyrkService service;
+	// 执行修改盘盈入库单据
+	int id = service.updateBillData(updateMessage, payload);
+	if (id > 0) {
+		result.success(id);
+	}
+	else if (id == -1) {
+		result.setData(id);
+		result.setStatus(RS_PARAMS_INVALID);
+	}
+	else {
+		result.fail(id);
+	}
+	return result;
 }
 
 JsonVO<int> PyrkController::execRemovePyrkBillById(const StringID& id)

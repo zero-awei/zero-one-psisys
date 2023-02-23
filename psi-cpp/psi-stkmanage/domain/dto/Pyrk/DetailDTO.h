@@ -11,11 +11,11 @@ class DetailDTO {
 	// # (分录号)
 	CC_SYNTHESIZE(int, entryNo, EntryNo);
 	// 物料
-	CC_SYNTHESIZE(string, materialId, MaterialId);
+	CC_SYNTHESIZE(string, material, Material);
 	// 仓库
-	CC_SYNTHESIZE(string, warehouseId, WarehouseId);
+	CC_SYNTHESIZE(string, warehouse, Warehouse);
 	// 单位
-	CC_SYNTHESIZE(string, unitId, UnitId);
+	CC_SYNTHESIZE(string, unit, Unit);
 	// 入库数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	// 入库金额

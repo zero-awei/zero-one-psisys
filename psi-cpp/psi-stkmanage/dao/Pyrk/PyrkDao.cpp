@@ -27,7 +27,7 @@
 
 // 定义条件解析宏，解析UPDATE stk_io 的条件，减少重复代码
 #define UPDATE_STKIO_TEARM_PARSE(obj, sql) \
-sql << "UPDATE stk_io SET `update_by`=?,`update_time`=?"; \
+sql << "UPDATE `stk_io` SET `update_by`=?,`update_time`=?"; \
 SqlParams params; \
 SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateBy()); \
 SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateTime()); \
@@ -86,18 +86,75 @@ if (obj.getIsVoided() == 1) { \
 sql << " WHERE `bill_no`=?"; \
 SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
 
+// 定义条件解析宏，解析UPDATE stk_io_entry 的条件，减少重复代码
+#define UPDATE_STKIOENTRY_TEARM_PARSE(obj, sql) \
+sql << "UPDATE `stk_io_entry` SET `update_by`=?,`update_time`=?"; \
+SqlParams params; \
+
 string PyrkDao::selectOrgCodeByUsername(const string& username)
 {
     string sql = "SELECT d.org_code FROM sys_depart d, sys_user u, sys_user_depart ud WHERE d.id = ud.dep_id AND u.id = ud.user_id AND u.username = ?";
     StringMapper mapper;
-    return *(sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", username).begin());
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", username);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
 }
 
 string PyrkDao::selectBillIdByBillNo(const string& billNo)
 {
     string sql = "SELECT id FROM stk_io WHERE bill_no = ?";
     StringMapper mapper;
-    return *(sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", billNo).begin());
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", billNo);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
+}
+
+string PyrkDao::selectAttachmentByBillNo(const string& billNo)
+{
+    string sql = "SELECT `attachment` FROM `stk_io` WHERE `bill_no`=?";
+    StringMapper mapper;
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", billNo);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
+}
+
+string PyrkDao::selectWarehouseIdByAuxName(const string& warehouse)
+{
+    string sql = "SELECT id FROM bas_warehouse WHERE aux_name=?";
+    StringMapper mapper;
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", warehouse);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
+}
+
+string PyrkDao::selectMaterialIdByAuxName(const string& material)
+{
+    string sql = "SELECT id FROM bas_material WHERE aux_name=?";
+    StringMapper mapper;
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", material);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
+}
+
+string PyrkDao::selectUnitIdByName(const string& unit)
+{
+    string sql = "SELECT id FROM bas_unit WHERE name=?";
+    StringMapper mapper;
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", unit);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
 }
 
 int PyrkDao::insert(const StkIoDO& iObj)
@@ -114,7 +171,7 @@ int PyrkDao::insert(const StkIoEntryDO& iObj)
         iObj.getId(),iObj.getMid(),iObj.getBillNo(),atoi(iObj.getEntryNo().c_str()), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(), iObj.getUnitId(), iObj.getQty(), iObj.getCost(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
 }
 
-string PyrkDao::insertFile(const string& fileName)
+string PyrkDao::insertAttachment(const string& fileName)
 {
 #ifdef LINUX
     // 定义客户端对象
@@ -126,21 +183,38 @@ string PyrkDao::insertFile(const string& fileName)
     return client.uploadFile(fileName);
 }
 
+bool PyrkDao::deleteAttachment(const string& fileName)
+{
+#ifdef LINUX
+    // 定义客户端对象
+    FastDfsClient client("conf/client.conf", 3);
+#else
+    // 定义客户端对象
+    FastDfsClient client("192.168.235.251");
+#endif
+    return client.deleteFile(fileName);
+}
+
 int PyrkDao::updateApproval(const StkIoDO& iObj)
 {
     stringstream sql;
     // 解析条件
     UPDATE_STKIO_TEARM_PARSE(iObj, sql);
-    
     return sqlSession->executeUpdate(sql.str(), params);
 }
 
 int PyrkDao::update(const StkIoDO& iObj)
 {
-    return int();
+    stringstream sql;
+    // 解析条件
+    UPDATE_STKIO_TEARM_PARSE(iObj, sql);
+    return sqlSession->executeUpdate(sql.str(), params);
 }
 
 int PyrkDao::update(const StkIoEntryDO& iObj)
 {
-    return int();
+    stringstream sql;
+    // 解析条件
+
+    return 0;
 }
