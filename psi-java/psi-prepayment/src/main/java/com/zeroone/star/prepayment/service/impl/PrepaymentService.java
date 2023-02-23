@@ -1,6 +1,7 @@
 package com.zeroone.star.prepayment.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
@@ -192,7 +193,20 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
 
     @Override
     public JsonVO<String> deleteById(DeleteDTO deleteDTO) {
-        return null;
+
+//        //(不清楚具体数字代表什么处理状态 所以这一步先省略)
+//        //获取处理状态
+//        String billStage = finPaymentMapper.selectById(deleteDTO.getId()).getBillStage();
+//        if (billStage != "编制中"){
+//            return JsonVO.fail("单据不能做该操作，可能被其他用户改变了状态！");
+//        }
+        int i = finPaymentMapper.deleteById(deleteDTO.getId());
+        int mid = finPaymentEntryMapper.delete(new QueryWrapper<FinPaymentEntry>().eq("mid", deleteDTO.getId()));
+        if (i > 0&&mid > 0){
+            return JsonVO.success("删除成功！");
+        }else {
+            throw new Exception("删除失败！");
+        }
     }
 
     /**
