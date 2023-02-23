@@ -3,7 +3,7 @@
 #ifndef _EXPORTACCOUNTCONTROLLER_H_
 #define _EXPORTACCOUNTCONTROLLER_H_
 #include "../../domain/vo/JsonVO.h"
-#include "domain/query/BankAccountQuery/SpecifiedBankAccountQuery.h"
+#include "domain/query/BankAccountQuery/ExportAccountQuery.h"
 #include "api/ApiHelper.h"
 
 /*
@@ -14,9 +14,9 @@
 class ExportAccountController
 {
 public:
-	CREATE_API_FUN_QUERY(exportAccountExecl, execExportAccountExecl, SpecifiedBankAccountQuery);
+	CREATE_API_FUN_QUERY(exportAccountExecl, execExportAccountExecl, ExportAccountQuery);
 private:
-	JsonVO<std::string> execExportAccountExecl(const SpecifiedBankAccountQuery& query);
+	JsonVO<std::string> execExportAccountExecl(const ExportAccountQuery& query);
 };
 
 #endif // _EXPORTACCOUNTCONTROLLER_H_

@@ -10,11 +10,18 @@
 * @Author: Oxygen
 * @Date: 2023/2/22 10:48:09
 */
-list<ExportAccountDO> ExportAccountService::listAll(const SpecifiedBankAccountQuery& query)
+list<ExportAccountDO> ExportAccountService::listAll(const ExportAccountQuery& query)
 {
 	ExportAccountDO obj;
-	obj.setAccount_no(query.getAccountNo());
+	obj.setAccountNo(query.getAccountNo());
 	obj.setName(query.getName());
+	obj.setCurrency(query.getAccountNo());
+	obj.setInit_bal(query.getInit_bal());
+	obj.setBankNo(query.getBankNo());
+	obj.setBankAddress(query.getBankAddress());
+	obj.setManager(query.getManager());
+	obj.setRemark(query.getRemark());
+	obj.setIsEnabled(query.getIsEnabled());
 	ExportAccountDAO dao;
 	list<ExportAccountDO> result = dao.selectAccount(obj);
 	return result;

@@ -521,5 +521,8 @@
     <ClInclude Include="domain\service\bankAccountService\DeleteAccountService.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\query\bankAccountQuery\ExportAccountQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

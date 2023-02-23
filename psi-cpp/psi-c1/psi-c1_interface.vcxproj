@@ -292,6 +292,7 @@
     <ClInclude Include="domain\dto\supplierDTO\DeleteSupplierDTO.h" />
     <ClInclude Include="domain\dto\supplierDTO\ModifySupplierDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\bankAccountQuery\ExportAccountQuery.h" />
     <ClInclude Include="domain\query\publicInterfaceQuery\AreaQuery.h" />
     <ClInclude Include="domain\query\bankAccountQuery\BankAccountQuery.h" />
     <ClInclude Include="domain\query\bankAccountQuery\SpecifiedBankAccountQuery.h" />

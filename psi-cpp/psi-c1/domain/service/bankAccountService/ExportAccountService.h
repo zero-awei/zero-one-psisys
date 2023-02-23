@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../../query/bankAccountQuery/SpecifiedBankAccountQuery.h"
+#include "../../query/bankAccountQuery/ExportAccountQuery.h"
 #include "../../do/bankAccountDO/ExportAccountDO.h"
 #ifndef _BANKACCOUNTSERVICE_H_
 #define _BANKACCOUNTSERVICE_H_
@@ -14,7 +14,7 @@ class ExportAccountService
 {
 public:
 	// 银行账户导出功能
-	list<ExportAccountDO> listAll(const SpecifiedBankAccountQuery& query);
+	list<ExportAccountDO> listAll(const ExportAccountQuery& query);
 };
 
 #endif // _BANKACCOUNTSERVICE_H_

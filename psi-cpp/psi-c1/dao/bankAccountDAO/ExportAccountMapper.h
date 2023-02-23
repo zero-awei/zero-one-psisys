@@ -16,8 +16,15 @@ public:
 	ExportAccountDO mapper(ResultSet* resultSet) const override
 	{
 		ExportAccountDO data;
-		data.setAccount_no(resultSet->getString(2));
-		data.setName(resultSet->getString(3));
+		data.setAccountNo(resultSet->getString(1));
+		data.setName(resultSet->getString(2));
+		data.setCurrency(resultSet->getString(3));
+		data.setInit_bal(resultSet->getDouble(4));
+		data.setBankNo(resultSet->getString(5));
+		data.setBankAddress(resultSet->getString(6));
+		data.setManager(resultSet->getString(7));
+		data.setRemark(resultSet->getString(8));
+		data.setIsEnabled(resultSet->getInt64(9));
 		return data;
 	}
 };

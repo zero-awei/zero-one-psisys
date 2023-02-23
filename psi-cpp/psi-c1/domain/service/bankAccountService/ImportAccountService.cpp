@@ -22,17 +22,20 @@ uint64_t ImportAccountService::saveData(const FileDTO& dto)
 		ImportAccountDO data;
 		std::string sheetName = CharsetConvertHepler::ansiToUtf8("银行账户");
 		auto readData = excel.readIntoVector(file, sheetName);
+		int rows = 0;
 		for (auto row : readData)
 		{
+			rows++;
+			if (rows < 3)	continue;
 			/*for (auto cellVal : row)
 			{
 				cout << CharsetConvertHepler::utf8ToAnsi(cellVal) << ",";
 			}
 			cout << endl;*/
 			int i = 0;
-			data.setCode(row.at(i++));
+			data.setAccountNo(row.at(i++));
 			data.setName(row.at(i++));
-			//执行数据添加
+			// 执行数据添加
 			ImportAccountDAO dao;
 			dao.insert(data);
 			res++;

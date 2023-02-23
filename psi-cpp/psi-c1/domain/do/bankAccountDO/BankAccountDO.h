@@ -10,8 +10,6 @@
 */
 class BankAccountDO
 {
-	// Id
-	CC_SYNTHESIZE(string, id, Id);
 	// 账号
 	CC_SYNTHESIZE(string, accountNo, AccountNo);
 	// 账户名
@@ -38,7 +36,6 @@ class BankAccountDO
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
 	BankAccountDO() {
-		id = "89135278095172895";
 		accountNo = "1234";
 		name = "张三";
 		currency = "人民币";
