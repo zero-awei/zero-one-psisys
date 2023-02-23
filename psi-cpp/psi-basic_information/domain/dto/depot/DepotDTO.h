@@ -42,7 +42,7 @@ class DepotDTO : public FileDTO
 	// 电话
 	CC_SYNTHESIZE(int, phone, Phone);
 	// 启用
-	CC_SYNTHESIZE(int, start, Start);
+	CC_SYNTHESIZE(string, start, Start);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 	//// 创建时间

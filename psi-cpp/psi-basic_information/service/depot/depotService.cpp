@@ -119,3 +119,12 @@ int DepotService::modifyDepot(const DepotDTO& dto)
 	DepotDAO dao;
 	return dao.update(data);
 }
+
+bool DepotService::saveFile(const std::list<DepotDTO>& dto)
+{
+	bool saveSucceed = true;
+	for (auto d : dto) {
+		saveSucceed = saveSucceed && saveData(d);
+	}
+	return saveSucceed;
+}

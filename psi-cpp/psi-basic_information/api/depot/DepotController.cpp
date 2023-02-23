@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "DepotController.h"
-
+#include "../../../lib-common/include/ExcelComponent.h"
+#include "../../../lib-common/include/CharsetConvertHepler.h"
 /*
 * 数据校验
 * 改接口返回值
@@ -89,9 +90,30 @@ JsonVO<bool> DepotController::execRemoveDepot(const OnlyValueQuery& query)
     return result;
 }
 
-JsonVO<int> DepotController::execAddDepots(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto)
 {
-    return JsonVO<int>();
+    JsonVO<bool> result;
+    //定义一个Service
+    DepotDTO Do;
+    std::list<DepotDTO> lDo;
+    // DepotService service;
+    ExcelComponent excel;
+    //输出测试上传文件路径列表
+    for (auto file : dto.getFiles()) {
+        std::cout << "path " << file << std::endl;
+        //从文件中读取
+        std::string sheetName = CharsetConvertHepler::ansiToUtf8("数据表");
+        auto readData = excel.readIntoVector(file, sheetName);
+        for (auto row : readData)
+        {
+            for (auto cellVal : row)
+            {
+                cout << CharsetConvertHepler::utf8ToAnsi(cellVal) << ",";
+            }
+            cout << endl;
+        }
+    }
+    return result;
 }
 
 JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const PayloadDTO& payload)

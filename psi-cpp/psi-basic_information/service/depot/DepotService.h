@@ -42,6 +42,8 @@ public:
 	// 删除数据
 	bool removeData(const OnlyValueQuery& query);
 	int modifyDepot(const DepotDTO& dto);
+	// 导入文件
+	bool saveFile(const std::list<DepotDTO>& dto);
 };
 
 #endif // !_DEPOT_SERVICE_

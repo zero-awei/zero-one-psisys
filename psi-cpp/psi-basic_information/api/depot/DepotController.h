@@ -57,7 +57,7 @@ private:
 	//删除仓库 
 	JsonVO<bool> execRemoveDepot(const OnlyValueQuery& query);
 	//文件导入
-	JsonVO<int> execAddDepots(const DepotDTO& dto);
+	JsonVO<bool> execAddDepots(const DepotDTO& dto);
 	//文件导出
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
 	// 通过唯一值批量导出
