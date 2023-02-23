@@ -5,7 +5,7 @@
 
 /**
  * 采购预付申请-查询指定预付申请单据列表-查询时点击单据编号
- */
+*/
 class PrepayDetailBillQuery {
 	//指定的单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);

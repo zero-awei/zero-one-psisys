@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "PrePayController.h"
 #include "../../domain/query/prepaymentbill/PrepayExportQuery.h"
@@ -22,7 +23,7 @@ JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const
 	if (query.getBill_stage() == "") {
 		return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
 	}
-	
+
 	//≤È—Ø≥…π¶
 	PrePayService service;
 	PageVO<PrepaymentBillVO> result = service.listAll(query);
@@ -34,7 +35,7 @@ JsonVO<PrepaymentDetailBillVO> PrePayController::execQueryPayDetailBill(const Pr
 {
 	if (query.getBill_no() == "") {
 		return JsonVO<PrepaymentDetailBillVO>({}, RS_PARAMS_INVALID);
-	}
+}
 	PrePayService service;
 	PageVO<PrepaymentDetailBillVO> result = service.getAll(query);
 	return JsonVO<PrepaymentDetailBillVO>({}, RS_SUCCESS);
@@ -66,7 +67,7 @@ JsonVO<PrepaymentExportVO> PrePayController::execPrepayExport(const PrePayExport
 JsonVO<uint64_t> PrePayController::execAddPay(const  AddPayDTO& dto)
 {
 
-	JsonVO<uint64_t> result;
+	JsonVO<uint64_t> result;	
 	PrePayService service;
 	uint64_t id = service.saveData(dto);
 	if (id > 0) {

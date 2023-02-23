@@ -10,6 +10,8 @@
 //查看预付申请单列表
 #include "../../domain/query/prepaymentbill/PrepayBillQuery.h"
 #include "../../domain/query/prepaymentbill/PrepayDetailBillQuery.h"
+#include "../../domain/query/prepaymentbill/PrePayExportQuery.h"
+//vo
 #include "../../domain/vo/prepaymentbill/PrepaymentBillVO.h"
 #include "../../domain/vo/prepaymentbill/PrepaymentDetailBillVO.h"
 //增加修改删除预付申请单列表

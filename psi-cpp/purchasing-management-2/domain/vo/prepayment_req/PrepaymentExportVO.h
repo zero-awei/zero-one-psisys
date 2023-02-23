@@ -18,6 +18,10 @@ class PrepaymentExportVO {
 	CC_SYNTHESIZE(string, od_dept, Od_dept);
 	//业务员
 	CC_SYNTHESIZE(string, op, Operator);
+
+
+
+	//-----------------付款申请单明细字段开始----------------------------
 	//申请金额
 	CC_SYNTHESIZE(int, amt, Amt);
 	//已付金额
