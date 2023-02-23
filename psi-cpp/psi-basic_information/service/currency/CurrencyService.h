@@ -2,7 +2,7 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
+ @Author: douhao
  @Date: 2022/10/25 11:08:56
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,14 +34,15 @@ public:
 	// 分页查询所有数据
 	PageVO<CurrencyVO> listAll(const CurrencyQuery& query);
 	CurrencyVO listByName(const OnlyValueCurrencyQuery& query);
-	/*
-	// 保存数据
-	uint64_t saveData(const SampleDTO& dto);
+	// 新增数据
+	uint64_t saveData(const CurrencyDTO& dto, const PayloadDTO& payload);
+	
 	// 修改数据
-	bool updateData(const SampleDTO& dto);
+	bool updateData(const CurrencyDTO& dto, const PayloadDTO& payload);
+	
 	// 通过ID删除数据
-	bool removeData(uint64_t id);
-	*/
+	bool removeData(string code);
+	
 };
 
 #endif // !_CURRENCY_SERVICE_

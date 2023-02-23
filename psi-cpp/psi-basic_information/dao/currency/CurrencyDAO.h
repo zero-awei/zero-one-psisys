@@ -2,7 +2,7 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
+ @Author: douhao
  @Date: 2022/10/25 14:23:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,14 +34,12 @@ public:
 	list<CurrencyDO> selectWithPage(const CurrencyDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	// 通过姓名查询数据
 	list<CurrencyDO> selectByName(const string& name);
-
-	/*
 	// 插入数据
 	uint64_t insert(const CurrencyDO& iObj);
 	// 修改数据
 	int update(const CurrencyDO& uObj);
 	// 通过ID删除数据
-	int deleteById(uint64_t id);
-	*/
+	int deleteById(string code);
+	
 };
 #endif // !_CURRENCY_DAO_

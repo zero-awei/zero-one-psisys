@@ -36,6 +36,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, name);
 	}
 };
+
 class OnlyValueCurrencyQuery
 {
 	// Ãû³Æ 

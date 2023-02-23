@@ -2,7 +2,7 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
+ @Author: douhao
  @Date: 2022/10/25 14:21:55
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,10 +32,11 @@ public:
 	CurrencyDO mapper(ResultSet* resultSet) const override
 	{
 		CurrencyDO data;
+		data.setId(resultSet->getString(1));
 		data.setCode(resultSet->getString(2));
 		data.setName(resultSet->getString(3));
-		data.setIsFunctional(resultSet->getString(4));
-		data.setIsEnabled(resultSet->getString(5));
+		data.setIsFunctional(resultSet->getInt(4));
+		data.setIsEnabled(resultSet->getInt(5));
 		data.setCreateBy(resultSet->getString(6));
 		data.setCreateTime(resultSet->getString(7));
 		data.setUpdateBy(resultSet->getString(8));
