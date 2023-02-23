@@ -191,6 +191,7 @@
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="dao\pur-quot\PurQuotDAO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotDetailVO.h" />
     <ClInclude Include="dao\pur-quot\PurQuotDividedListMapper.h" />
     <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h" />
     <ClInclude Include="dao\pur-quot\PurQuotFindDetailBillMapper.h" />
@@ -216,6 +217,7 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\do\pur-quot\PurQuotAllDO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotAllVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotBaseVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />

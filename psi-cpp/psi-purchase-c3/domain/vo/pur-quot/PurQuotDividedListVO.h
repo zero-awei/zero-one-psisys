@@ -2,6 +2,7 @@
 #ifndef _PUR_QUOT_DIVIDED_LIST_VO_H_
 #define _PUR_QUOT_DIVIDED_LIST_VO_H_
 #include "../../GlobalInclude.h"
+//询价单分录列表的VO
 class PurQuotDividedListVO
 {
 	//单据编号

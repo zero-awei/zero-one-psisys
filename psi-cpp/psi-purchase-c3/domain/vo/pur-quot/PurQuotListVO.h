@@ -2,7 +2,7 @@
 #ifndef _PUR_QUOT_LIST_VO_H_
 #define _PUR_QUOT_LIST_VO_H_
 #include "../../GlobalInclude.h"
-#include "PurQuotFindDetailBillVO.h"
+//询价单列表的VO
 class PurQuotListVO
 {
 	//源单分录号
