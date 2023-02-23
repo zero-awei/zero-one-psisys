@@ -3,10 +3,13 @@ package com.zeroone.star.project.dto.sysmanagement.usermanagement;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -66,6 +69,7 @@ public class EditUserDTO {
      * 性别(0-默认未知,1-男,2-女)
      */
     @NotNull
+    @Range(min = 1, max = 2)
     @ApiModelProperty(value = "性别", example = "2")
     private Integer sex;
 
@@ -73,13 +77,15 @@ public class EditUserDTO {
      * 电子邮件
      */
     @NotBlank
-    @ApiModelProperty(value = "电子邮件", example = "123@qq.com")
+    @Email(message = "邮箱格式错误")
+    @ApiModelProperty(value = "电子邮件", example = "zhangxiaohon@qq.com")
     private String email;
 
     /**
      * 电话
      */
     @NotBlank
+    @Pattern(regexp = "^(?:(?:\\+|00)86)?1[3-9]\\d{9}$", message = "手机号格式错误")
     @ApiModelProperty(value = "电话", example = "18611783333")
     private String phone;
 

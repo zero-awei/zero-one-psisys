@@ -24,14 +24,12 @@ public class DepartVO {
     /**
      * 主键id
      */
-    @NotBlank
-    @ApiModelProperty(value = "id", example = "")
+    @ApiModelProperty(value = "id", example = "4f1765520d6346f9bd9c79e2479e5b12")
     private String id;
 
     /**
      * 部门名称
      */
-    @NotBlank
     @ApiModelProperty(value = "部门名称", example = "市场部")
     private String departName;
 }

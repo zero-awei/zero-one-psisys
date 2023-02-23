@@ -65,7 +65,7 @@ public class EditUserVO {
     /**
      * 电子邮件
      */
-    @ApiModelProperty(value = "电子邮件", example = "123@qq.com")
+    @ApiModelProperty(value = "电子邮件", example = "zhangxiaohon@qq.com")
     private String email;
 
     /**

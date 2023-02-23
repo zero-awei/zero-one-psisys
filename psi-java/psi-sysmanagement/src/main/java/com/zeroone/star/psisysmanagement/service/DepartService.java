@@ -13,5 +13,5 @@ import java.util.List;
 */
 public interface DepartService extends IService<Depart> {
 
-    List<DepartVO> listDepart();
+    List<DepartVO> listDeparts();
 }

@@ -86,8 +86,7 @@ public class UserController implements UserApis {
     @GetMapping("/review")
     @Override
     public JsonVO<EditUserVO> review(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        EditUserVO editUserVO = iUserService.getUserInfo(id);
-        return JsonVO.create(editUserVO, ResultStatus.SUCCESS);
+        return JsonVO.success(iUserService.getUserInfo(id));
     }
 
     //    axin
@@ -167,7 +166,7 @@ public class UserController implements UserApis {
     @GetMapping("/list-depart")
     @Override
     public JsonVO<List<DepartVO>> listDepartment() {
-        return JsonVO.success(departService.listDepart());
+        return JsonVO.success(departService.listDeparts());
     }
 
 }

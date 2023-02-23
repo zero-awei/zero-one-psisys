@@ -27,11 +27,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -113,13 +115,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     // dan
+    @Transactional
     @Override
     public EditUserVO getUserInfo(String id) {
         User user = this.getById(id);
         EditUserVO editUserVO = new EditUserVO();
         BeanUtils.copyProperties(user, editUserVO);
-        Depart depart = departService.getById(user.getDepartIds());
-        editUserVO.setDepartName(depart.getDepartName());
+        QueryWrapper<Depart> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("depart_name").eq("id", user.getDepartIds());
+        List<Depart> departs = departService.getBaseMapper().selectList(queryWrapper);
+        log.info("departs :{}", departs);
+        editUserVO.setDepartName(departs.get(0).getDepartName());
         return editUserVO;
     }
 
