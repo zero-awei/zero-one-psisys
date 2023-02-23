@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-
+#include "prepayment/PrePayController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
@@ -75,6 +75,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	createPayRouter();
 	BIND_GET_ROUTER(server, "/query/ExecuteStatus", &StatisController::queryExeStatus, nullptr);
 	BIND_GET_ROUTER(server, "/query-all", &StatisController::queryStatis, nullptr);
 	BIND_GET_ROUTER(server, "/query-byDept", &StatisController::queryStatisByDept, nullptr);
@@ -108,3 +109,23 @@ void Router::createUserDepartRouter()
 	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
 }
 #endif
+
+void Router::createPayRouter() {
+	//查询单据列表
+	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
+	//查询指定单据详细信息
+	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
+	//导出
+	BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
+	//添加申请(保存/提交)
+	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
+	//修改申请(保存/提交/审核)
+	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
+	//删除申请
+	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
+	//修改单据状态(关闭/作废/反关闭)
+	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
+	//导入
+	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
+
+}
