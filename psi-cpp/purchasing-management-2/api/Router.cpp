@@ -21,6 +21,7 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
+#include "paymentBillImpl/PayApplyControlle.h"
 #include "payment/PaymentController.h"
 
 
@@ -58,25 +59,25 @@ void Router::initRouter()
 
 	//初始化一个文件上传接口示例
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
-			if (req.get_content_type() != content_type::multipart)
-			{
-				JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
-				nlohmann::json jvo = nlohmann::json(vo);
-				jvo.erase("data");
-				res.render_json(jvo);
-				return;
-			}
-			//获取表单参数
-			std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-			std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-			//获取文件路径
-			auto& files = req.get_upload_files();
-			std::vector<string> filePaths;
-			for (auto& file : files) {
-				filePaths.push_back(file.get_file_path().substr(1));
-				std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-			}
-			res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
+		if (req.get_content_type() != content_type::multipart)
+		{
+			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
+			nlohmann::json jvo = nlohmann::json(vo);
+			jvo.erase("data");
+			res.render_json(jvo);
+			return;
+		}
+	//获取表单参数
+	std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
+	std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
+	//获取文件路径
+	auto& files = req.get_upload_files();
+	std::vector<string> filePaths;
+	for (auto& file : files) {
+		filePaths.push_back(file.get_file_path().substr(1));
+		std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
+	}
+	res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
 	createSampleRouter();
@@ -85,6 +86,16 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+
+	////新增供应报价
+	//BIND_POST_ROUTER(server, "/post", &PurQuotController::addPurQuot, nullptr);
+	////修改供应报价
+	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::modPurQuot, nullptr);
+	////删除供应报价
+	//BIND_DEL_ROUTER(server, "/delete", &PurQuotController::delPurQuot, nullptr);
+	////修改供应报价状态（关闭、作弊、反关闭）
+	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
+
 	createPayRouter();
 	BIND_GET_ROUTER(server, "/query/ExecuteStatus", &StatisController::queryExeStatus, nullptr);
 	BIND_GET_ROUTER(server, "/query-all", &StatisController::queryStatis, nullptr);
