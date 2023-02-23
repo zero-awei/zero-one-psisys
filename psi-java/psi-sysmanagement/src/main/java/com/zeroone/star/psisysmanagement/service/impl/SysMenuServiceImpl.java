@@ -210,20 +210,45 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     public JsonVO<ResultStatus> deleteMenu(SysMenuQuery sysMenuQuery) {
 
         SysMenu sysMenu = BeanUtil.copyProperties(sysMenuQuery, SysMenu.class);
+        //从数据库中获取该对象，可拥有更多属性
+        SysMenu selectFromDB = baseMapper.selectById(sysMenu.getId());
+        int num = deleteSub(sysMenu);
+        resetSortNo(selectFromDB.getParentId());
 
+        return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
+    }
+
+    private int deleteSub(SysMenu sysMenu) {
         int num = baseMapper.deleteById(sysMenu);
-
         //将该节点的子项删除
         QueryWrapper<SysMenu> querySub = new QueryWrapper<>();
         querySub.eq("parent_id", sysMenu.getId());
         List<SysMenu> sysMenus = baseMapper.selectList(querySub);
         if (!sysMenus.isEmpty()) {
             for (SysMenu menu : sysMenus) {
-                SysMenuQuery menuQuery = BeanUtil.copyProperties(menu, SysMenuQuery.class);
-                deleteMenu(menuQuery);
+                deleteSub(menu);
             }
         }
+        return num;
+    }
 
-        return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
+    private void resetSortNo(String parentId) {
+        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("parent_id", parentId);
+        List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
+        if (!sysMenus.isEmpty()) {
+            //将同级其他节点排序重置
+            for (SysMenu menu : sysMenus) {
+                menu.setSortNo(0.00);
+                update().eq("id", menu.getId()).set("sort_no", menu.getSortNo()).update();
+            }
+            //将同级其他节点重新赋Sort_no
+            List<SysMenu> menus = baseMapper.selectList(queryWrapper);
+            for (SysMenu menu : menus) {
+                MenuDTO menuDTO = BeanUtil.copyProperties(menu, MenuDTO.class);
+                updateMenu(menuDTO);
+                resetSortNo(menu.getId());
+            }
+        }
     }
 }
