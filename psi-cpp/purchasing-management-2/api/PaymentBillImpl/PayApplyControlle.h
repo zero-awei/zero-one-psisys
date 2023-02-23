@@ -1,8 +1,8 @@
 #pragma once
 
 
-#ifndef _PUR_REQ_CONTROLLER_
-#define _PUR_REQ_CONTROLLER_
+#ifndef _PAY_APPLY_CONTROLLER_
+#define _PAY_APPLY_CONTROLLER_
 
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"

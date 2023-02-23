@@ -16,8 +16,6 @@
 #ifndef _PAYMENT_BILL_DETAIL_QUERY_
 #define _PAYMENT_BILL_DETAIL_QUERY_
 
-#include "../PageQuery.h"
-
 /*
 查询单据列表
 */
@@ -37,7 +35,14 @@ class PaymentBillDetailQuery {
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PaymentBillDetailQuery, srcNo, amt, paidAmt, remark, custom1, custom2);
+	friend void from_json(const json& j, PaymentBillDetailQuery& pbq) {
+		BIND_FROM_TO_ULL(j, pbq, srcNo);
+		BIND_FROM_TO_ULL(j, pbq, remark);
+		BIND_FROM_TO_ULL(j, pbq, custom1);
+		BIND_FROM_TO_ULL(j, pbq, custom2);
+		BIND_FROM_TO_D(j, pbq, amt);
+		BIND_FROM_TO_D(j, pbq, paidAmt);
+	}
 };
 
 #endif

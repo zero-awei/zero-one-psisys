@@ -110,8 +110,6 @@ public:
 		BIND_FROM_TO_I(j, mdt, isEffective);
 		BIND_FROM_TO_I(j, mdt, isClosed);
 		BIND_FROM_TO_I(j, mdt, isVoided);
-
-
 	}
 };
 

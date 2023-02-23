@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
+#include "PaymentBillImpl/PayApplyControlle.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"

@@ -50,20 +50,4 @@ public:
 		BIND_FROM_TO_I(j, pbq, isVoided);
 	}
 };
-
-
-/*
-查询指定单据详细信息
-*/
-class PaymentBillDetailQuery {
-	//指定的单据号
-	CC_SYNTHESIZE(string, billNo, BillNo);
-public:
-	// 绑定JSON转换方法
-	friend void from_json(const json& j, PaymentBillDetailQuery& pbdq) {
-		BIND_FROM_TO_ULL(j, pbdq, billNo);
-	}
-};
-
-
 #endif
