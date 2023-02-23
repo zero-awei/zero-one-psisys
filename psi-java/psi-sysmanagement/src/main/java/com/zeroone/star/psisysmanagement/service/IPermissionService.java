@@ -22,15 +22,15 @@ public interface IPermissionService extends IService<Permission> {
 
     /**
      * 添加权限
-     * @param permission
+     * @param permissionQuery
      * @return 是否添加成功
      */
-    Boolean saveMenuOrPermission(PermissionQuery permission) ;
+    Boolean savePermission(PermissionQuery permissionQuery) ;
 
     /**
      * 删除权限
      * @param permissionId
      * @return 权限是否删除成功
      */
-    Boolean deleteMenuOrPermission(String permissionId) ;
+    Boolean deletePermission(String permissionId) ;
 }

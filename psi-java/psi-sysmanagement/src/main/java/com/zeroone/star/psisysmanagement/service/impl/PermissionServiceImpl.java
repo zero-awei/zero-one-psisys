@@ -40,7 +40,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     }
 
     @Override
-    public Boolean saveMenuOrPermission(PermissionQuery permissionQuery) {
+    public Boolean savePermission(PermissionQuery permissionQuery) {
         Permission permission = new Permission();
         BeanUtil.copyProperties(permissionQuery,permission);
         int num = baseMapper.insert(permission);
@@ -51,7 +51,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     }
 
     @Override
-    public Boolean deleteMenuOrPermission(String permissionId) {
+    public Boolean deletePermission(String permissionId) {
         int num = baseMapper.deleteById(permissionId);
         if (num >= 1) {
             return true;

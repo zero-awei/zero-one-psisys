@@ -1,12 +1,13 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
-import com.zeroone.star.project.sysmanagement.RoleApis;
+import com.zeroone.star.project.sysmanagement.RolePermissionApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.psisysmanagement.service.IPermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 @RestController // 返回类型
 @RequestMapping("/sysmanagement/rolemanagement/permission") // 请求前缀
 @Api(tags = "系统管理-角色权限管理接口")
-public class RolePermissionController implements RoleApis<PermissionQuery> {
+public class RolePermissionController implements RolePermissionApis {
 
     @Autowired
     private IPermissionService service;
@@ -34,20 +35,21 @@ public class RolePermissionController implements RoleApis<PermissionQuery> {
     @ApiOperation(value = "查询权限")
     @Override
     public JsonVO<List<PermissionQuery>> listAll(String RId) {
-
         return JsonVO.success(service.listAll(RId));
     }
-
     /**
      * 添加权限
-     * @param permission
+     * @param permissionQuery
      * @return 是否添加成功
      */
     @PostMapping("/add")
     @ApiOperation(value = "新增权限")
     @Override
-    public JsonVO<Boolean> saveMenuOrPermission(PermissionQuery permission) {
-        return JsonVO.success(service.saveMenuOrPermission(permission));
+    public JsonVO<Boolean> savePermission(@Validated PermissionQuery permissionQuery) {
+        if (service.savePermission(permissionQuery)){
+            return JsonVO.success(true);
+        }
+        return JsonVO.fail(false);
     }
 
     /**
@@ -58,7 +60,10 @@ public class RolePermissionController implements RoleApis<PermissionQuery> {
     @DeleteMapping("/delete")
     @ApiOperation(value = "删除权限")
     @Override
-    public JsonVO<Boolean> deleteMenuOrPermission(String permissionId) {
-        return JsonVO.success(service.deleteMenuOrPermission(permissionId));
+    public JsonVO<Boolean> deletePermission(String permissionId) {
+        if (service.deletePermission(permissionId)){
+            return JsonVO.success(true);
+        }
+        return JsonVO.fail(false);
     }
 }

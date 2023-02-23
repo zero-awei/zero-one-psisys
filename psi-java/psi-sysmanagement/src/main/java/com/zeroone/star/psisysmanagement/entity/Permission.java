@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
 *
 * @Author:阿狸
@@ -12,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("permission")
-public class Permission {
+public class Permission implements Serializable {
     /**
      * 权限id
      */

@@ -37,13 +37,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
 
     /**
      * 用户选中菜单后，新增菜单
-     * @param menu
+     * @param menuQuery
      * @return
      */
     @Override
-    public Boolean saveMenuOrPermission(MenuQuery menu) { // 添加菜单
+    public Boolean saveMenu(MenuQuery menuQuery) { // 添加菜单
         SysMenu sysMenu = new SysMenu();
-        BeanUtil.copyProperties(menu,sysMenu);
+        BeanUtil.copyProperties(menuQuery,sysMenu);
         int num = baseMapper.insert(sysMenu);
         if (num >= 1){
             return true;
@@ -57,7 +57,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
      * @return
      */
     @Override
-    public Boolean deleteMenuOrPermission(String Id) {
+    public Boolean deleteMenu(String Id) {
         int num = baseMapper.deleteById(Id);
         if (num >= 1) {
             return true;
