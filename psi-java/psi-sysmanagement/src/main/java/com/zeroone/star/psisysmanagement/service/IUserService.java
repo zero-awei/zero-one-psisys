@@ -36,9 +36,9 @@ public interface IUserService extends IService<User> {
     // dan
     ResponseEntity<byte[]> getExcel(List<User> users);
     // dan
-    void updateStatus(String id, Integer status);
+    boolean updateStatus(String id, Integer status);
     // dan
-    void updateUser(EditUserDTO dto);
+    boolean updateUser(EditUserDTO dto);
     // dan
     EditUserVO getUserInfo(String id);
 

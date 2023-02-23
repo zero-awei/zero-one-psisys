@@ -98,20 +98,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     // dan
     @Override
-    public void updateStatus(String id, Integer status) {
+    public boolean updateStatus(String id, Integer status) {
         User user = new User();
         user.setStatus(status);
         user.setId(id);
-        this.updateById(user);
+        return this.updateById(user);
     }
 
     // dan
     @Override
-    public void updateUser(EditUserDTO dto) {
+    public boolean updateUser(EditUserDTO dto) {
         User user = new User();
         BeanUtils.copyProperties(dto, user);
         log.info("user = {}", user);
-        this.updateById(user);
+        return this.updateById(user);
     }
 
     // dan

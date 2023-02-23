@@ -102,8 +102,8 @@ public class UserController implements UserApis {
     @DeleteMapping("/delete")
     @Override
     public JsonVO<String> deleteUser(@NotBlank(message = "id 不能为空") @RequestParam String id) {
-        iUserService.removeById(id);
-        return JsonVO.success("删除成功");
+        if (iUserService.removeById(id)) return JsonVO.success("删除成功");
+        return JsonVO.fail("删除失败");
     }
 
     // dan
@@ -111,8 +111,8 @@ public class UserController implements UserApis {
     @PutMapping("/modify")
     @Override
     public JsonVO<String> modifyUser(@Validated EditUserDTO dto) {
-        iUserService.updateUser(dto);
-        return JsonVO.success("修改成功");
+        if (iUserService.updateUser(dto)) return JsonVO.success("修改成功");
+        return JsonVO.fail("修改失败");
     }
 
     // dan
@@ -126,8 +126,8 @@ public class UserController implements UserApis {
     public JsonVO<String> modifyStatus(
             @NotBlank(message = "id不能为空") @RequestParam String id,
             @NotNull(message = "状态不能为空") @RequestParam Integer status) {
-        iUserService.updateStatus(id, status);
-        return JsonVO.success("修改用户状态成功");
+        if (iUserService.updateStatus(id, status)) return JsonVO.success("修改用户状态成功");
+        return JsonVO.fail("修改失败");
     }
 
     @ApiOperation(value = "导入用户")
