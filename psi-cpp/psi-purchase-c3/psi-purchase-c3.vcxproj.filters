@@ -135,9 +135,6 @@
     <ClInclude Include="dao\pur-quot\PurQuotListMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\pur-quot\PurQuotAllVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\pur-quot\PurQuotDetailVO.h">
       <Filter>头文件</Filter>
     </ClInclude>

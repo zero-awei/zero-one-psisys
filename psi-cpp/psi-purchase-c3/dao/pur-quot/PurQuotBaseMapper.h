@@ -32,9 +32,21 @@ public:
 		data.setApproval_remark(resultSet->getString("approval_remark"));
 		data.setAttachment(resultSet->getString("attachment"));
 		data.setApproval_result_type(resultSet->getString("approval_result_type"));
-		//Ã÷Ï¸×Ö¶Î
+		data.setEffective_time(resultSet->getString("effective_time"));
+		data.setApprover(resultSet->getString("approver"));
+		data.setBpmi_instance_id(resultSet->getString("bpmi_instance_id"));
+		data.setCreate_time(resultSet->getString("create_time"));
+		data.setSys_org_code(resultSet->getString("sys_org_code"));
+		data.setCreate_by(resultSet->getString("create_by"));
+		data.setUpdate_time(resultSet->getString("update_time"));
+		data.setUpdate_by(resultSet->getString("update_by"));
+		data.setIs_auto(resultSet->getInt("is_auto"));
+		data.setIs_rubric(resultSet->getInt("is_rubric"));
+		data.setSrc_bill_type(resultSet->getString("src_bill_type"));
 		return data;
 	}
 };
 
 #endif
+
+

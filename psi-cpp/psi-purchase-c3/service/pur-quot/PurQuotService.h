@@ -33,9 +33,7 @@ public:
 	//获取多个PurQuotDividedListVO对象
 	list<PurQuotDividedListVO> listPurQuotDividedListVO(const PurQuotDividedListQuery& query);
 
-	PurQuotFindDetailBillVO getPurQuotFindDetailBillVO(const PurQuotFindDetailBillQuery& query) {
-
-	}
+	PurQuotFindDetailBillVO getPurQuotFindDetailBillVO(const PurQuotFindDetailBillQuery& query);
 
 
 };
