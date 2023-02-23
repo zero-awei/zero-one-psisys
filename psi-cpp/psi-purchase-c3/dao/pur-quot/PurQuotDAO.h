@@ -20,9 +20,9 @@ public:
 	list<PurQuotEntryDO> selectPurQuotDividedList(const PurQuotEntryDO& obj);
 
 	//此DO用于填充BaseVO
-	PurQuotDO selectPurQuotBase(const PurQuotDO& obj);
+	list<PurQuotDO> selectPurQuotBase(const PurQuotDO& obj);
 	//此DO用于填充DetailVO
-	PurQuotEntryDO selectPurQuotDetail(const PurQuotEntryDO& obj);
+	list<PurQuotEntryDO> selectPurQuotDetail(const PurQuotEntryDO& obj);
 
 	
 };

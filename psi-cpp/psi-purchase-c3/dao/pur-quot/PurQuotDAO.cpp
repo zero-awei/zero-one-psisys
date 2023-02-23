@@ -97,14 +97,24 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDividedList(const PurQuotEntryDO& 
 }
 
 
-
-
-PurQuotDO PurQuotDAO::selectPurQuotBase(const PurQuotDO& obj) {
+//查询指定单据的详细信息
+list<PurQuotDO> PurQuotDAO::selectPurQuotBase(const PurQuotDO& obj) {
 	stringstream sql;
-	sql << "SELECT bill_no, material_id, unit_id, qty, tax_rate, price, \
-	amt, remark, custom1, custom2 FROM pur_quot_entry";
+	sql << "SELECT bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided, subject,\
+		is_temp_supplied, supplier_id, payment_method, delivery_time, delivery_place, \
+	contact, phone, fax, email, remark, approval_mark, attachment, approval_result_type FROM pur_quot_entry";
 	PUR_QUOT_ENTRY_TERAM_PARSE(obj, sql);
 	PurQuotBaseMapper mapper;
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<PurQuotDO, PurQuotBaseMapper>(sqlStr, mapper, params);
+}
+//查询指定单据的详细信息
+list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDetail(const PurQuotEntryDO& obj) {
+	stringstream sql;
+	sql << "SELECT src_no, material_id, unit_id, qty, tax_rate, price, discount_rate,\
+		amt, remark, custom1, custom2 FROM pur_quot_entry";
+	PUR_QUOT_ENTRY_TERAM_PARSE(obj, sql);
+	PurQuotDetailMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurQuotEntryDO, PurQuotDetailMapper>(sqlStr, mapper, params);
 }
