@@ -30,13 +30,13 @@ public class RolePermissionController implements RoleApis<PermissionQuery> {
     @ApiOperation(value = "新增权限")
     @Override
     public JsonVO<Boolean> addMenuOrPermission(PermissionQuery permission) {
-        return JsonVO.success(service.addMenuOrPermission(permission));
+        return null;
     }
 
     @DeleteMapping("/delete")
     @ApiOperation(value = "删除权限")
     @Override
     public JsonVO<Boolean> deleteMenuOrPermission(String Id) {
-        return JsonVO.success(service.deleteMenuOrPermission(Id));
+        return null;
     }
 }

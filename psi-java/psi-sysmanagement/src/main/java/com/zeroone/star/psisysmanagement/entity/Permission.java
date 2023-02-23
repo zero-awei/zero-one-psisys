@@ -36,10 +36,15 @@ public class Permission {
     /**
      * 权限类型
      */
-    private Integer permissionType;
+    private String permissionType;
 
     /**
      * 权限说明
      */
     private String instruction;
+
+    /**
+     * 权限删除标志
+     */
+    private Integer deleteFlag;
 }

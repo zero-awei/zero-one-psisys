@@ -21,8 +21,8 @@ public class PermissionVO {
     @ApiModelProperty(value = "权限路径", example = "/monitor/redis/info")
     private String url;
 
-    @ApiModelProperty(value = "权限等级", example = "1")
-    private Integer permissionLevel;
+    @ApiModelProperty(value = "权限等级", example = "2")
+    private String permissionType;
 
     @ApiModelProperty(value = "父权限名称", example = "性能监控")
     private String fatherPermissionName;
@@ -32,4 +32,7 @@ public class PermissionVO {
 
     @ApiModelProperty(value = "对权限的说明", example = "拥有该权限的人可以对后台redis进行监控")
     private String instruction;
+
+    @ApiModelProperty(value = "权限删除标志", example = "0")
+    private Integer deleteFlag;
 }

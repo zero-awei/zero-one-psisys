@@ -15,6 +15,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PermissionDTO {
+    @ApiModelProperty(value = "权限id", example = "00a2a0ae65cdca5e93209cdbde97cbe6")
+    private String permissionId;
+
     @ApiModelProperty(value = "权限名称", example = "Redis监控")
     private String permissionName;
 
@@ -22,7 +25,7 @@ public class PermissionDTO {
     private String url;
 
     @ApiModelProperty(value = "权限等级", example = "1")
-    private Integer permissionLevel;
+    private Integer permissionType;
 
     @ApiModelProperty(value = "父权限名称", example = "性能监控")
     private String fatherPermissionName;
@@ -32,4 +35,7 @@ public class PermissionDTO {
 
     @ApiModelProperty(value = "对权限的说明", example = "拥有该权限的人可以对后台redis进行监控")
     private String instruction;
+
+    @ApiModelProperty(value = "权限删除状态", example = "1")
+    private String deleteFlag;
 }
