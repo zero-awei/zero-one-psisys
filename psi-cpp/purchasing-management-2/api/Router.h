@@ -42,6 +42,9 @@ private:
 	void createUserDepartRouter();
 #endif
 	void createPayRouter();
+	void createPurOrderRouter();
+	void createPurReqRouter();
+	void createPurComRouter();
 };
 
 #endif // !_ROUTER_

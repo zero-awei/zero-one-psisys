@@ -32,6 +32,10 @@
 
 #include "statis/StatisController.h"
 
+#define PURORDER
+#include "PurOrder/PurOrderController.h"
+#include "PueReq/PurReqController.h"
+#include "PurCom/PurComController.h"
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -93,7 +97,11 @@ void Router::initRouter()
 	BIND_GET_ROUTER(server, "/export-bySupplier", &StatisController::exportStatisBySupplier, nullptr);
 	BIND_GET_ROUTER(server, "/export-byMaterial", &StatisController::exportStatisByMaterial, nullptr);
 
-
+#ifdef PURORDER
+	createPurOrderRouter();
+	createPurReqRouter();
+	createPurComRouter();
+#endif
 
 	// 分页数据
 	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
@@ -164,5 +172,34 @@ void Router::createPayRouter() {
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
+}
 
+void Router::createPurOrderRouter()
+{
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
+	// 新增数据
+	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
+	// 修改数据
+	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
+	// 删除数据
+	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
+	// 删除ById
+	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
+}
+
+void Router::createPurReqRouter() {
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purReq/list", &PurReqController::listPurReq, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purReq/queryEntryByMainId", &PurReqController::getPurReq, nullptr);
+}
+
+void Router::createPurComRouter() {
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
 }
