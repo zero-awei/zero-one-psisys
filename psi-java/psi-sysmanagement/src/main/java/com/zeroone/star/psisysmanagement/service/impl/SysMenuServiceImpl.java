@@ -2,7 +2,6 @@ package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
@@ -15,11 +14,9 @@ import com.zeroone.star.psisysmanagement.service.ISysMenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.DoubleBinaryOperator;
 
 /**
  * <p>
@@ -121,10 +118,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
                 sortArray[i] = replace.charAt(i) - '0';
             }
 
+            int temp = 1;
             if (sortArray[1] == 0) {
                 //当父节点的Sort_no小数点后一位为0时，说明父节点为一级菜单，小数点第二位也必定为0，如1.00
                 //temp为小数点后第一位
-                int temp = 1;
                 double sort;
 
                 while (true) {
@@ -140,7 +137,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
                 //如果小数点后第一位不为0，即父节点为二级菜单，如1.10；
                 //由于限制只能创建到三级菜单，所以父节点只有三种情况，为空，一级菜单，二级菜单
                 //故父节点sort_no小数点后第二位没有判断的必要
-                int temp = 1;
                 double sort;
 
                 while (true) {
