@@ -109,6 +109,47 @@ class StkIoDO
 
 public:
 	StkIoDO() {
+		id = "";
+		billNo = "";
+		billDate = "";
+		srcBillType = "";
+		srcBillId = "";
+		srcNo = "";
+		subject = "";
+		isRubric = -1;
+		stockIoType = "";
+		opDept = "";
+		operator1 = "";
+		handler = "";
+		hasRp = -1;
+		hasSwell = -1;
+		supplierId = "";
+		customerId = "";
+		invoiceType = "";
+		cost = -1;
+		settleAmt = -1;
+		settledAmt = -1;
+		invoicedAmt = -1;
+		attachment = "";
+		remark = "";
+		isAuto = -1;
+		billStage = "";
+		approver = "";
+		bpmiInstanceId = "";
+		approvalResultType = "";
+		approvalRemark = "";
+		isEffective = -1;
+		effectiveTime = "";
+		isClosed = -1;
+		isVoided = -1;
+		sysOrgCode = "";
+		createBy = "";
+		createTime = "";
+		updateBy = "";
+		updateTime = "";
+		version = "";
+
+
 
 
 	}

@@ -90,6 +90,45 @@ class StkIoEntryDO
 
 
 public:
+	StkIoEntryDO()
+	{
+		id = "";
+		mid = "";
+		billNo = "";
+		entryNo = "";
+		srcBillType = "";
+		srcBillId = "";
+		srcEntryId = "";
+		srcNo = "";
+		materialId = "";
+		batchNo = "";
+		warehouseId = "";
+		stockIoDirection = "";
+		supplierId = "";
+		unitId = "";
+		swellQty = -1;
+		qty = -1;
+		expense = -1;
+		cost = -1;
+		settleQty = -1;
+		taxRate = -1;
+		price = -1;
+		discountRate = -1;
+		tax = -1;
+		settleAmt = -1;
+		invoicedQty = -1;
+		invoicedAmt = -1;
+		remark = "";
+		custom1 = "";
+		custom2 = "";
+		version = "";
+
+
+
+	}
+
+
+
 
 };
 
