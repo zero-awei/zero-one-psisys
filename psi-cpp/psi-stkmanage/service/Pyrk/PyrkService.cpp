@@ -128,6 +128,7 @@ int PyrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payloa
 	}
 	// 组装数据
 	StkIoDO data;
+	data.setBillNo(dto.getBillId());
 	data.setApprovalResultType(to_string(dto.getApprovalResultType()));
 	data.setApprovalRemark(dto.getApprovalRemark());
 	data.setApprover(payload.getUsername());
@@ -156,7 +157,7 @@ int PyrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payloa
 	//// 事务开始
 	//dao.getSqlSession()->beginTransaction();
 	// 执行更新数据
-	uint64_t row = dao.updateApproval(data);
+	int row = dao.updateApproval(data);
 	if (row == 0) {
 		return -2;
 	}

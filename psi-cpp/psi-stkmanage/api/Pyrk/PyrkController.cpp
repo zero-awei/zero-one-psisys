@@ -25,7 +25,7 @@ JsonVO<int> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMess
 	if (id > 0) {
 		result.success(id);
 	}
-	else if (id <= 0) {
+	else if (id == -1) {
 		result.setData(id);
 		result.setStatus(RS_PARAMS_INVALID);
 	}
@@ -35,15 +35,19 @@ JsonVO<int> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMess
 	return result;
 }
 
-JsonVO<uint64_t> PyrkController::execModifyBillApproval(const ApprovalDTO& approval, const PayloadDTO& payload)
+JsonVO<int> PyrkController::execModifyBillApproval(const ApprovalDTO& approval, const PayloadDTO& payload)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<int> result;
 	// 定义一个Service
 	PyrkService service;
 	// 执行修改数据(审核)
-	uint64_t id = service.updateApproval(approval, payload);
+	int id = service.updateApproval(approval, payload);
 	if (id > 0) {
 		result.success(id);
+	}
+	else if (id == -1) {
+		result.setData(id);
+		result.setStatus(RS_PARAMS_INVALID);
 	}
 	else {
 		result.fail(id);
@@ -51,38 +55,38 @@ JsonVO<uint64_t> PyrkController::execModifyBillApproval(const ApprovalDTO& appro
 	return result;
 }
 
-JsonVO<uint64_t> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload) {
-    return JsonVO<uint64_t>(0, RS_SUCCESS);
+JsonVO<int> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload) {
+    return JsonVO<int>(0, RS_SUCCESS);
 }
 
-JsonVO<uint64_t> PyrkController::execRemovePyrkBillById(const StringID& id)
+JsonVO<int> PyrkController::execRemovePyrkBillById(const StringID& id)
 {
-	JsonVO<uint64_t> result;
-	uint64_t data = 0;
+	JsonVO<int> result;
+	int data = 0;
 	result.success(data);
 	return result;
 }
 
-JsonVO<uint64_t> PyrkController::execModifyPyrkBillStateToClose(const StringID& id, const PayloadDTO& payload)
+JsonVO<int> PyrkController::execModifyPyrkBillStateToClose(const StringID& id, const PayloadDTO& payload)
 {
-	JsonVO<uint64_t> result;
-	uint64_t data = 0;
+	JsonVO<int> result;
+	int data = 0;
 	result.success(data);
 	return result;
 }
 
-JsonVO<uint64_t> PyrkController::execModifyPyrkBillStateToUnclose(const StringID& id, const PayloadDTO& payload)
+JsonVO<int> PyrkController::execModifyPyrkBillStateToUnclose(const StringID& id, const PayloadDTO& payload)
 {
-	JsonVO<uint64_t> result;
-	uint64_t data = 0;
+	JsonVO<int> result;
+	int data = 0;
 	result.success(data);
 	return result;
 }
 
-JsonVO<uint64_t> PyrkController::execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload)
+JsonVO<int> PyrkController::execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload)
 {
-	JsonVO<uint64_t> result;
-	uint64_t data = 0;
+	JsonVO<int> result;
+	int data = 0;
 	result.success(data);
 	return result;
 }

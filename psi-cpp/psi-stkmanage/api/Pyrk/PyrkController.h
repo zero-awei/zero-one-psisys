@@ -41,18 +41,18 @@ private:
 	// 新增单据详细信息
 	JsonVO<int> execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload);
 	// 审核单据
-	JsonVO<uint64_t> execModifyBillApproval(const ApprovalDTO& approval, const PayloadDTO& payload);
+	JsonVO<int> execModifyBillApproval(const ApprovalDTO& approval, const PayloadDTO& payload);
 	// 修改单据详细信息
-	JsonVO<uint64_t> execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload);
+	JsonVO<int> execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload);
 	//删除单据
-	JsonVO<uint64_t> execRemovePyrkBillById(const StringID& id);
+	JsonVO<int> execRemovePyrkBillById(const StringID& id);
 	//修改单据状态
 		// 关闭
-	JsonVO<uint64_t> execModifyPyrkBillStateToClose(const StringID& id, const PayloadDTO& payload);
+	JsonVO<int> execModifyPyrkBillStateToClose(const StringID& id, const PayloadDTO& payload);
 	// 反关闭
-	JsonVO<uint64_t> execModifyPyrkBillStateToUnclose(const StringID& id, const PayloadDTO& payload);
+	JsonVO<int> execModifyPyrkBillStateToUnclose(const StringID& id, const PayloadDTO& payload);
 	// 作废
-	JsonVO<uint64_t> execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload);
+	JsonVO<int> execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload);
 	// 导入
 	JsonVO<ImportPyrkFileVO> execImportPyrkFile(const ImportPyrkFileDTO& dto, const PayloadDTO& payload);
 	// 导出
