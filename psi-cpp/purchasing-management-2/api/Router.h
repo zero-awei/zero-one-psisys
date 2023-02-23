@@ -27,7 +27,6 @@ private:
 	void createUserDepartRouter();
 #endif
 	void createPayApplyRouter();
-
 };
 
 
