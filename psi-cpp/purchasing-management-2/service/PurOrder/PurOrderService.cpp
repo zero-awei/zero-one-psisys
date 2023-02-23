@@ -23,7 +23,7 @@
 #define PUR_ORDER_DTO2DO
 
 // 分页查询所有数据
-PageVO<PurOrderVO> PurOrderService::listAll(const PurOrderQuery& query)
+PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 {
 	//构建返回对象
 	PageVO<PurOrderVO> pages;
@@ -32,7 +32,7 @@ PageVO<PurOrderVO> PurOrderService::listAll(const PurOrderQuery& query)
 }
 
 // 查询单个数据
-PurOrderVO PurOrderService::getData(uint64_t id)
+PurOrderVO PurOrderService::getPurOrder(uint64_t id)
 {
 	PurOrderVO data;
 

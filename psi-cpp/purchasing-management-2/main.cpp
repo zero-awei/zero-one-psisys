@@ -23,10 +23,10 @@
 #include "ServerInfo.h"
 #include "StringUtil.h"
 //≤‚ ‘ø‚
-#include "uselib/fastdfs/TestFastDfs.h"
-#include "uselib/excel/TestExcel.h"
-#include "uselib/ws/TestWs.h"
-#include "uselib/rocketmq/TestRocket.h"
+//#include "uselib/fastdfs/TestFastDfs.h"
+//#include "uselib/excel/TestExcel.h"
+//#include "uselib/ws/TestWs.h"
+//#include "uselib/rocketmq/TestRocket.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"

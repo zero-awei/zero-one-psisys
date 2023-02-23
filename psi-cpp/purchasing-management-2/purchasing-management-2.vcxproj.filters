@@ -51,24 +51,6 @@
     <ClCompile Include="uselib\rocketmq\TestRocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\prepayment\PrePayController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\query\prepaymentbill\PrepayExportQuery.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="dao\PurOrder\PurOrderDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -161,15 +143,6 @@
     <ClInclude Include="uselib\rocketmq\TestRocket.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -183,24 +156,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="api\prepayment\PrePayController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\prepayment\AddPayDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\prepayment\DePayDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\prepayment\PayIntoDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\prepayment\PayModBillStatusDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\prepayment\PrepaymentDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\PurOrdDTO.h">
