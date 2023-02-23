@@ -218,6 +218,8 @@
     <ClCompile Include="dao\publicInterfaceDao\PurTypeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDao\TaxRateDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDao\TaxScaleDAO.cpp" />
+    <ClCompile Include="dao\supplierDao\SupplierLevelDAO.cpp" />
+    <ClCompile Include="dao\supplierDao\SupplierQueryCriteriaDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
@@ -228,6 +230,8 @@
     <ClCompile Include="service\publicInterfaceService\PurTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\TaxRateService.cpp" />
     <ClCompile Include="service\publicInterfaceService\TaxScaleService.cpp" />
+    <ClCompile Include="service\supplierService\SupplierLevelService.cpp" />
+    <ClCompile Include="service\supplierService\SupplierQueryCriteriaService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -283,13 +287,18 @@
     <ClInclude Include="dao\publicInterfaceDao\TaxRateMapper.h" />
     <ClInclude Include="dao\publicInterfaceDao\TaxScaleDAO.h" />
     <ClInclude Include="dao\publicInterfaceDao\TaxScaleMapper.h" />
-    <ClInclude Include="dao\supplierDao\temp.h" />
+    <ClInclude Include="dao\supplierDao\SupplierLevelDAO.h" />
+    <ClInclude Include="dao\supplierDao\SupplierLevelMapper.h" />
+    <ClInclude Include="dao\supplierDao\SupplierQueryCriteriaDAO.h" />
+    <ClInclude Include="dao\supplierDao\SupplierQueryCriteriaMapper.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\BillStageDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\PurTypeDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\TaxRateDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\TaxScaleDO.h" />
+    <ClInclude Include="domain\do\supplierDO\SupplierLevelDO.h" />
+    <ClInclude Include="domain\do\supplierDO\SupplierQueryCriteriaDO.h" />
     <ClInclude Include="domain\dto\bankAccountDTO\BankAccountDTO.h" />
     <ClInclude Include="domain\dto\publicInterfaceDTO\CreateReceiptDTO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
@@ -356,7 +365,8 @@
     <ClInclude Include="service\publicInterfaceService\PurTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\TaxRateService.h" />
     <ClInclude Include="service\publicInterfaceService\TaxScaleService.h" />
-    <ClInclude Include="service\supplierService\temp.h" />
+    <ClInclude Include="service\supplierService\SupplierLevelService.h" />
+    <ClInclude Include="service\supplierService\SupplierQueryCriteriaService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

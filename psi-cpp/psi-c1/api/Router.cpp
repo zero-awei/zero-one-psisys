@@ -116,6 +116,7 @@ void Router::initRouter()
 	initCurrencyType();
 	initDeliveryType();
 	initWarehouse();
+	initSupplier();
 
 #ifdef HTTP_SERVER_DEMO
 	//°ó¶¨Ê×Ò³Ò³Ãæ
