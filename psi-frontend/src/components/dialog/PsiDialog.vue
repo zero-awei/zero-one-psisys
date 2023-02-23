@@ -1,12 +1,6 @@
 <template>
   <div>
-    <el-dialog
-      v-model="visible"
-      :title="attrs.title"
-      :width="attrs.width"
-      :before-close="handleClose"
-      class="my-dialog"
-    >
+    <el-dialog v-model="visible" :title="attrs.title" :width="attrs.width" :before-close="handleClose" class="my-dialog">
       <!-- :fullscreen="attrs.fullscreen"
 <template #header="{ close, titleId, titleClass }">
       <div class="my-header">
@@ -31,6 +25,7 @@
       <slot></slot>
       <template #footer>
         <span class="dialog-footer">
+          <el-button v-if="attrs.determine" @click="determine">确定</el-button>
           <el-button @click="visible = false">取消</el-button>
           <el-button type="primary" @click="visible = false"> 关闭 </el-button>
         </span>
@@ -48,14 +43,14 @@ const props = defineProps({
   modelValue: null,
   attrs: {
     type: Object,
-    default: () => {}
+    default: () => { }
   },
   width: {
     type: String,
     default: () => '30%'
   }
 })
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'confim'])
 const visible = computed({
   get() {
     return props.modelValue
@@ -73,6 +68,9 @@ const handleClose = (done) => {
     .catch(() => {
       // catch error
     })
+}
+function determine() {
+  emit('determine')
 }
 </script>
 

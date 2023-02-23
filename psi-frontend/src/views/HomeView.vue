@@ -5,11 +5,12 @@
       <el-aside>
         <div class="logo-box" style="background-color: #1890ff">
           <el-image style="width: 28px; height: 32px" :src="url"></el-image>
-          <span class="manage-title" v-show="collapse">进销存</span>
+          <span class="manage-title" v-show="collapse=!collapse">进销存</span>
         </div>
         <!-- 使用自定义侧边菜单组件 -->
         <!-- <AsideCom /> -->
-        <test />
+        <test :label="collapse=!collapse"/>
+        <!-- 默认true -->
       </el-aside>
 
       <!-- 右侧内容 -->
@@ -24,6 +25,9 @@
           <!-- <el-icon style="color:white;top=8px;left:100px;"><Search /></el-icon> -->
           <HeadSideCom />
         </el-header>
+
+        <div class="tag"><NavHeadCom /></div >
+
         <el-main>
           <!-- 布局路由 -->
           <router-view />
@@ -62,8 +66,24 @@
         font-weight: bold;
       }
     }
-  }
+    }
+    .tag{
+      padding-top:30px;
+    }
 }
+  .el-header{
+    background-color: #1890ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .el-icon{
+      top:2px;
+      width:2em;
+      height:2em;
+      color:white;
+    }
+  }
+
 .el-header {
   background-color: #1890ff;
   display: flex;
@@ -83,6 +103,7 @@
 </style>
 
 <script>
+import {ref} from 'vue'
 import { userStore } from '../stores/user'
 //引入图标
 import { Fold, Expand } from '@element-plus/icons-vue'
@@ -92,23 +113,26 @@ import test from '@/components/home/test.vue'
 //导入logo
 import File from '@/assets/1.png'
 //导入UserNameCom
-import HeadSideCom from '@/components/Home/HeadSideCom.vue'
+import HeadSideCom from "@/components/Home/HeadSideCom.vue"
+//导入面包屑 
+import NavHeadCom from "@/components/Home/NavHeadCom.vue"
 
 const store = userStore()
 export default {
   data() {
     return {
       url: File,
-      collapse: false
+      collapse: false,
+      label:true
     }
   },
   //计算属性
   computed: {
     headerleft() {
-      return this.collapse ? 'Fold' : 'Expand'
+      return this.collapse ? 'Expand' : 'Fold'
     },
-    asideWidth() {
-      return this.collapse ? '200px' : '50px'
+    asideWidth () {
+      return this.collapse ? "80px" :"200px"
     }
   },
   //注册组件
@@ -117,8 +141,10 @@ export default {
     Expand,
     // AsideCom,
     test,
-    HeadSideCom
-  }
+    HeadSideCom,
+    NavHeadCom
+  },
+
 }
 
 // 菜单数据

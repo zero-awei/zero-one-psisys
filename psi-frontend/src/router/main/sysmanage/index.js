@@ -2,7 +2,7 @@
  * @Author: Kyle5 nnkyle@163.com
  * @Date: 2023-02-20 18:51:04
  * @LastEditors: Kyle5 nnkyle@163.com
- * @LastEditTime: 2023-02-22 23:52:18
+ * @LastEditTime: 2023-02-24 04:04:29
  * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -80,7 +80,7 @@ const routes = [
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
   },
-  // 基础资料
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓基础资料↓↓↓↓↓↓↓↓↓↓↓↓↓
   {
     path: '/client',
     name: 'client',
@@ -129,7 +129,50 @@ const routes = [
     component: () =>
       import('@/views/jichuziliao/StoreCheck.vue')
   },
-
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓采购管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  {
+    path: '/PurInquiry',
+    name: 'PurInquiry',
+    component: () =>
+      import('@/views/caigouguanli/PurInquiry.vue')
+  },
+  {
+    path: '/PurOrder',
+    name: 'PurOrder',
+    component: () =>
+      import('@/views/caigouguanli/PurOrder.vue')
+  },
+  {
+    path: '/PurPaymentApply',
+    name: 'PurPaymentApply',
+    component: () =>
+      import('@/views/caigouguanli/PurPaymentApply.vue')
+  },
+  {
+    path: '/PurRequisition',
+    name: 'PurRequisition',
+    component: () =>
+      import('@/views/caigouguanli/PurRequisition.vue')
+  },
+  {
+    path: '/PurComparison',
+    name: 'PurComparison',
+    component: () =>
+      import('@/views/caigouguanli/PurComparison.vue')
+  },
+  {
+    path: '/PurPrepaymentApply',
+    name: 'PurPrepaymentApply',
+    component: () =>
+      import('@/views/caigouguanli/PurPrepaymentApply.vue')
+  },
+  {
+    path: '/SupplyQuotation',
+    name: 'SupplyQuotation',
+    component: () =>
+      import('@/views/caigouguanli/SupplyQuotation.vue')
+  },
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓系统管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   {
     path: '/sysmanagement/rolemanagement',
     name: 'rolemanagement',

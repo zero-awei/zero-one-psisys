@@ -8,6 +8,10 @@
       @reset="doReset"
     ></psi-form>
 
+
+
+
+
     <!-- 表格数据 -->
     <!-- 修改点1 -->
     <div style="margin-top:10px">
@@ -18,9 +22,14 @@
       :pagination="pagination" 
       @add="addClient"
     >
+    
+
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
-        <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+        <el-button link 
+        type="primary" 
+        @click="clientEditDialogVisible = true"
+        @add="reviseClient">编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>
@@ -28,18 +37,234 @@
     </psi-table>
     </div>
 
+    <!-- 新增-抽屉 -->
+    <psi-drawer 
+      v-model="drawerVisible" 
+      :title="drawerStatus.title" 
+      :basicItems="drawerStatus.basicItems"
+      :toggleItems="drawerStatus.toggleItems" 
+      :formData="drawerStatus.formData" 
+      @confirm="confirm" />
   </div>
 </template>
     
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
 
+// 抽屉
+const drawerStatus = reactive({
+  title: '抽屉标题',
+  basicItems: [
+    {
+      type: 'input',
+      prop: 'name1',
+      label: '编码'
+    },
+    {
+      type: 'input',
+      prop: 'name2',
+      label: '名称'
+    },
+    {
+      type: 'input',
+      prop: 'name3',
+      label: '客户分类'
+    },
+    {
+      type: 'input',
+      prop: 'name4',
+      label: '客户等级'
+    },
+    {
+      type: 'input',
+      prop: 'name5',
+      label: '纳税规模'
+    },
+    {
+      type: 'input',
+      prop: 'name6',
+      label: '欠款额度'
+    },
+    {
+      type: 'input',
+      prop: 'name7',
+      label: '启用'
+    },
+    {
+      type: 'input',
+      prop: 'name8',
+      label: '备注'
+    }
+  ],
+  toggleItems: [
+    {
+      title: '开票信息',
+      name: '折叠唯一标识符号',
+      items: [
+        {
+          type: 'input',
+          prop: 'toggleName',
+          label: '单位名称'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '税号'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '开户行'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '行号'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '账号'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '联系电话'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '开票地址'
+        }
+      ]
+    },
+    {
+      title: '办款资料',
+      name: '折叠2唯一标识符号',
+      items: [
+        {
+          type: 'input',
+          prop: 'toggle21',
+          label: '单位名称'
+        },
+        {
+          type: 'input',
+          prop: 'toggle22',
+          label: '开户行'
+        },
+        {
+          type: 'input',
+          prop: 'toggle23',
+          label: '行号'
+        },
+        {
+          type: 'input',
+          prop: 'toggle24',
+          label: '账号'
+        }
+      ]
+    },
+    {
+      title: '收件信息',
+      name: '折叠3唯一标识符号',
+      items: [
+        {
+          type: 'input',
+          prop: 'toggleName3',
+          label: '收件人'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender3',
+          label: '联系电话'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender3',
+          label: '传真'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender3',
+          label: 'Email'
+        },
+        {
+          type: 'input',  
+          prop: 'toggleGender3',
+          label: '地址'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender3',
+          label: '邮编'
+        }
+      ]
+    },
+    {
+      title: '财务信息',
+      name: '折叠4唯一标识符号',
+      items: [
+        {
+          type: 'input',
+          prop: 'toggleName4',
+          label: '财务信息联系人'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender4',
+          label: '财务信息联系电话'
+        }
+      ]
+    },
+    {
+      title: '其他信息',
+      name: '折叠4唯一标识符号',
+      items: [
+        {
+          type: 'input',
+          prop: 'toggleName5',
+          label: '财务信息联系人'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender5',
+          label: '财务信息联系电话'
+        }
+      ]
+    }
+  ],
+  formData: {
+    name1: '',
+    name2: '',
+    name3: '',
+    toggleName: '',
+    toggleGender: '',
+    toggleName2: '',
+    toggleGender2: '',
+    toggleName3: '',
+    toggleGender3: '',
+    toggleName4: '',
+    toggleGender4: '',
+  }
+})
+
+// 抽屉自定义事件
+function confirm(data) {
+  emit('confirm', props.formData)
+}
+
+let drawerVisible = ref(false)
+
 // 编辑删除
 // 修改点3~5
 function addClient() {
-  addDialogVisible.value = true
-  // addDrawerVisible.value = true
+  drawerVisible.value = true
 }
+// 修改
+function reviseClient() {
+  drawerVisible.value = true
+} 
+
 let clientEditDialogVisible = ref(false)
 
 // const { clientEditDialogAttrs } = toRefs(clientEditDialogState)

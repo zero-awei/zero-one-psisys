@@ -18,9 +18,13 @@
       :pagination="pagination" 
       @add="addClient"
     >
+    
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
-        <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+        <el-button link 
+        type="primary" 
+        @click="clientEditDialogVisible = true"
+        @add="reviseClient">编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>
@@ -28,21 +32,136 @@
     </psi-table>
     </div>
 
-
-
-
+    <!-- 新增-抽屉 -->
+    <psi-drawer 
+      v-model="drawerVisible" 
+      :title="drawerStatus.title" 
+      :basicItems="drawerStatus.basicItems"
+      :toggleItems="drawerStatus.toggleItems" 
+      :formData="drawerStatus.formData" 
+      @confirm="confirm" />
   </div>
 </template>
     
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
 
+// 抽屉
+const drawerStatus = reactive({
+  title: '抽屉标题',
+  basicItems: [
+    {
+      type: 'input',
+      prop: 'name1',
+      label: '上级'
+    },
+    {
+      type: 'input',
+      prop: 'name2',
+      label: '有下级'
+    },
+    {
+      type: 'input',
+      prop: 'name3',
+      label: '编码'
+    },
+    {
+      type: 'input',
+      prop: 'name4',
+      label: '名称'
+    },
+    {
+      type: 'input',
+      prop: 'name5',
+      label: '助记名'
+    },
+    {
+      type: 'input',
+      prop: 'name6',
+      label: '电话'
+    },
+    {
+      type: 'select',
+      prop: 'name8',
+      label: '启用',
+      placeholder: '请选择',
+      options: [
+        {
+          label: '否',
+          value: 0
+        },
+        {
+          label: '是',
+          value: 1
+        }
+      ]
+    },
+    {
+      type: 'input',
+      prop: 'name9',
+      label: '备注'
+    }
+  ],
+  toggleItems: [
+    {
+      title: '开票信息',
+      name: '折叠唯一标识符号',
+      items: [
+        {
+          type: 'input',
+          prop: 'toggleName',
+          label: '创建时间'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '创建人'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '修改时间'
+        },
+        {
+          type: 'input',
+          prop: 'toggleGender',
+          label: '修改人'
+        }
+      ]
+    }
+  ],
+  formData: {
+    name1: '',
+    name2: '',
+    name3: '',
+    toggleName: '',
+    toggleGender: '',
+    toggleName2: '',
+    toggleGender2: '',
+    toggleName3: '',
+    toggleGender3: '',
+    toggleName4: '',
+    toggleGender4: '',
+  }
+})
+
+// 抽屉自定义事件
+function confirm(data) {
+  emit('confirm', props.formData)
+}
+
+let drawerVisible = ref(false)
+
 // 编辑删除
 // 修改点3~5
 function addClient() {
-  addDialogVisible.value = true
-  // addDrawerVisible.value = true
+  drawerVisible.value = true
 }
+// 修改
+function reviseClient() {
+  drawerVisible.value = true
+} 
+
 let clientEditDialogVisible = ref(false)
 
 // const { clientEditDialogAttrs } = toRefs(clientEditDialogState)

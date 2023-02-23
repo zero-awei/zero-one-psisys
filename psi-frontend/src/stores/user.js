@@ -173,6 +173,7 @@ const yewuRouter = {
     },
   ]
 }
+// 组件测试
 const componentRouter = {
   id: 999,
   text: '组件封装',
@@ -222,7 +223,64 @@ const componentRouter = {
     }
   ]
 }
-
+// 采购管理
+const purManagement = {
+  id: 700,
+  text: "采购管理",
+  icon: "IconTickets",
+  children: [
+    {
+      id: 701,
+      text: "采购申请",
+      href: '/PurRequisition',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 702,
+      text: "供应商",
+      href: '/PurInquiry',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 703,
+      text: "仓库",
+      href: '/SupplyQuotation',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 704,
+      text: "物料分类",
+      href: '/PurComparison',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 705,
+      text: "物料",
+      href: '/PurOrder',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 706,
+      text: "计量单位",
+      href: '/PurPrepaymentApply',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 707,
+      text: "币种",
+      href: '/PurPaymentApply',
+      icon: 'IconTickets',
+      pid: 5
+    }
+  ]
+}
+// 基础资料
 const baseDataRouter = {
   id: 800,
   text: "基础资料",
@@ -338,6 +396,8 @@ export const userStore = defineStore('user', {
       this.menus.push(componentRouter)
       this.menus.push(yewuRouter)
       this.menus.push(baseDataRouter)
+      this.menus.push(purManagement)
+      
     },
     // 加载刷新凭证
     loadRefreshToken() {
