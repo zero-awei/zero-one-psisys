@@ -12,26 +12,26 @@ class PurQuotBaseMapper : public Mapper<PurQuotDO>{
 public:
 	PurQuotDO mapper(ResultSet* resultSet) const override{
 		PurQuotDO data;
-		data.setBill_no(resultSet->getString(1));
-		data.setBill_date(resultSet->getString(2));
-		data.setBill_stage(resultSet->getString(3));
-		data.setIs_effective(resultSet->getInt(4));
-		data.setIs_closed(resultSet->getInt(5));
-		data.setIs_voided(resultSet->getInt(6));
-		data.setSubject(resultSet->getString(7));
-		data.setIs_temp_supplier(resultSet->getInt(8));
-		data.setSupplier_id(resultSet->getString(9));
-		data.setPayment_method(resultSet->getString(10));
-		data.setDelivery_time(resultSet->getString(11));
-		data.setDelivery_place(resultSet->getString(12));
-		data.setContact(resultSet->getString(13));
-		data.setPhone(resultSet->getString(14));
-		data.setFax(resultSet->getString(15));
-		data.setEmail(resultSet->getString(16));
-		data.setRemark(resultSet->getString(17));
-		data.setApproval_remark(resultSet->getString(18));
-		data.setAttachment(resultSet->getString(19));
-		data.setApproval_result_type(resultSet->getString(20));
+		data.setBill_no(resultSet->getString("bill_no"));
+		data.setBill_date(resultSet->getString("bill_date"));
+		data.setBill_stage(resultSet->getString("bill_stage"));
+		data.setIs_effective(resultSet->getInt("is_effective"));
+		data.setIs_closed(resultSet->getInt("is_closed"));
+		data.setIs_voided(resultSet->getInt("is_voided"));
+		data.setSubject(resultSet->getString("subject"));
+		data.setIs_temp_supplier(resultSet->getInt("is_temp_supplier"));
+		data.setSupplier_id(resultSet->getString("supplier_id"));
+		data.setPayment_method(resultSet->getString("payment_method"));
+		data.setDelivery_time(resultSet->getString("delivery_time"));
+		data.setDelivery_place(resultSet->getString("delivery_place"));
+		data.setContact(resultSet->getString("contact"));
+		data.setPhone(resultSet->getString("phone"));
+		data.setFax(resultSet->getString("fax"));
+		data.setEmail(resultSet->getString("email"));
+		data.setRemark(resultSet->getString("remark"));
+		data.setApproval_remark(resultSet->getString("approval_remark"));
+		data.setAttachment(resultSet->getString("attachment"));
+		data.setApproval_result_type(resultSet->getString("approval_result_type"));
 		//Ã÷Ï¸×Ö¶Î
 		return data;
 	}

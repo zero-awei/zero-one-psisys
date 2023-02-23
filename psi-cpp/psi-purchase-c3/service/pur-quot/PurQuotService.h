@@ -26,7 +26,7 @@ public:
 	list<PurQuotListVO> listPurQuotListVO(const PurQuotListQuery& query);
 
 	//获取多个PurQuotDividedListVO对象
-	list<PurQuotDividedListVO> listPurQuotFindBillVO(const PurQuotDividedListQuery& query);
+	list<PurQuotDividedListVO> listPurQuotDividedListVO(const PurQuotDividedListQuery& query);
 
 
 };

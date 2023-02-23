@@ -192,10 +192,10 @@
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="dao\pur-quot\PurQuotBaseMapper.h" />
     <ClInclude Include="dao\pur-quot\PurQuotDAO.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotDetailMapper.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotDetailVO.h" />
     <ClInclude Include="dao\pur-quot\PurQuotDividedListMapper.h" />
     <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotDetailMapper.h" />
     <ClInclude Include="dao\pur-quot\PurQuotListMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\pur-quot\PurQuotDO.h" />

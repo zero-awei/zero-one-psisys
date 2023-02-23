@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PurQuotService.h"
 #include "../../dao/pur-quot/PurQuotDAO.h"
+#include <list>
 
 //获取多个PurQuotFindBillVO对象
 PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFindBillQuery& query) {
@@ -71,7 +72,6 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	return pages;
 }
 
-
 //获取多个PurQuotList对象
 list<PurQuotListVO> PurQuotService::listPurQuotListVO(const PurQuotListQuery& query) {
 	//构建返回对象
@@ -80,15 +80,8 @@ list<PurQuotListVO> PurQuotService::listPurQuotListVO(const PurQuotListQuery& qu
 	PurQuotEntryDO obj;
 	obj.setBill_no(query.getBill_no());
 
-	//检查查询到的数据总数
-	PurQuotDAO dao;
-	uint64_t count = dao.count(obj);
-	//数据总数小于等于0, 直接返回pages
-	if (count <= 0)
-	{
-		return pages;
-	}
 	//接收查询到的DO
+	PurQuotDAO dao;
 	list<PurQuotEntryDO> result = dao.selectPurQuotList(obj);
 	//vr是接收DO的VO对象
 	list<PurQuotListVO> vr;
@@ -110,24 +103,16 @@ list<PurQuotListVO> PurQuotService::listPurQuotListVO(const PurQuotListQuery& qu
 	return pages;
 }
 
-
 //获取多个PurQuotDividedListVO对象
-list<PurQuotDividedListVO> PurQuotService::listPurQuotFindBillVO(const PurQuotDividedListQuery& query) {
+list<PurQuotDividedListVO> PurQuotService::listPurQuotDividedListVO(const PurQuotDividedListQuery& query) {
 	//构建返回对象
 	list<PurQuotDividedListVO> pages;
 	//设置查询条件
 	PurQuotEntryDO obj;
 	obj.setBill_no(query.getBill_no());
 
-	//检查查询到的数据总数
-	PurQuotDAO dao;
-	uint64_t count = dao.count(obj);
-	//数据总数小于等于0, 直接返回pages
-	if (count <= 0)
-	{
-		return pages;
-	}
 	//接收查询到的DO
+	PurQuotDAO dao;
 	list<PurQuotEntryDO> result = dao.selectPurQuotList(obj);
 	//vr是接收DO的VO对象
 	list<PurQuotDividedListVO> vr;

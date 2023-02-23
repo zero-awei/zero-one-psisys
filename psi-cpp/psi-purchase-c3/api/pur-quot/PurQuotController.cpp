@@ -66,8 +66,6 @@ JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(co
 //查询指定单据列表
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
 	//暂时未进行数据校验
-
-
 	PurQuotFindDetailBillVO vo;
 	//响应结果
 	return JsonVO<PurQuotFindDetailBillVO>(vo, RS_SUCCESS);
@@ -76,23 +74,21 @@ JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBil
 //询价单列表
 JsonVO<list<PurQuotListVO>> PurQuotController::execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload)
 {
-
-
 	//定义一个Service
 	PurQuotService service;
 	//构建返回对象
 	list<PurQuotListVO> result = service.listPurQuotListVO(query);
 	//响应结果
-	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
-
-
+	return JsonVO<list<PurQuotListVO>>(result, RS_SUCCESS);
 }
 //询价单分录列表
 JsonVO<list<PurQuotDividedListVO>> PurQuotController::execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload)
 {
-	//构建一个测试VO
-	PurQuotDividedListVO vo;
+	//定义一个Service
+	PurQuotService service;
+	//构建返回对象
+	list<PurQuotDividedListVO> result = service.listPurQuotDividedListVO(query);
 	//响应结果
-	return JsonVO<PurQuotDividedListVO>(vo, RS_SUCCESS);
+	return JsonVO<list<PurQuotDividedListVO>>(result, RS_SUCCESS);
 }
 
