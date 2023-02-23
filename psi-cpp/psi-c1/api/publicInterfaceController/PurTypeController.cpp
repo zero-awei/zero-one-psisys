@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PurTypeController.h"
-
+#include "../../service/publicInterfaceService/PurTypeService.h"
 /*
 采购方式下拉列表
 Author C1-三木
@@ -9,11 +9,8 @@ Author C1-三木
 
 JsonVO<list<PurTypeVO>> PurTypeController::executequeryPurType()
 {
-    list<PurTypeVO> data;
-    PurTypeVO vo;
-    vo.setId(1);
-    vo.setName(u8"集中采购");
-    data.push_back(vo);
+    PurTypeService service;
+    list<PurTypeVO> data=service.listAll();
     JsonVO<list<PurTypeVO>> res;
     res.success(data);
     return res;

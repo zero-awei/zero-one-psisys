@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TaxRateController.h"
+#include "../../service/publicInterfaceService/TaxRateService.h"
 
 /*
 税率下拉列表
@@ -9,11 +10,8 @@ Author C1-三木
 
 JsonVO<list<TaxRateVO>> TaxRateController::executequeryTaxRate()
 {
-    list<TaxRateVO> data;
-    TaxRateVO vo;
-    vo.setId(1);
-    vo.setRate("0.17");
-    data.push_back(vo);
+    TaxRateService service;
+    list<TaxRateVO> data = service.listAll();
     JsonVO<list<TaxRateVO>> res;
     res.success(data);
     return res;
