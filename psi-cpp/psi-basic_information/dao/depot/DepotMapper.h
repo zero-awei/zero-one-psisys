@@ -33,8 +33,20 @@ public:
 	{
 		DepotDO data;
 		// 后面编号要和数据库字段位置对应
-		data.setName(resultSet->getString(5));
+		data.setId(resultSet->getString(1));
+		data.setPid(resultSet->getString(2));
+		data.setHasChild(resultSet->getString(3));
 		data.setCode(resultSet->getString(4));
+		data.setName(resultSet->getString(5));
+		data.setAuxName(resultSet->getString(6));
+		data.setPhone(resultSet->getInt(7));
+		data.setStart(resultSet->getInt(8));
+		data.setRemarks(resultSet->getString(9));
+		data.setCreationPeo(resultSet->getString(10));
+		data.setCreationTime(resultSet->getString(11));
+		data.setModiPeo(resultSet->getString(12));
+		data.setModiTime(resultSet->getString(13));
+
 		return data;
 	}
 };

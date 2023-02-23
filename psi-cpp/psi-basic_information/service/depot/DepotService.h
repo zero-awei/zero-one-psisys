@@ -35,6 +35,8 @@ class DepotService
 public:
 	// 分页查询所有数据
 	PageVO<DepotVO> listAll(const DepotQuery& query);
+	//查询细节
+	DepotDetailVO listDetail(const OnlyValueQuery& query);
 	// 保存数据
 	int saveData(const DepotDTO& dto);
 	// 删除数据

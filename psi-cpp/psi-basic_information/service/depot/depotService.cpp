@@ -34,6 +34,7 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	DepotDO obj;
 	obj.setName(query.getName());
 	obj.setCode(query.getCode());
+	
 	DepotDAO dao;
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
@@ -42,20 +43,101 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	}
 
 	//分页查询数据
-	pages.setTotal(count);
+	obj.setPid("0");
+	pages.setTotal(dao.count(obj));
 	pages.calcPages();
-	list<DepotDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
-	list<DepotVO> vr;
-	for (DepotDO sub : result)
+	//分为用户未输入任何信息和输入其中一个信息的操作
+	if (obj.getName() == "" && obj.getCode() == "")
 	{
+		obj.setPid("0");
+		//DO接收结果集
+		list<DepotDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
+		list<DepotVO> vr;
+		for (DepotDO sub : result)
+		{
+			DepotVO vo;
+			vo.setName(sub.getName());
+			vo.setCode(sub.getCode());
+			vo.setAuxName(sub.getAuxName());
+			vo.setCreationPeo(sub.getCreationPeo());
+			vo.setCreationTime(sub.getCreationTime());
+			vo.setId(sub.getId());
+			vo.setModiPeo(sub.getModiPeo());
+			vo.setModiTime(sub.getModiTime());
+			vo.setRemarks(sub.getRemarks());
+			vo.setStart(sub.getStart());
+			vo.setPhone(sub.getPhone());
+			vr.push_back(vo);
+		}
+		pages.setRows(vr);
+	}
+	else
+	{
+		//DO接收结果集
+		obj.setPid("");
+		list<DepotDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
+		//VO返回结果集
+		list<DepotVO> vr;
+		//如果是子节点，找到他的父节点
+		DepotDO sub = result.front();
+		while (sub.getPid() != "0")
+		{
+			obj.setId(sub.getPid());
+			obj.setPid("");
+			obj.setCode("");
+			obj.setName("");
+			result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
+			sub = result.front();
+			obj.setPid(sub.getPid());
+		}
+		//转化成vo
 		DepotVO vo;
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
-		// 剩下的属性
+		vo.setAuxName(sub.getAuxName());
+		vo.setCreationPeo(sub.getCreationPeo());
+		vo.setCreationTime(sub.getCreationTime());
+		vo.setId(sub.getId());
+		vo.setModiPeo(sub.getModiPeo());
+		vo.setModiTime(sub.getModiTime());
+		vo.setRemarks(sub.getRemarks());
+		vo.setStart(sub.getStart());
+		vo.setPhone(sub.getPhone());
 		vr.push_back(vo);
+		
+		pages.setRows(vr);
 	}
-	pages.setRows(vr);
 	return pages;
+}
+
+DepotDetailVO DepotService::listDetail(const OnlyValueQuery& query)
+{
+	//构建查询数据
+	DepotDO obj;
+	obj.setName("");
+	obj.setCode(query.getCode());
+
+	DepotDAO dao;
+	std::list<DepotDO> result = dao.selectDetail(obj);
+
+	DepotDO sub = result.front();
+	obj.setCode("");
+	DepotDetailVO vo;
+	if (sub.getPid() != "0")
+	{
+		obj.setId(sub.getPid());
+		result = dao.selectDetail(obj);
+		DepotDO psub = result.front();
+		vo.setPid(psub.getName());
+	}
+	vo.setNext(sub.getHasChild());
+	vo.setCode(sub.getCode());
+	vo.setName(sub.getName());
+	vo.setAuxName(sub.getAuxName());
+	vo.setPhone(sub.getPhone());
+	vo.setStart(sub.getStart() + "0");
+	vo.setRemarks(sub.getRemarks());
+	return vo;
 }
 
 int DepotService::saveData(const DepotDTO& dto)
@@ -81,6 +163,7 @@ bool DepotService::removeData(const OnlyValueQuery& query)
 	DepotDO id;
 	id.setId(query.getId());
 	DepotDAO dao;
+
 	return dao.deleteDepot(id);
 }
 

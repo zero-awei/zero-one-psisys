@@ -27,7 +27,12 @@ JsonVO<DepotVO> DepotController::execQueryKidDepot(const OnlyValueQuery& query, 
 
 JsonVO<DepotDetailVO> DepotController::execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
-    return JsonVO<DepotDetailVO>();
+    //定义一个Service
+    DepotService service;
+    //查询数据
+    DepotDetailVO result = service.listDetail(query);
+    //响应结果
+    return JsonVO<DepotDetailVO>(result, RS_SUCCESS);
 }
 
 JsonVO<DepotActionInfoVO> DepotController::execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload)
