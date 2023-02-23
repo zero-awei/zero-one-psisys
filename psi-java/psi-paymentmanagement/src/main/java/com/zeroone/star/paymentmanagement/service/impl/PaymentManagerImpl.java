@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 public class PaymentManagerImpl implements PaymentManagerService {
 
-    @Autowired
-    PaymentManagerMapper paymentManagerMapper;
+//    @Autowired
+//    PaymentManagerMapper paymentManagerMapper;
 
     @Override
     public void importAll() {
@@ -28,7 +28,8 @@ public class PaymentManagerImpl implements PaymentManagerService {
 
     @Override
     public JsonVO chosenExport(ChosenExportDto chosenExportDto) {
-        List<ChosenExportVo> chosenExportVos = paymentManagerMapper.chosenExport(chosenExportDto);
-        return JsonVO.success(chosenExportVos);
+//        List<ChosenExportVo> chosenExportVos = paymentManagerMapper.chosenExport(chosenExportDto);
+//        return JsonVO.success(chosenExportVos);
+        return null;
     }
 }

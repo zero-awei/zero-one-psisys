@@ -30,8 +30,8 @@ public class QueryDocumentListController implements PaymentManagementApis {
     //根据查询的条件查询单据列表结果，传入条件为：单据编号，单据日期，单据主题，供应商，单据阶段，已生效，已关闭，已作废。
     public JsonVO<PageVO<QueryDocumentListVO>> queryDocumentList(QueryDocumentListQuery condition) {
 
-//        return JsonVO.success(service.queryDocumentList(condition));
-        return null;
+        return JsonVO.success(service.queryDocumentList(condition));
+//        return null;
     }
 
 
