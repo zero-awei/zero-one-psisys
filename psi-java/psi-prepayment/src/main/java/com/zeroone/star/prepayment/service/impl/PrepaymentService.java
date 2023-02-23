@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -233,18 +234,30 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         return null;
     }
 
+    /**
+     * 关闭功能
+     * author yuhang
+     */
     @Override
-    public JsonVO<String> closeById(StatusDTO statusDTO) {
-        return null;
+    public JsonVO<String> closeById(String id,UserDTO userDTO) {
+        return finPaymentService.closeById(id,userDTO);
     }
 
+    /**
+     * 反关闭功能
+     * author yuhang
+     */
     @Override
-    public JsonVO<String> uncloseById(StatusDTO statusDTO) {
-        return null;
+    public JsonVO<String> uncloseById(String id,UserDTO userDTO) {
+        return finPaymentService.uncloseById(id, userDTO);
     }
 
+    /**
+     * 作废功能
+     * author yuhang
+     */
     @Override
-    public JsonVO<String> voidById(StatusDTO statusDTO) {
-        return null;
+    public JsonVO<String> voidById(String id,UserDTO userDTO) {
+        return finPaymentService.voidById(id, userDTO);
     }
 }

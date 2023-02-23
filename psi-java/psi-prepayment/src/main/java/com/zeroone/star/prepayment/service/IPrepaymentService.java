@@ -124,17 +124,17 @@ public interface IPrepaymentService {
      * 修改状态——关闭
      * author yu-hang
      */
-    JsonVO<String> closeById(StatusDTO statusDTO);
+    JsonVO<String> closeById(String id,UserDTO userDTO);
 
     /**
      * 修改状态——反关闭
      * author yu-hang
      */
-    JsonVO<String> uncloseById(StatusDTO statusDTO);
+    JsonVO<String> uncloseById(String id,UserDTO userDTO);
 
     /**
      * 修改状态——作废
      * author yu-hang
      */
-    JsonVO<String> voidById(StatusDTO statusDTO);
+    JsonVO<String> voidById(String id,UserDTO userDTO);
 }

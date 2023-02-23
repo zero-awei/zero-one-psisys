@@ -297,21 +297,51 @@ public class PrepaymentController implements PrepaymentApis {
     @Override
     @PutMapping("close")
     @ApiOperation(value = "关闭操作（返回值data值表示更新成功与否）")
-    public JsonVO<String> closeById(StatusDTO statusDTO) {
-        return null;
+    public JsonVO<String> closeById(String id) {
+        //获取用户信息
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.closeById(id,currentUser);
     }
 
     @PutMapping("unclose")
     @ApiOperation(value = "反关闭操作（返回值data值表示更新成功与否）")
     @Override
-    public JsonVO<String> uncloseById(StatusDTO statusDTO) {
-        return null;
+    public JsonVO<String> uncloseById(String id) {
+        //获取用户信息
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.uncloseById(id,currentUser);
     }
 
     @Override
     @PutMapping("void")
     @ApiOperation(value = "作废操作（返回值data值表示更新成功与否）")
-    public JsonVO<String> voidById(StatusDTO statusDTO) {
-        return null;
+    public JsonVO<String> voidById(String id) {
+        //获取用户信息
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.voidById(id,currentUser);
     }
 }

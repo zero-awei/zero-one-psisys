@@ -111,4 +111,85 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         FinPayment finPayment = baseMapper.selectOne(FinQueryWrapper);
         return finPayment;
     }
+
+    /**
+     * 根据id查询付款单
+     * author yuhang
+     */
+    @Override
+    public FinPayment selectById(String id) {
+        QueryWrapper<FinPayment> FinQueryWrapper = new QueryWrapper<>();
+        FinQueryWrapper.eq("id", id);
+        return baseMapper.selectOne(FinQueryWrapper);
+    }
+
+    @Override
+    public JsonVO<String> closeById(String id,UserDTO userDTO) {
+        FinPayment finPayment = selectById(id);
+        // 查询要关闭的单据信息
+        if (finPayment == null) {
+            return JsonVO.fail("此单据不存在!");
+        }
+        //单据阶段为执行中，才可以关闭
+        if ("32".equals(finPayment.getBillStage())) {
+            finPayment.setId(id);
+            finPayment.setBillStage("33");
+            finPayment.setIsClosed(1);
+            finPayment.setUpdateTime(LocalDateTime.now());
+            finPayment.setUpdateBy(userDTO.getUsername());
+            boolean flag = updateById(finPayment);
+            if (flag) {
+                return JsonVO.success("修改成功");
+            }
+            return JsonVO.fail("修改失败");
+        }
+        return JsonVO.fail("单据阶段错误!");
+    }
+
+    @Override
+    public JsonVO<String> uncloseById(String id,UserDTO userDTO) {
+        FinPayment finPayment = selectById(id);
+        // 查询要关闭的单据信息
+        if (finPayment == null) {
+            return JsonVO.fail("此单据不存在!");
+        }
+        //单据阶段为执行止或者执行完，才可以关闭
+        String billStage = finPayment.getBillStage();
+        if ("33".equals(billStage) || "34".equals(billStage)) {
+            finPayment.setId(id);
+            finPayment.setBillStage("32");
+            finPayment.setIsClosed(0);
+            finPayment.setUpdateTime(LocalDateTime.now());
+            finPayment.setUpdateBy(userDTO.getUsername());
+            boolean flag = updateById(finPayment);
+            if (flag) {
+                return JsonVO.success("修改成功");
+            }
+            return JsonVO.fail("修改失败");
+        }
+        return JsonVO.fail("单据阶段错误!");
+    }
+
+    @Override
+    public JsonVO<String> voidById(String id,UserDTO userDTO) {
+        FinPayment finPayment = selectById(id);
+        // 查询要关闭的单据信息
+        if (finPayment == null) {
+            return JsonVO.fail("此单据不存在!");
+        }
+        //单据阶段为执行止或者执行完，才可以关闭
+        String billStage = finPayment.getBillStage();
+        if ("33".equals(billStage) || "34".equals(billStage)) {
+            return JsonVO.fail("单据阶段错误!");
+        }
+        finPayment.setId(id);
+        finPayment.setIsVoided(true);
+        finPayment.setUpdateTime(LocalDateTime.now());
+        finPayment.setUpdateBy(userDTO.getUsername());
+        boolean flag = updateById(finPayment);
+        if (flag) {
+            return JsonVO.success("修改成功");
+        }
+        return JsonVO.fail("修改失败");
+    }
 }

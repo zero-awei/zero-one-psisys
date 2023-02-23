@@ -51,4 +51,30 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * author hzp
      */
     FinPayment getByBillNo(String billNo);
+
+
+    /**
+     * 根据id查询付款单
+     * author yuhang
+     */
+    public FinPayment selectById(String id);
+
+    /**
+     * 关闭功能
+     * author yuhang
+     */
+    public JsonVO<String> closeById(String id,UserDTO userDTO);
+
+    /**
+     * 反关闭功能
+     * author yuhang
+     */
+    public JsonVO<String> uncloseById(String id,UserDTO userDTO);
+
+    /**
+     * 作废功能
+     * author yuhang
+     */
+    public JsonVO<String> voidById(String id,UserDTO userDTO);
+
 }
