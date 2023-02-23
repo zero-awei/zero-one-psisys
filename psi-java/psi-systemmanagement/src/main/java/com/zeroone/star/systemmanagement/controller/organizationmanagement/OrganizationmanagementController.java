@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -45,14 +46,16 @@ public class OrganizationmanagementController implements OrganizationManagementA
 
     /**
      * 查询指定结构树
+     *
      * @param departName 部门名称
      * @return
      */
     @ApiOperation("查询指定结构树")
     @GetMapping("query-tree")
     @Override
-    public JsonVO<OrganizationTreeVO> queryTree(String departName) {
-        return service.queryTree(departName);
+    public JsonVO<List<OrganizationTreeVO>> queryTree(String departName) {
+        List<OrganizationTreeVO> list = service.queryTree(departName);
+        return JsonVO.success(list);
     }
 
     /**
@@ -82,7 +85,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
     @Override
     public JsonVO<String> modify(OrganizationManagementDTO data) {
         String s = service.modify(data);
-        if (s.equals("修改成功")) {
+        if (s.equals("更新成功")) {
             return JsonVO.success(s);
         }
         else return JsonVO.fail(s);

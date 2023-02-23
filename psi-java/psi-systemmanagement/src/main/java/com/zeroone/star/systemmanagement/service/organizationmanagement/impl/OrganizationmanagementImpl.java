@@ -16,6 +16,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * <p>
  * 组织机构表 服务实现类
@@ -39,17 +43,34 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
         return PageVO.create(p, OrganizationListVO.class);
     }
 
-    @Override
-    public JsonVO<OrganizationTreeVO> queryTree(String departName) {
-        QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
-        wrapper.eq("depart_name", departName);
-        SysDepart sysDepart = mapper.selectById(wrapper);
-        String parentId = sysDepart.getParentId();
+//    @Override
+//    public JsonVO<OrganizationTreeVO> queryTree(String departName) {
+////        QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
+////        wrapper.eq("depart_name", departName);
+//        HashMap<String, Object> map = new HashMap<>();
+//        map.put("depart_name", departName);
+//        List<SysDepart> sysDeparts = mapper.selectByMap(map);
+//        String parentId = sysDeparts.getParentId();
+//        OrganizationTreeVO treeVO = new OrganizationTreeVO();
+//        treeVO.setDepartName(departName);
+//        treeVO.setParentId(parentId);
+//        return JsonVO.success(treeVO);
+//    }
+@Override
+public List<OrganizationTreeVO> queryTree(String departName) {
+    List<OrganizationTreeVO> treeVOS = new ArrayList<>();
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("depart_name", departName);
+    List<SysDepart> sysDeparts = mapper.selectByMap(map);
+    for (SysDepart depart : sysDeparts) {
+        String parentId = depart.getParentId();
         OrganizationTreeVO treeVO = new OrganizationTreeVO();
-        treeVO.setDepartName(departName);
         treeVO.setParentId(parentId);
-        return JsonVO.success(treeVO);
+        treeVO.setDepartName(departName);
+        treeVOS.add(treeVO);
     }
+    return treeVOS;
+}
 
     @Override
     public String add(OrganizationManagementDTO data) {
@@ -64,10 +85,6 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
 
     @Override
     public String modify(OrganizationManagementDTO data) {
-//        QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
-//        wrapper.eq("depart_name", data.getDepartName());
-//        SysDepart sysDepart = mapper.selectById(wrapper);
-        System.out.println(data.toString());
         SysDepart sysDepart = new SysDepart();
         BeanUtil.copyProperties(data, sysDepart);
         int result = mapper.updateById(sysDepart);

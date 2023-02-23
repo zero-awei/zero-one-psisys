@@ -7,6 +7,8 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationTreeVO;
 
+import java.util.List;
+
 
 /**
  *
@@ -22,10 +24,11 @@ public interface OrganizationManagementApis {
 
     /**
      * 查询指定组织结构树
+     *
      * @param departName 部门名称
      * @return 查询到的结构树属性
      */
-    JsonVO<OrganizationTreeVO> queryTree(String departName);
+    JsonVO<List<OrganizationTreeVO>> queryTree(String departName);
 
     /**
      * 新增组织结构
