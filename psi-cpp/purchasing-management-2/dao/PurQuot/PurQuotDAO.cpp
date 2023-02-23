@@ -1,7 +1,7 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
+ @Author: zuichu
  @Date: 2022/10/25 14:26:52
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,54 +37,54 @@ if (obj.getAge() != -1) { \
 	sql << " AND amt=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAmt()); \
 }
-
-//计算总页数
-uint64_t PurQuotDAO::count(const PurQuotDO& iObj)
-{
-	stringstream sql;
-	sql << "SELECT COUNT(*) FROM pur_quot";
-	SAMPLE_TERAM_PARSE(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
-}
-
 //
-std::list<PurQuotDO> PurQuotDAO::selectWithPage(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize)
-{
-	stringstream sql;
-	sql << "SELECT * FROM pur_quot";
-	SAMPLE_TERAM_PARSE(obj, sql);
-	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	PurQuotMapper mapper;
-	string sqlStr = sql.str();
-	return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sqlStr, mapper, params);
-}
+////计算总页数
+//uint64_t PurQuotDAO::count(const PurQuotDO& iObj)
+//{
+//	stringstream sql;
+//	sql << "SELECT COUNT(*) FROM pur_quot";
+//	SAMPLE_TERAM_PARSE(iObj, sql);
+//	string sqlStr = sql.str();
+//	return sqlSession->executeQueryNumerical(sqlStr, params);
+//}
 
-//查找指定账单号
-std::list<PurQuotDO> PurQuotDAO::selectByBill_no(const string& name)
-{
-	string sql = "SELECT * FROM pur_quot WHERE `name` LIKE CONCAT('%',?,'%')";
-	PurQuotMapper mapper;
-	return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sql, mapper, "%s", name);
-}
-
-//添加
-uint64_t PurQuotDAO::insertPurQuot(const PurQuotDO& iObj)
-{
-	string sql = "INSERT INTO ` pur_quot` (`name`, `sex`, `age`) VALUES (?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getName(), iObj.getSex(), iObj.getAge());
-}
-
-//修改状态
-int PurQuotDAO::updateStatus(const PurQuotDO& uObj)
-{
-	string sql = "UPDATE ` pur_quot` SET `name`=?, `sex`=?, `age`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%i%ull", uObj.getName(), uObj.getSex(), uObj.getAge(), uObj.getId());
-}
-
-//删除采购预付申请单号
-int PurQuotDAO::deleteById(uint64_t id)
-{
-	string sql = "DELETE FROM ` pur_quot` WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%ull", id);
-}
+////
+//std::list<PurQuotDO> PurQuotDAO::selectWithPage(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize)
+//{
+//	stringstream sql;
+//	sql << "SELECT * FROM pur_quot";
+//	SAMPLE_TERAM_PARSE(obj, sql);
+//	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+//	PurQuotMapper mapper;
+//	string sqlStr = sql.str();
+//	return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sqlStr, mapper, params);
+//}
+//
+////查找指定账单号
+//std::list<PurQuotDO> PurQuotDAO::selectByBill_no(const string& name)
+//{
+//	string sql = "SELECT * FROM pur_quot WHERE `name` LIKE CONCAT('%',?,'%')";
+//	PurQuotMapper mapper;
+//	return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sql, mapper, "%s", name);
+//}
+//
+////添加
+//uint64_t PurQuotDAO::insertPurQuot(const PurQuotDO& iObj)
+//{
+//	string sql = "INSERT INTO ` pur_quot` (`name`, `sex`, `age`) VALUES (?, ?, ?)";
+//	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getName(), iObj.getSex(), iObj.getAge());
+//}
+//
+////修改状态
+//int PurQuotDAO::updateStatus(const PurQuotDO& uObj)
+//{
+//	string sql = "UPDATE ` pur_quot` SET `name`=?, `sex`=?, `age`=? WHERE `id`=?";
+//	return sqlSession->executeUpdate(sql, "%s%s%i%ull", uObj.getName(), uObj.getSex(), uObj.getAge(), uObj.getId());
+//}
+//
+////删除采购预付申请单号
+//int PurQuotDAO::deleteById(uint64_t id)
+//{
+//	string sql = "DELETE FROM ` pur_quot` WHERE `id`=?";
+//	return sqlSession->executeUpdate(sql, "%ull", id);
+//}
