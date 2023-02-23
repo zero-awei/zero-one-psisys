@@ -64,6 +64,8 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
     IFinPaymentEntryService finPaymentEntryService;
     @Resource
     IFinPaymentReqService finPaymentReqService;
+    @Resource
+    IPurOrderService purOrderService;
 
     /**
      * 修改采购预付单
@@ -117,7 +119,7 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         if(finPaymentEntrys==null){
             DetHavVO detHavVO = new DetHavVO();
             BeanUtil.copyProperties(finPayment,detHavVO);
-            return detHavVO;
+            return JsonVO.success(detHavVO);
         }
         //明细单中的src_bill_id对应申请单中的id查询对应申请单
         FinPaymentReq finPaymentReq = finPaymentReqService.getBySrcBillId(finPaymentEntrys.get(0).getSrcBillId());
@@ -139,7 +141,7 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         BeanUtil.copyProperties(finPayment,detHavVO);
         detHavVO.setReq(finPaymentReqVO);
         detHavVO.setListDetail(finPaymentEntryVOList);
-        return detHavVO;
+        return JsonVO.success(detHavVO);
     }
 
     @Override
@@ -152,7 +154,7 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         if(finPaymentEntrys==null){
             DetNoVO detNoVO = new DetNoVO();
             BeanUtil.copyProperties(finPayment,detNoVO);
-            return detNoVO;
+            return JsonVO.success(detNoVO);
         }
         //明细单中的src_bill_id对应申请单中的id查询对应采购单
         PurOrder purOrder = purOrderService.getBySrcBillId(finPaymentEntrys.get(0).getSrcBillId());
@@ -174,7 +176,7 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         BeanUtil.copyProperties(finPayment,detNoVO);
         detNoVO.setListDetail(finPaymentEntryVOList);
         detNoVO.setPurOrder(purOrderVO);
-        return detNoVO;
+        return JsonVO.success(detNoVO);
     }
 
     @Override

@@ -37,5 +37,5 @@ public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
      * @param srcBillType 源单类型（ FinPaymentEntry  /  PurOrder ）
      * @return 查询结果
      */
-    List<FinPaymentEntry> listByMid(String mid, String srcBillType);
+    public List<FinPaymentEntry> listByMid(String mid, String srcBillType);
 }

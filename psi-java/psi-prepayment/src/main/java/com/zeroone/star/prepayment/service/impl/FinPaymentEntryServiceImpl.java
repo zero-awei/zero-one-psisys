@@ -1,4 +1,4 @@
-
+package com.zeroone.star.prepayment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.prepayment.entity.FinPayment;

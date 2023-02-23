@@ -1,8 +1,6 @@
 package com.zeroone.star.prepayment.controller;
 
 import com.zeroone.star.prepayment.service.IPrepaymentService;
-import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
-import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.prepayment.*;
@@ -15,8 +13,6 @@ import com.zeroone.star.project.vo.prepayment.DetHavVO;
 import com.zeroone.star.project.vo.prepayment.DetNoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
@@ -31,12 +27,9 @@ import java.util.List;
 import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
-import javax.json.Json;
-
 import com.zeroone.star.prepayment.service.*;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.prepayment.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("prepayment")
@@ -44,8 +37,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class PrepaymentController implements PrepaymentApis {
     @Resource
     IPrepaymentService prepaymentService;
+
     @Resource
     UserHolder userHolder;
+
     @Resource
     ISysDepartService departService;
     @Resource
@@ -125,14 +120,14 @@ public class PrepaymentController implements PrepaymentApis {
     @ApiOperation(value = "查看单据详情信息（有申请）")
     @Override
     public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
-        return JsonVO.success(service.queryByBillHav(condition));
+        return prepaymentService.queryByBillHav(condition);
     }
 
     @GetMapping("query-one-no")
     @ApiOperation(value = "查看单据详情信息（无申请）")
     @Override
     public JsonVO<DetNoVO> queryByBillNo(PreDetQuery condition) {
-        return JsonVO.success(service.queryByBillNo(condition));
+        return prepaymentService.queryByBillNo(condition);
     }
 
     /**

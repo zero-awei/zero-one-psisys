@@ -3,6 +3,7 @@ package com.zeroone.star.prepayment.service;
 import com.zeroone.star.prepayment.entity.SysDepart;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.vo.prepayment.SysDepartVO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

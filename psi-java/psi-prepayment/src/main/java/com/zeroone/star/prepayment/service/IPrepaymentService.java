@@ -50,7 +50,7 @@ public interface IPrepaymentService {
      * return 查询结果
      * author hzp
      */
-    DetHavVO queryByBillHav(PreDetQuery condition);
+    JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition);
 
     /**
      *通过单据编号查询数据-采购预付无申请
@@ -58,7 +58,7 @@ public interface IPrepaymentService {
      * return 查询结果
      * author hzp
      */
-    DetNoVO queryByBillNo (PreDetQuery condition);
+    JsonVO<DetNoVO> queryByBillNo (PreDetQuery condition);
 
     /**
      * 获取导出文件
