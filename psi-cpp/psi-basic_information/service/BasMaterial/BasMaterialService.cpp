@@ -19,6 +19,8 @@
 #include "stdafx.h"
 #include "BasMaterialService.h"
 #include "../../dao/BasMaterial/BasMaterialDAO.h"
+#include "../../domain/query/BasMaterial/BasMaterialDetailQuery.h"
+#include "../../../lib-common/include/SnowFlake.h"
 
 PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 {
@@ -32,13 +34,13 @@ PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 	obj.setName(query.getName());
 	obj.setCode(query.getCode());
 	obj.setCategoryId(query.getCategoryId());
+	obj.setTaxCode(query.getTaxCode());
 	BasMaterialDAO dao;
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
 	{
 		return pages;
 	}
-
 	//分页查询数据
 	pages.setTotal(count);
 	pages.calcPages();
@@ -67,18 +69,40 @@ PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 	pages.setRows(vr);
 	return pages;
 }
-BasMaterialVO BasMaterialService::getData(const BasMaterialQuery& query) {
-	BasMaterialVO result;
-	BasMaterialDO obj;
-	obj.setId(query.getId());
+BasMaterialVO BasMaterialService::getData(const BasMaterialDetailQuery& query) {
+
 	BasMaterialDAO dao;
-	return result;
+	list<BasMaterialDO> result = dao.selectById(query.getId());
+	BasMaterialVO vr;
+	if (result.size() == 0) return vr;
+	BasMaterialDO sub = result.front();
+
+	vr.setId(sub.getId());
+	vr.setCategoryId(sub.getCategoryId());
+	vr.setCode(sub.getCode());
+	vr.setName(sub.getName());
+	vr.setAuxName(sub.getAuxName());
+	vr.setIsEnabled(sub.getIsEnabled());
+	vr.setModel(sub.getModel());
+	vr.setUnitId(sub.getUnitId());
+	vr.setSalePrice(sub.getSalePrice());
+	vr.setTaxCode(sub.getTaxCode());
+	vr.setRemark(sub.getRemark());
+	vr.setCreateTime(sub.getCreateTime());
+	vr.setCreateBy(sub.getCreateBy());
+	vr.setUpdateBy(sub.getUpdateBy());
+	vr.setUpdateTime(sub.getUpdateTime());
+
+	return vr;
 }
-uint64_t BasMaterialService::saveData(const BasMaterialDTO& dto)
+uint64_t BasMaterialService::saveData(const BasMaterialDTO& dto, const PayloadDTO& payload)
 {
 	//组装数据
 	BasMaterialDO data;
-	//data.setId(dto.getId());
+	SnowFlake sf(1, 2);
+	uint64_t id = sf.nextId();
+
+	data.setId(id);
 	data.setCategoryId(dto.getCategoryId());
 	data.setCode(dto.getCode());
 	data.setName(dto.getName());
@@ -89,22 +113,23 @@ uint64_t BasMaterialService::saveData(const BasMaterialDTO& dto)
 	data.setSalePrice(dto.getSalePrice());
 	data.setTaxCode(dto.getTaxCode());
 	data.setRemark(dto.getRemark());
-
+	//cout <<1<< dto.getAuxName();没有输出？？
 	//创建人 ，创建时间
 	time_t now = time(0);
 	tm* ltm = localtime(&now);
 	string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
 	string currentTime = time;
 	data.setCreateTime(currentTime);
-	data.setCreateBy("admin");
-	//data.setUpdateBy(dto.getUpdateBy());
-	//data.setUpdateTime(dto.getUpdateTime());
+	data.setCreateBy(payload.getUsername());
+	data.setUpdateBy("");
+	data.setUpdateTime("");
+
 	//执行数据添加
 	BasMaterialDAO dao;
 	return dao.insert(data);
 }
 
-bool BasMaterialService::updateData(const BasMaterialDTO& dto)
+bool BasMaterialService::updateData(const BasMaterialDTO& dto, const PayloadDTO& payload)
 {
 	//组装传输数据
 	BasMaterialDO data;
@@ -126,14 +151,14 @@ bool BasMaterialService::updateData(const BasMaterialDTO& dto)
 	tm* ltm = localtime(&now);
 	string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
 	string currentTime = time;
-	data.setUpdateBy("admin");
+	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(currentTime);
 	//执行数据修改
 	BasMaterialDAO dao;
 	return dao.update(data) == 1;
 }
 
-bool BasMaterialService::removeData(uint64_t id)
+bool BasMaterialService::removeData(uint64_t  id)
 {
 	BasMaterialDAO dao;
 	return dao.deleteById(id) == 1;

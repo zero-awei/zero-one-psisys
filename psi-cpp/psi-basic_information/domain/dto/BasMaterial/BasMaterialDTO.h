@@ -63,7 +63,7 @@ class BasMaterialDTO : public FileDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, BasMaterialDTO& t);// NOLINT
-	BIND_TO_JSON(BasMaterialDTO, id, categoryId,code, name, auxName, isEnabled, model, unitId, salePrice, taxCode, isEnabled, remark);
+	BIND_TO_JSON(BasMaterialDTO, id, categoryId, code, name, auxName, isEnabled, model, unitId, salePrice, taxCode, isEnabled, remark);
 };
 
 #endif // !_BASMATERIAL_DTO_
