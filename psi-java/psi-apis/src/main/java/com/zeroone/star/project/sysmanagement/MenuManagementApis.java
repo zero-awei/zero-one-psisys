@@ -1,12 +1,9 @@
 package com.zeroone.star.project.sysmanagement;
 
-import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
-import com.zeroone.star.project.vo.TreeNodeVO;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
-
-import java.util.List;
 
 /**
  * 菜单管理
@@ -18,10 +15,10 @@ public interface MenuManagementApis {
 
     /**
      * 查询单一菜单
-     * @param singleMenuQuery
+     * @param sysMenuQuery
      * @return
      */
-    JsonVO<MenuTreeVO> querySingle(SingleMenuQuery singleMenuQuery);
+    JsonVO<MenuTreeVO> querySingle(SysMenuQuery sysMenuQuery);
 
     /**
      * 新增菜单
@@ -39,8 +36,8 @@ public interface MenuManagementApis {
 
     /**
      * 删除菜单
-     * @param singleMenuQuery
+     * @param sysMenuQuery
      * @return
      */
-    JsonVO<ResultStatus> deleteMenu(SingleMenuQuery singleMenuQuery);
+    JsonVO<ResultStatus> deleteMenu(SysMenuQuery sysMenuQuery);
 }

@@ -1,13 +1,10 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
-import com.zeroone.star.project.query.sysmanagement.menumanagement.MenusQuery;
-import com.zeroone.star.project.query.sysmanagement.menumanagement.SingleMenuQuery;
-import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
+import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
-import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.service.ISysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,7 +12,6 @@ import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -34,10 +30,6 @@ public class SysMenuController {
 
     @Resource
     private ISysMenuService iSysMenuService;
-    //@Resource
-    private SingleMenuQuery singleMenuQuery;
-    //@Resource
-    private MenusQuery menusQuery;
 
     @ResponseBody
     @SneakyThrows
@@ -68,10 +60,11 @@ public class SysMenuController {
     @SneakyThrows
     @ApiOperation(value = "删除菜单")
     @DeleteMapping("/delete")
-    public JsonVO<String> deleteMenu(int id) {
+    public JsonVO<String> deleteMenu(String id) {
 
-        singleMenuQuery.setId(String.valueOf(id));
-        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(singleMenuQuery);
+        SysMenuQuery sysMenuQuery = new SysMenuQuery();
+        sysMenuQuery.setId(id);
+        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(sysMenuQuery);
 
         return resultStatus.getData().getCode() == 9999
                 ? JsonVO.create("删除失败", ResultStatus.FAIL)
@@ -79,23 +72,25 @@ public class SysMenuController {
     }
 
     @SneakyThrows
-    @ApiOperation(value = "查询菜单")
+    @ApiOperation(value = "查询单一菜单")
     @GetMapping("/query")
-    public JsonVO<MenuVO> queryMenu(int id) {
+    public JsonVO<MenuVO> queryMenu(String id) {
 
-        singleMenuQuery.setId(String.valueOf(id));
+        SysMenuQuery sysMenuQuery = new SysMenuQuery();
+        sysMenuQuery.setId(id);
 
-        return iSysMenuService.querySingle(singleMenuQuery);
+        return iSysMenuService.querySingle(sysMenuQuery);
     }
 
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
     @GetMapping("/queryMenus")
-    public JsonVO<List<MenuVO>> queryMenus(int parentId) {
+    public JsonVO<List<MenuVO>> queryMenus(String parentId) {
         //一级菜单parentId为0
-        menusQuery.setParentId(String.valueOf(parentId));
+        SysMenuQuery sysMenuQuery = new SysMenuQuery();
+        sysMenuQuery.setParentId(parentId);
 
-        return null;
+        return iSysMenuService.queryMenus(sysMenuQuery);
 
     }
 
