@@ -106,21 +106,37 @@ std::list<MaterialClassificationDO> MaterialClassificationDAO::selectByPid(const
 	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sql, mapper, "%s", pid);
 }
 
+//按id查询
+std::list<MaterialClassificationDO> MaterialClassificationDAO::selectById(const string& id)
+{
+	string sql = "SELECT id,pid,has_child,code,name,fullname,is_enabled,create_by,create_time,update_by,update_time,version FROM bas_material_category WHERE `id` =?";
+	MaterialClassificationMapper mapper;
+	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sql, mapper, "%s", id);
+}
+
 
 
 //插入数据 #时间用string？
 uint64_t MaterialClassificationDAO::insert(const MaterialClassificationDO& iObj)
 {
-	string sql = "INSERT INTO `bas_material_category` (`id`,`pid`,`has_child`,`code`,`name`,`fullname`,`is_enabled`,`create_by`,`update_by`,`version`) VALUES (?,?,?,?,?,?,?,?,?,?)";
-	return sqlSession->executeUpdate(sql,"%s%s%s%s%s%s%i%s%s%i", iObj.getId(),iObj.getPid(),iObj.getHasChild(),iObj.getCode(),iObj.getName(),iObj.getFullname(),iObj.getIsEnabled(), iObj.getCreateBy(), iObj.getUpdateBy(), iObj.getVersion());
+	string sql = "INSERT INTO `bas_material_category` (`id`,`pid`,`has_child`,`code`,`name`,`fullname`,`is_enabled`,`create_by`,`create_time`,`version`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+	return sqlSession->executeUpdate(sql,"%s%s%s%s%s%s%i%s%s%i", iObj.getId(),iObj.getPid(),iObj.getHasChild(),iObj.getCode(),iObj.getName(),iObj.getFullname(),iObj.getIsEnabled(), iObj.getCreateBy(),iObj.getCreateTime(), iObj.getVersion());
 }
 
 //修改数据 
 int MaterialClassificationDAO::update(const MaterialClassificationDO& iObj)
 {
-	string sql = "UPDATE `bas_material_category` SET `name`= ?,`code`=?,`fullname`=?,`is_enabled`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%i%s", iObj.getName(), iObj.getCode(), iObj.getFullname(),iObj.getIsEnabled(),iObj.getId());
+	string sql = "UPDATE `bas_material_category` SET `name`= ?,`code`=?,`fullname`=?,`is_enabled`=? ,`update_by`=? ,`update_time`= ? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s", iObj.getName(), iObj.getCode(), iObj.getFullname(),iObj.getIsEnabled(),iObj.getUpdateBy(),iObj.getUpdateTime(),iObj.getId());
 }
+
+//按id修改，父节点的是否有子节点项,当有子节点时才会调用
+int MaterialClassificationDAO::updateById(const string id)
+{
+	string sql = "UPDATE `bas_material_category` SET `has_child`= ? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", "1");
+}
+
 //通过id删除数据 #删除数据后，如果是某个父类是否应该把子类一并删除；如果是子类应该要同时修改对应父类的has_child
 
 //如果要同时删除子类，则可以删除pid=id的数据；如果是修改父类，可以用count统计pid=id的个数
@@ -128,4 +144,9 @@ int MaterialClassificationDAO::deleteById(string id)
 {
 	string sql = "DELETE FROM `bas_material_category` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s", id);
+}
+
+int MaterialClassificationDAO::deleteByPid(string pid) {
+	string sql = "DELETE FROM `bas_material_category` WHERE `pid`=?";
+	return sqlSession->executeUpdate(sql, "%s", pid);
 }

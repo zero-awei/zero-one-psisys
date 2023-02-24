@@ -42,15 +42,21 @@ public:
 	list<MaterialClassificationDO> selectByCode(const string& code);
 
 	// 通过父节点查询数据,可以用来查询子级列表
-	list<MaterialClassificationDO> selectByPid(const string& code);
+	list<MaterialClassificationDO> selectByPid(const string& pid);
+
+	//通过id查询数据
+	list<MaterialClassificationDO> selectById(const string& id);
 
 	// 插入数据
 	uint64_t insert(const MaterialClassificationDO& iObj);
 	// 修改数据
 	int update(const MaterialClassificationDO& uObj);
+	//通过id修改是否有子类的项
+	int updateById(const string id);
 	// 通过ID删除数据
 	int deleteById(string id);
-
+	//通过pid删除数据
+	int deleteByPid(string pid);
 	//应该还有个导入数据
 };
 #endif 

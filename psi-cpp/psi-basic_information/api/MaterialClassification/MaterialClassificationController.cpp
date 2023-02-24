@@ -70,12 +70,12 @@ JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationController::e
 	return JsonVO<list<MaterialClassificationDetailVO>>(result, RS_SUCCESS);;
 }
 
-JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto)
+JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	MaterialClassificationService service;
 	//执行数据新增 #返回的是行号？
-	uint64_t id = service.saveData(dto);
+	uint64_t id = service.saveData(dto,payload);
 	if (id > 0) {
 		result.success(id);
 	}
@@ -88,11 +88,11 @@ JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification
 	return result;
 }
 
-JsonVO<uint64_t> MaterialClassificationController::execModifyMaterialClassification(const MaterialClassificationDTO& dto)
+JsonVO<uint64_t> MaterialClassificationController::execModifyMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	MaterialClassificationService service;
-	uint64_t id = service.updateData(dto);
+	uint64_t id = service.updateData(dto,payload);
 	if (id>0) {
 		result.success(id);
 	}
@@ -109,7 +109,7 @@ JsonVO<uint64_t> MaterialClassificationController::execRemoveMaterialClassificat
 {
 	JsonVO<uint64_t> result;
 	MaterialClassificationService service;
-	uint64_t id = service.removeData(dto.getId());
+	uint64_t id = service.removeData(dto);
 	//执行数据删除
 	if (id>0) {
 		result.success(id);

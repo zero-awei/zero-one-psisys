@@ -38,8 +38,8 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassification, execQueryMaterialClassification, MaterialClassificationQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationChild, execQueryMaterialClassificationChild,MaterialClassificationQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationDetail, execQueryMaterialClassificationDetail,MaterialClassificationQuery);
-	CREATE_API_FUN_BODY(addMaterialClassification, execAddMaterialClassification, MaterialClassificationDTO);
-	CREATE_API_FUN_BODY(modifyMaterialClassification, execModifyMaterialClassification, MaterialClassificationDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(addMaterialClassification, execAddMaterialClassification, MaterialClassificationDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(modifyMaterialClassification, execModifyMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY(removeMaterialClassification, execRemoveMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY_FILE(importMaterialClassification, execImportMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportMaterialClassification, execExportMaterialClassification, MaterialClassificationQuery);
@@ -56,9 +56,9 @@ private:
 
 
 	//新增分类 ,添加、修改、删除下级应该也可以用这种方式  #返回的是id,但是数据库用的是varchar
-	JsonVO<uint64_t> execAddMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<uint64_t> execAddMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	//修改分类
-	JsonVO<uint64_t> execModifyMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<uint64_t> execModifyMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	//删除分类
 	JsonVO<uint64_t> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
 	

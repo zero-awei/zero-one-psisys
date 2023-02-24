@@ -41,11 +41,11 @@ public:
 	//查询指定分类详细信息
 	list<MaterialClassificationDetailVO> listDetail(const MaterialClassificationQuery& query);
 	// 保存数据
-	int saveData(const MaterialClassificationDTO& dto);
+	int saveData(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	// 修改数据
-	int updateData(const MaterialClassificationDTO& dto);
+	int updateData(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	// 通过ID删除数据
-	int removeData(string id);
+	int removeData(const MaterialClassificationDTO& dto);
 };
 
 #endif // !_SAMPLE_SERVICE_

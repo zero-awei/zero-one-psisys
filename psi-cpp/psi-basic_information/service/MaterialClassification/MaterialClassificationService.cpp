@@ -19,7 +19,7 @@
 #include "stdafx.h"
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
-
+#include<ctime>
 
 //可能vo不需要分父类子类
 
@@ -50,6 +50,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	for (MaterialClassificationDO sub : result)
 	{
 		MaterialClassificationBaseVO vo;
+		vo.setId(sub.getId());
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
 		vo.setFullname(sub.getFullname());
@@ -80,6 +81,7 @@ list<MaterialClassificationChildVO> MaterialClassificationService::listChildren(
 	for (MaterialClassificationDO sub : result)
 	{
 		MaterialClassificationChildVO vo;
+		vo.setId(sub.getId());
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
 		vo.setFullname(sub.getFullname());
@@ -107,6 +109,7 @@ list<MaterialClassificationDetailVO> MaterialClassificationService::listDetail(c
 	for (MaterialClassificationDO sub : result)
 	{
 		MaterialClassificationDetailVO vo;
+		vo.setId(sub.getId());
 		vo.setPid(sub.getPid());
 		vo.setHasChild(sub.getHasChild());
 		vo.setName(sub.getName());
@@ -124,35 +127,50 @@ list<MaterialClassificationDetailVO> MaterialClassificationService::listDetail(c
 	return  vr;
 }
 
-int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)
+int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
 {
+	//新增数据应该不用管修改相关的信息
+
 	//组装数据
 	MaterialClassificationDO data;
 	//应该是在这里生成id
 	SnowFlake sf(1, 2);
 	data.setId(to_string(sf.nextId()));
 
-	//添加下级的时候要获得pid，如果父类一开始没有下级，则还要修改父类的has_child,可能要另外写一个添加子类的接口
+	//添加下级的时候要获得pid，如果pid的父类一开始没有下级，则还要修改父类的has_child
 	data.setPid(dto.getPid()==""? "0":dto.getPid());
 	data.setHasChild(dto.getHasChild()==""? "0":dto.getHasChild());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
 	data.setIsEnabled(dto.getIsEnabled());
-	data.setCreateBy(dto.getCreateBy());
-	data.setCreateTime(dto.getCreateTime());
-	data.setUpdateBy(dto.getUpdateBy());
-	data.setUpdateTime(dto.getUpdateTime());
+	data.setCreateBy(payload.getUsername());
+
+	//设置时间
+	time_t nowtime;
+	time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
+	tm p;
+	localtime_s(&p,&nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	//printf("%04d:%02d:%02d %02d:%02d:%02d\n", p.tm_year + 1900, p.tm_mon + 1, p.tm_mday,p.tm_hour,p.tm_min,p.tm_sec);
+	string nowTime = to_string(p.tm_year+1900) + "-" +to_string(p.tm_mon+1)+"-"+to_string(p.tm_mday) + " " + to_string(p.tm_hour)+":"+to_string(p.tm_min) +":"+to_string(p.tm_sec);
+
+	data.setCreateTime(nowTime);
 	data.setVersion(dto.getVersion());
 	//执行数据添加
 	MaterialClassificationDAO dao;
-	return dao.insert(data);
+
+	int modify = 1;
+	if (dto.getPid() != "") {//有父节点
+		modify = dao.updateById(dto.getPid());//通过id修改父节点的has_child
+	}
+
+	return (modify * dao.insert(data))==1;
 }
 
-int MaterialClassificationService::updateData(const MaterialClassificationDTO& dto)
+int MaterialClassificationService::updateData(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
 {
 
-	//修改数据要先拿到id
+	//修改数据要先拿到id,修改数据应该不用管创建相关的信息
 
 	//组装传输数据
 	MaterialClassificationDO data;
@@ -163,18 +181,30 @@ int MaterialClassificationService::updateData(const MaterialClassificationDTO& d
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
 	data.setIsEnabled(dto.getIsEnabled());
-	data.setCreateBy(dto.getCreateBy());
-	data.setCreateTime(dto.getCreateTime());
-	data.setUpdateBy(dto.getUpdateBy());
-	data.setUpdateTime(dto.getUpdateTime());
+
+	time_t nowtime;
+	time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
+	tm p;
+	localtime_s(&p, &nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	string nowTime = to_string(p.tm_year + 1900) + "-" + to_string(p.tm_mon + 1) + "-" + to_string(p.tm_mday) + " " + to_string(p.tm_hour) + ":" + to_string(p.tm_min) + ":" + to_string(p.tm_sec);
+
+	data.setUpdateBy(payload.getUsername());
+	data.setUpdateTime(nowTime);
 	data.setVersion(dto.getVersion());
 	//执行数据修改
 	MaterialClassificationDAO dao;
 	return dao.update(data) == 1;
 }
 
-int MaterialClassificationService::removeData(string id)
+int MaterialClassificationService::removeData(const MaterialClassificationDTO& dto)
 {
 	MaterialClassificationDAO dao;
-	return dao.deleteById(id) == 1;
+
+	int d = 1;
+	if (dto.getHasChild()=="1") {//如果有子级节点则删除
+		d = dao.deleteByPid(dto.getId());
+	}
+	
+
+	return (d*dao.deleteById(dto.getId())) == 1;
 }
