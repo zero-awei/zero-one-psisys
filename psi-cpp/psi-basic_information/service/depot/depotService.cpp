@@ -58,6 +58,32 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	return pages;
 }
 
+bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data)
+{
+	//查询数据总条数
+	DepotDO obj;
+	obj.setName(query.getName());
+	obj.setCode(query.getCode());
+	DepotDAO dao;
+	uint64_t count = dao.count(obj);
+	if (count <= 0)
+	{
+		return false;
+	}
+
+	//不分页查询数据
+	list<DepotDO> result = dao.selectWithPage(obj, -1, -1);
+	for (DepotDO sub : result)
+	{
+		vector<string> row;
+		row.emplace_back(sub.getName());
+		row.emplace_back(sub.getCode());
+		// 剩下的属性
+		data.emplace_back(row);
+	}
+	return true;
+}
+
 int DepotService::saveData(const DepotDTO& dto)
 {
 	//组装数据

@@ -23,6 +23,7 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "service/depot/DepotService.h"
+#include "../lib-common/include/ExcelComponent.h"
 // #include "../../domain/dto/FileDTO.h"
 
 /**

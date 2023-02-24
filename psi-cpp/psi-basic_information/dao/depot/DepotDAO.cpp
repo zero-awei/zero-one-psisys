@@ -61,7 +61,8 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 	// * Ã»¸Ä
 	sql << "SELECT * FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql, params);
-	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+	if(pageIndex > 0 && pageSize > 0)
+		sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	DepotMapper mapper;
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);

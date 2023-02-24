@@ -28,13 +28,14 @@
 #include "../../dao/depot/DepotDAO.h"
 
 /**
- * 示例服务实现，演示基础的示例服务实现
+ * 仓库基础功能
  */
 class DepotService
 {
 public:
 	// 分页查询所有数据
 	PageVO<DepotVO> listAll(const DepotQuery& query);
+	bool getData(const DepotQuery& query, vector<vector<string>>& data);
 	// 保存数据
 	int saveData(const DepotDTO& dto);
 	// 删除数据
