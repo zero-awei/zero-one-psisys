@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-19 21:06:50
- * @LastEditTime: 2023-02-22 14:49:50
+ * @LastEditTime: 2023-02-23 15:43:32
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\home\test.vue
@@ -11,18 +11,9 @@
   <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
   <div class="menu-wrap">
     <el-scrollbar>
-      <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        active-text-color="#1890ff"
-        text-color="#545c64"
-        background-color="#fff"
-        unique-opened
-        router
-         :collapse="props.label"
-          @open="handleOpen"
-          @close="handleClose"
-      >
+      <el-menu default-active="2" class="el-menu-vertical-demo" active-text-color="#1890ff" text-color="#545c64"
+        background-color="#fff" unique-opened router @select="menuSelect" :collapse="props.label" @open="handleOpen"
+        @close="handleClose">
         <el-menu-item index="/home">
           <el-icon>
             <icon-menu />
@@ -86,17 +77,28 @@ const store = userStore()
 const menus = store.getMenus
 
 const props = defineProps({
-  label:{
-    type:Boolean,
+  label: {
+    type: Boolean,
     default: () => []
-}
+  }
 })
-// console.log(props.label)
+// // // console.log(props.label)
 
 const handleOpen = (key, keyPath) => {
-  console.log(key, keyPath)
+  // // console.log(key, keyPath)
 }
 const handleClose = (key, keyPath) => {
-  console.log(key, keyPath)
+  // // console.log(key, keyPath)
+}
+
+const emit = defineEmits(['selectChange'])
+function menuSelect(index, indexPath, item, routeResult) {
+  // 
+  // // // console.log('----------')
+  // // // console.log('index', index)  //选中菜单项的 index
+  // // // console.log('indexPath', indexPath)  //选中菜单项的 index path, 
+  // // // console.log('item', item)  // 选中菜单项
+  // // // console.log('routeResult', routeResult) // vue-router 的返回值（如果 router 为 true）
+  emit('selectChange', item.route)
 }
 </script>

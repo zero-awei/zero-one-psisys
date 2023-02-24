@@ -1,4 +1,4 @@
-<!--
+<!--doQuery
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:40
  * @LastEditors: 160405103 1348313766@qq.com
@@ -88,12 +88,13 @@ function doReset() {
   //查询表单重置，表格也要刷新
   doGetTableList()
 }
-// 7.5 普通查询
+// 7.5 普通查询 TODO
 function doQuery(data) {
-  console.log('父组件接收')
-  console.log(data)
-  // console.log('params--', params.daterange)
+  // // console.log('父组件接收')
+  // // console.log(data)
+  // // // console.log('params--', params.daterange)
   // 处理表单数据 主要是开始日期和结束日期
+  // TODO 前端处理数据，请求参数为 params
   let params = {}
   params.roleName = data.roleName
   params.roleCode = data.roleCode
@@ -105,19 +106,25 @@ function doQuery(data) {
   // params.supplierId = data.supplierId
   // params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
   // params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
-  console.log('params', params)
+  // // console.log('params', params)
   // TODO 前后端联调接口
   // query(
   //   {
   //     params
   //   },
+  //   // 请求成功回调   
   //   (data) => {
   //     tableData = data.rows
   //     pagination.currentPage = data.pageIndex
   //     pagination.pageSize = data.pageSize
   //     pagination.pages = data.pages
   //     pagination.total = data.total
+  //     // // console.log('000000',data)
   //   }
+  //   // 请求失败回调
+  //   ()=>{
+  //
+  //    }
   // )
 }
 // 表格相关数据
@@ -212,8 +219,8 @@ let da = {
   "updateBy": "admin",
   "updateTime": "2019-05-20 11:40:26"
 }
-// console.log('111111111')
-// console.log(tableData)
+// // // console.log('111111111')
+// // // console.log(tableData)
 // tableData.push(da)
 tableData.value.push(da)
 // 分页相关配置
@@ -340,8 +347,8 @@ const addDialogState = reactive({
 const { addDialogAttrs } = toRefs(addDialogState)
 // 新增角色调用接口
 function determine() {
-  // 前后端联调
-  console.log("pinia00000000", store.getUser)
+  // TODO前后端联调
+  // // console.log("pinia00000000", store.getUser)
   const param = {}
   param.roleName = addRoleFormData.roleName
   param.description = addRoleFormData.description
@@ -364,7 +371,7 @@ const { menuEditDialogAttrs } = toRefs(menuEditDialogState)
 function menuEdit(data) {
   menuEditDialogVisible.value = true
   // 弹出框内的表格数据和data配置
-  console.log("menuDialog数据", data)
+  // // console.log("menuDialog数据", data)
 }
 // permissonEditDialog配置
 

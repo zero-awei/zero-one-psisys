@@ -116,7 +116,7 @@ const state = reactive({
 })
 
 const { items, toggleItems, formData } = toRefs(state)
-// console.log("-----",formData.name) 这句话没起作用
+// // // console.log("-----",formData.name) 这句话没起作用
 const state1 = reactive({
   items1: [
     {
@@ -269,7 +269,7 @@ const { items2, toggleItems2, formData2 } = toRefs(state2)
 
 function search(res) {
   // res 就是 formdata
-  console.log('----父组件', res)
+  // // console.log('----父组件', res)
 }
 </script>
 

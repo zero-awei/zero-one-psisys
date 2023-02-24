@@ -4,7 +4,7 @@
 
 ### 示例 (演示路径 /component/table)
 
-```javascript
+```vue
 <template>
   <div class="main">
     <psi-table
@@ -12,7 +12,11 @@
       :tableData="tableData"
       :attributes="attributes"
       :pagination="pagination"
-    />
+      @selectionChange="selectionChange" 
+      @add="addFunc"
+    >
+
+    </psi-table>
   </div>
 </template>
 
@@ -112,7 +116,10 @@ const status = reactive({
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true
+    border: true //表格边框
+    maxHeight: '400', // 表格最大高度
+    height: '400',    //表格高度
+    headOperation: ['add', 'select']
   }
 })
 
@@ -143,6 +150,7 @@ const pagination = reactive({
 
 | 属性名       | 说明                                                   | 类型                              | 默认 |
 | ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| type     |  组件类型          |string       |——
 | label     | 表格列名 | string                        | ——
 | prop      | model 的键名          | string       |——
 | width     |  表格列宽度          |string       |50
@@ -153,15 +161,42 @@ const pagination = reactive({
 
 | 属性名       | 说明                                                   | 类型                              | 默认 |
 | ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
-| currentPage     | 当前页 | number                        | ——
-| pageSize      | 每页数据量          | string       |——
+| function     | 当前页 | number                        | ——
+| slot      | 每页数据量          | string       |——
 | pageSizes     |  可选择的每页展示量          |Array       |——
 | total     |  数据总量          |number       |——
 | layout     |  表示需要显示的内容          |string       | prev, pager, next, jumper, ->, total
 
+## type 可选
+
+| 属性名       | 说明                                                   | 类型                              | 默认 |
+| ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| text     | 文本显示 | ——                        | ——
+| function      | 可实现自定义渲染文本          | ——       |——
+| slot     |  可自定义插槽          |Array       |——
+
+
+
+## attributes 配置
+| 属性名       | 说明                                                   | 类型                              | 默认 |
+| ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| selection     | 当前页 | number                        | ——
+| index      | 每页数据量          | string       |——
+| border     |  可选择的每页展示量          |Array       |——
+| maxHeight     |  数据总量          |number       |——
+| height     |  表示需要显示的内容          |string       | prev, pager, next, jumper, ->, total
+| headOperation     |  表格头部操作行          |['add','importData','exportData','select']       | ——
+
+
+## 插槽
+| 插槽名       | 说明                                                   | 类型                              | 默认 |
+| ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
+| batchOperation     | 批量操作(会渲染在头部操作行) | ——                        | ——
+| item.type=slot      | 声明当前列是个插槽          | ——       |——
+| item.slotName     |  自定义插槽名          |——       |——
+
+自定义的插槽会按照 item 的列顺序依次渲染
+
 ## 第二版需要提供功能
 
-1.表单项的配置
-2.表单的总体配置
-3.分页功能交互
-4.共选择了xx项
+1.分页功能交互

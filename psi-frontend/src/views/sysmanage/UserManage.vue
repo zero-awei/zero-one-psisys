@@ -3,9 +3,21 @@
     <!-- 查询 -->
     <psi-form :items="items" :formData="formData" @query="doQuery" @reset="doReset"></psi-form>
     <!-- 表格数据 -->
-    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
-    </psi-table>
+    <div style="margin-top:10px">
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+        <!-- 批量操作 -->
+        <template v-slot:batchOperation="slot">
+          <el-button>批量操作</el-button>
+        </template>
+        <template v-slot:basicOperation="slot">
 
+
+          <el-button link type="primary" @click="menuEditDialogVisible = true">编辑</el-button>
+          |
+          <el-button link type="primary" @click="deleteMenu(slot.data)">更多</el-button>
+        </template>
+      </psi-table>
+    </div>
     <!-- 弹出框 -->
     <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogAttrs">
     </psi-dialog>
@@ -24,20 +36,36 @@ const formState = reactive({
   items: [
     {
       type: 'input',
-      label: '角色名',
-      prop: 'roleName'
+      label: '用户编号',
+      prop: 'roleId',
+      placeholder: '请输入',
     },
     {
-      type: 'input',
-      label: '角色编码',
-      prop: 'roleCode',
+      type: 'select',
+      label: '状态',
+      prop: 'status',
+      placeholder: '请选择',
+      options: [
+        {
+          label: '状态1',
+          value: 0
+        },
+        {
+          label: '状态2',
+          value: 1
+        },
+        {
+          label: '状态3',
+          value: 2
+        }
+      ]
     }
   ],
 
   // 配置数据绑定的字段
   formData: {
-    roleName: '',
-    roleCode: '',
+    roleId: '',
+    status: '',
   }
 })
 const { items, formData } = toRefs(formState)
@@ -48,11 +76,11 @@ function doReset() {
 }
 // 7.5 普通查询
 function doQuery(data) {
-  // console.log('父组件接收')
-  // console.log('params--', params.daterange)
-  console.log('data.daterange[0]', data.daterange[0])
-  console.log('data.daterange[1]', data.daterange[1])
-  console.log('typeof', typeof data.daterange[1])
+  // // // console.log('父组件接收')
+  // // // console.log('params--', params.daterange)
+  // // console.log('data.daterange[0]', data.daterange[0])
+  // // console.log('data.daterange[1]', data.daterange[1])
+  // // console.log('typeof', typeof data.daterange[1])
   // 处理表单数据 主要是开始日期和结束日期
   let params = {}
   params.billNo = data.billNo
@@ -65,7 +93,7 @@ function doQuery(data) {
   params.supplierId = data.supplierId
   params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
   params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
-  console.log('params', params)
+  // // console.log('params', params)
   query(
     {
       params
@@ -84,63 +112,35 @@ const tableState = reactive({
   tableItems: [
     {
       type: 'text',
-      label: '单据日期',
+      label: '用户',
       prop: 'billDate',
       width: '120'
     },
     {
       type: 'text',
-      label: '供应商',
+      label: '角色名称',
       prop: 'supplierIdDictText',
       width: '120'
     },
     {
       type: 'daterange',
-      label: '单据阶段',
+      label: '状态',
       prop: 'billStageDictText',
       width: '120'
     },
     {
       type: 'text',
-      label: '已生效',
+      label: '创建时间',
       prop: 'isEffectiveDictText',
       width: '120'
     },
+
     {
-      type: 'text',
-      label: '已关闭',
-      prop: 'isClosedDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '自动单据',
-      prop: 'isAutoDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '备注',
-      prop: 'remark',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '核批人',
-      prop: 'approverDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '制单人',
-      prop: 'createByDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '修改时间',
-      prop: 'updateTime',
-      width: '120'
+      type: 'slot',
+      label: '操作',
+      width: '400',
+      slotName: 'basicOperation',
+      fixed: 'right'
     }
   ],
 
@@ -152,7 +152,7 @@ const tableState = reactive({
     border: true,
     maxHeight: '400',
     height: '400',
-    headOperation: false
+    headOperation: ['add', 'select']
   }
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)

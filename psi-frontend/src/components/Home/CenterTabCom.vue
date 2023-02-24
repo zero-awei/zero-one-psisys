@@ -1,26 +1,23 @@
 <template>
   <el-card style="width:295px;">
     <template #header>
-        <div class="card-header">
-             <span>处理中主要单据</span>
-             <!-- 更新图标 加事件 -->
-             <el-icon style="color:blue;"
-              @click="doReset()"><Refresh /></el-icon>
-        </div>
-    </template> 
-      <div class="card-bottom">
-          <el-table :data="tableData" style="width:436">
-            <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
-             <el-table-column 
-                prop="name" label="" width="103"/>
-            <el-table-column 
-                prop="edit" label="编制中" width="127" />
-            <el-table-column 
-                prop="appr" label="待核批" width="103" />
-            <el-table-column 
-                prop="exec" label="执行中" width="103" />
-          </el-table>
+      <div class="card-header">
+        <span>处理中主要单据</span>
+        <!-- 更新图标 加事件 -->
+        <el-icon style="color:blue;" @click="doReset()">
+          <Refresh />
+        </el-icon>
       </div>
+    </template>
+    <div class="card-bottom">
+      <el-table :data="tableData" style="width:436">
+        <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
+        <el-table-column prop="name" label="" width="103" />
+        <el-table-column prop="edit" label="编制中" width="127" />
+        <el-table-column prop="appr" label="待核批" width="103" />
+        <el-table-column prop="exec" label="执行中" width="103" />
+      </el-table>
+    </div>
   </el-card>
 </template>
 
@@ -32,8 +29,8 @@ import { defineProps} from "vue"
 const props = defineProps({
 
 }) */
-import { getTableList} from '@/data/home/datalist.js'
-import {onMounted } from 'vue'
+import { getTableList } from '@/data/home/datalist.js'
+import { onMounted } from 'vue'
 // const {tableData} = toRefs(tableState)
 /* function doGetTableList() {
   getTableList(
@@ -42,7 +39,7 @@ import {onMounted } from 'vue'
     // 请求成功
     (data) => {
       // 表格列表数据
-      console.log(data.data)
+      // // console.log(data.data)
       tableData = data.data
       name = tableData.name
       appr = tableData.appr
@@ -92,20 +89,22 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
-.el-card{
-  top:25px;
-  left:-10px;
-  width:295px;
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-span{
-  color: black;
-  font-size: 16px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-}
+.el-card {
+  top: 25px;
+  left: -10px;
+  width: 295px;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      color: black;
+      font-size: 16px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
 }
 </style>

@@ -4,18 +4,18 @@
       <template #header>
         <div class="card-header">
           <span>销售金额</span>
-          <el-icon style="color:blue; top:-15px;"
-          @click=""><Refresh /></el-icon>
+          <el-icon style="color:blue; top:-15px;" @click="">
+            <Refresh />
+          </el-icon>
         </div>
       </template>
       <div id="div1" style="width:273px;height:176px;float: left;"></div>
-   </el-card>
+    </el-card>
 
     <!-- <div id="div2" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div3" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div4" style="width: 700px;height:300px;float: left;margin:20px"></div> -->
   </div>
-  
 </template>
 
 <script>
@@ -27,79 +27,79 @@ import axios from "axios"
 // import option2 from  "@/static/option.js"
 // import option3 from  "@/static/option.js"
 // import option4 from  "@/static/option.js"
-  const datalist = {
-    "month": [
-        "3月",
-        "3月",
-        "3月",
-        "3月",
-        "3月",
-        "3月",
-        "3月",
-        "3月",
-        "3月",
-        "3月"
-    ],
-    "data":[
-        2000,
-        3334,
-        2133,
-        2000,
-        3334,
-        2133,
-        2133,
-        2000,
-        3334,
-        2133
-        
-    ]
-} 
+const datalist = {
+  "month": [
+    "3月",
+    "3月",
+    "3月",
+    "3月",
+    "3月",
+    "3月",
+    "3月",
+    "3月",
+    "3月",
+    "3月"
+  ],
+  "data": [
+    2000,
+    3334,
+    2133,
+    2000,
+    3334,
+    2133,
+    2133,
+    2000,
+    3334,
+    2133
+
+  ]
+}
 
 export default {
-  mounted(){
+  mounted() {
     this.getOption1();
     // this.getOption2();
     // this.getOption3();
     // this.getOption4();
   },
   methods: {
-    getOption1(){
+    getOption1() {
       var myEcharts = echarts.init(document.getElementById("div1"));
       var option1 = {
         yAxis: {},
         tooltip: {
-            trigger: "axis"
+          trigger: "axis"
         },
         xAxis: {
-            data: [],   // 将数据保存到json中，使用axios读取数据。axios.get("json路径").then(res=>{})  
+          data: [],   // 将数据保存到json中，使用axios读取数据。axios.get("json路径").then(res=>{})  
         },
         series: {
-            type: "bar",
-            // name: "销量",
-            data: [],   
+          type: "bar",
+          // name: "销量",
+          data: [],
         }
       }
-       axios.get(".././testData.json").then(
-        res =>{
-          console.log(res.data)
-          let datalist=JSON.parse(res.data)
+      axios.get(".././testData.json").then(
+        res => {
+          // // console.log(res.data)
+          // let datalist=JSON.parse(res.data)
         }
       )
       myEcharts.setOption(option1);
-        myEcharts.setOption(
-          {
-            xAxis: {
-              data: datalist.month
-            },
-            series: {
-              data: datalist.data,
-              label: {
+      myEcharts.setOption(
+        {
+          xAxis: {
+            data: datalist.month
+          },
+          series: {
+            data: datalist.data,
+            label: {
               show: true
-              }
             }
           }
-        )
-    } 
+        }
+      )
+    }
 
 
 
@@ -108,7 +108,7 @@ export default {
     //   var myEcharts = echarts.init(document.getElementById("div1"));
     //   myEcharts.setOption(option1);
     //   axios.get("/js/testData.json").then(res => {
-    //     console.log(res.data)
+    //     // // console.log(res.data)
     //     myEcharts.setOption(
     //       {
     //         xAxis: {
@@ -172,7 +172,7 @@ export default {
     //           trigger: 'item'
     //         }
     //       }
-          
+
     //     })
     //   })
     // }
@@ -183,25 +183,28 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-*{
-  margin:0;
+* {
+  margin: 0;
 }
-div{
-  top:15px;
-  left:-3px;
+
+div {
+  top: 15px;
+  left: -3px;
 }
+
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.card-header span{
-    top:-15px;
-    display: inline-block;
-    flex: 1;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: black;
-    font-size: 16px;
+
+.card-header span {
+  top: -15px;
+  display: inline-block;
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: black;
+  font-size: 16px;
 }
 </style>

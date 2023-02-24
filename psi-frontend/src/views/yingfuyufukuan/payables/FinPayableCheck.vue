@@ -1,4 +1,5 @@
-<template><!-- 应付核销界面 -->
+<template>
+  <!-- 应付核销界面 -->
   <div>
     <!-- 查询 -->
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="doQuery" @reset="doReset"></psi-form>
@@ -142,11 +143,11 @@ function doReset() {
 }
 // 7.5 普通查询
 function doQuery(data) {
-  // console.log('父组件接收')
-  // console.log('params--', params.daterange)
-  console.log('data.daterange[0]', data.daterange[0])
-  console.log('data.daterange[1]', data.daterange[1])
-  console.log('typeof', typeof data.daterange[1])
+  // // // console.log('父组件接收')
+  // // // console.log('params--', params.daterange)
+  // // console.log('data.daterange[0]', data.daterange[0])
+  // // console.log('data.daterange[1]', data.daterange[1])
+  // // console.log('typeof', typeof data.daterange[1])
   // 处理表单数据 主要是开始日期和结束日期
   let params = {}
   params.billNo = data.billNo
@@ -159,7 +160,8 @@ function doQuery(data) {
   params.supplierId = data.supplierId
   params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
   params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
-  console.log('params', params)
+  // // console.log('params', params)
+  // 后端调用接口
   query(
     {
       params
@@ -259,6 +261,7 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 // 7.2 列出所有单据
+//TODO 前后联调
 function doGetTableList() {
   getTableList(
     // 参数为空是这么写？

@@ -1,6 +1,23 @@
+/*
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-02-11 14:30:03
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-23 18:42:32
+ * @FilePath: \psi-frontend\src\router\index.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-02-11 14:30:03
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-23 17:23:23
+ * @FilePath: \psi-frontend\src\router\index.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { createRouter, createWebHistory } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { userStore } from '../stores/user'
+import { pathStore } from '../stores/path'
 const routes = []
 routes.push(
   {
@@ -53,6 +70,7 @@ router.beforeEach(async function (to, from, next) {
   // 判断本地是否记录token值
   let store = userStore()
   let token = store.getToken
+  let pathstore = pathStore()
   // 如果有token
   if (token) {
     // 判断是否已经加载数据
@@ -66,6 +84,8 @@ router.beforeEach(async function (to, from, next) {
       // 设置加载完毕
       store.setLoaded(true)
     }
+    //添加路由
+    pathstore.addPath(to)
     next()
   }
   // 如果没有token值，直接进入登录

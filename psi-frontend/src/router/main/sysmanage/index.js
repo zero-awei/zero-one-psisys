@@ -86,6 +86,26 @@ const routes = [
     path: '/sysmanagement/usermanagement',
     name: 'usermanagement',
     component: () => import('@/views/sysmanage/UserManage.vue')
+  },
+  {
+    path: '/sysmanagement/addressbook',
+    name: 'addressbook',
+    component: () => import('@/views/sysmanage/Addressbook.vue')
+  },
+  {
+    path: '/sysmanagement/Category',
+    name: 'Category',
+    component: () => import('@/views/sysmanage/Category.vue')
+  },
+  {
+    path: '/sysmanagement/orimanage',
+    name: 'orimanage',
+    component: () => import('@/views/sysmanage/OriManage.vue')
+  },
+  {
+    path: '/sysmanagement/sysposition',
+    name: 'sysposition',
+    component: () => import('@/views/sysmanage/SysPosition.vue')
   }
 ]
 

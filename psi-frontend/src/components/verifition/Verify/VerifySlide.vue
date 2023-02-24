@@ -1,88 +1,50 @@
 <template>
   <div style="position: relative">
-    <div
-      v-if="type === '2'"
-      class="verify-img-out"
-      :style="{ height: parseInt(setSize.imgHeight) + vSpace + 'px' }"
-    >
-      <div
-        class="verify-img-panel"
-        :style="{ width: setSize.imgWidth, height: setSize.imgHeight }"
-      >
-        <img
-          :src="'data:image/png;base64,' + backImgBase"
-          alt=""
-          style="width: 100%; height: 100%; display: block"
-        />
+    <div v-if="type === '2'" class="verify-img-out" :style="{ height: parseInt(setSize.imgHeight) + vSpace + 'px' }">
+      <div class="verify-img-panel" :style="{ width: setSize.imgWidth, height: setSize.imgHeight }">
+        <img :src="'data:image/png;base64,' + backImgBase" alt="" style="width: 100%; height: 100%; display: block" />
         <div class="verify-refresh" @click="refresh" v-show="showRefresh">
           <i class="iconfont icon-refresh"></i>
         </div>
         <transition name="tips">
-          <span
-            class="verify-tips"
-            v-if="tipWords"
-            :class="passFlag ? 'suc-bg' : 'err-bg'"
-            >{{ tipWords }}</span
-          >
+          <span class="verify-tips" v-if="tipWords" :class="passFlag ? 'suc-bg' : 'err-bg'">{{ tipWords }}</span>
         </transition>
       </div>
     </div>
     <!-- 公共部分 -->
-    <div
-      class="verify-bar-area"
-      :style="{
-        width: setSize.imgWidth,
-        height: barSize.height,
-        'line-height': barSize.height
-      }"
-    >
+    <div class="verify-bar-area" :style="{
+      width: setSize.imgWidth,
+      height: barSize.height,
+      'line-height': barSize.height
+    }">
       <span class="verify-msg" v-text="text"></span>
-      <div
-        class="verify-left-bar"
-        :style="{
-          width: leftBarWidth !== undefined ? leftBarWidth : barSize.height,
-          height: barSize.height,
-          'border-color': leftBarBorderColor,
-          transaction: transitionWidth
-        }"
-      >
+      <div class="verify-left-bar" :style="{
+        width: leftBarWidth !== undefined ? leftBarWidth : barSize.height,
+        height: barSize.height,
+        'border-color': leftBarBorderColor,
+        transaction: transitionWidth
+      }">
         <span class="verify-msg" v-text="finishText"></span>
-        <div
-          class="verify-move-block"
-          @touchstart="start"
-          @mousedown="start"
-          :style="{
-            width: barSize.height,
-            height: barSize.height,
-            'background-color': moveBlockBackgroundColor,
-            left: moveBlockLeft,
-            transition: transitionLeft
-          }"
-        >
-          <i
-            :class="['verify-icon iconfont', iconClass]"
-            :style="{ color: iconColor }"
-          ></i>
-          <div
-            v-if="type === '2'"
-            class="verify-sub-block"
-            :style="{
-              width: Math.floor((parseInt(setSize.imgWidth) * 47) / 310) + 'px',
-              height: setSize.imgHeight,
-              top: '-' + (parseInt(setSize.imgHeight) + vSpace) + 'px',
-              'background-size': setSize.imgWidth + ' ' + setSize.imgHeight
-            }"
-          >
-            <img
-              :src="'data:image/png;base64,' + blockBackImgBase"
-              alt=""
-              style="
-                width: 100%;
-                height: 100%;
-                display: block;
-                -webkit-user-drag: none;
-              "
-            />
+        <div class="verify-move-block" @touchstart="start" @mousedown="start" :style="{
+          width: barSize.height,
+          height: barSize.height,
+          'background-color': moveBlockBackgroundColor,
+          left: moveBlockLeft,
+          transition: transitionLeft
+        }">
+          <i :class="['verify-icon iconfont', iconClass]" :style="{ color: iconColor }"></i>
+          <div v-if="type === '2'" class="verify-sub-block" :style="{
+            width: Math.floor((parseInt(setSize.imgWidth) * 47) / 310) + 'px',
+            height: setSize.imgHeight,
+            top: '-' + (parseInt(setSize.imgHeight) + vSpace) + 'px',
+            'background-size': setSize.imgWidth + ' ' + setSize.imgHeight
+          }">
+            <img :src="'data:image/png;base64,' + blockBackImgBase" alt="" style="
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    -webkit-user-drag: none;
+                  " />
           </div>
         </div>
       </div>
@@ -271,7 +233,7 @@ export default {
         //兼容移动端
         x = e.touches[0].pageX
       }
-      console.log(barArea)
+      // // console.log(barArea)
       startLeft.value = Math.floor(
         x - barArea.value.getBoundingClientRect().left
       )
@@ -302,8 +264,8 @@ export default {
         if (
           move_block_left >=
           barArea.value.offsetWidth -
-            parseInt(parseInt(blockSize.value.width) / 2) -
-            2
+          parseInt(parseInt(blockSize.value.width) / 2) -
+          2
         ) {
           move_block_left =
             barArea.value.offsetWidth -
@@ -331,9 +293,9 @@ export default {
           captchaType: captchaType.value,
           pointJson: secretKey.value
             ? aesEncrypt(
-                JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
-                secretKey.value
-              )
+              JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
+              secretKey.value
+            )
             : JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
           token: backToken.value
         }
@@ -359,14 +321,14 @@ export default {
             ).toFixed(2)}s验证成功`
             var captchaVerification = secretKey.value
               ? aesEncrypt(
-                  backToken.value +
-                    '---' +
-                    JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
-                  secretKey.value
-                )
-              : backToken.value +
+                backToken.value +
                 '---' +
-                JSON.stringify({ x: moveLeftDistance, y: 5.0 })
+                JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
+                secretKey.value
+              )
+              : backToken.value +
+              '---' +
+              JSON.stringify({ x: moveLeftDistance, y: 5.0 })
             setTimeout(() => {
               tipWords.value = ''
               proxy.$parent.closeBox()

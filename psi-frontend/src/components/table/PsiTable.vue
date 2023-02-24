@@ -53,15 +53,15 @@
         <!-- 自定义操作 -->
         <el-table-column v-else-if="item.type === 'slot'" :label="item.label ?? ''" :prop="item.prop ?? ''"
           :width="item.width ?? 50" :type="item.type ?? ''" :fixed="item.fixed ?? false" :align="item.align ?? 'center'">
-          <template #default="scope">
-            <slot :name="item.slotName" :data="scope.row"></slot>
-          </template>
-        </el-table-column>
-        <!-- 正常文本显示 -->
-        <el-table-column v-else :label="item.label ?? ''" :prop="item.prop ?? ''" :width="item.width ?? 50"
-          :type="item.type ?? ''" :fixed="item.fixed ?? false" :align="item.align ?? 'center'"></el-table-column>
-      </template>
-      <el-table-column v-if="attributes.rightOperation" fixed="right" label="操作" width="150" align="center">
+        <template #default="scope">
+          <slot :name="item.slotName" :data="scope.row"></slot>
+        </template>
+      </el-table-column>
+      <!-- 正常文本显示 -->
+      <el-table-column v-else :label="item.label ?? ''" :prop="item.prop ?? ''" :width="item.width ?? 50"
+        :type="item.type ?? ''" :fixed="item.fixed ?? false" :align="item.align ?? 'center'"></el-table-column>
+    </template>
+    <!-- <el-table-column v-if="attributes.rightOperation" fixed="right" label="操作" width="150" align="center">
         <template #default="scope">
           <el-button link type="primary" @click="edit(scope.row)">编辑</el-button>
           |
@@ -74,28 +74,28 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item>删除</el-dropdown-item>
-                <el-dropdown-item>审核</el-dropdown-item>
-                <el-dropdown-item>作废</el-dropdown-item>
+                      <el-dropdown-item>删除</el-dropdown-item>
+                      <el-dropdown-item>审核</el-dropdown-item>
+                      <el-dropdown-item>作废</el-dropdown-item>
               <el-dropdown-item disabled>打印</el-dropdown-item>
-                <el-dropdown-item divided>反关闭</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </template>
-        <!-- <template #default> -->
-        <!-- <slot></slot> -->
-        <!-- <el-button link type="primary" size="small">Detail</el-button>
+                      <el-dropdown-item divided>反关闭</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
+              </template>    -->
+      <!-- <template #default> -->
+      <!-- <slot></slot> -->
+      <!-- <el-button link type="primary" size="small">Detail</el-button>
           <el-button link type="primary" size="small">Edit</el-button> -->
-        <!-- </template> -->
-      </el-table-column>
+      <!-- </template> -->
+      <!-- </el-table-column> -->
     </el-table>
     <div class="demo-pagination-block">
       <!-- <div class="demonstration">All combined</div> -->
       <el-pagination v-model:current-page="pagination.currentPage" v-model:page-size="pagination.pageSize"
         :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total" />
       <!--  @size-change="handleSizeChange"
-                              @current-change="handleCurrentChange" -->
+                                    @current-change="handleCurrentChange" -->
     </div>
   </div>
 </template>
@@ -125,7 +125,7 @@ const selectNum = ref(0)
 const emit = defineEmits(['selectionChange', 'add', 'importData', 'exportData'])
 const exportDataList = ref([])
 const handleSelectionChange = (val) => {
-  console.log('---', val)
+  // // console.log('---', val)
   selectNum.value = val.length
   exportDataList = val //不知道能不能赋值
   emit('selectionChange', val)
@@ -140,10 +140,10 @@ function exportData() {
   emit('exportData', exportDataList)
 }
 // const handleSizeChange = (val) => {
-//   console.log(`${val} items per page`)
+//   // // console.log(`${val} items per page`)
 // }
 // const handleCurrentChange = (val) => {
-//   console.log(`current page: ${val}`)
+//   // // console.log(`current page: ${val}`)
 // }
 
 // 自定义列相关配置
@@ -159,17 +159,17 @@ const customStatus = reactive({
 
 function refToColumn() {
   prop.items.forEach((value, index) => {
-    // console.log(index, '--', value)
+    // // // console.log(index, '--', value)
     let item = reactive({})
     item.label = value.label
     // item.value = value.prop
     item.value = value.prop
     customStatus.items.push(item)
   })
-  // console.log('123', status.items)
+  // // // console.log('123', status.items)
 }
 function handleChange(value) {
-  console.log("父组件接收参数value", value)
+  // // console.log("父组件接收参数value", value)
 }
 onMounted(() => {
   refToColumn()

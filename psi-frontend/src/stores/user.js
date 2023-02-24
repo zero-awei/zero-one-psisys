@@ -31,30 +31,30 @@ let testMenus = [
       {
         id: 5,
         text: '部门管理',
-        href: '/un-4',
+        href: '/sysmanagement/sysposition',
         icon: 'IconSetting',
         pid: 1
       },
       {
         id: 6,
         text: '组织结构管理',
-        href: '/un-5',
+        href: '/sysmanagement/orimanage',
         icon: 'IconSetting',
         pid: 1
       },
       {
-        id: 1,
+        id: 7,
         text: '分类字典',
         icon: 'IconTickets',
         pid: 997,
-        href: '/pay/payable/check'
+        href: '/sysmanagement/Category'
       },
       {
-        id: 1,
+        id: 8,
         text: '通讯录',
         icon: 'IconTickets',
         pid: 997,
-        href: '/pay/payable/check'
+        href: '/sysmanagement/addressbook'
       }
     ]
   },
@@ -234,7 +234,8 @@ export const userStore = defineStore('user', {
     // 保存当前用户
     user: null,
     // 菜单数据
-    menus: []
+    menus: [],
+    routeMenus: []
   }),
   getters: {
     // 获取token
@@ -314,6 +315,65 @@ export const userStore = defineStore('user', {
       this.refreshToken = null
       localStorage.removeItem('token')
       localStorage.removeItem('refreshToken')
+    },
+    // 递归遍历
+    // digui(tree, temp) {
+    //   for (let item in this.menus) {
+    //     if (this.menus[item].children) {
+    //       this.digui(this.menus[item].children, temp)
+    //     } else {
+    //       temp.push(this.menus[item])
+    //     }
+    //   }
+    //   return temp
+    // },
+    // 获取可跳转路由的菜单
+    // 非递归遍历
+    getRouteMenus() {
+      // if (this.menus.length > 0) {
+      //   let temp = []
+      //   temp = this.digui(this.menus, temp)
+      //   this.routeMenus = temp
+      //   return this.routeMenus
+      // }
+      // for (let item in this.menus) {
+      //   if (this.menus[item].children) {
+      //     this.getRouteMenus(this.menus[item].children)
+      //   } else {
+      //     routeMenus.push(this.menus[item])
+      //   }
+      // }
+      // return routeMenus
+      for (let i in this.menus) {
+        if (this.menus[i].children) {
+          for (let j in this.menus[i].children) {
+            let itemj = this.menus[i].children[j]
+            if (itemj.children) {
+              for (let k in itemj.children) {
+                let itemk = itemj.children[k]
+                if (itemk.children) {
+                } else {
+                  this.routeMenus.push(itemk)
+                }
+              }
+            } else {
+              this.routeMenus.push(itemj)
+            }
+          }
+        } else {
+          this.routeMenus.push(this.menus[i])
+        }
+        return this.routeMenus
+        // // // console.log('this.routeMenus', this.routeMenus)
+        // if (this.menus[i].children) {
+        //   for (let j in this.menus[i]){
+        //     if(j.chi)
+        //   }
+
+        // } else {
+        //   routeMenus.push(this.menus[item])
+        // }
+      }
     }
   }
 })

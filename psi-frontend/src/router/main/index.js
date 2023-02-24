@@ -2,13 +2,17 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
+    id: 1,
+    text: '主页',
     redirect: { name: 'Dashboard' },
     component: () => import('@/views/HomeView.vue'),
     children: [
       {
         path: '/dashboard',
         name: 'Dashboard',
-        component: () => import('@/views/dashboard/Dashboard.vue'),
+        id: 2,
+        text: '仪表板',
+        component: () => import('@/views/dashboard/Dashboard.vue')
       }
     ]
   }

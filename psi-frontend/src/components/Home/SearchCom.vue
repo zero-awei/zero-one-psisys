@@ -1,13 +1,8 @@
 <template>
-        <el-select  v-model="value" filterable placeholder="搜索菜单">
-          <el-option
-            v-for="item in temp"
-            :key="item.text"
-            :label="item.text"
-            :value="item.text"
-            @click="handleJump(item.href)"
-          />
-        </el-select>
+  <el-select v-model="value" filterable placeholder="搜索菜单">
+    <el-option v-for="item in temp" :key="item.text" :label="item.text" :value="item.text"
+      @click="handleJump(item.href)" />
+  </el-select>
 </template>
 
 <script setup>
@@ -19,7 +14,7 @@ const props = defineProps({
     default: () => false
 }
 })
-console.log(props.panelShow) */
+// // console.log(props.panelShow) */
 // let show = true
 /* const panelShow = defineProps({
   panelShow
@@ -45,24 +40,24 @@ function getList(tree) {
     }
   }
   return temp;
-} 
-console.log(getList(datalist)); 
+}
+// // // console.log(getList(datalist));
 temp = getList(datalist);
-console.log(temp);
+// // // console.log(temp);
 
-function handleJump(el){
+function handleJump(el) {
   $router.push(el)
-  console.log(el)
+  // // // console.log(el)
 }
 </script>
 
 <style lang="scss" scoped>
-.el-select{
-  position:fixed;
-  left:800px;
-  top:16px;
-  width:180px;
-  height:30px;
+.el-select {
+  position: fixed;
+  left: 800px;
+  top: 16px;
+  width: 180px;
+  height: 30px;
   // background-color:#000011;
 }
 </style>

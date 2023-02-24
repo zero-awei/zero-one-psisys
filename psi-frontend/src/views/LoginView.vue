@@ -102,7 +102,7 @@ function handleSuccess(res) {
     { baseURL: import.meta.env.VITE_CAPTCHA_URL }
   )
     .then((res) => {
-      console.log(res)
+      // // console.log(res)
       if (res.data.repCode === '0000') {
         // 跳转到首页
         $router.push('/home')
@@ -113,7 +113,7 @@ function handleSuccess(res) {
       ElMessage.error('账号或密码错误')
     })
     .catch((res) => {
-      console.log(res)
+      // // console.log(res)
       ElMessage.error('账号或密码错误')
     })
 
