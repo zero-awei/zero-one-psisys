@@ -17,7 +17,8 @@ public interface PurchasePaymentApis {
      * @param create 增加采购付款的数据传输对象
      * @return {@link JsonVO}<{@link String}>
      */
-    JsonVO<String> save(PaymentCreateDTO create);
+    JsonVO<String> saveApp(PaymentCreateDTO create);
+
 
     /**
      * 删除接口
@@ -42,4 +43,6 @@ public interface PurchasePaymentApis {
      * @return {@link JsonVO}<{@link String}>
      */
     JsonVO<String> upload(MultipartFile file);
+
+
 }

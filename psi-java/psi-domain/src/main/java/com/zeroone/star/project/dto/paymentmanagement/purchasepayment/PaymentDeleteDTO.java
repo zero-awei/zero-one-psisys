@@ -11,6 +11,6 @@ import lombok.Data;
 @Data
 @ApiModel("删除采购付款的数据传输对象")
 public class PaymentDeleteDTO {
-    @ApiModelProperty(value = "单据id",example = "1625823227778736130")
-    private int id;
+    @ApiModelProperty(value = "单据id",example = "GFK-230215-110")
+    private String billNo;
 }

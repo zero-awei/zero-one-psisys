@@ -3,12 +3,13 @@ package com.zeroone.star.project.dto.paymentmanagement.purchasepayment;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * @author Tomcat
+ * @author Tomcat -- 业峰实现
  * @Date 2023/2/15 17:31
  */
 @Data
@@ -16,7 +17,7 @@ import java.util.List;
 public class PaymentUpdateDTO {
     @ApiModelProperty(value ="备注", example = "test")
     private String remark;
-    @ApiModelProperty(value =  "单据日期", example = "CGFK-230215-035")
+    @ApiModelProperty(value =  "单据编号", example = "CGFK-230215-035")
     private String billNo;
     @ApiModelProperty(value =  "核批结果类型", example = "")
     private String approvalResultType;
@@ -27,17 +28,19 @@ public class PaymentUpdateDTO {
     @ApiModelProperty(value =  "是否作废", example = "0")
     private String isVoided;
     @ApiModelProperty(value =  "单据阶段", example = "FinPayment")
-    private Date billType;
+    private String billType;
     @ApiModelProperty(value =  "审核人", example = "")
     private String approver;
-    @ApiModelProperty(value =  "单据日期", example = "2023-02-15")
-    private Date billDate;
+    //这里的单据日期应该指的是单据创建的日期，这里是修改，故不要这个属性值
+    //@ApiModelProperty(value =  "单据日期", example = "2023-02-15")
+    //private Date billDate;
     @ApiModelProperty(value =  "源单类型", example = "")
     private String srcBillType;
     @ApiModelProperty(value =  "核批意见", example = "null")
     private String approvalRemark;
     @ApiModelProperty(value =  "源单号", example = "")
     private String srcNo;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value =  "修改时间", example = "2023-02-15 17")
     private Date updateTime;
     @ApiModelProperty(value =  "是否自动生成", example = "0")
@@ -46,10 +49,12 @@ public class PaymentUpdateDTO {
     private String isRubric;
     @ApiModelProperty(value =  "创建部门", example = "A01A05")
     private String sysOrgCode;
-    @ApiModelProperty(value =  "创建时间", example = "2023-02-15 17")
-    private Date createTime;
-    @ApiModelProperty(value =  "创建人", example = "psi")
-    private String createBy;
+    //这里是更新操作，创建的时间是新增的时候就确定了，后期不可修改，故不存在这个属性值
+    //@ApiModelProperty(value =  "创建时间", example = "2023-02-15 17")
+    //private Date createTime;
+    //创建人不可以修改
+    //@ApiModelProperty(value =  "创建人", example = "psi")
+    //private String createBy;
     @ApiModelProperty(value =  "源单id", example = "")
     private String srcBillId;
     @ApiModelProperty(value =  "生效时间", example = "null")
