@@ -1,347 +1,136 @@
+/*
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-02-24 22:06:10
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-24 23:44:46
+ * @FilePath: \psi-frontend\src\stores\user.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { defineStore } from 'pinia'
 import Request from '@/apis/request'
-// 测试菜单数据
-let testMenus = [
-  {
-    id: 1,
-    text: '系统管理',
-    icon: 'IconSetting',
-    children: [
-      {
-        id: 2,
-        text: '角色管理',
-        href: '/sysmanagement/rolemanagement',
-        icon: 'IconSetting',
-        pid: 1
-      },
-      {
-        id: 3,
-        text: '菜单管理',
-        href: '/sysmanagement/menumanagement',
-        icon: 'IconSetting',
-        pid: 1
-      },
-      {
-        id: 4,
-        text: '用户管理',
-        href: '/sysmanagement/usermanagement',
-        icon: 'IconSetting',
-        pid: 1
-      },
-      {
-        id: 5,
-        text: '部门管理',
-        href: '/sysmanagement/sysposition',
-        icon: 'IconSetting',
-        pid: 1
-      },
-      {
-        id: 6,
-        text: '组织结构管理',
-        href: '/sysmanagement/orimanage',
-        icon: 'IconSetting',
-        pid: 1
-      },
-      {
-        id: 7,
-        text: '分类字典',
-        icon: 'IconTickets',
-        pid: 997,
-        href: '/sysmanagement/Category'
-      },
-      {
-        id: 8,
-        text: '通讯录',
-        icon: 'IconTickets',
-        pid: 997,
-        href: '/sysmanagement/addressbook'
-      }
-    ]
-  },
-  {
-    id: 2,
-    text: '库存管理',
-    icon: 'IconUser',
-    children: [
-      {
-        id: 1,
-        text: '入库管理',
-        icon: 'IconUser',
-        children: [
-          {
-            id: 2,
-            text: '采购入库',
-            href: '/inventory/purchase',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 3,
-            text: '采购入库退货出库（红入）',
-            href: '/inventory/salesreturn',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 4,
-            text: '盘盈入库',
-            href: '/inventory/inventoryprofit',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 2,
-            text: '涨吨入库',
-            href: 'inventory/rise',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 2,
-            text: '其他入库',
-            href: 'inventory/other',
-            icon: 'IconSetting',
-            pid: 1
-          }
-        ]
-      },
-      {
-        id: 2,
-        text: '即时库存',
-        icon: 'IconUser',
-        children: [
-          {
-            id: 2,
-            text: '物料库存',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 3,
-            text: '物料批次库存',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 4,
-            text: '仓库物料库存',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 2,
-            text: '详细库存',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          }
-        ]
-      },
-      {
-        id: 3,
-        text: '出入库统计',
-        icon: 'IconUser',
-        children: [
-          {
-            id: 2,
-            text: '出入库日汇总',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 3,
-            text: '出入库月汇总',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          },
-          {
-            id: 4,
-            text: '出入库明细',
-            href: '/sysmanagement/rolemanagement',
-            icon: 'IconSetting',
-            pid: 1
-          }
-        ]
-      }
-    ]
-  }
-]
-// {
-//     id: 2,
-//     text: '用户管理',
-//     icon: 'IconUser',
-//     children: [
-//       {
-//         id: 2,
-//         text: '用户管理1',
-//         href: '/un-11',
-//         icon: 'IconUser',
-//         pid: 2
-//       },
-//       {
-//         id: 3,
-//         text: '用户管理2',
-//         href: '/un-12',
-//         icon: 'IconUser',
-//         pid: 2
-//       },
-//       {
-//         id: 4,
-//         text: '用户管理3',
-//         href: '/un-13',
-//         icon: 'IconUser',
-//         pid: 2
-//       },
-//       {
-//         id: 5,
-//         text: '用户管理4',
-//         href: '/un-14',
-//         icon: 'IconUser',
-//         pid: 2
-//       },
-//       {
-//         id: 6,
-//         text: '用户管理5',
-//         href: '/un-15',
-//         icon: 'IconUser',
-//         pid: 2
-//       }
-//     ]
-//   },
-//   {
-//     id: 3,
-//     text: '订单管理',
-//     icon: 'IconTickets',
-//     children: [
-//       {
-//         id: 2,
-//         text: '订单管理1',
-//         href: '/un-21',
-//         icon: 'IconTickets',
-//         pid: 3
-//       },
-//       {
-//         id: 3,
-//         text: '订单管理2',
-//         href: '/un-22',
-//         icon: 'IconTickets',
-//         pid: 3
-//       },
-//       {
-//         id: 4,
-//         text: '订单管理3',
-//         href: '/un-23',
-//         icon: 'IconTickets',
-//         pid: 3
-//       },
-//       {
-//         id: 5,
-//         text: '订单管理4',
-//         href: '/un-24',
-//         icon: 'IconTickets',
-//         pid: 3
-//       },
-//       {
-//         id: 6,
-//         text: '订单管理5',
-//         href: '/un-25',
-//         icon: 'IconTickets',
-//         pid: 3
-//       }
-//     ]
-//   }
-// 业务路由配置
-const yewuRouter = {
-  id: 998,
-  text: '应付与付款',
-  icon: 'IconTickets',
-  children: [
-    {
-      id: 3,
-      text: '应付管理',
-      icon: 'IconTickets',
-      pid: 998,
-      children: [
-        {
-          id: 3,
-          text: '采购应付',
-          href: '/pay/payable/purchase',
-          icon: 'IconTickets',
-          pid: 2
-        },
-        {
-          id: 3,
-          text: '其他应付',
-          href: '/pay/payable/other',
-          icon: 'IconTickets',
-          pid: 2
-        },
-        {
-          id: 3,
-          text: '应付核销',
-          href: '/pay/payable/check',
-          icon: 'IconTickets',
-          pid: 2
-        }
-      ]
-    }
-  ]
-}
-// 组件测试
-const componentRouter = {
-  id: 999,
-  text: '组件封装',
-  icon: 'IconTickets',
+// 系统管理
+let sysmanageRouter = {
+  id: 1,
+  text: '系统管理',
+  icon: 'IconSetting',
   children: [
     {
       id: 2,
-      text: '表单组件',
-      href: '/component/form',
-      icon: 'IconTickets',
-      pid: 3
+      text: '角色管理',
+      href: '/sysmanagement/rolemanagement',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 3,
-      text: '表格组件',
-      href: '/component/table',
-      icon: 'IconTickets',
-      pid: 3
+      text: '菜单管理',
+      href: '/sysmanagement/menumanagement',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 4,
-      text: '弹出框组件',
-      href: '/component/dialog',
-      icon: 'IconTickets',
-      pid: 3
+      text: '用户管理',
+      href: '/sysmanagement/usermanagement',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 5,
-      text: '抽屉组件',
-      href: '/component/drawer',
-      icon: 'IconTickets',
-      pid: 3
+      text: '部门管理',
+      href: '/sysmanagement/sysposition',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 6,
-      text: '自定义列组件',
-      href: '/component/custom',
-      icon: 'IconTickets',
-      pid: 3
+      text: '组织结构管理',
+      href: '/sysmanagement/orimanage',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
-      id: 6,
-      text: 'center组件',
-      href: '/component/center',
+      id: 7,
+      text: '分类字典',
       icon: 'IconTickets',
-      pid: 3
+      pid: 1,
+      href: '/sysmanagement/Category'
+    },
+    {
+      id: 8,
+      text: '通讯录',
+      icon: 'IconTickets',
+      pid: 1,
+      href: '/sysmanagement/addressbook'
     }
   ]
 }
+
+// 基础资料
+const baseDataRouter = {
+  id: 800,
+  text: '基础资料',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 801,
+      text: '客户',
+      href: '/Client',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 802,
+      text: '供应商',
+      href: '/Provider',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 803,
+      text: '仓库',
+      href: '/Store',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 804,
+      text: '物料分类',
+      href: '/MaterialSort',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 805,
+      text: '物料',
+      href: '/Material',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 806,
+      text: '计量单位',
+      href: '/Measurement',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 807,
+      text: '币种',
+      href: '/Currency',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 808,
+      text: '银行账户',
+      href: '/Account',
+      icon: 'IconTickets',
+      pid: 4
+    }
+  ]
+}
+
 // 采购管理
 const purManagement = {
   id: 700,
@@ -450,72 +239,209 @@ const purManagement = {
     }
   ]
 }
-// 基础资料
-const baseDataRouter = {
-  id: 800,
-  text: '基础资料',
+
+// 库存管理
+const kucunguanli = {
+  id: 2,
+  text: '库存管理',
+  icon: 'IconSetting',
+  children: [
+    {
+      id: 1,
+      text: '入库管理',
+      icon: 'IconSetting',
+      children: [
+        {
+          id: 2,
+          text: '采购入库',
+          href: '/inventory/purchase',
+          icon: 'IconSetting',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '采购入库退货出库（红入）',
+          href: '/inventory/salesreturn',
+          icon: 'IconSetting',
+          pid: 2
+        },
+        {
+          id: 4,
+          text: '盘盈入库',
+          href: '/inventory/inventoryprofit',
+          icon: 'IconSetting',
+          pid: 2
+        },
+        {
+          id: 2,
+          text: '涨吨入库',
+          href: '/inventory/rise',
+          icon: 'IconSetting',
+          pid: 2
+        },
+        {
+          id: 2,
+          text: '其他入库',
+          href: '/inventory/other',
+          icon: 'IconSetting',
+          pid: 2
+        }
+      ]
+    },
+    // {
+    //   id: 2,
+    //   text: '即时库存',
+    //   icon: 'IconUser',
+    //   children: [
+    //     {
+    //       id: 1,
+    //       text: '物料库存',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 2
+    //     },
+    //     {
+    //       id: 2,
+    //       text: '物料批次库存',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 2
+    //     },
+    //     {
+    //       id: 3,
+    //       text: '仓库物料库存',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 2
+    //     },
+    //     {
+    //       id: 3,
+    //       text: '详细库存',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 2
+    //     }
+    //   ]
+    // },
+    // {
+    //   id: 3,
+    //   text: '出入库统计',
+    //   icon: 'IconUser',
+    //   children: [
+    //     {
+    //       id: 1,
+    //       text: '出入库日汇总',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 3
+    //     },
+    //     {
+    //       id: 2,
+    //       text: '出入库月汇总',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 3
+    //     },
+    //     {
+    //       id: 3,
+    //       text: '出入库明细',
+    //       href: '/sysmanagement/rolemanagement',
+    //       icon: 'IconSetting',
+    //       pid: 3
+    //     }
+    //   ]
+    // }
+  ]
+}
+
+// 应付与付款
+const yingfuyufukuan = {
+  id: 998,
+  text: '应付与付款',
   icon: 'IconTickets',
   children: [
     {
-      id: 801,
-      text: '客户',
-      href: '/Client',
+      id: 3,
+      text: '应付管理',
       icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 802,
-      text: '供应商',
-      href: '/Provider',
-      icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 803,
-      text: '仓库',
-      href: '/Store',
-      icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 804,
-      text: '物料分类',
-      href: '/MaterialSort',
-      icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 805,
-      text: '物料',
-      href: '/Material',
-      icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 806,
-      text: '计量单位',
-      href: '/Measurement',
-      icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 807,
-      text: '币种',
-      href: '/Currency',
-      icon: 'IconTickets',
-      pid: 4
-    },
-    {
-      id: 808,
-      text: '银行账户',
-      href: '/Account',
-      icon: 'IconTickets',
-      pid: 4
+      pid: 998,
+      children: [
+        {
+          id: 3,
+          text: '采购应付',
+          href: '/pay/payable/purchase',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '其他应付',
+          href: '/pay/payable/other',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '应付核销',
+          href: '/pay/payable/check',
+          icon: 'IconTickets',
+          pid: 2
+        }
+      ]
     }
   ]
 }
-//库存管理
-const kucunRouter = {}
+
+// 组件测试
+const componentRouter = {
+  id: 999,
+  text: '组件封装',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 2,
+      text: '表单组件',
+      href: '/component/form',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 3,
+      text: '表格组件',
+      href: '/component/table',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 4,
+      text: '弹出框组件',
+      href: '/component/dialog',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 5,
+      text: '抽屉组件',
+      href: '/component/drawer',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 6,
+      text: '自定义列组件',
+      href: '/component/custom',
+      icon: 'IconTickets',
+      pid: 3
+    },
+    {
+      id: 6,
+      text: 'center组件',
+      href: '/component/center',
+      icon: 'IconTickets',
+      pid: 3
+    }
+  ]
+}
 
 export const userStore = defineStore('user', {
   state: () => ({
@@ -564,13 +490,13 @@ export const userStore = defineStore('user', {
         null
       )
       // this.menus = data.data
-      this.menus = testMenus
+      this.menus.push(sysmanageRouter)
       // 在后端返回菜单列表中添加组件列表路由
-      this.menus.push(componentRouter)
-      this.menus.push(yewuRouter)
       this.menus.push(baseDataRouter)
       this.menus.push(purManagement)
-      this.menus.push(kucunRouter)
+      this.menus.push(kucunguanli)
+      this.menus.push(yingfuyufukuan)
+      this.menus.push(componentRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {
@@ -627,26 +553,19 @@ export const userStore = defineStore('user', {
     // 获取可跳转路由的菜单
     // 非递归遍历
     getRouteMenus() {
-      // if (this.menus.length > 0) {
-      //   let temp = []
-      //   temp = this.digui(this.menus, temp)
-      //   this.routeMenus = temp
-      //   return this.routeMenus
-      // }
-      // for (let item in this.menus) {
-      //   if (this.menus[item].children) {
-      //     this.getRouteMenus(this.menus[item].children)
-      //   } else {
-      //     routeMenus.push(this.menus[item])
-      //   }
-      // }
-      // return routeMenus
-      for (let i in this.menus) {
-        if (this.menus[i].children) {
-          for (let j in this.menus[i].children) {
-            let itemj = this.menus[i].children[j]
+      // console.log('-------------this.menus', this.menus)
+      for (let i = 0; i < this.menus.length; i++) {
+        let itemi = this.menus[i] // 一级菜单
+        // console.log('-----------一级菜单', itemi)
+        if (itemi.children) {
+          // 如果有二级菜单
+          for (let j in itemi.children) {
+            // 遍历二级菜单
+            let itemj = itemi.children[j]
             if (itemj.children) {
+              // 如果有三级菜单
               for (let k in itemj.children) {
+                // 遍历三级菜单
                 let itemk = itemj.children[k]
                 if (itemk.children) {
                 } else {
@@ -658,19 +577,10 @@ export const userStore = defineStore('user', {
             }
           }
         } else {
-          this.routeMenus.push(this.menus[i])
+          this.routeMenus.push(itemi)
         }
-        return this.routeMenus
-        // // // console.log('this.routeMenus', this.routeMenus)
-        // if (this.menus[i].children) {
-        //   for (let j in this.menus[i]){
-        //     if(j.chi)
-        //   }
-
-        // } else {
-        //   routeMenus.push(this.menus[item])
-        // }
       }
+      return this.routeMenus
     }
   }
 })

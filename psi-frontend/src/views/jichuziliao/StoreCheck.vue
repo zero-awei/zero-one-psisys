@@ -1,51 +1,33 @@
 <template>
   <div>
-    <psi-form
-      :items="items"
-      :formData="formData"
-      :toggleItems="toggleItems"
-      @query="doQuery"
-      @reset="doReset"
-    ></psi-form>
+    <!-- 仓库 -->
+    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="doQuery" @reset="doReset"></psi-form>
 
     <!-- 表格数据 -->
     <!-- 修改点1 -->
     <div style="margin-top:10px">
-      <psi-table
-      :items="tableItems"
-      :tableData="tableData"
-      :attributes="attributes"
-      :pagination="pagination" 
-      @add="addClient"
-    >
-    
-      <template v-slot:basicOperation="slot">
-      <!-- 修改点2 -->
-      <el-button link 
-        type="primary" 
-        @click="drawerVisible = true"
-      >编辑</el-button>
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+        @add="addClient">
 
-        <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
-      </template>
-  
-    </psi-table>
+        <template v-slot:basicOperation="slot">
+          <!-- 修改点2 -->
+          <el-button link type="primary" @click="drawerVisible = true">编辑</el-button>
+
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+        </template>
+
+      </psi-table>
     </div>
 
     <!-- 新增-抽屉 -->
-    <psi-drawer 
-      v-model="drawerVisible" 
-      :title="drawerStatus.title" 
-      :basicItems="drawerStatus.basicItems"
-      :toggleItems="drawerStatus.toggleItems" 
-      :formData="drawerStatus.formData" 
-      @confirm="confirm" />
+    <psi-drawer v-model="drawerVisible" :title="drawerStatus.title" :basicItems="drawerStatus.basicItems"
+      :toggleItems="drawerStatus.toggleItems" :formData="drawerStatus.formData" @confirm="confirm" />
   </div>
 </template>
     
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
-
+import { } from './api/storecheck.js'
 // 抽屉
 const drawerStatus = reactive({
   title: '抽屉标题',
@@ -161,7 +143,7 @@ function addClient() {
 // 修改
 function reviseClient() {
   drawerVisible.value = true
-} 
+}
 
 let clientEditDialogVisible = ref(false)
 
@@ -284,7 +266,7 @@ const status = reactive({
       address: 'No. 189, Grove St, Los Angeles',
       zip: 'CA 90036',
       tag: 'Home'
-    } 
+    }
   ],
   // table 总体配置
   attributes: {

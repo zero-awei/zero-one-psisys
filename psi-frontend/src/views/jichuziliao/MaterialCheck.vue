@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 物料 -->
     <psi-form
       :items="items"
       :formData="formData"
@@ -50,7 +51,7 @@
     
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
-
+import {} from './api/materialcheck.js'
 // 抽屉
 const drawerStatus = reactive({
   title: '物料-新增',

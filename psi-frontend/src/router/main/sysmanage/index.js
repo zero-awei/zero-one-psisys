@@ -2,7 +2,7 @@
  * @Author: Kyle5 nnkyle@163.com
  * @Date: 2023-02-20 18:51:04
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 15:24:35
+ * @LastEditTime: 2023-02-24 23:44:56
  * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -202,8 +202,81 @@ const routes = [
     name: 'check',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
-  }
+  },
   // ↓↓↓↓↓↓↓↓↓↓↓↓↓库存管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  // 采购入库
+  {
+    path: '/inventory/purchase',
+    name: 'purchase',
+    component: () => import('@/views/kucunguanli/rukuguanli/CaiGouRuKu.vue')
+  },
+  // 采购入库退货出库（红入）
+  {
+    path: '/inventory/salesreturn',
+    name: 'salesreturn',
+    component: () =>
+      import('@/views/kucunguanli/rukuguanli/CaiGouRuKuTuiHuoChuKu.vue')
+  },
+  // 盘盈入库
+  {
+    path: '/inventory/inventoryprofit',
+    name: 'inventoryprofit',
+    component: () => import('@/views/kucunguanli/rukuguanli/PanYingRuKu.vue')
+  },
+  // 涨吨入库
+  {
+    path: '/inventory/rise',
+    name: 'rise',
+    component: () => import('@/views/kucunguanli/rukuguanli/ZhangDunRuKu.vue')
+  },
+  // 其他入库
+  {
+    path: '/inventory/other',
+    name: 'other',
+    component: () => import('@/views/kucunguanli/rukuguanli/QiTaRuKu.vue')
+  },
+  // {
+  //   path: '/inventory/purchase',
+  //   name: 'check',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // },
+  // {
+  //   path: '/inventory/purchase',
+  //   name: 'check',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // },
+  // {
+  //   path: '/inventory/purchase',
+  //   name: 'check',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // },
+  // {
+  //   path: '/inventory/purchase',
+  //   name: 'check',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // },
+  // {
+  //   path: '/inventory/purchase',
+  //   name: 'check',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // },
+  // {
+  //   path: '/inventory/purchase',
+  //   name: 'check',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // },
+  // {
+  //   path: '/sysmanagement/rolemanagement',
+  //   name: '出入库明细',
+  //   component: () =>
+  //     import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  // }
 ]
 
 export default routes
