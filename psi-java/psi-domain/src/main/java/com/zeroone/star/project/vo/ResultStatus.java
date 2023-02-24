@@ -14,6 +14,7 @@ public enum ResultStatus {
     /***/
     UNAUTHORIZED("暂未登录或TOKEN已经过期", 401),
     FORBIDDEN("没有相关权限", 403),
+    WRONG_CAPTCHA("验证码错误", 9993),
     SERVER_ERROR("服务器错误", 9994),
     PARAMS_INVALID("上传参数异常", 9995),
     CONTENT_TYPE_ERR("ContentType错误",9996),
@@ -21,7 +22,6 @@ public enum ResultStatus {
     SERVER_BUSY("服务器繁忙", 9998),
     FAIL("操作失败", 9999),
     SUCCESS("操作成功"),
-    WRONG_CAPTCHA("验证码错误", 9993),
     ;
 
     private final String message;
