@@ -32,6 +32,8 @@ class AddCgthckBillDTO : public FileDTO
 	CC_SYNTHESIZE(std::string, remark, Remark);
 	// 附件
 	CC_SYNTHESIZE(std::string, attachment, Attachment);
+	// 单据阶段
+	CC_SYNTHESIZE(std::string, billStage, BillStage);
 
 	/***不可填***/
 	// 已生效
@@ -83,6 +85,9 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, supplierId);
 		BIND_FROM_TO_NORMAL(j, t, srcNo);
 		BIND_FROM_TO_NORMAL(j, t, handler);
+		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_NORMAL(j, t, attachment);
+		BIND_FROM_TO_NORMAL(j, t, billStage);
 		BIND_FROM_TO_I(j, t, isEff);
 		BIND_FROM_TO_I(j, t, isClosed);
 		BIND_FROM_TO_I(j, t, isVoided);
@@ -103,13 +108,6 @@ public:
 		BIND_FROM_TO_OBJ(j, t, entry, std::list<CgthckBillEntryDTO>);
 		BIND_FROM_TO_OBJ(j, t, files, std::list<std::string>);
 	}
-	//BIND_TO_JSON
-	//(
-	//	AddCgthckBillDTO, billNo, billDate, subject, srcOperator, opDept, supplierId, srcNo,
-	//	handler, isEff, isClosed, isVoided, effTime, approver, bpmiInstanceId, createTime,
-	//	sysOrgCode, createBy, updateTime, updateBy, isAuto, isRubric, hasRp, hasSwell,
-	//	srcBillType, invoiceType
-	//);
 };
 
 #endif // !ADD_CGTHCK_BILL_DTO_

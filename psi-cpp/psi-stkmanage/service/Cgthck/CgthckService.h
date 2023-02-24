@@ -21,10 +21,15 @@ public:
 	// 添加采购退货出库单(保存/提交)
 	uint64_t saveData(const AddCgthckBillDTO& dto);
 	// 修改采购退货出库单（保存/提交/审核）
-	bool updateData(const ModifyCgthckBillDTO& dto);
+	int updateData(const AddCgthckBillDTO& dto);
+	// 审核单据
+	bool updateApproval(const ModifyCgthckBillDTO& dto);
 	// 删除采购退货出库单
 	bool removeData(uint64_t id);
 	// 修改单据状态（关闭/作废/反关闭）
+	bool closed(const ModifyCgthckBillDTO& dto);
+	bool unclosed(const ModifyCgthckBillDTO& dto);
+	bool voided(const ModifyCgthckBillDTO& dto);
 	// 导入
 	// 导出
 };

@@ -41,11 +41,41 @@ JsonVO<uint64_t> CgthckController::execAddCgthckBill(const AddCgthckBillDTO& dto
     return result;
 }
 
-JsonVO<uint64_t> CgthckController::execModifyCgthckBill(const ModifyCgthckBillDTO& dto)
+JsonVO<uint64_t> CgthckController::execModifyCgthckBill(const AddCgthckBillDTO& dto)
 {
     JsonVO<uint64_t> result;
-    result.success(1);
+    CgthckService service;
+    // 执行数据修改
+    int id = service.updateData(dto);
+    if (id > 0)
+    {
+        result.success(id);
+    }
+    else
+    {
+        result.fail(id);
+    }
     return result;
+}
+
+JsonVO<uint64_t> CgthckController::execModifyCgthckApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
+{
+    return JsonVO<uint64_t>();
+}
+
+JsonVO<uint64_t> CgthckController::execModifyCgthcStatusToClose(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
+{
+    return JsonVO<uint64_t>();
+}
+
+JsonVO<uint64_t> CgthckController::execModifyCgthcStatusToUnclose(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
+{
+    return JsonVO<uint64_t>();
+}
+
+JsonVO<uint64_t> CgthckController::execModifyCgthcStatusToVoided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
+{
+    return JsonVO<uint64_t>();
 }
 
 JsonVO<uint64_t> CgthckController::execDeleteCgthckBill(const DeleteCgthckBillDTO& dto)

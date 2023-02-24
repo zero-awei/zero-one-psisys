@@ -13,6 +13,7 @@ PageVO<QueryCgthckBillVO> CgthckService::listAll(const QueryCgthckBillQuery& que
     obj.setBillNo(query.getBillNo());
     obj.setBillDate(query.getBillDate());
     obj.setSupplierId(query.getSupplierId());
+    // TO DO
 
     CgthckDAO dao;
     uint64_t count = dao.count(obj);
@@ -68,14 +69,8 @@ uint64_t CgthckService::saveData(const AddCgthckBillDTO& dto)
         {
             attachment += fileName + ',';
         }
-        /*       
-        else
-        {
-            return -2;
-        }
-        */
     }
-    int len = attachment.size();
+
 
     // 辅助组装批次号函数
     auto getBanchNo = [](string billNO, string entryNo) -> std::string
@@ -123,7 +118,7 @@ uint64_t CgthckService::saveData(const AddCgthckBillDTO& dto)
     // 执行数据添加
      int cnt = 0; // 记录插入明细的总条数
     // 获取mid
-    uint64_t mid = dao.insertIntoBill(data);
+    uint64_t mid = dao.insert(data);
     if (mid > 0)
     {
         // 组装明细数据
@@ -169,7 +164,7 @@ uint64_t CgthckService::saveData(const AddCgthckBillDTO& dto)
             entryData.setInvoicedAmt(ety.getInAmt());
 
             // 执行数据添加, 返回插入成功的条数
-            cnt += dao.insertIntoEntry(entryData);
+            cnt += dao.insert(entryData);
         }
     }
     if (mid <= 0 || cnt <= 0)
@@ -185,12 +180,149 @@ uint64_t CgthckService::saveData(const AddCgthckBillDTO& dto)
     return cnt;
 }
 
-bool CgthckService::updateData(const ModifyCgthckBillDTO& dto)
+int CgthckService::updateData(const AddCgthckBillDTO& dto)
+{
+    // 数据检验
+    auto check = [](const AddCgthckBillDTO& dto)
+    {
+        for (auto& ety : dto.getEntry())
+        {
+            // 分录号不能为负数并且红字单就数据不能为正数
+            if (ety.getEntryNo() < 0 || ety.getSettleQty() > 0 || ety.getTax() > 0 || ety.getSettleAmt() > 0)
+                return true;
+        }
+        return false;
+    };
+
+    // 如果单据处于"已生效"阶段 则不能修改
+    if (dto.getIsClosed() || check(dto))
+    {
+        return -1;
+    }
+    
+    // 定义dao层对象
+    CgthckDAO dao;
+
+    // 上传附件
+    string attachment{ "" };
+    for (auto& f : dto.getFiles())
+    {
+        string fileName = dao.insertFile(f);
+        if (!fileName.empty())
+        {
+            attachment += fileName + ',';
+        }
+    }
+
+    // 辅助组装批次号函数
+    auto getBanchNo = [](string billNO, string entryNo) -> std::string
+    {
+        string banchNo = billNO + '-' + entryNo;
+        return banchNo;
+    };
+
+    // 组装单据数据
+    CgthckDO data;
+    // 单据编号
+    data.setBillNo(dto.getBillNo());
+    // 单据日期
+    data.setBillDate(dto.getBillDate());
+    // 供应商
+    data.setSupplierId(dto.getSupplierId());
+    // 采购入库单编号
+    data.setSrcNo(dto.getSrcNo());
+    // 已生效
+    data.setIsEffective(dto.getIsEff());
+    // 已关闭
+    data.setIsClosed(dto.getIsClosed());
+    // 已作废
+    data.setIsVoided(dto.getIsVoided());
+    // 业务部门
+    data.setOpDept(dto.getOpDept());
+    // 主题
+    data.setSubject(dto.getSubject());
+    // 发票类型
+    data.setInvoiceType(dto.getInvoiceType());
+    // 出库经办
+    data.setHandler(dto.getHandler());
+    // 单据阶段
+    data.setBillStage(dto.getBillStage());
+    // 附件
+    data.setAttachment(attachment);
+    // 备注
+    data.setRemark(dto.getRemark());
+
+    // 开启事务
+    dao.getSqlSession()->beginTransaction();
+
+    // 执行数据添加
+    int row = dao.update(data);
+    if (row == 0)
+    {
+        dao.getSqlSession()->rollbackTransaction();
+        // 删除新增的附件
+        dao.deleteFile(attachment);
+        return -2;
+    }
+
+    // 组装明细数据
+    CgthckEntryDO entryData;
+    list<CgthckBillEntryDTO> entries = dto.getEntry();
+    for (auto& ety : entries)
+    {
+        // 批次编号
+        entryData.setBatchNo(getBanchNo(dto.getBillNo(), to_string(ety.getEntryNo())));
+        // 分录号
+        entryData.setEntryNo(to_string(ety.getEntryNo()));
+        // 结算数量
+        entryData.setSettleQty(ety.getSettleQty());
+        //税率
+        entryData.setTaxRate(ety.getTaxRate());
+        // 结算金额
+        entryData.setSettleAmt(ety.getSettleAmt());
+        // 采购费用
+        entryData.setCost(ety.getCost());
+        // 入库数量
+        entryData.setQty(ety.getQty());
+        // 备注
+        entryData.setRemark(ety.getRemark());
+        // 自定义1
+        entryData.setCustom1(ety.getCustom1());
+        // 自定义2
+        entryData.setCustom2(ety.getCustom2());
+
+        if (dao.update(entryData) == 0)
+        {
+            dao.getSqlSession()->rollbackTransaction();
+            return -3;
+        }
+    }
+    // 插入成功, 提交
+    dao.getSqlSession()->commitTransaction();
+    return row;
+}
+
+bool CgthckService::updateApproval(const ModifyCgthckBillDTO& dto)
 {
     return false;
 }
 
 bool CgthckService::removeData(uint64_t id)
+{
+    return false;
+}
+
+bool CgthckService::closed(const ModifyCgthckBillDTO& dto)
+{
+    return false;
+}
+
+bool CgthckService::unclosed(const ModifyCgthckBillDTO& dto)
+{
+    return false;
+}
+
+bool CgthckService::voided(const ModifyCgthckBillDTO& dto)
 {
     return false;
 }

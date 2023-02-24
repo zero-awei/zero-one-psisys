@@ -27,7 +27,16 @@ public:
 	// 添加采购退货出库(红入)单据接口
 	CREATE_API_FUN_JSON(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
 	// 修改采购退货出库(红入)单据接口
-	CREATE_API_FUN_BODY(modifyCgthckBill, execModifyCgthckBill, ModifyCgthckBillDTO);
+	CREATE_API_FUN_JSON(modifyCgthckBill, execModifyCgthckBill, AddCgthckBillDTO);
+	// 修改采购退货出库(红入)审批
+	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckApproval, execModifyCgthckApproval, ModifyCgthckBillDTO);
+	// 修改采购退货出库(红入)单据状态接口
+	// 关闭
+	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToClosed, execModifyCgthcStatusToClose, ModifyCgthckBillDTO);
+	// 反关闭
+	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToUnclosed, execModifyCgthcStatusToUnclose, ModifyCgthckBillDTO);
+	// 作废
+	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToVoided, execModifyCgthcStatusToVoided, ModifyCgthckBillDTO);
 	// 删除采购退货出库(红入)单据接口
 	CREATE_API_FUN_BODY(deleteCgthckBill, execDeleteCgthckBill, DeleteCgthckBillDTO);
 	// 导入
@@ -44,7 +53,16 @@ private:
 	// 测试添加数据
 	JsonVO<uint64_t> execAddCgthckBill(const AddCgthckBillDTO& dto);
 	// 测试修改数据
-	JsonVO<uint64_t> execModifyCgthckBill(const ModifyCgthckBillDTO& dto);
+	JsonVO<uint64_t> execModifyCgthckBill(const AddCgthckBillDTO& dto);
+	// 审批单据
+	JsonVO<uint64_t> execModifyCgthckApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
+	// 修改单据状态
+	// 关闭
+	JsonVO<uint64_t> execModifyCgthcStatusToClose (const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
+	// 反关闭
+	JsonVO<uint64_t> execModifyCgthcStatusToUnclose(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
+	// 作废
+	JsonVO<uint64_t> execModifyCgthcStatusToVoided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 测试删除数据
 	JsonVO<uint64_t> execDeleteCgthckBill(const DeleteCgthckBillDTO& dto);
 	// 测试提交JSON

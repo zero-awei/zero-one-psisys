@@ -22,13 +22,17 @@ public:
 	// 分页查询数据
 	list<CgthckDO> selectById(const string& id);
 	// 插入单据数据
-	uint64_t insertIntoBill(const CgthckDO& iobj);
+	uint64_t insert(const CgthckDO& iobj);
 	// 插入单据明细
-	int insertIntoEntry(const CgthckEntryDO& iobj);
+	int insert(const CgthckEntryDO& iobj);
 	// 插入文件
 	string insertFile(const string& fileName);
-	// 修改数据
+	// 删除文件
+	bool deleteFile(const string& fileName);
+	// 修改单据数据
 	int update(const CgthckDO& iobj);
+	// 修改单据明细
+	int update(const CgthckEntryDO& iobj);
 	// 删除通过单号数据
 	int deleteById(const CgthckDO& iobj);
 };
