@@ -1,6 +1,6 @@
 <template>
   <div>
-    涨吨入库
+    <!-- 涨吨入库 -->
   </div>
 </template>
 

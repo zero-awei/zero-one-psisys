@@ -87,4 +87,4 @@ src/views`
   - `jichuziliao`:  基础资料
   - `caigouguanli`:  采购管理
   - `yingfuguanli`:  应付与付款
-  -  : 库存管理
+  - : 库存管理

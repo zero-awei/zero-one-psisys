@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:08
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 13:54:32
+ * @LastEditTime: 2023-02-25 00:48:24
  * @FilePath: \psi-frontend\src\views\sysmanage\MenuManage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -16,6 +16,7 @@
 -->
 <template>
   <div>
+    <!-- 菜单管理 -->
     <!-- 菜单查询 -->
     <psi-form :items="items" :formData="formData" @query="handleQuery" @reset="handleReset">
     </psi-form>
@@ -80,8 +81,11 @@
 
 
 <script setup>
+// ---------引入相关依赖----------
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { addMenu, deleteMenu, query, queryMenus, update } from './api/menu.js'
+// -------------------- 数据部分 --------------
+// 表单相关
 const formState = reactive({
   // 查询表单每一项的配置
   items: [
@@ -100,7 +104,7 @@ const formState = reactive({
   // 配置数据绑定的字段
   formData: {
     id: '',
-    parentId:''
+    parentId: ''
   }
 })
 const { items, formData } = toRefs(formState)
@@ -181,16 +185,11 @@ let da = [{
   "type": 3,
   "path": "/three",
   "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
-}]
-// // // console.log('111111111')
-// // // console.log(tableData)
-// tableData.push(da)
+}
+]
 tableData.value = da
 
-
-
 // 添加子目录相关
-
 const addSonMenuData = reactive({
   name: '',
   path: '',
@@ -205,10 +204,7 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
-
-
 // 新增菜单对话框配置
-
 let menuAddDialogVisible = ref(false)
 const menuAddDialogState = reactive({
   menuAddDialogAttrs: {
@@ -330,7 +326,7 @@ const editMenuState = reactive({
 
 const { editMenuItems, editMenuFormData, } = toRefs(editMenuState)
 
-// -------------------- 函数部分 --------------
+// -------------------- 函数部分 ----------------
 // 多选框多选时触发
 function selectionChange(val) {
 
@@ -373,7 +369,7 @@ function handleAddMenu() {
     {
       params
     },
-    // 3.调用成功返回参数成功执行
+    // 3.调用成功返回参数成功执行这个方法
     (data) => {
       // TODO 需要前后端字段匹配
       tableData = data.rows
@@ -424,10 +420,6 @@ function handleEditMenu() {
   params.permissionId = addMenuFormData.value.permissionId
 }
 
-
-
-
-
 </script>
 
-<style></style>
+<style scoped></style>
