@@ -26,10 +26,10 @@
 
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
-        <el-button link 
+      <el-button link 
         type="primary" 
-        @click="clientEditDialogVisible = true"
-        @add="reviseClient">编辑</el-button>
+        @click="drawerVisible = true"
+        >编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>

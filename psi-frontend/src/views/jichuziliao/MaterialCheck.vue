@@ -26,10 +26,10 @@
 
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
-        <el-button link 
+      <el-button link 
         type="primary" 
-        @click="clientEditDialogVisible = true"
-        @add="reviseClient">编辑</el-button>
+        @click="drawerVisible = true"
+        >编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>
@@ -53,9 +53,27 @@ import { reactive, toRefs, ref } from 'vue'
 
 // 抽屉
 const drawerStatus = reactive({
-  title: '抽屉标题',
+  title: '物料-新增',
   basicItems: [
+    {
+      type: 'input',
+      prop: 'code',
+      label: '币种代码'
+    },
+    {
+      type: 'input',
+      prop: 'isEnabled',
+      label: '启用'
+    },
+    {
+      type: 'input',
+      prop: 'remarks',
+      label: '备注'
+    },
+  ],
+  toggleItems: [
   {
+    title: '操作信息',
           type: 'input',
           prop: 'toggleName',
           label: '创建时间'
@@ -77,13 +95,16 @@ const drawerStatus = reactive({
         }
   ],
   formData: {
-    name1: '',
-    name2: '',
-    name3: '',
-    toggleName: '',
-    toggleGender: '',
-    toggleName2: '',
-    toggleGender2: '',
+    "categoryId": "",
+    "code": "",
+    "name": "",
+    "model": "",
+    "isEnabled": "",
+    "unitId": "",
+    "salePrice": "",
+    "taxCode": "",
+    "remark": "",
+    "auxName": "",
     toggleName3: '',
     toggleGender3: '',
     toggleName4: '',

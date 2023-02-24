@@ -29,7 +29,7 @@
         <el-button link 
         type="primary" 
         @click="clientEditDialogVisible = true"
-        @add="reviseClient">编辑</el-button>
+        >编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>

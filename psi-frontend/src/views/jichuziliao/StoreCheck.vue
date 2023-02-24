@@ -21,10 +21,10 @@
     
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
-        <el-button link 
+      <el-button link 
         type="primary" 
-        @click="clientEditDialogVisible = true"
-        @add="reviseClient">编辑</el-button>
+        @click="drawerVisible = true"
+      >编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>
@@ -52,37 +52,37 @@ const drawerStatus = reactive({
   basicItems: [
     {
       type: 'input',
-      prop: 'name1',
+      prop: 'pid',
       label: '上级'
     },
     {
       type: 'input',
-      prop: 'name2',
+      prop: 'pid2',
       label: '有下级'
     },
     {
       type: 'input',
-      prop: 'name3',
+      prop: 'code',
       label: '编码'
     },
     {
       type: 'input',
-      prop: 'name4',
+      prop: 'name',
       label: '名称'
     },
     {
       type: 'input',
-      prop: 'name5',
+      prop: 'auxName',
       label: '助记名'
     },
     {
       type: 'input',
-      prop: 'name6',
+      prop: 'phone',
       label: '电话'
     },
     {
       type: 'select',
-      prop: 'name8',
+      prop: 'start',
       label: '启用',
       placeholder: '请选择',
       options: [
@@ -98,7 +98,7 @@ const drawerStatus = reactive({
     },
     {
       type: 'input',
-      prop: 'name9',
+      prop: 'remarks',
       label: '备注'
     }
   ],
@@ -131,17 +131,18 @@ const drawerStatus = reactive({
     }
   ],
   formData: {
-    name1: '',
-    name2: '',
-    name3: '',
+    pid: '',
+    pid2: '',
+    name: '',
+    code: '',
+    auxName: '',
+    phone: '',
+    start: '',
+    remarks: '',
     toggleName: '',
     toggleGender: '',
-    toggleName2: '',
-    toggleGender2: '',
-    toggleName3: '',
-    toggleGender3: '',
-    toggleName4: '',
-    toggleGender4: '',
+    toggleName: '',
+    toggleGender: '',
   }
 })
 

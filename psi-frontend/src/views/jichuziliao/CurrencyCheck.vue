@@ -23,13 +23,12 @@
       @add="addClient"
     >
     
-
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
         <el-button link 
         type="primary" 
-        @click="clientEditDialogVisible = true"
-        @add="reviseClient">编辑</el-button>
+        @click="drawerVisible = true"
+        >编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>
@@ -57,27 +56,27 @@ const drawerStatus = reactive({
   basicItems: [
     {
       type: 'input',
-      prop: 'name1',
-      label: '代码'
+      prop: 'code',
+      label: '币种代码'
     },
     {
       type: 'input',
-      prop: 'name2',
-      label: '名称'
+      prop: 'name',
+      label: '币种名称'
     },
     {
       type: 'input',
-      prop: 'name3',
+      prop: 'isFunctional',
       label: '本币'
     },
     {
       type: 'input',
-      prop: 'name4',
+      prop: 'isEnabled',
       label: '启用'
     },
     {
       type: 'input',
-      prop: 'name5',
+      prop: 'remarks',
       label: '备注'
     },
   ],
@@ -110,17 +109,15 @@ const drawerStatus = reactive({
     }
   ],
   formData: {
-    name1: '',
-    name2: '',
-    name3: '',
+    "code": "",
+    "name": "",
+    "isFunctional": "",
+    "isEnabled": "",
+    "remarks": "",
     toggleName: '',
     toggleGender: '',
-    toggleName2: '',
-    toggleGender2: '',
-    toggleName3: '',
-    toggleGender3: '',
-    toggleName4: '',
-    toggleGender4: '',
+    toggleName: '',
+    toggleGender: '',
   }
 })
 

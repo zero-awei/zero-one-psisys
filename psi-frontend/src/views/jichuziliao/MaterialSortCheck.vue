@@ -26,10 +26,10 @@
 
       <template v-slot:basicOperation="slot">
       <!-- 修改点2 -->
-        <el-button link 
+      <el-button link 
         type="primary" 
-        @click="clientEditDialogVisible = true"
-        @add="reviseClient">编辑</el-button>
+        @click="drawerVisible = true"
+        >编辑</el-button>
 
         <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
       </template>
@@ -72,17 +72,17 @@ const drawerStatus = reactive({
     },
     {
       type: 'input',
-      prop: 'name4',
+      prop: 'code',
       label: '编码'
     },
     {
       type: 'input',
-      prop: 'name5',
+      prop: 'fullname',
       label: '全名'
     },
     {
       type: 'select',
-      prop: 'name8',
+      prop: 'is_enabled',
       label: '启用',
       placeholder: '请选择',
       options: [
@@ -97,155 +97,14 @@ const drawerStatus = reactive({
       ]
     },
   ],
-  toggleItems: [
-    {
-      title: '开票信息',
-      name: '折叠唯一标识符号',
-      items: [
-        {
-          type: 'input',
-          prop: 'toggleName',
-          label: '单位名称'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender',
-          label: '税号'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender',
-          label: '开户行'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender',
-          label: '行号'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender',
-          label: '账号'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender',
-          label: '联系电话'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender',
-          label: '开票地址'
-        }
-      ]
-    },
-    {
-      title: '办款资料',
-      name: '折叠2唯一标识符号',
-      items: [
-        {
-          type: 'input',
-          prop: 'toggle21',
-          label: '单位名称'
-        },
-        {
-          type: 'input',
-          prop: 'toggle22',
-          label: '开户行'
-        },
-        {
-          type: 'input',
-          prop: 'toggle23',
-          label: '行号'
-        },
-        {
-          type: 'input',
-          prop: 'toggle24',
-          label: '账号'
-        }
-      ]
-    },
-    {
-      title: '收件信息',
-      name: '折叠3唯一标识符号',
-      items: [
-        {
-          type: 'input',
-          prop: 'toggleName3',
-          label: '收件人'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender3',
-          label: '联系电话'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender3',
-          label: '传真'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender3',
-          label: 'Email'
-        },
-        {
-          type: 'input',  
-          prop: 'toggleGender3',
-          label: '地址'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender3',
-          label: '邮编'
-        }
-      ]
-    },
-    {
-      title: '财务信息',
-      name: '折叠4唯一标识符号',
-      items: [
-        {
-          type: 'input',
-          prop: 'toggleName4',
-          label: '财务信息联系人'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender4',
-          label: '财务信息联系电话'
-        }
-      ]
-    },
-    {
-      title: '其他信息',
-      name: '折叠4唯一标识符号',
-      items: [
-        {
-          type: 'input',
-          prop: 'toggleName5',
-          label: '财务信息联系人'
-        },
-        {
-          type: 'input',
-          prop: 'toggleGender5',
-          label: '财务信息联系电话'
-        }
-      ]
-    }
-  ],
   formData: {
-    name1: '',
-    name2: '',
-    name3: '',
-    toggleName: '',
-    toggleGender: '',
-    toggleName2: '',
-    toggleGender2: '',
-    toggleName3: '',
-    toggleGender3: '',
-    toggleName4: '',
-    toggleGender4: '',
+  "name1":"",
+  "name2":"",
+
+	"name": "",
+	"code": "",
+	"fullname": "",
+	"is_enabled": ""
   }
 })
 
