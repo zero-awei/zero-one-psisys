@@ -155,11 +155,10 @@ void Router::createMaterialClassificationRouter() {
 void Router::createCurrencyRouter()
 {
 	BIND_GET_ROUTER(server, "/currency-query", &CurrencyController::queryCurrency, nullptr);
-	//BIND_GET_ROUTER(server, "/Currency-query-kid", &CurrencyController::queryKidCurrency, nullptr);
 	BIND_GET_ROUTER(server, "/currency-detail", &CurrencyController::queryDetailCurrency, nullptr);
-	BIND_GET_ROUTER(server, "/currency-action-info", &CurrencyController::queryActionInfolCurrency, nullptr);
+	//BIND_GET_ROUTER(server, "/currency-action-info", &CurrencyController::queryActionInfolCurrency, nullptr);
 
-	BIND_PUT_ROUTER(server, "/currency-execAddCurrency", &CurrencyController::addCurrency, nullptr);
+	BIND_POST_ROUTER(server, "/currency-execAddCurrency", &CurrencyController::addCurrency, nullptr);
 	BIND_PUT_ROUTER(server, "/currency-modify", &CurrencyController::modifyCurrency, nullptr);
 	BIND_DEL_ROUTER(server, "/currency-remove", &CurrencyController::removeCurrency, nullptr);
 	BIND_POST_ROUTER(server, "/currency-add-Currencys", &CurrencyController::addCurrencys, nullptr);

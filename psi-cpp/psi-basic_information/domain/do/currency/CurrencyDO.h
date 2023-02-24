@@ -22,14 +22,16 @@
  */
 class CurrencyDO
 {
+	// 数据库内编号 Id
+	CC_SYNTHESIZE(string, id, Id);
 	// 代码 Code
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称 name
 	CC_SYNTHESIZE(string, name, Name);
 	// 本币 isFunctional
-	CC_SYNTHESIZE(string, isFunctional, IsFunctional);
+	CC_SYNTHESIZE(int, isFunctional, IsFunctional);
 	// 启用 isEnabled
-	CC_SYNTHESIZE(string, isEnabled, IsEnabled);
+	CC_SYNTHESIZE(int, isEnabled, IsEnabled);
 	// 创建人 createBy
 	CC_SYNTHESIZE(string, createBy, CreateBy);
 	// 创建时间 createTime
@@ -42,10 +44,11 @@ class CurrencyDO
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:
 	CurrencyDO() {
+		id = "11111";
 		code = "1";
 		name = "";
-		isFunctional = "1";
-		isEnabled = "1";
+		isFunctional = 0;
+		isEnabled = 1;
 		remarks = "";
 		createTime = "";
 		createBy = "";

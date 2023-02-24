@@ -48,7 +48,7 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
 	std::string dbName = "zopsi_sys";
-	std::string dbHost = "192.168.254.129";
+	std::string dbHost = "192.168.126.128";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
