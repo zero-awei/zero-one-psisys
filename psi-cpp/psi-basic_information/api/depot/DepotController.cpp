@@ -59,6 +59,21 @@ JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto)
     return result;
 }
 
+JsonVO<bool> DepotController::execAddKidDepot(const DepotDTO& dto)
+{
+    JsonVO<bool> result;
+    //定义一个Service
+    DepotService service;
+    //保存数据
+    if (service.saveData(dto)) {
+        result.success(true);
+    }
+    else {
+        result.fail(false);
+    }
+    return result;
+}
+
 JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto)
 {
     JsonVO<bool> result;

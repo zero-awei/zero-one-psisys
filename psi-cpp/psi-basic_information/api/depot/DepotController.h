@@ -36,6 +36,7 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailDepot, execQueryDetail, OnlyValueQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolDepot, execQueryActionInfo, OnlyValueQuery);
 	CREATE_API_FUN_BODY(addDepot, execAddDepot, DepotDTO);
+	CREATE_API_FUN_BODY(addKidDepot, execAddKidDepot, DepotDTO);
 	CREATE_API_FUN_BODY(modifyDepot, execModifyDepot, DepotDTO);
 	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, OnlyValueQuery);
 	// 这里直接用FileDTO报错
@@ -52,6 +53,8 @@ private:
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
 	// 新增仓库
 	JsonVO<bool> execAddDepot(const DepotDTO& dto);
+	// 新增子级仓库
+	JsonVO<bool> execAddKidDepot(const DepotDTO& dto);
 	//修改仓库
 	JsonVO<bool> execModifyDepot(const DepotDTO& dto);
 	//删除仓库 

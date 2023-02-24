@@ -123,6 +123,7 @@ void Router::createDepotRouter()
 	BIND_GET_ROUTER(server, "/query-depot-detail", &DepotController::queryDetailDepot, nullptr);
 	BIND_GET_ROUTER(server, "/query-depot-action-info", &DepotController::queryActionInfolDepot, nullptr);
 	BIND_POST_ROUTER(server, "/add-depot", &DepotController::addDepot, nullptr);
+	BIND_POST_ROUTER(server, "/add-depot-kid", &DepotController::addKidDepot, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-depot", &DepotController::modifyDepot, nullptr);
 	BIND_DEL_ROUTER(server, "/remove-depot", &DepotController::removeDepot, nullptr);
 	BIND_POST_ROUTER(server, "/add-depots", &DepotController::addDepots, nullptr);

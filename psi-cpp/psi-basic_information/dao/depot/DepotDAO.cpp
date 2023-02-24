@@ -78,13 +78,11 @@ std::list<DepotDO> DepotDAO::selectKid(const DepotDO& obj)
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
 }
 
-
 int DepotDAO::insertDepot(const DepotDO& iObj)
 {
 	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
 	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
 }
-
 
 int DepotDAO::deleteDepot(const DepotDO& iObj)
 {
