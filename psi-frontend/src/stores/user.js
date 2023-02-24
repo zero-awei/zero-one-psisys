@@ -57,92 +57,92 @@ let testMenus = [
         href: '/sysmanagement/addressbook'
       }
     ]
-  },
-  {
-    id: 2,
-    text: '用户管理',
-    icon: 'IconUser',
-    children: [
-      {
-        id: 2,
-        text: '用户管理1',
-        href: '/un-11',
-        icon: 'IconUser',
-        pid: 2
-      },
-      {
-        id: 3,
-        text: '用户管理2',
-        href: '/un-12',
-        icon: 'IconUser',
-        pid: 2
-      },
-      {
-        id: 4,
-        text: '用户管理3',
-        href: '/un-13',
-        icon: 'IconUser',
-        pid: 2
-      },
-      {
-        id: 5,
-        text: '用户管理4',
-        href: '/un-14',
-        icon: 'IconUser',
-        pid: 2
-      },
-      {
-        id: 6,
-        text: '用户管理5',
-        href: '/un-15',
-        icon: 'IconUser',
-        pid: 2
-      }
-    ]
-  },
-  {
-    id: 3,
-    text: '订单管理',
-    icon: 'IconTickets',
-    children: [
-      {
-        id: 2,
-        text: '订单管理1',
-        href: '/un-21',
-        icon: 'IconTickets',
-        pid: 3
-      },
-      {
-        id: 3,
-        text: '订单管理2',
-        href: '/un-22',
-        icon: 'IconTickets',
-        pid: 3
-      },
-      {
-        id: 4,
-        text: '订单管理3',
-        href: '/un-23',
-        icon: 'IconTickets',
-        pid: 3
-      },
-      {
-        id: 5,
-        text: '订单管理4',
-        href: '/un-24',
-        icon: 'IconTickets',
-        pid: 3
-      },
-      {
-        id: 6,
-        text: '订单管理5',
-        href: '/un-25',
-        icon: 'IconTickets',
-        pid: 3
-      }
-    ]
   }
 ]
+// {
+//     id: 2,
+//     text: '用户管理',
+//     icon: 'IconUser',
+//     children: [
+//       {
+//         id: 2,
+//         text: '用户管理1',
+//         href: '/un-11',
+//         icon: 'IconUser',
+//         pid: 2
+//       },
+//       {
+//         id: 3,
+//         text: '用户管理2',
+//         href: '/un-12',
+//         icon: 'IconUser',
+//         pid: 2
+//       },
+//       {
+//         id: 4,
+//         text: '用户管理3',
+//         href: '/un-13',
+//         icon: 'IconUser',
+//         pid: 2
+//       },
+//       {
+//         id: 5,
+//         text: '用户管理4',
+//         href: '/un-14',
+//         icon: 'IconUser',
+//         pid: 2
+//       },
+//       {
+//         id: 6,
+//         text: '用户管理5',
+//         href: '/un-15',
+//         icon: 'IconUser',
+//         pid: 2
+//       }
+//     ]
+//   },
+//   {
+//     id: 3,
+//     text: '订单管理',
+//     icon: 'IconTickets',
+//     children: [
+//       {
+//         id: 2,
+//         text: '订单管理1',
+//         href: '/un-21',
+//         icon: 'IconTickets',
+//         pid: 3
+//       },
+//       {
+//         id: 3,
+//         text: '订单管理2',
+//         href: '/un-22',
+//         icon: 'IconTickets',
+//         pid: 3
+//       },
+//       {
+//         id: 4,
+//         text: '订单管理3',
+//         href: '/un-23',
+//         icon: 'IconTickets',
+//         pid: 3
+//       },
+//       {
+//         id: 5,
+//         text: '订单管理4',
+//         href: '/un-24',
+//         icon: 'IconTickets',
+//         pid: 3
+//       },
+//       {
+//         id: 6,
+//         text: '订单管理5',
+//         href: '/un-25',
+//         icon: 'IconTickets',
+//         pid: 3
+//       }
+//     ]
+//   }
 // 业务路由配置
 const yewuRouter = {
   id: 998,
@@ -150,22 +150,29 @@ const yewuRouter = {
   icon: 'IconTickets',
   children: [
     {
-      id: 2,
-      text: '应付核销',
-      href: '/pay/payable/check',
-      icon: 'IconTickets',
-      pid: 998
-    },
-    {
       id: 3,
-      text: '测试三级菜单',
+      text: '应付管理',
       icon: 'IconTickets',
       pid: 998,
       children: [
         {
           id: 3,
           text: '采购应付',
-          href: '/1/2/3',
+          href: '/pay/payable/purchase',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '其他应付',
+          href: '/pay/payable/other',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '应付核销',
+          href: '/pay/payable/check',
           icon: 'IconTickets',
           pid: 2
         }

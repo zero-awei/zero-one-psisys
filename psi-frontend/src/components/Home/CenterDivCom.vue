@@ -164,7 +164,7 @@
 
 
     <!-- 第二个 -->
-     <el-card>
+     <el-card class="card2">
         <template #header>
           <div class="card-header">
             <span>销售</span>
@@ -336,7 +336,7 @@
 
 <style scoped>
 .el-card{
-    top:25px;
+    top:5px;
     left:3px;
 }
 .el-row{
@@ -352,8 +352,11 @@
   justify-content: space-between;
   align-items: center;
 }
+.card2{
+  top:15px;
+}
 .div1{
-    bottom:30px;
+    bottom:25px;
 }
 .div2{
     bottom:25px;
@@ -362,6 +365,7 @@
     width:587px;
     height:192px;
 }
+
 .cardBody{
     /* display:flex; */
     width:290px;

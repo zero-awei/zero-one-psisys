@@ -13,7 +13,9 @@
       :attributes="attributes"
       :pagination="pagination"
       @selectionChange="selectionChange" 
-      @add="addFunc"
+      @add="handleAdd"
+      @importData="handleImport"
+      @exportData="handleExport"
       @sizeChange="handleSizeChange"
       @currentChange="handleCurrentChange" @prevClick="handlePrevClickChange" @nextClick="handleNextClickChange"
     >
@@ -136,6 +138,19 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
+// 点击新增按钮出触发方法
+function handleAdd(){
+
+}
+
+// 点击导入按钮触发方法
+function handleImport(){
+
+}
+// 点击导出按钮触发方法
+function handleExport(){
+
+}
 // page-size 改变时触发
 function handleSizeChange(value) {
   console.log("handleSizeChange", value)

@@ -50,7 +50,7 @@ for (const path in mainRouter) {
 }
 
 // 定义一个路由对象
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })

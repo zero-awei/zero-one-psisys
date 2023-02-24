@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-22 22:31:41
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 10:04:28
+ * @LastEditTime: 2023-02-24 13:59:43
  * @FilePath: \psi-frontend\src\views\HomeView.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -31,7 +31,6 @@
           <!-- <Fold /> -->
           <component :is="headerleft"></component>
           </el-icon>
-          <!-- <el-icon style="color:white;top=8px;left:100px;"><Search /></el-icon> -->
           <HeadSideCom />
         </el-header>
 
@@ -282,8 +281,8 @@ export default {
 
 <style lang="scss" scoped>
 .el-container {
-  height: 100vh;
-
+   height: 100vh;
+  //  background-color:rgba(226, 225, 225, 0.03);
   .el-aside {
     background-color: #fff;
     //直接将计算属性的值拿过来
@@ -310,12 +309,22 @@ export default {
         font-weight: bold;
       }
     }
+    }
+
+}
+  .el-header{
+    background-color: #1890ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .el-icon{
+      top:2px;
+      width:2em;
+      height:2em;
+      color:white;
+    }
   }
 
-  .tag {
-    padding-top: 30px;
-  }
-}
 
 .el-header {
   background-color: #1890ff;

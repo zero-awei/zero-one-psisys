@@ -2,10 +2,12 @@
   <!-- 应付核销界面 -->
   <div>
     <!-- 查询 -->
-    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="doQuery" @reset="doReset"></psi-form>
+    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
+      @reset="handleReset"></psi-form>
     <br />
     <!-- 表格数据 -->
-    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+      @add="handleAdd">
     </psi-table>
 
     <!-- 弹出框 -->
@@ -18,7 +20,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { getTableList, query } from './methods.js'
+import { getTableList, query } from './api/yingfuhexiao.js'
 import { format } from '@/apis/date/index.js'
 // 查询表单相关数据及方法
 const formState = reactive({
@@ -137,12 +139,12 @@ const formState = reactive({
 })
 const { items, toggleItems, formData } = toRefs(formState)
 // 表单重置
-function doReset() {
+function handleReset() {
   //查询表单重置，表格也要刷新
   doGetTableList()
 }
 // 7.5 普通查询
-function doQuery(data) {
+function handleQuery(data) {
   // // // console.log('父组件接收')
   // // // console.log('params--', params.daterange)
   // // console.log('data.daterange[0]', data.daterange[0])
@@ -314,7 +316,13 @@ const { examineDialogAttrs } = toRefs(examineDialogState)
 //   editDialogVisible=true
 //   // 弹出框内的表格数据和data配置
 
+
 // }
+// ------方法 ----
+// 点击新增按钮触发方法
+function handleAdd() {
+
+}
 </script>
 
 <style></style>

@@ -4,7 +4,19 @@
       <template #header>
         <div class="card-header">
           <span>销售金额</span>
-          <el-icon style="color:blue; top:-15px;" @click="">
+          <el-icon style="color:blue; top:-15px;">
+            <Refresh />
+          </el-icon>
+        </div>
+      </template>
+      <div id="div1" style="width:230px;height:195px;float: left;"></div>
+    </el-card>
+
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <span>销售金额</span>
+          <el-icon style="color:blue; top:-15px;">
             <Refresh />
           </el-icon>
         </div>
@@ -12,6 +24,29 @@
       <div id="div1" style="width:273px;height:176px;float: left;"></div>
     </el-card>
 
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <span>销售金额</span>
+          <el-icon style="color:blue; top:-15px;">
+            <Refresh />
+          </el-icon>
+        </div>
+      </template>
+      <div id="div1" style="width:273px;height:176px;float: left;"></div>
+    </el-card>
+
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <span>销售金额</span>
+          <el-icon style="color:blue; top:-15px;">
+            <Refresh />
+          </el-icon>
+        </div>
+      </template>
+      <div id="div1" style="width:273px;height:176px;float: left;"></div>
+    </el-card>
     <!-- <div id="div2" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div3" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div4" style="width: 700px;height:300px;float: left;margin:20px"></div> -->
@@ -73,11 +108,21 @@ export default {
         xAxis: {
           data: [],   // 将数据保存到json中，使用axios读取数据。axios.get("json路径").then(res=>{})  
         },
+        grid: {
+          top: '4%',
+          left: '3%',
+          right: '4%',
+          bottom: '10%',
+          containLabel: true,
+        },
         series: {
           type: "bar",
           // name: "销量",
           data: [],
-        }
+          itemStyle: {
+            color: '#1890ff'
+          }
+        },
       }
       axios.get(".././testData.json").then(
         res => {
@@ -188,8 +233,9 @@ export default {
 }
 
 div {
-  top: 15px;
-  left: -3px;
+  top: 3px;
+  left: -4px;
+  width: 290px;
 }
 
 .card-header {
@@ -206,5 +252,4 @@ div {
   text-overflow: ellipsis;
   color: black;
   font-size: 16px;
-}
-</style>
+}</style>

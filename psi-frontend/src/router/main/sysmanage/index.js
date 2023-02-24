@@ -60,18 +60,7 @@ const routes = [
     name: 'center',
     component: () => import('@/components/center/index.vue')
   },
-  {
-    path: '/pay/payable/check',
-    name: 'check',
-    component: () =>
-      import('@/views/yingfuyufukuan/payables/FinPayableCheck.vue')
-  },
-  {
-    path: '/1/2/3',
-    name: '3',
-    component: () =>
-      import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
-  },
+  // 系统管理
   {
     path: '/sysmanagement/rolemanagement',
     name: 'rolemanagement',
@@ -106,6 +95,28 @@ const routes = [
     path: '/sysmanagement/sysposition',
     name: 'sysposition',
     component: () => import('@/views/sysmanage/SysPosition.vue')
+  },
+  // 应付管理
+  // 采购应付
+  {
+    path: '/pay/payable/purchase',
+    name: 'purchase',
+    component: () =>
+      import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
+  },
+  // 其他应付
+  {
+    path: '/pay/payable/other',
+    name: 'other',
+    component: () =>
+      import('@/views/yingfuyufukuan/yingfuguanli/QiTaYingFu.vue')
+  },
+  // 应付核销
+  {
+    path: '/pay/payable/check',
+    name: 'check',
+    component: () =>
+      import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
   }
 ]
 

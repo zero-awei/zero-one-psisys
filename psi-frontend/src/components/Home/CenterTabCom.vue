@@ -1,23 +1,36 @@
 <template>
   <el-card style="width:295px;">
     <template #header>
-      <div class="card-header">
-        <span>处理中主要单据</span>
-        <!-- 更新图标 加事件 -->
-        <el-icon style="color:blue;" @click="doReset()">
-          <Refresh />
-        </el-icon>
+        <div class="card-header">
+             <span>处理中主要单据</span>
+             <!-- 更新图标 加事件 -->
+             <el-icon style="color:blue;"
+              @click="doReset()"><Refresh /></el-icon>
+        </div>
+    </template> 
+      <div class="card-bottom">
+          <el-table :data="tableData" style="width:280px">
+            <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
+             <el-table-column 
+                prop="name" label="" width="63"/>
+            <el-table-column 
+                prop="edit" label="编制中" width="63" />
+            <el-table-column 
+                prop="appr" label="待核批" width="63" />
+            <el-table-column 
+                prop="exec" label="执行中" width="63" />
+          </el-table>
       </div>
-    </template>
-    <div class="card-bottom">
-      <el-table :data="tableData" style="width:436">
+    <!-- </template> -->
+    <!-- <div class="card-bottom">
+      <el-table :data="tableData" style="width:436"> -->
         <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
-        <el-table-column prop="name" label="" width="103" />
+        <!-- <el-table-column prop="name" label="" width="103" />
         <el-table-column prop="edit" label="编制中" width="127" />
         <el-table-column prop="appr" label="待核批" width="103" />
         <el-table-column prop="exec" label="执行中" width="103" />
-      </el-table>
-    </div>
+      </el-table> -->
+    <!-- </div> -->
   </el-card>
 </template>
 
@@ -29,8 +42,8 @@ import { defineProps} from "vue"
 const props = defineProps({
 
 }) */
-import { getTableList } from '@/data/home/datalist.js'
-import { onMounted } from 'vue'
+import { getTableList} from './api/datalist.js'
+import {onMounted } from 'vue'
 // const {tableData} = toRefs(tableState)
 /* function doGetTableList() {
   getTableList(
@@ -89,22 +102,25 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
-.el-card {
-  top: 25px;
-  left: -10px;
-  width: 295px;
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-      color: black;
-      font-size: 16px;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
+.el-table{
+  font-size:14px;
   }
+
+.el-card{
+  top:7px;
+  left:-13px;
+  width:295px;
+  --el-card-padding: 20px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+span{
+  color: black;
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+}
 }
 </style>

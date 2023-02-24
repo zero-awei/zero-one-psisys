@@ -6,7 +6,16 @@
  * @Description: 
  * @FilePath: \psi-frontend\src\components\home\test.vue
  * 可以输入预定的版权声明、个性签名、空行等
--->
+--> 
+<style scoped>
+/* .menu-wrap{
+  height:1080px;
+  overflow:hidden;
+} */
+
+</style>
+
+
 <template>
   <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
   <div class="menu-wrap">
