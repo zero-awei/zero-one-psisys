@@ -32,7 +32,7 @@ import { defineProps} from "vue"
 const props = defineProps({
 
 }) */
-import { getTableList} from '@/data/home/datalist.js'
+import { getTableList} from './api/datalist.js'
 import {onMounted } from 'vue'
 // const {tableData} = toRefs(tableState)
 /* function doGetTableList() {

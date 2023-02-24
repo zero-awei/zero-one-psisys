@@ -24,12 +24,12 @@
           <el-dropdown-item>切换部门</el-dropdown-item>
           <el-dropdown-item>密码修改</el-dropdown-item>
           <el-dropdown-item>系统设置</el-dropdown-item>
-          <el-dropdown-item disabled>清理缓存</el-dropdown-item>
-          <el-dropdown-item divided>退出登录</el-dropdown-item>
+          <el-dropdown-item>清理缓存</el-dropdown-item>
+          <el-dropdown-item @click="handleClick">退出登录</el-dropdown-item>
         </el-dropdown-menu>
        </template>
   </el-dropdown>
-      <span style="margin:0px 10px;left:10px;" >当前月度:2023-2</span>
+      <span style="margin:0px 10px;left:10px;top:-4px;" >当前月度:2023-2</span>
     </div>
   </div>
 </template>
@@ -65,10 +65,20 @@
 
 .newDrop{
   width:150px;
-  left:20px;
+  text-align:center;
+  left:30px;
   font-size:14px;
 }
 
+/* .lang-select-dropdown {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  min-width: max-content;
+  text-align: center;
+} */
 </style>
 
 <script setup>
@@ -76,8 +86,10 @@ import { ref ,watch} from 'vue'
 import { userStore } from '@/stores/user'
 import SearchCom from '@/components/Home/SearchCom.vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
 
-
+// 获取router对象
+const $router = useRouter()
 const store = userStore()
 // 用户信息提示
 const userInfo = ref(
@@ -87,6 +99,16 @@ const userInfo = ref(
 function handleSearch() {
   panelShow.value=true
   }*/
+
+function handleClick(){
+  /* if(command === 'cancel'){
+     //清除token
+  // Cookie.remove('token')
+  //跳到登录页面
+  $router.push(/login)
+  } */
+ $router.push('/')
+}
   
 // 菜单数据
 const menus = store.getMenus

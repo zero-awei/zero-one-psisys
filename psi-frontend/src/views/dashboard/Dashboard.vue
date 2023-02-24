@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="total">
     <div class="top"><CenterCom1 /></div >
     <div class="bottom">
       <el-row :gutter="20">
@@ -19,8 +19,13 @@
 </template>
 
 <style lang="css" scoped>
+  .total{
+    background-color:rgba(0,0,0,.03);
+  }
   .top{
-    margin-bottom:4px;
+    min-width:180px;
+    /* margin-bottom:4px; */
+    top:-10px;
   }
   .bottom{
     display:flex; 
@@ -46,9 +51,43 @@ export default {
   },
   data () {
     return {
-
+      ratio:100
     }
   },
-  
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", () => {
+        // 监听浏览器窗口大小改变
+        // 浏览器变化执行动作
+        this.detectZoom();
+      });
+    });
+  },
+  methods: {
+    detectZoom() {
+      // let ratio = 0
+      const screen = window.screen;
+      const ua = navigator.userAgent.toLowerCase();
+      if (window.devicePixelRatio !== undefined) {
+        this.ratio = window.devicePixelRatio;
+      } else if (~ua.indexOf("msie")) {
+        if (screen.deviceXDPI && screen.logicalXDPI) {
+          this.ratio = screen.deviceXDPI / screen.logicalXDPI;
+        }
+      } else if (
+        window.outerWidth !== undefined &&
+        window.innerWidth !== undefined
+      ) {
+        this.ratio = window.outerWidth / window.innerWidth;
+      }
+ 
+      if (this.ratio) {
+        this.ratio = Math.round(this.ratio * 100);
+      }
+      console.log(this.ratio);
+        //得到的额百分比
+      return this.ratio;
+    },
+  } 
 }
 </script>

@@ -33,7 +33,7 @@ for (const path in mainRouter) {
 }
 
 // 定义一个路由对象
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
@@ -66,6 +66,7 @@ router.beforeEach(async function (to, from, next) {
       // 设置加载完毕
       store.setLoaded(true)
     }
+    // next({ name: 'Home' })
     next()
   }
   // 如果没有token值，直接进入登录

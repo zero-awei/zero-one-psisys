@@ -1,7 +1,9 @@
 <!-- 登录页面 -->
 <template>
   <el-card class="box-card">
-    <el-form :model="formData" status-icon label-width="60px">
+    <!-- 表单验证 :rules="rules" -->
+    <span>系统登录</span>
+    <el-form :model="formData" :rules="rules" status-icon label-width="60px">
       <el-form-item label="账号" prop="username">
         <el-input v-model="formData.username"></el-input>
       </el-form-item>
@@ -30,6 +32,7 @@ import { ref, reactive } from 'vue'
 import { login } from '@/apis/login'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { router } from '@/router/index.js'
 
 // 获取router对象
 const $router = useRouter()
@@ -39,6 +42,16 @@ const formData = reactive({
   username: '',
   password: ''
 })
+//校验规则
+const rules = reactive({
+  username:[
+    { required:true,trigger:'blur',message:'请输入用户名'}
+  ],
+  password:[
+    { required:true,trigger:'blur',message:'请输入密码'}
+  ]
+
+}) 
 
 /**
  * 执行登录
@@ -121,10 +134,23 @@ function handleSuccess(res) {
 }
 </script>
 
-<style>
+<style scoped>
+span{
+  display:block;
+  font-size:28px;
+  top:-20px;
+  left:125px;
+  /* margin:0 auto; */
+}
 .box-card {
   width: 480px;
   margin: 180px auto;
   padding: 20px;
+}
+.el-button{
+  left:100px;
+  width:80px;
+  font-size:15px;
+  top:20px;
 }
 </style>

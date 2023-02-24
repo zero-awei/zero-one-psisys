@@ -22,7 +22,6 @@
             <!-- <Fold /> -->
             <component :is="headerleft"></component>
           </el-icon>
-          <!-- <el-icon style="color:white;top=8px;left:100px;"><Search /></el-icon> -->
           <HeadSideCom />
         </el-header>
 
@@ -40,7 +39,7 @@
 <style lang="scss" scoped>
 .el-container {
   height: 100vh;
-
+   background-color:rgba(0,0,0,.03);
   .el-aside {
     background-color: #fff;
     //直接将计算属性的值拿过来
@@ -68,7 +67,7 @@
     }
     }
     .tag{
-      padding-top:30px;
+
     }
 }
   .el-header{
@@ -123,7 +122,6 @@ export default {
     return {
       url: File,
       collapse: false,
-      label:true
     }
   },
   //计算属性
@@ -146,7 +144,6 @@ export default {
   },
 
 }
-
 // 菜单数据
 const menus = store.getMenus
 </script>

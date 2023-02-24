@@ -63,7 +63,7 @@
             </el-card>
           </el-col>
 
-          <el-col class="head" :span="6" style="width:295px;">
+          <el-col class="head" :span="6" >
             <el-card class="box-card">
               <template #header>
                 <div class="card-header">
@@ -101,7 +101,9 @@
 
 <style scoped>
 .top{
-  margin:4px 4px 0px 6px;
+  left:-14px;
+  min-width:1052px;
+  width:1192px;
 }
 
   .head{
@@ -164,60 +166,7 @@
           font-size: 30px;
           line-height: 32px;
         }
-  
 
-/* .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-span{
-  color: black;
-  font-size: 16px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-}
-
-.card-bottom1{ 
-.head-info.center{
-span{
-    color: rgba(70, 67, 67, 0.45);
-    display: inline-block;
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 4px;
-}
- p{
-    color: rgba(0,0,0,.85);
-    font-size: 24px;
-    line-height: 32px;
-    margin: 0;
-}
-} 
-}
-
-.card-bottom2{
- .body{
-  display:flex;
-  .head-info.center {
-    text-align: center;
-    padding: 0 40px;
-    span{
-    color: rgba(0,0,0,.45);
-    display: inline-block;
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 4px;
-       }
-     .head-info.center p {
-    color: rgba(0,0,0,.85);
-    font-size: 24px;
-    line-height: 32px;
-    margin: 0;
-     }
-   }
- }
-} */
 </style>
 
  
