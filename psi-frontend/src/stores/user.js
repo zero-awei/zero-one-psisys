@@ -238,45 +238,96 @@ const purManagement = {
     },
     {
       id: 702,
-      text: "供应商",
+      text: "采购询价",
       href: '/PurInquiry',
       icon: 'IconTickets',
       pid: 5
     },
     {
       id: 703,
-      text: "仓库",
+      text: "供应报价",
       href: '/SupplyQuotation',
       icon: 'IconTickets',
       pid: 5
     },
     {
       id: 704,
-      text: "物料分类",
+      text: "采购比价",
       href: '/PurComparison',
       icon: 'IconTickets',
       pid: 5
     },
     {
       id: 705,
-      text: "物料",
+      text: "采购订单",
       href: '/PurOrder',
       icon: 'IconTickets',
       pid: 5
     },
     {
       id: 706,
-      text: "计量单位",
+      text: "采购预付申请",
       href: '/PurPrepaymentApply',
       icon: 'IconTickets',
       pid: 5
     },
     {
       id: 707,
-      text: "币种",
+      text: "采购申请",
       href: '/PurPaymentApply',
       icon: 'IconTickets',
       pid: 5
+    },
+    {
+      id: 708,
+      text: "采购统计",
+      href: '',
+      icon: 'IconTickets',
+      pid: 5,
+      children:[
+        {
+          id: 711,
+          text: "采购订单执行情况",
+          href: "",
+          icon: "",
+          pid: 51
+        },
+        {
+          id: 712,
+          text: "采购订单汇总",
+          href: "",
+          icon: "",
+          pid: 51
+        },
+        {
+          id: 713,
+          text: "采购订单汇总-部门",
+          href: "",
+          icon: "",
+          pid: 51
+        },
+        {
+          id: 714,
+          text: "采购订单汇总-业务员",
+          href: "",
+          icon: "",
+          pid: 51
+        },
+        {
+          id: 715,
+          text: "采购订单汇总-供应商",
+          href: "",
+          icon: "",
+          pid: 51
+        },
+        {
+          id: 716,
+          text: "采购订单汇总-物料",
+          href: "",
+          icon: "",
+          pid: 51
+        }
+      ]
     }
   ]
 }

@@ -56,17 +56,18 @@ const formState = reactive({
       placeholder: '请输入编码'
     },
     {
-      type: 'input',
-      label: '名称',
-      prop: 'name',
-      placeholder: '请输入名称'
+      type: 'daterange',
+      label: '日期',
+      prop: 'daterange',
+      startPlaceholder: '开始日期',
+      endPlaceholder: '结束日期'
     }
   ],
   // 传给后台的查询数据，由输入框传来
   // 修改点7
   formData: {
     code: '',
-    name: '',
+    daterange: [],
   }
 })
 
