@@ -119,7 +119,7 @@ DepotDetailVO DepotService::listDetail(const OnlyValueQuery& query)
 
 	DepotDAO dao;
 	std::list<DepotDO> result = dao.selectDetail(obj);
-
+	//查询父节点名字
 	DepotDO sub = result.front();
 	obj.setCode("");
 	DepotDetailVO vo;
@@ -130,6 +130,7 @@ DepotDetailVO DepotService::listDetail(const OnlyValueQuery& query)
 		DepotDO psub = result.front();
 		vo.setPid(psub.getName());
 	}
+	//转换为vo
 	vo.setNext(sub.getHasChild());
 	vo.setCode(sub.getCode());
 	vo.setName(sub.getName());
@@ -137,6 +138,28 @@ DepotDetailVO DepotService::listDetail(const OnlyValueQuery& query)
 	vo.setPhone(sub.getPhone());
 	vo.setStart(sub.getStart() + "0");
 	vo.setRemarks(sub.getRemarks());
+	return vo;
+}
+
+DepotActionInfoVO DepotService::listInfo(const OnlyValueQuery& query)
+{
+	//构建查询数据
+	DepotDO obj;
+	obj.setName("");
+	obj.setCode(query.getCode());
+
+	DepotDAO dao;
+	std::list<DepotDO> result = dao.selectDetail(obj);
+
+	DepotDO sub = result.front();
+	obj.setCode("");
+	DepotActionInfoVO vo;
+
+	vo.setCreationTime(sub.getCreationTime());
+	vo.setCreationPeo(sub.getCreationPeo());
+	vo.setModiTime(sub.getModiTime());
+	vo.setModiPeo(sub.getModiPeo());
+
 	return vo;
 }
 
