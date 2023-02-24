@@ -11,6 +11,8 @@ import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.Organ
 import com.zeroone.star.systemmanagement.service.organizationmanagement.OrganizationmanagementService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

@@ -4,6 +4,8 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.alibaba.excel.write.metadata.WriteSheet;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -20,6 +22,11 @@ import java.util.List;
  * @author 阿伟学长
  * @version 1.0.0
  */
+@Configuration
+@ComponentScan({
+        "com.zeroone.star.project.components.jwt",
+        "com.zeroone.star.project.components.user"
+})
 @Component
 public class EasyExcelComponent {
     /**

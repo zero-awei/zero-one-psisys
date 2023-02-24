@@ -3,9 +3,10 @@ package com.zeroone.star.systemmanagement.service.organizationmanagement.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
-import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationTreeVO;
@@ -13,10 +14,12 @@ import com.zeroone.star.systemmanagement.entity.organizationmanagement.SysDepart
 import com.zeroone.star.systemmanagement.mapper.organizationmanagement.OrganizationmanagementMapper;
 import com.zeroone.star.systemmanagement.service.organizationmanagement.OrganizationmanagementService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,8 +33,10 @@ import java.util.List;
  */
 @Service
 public class OrganizationmanagementImpl extends ServiceImpl<OrganizationmanagementMapper, SysDepart> implements OrganizationmanagementService {
-    @Autowired
+    @Resource
     private OrganizationmanagementMapper mapper;
+    @Resource
+    private UserHolder holder;
 
     @Override
     public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition) {
@@ -43,39 +48,35 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
         return PageVO.create(p, OrganizationListVO.class);
     }
 
-//    @Override
-//    public JsonVO<OrganizationTreeVO> queryTree(String departName) {
-////        QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
-////        wrapper.eq("depart_name", departName);
-//        HashMap<String, Object> map = new HashMap<>();
-//        map.put("depart_name", departName);
-//        List<SysDepart> sysDeparts = mapper.selectByMap(map);
-//        String parentId = sysDeparts.getParentId();
-//        OrganizationTreeVO treeVO = new OrganizationTreeVO();
-//        treeVO.setDepartName(departName);
-//        treeVO.setParentId(parentId);
-//        return JsonVO.success(treeVO);
-//    }
-@Override
-public List<OrganizationTreeVO> queryTree(String departName) {
-    List<OrganizationTreeVO> treeVOS = new ArrayList<>();
-    HashMap<String, Object> map = new HashMap<>();
-    map.put("depart_name", departName);
-    List<SysDepart> sysDeparts = mapper.selectByMap(map);
-    for (SysDepart depart : sysDeparts) {
-        String parentId = depart.getParentId();
-        OrganizationTreeVO treeVO = new OrganizationTreeVO();
-        treeVO.setParentId(parentId);
-        treeVO.setDepartName(departName);
-        treeVOS.add(treeVO);
+    @Override
+    public List<OrganizationTreeVO> queryTree(String departName) {
+        List<OrganizationTreeVO> treeVOS = new ArrayList<>();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("depart_name", departName);
+        List<SysDepart> sysDeparts = mapper.selectByMap(map);
+        for (SysDepart depart : sysDeparts) {
+            String parentId = depart.getParentId();
+            OrganizationTreeVO treeVO = new OrganizationTreeVO();
+            treeVO.setParentId(parentId);
+            treeVO.setDepartName(departName);
+            treeVOS.add(treeVO);
+        }
+        return treeVOS;
     }
-    return treeVOS;
-}
 
     @Override
     public String add(OrganizationManagementDTO data) {
         SysDepart sysDepart = new SysDepart();
         BeanUtil.copyProperties(data, sysDepart);
+        try {
+            UserDTO userDTO = holder.getCurrentUser();
+            sysDepart.setUpdateBy(userDTO.getUsername());
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        Date date = new Date();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        sysDepart.setUpdateTime(dateFormat.format(date));
         int result = mapper.insert(sysDepart);
         if (result == 0) {
             return "新增失败";
@@ -87,6 +88,15 @@ public List<OrganizationTreeVO> queryTree(String departName) {
     public String modify(OrganizationManagementDTO data) {
         SysDepart sysDepart = new SysDepart();
         BeanUtil.copyProperties(data, sysDepart);
+        try {
+            UserDTO userDTO = holder.getCurrentUser();
+            sysDepart.setUpdateBy(userDTO.getUsername());
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        Date date = new Date();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        sysDepart.setUpdateTime(dateFormat.format(date));
         int result = mapper.updateById(sysDepart);
         if (result == 0) {
             return "更新失败";
