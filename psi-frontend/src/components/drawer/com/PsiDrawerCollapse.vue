@@ -2,13 +2,13 @@
   <div class="demo-collapse">
     <!-- 折叠面板 -->
         <el-collapse>
-        <el-collapse-item title="Consistency" name="1">
+        <el-collapse-item :title="title" name="1">
             <div>
             Consistent with real life: in line with the process and logic of real
             life, and comply with languages and habits that the users are used to;
             </div>
         </el-collapse-item>
-        <el-collapse-item title="Feedback" name="2">
+        <el-collapse-item :title="title" name="2">
             <div style="margin: 20px">
                 <!-- 通过v-for打印多个输入 -->
                 <el-form 
@@ -41,7 +41,8 @@ import { ref } from 'vue'
 
 // 用一个props接收根组件传来的后台数据
 const names = defineProps({
-  items: Array
+  items: Array,
+  title: String
 })
 
 

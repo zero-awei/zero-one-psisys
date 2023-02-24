@@ -1,8 +1,8 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-15 15:14:57
- * @LastEditTime: 2023-02-23 00:27:06
- * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-23 12:21:54
+ * @LastEditors: Kyle5 nnkyle@163.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\drawer\com\PsiDrawer.vue
  * 可以输入预定的版权声明、个性签名、空行等

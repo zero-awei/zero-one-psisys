@@ -180,6 +180,7 @@ const yewuRouter = {
     }
   ]
 }
+// 组件测试
 const componentRouter = {
   id: 999,
   text: '组件封装',
@@ -229,6 +230,180 @@ const componentRouter = {
     }
   ]
 }
+// 采购管理
+const purManagement = {
+  id: 700,
+  text: '采购管理',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 701,
+      text: '采购申请',
+      href: '/PurRequisition',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 702,
+      text: '采购询价',
+      href: '/PurInquiry',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 703,
+      text: '供应报价',
+      href: '/SupplyQuotation',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 704,
+      text: '采购比价',
+      href: '/PurComparison',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 705,
+      text: '采购订单',
+      href: '/PurOrder',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 706,
+      text: '采购预付申请',
+      href: '/PurPrepaymentApply',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 707,
+      text: '采购申请',
+      href: '/PurPaymentApply',
+      icon: 'IconTickets',
+      pid: 5
+    },
+    {
+      id: 708,
+      text: '采购统计',
+      href: '',
+      icon: 'IconTickets',
+      pid: 5,
+      children: [
+        {
+          id: 711,
+          text: '采购订单执行情况',
+          href: '',
+          icon: '',
+          pid: 51
+        },
+        {
+          id: 712,
+          text: '采购订单汇总',
+          href: '',
+          icon: '',
+          pid: 51
+        },
+        {
+          id: 713,
+          text: '采购订单汇总-部门',
+          href: '',
+          icon: '',
+          pid: 51
+        },
+        {
+          id: 714,
+          text: '采购订单汇总-业务员',
+          href: '',
+          icon: '',
+          pid: 51
+        },
+        {
+          id: 715,
+          text: '采购订单汇总-供应商',
+          href: '',
+          icon: '',
+          pid: 51
+        },
+        {
+          id: 716,
+          text: '采购订单汇总-物料',
+          href: '',
+          icon: '',
+          pid: 51
+        }
+      ]
+    }
+  ]
+}
+// 基础资料
+const baseDataRouter = {
+  id: 800,
+  text: '基础资料',
+  icon: 'IconTickets',
+  children: [
+    {
+      id: 801,
+      text: '客户',
+      href: '/Client',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 802,
+      text: '供应商',
+      href: '/Provider',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 803,
+      text: '仓库',
+      href: '/Store',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 804,
+      text: '物料分类',
+      href: '/MaterialSort',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 805,
+      text: '物料',
+      href: '/Material',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 806,
+      text: '计量单位',
+      href: '/Measurement',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 807,
+      text: '币种',
+      href: '/Currency',
+      icon: 'IconTickets',
+      pid: 4
+    },
+    {
+      id: 808,
+      text: '银行账户',
+      href: '/Account',
+      icon: 'IconTickets',
+      pid: 4
+    }
+  ]
+}
+//库存管理
+const kucunRouter = {}
 
 export const userStore = defineStore('user', {
   state: () => ({
@@ -281,6 +456,9 @@ export const userStore = defineStore('user', {
       // 在后端返回菜单列表中添加组件列表路由
       this.menus.push(componentRouter)
       this.menus.push(yewuRouter)
+      this.menus.push(baseDataRouter)
+      this.menus.push(purManagement)
+      this.menus.push(kucunRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {

@@ -9,9 +9,17 @@
 -->
 <template>
   <div>
-    <el-button type="primary" @click="drawerVisible = true">打开</el-button>
-    <psi-drawer v-model="drawerVisible" :title="drawerStatus.title" :basicItems="drawerStatus.basicItems"
-      :toggleItems="drawerStatus.toggleItems" :formData="drawerStatus.formData" @confirm="confirm" />
+    <el-button 
+    type="primary" 
+    @click="drawerVisible = true">打开</el-button>
+    
+    <psi-drawer 
+    v-model="drawerVisible" 
+    :title="drawerStatus.title" 
+    :basicItems="drawerStatus.basicItems"
+    :toggleItems="drawerStatus.toggleItems" 
+    :formData="drawerStatus.formData" 
+    @confirm="confirm" />
   </div>
 </template>
 

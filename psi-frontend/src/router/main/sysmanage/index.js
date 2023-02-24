@@ -1,3 +1,11 @@
+/*
+ * @Author: Kyle5 nnkyle@163.com
+ * @Date: 2023-02-20 18:51:04
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-24 15:24:35
+ * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 const routes = [
   {
     path: '/un-1',
@@ -60,7 +68,84 @@ const routes = [
     name: 'center',
     component: () => import('@/components/center/index.vue')
   },
-  // 系统管理
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓基础资料↓↓↓↓↓↓↓↓↓↓↓↓↓
+  {
+    path: '/client',
+    name: 'client',
+    component: () => import('@/views/jichuziliao/ClientCheck.vue')
+  },
+  {
+    path: '/Provider',
+    name: 'Provider',
+    component: () => import('@/views/jichuziliao/ProviderCheck.vue')
+  },
+  {
+    path: '/Currency',
+    name: 'Currency',
+    component: () => import('@/views/jichuziliao/CurrencyCheck.vue')
+  },
+  {
+    path: '/MaterialSort',
+    name: 'MaterialSort',
+    component: () => import('@/views/jichuziliao/MaterialSortCheck.vue')
+  },
+  {
+    path: '/Material',
+    name: 'Material',
+    component: () => import('@/views/jichuziliao/MaterialCheck.vue')
+  },
+  {
+    path: '/Measurement',
+    name: 'Measurement',
+    component: () => import('@/views/jichuziliao/MeasurementCheck.vue')
+  },
+  {
+    path: '/Account',
+    name: 'Account',
+    component: () => import('@/views/jichuziliao/AccountCheck.vue')
+  },
+  {
+    path: '/Store',
+    name: 'Store',
+    component: () => import('@/views/jichuziliao/StoreCheck.vue')
+  },
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓采购管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  {
+    path: '/PurInquiry',
+    name: 'PurInquiry',
+    component: () => import('@/views/caigouguanli/PurInquiry.vue')
+  },
+  {
+    path: '/PurOrder',
+    name: 'PurOrder',
+    component: () => import('@/views/caigouguanli/PurOrder.vue')
+  },
+  {
+    path: '/PurPaymentApply',
+    name: 'PurPaymentApply',
+    component: () => import('@/views/caigouguanli/PurPaymentApply.vue')
+  },
+  {
+    path: '/PurRequisition',
+    name: 'PurRequisition',
+    component: () => import('@/views/caigouguanli/PurRequisition.vue')
+  },
+  {
+    path: '/PurComparison',
+    name: 'PurComparison',
+    component: () => import('@/views/caigouguanli/PurComparison.vue')
+  },
+  {
+    path: '/PurPrepaymentApply',
+    name: 'PurPrepaymentApply',
+    component: () => import('@/views/caigouguanli/PurPrepaymentApply.vue')
+  },
+  {
+    path: '/SupplyQuotation',
+    name: 'SupplyQuotation',
+    component: () => import('@/views/caigouguanli/SupplyQuotation.vue')
+  },
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓系统管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   {
     path: '/sysmanagement/rolemanagement',
     name: 'rolemanagement',
@@ -96,7 +181,7 @@ const routes = [
     name: 'sysposition',
     component: () => import('@/views/sysmanage/SysPosition.vue')
   },
-  // 应付管理
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓应付管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   // 采购应付
   {
     path: '/pay/payable/purchase',
@@ -118,6 +203,7 @@ const routes = [
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
   }
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓库存管理↓↓↓↓↓↓↓↓↓↓↓↓↓
 ]
 
 export default routes

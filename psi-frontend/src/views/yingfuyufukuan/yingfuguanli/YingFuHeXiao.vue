@@ -11,9 +11,9 @@
     </psi-table>
 
     <!-- 弹出框 -->
-    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogAttrs">
+    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
     </psi-dialog>
-    <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogAttrs">
+    <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
     </psi-dialog>
   </div>
 </template>
@@ -50,7 +50,7 @@ const formState = reactive({
       type: 'select',
       label: '供应商',
       prop: 'supplierId',
-      placeholder: '请选择',
+      placeholder: '请选择性别',
       options: [
         {
           label: '供应商1',
@@ -66,7 +66,7 @@ const formState = reactive({
       type: 'select',
       label: '单据阶段',
       prop: 'billStage',
-      placeholder: '请选择',
+      placeholder: '请选择性别',
       options: [
         {
           label: '阶段1',
@@ -129,7 +129,7 @@ const formState = reactive({
   formData: {
     billNo: '',
     billStage: '',
-    daterange: [],
+    daterange: '',
     isClosed: 0,
     isEffective: 0,
     isVoided: 0,
@@ -247,10 +247,7 @@ const tableState = reactive({
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true,
-    maxHeight: '400',
-    height: '400',
-    headOperation: ['add', 'importData', 'exportData', 'select']
+    border: true
   }
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)
@@ -311,7 +308,7 @@ const examineDialogState = reactive({
     width: '80%'
   }
 })
-const { examineDialogAttrs } = toRefs(examineDialogState)
+const { examineDialogAttrs } = toRefs(editdialogState)
 // function edit(data){
 //   editDialogVisible=true
 //   // 弹出框内的表格数据和data配置
