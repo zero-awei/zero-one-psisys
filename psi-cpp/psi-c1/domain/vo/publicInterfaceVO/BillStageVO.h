@@ -8,7 +8,7 @@
 Author C1-ÈýÄ¾
 2023.2.11 18µã11·Ö
 */
-	class BillStageVO
+class BillStageVO
 {
 	// ½×¶Î±àºÅ
 	CC_SYNTHESIZE(int, id, Id);

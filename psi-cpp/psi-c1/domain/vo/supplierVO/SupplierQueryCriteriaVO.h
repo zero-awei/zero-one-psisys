@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _SUPPLIERQUERYCRITERIA_VO_
 #define _SUPPLIERQUREYCRITERIA_VO_
 
