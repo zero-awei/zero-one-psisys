@@ -96,6 +96,23 @@ int DepotService::saveData(const DepotDTO& dto)
 	return dao.insertDepot(data);
 }
 
+int DepotService::saveKidData(const DepotDTO& dto)
+{
+	//组装数据
+	DepotDO data;
+	SnowFlake sf(datacenterId, machineId);
+	data.setId(to_string(sf.nextId()));
+	data.setPid(dto.getPid());
+	data.setName(dto.getName());
+	data.setCode(dto.getCode());
+	data.setAuxName(dto.getAuxName());
+	data.setPhone(dto.getPhone());
+	data.setStart(dto.getStart());
+	//执行数据添加
+	DepotDAO dao;
+	return dao.insertKidDepot(data);
+}
+
 bool DepotService::removeData(const OnlyValueQuery& query)
 {
 	DepotDO id;

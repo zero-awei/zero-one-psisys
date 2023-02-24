@@ -39,6 +39,8 @@ public:
 	std::list<DepotVO> getKid(const OnlyValueQuery& query);
 	// 保存数据
 	int saveData(const DepotDTO& dto);
+	// 保存子级数据
+	int saveKidData(const DepotDTO& dto);
 	// 删除数据
 	bool removeData(const OnlyValueQuery& query);
 	int modifyDepot(const DepotDTO& dto);

@@ -65,7 +65,7 @@ JsonVO<bool> DepotController::execAddKidDepot(const DepotDTO& dto)
     //定义一个Service
     DepotService service;
     //保存数据
-    if (service.saveData(dto)) {
+    if (service.saveKidData(dto)) {
         result.success(true);
     }
     else {

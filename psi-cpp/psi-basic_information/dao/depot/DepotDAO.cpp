@@ -84,6 +84,14 @@ int DepotDAO::insertDepot(const DepotDO& iObj)
 	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
 }
 
+int DepotDAO::insertKidDepot(const DepotDO& iObj)
+{
+	string sqlInsert = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
+	string sqlUpdate = "UPDATE `bas_warehouse` SET `has_child`=? WHERE `pid`=?";
+	return sqlSession->executeUpdate(sqlInsert, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks())
+		&& sqlSession->executeUpdate(sqlUpdate, "%s%s", "1", iObj.getPid());
+}
+
 int DepotDAO::deleteDepot(const DepotDO& iObj)
 {
 	string sql = "DELETE FROM `bas_warehouse` WHERE `id`=?";

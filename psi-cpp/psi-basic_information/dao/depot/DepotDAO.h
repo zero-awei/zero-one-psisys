@@ -36,6 +36,8 @@ public:
 	std::list<DepotDO> selectKid(const DepotDO& obj);
 	// 新建
 	int insertDepot(const DepotDO& iObj);
+	// 新建子级仓库
+	int insertKidDepot(const DepotDO& iObj);
 	// 通过ID删除数据
 	int deleteDepot(const DepotDO& iObj);
 	// 通过ID修改
