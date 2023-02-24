@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.paymentmanagement.mapper.PaymentManagerMapper">
+    <update id="updateBillStage" parameterType="com.zeroone.star.project.dto.paymentManager.UpdateBillStageDto" >
+        update fin_payment set bill_stage=#{billStage} where id=#{id};
+    </update>
+
+    <insert id="insertList" parameterType="com.zeroone.star.paymentmanagement.entity.FinPayment">
+        insert into fin_payment(`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`sec_no`,`subject`,`is_rubric`,`payment_type`,
+        `supplier_id`,`amt`,`checked_amt`,`attachment`,`remark`,`is_auto`,`bill_stage`,`approver`,`bpmi_instance_id`,`approval_result_type`,
+        `approval_remark`, `is_effective`,`effective_time`,`is_closed`,`is_voided`,`create_time`,`create_by`,`sys_org_code`,`update_time`,
+        `update_by`,`version`
+        )values
+        <foreach collection="list" item="item" separator=",">
+            (
+                #{item.billNo},
+                #{item.billDate},
+            #{item.srcBillType},
+            #{item.srcBillId},
+            #{item.secNo},
+            #{item.subject},
+            #{item.isRubric},
+            #{item.paymentType},
+            #{item.supplierId},
+            #{item.amt},
+            #{item.checkedAmt},
+            #{item.attachment},
+            #{item.remark},
+            #{item.isAuto},
+            #{item.billStage},
+            #{item.approver},
+            #{item.bpmiInstanceId},
+            #{item.approvalResultType},
+            #{item.approvalRemark},
+            #{item.isEffective},
+            #{item.effectiveTime},
+            #{item.isClosed},
+            #{item.isVoided},
+            #{item.createTime},
+            #{item.createBy},
+            #{item.sysOrgCode},
+            #{item.updateTime},
+            #{item.updateBy},
+            #{item.version}
+            )
+        </foreach>
+
+    </insert>
+</mapper>
