@@ -81,7 +81,7 @@ std::list<DepotDO> DepotDAO::selectKid(const DepotDO& obj)
 {
 	stringstream sql;
 	SqlParams params;
-	sql << "SELECT id, pid, has_child, code, name, aux_name, phone, is_enabled, remark, create_by, create_time, update_by, update_time, version FROM bas_warehouse";
+	sql << "SELECT name, code, aux_name, phone, remark, create_by, create_time, update_by, update_time FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql, params);
 	DepotMapper mapper;
 	string sqlStr = sql.str();
