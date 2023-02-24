@@ -19,7 +19,7 @@
 #include "stdafx.h"
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
-
+#include<ctime>
 
 //可能vo不需要分父类子类
 
@@ -50,6 +50,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	for (MaterialClassificationDO sub : result)
 	{
 		MaterialClassificationBaseVO vo;
+		vo.setId(sub.getId());
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
 		vo.setFullname(sub.getFullname());
@@ -66,15 +67,21 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 }
 
 //查询子类列表
-JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
+list<MaterialClassificationChildVO> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
-	obj.setPid(query.getPid());
+	obj.setCode(query.getCode());//父类编码
 	MaterialClassificationDAO dao;
-	list<MaterialClassificationDO> result = dao.selectByPid(obj.getPid());
+	list<MaterialClassificationDO> father = dao.selectByCode(obj.getCode());//返回的是list
+	MaterialClassificationDO f;
+	for (MaterialClassificationDO sub : father) {
+		f.setId(sub.getId());
+	}
+	list<MaterialClassificationDO> result = dao.selectByPid(f.getId());
 	list<MaterialClassificationChildVO> vr;
 	for (MaterialClassificationDO sub : result)
 	{
 		MaterialClassificationChildVO vo;
+		vo.setId(sub.getId());
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
 		vo.setFullname(sub.getFullname());
@@ -87,16 +94,14 @@ JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationService::listC
 		vr.push_back(vo);
 
 	}
-	JsonVO<list<MaterialClassificationChildVO>> r;
-	r.setData(vr);//把数据放入JsonVO中
-	return r;
-	
+
+	return vr;
+
 }
 
 
-JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::listDetail(const MaterialClassificationQuery& query) {
+list<MaterialClassificationDetailVO> MaterialClassificationService::listDetail(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
-	obj.setName(query.getName());
 	obj.setCode(query.getCode());
 	MaterialClassificationDAO dao;
 	list<MaterialClassificationDO> result = dao.selectByCode(obj.getCode());
@@ -104,6 +109,7 @@ JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::list
 	for (MaterialClassificationDO sub : result)
 	{
 		MaterialClassificationDetailVO vo;
+		vo.setId(sub.getId());
 		vo.setPid(sub.getPid());
 		vo.setHasChild(sub.getHasChild());
 		vo.setName(sub.getName());
@@ -117,52 +123,88 @@ JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationService::list
 
 		vr.push_back(vo);
 	}
-	JsonVO<list<MaterialClassificationDetailVO>> r;
-	r.setData(vr);//把数据放入JsonVO中
-	return  r;
+
+	return  vr;
 }
 
-uint64_t MaterialClassificationService::saveData(const MaterialClassificationDTO& dto)
+int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
 {
+	//新增数据应该不用管修改相关的信息
+
 	//组装数据
 	MaterialClassificationDO data;
-	data.setId(dto.getId());
-	data.setPid(dto.getPid());
+	//应该是在这里生成id
+	SnowFlake sf(1, 2);
+	data.setId(to_string(sf.nextId()));
+
+	//添加下级的时候要获得pid，如果pid的父类一开始没有下级，则还要修改父类的has_child
+	data.setPid(dto.getPid()==""? "0":dto.getPid());
+	data.setHasChild(dto.getHasChild()==""? "0":dto.getHasChild());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
 	data.setIsEnabled(dto.getIsEnabled());
-	data.setCreateBy(dto.getCreateBy());
-	data.setCreateTime(dto.getCreateTime());
-	data.setUpdateBy(dto.getUpdateBy());
-	data.setUpdateTime(dto.getUpdateTime());
-	
+	data.setCreateBy(payload.getUsername());
+
+	//设置时间
+	time_t nowtime;
+	time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
+	tm p;
+	localtime_s(&p,&nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	//printf("%04d:%02d:%02d %02d:%02d:%02d\n", p.tm_year + 1900, p.tm_mon + 1, p.tm_mday,p.tm_hour,p.tm_min,p.tm_sec);
+	string nowTime = to_string(p.tm_year+1900) + "-" +to_string(p.tm_mon+1)+"-"+to_string(p.tm_mday) + " " + to_string(p.tm_hour)+":"+to_string(p.tm_min) +":"+to_string(p.tm_sec);
+
+	data.setCreateTime(nowTime);
+	data.setVersion(dto.getVersion());
 	//执行数据添加
 	MaterialClassificationDAO dao;
-	return dao.insert(data);
+
+	int modify = 1;
+	if (dto.getPid() != "") {//有父节点
+		modify = dao.updateById(dto.getPid());//通过id修改父节点的has_child
+	}
+
+	return (modify * dao.insert(data))==1;
 }
 
-bool MaterialClassificationService::updateData(const MaterialClassificationDTO& dto)
+int MaterialClassificationService::updateData(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
 {
+
+	//修改数据要先拿到id,修改数据应该不用管创建相关的信息
+
 	//组装传输数据
 	MaterialClassificationDO data;
 	data.setId(dto.getId());
 	data.setPid(dto.getPid());
+	data.setHasChild(dto.getHasChild());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
 	data.setIsEnabled(dto.getIsEnabled());
-	data.setCreateBy(dto.getCreateBy());
-	data.setCreateTime(dto.getCreateTime());
-	data.setUpdateBy(dto.getUpdateBy());
-	data.setUpdateTime(dto.getUpdateTime());
+
+	time_t nowtime;
+	time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
+	tm p;
+	localtime_s(&p, &nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	string nowTime = to_string(p.tm_year + 1900) + "-" + to_string(p.tm_mon + 1) + "-" + to_string(p.tm_mday) + " " + to_string(p.tm_hour) + ":" + to_string(p.tm_min) + ":" + to_string(p.tm_sec);
+
+	data.setUpdateBy(payload.getUsername());
+	data.setUpdateTime(nowTime);
+	data.setVersion(dto.getVersion());
 	//执行数据修改
 	MaterialClassificationDAO dao;
 	return dao.update(data) == 1;
 }
 
-bool MaterialClassificationService::removeData(string id)
+int MaterialClassificationService::removeData(const MaterialClassificationDTO& dto)
 {
 	MaterialClassificationDAO dao;
-	return dao.deleteById(id) == 1;
+
+	int d = 1;
+	if (dto.getHasChild()=="1") {//如果有子级节点则删除
+		d = dao.deleteByPid(dto.getId());
+	}
+	
+
+	return (d*dao.deleteById(dto.getId())) == 1;
 }
