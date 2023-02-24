@@ -40,7 +40,7 @@ public:
 		data.setName(resultSet->getString(5));
 		data.setAuxName(resultSet->getString(6));
 		data.setPhone(resultSet->getInt(7));
-		data.setStart(resultSet->getInt(8));
+		data.setStart(resultSet->getString(8));
 		data.setRemarks(resultSet->getString(9));
 		data.setCreationPeo(resultSet->getString(10));
 		data.setCreationTime(resultSet->getString(11));
