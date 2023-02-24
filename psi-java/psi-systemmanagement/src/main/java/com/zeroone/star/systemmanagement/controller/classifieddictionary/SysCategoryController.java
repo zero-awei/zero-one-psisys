@@ -33,6 +33,8 @@ public class SysCategoryController implements ClassifiedDictionaryApis {
     @Resource
     private SysCategoryServiceImpl service;
 
+
+
     @ApiOperation("查询所有根字典")
     @GetMapping("/query-all")
     @Override
@@ -79,7 +81,7 @@ public class SysCategoryController implements ClassifiedDictionaryApis {
     @PostMapping("/insert-one")
     @Override
     public JsonVO<String> add(ClassifiedDictionarySaveDTO data) {
-        if(data == null){
+        if(data == null || service.save(data).equals("数据已存在")){
             return JsonVO.create(null, ResultStatus.FAIL);
         }
         return JsonVO.success(service.save(data));

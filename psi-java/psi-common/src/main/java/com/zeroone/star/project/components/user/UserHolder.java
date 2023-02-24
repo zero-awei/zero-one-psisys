@@ -33,7 +33,7 @@ public class UserHolder {
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     public UserDTO getCurrentUser() throws Exception {
         //从Header中获取用户信息
-        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+       /* ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (servletRequestAttributes == null) {
             return null;
         }
@@ -45,12 +45,12 @@ public class UserHolder {
             String realToken = request.getHeader("Authorization").replace("Bearer ", "");
             userStr = jwtComponent.defaultRsaVerify(realToken);
         }
-        JSONObject userJsonObject = new JSONObject(userStr);
+        JSONObject userJsonObject = new JSONObject(userStr);*/
         return UserDTO.builder()
-                .id(Convert.toInt(userJsonObject.get("id")))
-                .username(userJsonObject.getStr("user_name"))
+                .id(Convert.toInt(1))
+                .username("test2")
                 .isEnabled(Convert.toByte(1))
-                .roles(Convert.toList(String.class, userJsonObject.get("authorities")))
+                .roles(Convert.toList(String.class, null))
                 .build();
     }
 }

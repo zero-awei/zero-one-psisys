@@ -4,6 +4,8 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.systemmanagement.classifieddictionary.ClassifiedDictionarySaveDTO;
 import com.zeroone.star.project.dto.systemmanagement.classifieddictionary.ClassifiedDictionaryUpdateDTO;
 import com.zeroone.star.project.query.PageQuery;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -31,6 +34,9 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
 
     @Resource
     private SysCategoryMapper mapper;
+
+    @Resource
+    private UserHolder holder;
 
     @Override
     public PageVO<ClassifiedDictionaryVO> listAll(PageQuery condition) {
@@ -57,6 +63,14 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
         }
         SysCategory sysCategory = new SysCategory();
         BeanUtil.copyProperties(data,sysCategory);
+        //获取操作者的信息
+        try{
+            UserDTO userDTO = holder.getCurrentUser();
+            sysCategory.setUpdateBy(userDTO.getUsername());
+        }catch (Exception e){
+            return e.getMessage();
+        }
+        //设置更新时间
         sysCategory.setUpdateTime(now);
         int result = mapper.updateById(sysCategory);
         if(result == 0){
@@ -91,25 +105,35 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
         //判断是否有子节点
         LambdaQueryWrapper<SysCategory> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysCategory::getPid,data.getPid());
-        int records = mapper.selectList(queryWrapper).size();
+        List<SysCategory> list = mapper.selectList(queryWrapper);
+        int records = list.size();
+        //实现sql，查询出所有子节点并按照创建时间降序获取top1
+        //根据父节点查子节点的数量为0
         if(records == 0){
+            sysCategory.setCode("A01");
             sysCategory.setHasChild("0");
-            //判断父节点的数量
-            LambdaQueryWrapper<SysCategory> wrapperParent = new LambdaQueryWrapper<>();
-            int numberP= mapper.selectList(wrapperParent).size();
-            sysCategory.setCode(makeCode(numberP));
-        }else {
-            //根据pid（父节点id）获取子节点的数量
-            int numberC = mapper.selectList(new LambdaQueryWrapper<SysCategory>()
-                    .eq(SysCategory::getPid,data.getPid())).size();
-            sysCategory.setCode(data.getPid()+makeCode(numberC));
         }
+        //根据父节点查子节点的数量不为0
         sysCategory.setHasChild("1");
+        List<SysCategory> listLastNode =mapper.selectNodeOrderByCreateTime(data.getPid());
+        String code = makeCode(listLastNode);
+        if(data.getPid().equals("0")){
+            sysCategory.setCode(code);
+        }
+        sysCategory.setCode(data.getPid()+code);
         //更新操作时间
         sysCategory.setCreateTime(now);
         sysCategory.setUpdateTime(now);
         //set操作人和更新人
+        try{
+           UserDTO userDTO = holder.getCurrentUser();
+           sysCategory.setCreateBy(userDTO.getUsername());
+           sysCategory.setUpdateBy(userDTO.getUsername());
+        }catch (Exception e){
+            return e.getMessage();
+        }
         int result = mapper.insert(sysCategory);
+        System.out.println("test4");
         if(result != 0){
             return "添加成功";
         }
@@ -118,17 +142,25 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
 
 
     /**
-     * 根据同级节点的数量进行编码
-     * @param recodes 同级节点数量
+     * 根据最后一个创建的同级节点的code字段进行编码
+     * @param  list 同级节点集合
      * @return code节点同级编码
      */
-    public String makeCode(int recodes){
-        if(recodes == 0){
-            return null;
+    public String makeCode(List<SysCategory> list){
+        int recodes = list.size();
+        String result = null;
+        SysCategory sysCategory = list.get(0);
+        char[] chars = sysCategory.getCode().toCharArray();
+        if(recodes%10 == 9){
+            chars[chars.length-1] = 0;
+            chars[chars.length-2] = ++chars[chars.length-2];
+            result = String.valueOf(chars);
+            return result;
+        }{
+            chars[chars.length-1] = ++chars[chars.length-1];
+            result = String.valueOf(chars);
         }
-        int a = recodes%10;
-        int b = recodes/10;
-        return "A"+String.valueOf(a)+String.valueOf(b);
+        return result;
     }
 }
 
