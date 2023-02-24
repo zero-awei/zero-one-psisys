@@ -45,7 +45,7 @@ public class PurchasePayableController implements PurchasePayableApis {
     @GetMapping("query/get/select/purchase/detail")
     @Override
     public JsonVO<PayableVO> getById(@Validated PayableBillNoQuery query) {
-        return JsonVO.success(service.getById(query));
+        return JsonVO.success(service.getByBillNO(query));
     }
 
     @PostMapping("/export")

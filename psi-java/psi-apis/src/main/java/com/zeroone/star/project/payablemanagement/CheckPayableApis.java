@@ -30,10 +30,11 @@ public interface CheckPayableApis {
 
     /**
      * 根据ID查询单据详情
+     *
      * @param condition 单据id
      * @return null
      */
-    JsonVO<PageVO<CheckPayableEntryVO>> getById(CheckPayableEntryQuery condition);
+    JsonVO<List<CheckPayableEntryVO>> getByMainId(CheckPayableEntryQuery condition);
 
     /**
      * 在新增界面上根据供应商ID查询应付单

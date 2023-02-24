@@ -19,7 +19,7 @@ import org.springframework.validation.annotation.Validated;
 public interface IFinPayableService extends IService<FinPayable> {
     public PageVO<PayableVO> getAll(PayableQuery query);
 
-    public PayableVO getById(@Validated PayableBillNoQuery query);
+    public PayableVO getByBillNO(@Validated PayableBillNoQuery query);
     /**
      * 根据条件分页查询
      * @param query 查询条件

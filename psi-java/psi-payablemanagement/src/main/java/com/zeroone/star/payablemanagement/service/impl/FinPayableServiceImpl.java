@@ -36,7 +36,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
     }
 
     @Override
-    public PayableVO getById(PayableBillNoQuery query) {
+    public PayableVO getByBillNO(PayableBillNoQuery query) {
         QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
         wrapper.eq("bill_no", query.getBillNO());
         FinPayable finPayable = baseMapper.selectOne(wrapper);

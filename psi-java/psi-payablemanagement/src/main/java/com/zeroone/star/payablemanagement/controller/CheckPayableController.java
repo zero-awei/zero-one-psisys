@@ -45,8 +45,8 @@ public class CheckPayableController implements CheckPayableApis {
     @Override
     @GetMapping("entry")
     @ApiOperation("查询单据详情")
-    public JsonVO<PageVO<CheckPayableEntryVO>> getById(CheckPayableEntryQuery condition) {
-        return null;
+    public JsonVO<List<CheckPayableEntryVO>> getByMainId(CheckPayableEntryQuery condition) {
+        return JsonVO.success(finPayableCheckEntry.getByMainId(condition));
     }
 
     @GetMapping("list")

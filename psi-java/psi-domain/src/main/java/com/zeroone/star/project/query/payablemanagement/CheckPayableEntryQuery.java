@@ -16,7 +16,6 @@ import lombok.EqualsAndHashCode;
 @ApiModel("应付核销单据查询")
 public class CheckPayableEntryQuery {
 
-
     @ApiModelProperty(value = "单据ID", example = "1623386325943361538")
     private String Id;
 }
