@@ -312,31 +312,69 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '账号',
       prop: 'date',
-      width: '120'
+      width: '120',
+      fixed: 'left'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '账户名',
       prop: 'city',
-      width: '120'
+      width: '120',
+      fixed: 'left'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '币种',
       prop: 'address',
       width: '600'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '行号',
       prop: 'zip',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Tag',
+      label: '账户管理员',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '启用',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '备注',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'slot',
+      label: '创建时间',
+      width: '120',
+      prop: 'tag'
+    },
+    {
+      type: 'text',
+      label: '创建人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
       prop: 'tag',
       width: '120'
     },

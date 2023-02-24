@@ -363,35 +363,107 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '编码',
       prop: 'date',
       width: '120'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '名称',
       prop: 'city',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '助记名',
       prop: 'address',
       width: '600'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '分类',
       prop: 'zip',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Tag',
+      label: '等级',
       prop: 'tag',
       width: '120'
     },
     // 表格右侧固定的编辑和删除
+    {
+      type: 'slot',
+      label: '纳税规模',
+      width: '120',
+      prop: ''
+    },
+    {
+      type: 'text',
+      label: '所属总公司',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '所属地区',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '业务区域',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '供应商地址',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '供应商网站',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '备选供应商',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '启用',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '备注',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
+      prop: 'tag',
+      width: '120'
+    },
     {
       type: 'slot',
       label: '操作',

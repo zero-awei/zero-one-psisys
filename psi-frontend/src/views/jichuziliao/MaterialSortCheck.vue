@@ -160,7 +160,7 @@ const status = reactive({
   // table列配置
   tableItems: [
     {
-      label: '#',
+      label: '名称',
       prop: 'name',
       width: '120',
       align: 'center',
@@ -172,31 +172,43 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '编码',
       prop: 'date',
       width: '120'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '全名',
       prop: 'city',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '启用',
       prop: 'address',
       width: '600'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '创建时间',
       prop: 'zip',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Tag',
+      label: '创建人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
       prop: 'tag',
       width: '120'
     },

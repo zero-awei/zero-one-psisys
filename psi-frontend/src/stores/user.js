@@ -283,7 +283,7 @@ const purManagement = {
       text: "采购统计",
       href: '',
       icon: 'IconTickets',
-      pid: 5,
+      pid: 50,
       children:[
         {
           id: 711,
