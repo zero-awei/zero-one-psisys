@@ -52,7 +52,7 @@ class CgrkBillEntryVO
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
 	//源单分录id
 	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
-	//源单号
+	//源单分录号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//出入方向
 	CC_SYNTHESIZE(string, stockIoDirection, StockIoDirection);
@@ -72,7 +72,37 @@ class CgrkBillEntryVO
 	CC_SYNTHESIZE(string, warehouseId, WarehouseId);
 public:
 	CgrkBillEntryVO() {
-		billNo = "CGRK-230203-123";
+		batchNo = "CGRK-221110-001-10";
+		billNo = "CGRK-221110-001";
+		cost = 88000;
+		custom1 = "";
+		custom2 = "";
+		discountRate = 100;
+		entryNo = 10;
+		expense = 0;
+		id = "1590717667725066242";
+		invoicedAmt = 0;
+		invoicedQty = 0;
+		materialId = "1584947805371310082";
+		mid = "1590717667678928898";
+		price = 8000;
+		qty = 11;
+		remark = "";
+		settleAmt = 88000;
+		settleQty = 11;
+		srcBillId = "1590710155252645889";
+		srcBillType: "PurOrder";
+		srcEntryId = "1590710155294588930";
+		srcNo = "CGDD-221110-001:10";
+		stockIoDirection = "1";
+		supplierId = "1584950950470164481";
+		swellQty = 0;;
+		tax = 10123.89;
+		taxRate = 13;
+		unitId = "40288101710a4c6201710a6618cc0003";
+		version = "";
+		warehouseId = "1584937486573969410";
+
 	}
 	// 绑定JSON转换方法
 	BIND_TO_JSON(CgrkBillEntryVO, batchNo, billNo, cost, custom1, custom2, discountRate, entryNo, expense, id, invoicedAmt, invoicedQty,

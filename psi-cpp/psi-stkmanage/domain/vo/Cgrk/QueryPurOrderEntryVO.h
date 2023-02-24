@@ -20,11 +20,15 @@
 #ifndef _QUERY_PUR_ORDER_ENTRY_VO_
 #define _QUERY_PUR_ORDER_ENTRY_VO_
 
+/**
+ * 查询采购订单明细
+ */
 
 class QueryPurOrderEntryVO
 {
+	CC_SYNTHESIZE(double, amt, Amt);
 	//ID
-	CC_SYNTHESIZE(string, id, ID);
+	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//单据主题
@@ -84,7 +88,32 @@ class QueryPurOrderEntryVO
 public:
 	QueryPurOrderEntryVO()
 	{
-		id = "7635498";
+		amt = 136500;
+		billNo = "CGDD-221113-003";
+		custom1 = "";
+		custom2 = "";
+		discountRate = 100;
+		entryNo = 10;
+		id = "1591814877002948609";
+		inCost = 136500;
+		inQty = 15;
+		invoicedAmt = 0;
+		invoicedQty = 0;
+		materialId = "1584947805371310082";
+		mid = "1591814876981977090";
+		price = 9100;
+		qty = 15;
+		remark = "";
+		settleAmt = 136500;
+		settleQty = 15;
+		srcBillId = "1591814351725092866";
+		srcBillType = "SalOrder";
+		srcEntryId = "1591814351737675778";
+		srcNo = "XSDD-221113-005:10";
+		tax = 15703.54;
+		taxRate = 13;
+		unitId = "40288101710a4c6201710a6618cc0003";
+		version = "";
 	}
 	BIND_TO_JSON(QueryPurOrderEntryVO, id, billNo, subject, custom1, custom2, entryNo, discountRate, inQty, inCost, invoicedAmt, invoicedQty, materialCode, materialId, materialModel, mid, price, qty, remark,
 		settleAmt, settleQty, srcBillId, srcBillType, srcEntryId, srcNo, tax, taxRate, unitId, version);

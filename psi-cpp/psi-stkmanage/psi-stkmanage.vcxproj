@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -183,6 +183,8 @@
     <ClCompile Include="api\Qtrk\QtrkController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\Zdrk\ZdrkController.cpp" />
+    <ClCompile Include="dao\Cgrk\CgrkDAO.cpp" />
+    <ClCompile Include="dao\Pyrk\PyrkDao.cpp" />
     <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp" />
@@ -198,6 +200,7 @@
     <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\Cgrk\CgrkService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -212,6 +215,14 @@
     <ClInclude Include="api\Qtrk\QtrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
+    <ClInclude Include="dao\Cgrk\CgrkDAO.h" />
+    <ClInclude Include="dao\Pyrk\PyrkDao.h" />
+    <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
+    <ClInclude Include="domain\do\Cgrk\PurOrderDO.h" />
+    <ClInclude Include="domain\do\Cgrk\PurOrderEntryDO.h" />
+    <ClInclude Include="domain\do\Cgrk\QueryCgrkBillListDO.h" />
+    <ClInclude Include="domain\do\Cgrk\StkIoDO.h" />
+    <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
@@ -283,6 +294,7 @@
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\Cgrk\CgrkService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

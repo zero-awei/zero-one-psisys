@@ -136,8 +136,60 @@ class PurOrderDO
 
 
 public:
-	StkIoDO() {
-
+	PurOrderDO() {
+		id = "";
+		billNo = "";
+		billDate = "";
+		srcBillType = "";
+		srcBillId = "";
+		srcNo = "";
+		subject = "";
+		isRubric = -1;
+		purType = "";
+		supplierId = "";
+		contact = "";
+		phone = "";
+		fax = "";
+		email = "";
+		opDept = "";
+		operator1 = "";
+		deliveryMethod = "";
+		deliveryPlace = "";
+		transportMethod = "";
+		paymentMethod = "";
+		settleMethod = "";
+		settleTime = "";
+		invoiceMethod = "";
+		invoiceType = "";
+		currency = "";
+		exchangeRate = -1;
+		qty = -1;
+		amt = -1;
+		prepaymentBal = -1;
+		settleQty = -1;
+		settleAmt = -1;
+		inQty = -1;
+		inCost = -1;
+		settleAmt = -1;
+		invoicedAmt = -1;
+		attachment = "";
+		remark = "";
+		isAuto = -1;
+		billStage = "";
+		approver = "";
+		bpmiInstanceId = "";
+		approvalResultType = "";
+		approvalRemark = "";
+		isEffective = -1;
+		effectiveTime = "";
+		isClosed = -1;
+		isVoided = -1;
+		sysOrgCode = "";
+		createBy = "";
+		createTime = "";
+		updateBy = "";
+		updateTime = "";
+		version = "";
 
 	}
 };

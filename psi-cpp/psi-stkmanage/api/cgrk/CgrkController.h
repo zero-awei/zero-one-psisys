@@ -68,7 +68,7 @@ private:
 	//高级查询采购入库表单
 	JsonVO<PageVO<QueryCgrkBillListVO>> execQueryCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query);
 	//查询单据详细信息
-	JsonVO<PageVO<QueryCgrkBillDetailsVO>> execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
+	JsonVO<QueryCgrkBillDetailsVO> execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
 	//查询采购订单列表
 	JsonVO<PageVO<QueryPurOrderListVO>> execQueryPurOrderList(const QueryPurOrderListQuery& query);
 	//查看采购订单分录列表

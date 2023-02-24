@@ -31,7 +31,7 @@ class QueryCgrkBillListQuery : public PageQuery
 	//单据日期（结束）
 	CC_SYNTHESIZE(string, billDateEnd, BillDateEnd);
 	//单据主题
-	CC_SYNTHESIZE(string, sudject, Subject);
+	CC_SYNTHESIZE(string, subject, Subject);
 	//供应商
 	CC_SYNTHESIZE(string, supplierId, SupplierId);
 	//单据阶段
@@ -42,34 +42,22 @@ class QueryCgrkBillListQuery : public PageQuery
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 	//已关闭
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	////红字单据
-	//CC_SYNTHESIZE(int, isRubric, IsRubric);
-	////源单类型
-	//CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	////源单号
-	//CC_SYNTHESIZE(string, srcNo, SrcNo);
-	////备注
-	//CC_SYNTHESIZE(string, remark, Remark);
-	////制单时间
-	//CC_SYNTHESIZE(string, createTime, CreateTime);
-	////制单部门
-	//CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	////制单人
-	//CC_SYNTHESIZE(string, createBy, CreateBy);
-	////修改时间
-	//CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	////修改人
-	//CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	////生效时间
-	//CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	////核批人
-	//CC_SYNTHESIZE(string, approver, Approver);
-	////核批结果类型
-	//CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	////有来往
-	//CC_SYNTHESIZE(int, hasRp, HasRp);
 
 public:
+	QueryCgrkBillListQuery()
+	{
+		billNo = "";
+		billDateStart = "";
+		billDateEnd = "";
+		subject = "";
+		supplierId = "";
+		billStage = "";
+		isEffective = -1;
+		isVoided = -1;
+		isClosed = -1;
+	}
+
+
 	// 绑定from_json
 	friend void from_json(const json& j, QueryCgrkBillListQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
@@ -77,28 +65,13 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 		BIND_FROM_TO_NORMAL(j, t, billDateStart);
 		BIND_FROM_TO_NORMAL(j, t, billDateEnd);
-		BIND_FROM_TO_NORMAL(j, t, sudject);
+		BIND_FROM_TO_NORMAL(j, t, subject);
 		BIND_FROM_TO_NORMAL(j, t, supplierId);
 		BIND_FROM_TO_NORMAL(j, t, billStage);
 
 		BIND_FROM_TO_I(j, t, isEffective);
 		BIND_FROM_TO_I(j, t, isVoided);
 		BIND_FROM_TO_I(j, t, isClosed);
-		//BIND_FROM_TO_I(j, t, is_rubric);
-
-		//BIND_FROM_TO_NORMAL(j, t, src_bill_type);
-		//BIND_FROM_TO_NORMAL(j, t, src_no);
-		//BIND_FROM_TO_NORMAL(j, t, remark);
-		//BIND_FROM_TO_NORMAL(j, t, create_time);
-		//BIND_FROM_TO_NORMAL(j, t, sys_org_code);
-		//BIND_FROM_TO_NORMAL(j, t, create_by);
-		//BIND_FROM_TO_NORMAL(j, t, update_time);
-		//BIND_FROM_TO_NORMAL(j, t, update_by);
-		//BIND_FROM_TO_NORMAL(j, t, effective_time);
-		//BIND_FROM_TO_NORMAL(j, t, approver);
-		//BIND_FROM_TO_NORMAL(j, t, approval_result_type);
-
-		//BIND_FROM_TO_I(j, t, has_rp);
 	}
 };
 

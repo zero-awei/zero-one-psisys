@@ -20,7 +20,9 @@
 #ifndef _QUERY_PUR_ORDER_LIST_VO_
 #define _QUERY_PUR_ORDER_LIST_VO_
 
-
+/**
+ * 查询采购订单列表
+ */
 class QueryPurOrderListVO 
 {
 	//ID
@@ -77,7 +79,30 @@ class QueryPurOrderListVO
 public:
 	QueryPurOrderListVO()
 	{
-		id = "123456";
+		amt = 18870;
+		billDate = "2023-02-19";
+		billNo = "CGDD-230219-007";
+		deliveryMethod = "";
+		deliveryPlace = "";
+		deliveryTime = "";
+		id = "1627250922651688962";
+		inCost = 0;
+		inQty = 0;
+		invoiceType = "0";
+		invoicedAmt = 0;
+		isClosed = 0;
+		opDept = "A01A03";
+		operator1 = "zhagnxiao";
+		paymentMethod = "";
+		prePaymentBal = 0;
+		purType = "2";
+		qty = 1887;
+		remark = "";
+		settleAmt = 0;
+		settleMethod = "";
+		settledAmt = 0;
+		srcNo = "";
+		subject = "";
 	}
 
 	BIND_TO_JSON(QueryPurOrderListVO, id, billNo, billDate, purType, paymentMethod, prePaymentBal, settleMethod, deliveryTime, deliveryPlace,

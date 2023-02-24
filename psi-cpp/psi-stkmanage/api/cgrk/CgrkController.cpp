@@ -18,18 +18,18 @@
 */
 #include "stdafx.h"
 #include "CgrkController.h"
+#include "../../service/Cgrk/CgrkService.h"
 
 
 //查询单据列表
 JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillList(const QueryCgrkBillListQuery& query)
 {
-	PageVO<QueryCgrkBillListVO> result;
-	list<QueryCgrkBillListVO> rows;
-	rows.push_back(QueryCgrkBillListVO());
-	rows.push_back(QueryCgrkBillListVO());
-	rows.push_back(QueryCgrkBillListVO());
-	result.setRows(rows);
+
+	CgrkService service;
+	PageVO<QueryCgrkBillListVO> result = service.listCgrkBillList(query);
 	return JsonVO<PageVO<QueryCgrkBillListVO>>(result, RS_SUCCESS);
+
+
 }
 
 //高级查询单据列表
@@ -46,19 +46,23 @@ JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillListAdvance
 
 
 //查看指定单据详细信息
-JsonVO<PageVO<QueryCgrkBillDetailsVO>> CgrkController::execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query)
+JsonVO<QueryCgrkBillDetailsVO> CgrkController::execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query)
 {
-	PageVO<QueryCgrkBillDetailsVO> result;
-	list<QueryCgrkBillDetailsVO> rows;
-	rows.push_back(QueryCgrkBillDetailsVO());
-	result.setRows(rows);
-	return JsonVO<PageVO<QueryCgrkBillDetailsVO>>(result, RS_SUCCESS);
+	CgrkService service;
+	QueryCgrkBillDetailsVO result = service.;
+	return JsonVO<QueryCgrkBillDetailsVO>(result, RS_SUCCESS);
 }
+
+
+
+
 //查询采购订单列表
 JsonVO<PageVO<QueryPurOrderListVO>> CgrkController::execQueryPurOrderList(const QueryPurOrderListQuery& query)
 {
 	PageVO<QueryPurOrderListVO> result;
 	list<QueryPurOrderListVO> rows;
+	rows.push_back(QueryPurOrderListVO());
+	rows.push_back(QueryPurOrderListVO());
 	rows.push_back(QueryPurOrderListVO());
 	result.setRows(rows);
 	return JsonVO<PageVO<QueryPurOrderListVO>>(result, RS_SUCCESS);
@@ -68,6 +72,8 @@ JsonVO<PageVO<QueryPurOrderEntryVO>> CgrkController::execQueryPurOrderEntry(cons
 {
 	PageVO<QueryPurOrderEntryVO> result;
 	list<QueryPurOrderEntryVO> rows;
+	rows.push_back(QueryPurOrderEntryVO());
+	rows.push_back(QueryPurOrderEntryVO());
 	rows.push_back(QueryPurOrderEntryVO());
 	result.setRows(rows);
 	return JsonVO<PageVO<QueryPurOrderEntryVO>>(result, RS_SUCCESS);
@@ -120,7 +126,7 @@ JsonVO<uint64_t> CgrkController::execImportCgrkFile(const ImportCgrkFileDTO& dto
 JsonVO<std::string> CgrkController::execExportCgrkFile()
 {
 	JsonVO<std::string> result;
-	result.success("1");
+	result.success(u8"下载链接");
 	return result;
 }
 
