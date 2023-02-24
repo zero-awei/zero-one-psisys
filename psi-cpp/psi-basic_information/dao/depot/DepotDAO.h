@@ -32,8 +32,11 @@ public:
 	// 统计数据条数
 	uint64_t count(const DepotDO& iObj);
 	// 分页查询数据
-	std::list<DepotDO> selectWithPage(const DepotDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	list<DepotDO> selectWithPage(const DepotDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	// 查询子级仓库
 	std::list<DepotDO> selectKid(const DepotDO& obj);
+	//查询详细信息
+	list<DepotDO> selectDetail(DepotDO obj);
 	// 新建
 	int insertDepot(const DepotDO& iObj);
 	// 新建子级仓库

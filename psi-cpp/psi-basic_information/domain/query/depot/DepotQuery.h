@@ -43,11 +43,13 @@ public:
 
 class OnlyValueQuery
 {
+	CC_SYNTHESIZE(string, code, Code);
 	CC_SYNTHESIZE(string, id, Id);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, OnlyValueQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, code);
 	}
 };
 

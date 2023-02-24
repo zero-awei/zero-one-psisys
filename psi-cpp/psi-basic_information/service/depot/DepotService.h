@@ -37,6 +37,10 @@ public:
 	PageVO<DepotVO> listAll(const DepotQuery& query);
 	// 查询所以子级
 	std::list<DepotVO> getKid(const OnlyValueQuery& query);
+	//查询细节
+	DepotDetailVO listDetail(const OnlyValueQuery& query);
+	//查询修改动作
+	DepotActionInfoVO listInfo(const OnlyValueQuery& query);
 	// 保存数据
 	int saveData(const DepotDTO& dto);
 	// 保存子级数据

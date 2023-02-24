@@ -32,7 +32,16 @@ if (!obj.getName().empty()) { \
 if (!obj.getCode().empty()) { \
 	sql << " AND `code`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getCode()); \
+} \
+if (!obj.getPid().empty()) { \
+		sql << " AND `pid`=?"; \
+		SQLPARAMS_PUSH(params, "s", std::string, obj.getPid()); \
+} \
+if (!obj.getId().empty()) { \
+		sql << " AND `id`=?"; \
+		SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
 }
+
 
 #define ONLY_FOR_KID(obj, sql, params) \
 sql<<" WHERE 1=1"; \
@@ -44,12 +53,14 @@ uint64_t DepotDAO::count(const DepotDO& iObj)
 	stringstream sql;
 	SqlParams params;
 	sql << "SELECT COUNT(*) FROM bas_warehouse";
-	if (!iObj.getId().empty()) {
+
+	/*if (!iObj.getId().empty()) {
 		ONLY_FOR_KID(iObj, sql, params);
 	}
 	else {
 		SAMPLE_TERAM_PARSE(iObj, sql, params);
-	}
+	}*/
+	SAMPLE_TERAM_PARSE(iObj, sql, params);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
@@ -58,7 +69,6 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 {
 	stringstream sql;
 	SqlParams params; 
-	// * Ã»¸Ä
 	sql << "SELECT * FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql, params);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
@@ -72,6 +82,17 @@ std::list<DepotDO> DepotDAO::selectKid(const DepotDO& obj)
 	stringstream sql;
 	SqlParams params;
 	sql << "SELECT id, pid, has_child, code, name, aux_name, phone, is_enabled, remark, create_by, create_time, update_by, update_time, version FROM bas_warehouse";
+	SAMPLE_TERAM_PARSE(obj, sql, params);
+	DepotMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
+}
+
+std::list<DepotDO> DepotDAO::selectDetail(DepotDO obj)
+{
+	stringstream sql;
+	SqlParams params;
+	sql << "SELECT * FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql, params);
 	DepotMapper mapper;
 	string sqlStr = sql.str();
