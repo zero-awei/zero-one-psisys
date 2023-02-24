@@ -221,6 +221,7 @@
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\Measurement\MeasurementDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\BasMaterial\BasMaterialDetailQuery.h" />
     <ClInclude Include="domain\query\CurrencyQuery.h" />
     <ClInclude Include="domain\query\depot\DepotQuery.h" />
     <ClInclude Include="api\MaterialClassification\MaterialClassificationController.h" />

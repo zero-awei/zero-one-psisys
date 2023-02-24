@@ -45,7 +45,7 @@ class BasMaterialVO
 	//主单位id
 	CC_SYNTHESIZE(string, unitId, UnitId);
 	//销售价格
-	CC_SYNTHESIZE(int, salePrice, SalePrice);
+	CC_SYNTHESIZE(double, salePrice, SalePrice);
 	//税控编码
 	CC_SYNTHESIZE(string, taxCode, TaxCode);
 	// 备注
@@ -65,4 +65,4 @@ public:
 	//	,salePrice, taxCode, isEnabled, remark, createTime, createBy, updateTime, updateBy)
 };
 
-#endif // !_SAMPLE_VO_
+#endif // !_BASMATERIAL_VO_

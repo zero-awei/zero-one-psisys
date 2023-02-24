@@ -62,21 +62,21 @@ class BasMaterialDO
 
 public:
 	BasMaterialDO() {
-		id = 1;
-		categoryId = "";
-		code = "";
-		name = "";
-		auxName = "";
-		isEnabled = 1;
-		model = "";
-		unitId = "";
-		salePrice = 0;
-		taxCode = "";
-		remark = "";
-		createBy = "";
-		createTime = "";
-		updateBy = "";
-		updateTime = "";
+		//id = 1;
+		//categoryId = "";
+		//code = "";
+		//name = "";
+		//auxName = "";
+		//isEnabled = 1;
+		//model = "";
+		//unitId = "";
+		//salePrice = 0;
+		//taxCode = "";
+		//remark = "";
+		//createBy = "";
+		//createTime = "";
+		//updateBy = "";
+		//updateTime = "";
 	}
 };
 
