@@ -3,14 +3,35 @@
 #include "ExcelComponent.h"
 #include "CharsetConvertHepler.h"
 #include "FastDfsClient.h"
+#include "../../service/supplierService/ExportSupplierService.h"
 using namespace std;
 
-JsonVO<std::string> ExportSupplierController::execExportSupplier()
+JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSupplierQuery& query, const PayloadDTO& payload)
 {
 	vector<vector<std::string>> data;
+	vector<std::string> header{
+		CharsetConvertHepler::ansiToUtf8("code"),
+		CharsetConvertHepler::ansiToUtf8("supplierName"),
+	};
+	data.push_back(header);
 	stringstream ss;
-	//假设后台查询到的数据，封装起来
-	for (int i = 1; i <= 10; i++)
+
+	ExportSupplierService service;
+	list<ExportSupplierDO> vo = service.listAll(query);
+	for (ExportSupplierDO sub : vo)
+	{
+		vector<std::string> row;
+		ss.clear();
+		ss << sub.getCode();
+		row.push_back(ss.str());
+		ss.str("");
+		ss.clear();
+		ss << sub.getName();
+		row.push_back(ss.str());
+		ss.str("");
+		data.push_back(row);
+	}
+	/*for (int i = 1; i <= 10; i++)
 	{
 		vector<std::string> row;
 		for (int j = 1; j <= 5; j++)
@@ -23,16 +44,16 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier()
 			ss.str("");
 		}
 		data.push_back(row);
-	}
+	}*/
 
 	//定义保存数据位置和页签名称
 	std::string fileName = "./public/excel/1.xlsx";
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("数据表");
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("supplier");
 
 	//保存到文件
 	ExcelComponent excel;
 	excel.writeVectorToFile(fileName, sheetName, data);
-	//返回下载地址
+	
 
 #ifdef LINUX
 	//定义客户端对象
@@ -58,7 +79,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier()
 	{
 		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
 	}*/
-
+	//返回下载地址
 	JsonVO<std::string> res;
 	res.success("http://1.15.240.108:8888/" + fieldName);
 	

@@ -1,13 +1,11 @@
 #include "stdafx.h"
 #include "CurrencyTypeController.h"
+#include "../../service/publicInterfaceService/CurrencyTypeService.h"
 
 JsonVO<list<CurrencyTypeVO>> CurrencyTypeController::execQueryCurrencyType()
 {
-	list<CurrencyTypeVO> data;
-	CurrencyTypeVO vo;
-	vo.setId(1);
-	vo.setName(u8"»À√˚±“");
-	data.push_back(vo);
+	CurrencyTypeService service;
+	list<CurrencyTypeVO> data = service.listAll();
 	JsonVO<list<CurrencyTypeVO>> res;
 	res.success(data);
 	return res;
