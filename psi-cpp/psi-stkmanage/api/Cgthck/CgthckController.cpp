@@ -29,14 +29,19 @@ JsonVO<uint64_t> CgthckController::execAddCgthckBill(const AddCgthckBillDTO& dto
     JsonVO<uint64_t> result;
     CgthckService service;
     // 执行数据新增
-    uint64_t id = service.saveData(dto);
-    if (id > 0)
+    uint64_t res = service.saveData(dto);
+    if (res > 0)
     {
-        result.success(id);
+        result.success(res);
+    }
+    else if (res == -1)
+    {
+        result.setData(res);
+        result.setStatus(RS_PARAMS_INVALID);
     }
     else
     {
-        result.fail(id);
+        result.fail(res);
     }
     return result;
 }
@@ -46,21 +51,43 @@ JsonVO<uint64_t> CgthckController::execModifyCgthckBill(const AddCgthckBillDTO& 
     JsonVO<uint64_t> result;
     CgthckService service;
     // 执行数据修改
-    int id = service.updateData(dto);
-    if (id > 0)
+    int res = service.updateData(dto);
+    if (res > 0)
     {
-        result.success(id);
+        result.success(res);
+    }
+    else if (res == -1)
+    {
+        result.setData(res);
+        result.setStatus(RS_PARAMS_INVALID);
     }
     else
     {
-        result.fail(id);
+        result.fail(res);
     }
     return result;
 }
 
 JsonVO<uint64_t> CgthckController::execModifyCgthckApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    return JsonVO<uint64_t>();
+    JsonVO<uint64_t> result;
+    CgthckService service;
+    // 执行数据修改
+    int res = service.updateApproval(dto, payload);
+    if (res > 0)
+    {
+        result.success(res);
+    }
+    else if(res == -1)
+    {
+        result.setData(res);
+        result.setStatus(RS_PARAMS_INVALID);
+    }
+    else
+    {
+        result.fail(res);
+    }
+    return result;
 }
 
 JsonVO<uint64_t> CgthckController::execModifyCgthcStatusToClose(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)

@@ -15,6 +15,8 @@ class ModifyCgthckBillDTO
 	CC_SYNTHESIZE(std::string, approvalResultType, ApprovalResultType);
 	// 核批意见
 	CC_SYNTHESIZE(std::string, approvalRemark, ApprovalRemark);
+	// 备注
+	CC_SYNTHESIZE(std::string, remark, Remark);
 public:
 	friend void from_json(const json& j, ModifyCgthckBillDTO& t)
 	{

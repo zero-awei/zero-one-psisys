@@ -57,6 +57,10 @@ if (!obj.getAttachment().empty()) { \
     sql << ", `attachment`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getAttachment()); \
 } \
+if (!obj.getEffectiveTime().empty()) { \
+    sql << ", `effective_time`=?"; \
+    SQLPARAMS_PUSH(params, "s", string, obj.getEffectiveTime()); \
+} \
 if (!obj.getRemark().empty()) {\
 	sql << ", `remark`=?"; \
 	SQLPARAMS_PUSH(params, "s", string, obj.getRemark()); \
@@ -100,10 +104,6 @@ if (obj.getQty()) { \
     sql << ", `qty`=?"; \
     SQLPARAMS_PUSH(params, "d", double, obj.getQty()); \
 } \
-if (obj.getSettleAmt()) { \
-    sql << ", `settle_amt`=?"; \
-    SQLPARAMS_PUSH(params, "d", double, obj.getSettleAmt()); \
-} \
 if (!obj.getRemark().empty()) { \
     sql << ", `remark`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getRemark()); \
@@ -119,6 +119,28 @@ if (!obj.getCustom2().empty()) { \
 sql << " WHERE `batch_no`=?"; \
 SQLPARAMS_PUSH(params, "s", string, obj.getBatchNo());
 
+// 定义条件解析宏，解析UPDATE stk_io 状态的条件，减少重复代码
+#define UPDATE_CGTHCK_STATUS_TEARM_PARSE(obj, sql) \
+sql << "UPDATE `stk_io` SET "; \
+SqlParams params; \
+if (obj.getIsClosed() != -1) { \
+    sql << "`is_closed`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getIsClosed()); \
+} \
+if (obj.getIsVoided() != -1) { \
+    sql << " ,`is_voided`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getIsVoided()); \
+} \
+if (!obj.getApprover().empty()) { \
+	sql << ", `approver`=?"; \
+	SQLPARAMS_PUSH(params, "s", string, obj.getApprover()); \
+} \
+if (!obj.getEffectiveTime().empty()) { \
+	sql << ", `effective_time`=?"; \
+	SQLPARAMS_PUSH(params, "s", string, obj.getEffectiveTime()); \
+} \
+sql << " WHERE `bill_no`=?"; \
+SQLPARAMS_PUSH(params, "s", string, obj.getBillNo());
 
 string CgthckDAO::insertFile(const string & fileName)
 {
@@ -187,7 +209,22 @@ int CgthckDAO::update(const CgthckEntryDO& iobj)
 	return sqlSession->executeUpdate(sql.str(), params);
 }
 
+int CgthckDAO::updateApproval(const CgthckDO& iobj)
+{
+	stringstream sql;
+	UPDATE_CGTHCK_TERAM_PARSE(iobj, sql);
+	return sqlSession->executeUpdate(sql.str(), params);
+}
+
+int CgthckDAO::updateStatus(const CgthckDO& iobj)
+{
+	stringstream sql;
+	UPDATE_CGTHCK_STATUS_TEARM_PARSE(iobj, sql);
+	return sqlSession->executeUpdate(sql.str(), params);
+}
+
 int CgthckDAO::deleteById(const CgthckDO& iobj)
 {
+	// TO DO
 	return 0;
 }

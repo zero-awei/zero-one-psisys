@@ -33,6 +33,10 @@ public:
 	int update(const CgthckDO& iobj);
 	// 修改单据明细
 	int update(const CgthckEntryDO& iobj);
+	// 审批
+	int updateApproval(const CgthckDO& iobj);
+	// 修改状态
+	int updateStatus(const CgthckDO& iobj);
 	// 删除通过单号数据
 	int deleteById(const CgthckDO& iobj);
 };

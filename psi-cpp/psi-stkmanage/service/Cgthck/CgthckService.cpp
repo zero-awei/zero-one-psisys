@@ -302,27 +302,122 @@ int CgthckService::updateData(const AddCgthckBillDTO& dto)
     return row;
 }
 
-bool CgthckService::updateApproval(const ModifyCgthckBillDTO& dto)
+int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
+{
+    // 数据检验 只有处于编制完才能审核
+    if (!dto.getBillStage().compare("12")) // 12编制中, 14编制完 
+    {
+        return -1;
+    }
+
+    // 组装数据
+    CgthckDO data;
+    data.setBillNo(dto.getBillNo());
+    data.setRemark(dto.getRemark());
+    data.setApprovalRemark(dto.getApprovalRemark());
+    data.setApprovalResultType(dto.getApprovalResultType());
+    data.setApprover(payload.getUsername());
+
+    // 生成当前时间
+    time_t rawtime;
+    struct tm* info;
+    char buffer[80];
+    time(&rawtime);
+    info = localtime(&rawtime);
+    strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+    // 审批测试
+    if (stoi(data.getApprovalResultType()) == 1)
+    {
+        data.setIsEffective(1);
+        data.setEffectiveTime(string(buffer));
+        data.setIsClosed(1);
+        data.setBillStage("34"); // 34:执行完
+    }
+    else
+    {
+        data.setBillStage("24"); // 34:核批完
+    }
+
+    // 定义DAO层
+    CgthckDAO dao;
+    // 事务开始
+    dao.getSqlSession()->beginTransaction();
+    int row = dao.updateApproval(data);
+    if (row == 0)
+    {
+        return -2;
+    }
+    return row;
+}
+
+int CgthckService::removeData(uint64_t id)
 {
     return false;
 }
 
-bool CgthckService::removeData(uint64_t id)
+int CgthckService::closed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    return false;
+    // 组装数据
+    CgthckDO data;
+    data.setBillNo(dto.getBillNo());
+    data.setIsClosed(1);
+
+    // 生成当前时间
+    time_t rawtime;
+    struct tm* info;
+    char buffer[80];
+    time(&rawtime);
+    info = localtime(&rawtime);
+    strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+    data.setEffectiveTime(string(buffer));
+    data.setApprover(payload.getUsername());
+
+    CgthckDAO dao;
+    return dao.updateStatus(data);
 }
 
-bool CgthckService::closed(const ModifyCgthckBillDTO& dto)
+int CgthckService::unclosed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    return false;
+    // 组装数据
+    CgthckDO data;
+    data.setBillNo(dto.getBillNo());
+    data.setIsClosed(0);
+
+    // 生成当前时间
+    time_t rawtime;
+    struct tm* info;
+    char buffer[80];
+    time(&rawtime);
+    info = localtime(&rawtime);
+    strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+    data.setEffectiveTime(string(buffer));
+    data.setApprover(payload.getUsername());
+
+    CgthckDAO dao;
+    return dao.updateStatus(data);
 }
 
-bool CgthckService::unclosed(const ModifyCgthckBillDTO& dto)
+int CgthckService::voided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    return false;
-}
+    // 组装数据
+    CgthckDO data;
+    data.setBillNo(dto.getBillNo());
+    data.setIsVoided(1);
 
-bool CgthckService::voided(const ModifyCgthckBillDTO& dto)
-{
-    return false;
+    // 生成当前时间
+    time_t rawtime;
+    struct tm* info;
+    char buffer[80];
+    time(&rawtime);
+    info = localtime(&rawtime);
+    strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+    data.setEffectiveTime(string(buffer));
+    data.setApprover(payload.getUsername());
+
+    CgthckDAO dao;
+    return dao.updateStatus(data);
 }
