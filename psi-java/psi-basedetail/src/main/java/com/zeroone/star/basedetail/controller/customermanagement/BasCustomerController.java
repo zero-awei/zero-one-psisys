@@ -2,6 +2,11 @@ package com.zeroone.star.basedetail.controller.customermanagement;
 
 
 import cn.hutool.core.date.DateTime;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelReader;
+import com.alibaba.excel.context.AnalysisContext;
+import com.alibaba.excel.event.AnalysisEventListener;
+import com.alibaba.excel.read.metadata.ReadSheet;
 import com.zeroone.star.basedetail.entity.BasCustomer;
 import com.zeroone.star.basedetail.entity.User;
 import com.zeroone.star.basedetail.service.IBasCustomerService;
@@ -26,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +120,24 @@ public class BasCustomerController {
     @ResponseBody
     @PostMapping("upload")
     public JsonVO<String> upload(MultipartFile file) {
-        return null;
+        if (file == null) {
+            return JsonVO.fail("未上传文件");
+        }
+        // 获取上传的文件流
+        InputStream inputStream = file.getInputStream();
+        // 读取Excel
+        EasyExcel.read(inputStream, BasCustomer.class,
+                new AnalysisEventListener<BasCustomer>() {
+                    // 每解析一行数据,该方法会被调用一次
+                    @Override
+                    public void invoke(BasCustomer basCustomer, AnalysisContext analysisContext) {
+                        basCustomerService.insertOne(basCustomer);
+                    }
+                    // 全部解析完成被调用
+                    @Override
+                    public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+                    }
+                }).sheet().doRead();
+        return JsonVO.success(file.getName());
     }
 }

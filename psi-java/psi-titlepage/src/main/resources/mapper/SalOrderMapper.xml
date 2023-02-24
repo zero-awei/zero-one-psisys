@@ -3,7 +3,7 @@
 <mapper namespace="com.zeroone.star.titlepage.mapper.SalOrderMapper">
 
     <!--List<SalOrder> querySalOrder();-->
-    <select id="querySalOrder" resultType="com.zeroone.star.titlepage.entity.SalOrder">
+    <select id="querySalOrder" resultType="com.zeroone.star.titlepage.entity.SalOrder2">
         SELECT CONCAT(MAX(MONTH(b.bill_date)), '月') x, IFNULL(SUM(b.gross_profit),0) y
         FROM sal_order b
         WHERE b.is_effective = 1 AND b.is_voided = 0

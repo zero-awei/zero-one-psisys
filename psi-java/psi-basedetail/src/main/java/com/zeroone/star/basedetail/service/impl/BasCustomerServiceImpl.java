@@ -21,7 +21,12 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
 
     @Override
     public List<BasCustomer> listBasCustomer() {
-        List<BasCustomer> basCustomers = baseMapper.selectList(null);
-        return basCustomers;
+        List<BasCustomer> list = baseMapper.selectList(null);
+        return list;
+    }
+
+    @Override
+    public void insertOne(BasCustomer basCustomer) {
+        baseMapper.insert(basCustomer);
     }
 }

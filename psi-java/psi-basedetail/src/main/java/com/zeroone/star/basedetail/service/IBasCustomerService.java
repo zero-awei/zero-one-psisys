@@ -15,9 +15,7 @@ import java.util.List;
  */
 public interface IBasCustomerService extends IService<BasCustomer> {
 
-    /**
-    查询客户excel需要的字段
-     */
     List<BasCustomer> listBasCustomer();
 
+    void insertOne(BasCustomer basCustomer);
 }
