@@ -76,6 +76,7 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
     //将查询得到的单条数据逐个转换为VO
     private static CheckPayableVO checkPayableEntityToVO(FinPayableCheck entity) {
         CheckPayableVO vo = new CheckPayableVO();
+        vo.setId(entity.getId());
         vo.setAmt(entity.getAmt());
         vo.setApprovalRemark(entity.getApprovalRemark());
         // TODO 把具体的值变为DictText

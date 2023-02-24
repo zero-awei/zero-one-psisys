@@ -74,8 +74,8 @@ public class CheckPayableVO {
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
     private LocalDateTime effectiveTime;
 
-//    @ApiModelProperty(value = "ID", example = "1623386325943361538")
-//    private String id;
+    @ApiModelProperty(value = "ID", example = "1623386325943361538")
+    private String id;
 
     @ApiModelProperty(value = "自动单据", example = "否")
     private String isAutoDictText;
