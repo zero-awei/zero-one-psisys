@@ -102,4 +102,8 @@ public class JsonVO<T> implements Serializable {
     public static <T> JsonVO<T> fail(T data) {
         return create(data, ResultStatus.FAIL);
     }
+
+    public static <T> JsonVO<T> fail(T data, ResultStatus status) {
+        return create(data, status);
+    }
 }

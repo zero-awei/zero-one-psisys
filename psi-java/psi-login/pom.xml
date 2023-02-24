@@ -10,6 +10,10 @@
     </parent>
     <artifactId>psi-login</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>psi-domain</artifactId>
+        </dependency>
         <!-- spring mvc 注意：请配置到第一个，避免JSON包冲突 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

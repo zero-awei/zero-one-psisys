@@ -21,7 +21,6 @@ public class RedisUtils {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
-
     /**
      * @author Gerins
      * @param key
