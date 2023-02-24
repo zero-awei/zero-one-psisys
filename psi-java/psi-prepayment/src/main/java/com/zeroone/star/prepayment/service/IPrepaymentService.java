@@ -3,6 +3,7 @@ package com.zeroone.star.prepayment.service;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
+import com.zeroone.star.project.query.prepayment.FinPaymentQuery;
 import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -42,7 +43,7 @@ public interface IPrepaymentService {
      * author husj
      * version 1.0.0
      */
-    JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition);
+    JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition);
 
     /**
      * 通过单据编号查询数据-采购预付有申请
@@ -88,29 +89,29 @@ public interface IPrepaymentService {
      * return
      * author 空
      */
-    public JsonVO<String> prepay(PrepaymentDTO prepaymentDTO,UserDTO userDTO);
+    JsonVO<String> prepay(PrepaymentDTO prepaymentDTO,UserDTO userDTO);
 
     /**
      * 获取供应商列表
      * return 供应商列表
      * author 空
      */
-    public JsonVO<List<SupplierVO>> querySupplierList();
+    JsonVO<List<SupplierVO>> querySupplierList();
 
-    /**
-     * 获取采购项目清单（无申请）
-     * param purchaseListQuery
-     * return 采购项目清单
-     * author 空
-     */
+//    /**
+//     * 获取采购项目清单（无申请）
+//     * param purchaseListQuery
+//     * return 采购项目清单
+//     * author 空
+//     */
 //    public JsonVO<PageVO<PurOrderEntryVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
-    /**
-     * 获取采购项目清单（有申请）
-     * param purchaseListQuery
-     * return 采购项目清单
-     * author 空
-     */
+//    /**
+//     * 获取采购项目清单（有申请）
+//     * param purchaseListQuery
+//     * return 采购项目清单
+//     * author 空
+//     */
 //    public JsonVO<PageVO<FinPaymentReqVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
     /**

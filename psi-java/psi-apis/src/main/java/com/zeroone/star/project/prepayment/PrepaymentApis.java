@@ -1,14 +1,13 @@
 package com.zeroone.star.project.prepayment;
 
 import com.zeroone.star.project.dto.prepayment.*;
+import com.zeroone.star.project.query.prepayment.*;
 import com.zeroone.star.project.vo.JsonVO;
 
-import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.DocListVO;
 
 
-import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.prepayment.DetHavVO;
 import com.zeroone.star.project.vo.prepayment.DetNoVO;
 
@@ -22,7 +21,6 @@ import com.zeroone.star.project.vo.prepayment.PaymentReqEntryVO;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.zeroone.star.project.dto.prepayment.*;
-import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.vo.PageVO;
@@ -66,7 +64,7 @@ public interface PrepaymentApis {
      * author husj
      * version 1.0.0
      */
-    JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition);
+    JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition);
 
     /**
      * 通过单据编号查询数据-采购预付有申请
@@ -113,14 +111,14 @@ public interface PrepaymentApis {
      * return
      * author 空
      */
-    public JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO);
+    JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO);
 
     /**
      * 获取供应商列表
      * return 供应商列表
      * author 空
      */
-    public JsonVO<List<SupplierVO>> querySupplierList();
+    JsonVO<List<SupplierVO>> querySupplierList();
 
 
     /**
@@ -129,7 +127,7 @@ public interface PrepaymentApis {
      * return 采购项目清单
      * author 空
      */
-    public JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+    JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
     /**
      * 获取采购项目清单（有申请）
@@ -137,7 +135,7 @@ public interface PrepaymentApis {
      * return 采购项目清单
      * author 空
      */
-    public JsonVO<PageVO<PurOrderVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
+    JsonVO<PageVO<PurOrderVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
 
 
     /**
@@ -145,21 +143,21 @@ public interface PrepaymentApis {
      * @return
      * author 空
      */
-    public JsonVO<List<SysUserVO>> getSysUsersName();
+    JsonVO<List<SysUserVO>> getSysUsersName();
 
     /**
      * 获取组织机构表
      * @return
      * author 空
      */
-    public JsonVO<List<SysDepartVO>> getSysDepart();
+    JsonVO<List<SysDepartVO>> getSysDepart();
 
     /**
      * 获取银行账户列表
      * @return
      * author 空
      */
-    public JsonVO<List<BasBankAccountVO>> getBankAccount();
+    JsonVO<List<BasBankAccountVO>> getBankAccount();
 
     /**
      * 导入功能

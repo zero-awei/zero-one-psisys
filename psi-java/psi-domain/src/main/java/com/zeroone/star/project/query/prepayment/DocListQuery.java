@@ -22,37 +22,40 @@ import java.time.LocalDate;
 @Data
 @ApiModel("单据列表查询对象")
 public class DocListQuery extends PageQuery {
+
+    @ApiModelProperty(value = "付款类型",example = "2011")
+    private String paymentType;
     /**
      * 单据编号
      */
-    @ApiModelProperty(value = "单据编号",example = "")
+    @ApiModelProperty(value = "单据编号")
     private String billNo;
 
     /**
      * 单据日期
      */
-    @ApiModelProperty(value = "单据日期",example = "")
+    @ApiModelProperty(value = "单据日期")
     private LocalDate billDate;
 
     /**
      * 单据主题
      */
-    @ApiModelProperty(value = "单据主题",example = "")
+    @ApiModelProperty(value = "单据主题")
     private String subject;
     /**
      * 供应商
      */
-    @ApiModelProperty(value = "供应商",example = "")
+    @ApiModelProperty(value = "供应商")
     private String supplierId;
     /**
      * 处理状态
      */
-    @ApiModelProperty(value = "处理状态",example = "")
+    @ApiModelProperty(value = "处理状态")
     private String billStage;
     /**
      * 是否生效(前台数据 后台没有)
      */
-    @ApiModelProperty(value = "是否生效",example = "")
+    @ApiModelProperty(value = "是否生效")
     private Integer isEffective;
 
     /**
@@ -64,6 +67,6 @@ public class DocListQuery extends PageQuery {
     /**
      * 是否作废
      */
-    @ApiModelProperty(value = "是否作废",example = "")
+    @ApiModelProperty(value = "是否作废")
     private Boolean isVoided;
 }

@@ -2,6 +2,7 @@ package com.zeroone.star.prepayment.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
@@ -13,9 +14,7 @@ import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.*;
-import com.zeroone.star.project.query.prepayment.DocListQuery;
-import com.zeroone.star.project.query.prepayment.IdQuery;
-import com.zeroone.star.project.query.prepayment.PreDetQuery;
+import com.zeroone.star.project.query.prepayment.*;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.*;
@@ -110,11 +109,29 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
         return finPaymentService.auditById(auditDTO,userDTO);
     }
 
+    /**
+     * 单据分页查询
+     * 采购预付（有申请）：payment_type 2011
+     * 采购预付（无申请）：payment_type 2010
+     * author husj
+     * since 2023-02-13
+     */
     @Override
-    public JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition) {
+    public JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition) {
+//        //创建一个Page对象，内部放入的是Finpayment数据组成的列表，并设置当前查询的页码和分页大小
+//        Page<FinPayment> finPaymentPage = new Page<>(condition.getPageIndex(),condition.getPageSize());
+//        //构建查询对象
+//        QueryWrapper<FinPayment> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("payment_type", condition.getPaymentType());
+//        Page<FinPayment> result = baseMapper.selectPage(finPaymentPage, queryWrapper);
         return null;
     }
 
+    /**
+     * 根据单据编号查询信息
+     * author hzp
+     * since 2023-02-13
+     */
     @Override
     public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
         //根据查询条件里的单据编号去fin_payment查询对应付款单据

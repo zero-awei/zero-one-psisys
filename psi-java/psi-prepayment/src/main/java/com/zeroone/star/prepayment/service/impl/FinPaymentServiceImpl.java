@@ -108,8 +108,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     public FinPayment getByBillNo(String billNo) {
         QueryWrapper<FinPayment> FinQueryWrapper = new QueryWrapper<>();
         FinQueryWrapper.eq("bill_no", billNo);
-        FinPayment finPayment = baseMapper.selectOne(FinQueryWrapper);
-        return finPayment;
+        return baseMapper.selectOne(FinQueryWrapper);
     }
 
     /**

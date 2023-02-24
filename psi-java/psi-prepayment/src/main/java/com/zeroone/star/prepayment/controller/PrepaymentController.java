@@ -5,6 +5,7 @@ import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
+import com.zeroone.star.project.query.prepayment.FinPaymentQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -100,15 +101,17 @@ public class PrepaymentController implements PrepaymentApis {
 
 
     /**
-     * 单据查询 前端控制器
+     * 单据分页查询
+     * 采购预付（有申请）：payment_type 2011
+     * 采购预付（无申请）：payment_type 2010
      * author husj
      * since 2023-02-13
      */
     @Override
     @GetMapping("query-all")
     @ApiOperation(value = "查询采购预付单功能")
-    public JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition) {
-        return null;
+    public JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition) {
+        return prepaymentService.queryAll(condition);
     }
 
     /**
