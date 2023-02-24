@@ -57,6 +57,118 @@ let testMenus = [
         href: '/sysmanagement/addressbook'
       }
     ]
+  },
+  {
+    id: 2,
+    text: '库存管理',
+    icon: 'IconUser',
+    children: [
+      {
+        id: 1,
+        text: '入库管理',
+        icon: 'IconUser',
+        children: [
+          {
+            id: 2,
+            text: '采购入库',
+            href: '/inventory/purchase',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 3,
+            text: '采购入库退货出库（红入）',
+            href: '/inventory/salesreturn',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 4,
+            text: '盘盈入库',
+            href: '/inventory/inventoryprofit',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 2,
+            text: '涨吨入库',
+            href: 'inventory/rise',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 2,
+            text: '其他入库',
+            href: 'inventory/other',
+            icon: 'IconSetting',
+            pid: 1
+          }
+        ]
+      },
+      {
+        id: 2,
+        text: '即时库存',
+        icon: 'IconUser',
+        children: [
+          {
+            id: 2,
+            text: '物料库存',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 3,
+            text: '物料批次库存',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 4,
+            text: '仓库物料库存',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 2,
+            text: '详细库存',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          }
+        ]
+      },
+      {
+        id: 3,
+        text: '出入库统计',
+        icon: 'IconUser',
+        children: [
+          {
+            id: 2,
+            text: '出入库日汇总',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 3,
+            text: '出入库月汇总',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          },
+          {
+            id: 4,
+            text: '出入库明细',
+            href: '/sysmanagement/rolemanagement',
+            icon: 'IconSetting',
+            pid: 1
+          }
+        ]
+      }
+    ]
   }
 ]
 // {

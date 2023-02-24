@@ -1,5 +1,36 @@
 <template>
  <div class="top">
+  <!--ToDo 2.5系统收支概况 -->
+  <!-- 
+    <el-row>
+        <el-col class="head" :span="12">
+            <el-card class="box-card">
+              <template #header>
+                <div class="card-header">
+                      <span>概况</span>
+                    <el-icon class="icon1"><Refresh /></el-icon>
+                </div>
+              </template>  
+                  <div class="card-bottom1">
+                    <el-row>
+                        <el-col :span="8">
+                          <span>即时库存</span>
+                          <p>0</p>
+                        </el-col>
+                    <el-col :span="8">
+                          <span>客户欠款（元）</span>
+                          <p>math</p>
+                        </el-col>
+                        <el-col :span="8">
+                          <span>欠供应商（元）</span>
+                          <p>math</p>
+                        </el-col>   
+                     </el-row>
+                  </div >  
+            </el-card>
+          </el-col>
+   -->
+
       <el-row>
         <el-col class="head" :span="12">
             <el-card class="box-card">
@@ -168,5 +199,9 @@
         }
 
 </style>
+
+<script setup>
+
+</script>
 
  
