@@ -2,6 +2,7 @@ package com.zeroone.star.titlepage.controller;
 
 import com.zeroone.star.project.homepage.InformationApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.homepage.*;
 import com.zeroone.star.titlepage.entity.HomePurchase;
 import com.zeroone.star.titlepage.entity.HomeSale;
@@ -88,12 +89,12 @@ public class OnlCgreportHeadController implements InformationApis {
         for(HomeSale homeSale : homeSales){
             SaleInformationVO saleInformationVO = new SaleInformationVO();
             saleInformationVO.setLabel(homeSale.getLabel());
-            saleInformationVO.setMAmt(homeSale.getMAmt());
-            saleInformationVO.setMCount(homeSale.getMCount());
-            saleInformationVO.setTAmt(homeSale.getTAmt());
-            saleInformationVO.setTCount(homeSale.getTCount());
-            saleInformationVO.setWAmt(homeSale.getWAmt());
-            saleInformationVO.setWCount(homeSale.getWCount());
+            saleInformationVO.setMonthAmt(homeSale.getMAmt());
+            saleInformationVO.setMonthCount(homeSale.getMCount());
+            saleInformationVO.setTodayAmt(homeSale.getTAmt());
+            saleInformationVO.setTodayCount(homeSale.getTCount());
+            saleInformationVO.setWeekAmt(homeSale.getWAmt());
+            saleInformationVO.setWeekCount(homeSale.getWCount());
             saleInformationVOList.add(saleInformationVO);
         }
         return JsonVO.success(saleInformationVOList);
@@ -116,15 +117,22 @@ public class OnlCgreportHeadController implements InformationApis {
         for(HomePurchase homePurchase : homePurchases){
             PurchaseInformationVO purchaseInformationVO = new PurchaseInformationVO();
             purchaseInformationVO.setLabel(homePurchase.getLabel());
-            purchaseInformationVO.setMAmt(homePurchase.getMAmt());
-            purchaseInformationVO.setMCount(homePurchase.getMCount());
-            purchaseInformationVO.setTAmt(homePurchase.getTAmt());
-            purchaseInformationVO.setTCount(homePurchase.getTCount());
-            purchaseInformationVO.setWAmt(homePurchase.getWAmt());
-            purchaseInformationVO.setWCount(homePurchase.getWCount());
+            purchaseInformationVO.setMonthAmt(homePurchase.getMAmt());
+            purchaseInformationVO.setMonthCount(homePurchase.getMCount());
+            purchaseInformationVO.setTodayAmt(homePurchase.getTAmt());
+            purchaseInformationVO.setTodayCount(homePurchase.getTCount());
+            purchaseInformationVO.setWeekAmt(homePurchase.getWAmt());
+            purchaseInformationVO.setWeekCount(homePurchase.getWCount());
             purchaseInformationVOList.add(purchaseInformationVO);
         }
         return JsonVO.success(purchaseInformationVOList);
+    }
+
+    @ApiOperation("pagetest")
+    @GetMapping("/page")
+    @ResponseBody
+    public PageVO test(){
+        return new PageVO();
     }
 
     /**
