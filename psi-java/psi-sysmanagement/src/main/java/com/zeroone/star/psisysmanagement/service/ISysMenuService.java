@@ -21,14 +21,6 @@ import java.util.List;
 public interface ISysMenuService extends IService<SysMenu> {
 
     /**
-     * 查询单一菜单
-     *
-     * @param sysMenuQuery
-     * @return
-     */
-    JsonVO<MenuVO> querySingle(SysMenuQuery sysMenuQuery);
-
-    /**
      * 查询父节点下菜单组
      * @param sysMenuQuery
      * @return

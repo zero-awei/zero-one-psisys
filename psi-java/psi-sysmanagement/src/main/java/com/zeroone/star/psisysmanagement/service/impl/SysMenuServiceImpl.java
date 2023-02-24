@@ -33,16 +33,6 @@ import java.util.function.DoubleBinaryOperator;
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements ISysMenuService {
 
     @Override
-    public JsonVO<MenuVO> querySingle(SysMenuQuery sysMenuQuery) {
-        SysMenu sysMenu = baseMapper.selectById(sysMenuQuery.getId());
-
-        MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
-
-        return menuVO == null ?
-                JsonVO.create(null, ResultStatus.FAIL) : JsonVO.create(menuVO, ResultStatus.SUCCESS);
-    }
-
-    @Override
     public JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery) {
 
         ArrayList<MenuVO> menuVOS = new ArrayList<>();

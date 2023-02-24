@@ -170,6 +170,7 @@ public class LoginController implements LoginApis {
 //            currentUser.setScore(user.getScore());
 
 
+
             SysUser user = userService.getById(currentUser.getId());
 
             //TODO:这里需要根据业务逻辑接口，重新实现
