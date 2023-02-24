@@ -35,7 +35,7 @@ public class StkIoVO extends PageQuery {
      * 出入库类型
      */
     @ApiModelProperty("出入库类型")
-    private String stockIoType;
+    private String itemText;
     /**
      * 源单号
      */
@@ -45,12 +45,12 @@ public class StkIoVO extends PageQuery {
      * 供应商
      */
     @ApiModelProperty("供应商")
-    private String supplierId;
+    private String name;
     /**
      * 业务部门
      */
     @ApiModelProperty("业务部门")
-    private String opDept;
+    private String departName;
 
     /**
      * 业务员

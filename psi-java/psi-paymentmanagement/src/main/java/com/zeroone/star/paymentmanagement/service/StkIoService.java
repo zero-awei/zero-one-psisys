@@ -22,6 +22,11 @@ public interface StkIoService extends IService<StkIo> {
      */
     Page<StkIoVO> queryAll(StkIoQuery stkIoQuery);
 
-
+    /**
+     * 采购退货出库单
+     * @param stkIoQuery 条件
+     * @return list
+     */
+    Page<StkIoVO> deliveryOrder(StkIoQuery stkIoQuery);
 
 }

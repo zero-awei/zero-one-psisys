@@ -35,6 +35,18 @@ public class StkIoServiceImpl extends ServiceImpl<StkIoMapper, StkIo>
         return  stkIoMapper.queryAll(page, stkIoQuery.getBillNo(), stkIoQuery.getBillDate(), stkIoQuery.getSupplierId());
     }
 
+    /**
+     * 采购退货出库单
+     *
+     * @param stkIoQuery 条件
+     * @return list
+     */
+    @Override
+    public Page<StkIoVO> deliveryOrder(StkIoQuery stkIoQuery) {
+        Page<StkIo> page = new Page<>(1,10);
+        return  stkIoMapper.deliveryOrder(page, stkIoQuery.getBillNo(), stkIoQuery.getBillDate(), stkIoQuery.getSupplierId());
+    }
+
 }
 
 

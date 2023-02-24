@@ -33,6 +33,13 @@ public interface StkIoMapper extends BaseMapper<StkIo> {
      */
     Page<StkIoVO> queryAll(@Param("page")Page<StkIo> page, @Param("billNo") String billNo, @Param("billDate") LocalDate billDate, @Param("supplierId") String supplierId);
 
+    /**
+     * 采购退货出库单
+     * @param deliveryOrder 条件
+     * @return list
+     */
+    Page<StkIoVO> deliveryOrder(@Param("page")Page<StkIo> page, @Param("billNo") String billNo, @Param("billDate") LocalDate billDate, @Param("supplierId") String supplierId);
+
 }
 
 

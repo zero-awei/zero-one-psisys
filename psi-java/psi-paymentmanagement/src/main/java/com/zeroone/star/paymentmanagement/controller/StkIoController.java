@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023/2/24 6:01 下午
  */
 
-@Api(value = "/paymentmanagement/stklo", tags = {"采购入库单查询"})
+@Api(value = "/paymentmanagement/stklo", tags = {"采购出入库查询"})
 @RestController
 @RequestMapping("/paymentmanagement/stklo")
 public class StkIoController implements StkIoApis {
@@ -32,10 +32,25 @@ public class StkIoController implements StkIoApis {
      * @param stkIoQuery 入库单条件
      * @return 列表
      */
-    @ApiOperation(value = "入库单查询", notes = "入库单查询")
+    @ApiOperation(value = "入库单查询", notes = "入库单查询", httpMethod = "GET")
     @Override
     @GetMapping
-    public JsonVO<Page<StkIoVO>> queryAll(StkIoQuery stkIoQuery) {
+    public JsonVO<Page<StkIoVO>> queryStorage(StkIoQuery stkIoQuery) {
         return JsonVO.success(stkIoService.queryAll(stkIoQuery));
     }
+
+    /**
+     * 采购退货出库单
+     *
+     * @param stkIoQuery 条件
+     * @return list
+     */
+    @ApiOperation(value = "采购退货出库单", notes = "采购退货出库单", httpMethod = "GET")
+    @Override
+    @GetMapping("/deliveryOrder")
+    public JsonVO<Page<StkIoVO>> deliveryOrder(StkIoQuery stkIoQuery) {
+        return JsonVO.success(stkIoService.deliveryOrder(stkIoQuery));
+    }
+
+
 }

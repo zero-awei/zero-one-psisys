@@ -16,7 +16,14 @@ public interface StkIoApis {
     /**
      * 入库单查询
      * @param stkIoQuery 入库单条件
-     * @return
+     * @return list
      */
-    JsonVO<Page<StkIoVO>> queryAll(StkIoQuery stkIoQuery);
+    JsonVO<Page<StkIoVO>> queryStorage(StkIoQuery stkIoQuery);
+
+    /**
+     * 采购退货出库单
+     * @param stkIoQuery 条件
+     * @return list
+     */
+    JsonVO<Page<StkIoVO>> deliveryOrder(StkIoQuery stkIoQuery);
 }
