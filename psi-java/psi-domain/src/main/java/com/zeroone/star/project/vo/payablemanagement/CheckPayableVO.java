@@ -41,8 +41,8 @@ public class CheckPayableVO {
     @ApiModelProperty(value = "附件", example = "")
     private String attachment;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
     private LocalDate billDate;
 
@@ -64,13 +64,13 @@ public class CheckPayableVO {
     @ApiModelProperty(value = "制单人", example = "管理员")
     private String createByDictText;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat
     @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
     private LocalDateTime createTime;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
     private LocalDateTime effectiveTime;
 
@@ -118,8 +118,8 @@ public class CheckPayableVO {
     @ApiModelProperty(value = "修改人", example = "管理员")
     private String updateByDictText;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat
     @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
     private LocalDateTime updateTime;
 
