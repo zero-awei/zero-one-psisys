@@ -84,7 +84,7 @@ bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data
 	return true;
 }
 
-int DepotService::saveData(const DepotDTO& dto)
+int DepotService::saveData(const DepotDTO& dto, const string Username)
 {
 	//组装数据
 	DepotDO data;
@@ -97,6 +97,8 @@ int DepotService::saveData(const DepotDTO& dto)
 	data.setAuxName(dto.getAuxName());
 	data.setPhone(dto.getPhone());
 	data.setStart(dto.getStart());
+	data.setCreationPeo(Username);
+	data.setCreationTime(gettime());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.insertDepot(data);
@@ -110,7 +112,7 @@ bool DepotService::removeData(const OnlyValueQuery& query)
 	return dao.deleteDepot(id);
 }
 
-int DepotService::modifyDepot(const DepotDTO& dto)
+int DepotService::modifyDepot(const DepotDTO& dto, const string Username)
 {
 	//组装数据
 	DepotDO data;
@@ -121,7 +123,18 @@ int DepotService::modifyDepot(const DepotDTO& dto)
 	data.setPhone(dto.getPhone());
 	data.setStart(dto.getStart());
 	data.setRemarks(dto.getRemarks());
+	data.setModiPeo(Username);
+	data.setModiTime(gettime());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.update(data);
+}
+
+string DepotService::gettime()
+{
+	time_t timep;
+	time(&timep);
+	char tmp[256];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
+	return tmp;
 }

@@ -36,13 +36,13 @@ JsonVO<DepotActionInfoVO> DepotController::execQueryActionInfo(const OnlyValueQu
     return JsonVO<DepotActionInfoVO>();
 }
 
-JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
     //定义一个Service
     DepotService service;
     //保存数据
-    if (service.saveData(dto)) {
+    if (service.saveData(dto, payload.getUsername())){
         result.success(true);
     }
     else {
@@ -51,12 +51,12 @@ JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto)
     return result;
 }
 
-JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
     //定义一个Service
     DepotService service;
-    if (service.modifyDepot(dto)) {
+    if (service.modifyDepot(dto, payload.getUsername())) {
         result.success(true);
     }
     else

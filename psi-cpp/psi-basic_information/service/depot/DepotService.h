@@ -37,10 +37,11 @@ public:
 	PageVO<DepotVO> listAll(const DepotQuery& query);
 	bool getData(const DepotQuery& query, vector<vector<string>>& data);
 	// 保存数据
-	int saveData(const DepotDTO& dto);
+	int saveData(const DepotDTO& dto, const string Username);
 	// 删除数据
 	bool removeData(const OnlyValueQuery& query);
-	int modifyDepot(const DepotDTO& dto);
+	int modifyDepot(const DepotDTO& dto, const string Username);
+	string gettime();
 };
 
 #endif // !_DEPOT_SERVICE_

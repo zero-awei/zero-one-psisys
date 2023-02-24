@@ -36,8 +36,8 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryKidDepot, execQueryKidDepot, OnlyValueQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailDepot, execQueryDetail, OnlyValueQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolDepot, execQueryActionInfo, OnlyValueQuery);
-	CREATE_API_FUN_BODY(addDepot, execAddDepot, DepotDTO);
-	CREATE_API_FUN_BODY(modifyDepot, execModifyDepot, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(addDepot, execAddDepot, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(modifyDepot, execModifyDepot, DepotDTO);
 	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, OnlyValueQuery);
 	// 这里直接用FileDTO报错
 	CREATE_API_FUN_BODY_FILE(addDepots, execAddDepots, DepotDTO);
@@ -52,9 +52,9 @@ private:
 	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
 	// 新增仓库
-	JsonVO<bool> execAddDepot(const DepotDTO& dto);
+	JsonVO<bool> execAddDepot(const DepotDTO& dto, const PayloadDTO& payload);
 	//修改仓库
-	JsonVO<bool> execModifyDepot(const DepotDTO& dto);
+	JsonVO<bool> execModifyDepot(const DepotDTO& dto, const PayloadDTO& payload);
 	//删除仓库 
 	JsonVO<bool> execRemoveDepot(const OnlyValueQuery& query);
 	//文件导入

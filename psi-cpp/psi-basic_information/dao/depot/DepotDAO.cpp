@@ -71,8 +71,11 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 
 int DepotDAO::insertDepot(const DepotDO& iObj)
 {
-	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
+	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%i%i%s%s%s",\
+		iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(),\
+		iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks(),\
+		iObj.getCreationPeo(), iObj.getCreationTime());
 }
 
 
@@ -84,7 +87,6 @@ int DepotDAO::deleteDepot(const DepotDO& iObj)
 
 int DepotDAO::update(const DepotDO& uObj)
 {
-	// 缺了修改人和修改时间
-	string sql = "UPDATE `bas_warehouse` SET `name`=?, `code`=?, `aux_name`=?, `phone`=?, `is_enabled`=?, `remark`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%i%i%s%s", uObj.getName(), uObj.getCode(), uObj.getAuxName(), uObj.getPhone(), uObj.getStart(), uObj.getRemarks(), uObj.getId());
+	string sql = "UPDATE `bas_warehouse` SET `name`=?, `code`=?, `aux_name`=?, `phone`=?, `is_enabled`=?, `remark`=? , `update_by`=?, `update_time`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%i%s%s%s%s", uObj.getName(), uObj.getCode(), uObj.getAuxName(), uObj.getPhone(), uObj.getStart(), uObj.getRemarks(), uObj.getModiPeo(), uObj.getModiTime(), uObj.getId());
 }
