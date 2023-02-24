@@ -52,7 +52,7 @@ std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t page
 {
 	stringstream sql;
 	sql << "SELECT * FROM sample";
-	SAMPLE_TERAM_PARSE(obj, sql);
+	SAMPLE_TERAM_PARSE(obj, sql);//创建好了填充字段。
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	SampleMapper mapper;
 	string sqlStr = sql.str();

@@ -23,9 +23,10 @@ class SupplierController
 		CREATE_API_FUN_QUERY_PAYLOAD(advancedquerySupplier,execAdvancedQuerySupplier,AdvancedQuery);//AdvancedQuery是查询时要传入的东西
 	/*宏也是定义函数啊，这里面定义的函数querySample会调用executeXXX，并且规定参数类型，然后宏定义的函数querySample被Router调用*/
 	CREATE_API_FUN_QUERY(specifiedquerySupplier,execSpecifiedQuerySupplier,SpecifiedSupplierDataQuery);//和这行导致的报错
-	//添加供应商并上传文件
+	//添加供应商时需要上传文件
 	CREATE_API_FUN_BODY_FILE(addSupplier, execAddSupplier, AddSupplierDTO);
-	CREATE_API_FUN_BODY(modifySupplier, execModifySupplier, ModifySupplierDTO);
+	//修改供应商时需要上传文件
+	CREATE_API_FUN_BODY_FILE(modifySupplier, execModifySupplier, ModifySupplierDTO);
 	CREATE_API_FUN_BODY(deleteSupplier, execDeleteSupplier, DeleteSupplierDTO);
 
 private:

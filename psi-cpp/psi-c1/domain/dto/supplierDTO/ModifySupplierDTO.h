@@ -2,13 +2,13 @@
 
 #ifndef _MODIFY_DTO_
 #define _MODIFY_DTO_
-
+#include "../FileDTO.h"
 #include "../../GlobalInclude.h"
 
 /**
  * 示例传输对象
  */
-class ModifySupplierDTO
+class ModifySupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 {
 	/*供应商信息*/
 	// 编号

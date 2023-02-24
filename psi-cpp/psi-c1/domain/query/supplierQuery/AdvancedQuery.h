@@ -5,24 +5,31 @@
 #include "../../GlobalInclude.h"
 #include "../PageQuery.h"
 
-class AdvancedQuery:public PageQuery
+class AdvancedQuerySQLCondition
 {
-	// 过滤匹配条件
-	CC_SYNTHESIZE(string, rule, Rule);
-	//查询字段
-	CC_SYNTHESIZE(string, name, Name);
-	//	字段查询条件：等于、包含、不等于、大于....
+	CC_SYNTHESIZE(string, field, Field);//待查询的字段
 	CC_SYNTHESIZE(string, condition, Condition);
-	//用户输入的需要查询的字段的值
 	CC_SYNTHESIZE(string, value, Value);
+public:
+	friend void from_json(const json& j, AdvancedQuerySQLCondition& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, field);
+		BIND_FROM_TO_NORMAL(j, t, condition);
+		BIND_FROM_TO_NORMAL(j, t, value);
+	}
+};
+
+class AdvancedQuery:public PageQuery//后期要继承“普通查询”
+{
+	//获取sql条件的连接条件：and还是or
+	CC_SYNTHESIZE(string, rule, Rule);
+	CC_SYNTHESIZE(list<AdvancedQuerySQLCondition>, advancedQueryCondition, AdvancedQueryCondition);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, AdvancedQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, rule);
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, condition);
-		BIND_FROM_TO_NORMAL(j, t, value);
+		BIND_FROM_TO_OBJ(j, t, advancedQueryCondition, list<AdvancedQuerySQLCondition>);
 	}
+	
 };
 
 #endif // !_ADVANCED_QUERY_

@@ -186,7 +186,7 @@ int main(int argc, char* argv[]) {
 	int code = HttpServer::startServer(ServerInfo::getInstance().getServerPort(),
 		[=](http_server* server) {
 			Router router(server);
-			router.initRouter();
+			router.initRouter();//调用内部我们定义函数的接口
 		}
 	);
 	// 释放数据库连接
