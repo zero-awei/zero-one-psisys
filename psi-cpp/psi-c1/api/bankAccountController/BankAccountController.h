@@ -14,7 +14,7 @@ public:
 
 private:
 	JsonVO<PageVO<SpecifiedBankAccountListVO>> execSpecifiedBankAccount(SpecifiedBankAccountQuery& query);
-	JsonVO<PageVO<BankAccountListVO>> executequeryBankAccountList(BankAccountQuery query);
+	JsonVO<PageVO<BankAccountListVO>> executequeryBankAccountList(BankAccountQuery& query);
 };
 
 
