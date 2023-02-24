@@ -6,17 +6,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author 白也
- * @title 付款申请单据列表
- * @date 2023/2/15 8:22 下午
+ * @title
+ * @date 2023/2/24 6:03 下午
  */
-
 @ApiModel(description = "")
 @Data
-public class FinPaymentReqVO extends PageQuery {
+public class StkIoVO extends PageQuery {
     /**
      * 单据编号
      */
@@ -26,17 +25,22 @@ public class FinPaymentReqVO extends PageQuery {
      * 单据日期
      */
     @ApiModelProperty("单据日期")
-    private LocalDate billDate;
+    private Date billDate;
     /**
-     * 单据主题
+     *单据主题
      */
     @ApiModelProperty("单据主题")
     private String subject;
     /**
-     * 付款类型
+     * 出入库类型
      */
-    @ApiModelProperty("付款类型")
-    private String paymentType;
+    @ApiModelProperty("出入库类型")
+    private String stockIoType;
+    /**
+     * 源单号
+     */
+    @ApiModelProperty("源单号")
+    private String srcNo;
     /**
      * 供应商
      */
@@ -47,29 +51,47 @@ public class FinPaymentReqVO extends PageQuery {
      */
     @ApiModelProperty("业务部门")
     private String opDept;
+
     /**
      * 业务员
      */
     @ApiModelProperty("业务员")
     private String operator;
+
     /**
-     * 申请金额
+     * 结算金额
      */
-    @ApiModelProperty("申请金额")
-    private BigDecimal amt;
+    @ApiModelProperty("结算金额")
+    private BigDecimal settleAmt;
+
     /**
-     * 已付金额
+     * 已结算金额
      */
-    @ApiModelProperty("已付金额")
-    private BigDecimal paidAmt;
+    @ApiModelProperty("已结算金额")
+    private BigDecimal settledAmt;
+
     /**
-     * 备注
+     * 已开票金额
      */
-    @ApiModelProperty("备注")
-    private String remark;
+    @ApiModelProperty("已开票金额")
+    private BigDecimal invoicedAmt;
+
+    /**
+     * 发票类型
+     */
+    @ApiModelProperty("发票类型")
+    private String invoiceType;
+
+    /**
+     * 是否有涨吨
+     */
+    @ApiModelProperty("是否有涨吨")
+    private Integer hasSwell;
+
     /**
      * 已关闭
      */
     @ApiModelProperty("已关闭")
     private Integer isClosed;
+
 }

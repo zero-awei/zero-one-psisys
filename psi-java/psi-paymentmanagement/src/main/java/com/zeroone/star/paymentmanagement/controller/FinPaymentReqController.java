@@ -27,9 +27,9 @@ import java.util.List;
  * @author pyramid
  * @since 2023-02-15
  */
-@Api(value = "/onlytype/fin-payment-req", tags = {"付款申请单 前端控制器"})
+@Api(value = "/onlytype/fin-payment-req", tags = {"付款申请单"})
 @RestController
-@RequestMapping("/onlytype/fin-payment-req")
+@RequestMapping("/paymentmanagement/fin-payment-req")
 public class FinPaymentReqController implements FinPaymentReqApis {
     @Autowired
     private IFinPaymentReqService iFinPaymentReqService;
