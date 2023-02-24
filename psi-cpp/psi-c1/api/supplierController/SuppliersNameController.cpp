@@ -1,13 +1,11 @@
 #include "stdafx.h"
 #include "SuppliersNameController.h"
+#include "service/supplierService/SuppliersNameService.h"
 
 JsonVO<std::list<SuppliersName>> SuppliersNameController::executeQuerySuppliersName()
-{
-    SuppliersName vo;
-    vo.setID("111");
-    vo.setName("qwyed");
-    std::list<SuppliersName> data;
-    data.push_back(vo);
+{   
+    SuppliersNameService service;
+    std::list<SuppliersName> data = service.listAll();
     JsonVO<std::list<SuppliersName>> res;
     res.success(data);
     return res;

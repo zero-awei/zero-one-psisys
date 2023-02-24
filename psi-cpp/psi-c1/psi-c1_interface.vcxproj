@@ -219,11 +219,14 @@
     <ClCompile Include="dao\publicInterfaceDAO\BasBankAccountDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\BasWareHouseTreeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\BillStageDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDAO\DeliveryMethodTypeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\DepartNameDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\InvoiceMethodDao.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\InvoiceTypeDao.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\MaterialDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDAO\MaterialTypeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\MaterialTypeTreeDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDAO\PayMethodTypeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\PurTypeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\SettleMethodDao.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\TaxRateDAO.cpp" />
@@ -233,6 +236,7 @@
     <ClCompile Include="dao\supplierDAO\SupplierCategoryDAO.cpp" />
     <ClCompile Include="dao\supplierDAO\SupplierLevelDAO.cpp" />
     <ClCompile Include="dao\supplierDAO\SupplierQueryCriteriaDAO.cpp" />
+    <ClCompile Include="dao\supplierDAO\SuppliersNameDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\AddSupplierDTO.cpp" />
     <ClCompile Include="domain\dto\supplierDTO\DeleteSupplierDTO.cpp" />
@@ -244,11 +248,14 @@
     <ClCompile Include="service\publicInterfaceService\BasBankAccountService.cpp" />
     <ClCompile Include="service\publicInterfaceService\BasWareHouseTreeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\BillStageService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\DeliveryMethodTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\DepartNameService.cpp" />
     <ClCompile Include="service\publicInterfaceService\InvoiceMethodService.cpp" />
     <ClCompile Include="service\publicInterfaceService\InvoiceTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\MaterialService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\MaterialTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\MaterialTypeTreeService.cpp" />
+    <ClCompile Include="service\publicInterfaceService\PayMethodTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\PurTypeService.cpp" />
     <ClCompile Include="service\publicInterfaceService\SettleMethodService.cpp" />
     <ClCompile Include="service\publicInterfaceService\TaxRateService.cpp" />
@@ -258,6 +265,7 @@
     <ClCompile Include="service\supplierService\SupplierCategoryService.cpp" />
     <ClCompile Include="service\supplierService\SupplierLevelService.cpp" />
     <ClCompile Include="service\supplierService\SupplierQueryCriteriaService.cpp" />
+    <ClCompile Include="service\supplierService\SuppliersNameService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -315,6 +323,8 @@
     <ClInclude Include="dao\publicInterfaceDAO\BasWareHouseTreeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\BillStageDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\BillStageMapper.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\DeliveryMethodTypeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\DeliveryMethodTypeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\DepartNameDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\DepartNameMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\InvoiceMethodDao.h" />
@@ -323,8 +333,12 @@
     <ClInclude Include="dao\publicInterfaceDAO\InvoiceTypeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\MaterialDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\MaterialMapper.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\MaterialTypeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\MaterialTypeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\MaterialTypeTreeDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\MaterialTypeTreeMapper.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\PayMethodTypeDAO.h" />
+    <ClInclude Include="dao\publicInterfaceDAO\PayMethodTypeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\PurTypeDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\PurTypeMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\SettleMethodDao.h" />
@@ -343,6 +357,8 @@
     <ClInclude Include="dao\supplierDAO\SupplierLevelMapper.h" />
     <ClInclude Include="dao\supplierDAO\SupplierQueryCriteriaDAO.h" />
     <ClInclude Include="dao\supplierDAO\SupplierQueryCriteriaMapper.h" />
+    <ClInclude Include="dao\supplierDAO\SuppliersNameDAO.h" />
+    <ClInclude Include="dao\supplierDAO\SuppliersNameMapper.h" />
     <ClInclude Include="dao\supplierDao\temp.h" />
     <ClInclude Include="domain\do\bankAccount\BankAccountDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
@@ -352,6 +368,7 @@
     <ClInclude Include="domain\do\publicInterfaceDO\BasBankAccountDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\BasWareHouseTreeDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\BillStageDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\DeliveryMethodTypeDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\DepartQueryDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\DepartReturnDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\InvoiceMethodDo.h" />
@@ -360,9 +377,12 @@
     <ClInclude Include="dao\publicInterfaceDAO\UserChoiceDAO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\MaterialQueryDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\MaterialReturnDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialTypeDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\MaterialTypeTreeDO.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\PayMethodTypeDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\PurTypeDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\SettleMethodDo.h" />
+    <ClInclude Include="domain\do\publicInterfaceDO\SuppliersNameDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\TaxRateDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\TaxScaleDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\TransportMethodDo.h" />
@@ -441,11 +461,14 @@
     <ClInclude Include="service\publicInterfaceService\BasBankAccountService.h" />
     <ClInclude Include="service\publicInterfaceService\BasWareHouseTreeService.h" />
     <ClInclude Include="service\publicInterfaceService\BillStageService.h" />
+    <ClInclude Include="service\publicInterfaceService\DeliveryMethodTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\DepartNameService.h" />
     <ClInclude Include="service\publicInterfaceService\InvoiceMethodService.h" />
     <ClInclude Include="service\publicInterfaceService\InvoiceTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\MaterialService.h" />
+    <ClInclude Include="service\publicInterfaceService\MaterialTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\MaterialTypeTreeService.h" />
+    <ClInclude Include="service\publicInterfaceService\PayMethodTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\PurTypeService.h" />
     <ClInclude Include="service\publicInterfaceService\SettleMethodService.h" />
     <ClInclude Include="service\publicInterfaceService\TaxRateService.h" />
@@ -456,6 +479,7 @@
     <ClInclude Include="service\supplierService\SupplierCategoryService.h" />
     <ClInclude Include="service\supplierService\SupplierLevelService.h" />
     <ClInclude Include="service\supplierService\SupplierQueryCriteriaService.h" />
+    <ClInclude Include="service\supplierService\SuppliersNameService.h" />
     <ClInclude Include="service\supplierService\temp.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

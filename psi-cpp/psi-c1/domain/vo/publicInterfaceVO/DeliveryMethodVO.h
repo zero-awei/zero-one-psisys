@@ -12,11 +12,11 @@ date: 2023/2/13
 
 class DeliveryMethodType
 {
-	CC_SYNTHESIZE(std::string, dict_id, Dict_id);
-	CC_SYNTHESIZE(std::string, id, Id);
-	CC_SYNTHESIZE(std::string, name, Name);
+	CC_SYNTHESIZE(uint64_t, dict_id, Dict_id);
+	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(std::string, item_text, Name);
 public:
-	BIND_TO_JSON(DeliveryMethodType, dict_id, id, name);
+	BIND_TO_JSON(DeliveryMethodType, dict_id, id, item_text);
 };
 
 

@@ -14,10 +14,12 @@ date: 2023/2/13
 
 class MaterialType
 {
-	CC_SYNTHESIZE(std::string, id, ID);
+	CC_SYNTHESIZE(uint64_t, id, ID);
+	CC_SYNTHESIZE(uint64_t, pid, PID);
+	CC_SYNTHESIZE(bool, has_child, Has_Child);
 	CC_SYNTHESIZE(std::string, name, Name);
 public:
-	BIND_TO_JSON(MaterialType, id, name);
+	BIND_TO_JSON(MaterialType, id, pid, has_child, name);
 };
 
 
