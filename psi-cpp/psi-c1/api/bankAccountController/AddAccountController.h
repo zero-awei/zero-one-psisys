@@ -16,7 +16,7 @@ class AddAccountController
 public:
 	CREATE_API_FUN_BODY_PAYLOAD(addBankAccount, execAddBankAccount, BankAccountDTO);
 private:
-	JsonVO<uint64_t> execAddBankAccount(const BankAccountDTO& dto, const PayloadDTO& pdto);
+	JsonVO<int> execAddBankAccount(const BankAccountDTO& dto, const PayloadDTO& pdto);
 };
 
 #endif // _ADDACCOUNTCONTROLLER_H_

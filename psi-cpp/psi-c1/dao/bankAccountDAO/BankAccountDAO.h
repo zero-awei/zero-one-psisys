@@ -13,7 +13,7 @@ class BankAccountDAO : public BaseDAO
 {
 public:
 	// 插入数据
-	uint64_t insertAccount(const BankAccountDO& iObj);
+	int insertAccount(const BankAccountDO& iObj, uint64_t ID);
 	// 修改数据
 	int updateAccount(const BankAccountDO& uObj);
 	// 通过ID删除数据

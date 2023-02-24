@@ -2,6 +2,7 @@
 #include "AddAccountService.h"
 #include "../../do/bankAccountDO/BankAccountDO.h"
 #include "../../../dao/bankAccountDAO/BankAccountDAO.h"
+#include "SnowFlake.h"
 
 
 /*
@@ -9,7 +10,9 @@
 * @Author: Oxygen
 * @Date: 2023/2/22 12:56:30
 */
-uint64_t AddAccountService::saveData(const BankAccountDTO& dto, const PayloadDTO& pdto)
+const int datacenterId = 1;
+const int machineId = 2;
+int AddAccountService::saveData(const BankAccountDTO& dto, const PayloadDTO& pdto)
 {
 	//组装数据
 	BankAccountDO data;
@@ -22,7 +25,10 @@ uint64_t AddAccountService::saveData(const BankAccountDTO& dto, const PayloadDTO
 	data.setIsEnabled(dto.getIsEnabled());
 	data.setRemark(dto.getRemark());
 	data.setCreateBy(pdto.getUsername());
+	//生成随机id
+	SnowFlake sf(datacenterId, machineId);
+	uint64_t ID = sf.nextId();
 	//执行数据添加
 	BankAccountDAO dao;
-	return dao.insertAccount(data);
+	return dao.insertAccount(data, ID);
 }

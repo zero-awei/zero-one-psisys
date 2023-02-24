@@ -13,7 +13,7 @@ class AddAccountService
 {
 public:
 	// ±£´æÊý¾Ý
-	uint64_t saveData(const BankAccountDTO& dto, const PayloadDTO& pdto);
+	int saveData(const BankAccountDTO& dto, const PayloadDTO& pdto);
 };
 
 #endif // _ADDACCOUNTSERVICE_H_

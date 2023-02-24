@@ -6,12 +6,13 @@
 * @Author: Oxygen
 * @Date: 2023/2/22 13:13:29
 */
-uint64_t BankAccountDAO::insertAccount(const BankAccountDO& iObj)
+int BankAccountDAO::insertAccount(const BankAccountDO& iObj, uint64_t ID)
 {
-	string sql = "INSERT INTO `bas_bank_account` (`account_no`, `name`, `currency`,`bank_no`,`bank_address`,`manager`,\
+	string id = to_string(ID);
+	string sql = "INSERT INTO `bas_bank_account` (`id`, `account_no`, `name`, `currency`,`bank_no`,`bank_address`,`manager`,\
 		`is_enabled`,`remark`,`create_by`) \
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%s%s%s%d%s%s", iObj.getAccountNo(), iObj.getName(), iObj.getCurrency(), \
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%d%s%s", id, iObj.getAccountNo(), iObj.getName(), iObj.getCurrency(), \
 		iObj.getBankNo(), iObj.getBankAddress(), iObj.getManager(), iObj.getIsEnabled(), iObj.getRemark(), \
 		iObj.getCreateBy());
 }

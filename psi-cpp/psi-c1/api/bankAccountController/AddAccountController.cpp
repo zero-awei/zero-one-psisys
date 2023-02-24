@@ -7,12 +7,12 @@
 * @Author: Oxygen
 * @Date: 2023/2/13 21:27:42
 */
-JsonVO<uint64_t> AddAccountController::execAddBankAccount(const BankAccountDTO& dto, const PayloadDTO& pdto)
+JsonVO<int> AddAccountController::execAddBankAccount(const BankAccountDTO& dto, const PayloadDTO& pdto)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<int> result;
 	AddAccountService service;
 	//执行数据新增
-	uint64_t id = service.saveData(dto, pdto);
+	int id = service.saveData(dto, pdto);
 	if (id > 0) {
 		result.success(id);
 	}
