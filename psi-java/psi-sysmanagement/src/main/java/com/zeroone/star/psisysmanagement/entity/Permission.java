@@ -1,14 +1,14 @@
 package com.zeroone.star.psisysmanagement.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * @Description 权限类
- * @Author Freasy
- * @Date 2023-02-18
- * @Version 1.0
- */
+*
+* @Author:阿狸
+* @Version:1.1
+*/
 @Getter
 @Setter
 @TableName("permission")

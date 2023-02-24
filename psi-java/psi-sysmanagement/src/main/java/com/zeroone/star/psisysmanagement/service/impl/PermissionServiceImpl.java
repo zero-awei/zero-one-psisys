@@ -12,11 +12,21 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+*
+* @Author:阿狸
+* @Version:1.1
+*/
 @Service
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
 
+    /**
+     *
+     * @param RId
+     * @return
+     */
     @Override
-    public List<PermissionQuery> showList(String RId) {
+    public List<PermissionQuery> listAll(String RId) {
         QueryWrapper<Permission> lisPermission = new QueryWrapper<>();
         lisPermission.eq("father_permission_id",RId);
         List<Permission> permissions = baseMapper.selectList(lisPermission);
@@ -30,7 +40,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     }
 
     @Override
-    public Boolean addMenuOrPermission(PermissionQuery permissionQuery) {
+    public Boolean saveMenuOrPermission(PermissionQuery permissionQuery) {
         Permission permission = new Permission();
         BeanUtil.copyProperties(permissionQuery,permission);
         int num = baseMapper.insert(permission);
