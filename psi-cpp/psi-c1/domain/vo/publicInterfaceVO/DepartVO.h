@@ -27,12 +27,12 @@ class DepartVO
 	//部门的名字(公司或者具体部门)
 	CC_SYNTHESIZE(std::string, departname, DepartName);
 	//部门的id
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(std::string, id, Id);
 public:
 	DepartVO()
 	{
-		departname = "yingxiaobu";
-		id = 1;
+		departname = "";
+		id = "";
 	}
 	BIND_TO_JSON(DepartVO, departname, id);
 };

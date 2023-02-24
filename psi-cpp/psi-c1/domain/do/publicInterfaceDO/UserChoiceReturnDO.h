@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: yunjj
- @Date: 2023/2/14 17:01
+ @Author: awei
+ @Date: 2022/10/25 10:58:42
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,36 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SUPPLIER_CATEGORY_QUERY_
-#define _SUPPLIER_CATEGORY_QUERY_
+
+#ifndef _USERCHOICERETURNDO_H_
+#define _USERCHOICERETURNDO_H_
 
 #include "../../GlobalInclude.h"
 
-class SupplierCategoryQuery
+class UserChoiceReturnDO
 {
-	//供应商名字
-	CC_SYNTHESIZE(std::string, name, Name);
-	//供应商id
-	CC_SYNTHESIZE(std::string,id,Id);
+	//用户id
+	CC_SYNTHESIZE(std::string, id, Id);
+	//用户账号姓名
+	CC_SYNTHESIZE(std::string, username, UserName);
+	//用户真实姓名
+	CC_SYNTHESIZE(std::string, realname, RealName);
+	//用户性别
+	CC_SYNTHESIZE(std::string, sex, Sex);
+	//用户电话
+	CC_SYNTHESIZE(std::string, phone, Phone);
+	//用户所属部门
+	CC_SYNTHESIZE(std::string, department, DepartMent);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, SupplierCategoryQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
+	UserChoiceReturnDO()
+	{
+		id = "";
+		username = "";
+		realname = "";
+		sex = "";
+		phone = "";
+		department = "";
 	}
 };
 
-#endif // !_SUPPLIER_QUERY_
+#endif // _USERCHOICERETURNDO_H_

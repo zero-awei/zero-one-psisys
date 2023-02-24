@@ -30,7 +30,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\publicInterfaceController\areaController.cpp">
+    <ClCompile Include="api\publicInterfaceController\AreaController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp">
@@ -42,7 +42,7 @@
     <ClCompile Include="api\publicInterfaceController\MaterialQueryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\supplierController\SuppliserCategoryController.cpp">
+    <ClCompile Include="api\supplierController\SupplierCategoryController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\bankAccountController\BankAccountController.cpp">
@@ -150,6 +150,36 @@
     <ClCompile Include="domain\dto\supplierDTO\ModifySupplierDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="service\publicInterfaceService\AreaService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\publicInterfaceDao\AreaDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\publicInterfaceService\UserChoiceService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\publicInterfaceDAO\UserChoiceDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\publicInterfaceService\MaterialService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\publicInterfaceDAO\MaterialDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\publicInterfaceService\DepartNameService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\publicInterfaceDAO\DepartNameDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\supplierService\SupplierCategoryService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\supplierDAO\SupplierCategoryDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -197,10 +227,7 @@
     <ClInclude Include="domain\query\publicInterfaceQuery\AreaQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="api\publicInterfaceController\areaController.h">
+    <ClInclude Include="api\publicInterfaceController\AreaController.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\publicInterfaceVO\UserVO.h">
@@ -230,10 +257,7 @@
     <ClInclude Include="api\publicInterfaceController\DepartChoiceController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\query\supplierQuery\SupplierCategoryQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\supplierVO\SupplierCategoruVO.h">
+    <ClInclude Include="domain\vo\supplierVO\SupplierCategoryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\supplierController\SupplierCategoryController.h">
@@ -474,6 +498,84 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="service\supplierService\temp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\AreaReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\DepartQueryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\DepartReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\UserChoiceDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialQueryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\MaterialReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\UserChoiceQueryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\UserChoiceReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\UserDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\supplierDO\SupplierCategoryReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\supplierQuery\SupplierCategoryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\supplierDAO\SupplierCategoryDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\supplierDAO\SupplierCategoryMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\areaDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\areaMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\DepartNameDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\DepartNameMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\MaterialDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\MaterialMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\publicInterfaceDAO\UserChoiceMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\publicInterfaceDO\AreaQueryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\supplierService\SupplierCategoryService.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

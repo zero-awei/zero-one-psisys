@@ -21,21 +21,27 @@
 #define _MATERIALQUERY_
 
 #include "../../GlobalInclude.h"
+#include "../PageQuery.h"
 
-class MaterialQuery
+class MaterialQuery : public PageQuery
 {
     //物料的编码
-    CC_SYNTHESIZE(uint64_t, code, Code);
+    CC_SYNTHESIZE(std::string, code, Code);
     //物料的名称
     CC_SYNTHESIZE(std::string, name, Name);
     //物料的分类
     CC_SYNTHESIZE(std::string, type, Type); 
+    //税控编码
+    CC_SYNTHESIZE(std::string, taxCode, TaxCode);
 public:
     // 绑定from_json
     friend void from_json(const json& j, MaterialQuery& t) { // NOLINT
         BIND_FROM_TO_NORMAL(j, t, name);
         BIND_FROM_TO_NORMAL(j, t, type);
-        BIND_FROM_TO_ULL(j, t, code);
+        BIND_FROM_TO_NORMAL(j, t, taxCode);
+        BIND_FROM_TO_NORMAL(j, t, code);
+		BIND_FROM_TO_ULL(j, t, pageIndex);
+		BIND_FROM_TO_ULL(j, t, pageSize);
     }
 
 };

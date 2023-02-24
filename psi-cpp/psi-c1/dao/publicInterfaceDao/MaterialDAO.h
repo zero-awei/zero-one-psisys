@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/14 17:01
+ @Date: 2023/2/21 22:17
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,20 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SUPPLIER_CATEGORY_QUERY_
-#define _SUPPLIER_CATEGORY_QUERY_
+#ifndef _MATERIALDAO_H_
+#define _MATERIALDAO_H_
 
-#include "../../GlobalInclude.h"
+#include "BaseDAO.h"
+#include "../../domain/do/publicInterfaceDO/MaterialReturnDO.h"
+#include "../../domain/do/publicInterfaceDO/MaterialQueryDO.h"
 
-class SupplierCategoryQuery
+class MaterialDAO :public BaseDAO
 {
-	//供应商名字
-	CC_SYNTHESIZE(std::string, name, Name);
-	//供应商id
-	CC_SYNTHESIZE(std::string,id,Id);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, SupplierCategoryQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
-	}
+	//查询物料信息
+	list<MaterialReturnDO>selecMaterialWithPage(const MaterialQueryDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	//用于统计一个查询里可以返回的表项数量
+	uint64_t count(const MaterialQueryDO& iObj);
 };
 
-#endif // !_SUPPLIER_QUERY_
+#endif // _MATERIALDAO_H_

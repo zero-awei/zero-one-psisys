@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: yunjj
- @Date: 2023/2/11 17:51
+ @Author:yunjj
+ @Date: 2023/2/23 21:41
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,19 +17,20 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _AREADO_H_
-#define _AREADO_H_
-#include "../DoInclude.h"
+#ifndef _SUPPLIERCATEGORYMAPPER_H_
+#define _SUPPLIERCATEGORYMAPPER_H_
+#include "Mapper.h"
+#include "../../domain/do/supplierDO/SupplierCategoryReturnDO.h"
 
-class AreaDO
+class SupplierCategoryMapper :public Mapper<SupplierCategoryReturnDO>
 {
-	CC_SYNTHESIZE(std::string, areaName, AreaName);
-	CC_SYNTHESIZE(uint64_t, id, Id);
 public:
-	AreaDO()
+	SupplierCategoryReturnDO mapper(ResultSet* resultSet) const override
 	{
-		areaName = "";
-		id = 0;
+		SupplierCategoryReturnDO data;
+		data.setName(resultSet->getString(1));
+		return data;
 	}
 };
-#endif // _AREADO_H_
+
+#endif // _SUPPLIERCATEGORYMAPPER_H_

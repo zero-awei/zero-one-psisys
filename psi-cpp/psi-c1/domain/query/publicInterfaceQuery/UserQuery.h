@@ -21,14 +21,17 @@
 #define _USERQUERY_H_
 
 #include "../../GlobalInclude.h"
+#include "../PageQuery.h"
 
-class UserQuery
+class UserQuery : public PageQuery
 {
 	//查询用户数据时用的用户账号名称
 	CC_SYNTHESIZE(std::string, username, UserName);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, UserQuery& t) { // NOLINT
+		BIND_FROM_TO_ULL(j, t, pageIndex);
+		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, username);
 	}
 };

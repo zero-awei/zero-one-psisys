@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: yunjj
- @Date: 2023/2/14 17:01
+ @Date: 2023/2/20 20:13
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SUPPLIER_CATEGORY_QUERY_
-#define _SUPPLIER_CATEGORY_QUERY_
 
-#include "../../GlobalInclude.h"
+#ifndef _USERCHOICESERVICE_H_
+#define _USERCHOICESERVICE_H_
 
-class SupplierCategoryQuery
+#include "../../domain/vo/publicInterfaceVO/UserVO.h"
+#include "../../domain/query/publicInterfaceQuery/UserQuery.h"
+#include "../../domain/vo/PageVO.h"
+
+class UserChoiceService
 {
-	//供应商名字
-	CC_SYNTHESIZE(std::string, name, Name);
-	//供应商id
-	CC_SYNTHESIZE(std::string,id,Id);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, SupplierCategoryQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
-	}
+	// 分页查询所有数据
+	PageVO<UserVO> listAll(const UserQuery& query);
 };
 
-#endif // !_SUPPLIER_QUERY_
+#endif // _USERCHOICESERVICE_H_

@@ -26,11 +26,11 @@ class DepartNameQuery
     //要查询部门的名字
     CC_SYNTHESIZE(std::string, departname, DepartName);
     //要查询部门的id
-    CC_SYNTHESIZE(uint64_t, id, Id);
+    CC_SYNTHESIZE(std::string, id, Id);
 public:
 	friend void from_json(const json& j, DepartNameQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, departname);
-		BIND_FROM_TO_ULL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, id);
 	}
 };
 

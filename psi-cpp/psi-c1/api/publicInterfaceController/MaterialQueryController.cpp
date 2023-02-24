@@ -1,15 +1,11 @@
 #include"stdafx.h"
 #include"MaterialQueryController.h"
+#include "../../service/publicInterfaceService/MaterialService.h"
 
 JsonVO<PageVO<MaterialVO>>MaterialQueryController::execQueryMaterial(const MaterialQuery& query, const PayloadDTO& payload)
 {
-	JsonVO<PageVO<MaterialVO>>rs;
-	PageVO<MaterialVO>data;
-	list<MaterialVO> rows;
-	rows.push_back(MaterialVO());
-	rows.push_back(MaterialVO());
-	rows.push_back(MaterialVO());
-	data.setRows(rows);
-	rs.success(data);
-	return rs;
+	MaterialService service;
+	PageVO<MaterialVO> result = service.listAll(query);
+	//ÏìÓ¦½á¹û
+	return JsonVO<PageVO<MaterialVO>>(result, RS_SUCCESS);
 }

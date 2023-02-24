@@ -19,7 +19,7 @@
 */
 #ifndef _AREACONTROLLER_H_
 #define _AREACONTROLLER_H_
-#include "../../domain/do/publicInterfaceDO/AreaDO.h"
+#include "../../domain/do/publicInterfaceDO/AreaQueryDO.h"
 #include "../../domain/query/publicInterfaceQuery/AreaQuery.h"
 #include "../../domain/vo/publicInterfaceVO/AreaVO.h"
 #include "../../domain/vo/PageVO.h"

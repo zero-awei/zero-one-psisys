@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: yunjj
- @Date: 2023/2/14 17:01
+ @Author:yunjj
+ @Date: 2023/2/20 20:51
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,23 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SUPPLIER_CATEGORY_QUERY_
-#define _SUPPLIER_CATEGORY_QUERY_
 
-#include "../../GlobalInclude.h"
+#ifndef _USERCHOICEMAPPER_H_
+#define _USERCHOICEMAPPER_H_
 
-class SupplierCategoryQuery
+#include "Mapper.h"
+
+class UserChoiceMapper :public Mapper<UserChoiceReturnDO>
 {
-	//供应商名字
-	CC_SYNTHESIZE(std::string, name, Name);
-	//供应商id
-	CC_SYNTHESIZE(std::string,id,Id);
 public:
-	// 绑定from_json
-	friend void from_json(const json& j, SupplierCategoryQuery& t) { // NOLINT
-		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, id);
+	UserChoiceReturnDO mapper(ResultSet* resultSet) const override
+	{
+		UserChoiceReturnDO data;
+		data.setId(resultSet->getString(1));
+		data.setUserName(resultSet->getString(2));
+		data.setSex(resultSet->getString(3));
+		data.setPhone(resultSet->getString(4));
+		data.setDepartMent(resultSet->getString(5));
+		return data;
 	}
 };
 
-#endif // !_SUPPLIER_QUERY_
+#endif // _USERCHOICEMAPPER_H_
