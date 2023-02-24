@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
  * @ClassName DepartVO
  * @Description 部门列表
  * @Author dan
- * @DATE 2023/2/23 0:15
+ * @DATE 2023/2/24 0:15
  * @Version 1.0
  */
 
