@@ -28,7 +28,7 @@
 #include "../../dao/depot/DepotDAO.h"
 
 /**
- * 示例服务实现，演示基础的示例服务实现
+ * 仓库基础功能
  */
 class DepotService
 {
@@ -41,6 +41,8 @@ public:
 	DepotDetailVO listDetail(const OnlyValueQuery& query);
 	//查询修改动作
 	DepotActionInfoVO listInfo(const OnlyValueQuery& query);
+
+	bool getData(const DepotQuery& query, vector<vector<string>>& data);
 	// 保存数据
 	int saveData(const DepotDTO& dto);
 	// 保存子级数据
