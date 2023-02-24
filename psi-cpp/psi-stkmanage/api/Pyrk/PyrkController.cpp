@@ -5,15 +5,15 @@
 
 JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryBillList(const QueryPyrkBillListQuery& query)
 {	
-	PageVO<QueryPyrkBillListVO> result;   // ≤‚ ‘ 
-	list<QueryPyrkBillListVO> rows;
-	rows.push_back(QueryPyrkBillListVO());
-	result.setRows(rows);
-	return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+	//PageVO<QueryPyrkBillListVO> result;   // ≤‚ ‘ 
+	//list<QueryPyrkBillListVO> rows;
+	//rows.push_back(QueryPyrkBillListVO());
+	//result.setRows(rows);
+	//return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
 
 
-    //geVO<QueryPyrkBillListVO> result;    
-    //turn JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+   PageVO<QueryPyrkBillListVO> result;    
+   return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const QueryPyrkBillListQuery& query) {

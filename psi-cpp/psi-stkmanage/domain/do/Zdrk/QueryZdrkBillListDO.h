@@ -46,7 +46,7 @@ class queryZdrkBillListDO
 
 public:
 	queryZdrkBillListDO() {
-		billNo = "";
+		billNo = "123";
 		billDate = "";
 		opDept = "";
 		operatoR = "";

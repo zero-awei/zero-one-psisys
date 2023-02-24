@@ -3,12 +3,14 @@
 
 JsonVO<QueryZdrkBillDetailsVO> ZdrkController::execQueryZdrkBillDetails(const QueryZdrkBillDetailsQuery& query)
 {
-    return JsonVO<QueryZdrkBillDetailsVO>();
+    QueryZdrkBillDetailsVO result;
+    return JsonVO<QueryZdrkBillDetailsVO>(result, RS_SUCCESS);
 }
 
 JsonVO<PageVO<QueryZdrkBillListVO>> ZdrkController::execQueryZdrkBillList(const QueryZdrkBillListQuery& query)
 {
-    return JsonVO<PageVO<QueryZdrkBillListVO>>();
+    PageVO<QueryZdrkBillListVO> result;
+    return JsonVO<PageVO<QueryZdrkBillListVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> ZdrkController::execAddZdrkBill(const AddZdrkBillDTO& dto)

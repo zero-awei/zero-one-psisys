@@ -56,8 +56,7 @@ PageVO<SampleVO> SampleService::listAll(const SampleQuery& query)
 	return pages;
 }
 
-uint64_t SampleService::saveData(const SampleDTO& dto)
-{
+uint64_t SampleService::saveData(const SampleDTO& dto) {
 	//组装数据
 	SampleDO data;
 	data.setName(dto.getName());
@@ -68,8 +67,7 @@ uint64_t SampleService::saveData(const SampleDTO& dto)
 	return dao.insert(data);
 }
 
-bool SampleService::updateData(const SampleDTO& dto)
-{
+bool SampleService::updateData(const SampleDTO& dto) {
 	//组装传输数据
 	SampleDO data;
 	data.setId(dto.getId());
