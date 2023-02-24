@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -117,7 +119,7 @@ public class SysDepart implements Serializable {
      * 创建日期
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新人
@@ -127,7 +129,7 @@ public class SysDepart implements Serializable {
     /**
      * 更新日期
      */
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
 
 }
