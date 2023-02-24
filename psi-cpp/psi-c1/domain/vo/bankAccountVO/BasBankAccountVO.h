@@ -5,22 +5,16 @@
 
 class BasBankAccountVO {
 	
-	CC_SYNTHESIZE(std::string, label, Label);
-
-	CC_SYNTHESIZE(std::string, text, Text);
-
-	CC_SYNTHESIZE(std::string, title, Title);
+	CC_SYNTHESIZE(string, id, Id);
 
 	CC_SYNTHESIZE(std::string, value, Value);
 
 public:
 
-	BIND_TO_JSON(BasBankAccountVO, label, text, title, value);
+	BIND_TO_JSON(BasBankAccountVO, id,value);
 
 	BasBankAccountVO() {
-		label = u8"12345678901234567890";
-		text = u8"12345678901234567890";
-		title = u8"12345678901234567890";
+		id = "111";
 		value = u8"1584913699556106242";
 	}
 

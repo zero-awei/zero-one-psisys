@@ -2,6 +2,10 @@
 #ifndef _MATERIALTYPEITEMQUERY_H_
 #define _MATERIALTYPEITEMQUERY_H_
 #include"../PageQuery.h"
+/*
+	@Author: kiva
+ @Date: 2023/2/13 15:36
+*/
 
 class MaterialTypeItemQuery :public PageQuery{
 	
