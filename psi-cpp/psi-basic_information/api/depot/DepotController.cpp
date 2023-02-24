@@ -23,17 +23,17 @@ JsonVO<PageVO<DepotVO>> DepotController::execQueryDepot(const DepotQuery& query,
     return JsonVO<PageVO<DepotVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<std::list<DepotVO>> DepotController::execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload)
+JsonVO<list<DepotVO>> DepotController::execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
     // 数据校验
     if (query.getId() == "") {
-        return JsonVO<std::list<DepotVO>>({}, RS_PARAMS_INVALID);
+        return JsonVO<list<DepotVO>>({}, RS_PARAMS_INVALID);
     }
     // 定义Service
     DepotService service;
     // 查询数据
-    std::list<DepotVO> result = service.getKid(query);
-    return JsonVO<std::list<DepotVO>>(result, RS_SUCCESS);
+    list<DepotVO> result = service.getKid(query);
+    return JsonVO<list<DepotVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<DepotDetailVO> DepotController::execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload)

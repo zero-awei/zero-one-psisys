@@ -110,21 +110,27 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	return pages;
 }
 
-std::list<DepotVO> DepotService::getKid(const OnlyValueQuery& query)
+list<DepotVO> DepotService::getKid(const OnlyValueQuery& query)
 {
 	// 获取父级id
-	DepotDO id;
-	id.setPid(query.getId());
+	DepotDO obj;
+	obj.setPid(query.getId());
 	// 获取子级仓库DO
 	DepotDAO dao;
-	std::list<DepotDO> result =  dao.selectKid(id);
-	std::list<DepotVO> vr;
+	list<DepotDO> result =  dao.selectKid(obj);
+	list<DepotVO> vr;
 	for (DepotDO sub : result)
 	{
 		DepotVO vo;
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
-		// 剩下的属性
+		vo.setAuxName(sub.getAuxName());
+		vo.setPhone(sub.getPhone());
+		vo.setRemarks(sub.getRemarks());
+		vo.setCreationPeo(sub.getCreationPeo());
+		vo.setCreationTime(sub.getCreationTime());
+		vo.setModiPeo(sub.getModiPeo());
+		vo.setModiTime(sub.getModiTime());
 		vr.push_back(vo);
 	}
 	return vr;
