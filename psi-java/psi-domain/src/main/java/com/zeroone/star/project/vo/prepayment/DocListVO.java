@@ -20,6 +20,10 @@ import java.time.LocalDateTime;
 @Data
 @ApiModel("显示单据列表")
 public class DocListVO {
+
+    @ApiModelProperty(value = "id",example = "11111")
+    private String id;
+
     /**
      * 单据编号
      */

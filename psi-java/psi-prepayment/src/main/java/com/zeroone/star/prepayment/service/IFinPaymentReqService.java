@@ -1,13 +1,9 @@
 package com.zeroone.star.prepayment.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 import com.zeroone.star.prepayment.entity.FinPaymentReq;
-import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,10 +19,10 @@ public interface IFinPaymentReqService extends IService<FinPaymentReq> {
 
     /**
      * 获取有申请采购单（分页）
-     * @param purchaseListQuery
-     * @return
+     * param purchaseListQuery
+     * return
      */
-    public PageVO<FinPaymentReqVO> getFinPaymentReq(PurchaseListQuery purchaseListQuery);
+    PageVO<FinPaymentReqVO> getFinPaymentReq(PurchaseListQuery purchaseListQuery);
 
     /**
      * 根据明细的源单id查询对应申请单

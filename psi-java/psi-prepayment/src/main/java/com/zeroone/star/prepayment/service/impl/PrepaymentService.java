@@ -117,15 +117,10 @@ public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPay
      * since 2023-02-13
      */
     @Override
-    public JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition) {
-//        //创建一个Page对象，内部放入的是Finpayment数据组成的列表，并设置当前查询的页码和分页大小
-//        Page<FinPayment> finPaymentPage = new Page<>(condition.getPageIndex(),condition.getPageSize());
-//        //构建查询对象
-//        QueryWrapper<FinPayment> queryWrapper = new QueryWrapper<>();
-//        queryWrapper.eq("payment_type", condition.getPaymentType());
-//        Page<FinPayment> result = baseMapper.selectPage(finPaymentPage, queryWrapper);
-        return null;
+    public PageVO<DocListVO> queryAll(DocListQuery condition) {
+        return finPaymentService.listAll(condition);
     }
+
 
     /**
      * 根据单据编号查询信息

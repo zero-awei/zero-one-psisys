@@ -3,9 +3,6 @@ package com.zeroone.star.project.vo.prepayment;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.sql.Date;
 

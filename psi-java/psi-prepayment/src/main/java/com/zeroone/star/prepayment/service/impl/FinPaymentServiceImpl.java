@@ -1,6 +1,7 @@
 package com.zeroone.star.prepayment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
@@ -8,7 +9,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.AuditDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
+import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -95,6 +99,40 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         //用户信息
         finPayment.setCreateBy(userDTO.getUsername());
         return finPaymentMapper.insert(finPayment);
+    }
+
+    @Override
+    public PageVO<DocListVO> listAll(DocListQuery condition) {
+        //构建分页对象
+        Page<FinPayment> finPaymentPage = new Page<>(condition.getPageIndex(),condition.getPageSize());
+        //创建查询条件
+        QueryWrapper<FinPayment> finPaymentQueryWrapper = new QueryWrapper<>();
+        //根据单据编号查询
+        if (condition.getBillNo()!=null)finPaymentQueryWrapper.eq("bill_no",condition.getBillNo());
+        //根据单据日期查询
+        if(condition.getBillDateStart()!=null && condition.getBillDateEnd()!=null)
+            finPaymentQueryWrapper.between("bill_date",condition.getBillDateStart(),condition.getBillDateEnd());
+        else if (condition.getBillDateStart()!=null)
+            finPaymentQueryWrapper.ge("bill_date",condition.getBillDateStart());
+        else if(condition.getBillDateEnd()!=null)
+            finPaymentQueryWrapper.le("bill_date",condition.getBillDateEnd());
+        //根据单据主题查询
+        if (condition.getSubject()!=null)finPaymentQueryWrapper.like("subject",condition.getSubject());
+        //根据供应商查询
+        if (condition.getSupplierId()!=null)finPaymentQueryWrapper.eq("supplier_id",condition.getSupplierId());
+        //根据处理状态查询
+        if (condition.getBillStage()!=null)finPaymentQueryWrapper.eq("bill_stage",condition.getBillStage());
+        //根据是否生效查询
+        if (condition.getIsEffective()!=null)finPaymentQueryWrapper.eq("is_effective",condition.getIsEffective());
+        //根据是否关闭查询
+        if (condition.getIsClosed()!=null)finPaymentQueryWrapper.eq("is_closed",condition.getIsClosed());
+        //根据是否作废查询
+        if (condition.getIsVoided()!=null)finPaymentQueryWrapper.eq("is_voided",condition.getIsVoided());
+        //根据付款类型查询（即2011是有申请，2010是无申请）
+        if (condition.getPaymentType()!=null)finPaymentQueryWrapper.eq("payment_type",condition.getPaymentType());
+        //执行SQL
+        Page<FinPayment> result = baseMapper.selectPage(finPaymentPage, finPaymentQueryWrapper);
+        return PageVO.create(result,DocListVO.class);
     }
 
     /**

@@ -4,7 +4,6 @@ import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.FinPaymentQuery;
-import com.zeroone.star.project.query.prepayment.IdQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -43,7 +42,8 @@ public interface IPrepaymentService {
      * author husj
      * version 1.0.0
      */
-    JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition);
+    PageVO<DocListVO> queryAll(DocListQuery condition);
+
 
     /**
      * 通过单据编号查询数据-采购预付有申请

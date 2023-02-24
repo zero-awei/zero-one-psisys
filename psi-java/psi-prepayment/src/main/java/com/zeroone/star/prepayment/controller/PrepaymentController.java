@@ -5,6 +5,7 @@ import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.prepayment.PrepaymentApis;
+import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.FinPaymentQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -16,8 +17,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.zeroone.star.project.query.prepayment.DocListQuery;
-import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -104,14 +103,14 @@ public class PrepaymentController implements PrepaymentApis {
      * 单据分页查询
      * 采购预付（有申请）：payment_type 2011
      * 采购预付（无申请）：payment_type 2010
-     * author husj
+     * author husj、hzp
      * since 2023-02-13
      */
     @Override
     @GetMapping("query-all")
     @ApiOperation(value = "查询采购预付单功能")
-    public JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition) {
-        return prepaymentService.queryAll(condition);
+    public JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition) {
+        return JsonVO.success(prepaymentService.queryAll(condition));
     }
 
     /**

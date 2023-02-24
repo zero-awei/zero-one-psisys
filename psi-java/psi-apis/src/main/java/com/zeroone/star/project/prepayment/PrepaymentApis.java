@@ -64,7 +64,7 @@ public interface PrepaymentApis {
      * author husj
      * version 1.0.0
      */
-    JsonVO<PageVO<FinPaymentVO>> queryAll(FinPaymentQuery condition);
+    JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition);
 
     /**
      * 通过单据编号查询数据-采购预付有申请

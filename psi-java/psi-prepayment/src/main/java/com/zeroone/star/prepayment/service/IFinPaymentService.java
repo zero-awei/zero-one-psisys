@@ -5,7 +5,10 @@ import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.AuditDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
 import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
+import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +46,8 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * author KONG
      */
     public int insert(PrepaymentDTO prepaymentDTO, UserDTO userDTO);
+
+    PageVO<DocListVO> listAll(DocListQuery condition);
 
     /**
      * 根据单据编号查询指定付款单
