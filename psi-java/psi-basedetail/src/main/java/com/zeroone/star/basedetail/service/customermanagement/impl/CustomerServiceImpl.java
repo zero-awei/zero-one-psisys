@@ -262,6 +262,10 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
                             if(quick == s.length()-1){
                                 return  true;
                             }
+                            //
+                            if(quick>s.length()-1){
+                                return  false;
+                            }
                             while (quick<s.length()&&s.charAt(quick)!='['){
                                 quick++;
                             }
@@ -335,12 +339,12 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
         }
         //以开头
         if(condition.equals("以开头")){
-            wrapper.likeLeft(name,value);
+            wrapper.likeRight(name,value);
             return true;
         }
         //以结尾
         if(condition.equals("以结尾")){
-            wrapper.likeRight(name,value);
+            wrapper.likeLeft(name,value);
             return true;
         }
         //包含
@@ -357,7 +361,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
             int end = 0;
             //构造查询得条件[value1,value2,value3.....]
             while (end<value.length()){
-                if(value.charAt(end)==','){
+                if(value.charAt(end)==','||value.charAt(end) == '，'){
                     //逗号之间是空字符，直接跳过
                     if(end-start<=1){
                         end++;
@@ -379,7 +383,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
                     s.append("'");
                 }
             }
-            wrapper.inSql(name,value);
+            wrapper.inSql(name,s.toString());
             return true;
 
         }

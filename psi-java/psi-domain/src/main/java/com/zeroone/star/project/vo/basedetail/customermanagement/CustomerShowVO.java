@@ -26,7 +26,7 @@ public class CustomerShowVO {
     @ApiModelProperty(value = "客户对象分类名称customer_category_name",example = "一级")
     private  String customerCategory;
 
-    @ApiModelProperty(value = "客户等级分类名称customer_level_name",example = "高级客户")
+    @ApiModelProperty(value = "客户对象等级名称customer_level_name",example = "高级客户")
     private String customerLevel;
 
     @ApiModelProperty(value = "客户对象业务区域bizArea", example = "0101")

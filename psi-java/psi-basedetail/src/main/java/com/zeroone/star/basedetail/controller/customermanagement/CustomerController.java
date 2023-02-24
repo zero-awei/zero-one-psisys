@@ -81,7 +81,7 @@ public class CustomerController implements CustomerApis {
 
     @Override
     @GetMapping("getcustomerbyid")
-    @ApiOperation(value = "查询指定id客户")
+    @ApiOperation(value = "查询指定code客户")
     public JsonVO<CustomerShowVO> specifiedcustomer(@RequestParam(required = false)String code) {
         CustomerShowVO customervo = customerService.getByCode(code);
         if(customervo!=null){
