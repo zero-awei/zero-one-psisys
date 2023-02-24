@@ -4,6 +4,7 @@ package com.zeroone.star.payablemanagement.controller;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckEntryService;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
 import com.zeroone.star.payablemanagement.service.IFinPayableService;
+import com.zeroone.star.payablemanagement.service.IFinPaymentService;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
@@ -23,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.List;
 
@@ -42,6 +44,9 @@ public class CheckPayableController implements CheckPayableApis {
     @Autowired
     IFinPayableCheckEntryService finPayableCheckEntry;
 
+    @Autowired
+    IFinPaymentService finPaymentService;
+
     @Override
     @GetMapping("entry")
     @ApiOperation("查询单据详情")
@@ -56,18 +61,19 @@ public class CheckPayableController implements CheckPayableApis {
     }
 
     @Override
+    @GetMapping("queryPaymentBySupplier")
+    @ApiOperation("根据供应商ID查询付款单")
+    public JsonVO<PageVO<PaymentVO>> listPaymentBySupplier(PaymentBySupplierQuery condition) {
+        return JsonVO.success(finPaymentService.queryBySupplierId(condition));
+    }
+
+    @Override
     @GetMapping("queryPayableBySupplier")
     @ApiOperation("根据供应商ID查询应付单")
     public JsonVO<PageVO<PayableVO>> listPayableBySupplier(PayableBySupplierQuery condition) {
         return null;
     }
 
-    @Override
-    @GetMapping("queryPaymentBySupplier")
-    @ApiOperation("根据供应商ID查询付款单")
-    public JsonVO<PageVO<PaymentVO>> listPaymentBySupplier(PaymentBySupplierQuery condition) {
-        return null;
-    }
 
     @PostMapping("/export")
     @ApiOperation(value = "应付核销导出功能")

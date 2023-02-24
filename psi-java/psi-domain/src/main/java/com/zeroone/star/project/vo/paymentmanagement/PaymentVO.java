@@ -80,7 +80,7 @@ public class PaymentVO {
 //    private String paymentType;
 
     @ApiModelProperty(value = "付款类型", example = "采购预付(有申请)")
-    private String payableTypeDictText;
+    private String paymentTypeDictText;
 
     /**
      * 供应商
