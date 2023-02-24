@@ -58,7 +58,8 @@ function handleJump(el){
 
 <style lang="scss" scoped>
 .el-select{
-  position:fixed;
+  display:flex;
+  // position:fixed;
   left:800px;
   top:16px;
   width:180px;

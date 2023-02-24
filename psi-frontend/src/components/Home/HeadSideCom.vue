@@ -43,6 +43,7 @@
       color: #fff;
       height: 59px;
       font-size: 14px;
+      display:float;
 }
       .el-icon{
         color:white;
