@@ -3,15 +3,13 @@ package com.zeroone.star.psisysmanagement.controller;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
 import com.zeroone.star.project.sysmanagement.RoleMenuApis;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.psisysmanagement.service.IMenuService;
+import com.zeroone.star.psisysmanagement.service.IRoleMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 
@@ -28,7 +26,7 @@ public class RoleMenuController implements RoleMenuApis {
 
 
     @Resource
-    private IMenuService service;
+    private IRoleMenuService service;
 
     /**
      * 查询角色菜单

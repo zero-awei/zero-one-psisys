@@ -11,7 +11,7 @@ import java.util.List;
 * @Author:阿狸
 * @Version:1.1
 */
-public interface IMenuService extends IService<SysMenu> {
+public interface IRoleMenuService extends IService<SysMenu> {
 
     /**
      * 查询角色菜单

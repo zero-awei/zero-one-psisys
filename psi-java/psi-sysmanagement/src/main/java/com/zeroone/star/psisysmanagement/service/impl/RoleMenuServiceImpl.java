@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.mapper.MenuMapper;
-import com.zeroone.star.psisysmanagement.service.IMenuService;
+import com.zeroone.star.psisysmanagement.service.IRoleMenuService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 * @Version:1.1
 */
 @Service
-public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
+public class RoleMenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IRoleMenuService {
 
 
     @Override

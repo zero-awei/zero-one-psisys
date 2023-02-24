@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
 import com.zeroone.star.psisysmanagement.entity.Permission;
 import com.zeroone.star.psisysmanagement.mapper.PermissionMapper;
-import com.zeroone.star.psisysmanagement.service.IPermissionService;
+import com.zeroone.star.psisysmanagement.service.IRolePermissionService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 * @Version:1.1
 */
 @Service
-public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
+public class RolePermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IRolePermissionService {
 
     /**
      *

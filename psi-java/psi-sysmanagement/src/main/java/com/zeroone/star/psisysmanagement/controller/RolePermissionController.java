@@ -3,16 +3,13 @@ package com.zeroone.star.psisysmanagement.controller;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.PermissionQuery;
 import com.zeroone.star.project.sysmanagement.RolePermissionApis;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.psisysmanagement.service.IPermissionService;
+import com.zeroone.star.psisysmanagement.service.IRolePermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,7 +24,7 @@ import java.util.List;
 public class RolePermissionController implements RolePermissionApis {
 
     @Autowired
-    private IPermissionService service;
+    private IRolePermissionService service;
 
     /**
      * 查询角色权限
@@ -42,7 +39,7 @@ public class RolePermissionController implements RolePermissionApis {
         if (list.size() == 0){
             return JsonVO.fail(list);
         }
-        return JsonVO.success(service.listAll(RId));
+        return JsonVO.success(list);
     }
     /**
      * 添加权限

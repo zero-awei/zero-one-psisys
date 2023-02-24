@@ -11,7 +11,7 @@ import java.util.List;
 * @Author:阿狸
 * @Version:1.1
 */
-public interface IPermissionService extends IService<Permission> {
+public interface IRolePermissionService extends IService<Permission> {
 
     /**
      * 查询角色权限
@@ -34,3 +34,4 @@ public interface IPermissionService extends IService<Permission> {
      */
     Boolean deletePermission(String permissionId) ;
 }
+
