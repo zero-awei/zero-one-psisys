@@ -21,6 +21,16 @@
                 prop="exec" label="执行中" width="63" />
           </el-table>
       </div>
+    <!-- </template> -->
+    <!-- <div class="card-bottom">
+      <el-table :data="tableData" style="width:436"> -->
+        <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
+        <!-- <el-table-column prop="name" label="" width="103" />
+        <el-table-column prop="edit" label="编制中" width="127" />
+        <el-table-column prop="appr" label="待核批" width="103" />
+        <el-table-column prop="exec" label="执行中" width="103" />
+      </el-table> -->
+    <!-- </div> -->
   </el-card>
 </template>
 
@@ -42,7 +52,7 @@ import {onMounted } from 'vue'
     // 请求成功
     (data) => {
       // 表格列表数据
-      console.log(data.data)
+      // // console.log(data.data)
       tableData = data.data
       name = tableData.name
       appr = tableData.appr

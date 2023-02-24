@@ -9,8 +9,6 @@
 -->
 <template>
    <div class="header-nav">
-        <!--  <el-icon
-         ><Search @click="handleSearch"/></el-icon> -->
         <SearchCom />
 <div>
 <!-- 改造的下拉菜单 -->
@@ -29,7 +27,7 @@
         </el-dropdown-menu>
        </template>
   </el-dropdown>
-      <span style="margin:0px 10px;left:10px;top:-4px;" >当前月度:2023-2</span>
+      <span style="margin:0px 10px;left:10px;top:-28px;" >当前月度:2023-2</span>
     </div>
   </div>
 </template>
@@ -38,12 +36,9 @@
 .header-nav{
       padding: 20px;
       background-color: #1890ff;
-      color: #f8f8f8;
-      z-index: 2;
-      color: #fff;
       height: 59px;
       font-size: 14px;
-      display:float;
+      display:inline;
 }
       .el-icon{
         color:white;
@@ -56,11 +51,12 @@
         color: #fff;
         height: 59px;
         font-size: 14px;
+        // display:flex;
       }
- .example-showcase .el-dropdown-link {
+.el-dropdown-link {
   cursor: pointer;
-  color: var(--el-color-primary);
-  display: flex;
+  display: block;
+  top:-23px;
   align-items: center;
 }
 
@@ -71,15 +67,7 @@
   font-size:14px;
 }
 
-/* .lang-select-dropdown {
-  position: absolute;
-  top: 30px;
-  left: 0px;
-  margin: 0px;
-  padding: 0px;
-  min-width: max-content;
-  text-align: center;
-} */
+
 </style>
 
 <script setup>

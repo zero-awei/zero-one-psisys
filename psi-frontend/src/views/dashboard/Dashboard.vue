@@ -1,3 +1,11 @@
+<!--
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-02-24 13:55:48
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-24 14:00:55
+ * @FilePath: \psi-frontend\src\views\dashboard\Dashboard.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="total">
     <div class="top"><CenterCom1 /></div >
@@ -6,14 +14,14 @@
         <el-col :span="12">
           <CenterDivCom />
         </el-col>
-        <el-col :span="6"> 
+        <el-col :span="6">
           <CenterPicCom />
         </el-col>
         <el-col :span="6">
           <CenterTabCom />
         </el-col>
       </el-row>
-    </div >
+    </div>
     <SearchCom />
   </div>
 </template>
@@ -41,7 +49,7 @@ import CenterTabCom from "@/components/Home/CenterTabCom.vue"
 import CenterDivCom from "@/components/Home/CenterDivCom.vue"
 import CenterPicCom from "@/components/Home/CenterPicCom.vue"
 export default {
-  components :{
+  components: {
     CenterCom1,
     CenterTabCom,
     // NavHeadCom,
@@ -49,7 +57,7 @@ export default {
     CenterDivCom,
     SearchCom
   },
-  data () {
+  data() {
     return {
       ratio:100
     }

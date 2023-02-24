@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-20 19:55:14
- * @LastEditTime: 2023-02-21 15:04:47
+ * @LastEditTime: 2023-02-24 09:59:47
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\custom\PsiPopover.vue
@@ -44,20 +44,20 @@ const props = defineProps({
 })
 //第一种方式：在created生命周期完成，没有效果
 const arr=[]
-console.log('1111111111')
-console.log(props.items)
+// // console.log('1111111111')
+// // console.log(props.items)
 props.items.forEach((value, index) => {
-  console.log(value.label)
+  // // console.log(value.label)
   arr.push(value.label)
   // checkList.value.push(value.label)
 })
 const checkList = ref(arr)
 // const { items } = toRefs(props)
 // const checkList = ref([])
-// console.log(items)
-// console.log(props.items)
+// // // console.log(items)
+// // // console.log(props.items)
 // props.items.forEach((value, index) => {
-//   console.log(value.label)
+//   // // console.log(value.label)
 //   checkList.value.push(value.label)
 // })
 // items.forEach((value, index) => {
@@ -77,22 +77,22 @@ const checkList = ref(arr)
 
 //       const arr=[]
 //       props.items.forEach((value, index) => {
-//         console.log('222222222')
+//         // // console.log('222222222')
 //         arr.push(value.label)
 //       })
 //       return arr
 // })
 // 3.nextTick和onmounted配合使用，没有效果
 // async function refToLabel() {
-//   console.log("挂载33333")
+//   // // console.log("挂载33333")
 //   props.items.forEach((value, index) => {
-//     console.log(value.label)
+//     // // console.log(value.label)
 //     checkList.value.push(value.label)
 //   })
 //   await nextTick()
 // }
 // onMounted(() => {
-//   console.log("挂载2222222")
+//   // // console.log("挂载2222222")
   
 //   refToLabel()
 // })

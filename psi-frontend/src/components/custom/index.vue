@@ -1,8 +1,8 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-11 13:36:36
- * @LastEditTime: 2023-02-15 16:17:55
- * @LastEditors: li.ziwei
+ * @LastEditTime: 2023-02-20 19:12:05
+ * @LastEditors: Kyle5 nnkyle@163.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\custom\index.vue
  * 可以输入预定的版权声明、个性签名、空行等
@@ -36,23 +36,23 @@ import { reactive } from '@vue/reactivity'
   items: [
      {
       label: 'option1',
-      value: 1
+      value: false
     },
     {
       label: 'option2',
-      value: 2
+      value: false
     },
     {
       label: 'option3',
-      value: 3
+      value: false
     },
     {
       label: 'option4',
-      value: 4
+      value: false
     },
     {
       label: 'option5',
-      value: 5
+      value: false
     }
   ]
 })
