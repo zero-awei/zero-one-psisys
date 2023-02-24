@@ -24,16 +24,29 @@ import org.springframework.web.bind.annotation.RestController;
 @ApiModel("单据表单查询接口")
 public class QueryDocumentListController implements PaymentManagementApis {
     private IQueryDocumentListService service;
-    @PostMapping("/queryDocumentList")
+    @PostMapping("/queryDocumentListTrue")
     @ApiOperation(value="查询单据列表数据")
     @Override
     //根据查询的条件查询单据列表结果，传入条件为：单据编号，单据日期，单据主题，供应商，单据阶段，已生效，已关闭，已作废。
-    public JsonVO<PageVO<QueryDocumentListVO>> queryDocumentList(QueryDocumentListQuery condition) {
+    public JsonVO<PageVO<QueryDocumentListVO>> queryDocumentList_true(QueryDocumentListQuery condition) {
 
         return JsonVO.success(service.queryDocumentList(condition));
-//        return null;
     }
+    @PostMapping("/queryDocumentListFalse")
+    @ApiOperation(value="查询单据列表数据")
+    @Override
+    //根据查询的条件查询单据列表结果，传入条件为：单据编号，单据日期，单据主题，供应商，单据阶段，已生效，已关闭，已作废。
+    public JsonVO<PageVO<QueryDocumentListVO>> queryDocumentList_false(QueryDocumentListQuery condition) {
 
+        return JsonVO.success(service.queryDocumentList(condition));
+    }@PostMapping("/queryDocumentListRed")
+    @ApiOperation(value="查询单据列表数据")
+    @Override
+    //根据查询的条件查询单据列表结果，传入条件为：单据编号，单据日期，单据主题，供应商，单据阶段，已生效，已关闭，已作废。
+    public JsonVO<PageVO<QueryDocumentListVO>> queryDocumentList_red(QueryDocumentListQuery condition) {
+
+        return JsonVO.success(service.queryDocumentList(condition));
+    }
 
 
 }
