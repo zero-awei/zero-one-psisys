@@ -127,7 +127,7 @@ function doQuery(data) {
   //    }
   // )
 }
-// 表格相关数据
+// 表格相关
 const tableState = reactive({
   // 查询表单每一项的配置
   tableItems: [

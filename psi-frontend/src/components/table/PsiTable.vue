@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-13 14:25:07
- * @LastEditTime: 2023-02-22 11:15:24
+ * @LastEditTime: 2023-02-24 13:07:55
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\table\PsiTable.vue
@@ -31,7 +31,7 @@
       <el-col :span="6" style="flex: none">
         <!-- <el-button type="primary">自定义列</el-button> -->
         <psi-popover :items="customStatus.items" :placement="attrs.placement" :title="attrs.title" :width="attrs.width"
-          :trigger="attrs.trigger" @change="handleChange" />
+          :trigger="attrs.trigger" @change="handleCustomChange" />
       </el-col>
     </el-row>
     <el-table style="margin-top: 10px;" ref="singleTableRef" :data="tableData" :border="attributes.border"
@@ -93,7 +93,12 @@
     <div class="demo-pagination-block">
       <!-- <div class="demonstration">All combined</div> -->
       <el-pagination v-model:current-page="pagination.currentPage" v-model:page-size="pagination.pageSize"
-        :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total" />
+        :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total" 
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        @prev-click = "handlePrevClickChange"
+        @next-click="handleNextClickChange"
+        />
       <!--  @size-change="handleSizeChange"
                                     @current-change="handleCurrentChange" -->
     </div>
@@ -122,7 +127,7 @@ const prop = defineProps({
 })
 
 const selectNum = ref(0)
-const emit = defineEmits(['selectionChange', 'add', 'importData', 'exportData'])
+const emit = defineEmits(['selectionChange', 'add', 'importData', 'exportData','sizeChange','currentChange','prevClick','nextClick'])
 const exportDataList = ref([])
 const handleSelectionChange = (val) => {
   // // console.log('---', val)
@@ -157,6 +162,7 @@ const customStatus = reactive({
   items: []
 })
 
+function handleCustomChange(){}
 function refToColumn() {
   prop.items.forEach((value, index) => {
     // // // console.log(index, '--', value)
@@ -168,9 +174,32 @@ function refToColumn() {
   })
   // // // console.log('123', status.items)
 }
-function handleChange(value) {
-  // // console.log("父组件接收参数value", value)
+
+function handleSizeChange(value) {
+  console.log("handleSizeChange", value)
+  emit('sizeChange',value)
 }
+
+function handleCurrentChange(value) {
+  console.log("handleCurrentChange", value)
+  emit('currentChange', value)
+}
+
+
+function handlePrevClickChange(value) {
+  console.log("handlePrevClickChange", value)
+  emit('prevClick', value)
+}
+
+
+function handleNextClickChange(value) {
+  console.log("handleNextClickChange", value)
+  emit('nextClick', value)
+}
+
+
+
+
 onMounted(() => {
   refToColumn()
 })
