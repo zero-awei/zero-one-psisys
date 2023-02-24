@@ -9,16 +9,16 @@
         </div>
     </template> 
       <div class="card-bottom">
-          <el-table :data="tableData" style="width:436">
+          <el-table :data="tableData" style="width:280px">
             <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
              <el-table-column 
-                prop="name" label="" width="103"/>
+                prop="name" label="" width="63"/>
             <el-table-column 
-                prop="edit" label="编制中" width="127" />
+                prop="edit" label="编制中" width="63" />
             <el-table-column 
-                prop="appr" label="待核批" width="103" />
+                prop="appr" label="待核批" width="63" />
             <el-table-column 
-                prop="exec" label="执行中" width="103" />
+                prop="exec" label="执行中" width="63" />
           </el-table>
       </div>
   </el-card>
@@ -92,10 +92,15 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
+.el-table{
+  font-size:14px;
+  }
+
 .el-card{
-  top:25px;
-  left:-10px;
+  top:7px;
+  left:-13px;
   width:295px;
+  --el-card-padding: 20px;
 .card-header {
   display: flex;
   justify-content: space-between;

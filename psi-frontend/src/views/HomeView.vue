@@ -38,8 +38,8 @@
 
 <style lang="scss" scoped>
 .el-container {
-  height: 100vh;
-   background-color:rgba(0,0,0,.03);
+   height: 100vh;
+  //  background-color:rgba(226, 225, 225, 0.03);
   .el-aside {
     background-color: #fff;
     //直接将计算属性的值拿过来
@@ -66,9 +66,7 @@
       }
     }
     }
-    .tag{
 
-    }
 }
   .el-header{
     background-color: #1890ff;
@@ -82,6 +80,7 @@
       color:white;
     }
   }
+
 
 .el-header {
   background-color: #1890ff;
@@ -130,7 +129,7 @@ export default {
       return this.collapse ? 'Expand' : 'Fold'
     },
     asideWidth () {
-      return this.collapse ? "80px" :"200px"
+      return this.collapse ? "80px" :"208px"
     }
   },
   //注册组件

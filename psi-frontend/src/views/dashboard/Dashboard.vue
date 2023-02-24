@@ -19,9 +19,7 @@
 </template>
 
 <style lang="css" scoped>
-  .total{
-    background-color:rgba(0,0,0,.03);
-  }
+
   .top{
     min-width:180px;
     /* margin-bottom:4px; */
@@ -29,8 +27,10 @@
   }
   .bottom{
     display:flex; 
-    margin:4px 4px 0px 6px;
     height:100%;
+    min-width:1052px;
+    width:1192px;
+    left:-14px;
   }
 </style>
 

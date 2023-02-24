@@ -13,8 +13,9 @@
       :name="item.text"
     >
     </el-tab-pane>
-  </el-tabs>
-</template>
+  </el-tabs> 
+ </template> 
+
 <script setup>
 import { ref } from 'vue'
 import { userStore } from '@/stores/user.js'
@@ -37,8 +38,6 @@ function getList(tree) {
   return temp;
 } 
 temp = getList(datalist);
-/* const arr = [id: 1, text: '首页', href: '/home', icon: 'IconSetting', pid: 1]
-arr.push(...temp) */
 
 let tabIndex = 1
 const editableTabsValue = ref('1')
@@ -46,20 +45,6 @@ const editableTabsValue = ref('1')
 const editableTabs = ref(temp)
 // console.log(editableTabs)
 
-
-/* const editableTabs = ref([
-  {
-    title: 'Tab 1',
-    name: '1',
-    content: 'Tab 1 content',
-  },
-  {
-    title: 'Tab 2',
-    name: '2',
-    content: 'Tab 2 content',
-  },
-])
- */
 const handleTabsEdit = (targetName, action) => {
   if (action === 'add') {
     const newTabName = `${++tabIndex}`
@@ -88,9 +73,13 @@ const handleTabsEdit = (targetName, action) => {
   }
 }
 </script>
+
 <style scoped>
 .el-tabs {
     --el-tabs-header-height: 52px;
     background-color:white;
+}
+.el-tabs__content{
+  display:none;
 }
 </style>
