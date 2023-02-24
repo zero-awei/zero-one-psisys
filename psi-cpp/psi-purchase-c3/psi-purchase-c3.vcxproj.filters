@@ -144,6 +144,15 @@
     <ClInclude Include="dao\pur-quot\PurQuotDetailMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\pur-quot\PurQuotNaiGuanDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-quot\PurQuotDetailDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="uselib\fastdfs\TestFastDfs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -174,6 +183,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\pur-quot\PurQuotDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

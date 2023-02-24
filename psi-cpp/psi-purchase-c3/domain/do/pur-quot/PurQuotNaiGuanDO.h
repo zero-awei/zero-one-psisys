@@ -1,18 +1,31 @@
 #pragma once
-#ifndef _MOD_PUR_QUOT_DTO_H_
-#define _MOD_PUR_QUOT_DTO_H_
-#include "../../GlobalInclude.h"
-#include "../FileDTO.h"
-#include "PurQuotDetailDTO.h"
-#include <list>
-#include <vector>
-#include "cinatra.hpp"
-#include "JWTUtil.h"
+/*
+ Copyright Zero One Star. All rights reserved.
 
+ @Author: awei
+ @Date: 2022/10/25 11:52:32
 
-class ModPurQuotDTO :public FileDTO
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+#ifndef _PUR_QUOT_NAI_GUAN_DO_H_
+#define _PUR_QUOT_NAI_GUNA_DO_H_
+#include "../DoInclude.h"
+#include "../../dto/pur-quot/PurQuotDetailDTO.h"
+/**
+ * 示例数据库实体类
+ */
+class PurQuotNaiGuanDO
 {
-
 	// 单据id
 	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
@@ -21,7 +34,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, billDate, BillDate);
 	//源单类型
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-
 	//源单id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
 	//源单号
@@ -30,8 +42,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, subject, Subject);
 	//是否红字
 	CC_SYNTHESIZE(int, isRubric, IsRubric);
-
-
 	//是否临时供应商
 	CC_SYNTHESIZE(int, isTempSupplier, IsTempSupplier);
 	//供应商
@@ -40,8 +50,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, tempSupplierName, TempSupplierName);
 	//付款方式
 	CC_SYNTHESIZE(string, deliveryMethod, DeliveryMethod);
-
-
 	//交货日期
 	CC_SYNTHESIZE(string, deliveryDate, DeliveryDate);
 	//交货地点
@@ -50,7 +58,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, contact, Contact);
 	//联系电话
 	CC_SYNTHESIZE(string, phone, Phone);
-
 	//传真
 	CC_SYNTHESIZE(string, fax, Fax);
 	//电子邮件
@@ -59,7 +66,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(double, qty, Qty);
 	//金额
 	CC_SYNTHESIZE(double, amt, Amt);
-
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -68,7 +74,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(int, isAuto, IsAuto);
 	//单据阶段
 	CC_SYNTHESIZE(string, billStage, BillStage);
-
 	//审核人
 	CC_SYNTHESIZE(string, approver, Approver);
 	//示例id
@@ -77,7 +82,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
 	//核批意见
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-
 	//是否生效
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
 	//生效时间
@@ -86,7 +90,6 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
 	//是否作废
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
-
 	//创建部门
 	CC_SYNTHESIZE(string, sysOrdCode, SysOrdCode);
 	//创建人
@@ -100,57 +103,10 @@ class ModPurQuotDTO :public FileDTO
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
-
 	//新增明细
 	CC_SYNTHESIZE(list<PurQuotDetailDTO>, detail, Detail);
-
 public:
-	//绑定JSON转换方法
-	friend void from_json(const json& j, ModPurQuotDTO& t) {
-
-		BIND_FROM_TO_D(j, t, qty);
-		BIND_FROM_TO_D(j, t, amt);
-
-		BIND_FROM_TO_I(j, t, isRubric);
-		BIND_FROM_TO_I(j, t, version);
-		BIND_FROM_TO_I(j, t, isAuto);
-		BIND_FROM_TO_I(j, t, isTempSupplier);
-		BIND_FROM_TO_I(j, t, isEffective);
-		BIND_FROM_TO_I(j, t, isClosed);
-		BIND_FROM_TO_I(j, t, isVoided);
-
-		BIND_FROM_TO_NORMAL(j, t, supplierId);
-		BIND_FROM_TO_NORMAL(j, t, srcNo);
-		BIND_FROM_TO_NORMAL(j, t, srcBillId);
-		BIND_FROM_TO_NORMAL(j, t, srcBillType);
-		BIND_FROM_TO_NORMAL(j, t, bpmi_instance_id);
-		BIND_FROM_TO_NORMAL(j, t, id);
-		BIND_FROM_TO_NORMAL(j, t, billNo);
-		BIND_FROM_TO_NORMAL(j, t, billDate);
-		BIND_FROM_TO_NORMAL(j, t, subject);
-		BIND_FROM_TO_NORMAL(j, t, tempSupplierName);
-		BIND_FROM_TO_NORMAL(j, t, deliveryMethod);
-		BIND_FROM_TO_NORMAL(j, t, deliveryDate);
-		BIND_FROM_TO_NORMAL(j, t, deliveryAddress);
-		BIND_FROM_TO_NORMAL(j, t, contact);
-		BIND_FROM_TO_NORMAL(j, t, phone);
-		BIND_FROM_TO_NORMAL(j, t, fax);
-		BIND_FROM_TO_NORMAL(j, t, email);
-		BIND_FROM_TO_NORMAL(j, t, attachment);
-		BIND_FROM_TO_NORMAL(j, t, remark);
-		BIND_FROM_TO_NORMAL(j, t, approver);
-		BIND_FROM_TO_NORMAL(j, t, approvalResultType);
-		BIND_FROM_TO_NORMAL(j, t, billStage);
-		BIND_FROM_TO_NORMAL(j, t, approvalRemark);
-		BIND_FROM_TO_NORMAL(j, t, effectiveTime);
-		BIND_FROM_TO_NORMAL(j, t, sysOrdCode);
-		BIND_FROM_TO_NORMAL(j, t, createBy);
-		BIND_FROM_TO_NORMAL(j, t, createTime);
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
-
-		BIND_FROM_TO_OBJ(j, t, detail, list<PurQuotDetailDTO>);
-	}
+	
 };
 
-#endif // !_MOD_PUR_QUOT_DTO_
+#endif // !_PUR_QUOT_DO_H_

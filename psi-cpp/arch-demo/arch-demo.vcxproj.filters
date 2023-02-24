@@ -48,33 +48,6 @@
     <ClCompile Include="api\user\DepartController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="uselib\mysql\TestDb.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\excel\TestExcel.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\jwt\TestToken.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\redis\TestRedis.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\kafka\TestKafka.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\rocketmq\TestRocket.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\ws\TestWs.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="uselib\mongo\TestMongo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macros.h">
@@ -146,37 +119,10 @@
     <ClInclude Include="domain\vo\user\depart\AddDepartMoreVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="uselib\jwt\TestToken.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\mysql\LibTest.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\mysql\TestDb.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\excel\TestExcel.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\IDDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="uselib\fastdfs\TestFastDfs.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ServerInfo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\redis\TestRedis.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\kafka\TestKafka.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\rocketmq\TestRocket.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\ws\TestWs.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\FileDTO.h">
@@ -186,9 +132,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\user\UserVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="uselib\mongo\TestMongo.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

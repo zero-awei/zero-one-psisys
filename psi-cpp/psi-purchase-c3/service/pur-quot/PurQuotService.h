@@ -18,6 +18,15 @@
 #include "../../domain/query/pur-quot/PurQuotListQuery.h"
 #include "../../domain/query/pur-quot/PurQuotDividedListQuery.h"
 #include "../../domain/query/pur-quot/PurQuotFindDetailBillQuery.h"
+
+//dto
+
+#include "../../domain/dto/pur-quot/AddPurQuotDTO.h"
+#include "../../domain/dto/pur-quot/ModPurQuotDTO.h"
+#include "../../domain/dto/pur-quot/DelPurQuotDTO.h"
+#include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
+#include "../../domain/dto/pur-quot/PurQuotDetailDTO.h"
+#include "../lib-http/include/JWTUtil.h"
 /**
  * 示例服务实现，演示基础的示例服务实现
  */
@@ -35,6 +44,19 @@ public:
 
 	PurQuotFindDetailBillVO getPurQuotFindDetailBillVO(const PurQuotFindDetailBillQuery& query);
 
+
+	// 分页查询所有数据
+	//PageVO<SampleVO> listAll(const SampleQuery& query);
+	// 保存数据
+	uint64_t saveData(const AddPurQuotDTO& dto, const PayloadDTO& payload);
+	// 修改数据
+	bool updateData(const ModPurQuotDTO& dto, const PayloadDTO& payload);
+	// 通过bill_no删除数据
+	bool removeData(const DelPurQuotDTO& dto);
+	// 通过bill_no修改报价状态
+	bool UpdateDataBillStatus(const PurQuotModBillStatusDTO& dto);
+	// 通过ID删除数据
+	//bool removeData(uint64_t id);				//sample案例
 
 };
 

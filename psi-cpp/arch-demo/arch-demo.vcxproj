@@ -193,12 +193,6 @@
     <ClCompile Include="domain\dto\user\depart\AddDepartDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="uselib\excel\TestExcel.cpp" />
-    <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp" />
-    <ClCompile Include="uselib\jwt\TestToken.cpp" />
-    <ClCompile Include="uselib\kafka\TestKafka.cpp" />
-    <ClCompile Include="uselib\mongo\TestMongo.cpp" />
-    <ClCompile Include="uselib\mysql\TestDb.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -206,9 +200,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="service\sample\SampleService.cpp" />
-    <ClCompile Include="uselib\redis\TestRedis.cpp" />
-    <ClCompile Include="uselib\rocketmq\TestRocket.cpp" />
-    <ClCompile Include="uselib\ws\TestWs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h" />
@@ -237,18 +228,8 @@
     <ClInclude Include="domain\vo\user\UserVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
-    <ClInclude Include="uselib\excel\TestExcel.h" />
-    <ClInclude Include="uselib\fastdfs\TestFastDfs.h" />
-    <ClInclude Include="uselib\kafka\TestKafka.h" />
-    <ClInclude Include="uselib\mongo\TestMongo.h" />
-    <ClInclude Include="uselib\mysql\LibTest.h" />
-    <ClInclude Include="uselib\mysql\TestDb.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="service\sample\SampleService.h" />
-    <ClInclude Include="uselib\jwt\TestToken.h" />
-    <ClInclude Include="uselib\redis\TestRedis.h" />
-    <ClInclude Include="uselib\rocketmq\TestRocket.h" />
-    <ClInclude Include="uselib\ws\TestWs.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib-common\lib-common.vcxproj">

@@ -4,7 +4,7 @@
 #include "BaseDAO.h"
 #include "../../domain/do/pur-quot/PurQuotDO.h"
 #include "../../domain/do/pur-quot/PurQuotEntryDO.h"
-
+#include "../../domain/do/pur-quot/PurQuotNaiGuanDO.h"
 
 class PurQuotDAO : public BaseDAO {
 public:
@@ -24,6 +24,18 @@ public:
 	//此DO用于填充DetailVO
 	list<PurQuotEntryDO> selectPurQuotDetail(const PurQuotEntryDO& obj);
 
+
+	// 插入数据
+	uint64_t insert(const PurQuotNaiGuanDO& iObj);
+	// 修改数据
+	int update(const PurQuotNaiGuanDO& uObj);
+	// 通过bill_no删除数据
+	int deleteByBillNo(const PurQuotNaiGuanDO& dObj);
+	// 通过bill_no修改报价状态
+	int updateBillStatus(const PurQuotNaiGuanDO& ubsObj);
+
+	// 通过ID删除数据
+	int deleteById(uint64_t id);
 	
 };
 

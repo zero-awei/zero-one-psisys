@@ -30,18 +30,27 @@
 #include "../../domain/vo/pur-quot/PurQuotFindDetailBillVO.h"
 #include "../../domain/vo/pur-quot/PurQuotListVO.h"
 
+#include "cinatra.hpp"
+#include "JWTUtil.h"
+using namespace cinatra;
+using namespace nlohmann;
+using namespace std;
 
 class PurQuotController
 {
 public:
-	//添加报价
-	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurQuot, execAddPurQuot, AddPurQuotDTO);
+	// 添加报价
+	// CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurQuot, execAddPurQuot, AddPurQuotDTO);
+	// 用body可以顺利接收APIPost中用body格式发的数据，但是导出为json-raw格式，并复制在raw中发送，却无法接收
+	// 因此，预计改为JSON_PAYLOAD_FILE来尝试看看———这个假设被验证是对的，看来下面Mod也可以从BODY改为JSON；
+	CREATE_API_FUN_JSON_PAYLOAD(addPurQuot, execAddPurQuot, AddPurQuotDTO);
 	//修改报价
-	CREATE_API_FUN_BODY_PAYLOAD_FILE(modPurQuot, execModPurQuot, ModPurQuotDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modPurQuot, execModPurQuot, ModPurQuotDTO);
 	//删除报价
-	CREATE_API_FUN_BODY(delPurQuotById, execDelPurQuotById, DelPurQuotDTO);
+	CREATE_API_FUN_BODY(delPurQuotById, execDelPurQuot, DelPurQuotDTO);
 	//修改报价状态（关闭、作废、反关闭）
 	CREATE_API_FUN_BODY_PAYLOAD(purQuotModBillStatus, execPurQuotModBillStatus, PurQuotModBillStatusDTO);
+
 	//导出
 	CREATE_API_FUN_BODY_PAYLOAD(queryPurQuotExport, execPurQuotExport, PurQuotExportQuery);
 	//导入
@@ -61,7 +70,7 @@ private:
 	//修改报价
 	JsonVO<uint64_t> execModPurQuot(const ModPurQuotDTO& dto, const PayloadDTO& payload);
 	//删除报价
-	JsonVO<uint64_t> execDelPurQuotById(const DelPurQuotDTO& dto);
+	JsonVO<uint64_t> execDelPurQuot(const DelPurQuotDTO& dto);
 	//修改报价状态（关闭、作废、反关闭）
 	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto, const PayloadDTO& payload);
 

@@ -2,8 +2,7 @@
 #ifndef _PUR_QUOT_INTO_DTO_H_
 #define _PUR_QUOT_INTO_DTO_H_
 #include "../FileDTO.h"
-//PurQuotIntoDTO涉及两个表里面的字段: pur-quot和pur-quot-entry
-//为了便于区分, 在pur-quot-entry表里面的字段前面加上entry前缀
+
 class PurQuotIntoDTO : public FileDTO {
 
 	//单据日期
@@ -11,7 +10,7 @@ class PurQuotIntoDTO : public FileDTO {
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject)
 	//采购询价单编号--pur-inquiry里面的字段
-		CC_SYNTHESIZE(string, pur_inquiry_bill_no, Pur_inquiry_bill_no)
+	CC_SYNTHESIZE(string, pur_inquiry_bill_no, Pur_inquiry_bill_no)
 	//是否临时供应商
 	CC_SYNTHESIZE(string, is_temp_supplier, Is_temp_supplier);
 	//供应商/临时供应商名
