@@ -10,6 +10,10 @@
     </parent>
     <artifactId>psi-common</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>psi-domain</artifactId>
+        </dependency>
         <!-- 解决未知的枚举常量 When.MAYBE 警告-->
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

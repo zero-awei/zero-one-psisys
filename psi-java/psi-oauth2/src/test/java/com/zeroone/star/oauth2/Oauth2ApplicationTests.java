@@ -22,5 +22,12 @@ class Oauth2ApplicationTests {
     }
 
 
+    @Resource
+    PasswordEncoder passwordEncoder;
+
+    @Test
+    public void testPasswordEncoder() {
+        System.out.println(passwordEncoder.encode("123456"));
+    }
 
 }
