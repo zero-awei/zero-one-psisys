@@ -6,26 +6,6 @@
 #include "../../../lib-common/include/StringUtil.h"
 #include <ctime>
 #include <algorithm>
-//#include "../../dao/sample/SampleDAO.h"
-PageVO<QueryPyrkBillListVO> PyrkService::queryAllFitBill(const QueryPyrkBillListQuery& query) {
-	//构建返回对象
-	PageVO<QueryPyrkBillListVO> pages;
-	pages.setPageIndex(query.getPageIndex());
-	pages.setPageSize(query.getPageSize());
-
-	//查询数据总条数
-	QueryPyrkBillListDo obj; //这是查询数据库的条件  封装成类
-	obj.setId(query.getId());
-	obj.setBeginData(query.getBeginData());
-	obj.setEndData(query.getEndData());
-	obj.setTheme(query.getTheme());
-	obj.setStage(query.getStage());
-	obj.setIsClosed(query.getIsClosed());
-	obj.setIsEffective(query.getIsEffective());
-	obj.setIsVoided(query.getIsVoided());
-	//SampleDAO dao;
-	return pages;
-}
 
 int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload)
 {
@@ -93,8 +73,10 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 		dao.getSqlSession()->rollbackTransaction();
 		// 删除附件
 		vector<string_view> fileNames = split(attachment, ",");
-		for (const auto& file : fileNames) {
-			dao.deleteAttachment(string(file));
+		if (!fileNames.empty()) {
+			for (const auto& file : fileNames) {
+				dao.deleteAttachment(string(file));
+			}
 		}
 		return -2;
 	}
@@ -121,8 +103,10 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 			dao.getSqlSession()->rollbackTransaction();
 			// 删除附件
 			vector<string_view> fileNames = split(attachment, ",");
-			for (const auto& file : fileNames) {
-				dao.deleteAttachment(string(file));
+			if (!fileNames.empty()) {
+				for (const auto& file : fileNames) {
+					dao.deleteAttachment(string(file));
+				}
 			}
 			return -3;
 		}
@@ -257,8 +241,10 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		// 回滚
 		dao.getSqlSession()->rollbackTransaction();
 		// 删除新增的附件
-		for (const auto& file : needUploadFile) {
-			dao.deleteAttachment(file);
+		if (!needUploadFile.empty()) {
+			for (const auto& file : needUploadFile) {
+				dao.deleteAttachment(file);
+			}
 		}
 		return -2;
 	}
@@ -266,7 +252,10 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 	if (!dto.getDetail().empty()) {
 		// 组装明细数据
 		StkIoEntryDO data2;
+		// 原来存在的明细分录号
+		list<int> oldEntryNo = dao.selectEntryNoByBillNo(dto.getBillNo());
 		for (auto& entry : dto.getDetail()) {
+			data2.setBillNo(dto.getBillNo());
 			data2.setEntryNo(to_string(entry.getEntryNo()));
 			data2.setMaterialId(dao.selectMaterialIdByAuxName(entry.getMaterial()));
 			data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
@@ -277,14 +266,32 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 			data2.setRemark(entry.getRemark());
 			data2.setCustom1(entry.getCustom1());
 			data2.setCustom2(entry.getCustom2());
-			if (dao.update(data2) == 0) {
-				// 回滚
-				dao.getSqlSession()->rollbackTransaction();
-				// 删除新增的附件
-				for (const auto& file : needUploadFile) {
-					dao.deleteAttachment(file);
+			auto it = find(oldEntryNo.begin(), oldEntryNo.end(), atoi(data2.getEntryNo().c_str()));
+			if (it != oldEntryNo.end()) { // 更新原有的明细
+				dao.update(data2);
+				oldEntryNo.erase(it);
+			}
+			else { // 新增明细
+				SnowFlake sf(1, 5);
+				data2.setId(to_string(sf.nextId()));
+				data2.setMid(dao.selectBillIdByBillNo(dto.getBillNo()));
+				data2.setStockIoDirection("1");
+				if (dao.insert(data2) == 0) {
+					// 回滚
+					dao.getSqlSession()->rollbackTransaction();
+					// 删除新增的附件
+					if (!needUploadFile.empty()) {
+						for (const auto& file : needUploadFile) {
+							dao.deleteAttachment(file);
+						}
+					}
+					return -3;
 				}
-				return -3;
+			}
+		}
+		if (!oldEntryNo.empty()) {
+			for (const auto& entryNo : oldEntryNo) { // 删除应该删除的明细
+				dao.deleteDetailById(dto.getBillNo(), entryNo);
 			}
 		}
 	}
@@ -292,8 +299,87 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 	// 提交
 	dao.getSqlSession()->commitTransaction();
 	// 删除需要删除的附件
-	for (const auto& file : needDeleteFile) {
-		dao.deleteAttachment(file);
+	if (!needDeleteFile.empty()) {
+		for (const auto& file : needDeleteFile) {
+			dao.deleteAttachment(file);
+		}
 	}
 	return row;
+}
+
+int PyrkService::updateStateToClose(const string& billNo, const PayloadDTO& payload)
+{
+	StkIoDO data;
+	data.setBillNo(billNo);
+	data.setIsClosed(1);
+	
+	// 生成当前时间
+	time_t rawtime;
+	struct tm* info;
+	char buffer[80];
+	time(&rawtime);
+	info = localtime(&rawtime);
+	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+	data.setUpdateTime(buffer);
+	data.setUpdateBy(payload.getUsername());
+	PyrkDao dao;
+	return dao.updateState(data);
+}
+
+int PyrkService::updateStateToUnclose(const string& billNo, const PayloadDTO& payload)
+{
+	StkIoDO data;
+	data.setBillNo(billNo);
+	data.setIsClosed(0);
+
+	// 生成当前时间
+	time_t rawtime;
+	struct tm* info;
+	char buffer[80];
+	time(&rawtime);
+	info = localtime(&rawtime);
+	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+	data.setUpdateTime(buffer);
+	data.setUpdateBy(payload.getUsername());
+	PyrkDao dao;
+	return dao.updateState(data);
+}
+
+int PyrkService::updateStateToVoid(const string& billNo, const PayloadDTO& payload)
+{
+	StkIoDO data;
+	data.setBillNo(billNo);
+	data.setIsVoided(1);
+
+	// 生成当前时间
+	time_t rawtime;
+	struct tm* info;
+	char buffer[80];
+	time(&rawtime);
+	info = localtime(&rawtime);
+	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
+
+	data.setUpdateTime(buffer);
+	data.setUpdateBy(payload.getUsername());
+	PyrkDao dao;
+	return dao.updateState(data);
+}
+
+int PyrkService::removeBillById(const string& billNo)
+{
+	PyrkDao dao;
+	// 删除明细
+	dao.deleteDetailById(billNo);
+	// 附件
+	string attachments = dao.selectAttachmentByBillNo(billNo);
+	if (!attachments.empty()) { // 删除附件
+		vector<string_view> attachment = split(attachments, ",");
+		for (const auto& file : attachment) {
+			dao.deleteAttachment(string(file));
+		}
+	}
+	// 删除单据
+	return dao.deleteBillById(billNo);
 }

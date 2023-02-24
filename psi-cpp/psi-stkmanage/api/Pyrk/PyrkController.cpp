@@ -55,7 +55,8 @@ JsonVO<int> PyrkController::execModifyBillApproval(const ApprovalDTO& approval, 
 	return result;
 }
 
-JsonVO<int> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload) {
+JsonVO<int> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& updateMessage, const PayloadDTO& payload)
+{
 	JsonVO<int> result;
 	// 定义一个Service
 	PyrkService service;
@@ -77,32 +78,64 @@ JsonVO<int> PyrkController::execUpdateBillDetailed(const PyrkBillDetailDTO& upda
 JsonVO<int> PyrkController::execRemovePyrkBillById(const StringID& id)
 {
 	JsonVO<int> result;
-	int data = 0;
-	result.success(data);
+	// 定义一个Service
+	PyrkService service;
+	// 执行删除单据
+	int ret = service.removeBillById(id.getId());
+	if (ret == 1) {
+		result.success(ret);
+	}
+	else {
+		result.fail(ret);
+	}
 	return result;
 }
 
 JsonVO<int> PyrkController::execModifyPyrkBillStateToClose(const StringID& id, const PayloadDTO& payload)
 {
 	JsonVO<int> result;
-	int data = 0;
-	result.success(data);
+	// 定义一个Service
+	PyrkService service;
+	// 执行关闭单据
+	int ret = service.updateStateToClose(id.getId(), payload);
+	if (ret > 0) {
+		result.success(ret);
+	}
+	else {
+		result.fail(ret);
+	}
 	return result;
 }
 
 JsonVO<int> PyrkController::execModifyPyrkBillStateToUnclose(const StringID& id, const PayloadDTO& payload)
 {
 	JsonVO<int> result;
-	int data = 0;
-	result.success(data);
+	// 定义一个Service
+	PyrkService service;
+	// 执行关闭单据
+	int ret = service.updateStateToUnclose(id.getId(), payload);
+	if (ret > 0) {
+		result.success(ret);
+	}
+	else {
+		result.fail(ret);
+	}
 	return result;
 }
 
 JsonVO<int> PyrkController::execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload)
 {
 	JsonVO<int> result;
-	int data = 0;
-	result.success(data);
+	// 定义一个Service
+	PyrkService service;
+	// 执行关闭单据
+	int ret = service.updateStateToVoid(id.getId(), payload);
+	if (ret > 0) {
+		result.success(ret);
+	}
+	else {
+		result.fail(ret);
+	}
 	return result;
 }
 
@@ -111,7 +144,7 @@ JsonVO<ImportPyrkFileVO> PyrkController::execImportPyrkFile(const ImportPyrkFile
 	JsonVO<ImportPyrkFileVO> result;
 	ImportPyrkFileVO vo;
 	result.success(vo);
-	return result;
+	return JsonVO<ImportPyrkFileVO>(vo, RS_API_UN_IMPL);
 }
 
 JsonVO<string> PyrkController::execExportPyrkFile(const StringIDs& ids)
@@ -119,5 +152,5 @@ JsonVO<string> PyrkController::execExportPyrkFile(const StringIDs& ids)
 	JsonVO<string> result;
 	string s = "www.baidu.com";
 	result.success(s);
-	return result;
+	return JsonVO<string>(s, RS_API_UN_IMPL);
 }

@@ -216,6 +216,7 @@
     <ClInclude Include="api\Qtrk\QtrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
+    <ClInclude Include="dao\Pyrk\IntMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDao.h" />
     <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
     <ClInclude Include="dao\Pyrk\StringMapper.h" />

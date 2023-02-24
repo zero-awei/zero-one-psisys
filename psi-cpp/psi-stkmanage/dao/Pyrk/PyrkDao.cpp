@@ -4,52 +4,21 @@
 #include <sstream>
 #include "FastDfsClient.h"
 #include "StringMapper.h"
-//#include "PyrkDAO.h"
-//#include "PyrkMapper.h"
-//#include <sstream>
-//
-////定义条件解析宏，减少重复代码
-////#define SAMPLE_TERAM_PARSE(obj, sql) \
-//
-//uint64_t PyrkDao::count(const QueryPyrkBillListDo& Obj) {
-//	stringstream sql;
-//	sql << "SELECT COUNT(*) FROM sample";//需要多表联查（待修改）
-//
-//	SqlParams params;
-//	sql << "WHERE 1=1";
-//	if (!Obj.getId().empty()) {
-//			sql << " AND `name`=?"; 
-//			params.push_back(SqlParam(__PARAM_KEY__, std::make_shared<__VAL_TYPE__>(__VAL_VAL__)))
-//	} 
-//	string sqlStr = sql.str();
-//	return sqlSession->executeQueryNumerical(sqlStr, params);
-//}
+#include "IntMapper.h"
 
 // 定义条件解析宏，解析UPDATE stk_io 的条件，减少重复代码
 #define UPDATE_STKIO_TEARM_PARSE(obj, sql) \
-sql << "UPDATE `stk_io` SET `update_by`=?,`update_time`=?"; \
+sql << "UPDATE `stk_io` SET `update_by`=?,`update_time`=?,`bill_date`=?,`subject`=?,`attachment`=?,`remark`=?"; \
 SqlParams params; \
 SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateBy()); \
 SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateTime()); \
-if (!obj.getBillDate().empty()) { \
-    sql << " ,`bill_date`=?"; \
-    SQLPARAMS_PUSH(params, "s", string, obj.getBillDate()); \
-} \
-if (!obj.getSubject().empty()) { \
-    sql << " ,`subject`=?"; \
-    SQLPARAMS_PUSH(params, "s", string, obj.getSubject()); \
-} \
+SQLPARAMS_PUSH(params, "s", string, obj.getBillDate()); \
+SQLPARAMS_PUSH(params, "s", string, obj.getSubject()); \
+SQLPARAMS_PUSH(params, "s", string, obj.getAttachment()); \
+SQLPARAMS_PUSH(params, "s", string, obj.getRemark()); \
 if (!obj.getHandler().empty()) { \
     sql << " ,`handler`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getHandler()); \
-} \
-if (!obj.getAttachment().empty()) { \
-    sql << " ,`attachment`=?"; \
-    SQLPARAMS_PUSH(params, "s", string, obj.getAttachment()); \
-} \
-if (!obj.getRemark().empty()) { \
-    sql << " ,`remark`=?"; \
-    SQLPARAMS_PUSH(params, "s", string, obj.getRemark()); \
 } \
 if (!obj.getBillStage().empty()) { \
     sql << " ,`bill_stage`=?"; \
@@ -67,7 +36,7 @@ if (!obj.getApprovalRemark().empty()) { \
     sql << " ,`approval_remark`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getApprovalRemark()); \
 } \
-if (obj.getIsEffective() == 1) { \
+if (obj.getIsEffective() != -1) { \
     sql << " ,`is_effective`=?"; \
     SQLPARAMS_PUSH(params, "i", int, obj.getIsEffective()); \
 } \
@@ -75,21 +44,25 @@ if (!obj.getEffectiveTime().empty()) { \
     sql << " ,`effective_time`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getEffectiveTime()); \
 } \
-if (obj.getIsClosed() == 1) { \
+sql << " WHERE `bill_no`=?"; \
+SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
+
+// 定义条件解析宏，解析UPDATE stk_io 状态的条件，减少重复代码
+#define UPDATE_STKIO_STATE_TEARM_PARSE(obj, sql) \
+sql << "UPDATE `stk_io` SET `update_by`=?,`update_time`=?"; \
+SqlParams params; \
+SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateBy()); \
+SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateTime()); \
+if (obj.getIsClosed() != -1) { \
     sql << " ,`is_closed`=?"; \
     SQLPARAMS_PUSH(params, "i", int, obj.getIsClosed()); \
 } \
-if (obj.getIsVoided() == 1) { \
+if (obj.getIsVoided() != -1) { \
     sql << " ,`is_voided`=?"; \
     SQLPARAMS_PUSH(params, "i", int, obj.getIsVoided()); \
 } \
 sql << " WHERE `bill_no`=?"; \
 SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
-
-// 定义条件解析宏，解析UPDATE stk_io_entry 的条件，减少重复代码
-#define UPDATE_STKIOENTRY_TEARM_PARSE(obj, sql) \
-sql << "UPDATE `stk_io_entry` SET `update_by`=?,`update_time`=?"; \
-SqlParams params; 
 
 string PyrkDao::selectOrgCodeByUsername(const string& username)
 {
@@ -211,10 +184,45 @@ int PyrkDao::update(const StkIoDO& iObj)
     return sqlSession->executeUpdate(sql.str(), params);
 }
 
-int PyrkDao::update(const StkIoEntryDO& iObj)
+int PyrkDao::updateState(const StkIoDO& iObj)
 {
     stringstream sql;
     // 解析条件
+    UPDATE_STKIO_STATE_TEARM_PARSE(iObj, sql);
+    return sqlSession->executeUpdate(sql.str(), params);
+}
 
-    return 0;
+list<int> PyrkDao::selectEntryNoByBillNo(const string& billNo)
+{
+    string sql = "SELECT `entry_no` FROM stk_io_entry WHERE `bill_no`=?";
+    IntMapper mapper;
+    list<int> ret = sqlSession->executeQuery<int, IntMapper>(sql, mapper, "%s", billNo);
+    if (ret.empty()) {
+        return list<int>();
+    }
+    return ret;
+}
+
+int PyrkDao::update(const StkIoEntryDO& iObj)
+{
+    string sql = "UPDATE `stk_io_entry` SET `material_id`=?,`warehouse_id`=?,`unit_id`=?,`qty`=?,`cost`=?,`remark`=?,`custom1`=?,`custom2`=? WHERE `bill_no`=? AND `entry_no`=?";
+    return sqlSession->executeUpdate(sql,"%s%s%s%d%d%s%s%s%s%i", iObj.getMaterialId(), iObj.getWarehouseId(), iObj.getUnitId(), iObj.getQty(), iObj.getCost(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2(), iObj.getBillNo(), atoi(iObj.getEntryNo().c_str()));
+}
+
+int PyrkDao::deleteBillById(const string& billNo)
+{
+    string sql = "DELETE FROM `stk_io` WHERE `bill_no`=?";
+    return sqlSession->executeUpdate(sql, "%s", billNo);
+}
+
+int PyrkDao::deleteDetailById(const string& billNo, const int& entryNo)
+{
+    string sql = "DELETE FROM `stk_io_entry` WHERE `bill_no`=? AND `entry_no`=?";
+    return sqlSession->executeUpdate(sql, "%s%i", billNo, entryNo);
+}
+
+int PyrkDao::deleteDetailById(const string& billNo)
+{
+    string sql = "DELETE FROM `stk_io_entry` WHERE `bill_no`=?";
+    return sqlSession->executeUpdate(sql, "%s", billNo);
 }

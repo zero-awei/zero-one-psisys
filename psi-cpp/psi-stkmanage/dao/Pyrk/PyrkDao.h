@@ -7,8 +7,6 @@
 #include "../../domain/do/Cgrk/StkIoEntryDO.h"
 class PyrkDao : public BaseDAO {
 public:
-	// 统计数据条数
-	uint64_t count(const QueryPyrkBillListDo& Obj);
 	// 根据username查询其所属部门代码
 	string selectOrgCodeByUsername(const string& username);
 	// 根据单据编号查其id
@@ -32,6 +30,17 @@ public:
 	int updateApproval(const StkIoDO& iObj);
 	// 修改数据
 	int update(const StkIoDO& iObj);
+	// 修改单据状态
+	int updateState(const StkIoDO& iObj);
+	// 根据单据编号查询明细分录号列表
+	list<int> selectEntryNoByBillNo(const string& billNo);
+	// 更新明细
 	int update(const StkIoEntryDO& iObj);
+	// 根据单据编号删除单据
+	int deleteBillById(const string& billNo);
+	// 根据单据编号和分录号删除明细
+	int deleteDetailById(const string& billNo, const int& entryNo);
+	// 根据单据编号删除所有明细
+	int deleteDetailById(const string& billNo);
 };
 #endif

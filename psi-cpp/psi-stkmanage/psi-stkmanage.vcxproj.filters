@@ -368,5 +368,8 @@
     <ClInclude Include="dao\Pyrk\StringMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\Pyrk\IntMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
