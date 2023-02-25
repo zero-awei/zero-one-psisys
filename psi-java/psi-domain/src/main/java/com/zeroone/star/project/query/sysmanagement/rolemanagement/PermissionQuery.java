@@ -2,6 +2,7 @@ package com.zeroone.star.project.query.sysmanagement.rolemanagement;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -21,12 +22,13 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("编辑权限对象")
+@TableName("permission")
 public class PermissionQuery {
 
     /**
      * 权限编号
      */
-    @TableId(type = IdType.ASSIGN_UUID)
+//    @TableId(type = IdType.ASSIGN_UUID)
     @ApiModelProperty(value = "权限编号")
     private String permissionId;
 
@@ -48,7 +50,7 @@ public class PermissionQuery {
      * 父权限id
      */
     @ApiModelProperty(value = "父权限id",example = "2e42e3835c2b44ec9f7bc26c146ee531")
-    @NotBlank(message = "父id不能为空")
+//    @NotBlank(message = "父id不能为空")
     private String fatherPermissionId;
 
     /**

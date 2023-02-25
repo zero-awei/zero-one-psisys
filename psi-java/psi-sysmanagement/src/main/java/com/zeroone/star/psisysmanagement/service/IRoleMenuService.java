@@ -11,7 +11,7 @@ import java.util.List;
 * @Author:阿狸
 * @Version:1.1
 */
-public interface IMenuService extends IService<SysMenu> {
+public interface IRoleMenuService extends IService<SysMenu> {
 
     /**
      * 查询角色菜单
@@ -22,15 +22,15 @@ public interface IMenuService extends IService<SysMenu> {
 
     /**
      * 添加菜单
-     * @param menu
+     * @param menuQuery
      * @return 菜单是否添加成功
      */
-    Boolean saveMenuOrPermission(MenuQuery menu) ;
+    Boolean saveMenu(MenuQuery menuQuery) ;
 
     /**
      * 删除菜单
      * @param Id
      * @return 菜单是否删除成功
      */
-    Boolean deleteMenuOrPermission(String Id) ;
+    Boolean deleteMenu(String Id) ;
 }

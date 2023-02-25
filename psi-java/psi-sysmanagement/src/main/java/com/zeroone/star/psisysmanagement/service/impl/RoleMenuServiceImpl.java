@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.sysmanagement.rolemanagement.MenuQuery;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.mapper.MenuMapper;
-import com.zeroone.star.psisysmanagement.service.IMenuService;
+import com.zeroone.star.psisysmanagement.service.IRoleMenuService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 * @Version:1.1
 */
 @Service
-public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IMenuService {
+public class RoleMenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements IRoleMenuService {
 
 
     @Override
@@ -37,13 +37,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
 
     /**
      * 用户选中菜单后，新增菜单
-     * @param menu
+     * @param menuQuery
      * @return
      */
     @Override
-    public Boolean saveMenuOrPermission(MenuQuery menu) { // 添加菜单
+    public Boolean saveMenu(MenuQuery menuQuery) { // 添加菜单
         SysMenu sysMenu = new SysMenu();
-        BeanUtil.copyProperties(menu,sysMenu);
+        BeanUtil.copyProperties(menuQuery,sysMenu);
         int num = baseMapper.insert(sysMenu);
         if (num >= 1){
             return true;
@@ -57,7 +57,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, SysMenu> implements
      * @return
      */
     @Override
-    public Boolean deleteMenuOrPermission(String Id) {
+    public Boolean deleteMenu(String Id) {
         int num = baseMapper.deleteById(Id);
         if (num >= 1) {
             return true;
