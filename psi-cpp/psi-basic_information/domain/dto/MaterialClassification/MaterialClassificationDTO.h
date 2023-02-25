@@ -67,7 +67,7 @@ class MaterialClassificationDTO :public FileDTO {
 	
 
 	//子级节点的DTO对象,数据库中没有，先设置看看
-	//CC_SYNTHESIZE(list<MaterialClassificationDTO>, children, Children);
+	//CC_SYNTHESIZE(list<MaterialClassificationDO>, children, Children);
 
 	
 public:

@@ -133,12 +133,12 @@ void Router::createDepotRouter()
 
 void Router::createBasMaterialRouter() {
 	BIND_GET_ROUTER(server, "/get-basmaterial", &BasMaterialController::queryBasMaterial, nullptr);
-	BIND_GET_ROUTER(server, "/get-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
-	BIND_POST_ROUTER(server, "/post-add", &BasMaterialController::addBasMaterial, nullptr);
-	BIND_PUT_ROUTER(server, "/put-modify", &BasMaterialController::modifyBasMaterial, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
-	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
-	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
+	BIND_GET_ROUTER(server, "/get-basmaterial-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-add-basmaterial", &BasMaterialController::addBasMaterial, nullptr);
+	BIND_PUT_ROUTER(server, "/put-modify-basmaterial", &BasMaterialController::modifyBasMaterial, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-basmaterial", &BasMaterialController::removeBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-import-basmaterial", &BasMaterialController::importBasMaterial, nullptr);
+	BIND_GET_ROUTER(server, "/get-export-basmaterial", &BasMaterialController::exportExecl, nullptr);
 }
 
 void Router::createMaterialClassificationRouter() {

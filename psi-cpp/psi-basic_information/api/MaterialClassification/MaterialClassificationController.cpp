@@ -30,9 +30,9 @@ JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::e
 	PageVO<MaterialClassificationBaseVO> result = service.listAll(query);
 	//响应结果
 
-	//数据校验
-	if (query.getCode() == "")
-		return JsonVO<PageVO< MaterialClassificationBaseVO>>({}, RS_PARAMS_INVALID);
+	////数据校验
+	//if (query.getCode() == "")
+	//	return JsonVO<PageVO< MaterialClassificationBaseVO>>({}, RS_PARAMS_INVALID);
 
 	return JsonVO<PageVO<MaterialClassificationBaseVO>>(result, RS_SUCCESS);
 
@@ -74,7 +74,7 @@ JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification
 {
 	JsonVO<uint64_t> result;
 	MaterialClassificationService service;
-	//执行数据新增 #返回的是行号？
+	//执行数据新增 
 	uint64_t id = service.saveData(dto,payload);
 	if (id > 0) {
 		result.success(id);

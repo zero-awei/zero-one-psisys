@@ -34,7 +34,7 @@ public:
 	// 统计数据条数
 	uint64_t count(const MaterialClassificationDO& iObj);
 	// 分页查询数据
-	list<MaterialClassificationDO> selectWithPage(const MaterialClassificationDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	list<MaterialClassificationDO> selectWithPage(const string& pid, uint64_t pageIndex, uint64_t pageSize);
 	// 通过姓名查询数据
 	list<MaterialClassificationDO> selectByName(const string& name);
 
@@ -52,7 +52,7 @@ public:
 	// 修改数据
 	int update(const MaterialClassificationDO& uObj);
 	//通过id修改是否有子类的项
-	int updateById(const string id);
+	int updateById(const string& id, const string child);
 	// 通过ID删除数据
 	int deleteById(string id);
 	//通过pid删除数据
