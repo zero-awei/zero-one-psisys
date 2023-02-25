@@ -53,7 +53,7 @@ public:
 
 private:
 	//修改单据状态(关闭、作废、反关闭)
-	JsonVO<uint64_t> execModifyPayBillStatus(const PayModBillStatusDTO& dto);
+	JsonVO<string> execModifyPayBillStatus(const PayModBillStatusDTO& dto);
 	//查询
 	JsonVO<PageVO<PrepaymentBillVO>> execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload);
 	//查询指定单据详细信息

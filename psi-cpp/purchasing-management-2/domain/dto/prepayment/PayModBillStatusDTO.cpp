@@ -20,7 +20,7 @@
 #include "PayModBillStatusDTO.h"
 
 void from_json(const json& j, PayModBillStatusDTO& t) {
-	BIND_FROM_TO_ULL(j, t, id);
+	BIND_FROM_TO_NORMAL(j, t, id);
 	BIND_FROM_TO_I(j, t, opType);
 	BIND_FROM_TO_NORMAL(j, t, bill_no);
 	//BIND_FROM_TO_B(j, t, is_effective);

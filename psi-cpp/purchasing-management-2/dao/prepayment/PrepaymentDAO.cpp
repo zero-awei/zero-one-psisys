@@ -91,13 +91,13 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 int PrepaymentDAO::updateStatusClose(const PrepaymentDO& uObj)
 {
 	string sql = "UPDATE `fin_payment_req` SET `is_closed`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%ull", uObj.getIs_closed(), uObj.getId());
+	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_closed(), uObj.getId());
 }
 
 int PrepaymentDAO::updateStatusCancel(const PrepaymentDO& uObj)
 {
 	string sql = "UPDATE `fin_payment_req` SET `is_voided`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%ull", uObj.getIs_voided(), uObj.getId());
+	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_voided(), uObj.getId());
 }
 
 // …æ≥˝‘§∏∂…Í«Îµ•
