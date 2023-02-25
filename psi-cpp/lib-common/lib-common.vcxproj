@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\SimpleDateTimeFormat.h" />
     <ClInclude Include="include\CharsetConvertHepler.h" />
     <ClInclude Include="include\ExcelComponent.h" />
     <ClInclude Include="include\FastDfsClient.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="include\NacosClient.h" />
     <ClInclude Include="include\RedisClient.h" />
     <ClInclude Include="include\RocketClient.h" />
+    <ClInclude Include="include\SimpleDateTimeFormat.h" />
     <ClInclude Include="include\SnowFlake.h" />
     <ClInclude Include="include\StringUtil.h" />
     <ClInclude Include="include\YamlHelper.h" />

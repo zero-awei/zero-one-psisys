@@ -2,6 +2,8 @@
 #include "SupplierServiceSatan.h"
 #include "../../../dao/supplierDao/dao-Supplier-satan/SupplierDAO.h"
 #include "../lib-common/include/SnowFlake.h"
+#include <sstream>
+
 // 高级查询
 PageVO<AdvancedQueryVO> SupplierService::advancedListSupplierData(const AdvancedQuery& query)
 {
@@ -158,9 +160,15 @@ uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
 		file_router = file_router + file_segment;
 	}
 	data.setAttachment(file_router);
-	//生成id并转入DO类中
-	
-	//data里面装了41个数据
+	//用雪花算法生成id并转入DO类中
+	SnowFlake sf(1, 1);
+	uint64_t id_int = sf.nextId();
+	//将int转化为string
+	ostringstream stream;
+	stream << id_int;  //n为int类型
+	string id_string=stream.str();
+	data.setID(id_string);
+	//data里面装了42个数据
 	//执行数据添加
 	SupplierDAO dao;
 	return dao.SupplierInsert(data);
