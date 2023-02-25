@@ -16,14 +16,7 @@ public interface PermissionApis {
      * @param condition 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<PermissionVO>> queryAll(PermissionQuery condition);
-
-    /**
-     * 根据用户输入的条件，分页查询
-     * @param condition 查询条件
-     * @return 查询结果
-     */
-    JsonVO<PageVO<PermissionVO>> queryByCondition(PermissionQuery condition);
+    JsonVO<PageVO<PermissionVO>> query(PermissionQuery condition);
 
     /**
      *
