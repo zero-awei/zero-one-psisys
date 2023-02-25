@@ -1,31 +1,21 @@
 <template>
   <div>
-    <psi-form
-      :items="items"
-      :formData="formData"
-      :toggleItems="toggleItems"
-      @query="doQuery"
-      @reset="doReset"
-    ></psi-form>
+    <!-- 采购申请 -->
+    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="doQuery" @reset="doReset"></psi-form>
 
     <!-- 表格数据 -->
     <!-- 修改点1 -->
     <div style="margin-top:10px">
-      <psi-table
-      :items="tableItems"
-      :tableData="tableData"
-      :attributes="attributes"
-      :pagination="pagination" 
-      @add="addClient"
-    >
-      <template v-slot:basicOperation="slot">
-      <!-- 修改点2 -->
-        <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+        @add="addClient">
+        <template v-slot:basicOperation="slot">
+          <!-- 修改点2 -->
+          <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
 
-        <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
-      </template>
-  
-    </psi-table>
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+        </template>
+
+      </psi-table>
     </div>
 
   </div>
@@ -162,7 +152,7 @@ const status = reactive({
       address: 'No. 189, Grove St, Los Angeles',
       zip: 'CA 90036',
       tag: 'Home'
-    } 
+    }
   ],
   // table 总体配置
   attributes: {

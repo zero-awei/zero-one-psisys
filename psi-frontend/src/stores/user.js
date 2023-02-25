@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-24 22:06:10
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 23:44:46
+ * @LastEditTime: 2023-02-25 16:27:38
  * @FilePath: \psi-frontend\src\stores\user.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -455,7 +455,8 @@ export const userStore = defineStore('user', {
     user: null,
     // 菜单数据
     menus: [],
-    routeMenus: []
+    routeMenus: [],
+    parentMenus: []
   }),
   getters: {
     // 获取token
@@ -465,7 +466,11 @@ export const userStore = defineStore('user', {
     // 获取当前用户
     getUser: (state) => state.user,
     // 获取菜单
-    getMenus: (state) => state.menus
+    getMenus: (state) => state.menus,
+    // 获取父级菜单
+    getParentMenus: (state) => state.parentMenus,
+    // 获取子级菜单
+    // getRouteMenus: (state) => state.routeMenus
   },
   actions: {
     // 加载用户
@@ -558,16 +563,23 @@ export const userStore = defineStore('user', {
         let itemi = this.menus[i] // 一级菜单
         // console.log('-----------一级菜单', itemi)
         if (itemi.children) {
+          console.log('-----------一级菜单', itemi)
+          this.parentMenus.push(itemi)
           // 如果有二级菜单
           for (let j in itemi.children) {
             // 遍历二级菜单
+            
             let itemj = itemi.children[j]
             if (itemj.children) {
+              console.log('-----------二级菜单', itemj)
+              this.parentMenus.push(itemj)
               // 如果有三级菜单
               for (let k in itemj.children) {
                 // 遍历三级菜单
                 let itemk = itemj.children[k]
                 if (itemk.children) {
+                  console.log('-----------三级菜单', itemk)
+                  this.parentMenus.push(itemk)
                 } else {
                   this.routeMenus.push(itemk)
                 }
@@ -580,6 +592,7 @@ export const userStore = defineStore('user', {
           this.routeMenus.push(itemi)
         }
       }
+      // console.log('-------------处理后this.menus', this.menus)
       return this.routeMenus
     }
   }

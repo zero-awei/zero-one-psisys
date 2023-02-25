@@ -20,7 +20,8 @@ let dialogVisible = ref(false)
 const state = reactive({
   attrs: {
     title: '单据',
-    width: '80%'
+    width: '80%',
+    determine:true
   }
 })
 const { attrs } = toRefs(state)
@@ -37,7 +38,6 @@ function confirm(){
 | 属性名       | 说明                                                   | 类型                              | 默认 |
 | ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
 | attrs     | 对话框属性| Object                        | ——       |
-| attrs     | 对话框属性| Object                        | ——       |
 
 组件需要 v-model 绑定一个 Boolean 值
 ## attrs 属性
@@ -46,7 +46,7 @@ function confirm(){
 | ---------- | ------------------------------------------------------------- | --------------------------------- | ------- |
 | title     |  标题          |string       |——
 | width     | 宽度 | string                        | ——
-
+| determine     | 对话框的确定按钮是否生效 | Boolean                        | false
 
 
 ## 事件

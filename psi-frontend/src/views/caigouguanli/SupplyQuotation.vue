@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 供应报价 -->
     <psi-form
       :items="items"
       :formData="formData"

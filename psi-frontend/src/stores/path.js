@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 17:13:14
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 23:48:58
+ * @LastEditTime: 2023-02-25 16:23:31
  * @FilePath: \psi-frontend\src\stores\path.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -53,7 +53,7 @@ export const pathStore = defineStore('path', {
           if (menus[i].href === path.href) {
             path.id = menus[i].id
             path.text = menus[i].text
-            console.log('-------------menus[i]', menus[i])
+            // console.log('-------------menus[i]', menus[i])
             break
           }
         }

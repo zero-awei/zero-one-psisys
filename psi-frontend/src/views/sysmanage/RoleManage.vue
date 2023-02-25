@@ -1,8 +1,8 @@
-<!--doQuery
+<!--
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:40
- * @LastEditors: Kyle5 nnkyle@163.com
- * @LastEditTime: 2023-02-23 14:32:41
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-25 20:02:15
  * @FilePath: \psi-frontend\src\views\sysmanage\RoleManage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -32,24 +32,31 @@
         <template v-slot:basicOperation="slot">
           <el-button link type="primary" @click="roleEditDialogVisible = true">编辑</el-button>
 
-          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+          <el-button link type="primary" @click="handleDeleteRole(slot.data)">删除</el-button>
         </template>
       </psi-table>
     </div>
 
     <!-- 对话框 -->
-    <!-- 新增 对话框 -->
-    <psi-dialog ref="menuEditDialog" v-model="addDialogVisible" :attrs="addDialogAttrs" @determine="determine">
+  <!-- 新增 对话框 -->
+  <psi-dialog v-model="addDialogVisible" :attrs="addDialogAttrs" @determine="handleAddRole">
       <psi-form :items="addRoleItems" :formData="addRoleFormData" :buttonShow="false"></psi-form>
     </psi-dialog>
     <!-- 菜单编辑对话框 -->
-    <psi-dialog ref="menuEditDialog" v-model="menuEditDialogVisible" :attrs="menuEditDialogAttrs">
+    <psi-dialog v-model="menuEditDialogVisible" :attrs="menuEditDialogAttrs">
+
+    <!-- <psi-table>
+
+        </psi-table> -->
     </psi-dialog>
     <!-- 权限编辑对话框 -->
-    <psi-dialog ref="permissonEditDialog" v-model="permissonEditDialogVisible" :attrs="permissonEditDialogAttrs">
+    <psi-dialog v-model="permissonEditDialogVisible" :attrs="permissonEditDialogAttrs">
+      <!-- <psi-table>
+
+        </psi-table> -->
     </psi-dialog>
     <!-- 角色编辑对话框 -->
-    <psi-dialog ref="roleEditDialog" v-model="roleEditDialogVisible" :attrs="roleEditDialogAttrs">
+    <psi-dialog v-model="roleEditDialogVisible" :attrs="roleEditDialogAttrs" @determine="handleEditRole">
     </psi-dialog>
   </div>
 </template>
@@ -59,7 +66,9 @@ import { ref, reactive, toRefs, onMounted } from 'vue'
 import { getTableList } from './api/role.js'
 import { format } from '@/apis/date/index.js'
 import { userStore } from '@/stores/user.js'
+// import { pathStore } from '@/stores/public.js'
 const store = userStore()
+// const pStore = pathStore()
 // 查询表单相关数据及方法
 const formState = reactive({
   // 查询表单每一项的配置
@@ -223,53 +232,7 @@ let da = {
 // // // console.log(tableData)
 // tableData.push(da)
 tableData.value.push(da)
-// 分页相关配置
-const pagination = reactive({
-  currentPage: 2, // 当前页
-  pageSize: 100, // 每页数据量
-  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
-  total: 400, //数据总量
-  layout: 'total, sizes, prev, pager, next, jumper'
-})
-// 7.2 列出所有单据
-function doGetTableList() {
-  // getTableList(
-  //   // 参数为空是这么写？
-  //   {},
-  //   // 请求成功
-  //   (data) => {
-  //     // 分页配置
-  //     // 页面属性 配对 返回数据
-  //     pagination.currentPage = data.pageIndex
-  //     pagination.pageSize = data.pageSize
-  //     pagination.pages = data.pages
-  //     // 表格列表数据
-  //     // tableData = data.rows
-  //     // 模拟表格列表数据
-  //     const da = [
-  //       {
-  //         "createBy": "admin",
-  //         "createTime": "2018-12-21 18:03:39",
-  //         "description": "管理员",
-  //         "id": "f6817f48af4fb3af11b9e8bf182f618b",
-  //         "roleCode": "admin",
-  //         "roleName": "管理员",
-  //         "updateBy": "admin",
-  //         "updateTime": "2019-05-20 11:40:26"
-  //       }
-  //     ]
-  //     tableData = da
-  //   },
-  //   () => {
-  //     ElMessage.error('查询数据出现错误')
-  //   }
-  // )
 
-}
-// 在钩子函数时查询所有单据
-onMounted(() => {
-  doGetTableList()
-})
 
 // 新增角色模块
 const addRoleFormState = reactive({
@@ -322,16 +285,15 @@ const addRoleFormState = reactive({
   },
 })
 const { addRoleItems, addRoleFormData, } = toRefs(addRoleFormState)
-// 新增角色打开对话框
-function addRole() {
-  addDialogVisible.value = true
-}
-// 删除角色
-function deleteRole() {
-  // TODO 前后端接口
 
-}
-
+// 分页相关配置
+const pagination = reactive({
+  currentPage: 2, // 当前页
+  pageSize: 100, // 每页数据量
+  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  total: 400, //数据总量
+  layout: 'total, sizes, prev, pager, next, jumper'
+})
 
 
 // 新增角色对话框配置
@@ -339,25 +301,14 @@ function deleteRole() {
 let addDialogVisible = ref(false)
 const addDialogState = reactive({
   addDialogAttrs: {
-    title: '用户新增',
+    title: '角色新增',
     width: '50%',
     determine: true,
   }
 })
 const { addDialogAttrs } = toRefs(addDialogState)
 // 新增角色调用接口
-function determine() {
-  // TODO前后端联调
-  // // console.log("pinia00000000", store.getUser)
-  const param = {}
-  param.roleName = addRoleFormData.roleName
-  param.description = addRoleFormData.description
-  const nDate = new Date()
-  param.createTime = format(nDate, 'yyyy-MM-dd hh:mm:ss')
-  param.createBy = store.getUser.roles[0]
-  // param.id =
 
-}
 // menuEditDialog配置
 
 let menuEditDialogVisible = ref(false)
@@ -368,13 +319,10 @@ const menuEditDialogState = reactive({
   }
 })
 const { menuEditDialogAttrs } = toRefs(menuEditDialogState)
-function menuEdit(data) {
-  menuEditDialogVisible.value = true
-  // 弹出框内的表格数据和data配置
-  // // console.log("menuDialog数据", data)
-}
-// permissonEditDialog配置
 
+
+
+// 权限编辑permissonEditDialog配置
 let permissonEditDialogVisible = ref(false)
 const permissonEditDialogState = reactive({
   permissonEditDialogAttrs: {
@@ -389,16 +337,91 @@ let roleEditDialogVisible = ref(false)
 const roleEditDialogState = reactive({
   roleEditDialogAttrs: {
     title: '编辑角色',
-    width: '80%'
+    width: '80%',
+    determine: true
   }
 })
 const { roleEditDialogAttrs } = toRefs(roleEditDialogState)
 
-// function edit(data){
-//   editDialogVisible=true
-//   // 弹出框内的表格数据和data配置
+// 进入页面时查询表格所有单据
+onMounted(() => {
+  doGetTableList()
 
-// }
+})
+
+// ------------------------ 方法---------------------------
+// 6.3 分页查询所有用户
+function doGetTableList() {
+  // getTableList(
+  //   // 参数为空是这么写？
+  //   {},
+  //   // 请求成功
+  //   (data) => {
+  //     // 分页配置
+  //     // 页面属性 配对 返回数据
+  //     pagination.currentPage = data.pageIndex
+  //     pagination.pageSize = data.pageSize
+  //     pagination.pages = data.pages
+  //     // 表格列表数据
+  //     // tableData = data.rows
+  //     // 模拟表格列表数据
+  //     const da = [
+  //       {
+  //         "createBy": "admin",
+  //         "createTime": "2018-12-21 18:03:39",
+  //         "description": "管理员",
+  //         "id": "f6817f48af4fb3af11b9e8bf182f618b",
+  //         "roleCode": "admin",
+  //         "roleName": "管理员",
+  //         "updateBy": "admin",
+  //         "updateTime": "2019-05-20 11:40:26"
+  //       }
+  //     ]
+  //     tableData = da
+  //   },
+  //   () => {
+  //     ElMessage.error('查询数据出现错误')
+  //   }
+  // )
+
+}
+
+// 新增角色打开对话框
+function addRole() {
+  addDialogVisible.value = true
+}
+// 6.2 新增角色
+function handleAddRole() {
+  // TODO前后端联调
+  // // console.log("pinia00000000", store.getUser)
+  const param = {}
+  param.roleName = addRoleFormData.roleName
+  param.description = addRoleFormData.description
+  const nDate = new Date()
+  param.createTime = format(nDate, 'yyyy-MM-dd hh:mm:ss')
+  param.createBy = store.getUser.roles[0]
+  // param.id =
+
+}
+// 6.1 删除角色
+function handleDeleteRole() {
+  // TODO 前后端接口
+
+}
+
+// 6.4 编辑角色
+function handleEditRole() {
+
+}
+
+
+function menuEdit(data) {
+  menuEditDialogVisible.value = true
+  // 弹出框内的表格数据和data配置
+  // // console.log("menuDialog数据", data)
+}
+
+
 
 // 多选
 const changeList = ref([])

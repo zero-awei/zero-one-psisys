@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-22 22:31:41
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 23:13:41
+ * @LastEditTime: 2023-02-25 16:23:01
  * @FilePath: \psi-frontend\src\views\HomeView.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -208,7 +208,7 @@ export default {
     function handleTabs(list) {
       let nextTab = list[list.length - 1]
       // // console.log("---------pathIdSet-------------", pathIdSet)
-      console.log("---------nextTab-------------", nextTab)
+      // console.log("---------nextTab-------------", nextTab)
       const pathIdList = [...pathIdSet]
       // pathIdSet 和 pathList是同步更新，所以pathIdSet.has(nextTab.id)一定为true
       if (pathIdList[pathIdList.length - 1] === nextTab.id) {
