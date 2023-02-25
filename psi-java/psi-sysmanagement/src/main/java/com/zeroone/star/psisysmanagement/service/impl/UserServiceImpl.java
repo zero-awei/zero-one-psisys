@@ -1,16 +1,14 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.date.DateTime;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
-import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
-import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
@@ -33,14 +31,13 @@ import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
  * 用户表 服务实现类
  * </p>
  *
- * @author  axin
+ * @author  dan axin
  * @since 2023-02-12
  */
 @Slf4j
@@ -53,6 +50,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Resource
     DepartService departService;
+
 
     // axin
     //    展示用户列表 finished tested（传id的情况下）
@@ -79,6 +77,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         Page<User> result = baseMapper.selectPage(userPage, userQueryWrapper);
         return PageVO.create(result, UserVO.class);
     }
+
+    //    axin
+//       新增用户
+    @Override
+    public void saveUser(AddUserDTO dto) {
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
+        log.info("user = {}", user);
+        this.save(user);
+    }
+
 
     // dan
     @SneakyThrows
@@ -128,5 +137,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         editUserVO.setDepartName(departs.get(0).getDepartName());
         return editUserVO;
     }
-
 }

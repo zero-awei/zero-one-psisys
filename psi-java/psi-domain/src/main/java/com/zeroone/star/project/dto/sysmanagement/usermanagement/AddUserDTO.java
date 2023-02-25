@@ -17,7 +17,7 @@ import java.util.List;
  * </p>
  *
  * @author axin
- * @since 2023-02-19
+ * @since 2023-02-23
  */
 @Data
 @ApiModel("用户管理中添加的显示对象")
@@ -62,9 +62,9 @@ public class AddUserDTO {
     /**
      * 生日
      */
-    @NotBlank
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @ApiModelProperty(value = "输入您的生日", example = "")
+    @ApiModelProperty(value = "输入您的生日", example = "2019-04-01 00:00:00")
     private Date birthday;
 
     /**
@@ -98,7 +98,7 @@ public class AddUserDTO {
     /**
      * 状态(1-正常,0-冻结)
      */
-    @NotBlank
+    @NotNull
     @ApiModelProperty(value = "选择您的状态，1为正常，0为冻结", example = "")
     private Boolean status;
 
@@ -106,7 +106,7 @@ public class AddUserDTO {
     /**
      * 同步工作流引擎(1-同步,0-不同步)
      */
-    @NotBlank
+    @NotNull
     @ApiModelProperty(value = "选择是否同步工作流引擎，1为同步，0为不同步", example = "")
     private Boolean activitiSync;
 
