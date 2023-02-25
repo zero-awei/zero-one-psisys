@@ -26,7 +26,7 @@ public interface PurchasePaymentApis {
      * @param delete 删除采购付款的数据传输对象
      * @return {@link JsonVO}<{@link String}>
      */
-    JsonVO<String> delete(PaymentDeleteDTO delete);
+    JsonVO<String> deleteApp(PaymentDeleteDTO delete);
 
     /**
      * 更新接口
@@ -34,7 +34,7 @@ public interface PurchasePaymentApis {
      * @param update 修改采购付款的数据传输对象
      * @return {@link JsonVO}<{@link String}>
      */
-    JsonVO<String> update(PaymentUpdateDTO update);
+    JsonVO<String> updateApp(PaymentUpdateDTO update);
 
     /**
      * 上传文件
@@ -44,5 +44,18 @@ public interface PurchasePaymentApis {
      */
     JsonVO<String> upload(MultipartFile file);
 
+    //采购无申请
+    JsonVO<String> saveUnApp(PaymentCreateDTO create);
+
+    JsonVO<String> deleteUnApp(PaymentDeleteDTO delete);
+
+    JsonVO<String> updateUnApp(PaymentUpdateDTO update);
+
+    //采购退款退货
+    JsonVO<String> saveRefund(PaymentCreateDTO create);
+
+    JsonVO<String> deleteRefund(PaymentDeleteDTO delete);
+
+    JsonVO<String> updateRefund(PaymentUpdateDTO update);
 
 }

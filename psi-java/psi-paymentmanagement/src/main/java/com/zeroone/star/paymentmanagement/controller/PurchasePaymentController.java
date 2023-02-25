@@ -43,19 +43,79 @@ public class PurchasePaymentController implements PurchasePaymentApis {
             return JsonVO.fail(paymentCreateDTO.toString());
     }
 
-    @DeleteMapping("/delete")
-    @ApiOperation("采购付款删除")
+    @DeleteMapping("/delete-app")
+    @ApiOperation("采购付款（有申请）删除")
     @Override
-    public JsonVO<String> delete(PaymentDeleteDTO paymentDeleteDTO) {
+    public JsonVO<String> deleteApp(PaymentDeleteDTO paymentDeleteDTO) {
         int delete = purchasePaymentService.delete(paymentDeleteDTO);
         if (delete > 0) return JsonVO.success(paymentDeleteDTO.getBillNo());
         else return JsonVO.fail(paymentDeleteDTO.getBillNo());
     }
 
-    @PutMapping("update")
-    @ApiOperation("采购付款修改")
+    @PutMapping("update-app")
+    @ApiOperation("采购付款（有申请）修改")
     @Override
-    public JsonVO<String> update(PaymentUpdateDTO paymentUpdateDTO) {
+    public JsonVO<String> updateApp(PaymentUpdateDTO paymentUpdateDTO) {
+        int update = purchasePaymentService.update(paymentUpdateDTO);
+        if (update > 0)return JsonVO.success(paymentUpdateDTO.toString());
+        else return JsonVO.fail(paymentUpdateDTO.toString());
+    }
+
+    //采购无申请
+    @PostMapping("save-unapp")
+    @ApiOperation("采购付款（无申请）增加")
+    @Override
+    public JsonVO<String> saveUnApp(PaymentCreateDTO paymentCreateDTO) {
+        int insert = purchasePaymentService.insert(paymentCreateDTO);
+        if (insert > 0)
+            return JsonVO.success(paymentCreateDTO.toString());
+        else
+            return JsonVO.fail(paymentCreateDTO.toString());
+    }
+
+    @DeleteMapping("/delete-unapp")
+    @ApiOperation("采购付款（无申请）删除")
+    @Override
+    public JsonVO<String> deleteUnApp(PaymentDeleteDTO paymentDeleteDTO) {
+        int delete = purchasePaymentService.delete(paymentDeleteDTO);
+        if (delete > 0) return JsonVO.success(paymentDeleteDTO.getBillNo());
+        else return JsonVO.fail(paymentDeleteDTO.getBillNo());
+    }
+
+    @PutMapping("update-unapp")
+    @ApiOperation("采购付款（无申请）修改")
+    @Override
+    public JsonVO<String> updateUnApp(PaymentUpdateDTO paymentUpdateDTO) {
+        int update = purchasePaymentService.update(paymentUpdateDTO);
+        if (update > 0)return JsonVO.success(paymentUpdateDTO.toString());
+        else return JsonVO.fail(paymentUpdateDTO.toString());
+    }
+
+    //采购退款退货
+    @PostMapping("save-refund")
+    @ApiOperation("采购退款退货增加")
+    @Override
+    public JsonVO<String> saveRefund(PaymentCreateDTO paymentCreateDTO) {
+        int insert = purchasePaymentService.insert(paymentCreateDTO);
+        if (insert > 0)
+            return JsonVO.success(paymentCreateDTO.toString());
+        else
+            return JsonVO.fail(paymentCreateDTO.toString());
+    }
+
+    @DeleteMapping("/delete-refund")
+    @ApiOperation("采购退款退货删除")
+    @Override
+    public JsonVO<String> deleteRefund(PaymentDeleteDTO paymentDeleteDTO) {
+        int delete = purchasePaymentService.delete(paymentDeleteDTO);
+        if (delete > 0) return JsonVO.success(paymentDeleteDTO.getBillNo());
+        else return JsonVO.fail(paymentDeleteDTO.getBillNo());
+    }
+
+    @PutMapping("update-refund")
+    @ApiOperation("采购退款退货修改")
+    @Override
+    public JsonVO<String> updateRefund(PaymentUpdateDTO paymentUpdateDTO) {
         int update = purchasePaymentService.update(paymentUpdateDTO);
         if (update > 0)return JsonVO.success(paymentUpdateDTO.toString());
         else return JsonVO.fail(paymentUpdateDTO.toString());
