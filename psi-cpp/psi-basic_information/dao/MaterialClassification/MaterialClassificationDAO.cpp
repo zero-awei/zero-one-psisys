@@ -22,7 +22,7 @@
 #include <sstream>
 
 //定义条件解析宏，减少重复代码
-//定义条件解析宏，减少重复代码
+
 #define MATERIALCLASSIFICATION_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
@@ -33,7 +33,13 @@ if (!obj.getName().empty()) { \
 if (!obj.getCode().empty()) { \
 	sql << " AND code=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getCode()); \
-} 
+} \
+else { \
+	sql << " AND pid=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, "0"); \
+}
+
+
 
 
 #define MATERIALCLASSIFICATION_CODE_PARSE(code, sql) \
@@ -64,16 +70,16 @@ uint64_t MaterialClassificationDAO::count(const MaterialClassificationDO& iObj)
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-//分页查找 #需要名称或编码
-std::list<MaterialClassificationDO> MaterialClassificationDAO::selectWithPage(const MaterialClassificationDO& obj, uint64_t pageIndex, uint64_t pageSize)
+//分页查找 #pid=0为根节点
+std::list<MaterialClassificationDO> MaterialClassificationDAO::selectWithPage(const string& pid,uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	sql << "SELECT id,pid,has_child,code,name,fullname,is_enabled,create_by,create_time,update_by,update_time,version FROM bas_material_category";
-	MATERIALCLASSIFICATION_TERAM_PARSE(obj, sql);
+	sql << "SELECT id,pid,has_child,code,name,fullname,is_enabled,create_by,create_time,update_by,update_time,version FROM bas_material_category WHERE pid = ? ";
+	
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	MaterialClassificationMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<MaterialClassificationDO, MaterialClassificationMapper>(sqlStr, mapper, "%s", pid);
 }
 
 //按名称查找 
@@ -130,11 +136,11 @@ int MaterialClassificationDAO::update(const MaterialClassificationDO& iObj)
 	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s", iObj.getName(), iObj.getCode(), iObj.getFullname(),iObj.getIsEnabled(),iObj.getUpdateBy(),iObj.getUpdateTime(),iObj.getId());
 }
 
-//按id修改，父节点的是否有子节点项,当有子节点时才会调用
-int MaterialClassificationDAO::updateById(const string id)
+//按id修改，添加下级时要同时修改父节点的“是否有子节点项”,当添加的子节点pid不为0时才会调用
+int MaterialClassificationDAO::updateById(const string& id, const string child)
 {
-	string sql = "UPDATE `bas_material_category` SET `has_child`= ? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s", "1");
+	string sql = "UPDATE `bas_material_category` SET `has_child`=?  WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s",child, id);
 }
 
 //通过id删除数据 #删除数据后，如果是某个父类是否应该把子类一并删除；如果是子类应该要同时修改对应父类的has_child

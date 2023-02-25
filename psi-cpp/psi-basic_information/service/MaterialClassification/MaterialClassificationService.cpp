@@ -20,7 +20,7 @@
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
 #include<ctime>
-
+#include<stack>
 //可能vo不需要分父类子类
 
 
@@ -33,37 +33,82 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 
 	//查询数据总条数
 	MaterialClassificationDO obj;
+	MaterialClassificationDAO dao;
 	obj.setName(query.getName());
 	obj.setCode(query.getCode());
-	MaterialClassificationDAO dao;
+	//如果名字和编码均为空，则显示所有物料分类根节点
+
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
 	{
 		return pages;
 	}
-
-	//分页查询数据 #可能还要弄个不分页的，或者弄子类列表
+	//分页查询数据 
 	pages.setTotal(count);
 	pages.calcPages();
-	list<MaterialClassificationDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
-	list<MaterialClassificationBaseVO> vr;
-	for (MaterialClassificationDO sub : result)
-	{
-		MaterialClassificationBaseVO vo;
-		vo.setId(sub.getId());
-		vo.setName(sub.getName());
-		vo.setCode(sub.getCode());
-		vo.setFullname(sub.getFullname());
-		vo.setIsEnabled(sub.getIsEnabled());
-		vo.setCreateTime(sub.getCreateTime());
-		vo.setCreateBy(sub.getCreateBy());
-		vo.setUpdateTime(sub.getUpdateTime());
-		vo.setUpdateBy(sub.getUpdateBy());
 
-		vr.push_back(vo);
+	
+	if (query.getCode() != "" || query.getName() != "") {//判断是不是子级，是则寻找根节点
+		list<MaterialClassificationDO> father;
+		if (query.getCode() != "") 
+			father = dao.selectByCode(query.getCode());
+		else if (query.getName() != "")
+			father = dao.selectByName(query.getName());
+		MaterialClassificationDO f;
+		for (MaterialClassificationDO sub : father) {
+			f.setId(sub.getId());
+			f.setPid(sub.getPid());
+		}	
+		//输入的是子类的编码或者名称时，循环寻找根节点
+			while (f.getPid() != "0") {
+				father = dao.selectById(f.getPid());
+				for (MaterialClassificationDO sub : father) {
+					f.setId(sub.getId());
+					f.setPid(sub.getPid());
+				}
+			}
+			//找到根节点
+			list<MaterialClassificationBaseVO> vr;
+			for (MaterialClassificationDO sub : father)
+			{
+				MaterialClassificationBaseVO vo;
+				vo.setId(sub.getId());
+				vo.setName(sub.getName());
+				vo.setCode(sub.getCode());
+				vo.setFullname(sub.getFullname());
+				vo.setIsEnabled(sub.getIsEnabled());
+				vo.setCreateTime(sub.getCreateTime());
+				vo.setCreateBy(sub.getCreateBy());
+				vo.setUpdateTime(sub.getUpdateTime());
+				vo.setUpdateBy(sub.getUpdateBy());
+
+				vr.push_back(vo);
+			}
+			pages.setRows(vr);
+			return pages;
 	}
-	pages.setRows(vr);
-	return pages;
+	else if (query.getCode() == "" && query.getName() == "") {//全空显示全部根节点
+
+		list<MaterialClassificationDO> result = dao.selectWithPage( "0",query.getPageIndex(), query.getPageSize());
+		list<MaterialClassificationBaseVO> vr;
+		for (MaterialClassificationDO sub : result)
+		{
+			MaterialClassificationBaseVO vo;
+			vo.setId(sub.getId());
+			vo.setName(sub.getName());
+			vo.setCode(sub.getCode());
+			vo.setFullname(sub.getFullname());
+			vo.setIsEnabled(sub.getIsEnabled());
+			vo.setCreateTime(sub.getCreateTime());
+			vo.setCreateBy(sub.getCreateBy());
+			vo.setUpdateTime(sub.getUpdateTime());
+			vo.setUpdateBy(sub.getUpdateBy());
+
+			vr.push_back(vo);
+		}
+		pages.setRows(vr);
+		return pages;
+	}
 }
 
 //查询子类列表
@@ -161,7 +206,13 @@ int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto
 
 	int modify = 1;
 	if (dto.getPid() != "") {//有父节点
-		modify = dao.updateById(dto.getPid());//通过id修改父节点的has_child
+		list<MaterialClassificationDO> father = dao.selectById(dto.getPid());
+		MaterialClassificationDO f;
+		for (MaterialClassificationDO sub : father) {
+			f.setHasChild(sub.getHasChild());
+		}
+		if (f.getHasChild() == "0")
+			modify = dao.updateById(dto.getPid(), "1");//通过id修改父节点的has_child
 	}
 
 	return (modify * dao.insert(data))==1;
@@ -196,15 +247,32 @@ int MaterialClassificationService::updateData(const MaterialClassificationDTO& d
 	return dao.update(data) == 1;
 }
 
+//删除子级节点的函数
+void removeNode(const MaterialClassificationDO& nodeChild) {
+	MaterialClassificationDAO dao;
+	if (nodeChild.getHasChild() == "0") {
+		dao.deleteById(nodeChild.getId());
+		return;
+	}
+	list<MaterialClassificationDO> children = dao.selectByPid(nodeChild.getId());
+	for (MaterialClassificationDO node : children) {
+		removeNode(node);
+	}
+	return;
+}
+
+
 int MaterialClassificationService::removeData(const MaterialClassificationDTO& dto)
 {
 	MaterialClassificationDAO dao;
-
-	int d = 1;
-	if (dto.getHasChild()=="1") {//如果有子级节点则删除
-		d = dao.deleteByPid(dto.getId());
-	}
+	list<MaterialClassificationDO> c = dao.selectById(dto.getId());//当前节点的所有子级
 	
-
+	int d = 1;
+	for (MaterialClassificationDO node : c) {
+		if (node.getHasChild() == "1") {//如果有子级节点则删除
+			removeNode(node);
+		}
+	}
+	d = dao.deleteByPid(dto.getId());
 	return (d*dao.deleteById(dto.getId())) == 1;
 }
