@@ -14,15 +14,15 @@ import java.util.List;
 
 /**
  * @author spk
+ * @description 应付核销单DTO。 加入所有的 DictText
  * @since 2023-02-14
- * @description 应付核销单DTO。
- * 加入所有的 DictText
  */
 @Data
 @ApiModel("应付核销单数据传输对象")
 @AllArgsConstructor
 @NoArgsConstructor
 public class CheckPayableDTO {
+
     @ApiModelProperty(value = "核销金额", example = "202")
     private BigDecimal amt;
 
@@ -41,7 +41,7 @@ public class CheckPayableDTO {
     private String attachment;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
     private Date billDate;
 
@@ -67,12 +67,12 @@ public class CheckPayableDTO {
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
     private Date createTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
     private Date effectiveTime;
 
@@ -127,7 +127,7 @@ public class CheckPayableDTO {
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
     private Date updateTime;
 

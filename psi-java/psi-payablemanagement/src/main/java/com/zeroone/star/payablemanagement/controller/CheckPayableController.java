@@ -1,12 +1,13 @@
 package com.zeroone.star.payablemanagement.controller;
 
 
+import com.zeroone.star.payablemanagement.entity.FinPayableCheck;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
-import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
+import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.PaymentBySupplierQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -33,8 +34,9 @@ import java.util.List;
 @Api(tags = "应付管理-应付核销")
 @Validated
 public class CheckPayableController implements CheckPayableApis {
+
     @Autowired
-    IFinPayableCheckService finPayableCheck;
+    IFinPayableCheckService finPayableCheckService;
 
     @Override
     @GetMapping("entry")
@@ -79,53 +81,115 @@ public class CheckPayableController implements CheckPayableApis {
     }
 
     @ApiOperation("新增应付核销单")
-    @PostMapping("/save")
+    @PostMapping("/add/{action}")
     @Override
-    public JsonVO<Void> addPayableCheck(@RequestBody CheckPayableDTO dto) {
-        return null;
+    public JsonVO<String> addPayableCheck(@RequestBody CheckPayableDTO dto, @PathVariable String action) {
+        try {
+            if ("submit".equals(action)) {
+                finPayableCheckService.submitAdd(dto);
+                return JsonVO.success("新增提交成功！");
+            } else {
+                finPayableCheckService.saveAdd(dto);
+                return JsonVO.success("新增保存成功！");
+            }
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     @ApiOperation("修改应付核销单")
-    @PutMapping("/modify")
+    @PutMapping("/modify/{action}")
     @Override
-    public JsonVO<Void> modifyPayableCheck(@RequestBody CheckPayableDTO dto) {
-        return null;
+    public JsonVO<String> modifyPayableCheck(@RequestBody CheckPayableDTO dto, @PathVariable String action) {
+        try {
+            if ("submit".equals(action)) {
+                finPayableCheckService.submitModify(dto);
+                return JsonVO.success("修改提交成功！");
+            } else {
+                finPayableCheckService.saveModify(dto);
+                return JsonVO.success("修改保存成功！");
+            }
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     @ApiOperation("关闭应付核销单（批量）")
     @PutMapping("/close")
     @Override
-    public JsonVO<Void> closePayableCheck(@ApiParam("单据id集合") @RequestParam List<String> ids) {
-        return null;
+    public JsonVO<String> closePayableCheck(@ApiParam("单据id集合") @RequestParam List<String> ids) {
+        try {
+            finPayableCheckService.lambdaUpdate()
+                .set(FinPayableCheck::getIsClosed, 1)
+                .in(FinPayableCheck::getId, ids)
+                .update();
+            return JsonVO.success("关闭应付核销单成功！");
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     @ApiOperation("反关闭应付核销单（批量）")
     @PutMapping("/unclose")
     @Override
-    public JsonVO<Void> unclosePayableCheck(@ApiParam("单据id集合") @RequestParam List<String> ids) {
-        return null;
+    public JsonVO<String> unclosePayableCheck(@ApiParam("单据id集合") @RequestParam List<String> ids) {
+        try {
+            finPayableCheckService.lambdaUpdate()
+                .set(FinPayableCheck::getIsClosed, 0)
+                .in(FinPayableCheck::getId, ids)
+                .update();
+            return JsonVO.success("反关闭应付核销单成功！");
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     @ApiOperation("删除应付核销单（批量）")
     @DeleteMapping("/delete")
     @Override
-    public JsonVO<Void> deletePayableCheck(@ApiParam("单据id集合") @RequestParam List<String> ids) {
-        return null;
+    public JsonVO<String> deletePayableCheck(@ApiParam("单据id集合") @RequestParam List<String> ids) {
+        try {
+            finPayableCheckService.removeWithEntry(ids);
+            return JsonVO.success("删除应付核销单成功！");
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     @ApiOperation("审核应付核销单")
     @PutMapping("/check")
     @Override
-    public JsonVO<Void> checkPayableCheck(@ApiParam("单据id") @RequestParam String id,
-                                          @ApiParam("核批结果") String approvalResultType,
-                                          @ApiParam(value = "核批意见", allowEmptyValue = true) @RequestParam(required = false) String approvalRemark) {
-        return null;
+    public JsonVO<String> checkPayableCheck(@ApiParam("单据id") @RequestParam String id,
+        @ApiParam("核批结果") String approvalResultType,
+        @ApiParam(value = "核批意见", allowEmptyValue = true) @RequestParam(required = false) String approvalRemark) {
+        try {
+            finPayableCheckService.lambdaUpdate()
+                .set(FinPayableCheck::getApprovalResultType, approvalResultType)
+                .set(FinPayableCheck::getApprovalRemark, approvalRemark)
+                .eq(FinPayableCheck::getId, id)
+                .update();
+            if ("1".equals(approvalResultType)) {
+                return JsonVO.success("审核通过！");
+            } else {
+                return JsonVO.success("审核不通过！");
+            }
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     @ApiOperation("作废应付核销单")
     @PutMapping("/void")
     @Override
-    public JsonVO<Void> voidPayableCheck(@ApiParam("单据id") @RequestParam String id) {
-        return null;
+    public JsonVO<String> voidPayableCheck(@ApiParam("单据id") @RequestParam String id) {
+        try {
+            finPayableCheckService.lambdaUpdate()
+                .set(FinPayableCheck::getIsVoided, 1)
+                .eq(FinPayableCheck::getId, id)
+                .update();
+            return JsonVO.success("作废应付核销单成功！");
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 }
