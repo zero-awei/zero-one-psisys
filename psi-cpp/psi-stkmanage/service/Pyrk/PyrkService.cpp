@@ -52,6 +52,13 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	data1.setSubject(dto.getSubject());
 	data1.setStockIoType("102"); // "102":盘盈入库
 	data1.setHandler(dto.getHandler());
+	data1.setCost([](const list<DetailDTO>& details) {
+		double cost = 0;
+		for (const auto& entry : details) {
+			cost += entry.getCost();
+		}
+		return cost;
+	}(dto.getDetail()));
 	data1.setRemark(dto.getRemark());
 	data1.setBillStage((dto.getSave() == 0 ? "12" : "14")); // "12":编制中, "14":编制完
 	data1.setAttachment(attachment);
@@ -84,7 +91,6 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	}
 	// 组装明细数据
 	StkIoEntryDO data2;
-	//string mid = cDao.selectBillIdByBillNo(dto.getBillNo());
 	for (auto& entry : dto.getDetail()) {
 		data2.setId(to_string(sf.nextId()));
 		data2.setMid(mid);
@@ -194,6 +200,13 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 	data1.setBillDate(dto.getBillDate());
 	data1.setSubject(dto.getSubject());
 	data1.setHandler(dto.getHandler());
+	data1.setCost([](const list<DetailDTO>& details) {
+		double cost = 0;
+		for (const auto& entry : details) {
+			cost += entry.getCost();
+		}
+		return cost;
+		}(dto.getDetail()));
 	data1.setRemark(dto.getRemark());
 	data1.setBillStage((dto.getSave() == 0 ? "12" : "14")); // "12":编制中, "14":编制完
 	data1.setAttachment([&](list<string> files) -> string { // 更新附件

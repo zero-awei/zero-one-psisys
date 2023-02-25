@@ -18,6 +18,8 @@ class AddQtrkBillDTO : public FileDTO
 	CC_SYNTHESIZE(string, billDate, BillDate);
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
+	// 供应商
+	CC_SYNTHESIZE(string, supplier, Supplier);
 	// 盘点经办
 	CC_SYNTHESIZE(string, handler, Handler);
 	// 备注

@@ -63,9 +63,6 @@
     <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -270,9 +267,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\Qtrk\ImportQtrkFileDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Qtrk\ModifyQtrkBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.h">

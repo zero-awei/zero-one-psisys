@@ -194,7 +194,6 @@
     <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp" />
-    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillListDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
@@ -259,7 +258,6 @@
     <ClInclude Include="domain\dto\Qtrk\DeleteQtrkBillDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\ExportQtrkFileDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\ImportQtrkFileDTO.h" />
-    <ClInclude Include="domain\dto\Qtrk\ModifyQtrkBillDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\QtrkBillDetailDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillListDTO.h" />

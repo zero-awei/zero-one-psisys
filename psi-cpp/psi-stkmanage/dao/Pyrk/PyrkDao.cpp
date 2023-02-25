@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PyrkDAO.h"
 #include <sstream>
-#include "FastDfsClient.h"
 
 // 定义条件解析宏，解析UPDATE stk_io 的条件，减少重复代码
 #define UPDATE_STKIO_TEARM_PARSE(obj, sql) \
@@ -33,6 +32,10 @@ if (!obj.getEffectiveTime().empty()) { \
     sql << " ,`effective_time`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getEffectiveTime()); \
 } \
+if (obj.getIsClosed() != -1) { \
+    sql << " ,`is_closed`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getIsClosed()); \
+} \
 sql << " WHERE `bill_no`=?"; \
 SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
 
@@ -56,9 +59,9 @@ SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
 
 int PyrkDAO::insert(const StkIoDO& iObj)
 {
-    string sql = "INSERT INTO `stk_io` (`id`,`bill_no`,`bill_date`,`subject`,`stock_io_type`, `handler`,`remark`,`bill_stage`,`attachment`,`sys_org_code`,`create_by`,`create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%s",
-        iObj.getId(), iObj.getBillNo(), iObj.getBillDate(), iObj.getSubject(),iObj.getStockIoType(),iObj.getHandler(),iObj.getRemark(),iObj.getBillStage(), iObj.getAttachment(),iObj.getSysOrgCode(), iObj.getCreateBy(), iObj.getCreateTime());
+    string sql = "INSERT INTO `stk_io` (`id`,`bill_no`,`bill_date`,`subject`,`stock_io_type`, `handler`,`cost`,`remark`,`bill_stage`,`attachment`,`sys_org_code`,`create_by`,`create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%d%s%s%s%s%s%s",
+        iObj.getId(), iObj.getBillNo(), iObj.getBillDate(), iObj.getSubject(),iObj.getStockIoType(),iObj.getHandler(),iObj.getCost(),iObj.getRemark(),iObj.getBillStage(), iObj.getAttachment(),iObj.getSysOrgCode(), iObj.getCreateBy(), iObj.getCreateTime());
 }
 
 int PyrkDAO::insert(const StkIoEntryDO& iObj)

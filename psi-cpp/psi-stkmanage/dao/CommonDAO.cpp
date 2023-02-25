@@ -71,6 +71,17 @@ string CommonDAO::selectUnitIdByName(const string& unit)
     return *ret.begin();
 }
 
+string CommonDAO::selectSupplyIdByAuxName(const string& supplier)
+{
+    string sql = "SELECT `id` FROM `bas_supplier` WHERE `aux_name`=?";
+    StringMapper mapper;
+    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", supplier);
+    if (ret.empty()) {
+        return "";
+    }
+    return *ret.begin();
+}
+
 string CommonDAO::insertAttachment(const string& fileName)
 {
 #ifdef LINUX

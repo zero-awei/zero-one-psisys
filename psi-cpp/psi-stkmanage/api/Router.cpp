@@ -144,6 +144,7 @@ void Router::createQtrkRouter()
 	BIND_GET_ROUTER(server, "/query-qtrk-bill-details", &QtrkController::querydetailsQtrk, nullptr);
 	BIND_POST_ROUTER(server, "/add-qtrk-bill", &QtrkController::addQtrk, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-qtrk-bill", &QtrkController::modifyQtrk, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-qtrk-bill-approval", &QtrkController::modifyQtrkApproval, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-qtrk-bill", &QtrkController::removeQtrk, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-qtrk-bill-state", &QtrkController::modifyQtrk, nullptr);
 	//BIND_POST_ROUTER(server, "/import-qtrk-file", [](request& req, response& res) {

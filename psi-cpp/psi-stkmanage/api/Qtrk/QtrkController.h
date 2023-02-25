@@ -7,8 +7,8 @@
 #include "../../domain/query/Qtrk/QueryQtrkBillDetailsQuery.h"
 //#include "../../domain/dto/Qtrk/QueryBillListDTO.h"
 #include "../../domain/dto/Qtrk/AddQtrkBillDTO.h"
+#include "../../domain/dto/Pyrk/ApprovalDTO.h"
 #include "../../domain/dto/Qtrk/DeleteQtrkBillDTO.h"
-#include "../../domain/dto/Qtrk/ModifyQtrkBillDTO.h"
 #include "../../domain/dto/Qtrk/ImportQtrkFileDTO.h"
 #include "../../domain/dto/Qtrk/ExportQtrkFileDTO.h"
 //#include "../../domain/dto/Qtrk/QueryQtrkBillDetailsDTO.h"
@@ -32,7 +32,8 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryQtrk, execQueryQtrk, QueryQtrkBillListQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(querydetailsQtrk, execQueryDetailsQtrk, QueryQtrkBillDetailsQuery);
 	CREATE_API_FUN_JSON_PAYLOAD(addQtrk, execAddQtrk, AddQtrkBillDTO);
-	CREATE_API_FUN_BODY(modifyQtrk, execModifyQtrk, ModifyQtrkBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyQtrk, execModifyQtrk, AddQtrkBillDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(modifyQtrkApproval, execModifyQtrkApproval, ApprovalDTO);
 	CREATE_API_FUN_BODY(removeQtrk, execRemoveQtrk, DeleteQtrkBillDTO);
 	//CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
 	//CREATE_API_FUN_JSON(jsonQtrk, execJsonQtrk, QueryBillListDTO);
@@ -47,7 +48,9 @@ private:
 	//添加其他入库单（保存/提交）
 	JsonVO<int> execAddQtrk(const AddQtrkBillDTO& dto, const PayloadDTO& payload);
 	//修改其他入库单数据
-	JsonVO<uint64_t> execModifyQtrk(const ModifyQtrkBillDTO& dto);
+	JsonVO<int> execModifyQtrk(const AddQtrkBillDTO& dto, const PayloadDTO& payload);
+	// 审核其他入库单
+	JsonVO<int> execModifyQtrkApproval(const ApprovalDTO& dto, const PayloadDTO& payload);
 	//演示删除数据
 	JsonVO<uint64_t> execRemoveQtrk(const DeleteQtrkBillDTO& dto);
 	//JsonVO<uint64_t> execRemoveById(const IntID& id);

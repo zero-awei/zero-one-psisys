@@ -22,6 +22,8 @@ public:
 	string selectMaterialIdByAuxName(const string& material);
 	// 根据名字查询单位id
 	string selectUnitIdByName(const string& unit);
+	// 根据助记名查询供应商id
+	string selectSupplyIdByAuxName(const string& supplier);
 	// 根据单据编号查询明细分录号列表
 	list<int> selectEntryNoByBillNo(const string& billNo);
 	// 上传附件

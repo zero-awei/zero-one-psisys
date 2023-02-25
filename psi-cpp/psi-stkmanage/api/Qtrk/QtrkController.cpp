@@ -49,16 +49,39 @@ JsonVO<int> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto, const Payload
 	return result;
 }
 
-JsonVO<uint64_t> QtrkController::execModifyQtrk(const ModifyQtrkBillDTO& dto)
+JsonVO<int> QtrkController::execModifyQtrk(const AddQtrkBillDTO& dto, const PayloadDTO& payload)
 {
-	//SampleService service;
-	JsonVO<uint64_t> result;
-	if (1/*service.updateData(dto)*/) {
-		result.success(1/*dto.getId()*/);
+	JsonVO<int> result;
+	QtrkService service;
+	//执行数据新增
+	int id = service.updateBillDate(dto, payload);
+	if (id > 0) {
+		result.success(id);
 	}
 	else
 	{
-		result.fail(1/*dto.getId()*/);
+		result.fail(id);
+	}
+	//响应结果
+	return result;
+}
+
+JsonVO<int> QtrkController::execModifyQtrkApproval(const ApprovalDTO& dto, const PayloadDTO& payload)
+{
+	JsonVO<int> result;
+	// 定义一个Service
+	QtrkService service;
+	// 执行修改数据(审核)
+	int id = service.updateApproval(dto, payload);
+	if (id > 0) {
+		result.success(id);
+	}
+	else if (id == -1) {
+		result.setData(id);
+		result.setStatus(RS_PARAMS_INVALID);
+	}
+	else {
+		result.fail(id);
 	}
 	return result;
 }
