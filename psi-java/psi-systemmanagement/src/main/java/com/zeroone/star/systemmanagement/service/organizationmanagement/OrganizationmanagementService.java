@@ -9,6 +9,8 @@ import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.Organ
 import com.zeroone.star.systemmanagement.entity.organizationmanagement.SysDepart;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 组织机构表 服务类
@@ -17,11 +19,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Morrangee
  * @since 2023-02-13
  */
-public interface IOrganizationmanagementService extends IService<SysDepart> {
+public interface OrganizationmanagementService extends IService<SysDepart> {
 
-    public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition);
-    public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName);
+    public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition);
+    public List<OrganizationTreeVO> queryTree(String departName);
     public String add(OrganizationManagementDTO data);
     public String modify(OrganizationManagementDTO data);
-    public String delete(String id);
+    public String remove(String id);
 }

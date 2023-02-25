@@ -1,16 +1,27 @@
 package com.zeroone.star.systemmanagement.service.organizationmanagement.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
-import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationTreeVO;
 import com.zeroone.star.systemmanagement.entity.organizationmanagement.SysDepart;
 import com.zeroone.star.systemmanagement.mapper.organizationmanagement.OrganizationmanagementMapper;
-import com.zeroone.star.systemmanagement.service.organizationmanagement.IOrganizationmanagementService;
+import com.zeroone.star.systemmanagement.service.organizationmanagement.OrganizationmanagementService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * <p>
@@ -21,77 +32,84 @@ import org.springframework.stereotype.Service;
  * @since 2023-02-13
  */
 @Service
-public class OrganizationmanagementImpl extends ServiceImpl<OrganizationmanagementMapper, SysDepart> implements IOrganizationmanagementService {
-
+public class OrganizationmanagementImpl extends ServiceImpl<OrganizationmanagementMapper, SysDepart> implements OrganizationmanagementService {
+    @Resource
     private OrganizationmanagementMapper mapper;
+    @Resource
+    private UserHolder holder;
+
     @Override
-    public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
-        return null;
+    public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition) {
+        // 从第一页开始，每一页查6条数据
+        Page<SysDepart> page = new Page<>(1, 6);
+        QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
+        wrapper.eq("depart_name", condition.getDepartName());
+        Page<SysDepart> p = mapper.selectPage(page, wrapper);
+        return PageVO.create(p, OrganizationListVO.class);
     }
 
     @Override
-    public JsonVO<PageVO<OrganizationTreeVO>> queryTree(String departName) {
-        return null;
+    public List<OrganizationTreeVO> queryTree(String departName) {
+        List<OrganizationTreeVO> treeVOS = new ArrayList<>();
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("depart_name", departName);
+        List<SysDepart> sysDeparts = mapper.selectByMap(map);
+        for (SysDepart depart : sysDeparts) {
+            String parentId = depart.getParentId();
+            OrganizationTreeVO treeVO = new OrganizationTreeVO();
+            treeVO.setParentId(parentId);
+            treeVO.setDepartName(departName);
+            treeVOS.add(treeVO);
+        }
+        return treeVOS;
     }
 
     @Override
     public String add(OrganizationManagementDTO data) {
         SysDepart sysDepart = new SysDepart();
-        sysDepart.setId(data.getId());
-        sysDepart.setParentId(data.getParentId());
-        sysDepart.setDepartName(data.getDepartName());
-        sysDepart.setDepartNameEn(data.getDepartNameEn());
-        sysDepart.setDepartNameEn(data.getDepartNameAbbr());
-        sysDepart.setDepartOrder(data.getDepartOrder());
-        sysDepart.setDescription(data.getDescription());
-        sysDepart.setOrgCategory(data.getOrgCategory());
-        sysDepart.setOrgType(data.getOrgType());
-        sysDepart.setOrgCode(data.getOrgCode());
-        sysDepart.setMobile(data.getMobile());
-        sysDepart.setFax(data.getFax());
-        sysDepart.setAddress(data.getAddress());
-        sysDepart.setMemo(data.getMemo());
-        sysDepart.setStatus(data.getStatus());
-        sysDepart.setDelFlag(data.getDelFlag());
-        sysDepart.setQywxIdentifier(data.getQywxIdentifier());
-        sysDepart.setCreateBy(data.getCreatBy());
-        sysDepart.setCreateTime(data.getCreatTime());
-        sysDepart.setUpdateBy(data.getUpdateBy());
-        sysDepart.setUpdateTime(data.getUpdateTime());
-        mapper.insert(sysDepart);
-        return "新增完毕";
+        BeanUtil.copyProperties(data, sysDepart);
+        try {
+            UserDTO userDTO = holder.getCurrentUser();
+            sysDepart.setUpdateBy(userDTO.getUsername());
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        Date date = new Date();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        sysDepart.setUpdateTime(dateFormat.format(date));
+        int result = mapper.insert(sysDepart);
+        if (result == 0) {
+            return "新增失败";
+        }
+        return "新增成功";
     }
 
     @Override
     public String modify(OrganizationManagementDTO data) {
         SysDepart sysDepart = new SysDepart();
-        sysDepart.setId(data.getId());
-        sysDepart.setParentId(data.getParentId());
-        sysDepart.setDepartName(data.getDepartName());
-        sysDepart.setDepartNameEn(data.getDepartNameEn());
-        sysDepart.setDepartNameEn(data.getDepartNameAbbr());
-        sysDepart.setDepartOrder(data.getDepartOrder());
-        sysDepart.setDescription(data.getDescription());
-        sysDepart.setOrgCategory(data.getOrgCategory());
-        sysDepart.setOrgType(data.getOrgType());
-        sysDepart.setOrgCode(data.getOrgCode());
-        sysDepart.setMobile(data.getMobile());
-        sysDepart.setFax(data.getFax());
-        sysDepart.setAddress(data.getAddress());
-        sysDepart.setMemo(data.getMemo());
-        sysDepart.setStatus(data.getStatus());
-        sysDepart.setDelFlag(data.getDelFlag());
-        sysDepart.setQywxIdentifier(data.getQywxIdentifier());
-        sysDepart.setCreateBy(data.getCreatBy());
-        sysDepart.setCreateTime(data.getCreatTime());
-        sysDepart.setUpdateBy(data.getUpdateBy());
-        sysDepart.setUpdateTime(data.getUpdateTime());
-        mapper.updateById(sysDepart);
-        return "修改完毕";
+        BeanUtil.copyProperties(data, sysDepart);
+        try {
+            UserDTO userDTO = holder.getCurrentUser();
+            sysDepart.setUpdateBy(userDTO.getUsername());
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        Date date = new Date();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        sysDepart.setUpdateTime(dateFormat.format(date));
+        int result = mapper.updateById(sysDepart);
+        if (result == 0) {
+            return "更新失败";
+        }
+        return "更新成功";
     }
 
     @Override
-    public String delete(String id) {
-        return null;
+    public String remove(String id) {
+        int result = mapper.deleteById(id);
+        if (result == 0) {
+            return "删除失败";
+        }
+        return "删除成功";
     }
 }
