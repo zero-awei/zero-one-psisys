@@ -23,8 +23,8 @@ import java.util.List;
 @Service
 public class PaymentManagerImpl implements PaymentManagerService {
 
-//    @Autowired
-//    PaymentManagerMapper paymentManagerMapper;
+    @Autowired
+    PaymentManagerMapper paymentManagerMapper;
 
     @Override
     public void importAll(MultipartFile file) {

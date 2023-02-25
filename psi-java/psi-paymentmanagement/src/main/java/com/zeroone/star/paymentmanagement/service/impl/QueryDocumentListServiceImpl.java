@@ -8,9 +8,10 @@ import com.zeroone.star.paymentmanagement.service.IQueryDocumentListService;
 import com.zeroone.star.project.query.paymentmanagement.QueryDocumentListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.paymentmanagement.QueryDocumentListVO;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-
+@Service
 public class QueryDocumentListServiceImpl extends ServiceImpl<QueryDocumentListMapper, QueryDocumentList> implements IQueryDocumentListService {
 
     @Resource
