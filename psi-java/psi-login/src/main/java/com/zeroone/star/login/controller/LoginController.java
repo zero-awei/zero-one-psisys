@@ -156,22 +156,9 @@ public class LoginController implements LoginApis {
         if (currentUser == null) {
             return JsonVO.fail(null);
         } else {
-//            User user = userService.getById(currentUser.getId());
-//            currentUser.setUserId(user.getUserId());
-//            currentUser.setEmail(user.getEmail());
-//            currentUser.setAddress(user.getAddress());
-//            currentUser.setLocationCD(user.getLocationCd());
-//            currentUser.setAge(user.getAge());
-//            currentUser.setSex(user.getSex());
-//            currentUser.setTel(user.getTel());
-//            currentUser.setLevelCd(user.getLevelCd());
-//            currentUser.setBId(user.getBId());
-//            currentUser.setStatusCd(user.getStatusCd());
-//            currentUser.setScore(user.getScore());
 
-
-
-            SysUser user = userService.getById(currentUser.getId());
+//            SysUser user = userService.getById(currentUser.getId());
+//            currentUser.setUsername(user.getUsername());
 
             //TODO:这里需要根据业务逻辑接口，重新实现
             LoginVO vo = new LoginVO();
@@ -214,4 +201,19 @@ public class LoginController implements LoginApis {
         }
         return JsonVO.success(tree);
     }
+
+
+
+//            User user = userService.getById(currentUser.getId());
+//            currentUser.setUserId(user.getUserId());
+//            currentUser.setEmail(user.getEmail());
+//            currentUser.setAddress(user.getAddress());
+//            currentUser.setLocationCD(user.getLocationCd());
+//            currentUser.setAge(user.getAge());
+//            currentUser.setSex(user.getSex());
+//            currentUser.setTel(user.getTel());
+//            currentUser.setLevelCd(user.getLevelCd());
+//            currentUser.setBId(user.getBId());
+//            currentUser.setStatusCd(user.getStatusCd());
+//            currentUser.setScore(user.getScore());
 }
