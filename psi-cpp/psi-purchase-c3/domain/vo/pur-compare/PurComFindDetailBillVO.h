@@ -21,11 +21,15 @@
 #define _PUR_COM_FIND_DETAIL_BILL_VO_
 
 #include "../../GlobalInclude.h"
+#include "PurComDetailsVO.h"
+
 /**
  * 指定的比价单详细信息显示对象
  */
 class PurComFindDetailBillVO
 {
+	//// id
+	//CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期
@@ -78,17 +82,32 @@ class PurComFindDetailBillVO
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
 	// 核批结果
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
+	// 明细列表
+	CC_SYNTHESIZE(list<PurComDetailsVO>, detailslist, DetailsList);
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(PurComFindDetailBillVO, billNo, billDate, billStage, isEffective, isClosed, isVoided, \
 		effectiveTime, approver, bpmiInstanceId, createTime, sysOrgCode, createBy, updateTime, \
 		updateBy, isAuto, isRubric, srcBillType, subject, srcNo, paymentMethod, deliveryTime, \
-		deliveryPlace, remark, attachment, approvalRemark, approvalResultType);
+		deliveryPlace, remark, attachment, approvalRemark, approvalResultType, detailslist);
 
-	PurComFindDetailBillVO(){
-		this->setBillNo("CGBJ100QZP");
+	/*PurComFindDetailBillVO(){
+		this->setBillNo("CGBJ-230214-001");
+		this->setBillDate("2023-02-14");
 		this->setSubject("test function");
-	}
+		this->setBillStage(u8"编制中");
+		this->setIsAuto("No");
+		this->setIsEffective("No");
+		this->setIsVoided("No");
+		this->setCreateTime("2023-02-14");
+		this->setSysOrgCode(u8"研发部");
+		this->setCreateBy("QZP");
+		this->setIsAuto("No");
+		this->setIsRubric("No");
+		PurComDetailsVO detail0;
+		list<PurComDetailsVO> lis; lis.push_back(detail0); lis.push_back(detail0);
+		this->setDetailsList(lis);
+	}*/
 };
 
 #endif 

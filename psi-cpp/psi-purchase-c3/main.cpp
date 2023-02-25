@@ -1,21 +1,4 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/24 23:02:34
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "HttpServer.h"
 #include "DbInit.h"
@@ -42,11 +25,12 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "123456";
-	std::string dbName = "test";
-	std::string dbHost = "192.168.197.128";
+	std::string dbPassword = "psitxms9527";
+	std::string dbName = "zopsi_sys";
+	std::string dbHost = "43.138.223.223";
 	int dbPort = 3306;
 	int dbMax = 25;
+
 #ifdef USE_NACOS
 	// Nacos配置参数
 	std::string nacosAddr = "192.168.197.128:8848";

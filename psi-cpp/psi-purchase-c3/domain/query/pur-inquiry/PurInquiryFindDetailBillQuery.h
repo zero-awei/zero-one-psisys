@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_INQUIRY_FIND_DETAIL_BILL_QUERY_
-#define _PUR_INQUIRY_FIND_DETAIL_BILL_QUERY_
+#ifndef _PUR_INQUIRY_FIND_DETAIL_BILL_QUERY_H_
+#define _PUR_INQUIRY_FIND_DETAIL_BILL_QUERY_H_
 
 #include "../PageQuery.h"
 
@@ -29,14 +29,14 @@
 class PurInquiryFindDetailBillQuery : public PageQuery
 {
 	//单据编号
-	CC_SYNTHESIZE(string, purInquiryBillNo, PurInquiryBillNo);    // 对应mysql数据库中bill_no字段
+	CC_SYNTHESIZE(string, bill_no, Bill_no);    // 对应mysql数据库中bill_no字段
 
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, PurInquiryFindDetailBillQuery& t) { 
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, purInquiryBillNo);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
 	}
 };
 

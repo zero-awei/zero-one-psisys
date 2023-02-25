@@ -5,12 +5,9 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 #include "pur-quot/PurQuotController.h"
-
-
-//
-#include "pur-req/PurReqController.h"
 #include "pur-compare/PurCompareController.h"
 #include "pur-inquiry/PurInquiryController.h"
+
 
 
 #ifdef HTTP_SERVER_DEMO
@@ -66,11 +63,9 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 	//#TIP :系统扩展路由定义，写在这个后面
+	createPurQuotRouter();
 	createPurCompareRouter();
 	createPurInquiryRouter();
-	createPurReqRouter();
-	createPurQuotRouter();
-
 }
 
 
@@ -99,41 +94,6 @@ void Router::createUserDepartRouter()
 #endif
 
 
-//采购申请
-void Router::createPurReqRouter() {
-	//查询单据列表
-	BIND_GET_ROUTER(server, "/get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
-	//查询指定单据详细信息
-	BIND_GET_ROUTER(server, "/get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
-	//添加申请(保存/提交)
-	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqController::addPurReq, nullptr);
-	//修改申请(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqController::modifyPurReq, nullptr);
-	//删除申请
-	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqController::removePurReqById, nullptr);
-	//修改单据状态(关闭/作废/反关闭)
-	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqController::modifyPurReqBillStatus, nullptr);
-	//导入
-	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
-	//导出
-	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
-}
-
-//采购询价
-void Router::createPurInquiryRouter() {
-	//查询单据列表
-	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
-	//查询指定单据详细信息
-	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
-	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
-	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
-	BIND_PUT_ROUTER(server, "/modify-status", &PurInquiryController::modifyPurQuotModBillStatus, nullptr);
-	BIND_POST_ROUTER(server, "/purReqInto", &PurInquiryController::PurInquiryInto,nullptr);
-	BIND_GET_ROUTER(server, "/purReqExport", &PurInquiryController::PurInquiryExport, nullptr);
-
-}
-
 //供应报价
 void Router::createPurQuotRouter()
 {
@@ -146,35 +106,62 @@ BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuotById, nul
 	//修改单据状态(关闭/作废/反关闭)
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
 	//导入
-	BIND_PUT_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
+	BIND_POST_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
 	//导出
-	BIND_PUT_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
+	BIND_GET_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
+	//查询单据列表
+	BIND_GET_ROUTER(server, "/pur-quot-find-bill", &PurQuotController::queryPurInquiryFindBill, nullptr);
+	//查询指定单据列表
+	BIND_GET_ROUTER(server, "/pur-quot-detail-find-bill", &PurQuotController::queryPurInquiryFindDetailBill, nullptr);
+
+	//报价单列表
+	BIND_GET_ROUTER(server, "/get-pur-quot-of-combill", &PurQuotController::queryPurQuotList, nullptr);
+	//报价单分录列表
+	BIND_GET_ROUTER(server, "/get-pur-quot-more-of-combill", &PurQuotController::queryPurQuotDividedList, nullptr);
 }
 
-//采购比价
-void Router::createPurCompareRouter(){
-	//查询单据列表
+
+
+
+
+void Router::createPurCompareRouter()
+{
+	//查询比价单列表接口路由绑定
 	BIND_GET_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
-	//查询指定单据详细信息
+	//查询指定比价单详细信息接口路由绑定
 	BIND_GET_ROUTER(server, "/get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
-	//报价单列表
+	//查询报价单接口路由绑定
 	BIND_GET_ROUTER(server, "/get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
-	//报价单分录列表
+	//查询报价单分录接口路由绑定
 	BIND_GET_ROUTER(server, "/get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
 	//添加比价(保存/提交)
 	BIND_POST_ROUTER(server, "/add-pur-com", &PurCompareController::addPurCom, nullptr);
 	//修改比较(保存/提交/审核)
-	BIND_POST_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
+	BIND_PUT_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
 	//删除比价
 	BIND_DEL_ROUTER(server, "/del-pur-com", &PurCompareController::removePurCom, nullptr);
 	//修改单据状态(关闭/作废/反关闭)
-	BIND_POST_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
-	//导入
-	BIND_POST_ROUTER(server, "/pur-into-into", &PurCompareController::modifyPurComInto, nullptr);
-	//导出
-	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
+	BIND_PUT_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
+	////导入
+	//BIND_POST_ROUTER(server, "/pur-into-into", &PurCompareController::modifyPurComInto, nullptr);
+	////导出
+	//BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
 }
 
 
 
-
+//采购询价
+void Router::createPurInquiryRouter() {
+	//查询单据列表
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
+	//查询指定单据详细信息
+	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
+	BIND_POST_ROUTER(server, "/add", &PurInquiryController::addPurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/modify", &PurInquiryController::modifyPurInquiry, nullptr);
+	BIND_DEL_ROUTER(server, "/delete", &PurInquiryController::removePurInquiry, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-status", &PurInquiryController::modifyPurQuotModBillStatus, nullptr);
+	// 导出
+	BIND_GET_ROUTER(server, "/pur-inquiry-export", &PurInquiryController::queryPurInquiryExport, nullptr);
+	// 导入
+	BIND_POST_ROUTER(server, "/pur-inquiry-into", &PurInquiryController::addPurInquiryInto, nullptr);
+}

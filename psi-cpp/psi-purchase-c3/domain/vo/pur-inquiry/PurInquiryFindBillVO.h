@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_INQUIRY_FIND_BILL_VO_
-#define _PUR_INQUIRY_FIND_BILL_VO_
+#ifndef _PUR_INQUIRY_FIND_BILL_VO_H_
+#define _PUR_INQUIRY_FIND_BILL_VO_H_
 
 #include "../../GlobalInclude.h"
 
@@ -29,68 +29,69 @@
 //采购询价单列表 - 基本信息
 class PurInquiryFindBillVO
 {
-	//单据编号  
-	CC_SYNTHESIZE(string, purInquiryBillNo, PurInquiryBillNo);    
-	//单据日期
-	CC_SYNTHESIZE(string, purInquiryBillDate, PurInquiryBillDate);  
-	//单据主题 
-	CC_SYNTHESIZE(string, purInquirySubject, PurInquirySubject);  
-	//源单号
-	CC_SYNTHESIZE(string, purInquirySrcBillId, PurInquirySrcBillId);   
-	//交货日期
-	CC_SYNTHESIZE(string, purInquiryDeliveryTime, purInquiryDeliveryTime);   
-	//数量
-	CC_SYNTHESIZE(double, purInquiryQty, purInquiryQty);   
-	//参考金额
-	CC_SYNTHESIZE(double, purInquiryAmt, purInquiryAmt);   
-	//报价单数
-	CC_SYNTHESIZE(int, purInquiryQuotCount, purInquiryQuotCount);    
-	//单据阶段（公共接口）
-	CC_SYNTHESIZE(string, purInquiryBillStage, purInquiryBillStage);
-	//是否生效
-	CC_SYNTHESIZE(int, purInquiryIsEffective, PurInquiryIsEffective);  
-	//是否关闭
-	CC_SYNTHESIZE(int, purInquiryIsClosed, PurInquiryIsClosed);  
-	//是否作废
-	CC_SYNTHESIZE(int, purInquiryIsVoided, PurInquiryIsVoided); 
-	//交货地点
-	CC_SYNTHESIZE(string, purInquiryDeliveryPlace, PurInquiryDeliveryPlace);   
-	//联系人
-	CC_SYNTHESIZE(string, purInquiryContact, PurInquiryContact);  
-	//联系电话
-	CC_SYNTHESIZE(string, purInquiryPhone, PurInquiryPhone);  
-	//传真
-	CC_SYNTHESIZE(string, purInquiryFax, PurInquiryFax);  
-	//电子邮件
-	CC_SYNTHESIZE(string, purInquiryEmail, PurInquiryEmail);   
-	//备注
-	CC_SYNTHESIZE(string, purInquiryRemark, PurInquiryRemark);   
-	//自动单据
-	CC_SYNTHESIZE(int, purInquiryIsAuto, PurInquiryIsAuto);   
-	//红字单据 
-	CC_SYNTHESIZE(int, purInquiryIsRubric, PurInquiryIsRubric);   
-	//生效时间
-	CC_SYNTHESIZE(string, purInquiryEffectiveTime, PurInquiryEffectiveTime);   
-	//核批人
-	CC_SYNTHESIZE(string, purInquiryApprover, PurInquiryApprover);   
-	//制单时间
-	CC_SYNTHESIZE(string, purInquiryCreateTime, PurInquiryCreateTime);   
-	//制单人
-	CC_SYNTHESIZE(string, purInquiryCreateBy, PurInquiryCreateBy);   
-	//制单部门
-	CC_SYNTHESIZE(string, purInquirySysOrgCode, PurInquirySysOrgCode);   
-	//修改时间
-	CC_SYNTHESIZE(string, purInquiryUpdateTime, PurInquiryUpdateTime);   
-	//修改人
-	CC_SYNTHESIZE(string, purInquiryUpdateBy, PurInquiryUpdateBy);   
+	// ID
+	//CC_SYNTHESIZE(string, id, Id);
+	// 单据编号
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	// 单据日期
+	CC_SYNTHESIZE(string, bill_date, Bill_date);
+	// 单据主题
+	CC_SYNTHESIZE(string, subject, Subject);
+	// 源单号			
+	CC_SYNTHESIZE(string, src_no, Src_no);
+	// 交货日期		   
+	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
+	// 数量			 
+	CC_SYNTHESIZE(double, qty, Qty);
+	// 参考金额		   
+	CC_SYNTHESIZE(double, amt, Amt);
+	// 报价单数		   
+	CC_SYNTHESIZE(int, quot_count, Quot_count);
+	// 单据阶段（公共接口）
+	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
+	// 是否生效
+	CC_SYNTHESIZE(int, is_effective, Is_effective)
+	// 是否关闭
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	// 是否作废
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	// 交货地点
+	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
+	// 联系人
+	CC_SYNTHESIZE(string, contact, Contact);
+	// 联系电话
+	CC_SYNTHESIZE(string, phone, Phone);
+	// 传真
+	CC_SYNTHESIZE(string, fax, Fax);
+	// 电子邮件
+	CC_SYNTHESIZE(string, email, Email);
+	// 备注
+	CC_SYNTHESIZE(string, remark, Remark);
+	// 自动单据
+	CC_SYNTHESIZE(int, is_auto, Is_auto);
+	// 红字单据 
+	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
+	// 生效时间
+	CC_SYNTHESIZE(string, effective_time, Effective_time);
+	// 核批人
+	CC_SYNTHESIZE(string, approver, Approver);
+	// 制单时间
+	CC_SYNTHESIZE(string, create_time, Create_time);
+	// 制单人
+	CC_SYNTHESIZE(string, create_by, Create_by);
+	// 制单部门
+	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
+	// 修改时间
+	CC_SYNTHESIZE(string, update_time, Update_time);
+	// 修改人
+	CC_SYNTHESIZE(string, update_by, Update_by);
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurInquiryFindBillVO, purInquiryBillNo, purInquiryBillDate, purInquirySubject, purInquirySrcBillId,
-		purInquiryDeliveryTime, purInquiryQty, purInquiryAmt, purInquiryQuotCount, purInquiryBillStage,purInquiryIsEffective, purInquiryIsClosed,
-		purInquiryIsVoided, purInquiryDeliveryPlace, purInquiryContact, purInquiryPhone, purInquiryFax, purInquiryEmail,
-		purInquiryRemark, purInquiryIsAuto, purInquiryIsRubric, purInquiryEffectiveTime, purInquiryApprover,
-		purInquiryCreateTime, purInquiryCreateBy, purInquirySysOrgCode, purInquiryUpdateTime, purInquiryUpdateBy);
+	BIND_TO_JSON(PurInquiryFindBillVO, bill_no, bill_date, subject, src_no, delivery_time, qty,
+		amt, quot_count, bill_stage, is_effective, is_closed, is_voided, delivery_place, contact,
+		phone, fax, email, remark, is_auto, is_rubric, effective_time, approver, create_time,
+		create_by, sys_org_code, update_time, update_by);
 
 };
 

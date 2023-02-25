@@ -1,46 +1,33 @@
-#ifndef __PUR_QUOT_DIVIDED_LIST_VO_
-#define __PUR_QUOT_DIVIDED_LIST_VO_
-
+#pragma once
+#ifndef _PUR_QUOT_DIVIDED_LIST_VO_H_
+#define _PUR_QUOT_DIVIDED_LIST_VO_H_
 #include "../../GlobalInclude.h"
-
-/**
- * 供应报价单查询显示对象
- */
+//询价单分录列表的VO
 class PurQuotDividedListVO
 {
-	// 序号
-	CC_SYNTHESIZE(string, receiptNum, ReceiptNum);
-	// 物料
-	CC_SYNTHESIZE(string, material, Material);
+	//单据编号
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	//物料
+	CC_SYNTHESIZE(string, material_id, Material_id);
 	//规格型号
-	CC_SYNTHESIZE(string, specificationsModels, SpecificationsModels);
 	//单位
-	CC_SYNTHESIZE(string, units, Units);
+	CC_SYNTHESIZE(string, unit_id, Unit_id);
 	//数量
-	CC_SYNTHESIZE(int, quantity, Quantity);
+	CC_SYNTHESIZE(double, qty, Qty);
 	//税率
-	CC_SYNTHESIZE(double, taxRate, TaxRate);
-	//参考税单价
-	CC_SYNTHESIZE(double, referenceTaxPrice, ReferenceTaxPrice);
+	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
 	//参考含税单价
-	CC_SYNTHESIZE(double, referenceIncludTaxPrice, ReferenceIncludTaxPrice);
+	CC_SYNTHESIZE(double, price, Price);
 	//参考含税金额
-	CC_SYNTHESIZE(double, referenceIncludTaxAmount, referenceIncludTaxAmount);
+	CC_SYNTHESIZE(double, amt, Amt);
 	//备注
-	CC_SYNTHESIZE(string, comments, Comments);
-	// 自定义1
+	CC_SYNTHESIZE(string, remark, Remark);
+	//自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// 自定义2
+	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurQuotDividedListVO, receiptNum, material, specificationsModels,\
-		units, quantity, taxRate, referenceTaxPrice, referenceIncludTaxPrice,\
-		referenceIncludTaxAmount, comments, custom1, custom2);
-	// 用于测试用
-	PurQuotDividedListVO() {
-		this->setReceiptNum("20");
-		this->setMaterial("test Material");
-	}
+	BIND_TO_JSON(PurQuotDividedListVO, bill_no, material_id, unit_id, qty, tax_rate, price, amt,remark, custom1, custom2);
 };
-#endif 
+#endif

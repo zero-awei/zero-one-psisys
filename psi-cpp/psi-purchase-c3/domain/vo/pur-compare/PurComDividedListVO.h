@@ -32,21 +32,21 @@ class PurComDividedListVO
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// # 分录编号
-	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
+	CC_SYNTHESIZE(string, entryNo, EntryNo);
 	// 物料
-	CC_SYNTHESIZE(string, materialId, MaterialId);
+	CC_SYNTHESIZE(string, materialName, MaterialName);
 	// 规格型号
 	CC_SYNTHESIZE(string, specifications, Specifications);
 	// 单位
-	CC_SYNTHESIZE(string, unitId, UnitId);
+	CC_SYNTHESIZE(string, unitName, UnitName);
 	// 数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	// 税率
-	CC_SYNTHESIZE(uint64_t, taxRate, TaxRate);
+	CC_SYNTHESIZE(double, taxRate, TaxRate);
 	// 含税价格
 	CC_SYNTHESIZE(double, price, Price);
 	// 折扣率
-	CC_SYNTHESIZE(uint64_t, discountRate, DiscountRate);
+	CC_SYNTHESIZE(double, discountRate, DiscountRate);
 	// 含税金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	// 备注
@@ -57,14 +57,14 @@ class PurComDividedListVO
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurComDividedListVO, billNo, materialId, specifications, unitId, qty, taxRate, \
+	BIND_TO_JSON(PurComDividedListVO, billNo, entryNo, materialName, specifications, unitName, qty, taxRate, \
 		price, discountRate, amt, remark, custom1, custom2);
-	PurComDividedListVO()
-	{
-		this->setBillNo("CGBJ100QZP");
-		this->setSrcEntryId("214");
-		this->setRemark("测试");
-	}
+	//PurComDividedListVO()
+	//{
+	//	this->setBillNo("CGBJ100QZP");
+	//	this->setSrcEntryId("214");
+	//	this->setRemark("测试");
+	//}
 };
 
 #endif 

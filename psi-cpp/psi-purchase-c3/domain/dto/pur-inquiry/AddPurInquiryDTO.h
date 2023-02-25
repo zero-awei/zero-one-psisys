@@ -1,11 +1,17 @@
-#include "stdafx.h"
+#pragma once
+
+#ifndef __ADD_PUR_INQUIRY_DTO_H__
+#define __ADD_PUR_INQUIRY_DTO_H__
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
-#ifndef __ADDPURINQUIRYDTO_H__
-#define __ADDPURINQUIRYDTO_H__
+#include "../IDDTO.h"
+#include <list>
+#include "AddPurInquiryEntryDTO.h"
 //增加和修改DTO
 class AddPurInquiryDTO : public FileDTO
 {
+	//ID
+	CC_SYNTHESIZE(std::string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据主题
@@ -13,7 +19,7 @@ class AddPurInquiryDTO : public FileDTO
 	//付款方式
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
 	//交货地点
-	CC_SYNTHESIZE(string, deliver_place, Deliver_place);
+	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
 	////联系人			;
 	CC_SYNTHESIZE(string, contact, Contact);
 	////联系电话	   ;
@@ -38,12 +44,18 @@ class AddPurInquiryDTO : public FileDTO
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_Date);
+	//明细
+	CC_SYNTHESIZE(list<AddPurInquiryEntryDTO>, detail, Detail);
+
+
 public:
 	friend void from_json(const json& j, AddPurInquiryDTO& t)
 	{
+		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		BIND_FROM_TO_NORMAL(j, t, subject);
 		BIND_FROM_TO_NORMAL(j, t, payment_method);
-		BIND_FROM_TO_NORMAL(j, t, deliver_place);
+		BIND_FROM_TO_NORMAL(j, t, delivery_place);
 		BIND_FROM_TO_NORMAL(j, t, contact);
 		BIND_FROM_TO_NORMAL(j, t, phone);
 		BIND_FROM_TO_NORMAL(j, t, fax);
@@ -56,6 +68,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, effective_time);
 		BIND_FROM_TO_NORMAL(j, t, bill_stage);
 		BIND_FROM_TO_NORMAL(j, t, bill_date);
+		BIND_FROM_TO_OBJ(j, t, detail,list<AddPurInquiryEntryDTO>);
 	}
 
 

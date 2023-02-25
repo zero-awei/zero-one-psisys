@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_INQUIRY_FIND_BILL_QUERY_
-#define _PUR_INQUIRY_FIND_BILL_QUERY_
+#ifndef _PUR_INQUIRY_FIND_BILL_QUERY_H_
+#define _PUR_INQUIRY_FIND_BILL_QUERY_H_
 
 #include "../PageQuery.h"
 
@@ -30,30 +30,30 @@
 class PurInquiryFindBillQuery : public PageQuery
 {
 	//单据编号
-	CC_SYNTHESIZE(string, purInquiryBillNo, PurInquiryBillNo);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
-	CC_SYNTHESIZE(string, purInquiryBillDate, PurInquiryBillDate);
+	CC_SYNTHESIZE(string, bill_date, Bill_date);
 	//单据主题
-	CC_SYNTHESIZE(string, purInquirySubject, PurInquirySubject);
+	CC_SYNTHESIZE(string, subject, Subject);
 //单据状态
 	//是否生效
-	CC_SYNTHESIZE(int, purInquiryIsEffective, PurInquiryIsEffective); 
+	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	//是否关闭
-	CC_SYNTHESIZE(int, purInquiryIsClosed, PurInquiryIsClosed);
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	//是否作废
-	CC_SYNTHESIZE(int, purInquiryIsVoided, PurInquiryIsVoided);
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
 
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, PurInquiryFindBillQuery& t) {
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, purInquiryBillNo);
-		BIND_FROM_TO_NORMAL(j, t, purInquiryBillDate);
-		BIND_FROM_TO_NORMAL(j, t, purInquirySubject);
-		BIND_FROM_TO_I(j, t, purInquiryIsEffective);
-		BIND_FROM_TO_I(j, t, purInquiryIsClosed);
-		BIND_FROM_TO_I(j, t, purInquiryIsVoided);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
+		BIND_FROM_TO_NORMAL(j, t, bill_date);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_I(j, t, is_effective);
+		BIND_FROM_TO_I(j, t, is_closed);
+		BIND_FROM_TO_I(j, t, is_voided);
 	}
 };
 

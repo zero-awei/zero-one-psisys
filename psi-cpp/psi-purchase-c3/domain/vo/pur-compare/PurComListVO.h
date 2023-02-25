@@ -34,7 +34,7 @@ class PurComListVO
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 供应商
-	CC_SYNTHESIZE(string, supplierId, SupplierId);
+	CC_SYNTHESIZE(string, supplierName, SupplierName);
 	// 付款方式
 	CC_SYNTHESIZE(string, paymentMethod, PaymentMethod);
 	// 交货日期
@@ -45,14 +45,14 @@ class PurComListVO
 	CC_SYNTHESIZE(string, remark, Remark);
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurComListVO, billNo, billDate, subject, supplierId, \
+	BIND_TO_JSON(PurComListVO, billNo, billDate, subject, supplierName, \
 		paymentMethod, deliveryTime, deliveryPlace, remark);
 	//用于测试
-	PurComListVO()
-	{
-		this->setBillNo("CGBJ100QZP");
-		this->setSubject("测试接口");
-	}
+	//PurComListVO()
+	//{
+	//	this->setBillNo("CGBJ100QZP");
+	//	this->setSubject("测试接口");
+	//}
 };
 
 

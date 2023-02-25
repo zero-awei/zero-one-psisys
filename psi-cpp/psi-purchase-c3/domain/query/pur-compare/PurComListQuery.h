@@ -25,7 +25,7 @@
 /**
  *  报价单列表查询对象
  */
-class PurComListQuery : public PageQuery
+class PurComListQuery 
 {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);

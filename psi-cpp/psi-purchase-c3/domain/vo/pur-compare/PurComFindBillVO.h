@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_COM_FIND_BILL_VO_H_
-#define _PUR_COM_FIND_BILL_VO_H_
+#ifndef _PUR_COM_FIND_BILL_VO_
+#define _PUR_COM_FIND_BILL_VO_
 
 #include "../../GlobalInclude.h"
 
@@ -27,8 +27,8 @@
  */
 class PurComFindBillVO
 {
-	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	// 编号(非数据库表中的id字段，只是前端的#)
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期
@@ -77,11 +77,11 @@ public:
 		billStage, isEffective, isClosed, isVoided, deliveryPlace, remark, isAuto, isRubric, \
 		effectiveTime, approver, createTime, createBy, sysOrgCode, updateTime, updateBy);
 	// 用于测试用
-	PurComFindBillVO() {
+	/*PurComFindBillVO() {
 		this->setId(100);
 		this->setBillNo("CGBJ100QZP");
 		this->setSubject("test function");
-	}
+	}*/
 };
 
 

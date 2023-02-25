@@ -1,8 +1,7 @@
-#include "stdafx.h"
+#pragma once
+#ifndef __PUR_INQUIRY_REMOVE_DTO_H__
+#define __PUR_INQUIRY_REMOVE_DTO_H__
 #include "../../GlobalInclude.h"
-#ifndef __PURINQUIRYREMOVEDTO_H__
-#define __PURINQUIRYREMOVEDTO_H__
-
 //É¾³ýDTO
 class PurInquiryRemoveDTO
 {

@@ -1,41 +1,36 @@
-#include "stdafx.h"
-#ifndef __PurQuotFindBill_QUERY_H__
-#define __PurQuotFindBill_QUERY_H__
-
+#pragma once
+#ifndef __PUR_QUOT_FIND_BILL_QUERY_H_
+#define __PUR_QUOT_FIND_BILL_QUERY_H_
 #include "../PageQuery.h"
-
-class PurQuotFindBillQuery : public PageQuery
-{
-
+class PurQuotFindBillQuery : public PageQuery{
 	// 单据编号
-	CC_SYNTHESIZE(string, receiptId, ReceiptId);
-	// 单据日期 开始
-	CC_SYNTHESIZE(string, receiptTimeBegin, ReceiptTimeBegin);
-	// 单据日期 结束
-	CC_SYNTHESIZE(string, receiptTimeEnd, ReceiptTimeEnd);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	//单据日期--开始
+	CC_SYNTHESIZE(string, bill_date_begin, Bill_date_begin);
+	//单据日期--结束
+	CC_SYNTHESIZE(string, bill_date_end, Bill_date_end);
 	// 单据主题
-	CC_SYNTHESIZE(string, receiptTheme, ReceiptTheme);
+	CC_SYNTHESIZE(string, subject, Subject);
 	// 单据阶段
-	CC_SYNTHESIZE(string, receiptStage, ReceiptStage);
+	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	// 已生效
-	CC_SYNTHESIZE(string, isWork, IsWork);
+	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	// 已关闭
-	CC_SYNTHESIZE(string, isClose, IsClose);
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	// 已作废
-	CC_SYNTHESIZE(string, isAbolish, IsAbolish);
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
 public:
 	friend void from_json(const json& j, PurQuotFindBillQuery& t) {
 		BIND_FROM_TO_I(j, t, pageIndex);
 		BIND_FROM_TO_I(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, receiptId);
-		BIND_FROM_TO_NORMAL(j, t, receiptTimeBegin);
-		BIND_FROM_TO_NORMAL(j, t, receiptTimeEnd);
-		BIND_FROM_TO_NORMAL(j, t, receiptTheme);
-		BIND_FROM_TO_NORMAL(j, t, receiptStage);
-		BIND_FROM_TO_NORMAL(j, t, isWork);
-		BIND_FROM_TO_NORMAL(j, t, isClose);
-		BIND_FROM_TO_NORMAL(j, t, isAbolish);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
+		BIND_FROM_TO_NORMAL(j, t, bill_date_begin);
+		BIND_FROM_TO_NORMAL(j, t, bill_date_end);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, bill_stage);
+		BIND_FROM_TO_I(j, t, is_effective);
+		BIND_FROM_TO_I(j, t, is_closed);
+		BIND_FROM_TO_I(j, t, is_voided);
 	}
 };
-
 #endif

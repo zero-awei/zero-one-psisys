@@ -1,18 +1,17 @@
-#include "stdafx.h"
-#ifndef __Pur_Quot_FindDetailBill_QUERY_H__
-#define __Pur_Quot_FindDetailBill_QUERY_H__
+#pragma once
+#ifndef __PUR_QUOT_FIND_DETAIL_QUERY_H_
+#define __PUR_QUOT_FIND_DETAIL_QUERY_H_
 
 #include "../PageQuery.h"
 
 class PurQuotFindDetailBillQuery
 {
-
 	// µ¥¾Ý±àºÅ
-	CC_SYNTHESIZE(string, receiptId, ReceiptId);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
+
 public:
 	friend void from_json(const json& j, PurQuotFindDetailBillQuery& t) {
-
-		BIND_FROM_TO_NORMAL(j, t, receiptId);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
 	}
 };
 #endif

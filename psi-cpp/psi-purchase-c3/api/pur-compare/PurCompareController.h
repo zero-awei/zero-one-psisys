@@ -21,34 +21,26 @@
 #define _PUR_COMPARE_CONTROLLER_
 
 //公共接口
-#include "../../domain/vo/JsonVO.h"
-#include "../../domain/vo/PageVO.h"
 #include "../../domain/dto/IDDTO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/vo/JsonVO.h"
 
+//query
+#include "../../domain/query/pur-compare/PurComFindBillQuery.h"
+#include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
+#include "../../domain/query/pur-compare/PurComDividedListQuery.h"
+#include "../../domain/query/pur-compare/PurComListQuery.h"
 //vo
 #include "../../domain/vo/pur-compare/PurComFindBillVO.h"
 #include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
 #include "../../domain/vo/pur-compare/PurComListVO.h"
 #include "../../domain/vo/pur-compare/PurComDividedListVO.h"
-#include "../../domain/vo/pur-compare/PurComExportVO.h"
-
-
-//query
-#include "../../domain/query/pur-compare/PurComFindBillQuery.h"
-#include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
-#include "../../domain/query/pur-compare/PurComListQuery.h"
-#include "../../domain/query/pur-compare/PurComDividedListQuery.h"
-#include "../../domain/query/pur-compare/PurComExportQuery.h"
 //dto
 #include "../../domain/dto/pur-compare/AddPurComDTO.h"
 #include "../../domain/dto/pur-compare/ModPurComDTO.h"
 #include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
 #include "../../domain/dto/pur-compare/DelPurComDTO.h"
 #include "../../domain/dto/pur-compare/PurComIntoDTO.h"
-
-
-
-
 /**
  * 比价单控制器
  */
@@ -60,40 +52,30 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComList, execQueryPurComList, PurComListQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComDividedList, execQueryPurComDividedList, PurComDividedListQuery);
 	// 新增比价
-	CREATE_API_FUN_BODY_FILE(addPurCom, execAddPurCom, AddPurComDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurCom, execAddPurCom, AddPurComDTO);
 	// 修改比价
-	CREATE_API_FUN_BODY(modifyPurCom, execModifyPurCom, ModPurComDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(modifyPurCom, execModifyPurCom, ModPurComDTO);
 	// 删除比价
 	CREATE_API_FUN_BODY(removePurCom, execRemovePurCom, DelPurComDTO);
 	// 修改单据状态
-	CREATE_API_FUN_BODY(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
-
-	//导出
-	CREATE_API_FUN_BODY_PAYLOAD(queryPurComExport, execPurComExport, PurComExportQuery);
-	//导入
-	CREATE_API_FUN_BODY_FILE(modifyPurComInto, execPurComInto, PurComIntoDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
 private:
+	//演示新增比价
+	JsonVO<uint64_t> execAddPurCom(const AddPurComDTO& dto, PayloadDTO payload);
+	//演示修改比价
+	JsonVO<uint64_t> execModifyPurCom(const ModPurComDTO& dto, PayloadDTO payload);
+	//演示删除比价
+	JsonVO<uint64_t> execRemovePurCom(const DelPurComDTO& dto);
+	//演示修改单据状态
+	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto, PayloadDTO payload);
 	// 查询比价单单据列表
 	JsonVO<PageVO<PurComFindBillVO>> execQueryPurComFindBill(const PurComFindBillQuery& query, const PayloadDTO& payload);
 	// 查询指定比价单单据详细信息
 	JsonVO<PurComFindDetailBillVO> execQueryPurComFindDetailBill(const PurComFindDetailBillQuery& query, const PayloadDTO& payload);
 	// 查询报价单列表
-	JsonVO<PageVO<PurComListVO>> execQueryPurComList(const PurComListQuery& query, const PayloadDTO& payload);
+	JsonVO<list<PurComListVO>> execQueryPurComList(const PurComListQuery& query, const PayloadDTO& payload);
 	// 查询报价单分录列表
-	JsonVO<PageVO<PurComDividedListVO>> execQueryPurComDividedList(const PurComDividedListQuery& query, const PayloadDTO& payload);
-	//演示新增比价
-	JsonVO<uint64_t> execAddPurCom(const AddPurComDTO& dto);
-	//演示修改比价
-	JsonVO<uint64_t> execModifyPurCom(const ModPurComDTO& dto);
-	//演示删除比价
-	JsonVO<uint64_t> execRemovePurCom(const DelPurComDTO& dto);
-	//演示修改单据状态
-	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto);
-
-	//执行方法：导出
-	JsonVO<std::string> execPurComExport(const PurComExportQuery& dto, const PayloadDTO& payload);
-	//执行方法：导入
-	JsonVO<uint64_t> execPurComInto(const PurComIntoDTO& dto);
+	JsonVO<list<PurComDividedListVO>> execQueryPurComDividedList(const PurComDividedListQuery& query, const PayloadDTO& payload);
 };
 
 #endif // _SAMPLE_CONTROLLER_#pragma once

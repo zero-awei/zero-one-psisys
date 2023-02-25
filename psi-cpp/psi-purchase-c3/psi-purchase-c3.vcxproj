@@ -97,7 +97,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;yaml-cppd.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>path=%path%;../lib-dy/lib/debug</Command>
@@ -122,7 +122,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;yaml-cpp.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -144,7 +144,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlntd.lib;yaml-cppd.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>path=%path%;../lib-dy/lib64/debug</Command>
@@ -169,7 +169,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;xlnt.lib;yaml-cpp.lib;hiredis.lib;redis++.lib;rdkafka++.lib;rocketmq-client-cpp.lib;mongocxx.lib;bsoncxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PreBuildEvent>
@@ -189,103 +189,133 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\pur-compare\PurCompareController.h" />
+    <ClInclude Include="api\pur-inquiry\ExecExport.h" />
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
+    <ClInclude Include="api\pur-inquiry\PurInquiryFastDfs.h" />
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
-    <ClInclude Include="api\pur-req\PurReqController.h" />
     <ClInclude Include="api\Router.h" />
-    <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="dao\pur-compare\PurCandidateQuotMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComDetailsMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComDividedListMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComFindBillMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComFindDetailBillMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComListMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurCompareDao.h" />
+    <ClInclude Include="dao\pur-inquiry\PurInquiryDAO.h" />
+    <ClInclude Include="dao\pur-inquiry\PurInquiryMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotBaseMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotDAO.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotDetailMapper.h" />
+    <ClInclude Include="domain\do\pur-compare\AddPurComDO.h" />
+    <ClInclude Include="domain\do\pur-compare\DelPurComDO.h" />
+    <ClInclude Include="domain\do\pur-compare\ModPurComDO.h" />
+    <ClInclude Include="domain\do\pur-compare\PurComModBillStatusDO.h" />
+    <ClInclude Include="domain\do\pur-compare\PurCompareDO.h" />
+    <ClInclude Include="domain\do\pur-compare\PurCompareEntryDO.h" />
+    <ClInclude Include="domain\do\pur-compare\PurComQuotDO.h" />
+    <ClInclude Include="domain\do\pur-compare\PurComQuotEntryDO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\AddPurInquiryDO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\AddPurInquiryEntryDO.h" />
     <ClInclude Include="domain\do\pur-inquiry\PurInquiryDO.h" />
-    <ClInclude Include="domain\do\purchase-quotation-naiguan\PurQuotNaiguanDO.h" />
-    <ClInclude Include="domain\dto\FileDTO.h" />
-    <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\PurInquiryEntryDO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\PurInquiryModBillStatusDO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\PurReqDO.h" />
+    <ClInclude Include="domain\do\pur-inquiry\PurReqEntryDO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotNaiGuanDO.h" />
     <ClInclude Include="domain\dto\pur-compare\AddPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\DelPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\ModPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComModBillStatusDTO.h" />
     <ClInclude Include="domain\dto\pur-inquiry\AddPurInquiryDTO.h" />
+    <ClInclude Include="domain\dto\pur-inquiry\AddPurInquiryEntryDTO.h" />
     <ClInclude Include="domain\dto\pur-inquiry\PurInquiryIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-inquiry\PurInquiryModBillStatusDTO.h" />
     <ClInclude Include="domain\dto\pur-inquiry\PurInquiryRemoveDTO.h" />
+    <ClInclude Include="domain\dto\pur-quot\PurQuotDetailDTO.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComDividedListQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComFindBillQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComFindDetailBillQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComListQuery.h" />
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryExportQuery.h" />
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindBillQuery.h" />
+    <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindDetailBillQuery.h" />
+    <ClInclude Include="domain\vo\pur-compare\PurComDetailsVO.h" />
+    <ClInclude Include="domain\vo\pur-compare\PurComDividedListVO.h" />
+    <ClInclude Include="domain\vo\pur-compare\PurComFindBillVO.h" />
+    <ClInclude Include="domain\vo\pur-compare\PurComFindDetailBillVO.h" />
+    <ClInclude Include="domain\vo\pur-compare\PurComListVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryExportVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindBillVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindDetailBillVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotDetailVO.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotDividedListMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h" />
+    <ClInclude Include="dao\pur-quot\PurQuotListMapper.h" />
+    <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotDO.h" />
+    <ClInclude Include="domain\do\pur-quot\PurQuotEntryDO.h" />
+    <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h" />
-    <ClInclude Include="domain\dto\pur-req\AddPurReqDTO.h" />
-    <ClInclude Include="domain\dto\pur-req\DeletePurReqDTO.h" />
-    <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h" />
-    <ClInclude Include="domain\dto\pur-req\PurReqIntoDTO.h" />
-    <ClInclude Include="domain\dto\pur-req\PurReqModBillStatusDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
-    <ClInclude Include="domain\query\pur-compare\PurComDividedListQuery.h" />
-    <ClInclude Include="domain\query\pur-compare\PurComExportQuery.h" />
-    <ClInclude Include="domain\query\pur-compare\PurComFindBillQuery.h" />
-    <ClInclude Include="domain\query\pur-compare\PurComFindDetailBillQuery.h" />
-    <ClInclude Include="domain\query\pur-compare\PurComListQuery.h" />
-    <ClInclude Include="domain\query\pur-inquiry\PurInquiryExportQuery.h" />
-    <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindDetailBillQuery.h" />
-    <ClInclude Include="domain\query\pur-inquiry\PurInquiryFindBillQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotDividedListQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotExportQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotFindBillQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotFindDetailBillQuery.h" />
     <ClInclude Include="domain\query\pur-quot\PurQuotListQuery.h" />
-    <ClInclude Include="domain\query\pur-req\PurReqExportQuery.h" />
-    <ClInclude Include="domain\query\pur-req\PurReqFindBillQuery.h" />
-    <ClInclude Include="domain\query\pur-req\PurReqFindDetailBillQuery.h" />
-    <ClInclude Include="domain\vo\pur-compare\PurComDividedListVO.h" />
-    <ClInclude Include="domain\vo\pur-compare\PurComExportVO.h" />
-    <ClInclude Include="domain\vo\pur-compare\PurComFindBillVO.h" />
-    <ClInclude Include="domain\vo\pur-compare\PurComFindDetailBillVO.h" />
-    <ClInclude Include="domain\vo\pur-compare\PurComListVO.h" />
-    <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h" />
-    <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryVO.h" />
-    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindBillVO.h" />
-    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindDetailBillVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-    <ClInclude Include="domain\vo\pur-inquiry\PurInquiryIntoVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotBaseVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotFindBillVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotFindDetailBillVO.h" />
+    <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h" />
     <ClInclude Include="domain\vo\pur-quot\PurQuotListVO.h" />
-    <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h" />
-    <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h" />
-    <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\pur-compare\PurCompareService.h" />
     <ClInclude Include="service\pur-inquiry\PurInquiryService.h" />
     <ClInclude Include="service\pur-req\PurReqService.h" />
+    <ClInclude Include="service\pur-quot\PurQuotService.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="uselib\fastdfs\TestFastDfs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\pur-compare\PurCompareController.cpp" />
+    <ClCompile Include="api\pur-inquiry\ExecExport.cpp" />
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
+    <ClCompile Include="api\pur-inquiry\PurInquiryFastDfs.cpp" />
     <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
-    <ClCompile Include="api\pur-req\PurReqController.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="domain\dto\pur-req\AddPurReqDTO.cpp" />
-    <ClCompile Include="domain\dto\pur-req\DeletePurReqDTO.cpp" />
-    <ClCompile Include="domain\dto\pur-req\ModifyPurReqDTO.cpp" />
-    <ClCompile Include="domain\dto\pur-req\PurReqIntoDTO.cpp" />
-    <ClCompile Include="domain\dto\pur-req\PurReqModBillStatusDTO.cpp" />
-    <ClCompile Include="domain\query\pur-req\PurReqExportQuery.cpp" />
+    <ClCompile Include="dao\pur-compare\PurCompareDao.cpp" />
+    <ClCompile Include="dao\pur-inquiry\PurInquiryDAO.cpp" />
+    <ClCompile Include="dao\pur-quot\PurQuotDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\pur-compare\PurCompareService.cpp" />
     <ClCompile Include="service\pur-inquiry\PurInquiryService.cpp" />
     <ClCompile Include="service\pur-req\PurReqService.cpp" />
+    <ClCompile Include="service\pur-quot\PurQuotService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
-#include "stdafx.h"
-#ifndef __PURINQUIRYINTODTO_H__
-#define __PURINQUIRYINTODTO_H__
+#pragma once
+#ifndef __PUR_INQUIRY_INTO_DTO_H__
+#define __PUR_INQUIRY_INTO_DTO_H__
 
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"

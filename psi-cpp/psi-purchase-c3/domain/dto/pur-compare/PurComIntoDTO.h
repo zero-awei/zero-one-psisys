@@ -1,7 +1,6 @@
 #pragma once
-
-#ifndef _PUR_COM_INTO_DTO_
-#define _PUR_COM_INTO_DTO_
+#ifndef _PUR_COM_INTO_DTO_H_
+#define _PUR_COM_INTO_DTO_H_
 
 #include "../FileDTO.h"
 

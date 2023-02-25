@@ -1,7 +1,7 @@
 
-
-#ifndef _DEL_PUR_COM_DTO_
-#define _DEL_PUR_COM_DTO_
+#pragma once
+#ifndef _DEL_PUR_COM_DTO_H_
+#define _DEL_PUR_COM_DTO_H_
 
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"

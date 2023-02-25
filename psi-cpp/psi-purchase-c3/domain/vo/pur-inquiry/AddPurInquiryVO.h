@@ -1,9 +1,9 @@
-#include "stdafx.h"
+#pragma once
+
+#ifndef __ADD_PUR_INQUIRY_VO_H__
+#define __ADD_PUR_INQUIRY_VO_H__
 #include <vector>
 #include "../../GlobalInclude.h"
-#ifndef __ADDPURINQUIRYVO_H__
-#define __ADDPURINQUIRYVO_H__
-
 
 //¸¶¿î·½Ê½
 class AddPurInquiryVO
