@@ -61,20 +61,17 @@ public class SysMenuController {
     @ApiOperation(value = "删除菜单")
     @DeleteMapping("/delete")
     public JsonVO<String> deleteMenu(String id) {
-
         SysMenuQuery sysMenuQuery = new SysMenuQuery();
         sysMenuQuery.setId(id);
-        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(sysMenuQuery);
-
-        return resultStatus.getData().getCode() == 9999
+        JsonVO<ResultStatus> resultStatus = iSysMenuService.deleteMenu(sysMenuQuery);        return resultStatus.getData().getCode() == 9999
                 ? JsonVO.create("删除失败", ResultStatus.FAIL)
                 : JsonVO.create("删除成功", ResultStatus.SUCCESS);
     }
 
     @SneakyThrows
     @ApiOperation(value = "查询菜单")
-    @GetMapping("/queryMenus")
-    public JsonVO<List<MenuVO>> queryMenus(String id, String parentId) {
+    @GetMapping("/query")
+public JsonVO<List<MenuVO>> queryMenus(String id, String parentId) {
         //一级菜单parentId为0
         SysMenuQuery sysMenuQuery = new SysMenuQuery();
         if (id != null){
@@ -87,6 +84,8 @@ public class SysMenuController {
         return iSysMenuService.queryMenus(sysMenuQuery);
 
     }
+
+
 
 }
 

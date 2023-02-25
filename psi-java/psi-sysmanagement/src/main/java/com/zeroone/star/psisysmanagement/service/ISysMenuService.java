@@ -49,3 +49,5 @@ public interface ISysMenuService extends IService<SysMenu> {
     JsonVO<ResultStatus> deleteMenu(SysMenuQuery sysMenuQuery);
 
 }
+
+}

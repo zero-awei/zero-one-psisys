@@ -182,7 +182,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             return JsonVO.fail(ResultStatus.FAIL);
         }
         //判断是否在二级菜单下继续新增菜单
-        if (!"0".equals(parentId)) {
+        if (!parentId.equals("0")) {
             double parentSort = query().eq("id", parentId).one().getSortNo();
             String sortString = Double.toString(parentSort);
             if (sortString.length() == 4 && !sortString.endsWith("0")) {
