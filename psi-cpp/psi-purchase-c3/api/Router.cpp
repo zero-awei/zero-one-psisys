@@ -67,7 +67,6 @@ void Router::initRouter()
 	createPurQuotRouter();
 	createPurCompareRouter();
 	createPurInquiryRouter();
-
 	createPurReqRouter();
 }
 

@@ -1,16 +1,16 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
- 
+
  @Author: awei
  @Date: 2022/10/24 13:59:13
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
-      https://www.apache.org/licenses/LICENSE-2.0
- 
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -61,15 +61,17 @@ private:
 	std::list<std::string> authorities;
 	// 数据状态系信息
 	PayloadCode code;
+	//部门
+	std::string department;
 public:
 	PayloadDTO();
-	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities);
-	
+	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _department);
+
 	// getter/setter
 	std::string getSub() const { return sub; }
 	void setSub(std::string val) { sub = val; }
-	int64_t getExp() const { return exp; } 
-	void setExp(int64_t val) { exp = val; } 
+	int64_t getExp() const { return exp; }
+	void setExp(int64_t val) { exp = val; }
 	std::string getUsername() const { return username; }
 	void setUsername(std::string val) { username = val; }
 	std::list<std::string>& getAuthorities() { return authorities; }
@@ -78,10 +80,12 @@ public:
 	void setCode(PayloadCode val) { code = val; }
 	std::string getId() const { return id; }
 	void setId(std::string val) { id = val; }
+	std::string getDepartment() const { return department; }
+	void setDepartment(std::string val) { department = val; }
 
 	// 绑定JSON转换方法
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities);
-	
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, department);
+
 };
 
 /**

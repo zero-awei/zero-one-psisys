@@ -1,15 +1,15 @@
 /*
  Copyright Zero One Star. All rights reserved.
- 
+
  @Author: awei
  @Date: 2022/10/24 14:37:50
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
-      https://www.apache.org/licenses/LICENSE-2.0
- 
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,8 +50,8 @@ PayloadDTO::PayloadDTO()
 	this->setCode(PayloadCode::SUCCESS);
 }
 
-PayloadDTO::PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities) : 
-	sub(_sub), exp(_exp), username(_username), authorities(_authorities)
+PayloadDTO::PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _department) :
+	sub(_sub), exp(_exp), username(_username), authorities(_authorities), department(_department)
 {
 	this->setCode(PayloadCode::SUCCESS);
 }
@@ -75,7 +75,7 @@ std::string JWTUtil::md5(const std::string& src)
 }
 
 std::string JWTUtil::generateTokenByHmac(PayloadDTO payloadDto, std::string secretStr)
-{	
+{
 	//1 创建JWT头，设置签名算法和类型
 	jwt_header hdr = jwt_header{ jwt::algorithm::HS256 };
 	//2 将负载信息封装到Payload中
@@ -136,6 +136,7 @@ PayloadDTO JWTUtil::verifyTokenByRsa(std::string token, std::string rsaPubKey)
 		{
 			p.setId(_payload["id"].get<std::string>());
 		}
+		p.setDepartment(payload.get_claim_value<std::string>("deparement"));
 	}
 	JU_VERIFY_CATCH(p);
 	return p;
