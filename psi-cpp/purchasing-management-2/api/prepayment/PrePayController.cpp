@@ -82,10 +82,10 @@ JsonVO<uint64_t> PrePayController::execAddPay(const  AddPayDTO& dto)
 }
 
 //修改预付申请单
-JsonVO<uint64_t> PrePayController::execModifyPay(const  PrepaymentDTO& dto)
+JsonVO<string> PrePayController::execModifyPay(const  PrepaymentDTO& dto)
 {
 	PrePayService service;
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	if (service.updateData(dto)) {
 		result.success(dto.getId());
 	}
@@ -102,7 +102,7 @@ JsonVO<string> PrePayController::execModifyPayBillStatus(const PayModBillStatusD
 	JsonVO<string> result;
 
 	// 数据校验
-	if (dto.getId() != "" || dto.getBill_no() == "") // 如果ID和单据编号为空
+	if (dto.getId() == "" || dto.getBill_no() == "") // 如果ID和单据编号为空
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
 	if (dto.getOpType() != PayModBillStatusDTO::CLOSE && dto.getOpType() != PayModBillStatusDTO::UNCLOSE && dto.getOpType() != PayModBillStatusDTO::CANCEL)
 		return JsonVO<string>({}, RS_PARAMS_INVALID);

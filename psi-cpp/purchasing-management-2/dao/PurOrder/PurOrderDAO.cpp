@@ -21,7 +21,13 @@
 #include "PurOrderMapper.h"
 #include <sstream>
 
-uint64_t PurOrderDAO::insert(const PurOrderDO& iObj)
+string PurOrderDAO::insert(const PurOrderDO& iObj)
 {
-	return 0;
+	return "";
+}
+
+int PurOrderDAO::deleteById(string id)
+{
+	string sql = "DELETE FROM `pur_order` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", id);
 }

@@ -64,9 +64,9 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, supplier_id);
 		BIND_FROM_TO_NORMAL(j, t, op_dept);
 		BIND_FROM_TO_NORMAL(j, t, op);
-		BIND_FROM_TO_D(j, t, payment_type);
+		BIND_FROM_TO_NORMAL(j, t, payment_type);
 		BIND_FROM_TO_NORMAL(j, t, amt);
-		BIND_FROM_TO_D(j, t, is_closed);
+		BIND_FROM_TO_B(j, t, is_closed);
 		BIND_FROM_TO_I(j, t, paid_amt);
 		BIND_FROM_TO_NORMAL(j, t, effective_time);
 		BIND_FROM_TO_I(j, t, is_effective);

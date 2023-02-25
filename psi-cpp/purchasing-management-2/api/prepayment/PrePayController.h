@@ -63,7 +63,7 @@ private:
 	//新增订单
 	JsonVO<uint64_t> execAddPay(const AddPayDTO& dto);
 	//修改订单
-	JsonVO<uint64_t> execModifyPay(const PrepaymentDTO& dto);
+	JsonVO<string> execModifyPay(const PrepaymentDTO& dto);
 	//删除订单
 	JsonVO<uint64_t> execRemoveDePay(const DePayDTO& dto);
 	JsonVO<uint64_t> execRemovePayById(const IntID& id);

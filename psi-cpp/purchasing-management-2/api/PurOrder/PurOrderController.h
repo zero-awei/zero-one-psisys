@@ -47,7 +47,7 @@ public:
 	// 删除数据
 	CREATE_API_FUN_BODY(removePurOrder, execRemovePurOrder, PurOrderDTO);
 	// 删除ById
-	CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
+	CREATE_API_FUN_BODY(removeById, execRemoveById, StringID);
 
 private:
 	// 请求分页数据
@@ -55,15 +55,15 @@ private:
 	// 查询单个数据
 	JsonVO<PurOrderVO> execGetPurOrder(const PurOrderDTO& dto);
 	// 新增数据
-	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto);
+	JsonVO<string> execAddPurOrder(const PurOrderDTO& dto);
 	// 修改数据
-	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto);
+	JsonVO<string> execModifyPurOrder(const PurOrderDTO& dto);
 	// 修改状态
-	JsonVO<uint64_t> execStatusPurOrder(const PurOrderDTO& dto);
+	JsonVO<string> execStatusPurOrder(const PurOrderDTO& dto);
 	//删除数据
-	JsonVO<uint64_t> execRemovePurOrder(const PurOrderDTO& dto);
+	JsonVO<string> execRemovePurOrder(const PurOrderDTO& dto);
 	// 删除数据-ID
-	JsonVO<uint64_t> execRemoveById(const IntID& id);
+	JsonVO<string> execRemoveById(const StringID& id);
 
 };
 

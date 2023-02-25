@@ -34,15 +34,15 @@ public:
 	// 分页查询所有数据
 	PageVO<PurOrderVO> listAll(const PurOrderQuery& query);
 	// 查询单个数据
-	PurOrderVO getData(uint64_t id);
+	PurOrderVO getData(string id);
 	// 保存数据
-	uint64_t saveData(const PurOrderDTO& dto);
+	string saveData(const PurOrderDTO& dto);
 	// 修改数据
 	bool updateData(const PurOrderDTO& dto);
 	// 修改状态
 	bool updateStatus(const PurOrderDTO& dto);
 	// 通过ID删除数据
-	bool removeData(uint64_t id);
+	bool removeData(string id);
 };
 
 #endif // !_PUR_ORDER_SERVICE_

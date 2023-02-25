@@ -32,7 +32,7 @@ PageVO<PurOrderVO> PurOrderService::listAll(const PurOrderQuery& query)
 }
 
 // 查询单个数据
-PurOrderVO PurOrderService::getData(uint64_t id)
+PurOrderVO PurOrderService::getData(string id)
 {
 	PurOrderVO data;
 
@@ -40,7 +40,7 @@ PurOrderVO PurOrderService::getData(uint64_t id)
 }
 
 // 保存数据
-uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
+string PurOrderService::saveData(const PurOrderDTO& dto)
 {
 	//组装数据
 	PurOrderDO data;
@@ -118,7 +118,8 @@ bool PurOrderService::updateStatus(const PurOrderDTO& dto)
 }
 
 // 通过ID删除数据
-bool PurOrderService::removeData(uint64_t id)
+bool PurOrderService::removeData(string id)
 {
-	return true;
+	PurOrderDAO dao;
+	return dao.deleteById(id) == 1;
 }

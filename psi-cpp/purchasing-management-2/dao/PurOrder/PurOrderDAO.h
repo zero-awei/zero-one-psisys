@@ -29,6 +29,8 @@ class PurOrderDAO : public BaseDAO
 {
 public:
 	// 插入数据
-	uint64_t insert(const PurOrderDO& iObj);
+	string insert(const PurOrderDO& iObj);
+	// 删除数据
+	int deleteById(string id);
 };
 #endif // !_PUR_ORDER_DAO_

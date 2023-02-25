@@ -51,15 +51,15 @@ JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 }
 
 // 新增数据
-JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto)
+JsonVO<string> PurOrderController::execAddPurOrder(const PurOrderDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	//定义一个Service
 	PurOrderService service;
 
 	//执行数据新增
-	uint64_t id = service.saveData(dto);
-	if (id > 0) {
+	string id = service.saveData(dto);
+	if (id != "") {
 		result.success(id);
 	}
 	else
@@ -70,12 +70,12 @@ JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto)
 	return result;
 }
 // 修改数据
-JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
+JsonVO<string> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 {
 	//定义一个Service
 	PurOrderService service;
 
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	if (service.updateData(dto)) {
 		result.success(dto.getId());
 	}
@@ -87,9 +87,9 @@ JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 }
 
 // 修改状态
-JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
+JsonVO<string> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	PurOrderService service;
 
 	if (service.updateStatus(dto)) {
@@ -102,12 +102,12 @@ JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
 	return result;
 }
 //删除数据
-JsonVO<uint64_t> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
+JsonVO<string> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 {
 	//定义一个Service
 	PurOrderService service;
 
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
 	//执行数据删除
 	if (service.removeData(dto.getId())) {
 		result.success(dto.getId());
@@ -120,8 +120,10 @@ JsonVO<uint64_t> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 	return result;
 }
 //删除数据byId
-JsonVO<uint64_t> PurOrderController::execRemoveById(const IntID& id)
+JsonVO<string> PurOrderController::execRemoveById(const StringID& id)
 {
+	// 数据校验
+	if (id.getId() == "") return JsonVO<string>({}, RS_PARAMS_INVALID);
 	PurOrderDTO dto;
 	dto.setId(id.getId());
 	return execRemovePurOrder(dto);
