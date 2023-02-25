@@ -1,6 +1,7 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.date.DateTime;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,8 +14,10 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
+import com.zeroone.star.psisysmanagement.entity.Depart;
 import com.zeroone.star.psisysmanagement.entity.User;
 import com.zeroone.star.psisysmanagement.mapper.UserMapper;
+import com.zeroone.star.psisysmanagement.service.DepartService;
 import com.zeroone.star.psisysmanagement.service.IUserService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +27,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -45,6 +50,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     // dan
     @Resource
     EasyExcelComponent excel;
+
+    @Resource
+    DepartService departService;
 
     // axin
     //    展示用户列表 finished tested（传id的情况下）
@@ -72,12 +80,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return PageVO.create(result, UserVO.class);
     }
 
-    // axin
-    @Override
-    public JsonVO<EditUserVO> review(String id) {
-        return null;
-    }
-
     // dan
     @SneakyThrows
     @Override
@@ -96,28 +98,34 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     // dan
     @Override
-    public void updateStatus(String id, Integer status) {
+    public boolean updateStatus(String id, Integer status) {
         User user = new User();
         user.setStatus(status);
         user.setId(id);
-        this.updateById(user);
+        return this.updateById(user);
     }
 
     // dan
     @Override
-    public void updateUser(EditUserDTO dto) {
+    public boolean updateUser(EditUserDTO dto) {
         User user = new User();
         BeanUtils.copyProperties(dto, user);
         log.info("user = {}", user);
-        this.updateById(user);
+        return this.updateById(user);
     }
 
     // dan
+    @Transactional
     @Override
     public EditUserVO getUserInfo(String id) {
         User user = this.getById(id);
         EditUserVO editUserVO = new EditUserVO();
         BeanUtils.copyProperties(user, editUserVO);
+        QueryWrapper<Depart> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("depart_name").eq("id", user.getDepartIds());
+        List<Depart> departs = departService.getBaseMapper().selectList(queryWrapper);
+        log.info("departs :{}", departs);
+        editUserVO.setDepartName(departs.get(0).getDepartName());
         return editUserVO;
     }
 

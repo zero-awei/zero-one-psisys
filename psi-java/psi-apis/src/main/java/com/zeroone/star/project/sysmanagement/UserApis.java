@@ -7,6 +7,7 @@ import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.AddUserVO;
+import com.zeroone.star.project.vo.sysmanagement.usermanagement.DepartVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import org.springframework.http.ResponseEntity;
@@ -63,13 +64,13 @@ public interface UserApis {
     /**
      * 导出选定用户
      * @param id 用户id
-     * @return 下载地址
+     * @return 导出文件
      */
     ResponseEntity<byte[]> download(@NotEmpty(message = "导出用户必须大于0") List<String> id);
 
     /**
      * 导出全部用户
-     * @return 下载地址
+     * @return 导出文件
      */
     ResponseEntity<byte[]> downloadAllUsers();
 
@@ -77,19 +78,19 @@ public interface UserApis {
      * 下拉框获取部门列表
      * @return
      */
-    JsonVO<List<AddUserVO>> listDepartment();
+    JsonVO<List<DepartVO>> listDepartment();
 
      /**
      * 修改用户
      * @param dto 数据数据内容
-     * @return 修改后的用户编号
+     * @return 修改成功提示
      */
     JsonVO<String> modifyUser(@Validated EditUserDTO dto);
 
     /**
      * 冻结/解冻用户
      * @param id 用户id
-     * @return 修改的用户编号
+     * @return 修改成功提示
      */
     JsonVO<String> modifyStatus(@NotBlank(message = "id不能为空") String id, @NotNull(message = "状态不能为空") @RequestParam Integer status);
 
