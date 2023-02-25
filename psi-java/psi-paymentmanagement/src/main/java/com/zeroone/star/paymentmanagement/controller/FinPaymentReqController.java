@@ -48,11 +48,11 @@ public class FinPaymentReqController implements FinPaymentReqApis {
         return JsonVO.success(iFinPaymentReqService.queryAll(finPayment));
     }
 
-    @ApiOperation(value = "测试查询所有", notes = "test")
-    @PostMapping
-    public JsonVO<List<FinPaymentReq>> test() {
-        return JsonVO.success(iFinPaymentReqService.test());
-    }
+//    @ApiOperation(value = "测试查询所有", notes = "test")
+//    @PostMapping
+//    public JsonVO<List<FinPaymentReq>> test() {
+//        return JsonVO.success(iFinPaymentReqService.test());
+//    }
 
 }
 
