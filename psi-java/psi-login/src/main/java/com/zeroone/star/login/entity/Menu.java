@@ -1,4 +1,4 @@
-package com.zeroone.star.payment.entity;
+package com.zeroone.star.login.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
