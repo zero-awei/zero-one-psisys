@@ -28,7 +28,9 @@
 class PurOrderDAO : public BaseDAO
 {
 public:
-	// 插入数据
-	uint64_t insert(const PurOrderDO& iObj);
+	// 统计数据条数
+	uint64_t count(const PurOrderDO& iObj);
+	// 分页查询数据
+	list<PurOrderDO> selectWithPage(const PurOrderDO& obj, uint64_t pageIndex, uint64_t pageSize);
 };
 #endif // !_PUR_ORDER_DAO_

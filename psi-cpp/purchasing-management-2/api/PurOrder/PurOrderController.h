@@ -35,7 +35,7 @@ class PurOrderController
 {
 public:
 	// 分页数据
-	CREATE_API_FUN_QUERY_PAYLOAD(listPurOrder, queryListPurOrder, PurOrderQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(querylistPurOrder, execQueryListPurOrder, PurOrderQuery);
 	// 单个数据
 	CREATE_API_FUN_BODY(getPurOrder, execGetPurOrder, PurOrderDTO);
 	// 新增数据
@@ -51,7 +51,7 @@ public:
 
 private:
 	// 请求分页数据
-	JsonVO<PageVO<PurOrderVO>> queryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<PurOrderVO>> execQueryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
 	// 查询单个数据
 	JsonVO<PurOrderVO> execGetPurOrder(const PurOrderDTO& dto);
 	// 新增数据

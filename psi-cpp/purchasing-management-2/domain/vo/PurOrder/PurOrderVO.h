@@ -133,34 +133,31 @@ class PurOrderVO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 	// 修改时间
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	// 版本
-	CC_SYNTHESIZE(int, version, Version);
+
 
 public:
-	//测试用无参构造
-	PurOrderVO()
-	{
-		id = 1231232;
-		bill_no = "0123";
+	////测试用无参构造
+	//PurOrderVO()
+	//{
+	//	id = 1231232;
+	//	bill_no = "0123";
 
-	}
-	// 绑定JSON转换方法
-	friend void from_json(const json& j, PurOrderVO& t); // NOLINT
-	friend void to_json(const json& j, PurOrderVO& t); // NOLINT
-	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \
-		src_bill_id, src_no, subject, \
-		is_rubric, pur_type, supplier_id, \
-		contact, phone, fax, email, \
-		op_dept, op_er, \
-		delivery_method, delivery_place, delivery_time, transport_method, \
-		payment_method, settle_method, settle_time, \
-		invoice_method, invoice_type, currency, exchange_rate, \
-		qty, amt, prepayment_bal, settle_qty, \
-		settle_amt, in_qty, in_cost, settled_amt, invoiced_amt, attachment, \
-		remark, is_auto, bill_stage, approver, bpmi_instance_id, \
-		approval_result_type, approval_remark, is_effective, \
-		effective_time, is_closed, is_voided, sys_org_code, \
-		create_by, create_time, update_by, update_time, version);
+	//}
+
+	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, 
+		src_bill_id, src_no, subject, 
+		is_rubric, pur_type, supplier_id, 
+		contact, phone, fax, email, 
+		op_dept, op_er, 
+		delivery_method, delivery_place, delivery_time, transport_method, 
+		payment_method, settle_method, settle_time, 
+		invoice_method, invoice_type, currency, exchange_rate, 
+		qty, amt, prepayment_bal, settle_qty, 
+		settle_amt, in_qty, in_cost, settled_amt, invoiced_amt, attachment, 
+		remark, is_auto, bill_stage, approver, bpmi_instance_id, 
+		approval_result_type, approval_remark, is_effective, 
+		effective_time, is_closed, is_voided, sys_org_code, 
+		create_by, create_time, update_by, update_time);
 };
 
 #endif // !_PUR_ORDER_VO_

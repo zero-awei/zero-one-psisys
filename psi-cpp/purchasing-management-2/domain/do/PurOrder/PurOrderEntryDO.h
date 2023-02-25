@@ -27,7 +27,6 @@
 */
 class PurOrderEntryDO
 {
-private:
 	// id
 	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 主表编号
@@ -78,8 +77,29 @@ private:
 	CC_SYNTHESIZE(string, custom1, Custom1);
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	// 版本
-	CC_SYNTHESIZE(string, version, Version);
+	PurOrderEntryDO() {
+		id = -1;
+		bill_no = "";
+		entry_no = "";
+		src_bill_type = "";
+		src_bill_id = "";
+		src_no = "";
+		unit_id = "";
+		qty = -1;
+		amt = -1;
+		remark = "";
+		custom1 = "";
+		custom2 = "";
+		mid = "";
+		discount_rate = -1;
+		tax = -1;
+		in_qty = -1;
+		in_cost = -1;
+		settle_qty = -1;
+		settle_amt = -1;
+		invoiced_qty = -1;
+		invoiced_amt = -1;
+	}
 };
 
 #endif
