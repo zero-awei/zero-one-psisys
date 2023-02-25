@@ -25,6 +25,6 @@ void from_json(const json& j, PayModBillStatusDTO& t) {
 	BIND_FROM_TO_NORMAL(j, t, bill_no);
 	//BIND_FROM_TO_B(j, t, is_effective);
 	//BIND_FROM_TO_NORMAL(j, t, effective_time);
-	BIND_FROM_TO_B(j, t, is_closed);
-	BIND_FROM_TO_B(j, t, is_voided);
+	//BIND_FROM_TO_B(j, t, is_closed);
+	//BIND_FROM_TO_B(j, t, is_voided);
 }

@@ -88,16 +88,16 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 
 
 //ĞŞ¸Äµ¥¾İ×´Ì¬
-int PrepaymentDAO::updateStatusClose(const PrepaymentDO& uObj)
+int PrepaymentDAO::updateStatusClose(const PrepaymentDO& prepaydo)
 {
-	string sql = "UPDATE `fin_payment_req` SET `is_closed`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_closed(), uObj.getId());
+	string sql = "UPDATE `fin_payment_req` SET `is_closed`=?, `update_by`=?, `update_time`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%i%s%s%%s", prepaydo.getIs_closed(), prepaydo.getUpdate_by(), prepaydo.getUpdate_time(), prepaydo.getId());
 }
 
-int PrepaymentDAO::updateStatusCancel(const PrepaymentDO& uObj)
+int PrepaymentDAO::updateStatusCancel(const PrepaymentDO& prepaydo)
 {
-	string sql = "UPDATE `fin_payment_req` SET `is_voided`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_voided(), uObj.getId());
+	string sql = "UPDATE `fin_payment_req` SET `is_voided`=?, `update_by`=?, `update_time`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%i%s%s%s", prepaydo.getIs_voided(), prepaydo.getUpdate_by(), prepaydo.getUpdate_time(), prepaydo.getId());
 }
 
 // É¾³ıÔ¤¸¶ÉêÇëµ¥

@@ -46,7 +46,9 @@ public:
 	CREATE_API_FUN_BODY(statusPurOrder, execStatusPurOrder, PurOrderDTO);
 	// 删除数据
 	CREATE_API_FUN_BODY(removePurOrder, execRemovePurOrder, PurOrderDTO);
+
 	// 删除ById
+	// 负责人：Andrew
 	CREATE_API_FUN_BODY(removeById, execRemoveById, StringID);
 
 private:
@@ -62,7 +64,9 @@ private:
 	JsonVO<string> execStatusPurOrder(const PurOrderDTO& dto);
 	//删除数据
 	JsonVO<string> execRemovePurOrder(const PurOrderDTO& dto);
+
 	// 删除数据-ID
+	// 负责人：Andrew
 	JsonVO<string> execRemoveById(const StringID& id);
 
 };

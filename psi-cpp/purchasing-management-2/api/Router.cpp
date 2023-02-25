@@ -129,7 +129,9 @@ void Router::initRouter()
 	BIND_PUT_ROUTER(server, "/purOrder/status", &PurOrderController::statusPurOrder, nullptr);
 	// 删除数据
 	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
+
 	// 删除ById
+	// 负责人：Andrew
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 
 	//查询单据列表
@@ -144,8 +146,13 @@ void Router::initRouter()
 	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
 	//删除申请
 	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-	//修改单据状态(关闭/作废/反关闭)
+
+
+	// 修改单据状态(关闭/作废/反关闭)
+	// 负责人：Andrew
 	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
+
+	
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
 	createPaymentRouter();

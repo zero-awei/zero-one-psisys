@@ -48,12 +48,17 @@ public:
 	//删除订单
 	CREATE_API_FUN_BODY(removeDePay, execRemoveDePay, DePayDTO);
 	CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
+
+
 	//修改单据状态(关闭、作废、反关闭)
-	CREATE_API_FUN_BODY(modifyPurReqBillStatus, execModifyPayBillStatus, PayModBillStatusDTO);
+	// 负责人：Andrew
+	CREATE_API_FUN_BODY_PAYLOAD(modifyPurReqBillStatus, execModifyPayBillStatus, PayModBillStatusDTO);
 
 private:
 	//修改单据状态(关闭、作废、反关闭)
-	JsonVO<string> execModifyPayBillStatus(const PayModBillStatusDTO& dto);
+	// 负责人：Andrew
+	JsonVO<string> execModifyPayBillStatus(const PayModBillStatusDTO& dto, const PayloadDTO& pl);
+
 	//查询
 	JsonVO<PageVO<PrepaymentBillVO>> execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload);
 	//查询指定单据详细信息

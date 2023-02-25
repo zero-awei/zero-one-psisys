@@ -57,6 +57,12 @@
     <ClInclude Include="..\..\..\..\..\..\..\Documents\Tencent Files\1207368051\FileRecv\ExcelComponent.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\Documents\Tencent Files\1207368051\FileRecv\SimpleDateTimeFormat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SimpleDateTimeFormat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -93,6 +99,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\RedisClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleDateTimeFormat.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
