@@ -78,6 +78,37 @@ bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data
 		vector<string> row;
 		row.emplace_back(sub.getName());
 		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getAuxName());
+		// 剩下的属性
+		data.emplace_back(row);
+	}
+	return true;
+}
+
+bool DepotService::getDataById(const OnlyValueQuery& query, vector<vector<string>>& data)
+{
+	//查询数据总条数
+	DepotDAO dao;
+	// 分割ID
+	string str = query.getId(), delimiters = " |";
+	vector<string>Ids;
+	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
+	string::size_type pos = str.find_first_of(delimiters, lastPos);
+	while (string::npos != pos || string::npos != lastPos)
+	{
+		Ids.push_back(str.substr(lastPos, pos - lastPos));
+		lastPos = str.find_first_not_of(delimiters, pos);
+		pos = str.find_first_of(delimiters, lastPos);
+	}
+	//查询数据
+	for(auto id:Ids){
+		DepotDO obj;
+		obj.setId(id);
+		list<DepotDO> result = dao.getDataById(obj);
+		DepotDO sub = result.front();
+		vector<string> row;
+		row.emplace_back(sub.getName());
+		row.emplace_back(sub.getCode());
 		// 剩下的属性
 		data.emplace_back(row);
 	}

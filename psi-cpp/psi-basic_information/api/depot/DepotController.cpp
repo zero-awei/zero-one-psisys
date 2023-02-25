@@ -111,6 +111,23 @@ JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const P
 
 JsonVO<string> DepotController::execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
-    return JsonVO<string>();
+    DepotService service;
+    // 创建excel表
+    string filename = u8"../../test/testids.xlsx";
+    vector<vector<string>> data;
+    data.emplace_back(vector<std::string>({ u8"名称", u8"编号", u8"助记名", u8"电话",\
+        u8"启用", u8"备注", u8"创建时间",u8"创建人", u8"修改时间", u8"修改人" }));
+    // 查询数据
+    if (!service.getDataById(query, data))
+        return JsonVO<string>(u8"导出失败", RS_FAIL);
+    string sheetname = u8"testids";
+    ExcelComponent excel;
+    excel.writeVectorToFile(filename, sheetname, data);
+    // 上传到文件服务器
+    FastDfsClient client("1.15.240.108");
+    filename = client.uploadFile(filename);
+    JsonVO<std::string> result(filename, RS_SUCCESS);
+    //响应结果
+    return result;
 }
 

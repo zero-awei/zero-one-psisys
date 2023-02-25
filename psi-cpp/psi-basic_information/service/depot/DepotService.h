@@ -36,6 +36,7 @@ public:
 	// 分页查询所有数据
 	PageVO<DepotVO> listAll(const DepotQuery& query);
 	bool getData(const DepotQuery& query, vector<vector<string>>& data);
+	bool getDataById(const OnlyValueQuery& query, vector<vector<string>>& data);
 	// 保存数据
 	int saveData(const DepotDTO& dto, const string Username);
 	// 删除数据

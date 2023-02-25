@@ -39,6 +39,11 @@ sql<<" WHERE 1=1"; \
 sql << " AND `pid`=?"; \
 SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
 
+#define ONLY_FOR_ID(obj, sql, params) \
+sql<<" WHERE 1=1"; \
+sql << " AND `id`=?"; \
+SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
+
 uint64_t DepotDAO::count(const DepotDO& iObj)
 {
 	stringstream sql;
@@ -67,6 +72,19 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
 }
+
+
+std::list<DepotDO> DepotDAO::getDataById(const DepotDO& obj) {
+	stringstream sql;
+	SqlParams params; 
+	// * Ã»¸Ä
+	sql << "SELECT * FROM bas_warehouse";
+	ONLY_FOR_ID(obj, sql, params);
+	DepotMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
+}
+
 
 
 int DepotDAO::insertDepot(const DepotDO& iObj)

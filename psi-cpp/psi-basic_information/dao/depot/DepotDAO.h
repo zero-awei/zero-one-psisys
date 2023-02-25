@@ -33,6 +33,7 @@ public:
 	uint64_t count(const DepotDO& iObj);
 	// 分页查询数据
 	list<DepotDO> selectWithPage(const DepotDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	list<DepotDO> getDataById(const DepotDO& obj);
 	// 新建
 	int insertDepot(const DepotDO& iObj);
 	// 通过ID删除数据
