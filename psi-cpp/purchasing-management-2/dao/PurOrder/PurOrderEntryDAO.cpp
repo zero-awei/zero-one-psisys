@@ -21,6 +21,102 @@
 #include "PurOrderMapper.h"
 #include <sstream>
 
+#define PUR_ORDER_ENTRY_MODIFY(obj, sql) \
+SqlParams params; \
+sql << "`material_id`=?"; \
+SQLPARAMS_PUSH(params, "s", std::string, obj.getMaterial_id()); \
+if (!obj.getEntry_no()) { \
+    sql << ", `entry_no`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getEntry_no()); \
+} \
+if (!obj.getSrc_bill_type().empty()) { \
+    sql << ", `src_bill_type`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_bill_type()); \
+} \
+if (!obj.getSrc_bill_id().empty()) { \
+    sql << ", `src_bill_id`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_bill_id()); \
+} \
+if (!obj.getSrc_entry_id().empty()) { \
+    sql << ", `src_entry_id`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_entry_id()); \
+} \
+if (!obj.getSrc_no().empty()) { \
+    sql << ", `src_no`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_no()); \
+} \
+if (!obj.getUnit_id().empty()) { \
+    sql << ", `unit_id`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getUnit_id()); \
+} \
+if (!obj.getQty()) { \
+    sql << ", `qty`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getQty()); \
+} \
+if (!obj.getTax_rate()) { \
+    sql << ", `tax_rate`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getTax_rate()); \
+} \
+if (!obj.getPrice()) { \
+    sql << ", `price`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getPrice()); \
+} \
+if (!obj.getDiscount_rate()) { \
+    sql << ", `discount_rate`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getDiscount_rate()); \
+} \
+if (!obj.getTax()) { \
+    sql << ", `tax`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getTax()); \
+} \
+if (!obj.getAmt()) { \
+    sql << ", `amt`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getAmt()); \
+} \
+if (!obj.getIn_qty()) { \
+    sql << ", `in_qty`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getIn_qty()); \
+} \
+if (!obj.getIn_cost()) { \
+    sql << ", `in_cost`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getIn_cost()); \
+} \
+if (!obj.getSettle_qty()) { \
+    sql << ", `settle_qty`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getSettle_qty()); \
+} \
+if (!obj.getSettle_amt()) { \
+    sql << ", `settle_amt`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getSettle_amt()); \
+} \
+if (!obj.getInvoiced_qty()) { \
+    sql << ", `invoiced_qty`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getInvoiced_qty()); \
+} \
+if (!obj.getInvoiced_amt()) { \
+    sql << ", `invoiced_amt`=?"; \
+    SQLPARAMS_PUSH(params, "d", double, obj.getInvoiced_amt()); \
+} \
+if (!obj.getRemark().empty()) { \
+    sql << ", `remark`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getRemark()); \
+} \
+if (!obj.getCustom1().empty()) { \
+    sql << ", `custom1`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getCustom1()); \
+} \
+if (!obj.getCustom2().empty()) { \
+    sql << ", `custom2`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getCustom2()); \
+} \
+if (!obj.getVersion()) { \
+    sql << ", `version`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getVersion()); \
+} \
+sql << " WHERE bill_no=? and mid=?"; \
+SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no());\
+SQLPARAMS_PUSH(params, "s", std::string, obj.getMid());
+
 //定义条件解析宏，减少重复代码
 #define PUR_ORDER_ENTRY_TERAM_PARSE(obj, sql) \
 SqlParams params; \
@@ -139,10 +235,25 @@ uint64_t PurOrderEntryDAO::insert(const PurOrderEntryDO& iObj)
 // 更新数据
 uint64_t PurOrderEntryDAO::update(const PurOrderEntryDO& iObj)
 {
-    return 0;
+    stringstream sql;
+    sql << "UPDATE `pur_order_entry` SET ";
+    PUR_ORDER_ENTRY_MODIFY(iObj, sql);
+
+    string sqlStr = sql.str();
+    cout << sqlStr << endl;
+    return sqlSession->executeUpdate(sqlStr, params);
 }
 
 // 是否存在
+uint64_t PurOrderEntryDAO::count(const PurOrderEntryDO& iObj)
+{
+    string sql = "SELECT count(*) FROM `pur_order_entry` WHERE `bill_no` = ? AND `mid` = ?";
+    return sqlSession->executeQueryNumerical(sql, "%s%s", iObj.getBill_no(), iObj.getMid());
+    //string sql = "SELECT count(*) FROM `pur_order_entry` WHERE `id` = ?";
+    //return sqlSession->executeQueryNumerical(sql, "%s", iObj.getId());
+}
+
+/*// 是否存在
 uint64_t PurOrderEntryDAO::count(const PurOrderEntryDO& iObj)
 {
     stringstream sql;
@@ -151,3 +262,4 @@ uint64_t PurOrderEntryDAO::count(const PurOrderEntryDO& iObj)
     string sqlstr = sql.str();
     return sqlSession->executeQueryNumerical(sqlstr, params);
 }
+*/

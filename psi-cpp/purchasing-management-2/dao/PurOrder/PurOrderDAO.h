@@ -32,5 +32,7 @@ public:
 	uint64_t insert(const PurOrderDO& iObj);
 	// 更新数据
 	uint64_t update(const PurOrderDO& iObj);
+	// 计数数据
+	uint64_t count(const PurOrderDO& iObj);
 };
 #endif // !_PUR_ORDER_DAO_

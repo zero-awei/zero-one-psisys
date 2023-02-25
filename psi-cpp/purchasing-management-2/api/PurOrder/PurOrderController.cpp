@@ -60,13 +60,17 @@ JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, con
 	//执行数据新增
 	uint64_t id = service.saveData(dto);
 	if (id > 0) {
-		result.success(id);
+		result.setStatus(RS_SUCCESS);
+	}
+	else if(id == -1)
+	{
+		result.setStatus(RS_PARAMS_INVALID); // 9995
+		return result;
 	}
 	else
 	{
-		result.fail(id);
+		result.setStatus(RS_FAIL); // 9999
 	}
-	//响应结果
 	return result;
 }
 // 修改数据
@@ -76,14 +80,19 @@ JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 	PurOrderService service;
 
 	JsonVO<uint64_t> result;
-	service.updateData(dto);
-	/*if (service.updateData(dto)) {
-		result.success(dto.getId());
+	uint64_t id = service.updateData(dto);
+	if (id > 0) {
+		result.setStatus(RS_SUCCESS);
+	}
+	else if (id == -1)
+	{
+		result.setStatus(RS_PARAMS_INVALID); // 9995
+		return result;
 	}
 	else
 	{
-		result.fail(dto.getId());
-	}*/
+		result.setStatus(RS_FAIL); // 9999
+	}
 	return result;
 }
 
@@ -93,6 +102,19 @@ JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
 	JsonVO<uint64_t> result;
 	PurOrderService service;
 
+	uint64_t id = service.updateData(dto);
+	if (id > 0) {
+		result.setStatus(RS_SUCCESS);
+	}
+	else if (id == -1)
+	{
+		result.setStatus(RS_PARAMS_INVALID); // 9995
+		return result;
+	}
+	else
+	{
+		result.setStatus(RS_FAIL); // 9999
+	}
 	return result;
 }
 //删除数据

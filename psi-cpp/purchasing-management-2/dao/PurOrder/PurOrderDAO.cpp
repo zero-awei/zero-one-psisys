@@ -236,14 +236,39 @@ if (!obj.getVersion()) { \
 sql << " WHERE bill_no=?"; \
 SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no());
 
+/*
+delivery_time
+settle_time
+effective_time
+create_time
+update_time
+*/
+#define PUR_ORDER_TIME(obj, str) \
+if (!obj.getDelivery_time().empty()) { \
+    str += ", '" + obj.getDelivery_time() + "'"; \
+} else {str += ", null";} \
+if (!obj.getSettle_time().empty()) { \
+    str += ", '" + obj.getSettle_time() + "'"; \
+} else {str += ", null";} \
+if (!obj.getEffective_time().empty()) { \
+    str += ", '" + obj.getEffective_time() + "'"; \
+} else {str += ", null";} \
+if (!obj.getCreate_time().empty()) { \
+    str += ", '" + obj.getCreate_time() + "'"; \
+} else {str += ", null";} \
+if (!obj.getUpdate_time().empty()) { \
+    str += ", '" + obj.getUpdate_time() + "'"; \
+} else {str += ", null";} \
+str += ")";
+
 
 // 插入数据
 uint64_t PurOrderDAO::insert(const PurOrderDO& iObj)
 {
-    /*cout << " id: " << iObj.getId() << "\n" << " bill_no: " << iObj.getBill_no() << "\n" << " bill_date: " << iObj.getBill_date() << "\n" << " src_bill_type: " << iObj.getSrc_bill_type() << "\n" << " src_bill_id: " << iObj.getSrc_bill_id() << "\n" << " src_no: " << iObj.getSrc_no() << "\n" << " subject: " << iObj.getSubject() << "\n" << " is_rubric: " << iObj.getIs_rubric() << "\n" << " pur_type: " << iObj.getPur_type() << "\n" << " supplier_id: " << iObj.getSupplier_id() << "\n" << " contact: " << iObj.getContact() << "\n" << " phone: " << iObj.getPhone() << "\n" << " fax: " << iObj.getFax() << "\n" << " email: " << iObj.getEmail() << "\n" << " op_dept: " << iObj.getOp_dept() << "\n" << " operator: " << iObj.getOp_er() << "\n" << " delivery_method: " << iObj.getDelivery_method() << "\n" << " delivery_place: " << iObj.getDelivery_place() << "\n" << " delivery_time: " << iObj.getDelivery_time() << "\n" << " transport_method: " << iObj.getTransport_method() << "\n" << " payment_method: " << iObj.getPayment_method() << "\n" << " settle_method: " << iObj.getSettle_method() << "\n" << " settle_time: " << iObj.getSettle_time() << "\n" << " invoice_method: " << iObj.getInvoice_method() << "\n" << " invoice_type: " << iObj.getInvoice_type() << "\n" << " currency: " << iObj.getCurrency() << "\n" << " exchange_rate: " << iObj.getExchange_rate() << "\n" << " qty: " << iObj.getQty() << "\n" << " amt: " << iObj.getAmt() << "\n" << " prepayment_bal: " << iObj.getPrepayment_bal() << "\n" << " settle_qty: " << iObj.getSettle_qty() << "\n" << " settle_amt: " << iObj.getSettle_amt() << "\n" << " in_qty: " << iObj.getIn_qty() << "\n" << " in_cost: " << iObj.getIn_cost() << "\n" << " settled_amt: " << iObj.getSettled_amt() << "\n" << " invoiced_amt: " << iObj.getInvoiced_amt() << "\n" << " attachment: " << iObj.getAttachment() << "\n" << " remark: " << iObj.getRemark() << "\n" << " is_auto: " << iObj.getIs_auto() << "\n" << " bill_stage: " << iObj.getBill_stage() << "\n" << " approver: " << iObj.getApprover() << "\n" << " bpmi_instance_id: " << iObj.getBpmi_instance_id() << "\n" << " approval_result_type: " << iObj.getApproval_result_type() << "\n" << " approval_remark: " << iObj.getApproval_remark() << "\n" << " is_effective: " << iObj.getIs_effective() << "\n" << " effective_time: " << iObj.getEffective_time() << "\n" << " is_closed: " << iObj.getIs_closed() << "\n" << " is_voided: " << iObj.getIs_voided() << "\n" << " sys_org_code: " << iObj.getSys_org_code() << "\n" << " create_by: " << iObj.getCreate_by() << "\n" << " create_time: " << iObj.getCreate_time() << "\n" << " update_by: " << iObj.getUpdate_by() << "\n" << " update_time: " << iObj.getUpdate_time() << "\n" << " version: " << iObj.getVersion() << endl; */
-
-    string sql = "INSERT INTO `pur_order` (`id`,`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`is_rubric`,`pur_type`,`supplier_id`,`contact`,`phone`,`fax`,`email`,`op_dept`,`operator`,`delivery_method`,`delivery_place`,`delivery_time`,`transport_method`,`payment_method`,`settle_method`,`settle_time`,`invoice_method`,`invoice_type`,`currency`,`exchange_rate`,`qty`,`amt`,`prepayment_bal`,`settle_qty`,`settle_amt`,`in_qty`,`in_cost`,`settled_amt`,`invoiced_amt`,`attachment`,`remark`,`is_auto`,`bill_stage`,`approver`,`bpmi_instance_id`,`approval_result_type`,`approval_remark`,`is_effective`,`effective_time`,`is_closed`,`is_voided`,`sys_org_code`,`create_by`,`create_time`,`update_by`,`update_time`, `version`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
-    string result = sqlSession->executeInsert(sql, "%s%s%s%s%s%s%s%i%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%s%s%i%s%s%s%s%s%i%s%i%i%s%s%s%s%s%i", iObj.getId(), iObj.getBill_no(), iObj.getBill_date(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), iObj.getSrc_no(), iObj.getSubject(), iObj.getIs_rubric(), iObj.getPur_type(), iObj.getSupplier_id(), iObj.getContact(), iObj.getPhone(), iObj.getFax(), iObj.getEmail(), iObj.getOp_dept(), iObj.getOp_er(), iObj.getDelivery_method(), iObj.getDelivery_place(), iObj.getDelivery_time(), iObj.getTransport_method(), iObj.getPayment_method(), iObj.getSettle_method(), iObj.getSettle_time(), iObj.getInvoice_method(), iObj.getInvoice_type(), iObj.getCurrency(), iObj.getExchange_rate(), iObj.getQty(), iObj.getAmt(), iObj.getPrepayment_bal(), iObj.getSettle_qty(), iObj.getSettle_amt(), iObj.getIn_qty(), iObj.getIn_cost(), iObj.getSettled_amt(), iObj.getInvoiced_amt(), iObj.getAttachment(), iObj.getRemark(), iObj.getIs_auto(), iObj.getBill_stage(), iObj.getApprover(), iObj.getBpmi_instance_id(), iObj.getApproval_result_type(), iObj.getApproval_remark(), iObj.getIs_effective(), iObj.getEffective_time(), iObj.getIs_closed(), iObj.getIs_voided(), iObj.getSys_org_code(), iObj.getCreate_by(), iObj.getCreate_time(), iObj.getUpdate_by(), iObj.getUpdate_time(), iObj.getVersion());
+    string para = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+    PUR_ORDER_TIME(iObj, para);
+    string sql = "INSERT INTO `pur_order` (id,bill_no,bill_date,src_bill_type,src_bill_id,src_no,subject,is_rubric,pur_type,supplier_id,contact,phone,fax,email,op_dept,operator,delivery_method,delivery_place,transport_method,payment_method,settle_method,invoice_method,invoice_type,currency,exchange_rate,qty,amt,prepayment_bal,settle_qty,settle_amt,in_qty,in_cost,settled_amt,invoiced_amt,attachment,remark,is_auto,bill_stage,approver,bpmi_instance_id,approval_result_type,approval_remark,is_effective,is_closed,is_voided,sys_org_code,create_by,update_by,version, delivery_time, settle_time, effective_time, create_time, update_time) VALUES"+ para; 
+    uint64_t result = sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%i%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%s%s%i%s%s%s%s%s%i%i%i%s%s%s%i", iObj.getId(), iObj.getBill_no(), iObj.getBill_date(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), iObj.getSrc_no(), iObj.getSubject(), iObj.getIs_rubric(), iObj.getPur_type(), iObj.getSupplier_id(), iObj.getContact(), iObj.getPhone(), iObj.getFax(), iObj.getEmail(), iObj.getOp_dept(), iObj.getOp_er(), iObj.getDelivery_method(), iObj.getDelivery_place(), iObj.getTransport_method(), iObj.getPayment_method(), iObj.getSettle_method(), iObj.getInvoice_method(), iObj.getInvoice_type(), iObj.getCurrency(), iObj.getExchange_rate(), iObj.getQty(), iObj.getAmt(), iObj.getPrepayment_bal(), iObj.getSettle_qty(), iObj.getSettle_amt(), iObj.getIn_qty(), iObj.getIn_cost(), iObj.getSettled_amt(), iObj.getInvoiced_amt(), iObj.getAttachment(), iObj.getRemark(), iObj.getIs_auto(), iObj.getBill_stage(), iObj.getApprover(), iObj.getBpmi_instance_id(), iObj.getApproval_result_type(), iObj.getApproval_remark(), iObj.getIs_effective(), iObj.getIs_closed(), iObj.getIs_voided(), iObj.getSys_org_code(), iObj.getCreate_by(), iObj.getUpdate_by(), iObj.getVersion());
     return result;
 }
 
@@ -255,6 +280,12 @@ uint64_t PurOrderDAO::update(const PurOrderDO& iObj)
     PUR_ORDER_MODIFY(iObj, sql);
     
     string sqlStr = sql.str();
-    cout << sqlStr;
     return sqlSession->executeUpdate(sqlStr, params);
+}
+
+// 是否存在
+uint64_t PurOrderDAO::count(const PurOrderDO& iObj)
+{
+    string sql = "SELECT count(*) FROM `pur_order` WHERE `bill_no` = ?"; 
+    return sqlSession->executeQueryNumerical(sql, "%s", iObj.getBill_no());
 }

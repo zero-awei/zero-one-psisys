@@ -20,6 +20,20 @@
 #include "PurOrderService.h"
 #include "../../../lib-common/include/SnowFlake.h"
 
+// from c3-adam
+string getTime()
+{
+	time_t now = time(0);
+	struct tm t;
+
+	localtime_s(&t, &now);
+
+	// 将信息输出到字符串流
+	stringstream ss;
+	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
+	return ss.str();
+}
+
 #define SET_PUR_ORDER_DO() \
 data.setBill_no(dto.getBill_no());\
 data.setBill_date(dto.getBill_date());\
@@ -129,22 +143,33 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
 
 	//调用雪花算法
 	SnowFlake sf(1, 4);
+	string time = getTime();
 	
+	if (dto.getBill_no() == "" || dto.getBill_date() == "" || dto.getOp_dept() == "" || dto.getOp_er() == "" || dto.getSupplier_id() == "" || dto.getInvoice_type() == "")
+	{
+		return result;
+	}
+
 	data.setId(std::to_string(sf.nextId()));
 	SET_PUR_ORDER_DO();
+	data.setCreate_time(time);
+	result = dao.insert(data);
+	if (!result) return result;
 
 	list<PurOrderEntryDTO> poe = dto.getDetail();
-	
 	PurOrderEntryDAO entryDao;
 	for (auto entrydto: poe)
 	{
+		if (entrydto.getEntry_no() == 0 || entrydto.getMaterial_id() == "" || entrydto.getUnit_id() == "" || entrydto.getQty() == 0 || entrydto.getTax_rate() == 0 || entrydto.getPrice() == 0 || entrydto.getDiscount_rate() == 0)
+			return -1;
+
 		PurOrderEntryDO entryData;
 		entryData.setId(std::to_string(sf.nextId()));
 		SET_PUR_ORDER_ENTRY_DO();
-
 		result = entryDao.insert(entryData);
+		if (!result) return result;
 	}
-	result = dao.insert(data);
+	
 	return result;
 }
 
@@ -155,12 +180,23 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 	PurOrderDO data;
 	PurOrderDAO dao;
 	uint64_t result = -1;
+	string time = getTime();
 
 	//调用雪花算法
 	SnowFlake sf(1, 4);
 
 	data.setId(dto.getId());
 	SET_PUR_ORDER_DO();
+	data.setUpdate_time(time);
+
+	if (dao.count(data))
+	{
+		result = dao.update(data);
+	}
+	else
+	{
+		return -1;
+	}
 
 	list<PurOrderEntryDTO> poe = dto.getDetail();
 
@@ -172,21 +208,42 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 		SET_PUR_ORDER_ENTRY_DO();
 
 		if (entryDao.count(entryData))
+		{
 			result = entryDao.update(entryData);
+		}
 		else
 		{
 			entryData.setId(std::to_string(sf.nextId()));
 			entryDao.insert(entryData);
 		}
 	}
-	result = dao.update(data);
+	
 	return result;
 }
 
 // 修改状态
 bool PurOrderService::updateStatus(const PurOrderDTO& dto)
 {
-	return true;
+	PurOrderDO data;
+	PurOrderDAO dao;
+	uint64_t result = -1;
+	string time = getTime();
+	data.setId(dto.getId());
+	data.setBill_no(dto.getBill_no());
+	data.setIs_voided(dto.getIs_voided());
+	data.setIs_closed(dto.getIs_closed());
+	data.setIs_effective(dto.getIs_effective());
+	data.setUpdate_time(time);
+
+	if (dao.count(data))
+	{
+		result = dao.update(data);
+	}
+	else
+	{
+		return false;
+	}
+	return result;
 }
 
 // 通过ID删除数据
