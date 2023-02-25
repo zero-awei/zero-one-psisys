@@ -3,6 +3,7 @@
 #include "PrePayController.h"
 #include "../../domain/query/prepaymentbill/PrepayExportQuery.h"
 #include "../../service/prepayment/PrePayService.h"
+#include "../lib-common/include/CharsetConvertHepler.h"
 
 //查询单据信息
 JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload)
@@ -99,11 +100,43 @@ JsonVO<uint64_t> PrePayController::execModifyPayBillStatus(const PayModBillStatu
 {
 	PrePayService service;
 	JsonVO<uint64_t> result;
+
+	// 数据校验
+	if (!dto.getId() || dto.getBill_no() == "") // 如果ID和单据编号为空
+		return JsonVO<uint64_t>({}, RS_PARAMS_INVALID);
+	if (dto.getOpType() != PayModBillStatusDTO::CLOSE && dto.getOpType() != PayModBillStatusDTO::UNCLOSE && dto.getOpType() != PayModBillStatusDTO::CANCEL)
+		return JsonVO<uint64_t>({}, RS_PARAMS_INVALID);
+
+	// 执行
 	if (service.updateStatus(dto)) {
 		result.success(dto.getId());
+		switch (dto.getOpType())
+		{
+		case PayModBillStatusDTO::CLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭成功"));
+			break;
+		case PayModBillStatusDTO::UNCLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭成功"));
+			break;
+		case PayModBillStatusDTO::CANCEL:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废成功"));
+			break;
+		}
 	}
 	else {
 		result.fail(dto.getId());
+		switch (dto.getOpType())
+		{
+		case PayModBillStatusDTO::CLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭失败"));
+			break;
+		case PayModBillStatusDTO::UNCLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭失败"));
+			break;
+		case PayModBillStatusDTO::CANCEL:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废失败"));
+			break;
+		}
 	}
 	return result;
 }

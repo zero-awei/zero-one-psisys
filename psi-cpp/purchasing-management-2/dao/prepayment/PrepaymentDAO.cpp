@@ -88,10 +88,16 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 
 
 //修改单据状态
-int PrepaymentDAO::updateStatus(const PrepaymentDO& uObj)
+int PrepaymentDAO::updateStatusClose(const PrepaymentDO& uObj)
 {
-	string sql = "UPDATE `fin_payment_req` SET `bill_no`=?, `is_effective`=?, `effective_time`=?,`is_closed`=?,`is_voided`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%i%s%i%i%ull", uObj.getBill_no(), uObj.getIs_effective(), uObj.getEffective_time(), uObj.getIs_closed(), uObj.getIs_voided(), uObj.getId());
+	string sql = "UPDATE `fin_payment_req` SET `is_closed`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%i%ull", uObj.getIs_closed(), uObj.getId());
+}
+
+int PrepaymentDAO::updateStatusCancel(const PrepaymentDO& uObj)
+{
+	string sql = "UPDATE `fin_payment_req` SET `is_voided`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%i%ull", uObj.getIs_voided(), uObj.getId());
 }
 
 // 删除预付申请单

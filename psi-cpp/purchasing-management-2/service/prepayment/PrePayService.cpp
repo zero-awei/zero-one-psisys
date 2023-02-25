@@ -102,7 +102,16 @@ bool PrePayService::updateStatus(const PayModBillStatusDTO& dto)
 	data.setBill_no(dto.getBill_no());
 	//执行数据修改
 	PrepaymentDAO dao;
-	return dao.updateStatus(data) == 1;
+	if (dto.getOpType() == PayModBillStatusDTO::CLOSE || dto.getOpType() == PayModBillStatusDTO::UNCLOSE)
+	{
+		data.setIs_closed(dto.getIs_closed());
+		return dao.updateStatusClose(data) == 1;
+	}
+	else if (dto.getOpType() == PayModBillStatusDTO::CANCEL)
+	{
+		data.setIs_voided(dto.getIs_voided());
+		return dao.updateStatusCancel(data) == 1;
+	}
 }
 
 // 保存导入数据

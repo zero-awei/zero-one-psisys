@@ -117,9 +117,6 @@
     <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\PurOrdDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -225,6 +222,9 @@
     <ClInclude Include="service\PurReq\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -291,6 +291,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\PurReq\PurReqService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

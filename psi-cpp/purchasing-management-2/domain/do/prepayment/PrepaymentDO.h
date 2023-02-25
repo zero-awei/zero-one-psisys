@@ -38,7 +38,7 @@ class PrepaymentDO {
 	// 生效时间
 	CC_SYNTHESIZE(int, effective_time, Effective_time);
 	// 核批人
-	CC_SYNTHESIZE(string, approver, approver);
+	CC_SYNTHESIZE(string, approver, Approver);
 	// 制单时间
 	CC_SYNTHESIZE(string, create_time, Create_time);
 	// 制单人
