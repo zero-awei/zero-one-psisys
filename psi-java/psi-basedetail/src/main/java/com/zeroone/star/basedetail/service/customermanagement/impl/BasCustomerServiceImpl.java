@@ -1,8 +1,8 @@
-package com.zeroone.star.basedetail.service.impl;
+package com.zeroone.star.basedetail.service.customermanagement.impl;
 
 import com.zeroone.star.basedetail.entity.BasCustomer;
 import com.zeroone.star.basedetail.mapper.BasCustomerMapper;
-import com.zeroone.star.basedetail.service.IBasCustomerService;
+import com.zeroone.star.basedetail.service.customermanagement.IBasCustomerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

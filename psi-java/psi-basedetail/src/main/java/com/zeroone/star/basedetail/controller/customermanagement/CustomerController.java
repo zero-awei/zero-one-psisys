@@ -1,6 +1,7 @@
 package com.zeroone.star.basedetail.controller.customermanagement;
 
 
+import com.zeroone.star.basedetail.service.customermanagement.IBasCustomerService;
 import com.zeroone.star.basedetail.service.customermanagement.impl.CusCLevelServiceImpl;
 import com.zeroone.star.basedetail.service.customermanagement.impl.CusCategoryServiceImpl;
 import com.zeroone.star.basedetail.service.customermanagement.impl.CustomerServiceImpl;
@@ -17,7 +18,6 @@ import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerCategor
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerLevelVO;
 
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerShowVO;
-import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +44,9 @@ public class CustomerController implements CustomerApis {
     private CusCLevelServiceImpl cusCLevelService;
     @Autowired
     private CustomerServiceImpl customerService;
+
+    @Autowired
+    private IBasCustomerService basCustomerService;
 
     @GetMapping("query-condition")
     @ApiOperation(value = "普通条件分页查询")
@@ -103,5 +106,6 @@ public class CustomerController implements CustomerApis {
     public JsonVO<String> deleteCustomer(String customerId) {
         return null;
     }
+
 
 }

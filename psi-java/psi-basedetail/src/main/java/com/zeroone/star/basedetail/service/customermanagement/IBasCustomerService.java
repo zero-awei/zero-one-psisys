@@ -1,4 +1,4 @@
-package com.zeroone.star.basedetail.service;
+package com.zeroone.star.basedetail.service.customermanagement;
 
 import com.zeroone.star.basedetail.entity.BasCustomer;
 import com.baomidou.mybatisplus.extension.service.IService;
