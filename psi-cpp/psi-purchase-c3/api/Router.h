@@ -29,6 +29,7 @@ private:
 	void createPurQuotRouter();
 	void createPurCompareRouter();
 	void createPurInquiryRouter();
+	void createPurReqRouter();
 };
 
 

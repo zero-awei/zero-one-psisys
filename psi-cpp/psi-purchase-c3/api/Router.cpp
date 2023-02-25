@@ -7,6 +7,7 @@
 #include "pur-quot/PurQuotController.h"
 #include "pur-compare/PurCompareController.h"
 #include "pur-inquiry/PurInquiryController.h"
+#include "pur-req/PurReqController.h"
 
 
 
@@ -66,6 +67,8 @@ void Router::initRouter()
 	createPurQuotRouter();
 	createPurCompareRouter();
 	createPurInquiryRouter();
+
+	createPurReqRouter();
 }
 
 
@@ -92,6 +95,29 @@ void Router::createUserDepartRouter()
 }
 
 #endif
+
+
+
+//采购申请
+void Router::createPurReqRouter() {
+	//查询单据列表
+	BIND_GET_ROUTER(server, "/get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
+	//查询指定单据详细信息
+	BIND_GET_ROUTER(server, "/get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
+	//添加申请(保存/提交)
+	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqController::addPurReq, nullptr);
+	//修改申请(保存/提交/审核)
+	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqController::modifyPurReq, nullptr);
+	//删除申请
+	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqController::removePurReqById, nullptr);
+	//修改单据状态(关闭/作废/反关闭)
+	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqController::modifyPurReqBillStatus, nullptr);
+	//导入
+	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
+	//导出
+	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
+}
+
 
 
 //供应报价

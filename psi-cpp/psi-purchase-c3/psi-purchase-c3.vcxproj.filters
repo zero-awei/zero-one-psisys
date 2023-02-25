@@ -324,6 +324,72 @@
     <ClInclude Include="service\pur-compare\PurCompareService.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\pur-req\PurReqDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-req\PurReqEntryMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-req\PurReqFindBillMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-req\PurReqFindDetailBillMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-req\ReqMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\pur-req\PurReqAdamDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\pur-req\PurReqDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\pur-req\PurReqEntryAdamDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\pur-req\PurReqEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\AddPurReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\DeletePurReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\ModifyPurReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\PurReqEntryDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\PurReqExportDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\PurReqIntoDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-req\PurReqModBillStatusDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-req\PurReqFindBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-req\PurReqFindDetailBillQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\PurReqDetailBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\PurReqExportVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\PurReqFindBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-req\PurReqFindDetailBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -378,6 +444,30 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\pur-compare\PurCompareService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\pur-req\PurReqDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\AddPurReqDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\DeletePurReqDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\ModifyPurReqDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\PurReqEntryDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\PurReqExportDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\PurReqIntoDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\pur-req\PurReqModBillStatusDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
