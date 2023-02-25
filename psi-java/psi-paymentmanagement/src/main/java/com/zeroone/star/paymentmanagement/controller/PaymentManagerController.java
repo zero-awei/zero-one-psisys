@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("paymentmanager")
-@Api(tags = "支付管理")
+@Api(tags = "应付与付款-付款管理")
 @Validated
 public class PaymentManagerController implements PaymentManagerApis {
     @Resource

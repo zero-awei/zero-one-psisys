@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023/2/24 6:01 下午
  */
 
-@Api(value = "/paymentmanagement/stklo", tags = {"采购出入库查询"})
+@Api(value = "/paymentmanagement/stklo", tags = {"应付与付款-付款管理"})
 @RestController
 @RequestMapping("/paymentmanagement/stklo")
 public class StkIoController implements StkIoApis {

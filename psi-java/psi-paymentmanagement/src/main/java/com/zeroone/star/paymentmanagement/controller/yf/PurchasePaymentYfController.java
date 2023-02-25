@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/purchase-payment")
-@Api(tags = "采购付款yf")
+@Api(tags = "应付与付款-付款管理")
 @Validated
 public class PurchasePaymentYfController implements PurchasePayment {
 

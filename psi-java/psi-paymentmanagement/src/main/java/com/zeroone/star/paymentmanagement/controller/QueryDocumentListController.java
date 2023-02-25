@@ -23,7 +23,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/paymentmanagement/")
-@Api(tags = "付款管理-采购付款")
+@Api(tags = "应付与付款-付款管理")
 @ApiModel("单据表单查询接口")
 public class QueryDocumentListController implements PaymentManagementApis {
 
