@@ -305,7 +305,7 @@ int CgthckService::updateData(const AddCgthckBillDTO& dto)
 int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
     // 数据检验 只有处于编制完才能审核
-    if (!dto.getBillStage().compare("12")) // 12编制中, 14编制完 
+    if (dto.getBillStage().compare("14")) // 12编制中, 14编制完 
     {
         return -1;
     }
@@ -327,7 +327,7 @@ int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadD
     strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
 
     // 审批测试
-    if (stoi(data.getApprovalResultType()) == 1)
+    if (stoi(data.getApprovalResultType()) == 1) // 审核通过
     {
         data.setIsEffective(1);
         data.setEffectiveTime(string(buffer));
@@ -336,7 +336,7 @@ int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadD
     }
     else
     {
-        data.setBillStage("24"); // 34:核批完
+        data.setBillStage("24"); // 24:核批完
     }
 
     // 定义DAO层
@@ -346,14 +346,45 @@ int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadD
     int row = dao.updateApproval(data);
     if (row == 0)
     {
+        dao.getSqlSession()->rollbackTransaction();
         return -2;
+    }
+    dao.getSqlSession()->commitTransaction();
+    return row;
+}
+
+int CgthckService::removeData(const DeleteCgthckBillDTO& dto)
+{
+    CgthckDAO dao;
+    int row = -1;
+    
+    // 检查单据编号是否为空
+    if (!dto.getBillNo().empty())
+    {
+        // 删除单据
+        row = dao.deleteBillById(dto.getBillNo());
+        // 删除明细
+        row += dao.deleteEntryById(dto.getBillNo());
     }
     return row;
 }
 
-int CgthckService::removeData(uint64_t id)
+int CgthckService::removeEntry(const DeleteCgthckBillDTO& dto)
 {
-    return false;
+    CgthckDAO dao;
+
+    int row = -1;
+    // 检查明细列表是否为空
+    if (!dto.getBillNo().empty() && !dto.getEntries().empty())
+    {
+        string billNo = dto.getBillNo();
+        for (auto& entry : dto.getEntries())
+        {
+            // 删除明细
+            row += dao.deleteEntryById(billNo, entry);
+        }
+    }
+    return row;
 }
 
 int CgthckService::closed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)

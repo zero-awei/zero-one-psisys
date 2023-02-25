@@ -24,9 +24,9 @@ if (!obj.getSupplierId().empty()) { \
 // 定义更新逻辑解析宏, 减少重复代码
 #define UPDATE_CGTHCK_TERAM_PARSE(obj, sql) \
 SqlParams params; \
-sql<<" UPDATE `stk_io` SET "; \
+sql<<" UPDATE `stk_io` SET `update_time`=NOW()"; \
 if (!obj.getBillDate().empty()) { \
-    sql << "`bill_date`=?"; \
+    sql << ", `bill_date`=?"; \
     SQLPARAMS_PUSH(params, "s", string, obj.getBillDate()); \
 } \
 if (!obj.getSupplierId().empty()) { \
@@ -69,13 +69,13 @@ if (obj.getIsEffective() == 1) { \
     sql << ", `is_effective`=?"; \
     SQLPARAMS_PUSH(params, "i", int, obj.getIsEffective()); \
 } \
-if (obj.getIsClosed() == 1) { \
-    sql << ", `is_closed`=?"; \
-    SQLPARAMS_PUSH(params, "i", int, obj.getIsClosed()); \
+if (!obj.getApprovalRemark().empty()) { \
+    sql << ", `approval_remark`=?"; \
+    SQLPARAMS_PUSH(params, "s", string, obj.getApprovalRemark()); \
 } \
-if (obj.getIsVoided() == 1) { \
-    sql << ", `is_voided`=?"; \
-    SQLPARAMS_PUSH(params, "i", int, obj.getIsVoided()); \
+if (!obj.getApprovalResultType().empty()) { \
+    sql << ", `approval_result_type`=?"; \
+    SQLPARAMS_PUSH(params, "s", string, obj.getApprovalResultType()); \
 } \
 sql << " WHERE `bill_no`=?"; \
 SQLPARAMS_PUSH(params, "s", string, obj.getBillNo());
@@ -121,13 +121,13 @@ SQLPARAMS_PUSH(params, "s", string, obj.getBatchNo());
 
 // 定义条件解析宏，解析UPDATE stk_io 状态的条件，减少重复代码
 #define UPDATE_CGTHCK_STATUS_TEARM_PARSE(obj, sql) \
-sql << "UPDATE `stk_io` SET "; \
+sql << "UPDATE `stk_io` SET `update_time`=NOW()"; \
 SqlParams params; \
-if (obj.getIsClosed() != -1) { \
-    sql << "`is_closed`=?"; \
+if (obj.getIsClosed() == 0 || obj.getIsClosed() == 1) { \
+    sql << ", `is_closed`=?"; \
     SQLPARAMS_PUSH(params, "i", int, obj.getIsClosed()); \
 } \
-if (obj.getIsVoided() != -1) { \
+if (obj.getIsVoided() == 0 || obj.getIsVoided() == 1) { \
     sql << " ,`is_voided`=?"; \
     SQLPARAMS_PUSH(params, "i", int, obj.getIsVoided()); \
 } \
@@ -213,6 +213,7 @@ int CgthckDAO::updateApproval(const CgthckDO& iobj)
 {
 	stringstream sql;
 	UPDATE_CGTHCK_TERAM_PARSE(iobj, sql);
+	string s = sql.str();
 	return sqlSession->executeUpdate(sql.str(), params);
 }
 
@@ -220,11 +221,24 @@ int CgthckDAO::updateStatus(const CgthckDO& iobj)
 {
 	stringstream sql;
 	UPDATE_CGTHCK_STATUS_TEARM_PARSE(iobj, sql);
+	string s = sql.str();
 	return sqlSession->executeUpdate(sql.str(), params);
 }
 
-int CgthckDAO::deleteById(const CgthckDO& iobj)
+int CgthckDAO::deleteBillById(const string& billNo)
 {
-	// TO DO
-	return 0;
+	string sql = "DELETE FROM `stk_io` WHERE `bill_no`=?";
+	return sqlSession->executeUpdate(sql, "%s", billNo);
+}
+
+int CgthckDAO::deleteEntryById(const string& billNo)
+{
+	string sql = "DELETE FROM `stk_io_entry` WHERE `bill_no`=?";
+	return sqlSession->executeUpdate(sql, "%s", billNo);
+}
+
+int CgthckDAO::deleteEntryById(const string& billNo, const string& entryNo)
+{
+	string sql = "DELETE FROM `stk_io_entry` WHERE `bill_no`=? AND `entry_no`=?";
+	return sqlSession->executeUpdate(sql, "%s%s", billNo, entryNo);
 }

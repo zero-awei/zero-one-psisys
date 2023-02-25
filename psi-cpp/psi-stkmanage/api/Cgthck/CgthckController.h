@@ -39,6 +39,8 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToVoided, execModifyCgthcStatusToVoided, ModifyCgthckBillDTO);
 	// 删除采购退货出库(红入)单据接口
 	CREATE_API_FUN_BODY(deleteCgthckBill, execDeleteCgthckBill, DeleteCgthckBillDTO);
+	// 删除采购退货出库(红入)单明细接口
+	CREATE_API_FUN_JSON(deleteCgthckBillDetail, execDeleteCgthckBillDetail, DeleteCgthckBillDTO);
 	// 导入
 	CREATE_API_FUN_BODY(importCgthckFile, execImportCgthckFile, ImportCgthckFileDTO);
 	// 导出
@@ -65,6 +67,8 @@ private:
 	JsonVO<uint64_t> execModifyCgthcStatusToVoided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 测试删除数据
 	JsonVO<uint64_t> execDeleteCgthckBill(const DeleteCgthckBillDTO& dto);
+	// 测试删除明细
+	JsonVO<uint64_t> execDeleteCgthckBillDetail(const DeleteCgthckBillDTO& dto);
 	// 测试提交JSON
 	// 测试文件导入
 	JsonVO<uint64_t> execImportCgthckFile(const ImportCgthckFileDTO& dto);

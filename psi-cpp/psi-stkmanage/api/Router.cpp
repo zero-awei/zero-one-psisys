@@ -136,6 +136,7 @@ void Router::createCgthckRouter()
 	BIND_PUT_ROUTER(server, "/modify-cgthck-bill-status-to-unclose", &CgthckController::modifyCgthckBillStatusToUnclosed, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-cgthck-bill-status-to-voided", &CgthckController::modifyCgthckBillStatusToVoided, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-cgthck-bill-by-id", &CgthckController::deleteCgthckBill, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-cgthck-bill-detail-by-id", &CgthckController::deleteCgthckBillDetail, nullptr);
 	BIND_POST_ROUTER(server, "/import-cgthck-file", &CgthckController::importCgthckFile, nullptr);
 	BIND_GET_ROUTER(server, "/export-cgthck-file", &CgthckController::exportCgthckFile, nullptr);
 }

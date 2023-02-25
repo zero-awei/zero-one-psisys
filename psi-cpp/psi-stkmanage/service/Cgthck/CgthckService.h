@@ -25,10 +25,15 @@ public:
 	// 审核单据
 	int updateApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 删除采购退货出库单
-	int removeData(uint64_t id);
+	int removeData(const DeleteCgthckBillDTO& dto);
+	// 删除采购退货单明细
+	int removeEntry(const DeleteCgthckBillDTO& dto);
 	// 修改单据状态（关闭/作废/反关闭）
+	// 关闭
 	int closed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
+	// 反关闭
 	int unclosed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
+	// 作废
 	int voided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 导入
 	// 导出

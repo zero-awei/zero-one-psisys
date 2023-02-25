@@ -38,7 +38,10 @@ public:
 	// 修改状态
 	int updateStatus(const CgthckDO& iobj);
 	// 删除通过单号数据
-	int deleteById(const CgthckDO& iobj);
+	int deleteBillById(const string& billNo);
+	// 删除通过单号明细
+	int deleteEntryById(const string& billNo);
+	int deleteEntryById(const string& billNo, const string& entryNo);
 };
 
 #endif // !_CGTHCK_DAO_
