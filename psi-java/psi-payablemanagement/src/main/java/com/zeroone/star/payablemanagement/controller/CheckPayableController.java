@@ -43,6 +43,7 @@ public class CheckPayableController implements CheckPayableApis {
         return null;
     }
 
+    @Override
     @GetMapping("list")
     @ApiOperation("查询单据列表")
     public JsonVO<PageVO<CheckPayableVO>> listFinPayableCheck(CheckPayableQuery condition) {
@@ -65,12 +66,14 @@ public class CheckPayableController implements CheckPayableApis {
 
     @PostMapping("/export")
     @ApiOperation(value = "应付核销导出功能")
+    @Override
     public JsonVO<String> fileExport() {
         return null;
     }
 
     @PostMapping("/import")
     @ApiOperation(value = "应付核销导入功能")
+    @Override
     public JsonVO<String> fileImport(MultipartFile file) {
         return null;
     }
