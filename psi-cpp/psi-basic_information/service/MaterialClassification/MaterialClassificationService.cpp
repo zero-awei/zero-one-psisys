@@ -212,7 +212,7 @@ int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto
 			f.setHasChild(sub.getHasChild());
 		}
 		if (f.getHasChild() == "0")
-			modify = dao.updateById(dto.getPid(), "1");//通过id修改父节点的has_child
+			modify = dao.updateHasChildById(dto.getPid(), "1");//通过id修改父节点的has_child
 	}
 
 	return (modify * dao.insert(data))==1;
@@ -265,14 +265,40 @@ void removeNode(const MaterialClassificationDO& nodeChild) {
 int MaterialClassificationService::removeData(const MaterialClassificationDTO& dto)
 {
 	MaterialClassificationDAO dao;
-	list<MaterialClassificationDO> c = dao.selectById(dto.getId());//当前节点的所有子级
-	
+	list<MaterialClassificationDO> info = dao.selectById(dto.getId());//获取当前节点的信息
+	MaterialClassificationDO bro;
+	for (MaterialClassificationDO node : info) {
+		bro.setPid(node.getPid());
+		bro.setHasChild(node.getHasChild());
+	}
+		
 	int d = 1;
-	for (MaterialClassificationDO node : c) {
-		if (node.getHasChild() == "1") {//如果有子级节点则删除
-			removeNode(node);
+	if (bro.getHasChild() == "1"){
+		for (MaterialClassificationDO node : info) {
+			bro.setPid(node.getPid());
+			if (node.getHasChild() == "1") {//如果有子级节点则删除
+				removeNode(node);
+			}
+		}
+		d = dao.deleteByPid(dto.getId());
+	}
+	int myself = dao.deleteById(dto.getId());//删除自身
+
+	//如果刚好其父节点没有了子节点，则还要修改父节点的has_child
+	
+	list<MaterialClassificationDO> brother = dao.selectByPid(bro.getPid());
+
+	int tag = 0;
+	for (MaterialClassificationDO sub : brother) {
+		if (sub.getPid() != "0") {//有兄弟,不用改父节点
+			tag++;
+			break;
 		}
 	}
-	d = dao.deleteByPid(dto.getId());
-	return (d*dao.deleteById(dto.getId())) == 1;
+	
+	int father = 1;
+	if (tag == 0) {//没有兄弟，要修改父节点
+		int father = dao.updateHasChildById(bro.getPid(),"0");
+	}
+	return (myself*d*father) == 1;
 }

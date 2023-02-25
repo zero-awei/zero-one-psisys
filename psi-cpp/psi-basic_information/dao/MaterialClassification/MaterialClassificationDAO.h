@@ -52,7 +52,7 @@ public:
 	// 修改数据
 	int update(const MaterialClassificationDO& uObj);
 	//通过id修改是否有子类的项
-	int updateById(const string& id, const string child);
+	int updateHasChildById(const string& id, const string child);
 	// 通过ID删除数据
 	int deleteById(string id);
 	//通过pid删除数据
