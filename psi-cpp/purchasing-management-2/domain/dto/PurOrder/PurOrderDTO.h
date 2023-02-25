@@ -21,14 +21,14 @@
 #define _PUR_ORDER_DTO_
 
 #include "../../GlobalInclude.h"
-
+#include "PurOrderEntryDTO.h"
 /**
  * 采购订单传输对象
  */
 class PurOrderDTO
 {
 	// ID
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
@@ -135,6 +135,8 @@ class PurOrderDTO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
 	CC_SYNTHESIZE(int, version, Version);
+	// 子表
+	CC_SYNTHESIZE(list<PurOrderEntryDTO>, detail, Detail);
 
 public:
 	// 绑定JSON转换方法

@@ -1,9 +1,8 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: qingyu
- @Date: 2023/2/19 16:41:00
+ @Date: 2023/02/25 14:26:52
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,20 +16,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_ORDER_DAO_
-#define _PUR_ORDER_DAO_
+#ifndef _PUR_ORDER_ENTRY_DAO_
+#define _PUR_ORDER_ENTRY_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/PurOrder/PurOrderDO.h"
+#include "../../domain/do/PurOrder/PurOrderEntryDO.h"
 
 /**
  * 采购订单表数据库操作实现
  */
-class PurOrderDAO : public BaseDAO
+class PurOrderEntryDAO : public BaseDAO
 {
 public:
 	// 插入数据
-	uint64_t insert(const PurOrderDO& iObj);
+	uint64_t insert(const PurOrderEntryDO& iObj);
 	// 更新数据
-	uint64_t update(const PurOrderDO& iObj);
+	uint64_t update(const PurOrderEntryDO& iObj);
+	// 是否存在
+	uint64_t count(const PurOrderEntryDO& iObj);
 };
 #endif // !_PUR_ORDER_DAO_

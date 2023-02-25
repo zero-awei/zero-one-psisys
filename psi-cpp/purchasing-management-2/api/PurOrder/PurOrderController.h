@@ -35,13 +35,13 @@ class PurOrderController
 {
 public:
 	// 分页数据
-	CREATE_API_FUN_QUERY_PAYLOAD(listPurOrder, queryListPurOrder, PurOrderQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(listPurOrder, execQueryPurOrder, PurOrderQuery);
 	// 单个数据
 	CREATE_API_FUN_BODY(getPurOrder, execGetPurOrder, PurOrderDTO);
 	// 新增数据
-	CREATE_API_FUN_JSON(addPurOrder, execAddPurOrder, PurOrderDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addPurOrder, execAddPurOrder, PurOrderDTO);
 	// 修改数据
-	CREATE_API_FUN_BODY(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
+	CREATE_API_FUN_JSON(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
 	// 修改状态
 	CREATE_API_FUN_BODY(statusPurOrder, execStatusPurOrder, PurOrderDTO);
 	// 删除数据
@@ -51,11 +51,11 @@ public:
 
 private:
 	// 请求分页数据
-	JsonVO<PageVO<PurOrderVO>> queryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<PurOrderVO>> execQueryPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
 	// 查询单个数据
 	JsonVO<PurOrderVO> execGetPurOrder(const PurOrderDTO& dto);
 	// 新增数据
-	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto);
+	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改数据
 	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto);
 	// 修改状态

@@ -18,9 +18,89 @@
 */
 #include "stdafx.h"
 #include "PurOrderService.h"
-#include "../../dao/PurOrder/PurOrderDAO.h"
+#include "../../../lib-common/include/SnowFlake.h"
 
-#define PUR_ORDER_DTO2DO
+#define SET_PUR_ORDER_DO() \
+data.setBill_no(dto.getBill_no());\
+data.setBill_date(dto.getBill_date());\
+data.setSrc_bill_type(dto.getSrc_bill_type());\
+data.setSrc_bill_id(dto.getSrc_bill_id());\
+data.setSrc_no(dto.getSrc_no());\
+data.setSubject(dto.getSubject());\
+data.setIs_rubric(dto.getIs_rubric());\
+data.setPur_type(dto.getPur_type());\
+data.setSupplier_id(dto.getSupplier_id());\
+data.setContact(dto.getContact());\
+data.setPhone(dto.getPhone());\
+data.setFax(dto.getFax());\
+data.setEmail(dto.getEmail());\
+data.setOp_dept(dto.getOp_dept());\
+data.setOp_er(dto.getOp_er());\
+data.setDelivery_method(dto.getDelivery_method());\
+data.setDelivery_place(dto.getDelivery_place());\
+data.setDelivery_time(dto.getDelivery_time());\
+data.setTransport_method(dto.getTransport_method());\
+data.setPayment_method(dto.getPayment_method());\
+data.setSettle_method(dto.getSettle_method());\
+data.setSettle_time(dto.getSettle_time());\
+data.setInvoice_method(dto.getInvoice_method());\
+data.setInvoice_type(dto.getInvoice_type());\
+data.setCurrency(dto.getCurrency());\
+data.setExchange_rate(dto.getExchange_rate());\
+data.setQty(dto.getQty());\
+data.setAmt(dto.getAmt());\
+data.setPrepayment_bal(dto.getPrepayment_bal());\
+data.setSettle_qty(dto.getSettle_qty());\
+data.setSettle_amt(dto.getSettle_amt());\
+data.setIn_qty(dto.getIn_qty());\
+data.setIn_cost(dto.getIn_cost());\
+data.setSettled_amt(dto.getSettled_amt());\
+data.setInvoiced_amt(dto.getInvoiced_amt());\
+data.setAttachment(dto.getAttachment());\
+data.setRemark(dto.getRemark());\
+data.setIs_auto(dto.getIs_auto());\
+data.setBill_stage(dto.getBill_stage());\
+data.setApprover(dto.getApprover());\
+data.setBpmi_instance_id(dto.getBpmi_instance_id());\
+data.setApproval_result_type(dto.getApproval_result_type());\
+data.setApproval_remark(dto.getApproval_remark());\
+data.setIs_effective(dto.getIs_effective());\
+data.setEffective_time(dto.getEffective_time());\
+data.setIs_closed(dto.getIs_closed());\
+data.setIs_voided(dto.getIs_voided());\
+data.setSys_org_code(dto.getSys_org_code());\
+data.setCreate_by(dto.getCreate_by());\
+data.setCreate_time(dto.getCreate_time());\
+data.setUpdate_by(dto.getUpdate_by());\
+data.setUpdate_time(dto.getUpdate_time());\
+data.setVersion(dto.getVersion());
+
+#define SET_PUR_ORDER_ENTRY_DO() \
+entryData.setMid(entrydto.getMid());\
+entryData.setBill_no(entrydto.getBill_no());\
+entryData.setEntry_no(entrydto.getEntry_no());\
+entryData.setSrc_bill_type(entrydto.getSrc_bill_type());\
+entryData.setSrc_bill_id(entrydto.getSrc_bill_id());\
+entryData.setSrc_entry_id(entrydto.getSrc_entry_id());\
+entryData.setSrc_no(entrydto.getSrc_no());\
+entryData.setMaterial_id(entrydto.getMaterial_id());\
+entryData.setUnit_id(entrydto.getUnit_id());\
+entryData.setQty(entrydto.getQty());\
+entryData.setTax_rate(entrydto.getTax_rate());\
+entryData.setPrice(entrydto.getPrice());\
+entryData.setDiscount_rate(entrydto.getDiscount_rate());\
+entryData.setTax(entrydto.getTax());\
+entryData.setAmt(entrydto.getAmt());\
+entryData.setIn_qty(entrydto.getIn_qty());\
+entryData.setIn_cost(entrydto.getIn_cost());\
+entryData.setSettle_qty(entrydto.getSettle_qty());\
+entryData.setSettle_amt(entrydto.getSettle_amt());\
+entryData.setInvoiced_qty(entrydto.getInvoiced_qty());\
+entryData.setInvoiced_amt(entrydto.getInvoiced_amt());\
+entryData.setRemark(entrydto.getRemark());\
+entryData.setCustom1(entrydto.getCustom1());\
+entryData.setCustom2(entrydto.getCustom2());\
+entryData.setVersion(entrydto.getVersion());
 
 // 分页查询所有数据
 PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
@@ -32,7 +112,7 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 }
 
 // 查询单个数据
-PurOrderVO PurOrderService::getPurOrder(uint64_t id)
+PurOrderVO PurOrderService::getPurOrder(string id)
 {
 	PurOrderVO data;
 
@@ -45,73 +125,65 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
 	//组装数据
 	PurOrderDO data;
 	PurOrderDAO dao;
+	uint64_t result = -1;
 
 	//调用雪花算法
-	data.setId(dto.getId());
-	data.setBill_no(dto.getBill_no());
-	data.setBill_date(dto.getBill_date());
-	data.setSrc_bill_type(dto.getSrc_bill_type());
-	data.setSrc_bill_id(dto.getSrc_bill_id());
-	data.setSrc_no(dto.getSrc_no());
-	data.setSubject(dto.getSubject());
-	data.setIs_rubric(dto.getIs_rubric());
-	data.setPur_type(dto.getPur_type());
-	data.setSupplier_id(dto.getSupplier_id());
-	data.setContact(dto.getContact());
-	data.setPhone(dto.getPhone());
-	data.setFax(dto.getFax());
-	data.setEmail(dto.getEmail());
-	data.setOp_dept(dto.getOp_dept());
-	data.setOp_er(dto.getOp_er());
-	data.setDelivery_method(dto.getDelivery_method());
-	data.setDelivery_place(dto.getDelivery_place());
-	data.setDelivery_time(dto.getDelivery_time());
-	data.setTransport_method(dto.getTransport_method());
-	data.setPayment_method(dto.getPayment_method());
-	data.setSettle_method(dto.getSettle_method());
-	data.setSettle_time(dto.getSettle_time());
-	data.setInvoice_method(dto.getInvoice_method());
-	data.setInvoice_type(dto.getInvoice_type());
-	data.setCurrency(dto.getCurrency());
-	data.setExchange_rate(dto.getExchange_rate());
-	data.setQty(dto.getQty());
-	data.setAmt(dto.getAmt());
-	data.setPrepayment_bal(dto.getPrepayment_bal());
-	data.setSettle_qty(dto.getSettle_qty());
-	data.setSettle_amt(dto.getSettle_amt());
-	data.setIn_qty(dto.getIn_qty());
-	data.setIn_cost(dto.getIn_cost());
-	data.setSettled_amt(dto.getSettled_amt());
-	data.setInvoiced_amt(dto.getInvoiced_amt());
-	data.setAttachment(dto.getAttachment());
-	data.setRemark(dto.getRemark());
-	data.setIs_auto(dto.getIs_auto());
-	data.setBill_stage(dto.getBill_stage());
-	data.setApprover(dto.getApprover());
-	data.setBpmi_instance_id(dto.getBpmi_instance_id());
-	data.setApproval_result_type(dto.getApproval_result_type());
-	data.setApproval_remark(dto.getApproval_remark());
-	data.setIs_effective(dto.getIs_effective());
-	data.setEffective_time(dto.getEffective_time());
-	data.setIs_closed(dto.getIs_closed());
-	data.setIs_voided(dto.getIs_voided());
-	data.setSys_org_code(dto.getSys_org_code());
-	data.setCreate_by(dto.getCreate_by());
-	data.setCreate_time(dto.getCreate_time());
-	data.setUpdate_by(dto.getUpdate_by());
-	data.setUpdate_time(dto.getUpdate_time());
-	data.setVersion(dto.getVersion());
+	SnowFlake sf(1, 4);
+	
+	data.setId(std::to_string(sf.nextId()));
+	SET_PUR_ORDER_DO();
 
-	return dao.insert(data);
+	list<PurOrderEntryDTO> poe = dto.getDetail();
+	
+	PurOrderEntryDAO entryDao;
+	for (auto entrydto: poe)
+	{
+		PurOrderEntryDO entryData;
+		entryData.setId(std::to_string(sf.nextId()));
+		SET_PUR_ORDER_ENTRY_DO();
+
+		result = entryDao.insert(entryData);
+	}
+	result = dao.insert(data);
+	return result;
 }
 
 // 修改数据
 bool PurOrderService::updateData(const PurOrderDTO& dto)
 {
-	return true;
+	//组装数据
+	PurOrderDO data;
+	PurOrderDAO dao;
+	uint64_t result = -1;
+
+	//调用雪花算法
+	SnowFlake sf(1, 4);
+
+	data.setId(dto.getId());
+	SET_PUR_ORDER_DO();
+
+	list<PurOrderEntryDTO> poe = dto.getDetail();
+
+	PurOrderEntryDAO entryDao;
+	for (auto entrydto : poe)
+	{
+		PurOrderEntryDO entryData;
+		entryData.setId(entrydto.getId());
+		SET_PUR_ORDER_ENTRY_DO();
+
+		if (entryDao.count(entryData))
+			result = entryDao.update(entryData);
+		else
+		{
+			entryData.setId(std::to_string(sf.nextId()));
+			entryDao.insert(entryData);
+		}
+	}
+	result = dao.update(data);
+	return result;
 }
 
-// 修改数据
+// 修改状态
 bool PurOrderService::updateStatus(const PurOrderDTO& dto)
 {
 	return true;

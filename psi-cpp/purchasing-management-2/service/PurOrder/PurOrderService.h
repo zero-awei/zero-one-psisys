@@ -24,6 +24,9 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
 #include "../../domain/dto/PurOrder/PurOrderDTO.h"
+#include "../../domain/dto/PurOrder/PurOrderEntryDTO.h"
+#include "../../dao/PurOrder/PurOrderDAO.h"
+#include "../../dao/PurOrder/PurOrderEntryDAO.h"
 
 /**
  * 采购订单服务实现，基础采购订单服务实现
@@ -34,7 +37,7 @@ public:
 	// 分页查询所有数据
 	PageVO<PurOrderVO> listPurOrder(const PurOrderQuery& query);
 	// 查询单个数据
-	PurOrderVO getPurOrder(uint64_t id);
+	PurOrderVO getPurOrder(string id);
 	// 保存数据
 	uint64_t saveData(const PurOrderDTO& dto);
 	// 修改数据

@@ -21,7 +21,7 @@
 #include "../../service/PurOrder/PurOrderService.h"
 
 // 查询list数据
-JsonVO<PageVO<PurOrderVO>> PurOrderController::queryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<PurOrderVO>> PurOrderController::execQueryPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	PurOrderService service;
@@ -51,7 +51,7 @@ JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 }
 
 // 新增数据
-JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto)
+JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	//定义一个Service
@@ -76,13 +76,14 @@ JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 	PurOrderService service;
 
 	JsonVO<uint64_t> result;
-	if (service.updateData(dto)) {
+	service.updateData(dto);
+	/*if (service.updateData(dto)) {
 		result.success(dto.getId());
 	}
 	else
 	{
 		result.fail(dto.getId());
-	}
+	}*/
 	return result;
 }
 
@@ -92,13 +93,6 @@ JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
 	JsonVO<uint64_t> result;
 	PurOrderService service;
 
-	if (service.updateStatus(dto)) {
-		result.success(dto.getId());
-	}
-	else
-	{
-		result.fail(dto.getId());
-	}
 	return result;
 }
 //删除数据
@@ -109,13 +103,13 @@ JsonVO<uint64_t> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 
 	JsonVO<uint64_t> result;
 	//执行数据删除
-	if (service.removeData(dto.getId())) {
-		result.success(dto.getId());
-	}
-	else
-	{
-		result.fail(dto.getId());
-	}
+	//if (service.removeData(dto.getId())) {
+	//	result.success(dto.getId());
+	//}
+	//else
+	//{
+	//	result.fail(dto.getId());
+	//}
 	//响应结果
 	return result;
 }
@@ -123,6 +117,6 @@ JsonVO<uint64_t> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 JsonVO<uint64_t> PurOrderController::execRemoveById(const IntID& id)
 {
 	PurOrderDTO dto;
-	dto.setId(id.getId());
+	//dto.setId(id.getId());
 	return execRemovePurOrder(dto);
 }

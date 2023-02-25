@@ -67,17 +67,17 @@ void Router::initRouter()
 			res.render_json(jvo);
 			return;
 		}
-	//获取表单参数
-	std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-	std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-	//获取文件路径
-	auto& files = req.get_upload_files();
-	std::vector<string> filePaths;
-	for (auto& file : files) {
-		filePaths.push_back(file.get_file_path().substr(1));
-		std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-	}
-	res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
+		//获取表单参数
+		std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
+		std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
+		//获取文件路径
+		auto& files = req.get_upload_files();
+		std::vector<string> filePaths;
+		for (auto& file : files) {
+			filePaths.push_back(file.get_file_path().substr(1));
+			std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
+		}
+		res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
 		}, nullptr);
 
 	createSampleRouter();
@@ -115,8 +115,11 @@ void Router::initRouter()
 	createPurOrderRouter();
 	createPurReqRouter();
 	createPurComRouter();
+	createPaymentRouter();
 #endif
-
+}
+void Router::createPurOrderRouter()
+{
 	// 分页数据
 	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
 	// 单个数据
@@ -148,7 +151,6 @@ void Router::initRouter()
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-	createPaymentRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -187,22 +189,6 @@ void Router::createPayRouter() {
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-}
-
-void Router::createPurOrderRouter()
-{
-	// 分页数据
-	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
-	// 单个数据
-	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
-	// 新增数据
-	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
-	// 修改数据
-	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-	// 删除数据
-	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
-	// 删除ById
-	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 }
 
 void Router::createPurReqRouter() {

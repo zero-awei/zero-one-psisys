@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: Andrew
- @Date: 2022/21/22 20:30:00
+ @Author: qingyu
+ @Date: 2023/02/25 11:59:38
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,17 +17,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+#ifndef _PUR_ORDER_ENTRY_DTO_
+#define _PUR_ORDER_ENTRY_DTO_
 
-#ifndef __PURORDERENTRYDO_H__
-#define __PURORDERENTRYDO_H__
-#include "../DoInclude.h"
+#include "../../GlobalInclude.h"
 
 /**
-* 采购订单明细表DO领域模型
-*/
-class PurOrderEntryDO
+ * 采购订单明细传输对象
+ */
+class PurOrderEntryDTO
 {
-private:
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
 	//主表
@@ -80,6 +79,9 @@ private:
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
+public:
+	// 绑定JSON转换方法
+	friend void from_json(const json& j, PurOrderEntryDTO& t); // NOLINT
+	BIND_TO_JSON(PurOrderEntryDTO, id, mid, bill_no, entry_no, src_bill_type, src_bill_id, src_entry_id, src_no, material_id, unit_id, qty, tax_rate, price, discount_rate, tax, amt, in_qty, in_cost, settle_qty, settle_amt, invoiced_qty, invoiced_amt, remark, custom1, custom2, version);
 };
-
-#endif
+#endif //_PUR_ORDER_ENTRY_DTO_
