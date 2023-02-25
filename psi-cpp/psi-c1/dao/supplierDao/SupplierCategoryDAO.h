@@ -27,7 +27,7 @@ class SupplierCategoryDAO :public BaseDAO
 {
 public:
 	//选择用户查询
-	list<SupplierCategoryReturnDO>selectSupplierCategory(const SupplierCategoryQueryDO& obj);
+	list<SupplierCategoryReturnDO>selectSupplierCategory();
 };
 
 

@@ -26,7 +26,7 @@ class SupplierCategoryService
 {
 public:
 	//列表返回查询数据
-	list<SuppliersCategoryVO>listAll(const SupplierCategoryQuery& query);
+	list<SuppliersCategoryVO>listAll();
 };
 
 #endif // _SUPPLIERCATEGORYSERVICE_H_

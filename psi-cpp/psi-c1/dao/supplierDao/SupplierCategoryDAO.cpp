@@ -3,7 +3,7 @@
 #include "SupplierCategoryMapper.h"
 
 
-std::list<SupplierCategoryReturnDO> SupplierCategoryDAO::selectSupplierCategory(const SupplierCategoryQueryDO& obj)
+std::list<SupplierCategoryReturnDO> SupplierCategoryDAO::selectSupplierCategory()
 {
 	stringstream sql;
 	SqlParams params;

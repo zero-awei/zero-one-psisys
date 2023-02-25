@@ -27,9 +27,9 @@
 class SupplierCategoryController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(querySupplierCategory, execQuerySupplierCategory, SupplierCategoryQuery);
+	CREATE_API_FUN_QUERY3(querySupplierCategory, execQuerySupplierCategory);
 private:
-	JsonVO<list<SuppliersCategoryVO>>execQuerySupplierCategory(const SupplierCategoryQuery& query,const PayloadDTO& payload);
+	JsonVO<list<SuppliersCategoryVO>>execQuerySupplierCategory();
 };
 
 #endif // !SUPPLIER_CATEGORY_CONTROLLER_

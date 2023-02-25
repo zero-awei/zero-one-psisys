@@ -2,11 +2,11 @@
 #include"SupplierCategoryController.h"
 #include "../../service/supplierService/SupplierCategoryService.h"
 
-JsonVO<list<SuppliersCategoryVO>>SupplierCategoryController::execQuerySupplierCategory(const SupplierCategoryQuery& query, const PayloadDTO& payload)
+JsonVO<list<SuppliersCategoryVO>>SupplierCategoryController::execQuerySupplierCategory()
 {
 	list<SuppliersCategoryVO> data;
 	SupplierCategoryService service;
-	data = service.listAll(query);
+	data = service.listAll();
 	JsonVO<list<SuppliersCategoryVO>> rs(data, RS_SUCCESS);
 	return rs;
 }

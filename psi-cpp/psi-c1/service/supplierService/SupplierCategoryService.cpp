@@ -2,16 +2,13 @@
 #include "SupplierCategoryService.h"
 #include "../../dao/supplierDAO/SupplierCategoryDAO.h"
 #include "../../domain/do/supplierDO/SupplierCategoryReturnDO.h"
-std::list<SuppliersCategoryVO> SupplierCategoryService::listAll(const SupplierCategoryQuery& query)
+std::list<SuppliersCategoryVO> SupplierCategoryService::listAll()
 {
 	//构建返回对象
 	list<SuppliersCategoryVO> vr;
-	//构建查询对象
-	SupplierCategoryQueryDO obj;
-	obj.setName(query.getName());
 	//定义dao层
 	SupplierCategoryDAO dao;
-	list<SupplierCategoryReturnDO> result = dao.selectSupplierCategory(obj);
+	list<SupplierCategoryReturnDO> result = dao.selectSupplierCategory();
 	for (SupplierCategoryReturnDO sub : result)
 	{
 		SuppliersCategoryVO vo;
