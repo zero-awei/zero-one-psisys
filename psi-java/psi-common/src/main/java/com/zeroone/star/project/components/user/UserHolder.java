@@ -52,5 +52,6 @@ public class UserHolder {
                 .isEnabled(Convert.toByte(1))
                 .roles(Convert.toList(String.class, null))
                 .build();
+
     }
 }

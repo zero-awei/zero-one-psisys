@@ -5,6 +5,7 @@ import com.zeroone.star.project.query.systemmanagement.positionmanagement.Positi
 import com.zeroone.star.project.systemmanagement.positionmanagement.PositionApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.systemmanagement.positionmanagement.PositionVO;
 import com.zeroone.star.systemmanagement.service.positionmanagement.IPositionService;
 import io.swagger.annotations.Api;
@@ -27,20 +28,30 @@ import java.util.List;
 public class PositionController implements PositionApis {
 
     @Autowired
-    IPositionService iPositionService;
+    private IPositionService iPositionService;
 
-    @ApiOperation("查询所有职务")
+    @ApiOperation("查询职务列表")
     @GetMapping("/queryall")
     @Override
     public JsonVO<PageVO<PositionVO>> listPositionByPageAndCondition(PositionQuery positionQuery) {
-        return null;
+        if(positionQuery == null){
+            return JsonVO.create(null,ResultStatus.FAIL);
+        }
+        return JsonVO.success(iPositionService.queryAll(positionQuery));
     }
 
     @ApiOperation("添加职务（返回值data值表示插入成功与否）")
     @PostMapping("/addPosition")
     @Override
     public JsonVO<String> savePosition(PositionDTO positionDTO) {
-        return null;
+        if (positionDTO == null){
+            return JsonVO.fail("无法执行请求,请联系管理员！");
+        }
+        String result = iPositionService.insert(positionDTO);
+        if (result.equals("添加失败")){
+            return JsonVO.fail(result);
+        }
+        return JsonVO.success(result);
     }
 
 
@@ -48,7 +59,14 @@ public class PositionController implements PositionApis {
     @PostMapping("updatePosition")
     @Override
     public JsonVO<String> updatePosition(PositionDTO positionDTO) {
-        return null;
+        if (positionDTO == null){
+            return JsonVO.fail("无法执行请求,请联系管理员！");
+        }
+        String result = iPositionService.update(positionDTO);
+        if (result.equals("更新失败")){
+            return JsonVO.fail(result);
+        }
+        return JsonVO.success(result);
     }
 
 
@@ -56,16 +74,20 @@ public class PositionController implements PositionApis {
     @DeleteMapping("/deletePosition")
     @Override
     public JsonVO<String> deletePosition(String positionId) {
-        //service
-        iPositionService.deletePositionById(positionId);
-        return JsonVO.success("删除成功");
+        if(positionId == null){
+            return JsonVO.fail("无法执行请求,请联系管理员！");
+        }
+        String result = iPositionService.deletePositionById(positionId);
+        if (result.equals("删除失败")){
+            return JsonVO.fail(result);
+        }
+        return JsonVO.success(result);
     }
 
     @ApiOperation(value = "查询职级")
-    @DeleteMapping("/queryPostRank")
+    @GetMapping("/queryPostRank")
     @Override
     public JsonVO<List<String>> queryPostRank() {
-        //service
-        return null;
+        return JsonVO.success(iPositionService.listPostRank());
     }
 }

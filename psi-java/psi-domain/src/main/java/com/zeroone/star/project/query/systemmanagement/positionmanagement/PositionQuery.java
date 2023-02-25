@@ -1,5 +1,6 @@
 package com.zeroone.star.project.query.systemmanagement.positionmanagement;
 
+import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel("职务查询Query")
-public class PositionQuery {
+public class PositionQuery extends PageQuery {
     @ApiModelProperty(value = "职务编码", example = "devleader")
     private String code;
 
