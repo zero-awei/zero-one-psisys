@@ -145,7 +145,7 @@ void Router::initRouter()
 	//删除申请
 	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
 	//修改单据状态(关闭/作废/反关闭)
-	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 	//导入
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
 	createPaymentRouter();
