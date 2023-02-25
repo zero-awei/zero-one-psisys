@@ -11,6 +11,8 @@
 class AddSupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 {
 	/*供应商信息*/
+	//id
+	CC_SYNTHESIZE(string, id, ID);
 	// 编号1
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称1
@@ -39,7 +41,7 @@ class AddSupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 	//开户行1
 	CC_SYNTHESIZE(string, invoice_bank_name, Invoice_Bank_Name);
 	//行号1
-	CC_SYNTHESIZE(string, invoice_bank_code, Invoice_Bank_Code);
+	CC_SYNTHESIZE(string, invoice_bank_code, Invoice_Bank_Code);//容易漏
 	//账号1
 	CC_SYNTHESIZE(string, invoice_account, Invoice_Account);
 	//联系电话1
@@ -93,7 +95,7 @@ class AddSupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 	CC_SYNTHESIZE(string, biz_area, Biz_Area);
 	//供应商地址 1
 	CC_SYNTHESIZE(string, address, Address);
-	//上传附件（还不确定要不要）
+	//上传附件——》不需要，因继承了FileDTO
 	//CC_SYNTHESIZE(string, attachment, Attachment);
 	/*操作信息*/
 	//创建时间
@@ -104,10 +106,14 @@ class AddSupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 	CC_SYNTHESIZE(string, update_time, Update_Time);
 	//修改人
 	CC_SYNTHESIZE(string, update_by, Update_By);
-	//41个字段
+	//40个字段+Filedto
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddSupplierDTO& t); // NOLINT
+	AddSupplierDTO()
+	{
+		is_enabled = -2;//is_enabled如果等于-2代表用户没有输入is_enabled的值
+	}
 };
 
 #endif // !_ADD_DTO_

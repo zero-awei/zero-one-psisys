@@ -11,11 +11,11 @@
 class DeleteSupplierDTO
 {
 	// 删除供应商需要的属性
-	CC_SYNTHESIZE(string, code, Code);
+	CC_SYNTHESIZE(string, id, ID);
 	
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, DeleteSupplierDTO& t); // NOLINT
 };
 
-#endif // !_ADD_DTO_
+#endif // !_DELETE_DTO_

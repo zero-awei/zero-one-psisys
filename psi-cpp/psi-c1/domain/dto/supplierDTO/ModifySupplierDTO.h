@@ -11,6 +11,8 @@
 class ModifySupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 {
 	/*供应商信息*/
+	//id
+	CC_SYNTHESIZE(string, id, ID);
 	// 编号
 	CC_SYNTHESIZE(string, code, Code);
 	// 名称

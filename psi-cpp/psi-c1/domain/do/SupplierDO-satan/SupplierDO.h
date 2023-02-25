@@ -21,7 +21,7 @@ class SupplierDO
 	CC_SYNTHESIZE(string, name, Name);
 	// 简称——查询指定供应商的信息中其他信息里面的字段
 	CC_SYNTHESIZE(string, short_name, Short_Name);
-	//助记名----其他信息的“辅助名称”和助记名用的都是数据库中的同一个字段 3
+	//助记名----其他信息的“辅助名称”和助记名用的都是数据库中的同一个字段   3 
 	CC_SYNTHESIZE(string, aux_name, Aux_Name);
 	//供应商分类 4
 	CC_SYNTHESIZE(string, supplier_category, Supplier_Category);
@@ -107,16 +107,16 @@ class SupplierDO
 	CC_SYNTHESIZE(string, update_by, Update_By);
 	//版本---增加供应商的时候不需要这个信息
 	CC_SYNTHESIZE(int, version, Version);
+	//一共43个字段
 
-
-public:
-	SupplierDO() {
-		id ="";
-		name = "";
-		aux_name = "";
-		is_enabled = 1;
-
-	}
+//public:
+//	SupplierDO() {
+//		id = "";
+//		name = "";
+//		aux_name = "";
+//		is_enabled = 1;
+//
+//	}
 };
 
 #endif // !_SUPPLIER_DO_

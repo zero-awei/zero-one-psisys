@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SupplierServiceSatan.h"
 #include "../../../dao/supplierDao/dao-Supplier-satan/SupplierDAO.h"
-
+#include "../lib-common/include/SnowFlake.h"
 // 高级查询
 PageVO<AdvancedQueryVO> SupplierService::advancedListSupplierData(const AdvancedQuery& query)
 {
@@ -21,7 +21,7 @@ PageVO<AdvancedQueryVO> SupplierService::advancedListSupplierData(const Advanced
 	}
 	//记录查询数据页数
 	pages.setTotal(count);
-	pages.calcPages();                                             //出现了问题
+	pages.calcPages();                                            
 	//执行DAO层的高级查询函数
 	list<SupplierDO> result = dao.AdvancedSelectWithPage(query.getPageIndex(), query.getPageSize(),query);
 	list<AdvancedQueryVO> vr;
@@ -123,6 +123,7 @@ uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
 	data.setInvoice_Company(dto.getInvoice_Company());
 	data.setInvoice_Tax_Code(dto.getInvoice_Tax_Code());
 	data.setInvoice_Bank_Name(dto.getInvoice_Bank_Name());
+	data.setInvoice_Bank_Code(dto.getInvoice_Bank_Code());//这一行在第二轮大检查的时候发现漏了
 	data.setInvoice_Account(dto.getInvoice_Account());
 	data.setInvoice_Phone(dto.getInvoice_Phone());
 	data.setInvoice_Address(dto.getInvoice_Address());
@@ -150,13 +151,16 @@ uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
 	data.setCreate_By(dto.getCreate_By());
 	data.setUpdate_Time(dto.getUpdate_Time());
 	data.setUpdate_By(dto.getUpdate_By());
+	//将文件的上传路径也装入DO领域模型类中，在执行SupplierInsert进行返回
 	string file_router;
 	for (auto file_segment : dto.getFiles())
 	{
 		file_router = file_router + file_segment;
 	}
 	data.setAttachment(file_router);
+	//生成id并转入DO类中
 	
+	//data里面装了41个数据
 	//执行数据添加
 	SupplierDAO dao;
 	return dao.SupplierInsert(data);
@@ -216,5 +220,5 @@ uint64_t SupplierService::modifySupplierData(const ModifySupplierDTO& dto)
 uint64_t SupplierService::deleteSupplierData(const DeleteSupplierDTO& dto)
 {
 	SupplierDAO dao;
-	return dao.SupplierDeleteByCode(dto.getCode()) == 1;
+	return dao.SupplierDeleteByCode(dto.getID()) == 1;
 }

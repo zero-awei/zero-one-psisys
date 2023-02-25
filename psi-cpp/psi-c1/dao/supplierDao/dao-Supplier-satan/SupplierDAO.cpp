@@ -115,54 +115,53 @@ list<SupplierDO> SupplierDAO::SpecifiedSelect(const string& code)
 }
 
 
-// 插入数据
+// 插入数据——已检查：字段，?，%s
 uint64_t SupplierDAO::SupplierInsert(const SupplierDO& iObj)
 {
-	string sql = "INSERT INTO `bas_supplier` (`code`,`name`, `short_name` ,` aux_name` ,` supplier_category `,` supplier_level ` ,` tax_scale `\
-		,`headquarters  ` ,`  area` ,` biz_area ` ,` address ` ,` website ` ,` legal_person ` ,` legal_person_phone` ,`financial_contacts` ,\
-		`financial_phone`, ` invoice_company `, `  invoice_tax_code`, ` invoice_bank_name `, ` invoice_bank_code `, `invoice_account  `, \
-		`invoice_phone  `, ` invoice_address `, ` receipt_company `, ` receipt_bank_name `, ` receipt_bank_code `, ` receipt_account `, \
-		`recv_name  `, `recv_phone  `, ` recv_fax `, ` recv_email `, `recv_address`, `recv_postcode `, `attachment`, ` alter_suppliers`,\
-		` is_enabled `, ` remark `,` create_by `,`create_time  `,` update_time `,` update_by `) VALUES ( ?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ,\
-		? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , )";//?有40个
-	return sqlSession->executeInsert(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%i\
+	string sql = "INSERT INTO `bas_supplier` (`id`,`code`,`name`, `short_name` ,`aux_name` ,`supplier_category`,`supplier_level`,`tax_scale`\
+		,`headquarters` ,`area` ,`biz_are` ,`address` ,`website` ,`legal_person` ,`legal_person_phone` ,`financial_contacts` ,\
+		`financial_phone`, `invoice_company`, `invoice_tax_code`, `invoice_bank_name`, `invoice_bank_code`, `invoice_account`, \
+		`invoice_phone`, `invoice_address`, `receipt_company`, `receipt_bank_name`, `receipt_bank_code`, `receipt_account`, \
+		`recv_name`, `recv_phone`, `recv_fax`, `recv_email`, `recv_address`, `recv_postcode`, `attachment`, `alter_suppliers`,\
+		`is_enabled`, `remark`,`create_by`,`create_time`,`update_time`,`update_by`) VALUES (?, ?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ,\
+		? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)";//已检查：?有42个;insert的字段也有42个(已经算上id的份)
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%i\
 		%s%s%s%s%s", iObj.getCode(), iObj.getName(), iObj.getShort_Name(), iObj.getAux_Name()
 		, iObj.getSupplier_Category(), iObj.getSupplier_Level(), iObj.getTax_Scale(), iObj.getHeadQuarters(), iObj.getArea(), iObj.getBiz_Area()
-		, iObj.getAddress(), iObj.getWebsite(), iObj.getLegal_Person(), iObj.getFinancial_Contacts(), iObj.getFinancial_Phone()
+		, iObj.getAddress(), iObj.getWebsite(), iObj.getLegal_Person(), iObj.getLegal_Person_Phone(), iObj.getFinancial_Contacts(), iObj.getFinancial_Phone()
 		, iObj.getInvoice_Company(), iObj.getInvoice_Tax_Code(), iObj.getInvoice_Bank_Name(), iObj.getInvoice_Bank_Code(), 
 		iObj.getInvoice_Account(), iObj.getInvoice_Phone(), iObj.getInvoice_Address(), iObj.getReceipt_Company(), iObj.getReceipt_Bank_Name(),
 		iObj.getReceipt_Bank_Code(), iObj.getReceipt_Account(), iObj.getRecv_Name(), iObj.getRecv_Phone(),
 		iObj.getRecv_Fax(), iObj.getRecv_Email(), iObj.getRecv_Address(), iObj.getRecv_Postcode(), iObj.getAttachment(),
 		iObj.getAlter_Suppliers(), iObj.getIs_Enabled(), iObj.getRemark(), iObj.getCreate_By(), iObj.getCreate_Time(), iObj.getUpdate_Time(),
-		iObj.getUpdate_By());  //40个字段
+		iObj.getUpdate_By()  );  //41个字段-修改过后已经正确了，%s在41个的基础上多加了一个(现在42个%s)，iObj的id还没有加
 }
-// 修改数据
+// 修改数据——已检查：字段，%s，
 int SupplierDAO::SupplierUpdateByCode(const SupplierDO& uObj)
 {
-	//string sql = "UPDATE `bas_supplier` SET `name`=?, `sex`=?, `age`=? WHERE `id`=?";
-	string sql = "UPDATE `bas_supplier` SET `code`=? ,`name`=? , `short_name`=? ,` aux_name`=? ,` supplier_category `=?,\
-		` supplier_level ` =?,` tax_scale `=?,`headquarters  `=?,`  area`=? ,` biz_area `=? ,` address `=? ,` website ` =?,\
-		` legal_person `=?,` legal_person_phone`=? ,`financial_contacts`=? ,`financial_phone`=? , ` invoice_company `=?, \
-		`  invoice_tax_code`=?, ` invoice_bank_name `=? , ` invoice_bank_code `=? , `invoice_account  `=?, \
-		`invoice_phone  `=?, ` invoice_address `=?, ` receipt_company `=?, ` receipt_bank_name `=?, ` receipt_bank_code `=?, \
-		` receipt_account `=?, `recv_name  `=? , `recv_phone  `=? , ` recv_fax `=?, ` recv_email `=?, `recv_address`=?, \
-		`recv_postcode `=?, `attachment`=?, ` alter_suppliers`=?,` is_enabled `=? , ` remark `=? ,` create_by `=? ,\
-		`create_time  `=? ,` update_time `=? ,` update_by `=? " ;
-	return sqlSession->executeInsert(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%i\
-		%s%s%s%s%s", uObj.getCode(), uObj.getName(),uObj.getShort_Name(), uObj.getAux_Name()
+	string sql = "UPDATE `bas_supplier` SET `code`=?,`name`=? , `short_name`=? ,`aux_name`=? ,`supplier_category`=?,\
+		`supplier_level` =?,`tax_scale`=?,`headquarters`=?,`area`=? ,`biz_area`=? ,`address`=? ,`website` =?,\
+		`legal_person`=?,`legal_person_phone`=? ,`financial_contacts`=? ,`financial_phone`=? , `invoice_company`=?, \
+		`invoice_tax_code`=?, `invoice_bank_name`=? , `invoice_bank_code`=? , `invoice_account`=?, \
+		`invoice_phone`=?, `invoice_address`=?, `receipt_company`=?, `receipt_bank_name`=?, `receipt_bank_code`=?, \
+		`receipt_account`=?, `recv_name`=? , `recv_phone`=? , `recv_fax`=?, `recv_email`=?, `recv_address`=?, \
+		`recv_postcode`=?, `attachment`=?, `alter_suppliers`=?,`is_enabled`=? , `remark`=? ,`create_by`=? ,\
+		`create_time`=? ,`update_time`=? ,`update_by`=? WHERE `id`=?" ;//41个字段+WHERE `id`=?
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%i\
+		%s%s%s%s%s%s", uObj.getCode(),uObj.getName(),uObj.getShort_Name(), uObj.getAux_Name()
 		, uObj.getSupplier_Category(), uObj.getSupplier_Level(), uObj.getTax_Scale(), uObj.getHeadQuarters(), uObj.getArea(), uObj.getBiz_Area()
-		, uObj.getAddress(), uObj.getWebsite(), uObj.getLegal_Person(), uObj.getFinancial_Contacts(), uObj.getFinancial_Phone()
+		, uObj.getAddress(), uObj.getWebsite(), uObj.getLegal_Person(), uObj.getLegal_Person_Phone(), uObj.getFinancial_Contacts(), uObj.getFinancial_Phone()
 		, uObj.getInvoice_Company(), uObj.getInvoice_Tax_Code(), uObj.getInvoice_Bank_Name(), uObj.getInvoice_Bank_Code(),
 		uObj.getInvoice_Account(), uObj.getInvoice_Phone(), uObj.getInvoice_Address(), uObj.getReceipt_Company(), uObj.getReceipt_Bank_Name(),
 		uObj.getReceipt_Bank_Code(), uObj.getReceipt_Account(), uObj.getRecv_Name(), uObj.getRecv_Phone(),
 		uObj.getRecv_Fax(), uObj.getRecv_Email(), uObj.getRecv_Address(), uObj.getRecv_Postcode(), uObj.getAttachment(),
 		uObj.getAlter_Suppliers(), uObj.getIs_Enabled(), uObj.getRemark(), uObj.getCreate_By(), uObj.getCreate_Time(), uObj.getUpdate_Time(),
-		uObj.getUpdate_By());  //40个字段
+		uObj.getUpdate_By()  );  //uobj有41个字段+最后要写id，已经有42个%s（id字段还没加）
 }
 // 通过编号来删除数据——根据code
-int SupplierDAO::SupplierDeleteByCode(string code)
+int SupplierDAO::SupplierDeleteByCode(string id)
 {
-	string sql = "DELETE FROM `bas_supplier` WHERE `code`=?";
-	return sqlSession->executeUpdate(sql, "%s", code);
+	string sql = "DELETE FROM `bas_supplier` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", id);
 }
 

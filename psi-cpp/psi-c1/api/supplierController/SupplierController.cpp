@@ -34,14 +34,12 @@ JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)//·
 		std::cout << "path " << file << std::endl;
 	}
 	//Êý¾Ý¿âÖÐÒªÇó·Ç¿ÕÊý¾ÝµÄ¼ì²é
-	if (dto.getCode() == NULL || dto.getName() == NULL || dto.getAux_Name() == NULL || dto.getIs_Enabled() == NULL)
+	if (dto.getCode() == ""|| dto.getName() == "" || dto.getAux_Name() == "" || dto.getIs_Enabled() == -2)
 	{
-		
-		JsonVO<string> result;
-		result.fail(dto.getCode());//Ê¹ÓÃ×´Ì¬Âë
+		result.fail(dto.getID());//Ê¹ÓÃ×´Ì¬Âë
 		return result;
 	}
-	//Ö´ÐÐÊý¾Ý²åÈëÊý¾Ý¿â
+	//Ö´ÐÐÊý¾Ý²åÈëÊý¾Ý¿â    (ºËÐÄ)
 	uint64_t id =service.addSupplierData(dto);
 	//ÅÐ¶Ï²åÈëÊÇ·ñ³É¹¦
 	if (id > 0) 
@@ -56,7 +54,7 @@ JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)//·
 	}
 	else
 	{
-		result.fail(dto.getCode());
+		result.fail(dto.getID());
 	}
 	return result;
 }
@@ -71,11 +69,11 @@ JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& d
 		std::cout << "path " << file << std::endl;
 	}
 	//Êý¾Ý¿âÖÐÒªÇó·Ç¿ÕÊý¾ÝµÄ¼ì²é
-	if (dto.getCode() == NULL || dto.getName() == NULL || dto.getAux_Name() == NULL || dto.getIs_Enabled() == NULL)
+	if (dto.getCode() == "" || dto.getName() == "" || dto.getAux_Name() == "" || dto.getIs_Enabled() == -2)
 	{
 
 		JsonVO<string> result;
-		result.fail(dto.getCode());//Ê¹ÓÃ×´Ì¬Âë
+		result.fail(dto.getID());//Ê¹ÓÃ×´Ì¬Âë
 		return result;
 	}
 	//Ö´ÐÐÊý¾Ý²åÈëÊý¾Ý¿â
@@ -93,7 +91,7 @@ JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& d
 	}
 	else
 	{
-		result.fail(dto.getCode());
+		result.fail(dto.getID());
 	}
 	return result;
 
@@ -105,14 +103,14 @@ JsonVO<string> SupplierController::execDeleteSupplier(const DeleteSupplierDTO& d
 	JsonVO<string> result;
 	//Ö´ÐÐÊý¾ÝÉ¾³ý
 	DeleteSupplierDTO delete_supplier_code;
-	delete_supplier_code.setCode(dto.getCode());
+	delete_supplier_code.setID(dto.getID());
 	if (service.deleteSupplierData(delete_supplier_code) )
 	{
-		result.success(dto.getCode());
+		result.success(dto.getID());
 	}
 	else
 	{
-		result.fail(dto.getCode());
+		result.fail(dto.getID());
 	}
 	return result;
 }

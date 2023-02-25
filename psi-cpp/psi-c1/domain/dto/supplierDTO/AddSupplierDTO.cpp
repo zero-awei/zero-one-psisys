@@ -3,6 +3,7 @@
 #include "AddSupplierDTO.h"
 
 void from_json(const json& j, AddSupplierDTO& t) { // NOLINT
+	BIND_FROM_TO_NORMAL(j, t, id);
 	BIND_FROM_TO_NORMAL(j, t, code);
 	BIND_FROM_TO_NORMAL(j, t, name);
 	BIND_FROM_TO_NORMAL(j, t, aux_name);
