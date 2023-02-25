@@ -5,7 +5,9 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../dao/Cgthck/CgthckDAO.h"
 #include "../../domain/do/Cgthck/CgthckDO.h"
+#include "../../domain/vo/Cgthck/QueryCgrkBillListsVO.h"
 #include "../../domain/vo/Cgthck/QueryCgthckBillVO.h"
+#include "../../domain/query/Cgthck/QueryCgrkBillQuery.h"
 #include "../../domain/query/Cgthck/QueryCgthckBillQuery.h"
 #include "../../domain/dto/Cgthck/AddCgthckBillDTO.h"
 #include "../../domain/dto/Cgthck/DeleteCgthckBillDTO.h"
@@ -16,8 +18,8 @@
 class CgthckService
 {
 public:
-	// 分页查询数据
-	PageVO<QueryCgthckBillVO> listAll(const QueryCgthckBillQuery& query);
+	// 采购入库单分录查询数据
+	PageVO<QueryCgrkBillListsVO> listAll(const QueryCgrkBillQuery& query);
 	// 添加采购退货出库单(保存/提交)
 	uint64_t saveData(const AddCgthckBillDTO& dto);
 	// 修改采购退货出库单（保存/提交/审核）

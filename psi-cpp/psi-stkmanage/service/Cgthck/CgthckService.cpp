@@ -1,19 +1,32 @@
 #include "stdafx.h"
 #include "CgthckService.h"
 
-PageVO<QueryCgthckBillVO> CgthckService::listAll(const QueryCgthckBillQuery& query)
+PageVO<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& query)
 {
+    // 构建时间区间
+    auto getTimeZone = [](const std::string & begin, const std::string & end)->std::string
+    {
+        return begin + '%' + end;
+    };
     // 构建返回对象
-    PageVO<QueryCgthckBillVO> pages;
+    PageVO<QueryCgrkBillListsVO> pages;
     pages.setPageIndex(query.getPageIndex());
     pages.setPageSize(query.getPageSize());
 
-    // 查询数据总条数
+    // 组装查询数据
     CgthckDO obj;
+    // 单据编号
     obj.setBillNo(query.getBillNo());
-    obj.setBillDate(query.getBillDate());
+    // 单据日期(开始时间-结束时间)
+    obj.setBillDate(getTimeZone(query.getBillDateStart(), query.getBillDateEnd()));
+    // 发票类型
+    obj.setInvoiceType(query.getInvoiceType());
+    // 供应商
     obj.setSupplierId(query.getSupplierId());
-    // TO DO
+    // 业务员
+    obj.setOperator1(query.getSrcOperator());
+    // 业务部门
+    obj.setOpDept(query.getOpDept());
 
     CgthckDAO dao;
     uint64_t count = dao.count(obj);
@@ -26,13 +39,38 @@ PageVO<QueryCgthckBillVO> CgthckService::listAll(const QueryCgthckBillQuery& que
     pages.setTotal(count);
     pages.calcPages();
     list<CgthckDO> result = dao.selectById(query.getBillNo());
-    list< QueryCgthckBillVO> vr;
+    list< QueryCgrkBillListsVO> vr;
     for (auto sub : result)
     {
-        QueryCgthckBillVO vo;
+        QueryCgrkBillListsVO vo;
+        // 单据编号
         vo.setBillNo(sub.getBillNo());
+        // 单据日期
         vo.setBillDate(sub.getBillDate());
+        // 单据主题
+
+        // 入库类型
+
+        // 源单号
+
+        // 供应商
         vo.setSupplierId(sub.getSupplierId());
+        // 业务部门
+
+        // 业务员
+
+        // 结算金额
+
+        // 已结算金额
+
+        // 已开票金额
+
+        // 发票类型
+
+        // 有涨吨
+
+        // 已关闭
+        
         vr.push_back(vo);
     }
     pages.setRows(vr);

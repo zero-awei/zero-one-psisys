@@ -4,10 +4,21 @@
 
 // 测试中
 
+// 分隔时间区间宏
+#define TIME_ZONE_SPLIT(__fmt__, __args__) \
+std::string __begin__, __end__; \
+if(__fmt__ != ""){ \
+	int __pos__ = __args__.find(__fmt__); \
+	if(__pos__ <= __args__.size()){ \
+		__begin__ = __args__.substr(0, __pos__); \
+		__end__ = __args__.substr(__pos__ + 1); \
+	} \
+}
+
 //定义条件解析宏，减少重复代码
-#define SAMPLE_TERAM_PARSE(obj, sql) \
+#define QUERY_CGRK_BILL_LIST_TERAM_PARSE(obj, sql) \
 SqlParams params; \
-sql<<" WHERE 1=1 AND `is_rubric` = 1"; \
+sql<<" WHERE 1=1"; \
 if (!obj.getBillNo().empty()) { \
 	sql << " AND `bill_no`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getBillNo()); \
@@ -19,7 +30,24 @@ if (!obj.getBillDate().empty()) { \
 if (!obj.getSupplierId().empty()) { \
 	sql << " AND supplier_id=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getSupplierId()); \
+} \
+if (!obj.getInvoiceType().empty()) { \
+	sql << " AND invoice_type=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getInvoiceType()); \
+} \
+if (!obj.getOperator1().empty()) { \
+	sql << " AND operator=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getOperator1()); \
+} \
+if (!obj.getOpDept().empty()) { \
+	sql << " AND op_dept=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getOpDept()); \
+} \
+if(!obj.getBillDate().empty()) { \
+	TIME_ZONE_SPLIT("%", obj.getBillDate()) \
+	sql << " AND BETWEEN " << __begin__ << " AND " << __end__; \
 }
+
 
 // 定义更新逻辑解析宏, 减少重复代码
 #define UPDATE_CGTHCK_TERAM_PARSE(obj, sql) \
@@ -169,15 +197,15 @@ bool CgthckDAO::deleteFile(const string& fileName)
 uint64_t CgthckDAO::count(const CgthckDO& iobj)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM " << DATABASE1;
-	SAMPLE_TERAM_PARSE(iobj, sql);
+	sql << "SELECT COUNT(*) FROM `stk_io`";
+	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 list<CgthckDO> CgthckDAO::selectById(const string& id)
 {
-	string sql = "SELECT `bill_no`, `bill_date`, `supplier_id` FROM " + string{ DATABASE1 } + " WHERE `bill_no` LIKE CONCAT('%', ?, '%') AND `is_rubric` = 1";
+	string sql = "SELECT `bill_no`, `bill_date`, `supplier_id` FROM " + string{ DATABASE1 } + " WHERE `bill_no` LIKE CONCAT('%', ?, '%')";
 	CgthckMapper mapper;
 	return sqlSession->executeQuery<CgthckDO, CgthckMapper>(sql, mapper, "%s", id);
 }
@@ -213,7 +241,6 @@ int CgthckDAO::updateApproval(const CgthckDO& iobj)
 {
 	stringstream sql;
 	UPDATE_CGTHCK_TERAM_PARSE(iobj, sql);
-	string s = sql.str();
 	return sqlSession->executeUpdate(sql.str(), params);
 }
 
@@ -221,7 +248,6 @@ int CgthckDAO::updateStatus(const CgthckDO& iobj)
 {
 	stringstream sql;
 	UPDATE_CGTHCK_STATUS_TEARM_PARSE(iobj, sql);
-	string s = sql.str();
 	return sqlSession->executeUpdate(sql.str(), params);
 }
 

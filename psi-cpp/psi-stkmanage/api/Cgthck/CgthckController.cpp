@@ -1,27 +1,31 @@
 #include "stdafx.h"
 #include "CgthckController.h"
 
-JsonVO<PageVO<QueryCgthckBillVO>> CgthckController::execQueryCgthckBill(const QueryCgthckBillQuery& query)
-{
-    // 定义一个service
-    CgthckService service;
-    // 查询数据
-    PageVO<QueryCgthckBillVO> result = service.listAll(query);
-    return JsonVO<PageVO<QueryCgthckBillVO>>(result, RS_SUCCESS);
-}
-
-JsonVO<PageVO<QueryCgthckBillDetailVO>> CgthckController::execQueryCgthckBillDetail(const QueryCgthckBillQuery& query)
-{
-    PageVO<QueryCgthckBillDetailVO> result;
-    list<QueryCgthckBillDetailVO> rows;
-    rows.push_back(QueryCgthckBillDetailVO());
-    result.setRows(rows);
-    return JsonVO<PageVO<QueryCgthckBillDetailVO>>(result, RS_SUCCESS);
-}
+//JsonVO<PageVO<QueryCgthckBillVO>> CgthckController::execQueryCgthckBill(const QueryCgthckBillQuery& query)
+//{
+//    // 定义一个service
+//    CgthckService service;
+//    // 查询数据
+//    PageVO<QueryCgthckBillVO> result = service.listAll(query);
+//    return JsonVO<PageVO<QueryCgthckBillVO>>(result, RS_SUCCESS);
+//}
+//
+//JsonVO<PageVO<QueryCgthckBillDetailVO>> CgthckController::execQueryCgthckBillDetail(const QueryCgthckBillQuery& query)
+//{
+//    PageVO<QueryCgthckBillDetailVO> result;
+//    list<QueryCgthckBillDetailVO> rows;
+//    rows.push_back(QueryCgthckBillDetailVO());
+//    result.setRows(rows);
+//    return JsonVO<PageVO<QueryCgthckBillDetailVO>>(result, RS_SUCCESS);
+//}
 
 JsonVO<PageVO<QueryCgrkBillListsVO>> CgthckController::execQueryCgrkBillList(const QueryCgrkBillQuery& query)
 {
-    return JsonVO<PageVO<QueryCgrkBillListsVO>>();
+    // 定义一个service
+    CgthckService service;
+
+    // 查询数据
+    PageVO<QueryCgthckBillVO> result = service.listAll(query);
 }
 
 JsonVO<uint64_t> CgthckController::execAddCgthckBill(const AddCgthckBillDTO& dto)

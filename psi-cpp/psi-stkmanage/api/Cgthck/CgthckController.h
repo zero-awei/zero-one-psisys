@@ -20,10 +20,13 @@
 class CgthckController
 {
 public:
-	// 查询单据接口
-	CREATE_API_FUN_QUERY(queryCgthcBillk, execQueryCgthckBill, QueryCgthckBillQuery);
-	// 查询指定单据明细接口
-	CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, QueryCgthckBillQuery);
+	// 查询采购退货出库(红入)单据接口
+	// CREATE_API_FUN_QUERY(queryCgthcBillk, execQueryCgthckBill, QueryCgthckBillQuery);
+	// 查询采购退货出库(红入)单据明细接口
+	// CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, QueryCgthckBillQuery);
+	
+	// 查询采购入库单据分录列表
+	CREATE_API_FUN_QUERY(queryCgrkBillList, execQueryCgrkBillList, QueryCgrkBillQuery);
 	// 添加采购退货出库(红入)单据接口
 	CREATE_API_FUN_JSON(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
 	// 修改采购退货出库(红入)单据接口
@@ -46,10 +49,10 @@ public:
 	// 导出
 	CREATE_API_FUN_BODY(exportCgthckFile, execExportCgthckFile, ExportCgthckFileDTO);
 private:
-	// 测试查询数据
-	JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
-	// 测试查询详细数据
-	JsonVO<PageVO<QueryCgthckBillDetailVO>> execQueryCgthckBillDetail(const QueryCgthckBillQuery& query);
+	//// 测试查询数据
+	//JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
+	//// 测试查询详细数据
+	//JsonVO<PageVO<QueryCgthckBillDetailVO>> execQueryCgthckBillDetail(const QueryCgthckBillQuery& query);
 	// 测试分录查询采购入库单列表	
 	JsonVO<PageVO<QueryCgrkBillListsVO>> execQueryCgrkBillList(const QueryCgrkBillQuery& query);
 	// 测试添加数据

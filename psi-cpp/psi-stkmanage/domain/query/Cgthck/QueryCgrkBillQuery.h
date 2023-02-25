@@ -17,6 +17,12 @@ class QueryCgrkBillQuery : public PageQuery
 	CC_SYNTHESIZE(std::string, billDateEnd, BillDateEnd);
 	// 发票类型
 	CC_SYNTHESIZE(std::string, invoiceType, InvoiceType);
+	// 源单业务员
+	CC_SYNTHESIZE(std::string, srcOperator, SrcOperator);
+	// 业务部门
+	CC_SYNTHESIZE(std::string, opDept, OpDept);
+	// 供应商
+	CC_SYNTHESIZE(std::string, supplierId, SupplierId);
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, QueryCgrkBillQuery& t)
@@ -25,6 +31,9 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, billDateStart);
 		BIND_FROM_TO_NORMAL(j, t, billDateEnd);
 		BIND_FROM_TO_NORMAL(j, t, invoiceType);
+		BIND_FROM_TO_NORMAL(j, t, srcOperator);
+		BIND_FROM_TO_NORMAL(j, t, opDept);
+		BIND_FROM_TO_NORMAL(j, t, supplierId);
 	}
 };
 #endif // !_QUERY_CGRK_BILL_QUERY_
