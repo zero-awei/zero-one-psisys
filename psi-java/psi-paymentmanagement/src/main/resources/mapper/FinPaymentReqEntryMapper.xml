@@ -2,4 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeroone.star.paymentmanagement.mapper.FinPaymentReqEntryMapper">
 
+    <select id="viewSpecifiedDocInf" resultType="com.zeroone.star.paymentmanagement.entity.FinPaymentReqEntry">
+        SELECT
+        req.id,
+        req.mid,
+        req.bill_no,
+        req.entry_no,
+        req.src_bill_type,
+        req.src_bill_id,
+        req.src_entry_id,
+        req.src_no,
+        req.amt,
+        req.remark,
+        req.custom1,
+        req.custom2,
+        req.version
+        FROM
+        fin_payment_req_entry AS req
+        where req.bill_no=#{billNo}
+
+    </select>
 </mapper>

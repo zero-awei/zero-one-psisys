@@ -20,9 +20,9 @@ public class QueryDocumentListServiceImpl extends ServiceImpl<QueryDocumentListM
     @Override
     public PageVO<QueryDocumentListVO> queryDocumentList(QueryDocumentListQuery query) {
         //构建分页对象
-        Page<QueryDocumentList> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        Page<QueryDocumentList> QueryDocumentListPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 执行查询
-        Page<QueryDocumentList> result = mapper.queryDocumentList(addressBookPage,query.getBillNo(),query.getSubject());
+        Page<QueryDocumentList> result = mapper.queryDocumentList(QueryDocumentListPage,query.getBillNo(),query.getSubject());
         return PageVO.create(result, QueryDocumentListVO.class);
     }
 }
