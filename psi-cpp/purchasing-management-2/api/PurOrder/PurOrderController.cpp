@@ -21,7 +21,7 @@
 #include "../../service/PurOrder/PurOrderService.h"
 
 // 查询list数据
-JsonVO<PageVO<PurOrderVO>> PurOrderController::execListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<PurOrderVO>> PurOrderController::queryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	//定义一个Service
 	PurOrderService service;
@@ -43,7 +43,7 @@ JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 	PurOrderService service;
 	PurOrderVO test;
 
-	JsonVO<PurOrderVO> result = JsonVO(service.getData(dto.getId()), RS_SUCCESS);
+	JsonVO<PurOrderVO> result = JsonVO(service.getPurOrder(dto.getId()), RS_SUCCESS);
 	test.setId(dto.getId());
 	result = JsonVO(test, RS_SUCCESS);
 

@@ -32,9 +32,9 @@ class PurOrderService
 {
 public:
 	// 分页查询所有数据
-	PageVO<PurOrderVO> listAll(const PurOrderQuery& query);
+	PageVO<PurOrderVO> listPurOrder(const PurOrderQuery& query);
 	// 查询单个数据
-	PurOrderVO getData(uint64_t id);
+	PurOrderVO getPurOrder(uint64_t id);
 	// 保存数据
 	uint64_t saveData(const PurOrderDTO& dto);
 	// 修改数据
