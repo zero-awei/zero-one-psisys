@@ -1,12 +1,14 @@
 package com.zeroone.star.project.basedetail.customermanagement;
 
 import com.zeroone.star.project.dto.basedetail.customermanagement.CustomerDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.basedetail.customermanagement.CustomerCdvancedQuery;
 import com.zeroone.star.project.query.basedetail.customermanagement.CustomerQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerCategoryVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerLevelVO;
+import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerShowVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerVO;
 
 import java.util.List;
@@ -24,13 +26,13 @@ public interface CustomerApis {
      * @param customerQuery 包含分页信息和查询客户的5个查询条件
      * @return customer message
      */
-    JsonVO<PageVO<CustomerVO>> listCustomerByPageAndCondition(CustomerQuery customerQuery);
+    JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndCondition(CustomerQuery customerQuery);
     /**
      * 客户高级查询
      * @param CustomerCdvancedQuery 包含分页信息和客户高级查询条件
      * @return customer message
      */
-    JsonVO<PageVO<CustomerVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery);
+    JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery,PageQuery pageQuery);
     /**
      * 客户分类查询
      * @return customer_category message
@@ -46,7 +48,7 @@ public interface CustomerApis {
      * @param id 要查询的客户id
      * @return customer message
      */
-    JsonVO<CustomerVO> specifiedcustomer(String id);
+    JsonVO<CustomerShowVO> specifiedcustomer(String id);
 
     /**
      * 添加客户信息
