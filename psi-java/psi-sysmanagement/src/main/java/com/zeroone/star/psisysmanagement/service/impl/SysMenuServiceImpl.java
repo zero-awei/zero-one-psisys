@@ -2,7 +2,6 @@ package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
@@ -15,11 +14,9 @@ import com.zeroone.star.psisysmanagement.service.ISysMenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.DoubleBinaryOperator;
 
 /**
  * <p>

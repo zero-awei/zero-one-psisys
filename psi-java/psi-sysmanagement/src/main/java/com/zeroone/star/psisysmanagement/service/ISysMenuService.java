@@ -21,7 +21,7 @@ import java.util.List;
 public interface ISysMenuService extends IService<SysMenu> {
 
     /**
-     * 查询父节点下菜单组
+     * 查询菜单
      * @param sysMenuQuery
      * @return
      */
