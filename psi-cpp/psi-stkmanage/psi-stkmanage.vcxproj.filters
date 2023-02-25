@@ -90,7 +90,16 @@
     <ClCompile Include="service\Pyrk\PyrkService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
+    <ClCompile Include="dao\Pyrk\PyrkDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\Qtrk\QtrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Qtrk\QtrkDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\CommonDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -359,16 +368,25 @@
     <ClInclude Include="domain\do\Cgthck\SysUserDepartDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\Pyrk\PyrkMapper.h">
+    <ClInclude Include="dao\Pyrk\PyrkDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\Pyrk\PyrkDao.h">
+    <ClInclude Include="dao\StringMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\Pyrk\StringMapper.h">
+    <ClInclude Include="dao\IntMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\Pyrk\IntMapper.h">
+    <ClInclude Include="domain\dto\Qtrk\QtrkBillDetailDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Qtrk\QtrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Qtrk\QtrkDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\CommonDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

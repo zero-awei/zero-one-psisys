@@ -1,7 +1,6 @@
-
 #include "stdafx.h"
 #include "QtrkController.h"
-//#include "../../service/sample/SampleService.h"
+#include "../../service/Qtrk/QtrkService.h"
 
 JsonVO<PageVO<QueryQtrkBillListVO>> QtrkController::execQueryQtrk(const QueryQtrkBillListQuery& query, const PayloadDTO& payload)
 {
@@ -33,12 +32,12 @@ JsonVO<PageVO<QueryQtrkBillDetailsVO>> QtrkController::execQueryDetailsQtrk(cons
 	return JsonVO<PageVO<QueryQtrkBillDetailsVO>>(data, RS_SUCCESS);
 }
 
-JsonVO<uint64_t> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto)
+JsonVO<int> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto, const PayloadDTO& payload)
 {
-	JsonVO<uint64_t> result;
-	//SampleService service;
+	JsonVO<int> result;
+	QtrkService service;
 	//执行数据新增
-	uint64_t id=1; //= service.saveData(dto);
+	int id = service.saveBillData(dto, payload);
 	if (id > 0) {
 		result.success(id);
 	}

@@ -31,7 +31,7 @@ class QtrkController
 public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryQtrk, execQueryQtrk, QueryQtrkBillListQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(querydetailsQtrk, execQueryDetailsQtrk, QueryQtrkBillDetailsQuery);
-	CREATE_API_FUN_BODY(addQtrk, execAddQtrk, AddQtrkBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addQtrk, execAddQtrk, AddQtrkBillDTO);
 	CREATE_API_FUN_BODY(modifyQtrk, execModifyQtrk, ModifyQtrkBillDTO);
 	CREATE_API_FUN_BODY(removeQtrk, execRemoveQtrk, DeleteQtrkBillDTO);
 	//CREATE_API_FUN_BODY(removeById, execRemoveById, IntID);
@@ -45,7 +45,7 @@ private:
 	//查询其他入库详细信息单据列表
 	JsonVO<PageVO<QueryQtrkBillDetailsVO>> execQueryDetailsQtrk(const QueryQtrkBillDetailsQuery& query, const PayloadDTO& payload);
 	//添加其他入库单（保存/提交）
-	JsonVO<uint64_t> execAddQtrk(const AddQtrkBillDTO& dto);
+	JsonVO<int> execAddQtrk(const AddQtrkBillDTO& dto, const PayloadDTO& payload);
 	//修改其他入库单数据
 	JsonVO<uint64_t> execModifyQtrk(const ModifyQtrkBillDTO& dto);
 	//演示删除数据
