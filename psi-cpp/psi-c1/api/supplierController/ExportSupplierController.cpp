@@ -6,7 +6,7 @@
 #include "../../service/supplierService/ExportSupplierService.h"
 using namespace std;
 
-JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSupplierQuery& query, const PayloadDTO& payload)
+JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<ExportSupplierQuery>& query, const PayloadDTO& payload)
 {
 	vector<vector<std::string>> data;
 	data.push_back({ CharsetConvertHepler::ansiToUtf8("供应商报表") });
@@ -23,45 +23,47 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSup
 	stringstream ss;
 
 	ExportSupplierService service;
-	list<ExportSupplierDO> vo = service.listAll(query);
-	for (ExportSupplierDO sub : vo)
+	list<list<ExportSupplierDO>> vo = service.listAll(query);
+	for (list<ExportSupplierDO> i : vo)
 	{
-		vector<std::string> row;
-		ss.clear();
-		ss << sub.getCode();
-		row.push_back(ss.str());
-		ss.str("");
+		for (ExportSupplierDO sub : i) {
+			vector<std::string> row;
+			ss.clear();
+			ss << sub.getCode();
+			row.push_back(ss.str());
+			ss.str("");
 
-		ss.clear();
-		ss << sub.getName();
-		row.push_back(ss.str());
-		ss.str("");
+			ss.clear();
+			ss << sub.getName();
+			row.push_back(ss.str());
+			ss.str("");
 
-		ss.clear();
-		ss << sub.getShortName();
-		row.push_back(ss.str());
-		ss.str("");
+			ss.clear();
+			ss << sub.getShortName();
+			row.push_back(ss.str());
+			ss.str("");
 
-		ss.clear();
-		ss << sub.getAuxName();
-		row.push_back(ss.str());
-		ss.str("");
+			ss.clear();
+			ss << sub.getAuxName();
+			row.push_back(ss.str());
+			ss.str("");
 
-		ss.clear();
-		ss << sub.getSupplierCategory();
-		row.push_back(ss.str());
-		ss.str("");
+			ss.clear();
+			ss << sub.getSupplierCategory();
+			row.push_back(ss.str());
+			ss.str("");
 
-		ss.clear();
-		ss << sub.getSupplierLevel();
-		row.push_back(ss.str());
-		ss.str("");
-		
-		if (sub.getIsEnabled() == 1) {
-			row.push_back(CharsetConvertHepler::ansiToUtf8("是"));
+			ss.clear();
+			ss << sub.getSupplierLevel();
+			row.push_back(ss.str());
+			ss.str("");
+
+			if (sub.getIsEnabled() == 1) {
+				row.push_back(CharsetConvertHepler::ansiToUtf8("是"));
+			}
+
+			data.push_back(row);
 		}
-
-		data.push_back(row);
 	}
 	/*for (int i = 1; i <= 10; i++)
 	{

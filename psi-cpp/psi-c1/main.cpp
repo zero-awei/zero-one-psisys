@@ -47,6 +47,7 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string dbHost = "localhost";
 	int dbPort = 3306;
 	int dbMax = 25;*/
+
 	std::string dbUsername = "root";
 	std::string dbPassword = "psitxms9527";
 	std::string dbName = "zopsi_sys";
