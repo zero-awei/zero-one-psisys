@@ -9,9 +9,15 @@ using namespace std;
 JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSupplierQuery& query, const PayloadDTO& payload)
 {
 	vector<vector<std::string>> data;
+	data.push_back({ CharsetConvertHepler::ansiToUtf8("供应商报表") });
 	vector<std::string> header{
-		CharsetConvertHepler::ansiToUtf8("code"),
-		CharsetConvertHepler::ansiToUtf8("supplierName"),
+		CharsetConvertHepler::ansiToUtf8("编码"),
+		CharsetConvertHepler::ansiToUtf8("名称"),
+		CharsetConvertHepler::ansiToUtf8("简称"),
+		CharsetConvertHepler::ansiToUtf8("助记名"),
+		CharsetConvertHepler::ansiToUtf8("供应商分类"),
+		CharsetConvertHepler::ansiToUtf8("供应商等级"),
+		CharsetConvertHepler::ansiToUtf8("是否启用"),
 	};
 	data.push_back(header);
 	stringstream ss;
@@ -25,10 +31,36 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const ExportSup
 		ss << sub.getCode();
 		row.push_back(ss.str());
 		ss.str("");
+
 		ss.clear();
 		ss << sub.getName();
 		row.push_back(ss.str());
 		ss.str("");
+
+		ss.clear();
+		ss << sub.getShortName();
+		row.push_back(ss.str());
+		ss.str("");
+
+		ss.clear();
+		ss << sub.getAuxName();
+		row.push_back(ss.str());
+		ss.str("");
+
+		ss.clear();
+		ss << sub.getSupplierCategory();
+		row.push_back(ss.str());
+		ss.str("");
+
+		ss.clear();
+		ss << sub.getSupplierLevel();
+		row.push_back(ss.str());
+		ss.str("");
+		
+		if (sub.getIsEnabled() == 1) {
+			row.push_back(CharsetConvertHepler::ansiToUtf8("是"));
+		}
+
 		data.push_back(row);
 	}
 	/*for (int i = 1; i <= 10; i++)

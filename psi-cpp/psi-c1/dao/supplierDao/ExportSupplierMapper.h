@@ -14,8 +14,13 @@ public:
 	ExportSupplierDO mapper(ResultSet* resultSet) const override
 	{
 		ExportSupplierDO data;
-		data.setCode(resultSet->getString(2));
-		data.setName(resultSet->getString(3));
+		data.setCode(resultSet->getString(1));
+		data.setName(resultSet->getString(2));
+		data.setShortName(resultSet->getString(3));
+		data.setAuxName(resultSet->getString(4));
+		data.setSupplierCategory(resultSet->getString(5));
+		data.setSupplierLevel(resultSet->getString(6));
+		data.setIsEnabled(resultSet->getInt(7));
 		return data;
 	}
 };
