@@ -41,7 +41,7 @@ public class CheckPayableDTO {
     private String attachment;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
     private Date billDate;
 
@@ -66,12 +66,12 @@ public class CheckPayableDTO {
     private String createBy;
 
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
     private Date createTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
     private Date effectiveTime;
@@ -126,12 +126,12 @@ public class CheckPayableDTO {
     private String updateBy;
 
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
     private Date updateTime;
 
-    @ApiModelProperty(value = "版本", example = "")
+    @ApiModelProperty(value = "版本")
     private Integer version;
 
     @ApiModelProperty(value = "往来核销明细")

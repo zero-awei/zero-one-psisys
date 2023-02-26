@@ -55,7 +55,10 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
         this.save(finPayableCheck);
         List<FinPayableCheckEntry> list = BeanUtil.copyToList(dto.getCheckPayableEntryList(),
             FinPayableCheckEntry.class);
-        list.forEach(item -> item.setBillNo(dto.getBillNo()));
+        list.forEach(item -> {
+            item.setBillNo(finPayableCheck.getBillNo());
+            item.setMid(finPayableCheck.getId());
+        });
         finPayableCheckEntryService.saveBatch(list);
     }
 
@@ -77,12 +80,15 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
         FinPayableCheck finPayableCheck = new FinPayableCheck();
         BeanUtil.copyProperties(dto, finPayableCheck);
         this.updateById(finPayableCheck);
-        finPayableCheckEntryService.remove(new LambdaQueryWrapper<FinPayableCheckEntry>()
-            .eq(FinPayableCheckEntry::getBillNo, dto.getBillNo()));
+//        finPayableCheckEntryService.remove(new LambdaQueryWrapper<FinPayableCheckEntry>()
+//            .eq(FinPayableCheckEntry::getBillNo, dto.getBillNo()));
         List<FinPayableCheckEntry> list = BeanUtil.copyToList(dto.getCheckPayableEntryList(),
             FinPayableCheckEntry.class);
-        list.forEach(item -> item.setBillNo(dto.getBillNo()));
-        finPayableCheckEntryService.saveBatch(list);
+//        list.forEach(item -> {
+//            item.setBillNo(finPayableCheck.getBillNo());
+//            item.setMid(finPayableCheck.getId());
+//        });
+        finPayableCheckEntryService.updateBatchById(list);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -90,9 +96,9 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
     public void removeWithEntry(List<String> ids) {
         this.removeByIds(ids);
         List<FinPayableCheck> list = this.listByIds(ids);
-        List<String> billNos = list.stream().map(FinPayableCheck::getBillNo).collect(Collectors.toList());
+        List<String> mids = list.stream().map(FinPayableCheck::getId).collect(Collectors.toList());
         finPayableCheckEntryService.remove(new LambdaQueryWrapper<FinPayableCheckEntry>()
-            .in(FinPayableCheckEntry::getBillNo, billNos));
+            .in(FinPayableCheckEntry::getMid, mids));
     }
 
     private static void isEmpty(CheckPayableDTO dto) {
@@ -118,7 +124,7 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
         }
         BigDecimal b2 = new BigDecimal(0);
         for (CheckPayableEntryDTO item : list2) {
-            b1 = b1.add(item.getAmt());
+            b2 = b2.add(item.getAmt());
         }
         // 比较是否一致
         if (b1.compareTo(b2) != 0) {
