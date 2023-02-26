@@ -2,7 +2,11 @@ package com.zeroone.star.payablemanagement.mapper;
 
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zeroone.star.project.query.payablemanagement.PayableQuery;
+import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,6 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2023-02-14
  */
 @Mapper
-public interface FinPayableMapper extends BaseMapper<FinPayable> {
+public interface FinPayableMapper extends BaseMapper<FinPayable>{
+    List<PayableVO> queryPayable(PayableQuery query);
 
+    PayableVO getOneByBillNo(String billNo);
 }
