@@ -32,7 +32,7 @@ public interface SalOrderMapper extends BaseMapper<SalOrder> {
      * 获取每月销售金额
      * @return 每月销售金额构成的list
      */
-    @Select("SELECT CONCAT(MAX(MONTH(b.bill_date)), '月') as x, IFNULL(SUM(b.amt),0) as y FROM sal_order b \n" +
+    @Select("SELECT CONCAT(MAX(MONTH(b.bill_date)), '月') as month, IFNULL(SUM(b.amt),0) as money FROM sal_order b \n" +
             " WHERE b.is_effective = 1 AND b.is_voided = 0\n" +
             " AND b.bill_date BETWEEN fn_first_day(DATE_ADD(SYSDATE(), INTERVAL -11 MONTH)) AND LAST_DAY(SYSDATE())\n" +
             " GROUP BY YEAR(b.bill_date), MONTH(b.bill_date)\n" +

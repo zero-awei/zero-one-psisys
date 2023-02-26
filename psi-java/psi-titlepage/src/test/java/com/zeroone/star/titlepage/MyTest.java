@@ -21,4 +21,12 @@ import java.util.List;
 @SpringBootTest
 public class MyTest {
 
+    @Autowired
+    SalOrderMapper mapper;
+
+    @Test
+    public void test(){
+        List<SalesAmountInformationVO> salesAmountInformationVOS = mapper.listSalesAmount();
+        System.out.println(salesAmountInformationVOS);
+    }
 }

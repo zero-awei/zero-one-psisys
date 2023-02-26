@@ -29,5 +29,4 @@ public interface ISalOrderService extends IService<SalOrder> {
      */
     public List<SalesAmountInformationVO> listSalesAmount();
 
-
 }
