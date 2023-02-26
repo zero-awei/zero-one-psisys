@@ -64,7 +64,7 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 	stringstream sql;
 	SqlParams params; 
 	// * 没改
-	sql << "SELECT * FROM bas_warehouse";
+	sql << "SELECT `id`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`, `update_by`, `update_time` FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql, params);
 	if(pageIndex > 0 && pageSize > 0)
 		sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
@@ -77,8 +77,7 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 std::list<DepotDO> DepotDAO::getDataById(const DepotDO& obj) {
 	stringstream sql;
 	SqlParams params; 
-	// * 没改
-	sql << "SELECT * FROM bas_warehouse";
+	sql << "SELECT `id`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`, `update_by`, `update_time` FROM bas_warehouse";
 	ONLY_FOR_ID(obj, sql, params);
 	DepotMapper mapper;
 	string sqlStr = sql.str();

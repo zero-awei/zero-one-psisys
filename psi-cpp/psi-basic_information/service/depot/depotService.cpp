@@ -49,8 +49,17 @@ PageVO<DepotVO> DepotService::listAll(const DepotQuery& query)
 	for (DepotDO sub : result)
 	{
 		DepotVO vo;
+		vo.setId(sub.getId());
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
+		vo.setAuxName(sub.getAuxName());
+		vo.setPhone(sub.getPhone());
+		vo.setStart(to_string(sub.getStart()));
+		vo.setRemarks(sub.getRemarks());
+		vo.setCreationPeo(sub.getCreationPeo());
+		vo.setCreationTime(sub.getCreationTime());
+		vo.setModiPeo(sub.getModiPeo());
+		vo.setModiTime(sub.getModiTime());
 		// 剩下的属性
 		vr.push_back(vo);
 	}
@@ -72,13 +81,20 @@ bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data
 	}
 
 	//不分页查询数据
-	list<DepotDO> result = dao.selectWithPage(obj, -1, -1);
+	list<DepotDO> result = dao.selectWithPage(obj, 0, 0);
 	for (DepotDO sub : result)
 	{
 		vector<string> row;
 		row.emplace_back(sub.getName());
 		row.emplace_back(sub.getCode());
 		row.emplace_back(sub.getAuxName());
+		row.emplace_back(to_string(sub.getPhone()));
+		row.emplace_back(to_string(sub.getStart()));
+		row.emplace_back(sub.getRemarks());
+		row.emplace_back(sub.getCreationPeo());
+		row.emplace_back(sub.getCreationTime());
+		row.emplace_back(sub.getModiPeo());
+		row.emplace_back(sub.getModiTime());
 		// 剩下的属性
 		data.emplace_back(row);
 	}
@@ -109,6 +125,14 @@ bool DepotService::getDataById(const OnlyValueQuery& query, vector<vector<string
 		vector<string> row;
 		row.emplace_back(sub.getName());
 		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getAuxName());
+		row.emplace_back(to_string(sub.getPhone()));
+		row.emplace_back(to_string(sub.getStart()));
+		row.emplace_back(sub.getRemarks());
+		row.emplace_back(sub.getCreationPeo());
+		row.emplace_back(sub.getCreationTime());
+		row.emplace_back(sub.getModiPeo());
+		row.emplace_back(sub.getModiTime());
 		// 剩下的属性
 		data.emplace_back(row);
 	}
