@@ -202,8 +202,23 @@ const routes = [
     name: 'check',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
-  }
+  },
   // ↓↓↓↓↓↓↓↓↓↓↓↓↓库存管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  // 采购入库
+  {
+    path: '/inventory/Ipurchase',
+    name: 'Ipurchase',
+    component: () =>
+      import('@/views/kucunguanli/rukuguanli/CaiGouRuKu.vue')
+  },
+  // 采购退货出库（红入）
+  {
+    path: '/inventory/salesreturn',
+    name: 'salesreturn',
+    component: () =>
+      import('@/views/kucunguanli/rukuguanli/CaiGouTuiHuoChuKu.vue')
+  },
+
 ]
 
 export default routes

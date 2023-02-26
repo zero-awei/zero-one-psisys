@@ -1,7 +1,7 @@
 <template>
 <!-- 采购应付 -->
   <div>
-    <!-- 查询(高级查询 ) -->
+    <!-- 查询 -->
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
       @reset="handleReset"></psi-form>
   </div>
@@ -16,6 +16,13 @@
     <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
     </psi-dialog>
 </template>
+
+<style scoped>
+.psi-table{
+  padding:0 15px;
+  margin-top:24px;
+}
+</style>
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
@@ -281,11 +288,3 @@ function handleAdd() {
 
 }
 </script>
-
-
-<style scoped>
-.psi-table{
-  padding:0 15px;
-  margin-top:24px;
-}
-</style>
