@@ -79,7 +79,22 @@ private:
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	// 版本
-	CC_SYNTHESIZE(string, version, Version);
+	CC_SYNTHESIZE(int, version, Version);
+public:
+	PurOrderEntryDO() {
+		tax_rate = 0.0;
+		qty = 0.0;
+		amt = 0.0;
+		price = 0.0;
+		discount_rate = 0.0;
+		settle_amt = 0.0;
+		settle_qty = 0.0;
+		in_qty = 0.0;
+		in_cost = 0.0;
+		tax = 0.0;
+		invoiced_amt = 0.0;
+		invoiced_qty = 0.0;
+	}
 };
 
 #endif

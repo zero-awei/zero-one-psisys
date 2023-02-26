@@ -38,14 +38,13 @@ public:
 	bool updateData(const PrepaymentDTO& dto);
 	// 通过ID删除数据
 	bool removeData(uint64_t id);
-
-	// 修改单据状态
-	// 负责人：Andrew
-	bool updateStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload);
-
 	// 保存导入数据
 	uint64_t saveInto(const PayIntoDTO& dto);
 
+
+	// 修改单据状态(关闭/反关闭/作废)
+	// 负责人：Andrew
+	bool updateStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // !_PRE_PAY_SERVICE_

@@ -4,7 +4,7 @@
 #include "../DoInclude.h"
 
 /**
- * 示例数据库实体类-采购预付实体类
+ * 采购预付申请实体类
  */
 class PrepaymentDO {
 	// 编号

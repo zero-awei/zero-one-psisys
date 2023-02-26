@@ -21,7 +21,7 @@ public:
 	// 修改预付申请单数据
 	int updatePrepay(const PrepaymentDO& uObj);
 	
-	// 修改单据状态
+	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	int updateStatusClose(const PrepaymentDO& uObj);
 	int updateStatusCancel(const PrepaymentDO& uObj);

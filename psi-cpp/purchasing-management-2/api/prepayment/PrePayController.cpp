@@ -95,7 +95,8 @@ JsonVO<string> PrePayController::execModifyPay(const  PrepaymentDTO& dto)
 	return result;
 }
 
-//修改单据状态
+// 修改单据状态
+// 负责人：Andrew
 JsonVO<string> PrePayController::execModifyPayBillStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload)
 {
 	PrePayService service;

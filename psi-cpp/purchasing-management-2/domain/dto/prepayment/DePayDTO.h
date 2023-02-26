@@ -8,7 +8,7 @@
 //删除订单的DTO 前端只需要传递一个单据编号给我即可进行修改
 class DePayDTO {
 	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:

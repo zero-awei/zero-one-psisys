@@ -134,6 +134,18 @@ JsonVO<string> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto, co
 	}
 	return result;
 }
+
+// 删除采购订单
+// 负责人：Andrew
+JsonVO<string> PurOrderController::execRemoveById(const StringID& id)
+{
+	// 数据校验
+	if (id.getId() == "") return JsonVO<string>({}, RS_PARAMS_INVALID);
+	PurOrderDTO dto;
+	dto.setId(id.getId());
+	return execRemovePurOrder(dto);
+}
+
 //删除数据
 JsonVO<string> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 {
@@ -151,15 +163,4 @@ JsonVO<string> PurOrderController::execRemovePurOrder(const PurOrderDTO& dto)
 	}
 	//响应结果
 	return result;
-}
-
-// 删除数据byId
-// 负责人：Andrew
-JsonVO<string> PurOrderController::execRemoveById(const StringID& id)
-{
-	// 数据校验
-	if (id.getId() == "") return JsonVO<string>({}, RS_PARAMS_INVALID);
-	PurOrderDTO dto;
-	dto.setId(id.getId());
-	return execRemovePurOrder(dto);
 }

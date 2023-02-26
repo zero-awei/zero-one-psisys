@@ -26,7 +26,7 @@ string PurOrderDAO::insert(const PurOrderDO& iObj)
 	return "";
 }
 
-// 通过id删除采购订单
+// 删除采购订单-ID
 // 负责人：Andrew
 int PurOrderDAO::deleteById(string id)
 {
@@ -34,7 +34,7 @@ int PurOrderDAO::deleteById(string id)
 	return sqlSession->executeUpdate(sql, "%s", id);
 }
 
-// 修改订单状态
+// 修改订单状态(关闭/反关闭/作废)
 // 负责人：Andrew
 int PurOrderDAO::updateStatusClose(const PurOrderDO& purdo)
 {

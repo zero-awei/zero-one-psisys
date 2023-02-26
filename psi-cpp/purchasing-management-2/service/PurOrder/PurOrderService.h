@@ -40,11 +40,11 @@ public:
 	// 修改数据
 	bool updateData(const PurOrderDTO& dto);
 	
-	// 修改状态
+	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	bool updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload);
 	
-	// 通过ID删除数据
+	// 删除采购订单-ID
 	bool removeData(string id);
 };
 

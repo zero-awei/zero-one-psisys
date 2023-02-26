@@ -94,7 +94,7 @@ bool PrePayService::removeData(uint64_t id)
 	return dao.deleteById(id) == 1;
 }
 
-// 修改单据状态
+// 修改单据状态(关闭/反关闭/作废)
 // 负责人：Andrew
 bool PrePayService::updateStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload)
 {

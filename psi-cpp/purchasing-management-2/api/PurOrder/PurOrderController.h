@@ -45,10 +45,10 @@ public:
 	// 删除数据
 	CREATE_API_FUN_BODY(removePurOrder, execRemovePurOrder, PurOrderDTO);
 
-	// 删除ById
+	// 删除采购订单
 	// 负责人：Andrew
 	CREATE_API_FUN_BODY(removeById, execRemoveById, StringID);
-	// 修改状态
+	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	CREATE_API_FUN_BODY_PAYLOAD(statusPurOrder, execStatusPurOrder, PurOrderDTO);
 
@@ -64,10 +64,10 @@ private:
 	//删除数据
 	JsonVO<string> execRemovePurOrder(const PurOrderDTO& dto);
 
-	// 删除数据-ID
+	// 删除采购订单
 	// 负责人：Andrew
 	JsonVO<string> execRemoveById(const StringID& id);
-	// 修改状态
+	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	JsonVO<string> execStatusPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 

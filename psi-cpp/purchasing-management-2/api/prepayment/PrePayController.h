@@ -28,27 +28,26 @@
 
 
 /**
- * 示例控制器，演示基础接口的使用
+ * 采购预付申请控制器
  */
 class PrePayController
 {
 public:
-	//导入
-	CREATE_API_FUN_BODY(modifyPayInto, execPayInto, PayIntoDTO);
-	//查询
-	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill, execQueryPrepayFindBill, PrepayBillQuery);
-	//查询指定单据详细信息
-	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
-	//导出申请单
-	CREATE_API_FUN_BODY_PAYLOAD(queryPayExport, execPrepayExport, PrePayExportQuery);
-	//添加订单
-	CREATE_API_FUN_BODY(addPay, execAddPay, AddPayDTO);
-	//修改订单
-	CREATE_API_FUN_BODY(modifyPay, execModifyPay, PrepaymentDTO);
-	//删除订单
-	CREATE_API_FUN_BODY(removeDePay, execRemoveDePay, DePayDTO);
-	CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
-
+	////导入
+	//CREATE_API_FUN_BODY(modifyPayInto, execPayInto, PayIntoDTO);
+	////查询
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill, execQueryPrepayFindBill, PrepayBillQuery);
+	////查询指定单据详细信息
+	//CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
+	////导出申请单
+	//CREATE_API_FUN_BODY_PAYLOAD(queryPayExport, execPrepayExport, PrePayExportQuery);
+	////添加订单
+	//CREATE_API_FUN_BODY(addPay, execAddPay, AddPayDTO);
+	////修改订单
+	//CREATE_API_FUN_BODY(modifyPay, execModifyPay, PrepaymentDTO);
+	////删除订单
+	//CREATE_API_FUN_BODY(removeDePay, execRemoveDePay, DePayDTO);
+	//CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
 
 	//修改单据状态(关闭、作废、反关闭)
 	// 负责人：Andrew

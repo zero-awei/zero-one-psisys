@@ -14,10 +14,6 @@ class PayModBillStatusDTO {
 	CC_SYNTHESIZE(int, opType, OpType);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// 是否生效
-	//CC_SYNTHESIZE(bool, is_effective, Is_effective);
-	// 生效时间
-	//CC_SYNTHESIZE(string, effective_time, effective_time);
 	// 是否关闭
 	//CC_SYNTHESIZE(bool, is_closed, Is_closed);
 	// 是否作废

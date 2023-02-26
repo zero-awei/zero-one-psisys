@@ -34,20 +34,29 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
-
 private:
-	void createPaymentRouter();
 #ifdef HTTP_SERVER_DEMO
 	//创建演示路由
 	void createSampleRouter();
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
-	void createPayRouter();
-	void createPurOrderRouter();
-	void createPurReqRouter();
-	void createPurComRouter();
-	void createPayApplyRouter();
+	//void createPaymentRouter();
+	//void createPayRouter();
+	//void createPurOrderRouter();
+	//void createPurReqRouter();
+	//void createPurComRouter();
+	//void createPayApplyRouter();
+
+	/**
+	* 负责人：Andrew
+	* 1. 采购订单-修改单据状态(关闭/反关闭/作废)
+	* 2. 采购预付申请单-修改单据状态(关闭/反关闭/作废)
+	* 3. 采购订单-删除采购订单(通过id)
+	* ...
+	* 备注：包含采购统计接口
+	*/
+	void createAndrewRouter();
 };
 
 #endif // !_ROUTER_

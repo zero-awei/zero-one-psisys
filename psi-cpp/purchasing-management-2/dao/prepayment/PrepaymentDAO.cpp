@@ -87,7 +87,7 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 }
 
 
-// 修改单据状态
+// 修改单据状态(关闭/反关闭)
 // 负责人：Andrew
 int PrepaymentDAO::updateStatusClose(const PrepaymentDO& prepaydo)
 {
@@ -95,6 +95,8 @@ int PrepaymentDAO::updateStatusClose(const PrepaymentDO& prepaydo)
 	return sqlSession->executeUpdate(sql, "%i%s%s%%s", prepaydo.getIs_closed(), prepaydo.getUpdate_by(), prepaydo.getUpdate_time(), prepaydo.getId());
 }
 
+// 修改单据状态(作废)
+// 负责人：Andrew
 int PrepaymentDAO::updateStatusCancel(const PrepaymentDO& prepaydo)
 {
 	string sql = "UPDATE `fin_payment_req` SET `is_voided`=?, `update_by`=?, `update_time`=? WHERE `id`=?";

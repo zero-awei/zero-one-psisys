@@ -113,7 +113,7 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 	return true;
 }
 
-// 修改单据状态
+// 修改单据状态(关闭/反关闭/作废)
 // 负责人：Andrew
 bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
@@ -138,7 +138,8 @@ bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& pay
 	}
 }
 
-// 通过ID删除数据
+// 删除采购订单-通过ID
+// 负责人：Andrew
 bool PurOrderService::removeData(string id)
 {
 	PurOrderDAO dao;

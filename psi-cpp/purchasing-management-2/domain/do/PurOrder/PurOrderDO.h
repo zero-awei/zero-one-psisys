@@ -136,8 +136,22 @@ class PurOrderDO
 	CC_SYNTHESIZE(int, version, Version);
 public:
 	PurOrderDO() {
-	// TODO
-
+		exchange_rate = 0.0;
+		qty = 0.0;
+		amt = 0.0;
+		prepayment_bal = 0.0;
+		settle_amt = 0.0;
+		settle_qty = 0.0;
+		in_qty = 0.0;
+		in_cost = 0.0;
+		settled_amt = 0.0;
+		invoiced_amt = 0.0;
+		is_rubric = -1;
+		is_auto = -1;
+		is_effective = -1;
+		is_closed = -1;
+		is_voided = -1;
+		version = -1;
 	}
 };
 

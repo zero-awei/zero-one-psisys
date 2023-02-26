@@ -6,7 +6,7 @@
 #include "../../domain/do/prepayment/PrepaymentDO.h"
 
 /**
- * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * ²É¹ºÔ¤¸¶ÉêÇë±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
 class PrepaymentMapper : public Mapper<PrepaymentDO>
 {
