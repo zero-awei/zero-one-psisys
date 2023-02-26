@@ -84,6 +84,24 @@
     <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="service\Pyrk\PyrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\Cgthck\CgthrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Cgthrk\CgthrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\Cgrk\CgrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Cgrk\CgrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -318,6 +336,42 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Pyrk\PyrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Cgthck\CgthrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Cgthrk\CgthrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\SysUserRoleDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Cgrk\CgrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\ModifyCgrkBillStatusDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Cgrk\CgrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Cgthrk\QueryCgthrkBillListDOMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListReturnDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

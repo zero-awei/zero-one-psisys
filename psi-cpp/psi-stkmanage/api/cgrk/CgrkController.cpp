@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "CgrkController.h"
-
+#include"../../service/Cgrk/CgrkService.h"
 
 //查询单据列表
 JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillList(const QueryCgrkBillListQuery& query)
@@ -103,10 +103,16 @@ JsonVO<uint64_t> CgrkController::execRemoveCgrkBill(const RemoveCgrkBillDTO& dto
 //修改单据状态
 JsonVO<uint64_t> CgrkController::execModifyCgrkBillState(const ModifyCgrkBillStateDTO& dto)
 {
-
+	CgrkService cs;
 	JsonVO<uint64_t> result;
-	result.success(1);
 
+	if (cs.updataBillStatus(dto)) {
+		result.success(1);
+	}
+	else
+	{
+		result.fail(0);
+	}
 	return result;
 }
 // 导入
