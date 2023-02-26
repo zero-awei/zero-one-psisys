@@ -63,7 +63,7 @@ uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& pa
 	//首先将订单本体添加进数据库
 	//组装传输数据
 	FinPayReqDO data;
-	SnowFlake sf(1, 3);
+	SnowFlake sf(1, 4);
 	string id = to_string(sf.nextId());
 	string Bill_no = dto.getBill_no();
 	string time = getTime();

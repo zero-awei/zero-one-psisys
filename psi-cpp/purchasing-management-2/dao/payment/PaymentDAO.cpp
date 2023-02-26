@@ -52,7 +52,7 @@ uint64_t PaymentDAO::insertPayment(const FinPayReqDO& obj)
 	else {
 		sql += ", null";
 	}
-	sql += ", ?, ?, ?, ?,? ,?";
+	sql += ", ?, ?, ?, ?, ? ,?";
 	if (obj.getUpdate_time() != "") {
 		sql += ", '" + obj.getUpdate_time() + "'";
 	}
@@ -71,7 +71,7 @@ uint64_t PaymentDAO::insertPayment(const FinPayReqDO& obj)
 		obj.getSrc_bill_type(),obj.getSrc_bill_id(), obj.getSrc_no(), 
 		obj.getSubject(),obj.getIs_rubric(), obj.getPayment_type(), 
 		obj.getSupplier_id(),obj.getOp_dept(), obj.getOperator(), 
-		obj.getAmt(),obj.getPaid_amt(), obj, obj.getAttachment(),
+		obj.getAmt(),obj.getPaid_amt(), obj.getAttachment(),
 		obj.getRemark(), obj.getIs_auto(), obj.getBill_stage(),
 		obj.getApprover(), obj.getBpmi_instance_id(), obj.getApproval_result_type(),
 		obj.getApproval_remark(), obj.getIs_effective(),
