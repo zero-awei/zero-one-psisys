@@ -234,13 +234,28 @@
     <ClInclude Include="domain\vo\PurOrder\PurOrderDetailVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\PurOrder\PurReqVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\PurOrder\PurOrderEntryVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dao\PurOrder\PurOrderDetailMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurOrderSub\PurCompareVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurOrderSub\PurCompareEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurOrderSub\PurReqEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurOrderSub\PurInquiryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\PurOrderSub\PurInquiryEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\PurOrderSub\PurOrderEntryMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

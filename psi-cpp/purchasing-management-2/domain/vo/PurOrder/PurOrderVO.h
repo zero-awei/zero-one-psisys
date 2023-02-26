@@ -23,7 +23,7 @@
 #include "../../GlobalInclude.h"
 #include "PurOrderEntryVO.h"
 /**
- * 示例显示对象
+ * 显示对象
  */
 class PurOrderVO
 {
@@ -135,8 +135,6 @@ class PurOrderVO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
 	CC_SYNTHESIZE(int, version, Version);
-	// 明细
-	CC_SYNTHESIZE(list<PurOrderEntryVO>, detail, Detail);
 
 public:
 	//测试用无参构造
@@ -158,7 +156,7 @@ public:
 		remark, is_auto, bill_stage, approver, bpmi_instance_id, \
 		approval_result_type, approval_remark, is_effective, \
 		effective_time, is_closed, is_voided, sys_org_code, \
-		create_by, create_time, update_by, update_time, version, detail);
+		create_by, create_time, update_by, update_time, version);
 };
 
 #endif // !_PUR_ORDER_VO_

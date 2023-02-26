@@ -22,6 +22,14 @@
 
 #include "../../GlobalInclude.h"
 
+#include "../PurReq/PurReqVO.h"
+#include "../PurOrderSub/PurReqEntryVO.h"
+#include "../PurOrderSub/PurCompareVO.h"
+#include "../PurOrderSub/PurCompareEntryVO.h"
+#include "../PurOrderSub/PurInquiryVO.h"
+#include "../PurOrderSub/PurInquiryEntryVO.h"
+
+
 /**
  * 示例显示对象
  */
@@ -135,6 +143,8 @@ class PurOrderDetailVO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
 	CC_SYNTHESIZE(int, version, Version);
+	// Entry
+	CC_SYNTHESIZE(list<PurOrderEntryVO>, entry, Entry);
 
 public:
 	//测试用无参构造
@@ -156,7 +166,7 @@ public:
 		remark, is_auto, bill_stage, approver, bpmi_instance_id, \
 		approval_result_type, approval_remark, is_effective, \
 		effective_time, is_closed, is_voided, sys_org_code, \
-		create_by, create_time, update_by, update_time, version);
+		create_by, create_time, update_by, update_time, version, entry);
 };
 
 #endif // !_PUR_ORDER_DETAIL_VO_

@@ -20,6 +20,7 @@
 #define _PUR_ORDER_ENTRY_DAO_
 #include "BaseDAO.h"
 #include "../../domain/do/PurOrder/PurOrderEntryDO.h"
+#include "../PurOrderSub/PurOrderEntryMapper.h"
 
 /**
  * 采购订单表数据库操作实现
@@ -33,5 +34,7 @@ public:
 	uint64_t update(const PurOrderEntryDO& iObj);
 	// 是否存在
 	uint64_t count(const PurOrderEntryDO& iObj);
+
+	list<PurOrderEntryDO> selectPurOrderEntry(const string bill_no);
 };
 #endif // !_PUR_ORDER_DAO_

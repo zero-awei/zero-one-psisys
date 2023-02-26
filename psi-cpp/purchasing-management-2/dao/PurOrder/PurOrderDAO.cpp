@@ -325,11 +325,11 @@ uint64_t PurOrderDAO::update(const PurOrderDO& iObj)
 list<PurOrderDO> PurOrderDAO::selectDetail(const string bill_no)
 {
     string sql;
-    sql = "SELECT id, bill_no, bill_date, src_bill_type, src_bill_id, src_no, subject, is_rubric, pur_type, supplier_id, contact, phone, fax, email, op_dept, operator, delivery_method, delivery_place, delivery_time, transport_method, payment_method, settle_method, settle_time, invoice_method, invoice_type, currency, exchange_rate, qty, amt, prepayment_bal, settle_qty, settle_amt, in_qty, in_cost, settled_amt, invoiced_amt, attachment, remark, is_auto, bill_stage, approver, bpmi_instance_id, approval_result_type, approval_remark, is_effective, effective_time, is_closed, is_voided, sys_org_code, create_by, create_time, update_by, update_time, version\
-    FROM `pur_order`\
-    WHERE `bill_no`=?";
+    sql = "SELECT * FROM `pur_order` WHERE `bill_no`=?";
     PurOrderDetailMapper mapper;
-    return sqlSession->executeQuery<PurOrderDO, PurOrderDetailMapper>(sql, mapper, "%s", bill_no);
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, bill_no);
+    return sqlSession->executeQuery<PurOrderDO, PurOrderDetailMapper>(sql, mapper, params);
 }
 
 uint64_t PurOrderDAO::count(const PurOrderDO& iObj) {

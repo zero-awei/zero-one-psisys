@@ -229,7 +229,7 @@ if (!obj.getVersion()) { \
 uint64_t PurOrderEntryDAO::insert(const PurOrderEntryDO& iObj)
 {
     string sql = "INSERT INTO `pur_order_entry` (id,mid,bill_no,entry_no,src_bill_type,src_bill_id,src_entry_id,src_no,material_id,unit_id,qty,tax_rate,price,discount_rate,tax,amt,in_qty,in_cost,settle_qty,settle_amt,invoiced_qty,invoiced_amt,remark,custom1,custom2,version) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    return sqlSession->executeInsert(sql, "%s%s%s%i%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%d%d%s%s%s%i", iObj.getId(), iObj.getMid(), iObj.getBill_no(), iObj.getEntry_no(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), iObj.getSrc_entry_id(), iObj.getSrc_no(), iObj.getMaterial_id(), iObj.getUnit_id(), iObj.getQty(), iObj.getTax_rate(), iObj.getPrice(), iObj.getDiscount_rate(), iObj.getTax(), iObj.getAmt(), iObj.getIn_qty(), iObj.getIn_cost(), iObj.getSettle_qty(), iObj.getSettle_amt(), iObj.getInvoiced_qty(), iObj.getInvoiced_amt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2(), iObj.getVersion());
+    return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%d%d%s%s%s%i", iObj.getId(), iObj.getMid(), iObj.getBill_no(), iObj.getEntry_no(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), iObj.getSrc_entry_id(), iObj.getSrc_no(), iObj.getMaterial_id(), iObj.getUnit_id(), iObj.getQty(), iObj.getTax_rate(), iObj.getPrice(), iObj.getDiscount_rate(), iObj.getTax(), iObj.getAmt(), iObj.getIn_qty(), iObj.getIn_cost(), iObj.getSettle_qty(), iObj.getSettle_amt(), iObj.getInvoiced_qty(), iObj.getInvoiced_amt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2(), iObj.getVersion());
 }
 
 // 更新数据
@@ -253,13 +253,12 @@ uint64_t PurOrderEntryDAO::count(const PurOrderEntryDO& iObj)
     //return sqlSession->executeQueryNumerical(sql, "%s", iObj.getId());
 }
 
-/*// 是否存在
-uint64_t PurOrderEntryDAO::count(const PurOrderEntryDO& iObj)
+list<PurOrderEntryDO> PurOrderEntryDAO::selectPurOrderEntry(const string bill_no)
 {
-    stringstream sql;
-    sql <<  "SELECT count(*) FROM `pur_order_entry`";
-    PUR_ORDER_ENTRY_TERAM_PARSE(iObj, sql);
-    string sqlstr = sql.str();
-    return sqlSession->executeQueryNumerical(sqlstr, params);
+    string sql;
+    sql = "SELECT * FROM `pur_order_entry` WHERE `bill_no`=?";
+    PurOrderEntryMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, bill_no);
+    return sqlSession->executeQuery<PurOrderEntryDO, PurOrderEntryMapper>(sql, mapper, params);
 }
-*/

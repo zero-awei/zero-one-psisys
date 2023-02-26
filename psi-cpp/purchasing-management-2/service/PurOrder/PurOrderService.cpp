@@ -90,8 +90,8 @@ data.setUpdate_time(dto.getUpdate_time());\
 data.setVersion(dto.getVersion());
 
 #define SET_PUR_ORDER_ENTRY_DO() \
-entryData.setMid(entrydto.getMid());\
-entryData.setBill_no(entrydto.getBill_no());\
+entryData.setMid(data.getId());\
+entryData.setBill_no(dto.getBill_no());\
 entryData.setEntry_no(entrydto.getEntry_no());\
 entryData.setSrc_bill_type(entrydto.getSrc_bill_type());\
 entryData.setSrc_bill_id(entrydto.getSrc_bill_id());\
@@ -213,15 +213,104 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 // 查询单个数据
 PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 {
-	PurOrderDetailVO data;
+	PurOrderDetailVO vo;
 	PurOrderDAO dao;
 	list<PurOrderDO> do_datas;
 	do_datas = dao.selectDetail(bill_no);
 	for (auto do_data : do_datas)
 	{
-		data.setId(do_data.getId());
+		vo.setId(do_data.getId());
+		vo.setBill_no(do_data.getBill_no());
+		vo.setBill_date(do_data.getBill_date());
+		vo.setSubject(do_data.getSubject());
+		vo.setSrc_no(do_data.getSrc_no());
+		vo.setPur_type(do_data.getPur_type());
+		vo.setQty(do_data.getQty());
+		vo.setAmt(do_data.getAmt());
+		vo.setBill_stage(do_data.getBill_stage());
+		vo.setIs_effective(do_data.getIs_effective());
+		vo.setIs_closed(do_data.getIs_closed());
+		vo.setIs_voided(do_data.getIs_voided());
+		vo.setRemark(do_data.getRemark());
+		vo.setIs_auto(do_data.getIs_auto());
+		vo.setIs_rubric(do_data.getIs_rubric());
+		vo.setEffective_time(do_data.getEffective_time());
+		vo.setCreate_time(do_data.getCreate_time());
+		vo.setCreate_by(do_data.getCreate_by());
+		vo.setSys_org_code(do_data.getSys_org_code());
+		vo.setUpdate_time(do_data.getUpdate_time());
+		vo.setUpdate_by(do_data.getUpdate_by());
+		vo.setId(do_data.getId());
+		vo.setSrc_bill_type(do_data.getSrc_bill_type());
+		vo.setSrc_bill_id(do_data.getSrc_bill_id());
+		vo.setSupplier_id(do_data.getSupplier_id());
+		vo.setContact(do_data.getContact());
+		vo.setPhone(do_data.getPhone());
+		vo.setFax(do_data.getFax());
+		vo.setEmail(do_data.getEmail());
+		vo.setOp_dept(do_data.getOp_dept());
+		vo.setOp_er(do_data.getOp_er());
+		vo.setDelivery_method(do_data.getDelivery_method());
+		vo.setDelivery_place(do_data.getDelivery_place());
+		vo.setDelivery_time(do_data.getDelivery_time());
+		vo.setTransport_method(do_data.getTransport_method());
+		vo.setPayment_method(do_data.getPayment_method());
+		vo.setSettle_method(do_data.getSettle_method());
+		vo.setSettle_time(do_data.getSettle_time());
+		vo.setInvoice_method(do_data.getInvoice_method());
+		vo.setInvoice_type(do_data.getInvoice_type());
+		vo.setCurrency(do_data.getCurrency());
+		vo.setExchange_rate(do_data.getExchange_rate());
+		vo.setPrepayment_bal(do_data.getPrepayment_bal());
+		vo.setSettle_qty(do_data.getSettle_qty());
+		vo.setSettle_amt(do_data.getSettle_amt());
+		vo.setIn_qty(do_data.getIn_qty());
+		vo.setIn_cost(do_data.getIn_cost());
+		vo.setSettled_amt(do_data.getSettled_amt());
+		vo.setInvoiced_amt(do_data.getInvoiced_amt());
+		vo.setAttachment(do_data.getAttachment());
+		vo.setApprover(do_data.getApprover());
+		vo.setBpmi_instance_id(do_data.getBpmi_instance_id());
+		vo.setApproval_result_type(do_data.getApproval_result_type());
+		vo.setApproval_remark(do_data.getApproval_remark());
 	}
-	return data;
+
+	PurOrderEntryDAO entry_dao;
+	list<PurOrderEntryDO> pur_order_entry_do = entry_dao.selectPurOrderEntry(bill_no);
+	list<PurOrderEntryVO> pur_order_entry_vo_list;
+	PurOrderEntryVO pur_order_entry_vo;
+	for (auto do_data : pur_order_entry_do)
+	{
+		pur_order_entry_vo.setId(do_data.getId());
+		pur_order_entry_vo.setMid(do_data.getMid());
+		pur_order_entry_vo.setBill_no(do_data.getBill_no());
+		pur_order_entry_vo.setEntry_no(do_data.getEntry_no());
+		pur_order_entry_vo.setSrc_bill_type(do_data.getSrc_bill_type());
+		pur_order_entry_vo.setSrc_bill_id(do_data.getSrc_bill_id());
+		pur_order_entry_vo.setSrc_entry_id(do_data.getSrc_entry_id());
+		pur_order_entry_vo.setSrc_no(do_data.getSrc_no());
+		pur_order_entry_vo.setMaterial_id(do_data.getMaterial_id());
+		pur_order_entry_vo.setUnit_id(do_data.getUnit_id());
+		pur_order_entry_vo.setQty(do_data.getQty());
+		pur_order_entry_vo.setTax_rate(do_data.getTax_rate());
+		pur_order_entry_vo.setPrice(do_data.getPrice());
+		pur_order_entry_vo.setDiscount_rate(do_data.getDiscount_rate());
+		pur_order_entry_vo.setTax(do_data.getTax());
+		pur_order_entry_vo.setAmt(do_data.getAmt());
+		pur_order_entry_vo.setIn_qty(do_data.getIn_qty());
+		pur_order_entry_vo.setIn_cost(do_data.getIn_cost());
+		pur_order_entry_vo.setSettle_qty(do_data.getSettle_qty());
+		pur_order_entry_vo.setSettle_amt(do_data.getSettle_amt());
+		pur_order_entry_vo.setInvoiced_qty(do_data.getInvoiced_qty());
+		pur_order_entry_vo.setInvoiced_amt(do_data.getInvoiced_amt());
+		pur_order_entry_vo.setRemark(do_data.getRemark());
+		pur_order_entry_vo.setCustom1(do_data.getCustom1());
+		pur_order_entry_vo.setCustom2(do_data.getCustom2());
+		pur_order_entry_vo.setVersion(do_data.getVersion());
+		pur_order_entry_vo_list.push_back(pur_order_entry_vo);
+	}
+	vo.setEntry(pur_order_entry_vo_list);
+	return vo;
 }
 
 // 保存数据
@@ -280,14 +369,7 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 	SET_PUR_ORDER_DO();
 	data.setUpdate_time(time);
 
-	if (dao.count(data))
-	{
-		result = dao.update(data);
-	}
-	else
-	{
-		return -1;
-	}
+	result = dao.update(data);
 
 	list<PurOrderEntryDTO> poe = dto.getDetail();
 
