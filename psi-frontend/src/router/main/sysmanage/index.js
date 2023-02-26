@@ -2,7 +2,7 @@
  * @Author: Kyle5 nnkyle@163.com
  * @Date: 2023-02-20 18:51:04
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 23:44:56
+ * @LastEditTime: 2023-02-26 11:42:13
  * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -164,7 +164,7 @@ const routes = [
   {
     path: '/sysmanagement/addressbook',
     name: 'addressbook',
-    component: () => import('@/views/sysmanage/Addressbook.vue')
+    component: () => import('@/views/sysmanage/AddressBook.vue')
   },
   {
     path: '/sysmanagement/Category',
@@ -181,18 +181,18 @@ const routes = [
     name: 'sysposition',
     component: () => import('@/views/sysmanage/SysPosition.vue')
   },
-  // ↓↓↓↓↓↓↓↓↓↓↓↓↓应付管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓应付与付款--应付管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   // 采购应付
   {
     path: '/pay/payable/purchase',
-    name: 'purchase',
+    name: 'payablePurchase',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/CaiGouYingFu.vue')
   },
   // 其他应付
   {
     path: '/pay/payable/other',
-    name: 'other',
+    name: 'payableOther',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/QiTaYingFu.vue')
   },
@@ -202,6 +202,42 @@ const routes = [
     name: 'check',
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
+  },
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓应付与付款--预付管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  // 采购预付(有申请)
+  {
+    path: '/paymentApply',
+    name: 'paymentApply',
+    component: () =>
+      import('@/views/yingfuyufukuan/yufuguanli/CaiGouYuFuApply.vue')
+  },
+  // 采购预付(无申请)
+  {
+    path: '/payment',
+    name: 'payment',
+    component: () => import('@/views/yingfuyufukuan/yufuguanli/CaiGouYuFu.vue')
+  },
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓应付与付款--付款管理↓↓↓↓↓↓↓↓↓↓↓↓↓
+  // 采购付款(有申请)
+  {
+    path: '/purchaseApply',
+    name: 'purchaseApply',
+    component: () =>
+      import('@/views/yingfuyufukuan/fukuanguanli/CaiGouFuKuanApply.vue')
+  },
+  // 采购付款(无申请)
+  {
+    path: '/purchase',
+    name: 'caigouPurchase',
+    component: () =>
+      import('@/views/yingfuyufukuan/fukuanguanli/CaiGouFuKuan.vue')
+  },
+  // 采购退货退款(红付)
+  {
+    path: '/purchaseHongfu',
+    name: 'purchaseHongfu',
+    component: () =>
+      import('@/views/yingfuyufukuan/fukuanguanli/CaiGouTuiHuoTuiKuan.vue')
   },
   // ↓↓↓↓↓↓↓↓↓↓↓↓↓库存管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   // 采购入库
@@ -234,7 +270,7 @@ const routes = [
     path: '/inventory/other',
     name: 'other',
     component: () => import('@/views/kucunguanli/rukuguanli/QiTaRuKu.vue')
-  },
+  }
   // {
   //   path: '/inventory/purchase',
   //   name: 'check',

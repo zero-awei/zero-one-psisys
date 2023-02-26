@@ -2,63 +2,54 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-23 15:13:58
+ * @LastEditTime: 2023-02-26 13:40:42
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div>
     <!-- 通讯录 -->
-    <!-- <el-row gutter="20">
-      <el-col :span="6">
-        <el-card>
-          <el-row>
-            <el-input v-model=""></el-input>
-            <el-icon>
-              <Search @click="query" />
-            </el-icon>
+    <!-- 查询 -->
+    <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
 
-          </el-row>
-        </el-card>
-      </el-col>
-      <el-col :span="18">
-        <el-card>
-          查询
-        </el-card>
-      </el-col>
-    </el-row> -->
-    <psi-form :items="items" :formData="formData" @query="doQuery" @reset="doReset">
-    </psi-form>
+    <div style="margin-top:10px">
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+      </psi-table>
+    </div>
+
 
   </div>
 </template>
 
-<script scoped>
-import { ref, reactive, toRefs, } from 'vue'
-// 查询
+<script setup>
+import { ref, reactive, toRefs, onMounted } from 'vue'
+import { query, queryAll } from './api/addressbook.js'
+
+// 查询表单相关数据及方法
 const formState = reactive({
   // 查询表单每一项的配置
-  items: [
+  formItems: [
     {
       type: 'input',
-      label: '姓名',
-      prop: 'name'
+      label: '姓名',  // 标签名
+      prop: 'realname', // 对应字段
+      placeholder: '请输入'
     },
-     {
+    {
       type: 'input',
       label: '工号',
-      prop: 'num'
+      prop: 'workNo',
+      placeholder: '请输入'
     },
   ],
 
   // 配置数据绑定的字段
   formData: {
-    name: '',
-    num:''
+    realname: '',
+    workNo: '',
   }
 })
-
-const { items, formData } = toRefs(formState)
+const { formItems, formData } = toRefs(formState)
 
 // 表格相关
 const tableState = reactive({
@@ -67,55 +58,123 @@ const tableState = reactive({
     {
       type: 'text',
       label: '姓名',
-      prop: 'name',
+      prop: 'nealname',
       width: '120'
     },
     {
-      type: 'slot',
+      type: 'text',
       label: '工号',
-      prop: 'type',
-      width: '120',
-      slotName: 'labelText',
-    },
-    {
-      type: 'daterange',
-      label: '部门',
-      prop: 'path',
+      prop: 'workNo',
       width: '120'
     },
-    // TODO 权限码感觉有问题
+    {
+      type: 'text',
+      label: '部门',
+      prop: 'departName',
+      width: '120'
+    },
     {
       type: 'text',
       label: '职务',
-      prop: 'permissionId',
-      width: '300'
+      prop: 'post',
+      width: '120'
+    },
+
+    {
+      type: 'text',
+      label: '手机',
+      prop: 'phone',
+      width: '120'
     },
     {
-      type: 'slot',
-      label: '',
-      width: '400',
-      slotName: 'basicOperation',
-      fixed: 'right'
+      type: 'text',
+      label: '公司邮箱',
+      prop: 'email',
+      width: '120'
     }
   ],
 
-  // 配置数据绑定的字段
+  // 配置表格数据绑定的字段
   tableData: [],
   attributes: {
-    selection: true, //是否多选框
     index: true, // 索引
     border: true,
     maxHeight: '400',
     height: '400',
-    headOperation: ['add', 'select']
+    headOperation: []
   }
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)
 
+// 分页相关配置
+const pagination = reactive({
+  currentPage: 2, // 当前页
+  pageSize: 100, // 每页数据量
+  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  total: 400, //数据总量
+  layout: 'total, sizes, prev, pager, next, jumper'
+})
 
-function query() {
+// --------------- 方法--------------
+// 点击查询按钮 
+function handleQuery() {
+  // 处理请求参数
+  let params = {}
+  params.realname = formData.value.realname
+  params.workNo = formData.value.workNo
+  query(
+    params,
+    (data) => {
+      // 查询返回的是表格数据
+      // 分页
+      pagination.value.currentPage = data.pageIndex
+      pagination.value.pageSize = data.pageSize
+      pagination.value.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+    },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
 
 }
+
+// 点击重置按钮
+function handleReset() {
+  handleQueryAll()
+}
+
+function handleQueryAll() {
+  queryAll(
+    {
+
+    },
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      pagination.value.currentPage = data.pageIndex
+      pagination.value.pageSize = data.pageSize
+      pagination.value.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+
+
+onMounted(() => {
+  handleQueryAll()
+})
 </script>
 
-<style></style>
+<style scoped></style>

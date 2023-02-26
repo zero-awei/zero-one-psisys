@@ -14,15 +14,17 @@
         <el-button type="primary" @click="submitForm()">登录</el-button>
       </el-form-item>
     </el-form>
+
+    <Test />
   </el-card>
   <!-- 验证码组件 -->
-  <!-- <Verify
+<!-- <Verify
     mode="pop"
     :captchaType="captchaType"
     :imgSize="{ width: '400px', height: '200px' }"
     ref="verify"
     @success="handleSuccess">
-  </Verify> -->
+    </Verify> -->
 </template>
 
 <script setup>
@@ -33,7 +35,7 @@ import { login } from '@/apis/login'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { router } from '@/router/index.js'
-
+import Test from '@/views/test/test.vue'
 // 获取router对象
 const $router = useRouter()
 
@@ -44,14 +46,14 @@ const formData = reactive({
 })
 //校验规则
 const rules = reactive({
-  username:[
-    { required:true,trigger:'blur',message:'请输入用户名'}
+  username: [
+    { required: true, trigger: 'blur', message: '请输入用户名' }
   ],
-  password:[
-    { required:true,trigger:'blur',message:'请输入密码'}
+  password: [
+    { required: true, trigger: 'blur', message: '请输入密码' }
   ]
 
-}) 
+})
 
 /**
  * 执行登录
@@ -135,22 +137,24 @@ function handleSuccess(res) {
 </script>
 
 <style scoped>
-span{
-  display:block;
-  font-size:28px;
-  top:-20px;
-  left:125px;
+span {
+  display: block;
+  font-size: 28px;
+  top: -20px;
+  left: 125px;
   /* margin:0 auto; */
 }
+
 .box-card {
   width: 480px;
   margin: 180px auto;
   padding: 20px;
 }
-.el-button{
-  left:100px;
-  width:80px;
-  font-size:15px;
-  top:20px;
+
+.el-button {
+  left: 100px;
+  width: 80px;
+  font-size: 15px;
+  top: 20px;
 }
 </style>

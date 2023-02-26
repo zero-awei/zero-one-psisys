@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-24 22:06:10
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-25 16:27:38
+ * @LastEditTime: 2023-02-26 11:35:02
  * @FilePath: \psi-frontend\src\stores\user.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -185,58 +185,58 @@ const purManagement = {
       href: '/PurPaymentApply',
       icon: 'IconTickets',
       pid: 5
-    },
-    {
-      id: 708,
-      text: '采购统计',
-      href: '',
-      icon: 'IconTickets',
-      pid: 5,
-      children: [
-        {
-          id: 711,
-          text: '采购订单执行情况',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 712,
-          text: '采购订单汇总',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 713,
-          text: '采购订单汇总-部门',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 714,
-          text: '采购订单汇总-业务员',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 715,
-          text: '采购订单汇总-供应商',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 716,
-          text: '采购订单汇总-物料',
-          href: '',
-          icon: '',
-          pid: 51
-        }
-      ]
     }
+    // {
+    //   id: 708,
+    //   text: '采购统计',
+    //   href: '',
+    //   icon: 'IconTickets',
+    //   pid: 50,
+    //   children:[
+    //     {
+    //       id: 711,
+    //       text: '采购订单执行情况',
+    //       href: '',
+    //       icon: '',
+    //       pid: 51
+    //     },
+    //     {
+    //       id: 712,
+    //       text: '采购订单汇总',
+    //       href: '',
+    //       icon: '',
+    //       pid: 51
+    //     },
+    //     {
+    //       id: 713,
+    //       text: '采购订单汇总-部门',
+    //       href: '',
+    //       icon: '',
+    //       pid: 51
+    //     },
+    //     {
+    //       id: 714,
+    //       text: '采购订单汇总-业务员',
+    //       href: '',
+    //       icon: '',
+    //       pid: 51
+    //     },
+    //     {
+    //       id: 715,
+    //       text: '采购订单汇总-供应商',
+    //       href: '',
+    //       icon: '',
+    //       pid: 51
+    //     },
+    //     {
+    //       id: 716,
+    //       text: '采购订单汇总-物料',
+    //       href: '',
+    //       icon: '',
+    //       pid: 51
+    //     }
+    //   ]
+    // }
   ]
 }
 
@@ -287,70 +287,7 @@ const kucunguanli = {
           pid: 2
         }
       ]
-    },
-    // {
-    //   id: 2,
-    //   text: '即时库存',
-    //   icon: 'IconUser',
-    //   children: [
-    //     {
-    //       id: 1,
-    //       text: '物料库存',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 2
-    //     },
-    //     {
-    //       id: 2,
-    //       text: '物料批次库存',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 2
-    //     },
-    //     {
-    //       id: 3,
-    //       text: '仓库物料库存',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 2
-    //     },
-    //     {
-    //       id: 3,
-    //       text: '详细库存',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 2
-    //     }
-    //   ]
-    // },
-    // {
-    //   id: 3,
-    //   text: '出入库统计',
-    //   icon: 'IconUser',
-    //   children: [
-    //     {
-    //       id: 1,
-    //       text: '出入库日汇总',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 3
-    //     },
-    //     {
-    //       id: 2,
-    //       text: '出入库月汇总',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 3
-    //     },
-    //     {
-    //       id: 3,
-    //       text: '出入库明细',
-    //       href: '/sysmanagement/rolemanagement',
-    //       icon: 'IconSetting',
-    //       pid: 3
-    //     }
-    //   ]
-    // }
+    }
   ]
 }
 
@@ -384,6 +321,57 @@ const yingfuyufukuan = {
           id: 3,
           text: '应付核销',
           href: '/pay/payable/check',
+          icon: 'IconTickets',
+          pid: 2
+        }
+      ]
+    },
+    {
+      id: 3,
+      text: '预付管理',
+      icon: 'IconTickets',
+      pid: 998,
+      children: [
+        {
+          id: 3,
+          text: '采购预付(有申请)',
+          href: '/paymentApply',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '采购预付(无申请)',
+          href: '/payment',
+          icon: 'IconTickets',
+          pid: 2
+        }
+      ]
+    },
+    {
+      id: 3,
+      text: '付款管理',
+      icon: 'IconTickets',
+      pid: 998,
+      children: [
+        {
+          id: 3,
+          text: '采购付款(有申请)',
+          href: '/purchaseApply',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '采购付款(无申请)应付',
+          href: '/purchase',
+          icon: 'IconTickets',
+          pid: 2
+        },
+        {
+          id: 3,
+          text: '采购退货退款(红付)',
+          href: '/purchaseHongfu',
           icon: 'IconTickets',
           pid: 2
         }
@@ -468,7 +456,7 @@ export const userStore = defineStore('user', {
     // 获取菜单
     getMenus: (state) => state.menus,
     // 获取父级菜单
-    getParentMenus: (state) => state.parentMenus,
+    getParentMenus: (state) => state.parentMenus
     // 获取子级菜单
     // getRouteMenus: (state) => state.routeMenus
   },
@@ -568,7 +556,7 @@ export const userStore = defineStore('user', {
           // 如果有二级菜单
           for (let j in itemi.children) {
             // 遍历二级菜单
-            
+
             let itemj = itemi.children[j]
             if (itemj.children) {
               console.log('-----------二级菜单', itemj)

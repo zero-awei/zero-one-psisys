@@ -167,31 +167,49 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '代码',
       prop: 'date',
       width: '120'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '名称',
       prop: 'city',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '本币',
       prop: 'address',
       width: '600'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '启用',
       prop: 'zip',
       width: '120'
     },
     {
+      type: 'slot',
+      label: '创建时间',
+      width: '120',
+      prop: 'tag'
+    },
+    {
       type: 'text',
-      label: 'Tag',
+      label: '创建人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
       prop: 'tag',
       width: '120'
     },
