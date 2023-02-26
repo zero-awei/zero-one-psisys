@@ -19,6 +19,8 @@
 #include "stdafx.h"
 #include "PurOrderService.h"
 #include "../../dao/PurOrder/PurOrderDAO.h"
+#include "../lib-common//include/SimpleDateTimeFormat.h"
+#include "../lib-common//include/CharsetConvertHepler.h"
 
 #define PUR_ORDER_DTO2DO
 
@@ -111,10 +113,29 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 	return true;
 }
 
-// 修改数据
-bool PurOrderService::updateStatus(const PurOrderDTO& dto)
+// 修改单据状态
+// 负责人：Andrew
+bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
-	return true;
+	PurOrderDO data;
+
+	// 设置字段值
+	data.setUpdate_by(payload.getUsername());
+	data.setUpdate_time(SimpleDateTimeFormat::format());
+	data.setId(dto.getId());
+	data.setBill_no(dto.getBill_no());
+
+	PurOrderDAO dao;
+	if (dto.getOpType() == dto.CLOSE || dto.getOpType() == dto.UNCLOSE)
+	{
+		data.setIs_closed(dto.OPS[dto.getOpType()]);
+		return dao.updateStatusClose(data) == 1;
+	}
+	else if (dto.getOpType() == dto.CANCEL)
+	{
+		data.setIs_voided(dto.OPS[dto.getOpType()]);
+		return dao.updateStatusCancel(data) == 1;
+	}
 }
 
 // 通过ID删除数据

@@ -125,14 +125,15 @@ void Router::initRouter()
 	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
 	// 修改数据
 	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-	// 修改状态
-	BIND_PUT_ROUTER(server, "/purOrder/status", &PurOrderController::statusPurOrder, nullptr);
 	// 删除数据
 	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
 
 	// 删除ById
 	// 负责人：Andrew
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
+	// 修改状态
+	// 负责人：Andrew
+	BIND_PUT_ROUTER(server, "/purOrder/modifyStatus", &PurOrderController::statusPurOrder, nullptr);
 
 	//查询单据列表
 	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);

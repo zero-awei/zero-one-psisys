@@ -30,7 +30,13 @@ class PurOrderDAO : public BaseDAO
 public:
 	// 插入数据
 	string insert(const PurOrderDO& iObj);
+
 	// 删除数据
+	// 负责人：Andrew
 	int deleteById(string id);
+	// 修改状态(关闭/反关闭/作废)
+	// 负责人：Andrew
+	int updateStatusClose(const PurOrderDO& purdo);
+	int updateStatusCancel(const PurOrderDO& purdo);
 };
 #endif // !_PUR_ORDER_DAO_

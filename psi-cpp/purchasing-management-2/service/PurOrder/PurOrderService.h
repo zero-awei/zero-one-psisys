@@ -39,8 +39,11 @@ public:
 	string saveData(const PurOrderDTO& dto);
 	// 修改数据
 	bool updateData(const PurOrderDTO& dto);
+	
 	// 修改状态
-	bool updateStatus(const PurOrderDTO& dto);
+	// 负责人：Andrew
+	bool updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload);
+	
 	// 通过ID删除数据
 	bool removeData(string id);
 };

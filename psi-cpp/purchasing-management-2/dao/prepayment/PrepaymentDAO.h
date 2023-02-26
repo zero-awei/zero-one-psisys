@@ -20,9 +20,12 @@ public:
 	uint64_t insertPrepay(const PrepaymentDO& iObj);
 	// 修改预付申请单数据
 	int updatePrepay(const PrepaymentDO& uObj);
-	//修改单据状态
+	
+	// 修改单据状态
+	// 负责人：Andrew
 	int updateStatusClose(const PrepaymentDO& uObj);
 	int updateStatusCancel(const PrepaymentDO& uObj);
+	
 	// 通过ID删除数据
 	int deleteById(uint64_t id);
 	// 保存导入数据

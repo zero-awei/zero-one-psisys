@@ -26,8 +26,24 @@ string PurOrderDAO::insert(const PurOrderDO& iObj)
 	return "";
 }
 
+// 通过id删除采购订单
+// 负责人：Andrew
 int PurOrderDAO::deleteById(string id)
 {
 	string sql = "DELETE FROM `pur_order` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s", id);
+}
+
+// 修改订单状态
+// 负责人：Andrew
+int PurOrderDAO::updateStatusClose(const PurOrderDO& purdo)
+{
+	string sql = "UPDATE `pur_order` SET `update_by`=?, `update_time`=?, `is_closed`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%i%s", purdo.getUpdate_by(), purdo.getUpdate_time(), purdo.getIs_closed(), purdo.getId());
+}
+
+int PurOrderDAO::updateStatusCancel(const PurOrderDO& purdo)
+{
+	string sql = "UPDATE `pur_order` SET `update_by`=?, `update_time`=?, `is_voided`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%i%s", purdo.getUpdate_by(), purdo.getUpdate_time(), purdo.getIs_voided(), purdo.getId());
 }

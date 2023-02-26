@@ -19,8 +19,10 @@
 #include "stdafx.h"
 #include "PurOrderDTO.h"
 void from_json(const json& j, PurOrderDTO& t) { // NOLINT
+	// 操作类型
+	BIND_FROM_TO_I(j, t, opType);
 	// ID
-	BIND_FROM_TO_ULL(j, t, id);
+	BIND_FROM_TO_NORMAL(j, t, id);
 	// 单据编号
 	BIND_FROM_TO_NORMAL(j, t, bill_no);
 	// 单据日期

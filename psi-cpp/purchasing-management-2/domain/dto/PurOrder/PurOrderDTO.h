@@ -27,6 +27,8 @@
  */
 class PurOrderDTO
 {
+	// 操作类型
+	CC_SYNTHESIZE(int, opType, OpType);
 	// ID
 	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
@@ -137,9 +139,11 @@ class PurOrderDTO
 	CC_SYNTHESIZE(int, version, Version);
 
 public:
+	enum OPTYPE { CLOSE, UNCLOSE, CANCEL }; // 操作类型枚举类
+	int OPS[3] = { 1, 0, 1 }; // 操作类型对应操作值
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurOrderDTO& t); // NOLINT
-	BIND_TO_JSON(PurOrderDTO, id, bill_no, bill_date, src_bill_type, \
+	BIND_TO_JSON(PurOrderDTO, opType, id, bill_no, bill_date, src_bill_type, \
 		src_bill_id, src_no, subject, \
 		is_rubric, pur_type, supplier_id, \
 		contact, phone, fax, email, \
