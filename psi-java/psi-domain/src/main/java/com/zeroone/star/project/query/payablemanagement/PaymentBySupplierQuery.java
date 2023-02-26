@@ -15,6 +15,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @ApiModel("根据供应商查询付款单列表")
 public class PaymentBySupplierQuery extends PageQuery {
-    @ApiModelProperty(value = "供应商", example = "1623284221748748290")
+    @ApiModelProperty(value = "供应商", example = "1584950950470164481")
     private String supplierId;
 }
