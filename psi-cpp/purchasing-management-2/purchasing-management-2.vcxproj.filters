@@ -228,6 +228,9 @@
     <ClInclude Include="dao\PurCom\PurComMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\PurCom\PurComDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -294,6 +297,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\PurReq\PurReqService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\PurCom\PurComDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
