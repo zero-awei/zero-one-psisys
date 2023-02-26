@@ -1,6 +1,4 @@
 #pragma once
-
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,6 +22,9 @@
 #define _FIN_PAYMENT_REQ_DO_
 #include "../DoInclude.h"
 
+/*
+ *查询表单
+ */
 class FinPaymentReqDO
 {
 	//ID
@@ -38,7 +39,7 @@ class FinPaymentReqDO
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 	//源单号
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//
+	//主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//是否红字
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
@@ -90,6 +91,8 @@ class FinPaymentReqDO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
+	//明细
+	CC_SYNTHESIZE(list<FinPaymentEntryReqDO>, detail, Detail);
 public:
 	FinPaymentReqDO()
 	{

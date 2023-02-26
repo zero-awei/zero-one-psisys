@@ -4,7 +4,10 @@
 #define _FIN_PAYMENT_ENTRY_REQ_DO_
 #include "../DoInclude.h"
 
-class FINRaymentEntryReqDO {
+/*
+ *查询表单详情
+ */
+class FinPaymentEntryReqDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
 	//单据号
@@ -20,9 +23,9 @@ class FINRaymentEntryReqDO {
 	//源单分录号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//申请金额
-	CC_SYNTHESIZE(double, amt, amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
-	CC_SYNTHESIZE(double, paidAmt, paid_amt);
+	CC_SYNTHESIZE(double, paidAmt, PaidAmt);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//自定义1
@@ -30,7 +33,7 @@ class FINRaymentEntryReqDO {
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	FINRaymentEntryReqDO() {
+	FinPaymentEntryReqDO() {
 
 	}
 };

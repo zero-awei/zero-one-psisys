@@ -4,6 +4,9 @@
 #define _FIN_PAYMENT_BILL_REQ_DO_
 #include "../DoInclude.h"
 
+/*
+*管理表单
+*/
 class FinPaymentBillReqDO
 {
 	//单据id

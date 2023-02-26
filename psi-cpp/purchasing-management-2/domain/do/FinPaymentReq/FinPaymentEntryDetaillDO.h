@@ -4,6 +4,9 @@
 #define _FIN_PAYMENT_ENTRY_DETAIL_DO_
 #include "../DoInclude.h"
 
+/*
+ *管理表单详情
+ */
 class FinPaymentEntryDetaillDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
@@ -22,9 +25,9 @@ class FinPaymentEntryDetaillDO {
 	//源单分录号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//申请金额
-	CC_SYNTHESIZE(double, amt, amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
-	CC_SYNTHESIZE(double, paidAmt, paid_amt);
+	CC_SYNTHESIZE(double, paidAmt, PaidAmt);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//自定义1

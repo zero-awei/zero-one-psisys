@@ -191,11 +191,15 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
     <ClInclude Include="dao\purPayment\purPayReqDAO.h" />
+    <ClInclude Include="dao\purPayment\purPayReqEntryMapper.h" />
+    <ClInclude Include="dao\purPayment\PurPayReqFindBillMapper.h" />
+    <ClInclude Include="dao\purPayment\PurPayReqFindDetailBillMapper.h" />
+    <ClInclude Include="dao\purPayment\purPayReqMapper.h" />
     <ClInclude Include="dao\PurQuot\PurQuotDAO.h" />
     <ClInclude Include="dao\PurQuot\PurQuotMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentBillReqDO.h" />
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEmtryReqDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEntryReqDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEntryDetaillDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
@@ -264,6 +268,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
     <ClCompile Include="dao\PurOrder\PurOrderDAO.cpp" />
+    <ClCompile Include="dao\purPayment\purPayReqDAO.cpp" />
     <ClCompile Include="dao\PurQuot\PurQuotDAO.cpp" />
     <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp" />
