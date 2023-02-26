@@ -161,8 +161,7 @@ public class CustomerController implements CustomerApis {
     @ApiOperation("添加客户")
     @PostMapping("add-Customer")
     @Override
-    public JsonVO<String> saveCustomer(@Valid @RequestBody CustomerAddDTO customerAddDTO,
-                                       BindingResult bindingResult) {
+    public JsonVO<String> saveCustomer(CustomerAddDTO customerAddDTO, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return JsonVO.fail(bindingResult.getFieldError().getDefaultMessage());
         }

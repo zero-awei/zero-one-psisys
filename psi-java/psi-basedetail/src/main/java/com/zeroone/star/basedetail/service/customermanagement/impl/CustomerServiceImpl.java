@@ -47,6 +47,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
     private CusLevelMapper cusLevelMapper;
     //用于匹配大写字母
     private static Pattern humpPattern = Pattern.compile("[A-Z]");
+
     @Override
     /**
     查询指定的客户
@@ -63,7 +64,9 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper,Customer> im
             System.out.println(customervo.toString());
             return customervo;
         }*/
-        Customer customer = customerMapper.selectById(id);
+        Customer customer = baseMapper.selectById(id);
+                //customerMapper.selectById(id);
+
         //要判断是否为空，虽然正常不可能传输错误（因为是点击，用户没有办法乱输入），但是怕前端传输数据失败（错误），防止程序崩溃
         if(customer!=null){
             String cate_id = customer.getCustomerCategory();

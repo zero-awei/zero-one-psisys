@@ -1,10 +1,12 @@
 package com.zeroone.star.basedetail.service.customermanagement.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.basedetail.entity.BasCustomer;
 import com.zeroone.star.basedetail.mapper.BasCustomerMapper;
 import com.zeroone.star.basedetail.service.customermanagement.IBasCustomerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.basedetail.customermanagement.CustomerAddDTO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerBaseInfoVO;
 import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerExistVO;
@@ -123,43 +125,14 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
     @Override
     public BasCustomer insertIntoCustomerEntity(CustomerAddDTO customerAddDTO) {
         BasCustomer basCustomer = new BasCustomer();
-        basCustomer.setAddress(customerAddDTO.getAddress());
-        basCustomer.setArea(customerAddDTO.getArea());
-        basCustomer.setAttachment(customerAddDTO.getAttachment());
-        basCustomer.setAuxName(customerAddDTO.getAuxName());
-        basCustomer.setBizArea(customerAddDTO.getBizArea());
-        basCustomer.setCode(customerAddDTO.getCode());
-        basCustomer.setCreditQuota(customerAddDTO.getCreditQuota());
-        basCustomer.setCustomerCategory(customerAddDTO.getCustomerCategory());
-        basCustomer.setCustomerLevel(customerAddDTO.getCustomerLevel());
-        basCustomer.setFinancialContacts(customerAddDTO.getFinancialContacts());
-        basCustomer.setFinancialPhone(customerAddDTO.getFinancialPhone());
-        basCustomer.setHeadquarters(customerAddDTO.getHeadquarters());
-        basCustomer.setInvoiceAccount(customerAddDTO.getInvoiceAccount());
-        basCustomer.setInvoiceAddress(customerAddDTO.getInvoiceAddress());
-        basCustomer.setInvoiceBankCode(customerAddDTO.getInvoiceBankCode());
-        basCustomer.setInvoiceBankName(customerAddDTO.getInvoiceBankName());
-        basCustomer.setInvoiceCompany(customerAddDTO.getInvoiceCompany());
-        basCustomer.setInvoicePhone(customerAddDTO.getInvoicePhone());
-        basCustomer.setInvoiceTaxCode(customerAddDTO.getInvoiceTaxCode());
-        basCustomer.setIsEnabled(customerAddDTO.getIsEnabled().toString());
-        basCustomer.setLegalPerson(customerAddDTO.getLegalPerson());
-        basCustomer.setLegalPersonPhone(customerAddDTO.getLegalPersonPhone());
-        basCustomer.setName(customerAddDTO.getName());
-        basCustomer.setPaymentAccount(customerAddDTO.getPaymentAccount());
-        basCustomer.setPaymentBankCode(customerAddDTO.getPaymentBankCode());
-        basCustomer.setPaymentBankName(customerAddDTO.getPaymentBankName());
-        basCustomer.setPaymentCompany(customerAddDTO.getPaymentCompany());
-        basCustomer.setRecvAddress(customerAddDTO.getRecvAddress());
-        basCustomer.setRecvEmail(customerAddDTO.getRecvEmail());
-        basCustomer.setRecvFax(customerAddDTO.getRecvFax());
-        basCustomer.setRecvName(customerAddDTO.getRecvName());
-        basCustomer.setRecvPhone(customerAddDTO.getRecvPhone());
-        basCustomer.setRecvPostcode(customerAddDTO.getRecvPostcode());
-        basCustomer.setRemark(customerAddDTO.getRemark());
-        basCustomer.setShortName(customerAddDTO.getShortName());
-        basCustomer.setTaxScale(customerAddDTO.getTaxScale());
-        basCustomer.setWebsite(customerAddDTO.getWebsite());
+        BeanUtil.copyProperties(basCustomer,customerAddDTO);
+        UserHolder userHolder = new UserHolder();
+        try {
+            basCustomer.setCreateBy(userHolder.getCurrentUser().getUsername());
+            basCustomer.setUpdateBy(userHolder.getCurrentUser().getUsername());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return basCustomer;
     }
 

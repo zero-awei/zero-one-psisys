@@ -92,211 +92,246 @@ public class BasCustomer implements Serializable {
      */
     @ExcelProperty(value = "编码", index = 0)
     private String code;
-    @ExcelProperty(value = "名称", index = 1)
     /**
      * 名称
      */
+    @ExcelProperty(value = "名称", index = 1)
     private String name;
-    @ExcelProperty(value = "简称", index = 2)
     /**
      * 简称
      */
+    @ExcelProperty(value = "简称", index = 2)
     private String shortName;
-    @ExcelProperty(value = "助记名", index = 3)
     /**
      * 助记名
      */
+    @ExcelProperty(value = "助记名", index = 3)
     private String auxName;
-    @ExcelProperty(value = "客户分类", index = 4)
     /**
      * 客户分类
      */
+    @ExcelProperty(value = "客户分类", index = 4)
     private String customerCategory;
-    @ExcelProperty(value = "客户等级", index = 5)
     /**
      * 客户等级
      */
+    @ExcelProperty(value = "客户等级", index = 5)
     private String customerLevel;
-    @ExcelProperty(value = "纳税规模", index = 6)
     /**
      * 纳税规模
      */
+    @ExcelProperty(value = "纳税规模", index = 6)
     private String taxScale;
-    @ExcelProperty(value = "欠款额度", index = 7)
+
     /**
      * 欠款额度
      */
+    @ExcelProperty(value = "欠款额度", index = 7)
     private BigDecimal creditQuota;
-    @ExcelProperty(value = "所属总公司", index = 8)
+
     /**
      * 所属总公司
      */
+    @ExcelProperty(value = "所属总公司", index = 8)
     private String headquarters;
-    @ExcelProperty(value = "所属地区", index = 9)
+
     /**
      * 所属地区
      */
+    @ExcelProperty(value = "所属地区", index = 9)
     private String area;
-    @ExcelProperty(value = "业务区域", index = 10)
+
     /**
      * 业务区域
      */
+    @ExcelProperty(value = "业务区域", index = 10)
     private String bizArea;
-    @ExcelProperty(value = "客户地址", index = 11)
+
     /**
      * 客户地址
      */
+    @ExcelProperty(value = "客户地址", index = 11)
     private String address;
-    @ExcelProperty(value = "客户网站", index = 12)
+
     /**
      * 客户网站
      */
+    @ExcelProperty(value = "客户网站", index = 12)
     private String website;
-    @ExcelProperty(value = "法人代表", index = 13)
+
     /**
      * 法人代表
      */
+    @ExcelProperty(value = "法人代表", index = 13)
     private String legalPerson;
-    @ExcelProperty(value = "法人电话", index = 14)
+
     /**
      * 法人电话
      */
+    @ExcelProperty(value = "法人电话", index = 14)
     private String legalPersonPhone;
-    @ExcelProperty(value = "财务信息联系人", index = 15)
+
     /**
      * 财务信息联系人
      */
+    @ExcelProperty(value = "财务信息联系人", index = 15)
     private String financialContacts;
-    @ExcelProperty(value = "财务信息联系电话", index = 16)
+
     /**
      * 财务信息联系电话
      */
+    @ExcelProperty(value = "财务信息联系电话", index = 16)
     private String financialPhone;
-    @ExcelProperty(value = "开票信息单位名称", index = 17)
+
     /**
      * 开票信息单位名称
      */
+    @ExcelProperty(value = "开票信息单位名称", index = 17)
     private String invoiceCompany;
-    @ExcelProperty(value = "开票信息税号", index = 18)
+
     /**
      * 开票信息税号
      */
+    @ExcelProperty(value = "开票信息税号", index = 18)
     private String invoiceTaxCode;
-    @ExcelProperty(value = "开票信息开户行", index = 19)
+
     /**
      * 开票信息开户行
      */
+    @ExcelProperty(value = "开票信息开户行", index = 19)
     private String invoiceBankName;
-    @ExcelProperty(value = "开票信息行号", index = 20)
+
     /**
      * 开票信息行号
      */
+    @ExcelProperty(value = "开票信息行号", index = 20)
     private String invoiceBankCode;
-    @ExcelProperty(value = "开票信息账号", index = 21)
+
     /**
      * 开票信息账号
      */
+    @ExcelProperty(value = "开票信息账号", index = 21)
     private String invoiceAccount;
-    @ExcelProperty(value = "开票信息联系电话", index = 22)
+
     /**
      * 开票信息联系电话
      */
+    @ExcelProperty(value = "开票信息联系电话", index = 22)
     private String invoicePhone;
-    @ExcelProperty(value = "开票地址", index = 23)
+
     /**
      * 开票地址
      */
+    @ExcelProperty(value = "开票地址", index = 23)
     private String invoiceAddress;
-    @ExcelProperty(value = "办款资料单位名称", index = 24)
+
     /**
      * 办款资料单位名称
      */
+    @ExcelProperty(value = "办款资料单位名称", index = 24)
     private String paymentCompany;
-    @ExcelProperty(value = "办款资料开户行", index = 25)
+
     /**
      * 办款资料开户行
      */
+    @ExcelProperty(value = "办款资料开户行", index = 25)
     private String paymentBankName;
-    @ExcelProperty(value = "办款资料行号", index = 26)
+
     /**
      * 办款资料行号
      */
+    @ExcelProperty(value = "办款资料行号", index = 26)
     private String paymentBankCode;
-    @ExcelProperty(value = "办款资料账号", index = 27)
+
     /**
      * 办款资料账号
      */
+    @ExcelProperty(value = "办款资料账号", index = 27)
     private String paymentAccount;
-    @ExcelProperty(value = "收件信息收件人", index = 28)
+
     /**
      * 收件信息收件人
      */
+    @ExcelProperty(value = "收件信息收件人", index = 28)
     private String recvName;
-    @ExcelProperty(value = "收件信息联系电话", index = 29)
+
     /**
      * 收件信息联系电话
      */
+    @ExcelProperty(value = "收件信息联系电话", index = 29)
     private String recvPhone;
-    @ExcelProperty(value = "收件信息传真", index = 30)
+
     /**
      * 收件信息传真
      */
+    @ExcelProperty(value = "收件信息传真", index = 30)
     private String recvFax;
-    @ExcelProperty(value = "收件信息Email", index = 31)
+
     /**
      * 收件信息Email
      */
+    @ExcelProperty(value = "收件信息Email", index = 31)
     private String recvEmail;
-    @ExcelProperty(value = "收件信息地址", index = 32)
+
     /**
      * 收件信息地址
      */
+    @ExcelProperty(value = "收件信息地址", index = 32)
     private String recvAddress;
-    @ExcelProperty(value = "收件信息邮编", index = 33)
+
     /**
      * 收件信息邮编
      */
+    @ExcelProperty(value = "收件信息邮编", index = 33)
     private String recvPostcode;
-    @ExcelProperty(value = "附件", index = 34)
+
     /**
      * 附件
      */
+    @ExcelProperty(value = "附件", index = 34)
     private String attachment;
-    @ExcelProperty(value = "启用", index = 35,converter = IsEnabledConverter.class)
+
     /**
      * 启用
      */
+    @ExcelProperty(value = "启用", index = 35,converter = IsEnabledConverter.class)
     private String isEnabled;
-    @ExcelProperty(value = "备注", index = 36)
+
     /**
      * 备注
      */
+    @ExcelProperty(value = "备注", index = 36)
     private String remark;
-    @ExcelIgnore
+
     /**
      * 创建人
      */
-    private String createBy;
     @ExcelIgnore
+    private String createBy;
+
     /**
      * 创建时间
      */
+    @ExcelIgnore
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-    @ExcelIgnore
+
     /**
      * 修改人
      */
-    private String updateBy;
     @ExcelIgnore
+    private String updateBy;
+
     /**
      * 修改时间
      */
+    @ExcelIgnore
     private LocalDateTime updateTime;
-    @ExcelProperty(value = "版本", index = 37)
+
     /**
      * 版本
      */
+    @ExcelProperty(value = "版本", index = 37)
     private Integer version;
 
 
