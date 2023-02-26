@@ -17,7 +17,7 @@
 #define _ADD_PAY_APPLY_DTO_
 
 #include "../../GlobalInclude.h"
-#include "../FileDTO.h"
+#include "PurPayReqEntryDTO.h"
 
 class AddPayApplyDTO :public FileDTO
 {
@@ -57,6 +57,10 @@ class AddPayApplyDTO :public FileDTO
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
 	//是否作废
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
+	//版本
+	CC_SYNTHESIZE(int, version, Version);
+	//明细列表
+	CC_SYNTHESIZE(list<PurPayReqEntryDTO>, detail, Detail);
 public:
 	//绑定JSON转换方法
 	friend void from_json(const json& j, AddPayApplyDTO& apt) {
@@ -73,6 +77,7 @@ public:
 		BIND_FROM_TO_ULL(j, apt, remark);
 		BIND_FROM_TO_ULL(j, apt, billStage);
 		BIND_FROM_TO_ULL(j, apt, effectiveTime);
+		BIND_FROM_TO_ULL(j, apt, version);
 
 		BIND_FROM_TO_D(j, apt, amt);
 
@@ -80,6 +85,8 @@ public:
 		BIND_FROM_TO_I(j, apt, isEffective);
 		BIND_FROM_TO_I(j, apt, isClosed);
 		BIND_FROM_TO_I(j, apt, isVoided);
+
+		BIND_FROM_TO_OBJ(j, apt, detail, list<PurPayReqEntryDTO>);
 	}
 };
 

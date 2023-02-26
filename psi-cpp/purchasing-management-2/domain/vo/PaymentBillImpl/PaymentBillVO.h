@@ -23,15 +23,15 @@
 */
 class PaymentBillVO {
 	// 单据编号
-	CC_SYNTHESIZE(string, billNo, Bill_no);
+	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期
-	CC_SYNTHESIZE(string, billDate, Bill_date);
+	CC_SYNTHESIZE(string, billDate, BillDate);
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 供应商
-	CC_SYNTHESIZE(string, supplierId, Supplier_id)
+	CC_SYNTHESIZE(string, supplierId, SupplierId)
 	// 业务部门
-	CC_SYNTHESIZE(string, opDept, Op_dept)
+	CC_SYNTHESIZE(string, opDept, OpDept)
 	// 业务员
 	CC_SYNTHESIZE(string, operator, Operator)
 	// 源单号

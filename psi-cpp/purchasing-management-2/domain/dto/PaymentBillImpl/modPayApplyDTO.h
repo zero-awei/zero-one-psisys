@@ -34,17 +34,19 @@ class ModPayApplyDTO :public FileDTO
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//付款类型
-	CC_SYNTHESIZE(string, paymentType, paymentType);
+	CC_SYNTHESIZE(string, paymentType, PaymentType);
 	//供应商
-	CC_SYNTHESIZE(string, supplierId, supplierId);
+	CC_SYNTHESIZE(string, supplierId, SupplierId);
 	//业务部门
-	CC_SYNTHESIZE(string, opDept, opDept);
+	CC_SYNTHESIZE(string, opDept, OpDept);
 	//业务员
 	CC_SYNTHESIZE(string, operator, Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
 	CC_SYNTHESIZE(double, paidAmt, PaidAmt);
+	//附件
+	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//是否自动生成
@@ -77,6 +79,10 @@ class ModPayApplyDTO :public FileDTO
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//修改时间
 	CC_SYNTHESIZE(string, updateTime, updateTime);
+	//版本
+	CC_SYNTHESIZE(int, version, Version);
+	//明细列表
+	CC_SYNTHESIZE(list<PurPayReqEntryDTO>, detail, Detail);
 
 public:
 	//绑定JSON转换方法
@@ -97,11 +103,13 @@ public:
 		BIND_FROM_TO_ULL(j, mdt, bpmiInstanceId);
 		BIND_FROM_TO_ULL(j, mdt, approvalRemark);
 		BIND_FROM_TO_ULL(j, mdt, effectiveTime);
+		BIND_FROM_TO_ULL(j, mdt, attachment);
 		BIND_FROM_TO_ULL(j, mdt, sysOrdCode);
 		BIND_FROM_TO_ULL(j, mdt, createBy);
 		BIND_FROM_TO_ULL(j, mdt, createTime);
 		BIND_FROM_TO_ULL(j, mdt, updateBy);
 		BIND_FROM_TO_ULL(j, mdt, updateTime);
+		BIND_FROM_TO_ULL(j, mdt, version);
 
 		BIND_FROM_TO_D(j, mdt, amt);
 		BIND_FROM_TO_D(j, mdt, paidAmt);
@@ -110,6 +118,8 @@ public:
 		BIND_FROM_TO_I(j, mdt, isEffective);
 		BIND_FROM_TO_I(j, mdt, isClosed);
 		BIND_FROM_TO_I(j, mdt, isVoided);
+
+		BIND_FROM_TO_OBJ(j, mdt, detail, list<PurPayReqEntryDTO>);
 	}
 };
 

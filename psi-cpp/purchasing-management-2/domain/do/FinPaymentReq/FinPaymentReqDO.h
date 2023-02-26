@@ -74,7 +74,7 @@ class FinPaymentReqDO
 	//是否生效
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	//生效时间
-	CC_SYNTHESIZE(string, effective_time, Effective_time);
+	CC_SYNTHESIZE(int, effective_time, Effective_time);
 	//已关闭
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	//是否作废

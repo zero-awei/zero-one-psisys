@@ -22,6 +22,16 @@
 查询单据列表
 */
 class PaymentBillDetailQuery {
+	//单据号
+	CC_SYNTHESIZE(string, billNo, BillNo);
+	//分录号
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
+	//源单类型
+	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
+	// 源单id
+	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
+	//源单分录id
+	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
 	//源单号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//申请金额
@@ -38,6 +48,11 @@ class PaymentBillDetailQuery {
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PaymentBillDetailQuery& t) {
+		BIND_FROM_TO_ULL(j, t, billNo);
+		BIND_FROM_TO_ULL(j, t, srcBillType);
+		BIND_FROM_TO_ULL(j, t, srcEntryId);
+		BIND_FROM_TO_ULL(j, t, srcBillId);
+		BIND_FROM_TO_I(j, t, entryNo);
 		BIND_FROM_TO_ULL(j, t, srcNo);
 		BIND_FROM_TO_ULL(j, t, remark);
 		BIND_FROM_TO_ULL(j, t, custom1);

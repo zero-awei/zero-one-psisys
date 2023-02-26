@@ -252,6 +252,9 @@
     <ClInclude Include="dao\purPayment\PurPayReqFindDetailBillMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\PaymentBillImpl\purPayReqEntryDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

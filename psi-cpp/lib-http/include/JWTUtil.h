@@ -61,6 +61,8 @@ private:
 	std::list<std::string> authorities;
 	// 数据状态系信息
 	PayloadCode code;
+	//部门
+	std::string department;
 public:
 	PayloadDTO();
 	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities);
@@ -78,9 +80,11 @@ public:
 	void setCode(PayloadCode val) { code = val; }
 	std::string getId() const { return id; }
 	void setId(std::string val) { id = val; }
+	std::string getDepartment() const { return department; }
+	void setDepartment(std::string val) { department = val; }
 
 	// 绑定JSON转换方法
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, department);
 	
 };
 

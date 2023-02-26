@@ -39,7 +39,7 @@ class PaymentBillDetailVO:public PaymentBillVO {
 public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(PaymentBillDetailVO, billNo, billDate, subject, supplierId, opDept,
-		operator_, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
+		operator, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
 		isAuto, isRubric, remark, effectiveTime,
 		approver, createTime, createBy, sysOrgCode, updateTime, updateBy, custom1, custom2);
 };

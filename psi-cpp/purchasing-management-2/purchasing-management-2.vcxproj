@@ -214,6 +214,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\PurReqEntry\PurReqEntryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\PaymentBillImpl\purPayReqEntryDTO.h" />
     <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h" />
     <ClInclude Include="domain\dto\payment\PaymentImportDTO.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
