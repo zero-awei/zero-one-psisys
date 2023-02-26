@@ -23,7 +23,7 @@ public:
 	//删除
 	CREATE_API_FUN_BODY(deleteById, execDePayment, DePaymentDTO);
 	//添加
-	CREATE_API_FUN_JSON_PAYLOAD(AddPayment, execAddPayment, AddPaymentDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(AddPayment, execAddPayment, AddPaymentDTO);
 private:
 	//修改单据状态（关闭/作废/反关闭）
 	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto);

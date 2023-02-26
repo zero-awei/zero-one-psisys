@@ -11,7 +11,7 @@ class PaymentDAO : public BaseDAO
 {
 public:
 	// 添加预付申请单数据
-	uint64_t  insertPayment(const FinPayReqDO& iObj);
+	uint64_t  insertPayment(const FinPayReqDO& Obj);
 	//修改单据状态
 	int ChangeStatusClose(const FinPayReqDO& uObj);
 	int ChangeStatusCancel(const FinPayReqDO& uObj);

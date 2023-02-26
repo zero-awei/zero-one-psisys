@@ -74,6 +74,52 @@ class FinPayReqDO
 	CC_SYNTHESIZE(int, version, Version);
 public:
 	FinPayReqDO() {
+		//创建部门
+		sys_org_code = "";
+		//源单类型
+		src_bill_type = "";
+		//付款类型
+		payment_type = "";
+		//已付金额
+		paid_amt = 0.0000; 
+		//源单id
+		src_bill_id = "";
+		//源单号
+		src_no = "";
+		//单据主题
+		subject = "";
+		//是否红字
+		is_rubric = 0;
+		//参考金额
+		amt = 0.00;
+		//附件
+		attachment = "";
+		//备注
+		remark = "";
+		//是否自动生成
+		is_auto = 0;
+		//审核人
+		approver = "";
+		//审批id
+		bpmi_instance_id = "";
+		//核批结果类型
+		approval_result_type = "";
+		//核批意见
+		approval_remark = "";
+		//是否生效
+		is_effective = 0;
+		//生效时间
+		effective_time = "132";
+		//是否已关闭
+		is_closed = 0;
+		//是否作废
+		is_voided = 0;
+		//修改人
+		update_by = "";
+		//修改时间
+		update_time = "";
+		//版本
+		version = -1;
 	}
 
 };

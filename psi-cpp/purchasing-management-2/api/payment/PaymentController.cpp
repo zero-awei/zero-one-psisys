@@ -85,6 +85,19 @@ JsonVO<uint64_t> PaymentController::execAddPayment(const AddPaymentDTO& dto, con
 		result.setData(9999);
 		return result;
 	}
+
+	////进行明细检验
+	//if (dto.getDetail().size() != 0) {
+	//	for (auto d : dto.getDetail())
+	//	{
+	//		if (d.getEntryNo() < 0 || d.getMaterialId() == "" || d.getUnitId() == ""
+	//			|| d.getQty() < 0 || d.getOrderedQty() < 0) {
+	//			result.setStatus(RS_PARAMS_INVALID);
+	//			result.setData(9999);
+	//			return result;
+	//		}
+	//	}
+	//}
 	//执行数据新增
 	uint64_t id = service.saveData(dto, payload);
 	if (id > 0) {
