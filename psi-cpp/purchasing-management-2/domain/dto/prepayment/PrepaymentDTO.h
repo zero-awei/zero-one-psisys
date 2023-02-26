@@ -12,7 +12,7 @@ class PrepaymentDTO
 {
 	//------------------直接填入------------------------
 	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期

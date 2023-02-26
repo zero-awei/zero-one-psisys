@@ -8,7 +8,7 @@
 //修改订单状态的DTO 前端需要传递一个单据编号以及状态修改信息
 class PayModBillStatusDTO {
 	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 是否生效

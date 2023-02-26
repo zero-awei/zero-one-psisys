@@ -33,9 +33,9 @@ public:
 	// 查询预付申请单详细数据(单个对象)
 	PageVO<PrepaymentDetailBillVO> getAll(const PrepayDetailBillQuery& query);
 	// 保存数据
-	uint64_t saveData(const AddPayDTO& dto);
+	uint64_t saveData(const AddPayDTO& dto, const PayloadDTO& payload);
 	// 修改数据
-	bool updateData(const PrepaymentDTO& dto);
+	bool updateData(const AddPayDTO& dto, const PayloadDTO& payload);
 	// 通过ID删除数据
 	bool removeData(uint64_t id);
 	// 修改单据状态

@@ -7,23 +7,6 @@
 //查询单据信息
 JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload)
 {
-	//todo：数据校验
-	if (query.getBill_no() == "") {
-		return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	}
-	if (query.getBill_date() == "") {
-		return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	}
-	if (query.getSubject() == "") {
-		return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	}
-	if (query.getSupplier_id() == "") {
-		return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	}
-	if (query.getBill_stage() == "") {
-		return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	}
-
 	//查询成功
 	PrePayService service;
 	PageVO<PrepaymentBillVO> result = service.listAll(query);
@@ -31,15 +14,51 @@ JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const
 }
 
 //查询指定单据详细信息
-JsonVO<PrepaymentDetailBillVO> PrePayController::execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<PrepaymentDetailBillVO>> PrePayController::execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload)
 {
-	if (query.getBill_no() == "") {
-		return JsonVO<PrepaymentDetailBillVO>({}, RS_PARAMS_INVALID);
-}
 	PrePayService service;
 	PageVO<PrepaymentDetailBillVO> result = service.getAll(query);
-	return JsonVO<PrepaymentDetailBillVO>({}, RS_SUCCESS);
+	if (result.getTotal() > 0) {
+		return JsonVO<PageVO<PrepaymentDetailBillVO>>(result, RS_SUCCESS);
+	}
+	else {
+		return JsonVO<PageVO<PrepaymentDetailBillVO>>(result, RS_PARAMS_INVALID);
+	}
+	
 }
+
+//新增预付申请单
+JsonVO<uint64_t> PrePayController::execAddPay(const  AddPayDTO& dto, const PayloadDTO& payload)
+{
+	//响应结果
+	JsonVO<uint64_t> result;
+	PrePayService service;
+	uint64_t id = service.saveData(dto, payload);
+	if (id > 0) {
+		result.success(id);
+	}
+	else {
+		result.fail(id);
+	}
+	//响应结果
+	return result;
+}
+
+//修改预付申请单
+JsonVO<uint64_t> PrePayController::execModifyPay(const  AddPayDTO& dto, const PayloadDTO& payload)
+{
+	PrePayService service;
+	JsonVO<uint64_t> result;
+	if (service.updateData(dto, payload)) {
+		result.success(1);
+	}
+	else {
+		result.fail(0);
+	}
+	return result;
+}
+
+
 
 //导入
 JsonVO<uint64_t> PrePayController::execPayInto(const PayIntoDTO& dto)
@@ -63,48 +82,18 @@ JsonVO<PrepaymentExportVO> PrePayController::execPrepayExport(const PrePayExport
 	return JsonVO<PrepaymentExportVO>();
 }
 
-//新增预付申请单
-JsonVO<uint64_t> PrePayController::execAddPay(const  AddPayDTO& dto)
-{
-
-	JsonVO<uint64_t> result;	
-	PrePayService service;
-	uint64_t id = service.saveData(dto);
-	if (id > 0) {
-		result.success(id);
-	}
-	else{
-		result.fail(id);
-	}
-	//响应结果
-	return result;
-}
-
-//修改预付申请单
-JsonVO<uint64_t> PrePayController::execModifyPay(const  PrepaymentDTO& dto)
-{
-	PrePayService service;
-	JsonVO<uint64_t> result;
-	if (service.updateData(dto)) {
-		result.success(dto.getId());
-	}
-	else{
-		result.fail(dto.getId());
-	}
-	return result;
-}
 
 //修改单据状态
 JsonVO<uint64_t> PrePayController::execModifyPayBillStatus(const PayModBillStatusDTO& dto)
 {
 	PrePayService service;
 	JsonVO<uint64_t> result;
-	if (service.updateStatus(dto)) {
-		result.success(dto.getId());
-	}
-	else {
-		result.fail(dto.getId());
-	}
+	//if (service.updateStatus(dto)) {
+	//	result.success(dto.getId());
+	//}
+	//else {
+	//	result.fail(dto.getId());
+	//}
 	return result;
 }
 

@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -187,6 +187,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="api\statis\StatisController.h" />
     <ClInclude Include="dao\DoInclude.h" />
     <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
+    <ClInclude Include="dao\prepayment\PrepaymentDetailMapper.h" />
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
@@ -194,6 +195,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\PurQuot\PurQuotMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
+    <ClInclude Include="domain\do\prepayment\PrepaymentDetailDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
@@ -212,7 +214,6 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\dto\prepayment\DePayDTO.h" />
     <ClInclude Include="domain\dto\prepayment\PayIntoDTO.h" />
     <ClInclude Include="domain\dto\prepayment\PayModBillStatusDTO.h" />
-    <ClInclude Include="domain\dto\prepayment\PrepaymentDTO.h" />
     <ClInclude Include="domain\dto\PurOrdDTO.h" />
     <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
@@ -263,7 +264,6 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp" />
-    <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp" />
     <ClCompile Include="domain\dto\PurOrder\PurOrderDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
