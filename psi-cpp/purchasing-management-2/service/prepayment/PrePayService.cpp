@@ -59,50 +59,58 @@ PageVO<PrepaymentDetailBillVO> PrePayService::getAll(const PrepayDetailBillQuery
 	return pages;
 }
 
-// 保存数据
-uint64_t PrePayService::saveData(const AddPayDTO& dto)
-{
-	//组装数据
-	PrepaymentDO data;
-	data.setBill_no(dto.getBill_no());
-	data.setBill_date(dto.getBill_date());
-	data.setAmt(dto.getAmt());
-	//执行数据添加
-	PrepaymentDAO dao;
-	return dao.insertPrepay(data);
-}
-
-// 修改数据
-bool PrePayService::updateData(const PrepaymentDTO& dto)
-{
-	//组装传输数据
-	PrepaymentDO data;
-	data.setId(dto.getId());
-	data.setBill_no(dto.getBill_no());
-	data.setBill_date(dto.getBill_date());
-	data.setAmt(dto.getAmt());
-	//执行数据修改
-	PrepaymentDAO dao;
-	return dao.updatePrepay(data) == 1;
-}
-
 // 通过ID删除数据
-bool PrePayService::removeData(uint64_t id)
+bool PrePayService::DePrePayId(const DePayDTO& dto)
 {
 	PrepaymentDAO dao;
-	return dao.deleteById(id) == 1;
-}
-
-// 修改单据状态
-bool PrePayService::updateStatus(const PayModBillStatusDTO& dto)
-{
-	//组装传输数据
 	PrepaymentDO data;
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
 	//执行数据修改
-	PrepaymentDAO dao;
-	return dao.updateStatus(data) == 1;
+	if (dto.getId() != "" || dto.getBill_no() != "")
+	{
+		data.setId(dto.getId());
+		return dao.deleteById(data) == 1;
+	}
 }
 
-// 保存导入数据
+//// 保存数据
+//uint64_t PrePayService::saveData(const AddPayDTO& dto)
+//{
+//	//组装数据
+//	PrepaymentDO data;
+//	data.setBill_no(dto.getBill_no());
+//	data.setBill_date(dto.getBill_date());
+//	data.setAmt(dto.getAmt());
+//	//执行数据添加
+//	PrepaymentDAO dao;
+//	return dao.insertPrepay(data);
+//}
+//
+//// 修改数据
+//bool PrePayService::updateData(const PrepaymentDTO& dto)
+//{
+//	//组装传输数据
+//	PrepaymentDO data;
+//	data.setId(dto.getId());
+//	data.setBill_no(dto.getBill_no());
+//	data.setBill_date(dto.getBill_date());
+//	data.setAmt(dto.getAmt());
+//	//执行数据修改
+//	PrepaymentDAO dao;
+//	return dao.updatePrepay(data) == 1;
+//}
+//
+//// 修改单据状态
+//bool PrePayService::updateStatus(const PayModBillStatusDTO& dto)
+//{
+//	//组装传输数据
+//	PrepaymentDO data;
+//	data.setId(dto.getId());
+//	data.setBill_no(dto.getBill_no());
+//	//执行数据修改
+//	PrepaymentDAO dao;
+//	return dao.updateStatus(data) == 1;
+//}
+//
+//// 保存导入数据

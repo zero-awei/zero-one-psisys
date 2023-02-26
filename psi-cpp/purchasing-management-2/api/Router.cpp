@@ -96,7 +96,7 @@ void Router::initRouter()
 	////修改供应报价状态（关闭、作弊、反关闭）
 	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
 
-	createPayRouter();
+	
 	BIND_GET_ROUTER(server, "/query/ExecuteStatus", &StatisController::queryExeStatus, nullptr);
 	BIND_GET_ROUTER(server, "/query-all", &StatisController::queryStatis, nullptr);
 	BIND_GET_ROUTER(server, "/query-byDept", &StatisController::queryStatisByDept, nullptr);
@@ -112,9 +112,11 @@ void Router::initRouter()
 	BIND_GET_ROUTER(server, "/export-byMaterial", &StatisController::exportStatisByMaterial, nullptr);
 
 #ifdef PURORDER
+	createPrePayRouter();
 	createPurOrderRouter();
 	createPurReqRouter();
 	createPurComRouter();
+	createPaymentRouter();
 #endif
 
 	// 分页数据
@@ -132,23 +134,7 @@ void Router::initRouter()
 	// 删除ById
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 
-	//查询单据列表
-	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
-	//查询指定单据详细信息
-	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
-	//导出
-	BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
-	//添加申请(保存/提交)
-	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
-	//修改申请(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
-	//删除申请
-	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-	//修改单据状态(关闭/作废/反关闭)
-	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
-	//导入
-	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-	createPaymentRouter();
+
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -170,23 +156,28 @@ void Router::createUserDepartRouter()
 }
 #endif
 
-void Router::createPayRouter() {
+//采购预付
+void Router::createPrePayRouter() {
+	//xubuxi
 	//查询单据列表
-	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
+	BIND_GET_ROUTER(server, "/get-prepaybill", &PrePayController::queryPayFindBill, nullptr);
 	//查询指定单据详细信息
-	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
-	//导出
-	BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
-	//添加申请(保存/提交)
-	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
-	//修改申请(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
+	BIND_GET_ROUTER(server, "/get-prepaybill-detail", &PrePayController::queryPayFinDetailBill, nullptr);
 	//删除申请
-	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-	//修改单据状态(关闭/作废/反关闭)
-	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
-	//导入
-	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-t-prepay-id", &PrePayController::removeDePayId, nullptr);
+
+	////qi
+	////添加申请(保存/提交)
+	//BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
+	////修改申请(保存/提交/审核)
+	//BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
+	////修改单据状态(关闭/作废/反关闭)
+	//BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
+
+	////导入
+	//BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
+	////导出
+	//BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
 }
 
 void Router::createPurOrderRouter()

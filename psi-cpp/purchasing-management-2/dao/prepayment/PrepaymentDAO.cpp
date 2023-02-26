@@ -58,7 +58,7 @@ uint64_t PrepaymentDAO::count(const PrepaymentDO & iObj)
 std::list<PrepaymentDO> PrepaymentDAO::selectWithPage(const PrepaymentDO & obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	sql << "SELECT * FROM fin_payment_req";
+	sql << "SELECT * FROM `fin_payment_req`";
 	SAMPLE_TERAM_PARSE(obj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PrepaymentMapper mapper;
@@ -68,42 +68,16 @@ std::list<PrepaymentDO> PrepaymentDAO::selectWithPage(const PrepaymentDO & obj, 
 //查询指定单据详细信息
 std::list<PrepaymentDO> PrepaymentDAO::selectByBill_no(const string& bill_no)
 {
-	string sql = "SELECT * FROM fin_payment_req WHERE `bill_no` LIKE CONCAT('%',?,'%')";
+	string sql = "SELECT * FROM `fin_payment_req` WHERE `bill_no` LIKE CONCAT('%',?,'%')";
 	PrepaymentMapper mapper;
 	return sqlSession->executeQuery<PrepaymentDO, PrepaymentMapper>(sql, mapper, "%s", bill_no);
-}
-//新增预付申请单
-uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
-{
-	string sql = "INSERT INTO `fin_payment_req` (`bill_no`, `bill_date`, `amt`) VALUES (?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getBill_no(), iObj.getBill_date(), iObj.getAmt());
-}
 
-//修改预付申请单
-int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
-{
-	string sql = "UPDATE `fin_payment_req` SET `bill_no`=?, `bill_date`=?, `amt`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%i%ull", uObj.getBill_no(), uObj.getBill_date(), uObj.getAmt(), uObj.getId());
-}
-
-
-//修改单据状态
-int PrepaymentDAO::updateStatus(const PrepaymentDO& uObj)
-{
-	string sql = "UPDATE `fin_payment_req` SET `bill_no`=?, `is_effective`=?, `effective_time`=?,`is_closed`=?,`is_voided`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%i%s%i%i%ull", uObj.getBill_no(), uObj.getIs_effective(), uObj.getEffective_time(), uObj.getIs_closed(), uObj.getIs_voided(), uObj.getId());
 }
 
 // 删除预付申请单
-int PrepaymentDAO::deleteById(uint64_t id)
+int PrepaymentDAO::deleteById(const PrepaymentDO& uObj)
 {
-	string sql = "DELETE FROM `sample` WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%ull", id);
+	string sql = "DELETE FROM `fin_payment_req` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
 }
 
-// 保存导入数据
-uint64_t PrepaymentDAO::insertInfo(const PrepaymentDO& iObj)
-{
-	string sql = "INSERT INTO `fin_payment_req` (`bill_no`, `bill_date`, `amt`) VALUES (?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getBill_no(), iObj.getBill_date(), iObj.getAmt());
-}

@@ -32,16 +32,17 @@ public:
 	PageVO<PrepaymentBillVO> listAll(const PrepayBillQuery& query);
 	// 查询预付申请单详细数据(单个对象)
 	PageVO<PrepaymentDetailBillVO> getAll(const PrepayDetailBillQuery& query);
-	// 保存数据
-	uint64_t saveData(const AddPayDTO& dto);
-	// 修改数据
-	bool updateData(const PrepaymentDTO& dto);
 	// 通过ID删除数据
-	bool removeData(uint64_t id);
-	// 修改单据状态
-	bool updateStatus(const PayModBillStatusDTO& dto);
-	// 保存导入数据
-	uint64_t saveInto(const PayIntoDTO& dto);
+	bool DePrePayId(const DePayDTO& dto);
+
+	//// 保存数据
+	//uint64_t saveData(const AddPayDTO& dto);
+	//// 修改数据
+	//bool updateData(const PrepaymentDTO& dto);
+	//// 修改单据状态
+	//bool updateStatus(const PayModBillStatusDTO& dto);
+	//// 保存导入数据
+	//uint64_t saveInto(const PayIntoDTO& dto);
 
 };
 

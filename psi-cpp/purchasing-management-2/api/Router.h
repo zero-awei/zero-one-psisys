@@ -43,7 +43,7 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
-	void createPayRouter();
+	void createPrePayRouter();
 	void createPurOrderRouter();
 	void createPurReqRouter();
 	void createPurComRouter();

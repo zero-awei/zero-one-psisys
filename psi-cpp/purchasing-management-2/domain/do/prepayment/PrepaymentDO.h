@@ -8,7 +8,7 @@
  */
 class PrepaymentDO {
 	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
@@ -51,7 +51,7 @@ class PrepaymentDO {
 	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
 	PrepaymentDO() {
-		id = 0;
+		id = "";
 		bill_no = "";
 		bill_date = "";
 		subject = "";

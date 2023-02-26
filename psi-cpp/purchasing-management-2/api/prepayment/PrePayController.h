@@ -33,42 +33,26 @@
 class PrePayController
 {
 public:
-	//导入
-	CREATE_API_FUN_BODY(modifyPayInto, execPayInto, PayIntoDTO);
+
 	//查询
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill, execQueryPrepayFindBill, PrepayBillQuery);
 	//查询指定单据详细信息
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
-	//导出申请单
-	CREATE_API_FUN_BODY_PAYLOAD(queryPayExport, execPrepayExport, PrePayExportQuery);
-	//添加订单
-	CREATE_API_FUN_BODY(addPay, execAddPay, AddPayDTO);
-	//修改订单
-	CREATE_API_FUN_BODY(modifyPay, execModifyPay, PrepaymentDTO);
 	//删除订单
-	CREATE_API_FUN_BODY(removeDePay, execRemoveDePay, DePayDTO);
-	CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
-	//修改单据状态(关闭、作废、反关闭)
-	CREATE_API_FUN_BODY(modifyPurReqBillStatus, execModifyPayBillStatus, PayModBillStatusDTO);
+	CREATE_API_FUN_BODY(removeDePayId, execRemoveDePayId, DePayDTO);
+	//CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
+
 
 private:
-	//修改单据状态(关闭、作废、反关闭)
-	JsonVO<uint64_t> execModifyPayBillStatus(const PayModBillStatusDTO& dto);
+	
 	//查询
 	JsonVO<PageVO<PrepaymentBillVO>> execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload);
 	//查询指定单据详细信息
 	JsonVO<PrepaymentDetailBillVO> execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload);
-	//导出
-	JsonVO<PrepaymentExportVO> execPrepayExport(const PrePayExportQuery& query, const PayloadDTO& payload);
-	//新增订单
-	JsonVO<uint64_t> execAddPay(const AddPayDTO& dto);
-	//修改订单
-	JsonVO<uint64_t> execModifyPay(const PrepaymentDTO& dto);
 	//删除订单
-	JsonVO<uint64_t> execRemoveDePay(const DePayDTO& dto);
-	JsonVO<uint64_t> execRemovePayById(const IntID& id);
-	//导入
-	JsonVO<uint64_t> execPayInto(const PayIntoDTO& dto);
+	JsonVO<string> execRemoveDePayId(const DePayDTO& dto);
+	//JsonVO<uint64_t> execRemovePayById(const IntID& id);
+
 };
 
 #endif // _SAMPLE_CONTROLLER_

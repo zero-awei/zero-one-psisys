@@ -11,8 +11,6 @@
  */
 
 class PrepaymentDetailBillVO : public PrepaymentBillVO {
-	//源单号
-	CC_SYNTHESIZE(string, subject, Subject);
 	//申请金额
 	CC_SYNTHESIZE(int, amt, Amt);
 	//备注
