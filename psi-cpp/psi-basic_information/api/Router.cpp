@@ -46,12 +46,12 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 	createDepotRouter();
 
-	
+
 #ifdef HTTP_SERVER_DEMO
-		//绑定首页页面
-		BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
+	//绑定首页页面
+	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
 		res.render_raw_view("./public/test.html");
-			}, nullptr);
+		}, nullptr);
 
 	//初始化一个文件上传接口示例
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
@@ -133,12 +133,12 @@ void Router::createDepotRouter()
 
 void Router::createBasMaterialRouter() {
 	BIND_GET_ROUTER(server, "/get-basmaterial", &BasMaterialController::queryBasMaterial, nullptr);
-	BIND_GET_ROUTER(server, "/get-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
-	BIND_POST_ROUTER(server, "/post-add", &BasMaterialController::addBasMaterial, nullptr);
-	BIND_PUT_ROUTER(server, "/put-modify", &BasMaterialController::modifyBasMaterial, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &BasMaterialController::removeBasMaterial, nullptr);
-	BIND_POST_ROUTER(server, "/post-import", &BasMaterialController::importBasMaterial, nullptr);
-	BIND_GET_ROUTER(server, "/get-export", &BasMaterialController::exportExecl, nullptr);
+	BIND_GET_ROUTER(server, "/get-basmaterial-detail", &BasMaterialController::queryDetailBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-add-basmaterial", &BasMaterialController::addBasMaterial, nullptr);
+	BIND_PUT_ROUTER(server, "/put-modify-basmaterial", &BasMaterialController::modifyBasMaterial, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-basmaterial", &BasMaterialController::removeBasMaterial, nullptr);
+	BIND_POST_ROUTER(server, "/post-import-basmaterial", &BasMaterialController::importBasMaterial, nullptr);
+	BIND_GET_ROUTER(server, "/get-export-basmaterial", &BasMaterialController::exportExecl, nullptr);
 }
 
 void Router::createMaterialClassificationRouter() {
@@ -155,11 +155,10 @@ void Router::createMaterialClassificationRouter() {
 void Router::createCurrencyRouter()
 {
 	BIND_GET_ROUTER(server, "/currency-query", &CurrencyController::queryCurrency, nullptr);
-	//BIND_GET_ROUTER(server, "/Currency-query-kid", &CurrencyController::queryKidCurrency, nullptr);
 	BIND_GET_ROUTER(server, "/currency-detail", &CurrencyController::queryDetailCurrency, nullptr);
-	BIND_GET_ROUTER(server, "/currency-action-info", &CurrencyController::queryActionInfolCurrency, nullptr);
+	//BIND_GET_ROUTER(server, "/currency-action-info", &CurrencyController::queryActionInfolCurrency, nullptr);
 
-	BIND_PUT_ROUTER(server, "/currency-execAddCurrency", &CurrencyController::addCurrency, nullptr);
+	BIND_POST_ROUTER(server, "/currency-execAddCurrency", &CurrencyController::addCurrency, nullptr);
 	BIND_PUT_ROUTER(server, "/currency-modify", &CurrencyController::modifyCurrency, nullptr);
 	BIND_DEL_ROUTER(server, "/currency-remove", &CurrencyController::removeCurrency, nullptr);
 	BIND_POST_ROUTER(server, "/currency-add-Currencys", &CurrencyController::addCurrencys, nullptr);

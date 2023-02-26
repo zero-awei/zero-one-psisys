@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "BasMaterialController.h"
 #include <service/BasMaterial/BasMaterialService.h>
-
+#include <FastDfsClient.h>
+#include "CharsetConvertHepler.h"
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -57,7 +58,20 @@ JsonVO<uint64_t> BasMaterialController::execAddBasMaterial(const BasMaterialDTO&
 	return result;
 }
 
-
+////修改数据
+//JsonVO<uint64_t> BasMaterialController::execModifyBasMaterial(const BasMaterialDTO& dto)
+//{
+//	BasMaterialService service;
+//	JsonVO<uint64_t> result;
+//	if (service.updateData(dto)) {
+//		result.success(dto.getId());
+//	}
+//	else
+//	{
+//		result.fail(dto.getId());
+//	}
+//	return result;
+//}
 JsonVO<uint64_t> BasMaterialController::execModifyBasMaterial(const BasMaterialDTO& dto, const PayloadDTO& payload)
 {
 	BasMaterialService service;
@@ -103,5 +117,38 @@ JsonVO<PageVO<BasMaterialVO>> BasMaterialController::execImportBasMaterial(const
 
 JsonVO<string> BasMaterialController::execExportExecl(const BasMaterialQuery& query, const PayloadDTO& payload)
 {
-	return JsonVO<string>();
+	BasMaterialService service;
+	// 创建excel表
+	string filename = u8"../../test/test.xlsx";
+	vector<vector<string>> data;
+	
+	data.emplace_back(vector<std::string>({ u8"分类id",u8"编码", u8"名称", u8"助记名",\
+		u8"启用", u8"规格型号" , u8"单位id", u8"销售价格", u8"税务编码", u8"备注", u8"创建人",u8"创建时间", u8"修改人", u8"修改时间" }));
+	// 查询数据
+	if (!service.getExceData(query, data))
+		return JsonVO<string>(u8"导出失败", RS_FAIL);
+	string sheetname = u8"test";
+	ExcelComponent excel;
+	excel.writeVectorToFile(filename, sheetname, data);
+	// 上传到文件服务器
+	FastDfsClient client("1.15.240.108");
+	filename = client.uploadFile(filename);
+	JsonVO<std::string> result(filename, RS_SUCCESS);
+	//响应结果
+	return result;
+	//return JsonVO<string>();
 }
+//问题：文件导入，导出怎么实现？？
+
+//JsonVO<BasMaterialVO> BasMaterialController::execJsonBasMaterial(const BasMaterialDTO& dto)
+//{
+//	//构建一个测试VO
+//	BasMaterialVO vo;
+//	vo.setId(dto.getId());
+//	vo.setName(dto.getName());
+//	vo.setAge(dto.getAge());
+//	vo.setSex(dto.getSex());
+//
+//	//响应结果
+//	return JsonVO<BasMaterialVO>(vo, RS_API_UN_IMPL);
+//}

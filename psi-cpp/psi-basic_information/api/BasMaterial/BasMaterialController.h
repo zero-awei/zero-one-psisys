@@ -27,6 +27,8 @@
 #include "../../domain/vo/BasMaterial/BasMaterialVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
+#include "../lib-common/include/ExcelComponent.h"
+#include "../../service/BasMaterial/BasMaterialService.h"
 
 /**
  * 示例控制器，演示基础接口的使用
@@ -41,6 +43,7 @@ public:
 	CREATE_API_FUN_BODY(removeBasMaterial, execRemoveById, IntID);
 	CREATE_API_FUN_BODY_FILE(importBasMaterial, execImportBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, BasMaterialQuery);
+
 private:
 	//普通查询数据
 	JsonVO<PageVO<BasMaterialVO>> execQueryBasMaterial(const BasMaterialQuery& query, const PayloadDTO& payload);
@@ -57,6 +60,8 @@ private:
 	JsonVO<PageVO<BasMaterialVO>> execImportBasMaterial(const BasMaterialDTO& dto);
 	//导出
 	JsonVO<string> execExportExecl(const BasMaterialQuery& query, const PayloadDTO& payload);
+
+
 
 };
 

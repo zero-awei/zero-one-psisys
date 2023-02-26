@@ -25,6 +25,7 @@
 PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 {
 	//构建返回对象
+	
 	PageVO<BasMaterialVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
@@ -42,13 +43,16 @@ PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 		return pages;
 	}
 	//分页查询数据
+	//cout << count;
 	pages.setTotal(count);
 	pages.calcPages();
 	list<BasMaterialDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
+	cout << result.size();
 	list<BasMaterialVO> vr;
 	for (BasMaterialDO sub : result)
 	{
 		BasMaterialVO vo;
+		//cout << sub.getCode();
 		vo.setId(sub.getId());
 		vo.setCategoryId(sub.getCategoryId());
 		vo.setCode(sub.getCode());
@@ -68,6 +72,60 @@ PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 	}
 	pages.setRows(vr);
 	return pages;
+}
+
+bool BasMaterialService::getExceData(const BasMaterialQuery& query, vector<vector<string>>& data)
+{
+	//构建返回对象
+
+	PageVO<BasMaterialVO> pages;
+
+
+	//查询数据总条数
+	BasMaterialDO obj;
+	obj.setName(query.getName());
+	obj.setCode(query.getCode());
+	obj.setCategoryId(query.getCategoryId());
+	obj.setTaxCode(query.getTaxCode());
+	BasMaterialDAO dao;
+	uint64_t count = dao.count(obj);
+
+	if (count <= 0)
+	{
+		return false;
+	}
+//	cout << count;
+
+	//分页查询数据
+	pages.setTotal(count);
+	pages.calcPages();
+	list<BasMaterialDO> result = dao.selectWithPage(obj, 1, count);
+	//cout << result.size();
+	for (BasMaterialDO sub : result)
+	{
+		
+		vector<string> row;
+		row.emplace_back(sub.getCategoryId());
+		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getName());
+		row.emplace_back(sub.getAuxName());
+		string isEnabled = to_string(sub.getIsEnabled());
+		row.emplace_back(isEnabled);
+		row.emplace_back(sub.getModel());
+		row.emplace_back(sub.getUnitId());
+		string salePrice = to_string(sub.getSalePrice());
+		row.emplace_back(salePrice);
+		row.emplace_back(sub.getTaxCode());
+		row.emplace_back(sub.getRemark());
+		row.emplace_back(sub.getCreateBy());
+		row.emplace_back(sub.getCreateTime());
+		row.emplace_back(sub.getUpdateBy());
+		row.emplace_back(sub.getUpdateTime());
+		
+		data.emplace_back(row);
+	}
+	
+	return true;
 }
 BasMaterialVO BasMaterialService::getData(const BasMaterialDetailQuery& query) {
 

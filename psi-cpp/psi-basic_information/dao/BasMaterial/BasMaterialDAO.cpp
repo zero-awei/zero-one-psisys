@@ -31,7 +31,7 @@ if (!obj.getName().empty()) { \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getName()); \
 } \
 if (!obj.getCode().empty()) { \
-	sql << " AND `code`=?"; \
+	sql << " AND `code`= ?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getCode()); \
 } \
 if (!obj.getCategoryId().empty()) { \
@@ -56,17 +56,12 @@ uint64_t BasMaterialDAO::count(const BasMaterialDO& iObj)
 //·ÖÒ³Õ¹Ê¾
 std::list<BasMaterialDO> BasMaterialDAO::selectWithPage(const BasMaterialDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
-	//sql << "SELECT `A.id`,`A.code`,`A.name`,`A.aux_name`,`A.is_enabled`,`A.model`
-	//,`A.sale_price`,`A.tax_code`,`A.remark`,`A.create_by`,`A.create_time`,`A.update_by`,`A.update_time`
-	//,`B.name`,`C.name` 
-	//FROM bas_material A ,bas_material_category B, bas_unit C  
-	//Where (A.category_id = B.id and A.unit_id = C.id ) ";
 
-	/*sql << "SELECT COUNT(*) FROM `bas_material`";*/
 	stringstream sql;
 	sql << "SELECT * FROM bas_material";
 	BASMATERIAL_TERAM_PARSE(obj, sql);
-	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+	if (pageIndex > 0 && pageSize > 0)
+		sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	BasMaterialMapper mapper;
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<BasMaterialDO, BasMaterialMapper>(sqlStr, mapper, params);
