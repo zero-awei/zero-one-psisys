@@ -14,6 +14,7 @@ import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -63,7 +64,7 @@ public interface UserApis {
      * 用户导入
      * @return
      */
-    JsonVO<String> upload();
+    JsonVO<String> upload(MultipartFile file);
 
     /**
      * 导出选定用户

@@ -1,11 +1,12 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.date.DateTime;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.read.listener.PageReadListener;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
-import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
@@ -26,6 +27,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
@@ -37,7 +39,7 @@ import java.util.List;
  * 用户表 服务实现类
  * </p>
  *
- * @author  dan axin
+ * @author  axin
  * @since 2023-02-12
  */
 @Slf4j
@@ -50,7 +52,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Resource
     DepartService departService;
-
 
     // axin
     //    展示用户列表 finished tested（传id的情况下）
@@ -77,17 +78,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         Page<User> result = baseMapper.selectPage(userPage, userQueryWrapper);
         return PageVO.create(result, UserVO.class);
     }
-
-    //    axin
-//       新增用户
-    @Override
-    public void saveUser(AddUserDTO dto) {
-        User user = new User();
-        BeanUtils.copyProperties(dto, user);
-        log.info("user = {}", user);
-        this.save(user);
-    }
-
 
     // dan
     @SneakyThrows
@@ -137,4 +127,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         editUserVO.setDepartName(departs.get(0).getDepartName());
         return editUserVO;
     }
+
+    // dan
+    @Transactional
+    @Override
+    public void saveUsers(MultipartFile file) throws Exception {
+        EasyExcel.read(file.getInputStream(), User.class, new PageReadListener<User>(this::saveBatch)).sheet().doRead();
+    }
+
 }

@@ -1,8 +1,14 @@
 package com.zeroone.star.psisysmanagement.controller;
 
+import cn.hutool.core.date.DateTime;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.read.listener.PageReadListener;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
-import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
+import com.zeroone.star.project.components.easyexcel.ExcelReadListener;
+import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
+import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
 import com.zeroone.star.project.sysmanagement.UserApis;
@@ -20,25 +26,38 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.formula.functions.T;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 
 /**
  * <p>
  * 用户表 控制层
  * </p>
  *
- * @author dan axin
- * @since 2023-02-24
+ * @author axin
+ * @since 2023-02-18
  */
 
 @Slf4j
@@ -82,8 +101,7 @@ public class UserController implements UserApis {
     @ApiOperation(value = "添加用户")
     @PostMapping("/add")
     @Override
-    public JsonVO<String> addUser(@Validated AddUserDTO dto) {
-        iUserService.saveUser(dto);
+    public JsonVO<String> addUser(UserDTO dto) {
         return JsonVO.success("添加成功");
     }
 
@@ -120,14 +138,17 @@ public class UserController implements UserApis {
         return JsonVO.fail("修改失败");
     }
 
+    @SneakyThrows
     @ApiOperation(value = "导入用户")
     @PostMapping("/upload")
     @Override
-    public JsonVO<String> upload() {
+    public JsonVO<String> upload(MultipartFile file) {
+        if (file.isEmpty()) return JsonVO.fail("上传文件不能为空!");
+        iUserService.saveUsers(file);
         return JsonVO.success("导入成功");
     }
 
-    //     dan
+    // dan
     @SneakyThrows
     @ApiOperation(value = "导出用户")
     @ApiImplicitParams(value = {
@@ -158,4 +179,5 @@ public class UserController implements UserApis {
     public JsonVO<List<DepartVO>> listDepartment() {
         return JsonVO.success(departService.listDeparts());
     }
+
 }
