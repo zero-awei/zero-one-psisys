@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "SupplierDAO.h"
 #include <sstream>
-#include"SupplierMapper.h"
-
+#include "SupplierAdvancedMapper.h"
+#include "SupplierSpecificMapper.h"
 
 
 //查询数据条数——分页查询的service中的高级查询需要使用！！！！！！！！！！！！
@@ -63,11 +63,13 @@ uint64_t SupplierDAO::count(const  AdvancedQuery condition)//原来函数参数放的是c
 	return sqlSession->executeQueryNumerical(sqlStr, params);//params是宏SAMPLE_TERAM_PARSE中定义的
 }
 
-// 高级查询-分页查询！！！！！！！！！！！！
+// 高级查询-分页查询！！！！
 std::list<SupplierDO> SupplierDAO::AdvancedSelectWithPage(uint64_t pageIndex, uint64_t pageSize,const  AdvancedQuery &condition)//service层会传入页数
 {
 	stringstream sql;
-	sql << "SELECT * FROM `bas_supplier`"<<" ";
+	sql << "SELECT `id`,`code`,`name`,`aux_name` ,`supplier_category`,`supplier_level`,`tax_scale`,\
+		`headquarters` ,`area` ,`biz_area` ,`address` ,`website` , `alter_suppliers`,\
+		`is_enabled`, `remark`,`create_by`,`update_time`,`update_by`  FROM `bas_supplier`"<<" ";
 	SqlParams params;//没有用的，空的填充参数容器
 	/*在sql中添加用户输入的查询条件*/
 	list<AdvancedQuerySQLCondition> list = condition.getAdvancedQueryCondition();
@@ -118,19 +120,28 @@ std::list<SupplierDO> SupplierDAO::AdvancedSelectWithPage(uint64_t pageIndex, ui
 	}
 	//向sql变量中加入分页限制
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize << " ";//pageSize是每页的数据的条目数；pageindex是显示的页数
-	SupplierMapper mapper;
+	SupplierAdvancedMapper mapper;
 	string sqlStr = sql.str();
 	//test
 	cout << "dao.supplier:  " << sqlStr << endl;
-	return sqlSession->executeQuery<SupplierDO, SupplierMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<SupplierDO, SupplierAdvancedMapper>(sqlStr, mapper, params);
 }
 
-// 查询指定供应商——根据code
-list<SupplierDO> SupplierDAO::SpecifiedSelect(const string& code)
+// 查询指定供应商——根据id
+SupplierDO SupplierDAO::SpecifiedSelect(const string& id)
 {
-	string sql = "SELECT * FROM `bas_supplier` WHERE `code` LIKE CONCAT('%',?,'%')";//需要'?'来做占位符
-	SupplierMapper mapper;
-	return sqlSession->executeQuery<SupplierDO, SupplierMapper>(sql, mapper, "%s", code);
+	string sql = "SELECT `code`,`name`, `short_name` ,`aux_name` ,`supplier_category`,`supplier_level`,`tax_scale`\
+		,`headquarters` ,`area` ,`biz_area` ,`address` ,`website` ,`legal_person` ,`legal_person_phone` ,`financial_contacts` ,\
+		`financial_phone`, `invoice_company`, `invoice_tax_code`, `invoice_bank_name`, `invoice_bank_code`, `invoice_account`, \
+		`invoice_phone`, `invoice_address`, `receipt_company`, `receipt_bank_name`, `receipt_bank_code`, `receipt_account`, \
+		`recv_name`, `recv_phone`, `recv_fax`, `recv_email`, `recv_address`, `recv_postcode`, `attachment`, \
+		`is_enabled`, `alter_suppliers`,`remark`,`create_by`,`create_time`,`update_time`,`update_by` FROM `bas_supplier` WHERE `id` =?";//需要'?'来做占位符
+	SupplierSpecificMapper mapper;
+	list<SupplierDO>res= sqlSession->executeQuery<SupplierDO, SupplierSpecificMapper>(sql, mapper, "%s", id);
+	if (!res.empty())
+	{
+		return res.front();
+	}
 }
 
 
@@ -161,10 +172,113 @@ uint64_t SupplierDAO::SupplierInsert(const SupplierDO& iObj)
 		iObj.getAlter_Suppliers(), iObj.getIs_Enabled(), iObj.getRemark(), iObj.getCreate_By(), iObj.getCreate_Time(), iObj.getUpdate_Time(),
 		iObj.getUpdate_By());  //41个字段-修改过后已经正确了，%s在41个的基础上多加了一个(现在42个%s)，iObj的id还没有加
 }
-// 修改数据——已检查：字段，%s，
+
+// 修改数据——已检查：字段，%s
 int SupplierDAO::SupplierUpdateByCode(const SupplierDO& uObj)
 {
-	string sql = "UPDATE `bas_supplier` SET `code`=?,`name`=?, `short_name`=?, `aux_name`=?,`supplier_category`=? ,\
+	stringstream sql;
+	sql <<"UPDATE `bas_supplier` SET"<<" ";
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	if (uObj.getCode() != "")
+	{
+		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+	}
+	/*string sql = "UPDATE `bas_supplier` SET `code`=?,`name`=?, `short_name`=?, `aux_name`=?,`supplier_category`=? ,\
 	`supplier_level`=?,`tax_scale`=?,`headquarters`=?,`area`=? ,`biz_area`=? ,`address`=? ,\
 	`website`=?,`legal_person`=?,`legal_person_phone`=? ,`financial_contacts`=? ,`financial_phone`=? , \
 	`invoice_company`=?,`invoice_tax_code`=?, `invoice_bank_name`=? , `invoice_bank_code`=? , `invoice_account`=?,\
@@ -187,7 +301,8 @@ int SupplierDAO::SupplierUpdateByCode(const SupplierDO& uObj)
 		uObj.getInvoice_Phone(), uObj.getInvoice_Address(), uObj.getReceipt_Company(), uObj.getReceipt_Bank_Name(), uObj.getReceipt_Bank_Code(),
 		uObj.getReceipt_Account(), uObj.getRecv_Name(), uObj.getRecv_Phone(), uObj.getRecv_Fax(), uObj.getRecv_Email(), uObj.getRecv_Address(),
 		uObj.getRecv_Postcode(), uObj.getAttachment(), uObj.getAlter_Suppliers(), uObj.getIs_Enabled(), uObj.getRemark(), uObj.getCreate_By(),
-		uObj.getUpdate_Time(), uObj.getUpdate_By(), uObj.getID());
+		uObj.getUpdate_Time(), uObj.getUpdate_By(), uObj.getID());*/
+	return 0;
 }
 
 

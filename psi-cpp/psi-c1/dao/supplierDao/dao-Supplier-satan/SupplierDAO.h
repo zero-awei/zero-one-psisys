@@ -20,7 +20,7 @@ public:
 	// 高级查询-分页查询
 	list<SupplierDO> AdvancedSelectWithPage(uint64_t pageIndex, uint64_t pageSize, const AdvancedQuery &condition);
 	// 查询指定供应商——不是根据id
-	list<SupplierDO> SpecifiedSelect(const string& code);//实际上是没有必要使用list，因为同一个code只能查出一个供应商，但是你看DAO.cpp就发现我们需要的函数的返回值就是list类型的没办法
+	SupplierDO SpecifiedSelect(const string& id);//实际上是没有必要使用list，因为同一个code只能查出一个供应商，但是你看DAO.cpp就发现我们需要的函数的返回值就是list类型的没办法
 	// 插入数据
 	uint64_t SupplierInsert(const SupplierDO& iObj);
 	// 修改数据

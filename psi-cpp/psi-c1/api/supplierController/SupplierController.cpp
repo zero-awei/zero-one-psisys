@@ -18,7 +18,7 @@ JsonVO<SpecifiedSupplierDataQueryVO> SupplierController::execSpecifiedQuerySuppl
 {
 	//定义一个Service
 	SupplierService service;
-	//查询数据
+	//查询数据（核心）
 	SpecifiedSupplierDataQueryVO result = service.specifiedListSupplierData(query);
 	//返回结果
 	return JsonVO<SpecifiedSupplierDataQueryVO>(result, RS_SUCCESS);

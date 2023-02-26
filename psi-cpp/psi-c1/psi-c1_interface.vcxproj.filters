@@ -473,7 +473,10 @@
     <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierMapper.h">
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierAdvancedMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierSpecificMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

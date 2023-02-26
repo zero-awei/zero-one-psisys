@@ -269,7 +269,8 @@
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
     <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierDAO.h" />
-    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierMapper.h" />
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierAdvancedMapper.h" />
+    <ClInclude Include="dao\supplierDao\dao-Supplier-satan\SupplierSpecificMapper.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\SupplierDO-satan\SupplierDO.h" />

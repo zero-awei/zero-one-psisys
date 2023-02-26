@@ -30,6 +30,8 @@ class SupplierDO
 	//纳税规模 6
 	CC_SYNTHESIZE(string, tax_scale, Tax_Scale);
 
+	//8
+	
 	//所属总公司 7
 	CC_SYNTHESIZE(string, headquarters, HeadQuarters);
 	//业务区域  9
@@ -39,6 +41,8 @@ class SupplierDO
 	//供应商地址 10
 	CC_SYNTHESIZE(string, address, Address);
 
+	//12
+	
 	//供应商网站 11
 	CC_SYNTHESIZE(string, website, Website);
 	//法人代表
@@ -50,6 +54,8 @@ class SupplierDO
 	CC_SYNTHESIZE(string, financial_contacts, Financial_Contacts);
 	//财务信息联系电话
 	CC_SYNTHESIZE(string, financial_phone, Financial_Phone);
+
+	//17
 
 	/*发票信息*/
     //单位名称
@@ -66,6 +72,9 @@ class SupplierDO
 	CC_SYNTHESIZE(string, invoice_phone, Invoice_Phone);
 	//开票地址
 	CC_SYNTHESIZE(string, invoice_address, Invoice_Address);
+
+	//24
+
 	/*办款资料*/
 	//单位名称Unit name
 	CC_SYNTHESIZE(string, receipt_company, Receipt_Company);
@@ -75,6 +84,9 @@ class SupplierDO
 	CC_SYNTHESIZE(string, receipt_bank_code, Receipt_Bank_Code);
 	//账号Account
 	CC_SYNTHESIZE(string, receipt_account, Receipt_Account);
+
+	//28
+
 	/*收件信息*/
 	//addressee收件人
 	CC_SYNTHESIZE(string, recv_name, Recv_Name);
@@ -96,6 +108,9 @@ class SupplierDO
 	CC_SYNTHESIZE(int, is_enabled, Is_Enabled);
 	//备注  14
 	CC_SYNTHESIZE(string, remark, Remark);
+
+	//38
+
 	/*操作信息*/
 	//创建人 15
 	CC_SYNTHESIZE(string, create_by, Create_By);
@@ -107,6 +122,7 @@ class SupplierDO
 	CC_SYNTHESIZE(string, update_by, Update_By);
 	//版本---增加供应商的时候不需要这个信息
 	CC_SYNTHESIZE(int, version, Version);
+
 	//一共43个字段
 
 //public:

@@ -38,7 +38,7 @@ class AdvancedQueryVO
 	//创建人
 	CC_SYNTHESIZE(string, create_by, Create_By);
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, Update_Time);
+	CC_SYNTHESIZE(string, update_time,Update_Time);
 	//修改人
 	CC_SYNTHESIZE(string, update_by, Update_By);
 
