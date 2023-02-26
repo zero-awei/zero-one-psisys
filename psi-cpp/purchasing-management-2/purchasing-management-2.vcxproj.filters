@@ -225,6 +225,18 @@
     <ClInclude Include="service\PurReq\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="service\Payment\PaymentService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\payment\PaymentDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\payment\PaymentMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\PurReq\PurReqDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -291,6 +303,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\PurReq\PurReqService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\Payment\PaymentService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\payment\PaymentChangeDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\payment\PaymentDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

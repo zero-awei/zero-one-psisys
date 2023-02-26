@@ -1,19 +1,54 @@
 #include "stdafx.h"
 #include "PaymentController.h"
+#include "../../service/Payment/PaymentService.h"
+#include "../lib-common/include/CharsetConvertHepler.h"
 
-
-JsonVO<uint64_t> PaymentController::execChangePayment(const PaymentChangeDTO& dto)
+//修改单据状态
+JsonVO<string>  PaymentController::execChangePayment(const PaymentChangeDTO& dto)
 {
-	JsonVO<uint64_t> result;
-	if (/*service.updateData(dto)*/true) {
+	PaymentService service;
+	JsonVO<string> result;
+
+	// 数据校验
+	if (dto.getId() == "" || dto.getBill_no() == "") // 如果ID和单据编号为空
+		return JsonVO<string>({}, RS_PARAMS_INVALID);
+	if (dto.getOpType() != PaymentChangeDTO::CLOSE && dto.getOpType() != PaymentChangeDTO::UNCLOSE && dto.getOpType() != PaymentChangeDTO::CANCEL)
+		return JsonVO<string>({}, RS_PARAMS_INVALID);
+
+	// 执行
+	if (service.ChangePayStatus(dto)) {
 		result.success(dto.getId());
+		switch (dto.getOpType())
+		{
+		case PaymentChangeDTO::CLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭成功"));
+			break;
+		case PaymentChangeDTO::UNCLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭成功"));
+			break;
+		case PaymentChangeDTO::CANCEL:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废成功"));
+			break;
+		}
 	}
-	else
-	{
+	else {
 		result.fail(dto.getId());
+		switch (dto.getOpType())
+		{
+		case PaymentChangeDTO::CLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭失败"));
+			break;
+		case PaymentChangeDTO::UNCLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭失败"));
+			break;
+		case PaymentChangeDTO::CANCEL:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废失败"));
+			break;
+		}
 	}
 	return result;
 }
+
 
 JsonVO<uint64_t> PaymentController::execDeleteById(const IntID& id)
 {

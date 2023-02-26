@@ -24,7 +24,7 @@ public:
 	CREATE_API_FUN_BODY_FILE(importPayment, exeImportPayment, PaymentImportDTO);
 private:
 	//修改单据状态（关闭/作废/反关闭）
-	JsonVO<uint64_t> execChangePayment(const PaymentChangeDTO& dto);
+	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto);
 	//删除数据
 	JsonVO<uint64_t> execDeleteById(const IntID& id);
 	//批量导出数据

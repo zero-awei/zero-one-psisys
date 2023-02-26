@@ -43,11 +43,7 @@ bool getStartArg(int argc, char* argv[]) {
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
-<<<<<<< Updated upstream
-	std::string dbName = "test";
-=======
 	std::string dbName = "zopsi_sys";
->>>>>>> Stashed changes
 	std::string dbHost = "192.168.108.8";
 	int dbPort = 3306;
 	int dbMax = 25;
