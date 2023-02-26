@@ -188,70 +188,40 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\pur-quot\PurQuotController.h" />
+    <ClInclude Include="api\PurOrder\PurOrderControoler.h" />
     <ClInclude Include="api\Router.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotBaseMapper.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotDAO.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotDetailMapper.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotNaiGuanDO.h" />
-    <ClInclude Include="domain\dto\pur-quot\PurQuotDetailDTO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotDetailVO.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotDividedListMapper.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotFindBillMapper.h" />
-    <ClInclude Include="dao\pur-quot\PurQuotListMapper.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderDividedListMapper.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderDividedListDO.h" />
+    <ClInclude Include="domain\query\PurOrder\PurOrderDividedListQuery.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotDO.h" />
-    <ClInclude Include="domain\do\pur-quot\PurQuotEntryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
-    <ClInclude Include="domain\dto\pur-quot\AddPurQuotDTO.h" />
-    <ClInclude Include="domain\dto\pur-quot\DelPurQuotDTO.h" />
-    <ClInclude Include="domain\dto\pur-quot\ModPurQuotDTO.h" />
-    <ClInclude Include="domain\dto\pur-quot\PurQuotIntoDTO.h" />
-    <ClInclude Include="domain\dto\pur-quot\PurQuotModBillStatusDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
-    <ClInclude Include="domain\query\pur-quot\PurQuotDividedListQuery.h" />
-    <ClInclude Include="domain\query\pur-quot\PurQuotExportQuery.h" />
-    <ClInclude Include="domain\query\pur-quot\PurQuotFindBillQuery.h" />
-    <ClInclude Include="domain\query\pur-quot\PurQuotFindDetailBillQuery.h" />
-    <ClInclude Include="domain\query\pur-quot\PurQuotListQuery.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotDividedListVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotBaseVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotExportVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotFindBillVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotFindDetailBillVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotIntoVO.h" />
-    <ClInclude Include="domain\vo\pur-quot\PurQuotListVO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurOrderDividedListVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
-    <ClInclude Include="service\pur-inquiry\PurInquiryService.h" />
-    <ClInclude Include="service\pur-req\PurReqService.h" />
-    <ClInclude Include="service\pur-quot\PurQuotService.h" />
+    <ClInclude Include="service\PurOrder\PurOrderService.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="uselib\fastdfs\TestFastDfs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
     <ClCompile Include="api\Router.cpp" />
-    <ClCompile Include="dao\pur-quot\PurQuotDAO.cpp" />
+    <ClCompile Include="dao\PurOrder\PurOrderDAO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="service\pur-inquiry\PurInquiryService.cpp" />
-    <ClCompile Include="service\pur-req\PurReqService.cpp" />
-    <ClCompile Include="service\pur-quot\PurQuotService.cpp" />
+    <ClCompile Include="service\PurOrder\PurOrderService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,8 +4,7 @@
 #include "Router.h"
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
-#include "pur-quot/PurQuotController.h"
-
+#include "PurOrder/PurOrderControoler.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
@@ -60,8 +59,7 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 	//#TIP :系统扩展路由定义，写在这个后面
-	createPurQuotRouter();
-
+	createPurOrderRouter();
 }
 
 
@@ -88,34 +86,11 @@ void Router::createUserDepartRouter()
 }
 
 #endif
-
-
-//供应报价
-void Router::createPurQuotRouter()
-{
-	//添加报价(保存/提交)
-	BIND_POST_ROUTER(server, "/add-pur-quot", &PurQuotController::addPurQuot, nullptr);
-	//修改报价(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
-	//删除报价
-BIND_DEL_ROUTER(server, "/del-pur-quot", &PurQuotController::delPurQuotById, nullptr);
-	//修改单据状态(关闭/作废/反关闭)
-	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
-	//导入
-	BIND_POST_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
-	//导出
-	BIND_GET_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
-	//查询单据列表
-	BIND_GET_ROUTER(server, "/pur-quot-find-bill", &PurQuotController::queryPurInquiryFindBill, nullptr);
-	//查询指定单据列表
-	BIND_GET_ROUTER(server, "/pur-quot-detail-find-bill", &PurQuotController::queryPurInquiryFindDetailBill, nullptr);
-
-	//报价单列表
-	BIND_GET_ROUTER(server, "/get-pur-quot-of-combill", &PurQuotController::queryPurQuotList, nullptr);
-	//报价单分录列表
-	BIND_GET_ROUTER(server, "/get-pur-quot-more-of-combill", &PurQuotController::queryPurQuotDividedList, nullptr);
+void Router::createPurOrderRouter() {
+	BIND_GET_ROUTER(server, "/pur-order-detail-find-bill", &PurOrderController::queryPurOrderDividedList, nullptr);
 }
 
+//供应报价
 
 
 
