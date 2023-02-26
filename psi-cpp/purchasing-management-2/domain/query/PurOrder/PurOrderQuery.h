@@ -69,6 +69,11 @@ public:
 		// ÊÇ·ñ×÷·Ï
 		BIND_FROM_TO_I(j, t, is_voided);
 	}
+	PurOrderQuery() {
+		is_effective= -1;
+		is_closed = -1;
+		is_voided = -1;
+	}
 };
 #endif // !_PUR_ORDER_QUERY_
 

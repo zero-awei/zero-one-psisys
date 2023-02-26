@@ -38,13 +38,20 @@
  * 前缀与真实值之间使用=分隔
  */
 bool getStartArg(int argc, char* argv[]) {
-	// 服务器端口
-	std::string serverPort = "8091";
+	//// 服务器端口
+	//std::string serverPort = "8091";
+	//// 数据库连接信息
+	//std::string dbUsername = "root";
+	//std::string dbPassword = "psitxms9527";
+	//std::string dbName = "zopsi_sys";
+	//std::string dbHost = "43.138.223.223";
+
+	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "psitxms9527";
+	std::string dbPassword = "123456";
 	std::string dbName = "zopsi_sys";
-	std::string dbHost = "43.138.223.223";
+	std::string dbHost = "8.130.29.125";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS
