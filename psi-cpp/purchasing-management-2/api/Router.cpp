@@ -121,7 +121,7 @@ void Router::initRouter()
 void Router::createPurOrderRouter()
 {
 	// 分页数据
-	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
+	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::querylistPurOrder, nullptr);
 	// 单个数据
 	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
 	// 新增数据

@@ -261,6 +261,45 @@ if (!obj.getUpdate_time().empty()) { \
 } else {str += ", null";} \
 str += ")";
 
+#define PUR_ORDER_TERAM_PARSE(obj, sql) \
+SqlParams params; \
+sql<<" WHERE 1=1"; \
+if (!obj.getBill_no().empty()) { \
+    sql << " AND `bill_no`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
+} \
+if (!obj.getBill_date().empty()) { \
+    sql << " AND `bill_date`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_date()); \
+} \
+if (!obj.getSubject().empty()) { \
+    sql << " AND `subject`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getSubject()); \
+} \
+if (!obj.getSupplier_id().empty()) { \
+    sql << " AND `supplier_id`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getSupplier_id()); \
+} \
+if (!obj.getOp_er().empty()) { \
+    sql << " AND `operator`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getOp_er()); \
+} \
+if (!obj.getBill_stage().empty()) { \
+    sql << " AND `bill_stage`=?"; \
+    SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_stage()); \
+} \
+if (obj.getIs_effective()!=-1) { \
+    sql << " AND `is_effective`=?"; \
+    SQLPARAMS_PUSH(params, "i",int, obj.getIs_effective()); \
+} \
+if (obj.getIs_closed()!=-1) { \
+    sql << " AND `is_closed`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getIs_closed()); \
+} \
+if (obj.getIs_voided()!=-1) { \
+    sql << " AND `is_voided`=?"; \
+    SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
+} 
 
 // ²åÈëÊý¾Ý
 uint64_t PurOrderDAO::insert(const PurOrderDO& iObj)
@@ -298,4 +337,24 @@ list<PurOrderDO> PurOrderDAO::selectDetail(const string bill_no)
     WHERE `bill_no`=?";
     PurOrderDetailMapper mapper;
     return sqlSession->executeQuery<PurOrderDO, PurOrderDetailMapper>(sql, mapper, "%s", bill_no);
+}
+
+uint64_t PurOrderDAO::count(const PurOrderDO& iObj) {
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM pur_order";
+    PUR_ORDER_TERAM_PARSE(iObj, sql);
+
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
+
+}
+std::list<PurOrderDO> PurOrderDAO::selectWithPage(const PurOrderDO& jobj, uint64_t pageIndex, uint64_t pageSize)
+{
+	stringstream sql;
+	sql << "SELECT * FROM pur_order";
+    PUR_ORDER_TERAM_PARSE(jobj, sql);
+	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+	PurOrderMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurOrderDO, PurOrderMapper>(sqlStr, mapper, params);
 }

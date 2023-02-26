@@ -32,9 +32,11 @@ public:
 	uint64_t insert(const PurOrderDO& iObj);
 	// 更新数据
 	uint64_t update(const PurOrderDO& iObj);
-	// 计数数据
-	uint64_t count(const PurOrderDO& iObj);
 	// 查询详细信息
 	list<PurOrderDO> selectDetail(const string bill_no);
+	// 统计数据条数
+	uint64_t count(const PurOrderDO& iObj);
+	// 分页查询数据
+	list<PurOrderDO> selectWithPage(const PurOrderDO& obj, uint64_t pageIndex, uint64_t pageSize);
 };
 #endif // !_PUR_ORDER_DAO_

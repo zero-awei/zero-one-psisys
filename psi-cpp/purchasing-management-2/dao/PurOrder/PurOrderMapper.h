@@ -26,7 +26,7 @@
 /**
  * 采购订单表字段匹配映射
  */
-class SampleMapper : public Mapper<PurOrderDO>
+class PurOrderMapper : public Mapper<PurOrderDO>
 {
 public:
 	PurOrderDO mapper(ResultSet* resultSet) const override
@@ -61,14 +61,14 @@ public:
 
 		data.setExchange_rate(resultSet->getDouble(27));
 		data.setQty(resultSet->getDouble(28));
-		data.setAmt(resultSet->getDouble(29)); // 此处没有getfloat
-		data.setPrepayment_bal(resultSet->getDouble(30)); //
+		data.setAmt(resultSet->getDouble(29)); 
+		data.setPrepayment_bal(resultSet->getDouble(30)); 
 		data.setSettle_qty(resultSet->getDouble(31));
-		data.setSettle_amt(resultSet->getDouble(32)); //
+		data.setSettle_amt(resultSet->getDouble(32)); 
 		data.setIn_qty(resultSet->getDouble(33));
-		data.setIn_cost(resultSet->getDouble(34)); //
-		data.setSettled_amt(resultSet->getDouble(35)); //
-		data.setInvoiced_amt(resultSet->getDouble(36)); //
+		data.setIn_cost(resultSet->getDouble(34));
+		data.setSettled_amt(resultSet->getDouble(35)); 
+		data.setInvoiced_amt(resultSet->getDouble(36)); 
 
 		data.setAttachment(resultSet->getString(37));
 		data.setRemark(resultSet->getString(38));
@@ -88,7 +88,6 @@ public:
 		data.setCreate_time(resultSet->getString(51));
 		data.setUpdate_by(resultSet->getString(52));
 		data.setUpdate_time(resultSet->getString(53));
-		data.setVersion(resultSet->getInt(54));
 		return data;
 	}
 };

@@ -83,21 +83,21 @@ class PurOrderDO
 	// 数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	// 金额
-	CC_SYNTHESIZE(float, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	// 预付余款	
-	CC_SYNTHESIZE(float, prepayment_bal, Prepayment_bal);
+	CC_SYNTHESIZE(double, prepayment_bal, Prepayment_bal);
 	// 结算数量
 	CC_SYNTHESIZE(double, settle_qty, Settle_qty);
 	// 结算金额
-	CC_SYNTHESIZE(float, settle_amt, Settle_amt);
+	CC_SYNTHESIZE(double, settle_amt, Settle_amt);
 	// 已入库数量		
 	CC_SYNTHESIZE(double, in_qty, In_qty);
 	// 已入库成本
-	CC_SYNTHESIZE(float, in_cost, In_cost);
+	CC_SYNTHESIZE(double, in_cost, In_cost);
 	// 已结算金额
-	CC_SYNTHESIZE(float, settled_amt, Settled_amt);
+	CC_SYNTHESIZE(double, settled_amt, Settled_amt);
 	// 已开票金额
-	CC_SYNTHESIZE(float, invoiced_amt, Invoiced_amt);
+	CC_SYNTHESIZE(double, invoiced_amt, Invoiced_amt);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -132,12 +132,61 @@ class PurOrderDO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 	// 修改时间
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	// 版本
-	CC_SYNTHESIZE(int, version, Version);
+
 public:
 	PurOrderDO() {
-	// TODO
-
+		id = -1;
+		bill_no = "";
+		bill_date = "";
+		src_bill_type = "";
+		src_bill_id = "";
+		src_no = "";
+		subject = "";
+		is_rubric = -1;
+		pur_type = "";
+		qty = -1;
+		amt = -1;
+		attachment = "";
+		remark = "";
+		is_auto = -1;
+		bill_stage = "";
+		approver = "";
+		bpmi_instance_id = "";
+		approval_result_type = "";
+		approval_remark = "";
+		is_effective = -1;
+		effective_time = -1;
+		is_closed = -1;
+		is_voided = -1;
+		sys_org_code = "";
+		create_by = "";
+		create_time = "";
+		update_by = "";
+		update_time = "";
+		supplier_id = "";
+		contact = "";
+		phone = "";
+		fax = "";
+		email = "";
+		op_dept = "";
+		op_er = "";
+		delivery_method = "";
+		delivery_place = "";
+		delivery_time = "";
+		transport_method = "";
+		payment_method = "";
+		settle_method = "";
+		settle_time = "";
+		invoice_method = "";
+		invoice_type = "";
+		currency = "";
+		exchange_rate = -1;
+		prepayment_bal = -1;
+		settle_qty = -1;
+		settle_amt = -1;
+		in_qty = -1;
+		in_cost = -1;
+		invoiced_amt = -1;
 	}
 };
 
