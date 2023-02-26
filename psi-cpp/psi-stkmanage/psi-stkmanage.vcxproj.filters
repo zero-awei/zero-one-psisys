@@ -356,5 +356,17 @@
     <ClInclude Include="domain\do\Cgrk\QueryCgrkBillListDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\Cgrk\StkIoEntryMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Cgrk\PurOrderMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Cgrk\PurOrderEntryMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Cgrk\StkIoMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

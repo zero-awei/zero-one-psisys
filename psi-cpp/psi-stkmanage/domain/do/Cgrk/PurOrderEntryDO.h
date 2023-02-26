@@ -24,7 +24,7 @@
 /**
  * stk_io_entry数据库实体类
  */
-class StkIoEntryDO
+class PurOrderEntryDO
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -33,7 +33,7 @@ class StkIoEntryDO
 	//单据号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//分录号
-	CC_SYNTHESIZE(string, entryNo, EntryNo);
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
 	//源单类型
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
 	//源单id
@@ -77,7 +77,7 @@ class StkIoEntryDO
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	//版本
-	CC_SYNTHESIZE(string, version, Version);
+	CC_SYNTHESIZE(int, version, Version);
 
 
 

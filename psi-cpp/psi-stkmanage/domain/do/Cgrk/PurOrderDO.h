@@ -62,6 +62,8 @@ class PurOrderDO
 	CC_SYNTHESIZE(string, deliveryMethod, DeliveryMethod);
 	//交货地点
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
+	//交货时间
+	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
 	//运输方式
 	CC_SYNTHESIZE(string, transportMethod, TransportMethod);
 	//付款方式
@@ -83,7 +85,7 @@ class PurOrderDO
 	//金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//预付款余额
-	CC_SYNTHESIZE(double, prepaymentBal, PrepaymentBal);
+	CC_SYNTHESIZE(double, prepaymentBal, PrePaymentBal);
 	//结算数量
 	CC_SYNTHESIZE(double, settleQty, SettleQty);
 	//结算金额

@@ -50,8 +50,20 @@ public:
 	PageVO<QueryCgrkBillListVO> listCgrkBillList(const QueryCgrkBillListQuery& query);
 
 	//查询单据详细信息
-	//QueryCgrkBillDetailsVO getCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
+	QueryCgrkBillDetailsVO getCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
+
+	//查询采购订单列表
+	PageVO<QueryPurOrderListVO> listPurOrderList(const QueryPurOrderListQuery& query);
 	
+	//采购订单分录列表
+	PageVO<QueryPurOrderEntryVO> listPurOrderEntry(const QueryPurOrderEntryQuery& query);
+
+	//添加采购入库单
+	uint64_t saveCgrkBill(const AddCgrkBillDTO& DTO);
+
+
+	//删除采购入库单
+	uint64_t removeCgrkBill(string id);
 	//// 保存数据
 	//uint64_t saveData(const SampleDTO& dto);
 	//// 修改数据

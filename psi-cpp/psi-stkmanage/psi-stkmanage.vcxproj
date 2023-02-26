@@ -216,6 +216,10 @@
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="dao\Cgrk\CgrkDAO.h" />
+    <ClInclude Include="dao\Cgrk\PurOrderEntryMapper.h" />
+    <ClInclude Include="dao\Cgrk\PurOrderMapper.h" />
+    <ClInclude Include="dao\Cgrk\StkIoEntryMapper.h" />
+    <ClInclude Include="dao\Cgrk\StkIoMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDao.h" />
     <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderDO.h" />

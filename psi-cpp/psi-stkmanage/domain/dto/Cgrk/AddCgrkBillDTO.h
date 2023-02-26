@@ -25,7 +25,7 @@
 #include "../FileDTO.h"
 
 /**
- * 修改采购入库单（保存/审核/提交）
+ * 添加采购入库单（保存/审核/提交）
  */
 class AddCgrkBillDTO : public FileDTO
 {

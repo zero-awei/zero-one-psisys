@@ -26,7 +26,7 @@
 class QueryPurOrderListVO 
 {
 	//ID
-	CC_SYNTHESIZE(string, id, ID);
+	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//单据日期
@@ -50,7 +50,7 @@ class QueryPurOrderListVO
 	//已入库成本
 	CC_SYNTHESIZE(double, inCost, InCost);	
 	//已开票金额
-	CC_SYNTHESIZE(double, invoicedAmt, InvoiceAmt);
+	CC_SYNTHESIZE(double, invoicedAmt, InvoicedAmt);
 	//发票类型
 	CC_SYNTHESIZE(string, invoiceType, InvoiceType);
 	//金额
@@ -79,30 +79,31 @@ class QueryPurOrderListVO
 public:
 	QueryPurOrderListVO()
 	{
-		amt = 18870;
-		billDate = "2023-02-19";
-		billNo = "CGDD-230219-007";
+		amt = -1;
+		billDate = "";
+		billNo = "7";
 		deliveryMethod = "";
 		deliveryPlace = "";
 		deliveryTime = "";
-		id = "1627250922651688962";
-		inCost = 0;
-		inQty = 0;
-		invoiceType = "0";
-		invoicedAmt = 0;
-		isClosed = 0;
-		opDept = "A01A03";
-		operator1 = "zhagnxiao";
+		id = "";
+		inCost = -1;
+		inQty = -1;
+		invoiceType = "";
+		invoicedAmt = -1;
+		isClosed = -1;
+		opDept = "";
+		operator1 = "";
 		paymentMethod = "";
-		prePaymentBal = 0;
-		purType = "2";
-		qty = 1887;
+		prePaymentBal = -1;
+		purType = "";
+		qty = -1;
 		remark = "";
-		settleAmt = 0;
+		settleAmt = -1;
 		settleMethod = "";
-		settledAmt = 0;
+		settledAmt = -1;
 		srcNo = "";
 		subject = "";
+		supplierId = "";
 	}
 
 	BIND_TO_JSON(QueryPurOrderListVO, id, billNo, billDate, purType, paymentMethod, prePaymentBal, settleMethod, deliveryTime, deliveryPlace,

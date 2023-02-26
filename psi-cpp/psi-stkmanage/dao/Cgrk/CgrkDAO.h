@@ -22,8 +22,14 @@
 #include "BaseDAO.h"
 #include "../../domain/do/Cgrk/StkIoDO.h"
 #include "../../domain/do/Cgrk/StkIoEntryDO.h"
+#include "../../domain/do/Cgrk/PurOrderDO.h"
+#include "../../domain/do/Cgrk/PurOrderEntryDO.h"
 #include "../../domain/vo/Cgrk/QueryCgrkBillDetailsVO.h"
 #include "../../domain/query/Cgrk/QueryCgrkBillListQuery.h"
+#include "../../domain/query/Cgrk/QueryPurOrderListQuery.h"
+#include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
+#include "../../domain/dto/Cgrk/AddCgrkBillDTO.h"
+
 /**
  * 采购入库数据库操作实现
  */
@@ -37,8 +43,25 @@ public:
 
 	//查询单据列表
 	std::list<StkIoDO> selectBillList(const QueryCgrkBillListQuery query);
+
+	//查询单个单据列表信息
+	list<StkIoDO>selectBillListByBillNo(string BillNo);
+
+
 	//查询单据详细信息
-	//QueryCgrkBillDetailsVO selectBillDetails(const StkIoDO& SIDO, const StkIoEntryDO& SIEDO, string billNo);
+	list<StkIoEntryDO> selectBillDetails(string billNo);
+
+	//查询采购订单信息
+	list<PurOrderDO> selectPurOrderList(const QueryPurOrderListQuery& query);
+
+	//查询采购订单分录列表
+	list<PurOrderEntryDO> selectPurOrderEntry(const QueryPurOrderEntryQuery& query);
+
+	//添加采购入库单
+	uint64_t insertCgrkBill(const AddCgrkBillDTO& obj);
+
+	//删除采购入库单
+	uint64_t deleteCgrkBill(string id);
 
 	//// 统计数据条数
 	//uint64_t count(const SampleDO& iObj);

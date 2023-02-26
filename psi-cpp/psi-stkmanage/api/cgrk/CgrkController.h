@@ -84,7 +84,7 @@ private:
 	// 导入
 	JsonVO<uint64_t> execImportCgrkFile(const ImportCgrkFileDTO& dto);
 	// 导出
-	JsonVO<std::string> execExportCgrkFile( );
+	JsonVO<std::string> execExportCgrkFile();
 
 	//JsonVO<uint64_t> execRemoveById(const IntID& id);
 	////演示JSON提交

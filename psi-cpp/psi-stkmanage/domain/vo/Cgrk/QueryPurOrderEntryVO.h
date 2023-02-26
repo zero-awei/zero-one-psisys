@@ -26,19 +26,18 @@
 
 class QueryPurOrderEntryVO
 {
+	//金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//单据主题
-	CC_SYNTHESIZE(string, subject, Subject);
 	//自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	//分录号
-	CC_SYNTHESIZE(int, entryNo, EntryNO);
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
 	//折扣率
 	CC_SYNTHESIZE(double, discountRate, DiscountRate);
 	//已入库数量
@@ -46,15 +45,11 @@ class QueryPurOrderEntryVO
 	//已入库成本
 	CC_SYNTHESIZE(double, inCost, InCost);
 	//已开票金额
-	CC_SYNTHESIZE(double, invoicedAmt, InvoiceAmt);
+	CC_SYNTHESIZE(double, invoicedAmt, InvoicedAmt);
 	//已开票数量
 	CC_SYNTHESIZE(double, invoicedQty, InvoicedQty);
-	//物料编码
-	CC_SYNTHESIZE(string, materialCode, MaterialCode);
 	//物料
 	CC_SYNTHESIZE(string, materialId, MaterialId);
-	//规格型号
-	CC_SYNTHESIZE(string, materialModel, MaterialModel);
 	//主表
 	CC_SYNTHESIZE(string, mid, Mid);
 	//含税单价
@@ -72,7 +67,7 @@ class QueryPurOrderEntryVO
 	//源单类型
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
 	//源单分录id
-	CC_SYNTHESIZE(string, srcEntryId, SrcEntryType);
+	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
 	//源单分录号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//税额
@@ -82,40 +77,40 @@ class QueryPurOrderEntryVO
 	//计量单位
 	CC_SYNTHESIZE(string, unitId, UnitId);
 	//版本
-	CC_SYNTHESIZE(string, version, Version);
+	CC_SYNTHESIZE(int, version, Version);
 
 
 public:
 	QueryPurOrderEntryVO()
 	{
-		amt = 136500;
-		billNo = "CGDD-221113-003";
+		amt = -1;
+		billNo = "";
 		custom1 = "";
 		custom2 = "";
-		discountRate = 100;
-		entryNo = 10;
-		id = "1591814877002948609";
-		inCost = 136500;
-		inQty = 15;
-		invoicedAmt = 0;
-		invoicedQty = 0;
-		materialId = "1584947805371310082";
-		mid = "1591814876981977090";
-		price = 9100;
-		qty = 15;
+		discountRate = -1;
+		entryNo = -1;
+		id = "";
+		inCost = -1;
+		inQty = -1;
+		invoicedAmt = -1;
+		invoicedQty = -1;
+		materialId = "";
+		mid = "";
+		price = -1;
+		qty = -1;
 		remark = "";
-		settleAmt = 136500;
-		settleQty = 15;
-		srcBillId = "1591814351725092866";
-		srcBillType = "SalOrder";
-		srcEntryId = "1591814351737675778";
-		srcNo = "XSDD-221113-005:10";
-		tax = 15703.54;
-		taxRate = 13;
-		unitId = "40288101710a4c6201710a6618cc0003";
-		version = "";
+		settleAmt = -1;
+		settleQty = -1;
+		srcBillId = "";
+		srcBillType = "";
+		srcEntryId = "";
+		srcNo = "";
+		tax = -1;
+		taxRate = -1;
+		unitId = "";
+		version = -1;
 	}
-	BIND_TO_JSON(QueryPurOrderEntryVO, id, billNo, subject, custom1, custom2, entryNo, discountRate, inQty, inCost, invoicedAmt, invoicedQty, materialCode, materialId, materialModel, mid, price, qty, remark,
+	BIND_TO_JSON(QueryPurOrderEntryVO, id, billNo, custom1, custom2, entryNo, discountRate, inQty, inCost, invoicedAmt, invoicedQty, materialId, mid, price, qty, remark,
 		settleAmt, settleQty, srcBillId, srcBillType, srcEntryId, srcNo, tax, taxRate, unitId, version);
 };
 

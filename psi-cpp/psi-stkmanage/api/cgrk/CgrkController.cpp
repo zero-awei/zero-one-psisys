@@ -49,7 +49,7 @@ JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillListAdvance
 JsonVO<QueryCgrkBillDetailsVO> CgrkController::execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query)
 {
 	CgrkService service;
-	QueryCgrkBillDetailsVO result = service.;
+	QueryCgrkBillDetailsVO result = service.getCgrkBillDetails(query);
 	return JsonVO<QueryCgrkBillDetailsVO>(result, RS_SUCCESS);
 }
 
@@ -59,23 +59,15 @@ JsonVO<QueryCgrkBillDetailsVO> CgrkController::execQueryCgrkBillDetails(const Qu
 //查询采购订单列表
 JsonVO<PageVO<QueryPurOrderListVO>> CgrkController::execQueryPurOrderList(const QueryPurOrderListQuery& query)
 {
-	PageVO<QueryPurOrderListVO> result;
-	list<QueryPurOrderListVO> rows;
-	rows.push_back(QueryPurOrderListVO());
-	rows.push_back(QueryPurOrderListVO());
-	rows.push_back(QueryPurOrderListVO());
-	result.setRows(rows);
+	CgrkService service;
+	PageVO<QueryPurOrderListVO> result = service.listPurOrderList(query);
 	return JsonVO<PageVO<QueryPurOrderListVO>>(result, RS_SUCCESS);
 }
 //查看采购订单分录列表
 JsonVO<PageVO<QueryPurOrderEntryVO>> CgrkController::execQueryPurOrderEntry(const QueryPurOrderEntryQuery& query)
 {
-	PageVO<QueryPurOrderEntryVO> result;
-	list<QueryPurOrderEntryVO> rows;
-	rows.push_back(QueryPurOrderEntryVO());
-	rows.push_back(QueryPurOrderEntryVO());
-	rows.push_back(QueryPurOrderEntryVO());
-	result.setRows(rows);
+	CgrkService service;
+	PageVO<QueryPurOrderEntryVO> result = service.listPurOrderEntry(query);
 	return JsonVO<PageVO<QueryPurOrderEntryVO>>(result, RS_SUCCESS);
 }
 
@@ -83,6 +75,8 @@ JsonVO<PageVO<QueryPurOrderEntryVO>> CgrkController::execQueryPurOrderEntry(cons
 JsonVO<uint64_t> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto)
 {
 	JsonVO<uint64_t> result;
+
+
 	result.success(1);
 	return result;
 }
@@ -99,9 +93,16 @@ JsonVO<uint64_t>  CgrkController::execModifyCgrkBill(const ModifyCgrkBillDTO& dt
 JsonVO<uint64_t> CgrkController::execRemoveCgrkBill(const RemoveCgrkBillDTO& dto)
 {
 
+	CgrkService service;
 	JsonVO<uint64_t> result;
 	//执行数据删除
-	result.success(1);
+	if (service.removeCgrkBill(dto.getBillNo())) {
+		result.success();
+	}
+	else
+	{
+		result.fail(dto.getId());
+	}
 	//响应结果
 	return result;
 }
