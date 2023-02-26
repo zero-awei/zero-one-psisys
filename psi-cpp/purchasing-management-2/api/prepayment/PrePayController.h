@@ -40,7 +40,7 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
 	//É¾³ý¶©µ¥
 	CREATE_API_FUN_BODY(removeDePayId, execRemoveDePayId, DePayDTO);
-	//CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
+	
 
 
 private:
@@ -51,7 +51,7 @@ private:
 	JsonVO<PrepaymentDetailBillVO> execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload);
 	//É¾³ý¶©µ¥
 	JsonVO<string> execRemoveDePayId(const DePayDTO& dto);
-	//JsonVO<uint64_t> execRemovePayById(const IntID& id);
+	
 
 };
 

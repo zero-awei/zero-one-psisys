@@ -1,10 +1,26 @@
 #pragma once
+
+/*
+ Copyright Zero One Star. All rights reserved.
+ @Author: xubuxi
+ @Date: 2023/2/18 22:45
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+	  https://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+#pragma once
 #ifndef _PREPAYMENT_DO_
 #define _PREPAYMENT_DO_
 #include "../DoInclude.h"
 
 /**
- * 示例数据库实体类-采购预付实体类
+ * 示例数据库实体类-采购预付实体类-`fin_payment_req`
  */
 class PrepaymentDO {
 	// 编号
@@ -36,9 +52,9 @@ class PrepaymentDO {
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 生效时间
-	CC_SYNTHESIZE(int, effective_time, Effective_time);
+	CC_SYNTHESIZE(string, effective_time, Effective_time);
 	// 核批人
-	CC_SYNTHESIZE(string, approver, approver);
+	CC_SYNTHESIZE(string, approver, Approver);
 	// 制单时间
 	CC_SYNTHESIZE(string, create_time, Create_time);
 	// 制单人
@@ -52,13 +68,19 @@ class PrepaymentDO {
 public:
 	PrepaymentDO() {
 		id = "";
-		bill_no = "";
+		bill_no = "CGXJ-230112-005";
 		bill_date = "";
 		subject = "";
 		supplier_id = "";
 		op_dept = "";
 		op = "";
 		amt = 0;
+		paid_amt = 0;
+		bill_stage = "";
+		is_effective = -1;
+		effective_time = "";
+		is_closed = -1;
+		is_voided = -1;
 	}
 };
 #endif // !_PREPAYMENT_DO_

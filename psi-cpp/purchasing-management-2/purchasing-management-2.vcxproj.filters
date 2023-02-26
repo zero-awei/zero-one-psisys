@@ -144,7 +144,7 @@
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h">
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailEntryBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h">
@@ -223,6 +223,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="service\PurReq\PurReqService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\prepayment\PrepaymentEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
