@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "areaController.h"
-#include "../../service/publicInterfaceService/areaService.h"
+#include "AreaController.h"
+#include "../../service/publicInterfaceService/AreaService.h"
 
 
 
