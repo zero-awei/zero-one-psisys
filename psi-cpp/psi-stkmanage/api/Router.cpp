@@ -117,7 +117,7 @@ void Router::createIncreaseTonRouter()
 {
 	BIND_GET_ROUTER(server, "/query-zdrk-bill-list", &ZdrkController::queryZdrkBillList, nullptr);
 	BIND_GET_ROUTER(server, "/query-zdrk-bill-details", &ZdrkController::queryZdrkBillDetails, nullptr);
-	BIND_POST_ROUTER(server, "/add-zdrk-bill", &ZdrkController::addZdrkBill, nullptr);
+	BIND_POST_ROUTER(server, "/add-zdrk-bill", &ZdrkController::addZdrkrkBill, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-zdrk-bill", &ZdrkController::modifyZdrkBill, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-zdrk-bill", &ZdrkController::removeZdrkBill, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state", &ZdrkController::modifyZdrkBillState, nullptr);

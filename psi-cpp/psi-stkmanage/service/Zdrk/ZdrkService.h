@@ -10,7 +10,7 @@
 #include "../psi-stkmanage/domain/dto/Zdrk/AddZdrkBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Zdrk/ModifyZdrkBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Zdrk/ModifyZdrkBillStateDTO.h"
-class PyrkService {
+class ZdrkService {
 public:
 	// 新增单据数据
 	int saveBillData(const AddZdrkBillDTO& dto, const PayloadDTO& payload);

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ZdrkController.h"
-
+#include "../psi-stkmanage/service/Zdrk/ZdrkService.h"
 JsonVO<PageVO<QueryZdrkBillDetailsVO>> ZdrkController::execQueryZdrkBillDetails(const QueryZdrkBillDetailsQuery& query)
 {
     PageVO<QueryZdrkBillDetailsVO> result;
@@ -21,11 +21,24 @@ JsonVO<PageVO<QueryZdrkBillListVO>> ZdrkController::execQueryZdrkBillList(const 
     return JsonVO<PageVO<QueryZdrkBillListVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<uint64_t> ZdrkController::execAddZdrkBill(const AddZdrkBillDTO& dto)
+JsonVO<uint64_t> ZdrkController::execAddZdrkBill(const AddZdrkBillDTO& dto,const  PayloadDTO& payload)
 {
-
     JsonVO<uint64_t> result;
-    result.success(1);
+    // 定义一个Service
+    ZdrkService service;
+    // 执行新增数据
+    int id = service.saveBillData(dto, payload);
+    cout << id << endl;
+    if (id > 0) {
+        result.success(id);
+    }
+    else if (id == -1) {
+        result.setData(id);
+        result.setStatus(RS_PARAMS_INVALID);
+    }
+    else {
+        result.fail(id);
+    }
     return result;
 }
 

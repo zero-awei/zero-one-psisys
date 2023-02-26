@@ -23,7 +23,7 @@ class ZdrkController
 public:
 	CREATE_API_FUN_QUERY(queryZdrkBillDetails, execQueryZdrkBillDetails, QueryZdrkBillDetailsQuery);
 	CREATE_API_FUN_QUERY(queryZdrkBillList, execQueryZdrkBillList, QueryZdrkBillListQuery);
-	CREATE_API_FUN_BODY(addZdrkBill, execAddZdrkBill, AddZdrkBillDTO); 
+	CREATE_API_FUN_JSON_PAYLOAD(addZdrkrkBill, execAddZdrkBill, AddZdrkBillDTO);
 	CREATE_API_FUN_BODY(modifyZdrkBill, execModifyZdrkBill, ModifyZdrkBillDTO);
 	CREATE_API_FUN_BODY(removeZdrkBill, execRemoveZdrkBill, StringID);
 	CREATE_API_FUN_BODY(modifyZdrkBillState, execModifyZdrkBillState, ModifyZdrkBillStateDTO);
@@ -35,7 +35,7 @@ private:
 	//查询单据列表
 	JsonVO<PageVO<QueryZdrkBillListVO>> execQueryZdrkBillList(const QueryZdrkBillListQuery& query);//**?负载信息
 	//添加单据
-	JsonVO<uint64_t> execAddZdrkBill(const AddZdrkBillDTO& dto);
+	JsonVO<uint64_t> execAddZdrkBill(const AddZdrkBillDTO& dto,const PayloadDTO& payload);
 	//修改单据
 	JsonVO<uint64_t> execModifyZdrkBill(const ModifyZdrkBillDTO& dto);
 	//删除单据
