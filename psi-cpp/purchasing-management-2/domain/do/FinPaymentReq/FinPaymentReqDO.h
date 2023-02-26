@@ -20,11 +20,11 @@
  limitations under the License.
 */
 
-#ifndef _FIN_PAYMENT_REQ_
-#define _FIN_PAYMENT_REQ_
+#ifndef _FIN_PAYMENT_REQ_DO_
+#define _FIN_PAYMENT_REQ_DO_
 #include "../DoInclude.h"
 
-class FinPaymentReq
+class FinPaymentReqDO
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -91,11 +91,11 @@ class FinPaymentReq
 	//°æ±¾
 	CC_SYNTHESIZE(int, version, Version);
 public:
-	FinPaymentReq()
+	FinPaymentReqDO()
 	{
 
 	}
 
 };
 
-#endif //!_FIN_PAYMENT_REQ_
+#endif //!_FIN_PAYMENT_REQ_DO_

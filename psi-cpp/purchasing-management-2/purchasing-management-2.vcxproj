@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -190,10 +190,14 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
+    <ClInclude Include="dao\purPayment\purPayReqDAO.h" />
     <ClInclude Include="dao\PurQuot\PurQuotDAO.h" />
     <ClInclude Include="dao\PurQuot\PurQuotMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentBillReqDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEmtryReqDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEntryDetaillDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
@@ -246,6 +250,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="service\prepayment\PrePayService.h" />
     <ClInclude Include="service\PurCom\PurComService.h" />
     <ClInclude Include="service\PurOrder\PurOrderService.h" />
+    <ClInclude Include="service\purPayment\purPayReqService.h" />
     <ClInclude Include="service\PurReq\PurReqService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -270,6 +275,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="service\prepayment\PrePayService.cpp" />
     <ClCompile Include="service\PurCom\PurComService.cpp" />
     <ClCompile Include="service\PurOrder\PurOrderService.cpp" />
+    <ClCompile Include="service\purPayment\PurPayReqService.cpp" />
     <ClCompile Include="service\PurReq\PurReqService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

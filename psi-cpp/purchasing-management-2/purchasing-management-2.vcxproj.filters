@@ -84,7 +84,7 @@
     <ClInclude Include="service\PurOrder\PurOrderService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h">
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h">
@@ -225,6 +225,21 @@
     <ClInclude Include="service\PurReq\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="service\purPayment\purPayReqService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\purPayment\purPayReqDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentBillReqDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEmtryReqDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEntryDetaillDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -291,6 +306,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\PurReq\PurReqService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\purPayment\PurPayReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

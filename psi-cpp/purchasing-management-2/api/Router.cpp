@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
@@ -47,17 +47,17 @@ Router::Router(http_server* sever)
 
 void Router::initRouter()
 {
-	//ÉèÖÃ¾²Ì¬ÎÄ¼şÄ¿Â¼
+	//è®¾ç½®é™æ€æ–‡ä»¶ç›®å½•
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
 #ifdef HTTP_SERVER_DEMO
-	//°ó¶¨Ê×Ò³Ò³Ãæ
+	//ç»‘å®šé¦–é¡µé¡µé¢
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
 		res.render_raw_view("./public/test.html");
 		}, nullptr);
 
-	//³õÊ¼»¯Ò»¸öÎÄ¼şÉÏ´«½Ó¿ÚÊ¾Àı
+	//åˆå§‹åŒ–ä¸€ä¸ªæ–‡ä»¶ä¸Šä¼ æ¥å£ç¤ºä¾‹
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
 		if (req.get_content_type() != content_type::multipart)
 		{
@@ -67,10 +67,10 @@ void Router::initRouter()
 			res.render_json(jvo);
 			return;
 		}
-	//»ñÈ¡±íµ¥²ÎÊı
+	//è·å–è¡¨å•å‚æ•°
 	std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
 	std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-	//»ñÈ¡ÎÄ¼şÂ·¾¶
+	//è·å–æ–‡ä»¶è·¯å¾„
 	auto& files = req.get_upload_files();
 	std::vector<string> filePaths;
 	for (auto& file : files) {
@@ -85,15 +85,15 @@ void Router::initRouter()
 	TestWs::addChatHandler(server);
 #endif
 
-	//#TIP :ÏµÍ³À©Õ¹Â·ÓÉ¶¨Òå£¬Ğ´ÔÚÕâ¸öºóÃæ
+	//#TIP :ç³»ç»Ÿæ‰©å±•è·¯ç”±å®šä¹‰ï¼Œå†™åœ¨è¿™ä¸ªåé¢
 
-	////ĞÂÔö¹©Ó¦±¨¼Û
+	////æ–°å¢ä¾›åº”æŠ¥ä»·
 	//BIND_POST_ROUTER(server, "/post", &PurQuotController::addPurQuot, nullptr);
-	////ĞŞ¸Ä¹©Ó¦±¨¼Û
+	////ä¿®æ”¹ä¾›åº”æŠ¥ä»·
 	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::modPurQuot, nullptr);
-	////É¾³ı¹©Ó¦±¨¼Û
+	////åˆ é™¤ä¾›åº”æŠ¥ä»·
 	//BIND_DEL_ROUTER(server, "/delete", &PurQuotController::delPurQuot, nullptr);
-	////ĞŞ¸Ä¹©Ó¦±¨¼Û×´Ì¬£¨¹Ø±Õ¡¢×÷±×¡¢·´¹Ø±Õ£©
+	////ä¿®æ”¹ä¾›åº”æŠ¥ä»·çŠ¶æ€ï¼ˆå…³é—­ã€ä½œå¼Šã€åå…³é—­ï¼‰
 	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
 
 	createPayRouter();
@@ -117,36 +117,36 @@ void Router::initRouter()
 	createPurComRouter();
 #endif
 
-	// ·ÖÒ³Êı¾İ
+	// åˆ†é¡µæ•°æ®
 	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
-	// µ¥¸öÊı¾İ
+	// å•ä¸ªæ•°æ®
 	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
-	// ĞÂÔöÊı¾İ
+	// æ–°å¢æ•°æ®
 	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-	// ĞŞ¸Ä×´Ì¬
+	// ä¿®æ”¹çŠ¶æ€
 	BIND_PUT_ROUTER(server, "/purOrder/status", &PurOrderController::statusPurOrder, nullptr);
-	// É¾³ıÊı¾İ
+	// åˆ é™¤æ•°æ®
 	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
-	// É¾³ıById
+	// åˆ é™¤ById
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
-	//µ¼³ö
+	//å¯¼å‡º
 	BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
-	//Ìí¼ÓÉêÇë(±£´æ/Ìá½»)
+	//æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤)
 	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
-	//ĞŞ¸ÄÉêÇë(±£´æ/Ìá½»/ÉóºË)
+	//ä¿®æ”¹ç”³è¯·(ä¿å­˜/æäº¤/å®¡æ ¸)
 	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
-	//É¾³ıÉêÇë
+	//åˆ é™¤ç”³è¯·
 	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ/×÷·Ï/·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­/ä½œåºŸ/åå…³é—­)
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
-	//µ¼Èë
+	//å¯¼å…¥
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
 	createPaymentRouter();
 }
@@ -171,51 +171,51 @@ void Router::createUserDepartRouter()
 #endif
 
 void Router::createPayRouter() {
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
-	//µ¼³ö
+	//å¯¼å‡º
 	BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
-	//Ìí¼ÓÉêÇë(±£´æ/Ìá½»)
+	//æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤)
 	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
-	//ĞŞ¸ÄÉêÇë(±£´æ/Ìá½»/ÉóºË)
+	//ä¿®æ”¹ç”³è¯·(ä¿å­˜/æäº¤/å®¡æ ¸)
 	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
-	//É¾³ıÉêÇë
+	//åˆ é™¤ç”³è¯·
 	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ/×÷·Ï/·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­/ä½œåºŸ/åå…³é—­)
 	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
-	//µ¼Èë
+	//å¯¼å…¥
 	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
 }
 
 void Router::createPurOrderRouter()
 {
-	// ·ÖÒ³Êı¾İ
+	// åˆ†é¡µæ•°æ®
 	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
-	// µ¥¸öÊı¾İ
+	// å•ä¸ªæ•°æ®
 	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
-	// ĞÂÔöÊı¾İ
+	// æ–°å¢æ•°æ®
 	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-	// É¾³ıÊı¾İ
+	// åˆ é™¤æ•°æ®
 	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
-	// É¾³ıById
+	// åˆ é™¤ById
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
 }
 
 void Router::createPurReqRouter() {
-	// ·ÖÒ³Êı¾İ
+	// åˆ†é¡µæ•°æ®
 	BIND_GET_ROUTER(server, "/purReq/list", &PurReqController::listPurReq, nullptr);
-	// µ¥¸öÊı¾İ
+	// å•ä¸ªæ•°æ®
 	BIND_GET_ROUTER(server, "/purReq/queryEntryByMainId", &PurReqController::getPurReq, nullptr);
 }
 
 void Router::createPurComRouter() {
-	// ·ÖÒ³Êı¾İ
+	// åˆ†é¡µæ•°æ®
 	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
-	// µ¥¸öÊı¾İ
+	// å•ä¸ªæ•°æ®
 	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
 }
 
@@ -226,3 +226,11 @@ void Router::createPaymentRouter()
 	BIND_POST_ROUTER(server, "/payment-export", &PaymentController::exportPayment, nullptr);
 	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
 }
+/*
+void Router::createPayApplyRouter() {
+	BIND_GET_ROUTER(server, "/paymentApplyBill", &PayApplyControlle::queryPaymentBill, nullptr);
+	BIND_GET_ROUTER(server, "/paymentApplyDetailBill", &PayApplyControlle::queryPaymentDetailBill, nullptr);
+	BIND_POST_ROUTER(server, "/paymentApply/add", &PayApplyControlle::addPayApply, nullptr);
+	BIND_PUT_ROUTER(server, "/paymentApply/mod", &PayApplyControlle::modPayReqApply, nullptr);
+
+}*/
