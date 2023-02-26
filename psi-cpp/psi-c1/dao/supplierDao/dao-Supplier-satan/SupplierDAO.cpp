@@ -180,129 +180,165 @@ int SupplierDAO::SupplierUpdateByCode(const SupplierDO& uObj)
 	sql <<"UPDATE `bas_supplier` SET"<<" ";
 	if (uObj.getCode() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `code`" << "=" << '\'' << uObj.getCode() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getName() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `name`" << "=" << '\'' << uObj.getName() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getShort_Name() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `short_name`" << "=" << '\'' << uObj.getShort_Name() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getAux_Name() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `aux_name`" << "=" << '\'' << uObj.getAux_Name() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getSupplier_Category() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `supplier_category`" << "=" << '\'' << uObj.getSupplier_Category() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getSupplier_Level() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `supplier_level`" << "=" << '\'' << uObj.getSupplier_Level() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getTax_Scale() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `tax_scale`" << "=" << '\'' << uObj.getTax_Scale() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getHeadQuarters() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `headquarters`" << "=" << '\'' << uObj.getHeadQuarters() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getArea() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `area`" << "=" << '\'' << uObj.getArea() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getBiz_Area() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `biz_area`" << "=" << '\'' << uObj.getBiz_Area() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getAddress() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `address`" << "=" << '\'' << uObj.getAddress() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getWebsite() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `website`" << "=" << '\'' << uObj.getWebsite() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getLegal_Person() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `legal_person`" << "=" << '\'' << uObj.getLegal_Person() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getLegal_Person_Phone() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `legal_person_phone`" << "=" << '\'' << uObj.getLegal_Person_Phone() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getFinancial_Contacts() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `financial_contacts`" << "=" << '\'' << uObj.getFinancial_Contacts() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getFinancial_Phone() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `financial_phone`" << "=" << '\'' << uObj.getFinancial_Phone() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Company() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_company`" << "=" << '\'' << uObj.getInvoice_Company() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Tax_Code() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_tax_code`" << "=" << '\'' << uObj.getInvoice_Tax_Code() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Bank_Name() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_bank_name`" << "=" << '\'' << uObj.getInvoice_Bank_Name() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Bank_Code() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_bank_code`" << "=" << '\'' << uObj.getInvoice_Bank_Code() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Account() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_account`" << "=" << '\'' << uObj.getInvoice_Account() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Phone() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_phone`" << "=" << '\'' << uObj.getInvoice_Phone() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getInvoice_Address() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `invoice_address`" << "=" << '\'' << uObj.getInvoice_Address() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getReceipt_Company() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `receipt_company`" << "=" << '\'' << uObj.getReceipt_Company() << '\'' << "," << " ";
 	}
-	if (uObj.getCode() != "")
+	if (uObj.getReceipt_Bank_Name() != "")
 	{
-		sql << " `code`" << "=" << uObj.getCode() << "," << " ";
+		sql << " `receipt_bank_name`" << "=" << '\'' << uObj.getReceipt_Bank_Name() << '\'' << "," << " ";
 	}
-	/*string sql = "UPDATE `bas_supplier` SET `code`=?,`name`=?, `short_name`=?, `aux_name`=?,`supplier_category`=? ,\
-	`supplier_level`=?,`tax_scale`=?,`headquarters`=?,`area`=? ,`biz_area`=? ,`address`=? ,\
-	`website`=?,`legal_person`=?,`legal_person_phone`=? ,`financial_contacts`=? ,`financial_phone`=? , \
-	`invoice_company`=?,`invoice_tax_code`=?, `invoice_bank_name`=? , `invoice_bank_code`=? , `invoice_account`=?,\
-	`invoice_phone`=?, `invoice_address`=?, `receipt_company`=?, `receipt_bank_name`=?, `receipt_bank_code`=?,\
-	`receipt_account`=?, `recv_name`=? , `recv_phone`=? , `recv_fax`=?, `recv_email`=?, `recv_address`=?, \
-	`recv_postcode`=?, `attachment`=?,  `alter_suppliers`=? ,`is_enabled`=? , `remark`=? ,`create_by`=?,  \
-	`update_time`=? ,`update_by`=? WHERE `id`=?" ;//41个字段+WHERE `id`=?
-	cout << sql << endl;
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s\
-        %s%s%s%s%s%s\
-		%s%s%s%s%s\
-		%s%s%s%s%s\
-		%s%s%s%s%s\
-		%s%s%s%s%s%s\
-		%s%s%s%i%s%s\
-        %s%s%s", uObj.getCode(),uObj.getName(),uObj.getShort_Name(), uObj.getAux_Name(), uObj.getSupplier_Category(), 
-		uObj.getSupplier_Level(), uObj.getTax_Scale(), uObj.getHeadQuarters(), uObj.getArea(), uObj.getBiz_Area(), uObj.getAddress(), 
-		uObj.getWebsite(), uObj.getLegal_Person(), uObj.getLegal_Person_Phone(), uObj.getFinancial_Contacts(), uObj.getFinancial_Phone(),
-		uObj.getInvoice_Company(), uObj.getInvoice_Tax_Code(), uObj.getInvoice_Bank_Name(), uObj.getInvoice_Bank_Code(), uObj.getInvoice_Account(),
-		uObj.getInvoice_Phone(), uObj.getInvoice_Address(), uObj.getReceipt_Company(), uObj.getReceipt_Bank_Name(), uObj.getReceipt_Bank_Code(),
-		uObj.getReceipt_Account(), uObj.getRecv_Name(), uObj.getRecv_Phone(), uObj.getRecv_Fax(), uObj.getRecv_Email(), uObj.getRecv_Address(),
-		uObj.getRecv_Postcode(), uObj.getAttachment(), uObj.getAlter_Suppliers(), uObj.getIs_Enabled(), uObj.getRemark(), uObj.getCreate_By(),
-		uObj.getUpdate_Time(), uObj.getUpdate_By(), uObj.getID());*/
-	return 0;
+	if (uObj.getReceipt_Bank_Code() != "")
+	{
+		sql << " `receipt_bank_code`" << "=" << '\'' << uObj.getReceipt_Bank_Code() << '\'' << "," << " ";
+	}
+	if (uObj.getReceipt_Account() != "")
+	{
+		sql << " `receipt_account`" << "=" << '\'' << uObj.getReceipt_Account() << '\'' << "," << " ";
+	}
+	if (uObj.getRecv_Name() != "")
+	{
+		sql << " `recv_name`" << "=" << '\'' << uObj.getRecv_Name() << '\'' << "," << " ";
+	}
+	if (uObj.getRecv_Phone() != "")
+	{
+		sql << " `recv_phone`" << "=" << '\'' << uObj.getRecv_Phone() << '\'' << "," << " ";
+	}
+	if (uObj.getRecv_Fax() != "")
+	{
+		sql << " `recv_fax`" << "=" << '\'' << uObj.getRecv_Fax() << '\'' << "," << " ";
+	}
+	if (uObj.getRecv_Email() != "")
+	{
+		sql << " `recv_email`" << "=" << '\'' << uObj.getRecv_Email() << '\'' << "," << " ";
+	}
+	if (uObj.getRecv_Address() != "")
+	{
+		sql << " `recv_address`" << "=" << '\'' << uObj.getRecv_Address() << '\'' << "," << " ";
+	}
+	if (uObj.getRecv_Postcode() != "")
+	{
+		sql << " `recv_postcode`" << "=" << '\'' << uObj.getRecv_Postcode() << '\'' << "," << " ";
+	}
+	if (uObj.getAttachment() != "")
+	{
+		sql << " `attachment`" << "=" << '\'' << uObj.getAttachment() << '\'' << "," << " ";
+	}
+	if (uObj.getAlter_Suppliers() != "")
+	{
+		sql << " `alter_suppliers`" << "=" << '\'' << uObj.getAlter_Suppliers() << '\'' << "," << " ";
+	}
+	if (uObj.getIs_Enabled() != -1)
+	{
+		sql << " `is_enabled`" << "=" <<  uObj.getIs_Enabled()  << "," << " ";
+	}
+	if (uObj.getRemark() != "")
+	{
+		sql << " `remark`" << "=" << '\'' << uObj.getRemark() << '\'' << "," << " ";
+	}
+	if (uObj.getUpdate_Time() != "")
+	{
+		sql << " `update_time`" << "=" << '\'' << uObj.getUpdate_Time() << '\'' << "," << " ";
+	}
+	if (uObj.getUpdate_By() != "")
+	{
+		sql << " `update_by`" << "=" << '\'' << uObj.getUpdate_By() << '\'' << " ";
+	}
+	sql << "WHERE `id`=" << '\''<< uObj.getID()<< '\'';
+	string sqlStr = sql.str();
+	cout << "modify_dao:  " << sqlStr << endl;
+	SqlParams params;//没有用的，空的填充参数容器
+	return sqlSession->executeUpdate(sqlStr, params);
 }
 
 
