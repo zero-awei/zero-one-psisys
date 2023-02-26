@@ -20,6 +20,8 @@ import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 /**
  * <p>
  * 应付单 服务实现类
@@ -123,6 +125,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
         //使用雪花算法生成id
         newPayable.setId(snowFlake.nextId()+"");
+        newPayable.setCreateTime(LocalDateTime.now());
         FinPayable finPayable = null;
         try {
             finPayable = TransformationUtils.convert(newPayable, FinPayable.class);
@@ -135,27 +138,50 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
     @Override
     public int updateOtherPayable(PayableDTO updatePayable) {
-        FinPayable finPayable = null;
-        //传入值为空或者单据已作废则或者已关闭无法更新
-        if(updatePayable==null||updatePayable.getIsClosed()==1||updatePayable.getIsVoided()==1){
+        //传入updatePayable转换而成的实体类
+        FinPayable finPayableIN = null;
+        //传入值为空无法更新
+        if(updatePayable==null){
             return 0;
         }
 
 
         //将PayableDTO转换为finPayable实体类
-        finPayable = TransformationUtils.toAllDto(updatePayable,FinPayable.class);
+        finPayableIN = TransformationUtils.toAllDto(updatePayable,FinPayable.class);
 
-        return finPayableMapper.updateById(finPayable);
+
+        QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
+        wrapper.eq("bill_no", updatePayable.getBillNo());
+
+        //与传入updatePayable相同BillNo的数据库中的实体类
+        FinPayable finPayableDB = baseMapper.selectOne(wrapper);
+        //如果单据已作废，或者已关闭，或者没有该条数据则无法更新
+        if(finPayableDB==null||finPayableDB.getIsVoided()==1||finPayableDB.getIsClosed()==1){
+            return 0;
+        }
+        finPayableIN.setUpdateTime(LocalDateTime.now());
+        finPayableIN.setId(finPayableDB.getId());
+        return finPayableMapper.updateById(finPayableIN);
     }
 
     @Override
     public int delOtherPayable(DeleteDTO delPayable) {
-        FinPayable finPayable = null;
+//        FinPayable finPayableIN = null;
         if(delPayable==null){
             return 0;
         }
-        finPayable = TransformationUtils.toAllDto(delPayable,FinPayable.class);
-        return finPayableMapper.deleteById(finPayable);
+//        finPayableIN = TransformationUtils.toAllDto(delPayable,FinPayable.class);
+
+        QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
+        wrapper.eq("bill_no", delPayable.getBillNo());
+
+        //与传入delPayable相同BillNo的数据库中的实体类
+        FinPayable finPayableDB = baseMapper.selectOne(wrapper);
+        //如果没有该条数据则无法删除
+        if(finPayableDB==null){
+            return 0;
+        }
+        return finPayableMapper.deleteById(finPayableDB);
     }
 
     @Override
@@ -178,6 +204,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
             return 0;
         }
 
+        finPayableIN.setId(finPayableDB.getId());
         return finPayableMapper.updateById(finPayableIN);
     }
 }

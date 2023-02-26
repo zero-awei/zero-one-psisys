@@ -197,18 +197,18 @@ public class PayableDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime effectiveTime;
 
-    /**
-     * 已关闭
-     */
-    @ApiModelProperty(value = "已关闭", example = "1")
-    private Integer isClosed;
-
-
-    /**
-     * 已作废
-     */
-    @ApiModelProperty(value = "已作废", example = "0")
-    private Integer isVoided;
+//    /**
+//     * 已关闭
+//     */
+//    @ApiModelProperty(value = "已关闭", example = "1")
+//    private Integer isClosed;
+//
+//
+//    /**
+//     * 已作废
+//     */
+//    @ApiModelProperty(value = "已作废", example = "0")
+//    private Integer isVoided;
 
 
     /**
