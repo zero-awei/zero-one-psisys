@@ -50,6 +50,7 @@
         <es.client.version>7.14.0</es.client.version>
         <captcha.version>1.3.0</captcha.version>
         <mapstruct.version>1.4.0.Final</mapstruct.version>
+
     </properties>
     <dependencies>
         <!-- lombok -->
@@ -243,6 +244,7 @@
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
+
 
             <dependency>
                 <groupId>com.zeroone.star</groupId>

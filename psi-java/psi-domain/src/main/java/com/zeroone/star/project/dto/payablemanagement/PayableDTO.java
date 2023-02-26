@@ -63,7 +63,7 @@ public class PayableDTO {
     /**
      * 单据日期
      */
-    @ApiModelProperty(value = "单据日期", example = "2022-01-13")
+    @ApiModelProperty(value = "单据日期", example = "2022-01-13 00:00:00")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime billDate;

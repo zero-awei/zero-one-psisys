@@ -14,4 +14,7 @@ import lombok.NoArgsConstructor;
 public class DeleteDTO {
     @ApiModelProperty(value = "ID", example = "1590717742358511617")
     private String id;
+
+    @ApiModelProperty(value = "单据编号", example = "QTAP-230213-007")
+    private String billNo;
 }

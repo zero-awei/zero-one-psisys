@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.zeroone.star.payablemanagement.mapper.FinPayableMapper;
 import com.zeroone.star.payablemanagement.service.IFinPayableService;
+import com.zeroone.star.payablemanagement.utils.SnowFlakeShortUrl;
 import com.zeroone.star.payablemanagement.utils.TransformationUtils;
 import com.zeroone.star.project.dto.payablemanagement.DeleteDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
@@ -31,6 +32,9 @@ import org.springframework.stereotype.Service;
 public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPayable> implements IFinPayableService {
     @Autowired
     FinPayableMapper finPayableMapper;
+
+
+    SnowFlakeShortUrl snowFlake = new SnowFlakeShortUrl(5, 3);
     @Override
     public PageVO<PayableVO> getAll(PayableQuery query) {
         Page<FinPayable> payablePage = new Page<>(query.getPageIndex(), query.getPageSize());
@@ -111,11 +115,14 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
     @Override
     public int addOtherPayable(PayableDTO newPayable) {
-        if (newPayable==null||newPayable.getId()==null){
+        if (newPayable==null){
             return 0;
         }
         //将PayableDTO转换为finPayable实体类
 //        FinPayable finPayable = TransformationUtils.toAllDto(newPayable,FinPayable.class);
+
+        //使用雪花算法生成id
+        newPayable.setId(snowFlake.nextId()+"");
         FinPayable finPayable = null;
         try {
             finPayable = TransformationUtils.convert(newPayable, FinPayable.class);
@@ -133,6 +140,8 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
         if(updatePayable==null||updatePayable.getIsClosed()==1||updatePayable.getIsVoided()==1){
             return 0;
         }
+
+
         //将PayableDTO转换为finPayable实体类
         finPayable = TransformationUtils.toAllDto(updatePayable,FinPayable.class);
 
@@ -151,12 +160,24 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
     @Override
     public int updateOtherPayableStatus(PayableStatusDTO payableStatus) {
-        FinPayable finPayable = null;
-        //传入值为空或者单据已作废则或者已关闭无法更新状态
-        if(payableStatus==null||payableStatus.getIsVoided()==1||payableStatus.getIsClosed()==1){
+        //传入payableStatus转换而成的实体类
+        FinPayable finPayableIN = null;
+        //传入值为空无法更新状态
+        if(payableStatus==null){
             return 0;
         }
-        finPayable = TransformationUtils.toAllDto(payableStatus,FinPayable.class);
-        return finPayableMapper.updateById(finPayable);
+        finPayableIN = TransformationUtils.toAllDto(payableStatus,FinPayable.class);
+
+        QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
+        wrapper.eq("bill_no", payableStatus.getBillNo());
+
+        //与传入payableStatus相同BillNo的数据库中的实体类
+        FinPayable finPayableDB = baseMapper.selectOne(wrapper);
+        //如果单据已关闭或者单据已作废，或者没有该条数据则无法更新
+        if(finPayableDB==null||finPayableDB.getIsClosed()==1||finPayableDB.getIsVoided()==1){
+            return 0;
+        }
+
+        return finPayableMapper.updateById(finPayableIN);
     }
 }

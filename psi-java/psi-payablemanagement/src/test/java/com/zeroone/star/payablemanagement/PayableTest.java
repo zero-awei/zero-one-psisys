@@ -1,9 +1,11 @@
 package com.zeroone.star.payablemanagement;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.zeroone.star.payablemanagement.mapper.FinPayableMapper;
 import com.zeroone.star.payablemanagement.service.impl.FinPayableServiceImpl;
+import com.zeroone.star.payablemanagement.utils.SnowFlakeShortUrl;
 import com.zeroone.star.payablemanagement.utils.TransformationUtils;
 import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
@@ -45,19 +47,25 @@ public class PayableTest {
         FinPayable entity = new FinPayable();
         PayableDTO payableDTO = new PayableDTO();
         payableDTO.setId("1114445551919810");
-        payableDTO.setBillNo("1919810145");
-        payableDTO.setBillDate(LocalDateTime.now());
-        payableDTO.setIsRubric(0);
-        payableDTO.setPayableType("已处理订单");
-        payableDTO.setSupplierId("1584951160223113218");
-        payableDTO.setAmt(BigDecimal.valueOf(800));
-        payableDTO.setCheckedAmt(BigDecimal.valueOf(400));
-        payableDTO.setIsAuto(1);
-        payableDTO.setBillStage("54");
-        payableDTO.setIsEffective(1);
-        payableDTO.setIsClosed(0);
-        payableDTO.setIsVoided(0);
-        System.out.println(service.addOtherPayable(payableDTO));
+        payableDTO.setBillNo("7777777");
+//        payableDTO.setBillDate(LocalDateTime.now());
+//        payableDTO.setIsRubric(0);
+//        payableDTO.setPayableType("已处理订单");
+//        payableDTO.setSupplierId("1584951160223113218");
+//        payableDTO.setAmt(BigDecimal.valueOf(800));
+//        payableDTO.setCheckedAmt(BigDecimal.valueOf(400));
+//        payableDTO.setIsAuto(1);
+//        payableDTO.setBillStage("54");
+//        payableDTO.setIsEffective(1);
+//        payableDTO.setIsClosed(0);
+//        payableDTO.setIsVoided(0);
+//        System.out.println(service.addOtherPayable(payableDTO));
+        QueryWrapper<FinPayable> wrapper = new QueryWrapper<>();
+        wrapper.eq("bill_no", payableDTO.getBillNo());
+
+        //与传入payableStatus相同BillNo的数据库中的实体类
+        FinPayable finPayableDB = finPayableMapper.selectOne(wrapper);
+        System.out.println(finPayableDB);
     }
 
     @Test
@@ -92,5 +100,11 @@ public class PayableTest {
 //        entity.setIsClosed(0);
 //        entity.setIsVoided(0);
 //        System.out.println(finPayableMapper.insert(entity));
+    }
+
+    @Test
+    public void generateIdTest(){
+        SnowFlakeShortUrl snowFlakeShortUrl = new SnowFlakeShortUrl(5,3);
+        System.out.println(snowFlakeShortUrl.nextId());
     }
 }
