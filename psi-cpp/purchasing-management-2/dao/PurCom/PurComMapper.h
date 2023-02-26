@@ -68,7 +68,7 @@ public:
 		data.setUpdate_by(resultSet->getString("update_by"));
 		data.setUpdate_time(resultSet->getString("update_time"));
 		data.setVersion(resultSet->getInt("version"));
-
+		return data;
 	}
 };
 

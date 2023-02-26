@@ -30,9 +30,11 @@
 
 class PurComDAO : public BaseDAO {
 public:
-	//分页查询数据
+	// 统计数据条数
+	uint64_t count(const PurComDO& obj);
+	// 分页查询数据
 	list<PurComDO> selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	//指定单据明细
+	// 指定单据明细
 	
 };
 
