@@ -10,8 +10,11 @@
 //增加修改删除预付申请单列表
 #include "../../domain/dto/prepayment/AddPayDTO.h"
 #include "../../domain/dto/prepayment/PrepaymentDTO.h"
-#include "../../domain/dto/prepayment/DePayDTO.h"
+//删除DTO
+#include "../../domain/dto/payment/DePaymentDTO.h"
+//修改订单状态DTO
 #include "../../domain/dto/payment/PaymentChangeDTO.h"
+
 #include "../../domain/vo/prepayment/PrepaymentVO.h"
 //导入导出
 #include "../../domain/query/prepaymentbill/PrePayExportQuery.h"
@@ -29,7 +32,7 @@ class PaymentService
 {
 public:
 	// 通过ID删除数据
-	/*bool removeData(const PayModBillStatusDTO& dto);*/
+	bool DePayment(const  DePaymentDTO& dto);
 	// 修改单据状态
 	bool ChangePayStatus(const PaymentChangeDTO& dto);
 

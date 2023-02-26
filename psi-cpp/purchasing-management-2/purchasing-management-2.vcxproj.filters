@@ -237,6 +237,9 @@
     <ClInclude Include="domain\do\PurReq\PurReqDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\payment\DePaymentDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -312,6 +315,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\payment\PaymentDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\payment\DePaymentDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

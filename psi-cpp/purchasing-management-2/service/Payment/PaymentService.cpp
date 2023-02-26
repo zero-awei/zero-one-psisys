@@ -2,12 +2,21 @@
 #include "PaymentService.h"
 #include "../../dao/Payment/PaymentDAO.h"
 
-//// 通过ID删除数据
-////bool PrePayService::removeData(uint64_t id)
-////{
-////	PrepaymentDAO dao;
-////	return dao.deleteById(id) == 1;
-////}
+// 通过ID删除数据
+bool PaymentService::DePayment(const DePaymentDTO& dto)
+{
+	//组装传输数据
+	PaymentDAO dao;
+	PurReqDO data;
+	data.setId(dto.getId());
+	data.setBill_no(dto.getBill_no());
+	//执行数据修改
+	if (dto.getId() != "" || dto.getBill_no() != "")
+	{
+		data.setId(dto.getId());
+		return dao.deleteById(data) == 1;
+	}
+}
 
 // 修改单据状态
 bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto)

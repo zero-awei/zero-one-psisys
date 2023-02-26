@@ -49,19 +49,25 @@ JsonVO<string>  PaymentController::execChangePayment(const PaymentChangeDTO& dto
 	return result;
 }
 
-
-JsonVO<uint64_t> PaymentController::execDeleteById(const IntID& id)
+// 删除申请单
+JsonVO<string> PaymentController::execDePayment(const DePaymentDTO& dto)
 {
-	//SampleService service;
-	JsonVO<uint64_t> result;
+	PaymentService service;
+	JsonVO<string> result;
+	// 数据校验
+	if (dto.getId() == "" || dto.getBill_no() == "") {// 如果ID和单据编号为空
+		return JsonVO<string>({}, RS_PARAMS_INVALID);
+	}
 	//执行数据删除
-	if (/*service.removeData(dto.getId())*/1) {
-		result.success(id.getId());
+	if (service.DePayment(dto)) {
+		result.success(dto.getId());
+		result.setMessage(CharsetConvertHepler::ansiToUtf8("删除成功"));
 	}
-	else
-	{
-		result.fail(id.getId());
+	else {
+		result.fail(dto.getId());
+		result.setMessage(CharsetConvertHepler::ansiToUtf8("删除失败"));
 	}
+	//响应结果
 	return result;
 }
 

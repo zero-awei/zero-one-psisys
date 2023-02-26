@@ -42,9 +42,9 @@ int PaymentDAO::ChangeStatusCancel(const PurReqDO& uObj)
 	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_voided(), uObj.getId());
 }
 
-//// É¾³ýÔ¤¸¶ÉêÇëµ¥
-//int PrepaymentDAO::deleteById(uint64_t id)
-//{
-//	string sql = "DELETE FROM `sample` WHERE `id`=?";
-//	return sqlSession->executeUpdate(sql, "%ull", id);
-//}
+// É¾³ýÔ¤¸¶ÉêÇëµ¥
+int PaymentDAO::deleteById(const PurReqDO& uObj)
+{
+	string sql = "DELETE FROM `pur_req` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
+}

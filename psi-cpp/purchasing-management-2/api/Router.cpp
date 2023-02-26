@@ -223,7 +223,7 @@ void Router::createPaymentRouter()
 {
 	//ÐÞ¸Äµ¥¾Ý×´Ì¬
 	BIND_PUT_ROUTER(server, "/payment-change", &PaymentController::changePayment, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &PaymentController::deleteById, nullptr);
+	BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::deleteById, nullptr);
 	BIND_POST_ROUTER(server, "/payment-export", &PaymentController::exportPayment, nullptr);
 	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
 }
