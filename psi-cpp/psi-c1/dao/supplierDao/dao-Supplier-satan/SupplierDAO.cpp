@@ -173,7 +173,7 @@ uint64_t SupplierDAO::SupplierInsert(const SupplierDO& iObj)
 		iObj.getUpdate_By());  //41个字段-修改过后已经正确了，%s在41个的基础上多加了一个(现在42个%s)，iObj的id还没有加
 }
 
-// 修改数据——已检查：字段，%s
+// 修改数据
 int SupplierDAO::SupplierUpdateByCode(const SupplierDO& uObj)
 {
 	stringstream sql;

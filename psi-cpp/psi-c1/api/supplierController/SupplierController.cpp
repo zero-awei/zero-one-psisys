@@ -59,7 +59,7 @@ JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto, co
 	}
 	return result;
 }
-
+//修改
 JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& dto, const PayloadDTO& payload)//返回string类型是因为code是string类型
 {
 	JsonVO<string> result;//返回文件保存的路径

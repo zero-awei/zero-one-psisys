@@ -257,9 +257,6 @@ void Router::initSupplier()
 	BIND_GET_ROUTER(server, "/qurey-supplier-level", &SupplierLevelController::querySupplierLevel, nullptr);
 	//供应商高级查询条件下拉列表
 	BIND_GET_ROUTER(server, "/qurey-supplier-advanced_criteria", &SupplierQueryCriteriaController::querySupplierQueryCriteria, nullptr);
-	////添加供应商--上传文件
-	//BIND_POST_ROUTER(server, "/add-supplier", &SupplierController::addSupplierImportFile, nullptr);
-	////指定查询供应商--显示文件路径
-	//BIND_GET_ROUTER(server, "/export-account", &SupplierController::exportSupplierExecl, nullptr);
+
 }
 
