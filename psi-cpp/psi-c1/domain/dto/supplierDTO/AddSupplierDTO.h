@@ -99,14 +99,15 @@ class AddSupplierDTO : public FileDTO//继承FileDTO就是为了实现文件上传
 	//CC_SYNTHESIZE(string, attachment, Attachment);
 	/*操作信息*/
 	//创建时间
-	CC_SYNTHESIZE(string, create_time, Create_Time);
+	//CC_SYNTHESIZE(string, create_time, Create_Time);
 	//创建人
-	CC_SYNTHESIZE(string, create_by, Create_By);
+	//CC_SYNTHESIZE(string, create_by, Create_By);
 	//修改时间
-	CC_SYNTHESIZE(string, update_time, Update_Time);
+	//CC_SYNTHESIZE(string, update_time, Update_Time);
 	//修改人
-	CC_SYNTHESIZE(string, update_by, Update_By);
-	//40个字段+Filedto
+	//CC_SYNTHESIZE(string, update_by, Update_By);
+	/*以上create_time，create_by，update_time，update_by四个字段都不需要用户输入，是系统生成的，所以dto中不需要，在service中会写*/
+	//40个字段+Filedto-操作信息的4个字段
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddSupplierDTO& t); // NOLINT

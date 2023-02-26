@@ -3,6 +3,8 @@
 #include "../../../dao/supplierDao/dao-Supplier-satan/SupplierDAO.h"
 #include "../lib-common/include/SnowFlake.h"
 #include <sstream>
+#include "../lib-common/include/SimpleDateTimeFormat.h"
+#include "../lib-http/include/JWTUtil.h"
 
 // 高级查询
 PageVO<AdvancedQueryVO> SupplierService::advancedListSupplierData(const AdvancedQuery& query)
@@ -108,8 +110,9 @@ SpecifiedSupplierDataQueryVO  SupplierService::specifiedListSupplierData(const S
 	}
 	return data;
 }
+
 // 添加供应商
-uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
+uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto,const PayloadDTO& payload)
 {
 	//组装数据
 	SupplierDO data;
@@ -149,10 +152,10 @@ uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
 	data.setArea(dto.getArea());
 	data.setBiz_Area(dto.getBiz_Area());
 	data.setAddress(dto.getAddress());
-	data.setCreate_Time(dto.getCreate_Time());
-	data.setCreate_By(dto.getCreate_By());
-	data.setUpdate_Time(dto.getUpdate_Time());
-	data.setUpdate_By(dto.getUpdate_By());
+	//data.setCreate_Time(dto.getCreate_Time());————设置时间使用format函数
+	//data.setCreate_By(dto.getCreate_By());————设置用户信息使用payloaddto类
+	//data.setUpdate_Time(dto.getUpdate_Time());
+	//data.setUpdate_By(dto.getUpdate_By());
 	//将文件的上传路径也装入DO领域模型类中，在执行SupplierInsert进行返回
 	string file_router;
 	for (auto file_segment : dto.getFiles())
@@ -168,6 +171,17 @@ uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
 	stream << id_int;  //n为int类型
 	string id_string=stream.str();
 	data.setID(id_string);
+	//用format生成create_time创建时间和update_time修改时间
+	SimpleDateTimeFormat time;
+	string create_time = time.format();
+	string update_time = create_time;
+	data.setCreate_Time(create_time);
+	data.setUpdate_Time(update_time);
+	//用PayloadDTO生成Create_By和Update_By
+	string create_by= payload.getUsername();
+	string update_by = payload.getUsername();
+	data.setCreate_By(create_by);
+	data.setUpdate_By(update_by);
 	//data里面装了42个数据
 	//执行数据添加
 	SupplierDAO dao;
@@ -175,7 +189,7 @@ uint64_t SupplierService::addSupplierData(const AddSupplierDTO& dto)
 }
 
 // 修改供应商
-uint64_t SupplierService::modifySupplierData(const ModifySupplierDTO& dto)
+uint64_t SupplierService::modifySupplierData(const ModifySupplierDTO& dto, const PayloadDTO& payload)
 {
 	//组装数据
 	SupplierDO data;
@@ -186,6 +200,8 @@ uint64_t SupplierService::modifySupplierData(const ModifySupplierDTO& dto)
 	data.setSupplier_Level(dto.getSupplier_Level());
 	data.setTax_Scale(dto.getTax_Scale());
 	data.setAlter_Suppliers(dto.getAlter_Suppliers());
+	//is_enable要单独处理，因为我希望它显示到前端的时候只能是0或1
+	//if(dto.getIs_Enabled())
 	data.setIs_Enabled(dto.getIs_Enabled());
 	data.setRemark(dto.getRemark());
 	data.setInvoice_Company(dto.getInvoice_Company());
@@ -214,16 +230,24 @@ uint64_t SupplierService::modifySupplierData(const ModifySupplierDTO& dto)
 	data.setArea(dto.getArea());
 	data.setBiz_Area(dto.getBiz_Area());
 	data.setAddress(dto.getAddress());
-	data.setCreate_Time(dto.getCreate_Time());
-	data.setCreate_By(dto.getCreate_By());
-	data.setUpdate_Time(dto.getUpdate_Time());
-	data.setUpdate_By(dto.getUpdate_By());
-
+	//data.setCreate_Time(dto.getCreate_Time());————设置时间使用format函数
+	//data.setCreate_By(dto.getCreate_By());————设置用户信息使用payloaddto类
+	//data.setUpdate_Time(dto.getUpdate_Time());————设置时间使用format函数
+	//data.setUpdate_By(dto.getUpdate_By());————设置用户信息使用payloaddto类
+	data.setID(dto.getID());
+	//用format生成update_time修改时间
+	SimpleDateTimeFormat time;
+	string update_time = time.format();
+	data.setUpdate_Time(update_time);
+	//用PayloadDTO生成Update_By修改人
+	string update_by = payload.getUsername();
+	data.setUpdate_By(update_by);
 	//执行数据修改
 	SupplierDAO dao;
-	return dao.SupplierUpdateByCode(data) == 1;
+	return dao.SupplierUpdateByCode(data) ;
 
 }
+
 //删除供应商
 uint64_t SupplierService::deleteSupplierData(const DeleteSupplierDTO& dto)
 {

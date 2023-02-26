@@ -25,7 +25,7 @@ JsonVO<SpecifiedSupplierDataQueryVO> SupplierController::execSpecifiedQuerySuppl
 }
 
 //Ìí¼Ó¹©Ó¦ÉÌ
-JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)//·µ»ØstringÀàĞÍÊÇÒòÎªcodeÊÇstringÀàĞÍ
+JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto, const PayloadDTO& payload)//·µ»ØstringÀàĞÍÊÇÒòÎªcodeÊÇstringÀàĞÍ
 {
 	JsonVO<string> result;//·µ»ØÎÄ¼ş±£´æµÄÂ·¾¶
 	SupplierService service;
@@ -40,7 +40,8 @@ JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)//·
 		return result;
 	}
 	//Ö´ĞĞÊı¾İ²åÈëÊı¾İ¿â    (ºËĞÄ)
-	uint64_t id =service.addSupplierData(dto);
+	uint64_t id =service.addSupplierData(dto, payload);
+	cout <<"user_name"<< payload.getUsername() << endl;
 	//ÅĞ¶Ï²åÈëÊÇ·ñ³É¹¦
 	if (id > 0) 
 	{
@@ -59,7 +60,7 @@ JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto)//·
 	return result;
 }
 
-JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& dto)//·µ»ØstringÀàĞÍÊÇÒòÎªcodeÊÇstringÀàĞÍ
+JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& dto, const PayloadDTO& payload)//·µ»ØstringÀàĞÍÊÇÒòÎªcodeÊÇstringÀàĞÍ
 {
 	JsonVO<string> result;//·µ»ØÎÄ¼ş±£´æµÄÂ·¾¶
 	SupplierService service;
@@ -77,7 +78,7 @@ JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& d
 		return result;
 	}
 	//Ö´ĞĞÊı¾İ²åÈëÊı¾İ¿â
-	uint64_t id = service.modifySupplierData(dto);
+	uint64_t id = service.modifySupplierData(dto, payload);
 	//ÅĞ¶Ï²åÈëÊÇ·ñ³É¹¦
 	if (id > 0)
 	{

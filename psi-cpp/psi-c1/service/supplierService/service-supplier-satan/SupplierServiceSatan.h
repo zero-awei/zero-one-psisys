@@ -27,9 +27,9 @@ public:
 	//查询指定供应商详细数据
 	SpecifiedSupplierDataQueryVO  specifiedListSupplierData(const SpecifiedSupplierDataQuery& query);
 	// 添加供应商
-	uint64_t addSupplierData(const AddSupplierDTO& dto);
+	uint64_t addSupplierData(const AddSupplierDTO& dto, const PayloadDTO& payload);
 	// 修改供应商
-	uint64_t modifySupplierData(const ModifySupplierDTO& dto);
+	uint64_t modifySupplierData(const ModifySupplierDTO& dto, const PayloadDTO& payload);
 	//删除供应商
 	uint64_t deleteSupplierData(const DeleteSupplierDTO& dto);
 };

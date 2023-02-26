@@ -41,11 +41,11 @@ void from_json(const json& j, AddSupplierDTO& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, biz_area);
 	BIND_FROM_TO_NORMAL(j, t, address);
 	//附件在这里不用写，我们在controller里面写了
-	BIND_FROM_TO_NORMAL(j, t, create_time);
-	BIND_FROM_TO_NORMAL(j, t, create_by);
-	BIND_FROM_TO_NORMAL(j, t, update_time);
-	BIND_FROM_TO_NORMAL(j, t, update_by);
-
+	//BIND_FROM_TO_NORMAL(j, t, create_time);
+	//BIND_FROM_TO_NORMAL(j, t, create_by);
+	//BIND_FROM_TO_NORMAL(j, t, update_time);
+	//BIND_FROM_TO_NORMAL(j, t, update_by);
+	/*以上create_time，create_by，update_time，update_by四个字段都不需要用户输入，是系统生成的，所以dto中不需要，在service中会写*/
 }
 
 

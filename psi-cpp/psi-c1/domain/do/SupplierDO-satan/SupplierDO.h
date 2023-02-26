@@ -88,7 +88,7 @@ class SupplierDO
 	CC_SYNTHESIZE(string, recv_address, Recv_Address);
 	//Zip邮编
 	CC_SYNTHESIZE(string, recv_postcode, Recv_Postcode);
-	//上传附件（还不确定要不要）
+	//上传附件---需要
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备选供应商 12
 	CC_SYNTHESIZE(string, alter_suppliers, Alter_Suppliers);

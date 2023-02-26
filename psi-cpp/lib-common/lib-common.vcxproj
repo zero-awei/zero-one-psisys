@@ -185,6 +185,7 @@
     <ClInclude Include="include\CommonMacros.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\SimpleDateTimeFormat.cpp" />
     <ClCompile Include="src\RedisClient.cpp" />
     <ClCompile Include="src\MongoClient.cpp" />
     <ClCompile Include="src\SnowFlake.cpp" />
