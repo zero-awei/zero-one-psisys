@@ -5,8 +5,7 @@
 list<ExportSupplierDO> ExportSupplierService::listAll(const ExportSupplierQuery& query)
 {
     ExportSupplierDO obj;
-    obj.setCode(query.getCode());
-    obj.setName(query.getName());
+    obj.setId(query.getId());
     ExportSupplierDAO dao;
     list<ExportSupplierDO> result = dao.selectSupplier(obj);
     return result;
