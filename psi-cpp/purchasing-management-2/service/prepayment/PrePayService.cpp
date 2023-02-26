@@ -210,7 +210,7 @@ bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 
 	//执行数据修改
 	PrepaymentDAO dao;
-	return dao.updatePrepay(data) == 1;
+	return dao.updatePrepay(data);
 }
 
 // 通过ID删除数据
