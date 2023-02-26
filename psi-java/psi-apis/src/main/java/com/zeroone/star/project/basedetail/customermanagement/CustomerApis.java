@@ -1,16 +1,16 @@
 package com.zeroone.star.project.basedetail.customermanagement;
 
+import com.zeroone.star.project.dto.basedetail.customermanagement.CustomerAddDTO;
 import com.zeroone.star.project.dto.basedetail.customermanagement.CustomerDTO;
 import com.zeroone.star.project.query.PageQuery;
-import com.zeroone.star.project.query.basedetail.customermanagement.CustomerCdvancedQuery;
-import com.zeroone.star.project.query.basedetail.customermanagement.CustomerQuery;
+import com.zeroone.star.project.query.basedetail.customermanagement.*;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerCategoryVO;
-import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerLevelVO;
-import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerShowVO;
-import com.zeroone.star.project.vo.basedetail.customermanagement.CustomerVO;
+import com.zeroone.star.project.vo.basedetail.customermanagement.*;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.BindingResult;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -51,25 +51,56 @@ public interface CustomerApis {
     JsonVO<CustomerShowVO> specifiedcustomer(String id);
 
     /**
+     * 根据编码获取客户信息
+     * @param customerByCodeQuery
+     * @return
+     */
+    JsonVO<CustomerBaseInfoVO> queryCustomerByCode(CustomerByCodeQuery customerByCodeQuery);
+
+    /**
+     * 根据名称获取用户是否存在的信息
+     * @param customerByNameQuery
+     * @return
+     */
+    JsonVO<CustomerExistVO> queryCustomerByName(CustomerByNameQuery customerByNameQuery);
+
+    /**
+     * 根据助记名获取获取用户是否存在的信息
+     * @param customerByAuxNameQuery
+     * @return
+     */
+    JsonVO<CustomerExistVO> queryCustomerByAuxName(CustomerByAuxNameQuery customerByAuxNameQuery);
+
+    /**
+     * 根据辅助名称获取获取用户是否存在的信息
+     * @param customerByAuxiliaryNameQuery
+     * @return
+     */
+    JsonVO<CustomerExistVO> queryCustomerByAuxiliaryName(CustomerByAuxiliaryNameQuery
+                                                                 customerByAuxiliaryNameQuery);
+
+    /**
      * 添加客户信息
-     * @param customerDTO 根据DTO添加职务
+     * @param customerAddDTO 根据DTO添加职务
      * @return 结果的字符串
      */
-    JsonVO<String> saveCustomer(CustomerDTO customerDTO);
+    JsonVO<String> saveCustomer(CustomerAddDTO customerAddDTO,
+                                BindingResult bindingResult);
 
     /**
      * 修改客户信息
      * @param customerDTO 根据DTO修改职务
      * @return 结果的字符串
      */
-    JsonVO<String> updateCustomer(CustomerDTO customerDTO);
+    JsonVO<String> updateCustomer(CustomerAddDTO customerDTO,BindingResult bindingResult);
 
     /**
      * 删除指定客户信息
-     * @param customerId 根据DTO删除职务
-     * @return 结果的字符串
+     * @param customerByCodeQuery
+     * @param bindingResult
+     * @return
      */
-    JsonVO<String> deleteCustomer(String customerId);
+    JsonVO<String> deleteCustomer(CustomerByCodeQuery customerByCodeQuery,BindingResult bindingResult);
 
 
 

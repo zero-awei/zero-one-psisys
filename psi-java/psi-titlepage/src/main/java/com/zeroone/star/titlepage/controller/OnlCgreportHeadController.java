@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -77,7 +78,7 @@ public class OnlCgreportHeadController implements InformationApis {
      * @return 销售概况视图对象，如果未能查到数据返回的数据为null
      */
     @ApiOperation("查询销售概况")
-    @GetMapping("/query-Sale")
+    @PostMapping ("/query-Sale")
     @Override
     @ResponseBody
     public JsonVO<List<SaleInformationVO>> querySaleInfo() {
