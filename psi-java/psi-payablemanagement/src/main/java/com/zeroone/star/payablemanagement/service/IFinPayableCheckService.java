@@ -27,4 +27,5 @@ public interface IFinPayableCheckService extends IService<FinPayableCheck> {
      */
     public PageVO<CheckPayableVO> queryAll(CheckPayableQuery condition);
 
+
 }

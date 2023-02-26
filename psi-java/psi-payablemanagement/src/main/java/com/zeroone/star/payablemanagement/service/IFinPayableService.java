@@ -3,6 +3,7 @@ package com.zeroone.star.payablemanagement.service;
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
+import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
@@ -33,5 +34,12 @@ public interface IFinPayableService extends IService<FinPayable> {
      * @return 查询结果
      */
     PayableVO getByBillNo(String billNo);
+
+    /**
+     * 根据供应商ID查询
+     * @param condition 供应商ID
+     * @return 查血结果
+     */
+    public PageVO<PayableVO> queryPayableBySupplierId(PayableBySupplierQuery condition);
 
 }

@@ -71,7 +71,7 @@ public class CheckPayableController implements CheckPayableApis {
     @GetMapping("queryPayableBySupplier")
     @ApiOperation("根据供应商ID查询应付单")
     public JsonVO<PageVO<PayableVO>> listPayableBySupplier(PayableBySupplierQuery condition) {
-        return null;
+        return JsonVO.success(finPayable.queryPayableBySupplierId(condition));
     }
 
 
