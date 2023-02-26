@@ -21,13 +21,6 @@ if (obj.getAmt() != -1) { \
 	sql << " AND amt=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAmt()); \
 } \
-////
-////新增预付申请单
-////uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
-////{
-////	string sql = "INSERT INTO `fin_payment_req` (`bill_no`, `bill_date`, `amt`) VALUES (?, ?, ?)";
-////	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getBill_no(), iObj.getBill_date(), iObj.getAmt());
-////}
 
 //修改单据状态
 int PaymentDAO::ChangeStatusClose(const FinPayReqDO& uObj)
@@ -48,9 +41,9 @@ int PaymentDAO::deleteById(const FinPayReqDO& uObj)
 	string sql = "DELETE FROM `fin_payment_req` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
 }
-//// 添加申请单
-//int PaymentDAO::deleteById(const FinPayReqDO& uObj)
-//{
-//	string sql = "INSTER FROM `fin_payment_req` WHERE `id`=?";
-//	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
-//}
+// 添加申请单
+int PaymentDAO::insertPrepay(const FinPayReqDO& uObj)
+{
+	string sql = "INSERT INTO `fin_payment_req` (`id`,`bill_no`) VALUES(? ,? )";
+	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
+}

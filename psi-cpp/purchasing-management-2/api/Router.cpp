@@ -208,6 +208,6 @@ void Router::createPaymentRouter()
 	BIND_PUT_ROUTER(server, "/payment-change", &PaymentController::changePayment, nullptr);
 	//删除单据
 	BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::deleteById, nullptr);
-	//添加单据
-	//BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::AddPayment, nullptr);
+	////添加单据
+	//BIND_PUT_ROUTER(server, "/AppPayment", &PaymentController::AddPayment, nullptr);
 }

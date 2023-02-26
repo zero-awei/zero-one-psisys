@@ -4,22 +4,23 @@
 
 void from_json(const json& j, AddPaymentDTO& apt) {
 	BIND_FROM_TO_NORMAL(j, apt, bill_no);
-	BIND_FROM_TO_NORMAL(j, apt, billDate);
-	BIND_FROM_TO_NORMAL(j, apt, srcBillType);
-	BIND_FROM_TO_NORMAL(j, apt, srcBillId);
-	BIND_FROM_TO_NORMAL(j, apt, srcNo);
+	BIND_FROM_TO_NORMAL(j, apt, id);
+	BIND_FROM_TO_NORMAL(j, apt, bill_date);
+	BIND_FROM_TO_NORMAL(j, apt, src_bill_type);
+	BIND_FROM_TO_NORMAL(j, apt, src_bill_id);
+	BIND_FROM_TO_NORMAL(j, apt, src_no);
 	BIND_FROM_TO_NORMAL(j, apt, subject);
-	BIND_FROM_TO_NORMAL(j, apt, supplierId);
-	BIND_FROM_TO_NORMAL(j, apt, opDept);
+	BIND_FROM_TO_NORMAL(j, apt, supplier_id);
+	BIND_FROM_TO_NORMAL(j, apt, op_dept);
 	BIND_FROM_TO_NORMAL(j, apt, operator1);
-	BIND_FROM_TO_NORMAL(j, apt, paymentType);
+	BIND_FROM_TO_NORMAL(j, apt, payment_type);
 	BIND_FROM_TO_NORMAL(j, apt, remark);
-	BIND_FROM_TO_NORMAL(j, apt, billStage);
-	BIND_FROM_TO_NORMAL(j, apt, effectiveTime);
+	BIND_FROM_TO_NORMAL(j, apt, bill_stage);
+	BIND_FROM_TO_NORMAL(j, apt, effective_time);
 
 	BIND_FROM_TO_I(j, apt, amt);
-	BIND_FROM_TO_I(j, apt, isAuto);
-	BIND_FROM_TO_I(j, apt, isEffective);
-	BIND_FROM_TO_I(j, apt, isClosed);
-	BIND_FROM_TO_I(j, apt, isVoided);
+	BIND_FROM_TO_I(j, apt, is_auto);
+	BIND_FROM_TO_I(j, apt, is_effective);
+	BIND_FROM_TO_I(j, apt, is_closed);
+	BIND_FROM_TO_I(j, apt, is_voided);
 }

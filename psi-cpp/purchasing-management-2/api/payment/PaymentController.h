@@ -22,21 +22,15 @@ public:
 	CREATE_API_FUN_BODY(changePayment, execChangePayment, PaymentChangeDTO);
 	//删除
 	CREATE_API_FUN_BODY(deleteById, execDePayment, DePaymentDTO);
-	//添加
-	//CREATE_API_FUN_BODY(AddPayment, execAddPayment, AddPaymentDTO);
+	////添加
+	//CREATE_API_FUN_JSON_PAYLOAD(AddPayment, execAddPayment, AddPaymentDTO);
 private:
 	//修改单据状态（关闭/作废/反关闭）
 	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto);
 	//删除数据
 	JsonVO<string> execDePayment(const DePaymentDTO& dto);
-	//添加数据
-	/*JsonVO<string> execAddPayment(const AddPaymentDTO& dto);*/
+	////添加数据
+	//JsonVO<uint64_t> execAddPayment(const AddPaymentDTO& dto, const PayloadDTO& payload);
+
 };
-
-
-
-
-
-
-
 #endif // _PAYMENTCONTROLLER_H_

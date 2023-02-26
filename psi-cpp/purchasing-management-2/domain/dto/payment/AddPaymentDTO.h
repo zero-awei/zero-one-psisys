@@ -21,42 +21,44 @@
 
 class AddPaymentDTO :public FileDTO
 {
+	//编号id
+	CC_SYNTHESIZE(string,	id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
-	CC_SYNTHESIZE(string, billDate, BillDate);
+	CC_SYNTHESIZE(string, bill_date, Bill_date);
 	//源单类型
-	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
+	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	//源单id
-	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
+	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 	//源单号
-	CC_SYNTHESIZE(string, srcNo, SrcNo);
+	CC_SYNTHESIZE(string, src_no, Src_no);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//供应商
-	CC_SYNTHESIZE(string, supplierId, SupplierId);
+	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
 	//业务部门
-	CC_SYNTHESIZE(string, opDept, OpDept);
+	CC_SYNTHESIZE(string, op_dept, Op_dept);
 	//业务员
 	CC_SYNTHESIZE(string, operator1, Operator);
 	//付款类型
-	CC_SYNTHESIZE(string, paymentType, PaymentType);
+	CC_SYNTHESIZE(string, payment_type, Payment_type);
 	//申请金额
 	CC_SYNTHESIZE(int, amt, Amt);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//是否自动生成
-	CC_SYNTHESIZE(int, isAuto, IsAuto);
+	CC_SYNTHESIZE(int, is_auto, Is_auto);
 	//单据阶段
-	CC_SYNTHESIZE(string, billStage, BillStage);
+	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//是否生效
-	CC_SYNTHESIZE(int, isEffective, IsEffective);
+	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	//生效时间
-	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
+	CC_SYNTHESIZE(string, effective_time, Effective_time);
 	//是否已关闭
-	CC_SYNTHESIZE(int, isClosed, IsClosed);
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	//是否作废
-	CC_SYNTHESIZE(int, isVoided, IsVoided);
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
 public:
 	//绑定JSON转换方法
 	friend void from_json(const json& j, AddPaymentDTO& apt);

@@ -45,12 +45,13 @@ bool PaymentService::AddPay(const AddPaymentDTO& dto)
 	//组装传输数据
 	FinPayReqDO data;
 	data.setBill_no(dto.getBill_no());
+	data.setId(dto.getId());
 	//执行数据修改
 	PaymentDAO dao;
 	if ( dto.getBill_no() != "")
 	{
-		data.setId(dto.getBill_no());
-		return dao.deleteById(data) == 1;
+		data.setId(dto.getId());
+		return dao.insertPrepay(data) == 1;
 	}
 }
 
