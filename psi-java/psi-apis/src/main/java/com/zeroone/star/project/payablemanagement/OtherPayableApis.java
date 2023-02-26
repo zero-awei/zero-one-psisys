@@ -1,5 +1,6 @@
 package com.zeroone.star.project.payablemanagement;
 
+import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
 import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -46,27 +47,27 @@ public interface OtherPayableApis {
      * 添加应付单
      * @param PayableDTO 应付单DTO
      */
-    JsonVO<PayableVO> addOtherPayable(PayableDTO PayableDTO);
+    JsonVO<String> addOtherPayable(PayableDTO PayableDTO);
 
     /**
      * 修改应付单
      * @param PayableDTO 应付单DTO
      */
-    JsonVO<PayableVO> updateOtherPayable(PayableDTO PayableDTO);
+    JsonVO<String> updateOtherPayable(PayableDTO PayableDTO);
 
     /**
      * 删除应付单
-     * @param otherPayableId 应付单ID
+     * @param delPayable 待删除应付单DTO
      */
-    JsonVO<PayableVO> deleteOtherPayable(Integer otherPayableId);
+    JsonVO<String> deleteOtherPayable(PayableDTO delPayable);
 
 
     /**
      * 修改单据状态
-     * @param otherPayableId 应付单ID
-     * @param status 单据状态（关闭/作废/反关闭）
+     * @param payableStatus 应付单ID
+
      */
-    JsonVO<PayableVO> updateOtherPayableStatus(Integer otherPayableId, String status);
+    JsonVO<String> updateOtherPayableStatus(PayableStatusDTO payableStatus);
     
 
 }

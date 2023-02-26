@@ -2,6 +2,8 @@ package com.zeroone.star.payablemanagement.service;
 
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
+import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
 import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.PageVO;
@@ -34,4 +36,32 @@ public interface IFinPayableService extends IService<FinPayable> {
      */
     PayableVO getByBillNo(String billNo);
 
+    /**
+     * 新增其他应付单
+     * @param newPayable 新增其他应付单DTO
+     * @return 返回大于0的数或0，大于0代表添加成功，0代表添加失败
+     */
+    int addOtherPayable(PayableDTO newPayable);
+
+    /**
+     * 新增其他应付单
+     * @param updatePayable 待更新其他应付单DTO
+     * @return 返回大于0的数或0，大于0代表修改成功，0代表修改失败
+     */
+    int updateOtherPayable(PayableDTO updatePayable);
+
+
+    /**
+     * 删除其他应付单
+     * @param delPayable 待删除其他应付单DTO
+     * @return 返回大于0的数或0，大于0代表删除成功，0代表删除失败
+     */
+    int delOtherPayable(PayableDTO delPayable);
+
+    /**
+     * 删除其他应付单
+     * @param payableStatus 其他应付单状态DTO
+     * @return 返回大于0的数或0，大于0代表删除成功，0代表删除失败
+     */
+    int updateOtherPayableStatus(PayableStatusDTO payableStatus);
 }

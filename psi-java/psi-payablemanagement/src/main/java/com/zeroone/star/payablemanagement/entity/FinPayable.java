@@ -1,15 +1,14 @@
 package com.zeroone.star.payablemanagement.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * <p>
@@ -184,5 +183,41 @@ public class FinPayable implements Serializable {
      */
     private Integer version;
 
-
+    @Override
+    public String toString() {
+        return "FinPayable{" +
+                "id='" + id + '\'' +
+                ", billNo='" + billNo + '\'' +
+                ", billDate=" + billDate +
+                ", srcBillType='" + srcBillType + '\'' +
+                ", srcBillId='" + srcBillId + '\'' +
+                ", srcNo='" + srcNo + '\'' +
+                ", subject='" + subject + '\'' +
+                ", isRubric=" + isRubric +
+                ", payableType='" + payableType + '\'' +
+                ", supplierId='" + supplierId + '\'' +
+                ", opDept='" + opDept + '\'' +
+                ", operator='" + operator + '\'' +
+                ", amt=" + amt +
+                ", checkedAmt=" + checkedAmt +
+                ", attachment='" + attachment + '\'' +
+                ", remark='" + remark + '\'' +
+                ", isAuto=" + isAuto +
+                ", billStage='" + billStage + '\'' +
+                ", approver='" + approver + '\'' +
+                ", bpmiInstanceId='" + bpmiInstanceId + '\'' +
+                ", approvalResultType='" + approvalResultType + '\'' +
+                ", approvalRemark='" + approvalRemark + '\'' +
+                ", isEffective=" + isEffective +
+                ", effectiveTime=" + effectiveTime +
+                ", isClosed=" + isClosed +
+                ", isVoided=" + isVoided +
+                ", sysOrgCode='" + sysOrgCode + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", version=" + version +
+                '}';
+    }
 }

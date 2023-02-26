@@ -1,18 +1,21 @@
 package com.zeroone.star.payablemanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import org.springframework.context.annotation.Bean;
-import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
 import com.alibaba.nacos.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.zeroone.star.payablemanagement.mapper.FinPayableMapper;
 import com.zeroone.star.payablemanagement.service.IFinPayableService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.payablemanagement.utils.TransformationUtils;
+import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
+import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
+import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,7 +28,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPayable> implements IFinPayableService {
-
+    @Autowired
+    FinPayableMapper finPayableMapper;
     @Override
     public PageVO<PayableVO> getAll(PayableQuery query) {
         Page<FinPayable> payablePage = new Page<>(query.getPageIndex(), query.getPageSize());
@@ -101,5 +105,56 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
         PayableVO payableVO = new PayableVO();
         BeanUtil.copyProperties(f, payableVO);
         return payableVO;
+    }
+
+
+    @Override
+    public int addOtherPayable(PayableDTO newPayable) {
+        if (newPayable==null){
+            return 0;
+        }
+        //将PayableDTO转换为finPayable实体类
+//        FinPayable finPayable = TransformationUtils.toAllDto(newPayable,FinPayable.class);
+        FinPayable finPayable = null;
+        try {
+            finPayable = TransformationUtils.convert(newPayable, FinPayable.class);
+//            finPayable = TransformationUtils.transmissionCreateDTO(newPayable);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        return finPayableMapper.insert(finPayable);
+    }
+
+    @Override
+    public int updateOtherPayable(PayableDTO updatePayable) {
+        FinPayable finPayable = null;
+        if(updatePayable==null){
+            return 0;
+        }
+        //将PayableDTO转换为finPayable实体类
+        finPayable = TransformationUtils.toAllDto(updatePayable,FinPayable.class);
+
+        return finPayableMapper.updateById(finPayable);
+    }
+
+    @Override
+    public int delOtherPayable(PayableDTO delPayable) {
+        FinPayable finPayable = null;
+        if(delPayable==null){
+            return 0;
+        }
+        finPayable = TransformationUtils.toAllDto(delPayable,FinPayable.class);
+        return finPayableMapper.deleteById(finPayable);
+    }
+
+    @Override
+    public int updateOtherPayableStatus(PayableStatusDTO payableStatus) {
+        FinPayable finPayable = null;
+        //传入值为空或者单据已作废则无法更新状态
+        if(payableStatus==null||payableStatus.getIsVoided()==1){
+            return 0;
+        }
+        finPayable = TransformationUtils.toAllDto(payableStatus,FinPayable.class);
+        return finPayableMapper.updateById(finPayable);
     }
 }

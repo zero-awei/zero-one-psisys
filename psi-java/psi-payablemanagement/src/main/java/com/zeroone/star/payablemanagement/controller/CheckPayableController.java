@@ -5,15 +5,14 @@ import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
-import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
+import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.PaymentBySupplierQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableEntryVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
-import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -59,7 +58,7 @@ public class CheckPayableController implements CheckPayableApis {
     @Override
     @GetMapping("queryPaymentBySupplier")
     @ApiOperation("根据供应商ID查询付款单")
-    public JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
+    public JsonVO<PageVO<PayableVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
         return null;
     }
 

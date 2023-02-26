@@ -1,5 +1,6 @@
 package com.zeroone.star.project.payablemanagement;
 
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
@@ -9,10 +10,7 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableEntryVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
-import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import org.springframework.web.multipart.MultipartFile;
-import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
-import com.zeroone.star.project.vo.JsonVO;
 
 import java.util.List;
 /**
@@ -48,7 +46,7 @@ public interface CheckPayableApis {
      * @return null
      * @param condition 查询条件
      */
-    JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition);
+    JsonVO<PageVO<PayableVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition);
 
     /**
     * 文件导出
