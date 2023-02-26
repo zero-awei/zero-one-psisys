@@ -39,22 +39,24 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto)
 	}
 }
 
-// 添加数据
-bool PaymentService::AddPay(const AddPaymentDTO& dto)
+
+string getTime()
 {
-	//组装传输数据
-	FinPayReqDO data;
-	data.setBill_no(dto.getBill_no());
-	data.setId(dto.getId());
-	//执行数据修改
-	PaymentDAO dao;
-	if ( dto.getBill_no() != "")
-	{
-		data.setId(dto.getId());
-		return dao.insertPrepay(data) == 1;
-	}
+	time_t now = time(0);
+	struct tm t;
+
+	localtime_s(&t, &now);
+
+	// 将信息输出到字符串流
+	stringstream ss;
+	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
+	return ss.str();
 }
 
+//定义一个宏用来进行值的修改
+#define MODIFY(name) data.set##name(dto.get##name());
+//定义一个宏用来进行默认值的修改
+#define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
 // 保存数据
 uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& payload)
 {
@@ -63,66 +65,32 @@ uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& pa
 	FinPayReqDO data;
 	SnowFlake sf(1, 3);
 	string id = to_string(sf.nextId());
-	string BillNo = dto.getBillNo();
+	string Bill_no = dto.getBill_no();
 	string time = getTime();
 	//首先是进行id设置使用雪花算法
 	data.setId(id);
 	//获取必填信息
-	data.setBillNo(BillNo);
-	MODIFY(BillDate);
-	MODIFY(RequestDept);
-	MODIFY(Requester);
-	MODIFY(RequestTime);
-	MODIFY(BillStage);
+	data.setBill_no(Bill_no);
+	MODIFY(Bill_date);
+	MODIFY(Operator);
+	MODIFY(Op_dept);
+	MODIFY(Supplier_id);
 	//获取用户的信息，此处为添加订单人信息
-	data.setSysOrgCode(payload.getDepartment());
-	data.setCreateBy(payload.getUsername());
-	data.setCreateTime(time);
-	data.setUpdateBy(payload.getUsername());
-	data.setUpdateTime(time);
-	//特殊处理附件
-	MODIFY_DEFAULT(Attachment);
+	data.setOp_dept(payload.getDepartment());
+	data.setOperator(payload.getUsername());
+	data.setCreate_time(time);
+	data.setUpdate_by(payload.getUsername());
+	data.setUpdate_time(time);
 	//存在默认值时的处理
-	MODIFY_DEFAULT(SrcBillType);
-	MODIFY_DEFAULT(SrcBillId);
-	MODIFY_DEFAULT(SrcNo);
+	MODIFY_DEFAULT(Src_bill_type);
+	MODIFY_DEFAULT(Src_bill_id);
+	MODIFY_DEFAULT(Src_no);
 	MODIFY_DEFAULT(Subject);
-	MODIFY_DEFAULT(PurType);
-	MODIFY_DEFAULT(Qty);
+	MODIFY_DEFAULT(Payment_type);
 	MODIFY_DEFAULT(Amt);
-	MODIFY_DEFAULT(OrderedQty);
 	MODIFY_DEFAULT(Remark);
-	MODIFY_DEFAULT(Version);
 	//执行数据修改
-	PurReqDAO dao;
+	PaymentDAO dao;
 	//然后将订单明细添加进数据库
-	for (PurReqEntryDTO& dto : dto.getDetail()) {
-		PurReqEntryAdamDO data;
-		//首先是进行id设置使用雪花算法
-		data.setId(to_string(sf.nextId()));
-		//设置和主表的链接键
-		data.setMid(id);
-		data.setBillNo(BillNo);
-		//进行必填值的插入
-		MODIFY(EntryNo);
-		MODIFY(MaterialId);
-		MODIFY(UnitId);
-		MODIFY(Qty);
-		MODIFY(OrderedQty);
-		//默认值设置
-		MODIFY_DEFAULT(SrcBillType);
-		MODIFY_DEFAULT(SrcEntryId);
-		MODIFY_DEFAULT(SrcNo);
-		MODIFY_DEFAULT(TaxRate);
-		MODIFY_DEFAULT(SrcNo);
-		MODIFY_DEFAULT(Price);
-		MODIFY_DEFAULT(Amt);
-		MODIFY_DEFAULT(SuggestSupplierId);
-		MODIFY_DEFAULT(Remark);
-		MODIFY_DEFAULT(Custom1);
-		MODIFY_DEFAULT(Custom2);
-		MODIFY_DEFAULT(Version);
-		dao.insertEntry(data);
-	}
-	return dao.insert(data);
+	return dao.insertPayment(data);
 }

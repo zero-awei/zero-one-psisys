@@ -2,6 +2,14 @@
 #ifndef _PAYMENT_SERVICE_
 #define _PAYMENT_SERVICE_
 #include <list>
+#include <time.h>
+#include <cstdio> //C++
+
+#include "SnowFlake.h"
+#include "FastDfsClient.h"
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
+
 //查看预付申请单列表
 #include "../../domain/query/prepaymentbill/PrepayBillQuery.h"
 #include "../../domain/query/prepaymentbill/PrepayDetailBillQuery.h"
