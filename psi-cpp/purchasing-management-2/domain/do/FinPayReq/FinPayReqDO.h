@@ -29,7 +29,7 @@ class FinPayReqDO
 	//业务部门
 	CC_SYNTHESIZE(string, op_dept, Op_dept);
 	//业务员
-	CC_SYNTHESIZE(string, operator1, Operator1);
+	CC_SYNTHESIZE(string, operator1, Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额

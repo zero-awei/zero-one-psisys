@@ -4,7 +4,6 @@
 
 void from_json(const json& j, AddPaymentDTO& apt) {
 	BIND_FROM_TO_NORMAL(j, apt, bill_no);
-	BIND_FROM_TO_NORMAL(j, apt, id);
 	BIND_FROM_TO_NORMAL(j, apt, bill_date);
 	BIND_FROM_TO_NORMAL(j, apt, src_bill_type);
 	BIND_FROM_TO_NORMAL(j, apt, src_bill_id);

@@ -39,6 +39,8 @@ public:
 	bool ChangePayStatus(const PaymentChangeDTO& dto);
 	// 添加数据
 	bool AddPay(const AddPaymentDTO& dto);
+	//插入数据
+	uint64_t saveData(const AddPaymentDTO& dto, const PayloadDTO& payload);
 
 };
 

@@ -21,8 +21,6 @@
 
 class AddPaymentDTO :public FileDTO
 {
-	//编号id
-	CC_SYNTHESIZE(string,	id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
