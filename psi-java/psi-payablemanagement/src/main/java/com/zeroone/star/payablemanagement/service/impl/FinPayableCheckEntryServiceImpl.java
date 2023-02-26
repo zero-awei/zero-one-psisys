@@ -47,6 +47,10 @@ public class FinPayableCheckEntryServiceImpl extends ServiceImpl<FinPayableCheck
      * 并返回VOS
      */
     private static List<CheckPayableEntryVO> createCheckPayableEntryVOS(List<FinPayableCheckEntry> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return null;
+        }
+
         List<CheckPayableEntryVO> result = entries.stream().map(finPayableCheckEntry -> {
             //构建VO
             CheckPayableEntryVO checkPayableEntryVO = new CheckPayableEntryVO();
