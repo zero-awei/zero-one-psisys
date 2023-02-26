@@ -225,6 +225,12 @@
     <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\PaymentBillImpl\addPayApplyDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\PaymentBillImpl\modPayApplyDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

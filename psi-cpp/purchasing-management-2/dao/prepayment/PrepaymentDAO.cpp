@@ -87,7 +87,8 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 }
 
 
-//修改单据状态
+// 修改单据状态
+// 负责人：Andrew
 int PrepaymentDAO::updateStatusClose(const PrepaymentDO& prepaydo)
 {
 	string sql = "UPDATE `fin_payment_req` SET `is_closed`=?, `update_by`=?, `update_time`=? WHERE `id`=?";
