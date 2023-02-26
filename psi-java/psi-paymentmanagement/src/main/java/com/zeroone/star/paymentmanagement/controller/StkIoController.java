@@ -32,7 +32,7 @@ public class StkIoController implements StkIoApis {
      * @param stkIoQuery 入库单条件
      * @return 列表
      */
-    @ApiOperation(value = "采购入库单查询", notes = "采购入库单查询", httpMethod = "GET")
+    @ApiOperation(value = "(采购付款-无申请)采购入库单查询", notes = "采购入库单查询", httpMethod = "GET")
     @Override
     @GetMapping
     public JsonVO<Page<StkIoVO>> queryStorage(StkIoQuery stkIoQuery) {
@@ -45,7 +45,7 @@ public class StkIoController implements StkIoApis {
      * @param stkIoQuery 条件
      * @return list
      */
-    @ApiOperation(value = "采购退货出库单", notes = "采购退货出库单", httpMethod = "GET")
+    @ApiOperation(value = "(采购退货退款-红付)采购退货出库单", notes = "采购退货出库单", httpMethod = "GET")
     @Override
     @GetMapping("/deliveryOrder")
     public JsonVO<Page<StkIoVO>> deliveryOrder(StkIoQuery stkIoQuery) {

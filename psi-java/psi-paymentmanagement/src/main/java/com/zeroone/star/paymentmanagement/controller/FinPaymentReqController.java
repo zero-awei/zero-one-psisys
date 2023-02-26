@@ -41,7 +41,7 @@ public class FinPaymentReqController implements FinPaymentReqApis {
      * @author 白也
      */
 
-    @ApiOperation(value = "付款申请查询", notes = "付款申请查询")
+    @ApiOperation(value = "(采购付款-有申请)付款申请查询", notes = "付款申请查询")
     @Override
     @GetMapping
     public JsonVO<Page<FinPaymentReqVO>> queryAll(FinPaymentReqQuery finPayment) {
