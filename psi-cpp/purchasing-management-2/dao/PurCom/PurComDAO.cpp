@@ -21,6 +21,17 @@
 #include "PurComMApper.h"
 #include <sstream>
 
+uint64_t PurComDAO::count(const PurComDO& obj)
+{
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM pur_compare";
+	SqlParams params;
+	//____待添加筛选条件___
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
+	return uint64_t();
+}
+
 //分页查询数据
 list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
