@@ -4,12 +4,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.sysmanagement.permissionmanagement.PermissionQuery;
 import com.zeroone.star.project.vo.sysmanagement.permissionmanagement.PermissionVO;
 import com.zeroone.star.psisysmanagement.entity.Permission;
-import com.zeroone.star.psisysmanagement.entity.SysPermission;
 import com.zeroone.star.project.vo.PageVO;
 
 
 import java.util.List;
-*/
+
 public interface IRolePermissionService extends IService<Permission> {
 
     /**

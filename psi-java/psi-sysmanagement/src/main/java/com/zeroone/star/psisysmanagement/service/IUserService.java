@@ -1,6 +1,7 @@
 package com.zeroone.star.psisysmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
@@ -30,6 +31,9 @@ public interface IUserService extends IService<User> {
     // axin
     //    查询用户信息（通过FindUserQuery中的name属性）
     PageVO<UserVO> listUser(FindUserQuery query);
+    //     axin
+//        新增用户
+    void saveUser(AddUserDTO dto);
 
 
     // dan

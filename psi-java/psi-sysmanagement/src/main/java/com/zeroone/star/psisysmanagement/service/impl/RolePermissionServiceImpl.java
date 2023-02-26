@@ -10,7 +10,6 @@ import com.zeroone.star.project.query.sysmanagement.permissionmanagement.Permiss
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.permissionmanagement.PermissionVO;
 import com.zeroone.star.psisysmanagement.entity.Permission;
-import com.zeroone.star.psisysmanagement.entity.SysPermission;
 import com.zeroone.star.psisysmanagement.mapper.PermissionMapper;
 import com.zeroone.star.psisysmanagement.service.IRolePermissionService;
 import com.zeroone.star.psisysmanagement.util.IDGenerator;
@@ -28,9 +27,22 @@ import java.util.List;
 @Service
 public class RolePermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IRolePermissionService {
 
+    /**
+     *
+     * @param RId
+     * @return
      */
     @Override
+    public List<PermissionQuery> listAll(String RId) {
+        QueryWrapper<Permission> lisPermission = new QueryWrapper<>();
+        lisPermission.eq("father_permission_id",RId);
+        List<Permission> permissions = baseMapper.selectList(lisPermission);
+        List<PermissionQuery> list = new ArrayList<>();
+        for (Permission permission : permissions) {
+            PermissionQuery permissionQuery = new PermissionQuery();
+            BeanUtil.copyProperties(permission,permissionQuery);
             list.add(permissionQuery);
+        }
         return list;
     }
 

@@ -7,6 +7,7 @@ import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
 import com.zeroone.star.project.components.easyexcel.ExcelReadListener;
 import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
 import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
@@ -101,7 +102,8 @@ public class UserController implements UserApis {
     @ApiOperation(value = "添加用户")
     @PostMapping("/add")
     @Override
-    public JsonVO<String> addUser(UserDTO dto) {
+    public JsonVO<String> addUser(@Validated AddUserDTO dto) {
+        iUserService.saveUser(dto);
         return JsonVO.success("添加成功");
     }
 

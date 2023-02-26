@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
+import com.zeroone.star.project.dto.sysmanagement.usermanagement.AddUserDTO;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
@@ -77,6 +78,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        执行分页查询
         Page<User> result = baseMapper.selectPage(userPage, userQueryWrapper);
         return PageVO.create(result, UserVO.class);
+    }
+
+    //    axin
+//       新增用户
+    @Override
+    public void saveUser(AddUserDTO dto) {
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
+        log.info("user = {}", user);
+        this.save(user);
     }
 
     // dan
