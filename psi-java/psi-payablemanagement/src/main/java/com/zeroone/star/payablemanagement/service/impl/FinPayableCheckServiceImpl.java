@@ -38,17 +38,79 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void submitAdd(CheckPayableDTO dto) {
+        isAllowSubmit(dto);
+        addWithEntry(dto);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void saveAdd(CheckPayableDTO dto) {
+        isEmpty(dto);
+        addWithEntry(dto);
+    }
+
+    private void addWithEntry(CheckPayableDTO dto) {
+        FinPayableCheck finPayableCheck = new FinPayableCheck();
+        BeanUtil.copyProperties(dto, finPayableCheck);
+        this.save(finPayableCheck);
+        List<FinPayableCheckEntry> list = BeanUtil.copyToList(dto.getCheckPayableEntryList(),
+            FinPayableCheckEntry.class);
+        list.forEach(item -> item.setBillNo(dto.getBillNo()));
+        finPayableCheckEntryService.saveBatch(list);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void submitModify(CheckPayableDTO dto) {
+        isAllowSubmit(dto);
+        updateWithEntry(dto);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void saveModify(CheckPayableDTO dto) {
+        isEmpty(dto);
+        updateWithEntry(dto);
+    }
+
+    private void updateWithEntry(CheckPayableDTO dto) {
+        FinPayableCheck finPayableCheck = new FinPayableCheck();
+        BeanUtil.copyProperties(dto, finPayableCheck);
+        this.updateById(finPayableCheck);
+        finPayableCheckEntryService.remove(new LambdaQueryWrapper<FinPayableCheckEntry>()
+            .eq(FinPayableCheckEntry::getBillNo, dto.getBillNo()));
+        List<FinPayableCheckEntry> list = BeanUtil.copyToList(dto.getCheckPayableEntryList(),
+            FinPayableCheckEntry.class);
+        list.forEach(item -> item.setBillNo(dto.getBillNo()));
+        finPayableCheckEntryService.saveBatch(list);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void removeWithEntry(List<String> ids) {
+        this.removeByIds(ids);
+        List<FinPayableCheck> list = this.listByIds(ids);
+        List<String> billNos = list.stream().map(FinPayableCheck::getBillNo).collect(Collectors.toList());
+        finPayableCheckEntryService.remove(new LambdaQueryWrapper<FinPayableCheckEntry>()
+            .in(FinPayableCheckEntry::getBillNo, billNos));
+    }
+
+    private static void isEmpty(CheckPayableDTO dto) {
         // 判空
         List<CheckPayableEntryDTO> checkPayableEntryList = dto.getCheckPayableEntryList();
         if (CollectionUtils.isEmpty(checkPayableEntryList)) {
             throw new RuntimeException("应付核销单明细为空！");
         }
+    }
+
+    private static void isAllowSubmit(CheckPayableDTO dto) {
+        // 判空
+        isEmpty(dto);
         // 按核销方向分组
-        Map<String, List<CheckPayableEntryDTO>> collect = checkPayableEntryList.stream()
+        Map<String, List<CheckPayableEntryDTO>> collect = dto.getCheckPayableEntryList().stream()
             .collect(Collectors.groupingBy(CheckPayableEntryDTO::getCheckSide));
         List<CheckPayableEntryDTO> list1 = collect.get("1");
         List<CheckPayableEntryDTO> list2 = collect.get("2");
-        // TODO: 上下核销不一致无法提交
         // 计算各自的核销金额是否一致
         BigDecimal b1 = new BigDecimal(0);
         for (CheckPayableEntryDTO item : list1) {
@@ -62,47 +124,5 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
         if (b1.compareTo(b2) != 0) {
             throw new RuntimeException("上下核销不一致，无法提交！");
         }
-        FinPayableCheck finPayableCheck = new FinPayableCheck();
-        BeanUtil.copyProperties(dto, finPayableCheck);
-        this.save(finPayableCheck);
-        List<FinPayableCheckEntry> list = BeanUtil.copyToList(checkPayableEntryList,
-            FinPayableCheckEntry.class);
-        list.forEach(item -> item.setBillNo(dto.getBillNo()));
-        finPayableCheckEntryService.saveBatch(list);
-    }
-
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void saveAdd(CheckPayableDTO dto) {
-        // 判空
-        List<CheckPayableEntryDTO> checkPayableEntryList = dto.getCheckPayableEntryList();
-        if (CollectionUtils.isEmpty(checkPayableEntryList)) {
-            throw new RuntimeException("应付核销单明细为空！");
-        }
-        FinPayableCheck finPayableCheck = new FinPayableCheck();
-        BeanUtil.copyProperties(dto, finPayableCheck);
-        this.save(finPayableCheck);
-        List<FinPayableCheckEntry> list = BeanUtil.copyToList(dto.getCheckPayableEntryList(),
-            FinPayableCheckEntry.class);
-        list.forEach(item -> item.setBillNo(dto.getBillNo()));
-        finPayableCheckEntryService.saveBatch(list);
-    }
-
-    @Override
-    public void submitModify(CheckPayableDTO dto) {
-        // 思路：先删除再新增 亦或 直接更新
-    }
-
-    @Override
-    public void saveModify(CheckPayableDTO dto) {
-        // 思路：先删除再新增 亦或 直接更新
-    }
-
-    @Override
-    public void removeWithEntry(List<String> ids) {
-        List<FinPayableCheck> list = listByIds(ids);
-        // TODO: 需要查询出对应的明细进行删除
-        this.remove(new LambdaQueryWrapper<FinPayableCheck>()
-            .in(FinPayableCheck::getId, ids));
     }
 }
