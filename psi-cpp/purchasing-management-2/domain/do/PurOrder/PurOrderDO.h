@@ -132,10 +132,12 @@ class PurOrderDO
 	CC_SYNTHESIZE(string, update_by, Update_by);
 	// 修改时间
 	CC_SYNTHESIZE(string, update_time, Update_time);
+	// 版本
+	CC_SYNTHESIZE(int, version, Version);
 
 public:
 	PurOrderDO() {
-		id = -1;
+		id = "";
 		bill_no = "";
 		bill_date = "";
 		src_bill_type = "";
@@ -187,6 +189,7 @@ public:
 		in_qty = -1;
 		in_cost = -1;
 		invoiced_amt = -1;
+		version = -1;
 	}
 };
 

@@ -84,7 +84,7 @@ private:
 	PurOrderEntryDO() {
 		id = "";
 		bill_no = "";
-		entry_no = "";
+		entry_no = -1;
 		src_bill_type = "";
 		src_bill_id = "";
 		src_no = "";

@@ -322,13 +322,6 @@ uint64_t PurOrderDAO::update(const PurOrderDO& iObj)
     return sqlSession->executeUpdate(sqlStr, params);
 }
 
-// ÊÇ·ñ´æÔÚ
-uint64_t PurOrderDAO::count(const PurOrderDO& iObj)
-{
-    string sql = "SELECT count(*) FROM `pur_order` WHERE `bill_no` = ?"; 
-    return sqlSession->executeQueryNumerical(sql, "%s", iObj.getBill_no());
-}
-
 list<PurOrderDO> PurOrderDAO::selectDetail(const string bill_no)
 {
     string sql;
