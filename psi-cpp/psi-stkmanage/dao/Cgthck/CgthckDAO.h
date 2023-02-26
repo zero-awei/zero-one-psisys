@@ -20,7 +20,7 @@ public:
 	// 统计数据条数
 	uint64_t count(const CgthckDO& iobj);
 	// 分页查询数据
-	list<CgthckDO> selectById(const string& id);
+	list<CgthckDO> selectWithPage(const CgthckDO& iobj, uint64_t pageIndex, uint64_t pageSize);
 	// 插入单据数据
 	uint64_t insert(const CgthckDO& iobj);
 	// 插入单据明细

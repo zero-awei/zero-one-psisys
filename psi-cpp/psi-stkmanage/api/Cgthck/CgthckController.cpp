@@ -25,7 +25,8 @@ JsonVO<PageVO<QueryCgrkBillListsVO>> CgthckController::execQueryCgrkBillList(con
     CgthckService service;
 
     // ²éÑ¯Êý¾Ý
-    PageVO<QueryCgthckBillVO> result = service.listAll(query);
+    PageVO<QueryCgrkBillListsVO> result = service.listAll(query);
+    return JsonVO<PageVO<QueryCgrkBillListsVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> CgthckController::execAddCgthckBill(const AddCgthckBillDTO& dto)

@@ -6,7 +6,11 @@ PageVO<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& qu
     // 构建时间区间
     auto getTimeZone = [](const std::string & begin, const std::string & end)->std::string
     {
-        return begin + '%' + end;
+        if (!begin.empty() && !end.empty())
+        {
+            return string{ begin + '%' + end };
+        }
+        return string{ "" };
     };
     // 构建返回对象
     PageVO<QueryCgrkBillListsVO> pages;
@@ -38,7 +42,7 @@ PageVO<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& qu
     // 分页查询数据
     pages.setTotal(count);
     pages.calcPages();
-    list<CgthckDO> result = dao.selectById(query.getBillNo());
+    list<CgthckDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
     list< QueryCgrkBillListsVO> vr;
     for (auto sub : result)
     {
@@ -48,29 +52,30 @@ PageVO<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& qu
         // 单据日期
         vo.setBillDate(sub.getBillDate());
         // 单据主题
-
+        vo.setSubject(sub.getSubject());
         // 入库类型
-
+        vo.setStockIoType(sub.getStockIoType());
         // 源单号
-
+        vo.setSrcNo(sub.getSrcNo());
         // 供应商
         vo.setSupplierId(sub.getSupplierId());
         // 业务部门
-
+        vo.setOpDept(sub.getOpDept());
         // 业务员
-
+        vo.setSrcOperator(sub.getOperator1());
         // 结算金额
-
+        vo.setSettleAmt(sub.getSettleAmt());
         // 已结算金额
-
+        vo.setSettledAmt(sub.getSettledAmt());
         // 已开票金额
-
+        vo.setInvoicedAmt(sub.getInvoicedAmt());
         // 发票类型
-
+        vo.setInvoiceType(sub.getInvoiceType());
         // 有涨吨
-
+        vo.setHasSwell(sub.getHasSwell());
         // 已关闭
-        
+        vo.setIsClosed(sub.getIsClosed());
+
         vr.push_back(vo);
     }
     pages.setRows(vr);

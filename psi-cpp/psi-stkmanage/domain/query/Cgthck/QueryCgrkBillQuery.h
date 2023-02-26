@@ -27,6 +27,8 @@ public:
 	// °ó¶¨from_json
 	friend void from_json(const json& j, QueryCgrkBillQuery& t)
 	{
+		BIND_FROM_TO_ULL(j, t, pageIndex);
+		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 		BIND_FROM_TO_NORMAL(j, t, billDateStart);
 		BIND_FROM_TO_NORMAL(j, t, billDateEnd);

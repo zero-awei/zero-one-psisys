@@ -129,6 +129,7 @@ void Router::createCgthckRouter()
 {
 	//BIND_GET_ROUTER(server, "/query-cgthck-bill-list", &CgthckController::queryCgthcBillk, nullptr);
 	//BIND_GET_ROUTER(server, "/query-cgthck-bill-details", &CgthckController::queryCgthckBillDetail, nullptr);
+	BIND_GET_ROUTER(server, "/query-cgrk-bill-list", &CgthckController::queryCgrkBillList, nullptr);
 	BIND_POST_ROUTER(server, "/add-cgthck-bill", &CgthckController::addCgthckBill, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-cgthck-bill", &CgthckController::modifyCgthckBill, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-cgthck-bill-approval", &CgthckController::modifyCgthckApproval, nullptr);
