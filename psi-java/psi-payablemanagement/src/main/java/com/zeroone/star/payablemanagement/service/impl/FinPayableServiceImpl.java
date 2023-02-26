@@ -173,8 +173,8 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
         //与传入payableStatus相同BillNo的数据库中的实体类
         FinPayable finPayableDB = baseMapper.selectOne(wrapper);
-        //如果单据已关闭或者单据已作废，或者没有该条数据则无法更新
-        if(finPayableDB==null||finPayableDB.getIsClosed()==1||finPayableDB.getIsVoided()==1){
+        //如果单据已作废，或者没有该条数据则无法更新
+        if(finPayableDB==null||finPayableDB.getIsVoided()==1){
             return 0;
         }
 
