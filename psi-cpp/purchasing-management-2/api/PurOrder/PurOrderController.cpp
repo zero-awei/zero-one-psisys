@@ -38,16 +38,13 @@ JsonVO<PageVO<PurOrderVO>> PurOrderController::execQueryPurOrder(const PurOrderQ
 }
 
 // 查询单个数据byDTO
-JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
+JsonVO<PurOrderDetailVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 {
 	PurOrderService service;
-	PurOrderVO test;
+	PurOrderDetailVO result = service.getPurOrder(dto.getBill_no());
+	JsonVO<PurOrderDetailVO> jsresult = JsonVO(result, RS_SUCCESS);
 
-	JsonVO<PurOrderVO> result = JsonVO(service.getPurOrder(dto.getId()), RS_SUCCESS);
-	test.setId(dto.getId());
-	result = JsonVO(test, RS_SUCCESS);
-
-	return result;
+	return jsresult;
 }
 
 // 新增数据

@@ -126,10 +126,16 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 }
 
 // 查询单个数据
-PurOrderVO PurOrderService::getPurOrder(string id)
+PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 {
-	PurOrderVO data;
-
+	PurOrderDetailVO data;
+	PurOrderDAO dao;
+	list<PurOrderDO> do_datas;
+	do_datas = dao.selectDetail(bill_no);
+	for (auto do_data : do_datas)
+	{
+		data.setId(do_data.getId());
+	}
 	return data;
 }
 

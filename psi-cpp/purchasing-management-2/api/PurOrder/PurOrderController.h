@@ -25,6 +25,7 @@
 #include "../../domain/dto/PurOrder/PurOrderDTO.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
+#include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
@@ -53,7 +54,7 @@ private:
 	// 请求分页数据
 	JsonVO<PageVO<PurOrderVO>> execQueryPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
 	// 查询单个数据
-	JsonVO<PurOrderVO> execGetPurOrder(const PurOrderDTO& dto);
+	JsonVO<PurOrderDetailVO> execGetPurOrder(const PurOrderDTO& dto);
 	// 新增数据
 	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改数据

@@ -17,15 +17,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_ORDER_VO_
-#define _PUR_ORDER_VO_
+#ifndef _PUR_REQ_VO
+#define _PUR_REQ_VO
 
 #include "../../GlobalInclude.h"
-#include "PurOrderEntryVO.h"
+
 /**
- * 示例显示对象
+ * 采购申请单对象
  */
-class PurOrderVO
+class PurReqVO
 {
 	// ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -135,17 +135,17 @@ class PurOrderVO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
 	CC_SYNTHESIZE(int, version, Version);
-	// 明细
-	CC_SYNTHESIZE(list<PurOrderEntryVO>, detail, Detail);
 
 public:
 	//测试用无参构造
-	PurOrderVO()
+	PurReqVO()
 	{
-
+	
 	}
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \
+	friend void from_json(const json& j, PurReqVO& t); // NOLINT
+	friend void to_json(const json& j, PurReqVO& t); // NOLINT
+	BIND_TO_JSON(PurReqVO, id, bill_no, bill_date, src_bill_type, \
 		src_bill_id, src_no, subject, \
 		is_rubric, pur_type, supplier_id, \
 		contact, phone, fax, email, \
@@ -158,7 +158,7 @@ public:
 		remark, is_auto, bill_stage, approver, bpmi_instance_id, \
 		approval_result_type, approval_remark, is_effective, \
 		effective_time, is_closed, is_voided, sys_org_code, \
-		create_by, create_time, update_by, update_time, version, detail);
+		create_by, create_time, update_by, update_time, version);
 };
 
-#endif // !_PUR_ORDER_VO_
+#endif // !_PUR_REQ_VO

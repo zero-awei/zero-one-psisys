@@ -189,6 +189,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderDetailMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
     <ClInclude Include="dao\PurQuot\PurQuotDAO.h" />
     <ClInclude Include="dao\PurQuot\PurQuotMapper.h" />
@@ -235,7 +236,10 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComVO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurOrderDetailVO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurReqVO.h" />
     <ClInclude Include="domain\vo\PurReq\PurReqVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="domain\vo\StatisVO\ExeStatusVO.h" />

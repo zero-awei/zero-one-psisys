@@ -21,6 +21,7 @@
 #define _PUR_ORDER_SERVICE_
 #include <list>
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
+#include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
 #include "../../domain/dto/PurOrder/PurOrderDTO.h"
@@ -37,7 +38,7 @@ public:
 	// 分页查询所有数据
 	PageVO<PurOrderVO> listPurOrder(const PurOrderQuery& query);
 	// 查询单个数据
-	PurOrderVO getPurOrder(string id);
+	PurOrderDetailVO getPurOrder(string id);
 	// 保存数据
 	uint64_t saveData(const PurOrderDTO& dto);
 	// 修改数据
