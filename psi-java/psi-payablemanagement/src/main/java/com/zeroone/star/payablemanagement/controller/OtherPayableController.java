@@ -1,6 +1,7 @@
 package com.zeroone.star.payablemanagement.controller;
 
 import com.zeroone.star.payablemanagement.service.IFinPayableService;
+import com.zeroone.star.project.dto.payablemanagement.DeleteDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
 import com.zeroone.star.project.payablemanagement.OtherPayableApis;
@@ -69,7 +70,7 @@ public class OtherPayableController implements OtherPayableApis {
     @DeleteMapping("deleteOtherPayable}")
     @ApiOperation(value = "删除其他应付单")
     @Override
-    public JsonVO<String> deleteOtherPayable(PayableDTO delete) {
+    public JsonVO<String> deleteOtherPayable(DeleteDTO delete) {
 
         return service.delOtherPayable(delete) > 0 ? JsonVO.success("删除成功") : JsonVO.fail("删除失败");
     }

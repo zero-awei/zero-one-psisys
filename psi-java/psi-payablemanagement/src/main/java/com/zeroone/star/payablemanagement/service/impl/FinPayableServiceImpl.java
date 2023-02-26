@@ -9,6 +9,7 @@ import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.zeroone.star.payablemanagement.mapper.FinPayableMapper;
 import com.zeroone.star.payablemanagement.service.IFinPayableService;
 import com.zeroone.star.payablemanagement.utils.TransformationUtils;
+import com.zeroone.star.project.dto.payablemanagement.DeleteDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
 import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
@@ -110,7 +111,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
     @Override
     public int addOtherPayable(PayableDTO newPayable) {
-        if (newPayable==null){
+        if (newPayable==null||newPayable.getId()==null){
             return 0;
         }
         //将PayableDTO转换为finPayable实体类
@@ -128,7 +129,8 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
     @Override
     public int updateOtherPayable(PayableDTO updatePayable) {
         FinPayable finPayable = null;
-        if(updatePayable==null){
+        //传入值为空或者单据已作废则或者已关闭无法更新
+        if(updatePayable==null||updatePayable.getIsClosed()==1||updatePayable.getIsVoided()==1){
             return 0;
         }
         //将PayableDTO转换为finPayable实体类
@@ -138,7 +140,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
     }
 
     @Override
-    public int delOtherPayable(PayableDTO delPayable) {
+    public int delOtherPayable(DeleteDTO delPayable) {
         FinPayable finPayable = null;
         if(delPayable==null){
             return 0;
@@ -150,8 +152,8 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
     @Override
     public int updateOtherPayableStatus(PayableStatusDTO payableStatus) {
         FinPayable finPayable = null;
-        //传入值为空或者单据已作废则无法更新状态
-        if(payableStatus==null||payableStatus.getIsVoided()==1){
+        //传入值为空或者单据已作废则或者已关闭无法更新状态
+        if(payableStatus==null||payableStatus.getIsVoided()==1||payableStatus.getIsClosed()==1){
             return 0;
         }
         finPayable = TransformationUtils.toAllDto(payableStatus,FinPayable.class);

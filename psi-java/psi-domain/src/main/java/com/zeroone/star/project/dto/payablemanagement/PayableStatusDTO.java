@@ -16,6 +16,11 @@ import lombok.Data;
 @ApiModel("其他应付单单据状态传输对象")
 public class PayableStatusDTO {
     /**
+     * 单据ID
+     */
+    @ApiModelProperty(value = "ID", example = "1590717742358511617")
+    private String id;
+    /**
      * 单据编号
      */
     @ApiModelProperty(value = "单据编号", example = "QTAP-230213-007")

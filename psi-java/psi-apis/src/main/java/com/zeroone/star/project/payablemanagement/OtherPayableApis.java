@@ -1,5 +1,6 @@
 package com.zeroone.star.project.payablemanagement;
 
+import com.zeroone.star.project.dto.payablemanagement.DeleteDTO;
 import com.zeroone.star.project.dto.payablemanagement.PayableStatusDTO;
 import com.zeroone.star.project.query.payablemanagement.PayableQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -59,7 +60,7 @@ public interface OtherPayableApis {
      * 删除应付单
      * @param delPayable 待删除应付单DTO
      */
-    JsonVO<String> deleteOtherPayable(PayableDTO delPayable);
+    JsonVO<String> deleteOtherPayable(DeleteDTO delPayable);
 
 
     /**
