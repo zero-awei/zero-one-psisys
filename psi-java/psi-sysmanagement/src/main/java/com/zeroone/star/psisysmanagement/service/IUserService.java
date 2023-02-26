@@ -2,15 +2,14 @@ package com.zeroone.star.psisysmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
-import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
-import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
 import com.zeroone.star.psisysmanagement.entity.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -41,5 +40,6 @@ public interface IUserService extends IService<User> {
     boolean updateUser(EditUserDTO dto);
     // dan
     EditUserVO getUserInfo(String id);
-
+    // dan
+    void saveUsers(MultipartFile file) throws Exception;
 }

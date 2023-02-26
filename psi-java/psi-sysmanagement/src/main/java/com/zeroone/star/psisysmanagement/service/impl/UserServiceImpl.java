@@ -1,16 +1,15 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.date.DateTime;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.read.listener.PageReadListener;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
 import com.zeroone.star.project.dto.sysmanagement.usermanagement.EditUserDTO;
-import com.zeroone.star.project.dto.sysmanagement.usermanagement.UserDTO;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.FindUserQuery;
 import com.zeroone.star.project.query.sysmanagement.usermanagement.UserQuery;
-import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.EditUserVO;
 import com.zeroone.star.project.vo.sysmanagement.usermanagement.UserVO;
@@ -28,12 +27,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -127,6 +126,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         log.info("departs :{}", departs);
         editUserVO.setDepartName(departs.get(0).getDepartName());
         return editUserVO;
+    }
+
+    // dan
+    @Transactional
+    @Override
+    public void saveUsers(MultipartFile file) throws Exception {
+        EasyExcel.read(file.getInputStream(), User.class, new PageReadListener<User>(this::saveBatch)).sheet().doRead();
     }
 
 }
