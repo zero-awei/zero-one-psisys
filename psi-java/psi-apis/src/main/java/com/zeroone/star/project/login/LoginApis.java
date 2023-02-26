@@ -52,4 +52,11 @@ public interface LoginApis {
      * @throws Exception 异常信息
      */
     JsonVO<List<TreeNodeVO<MenuTreeVO>>> getMenus() throws Exception;
+
+    /**
+     * @author Gerins
+     * @return 验证码
+     * @desc 生成验证码
+     */
+    JsonVO getCaptcha();
 }

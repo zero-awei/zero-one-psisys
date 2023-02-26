@@ -20,13 +20,13 @@ import java.util.List;
 @Data
 public class LoginVO {
     @ApiModelProperty(value = "用户唯一编号", example = "1")
-    private Integer id;
+    private String id;
 
     @ApiModelProperty(value = "用户名", example = "admin")
     private String username;
 
     @ApiModelProperty(value = "是否启用 1 启用 0 禁用 ", example = "1")
-    private Byte isEnabled;
+    private Boolean isEnabled;
 
     @ApiModelProperty(value = "用户角色列表", example = "['ADMIN','MANAGER']")
     private List<String> roles;

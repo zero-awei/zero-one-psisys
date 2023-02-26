@@ -21,7 +21,7 @@ public class UserDTO {
     /**
      * 用户编号
      */
-    private Integer id;
+    private String id;
     /**
      * 用户名称
      */
@@ -29,7 +29,7 @@ public class UserDTO {
     /**
      * 是否启用
      */
-    private Byte isEnabled;
+    private Boolean isEnabled;
     /**
      * 用户拥有角色列表
      */

@@ -47,10 +47,25 @@ public class UserHolder {
         }
         JSONObject userJsonObject = new JSONObject(userStr);
         return UserDTO.builder()
-                .id(Convert.toInt(userJsonObject.get("id")))
+                .id(Convert.toStr(userJsonObject.get("id")))
                 .username(userJsonObject.getStr("user_name"))
-                .isEnabled(Convert.toByte(1))
+                .isEnabled(Convert.toBool(1))
                 .roles(Convert.toList(String.class, userJsonObject.get("authorities")))
                 .build();
+    }
+
+    /**
+     * @author Gerins
+     * @desc 获取当前用户token
+     */
+    public String getCurrentUserToken() throws Exception {
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (servletRequestAttributes == null) {
+            return null;
+        }
+
+        // 获取请求Request中的token
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        return request.getHeader("Authorization").replace("Bearer ", "");
     }
 }

@@ -1,10 +1,13 @@
 package com.zeroone.star.login.controller;
 
+import cn.hutool.captcha.CaptchaUtil;
+import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
+import com.zeroone.star.login.entity.SysMenu;
+import com.zeroone.star.login.entity.SysRole;
 import com.zeroone.star.login.entity.SysUser;
-import com.zeroone.star.login.service.IMenuService;
-import com.zeroone.star.login.service.ISysUserService;
-import com.zeroone.star.login.service.OauthService;
+import com.zeroone.star.login.service.*;
 import com.zeroone.star.login.utils.CommonUtils;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
@@ -26,6 +29,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,6 +62,8 @@ public class LoginController implements LoginApis {
     UserHolder userHolder;
     @Resource
     ISysUserService userService;
+    @Resource
+    ISysRoleService roleService;
     @Resource
     private RedisUtils redisUtils;
 
@@ -157,8 +163,22 @@ public class LoginController implements LoginApis {
             return JsonVO.fail(null);
         } else {
 
-//            SysUser user = userService.getById(currentUser.getId());
-//            currentUser.setUsername(user.getUsername());
+            SysUser user = userService.getById(currentUser.getId());
+            currentUser.setId(user.getId());
+            currentUser.setUsername(user.getUsername());
+            // 1正常 2冻结
+            currentUser.setIsEnabled(user.getStatus());
+
+            /*
+            查询用户拥有的角色列表
+             */
+            List<SysRole> sysRoles = roleService.listRoleByUserId(currentUser.getId());
+            List<String> roleNameList = new ArrayList<>();
+            for (SysRole sysRole : sysRoles) {
+                roleNameList.add(sysRole.getRoleName());
+            }
+
+            currentUser.setRoles(roleNameList);
 
             //TODO:这里需要根据业务逻辑接口，重新实现
             LoginVO vo = new LoginVO();
@@ -171,8 +191,27 @@ public class LoginController implements LoginApis {
     @GetMapping("logout")
     @Override
     public JsonVO<String> logout() {
+        // 1. 获取当前用户Token
+        String userToken;
+        try {
+            userToken = userHolder.getCurrentUserToken();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (StrUtil.isBlank(userToken)) {
+            return JsonVO.fail(ResultStatus.UNAUTHORIZED.getMessage(), ResultStatus.UNAUTHORIZED);
+        }
+
+        // 2. 移除当前用户Token
+        String userTokenKey = CommonUtils.generateRedisTokenKey(userToken);
+        if (redisUtils.del(userTokenKey) < 0) {
+            return JsonVO.fail(ResultStatus.SERVER_ERROR.getMessage(), ResultStatus.SERVER_ERROR);
+        }
+
+        return JsonVO.success("退出操作成功" + ResultStatus.SUCCESS.getMessage());
+
         //TODO:登出逻辑，需要配合登录逻辑实现
-        return null;
+
     }
 
     @Resource
@@ -203,17 +242,50 @@ public class LoginController implements LoginApis {
     }
 
 
+    @Value("${captcha.width}")
+    private int captchaWidth;
 
-//            User user = userService.getById(currentUser.getId());
-//            currentUser.setUserId(user.getUserId());
-//            currentUser.setEmail(user.getEmail());
-//            currentUser.setAddress(user.getAddress());
-//            currentUser.setLocationCD(user.getLocationCd());
-//            currentUser.setAge(user.getAge());
-//            currentUser.setSex(user.getSex());
-//            currentUser.setTel(user.getTel());
-//            currentUser.setLevelCd(user.getLevelCd());
-//            currentUser.setBId(user.getBId());
-//            currentUser.setStatusCd(user.getStatusCd());
-//            currentUser.setScore(user.getScore());
+    @Value("${captcha.height}")
+    private int captchaHeight;
+
+    @Value("${captcha.codeCount}")
+    private int codeCount;
+
+    @Value("${captcha.lineCount}")
+    private int lineCount;
+
+    /**
+     * @author  Gerins
+     * @desc  生成验证码
+     */
+    @ApiOperation("生成验证码")
+    @GetMapping ("get-captcha")
+    @Override
+    public JsonVO getCaptcha() {
+        // 1. 生成验证码
+        LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(captchaWidth, captchaHeight, codeCount, lineCount);
+        String captcha = lineCaptcha.getCode();
+        log.info("captcha code: {}", captcha);
+
+        String imageBase64 = lineCaptcha.getImageBase64();
+        log.info("imageBase64: {}", imageBase64);
+
+        // 2. 将验证码放到redis，有效时间为60s
+        String redisKey = CommonUtils.generateRedisKey(RedisConstant.CAPTCHA, captcha);
+
+        if (redisUtils.add(redisKey, captcha, 60L, TimeUnit.SECONDS) < 0) {
+            return JsonVO.fail(null, ResultStatus.SERVER_ERROR);
+        }
+
+        // 3. 返回Base64格式数据
+        Map<String, Object> data = new HashMap<>();
+        data.put("imageBase64", "data:image/jpg;base64," + imageBase64);
+        data.put("captcha", captcha);
+        return JsonVO.success(data);
+    }
+
+
+
+
+
 }
