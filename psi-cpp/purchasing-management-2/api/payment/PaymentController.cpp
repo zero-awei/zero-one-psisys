@@ -71,27 +71,31 @@ JsonVO<string> PaymentController::execDePayment(const DePaymentDTO& dto)
 	return result;
 }
 
-JsonVO<std::string> PaymentController::execExportPayment(const IntIDs& query)
-{
-	JsonVO<std::string> result;
-	result.success(u8"http://filedownload.com");
-	//响应结果
-	return result;
-}
-
-JsonVO<PaymentVO> PaymentController::exeImportPayment(const PaymentImportDTO& dto)
-{
-	//构建一个测试VO
-	PaymentVO vo;
-	//vo.setNickname(dto.getNickname());
-	//vo.setIdCard(dto.getIdCard());
-	//vo.setAge(dto.getAge());
-
-	//输出测试上传文件路径列表
-	for (auto file : dto.getFiles()) {
-		std::cout << "path " << file << std::endl;
-	}
-
-	//响应结果
-	return JsonVO<PaymentVO>(vo, RS_API_UN_IMPL);
-}
+//// 添加申请单
+//JsonVO<string> PaymentController::execAddPayment(const AddPaymentDTO& dto)
+//{
+//	PaymentService service;
+//	JsonVO<string> result;
+//	// 数据校验
+//	if ( dto.getBill_no() == "") {// 如果单据编号为空
+//		return JsonVO<string>({}, RS_PARAMS_INVALID);
+//	}
+//	//执行数据添加
+//	if (service.DePayment(dto)) {
+//		result.success(dto.getBill_no());
+//		result.setMessage(CharsetConvertHepler::ansiToUtf8("删除成功"));
+//	}
+//	else {
+//		result.fail(dto.getId());
+//		result.setMessage(CharsetConvertHepler::ansiToUtf8("删除失败"));
+//	}
+//	//响应结果
+//	return result;
+//}
+//JsonVO<std::string> PaymentController::execExportPayment(const IntIDs& query)
+//{
+//	JsonVO<std::string> result;
+//	result.success(u8"http://filedownload.com");
+//	//响应结果
+//	return result;
+//}

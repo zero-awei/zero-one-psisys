@@ -7,7 +7,7 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 {
 	//组装传输数据
 	PaymentDAO dao;
-	PurReqDO data;
+	FinPayReqDO data;
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
 	//执行数据修改
@@ -22,7 +22,7 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto)
 {
 	//组装传输数据
-	PurReqDO data;
+	FinPayReqDO data;
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
 	//执行数据修改
@@ -36,6 +36,21 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto)
 	{
 		data.setIs_voided(dto.getIs_voided());
 		return dao.ChangeStatusCancel(data) == 1;
+	}
+}
+
+// 添加数据
+bool PaymentService::AddPay(const AddPaymentDTO& dto)
+{
+	//组装传输数据
+	FinPayReqDO data;
+	data.setBill_no(dto.getBill_no());
+	//执行数据修改
+	PaymentDAO dao;
+	if ( dto.getBill_no() != "")
+	{
+		data.setId(dto.getBill_no());
+		return dao.deleteById(data) == 1;
 	}
 }
 

@@ -13,16 +13,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _ADD_PAY_APPLY_DTO_
-#define _ADD_PAY_APPLY_DTO_
+#ifndef _ADD_PAYMENT_DTO_
+#define _ADD_PAYMENT_DTO_
 
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
-class AddPayApplyDTO :public FileDTO
+class AddPaymentDTO :public FileDTO
 {
 	//单据编号
-	CC_SYNTHESIZE(string, billNo, BillNo);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//单据日期
 	CC_SYNTHESIZE(string, billDate, BillDate);
 	//源单类型
@@ -42,7 +42,7 @@ class AddPayApplyDTO :public FileDTO
 	//付款类型
 	CC_SYNTHESIZE(string, paymentType, PaymentType);
 	//申请金额
-	CC_SYNTHESIZE(double, amt, Amt);
+	CC_SYNTHESIZE(int, amt, Amt);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//是否自动生成
@@ -59,28 +59,7 @@ class AddPayApplyDTO :public FileDTO
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, AddPayApplyDTO& apt) {
-		BIND_FROM_TO_ULL(j, apt, billNo);
-		BIND_FROM_TO_ULL(j, apt, billDate);
-		BIND_FROM_TO_ULL(j, apt, srcBillType);
-		BIND_FROM_TO_ULL(j, apt, srcBillId);
-		BIND_FROM_TO_ULL(j, apt, srcNo);
-		BIND_FROM_TO_ULL(j, apt, subject);
-		BIND_FROM_TO_ULL(j, apt, supplierId);
-		BIND_FROM_TO_ULL(j, apt, opDept);
-		BIND_FROM_TO_ULL(j, apt, operator1);
-		BIND_FROM_TO_ULL(j, apt, paymentType);
-		BIND_FROM_TO_ULL(j, apt, remark);
-		BIND_FROM_TO_ULL(j, apt, billStage);
-		BIND_FROM_TO_ULL(j, apt, effectiveTime);
-
-		BIND_FROM_TO_D(j, apt, amt);
-
-		BIND_FROM_TO_I(j, apt, isAuto);
-		BIND_FROM_TO_I(j, apt, isEffective);
-		BIND_FROM_TO_I(j, apt, isClosed);
-		BIND_FROM_TO_I(j, apt, isVoided);
-	}
+	friend void from_json(const json& j, AddPaymentDTO& apt);
 };
 
 #endif

@@ -84,9 +84,6 @@
     <ClInclude Include="service\PurOrder\PurOrderService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -240,6 +237,15 @@
     <ClInclude Include="domain\dto\payment\DePaymentDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\payment\AddPaymentDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\PaymentBillImpl\modPayApplyDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\FinPayReq\FinPayReqDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -318,6 +324,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\payment\DePaymentDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\payment\AddPaymentDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

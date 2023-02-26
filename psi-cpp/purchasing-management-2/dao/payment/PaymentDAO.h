@@ -1,8 +1,8 @@
 #pragma once
-#ifndef _PREPAYMENT_DAO_
-#define _PREPAYMENT_DAO_
+#ifndef _PAYMENT_DAO_
+#define _PAYMENT_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/PurReq/PurReqDO.h"
+#include "../../domain/do/FinPayReq/FinPayReqDO.h"
 
 /**
  * 采购预付表数据库操作实现
@@ -11,12 +11,12 @@ class PaymentDAO : public BaseDAO
 {
 public:
 	// 添加预付申请单数据
-	uint64_t insertPrepay(const PurReqDO& iObj);
+	uint64_t insertPrepay(const FinPayReqDO& iObj);
 	//修改单据状态
-	int ChangeStatusClose(const PurReqDO& uObj);
-	int ChangeStatusCancel(const PurReqDO& uObj);
+	int ChangeStatusClose(const FinPayReqDO& uObj);
+	int ChangeStatusCancel(const FinPayReqDO& uObj);
 	// 通过ID删除数据
-	int deleteById(const PurReqDO& uObj);
+	int deleteById(const FinPayReqDO& uObj);
 
 };
 #endif // !_PREPAYMENT_DAO_

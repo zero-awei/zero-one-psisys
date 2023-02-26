@@ -21,30 +21,36 @@ if (obj.getAmt() != -1) { \
 	sql << " AND amt=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAmt()); \
 } \
-
+////
 ////ÐÂÔöÔ¤¸¶ÉêÇëµ¥
-//uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
-//{
-//	string sql = "INSERT INTO `fin_payment_req` (`bill_no`, `bill_date`, `amt`) VALUES (?, ?, ?)";
-//	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getBill_no(), iObj.getBill_date(), iObj.getAmt());
-//}
+////uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
+////{
+////	string sql = "INSERT INTO `fin_payment_req` (`bill_no`, `bill_date`, `amt`) VALUES (?, ?, ?)";
+////	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getBill_no(), iObj.getBill_date(), iObj.getAmt());
+////}
 
 //ÐÞ¸Äµ¥¾Ý×´Ì¬
-int PaymentDAO::ChangeStatusClose(const PurReqDO& uObj)
+int PaymentDAO::ChangeStatusClose(const FinPayReqDO& uObj)
 {
-	string sql = "UPDATE `pur_req` SET `is_closed`=? WHERE `id`=?";
+	string sql = "UPDATE `fin_payment_req` SET `is_closed`=? WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_closed(), uObj.getId());
 }
 
-int PaymentDAO::ChangeStatusCancel(const PurReqDO& uObj)
+int PaymentDAO::ChangeStatusCancel(const FinPayReqDO& uObj)
 {
-	string sql = "UPDATE `pur_req` SET `is_voided`=? WHERE `id`=?";
+	string sql = "UPDATE `fin_payment_req` SET `is_voided`=? WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_voided(), uObj.getId());
 }
 
-// É¾³ýÔ¤¸¶ÉêÇëµ¥
-int PaymentDAO::deleteById(const PurReqDO& uObj)
+// É¾³ýÉêÇëµ¥
+int PaymentDAO::deleteById(const FinPayReqDO& uObj)
 {
-	string sql = "DELETE FROM `pur_req` WHERE `id`=?";
+	string sql = "DELETE FROM `fin_payment_req` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
 }
+//// Ìí¼ÓÉêÇëµ¥
+//int PaymentDAO::deleteById(const FinPayReqDO& uObj)
+//{
+//	string sql = "INSTER FROM `fin_payment_req` WHERE `id`=?";
+//	return sqlSession->executeUpdate(sql, "%s", uObj.getId());
+//}

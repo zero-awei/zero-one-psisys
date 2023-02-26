@@ -1,19 +1,19 @@
 #pragma once
-#ifndef _SAMPLE_MAPPER_
-#define _SAMPLE_MAPPER_
+#ifndef _PAYMENT_MAPPER_
+#define _PAYMENT_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/PurReq/PurReqDO.h"
+#include "../../domain/do/FinPayReq/FinPayReqDO.h"
 
 /**
  * Ê¾Àý±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
-class PrepaymentMapper : public Mapper<PurReqDO>
+class PrepaymentMapper : public Mapper<FinPayReqDO>
 {
 public:
-	PurReqDO mapper(ResultSet* resultSet) const override
+	FinPayReqDO mapper(ResultSet* resultSet) const override
 	{
-		PurReqDO data;
+		FinPayReqDO data;
 		data.setId(resultSet->getString(1));
 		data.setBill_no(resultSet->getString(2));
 		data.setBill_date(resultSet->getString(3));

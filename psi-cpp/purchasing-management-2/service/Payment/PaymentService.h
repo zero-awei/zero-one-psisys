@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _PRE_PAY_SERVICE_
-#define _PRE_PAY_SERVICE_
+#ifndef _PAYMENT_SERVICE_
+#define _PAYMENT_SERVICE_
 #include <list>
 //查看预付申请单列表
 #include "../../domain/query/prepaymentbill/PrepayBillQuery.h"
@@ -14,6 +14,8 @@
 #include "../../domain/dto/payment/DePaymentDTO.h"
 //修改订单状态DTO
 #include "../../domain/dto/payment/PaymentChangeDTO.h"
+//添加DTO
+#include "../../domain/dto/payment/AddPaymentDTO.h"
 
 #include "../../domain/vo/prepayment/PrepaymentVO.h"
 //导入导出
@@ -35,6 +37,8 @@ public:
 	bool DePayment(const  DePaymentDTO& dto);
 	// 修改单据状态
 	bool ChangePayStatus(const PaymentChangeDTO& dto);
+	// 添加数据
+	bool AddPay(const AddPaymentDTO& dto);
 
 };
 
