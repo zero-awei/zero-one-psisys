@@ -5,8 +5,12 @@
         update fin_payment set bill_stage=#{billStage} where id=#{id};
     </update>
 
+    <update id="updateBillStageReq" parameterType="com.zeroone.star.project.dto.paymentManager.UpdateBillStageDto" >
+        update fin_payment_req set bill_stage=#{billStage} where id=#{id};
+    </update>
+
     <insert id="insertList" parameterType="com.zeroone.star.paymentmanagement.entity.FinPayment">
-        insert into fin_payment(`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`sec_no`,`subject`,`is_rubric`,`payment_type`,
+        insert into fin_payment(`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`is_rubric`,`payment_type`,
         `supplier_id`,`amt`,`checked_amt`,`attachment`,`remark`,`is_auto`,`bill_stage`,`approver`,`bpmi_instance_id`,`approval_result_type`,
         `approval_remark`, `is_effective`,`effective_time`,`is_closed`,`is_voided`,`create_time`,`create_by`,`sys_org_code`,`update_time`,
         `update_by`,`version`
@@ -17,7 +21,49 @@
                 #{item.billDate},
             #{item.srcBillType},
             #{item.srcBillId},
-            #{item.secNo},
+            #{item.srcNo},
+            #{item.subject},
+            #{item.isRubric},
+            #{item.paymentType},
+            #{item.supplierId},
+            #{item.amt},
+            #{item.checkedAmt},
+            #{item.attachment},
+            #{item.remark},
+            #{item.isAuto},
+            #{item.billStage},
+            #{item.approver},
+            #{item.bpmiInstanceId},
+            #{item.approvalResultType},
+            #{item.approvalRemark},
+            #{item.isEffective},
+            #{item.effectiveTime},
+            #{item.isClosed},
+            #{item.isVoided},
+            #{item.createTime},
+            #{item.createBy},
+            #{item.sysOrgCode},
+            #{item.updateTime},
+            #{item.updateBy},
+            #{item.version}
+            )
+        </foreach>
+
+    </insert>
+
+    <insert id="insertList" parameterType="com.zeroone.star.paymentmanagement.entity.FinPayment">
+        insert into fin_payment_req(`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`is_rubric`,`payment_type`,
+        `supplier_id`,`amt`,`checked_amt`,`attachment`,`remark`,`is_auto`,`bill_stage`,`approver`,`bpmi_instance_id`,`approval_result_type`,
+        `approval_remark`, `is_effective`,`effective_time`,`is_closed`,`is_voided`,`create_time`,`create_by`,`sys_org_code`,`update_time`,
+        `update_by`,`version`
+        )values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.billNo},
+            #{item.billDate},
+            #{item.srcBillType},
+            #{item.srcBillId},
+            #{item.srcNo},
             #{item.subject},
             #{item.isRubric},
             #{item.paymentType},

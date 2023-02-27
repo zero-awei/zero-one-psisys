@@ -31,9 +31,24 @@ public class PaymentManagerController implements PaymentManagerApis {
         return null;
     }
 
+    @PostMapping("/importReq")
     @Override
-    public JsonVO updateBillStage(UpdateBillStageDto updateBillStageDto) {
+    public JsonVO importReq(MultipartFile file) {
+        paymentManagerService.importReq(file);
+        return null;
+    }
+
+    @Override
+    @PostMapping("/updateBillStage")
+    public JsonVO updateBillStage(@RequestBody UpdateBillStageDto updateBillStageDto) {
         paymentManagerService.updateBillStage(updateBillStageDto);
+        return null;
+    }
+
+    @Override
+    @PostMapping("/updateBillStageReq")
+    public JsonVO updateBillStageReq(@RequestBody UpdateBillStageDto updateBillStageDto) {
+        paymentManagerService.updateBillStageReq(updateBillStageDto);
         return null;
     }
 
@@ -43,4 +58,6 @@ public class PaymentManagerController implements PaymentManagerApis {
     public JsonVO chosenExport(@RequestBody ChosenExportDto chosenExportDto) {
         return paymentManagerService.chosenExport(chosenExportDto);
     }
+
+
 }

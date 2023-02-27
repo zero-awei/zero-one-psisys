@@ -3,6 +3,7 @@ package com.zeroone.star.paymentmanagement.service.impl;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import com.zeroone.star.paymentmanagement.entity.FinPayment;
+import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
 import com.zeroone.star.paymentmanagement.exception.BaseException;
 import com.zeroone.star.paymentmanagement.mapper.PaymentManagerMapper;
 import com.zeroone.star.paymentmanagement.service.PaymentManagerService;
@@ -52,5 +53,27 @@ public class PaymentManagerImpl implements PaymentManagerService {
     public JsonVO chosenExport(ChosenExportDto chosenExportDto) {
         List<ChosenExportVo> chosenExportVos = paymentManagerMapper.chosenExport(chosenExportDto);
         return JsonVO.success(chosenExportVos);
+    }
+
+    @Override
+    public void importReq(MultipartFile file) {
+        try {
+            InputStream inputStream = file.getInputStream();
+            ExcelReader reader = ExcelUtil.getReader(inputStream);
+            List<FinPaymentReq> finPayments = reader.readAll(FinPaymentReq.class);
+            paymentManagerMapper.insertListReq(finPayments);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateBillStageReq(UpdateBillStageDto updateBillStageDto) {
+        if (StringUtils.isEmpty(updateBillStageDto.getBillStage())||updateBillStageDto.getId()==null){
+            Object[] args={updateBillStageDto.getBillStage(),updateBillStageDto.getId()};
+            throw  new BaseException("PaymentManager",String.valueOf(ResultStatus.PARAM_NULL.getCode()),args,ResultStatus.PARAM_NULL.getMessage());
+        }
+        paymentManagerMapper.updateBillStageReq(updateBillStageDto);
+
     }
 }

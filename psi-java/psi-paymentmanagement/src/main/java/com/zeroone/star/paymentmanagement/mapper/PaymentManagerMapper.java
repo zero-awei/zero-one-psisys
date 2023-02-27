@@ -1,6 +1,7 @@
 package com.zeroone.star.paymentmanagement.mapper;
 
 import com.zeroone.star.paymentmanagement.entity.FinPayment;
+import com.zeroone.star.paymentmanagement.entity.FinPaymentReq;
 import com.zeroone.star.project.dto.paymentManager.ChosenExportDto;
 import com.zeroone.star.project.dto.paymentManager.UpdateBillStageDto;
 import com.zeroone.star.project.vo.paymentManager.ChosenExportVo;
@@ -16,4 +17,8 @@ public interface PaymentManagerMapper {
     void updateBillStage(UpdateBillStageDto updateBillStageDto);
 
     void insertList(List<FinPayment> finPayments);
+
+    void insertListReq(List<FinPaymentReq> finPayments);
+
+    void updateBillStageReq(UpdateBillStageDto updateBillStageDto);
 }

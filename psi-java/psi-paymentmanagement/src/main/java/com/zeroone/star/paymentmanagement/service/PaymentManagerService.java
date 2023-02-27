@@ -12,4 +12,8 @@ public interface PaymentManagerService {
     JsonVO updateBillStage(UpdateBillStageDto updateBillStageDto);
 
     JsonVO chosenExport(ChosenExportDto chosenExportDto);
+
+    void importReq(MultipartFile file);
+
+    void updateBillStageReq(UpdateBillStageDto updateBillStageDto);
 }
