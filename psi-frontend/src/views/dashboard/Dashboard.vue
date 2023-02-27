@@ -8,7 +8,9 @@
 -->
 <template>
   <div class="total">
-    <div class="top"><CenterCom1 /></div >
+    <div class="top">
+      <CenterCom1 />
+    </div>
     <div class="bottom">
       <el-row :gutter="20">
         <el-col :span="12">
@@ -27,19 +29,19 @@
 </template>
 
 <style lang="css" scoped>
+.top {
+  min-width: 180px;
+  /* margin-bottom:4px; */
+  top: -10px;
+}
 
-  .top{
-    min-width:180px;
-    /* margin-bottom:4px; */
-    top:-10px;
-  }
-  .bottom{
-    display:flex; 
-    height:100%;
-    min-width:1052px;
-    width:1192px;
-    left:-14px;
-  }
+.bottom {
+  display: flex;
+  height: 100%;
+  min-width: 1052px;
+  width: 1192px;
+  left: -14px;
+}
 </style>
 
 <script>
@@ -59,7 +61,7 @@ export default {
   },
   data() {
     return {
-      ratio:100
+      ratio: 100
     }
   },
   mounted() {
@@ -88,14 +90,14 @@ export default {
       ) {
         this.ratio = window.outerWidth / window.innerWidth;
       }
- 
+
       if (this.ratio) {
         this.ratio = Math.round(this.ratio * 100);
       }
-      console.log(this.ratio);
-        //得到的额百分比
+      // console.log(this.ratio);
+      //得到的额百分比
       return this.ratio;
     },
-  } 
+  }
 }
 </script>

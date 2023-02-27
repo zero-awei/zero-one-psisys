@@ -1,3 +1,11 @@
+/*
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-02-24 22:06:10
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-26 11:35:02
+ * @FilePath: \psi-frontend\src\stores\user.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { defineStore } from 'pinia'
 import Request from '@/apis/request'
 // 测试菜单数据
@@ -238,156 +246,56 @@ const componentRouter = {
   children: [
     {
       id: 2,
-      text: '表单组件',
-      href: '/component/form',
-      icon: 'IconTickets',
-      pid: 3
+      text: '角色管理',
+      href: '/sysmanagement/rolemanagement',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 3,
-      text: '表格组件',
-      href: '/component/table',
-      icon: 'IconTickets',
-      pid: 3
+      text: '菜单管理',
+      href: '/sysmanagement/menumanagement',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 4,
-      text: '弹出框组件',
-      href: '/component/dialog',
-      icon: 'IconTickets',
-      pid: 3
+      text: '用户管理',
+      href: '/sysmanagement/usermanagement',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 5,
-      text: '抽屉组件',
-      href: '/component/drawer',
-      icon: 'IconTickets',
-      pid: 3
+      text: '部门管理',
+      href: '/sysmanagement/sysposition',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
       id: 6,
-      text: '自定义列组件',
-      href: '/component/custom',
-      icon: 'IconTickets',
-      pid: 3
+      text: '组织结构管理',
+      href: '/sysmanagement/orimanage',
+      icon: 'IconSetting',
+      pid: 1
     },
     {
-      id: 6,
-      text: 'center组件',
-      href: '/component/center',
+      id: 7,
+      text: '分类字典',
       icon: 'IconTickets',
-      pid: 3
+      pid: 1,
+      href: '/sysmanagement/Category'
+    },
+    {
+      id: 8,
+      text: '通讯录',
+      icon: 'IconTickets',
+      pid: 1,
+      href: '/sysmanagement/addressbook'
     }
   ]
 }
-// 采购管理
-const purManagement = {
-  id: 700,
-  text: '采购管理',
-  icon: 'IconTickets',
-  children: [
-    {
-      id: 701,
-      text: '采购申请',
-      href: '/PurRequisition',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 702,
-      text: '采购询价',
-      href: '/PurInquiry',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 703,
-      text: '供应报价',
-      href: '/SupplyQuotation',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 704,
-      text: '采购比价',
-      href: '/PurComparison',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 705,
-      text: '采购订单',
-      href: '/PurOrder',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 706,
-      text: '采购预付申请',
-      href: '/PurPrepaymentApply',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 707,
-      text: '采购申请',
-      href: '/PurPaymentApply',
-      icon: 'IconTickets',
-      pid: 5
-    },
-    {
-      id: 708,
-      text: '采购统计',
-      href: '',
-      icon: 'IconTickets',
-      pid: 5,
-      children: [
-        {
-          id: 711,
-          text: '采购订单执行情况',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 712,
-          text: '采购订单汇总',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 713,
-          text: '采购订单汇总-部门',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 714,
-          text: '采购订单汇总-业务员',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 715,
-          text: '采购订单汇总-供应商',
-          href: '',
-          icon: '',
-          pid: 51
-        },
-        {
-          id: 716,
-          text: '采购订单汇总-物料',
-          href: '',
-          icon: '',
-          pid: 51
-        }
-      ]
-    }
-  ]
-}
+
 // 基础资料
 const baseDataRouter = {
   id: 800,
@@ -515,7 +423,8 @@ export const userStore = defineStore('user', {
     user: null,
     // 菜单数据
     menus: [],
-    routeMenus: []
+    routeMenus: [],
+    parentMenus: []
   }),
   getters: {
     // 获取token
@@ -525,7 +434,11 @@ export const userStore = defineStore('user', {
     // 获取当前用户
     getUser: (state) => state.user,
     // 获取菜单
-    getMenus: (state) => state.menus
+    getMenus: (state) => state.menus,
+    // 获取父级菜单
+    getParentMenus: (state) => state.parentMenus
+    // 获取子级菜单
+    // getRouteMenus: (state) => state.routeMenus
   },
   actions: {
     // 加载用户
@@ -550,13 +463,13 @@ export const userStore = defineStore('user', {
         null
       )
       // this.menus = data.data
-      this.menus = testMenus
+      this.menus.push(sysmanageRouter)
       // 在后端返回菜单列表中添加组件列表路由
-      this.menus.push(componentRouter)
-      this.menus.push(yewuRouter)
       this.menus.push(baseDataRouter)
       this.menus.push(purManagement)
-      this.menus.push(kucunRouter)
+      this.menus.push(kucunguanli)
+      this.menus.push(yingfuyufukuan)
+      this.menus.push(componentRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {
@@ -613,28 +526,28 @@ export const userStore = defineStore('user', {
     // 获取可跳转路由的菜单
     // 非递归遍历
     getRouteMenus() {
-      // if (this.menus.length > 0) {
-      //   let temp = []
-      //   temp = this.digui(this.menus, temp)
-      //   this.routeMenus = temp
-      //   return this.routeMenus
-      // }
-      // for (let item in this.menus) {
-      //   if (this.menus[item].children) {
-      //     this.getRouteMenus(this.menus[item].children)
-      //   } else {
-      //     routeMenus.push(this.menus[item])
-      //   }
-      // }
-      // return routeMenus
-      for (let i in this.menus) {
-        if (this.menus[i].children) {
-          for (let j in this.menus[i].children) {
-            let itemj = this.menus[i].children[j]
+      // console.log('-------------this.menus', this.menus)
+      for (let i = 0; i < this.menus.length; i++) {
+        let itemi = this.menus[i] // 一级菜单
+        // console.log('-----------一级菜单', itemi)
+        if (itemi.children) {
+          console.log('-----------一级菜单', itemi)
+          this.parentMenus.push(itemi)
+          // 如果有二级菜单
+          for (let j in itemi.children) {
+            // 遍历二级菜单
+
+            let itemj = itemi.children[j]
             if (itemj.children) {
+              console.log('-----------二级菜单', itemj)
+              this.parentMenus.push(itemj)
+              // 如果有三级菜单
               for (let k in itemj.children) {
+                // 遍历三级菜单
                 let itemk = itemj.children[k]
                 if (itemk.children) {
+                  console.log('-----------三级菜单', itemk)
+                  this.parentMenus.push(itemk)
                 } else {
                   this.routeMenus.push(itemk)
                 }
@@ -644,19 +557,11 @@ export const userStore = defineStore('user', {
             }
           }
         } else {
-          this.routeMenus.push(this.menus[i])
+          this.routeMenus.push(itemi)
         }
-        return this.routeMenus
-        // // // console.log('this.routeMenus', this.routeMenus)
-        // if (this.menus[i].children) {
-        //   for (let j in this.menus[i]){
-        //     if(j.chi)
-        //   }
-
-        // } else {
-        //   routeMenus.push(this.menus[item])
-        // }
       }
+      // console.log('-------------处理后this.menus', this.menus)
+      return this.routeMenus
     }
   }
 })

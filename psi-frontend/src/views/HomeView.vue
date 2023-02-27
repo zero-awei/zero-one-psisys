@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-22 22:31:41
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 13:59:43
+ * @LastEditTime: 2023-02-25 16:23:01
  * @FilePath: \psi-frontend\src\views\HomeView.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -27,16 +27,16 @@
         <!-- 导航栏 -->
         <!-- 头部 -->
         <el-header>
-          <el-icon size="30" @click="collapse = !collapse" color="white">
+        <el-icon size="30" @click="collapse = !collapse" color="white">
           <!-- <Fold /> -->
-          <component :is="headerleft"></component>
+            <component :is="headerleft"></component>
           </el-icon>
           <HeadSideCom />
         </el-header>
 
         <!-- <div class="tag">
-                                                                                                                                                                                                                    <NavHeadCom />
-                                                                                                                                                                                                                  </div> -->
+                                                                                                                                                                                                                      <NavHeadCom />
+                                                                                                                                                                                                                    </div> -->
 
         <el-main>
           <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs" @tab-remove="removeTab"
@@ -97,7 +97,7 @@ export default {
       return this.collapse ? 'Expand' : 'Fold'
     },
     asideWidth() {
-      return this.collapse ? "80px" : "200px"
+      return this.collapse ? "80px" : "230px"
     },
 
   },
@@ -208,7 +208,7 @@ export default {
     function handleTabs(list) {
       let nextTab = list[list.length - 1]
       // // console.log("---------pathIdSet-------------", pathIdSet)
-      // // console.log("---------nextTab-------------", nextTab)
+      // console.log("---------nextTab-------------", nextTab)
       const pathIdList = [...pathIdSet]
       // pathIdSet 和 pathList是同步更新，所以pathIdSet.has(nextTab.id)一定为true
       if (pathIdList[pathIdList.length - 1] === nextTab.id) {
@@ -281,7 +281,8 @@ export default {
 
 <style lang="scss" scoped>
 .el-container {
-   height: 100vh;
+  height: 100vh;
+
   //  background-color:rgba(226, 225, 225, 0.03);
   .el-aside {
     background-color: #fff;
@@ -309,21 +310,23 @@ export default {
         font-weight: bold;
       }
     }
-    }
+  }
 
 }
-  .el-header{
-    background-color: #1890ff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .el-icon{
-      top:2px;
-      width:2em;
-      height:2em;
-      color:white;
-    }
+
+.el-header {
+  background-color: #1890ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .el-icon {
+    top: 2px;
+    width: 2em;
+    height: 2em;
+    color: white;
   }
+}
 
 
 .el-header {

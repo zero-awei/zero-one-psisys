@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 采购应付 -->
     <!-- 查询 -->
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
       @reset="handleReset"></psi-form>

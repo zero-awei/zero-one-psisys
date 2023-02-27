@@ -1,13 +1,7 @@
 <template>
   <div class="main">
-    <el-card>
-      <psi-table
-        :items="items"
-        :tableData="tableData"
-        :attributes="attributes"
-        :pagination="pagination"
-      />
-    </el-card>
+    <psi-table :items="items" :tableData="tableData" :attributes="attributes" :pagination="pagination" />
+
   </div>
 </template>
 
@@ -108,7 +102,10 @@ const status = reactive({
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true
+    border: true, //表格边框
+    maxHeight: '400', // 表格最大高度
+    height: '400',    //表格高度
+    headOperation: ['add', 'importData', 'exportData', 'select']
   }
 })
 

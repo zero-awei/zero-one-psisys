@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-19 21:06:50
- * @LastEditTime: 2023-02-23 15:43:32
+ * @LastEditTime: 2023-02-24 23:05:34
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\home\test.vue
@@ -19,7 +19,7 @@
 <template>
   <!-- 侧边栏菜单  <el-scrollbar max-height="100vh">-->
   <div class="menu-wrap">
-    <el-scrollbar>
+    <!-- <el-scrollbar> -->
       <el-menu default-active="2" class="el-menu-vertical-demo" active-text-color="#1890ff" text-color="#545c64"
         background-color="#fff" unique-opened router @select="menuSelect" :collapse="props.label" @open="handleOpen"
         @close="handleClose">
@@ -74,7 +74,7 @@
           <!-- </div> -->
         </el-sub-menu>
       </el-menu>
-    </el-scrollbar>
+    <!-- </el-scrollbar> -->
   </div>
 </template>
 

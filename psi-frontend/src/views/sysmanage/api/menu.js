@@ -15,7 +15,7 @@ export function addMenu(data, success, fail) {
         success(data.data)
         return
       }
-      fail()
+      fail(data.message)
     })
     .catch((err) => {
       // 打印错误信息

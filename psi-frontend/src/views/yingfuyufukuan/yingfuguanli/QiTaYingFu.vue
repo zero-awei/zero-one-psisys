@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <!-- 其他应付 -->
     <!-- 表格数据 -->
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
       @add="handleAdd">

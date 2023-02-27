@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 物料 -->
     <psi-form
       :items="items"
       :formData="formData"
@@ -50,7 +51,7 @@
     
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
-
+import {} from './api/materialcheck.js'
 // 抽屉
 const drawerStatus = reactive({
   title: '物料-新增',
@@ -176,31 +177,85 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '编码',
       prop: 'date',
       width: '120'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '名称',
       prop: 'city',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '助记名',
       prop: 'address',
       width: '600'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '分类',
       prop: 'zip',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Tag',
+      label: '规格型号',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '主单位',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '销售价格',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '税控编码',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '启用',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '备注',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建时间',
+      prop: 'zip',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
       prop: 'tag',
       width: '120'
     },

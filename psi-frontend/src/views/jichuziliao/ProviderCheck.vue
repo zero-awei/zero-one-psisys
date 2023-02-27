@@ -1,12 +1,7 @@
 <template>
   <div>
-    <psi-form
-      :items="items"
-      :formData="formData"
-      :toggleItems="toggleItems"
-      @query="doQuery"
-      @reset="doReset"
-    ></psi-form>
+    <!-- 供应商 -->
+    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="doQuery" @reset="doReset"></psi-form>
 
 
 
@@ -15,42 +10,29 @@
     <!-- 表格数据 -->
     <!-- 修改点1 -->
     <div style="margin-top:10px">
-      <psi-table
-      :items="tableItems"
-      :tableData="tableData"
-      :attributes="attributes"
-      :pagination="pagination" 
-      @add="addClient"
-    >
-    
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+        @add="addClient">
 
-      <template v-slot:basicOperation="slot">
-      <!-- 修改点2 -->
-        <el-button link 
-        type="primary" 
-        @click="clientEditDialogVisible = true"
-        >编辑</el-button>
 
-        <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
-      </template>
-  
-    </psi-table>
+        <template v-slot:basicOperation="slot">
+          <!-- 修改点2 -->
+          <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+        </template>
+
+      </psi-table>
     </div>
 
     <!-- 新增-抽屉 -->
-    <psi-drawer 
-      v-model="drawerVisible" 
-      :title="drawerStatus.title" 
-      :basicItems="drawerStatus.basicItems"
-      :toggleItems="drawerStatus.toggleItems" 
-      :formData="drawerStatus.formData" 
-      @confirm="confirm" />
+    <psi-drawer v-model="drawerVisible" :title="drawerStatus.title" :basicItems="drawerStatus.basicItems"
+      :toggleItems="drawerStatus.toggleItems" :formData="drawerStatus.formData" @confirm="confirm" />
   </div>
 </template>
     
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
-
+import { } from './api/providercheck.js'
 // 抽屉
 const drawerStatus = reactive({
   title: '抽屉标题',
@@ -205,7 +187,7 @@ const drawerStatus = reactive({
           label: 'Email'
         },
         {
-          type: 'input',  
+          type: 'input',
           prop: 'toggleGender3',
           label: '地址'
         },
@@ -314,7 +296,7 @@ function addClient() {
 // 修改
 function reviseClient() {
   drawerVisible.value = true
-} 
+}
 
 let clientEditDialogVisible = ref(false)
 
@@ -363,35 +345,107 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '编码',
       prop: 'date',
       width: '120'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '名称',
       prop: 'city',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '助记名',
       prop: 'address',
       width: '600'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '分类',
       prop: 'zip',
       width: '120'
     },
     {
       type: 'text',
-      label: 'Tag',
+      label: '等级',
       prop: 'tag',
       width: '120'
     },
     // 表格右侧固定的编辑和删除
+    {
+      type: 'slot',
+      label: '纳税规模',
+      width: '120',
+      prop: ''
+    },
+    {
+      type: 'text',
+      label: '所属总公司',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '所属地区',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '业务区域',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '供应商地址',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '供应商网站',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '备选供应商',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '启用',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '备注',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
+      prop: 'tag',
+      width: '120'
+    },
     {
       type: 'slot',
       label: '操作',
@@ -437,7 +491,7 @@ const status = reactive({
       address: 'No. 189, Grove St, Los Angeles',
       zip: 'CA 90036',
       tag: 'Home'
-    } 
+    }
   ],
   // table 总体配置
   attributes: {

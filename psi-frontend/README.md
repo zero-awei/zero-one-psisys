@@ -1,3 +1,11 @@
+<!--
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-02-07 13:55:16
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-02-24 20:27:15
+ * @FilePath: \psi-frontend\README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # `project-frontend`
 
 下面说明能够帮助在基于Vite构建工具环境下开发`Vue3`。
@@ -65,3 +73,18 @@ npm run lint
 - `vite.config.js`：`Vite`构建工具配置文件
 - `start.sh`：`Linux`下面的启动脚本
 
+## 后端使用说明
+1.git clone
+2.打开psi-frontend文件夹
+3.npm i  安装依赖
+4.npm run dev 运行项目
+
+
+## 业务页面目录
+src/views`
+  - `dashboard`:  首页展示
+  - `sysmanage`:  系统管理
+  - `jichuziliao`:  基础资料
+  - `caigouguanli`:  采购管理
+  - `yingfuguanli`:  应付与付款
+  - : 库存管理

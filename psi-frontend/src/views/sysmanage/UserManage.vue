@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!--用户管理 -->
     <!-- 查询 -->
     <psi-form :items="items" :formData="formData" @query="doQuery" @reset="doReset"></psi-form>
     <!-- 表格数据 -->
     <div style="margin-top:10px">
-      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+        @add="addUserDialogVisible = true">
         <!-- 批量操作 -->
         <template v-slot:batchOperation="slot">
           <el-button>批量操作</el-button>
@@ -12,16 +14,25 @@
         <template v-slot:basicOperation="slot">
 
 
-          <el-button link type="primary" @click="menuEditDialogVisible = true">编辑</el-button>
+          <el-button link type="primary" @click="editUser">编辑</el-button>
           |
-          <el-button link type="primary" @click="deleteMenu(slot.data)">更多</el-button>
+          <el-button link type="primary" @click="handleDeleteUser(slot.data)">删除</el-button>
+          |
+          <el-button v-if="userState === '1'" link type="primary" @click="handleStatus()">冻结</el-button>
+          <el-button v-else="userState === '2'" link type="danger" @click="handleStatus()">解冻</el-button>
         </template>
       </psi-table>
     </div>
     <!-- 弹出框 -->
-    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogAttrs">
+    <!-- 新增用户对话框 -->
+    <psi-dialog ref="addUserDialog" v-model="addUserDialogVisible" :attrs="addUserDialogAttrs" @determine="handleAddUser">
+      <psi-form :items="addUserItems" :formData="addUserFormData" :buttonShow="false"></psi-form>
     </psi-dialog>
-    <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogAttrs">
+    <!-- 编辑用户对话框 -->
+    <psi-dialog ref="editUserDialog" v-model="editUserDialogVisible" :attrs="editUserDialogAttrs"
+      @determine="handleEditUser">
+
+      <psi-form :items="editUserItems" :formData="editUserFormData" :buttonShow="false"></psi-form>
     </psi-dialog>
   </div>
 </template>
@@ -73,38 +84,6 @@ const { items, formData } = toRefs(formState)
 function doReset() {
   //查询表单重置，表格也要刷新
   doGetTableList()
-}
-// 7.5 普通查询
-function doQuery(data) {
-  // // // console.log('父组件接收')
-  // // // console.log('params--', params.daterange)
-  // // console.log('data.daterange[0]', data.daterange[0])
-  // // console.log('data.daterange[1]', data.daterange[1])
-  // // console.log('typeof', typeof data.daterange[1])
-  // 处理表单数据 主要是开始日期和结束日期
-  let params = {}
-  params.billNo = data.billNo
-  params.billStage = data.billStage
-  params.billStage = data.billStage
-  params.isClosed = data.isClosed
-  params.isEffective = data.isEffective
-  params.isVoided = data.isVoided
-  params.subject = data.subject
-  params.supplierId = data.supplierId
-  params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
-  params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
-  // // console.log('params', params)
-  query(
-    {
-      params
-    },
-    (data) => {
-      tableData = data.rows
-      pagination.currentPage = data.pageIndex
-      pagination.pageSize = data.pageSize
-      pagination.pages = data.pages
-    }
-  )
 }
 // 表格相关数据
 const tableState = reactive({
@@ -189,35 +168,182 @@ onMounted(() => {
   doGetTableList()
 })
 
-// editDialog配置
+// addUserDialog配置
 
-let editDialogVisible = ref(false)
-const editdialogState = reactive({
-  editDialogAttrs: {
-    title: '应付核销 - 编辑',
+let addUserDialogVisible = ref(false)
+const addUserDialogState = reactive({
+  addUserDialogAttrs: {
+    title: '新增用户',
     width: '80%'
   }
 })
-const { editDialogAttrs } = toRefs(editdialogState)
-function edit(data) {
-  editDialogVisible = true
-  // 弹出框内的表格数据和data配置
+const { addUserDialogAttrs } = toRefs(addUserDialogState)
+
+// editUserDialog配置
+
+let editUserDialogVisible = ref(false)
+const editUserDialogState = reactive({
+  editUserDialogAttrs: {
+    title: '修改用户',
+    width: '80%'
+  }
+})
+const { editUserDialogAttrs } = toRefs(editUserDialogState)
+
+// 新增用户对话框的数据配置
+const addUserState = reactive({
+  addUserItems: [
+    {
+      type: 'input',
+      label: '用户名',
+      prop: 'username',
+      placeholder: '请输入'
+    },
+    {
+      type: 'input',
+      label: '用户名',
+      prop: 'username',
+      placeholder: '请输入'
+    },
+    {
+      type: 'input',
+      label: '密码',
+      prop: 'password',
+      placeholder: '请输入'
+    },
+    {
+      type: 'input',
+      label: '电子邮箱',
+      prop: 'email',
+      placeholder: '请输入'
+    },
+    {
+      type: 'select',
+      prop: 'departIds',
+      label: '部门',
+      placeholder: '请选择',
+      options: [
+        {
+          label: '部门1',
+          value: '1'
+        },
+        {
+          label: '部门2',
+          value: '2'
+        }
+      ]
+    }
+  ],
+  addUserFormData: {
+    username: '',// 用户名
+    password: '',// 密码
+    email: '',// 电子邮箱
+    departIds: ''// 部门id
+  }
+})
+
+const { addUserItems, addUserFormData } = toRefs(addUserState)
+
+const userState = ref('1') //用户状态默认正常
+
+const editUserState = reactive({
+  editUserItems: [
+    {
+      type: 'input',
+      label: '用户名',
+      prop: 'username',
+      placeholder: '请输入'
+    },
+    {
+      type: 'input',
+      label: '用户名',
+      prop: 'username',
+      placeholder: '请输入'
+    },
+    {
+      type: 'input',
+      label: '密码',
+      prop: 'password',
+      placeholder: '请输入'
+    },
+    {
+      type: 'input',
+      label: '电子邮箱',
+      prop: 'email',
+      placeholder: '请输入'
+    },
+    {
+      type: 'select',
+      prop: 'departIds',
+      label: '部门',
+      placeholder: '请选择',
+      options: [
+        {
+          label: '部门1',
+          value: '1'
+        },
+        {
+          label: '部门2',
+          value: '2'
+        }
+      ]
+    }
+  ],
+  editUserFormData: {
+    username: '',// 用户名
+    password: '',// 密码
+    email: '',// 电子邮箱
+    departIds: ''// 部门id
+  }
+})
+
+const { editUserItems, editUserFormData } = toRefs(editUserState)
+
+// ------------------方法--------------------
+
+
+// j1 3.1新增用户
+function handleAddUser() {
+  let params = {}
+  // addUserFormData.value
+
+  // 请求后端
+
 }
-// examineDialog配置
 
-let examineDialogVisible = ref(false)
-const examineDialogState = reactive({
-  examineDialogAttrs: {
-    title: '应付核销 - 审核',
-    width: '80%'
-  }
-})
-const { examineDialogAttrs } = toRefs(examineDialogState)
-// function edit(data){
-//   editDialogVisible=true
-//   // 弹出框内的表格数据和data配置
+// j1 3.2删除用户
+function handleDeleteUser(data) {
 
-// }
+}
+
+// j1 3.5 查询用户列表  3.8 查询用户是什么场景下使用 TODO
+function doQuery() {
+
+}
+
+
+
+// j1 3.7 修改用户信息 3.9修改用户信息(回显)什么场景下使用 TODO
+function editUser() {
+  let param = {}
+  // param.xx = editMenuFormData.xx
+  editUserDialogVisible = true
+  // 弹出框内的表格数据和data配置
+
+
+}
+function handleEditUser() {
+
+}
+
+// j1 3.10 冻结/解冻
+function handleStatus() {
+
+}
+
+// 删除用户
+
+
 </script>
 
 <style></style>

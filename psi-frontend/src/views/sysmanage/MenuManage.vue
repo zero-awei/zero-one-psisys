@@ -2,20 +2,13 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:08
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 13:54:32
- * @FilePath: \psi-frontend\src\views\sysmanage\MenuManage.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<!--
- * @Author: 160405103 1348313766@qq.com
- * @Date: 2023-02-21 15:35:08
- * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 13:51:41
+ * @LastEditTime: 2023-02-25 17:53:41
  * @FilePath: \psi-frontend\src\views\sysmanage\MenuManage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div>
+    <!-- 菜单管理 -->
     <!-- 菜单查询 -->
     <psi-form :items="items" :formData="formData" @query="handleQuery" @reset="handleReset">
     </psi-form>
@@ -41,24 +34,28 @@
           </el-button>
         </template>
         <template v-slot:basicOperation="slot">
+          <!-- todo 有问题 -->
+          <!-- @click="popoverVisible = true"  :visible="popoverVisible"-->
           <el-popover placement="bottom" :width="300" trigger="click">
             <template #reference>
               <el-button style="margin-right: 16px">添加子目录</el-button>
             </template>
-            <el-form :model="addSonMenuData" label-position="right">
+            <el-form :model="addSubMenuData" label-position="right">
               <el-form-item label="菜单名称">
-                <el-input v-model="addSonMenuData.name" />
+                <el-input v-model="addSubMenuData.name" />
               </el-form-item>
               <el-form-item label="url路径">
-                <el-input v-model="addSonMenuData.path" />
+                <el-input v-model="addSubMenuData.path" />
               </el-form-item>
               <el-form-item label="权限码">
-                <el-input v-model="addSonMenuData.permissionId" />
+                <el-input v-model="addSubMenuData.permissionId" />
               </el-form-item>
             </el-form>
+            <el-button @click="handleAddSubMenu(slot.data)">确定</el-button>
+            <el-button @click="popoverVisible = false">取消</el-button>
           </el-popover>
           |
-          <el-button link type="primary" @click="menuEditDialogVisible = true">修改</el-button>
+          <el-button link type="primary" @click="editMenu(slot.data)">修改</el-button>
           |
           <el-button link type="primary" @click="handleDeleteMenu(slot.data)">删除</el-button>
         </template>
@@ -68,20 +65,31 @@
     <!-- 新增 对话框 -->
     <psi-dialog ref="menuAddDialog" v-model="menuAddDialogVisible" :attrs="menuAddDialogAttrs" @determine="handleAddMenu">
       <psi-form :items="addMenuItems" :formData="addMenuFormData" :buttonShow="false"></psi-form>
+
     </psi-dialog>
 
     <!-- 菜单编辑对话框 -->
     <psi-dialog ref="menuEditDialog" v-model="menuEditDialogVisible" :attrs="menuEditDialogAttrs"
       @determine="handleEditMenu">
       <psi-form :items="editMenuItems" :formData="editMenuFormData" :buttonShow="false"></psi-form>
+
     </psi-dialog>
   </div>
 </template>
 
 
 <script setup>
+// ---------引入相关依赖----------
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { addMenu, deleteMenu, query, queryMenus, update } from './api/menu.js'
+import { userStore } from '@/stores/user';
+
+// 父目录选择框的相关数据
+const parentMenusOptions = []
+
+const uStore = userStore()
+// -------------------- 数据部分 --------------
+// 表单相关
 const formState = reactive({
   // 查询表单每一项的配置
   items: [
@@ -100,7 +108,7 @@ const formState = reactive({
   // 配置数据绑定的字段
   formData: {
     id: '',
-    parentId:''
+    parentId: ''
   }
 })
 const { items, formData } = toRefs(formState)
@@ -162,36 +170,35 @@ let da = [{
   "name": "根目录",
   "type": 0,
   "path": "/admin",
+  "parentId": '-1',
   "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
 },
 {
   "name": "一级菜单",
   "type": 1,
+  "parentId": '0',
   "path": "/one",
   "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
 },
 {
   "name": "二级菜单",
   "type": 2,
+  "parentId": '2',
   "path": "/two",
   "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
 },
 {
   "name": "三级菜单",
   "type": 3,
+  "parentId": '3',
   "path": "/three",
   "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
-}]
-// // // console.log('111111111')
-// // // console.log(tableData)
-// tableData.push(da)
+}
+]
 tableData.value = da
 
-
-
 // 添加子目录相关
-
-const addSonMenuData = reactive({
+const addSubMenuData = reactive({
   name: '',
   path: '',
   permissionId: ''
@@ -205,10 +212,7 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
-
-
 // 新增菜单对话框配置
-
 let menuAddDialogVisible = ref(false)
 const menuAddDialogState = reactive({
   menuAddDialogAttrs: {
@@ -233,18 +237,9 @@ const addMenuState = reactive({
     {
       type: 'select',
       label: '父目录',
-      prop: 'roleName',
+      prop: 'parentId',
       placeholder: '请选择',
-      options: [
-        {
-          label: '目录1',
-          value: 0
-        },
-        {
-          label: '目录2',
-          value: 1
-        }
-      ]
+      options: parentMenusOptions
     },
     {
       type: 'input',
@@ -262,7 +257,7 @@ const addMenuState = reactive({
   ],
   addMenuFormData: {
     name: '',     // 菜单名称
-    roleName: '', // 父目录
+    parentId: '', // 父目录
     path: '',     // url路径
     permissionId: '',// 权限码
   }
@@ -276,7 +271,8 @@ let menuEditDialogVisible = ref(false)
 const menuEditDialogState = reactive({
   menuEditDialogAttrs: {
     title: '修改菜单',
-    width: '80%'
+    width: '80%',
+    determine: true,
   }
 })
 const { menuEditDialogAttrs } = toRefs(menuEditDialogState)
@@ -293,18 +289,9 @@ const editMenuState = reactive({
     {
       type: 'select',
       label: '父目录',
-      prop: 'roleName',
+      prop: 'parentId',
       placeholder: '请选择',
-      options: [
-        {
-          label: '目录1',
-          value: 0
-        },
-        {
-          label: '目录2',
-          value: 1
-        }
-      ]
+      options: parentMenusOptions
     },
     {
       type: 'input',
@@ -322,7 +309,7 @@ const editMenuState = reactive({
   ],
   editMenuFormData: {
     name: '',     // 菜单名称
-    roleName: '', // 父目录
+    parentMenuId: '', // 父目录
     path: '',     // url路径
     permissionId: '',// 权限码
   }
@@ -330,7 +317,30 @@ const editMenuState = reactive({
 
 const { editMenuItems, editMenuFormData, } = toRefs(editMenuState)
 
-// -------------------- 函数部分 --------------
+// 弹出框 popover
+let popoverVisible = ref(false)
+
+onMounted(() => {
+  getType()
+})
+
+
+// -------------------- 函数部分 ----------------
+//配置select选择框 
+
+function getType() {
+  // 父目录
+  const temp = uStore.getParentMenus
+  console.log("获取父目录", temp)
+
+  temp.forEach((item) => {
+    let temp = {}
+    temp.label = item.text
+    temp.value = item.id
+    parentMenusOptions.push(temp)
+  })
+}
+
 // 多选框多选时触发
 function selectionChange(val) {
 
@@ -364,7 +374,7 @@ function handleAddMenu() {
   let params = {}
   // console.log('新增菜单addMenuFormData', addMenuFormData.value.name)
   params.name = addMenuFormData.value.name
-  params.roleName = addMenuFormData.value.roleName
+  params.parentId = addMenuFormData.value.parentId
   params.path = addMenuFormData.value.path
   params.permissionId = addMenuFormData.value.permissionId
   console.log('新增菜单', params)
@@ -373,7 +383,7 @@ function handleAddMenu() {
     {
       params
     },
-    // 3.调用成功返回参数成功执行
+    // 3.调用成功返回参数成功执行这个方法
     (data) => {
       // TODO 需要前后端字段匹配
       tableData = data.rows
@@ -383,12 +393,44 @@ function handleAddMenu() {
     },
     // 4.执行失败给出提示信息
     () => {
-      ElMessage.error('addMenu查询数据出现错误')
+      ElMessage.error('新增菜单出现错误')
     }
   )
 
 }
 
+// 点击添加子目录实现新增菜单
+function handleAddSubMenu(data) {
+  // console.log("------data", data)
+  let params = {}
+  // console.log("------addSubMenuData", addSubMenuData)
+  params.parentId = data.id  // 父菜单id
+  params.name = addSubMenuData.name ?? ''
+  params.path = addSubMenuData.path ?? ''
+  params.permissionId = addSubMenuData.permissionId ?? ''
+
+  //2. 调用menujs的addMenu方法
+  addMenu(
+    {
+      params
+    },
+    // 3.调用成功返回参数成功执行这个方法,并且关闭弹出框
+    (data) => {
+      // TODO 需要前后端字段匹配
+
+      tableData = data.rows
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.pages = data.pages
+
+    },
+    // 4.执行失败给出提示信息
+    () => {
+      ElMessage.error('添加子目录出现错误')
+    }
+  )
+  popoverVisible.value = false
+}
 // j1 4.2 删除菜单
 function handleDeleteMenu(data) {
   let params = {}
@@ -415,19 +457,42 @@ function handleQuery() {
 }
 
 // j1 4.5 修改菜单
+// 点击修改，打开修改菜单对话框
+function editMenu(data) {
+  menuEditDialogVisible.value = true
+  console.log("点击编辑行传来的数据", data)
+  // 给修改菜单对话框内的表单赋值
+  editMenuFormData.value.name = data.name
+  editMenuFormData.value.parentMenuId = data.parentMenuId
+  editMenuFormData.value.path = data.path
+  editMenuFormData.value.permissionId = data.permissionId
+}
+// 点击确定，向后端发送数据
 function handleEditMenu() {
   let params = {}
   // console.log('新增菜单addMenuFormData', addMenuFormData.value.name)
-  params.name = addMenuFormData.value.name
-  params.roleName = addMenuFormData.value.roleName
-  params.path = addMenuFormData.value.path
-  params.permissionId = addMenuFormData.value.permissionId
+  params.name = editMenuFormData.value.name
+  params.parentId = editMenuFormData.value.parentId
+  params.path = editMenuFormData.value.path
+  params.permissionId = editMenuFormData.value.permissionId
+  console.log("修改菜单点击确定", params)
+  update(
+    {
+      params
+    },
+    // 更新成功，关闭对话框，更新表格
+    (data) => {
+      tableData.value = data
+      menuEditDialogVisible.value = false
+
+    },
+    // 更新失败
+    () => {
+      ElMessage.error("更新菜单出现错误")
+    }
+  )
 }
-
-
-
-
 
 </script>
 
-<style></style>
+<style scoped></style>
