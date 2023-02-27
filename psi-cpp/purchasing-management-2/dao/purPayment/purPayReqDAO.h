@@ -5,6 +5,7 @@
 #include "BaseDAO.h"
 #include "../../domain/do/FinPaymentReq/FinPaymentBillReqDO.h"
 #include "../../domain/do/FinPaymentReq/FinPaymentEntryDetaillDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentEntryReqDO.h"
 #include "../../domain/do/FinPaymentReq/FinPaymentReqDO.h"
 
 

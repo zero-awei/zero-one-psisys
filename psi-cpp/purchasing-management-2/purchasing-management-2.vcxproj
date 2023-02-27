@@ -178,6 +178,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h" />
     <ClInclude Include="api\payment\PaymentController.h" />
     <ClInclude Include="api\prepayment\PrePayController.h" />
     <ClInclude Include="api\PueReq\PurReqController.h" />
@@ -237,6 +238,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\PaymentBillImpl\PaymentDetailBillVO.h" />
     <ClInclude Include="domain\vo\payment\PaymentVO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h" />
@@ -261,6 +263,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp" />
     <ClCompile Include="api\payment\PaymentController.cpp" />
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
     <ClCompile Include="api\PueReq\PurReqController.cpp" />

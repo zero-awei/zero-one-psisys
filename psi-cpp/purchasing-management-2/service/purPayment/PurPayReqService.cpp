@@ -215,39 +215,27 @@ PageVO<PaymentBillVO> PurPayReqService::queryList(const PaymentBillQuery& query)
 	return pages;
 }
 //查询指定单据详细信息
-PaymentBillDetailVO PurPayReqService::detailDate(const PaymentBillDetailQuery& query) {
+PaymentDetailBillVO PurPayReqService::detailDate(const PaymentBillDetailQuery& query) {
 	PurPayReqDAO dao;
 	list<FinPaymentReqDO> pus = dao.selectBillNo(query.getBillNo());
-	PaymentBillDetailVO po;
+	PaymentDetailBillVO po;
 	if (!pus.empty()) {
 		FinPaymentReqDO pu = *pus.begin();
-		po.setBill_no(pu.getBill_no());
-		po.setBill_date(pu.getBill_date());
-		po.setIs_effective(pu.getIs_effective());
-		po.setIs_closed(pu.getIs_closed());
-		po.setIs_voided(pu.getIs_voided());
+		po.setBillNo(pu.getBill_no());
+		po.setBillDate(pu.getBill_date());
+		po.setIsEffective(pu.getIs_effective());
+		po.setIsClosed(pu.getIs_closed());
+		po.setIsVoided(pu.getIs_voided());
 		po.setSubject(pu.getSubject());
-		po.setPur_type(pu.getPur_type());
-		po.setRequester(pu.getRequester());
-		po.setRequest_dept(pu.getRequest_dept());
-		po.setRequest_time(pu.getRequest_time());
-		po.setOrdered_qty(pu.getOrdered_qty());
 
-		list<PurReqEntryDO> detailsResult = pu.getDetail();
-		list<PurReqDetailBillVO> pbVO;
-		for (PurReqEntryDO re : detailsResult)
+		list<FinPaymentEntryReqDO> detailsResult = pu.getDetail();
+		list<PaymentBillDetailVO> pbVO;
+		for (FinPaymentEntryReqDO re : detailsResult)
 		{
-			PurReqDetailBillVO tep;
-			tep.setSrc_no(re.getSrc_no());
-			tep.setMaterial_id(re.getMaterial_id());
-			tep.setSrc_bill_type(re.getSrc_bill_type());
-			tep.setUnit_id(re.getUnit_id());
-			tep.setQty(re.getQty());
-			tep.setOrdered_qty(re.getOrdered_qty());
-			tep.setTax_rate(re.getTax_rate());
-			tep.setPrice(re.getPrice());
+			PaymentBillDetailVO tep;
+			tep.setSrcNo(re.getSrcNo());;
 			tep.setAmt(re.getAmt());
-			tep.setSuggest_supplier_id(re.getSuggest_supplier_id());
+			tep.setPaidAmt(re.getPaidAmt());
 			tep.setRemark(re.getRemark());
 			tep.setCustom1(re.getCustom1());
 			tep.setCustom2(re.getCustom2());

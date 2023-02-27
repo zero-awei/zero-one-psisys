@@ -226,11 +226,10 @@ void Router::createPaymentRouter()
 	BIND_POST_ROUTER(server, "/payment-export", &PaymentController::exportPayment, nullptr);
 	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
 }
-/*
+
 void Router::createPayApplyRouter() {
 	BIND_GET_ROUTER(server, "/paymentApplyBill", &PayApplyControlle::queryPaymentBill, nullptr);
 	BIND_GET_ROUTER(server, "/paymentApplyDetailBill", &PayApplyControlle::queryPaymentDetailBill, nullptr);
 	BIND_POST_ROUTER(server, "/paymentApply/add", &PayApplyControlle::addPayApply, nullptr);
 	BIND_PUT_ROUTER(server, "/paymentApply/mod", &PayApplyControlle::modPayReqApply, nullptr);
-
-}*/
+}

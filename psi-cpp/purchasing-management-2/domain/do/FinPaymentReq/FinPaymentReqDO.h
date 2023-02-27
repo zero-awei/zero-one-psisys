@@ -50,7 +50,7 @@ class FinPaymentReqDO
 	//业务部门
 	CC_SYNTHESIZE(string, op_dept, Op_dept);
 	//业务员
-	CC_SYNTHESIZE(string, operator, Operator);
+	CC_SYNTHESIZE(string, operator1,Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
@@ -74,7 +74,7 @@ class FinPaymentReqDO
 	//是否生效
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	//生效时间
-	CC_SYNTHESIZE(int, effective_time, Effective_time);
+	CC_SYNTHESIZE(string,effective_time, Effective_time);
 	//已关闭
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	//是否作废

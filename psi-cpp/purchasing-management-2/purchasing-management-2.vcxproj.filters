@@ -255,6 +255,12 @@
     <ClInclude Include="domain\dto\PaymentBillImpl\purPayReqEntryDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\vo\PaymentBillImpl\PaymentDetailBillVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -327,6 +333,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\purPayment\purPayReqDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

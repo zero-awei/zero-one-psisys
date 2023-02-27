@@ -18,6 +18,7 @@
 
 #include "../../GlobalInclude.h"
 #include "PurPayReqEntryDTO.h"
+#include "../FileDTO.h"
 
 class AddPayApplyDTO :public FileDTO
 {
@@ -38,7 +39,7 @@ class AddPayApplyDTO :public FileDTO
 	//业务部门
 	CC_SYNTHESIZE(string, opDept, OpDept);
 	//业务员
-	CC_SYNTHESIZE(string, operator, Operator);
+	CC_SYNTHESIZE(string, operator1, Operator);
 	//付款类型
 	CC_SYNTHESIZE(string, paymentType, PaymentType);
 	//申请金额
@@ -72,7 +73,7 @@ public:
 		BIND_FROM_TO_ULL(j, apt, subject);
 		BIND_FROM_TO_ULL(j, apt, supplierId);
 		BIND_FROM_TO_ULL(j, apt, opDept);
-		BIND_FROM_TO_ULL(j, apt, operator);
+		BIND_FROM_TO_ULL(j, apt, operator1);
 		BIND_FROM_TO_ULL(j, apt, paymentType);
 		BIND_FROM_TO_ULL(j, apt, remark);
 		BIND_FROM_TO_ULL(j, apt, billStage);

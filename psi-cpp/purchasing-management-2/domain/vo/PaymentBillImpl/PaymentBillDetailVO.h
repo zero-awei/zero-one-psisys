@@ -23,6 +23,16 @@
 查询单据列表
 */
 class PaymentBillDetailVO:public PaymentBillVO {
+	//单据号
+	CC_SYNTHESIZE(string, billNo, BillNo);
+	//分录号
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
+	//源单类型
+	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
+	// 源单id
+	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
+	//源单分录id
+	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
 	//源单号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//申请金额
@@ -38,10 +48,8 @@ class PaymentBillDetailVO:public PaymentBillVO {
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PaymentBillDetailVO, billNo, billDate, subject, supplierId, opDept,
-		operator, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
-		isAuto, isRubric, remark, effectiveTime,
-		approver, createTime, createBy, sysOrgCode, updateTime, updateBy, custom1, custom2);
+	BIND_TO_JSON(PaymentBillDetailVO, billNo, entryNo, srcBillType, srcBillId, srcEntryId,
+		srcNo, amt, paidAmt, remark, custom1, custom2);
 };
 
 #endif

@@ -1,9 +1,9 @@
-
-
 #include "stdafx.h"
 #include "PayApplyControlle.h"
 
 JsonVO<PageVO<PaymentBillVO>> PayApplyControlle::execQueryPayBill(const PaymentBillQuery& query, const PayloadDTO& payload) {
+
+
 	JsonVO<PageVO<PaymentBillVO>> result;
 
 	return result;

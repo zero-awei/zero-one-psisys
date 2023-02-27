@@ -40,7 +40,7 @@ class ModPayApplyDTO :public FileDTO
 	//业务部门
 	CC_SYNTHESIZE(string, opDept, OpDept);
 	//业务员
-	CC_SYNTHESIZE(string, operator, Operator);
+	CC_SYNTHESIZE(string, operator1, Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
@@ -96,7 +96,7 @@ public:
 		BIND_FROM_TO_ULL(j, mdt, paymentType);
 		BIND_FROM_TO_ULL(j, mdt, supplierId);
 		BIND_FROM_TO_ULL(j, mdt, opDept);
-		BIND_FROM_TO_ULL(j, mdt, operator);
+		BIND_FROM_TO_ULL(j, mdt, operator1);
 		BIND_FROM_TO_ULL(j, mdt, remark);
 		BIND_FROM_TO_ULL(j, mdt, billStage);
 		BIND_FROM_TO_ULL(j, mdt, approver);

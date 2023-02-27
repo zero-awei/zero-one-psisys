@@ -14,7 +14,7 @@
 #include "../../domain/dto/PaymentBillImpl/AddPayApplyDTO.h"
 #include "../../domain/dto/PaymentBillImpl/ModPayApplyDTO.h"
 #include"../../domain/vo/PaymentBillImpl/PaymentBillVO.h"
-#include"../../domain/vo/PaymentBillImpl/PaymentBillDetailVO.h"
+#include"../../domain/vo/PaymentBillImpl/PaymentDetailBillVO.h"
 #include"../../domain/query/PaymentBillImpl/PaymentBillQuery.h"
 #include"../../domain/query/PaymentBillImpl/PaymentBillDetailQuery.h"
 
@@ -31,7 +31,7 @@ public:
 	// 分页查询所有数据
 	PageVO<PaymentBillVO> queryList(const PaymentBillQuery& query);
 	//查询指定单据详细信息
-	PaymentBillDetailVO detailDate(const PaymentBillDetailQuery& query);
+	PaymentDetailBillVO detailDate(const PaymentBillDetailQuery& query);
 	
 };
 
