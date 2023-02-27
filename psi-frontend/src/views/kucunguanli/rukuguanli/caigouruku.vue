@@ -5,12 +5,8 @@
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
       @reset="handleReset"></psi-form>
   </div>
-<<<<<<< HEAD
-  <!-- 表格数据（导入导出） -->
-=======
   <div style="margin-top:10px">
     <!-- 表格数据 -->
->>>>>>> origin/f1
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
       @add="handleAdd" >
     </psi-table>

@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 <!-- 采购应付 -->
   <div>
     <!-- 查询 -->
@@ -289,15 +288,3 @@ function handleAdd() {
 
 }
 </script>
-=======
-  <div>
-    <!-- 采购退货出库（红入） -->
-  </div>
-</template>
-
-<script setup>
-import { } from './api/caigourukutuihuochuku.js'
-</script>
-
-<style></style>
->>>>>>> origin/f1

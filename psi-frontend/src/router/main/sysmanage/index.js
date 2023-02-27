@@ -203,14 +203,6 @@ const routes = [
     component: () =>
       import('@/views/yingfuyufukuan/yingfuguanli/YingFuHeXiao.vue')
   },
-  // ↓↓↓↓↓↓↓↓↓↓↓↓↓库存管理↓↓↓↓↓↓↓↓↓↓↓↓↓
-  // 采购入库
-  {
-    path: '/inventory/Ipurchase',
-    name: 'Ipurchase',
-    component: () =>
-      import('@/views/kucunguanli/rukuguanli/CaiGouRuKu.vue')
-  },
   // 采购退货出库（红入）
   // ↓↓↓↓↓↓↓↓↓↓↓↓↓应付与付款--预付管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   // 采购预付(有申请)
@@ -248,6 +240,7 @@ const routes = [
     component: () =>
       import('@/views/yingfuyufukuan/fukuanguanli/CaiGouTuiHuoTuiKuan.vue')
   },
+  
   // ↓↓↓↓↓↓↓↓↓↓↓↓↓库存管理↓↓↓↓↓↓↓↓↓↓↓↓↓
   // 采购入库
   {
