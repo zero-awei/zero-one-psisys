@@ -32,24 +32,27 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 	PurComDO obj;
 	obj.setBill_no(query.getBill_no());
 	obj.setBill_date(query.getBill_date());
-	obj.setSubject(query.getSubject());
-	obj.setIs_effective(query.getIs_effective());
-	obj.setIs_closed(query.getIs_closed());
-	obj.setIs_voided(query.getIs_voided());
 	
 	// 生成DAO层对象
 	PurComDAO dao;
+	
+	//查询数据总条数
 	uint64_t count = dao.count(obj);
+	//
+	//待加入筛选条件
+	//
 	if (count <= 0)
 	{
 		return pages;
 	}
+
 	// 调用DAO层功能,传入DO
 	pages.setTotal(count);
 	pages.calcPages();
 	list<PurComDO> result = dao.selectPurCom(obj, query.getPageIndex(), query.getPageSize());
 	list<PurComVO> vr;		//分页查询返回的VO列表
 	// 根据DAO层返回的DO，对VO成员进行赋值
+
 	for (PurComDO sub : result)
 	{
 		// 构造用于返回的VO
@@ -97,7 +100,8 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 
 		vr.push_back(vo);
 	}
-	// 返回VO
+	// 将vr填入pages中，并返回pages
+	pages.setRows(vr);
 	return pages;
 }
 

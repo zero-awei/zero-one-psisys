@@ -29,7 +29,6 @@ uint64_t PurComDAO::count(const PurComDO& obj)
 	//____待添加筛选条件___
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
-	return uint64_t();
 }
 
 //分页查询数据

@@ -34,6 +34,8 @@ JsonVO<PageVO<PurComVO>> PurComController::execListPurCom(const PurComQuery& que
 JsonVO<PurComVO> PurComController::execGetPurCom(const PurComQuery& query)
 {
 	PurComService service;
-	JsonVO<PurComVO> result = JsonVO(service.getData(query.getId()), RS_SUCCESS);
+	//JsonVO<PurComVO> result = JsonVO(service.getData(query.getId()), RS_SUCCESS);
+	//return result;
+	JsonVO<PurComVO> result;
 	return result;
 }
