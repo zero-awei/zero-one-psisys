@@ -29,6 +29,7 @@
 #include "../../domain/vo/JsonVO.h"
 #include "../lib-common/include/ExcelComponent.h"
 #include "../../service/BasMaterial/BasMaterialService.h"
+#include "../../domain/dto/FileDTO.h"
 
 /**
  * 示例控制器，演示基础接口的使用
@@ -41,7 +42,7 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(addBasMaterial, execAddBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_BODY_PAYLOAD(modifyBasMaterial, execModifyBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_BODY(removeBasMaterial, execRemoveById, IntID);
-	CREATE_API_FUN_BODY_FILE(importBasMaterial, execImportBasMaterial, BasMaterialDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(importBasMaterial, execImportBasMaterial, BasMaterialDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, BasMaterialQuery);
 
 private:
@@ -57,7 +58,8 @@ private:
 	JsonVO<uint64_t> execRemoveBasMaterial(const BasMaterialDTO& dto);
 	JsonVO<uint64_t> execRemoveById(const IntID& id);
 	//导入
-	JsonVO<PageVO<BasMaterialVO>> execImportBasMaterial(const BasMaterialDTO& dto);
+	JsonVO<bool> execImportBasMaterial(const FileDTO& dto, const PayloadDTO& payload);
+
 	//导出
 	JsonVO<string> execExportExecl(const BasMaterialQuery& query, const PayloadDTO& payload);
 

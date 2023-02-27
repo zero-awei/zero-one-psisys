@@ -110,9 +110,24 @@ JsonVO<uint64_t> BasMaterialController::execRemoveById(const IntID& id)
 	return execRemoveBasMaterial(dto);
 }
 
-JsonVO<PageVO<BasMaterialVO>> BasMaterialController::execImportBasMaterial(const BasMaterialDTO& dto)
-{
-	return JsonVO<PageVO<BasMaterialVO>>();
+
+//JsonVO<PageVO<BasMaterialVO>> BasMaterialController::execImportBasMaterial(const BasMaterialDTO& dto)
+//{
+//	return JsonVO<PageVO<BasMaterialVO>>();
+//}
+JsonVO<bool> BasMaterialController::execImportBasMaterial(const FileDTO& dto, const PayloadDTO& payload) {
+	JsonVO<bool> res;
+	BasMaterialService service;
+	uint64_t id = service.saveExceData(dto, payload);
+	if (id > 0) {
+		res.success(id);
+	}
+	else
+	{
+		res.fail(id);
+	}
+	
+	return res;
 }
 
 JsonVO<string> BasMaterialController::execExportExecl(const BasMaterialQuery& query, const PayloadDTO& payload)

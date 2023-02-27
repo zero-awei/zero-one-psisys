@@ -21,7 +21,9 @@
 #include "../../dao/BasMaterial/BasMaterialDAO.h"
 #include "../../domain/query/BasMaterial/BasMaterialDetailQuery.h"
 #include "../../../lib-common/include/SnowFlake.h"
-
+#include "../../../lib-common/include/SimpleDateTimeFormat.h"
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
 PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 {
 	//构建返回对象
@@ -74,59 +76,7 @@ PageVO<BasMaterialVO> BasMaterialService::listAll(const BasMaterialQuery& query)
 	return pages;
 }
 
-bool BasMaterialService::getExceData(const BasMaterialQuery& query, vector<vector<string>>& data)
-{
-	//构建返回对象
 
-	PageVO<BasMaterialVO> pages;
-
-
-	//查询数据总条数
-	BasMaterialDO obj;
-	obj.setName(query.getName());
-	obj.setCode(query.getCode());
-	obj.setCategoryId(query.getCategoryId());
-	obj.setTaxCode(query.getTaxCode());
-	BasMaterialDAO dao;
-	uint64_t count = dao.count(obj);
-
-	if (count <= 0)
-	{
-		return false;
-	}
-//	cout << count;
-
-	//分页查询数据
-	pages.setTotal(count);
-	pages.calcPages();
-	list<BasMaterialDO> result = dao.selectWithPage(obj, 1, count);
-	//cout << result.size();
-	for (BasMaterialDO sub : result)
-	{
-		
-		vector<string> row;
-		row.emplace_back(sub.getCategoryId());
-		row.emplace_back(sub.getCode());
-		row.emplace_back(sub.getName());
-		row.emplace_back(sub.getAuxName());
-		string isEnabled = to_string(sub.getIsEnabled());
-		row.emplace_back(isEnabled);
-		row.emplace_back(sub.getModel());
-		row.emplace_back(sub.getUnitId());
-		string salePrice = to_string(sub.getSalePrice());
-		row.emplace_back(salePrice);
-		row.emplace_back(sub.getTaxCode());
-		row.emplace_back(sub.getRemark());
-		row.emplace_back(sub.getCreateBy());
-		row.emplace_back(sub.getCreateTime());
-		row.emplace_back(sub.getUpdateBy());
-		row.emplace_back(sub.getUpdateTime());
-		
-		data.emplace_back(row);
-	}
-	
-	return true;
-}
 BasMaterialVO BasMaterialService::getData(const BasMaterialDetailQuery& query) {
 
 	BasMaterialDAO dao;
@@ -176,7 +126,7 @@ uint64_t BasMaterialService::saveData(const BasMaterialDTO& dto, const PayloadDT
 	time_t now = time(0);
 	tm* ltm = localtime(&now);
 	string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
-	string currentTime = time;
+	string currentTime = SimpleDateTimeFormat::format(time);
 	data.setCreateTime(currentTime);
 	data.setCreateBy(payload.getUsername());
 	data.setUpdateBy("");
@@ -208,7 +158,7 @@ bool BasMaterialService::updateData(const BasMaterialDTO& dto, const PayloadDTO&
 	time_t now = time(0);
 	tm* ltm = localtime(&now);
 	string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
-	string currentTime = time;
+	string currentTime = SimpleDateTimeFormat::format(time);
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(currentTime);
 	//执行数据修改
@@ -220,4 +170,118 @@ bool BasMaterialService::removeData(uint64_t  id)
 {
 	BasMaterialDAO dao;
 	return dao.deleteById(id) == 1;
+}
+//导出
+bool BasMaterialService::getExceData(const BasMaterialQuery& query, vector<vector<string>>& data)
+{
+	//构建返回对象
+
+	PageVO<BasMaterialVO> pages;
+
+
+	//查询数据总条数
+	BasMaterialDO obj;
+	obj.setName(query.getName());
+	obj.setCode(query.getCode());
+	obj.setCategoryId(query.getCategoryId());
+	obj.setTaxCode(query.getTaxCode());
+	BasMaterialDAO dao;
+	uint64_t count = dao.count(obj);
+
+	if (count <= 0)
+	{
+		return false;
+	}
+	//	cout << count;
+
+		//分页查询数据
+	pages.setTotal(count);
+	pages.calcPages();
+	list<BasMaterialDO> result = dao.selectWithPage(obj, 1, count);
+	//cout << result.size();
+	for (BasMaterialDO sub : result)
+	{
+
+		vector<string> row;
+		row.emplace_back(sub.getCategoryId());
+		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getName());
+		row.emplace_back(sub.getAuxName());
+		string isEnabled = to_string(sub.getIsEnabled());
+		row.emplace_back(isEnabled);
+		row.emplace_back(sub.getModel());
+		row.emplace_back(sub.getUnitId());
+		string salePrice = to_string(sub.getSalePrice());
+		row.emplace_back(salePrice);
+		row.emplace_back(sub.getTaxCode());
+		row.emplace_back(sub.getRemark());
+		row.emplace_back(sub.getCreateBy());
+		row.emplace_back(sub.getCreateTime());
+		row.emplace_back(sub.getUpdateBy());
+		row.emplace_back(sub.getUpdateTime());
+
+		data.emplace_back(row);
+	}
+
+	return true;
+}
+//导入
+uint64_t BasMaterialService::saveExceData(const FileDTO& dto, const PayloadDTO& payload)
+{
+	ExcelComponent excel;
+	uint64_t res = 0;
+	//输出测试上传文件路径列表
+	for (auto file : dto.getFiles()) {
+		std::cout << "path " << file << std::endl;
+
+		//从文件中读取
+		BasMaterialDO data;
+		auto readData = excel.readIntoVector(file, u8"test");
+		int rows = 0;
+		for (auto row : readData)
+		{
+			if (rows < 1)
+			{
+				rows++;
+				continue;
+			}
+			if (!row.empty())
+			{
+				int i = 0;
+				SnowFlake sf(1, 2);
+				data.setId(sf.nextId());
+				data.setCategoryId(row.at(i++));
+				data.setCode(row.at(i++));
+				data.setName(row.at(i++));
+				data.setAuxName(row.at(i++));
+				  if (CharsetConvertHepler::utf8ToAnsi(row.at(i++)) == "1") {
+					  data.setIsEnabled(1);
+				  }
+				  else data.setIsEnabled(0);
+				
+				data.setModel(row.at(i++));
+				data.setUnitId(row.at(i++));
+
+				double d = stod(row.at(i++));
+				data.setSalePrice(d);
+				data.setTaxCode(row.at(i++));
+				data.setRemark(row.at(i++));
+				time_t now = time(0);
+				tm* ltm = localtime(&now);
+				string time = to_string(ltm->tm_year + 1900) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + " " + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min) + ":" + to_string(ltm->tm_sec);
+				string currentTime = SimpleDateTimeFormat::format(time);
+				data.setCreateTime(currentTime);
+				data.setCreateBy(payload.getUsername());
+				data.setUpdateBy("");
+				data.setUpdateTime("");
+				//执行数据添加
+				BasMaterialDAO dao;
+				dao.insert(data);
+				res++;
+			}
+		}
+
+	}
+
+	return res;
 }
