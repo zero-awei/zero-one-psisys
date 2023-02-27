@@ -26,10 +26,10 @@ public class CheckPayableDTO {
     @ApiModelProperty(value = "核销金额", example = "202")
     private BigDecimal amt;
 
-    @ApiModelProperty(value = "核批意见", example = "")
+    @ApiModelProperty(value = "核批意见")
     private String approvalRemark;
 
-    @ApiModelProperty(value = "核批结果", example = "1")
+    @ApiModelProperty(value = "核批结果 1-审核通过 2-审核不通过", example = "1")
     private String approvalResultType;
 
 
@@ -37,7 +37,7 @@ public class CheckPayableDTO {
     private String approver;
 
 
-    @ApiModelProperty(value = "附件", example = "")
+    @ApiModelProperty(value = "附件")
     private String attachment;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -48,7 +48,7 @@ public class CheckPayableDTO {
     @ApiModelProperty(value = "单据编号", example = "YFHX-230209-009")
     private String billNo;
 
-    @ApiModelProperty(value = "单据阶段", example = "34")
+    @ApiModelProperty(value = "单据阶段 1-编制中 2-编制完 3-执行完 4-核批完", example = "34")
     private String billStage;
 
 
@@ -101,16 +101,16 @@ public class CheckPayableDTO {
     @ApiModelProperty(value = "核销类型", example = "2")
     private String payableCheckType;
 
-    @ApiModelProperty(value = "备注", example = "")
+    @ApiModelProperty(value = "备注")
     private String remark;
 
-    @ApiModelProperty(value = "源单id", example = "")
+    @ApiModelProperty(value = "源单id")
     private String srcBillId;
 
-    @ApiModelProperty(value = "源单类型", example = "")
+    @ApiModelProperty(value = "源单类型")
     private String srcBillType;
 
-    @ApiModelProperty(value = "源单号", example = "")
+    @ApiModelProperty(value = "源单号")
     private String srcNo;
 
     @ApiModelProperty(value = "单据主题", example = "3333333333")

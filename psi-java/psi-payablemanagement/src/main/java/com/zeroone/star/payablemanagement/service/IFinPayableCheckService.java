@@ -25,4 +25,6 @@ public interface IFinPayableCheckService extends IService<FinPayableCheck> {
     void saveModify(CheckPayableDTO dto);
 
     void removeWithEntry(List<String> ids);
+
+    boolean isCheckPass(String id, String approvalResultType, String approvalRemark);
 }

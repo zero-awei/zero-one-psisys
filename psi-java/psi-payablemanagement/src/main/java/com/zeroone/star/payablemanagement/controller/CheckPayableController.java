@@ -1,6 +1,7 @@
 package com.zeroone.star.payablemanagement.controller;
 
 
+import cn.hutool.core.util.BooleanUtil;
 import com.zeroone.star.payablemanagement.entity.FinPayableCheck;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
@@ -163,16 +164,8 @@ public class CheckPayableController implements CheckPayableApis {
         @ApiParam("核批结果") String approvalResultType,
         @ApiParam(value = "核批意见", allowEmptyValue = true) @RequestParam(required = false) String approvalRemark) {
         try {
-            finPayableCheckService.lambdaUpdate()
-                .set(FinPayableCheck::getApprovalResultType, approvalResultType)
-                .set(FinPayableCheck::getApprovalRemark, approvalRemark)
-                .eq(FinPayableCheck::getId, id)
-                .update();
-            if ("1".equals(approvalResultType)) {
-                return JsonVO.success("审核通过！");
-            } else {
-                return JsonVO.success("审核不通过！");
-            }
+            boolean flag = finPayableCheckService.isCheckPass(id, approvalResultType, approvalRemark);
+            return JsonVO.success(BooleanUtil.isTrue(flag) ? "审核通过！" : "审核不通过！");
         } catch (Exception e) {
             return JsonVO.fail(e.getMessage());
         }
@@ -184,7 +177,7 @@ public class CheckPayableController implements CheckPayableApis {
     public JsonVO<String> voidPayableCheck(@ApiParam("单据id") @RequestParam String id) {
         try {
             finPayableCheckService.lambdaUpdate()
-                .set(FinPayableCheck::getIsVoided, 1)
+                .setSql("is_voided = 1")
                 .eq(FinPayableCheck::getId, id)
                 .update();
             return JsonVO.success("作废应付核销单成功！");
