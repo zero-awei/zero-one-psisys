@@ -34,9 +34,45 @@ uint64_t ImportSupplierService::saveData(const FileDTO& dto)
 				data.setAuxName(row.at(i++));
 				data.setSupplierCategory(row.at(i++));
 				data.setSupplierLevel(row.at(i++));
+				data.setTaxScale(row.at(i++));
+				data.setHeadquarters(row.at(i++));
+				data.setArea(row.at(i++));
+				data.setBizArea(row.at(i++));
+				data.setAddress(row.at(i++));
+				data.setWebsite(row.at(i++));
+				data.setLegalPerson(row.at(i++));
+				data.setLegalPersonPhone(row.at(i++));
+				data.setFinancialContacts(row.at(i++));
+				data.setFinancialPhone(row.at(i++));
+				data.setInvoiceCompany(row.at(i++));
+				data.setInvoiceTaxCode(row.at(i++));
+				data.setInvoiceBankName(row.at(i++));
+				data.setInvoiceBankCode(row.at(i++));
+				data.setInvoiceAccount(row.at(i++));
+				data.setInvoicePhone(row.at(i++));
+				data.setInvoiceAddress(row.at(i++));
+				data.setReceiptCompany(row.at(i++));
+				data.setReceiptBankName(row.at(i++));
+				data.setReceiptBankCode(row.at(i++));
+				data.setReceiptAccount(row.at(i++));
+				data.setRecvName(row.at(i++));
+				data.setRecvPhone(row.at(i++));
+				data.setRecvFax(row.at(i++));
+				data.setRecvEmail(row.at(i++));
+				data.setRecvAddress(row.at(i++));
+				data.setRecvPostcode(row.at(i++));
+				data.setAttachment(row.at(i++));
 				if (CharsetConvertHepler::utf8ToAnsi(row.at(i++)) == "是") {
 					data.setIsEnabled(1);
-				}				
+				}
+				data.setAlterSuppliers(row.at(i++));
+				data.setRemark(row.at(i++));
+				int n;
+				stringstream ss;
+				ss << row.at(i++);
+				ss >> n;
+				data.setVersion(n);
+							
 				//执行数据添加
 				ImportSupplierDAO dao;
 				dao.insert(data);
