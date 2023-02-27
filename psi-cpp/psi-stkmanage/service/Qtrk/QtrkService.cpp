@@ -4,7 +4,7 @@
 #include "../../dao/CommonDAO.h"
 #include "../../../lib-common/include/SnowFlake.h"
 #include "../../../lib-common/include/StringUtil.h"
-#include <ctime>
+#include "../../../lib-common/include/SimpleDateTimeFormat.h"
 #include <algorithm>
 
 int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& payload)
@@ -51,7 +51,7 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 	data1.setBillDate(dto.getBillDate());
 	data1.setSubject(dto.getSubject());
 	data1.setStockIoType("199"); // "199":其他入库
-	data1.setSupplierId(cDao.selectSupplyIdByAuxName(dto.getSupplier()));
+	data1.setSupplierId(dto.getSupplier());
 	data1.setHandler(dto.getHandler());
 	data1.setCost([](const list<QtrkBillDetailDTO>& details) {
 		double cost = 0;
@@ -65,15 +65,7 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 	data1.setAttachment(attachment);
 	data1.setSysOrgCode(cDao.selectOrgCodeByUsername(payload.getUsername()));
 	data1.setCreateBy(payload.getUsername());
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data1.setCreateTime(string(buffer));
+	data1.setCreateTime(SimpleDateTimeFormat::format());
 	// 事务开始
 	qDao.getSqlSession()->beginTransaction();
 	// 执行数据添加
@@ -97,11 +89,11 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 		data2.setMid(mid);
 		data2.setBillNo(dto.getBillNo());
 		data2.setEntryNo(to_string(entry.getEntryNo()));
-		data2.setMaterialId(cDao.selectMaterialIdByAuxName(entry.getMaterial()));
+		data2.setMaterialId(entry.getMaterial());
 		data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
-		data2.setWarehouseId(cDao.selectWarehouseIdByAuxName(entry.getWarehouse()));
+		data2.setWarehouseId(entry.getWarehouse());
 		data2.setStockIoDirection("1");
-		data2.setUnitId(cDao.selectUnitIdByName(entry.getUnit()));
+		data2.setUnitId(entry.getUnit());
 		data2.setQty(entry.getQty());
 		data2.setPrice(entry.getPrice());
 		data2.setCost(entry.getCost());
@@ -157,7 +149,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 	data1.setBillNo(dto.getBillNo());
 	data1.setBillDate(dto.getBillDate());
 	data1.setSubject(dto.getSubject());
-	data1.setSupplierId(cDao.selectSupplyIdByAuxName(dto.getSupplier()));
+	data1.setSupplierId(dto.getSupplier());
 	data1.setHandler(dto.getHandler());
 	data1.setCost([](const list<QtrkBillDetailDTO>& details) {
 		double cost = 0;
@@ -198,16 +190,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 		return result;
 		}(dto.getFiles()));
 	data1.setUpdateBy(payload.getUsername());
-
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data1.setUpdateTime(string(buffer));
+	data1.setUpdateTime(SimpleDateTimeFormat::format());
 	// 事务开始
 	pDao.getSqlSession()->beginTransaction();
 	// 执行数据添加
@@ -232,11 +215,11 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 		for (auto& entry : dto.getDetail()) {
 			data2.setBillNo(dto.getBillNo());
 			data2.setEntryNo(to_string(entry.getEntryNo()));
-			data2.setMaterialId(cDao.selectMaterialIdByAuxName(entry.getMaterial()));
+			data2.setMaterialId(entry.getMaterial());
 			data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
-			data2.setWarehouseId(cDao.selectWarehouseIdByAuxName(entry.getWarehouse()));
-			data2.setUnitId(cDao.selectUnitIdByName(entry.getUnit()));
-			data2.setSupplierId(cDao.selectSupplyIdByAuxName(dto.getSupplier()));
+			data2.setWarehouseId(entry.getWarehouse());
+			data2.setUnitId(entry.getUnit());
+			data2.setSupplierId(dto.getSupplier());
 			data2.setQty(entry.getQty());
 			data2.setPrice(entry.getPrice());
 			data2.setCost(entry.getCost());
@@ -297,18 +280,11 @@ int QtrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payloa
 	data.setApprovalRemark(dto.getApprovalRemark());
 	data.setApprover(payload.getUsername());
 	data.setUpdateBy(payload.getUsername());
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data.setUpdateTime(string(buffer));
+	string time = SimpleDateTimeFormat::format();
+	data.setUpdateTime(time);
 	if (dto.getApprovalResultType() == 1) { // 审核通过
 		data.setIsEffective(1);
-		data.setEffectiveTime(string(buffer));
+		data.setEffectiveTime(time);
 		data.setIsClosed(1);
 		data.setBillStage("34"); // "34":执行完
 	}

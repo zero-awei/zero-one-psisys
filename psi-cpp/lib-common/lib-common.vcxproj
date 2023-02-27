@@ -176,6 +176,7 @@
     <ClInclude Include="include\NacosClient.h" />
     <ClInclude Include="include\RedisClient.h" />
     <ClInclude Include="include\RocketClient.h" />
+    <ClInclude Include="include\SimpleDateTimeFormat.h" />
     <ClInclude Include="include\SnowFlake.h" />
     <ClInclude Include="include\StringUtil.h" />
     <ClInclude Include="include\YamlHelper.h" />
@@ -185,6 +186,7 @@
   <ItemGroup>
     <ClCompile Include="src\RedisClient.cpp" />
     <ClCompile Include="src\MongoClient.cpp" />
+    <ClCompile Include="src\SimpleDateTimeFormat.cpp" />
     <ClCompile Include="src\SnowFlake.cpp" />
     <ClCompile Include="src\KafkaClient.cpp" />
     <ClCompile Include="src\RocketClient.cpp" />

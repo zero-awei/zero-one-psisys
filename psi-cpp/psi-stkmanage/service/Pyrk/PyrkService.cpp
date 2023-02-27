@@ -4,7 +4,7 @@
 #include "../../dao/CommonDAO.h"
 #include "../../../lib-common/include/SnowFlake.h"
 #include "../../../lib-common/include/StringUtil.h"
-#include <ctime>
+#include "../../../lib-common/include/SimpleDateTimeFormat.h"
 #include <algorithm>
 
 int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& payload)
@@ -64,15 +64,7 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	data1.setAttachment(attachment);
 	data1.setSysOrgCode(cDao.selectOrgCodeByUsername(payload.getUsername()));
 	data1.setCreateBy(payload.getUsername());
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data1.setCreateTime(string(buffer));
+	data1.setCreateTime(SimpleDateTimeFormat::format());
 	// 事务开始
 	pDao.getSqlSession()->beginTransaction();
 	// 执行数据添加
@@ -96,11 +88,11 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 		data2.setMid(mid);
 		data2.setBillNo(dto.getBillNo());
 		data2.setEntryNo(to_string(entry.getEntryNo()));
-		data2.setMaterialId(cDao.selectMaterialIdByAuxName(entry.getMaterial()));
+		data2.setMaterialId(entry.getMaterial());
 		data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
-		data2.setWarehouseId(cDao.selectWarehouseIdByAuxName(entry.getWarehouse()));
+		data2.setWarehouseId(entry.getWarehouse());
 		data2.setStockIoDirection("1");
-		data2.setUnitId(cDao.selectUnitIdByName(entry.getUnit()));
+		data2.setUnitId(entry.getUnit());
 		data2.setQty(entry.getQty());
 		data2.setCost(entry.getCost());
 		data2.setRemark(entry.getRemark());
@@ -137,18 +129,11 @@ int PyrkService::updateApproval(const ApprovalDTO& dto, const PayloadDTO& payloa
 	data.setApprovalRemark(dto.getApprovalRemark());
 	data.setApprover(payload.getUsername());
 	data.setUpdateBy(payload.getUsername());
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data.setUpdateTime(string(buffer));
+	string time = SimpleDateTimeFormat::format();
+	data.setUpdateTime(time);
 	if (dto.getApprovalResultType() == 1) { // 审核通过
 		data.setIsEffective(1);
-		data.setEffectiveTime(string(buffer));
+		data.setEffectiveTime(time);
 		data.setIsClosed(1);
 		data.setBillStage("34"); // "34":执行完
 	}
@@ -239,16 +224,7 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		return result;
 	}(dto.getFiles()));
 	data1.setUpdateBy(payload.getUsername());
-
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data1.setUpdateTime(string(buffer));
+	data1.setUpdateTime(SimpleDateTimeFormat::format());
 	// 事务开始
 	pDao.getSqlSession()->beginTransaction();
 	// 执行数据添加
@@ -273,10 +249,10 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		for (auto& entry : dto.getDetail()) {
 			data2.setBillNo(dto.getBillNo());
 			data2.setEntryNo(to_string(entry.getEntryNo()));
-			data2.setMaterialId(cDao.selectMaterialIdByAuxName(entry.getMaterial()));
+			data2.setMaterialId(entry.getMaterial());
 			data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
-			data2.setWarehouseId(cDao.selectWarehouseIdByAuxName(entry.getWarehouse()));
-			data2.setUnitId(cDao.selectUnitIdByName(entry.getUnit()));
+			data2.setWarehouseId(entry.getWarehouse());
+			data2.setUnitId(entry.getUnit());
 			data2.setQty(entry.getQty());
 			data2.setCost(entry.getCost());
 			data2.setRemark(entry.getRemark());
@@ -328,16 +304,7 @@ int PyrkService::updateStateToClose(const string& billNo, const PayloadDTO& payl
 	StkIoDO data;
 	data.setBillNo(billNo);
 	data.setIsClosed(1);
-	
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data.setUpdateTime(buffer);
+	data.setUpdateTime(SimpleDateTimeFormat::format());
 	data.setUpdateBy(payload.getUsername());
 	PyrkDAO dao;
 	return dao.updateState(data);
@@ -348,16 +315,7 @@ int PyrkService::updateStateToUnclose(const string& billNo, const PayloadDTO& pa
 	StkIoDO data;
 	data.setBillNo(billNo);
 	data.setIsClosed(0);
-
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data.setUpdateTime(buffer);
+	data.setUpdateTime(SimpleDateTimeFormat::format());
 	data.setUpdateBy(payload.getUsername());
 	PyrkDAO dao;
 	return dao.updateState(data);
@@ -368,16 +326,7 @@ int PyrkService::updateStateToVoid(const string& billNo, const PayloadDTO& paylo
 	StkIoDO data;
 	data.setBillNo(billNo);
 	data.setIsVoided(1);
-
-	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data.setUpdateTime(buffer);
+	data.setUpdateTime(SimpleDateTimeFormat::format());
 	data.setUpdateBy(payload.getUsername());
 	PyrkDAO dao;
 	return dao.updateState(data);

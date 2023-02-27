@@ -38,50 +38,6 @@ string CommonDAO::selectAttachmentByBillNo(const string& billNo)
     return *ret.begin();
 }
 
-string CommonDAO::selectWarehouseIdByAuxName(const string& warehouse)
-{
-    string sql = "SELECT `id` FROM `bas_warehouse` WHERE `aux_name`=?";
-    StringMapper mapper;
-    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", warehouse);
-    if (ret.empty()) {
-        return "";
-    }
-    return *ret.begin();
-}
-
-string CommonDAO::selectMaterialIdByAuxName(const string& material)
-{
-    string sql = "SELECT `id` FROM `bas_material` WHERE `aux_name`=?";
-    StringMapper mapper;
-    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", material);
-    if (ret.empty()) {
-        return "";
-    }
-    return *ret.begin();
-}
-
-string CommonDAO::selectUnitIdByName(const string& unit)
-{
-    string sql = "SELECT `id` FROM `bas_unit` WHERE `name`=?";
-    StringMapper mapper;
-    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", unit);
-    if (ret.empty()) {
-        return "";
-    }
-    return *ret.begin();
-}
-
-string CommonDAO::selectSupplyIdByAuxName(const string& supplier)
-{
-    string sql = "SELECT `id` FROM `bas_supplier` WHERE `aux_name`=?";
-    StringMapper mapper;
-    list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", supplier);
-    if (ret.empty()) {
-        return "";
-    }
-    return *ret.begin();
-}
-
 string CommonDAO::insertAttachment(const string& fileName)
 {
 #ifdef LINUX
