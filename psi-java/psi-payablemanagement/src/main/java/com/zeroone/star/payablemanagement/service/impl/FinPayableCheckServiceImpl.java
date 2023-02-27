@@ -99,10 +99,15 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
         FinPayableCheck finPayableCheck = new FinPayableCheck();
         BeanUtil.copyProperties(dto, finPayableCheck);
         this.updateById(finPayableCheck);
+        finPayableCheckEntryService.remove(new LambdaQueryWrapper<FinPayableCheckEntry>()
+            .eq(FinPayableCheckEntry::getMid, dto.getId()));
         List<FinPayableCheckEntry> list = BeanUtil.copyToList(dto.getCheckPayableEntryList(),
             FinPayableCheckEntry.class);
-        // TODO:明细表的修改或许应该先删除再新增 待测试
-        finPayableCheckEntryService.updateBatchById(list);
+        list.forEach(item -> {
+            item.setBillNo(finPayableCheck.getBillNo());
+            item.setMid(finPayableCheck.getId());
+        });
+        finPayableCheckEntryService.saveBatch(list);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -130,6 +135,7 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
             this.lambdaUpdate()
                 .set(FinPayableCheck::getApprovalResultType, approvalResultType)
                 .set(FinPayableCheck::getApprovalRemark, approvalRemark)
+                .set(FinPayableCheck::getIsClosed, 0)
                 .set(FinPayableCheck::getBillStage, "4")
                 .eq(FinPayableCheck::getId, id)
                 .update();

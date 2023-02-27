@@ -161,8 +161,8 @@ public class CheckPayableController implements CheckPayableApis {
     @PutMapping("/check")
     @Override
     public JsonVO<String> checkPayableCheck(@ApiParam("单据id") @RequestParam String id,
-        @ApiParam("核批结果") String approvalResultType,
-        @ApiParam(value = "核批意见", allowEmptyValue = true) @RequestParam(required = false) String approvalRemark) {
+        @ApiParam("核批结果 1-通过 2-不通过") @RequestParam String approvalResultType,
+        @ApiParam(value = "核批意见") @RequestParam(defaultValue = "") String approvalRemark) {
         try {
             boolean flag = finPayableCheckService.isCheckPass(id, approvalResultType, approvalRemark);
             return JsonVO.success(BooleanUtil.isTrue(flag) ? "审核通过！" : "审核不通过！");
