@@ -17,21 +17,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_ORDER_ENTRY_DETAIL_MAPPER_
-#define _PUR_ORDER_ENTRY_DETAIL_MAPPER_
+#ifndef _PUR_INQUIRY_ENTRY_MAPPER_
+#define _PUR_INQUIRY_ENTRY_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/PurOrder/PurOrderEntryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryEntryDO.h"
 
 /**
  * ≤…π∫∂©µ•entry±Ì◊÷∂Œ∆•≈‰”≥…‰
  */
-class PurOrderEntryMapper : public Mapper<PurOrderEntryDO>
+class PurInquiryEntryMapper : public Mapper<PurInquiryEntryDO>
 {
 public:
-	PurOrderEntryDO mapper(ResultSet* resultSet) const override
+	PurInquiryEntryDO mapper(ResultSet* resultSet) const override
 	{
-		PurOrderEntryDO data;
+		PurInquiryEntryDO data;
 		data.setId(resultSet->getString(1));
 		data.setMid(resultSet->getString(2));
 		data.setBill_no(resultSet->getString(3));
@@ -45,21 +45,13 @@ public:
 		data.setQty(resultSet->getDouble(11));
 		data.setTax_rate(resultSet->getDouble(12));
 		data.setPrice(resultSet->getDouble(13));
-		data.setDiscount_rate(resultSet->getDouble(14));
-		data.setTax(resultSet->getDouble(15));
-		data.setAmt(resultSet->getDouble(16));
-		data.setIn_qty(resultSet->getDouble(17));
-		data.setIn_cost(resultSet->getDouble(18));
-		data.setSettle_qty(resultSet->getDouble(19));
-		data.setSettle_amt(resultSet->getDouble(20));
-		data.setInvoiced_qty(resultSet->getDouble(21));
-		data.setInvoiced_amt(resultSet->getDouble(22));
-		data.setRemark(resultSet->getString(23));
-		data.setCustom1(resultSet->getString(24));
-		data.setCustom2(resultSet->getString(25));
-		data.setVersion(resultSet->getInt(26));
+		data.setAmt(resultSet->getDouble(14));
+		data.setRemark(resultSet->getString(15));
+		data.setCustom1(resultSet->getString(16));
+		data.setCustom2(resultSet->getString(17));
+		data.setVersion(resultSet->getInt(18));
 		return data;
 	}
 };
 
-#endif // !_PUR_ORDER_DETAIL_MAPPER
+#endif //_PUR_COMPARE_ENTRY_MAPPER_

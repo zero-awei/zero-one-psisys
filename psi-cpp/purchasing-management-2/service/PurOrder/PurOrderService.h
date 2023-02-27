@@ -29,6 +29,23 @@
 #include "../../dao/PurOrder/PurOrderDAO.h"
 #include "../../dao/PurOrder/PurOrderEntryDAO.h"
 
+#include "../../domain/do/PurReq/PurReqDO.h"
+#include "../../domain/do/PurReqEntry/PurReqEntryDO.h"
+#include "../../domain/do/PurCom/PurComDO.h"
+#include "../../domain/do/PurCom/PurComEntryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryEntryDO.h"
+#include "../../domain/do/PurQuot/PurQuotDO.h"
+#include "../../domain/do/PurQuot/PurQuotEntryDO.h"
+
+#include "../../domain/vo/PurOrderSub/PurReqEntryVO.h"
+#include "../../domain/vo/PurOrderSub/PurCompareVO.h"
+#include "../../domain/vo/PurOrderSub/PurCompareEntryVO.h"
+#include "../../domain/vo/PurOrderSub/PurInquiryVO.h"
+#include "../../domain/vo/PurOrderSub/PurInquiryEntryVO.h"
+#include "../../domain/vo/PurOrderSub/PurQuotVO.h"
+#include "../../domain/vo/PurOrderSub/PurQuotEntryVO.h"
+
 /**
  * 采购订单服务实现，基础采购订单服务实现
  */

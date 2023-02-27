@@ -20,8 +20,24 @@
 #define _PUR_ORDER_ENTRY_DAO_
 #include "BaseDAO.h"
 #include "../../domain/do/PurOrder/PurOrderEntryDO.h"
-#include "../PurOrderSub/PurOrderEntryMapper.h"
+#include "../../domain/do/PurReq/PurReqDO.h"
+#include "../../domain/do/PurReqEntry/PurReqEntryDO.h"
+#include "../../domain/do/PurCom/PurComDO.h"
+#include "../../domain/do/PurCom/PurComEntryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryEntryDO.h"
+#include "../../domain/do/PurQuot/PurQuotDO.h"
+#include "../../domain/do/PurQuot/PurQuotEntryDO.h"
 
+#include "../PurOrderSub/PurOrderEntryMapper.h"
+#include "../PurOrderSub/PurReqMapper.h"
+#include "../PurOrderSub/PurReqEntryMapper.h"
+#include "../PurOrderSub/PurCompareMapper.h"
+#include "../PurOrderSub/PurCompareEntryMapper.h"
+#include "../PurOrderSub/PurInquiryMapper.h"
+#include "../PurOrderSub/PurInquiryEntryMapper.h"
+#include "../PurOrderSub/PurQuotMapper.h"
+#include "../PurOrderSub/PurQuotEntryMapper.h"
 /**
  * 采购订单表数据库操作实现
  */
@@ -36,5 +52,13 @@ public:
 	uint64_t count(const PurOrderEntryDO& iObj);
 
 	list<PurOrderEntryDO> selectPurOrderEntry(const string bill_no);
+	list<PurReqDO> selectPurReq(const string id);
+	list<PurReqEntryDO> selectPurReqEntry(const string id);
+	list<PurComDO> selectPurCompare(const string id);
+	list<PurComEntryDO> selectPurCompareEntry(const string id);
+	list<PurInquiryDO> selectPurInquiry(const string id);
+	list<PurInquiryEntryDO> selectPurInquiryEntry(const string id);
+	list<PurQuotDO> selectPurQuot(const string id);
+	list<PurQuotEntryDO> selectPurQuotEntry(const string id);
 };
 #endif // !_PUR_ORDER_DAO_

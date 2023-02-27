@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "PurOrderEntryDAO.h"
-#include "PurOrderMapper.h"
+#include "../PurOrderSub/PurCompareEntryMapper.h"
 #include <sstream>
 
 #define PUR_ORDER_ENTRY_MODIFY(obj, sql) \
@@ -261,4 +261,81 @@ list<PurOrderEntryDO> PurOrderEntryDAO::selectPurOrderEntry(const string bill_no
     SqlParams params;
     SQLPARAMS_PUSH(params, "s", std::string, bill_no);
     return sqlSession->executeQuery<PurOrderEntryDO, PurOrderEntryMapper>(sql, mapper, params);
+}
+
+list<PurReqDO> PurOrderEntryDAO::selectPurReq(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_req` WHERE `id`=?";
+    PurReqMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurReqDO, PurReqMapper>(sql, mapper, params);
+}
+
+list<PurReqEntryDO> PurOrderEntryDAO::selectPurReqEntry(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_req_entry` WHERE `id`=?";
+    PurReqEntryMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurReqEntryDO, PurReqEntryMapper>(sql, mapper, params);
+}
+
+list<PurComDO> PurOrderEntryDAO::selectPurCompare(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_compare` WHERE `id`=?";
+    PurCompareMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurComDO, PurCompareMapper>(sql, mapper, params);
+}
+
+list<PurComEntryDO> PurOrderEntryDAO::selectPurCompareEntry(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_compare_entry` WHERE `id`=?";
+    PurCompareEntryMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurComEntryDO, PurCompareEntryMapper>(sql, mapper, params);
+}
+
+list<PurInquiryDO> PurOrderEntryDAO::selectPurInquiry(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_inquiry` WHERE `id`=?";
+    PurInquiryMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurInquiryDO, PurInquiryMapper>(sql, mapper, params);
+}
+list<PurInquiryEntryDO> PurOrderEntryDAO::selectPurInquiryEntry(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_inquiry_entry` WHERE `id`=?";
+    PurInquiryEntryMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurInquiryEntryDO, PurInquiryEntryMapper>(sql, mapper, params);
+}
+list<PurQuotDO> PurOrderEntryDAO::selectPurQuot(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_quot` WHERE `id`=?";
+    PurQuotMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sql, mapper, params);
+}
+list<PurQuotEntryDO> PurOrderEntryDAO::selectPurQuotEntry(const string id)
+{
+    string sql;
+    sql = "SELECT * FROM `pur_quot_entry` WHERE `id`=?";
+    PurQuotEntryMapper mapper;
+    SqlParams params;
+    SQLPARAMS_PUSH(params, "s", std::string, id);
+    return sqlSession->executeQuery<PurQuotEntryDO, PurQuotEntryMapper>(sql, mapper, params);
 }

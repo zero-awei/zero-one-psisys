@@ -28,6 +28,8 @@
 #include "../PurOrderSub/PurCompareEntryVO.h"
 #include "../PurOrderSub/PurInquiryVO.h"
 #include "../PurOrderSub/PurInquiryEntryVO.h"
+#include "../PurOrderSub/PurQuotVO.h"
+#include "../PurOrderSub/PurQuotEntryVO.h"
 
 
 /**
@@ -145,6 +147,22 @@ class PurOrderDetailVO
 	CC_SYNTHESIZE(int, version, Version);
 	// Entry
 	CC_SYNTHESIZE(list<PurOrderEntryVO>, entry, Entry);
+	// Pur_req
+	CC_SYNTHESIZE(list<PurReqVO>, pur_req, Pur_req);
+	// Pur_req_entry
+	CC_SYNTHESIZE(list<PurReqEntryVO>, pur_req_entry, Pur_req_entry);
+	// Pur_compare
+	CC_SYNTHESIZE(list<PurCompareVO>, pur_compare, Pur_compare);
+	// Pur_compare_entry
+	CC_SYNTHESIZE(list<PurCompareEntryVO>, pur_compare_entry, Pur_compare_entry);
+	// Pur_inquiry
+	CC_SYNTHESIZE(list<PurInquiryVO>, pur_inquiry, Pur_inquiry);
+	// Pur_inquiry_entry
+	CC_SYNTHESIZE(list<PurInquiryEntryVO>, pur_inquiry_entry, Pur_inquiry_entry);
+	// Pur_quot
+	CC_SYNTHESIZE(list<PurQuotVO>, pur_quot, Pur_quot);
+	// Pur_quot_entry
+	CC_SYNTHESIZE(list<PurQuotEntryVO>, pur_quot_entry, Pur_quot_entry);
 
 public:
 	//测试用无参构造
@@ -166,7 +184,8 @@ public:
 		remark, is_auto, bill_stage, approver, bpmi_instance_id, \
 		approval_result_type, approval_remark, is_effective, \
 		effective_time, is_closed, is_voided, sys_org_code, \
-		create_by, create_time, update_by, update_time, version, entry);
+		create_by, create_time, update_by, update_time, version, \
+		entry, pur_req, pur_req_entry, pur_compare, pur_compare_entry, pur_inquiry, pur_inquiry_entry, pur_quot, pur_quot_entry);
 };
 
 #endif // !_PUR_ORDER_DETAIL_VO_

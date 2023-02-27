@@ -29,13 +29,13 @@ class PurQuotEntryDO
 {
 private:
 	// id
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 主表编号
 	CC_SYNTHESIZE(string, mid, Mid);
 	// 单据号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 分录号
-	CC_SYNTHESIZE(string, entry_no, Entry_no);
+	CC_SYNTHESIZE(int, entry_no, Entry_no);
 	// 源单类型
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	// 源单id
@@ -65,7 +65,7 @@ private:
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	// 版本
-	CC_SYNTHESIZE(string, version, Version);
+	CC_SYNTHESIZE(int, version, Version);
 };
 
 #endif
