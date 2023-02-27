@@ -127,7 +127,7 @@ list<DepotVO> DepotService::getKid(const OnlyValueQuery& query)
 		vo.setCode(sub.getCode());
 		vo.setAuxName(sub.getAuxName());
 		vo.setPhone(sub.getPhone());
-		vo.setStart(to_string(sub.getStart()));
+		vo.setStart(sub.getStart());
 		vo.setRemarks(sub.getRemarks());
 		vo.setCreationPeo(sub.getCreationPeo());
 		vo.setCreationTime(sub.getCreationTime());
@@ -214,7 +214,7 @@ bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data
 		row.emplace_back(sub.getCode());
 		row.emplace_back(sub.getAuxName());
 		row.emplace_back(to_string(sub.getPhone()));
-		row.emplace_back(to_string(sub.getStart()));
+		row.emplace_back(sub.getStart());
 		row.emplace_back(sub.getRemarks());
 		row.emplace_back(sub.getCreationPeo());
 		row.emplace_back(sub.getCreationTime());
@@ -252,7 +252,7 @@ bool DepotService::getDataById(const OnlyValueQuery& query, vector<vector<string
 		row.emplace_back(sub.getCode());
 		row.emplace_back(sub.getAuxName());
 		row.emplace_back(to_string(sub.getPhone()));
-		row.emplace_back(to_string(sub.getStart()));
+		row.emplace_back(sub.getStart());
 		row.emplace_back(sub.getRemarks());
 		row.emplace_back(sub.getCreationPeo());
 		row.emplace_back(sub.getCreationTime());
@@ -285,7 +285,7 @@ int DepotService::saveData(const DepotDTO& dto, const string Username)
 	return dao.insertDepot(data);
 }
 
-int DepotService::saveKidData(const DepotDTO& dto)
+int DepotService::saveKidData(const DepotDTO& dto, const string Username)
 {
 	//组装数据
 	DepotDO data;
@@ -297,6 +297,9 @@ int DepotService::saveKidData(const DepotDTO& dto)
 	data.setAuxName(dto.getAuxName());
 	data.setPhone(dto.getPhone());
 	data.setStart(dto.getStart());
+	data.setRemarks(dto.getRemarks());
+	data.setCreationPeo(Username);
+	data.setCreationTime(gettime());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.insertKidDepot(data);

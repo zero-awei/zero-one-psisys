@@ -71,13 +71,13 @@ JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto, const PayloadDTO
     return result;
 }
 
-JsonVO<bool> DepotController::execAddKidDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddKidDepot(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
     //定义一个Service
     DepotService service;
     //保存数据
-    if (service.saveKidData(dto), payload.getUsername())) {
+    if (service.saveKidData(dto, payload.getUsername())) {
         result.success(true);
     }
     else {
@@ -120,14 +120,13 @@ JsonVO<bool> DepotController::execRemoveDepot(const OnlyValueQuery& query)
 JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
-    bool succeed = true;
     std::list<DepotDTO> vDto;
     ExcelComponent excel;
 
     // 获取上传文件路径列表
     for (auto file : dto.getFiles()) {
         // 读取文件到DTO
-        string sheetName = u8"test";
+        string sheetName = CharsetConvertHepler::ansiToUtf8("test");
         auto readData = excel.readIntoVector(file, sheetName);
         for (auto row : readData)
         {
@@ -135,6 +134,7 @@ JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto, const PayloadDT
             Dto.setName(row[0]);
             Dto.setCode(row[1]);
             Dto.setAuxName(row[2]);
+            // 将string转为int
             int phone = 0;
             istringstream ss(row[3]);
             ss >> phone;

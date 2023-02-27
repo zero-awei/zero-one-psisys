@@ -44,7 +44,6 @@ public:
 
 	bool getData(const DepotQuery& query, vector<vector<string>>& data);
 	bool getDataById(const OnlyValueQuery& query, vector<vector<string>>& data);
-	int saveData(const DepotDTO& dto);
 	// 保存子级数据
 	int saveKidData(const DepotDTO& dto, const string Username);
 	// 保存数据
