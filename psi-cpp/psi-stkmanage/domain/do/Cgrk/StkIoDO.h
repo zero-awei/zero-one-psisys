@@ -98,6 +98,10 @@ class StkIoDO
 	CC_SYNTHESIZE(string, createBy, CreateBy);
 	//制单时间
 	CC_SYNTHESIZE(string, createTime, CreateTime);
+	// 修改人
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	// 修改时间
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	//版本
 	CC_SYNTHESIZE(string, version, Version);
 
