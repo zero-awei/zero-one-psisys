@@ -8,7 +8,7 @@
 * @Author: Oxygen
 * @Date: 2023/2/15 11:20:02
 */
-JsonVO<std::string> ExportAccountController::execExportAccountExecl(const list<ExportAccountQuery>& query, PayloadDTO payload)
+JsonVO<std::string> ExportAccountController::execExportAccountExecl(const StringIDs& query, PayloadDTO payload)
 {
 	//∑µªÿœ¬‘ÿµÿ÷∑
 	ExportAccountService service;

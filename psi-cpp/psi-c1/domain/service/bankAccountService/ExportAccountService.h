@@ -3,6 +3,7 @@
 #include "../../do/bankAccountDO/ExportAccountDO.h"
 #include "../../vo/JsonVO.h"
 #include "../../query/bankAccountQuery/ExportAccountQuery.h"
+#include "../../dto/IDDTO.h"
 #ifndef _BANKACCOUNTSERVICE_H_
 #define _BANKACCOUNTSERVICE_H_
 
@@ -15,7 +16,7 @@ class ExportAccountService
 {
 public:
 	// 银行账户导出功能
-	JsonVO<std::string> listAll(const list<ExportAccountQuery>& query);
+	JsonVO<std::string> listAll(const StringIDs& query);
 };
 
 #endif // _BANKACCOUNTSERVICE_H_

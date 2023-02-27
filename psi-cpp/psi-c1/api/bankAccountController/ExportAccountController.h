@@ -3,8 +3,7 @@
 #ifndef _EXPORTACCOUNTCONTROLLER_H_
 #define _EXPORTACCOUNTCONTROLLER_H_
 #include "../../domain/vo/JsonVO.h"
-#include "api/ApiHelper.h"
-#include "domain/query/bankAccountQuery/ExportAccountQuery.h"
+#include "../../domain/dto/IDDTO.h"
 
 /*
 * 账户信息导出
@@ -14,9 +13,9 @@
 class ExportAccountController
 {
 public:
-	CREATE_API_FUN_BODY_PAYLOAD(exportAccountExecl, execExportAccountExecl, list<ExportAccountQuery>);
+	CREATE_API_FUN_JSON_PAYLOAD(exportAccountExecl, execExportAccountExecl, StringIDs);
 private:
-	JsonVO<std::string> execExportAccountExecl(const list<ExportAccountQuery>& query, PayloadDTO payload);
+	JsonVO<std::string> execExportAccountExecl(const StringIDs& query, PayloadDTO payload);
 };
 
 #endif // _EXPORTACCOUNTCONTROLLER_H_

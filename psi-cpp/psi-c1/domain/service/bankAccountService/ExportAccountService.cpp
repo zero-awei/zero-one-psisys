@@ -11,7 +11,7 @@
 * @Author: Oxygen
 * @Date: 2023/2/22 10:48:09
 */
-JsonVO<std::string> ExportAccountService::listAll(const list<ExportAccountQuery>& query)
+JsonVO<std::string> ExportAccountService::listAll(const StringIDs& query)
 {
 	vector<vector<std::string>> data;
 	data.push_back({ CharsetConvertHepler::ansiToUtf8("银行账户报表") });
@@ -30,16 +30,13 @@ JsonVO<std::string> ExportAccountService::listAll(const list<ExportAccountQuery>
 	stringstream ss;
 
 	ExportAccountDAO dao;
-	for (auto x : query) {
-		cout << x.getIds() << endl;
-	}
-	int size = 0;
+	int size = query.getId().size();
 	//如果传入ID，那么输出该ID的内容
 	if (size != 0) {
-		for (auto x : query) {
+		for (auto x : query.getId()) {
 			//查询
 			ExportAccountDO obj;
-			obj.setId(x.getIds());
+			obj.setId(x);
 			list<ExportAccountDO> reslist = dao.selectAccount(obj);
 			ExportAccountDO res;
 			if (!reslist.empty()) {
@@ -85,8 +82,8 @@ JsonVO<std::string> ExportAccountService::listAll(const list<ExportAccountQuery>
 	}
 
 	//定义保存数据位置和页签名称
-	std::string fileName = "../../public/excel/银行账户.xlsx";
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("银行账户");
+	std::string fileName = "../../public/excel/bankaccount.xlsx";
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("bankaccount");
 
 	//保存到文件
 	ExcelComponent excel;
