@@ -1,11 +1,11 @@
 #pragma once
 
-#ifndef _PUR_PAY_REQ_ENTRY_DTO_
-#define _PUR_PAY_REQ_ENTRY_DTO_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_DTO_
+#define _FIN_PAYMENT_REQ_ENTRY_DTO_
 
 #include "../../GlobalInclude.h"
 
-class PurPayReqEntryDTO
+class FinPaymentReqEtryDTO
 {
 	//分录号
 	CC_SYNTHESIZE(int, entryNo, EntryNo);
@@ -31,7 +31,7 @@ class PurPayReqEntryDTO
 	CC_SYNTHESIZE(int, version, Version);
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, PurPayReqEntryDTO& t) {
+	friend void from_json(const json& j, FinPaymentReqEtryDTO& t) {
 		BIND_FROM_TO_NORMAL(j, t, srcBillType);
 		BIND_FROM_TO_NORMAL(j, t, srcBillId);
 		BIND_FROM_TO_NORMAL(j, t, srcEntryId);
@@ -48,4 +48,4 @@ public:
 	}
 };
 
-#endif // _PUR_PAY_REQ_ENTRY_DTO_
+#endif // _FIN_PAYMENT_REQ_ENTRY_DTO_

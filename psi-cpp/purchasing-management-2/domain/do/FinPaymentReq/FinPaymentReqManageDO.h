@@ -1,13 +1,13 @@
 #pragma once
 
-#ifndef _FIN_PAYMENT_BILL_REQ_DO_
-#define _FIN_PAYMENT_BILL_REQ_DO_
+#ifndef _FIN_PAYMENT_REQ_MANAGE_DO_
+#define _FIN_PAYMENT_REQ_MANAGE_DO_
 #include "../DoInclude.h"
 
 /*
 *管理表单
 */
-class FinPaymentBillReqDO
+class FinPaymentReqManageDO
 {
 	//单据id
 	CC_SYNTHESIZE(string, id, Id);
@@ -76,9 +76,9 @@ class FinPaymentBillReqDO
 
 
 public:
-	FinPaymentBillReqDO() {
+	FinPaymentReqManageDO() {
 
 	}
 };
 
-#endif // _FIN_PAYMENT_BILL_REQ_DO_
+#endif // _FIN_PAYMENT_REQ_MANAGE_DO_

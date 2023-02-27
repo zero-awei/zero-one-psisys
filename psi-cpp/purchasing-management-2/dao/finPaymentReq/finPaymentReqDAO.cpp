@@ -1,13 +1,13 @@
 
 #include "stdafx.h"
 #include <sstream>
-#include "PurPayReqDAO.h"
-#include "purPayReqMapper.h"
-#include "PurPayReqEntryMapper.h"
-#include "PurPayReqFindBillMapper.h"
-#include "PurPayReqFindDetailBillMapper.h"
+#include "finPaymentReqDAO.h"
+#include "FinPaymentReqMapper.h"
+#include "FinPaymentReqEntryMapper.h"
+#include "FinPaymentReqBillMapper.h"
+#include "FinPaymentReqEntryBillMapper.h"
 
-#define PUR_PAY_REQ_TERAM_PARSE(obj, sql) \
+#define FIN_PAYMENT_REQ_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
 if (!obj.getBill_no().empty()) { \
@@ -39,42 +39,42 @@ if (obj.getIs_voided()!=-1) { \
 	SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
 }
 
-uint64_t PurPayReqDAO::count(const FinPaymentReqDO & iObj) {
+uint64_t FinPaymentReqDAO::count(const FinPaymentReqDO & iObj) {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM fin_payment_req";
-	PUR_PAY_REQ_TERAM_PARSE(iObj, sql);
+	FIN_PAYMENT_REQ_TERAM_PARSE(iObj, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 
 }
 
-std::list<FinPaymentReqDO> PurPayReqDAO::selectWithPage(const FinPaymentReqDO& jobj, uint64_t pageIndex, uint64_t pageSize)
+std::list<FinPaymentReqDO> FinPaymentReqDAO::selectWithPage(const FinPaymentReqDO& jobj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
 	sql << "SELECT * FROM fin_payment_req";
-	PUR_PAY_REQ_TERAM_PARSE(jobj, sql);
+	FIN_PAYMENT_REQ_TERAM_PARSE(jobj, sql);
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	PurPayReqFindBillMapper mapper;
+	FinPaymentReqBillMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<FinPaymentReqDO, PurPayReqFindBillMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<FinPaymentReqDO, FinPaymentReqBillMapper>(sqlStr, mapper, params);
 }
 
-std::list<FinPaymentReqDO>  PurPayReqDAO::selectBillNo(const string& no)
+std::list<FinPaymentReqDO>  FinPaymentReqDAO::selectBillNo(const string& no)
 {
 	string sql;
 	sql = "SELECT * FROM fin_payment_req WHERE bill_no=?";
-	PurPayReqFindBillMapper purPayReqFindBillMapper;
-	list<FinPaymentReqDO> Bills = sqlSession->executeQuery<FinPaymentReqDO, PurPayReqFindBillMapper>(sql, purPayReqFindBillMapper, "%s", no);
+	FinPaymentReqBillMapper purPayReqFindBillMapper;
+	list<FinPaymentReqDO> Bills = sqlSession->executeQuery<FinPaymentReqDO, FinPaymentReqBillMapper>(sql, purPayReqFindBillMapper, "%s", no);
 	if (!Bills.empty()) {
 		sql = "SELECT *  FROM fin_payment_req_entry WHERE bill_no=?";
-		PurPayReqFindDetailBillMapper purPayReqFindDetailBillMapper;
-		list<FinPaymentEntryReqDO> detailBills = sqlSession->executeQuery<FinPaymentEntryReqDO, PurPayReqFindDetailBillMapper>(sql, purPayReqFindDetailBillMapper, "%s", no);
+		FinPaymentReqEntryBillMapper purPayReqFindDetailBillMapper;
+		list<FinPaymentReqEntryDO> detailBills = sqlSession->executeQuery<FinPaymentReqEntryDO, FinPaymentReqEntryBillMapper>(sql, purPayReqFindDetailBillMapper, "%s", no);
 		(*(Bills.begin())).setDetail(detailBills);
 	}
 	return Bills;
 }
 
-uint64_t PurPayReqDAO::insert(const FinPaymentBillReqDO& obj)
+uint64_t FinPaymentReqDAO::insert(const FinPaymentReqManageDO& obj)
 {
 	string sql = "INSERT INTO `fin_payment_req` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
 	if (obj.getEffectiveTime() != "") {
@@ -110,7 +110,7 @@ uint64_t PurPayReqDAO::insert(const FinPaymentBillReqDO& obj)
 		obj.getCreateBy(), obj.getCreateTime(), obj.getUpdateBy());
 }
 
-uint64_t PurPayReqDAO::insertEntry(const FinPaymentEntryDetaillDO& obj)
+uint64_t FinPaymentReqDAO::insertEntry(const FinPaymentReqEntryManageDO& obj)
 {
 	string sql = "INSERT INTO fin_payment_req_entry` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
 	if (obj.getVersion() != 1) {
@@ -128,16 +128,16 @@ uint64_t PurPayReqDAO::insertEntry(const FinPaymentEntryDetaillDO& obj)
 		obj.getCustom2());
 }
 
-list<FinPaymentBillReqDO> PurPayReqDAO::selectByBillNo(const string& billNo)
+list<FinPaymentReqManageDO> FinPaymentReqDAO::selectByBillNo(const string& billNo)
 {
 	string sql = "SELECT `id`,`bill_no` ,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`is_rubric`,`payment_type`,`supplier_id`,`op_dept`,`operator` ,`amt`,`paid_amt`,`attachment`,`remark`,`is_auto`,`bill_stage` ,`approver` ,`bpmi_instance_id` ,`approval_result_type`,`approval_remark`,`is_effective`,`effective_time` ,`is_closed`,`is_voided` ,`sys_org_code`,`create_by` ,`create_time`,`update_by`,`update_time` ,`version` FROM pur_req WHERE `bill_no` = ?";
-	purPayReqMapper mapper;
-	return sqlSession->executeQuery<FinPaymentBillReqDO, purPayReqMapper>(sql, mapper, "%s", billNo);
+	FinPaymentReqMapper mapper;
+	return sqlSession->executeQuery<FinPaymentReqManageDO, FinPaymentReqMapper>(sql, mapper, "%s", billNo);
 }
 
-list<FinPaymentEntryDetaillDO> PurPayReqDAO::selectEntryByBillNo(const string& billNo)
+list<FinPaymentReqEntryManageDO> FinPaymentReqDAO::selectEntryByBillNo(const string& billNo)
 {
 	string sql = "SELECT `id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,`src_bill_id`,`src_entry_id`, `src_no`, `amt`, `paid_amt`, `remark`,  `custom1`, `custom2`, `version` FROM `fin_payment_req_entry` WHERE `bill_no` = ?";
-	PurPayReqEntryMapper mapper;
-	return sqlSession->executeQuery<FinPaymentEntryDetaillDO, PurPayReqEntryMapper>(sql, mapper, "%s", billNo);
+	FinPaymentReqEntryMapper mapper;
+	return sqlSession->executeQuery<FinPaymentReqEntryManageDO, FinPaymentReqEntryMapper>(sql, mapper, "%s", billNo);
 }

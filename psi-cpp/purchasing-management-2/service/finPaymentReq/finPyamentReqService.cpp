@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "PurPayReqService.h"
-#include "../../dao/purPayment/PurPayReqDAO.h"
+#include "FinPyamentReqService.h"
+#include "../../dao/finPaymentReq/FinPaymentReqDAO.h"
 
 //定义一个宏用来进行默认值的修改
 #define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
@@ -30,11 +30,11 @@ string getTime()
 	return ss.str();
 }
 
-uint64_t PurPayReqService::addData(const AddPayApplyDTO& dto, const PayloadDTO& payload)
+uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const PayloadDTO& payload)
 {
 	//首先将订单本体添加进数据库
 	//组装传输数据
-	FinPaymentBillReqDO data;
+	FinPaymentReqManageDO data;
 	SnowFlake sf(1, 3);
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
@@ -66,10 +66,10 @@ uint64_t PurPayReqService::addData(const AddPayApplyDTO& dto, const PayloadDTO& 
 	MODIFY_DEFAULT(Remark);
 	MODIFY_DEFAULT(Version);
 	//执行数据修改
-	PurPayReqDAO dao;
+	FinPaymentReqDAO dao;
 	//然后将订单明细添加进数据库
-	for (PurPayReqEntryDTO& dto : dto.getDetail()) {
-		FinPaymentEntryDetaillDO data;
+	for (FinPaymentReqEtryDTO& dto : dto.getDetail()) {
+		FinPaymentReqEntryManageDO data;
 		//首先是进行id设置使用雪花算法
 		data.setId(to_string(sf.nextId()));
 		//设置和主表的链接键
@@ -93,12 +93,12 @@ uint64_t PurPayReqService::addData(const AddPayApplyDTO& dto, const PayloadDTO& 
 }
 
 
-uint64_t PurPayReqService::updateData(const ModPayApplyDTO& dto, const PayloadDTO& payload)
+uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const PayloadDTO& payload)
 {
 	//首先将订单本体添加进数据库
 	//组装传输数据
-	FinPaymentBillReqDO data;
-	PurPayReqDAO dao;
+	FinPaymentReqManageDO data;
+	FinPaymentReqDAO dao;
 	SnowFlake sf(1, 3);
 	//使用雪花算法设置id
 	string id = to_string(sf.nextId());
@@ -132,8 +132,8 @@ uint64_t PurPayReqService::updateData(const ModPayApplyDTO& dto, const PayloadDT
 	//执行数据修改
 
 	//然后将订单明细添加进数据库
-	for (PurPayReqEntryDTO& dto : dto.getDetail()) {
-		FinPaymentEntryDetaillDO data;
+	for (FinPaymentReqEtryDTO& dto : dto.getDetail()) {
+		FinPaymentReqEntryManageDO data;
 		//首先是进行id设置,用雪花算法
 		data.setId(to_string(sf.nextId()));
 		//设置和主表的外键
@@ -156,9 +156,9 @@ uint64_t PurPayReqService::updateData(const ModPayApplyDTO& dto, const PayloadDT
 	return dao.insert(data);
 }
 
-PageVO<PaymentBillVO> PurPayReqService::queryList(const PaymentBillQuery& query) {
+PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery& query) {
 	//构建返回对象
-	PageVO<PaymentBillVO> pages;
+	PageVO<FinPaymentReqVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
@@ -171,7 +171,7 @@ PageVO<PaymentBillVO> PurPayReqService::queryList(const PaymentBillQuery& query)
 	obj.setIs_effective(query.getIsEffective());
 	obj.setIs_closed(query.getIsClosed());
 	obj.setIs_voided(query.getIsVoided());
-	PurPayReqDAO dao;
+	FinPaymentReqDAO dao;
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
 	{
@@ -182,10 +182,10 @@ PageVO<PaymentBillVO> PurPayReqService::queryList(const PaymentBillQuery& query)
 	pages.setTotal(count);
 	pages.calcPages();
 	list<FinPaymentReqDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
-	list<PaymentBillVO> vr;
+	list<FinPaymentReqVO> vr;
 	for (FinPaymentReqDO sub : result)
 	{
-		PaymentBillVO vo;
+		FinPaymentReqVO vo;
 		vo.setBillNo(sub.getBill_no());
 		vo.setBillDate(sub.getBill_date());
 		vo.setSubject(sub.getSubject());
@@ -215,10 +215,10 @@ PageVO<PaymentBillVO> PurPayReqService::queryList(const PaymentBillQuery& query)
 	return pages;
 }
 //查询指定单据详细信息
-PaymentDetailBillVO PurPayReqService::detailDate(const PaymentBillDetailQuery& query) {
-	PurPayReqDAO dao;
+FinPaymentDetailVO FinPyamentReqService::detailDate(const FinPaymentReqEntryQuery& query) {
+	FinPaymentReqDAO dao;
 	list<FinPaymentReqDO> pus = dao.selectBillNo(query.getBillNo());
-	PaymentDetailBillVO po;
+	FinPaymentDetailVO po;
 	if (!pus.empty()) {
 		FinPaymentReqDO pu = *pus.begin();
 		po.setBillNo(pu.getBill_no());
@@ -228,11 +228,11 @@ PaymentDetailBillVO PurPayReqService::detailDate(const PaymentBillDetailQuery& q
 		po.setIsVoided(pu.getIs_voided());
 		po.setSubject(pu.getSubject());
 
-		list<FinPaymentEntryReqDO> detailsResult = pu.getDetail();
-		list<PaymentBillDetailVO> pbVO;
-		for (FinPaymentEntryReqDO re : detailsResult)
+		list<FinPaymentReqEntryDO> detailsResult = pu.getDetail();
+		list<FinPaymentReqEntryVO> pbVO;
+		for (FinPaymentReqEntryDO re : detailsResult)
 		{
-			PaymentBillDetailVO tep;
+			FinPaymentReqEntryVO tep;
 			tep.setSrcNo(re.getSrcNo());;
 			tep.setAmt(re.getAmt());
 			tep.setPaidAmt(re.getPaidAmt());

@@ -13,15 +13,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_VO_
-#define _PAYMENT_BILL_VO_
+#ifndef _FIN_PAYMENT_REQ_VO
+#define _FIN_PAYMENT_REQ_VO
 
 #include "../../GlobalInclude.h"
 
 /*
 查询单据列表
 */
-class PaymentBillVO {
+class FinPaymentReqVO {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期
@@ -71,10 +71,10 @@ class PaymentBillVO {
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PaymentBillVO, billNo, billDate, subject, supplierId, opDept,
+	BIND_TO_JSON(FinPaymentReqVO, billNo, billDate, subject, supplierId, opDept,
 		operator1, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
 		isAuto, isRubric, remark, effectiveTime,
 		approver, createTime, createBy, sysOrgCode, updateTime, updateBy);
 };
 
-#endif
+#endif //_FIN_PAYMENT_REQ_VO

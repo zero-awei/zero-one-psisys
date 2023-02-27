@@ -1,13 +1,13 @@
 #pragma once
 
 
-#ifndef _PUR_PAY_REQ_FINF_BILL_MAPPER_
-#define _PUR_PAY_REQ_FINF_BILL_MAPPER_
+#ifndef _FIN_PAYMENT_REQ_BILL_MAPPER_
+#define _FIN_PAYMENT_REQ_BILL_MAPPER_
 
 #include "Mapper.h"
 #include "../../domain/do/FinPaymentReq/FinPaymentReqDO.h"
 
-class PurPayReqFindBillMapper : public Mapper<FinPaymentReqDO>
+class FinPaymentReqBillMapper : public Mapper<FinPaymentReqDO>
 {
 public:
 	FinPaymentReqDO mapper(ResultSet* resultSet) const override
@@ -48,4 +48,4 @@ public:
 	}
 };
 
-#endif //_PUR_PAY_REQ_FINF_BILL_MAPPER_
+#endif //_FIN_PAYMENT_REQ_BILL_MAPPER_

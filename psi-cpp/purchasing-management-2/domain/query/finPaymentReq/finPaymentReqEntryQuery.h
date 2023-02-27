@@ -13,15 +13,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_DETAIL_QUERY_
-#define _PAYMENT_BILL_DETAIL_QUERY_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_QUERY_
+#define _FIN_PAYMENT_REQ_ENTRY_QUERY_
 
 
 #include "../PageQuery.h"
 /*
 查询单据列表
 */
-class PaymentBillDetailQuery {
+class FinPaymentReqEntryQuery {
 	//单据号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//分录号
@@ -47,7 +47,7 @@ class PaymentBillDetailQuery {
 
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PaymentBillDetailQuery& t) {
+	friend void from_json(const json& j, FinPaymentReqEntryQuery& t) {
 		BIND_FROM_TO_ULL(j, t, billNo);
 		BIND_FROM_TO_ULL(j, t, srcBillType);
 		BIND_FROM_TO_ULL(j, t, srcEntryId);
@@ -62,4 +62,4 @@ public:
 	}
 };
 
-#endif
+#endif //_FIN_PAYMENT_REQ_ENTRY_QUERY_

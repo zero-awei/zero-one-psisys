@@ -4,18 +4,18 @@
 #define _PUR_PAY_REQ_ENTRY_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/FinPaymentReq/FinPaymentEntryDetaillDO.h"
+#include "../../domain/do/finPaymentReq/FinPaymentReqEntryManageDO.h"
 
 /**
  * Ê¾ÀýÖ÷±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
-class PurPayReqEntryMapper : public Mapper<FinPaymentEntryDetaillDO>
+class FinPaymentReqEntryMapper : public Mapper<FinPaymentReqEntryManageDO>
 {
 public:
-	FinPaymentEntryDetaillDO mapper(ResultSet* resultSet) const override
+	FinPaymentReqEntryManageDO mapper(ResultSet* resultSet) const override
 	{
 		int i = 1;
-		FinPaymentEntryDetaillDO data;
+		FinPaymentReqEntryManageDO data;
 		data.setId(resultSet->getString(i++));
 		data.setMid(resultSet->getString(i++));
 		data.setBillNo(resultSet->getString(i++));

@@ -13,16 +13,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_DETAIL_VO_
-#define _PAYMENT_BILL_DETAIL_VO_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_VO_
+#define _FIN_PAYMENT_REQ_ENTRY_VO_
 
 #include "../../GlobalInclude.h"
-#include "PaymentBillVO.h"
+#include "finPaymentReqVO.h"
 
 /*
 查询单据列表
 */
-class PaymentBillDetailVO:public PaymentBillVO {
+class FinPaymentReqEntryVO : public FinPaymentReqVO {
 	//单据号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//分录号
@@ -48,8 +48,8 @@ class PaymentBillDetailVO:public PaymentBillVO {
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PaymentBillDetailVO, billNo, entryNo, srcBillType, srcBillId, srcEntryId,
+	BIND_TO_JSON(FinPaymentReqEntryVO, billNo, entryNo, srcBillType, srcBillId, srcEntryId,
 		srcNo, amt, paidAmt, remark, custom1, custom2);
 };
 
-#endif
+#endif //_FIN_PAYMENT_REQ_ENTRY_VO_

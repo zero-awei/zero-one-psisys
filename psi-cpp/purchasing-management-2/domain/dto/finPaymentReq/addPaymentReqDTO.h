@@ -13,14 +13,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _ADD_PAY_APPLY_DTO_
-#define _ADD_PAY_APPLY_DTO_
+#ifndef _ADD_PAYMENT_REQ_DTO_
+#define _ADD_PAYMENT_REQ_DTO_
 
 #include "../../GlobalInclude.h"
-#include "PurPayReqEntryDTO.h"
+#include "finPaymentReqEntryDTO.h"
 #include "../FileDTO.h"
 
-class AddPayApplyDTO :public FileDTO
+class AddPaymentReqDTO :public FileDTO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -61,34 +61,34 @@ class AddPayApplyDTO :public FileDTO
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
 	//明细列表
-	CC_SYNTHESIZE(list<PurPayReqEntryDTO>, detail, Detail);
+	CC_SYNTHESIZE(list<FinPaymentReqEtryDTO>, detail, Detail);
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, AddPayApplyDTO& apt) {
-		BIND_FROM_TO_ULL(j, apt, billNo);
-		BIND_FROM_TO_ULL(j, apt, billDate);
-		BIND_FROM_TO_ULL(j, apt, srcBillType);
-		BIND_FROM_TO_ULL(j, apt, srcBillId);
-		BIND_FROM_TO_ULL(j, apt, srcNo);
-		BIND_FROM_TO_ULL(j, apt, subject);
-		BIND_FROM_TO_ULL(j, apt, supplierId);
-		BIND_FROM_TO_ULL(j, apt, opDept);
-		BIND_FROM_TO_ULL(j, apt, operator1);
-		BIND_FROM_TO_ULL(j, apt, paymentType);
-		BIND_FROM_TO_ULL(j, apt, remark);
-		BIND_FROM_TO_ULL(j, apt, billStage);
-		BIND_FROM_TO_ULL(j, apt, effectiveTime);
-		BIND_FROM_TO_ULL(j, apt, version);
+	friend void from_json(const json& j, AddPaymentReqDTO& t) {
+		BIND_FROM_TO_ULL(j, t, billNo);
+		BIND_FROM_TO_ULL(j, t, billDate);
+		BIND_FROM_TO_ULL(j, t, srcBillType);
+		BIND_FROM_TO_ULL(j, t, srcBillId);
+		BIND_FROM_TO_ULL(j, t, srcNo);
+		BIND_FROM_TO_ULL(j, t, subject);
+		BIND_FROM_TO_ULL(j, t, supplierId);
+		BIND_FROM_TO_ULL(j, t, opDept);
+		BIND_FROM_TO_ULL(j, t, operator1);
+		BIND_FROM_TO_ULL(j, t, paymentType);
+		BIND_FROM_TO_ULL(j, t, remark);
+		BIND_FROM_TO_ULL(j, t, billStage);
+		BIND_FROM_TO_ULL(j, t, effectiveTime);
+		BIND_FROM_TO_ULL(j, t, version);
 
-		BIND_FROM_TO_D(j, apt, amt);
+		BIND_FROM_TO_D(j, t, amt);
 
-		BIND_FROM_TO_I(j, apt, isAuto);
-		BIND_FROM_TO_I(j, apt, isEffective);
-		BIND_FROM_TO_I(j, apt, isClosed);
-		BIND_FROM_TO_I(j, apt, isVoided);
+		BIND_FROM_TO_I(j, t, isAuto);
+		BIND_FROM_TO_I(j, t, isEffective);
+		BIND_FROM_TO_I(j, t, isClosed);
+		BIND_FROM_TO_I(j, t, isVoided);
 
-		BIND_FROM_TO_OBJ(j, apt, detail, list<PurPayReqEntryDTO>);
+		BIND_FROM_TO_OBJ(j, t, detail, list<FinPaymentReqEtryDTO>);
 	}
 };
 
-#endif
+#endif //_ADD_PAYMENT_REQ_DTO_

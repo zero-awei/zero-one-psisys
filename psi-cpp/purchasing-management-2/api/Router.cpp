@@ -21,7 +21,7 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
-#include "paymentBillImpl/PayApplyControlle.h"
+#include "finPaymenReq/FinPaymentReqControlle.h"
 #include "payment/PaymentController.h"
 
 
@@ -228,8 +228,8 @@ void Router::createPaymentRouter()
 }
 
 void Router::createPayApplyRouter() {
-	BIND_GET_ROUTER(server, "/paymentApplyBill", &PayApplyControlle::queryPaymentBill, nullptr);
-	BIND_GET_ROUTER(server, "/paymentApplyDetailBill", &PayApplyControlle::queryPaymentDetailBill, nullptr);
-	BIND_POST_ROUTER(server, "/paymentApply/add", &PayApplyControlle::addPayApply, nullptr);
-	BIND_PUT_ROUTER(server, "/paymentApply/mod", &PayApplyControlle::modPayReqApply, nullptr);
+	BIND_GET_ROUTER(server, "/finPaymenReq", &FinPaymentReqControlle::finPaymentReq, nullptr);
+	BIND_GET_ROUTER(server, "/finPaymentReqEntry", &FinPaymentReqControlle::finPaymentReqEntry, nullptr);
+	BIND_POST_ROUTER(server, "/paymentReq/add", &FinPaymentReqControlle::addPaymentReq, nullptr);
+	BIND_PUT_ROUTER(server, "/paymentReq/mod", &FinPaymentReqControlle::modPaymentReq, nullptr);
 }

@@ -1,19 +1,19 @@
 ﻿#pragma once
 
 
-#ifndef _PUE_PAY_REQ_MAPPER_
-#define _PUE_PAY_REQ_MAPPER_
+#ifndef _FIN_PAYMENT_REQ_MAPPER_
+#define _FIN_PAYMENT_REQ_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/FinPaymentReq/FinPaymentBillReqDO.h"
+#include "../../domain/do/finPaymentReq/FinPaymentReqManageDO.h"
 
-class purPayReqMapper : public Mapper<FinPaymentBillReqDO>
+class FinPaymentReqMapper : public Mapper<FinPaymentReqManageDO>
 {
 public:
-	FinPaymentBillReqDO mapper(ResultSet* resultSet) const override
+	FinPaymentReqManageDO mapper(ResultSet* resultSet) const override
 	{
 		int i = 1;
-		FinPaymentBillReqDO data;
+		FinPaymentReqManageDO data;
 		data.setId(resultSet->getString(i++));
 		data.setBillNo(resultSet->getString(i++));
 		data.setBillDate(resultSet->getString(i++));
@@ -50,4 +50,4 @@ public:
 	}
 };
 
-#endif // purPayReqMapper
+#endif // _FIN_PAYMENT_REQ_MAPPER_

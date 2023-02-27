@@ -1,17 +1,15 @@
 #pragma once
 
-#ifndef _FIN_PAYMENT_ENTRY_DETAIL_DO_
-#define _FIN_PAYMENT_ENTRY_DETAIL_DO_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_DO_
+#define _FIN_PAYMENT_REQ_ENTRY_DO_
 #include "../DoInclude.h"
 
 /*
- *管理表单详情
+ *查询表单详情
  */
-class FinPaymentEntryDetaillDO {
+class FinPaymentReqEntryDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
-	//主表id
-	CC_SYNTHESIZE(string, mid, Mid);
 	//单据号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//分录号
@@ -34,13 +32,11 @@ class FinPaymentEntryDetaillDO {
 	CC_SYNTHESIZE(string, custom1, Custom1);
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	//版本
-	CC_SYNTHESIZE(int, version, Version);
 public:
-	FinPaymentEntryDetaillDO() {
+	FinPaymentReqEntryDO() {
 
 	}
 };
 
 
-#endif; //_FIN_PAYMENT_ENTRY_DETAIL_DO_
+#endif; //_FIN_PAYMENT_ENTRY_REQ_DO_

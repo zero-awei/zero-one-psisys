@@ -19,7 +19,7 @@
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
-class ModPayApplyDTO :public FileDTO
+class ModPyamentReqDTO :public FileDTO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
@@ -82,44 +82,44 @@ class ModPayApplyDTO :public FileDTO
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
 	//明细列表
-	CC_SYNTHESIZE(list<PurPayReqEntryDTO>, detail, Detail);
+	CC_SYNTHESIZE(list<FinPaymentReqEtryDTO>, detail, Detail);
 
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, ModPayApplyDTO& mdt) {
-		BIND_FROM_TO_ULL(j, mdt, billNo);
-		BIND_FROM_TO_ULL(j, mdt, billDate);
-		BIND_FROM_TO_ULL(j, mdt, srcBillType);
-		BIND_FROM_TO_ULL(j, mdt, srcBillId);
-		BIND_FROM_TO_ULL(j, mdt, srcNo);
-		BIND_FROM_TO_ULL(j, mdt, subject);
-		BIND_FROM_TO_ULL(j, mdt, paymentType);
-		BIND_FROM_TO_ULL(j, mdt, supplierId);
-		BIND_FROM_TO_ULL(j, mdt, opDept);
-		BIND_FROM_TO_ULL(j, mdt, operator1);
-		BIND_FROM_TO_ULL(j, mdt, remark);
-		BIND_FROM_TO_ULL(j, mdt, billStage);
-		BIND_FROM_TO_ULL(j, mdt, approver);
-		BIND_FROM_TO_ULL(j, mdt, bpmiInstanceId);
-		BIND_FROM_TO_ULL(j, mdt, approvalRemark);
-		BIND_FROM_TO_ULL(j, mdt, effectiveTime);
-		BIND_FROM_TO_ULL(j, mdt, attachment);
-		BIND_FROM_TO_ULL(j, mdt, sysOrdCode);
-		BIND_FROM_TO_ULL(j, mdt, createBy);
-		BIND_FROM_TO_ULL(j, mdt, createTime);
-		BIND_FROM_TO_ULL(j, mdt, updateBy);
-		BIND_FROM_TO_ULL(j, mdt, updateTime);
-		BIND_FROM_TO_ULL(j, mdt, version);
+	friend void from_json(const json& j, ModPyamentReqDTO& t) {
+		BIND_FROM_TO_ULL(j, t, billNo);
+		BIND_FROM_TO_ULL(j, t, billDate);
+		BIND_FROM_TO_ULL(j, t, srcBillType);
+		BIND_FROM_TO_ULL(j, t, srcBillId);
+		BIND_FROM_TO_ULL(j, t, srcNo);
+		BIND_FROM_TO_ULL(j, t, subject);
+		BIND_FROM_TO_ULL(j, t, paymentType);
+		BIND_FROM_TO_ULL(j, t, supplierId);
+		BIND_FROM_TO_ULL(j, t, opDept);
+		BIND_FROM_TO_ULL(j, t, operator1);
+		BIND_FROM_TO_ULL(j, t, remark);
+		BIND_FROM_TO_ULL(j, t, billStage);
+		BIND_FROM_TO_ULL(j, t, approver);
+		BIND_FROM_TO_ULL(j, t, bpmiInstanceId);
+		BIND_FROM_TO_ULL(j, t, approvalRemark);
+		BIND_FROM_TO_ULL(j, t, effectiveTime);
+		BIND_FROM_TO_ULL(j, t, attachment);
+		BIND_FROM_TO_ULL(j, t, sysOrdCode);
+		BIND_FROM_TO_ULL(j, t, createBy);
+		BIND_FROM_TO_ULL(j, t, createTime);
+		BIND_FROM_TO_ULL(j, t, updateBy);
+		BIND_FROM_TO_ULL(j, t, updateTime);
+		BIND_FROM_TO_ULL(j, t, version);
 
-		BIND_FROM_TO_D(j, mdt, amt);
-		BIND_FROM_TO_D(j, mdt, paidAmt);
+		BIND_FROM_TO_D(j, t, amt);
+		BIND_FROM_TO_D(j, t, paidAmt);
 
-		BIND_FROM_TO_I(j, mdt, isAuto);
-		BIND_FROM_TO_I(j, mdt, isEffective);
-		BIND_FROM_TO_I(j, mdt, isClosed);
-		BIND_FROM_TO_I(j, mdt, isVoided);
+		BIND_FROM_TO_I(j, t, isAuto);
+		BIND_FROM_TO_I(j, t, isEffective);
+		BIND_FROM_TO_I(j, t, isClosed);
+		BIND_FROM_TO_I(j, t, isVoided);
 
-		BIND_FROM_TO_OBJ(j, mdt, detail, list<PurPayReqEntryDTO>);
+		BIND_FROM_TO_OBJ(j, t, detail, list<FinPaymentReqEtryDTO>);
 	}
 };
 

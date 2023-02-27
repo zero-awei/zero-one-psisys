@@ -1,17 +1,17 @@
 #pragma once
 
-#ifndef _PUR_PAY_REQ_FIND_DETAIL_BILL_MAPPER_
-#define _PUR_PAY_REQ_FIND_DETAIL_BILL_MAPPER_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_BILL_MAPPER_
+#define _FIN_PAYMENT_REQ_ENTRY_BILL_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/FinPaymentReq/FinPaymentEntryReqDO.h"
+#include "../../domain/do/finPaymentReq/FinPaymentReqEntryDO.h"
 
-class PurPayReqFindDetailBillMapper : public Mapper<FinPaymentEntryReqDO>
+class FinPaymentReqEntryBillMapper : public Mapper<FinPaymentReqEntryDO>
 {
 public:
-	FinPaymentEntryReqDO mapper(ResultSet* resultSet) const override
+	FinPaymentReqEntryDO mapper(ResultSet* resultSet) const override
 	{
-		FinPaymentEntryReqDO data;
+		FinPaymentReqEntryDO data;
 		data.setId(resultSet->getString(1));
 		data.setBillNo(resultSet->getString(2));
 		data.setEntryNo(resultSet->getInt(3));
@@ -27,4 +27,4 @@ public:
 		return data;
 	}
 };
-#endif //_PUR_PAY_REQ_FIND_DETAIL_BILL_MAPPER_
+#endif //_FIN_PAYMENT_REQ_ENTRY_BILL_MAPPER_

@@ -84,7 +84,7 @@
     <ClInclude Include="service\PurOrder\PurOrderService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h">
+    <ClInclude Include="domain\do\finPaymentReq\FinPaymentReqDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h">
@@ -225,40 +225,40 @@
     <ClInclude Include="service\PurReq\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\purPayment\purPayReqService.h">
+    <ClInclude Include="service\finPaymentReq\finPyamentReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\purPayment\purPayReqDAO.h">
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentBillReqDO.h">
+    <ClInclude Include="domain\do\finPaymentReq\FinPaymentReqManageDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEntryReqDO.h">
+    <ClInclude Include="domain\do\finPaymentReq\FinPaymentReqEntryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentEntryDetaillDO.h">
+    <ClInclude Include="domain\do\finPaymentReq\FinPaymentReqEntryManageDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\purPayment\purPayReqMapper.h">
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\purPayment\purPayReqEntryMapper.h">
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqEntryMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\purPayment\PurPayReqFindBillMapper.h">
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqBillMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\purPayment\PurPayReqFindDetailBillMapper.h">
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqEntryBIllMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\dto\PaymentBillImpl\purPayReqEntryDTO.h">
+    <ClInclude Include="domain\dto\finPaymentReq\finPaymentReqEntryDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\PaymentBillImpl\PaymentDetailBillVO.h">
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentDetailVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h">
+    <ClInclude Include="api\finPaymenReq\FinPaymentReqControlle.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -329,13 +329,13 @@
     <ClCompile Include="service\PurReq\PurReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\purPayment\PurPayReqService.cpp">
+    <ClCompile Include="service\finPaymentReq\finPyamentReqService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dao\purPayment\purPayReqDAO.cpp">
+    <ClCompile Include="dao\finPaymentReq\finPaymentReqDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp">
+    <ClCompile Include="api\finPaymenReq\FinPaymentReqControlle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

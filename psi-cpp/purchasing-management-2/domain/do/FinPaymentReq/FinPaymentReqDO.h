@@ -92,7 +92,7 @@ class FinPaymentReqDO
 	//°æ±¾
 	CC_SYNTHESIZE(int, version, Version);
 	//Ã÷Ï¸
-	CC_SYNTHESIZE(list<FinPaymentEntryReqDO>, detail, Detail);
+	CC_SYNTHESIZE(list<FinPaymentReqEntryDO>, detail, Detail);
 public:
 	FinPaymentReqDO()
 	{

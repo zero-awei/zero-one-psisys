@@ -12,14 +12,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_Query_
-#define _PAYMENT_BILL_Query_
+#ifndef _FIN_PAYMENT_REQ_QUERY_
+#define _FIN_PAYMENT_REQ_QUERY_
 
 #include "../PageQuery.h"
 
 
 //查询单据列表
-class PaymentBillQuery : public PageQuery {
+class FinPaymentReqQuery : public PageQuery {
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//单据日期
@@ -38,7 +38,7 @@ class PaymentBillQuery : public PageQuery {
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PaymentBillQuery& t) {
+	friend void from_json(const json& j, FinPaymentReqQuery& t) {
 		BIND_FROM_TO_ULL(j, t, billNo);
 		BIND_FROM_TO_ULL(j, t, billDate);
 		BIND_FROM_TO_ULL(j, t, subject);
@@ -49,4 +49,4 @@ public:
 		BIND_FROM_TO_I(j, t, isVoided);
 	}
 };
-#endif
+#endif //_FIN_PAYMENT_REQ_QUERY_
