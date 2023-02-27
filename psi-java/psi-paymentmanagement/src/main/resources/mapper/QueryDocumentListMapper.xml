@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeroone.star.paymentmanagement.mapper.QueryDocumentListMapper">
-    <select id="queryDocumentList" resultType="com.zeroone.star.paymentmanagement.entity.QueryDocumentList">
-        SELECT
-        req.id,
-        req.bill_no,
-        req.bill_date,
-        req.`subject`,
-        req.payment_type,
-        req.amt,
-        req.paid_amt,
-        req.bill_stage,
-        req.is_effective,
-        req.is_closed,
-        req.is_voided
-        FROM
-        fin_payment_req AS req
 
-        <where>
-            <if test="billNo != null and billNo != ''">
-                req.bill_no = #{billNo}
-            </if>
-            <if test="subject != null and subject != ''">
-                AND req.subject = #{subject}
-            </if>
-        </where>
-    </select>
+<!--    <select id="queryDocumentList" resultType="com.zeroone.star.paymentmanagement.entity.QueryDocumentList">-->
+<!--        SELECT-->
+<!--        req.id,-->
+<!--        req.bill_no,-->
+<!--        req.bill_date,-->
+<!--        req.`subject`,-->
+<!--        req.payment_type,-->
+<!--        req.amt,-->
+<!--        req.paid_amt,-->
+<!--        req.bill_stage,-->
+<!--        req.is_effective,-->
+<!--        req.is_closed,-->
+<!--        req.is_voided-->
+<!--        FROM-->
+<!--        fin_payment_req AS req-->
+
+<!--        <where>-->
+<!--            <if test="billNo != null and billNo != ''">-->
+<!--                req.bill_no = #{billNo}-->
+<!--            </if>-->
+<!--            <if test="subject != null and subject != ''">-->
+<!--                AND req.subject = #{subject}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
 
 </mapper>

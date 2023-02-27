@@ -2,6 +2,8 @@ package com.zeroone.star.paymentmanagement.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.paymentmanagement.entity.FinPayment;
 import com.zeroone.star.paymentmanagement.mapper.PurchasePaymentMapper;
@@ -10,6 +12,9 @@ import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.FinPayment
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentCreateDTO;
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentDeleteDTO;
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentUpdateDTO;
+import com.zeroone.star.project.query.PageQuery;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.paymentmanagement.QueryDocumentListVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,5 +81,32 @@ public class PurchasePaymentServiceImpl extends ServiceImpl<PurchasePaymentMappe
         UpdateWrapper<FinPayment> wrapper = new UpdateWrapper<>();
         wrapper.eq("bill_no", paymentUpdateDTO.getBillNo());
         return purchasePaymentMapper.update(finPayment, wrapper);
+    }
+
+    @Override
+    public PageVO<QueryDocumentListVO> listAll(PageQuery condition) {
+        Page<FinPayment> page = new Page<>(condition.getPageIndex(), condition.getPageSize());
+        QueryWrapper<FinPayment> wrapper = new QueryWrapper<>();
+        wrapper.eq("payment_type","2021");
+        Page<FinPayment> pages = purchasePaymentMapper.selectPage(page, wrapper);
+        return PageVO.create(pages,QueryDocumentListVO.class);
+    }
+
+    @Override
+    public PageVO<QueryDocumentListVO> listAllUn(PageQuery condition) {
+        Page<FinPayment> page = new Page<>(condition.getPageIndex(), condition.getPageSize());
+        QueryWrapper<FinPayment> wrapper = new QueryWrapper<>();
+        wrapper.eq("payment_type","2020");
+        Page<FinPayment> pages = purchasePaymentMapper.selectPage(page, wrapper);
+        return PageVO.create(pages,QueryDocumentListVO.class);
+    }
+
+    @Override
+    public PageVO<QueryDocumentListVO> listRefund(PageQuery condition) {
+        Page<FinPayment> page = new Page<>(condition.getPageIndex(), condition.getPageSize());
+        QueryWrapper<FinPayment> wrapper = new QueryWrapper<>();
+        wrapper.eq("payment_type","203");
+        Page<FinPayment> pages = purchasePaymentMapper.selectPage(page, wrapper);
+        return PageVO.create(pages,QueryDocumentListVO.class);
     }
 }

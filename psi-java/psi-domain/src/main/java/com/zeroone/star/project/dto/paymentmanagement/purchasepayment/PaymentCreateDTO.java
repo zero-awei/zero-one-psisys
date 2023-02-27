@@ -32,7 +32,7 @@ public class PaymentCreateDTO {
     private String srcBillId;
     @ApiModelProperty(value =  "源单号", example = "")
     private String srcNo;
-	@ApiModelProperty(value =  "付款类型", example = "2021")
+	@ApiModelProperty(value =  "付款类型", example = "采购付款（有申请）2021、采购付款（无申请）2020、采购退货退款(红付)203")
     private String paymentType;
 	@ApiModelProperty(value =  "申请金额", example = "0")
     private BigDecimal amt;

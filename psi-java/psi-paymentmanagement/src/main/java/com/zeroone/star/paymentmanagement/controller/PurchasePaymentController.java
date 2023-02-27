@@ -1,11 +1,16 @@
 package com.zeroone.star.paymentmanagement.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.zeroone.star.paymentmanagement.service.PurchasePaymentService;
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentCreateDTO;
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentDeleteDTO;
 import com.zeroone.star.project.dto.paymentmanagement.purchasepayment.PaymentUpdateDTO;
 import com.zeroone.star.project.paymentmanagement.purchasepayment.PurchasePaymentApis;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.ResultStatus;
+import com.zeroone.star.project.vo.paymentmanagement.QueryDocumentListVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,11 +126,50 @@ public class PurchasePaymentController implements PurchasePaymentApis {
         else return JsonVO.fail(paymentUpdateDTO.toString());
     }
 
+    /**
+     *@author 业峰
+     * return 文件下载的路径
+     */
     @PostMapping("/upload")
     @ApiOperation("附件上传")
     @Override
-    //TODO：技术没懂，暂时放着
-    public JsonVO<String> upload(MultipartFile flie){return null;}
+    public JsonVO<String> upload(MultipartFile flie){
+        return null;
+    }
 
+    /**
+     * @author 业峰
+     * @param condition
+     * @return
+     */
+    @GetMapping("/list-all")
+    @ApiOperation("查询所有（有申请）")
+    public JsonVO<PageVO<QueryDocumentListVO>> listAll(PageQuery condition){
+        PageVO<QueryDocumentListVO> page = purchasePaymentService.listAll(condition);
+        return JsonVO.create(page, ResultStatus.SUCCESS);
+    }
 
+    /**
+     * @author 业峰
+     * @param condition
+     * @return
+     */
+    @GetMapping("/list-all-un")
+    @ApiOperation("查询所有（无申请）")
+    public JsonVO<PageVO<QueryDocumentListVO>> listAllUn(PageQuery condition){
+        PageVO<QueryDocumentListVO> page = purchasePaymentService.listAllUn(condition);
+        return JsonVO.create(page, ResultStatus.SUCCESS);
+    }
+
+    /**
+     * @author 业峰
+     * @param condition
+     * @return
+     */
+    @GetMapping("/list-refund")
+    @ApiOperation("查询所有（退货退款）")
+    public JsonVO<PageVO<QueryDocumentListVO>> listRefund(PageQuery condition){
+        PageVO<QueryDocumentListVO> page = purchasePaymentService.listRefund(condition);
+        return JsonVO.create(page, ResultStatus.SUCCESS);
+    }
 }
