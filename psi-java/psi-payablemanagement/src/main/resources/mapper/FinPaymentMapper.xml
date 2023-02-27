@@ -4,4 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeroone.star.payablemanagement.mapper.FinPaymentMapper">
 
+    <select id="getBySupplierId" resultType="com.zeroone.star.project.vo.paymentmanagement.PaymentVO" parameterType="com.zeroone.star.project.query.payablemanagement.PaymentBySupplierQuery">
+        <include refid="selectBase"/>
+        <where>
+            fpm.supplier_id = #{supplierId}
+        </where>
+    </select>
+
+    <sql id="selectBase">
+        SELECT fpm.amt, fpm.approval_remark, fpm.approval_result_type,
+            su.realname approval_dict_text, fpm.attachment, fpm.bill_date,
+            fpm.bill_no, sdi.item_text bill_stage_dict_text, fpm.checked_amt,
+            su1.realname create_by_dict_text, fpm.create_time, fpm.effective_time,
+            fpm.is_auto, fpm.is_closed, fpm.is_rubric,
+            fpm.is_voided, sdi1.item_text payment_type_dict_text, fpm.remark,
+            fpm.src_no, fpm.subject, bs.name supplier_id_dict_text,
+            sdp.depart_name sys_org_code_dict_text,
+            CASE WHEN fpm.amt - fpm.checked_amt &lt; 0 THEN 0
+            ELSE fpm.amt - fpm.checked_amt
+            END AS unchecked_amt, su2.realname update_by_dict_text, fpm.update_time
+        FROM fin_payment fpm
+            LEFT JOIN sys_user su ON fpm.approver = su.username
+            LEFT JOIN sys_user su1 ON fpm.create_by = su1.username
+            LEFT JOIN sys_user su2 ON fpm.update_by = su2.username
+            LEFT JOIN bas_supplier bs ON fpm.supplier_id = bs.id
+            LEFT JOIN sys_depart sdp ON fpm.sys_org_code = sdp.org_code
+            JOIN sys_dict_item sdi ON fpm.bill_stage = sdi.item_value
+            JOIN sys_dict_item sdi1 ON fpm.payment_type = sdi1.item_value
+            JOIN sys_dict sdict ON sdi.dict_id = sdict.id
+    </sql>
 </mapper>
