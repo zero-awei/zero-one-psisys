@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "pch.h"
 #include "../include/SimpleDateTimeFormat.h"
 #include <chrono>

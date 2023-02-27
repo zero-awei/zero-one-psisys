@@ -23,5 +23,5 @@ public:
 	}
 };
 
-#endif _
+#endif
 
