@@ -1,7 +1,7 @@
-package com.zeroone.star.payment.service;
+package com.zeroone.star.login.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zeroone.star.payment.entity.Menu;
+import com.zeroone.star.login.entity.Menu;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
 
 import java.util.List;

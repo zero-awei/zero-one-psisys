@@ -1,7 +1,7 @@
-package com.zeroone.star.payment.mapper;
+package com.zeroone.star.login.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeroone.star.payment.entity.Menu;
+import com.zeroone.star.login.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

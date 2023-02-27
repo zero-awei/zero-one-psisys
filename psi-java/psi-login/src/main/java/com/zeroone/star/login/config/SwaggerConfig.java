@@ -1,4 +1,4 @@
-package com.zeroone.star.payment.config;
+package com.zeroone.star.login.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
-package com.zeroone.star.payment.fallback;
+package com.zeroone.star.login.fallback;
 
-import com.zeroone.star.payment.service.impl.OauthServiceImpl;
+import com.zeroone.star.login.service.impl.OauthServiceImpl;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 

@@ -2,9 +2,11 @@ package com.zeroone.star.payablemanagement.service;
 
 import com.zeroone.star.payablemanagement.entity.FinPayableCheck;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
+import java.util.List;
 
 /**
  * <p>
@@ -24,5 +26,15 @@ public interface IFinPayableCheckService extends IService<FinPayableCheck> {
      */
     public PageVO<CheckPayableVO> getAll(CheckPayableQuery condition);
 
+    void submitAdd(CheckPayableDTO dto);
 
+    void saveAdd(CheckPayableDTO dto);
+
+    void submitModify(CheckPayableDTO dto);
+
+    void saveModify(CheckPayableDTO dto);
+
+    void removeWithEntry(List<String> ids);
+
+    boolean isCheckPass(String id, String approvalResultType, String approvalRemark);
 }

@@ -1,4 +1,4 @@
-package com.zeroone.star.payment.config;
+package com.zeroone.star.login.config;
 
 import com.zeroone.star.project.utils.tree.NodeMapper;
 import com.zeroone.star.project.utils.tree.TreeNode;
