@@ -4,7 +4,7 @@ package com.zeroone.star.payablemanagement;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.payablemanagement.entity.FinPayable;
 import com.zeroone.star.payablemanagement.mapper.FinPayableMapper;
-import com.zeroone.star.payablemanagement.service.impl.FinPayableServiceImpl;
+import com.zeroone.star.payablemanagement.service.impl.Other.FinPayableServiceImpl;
 import com.zeroone.star.payablemanagement.utils.SnowFlakeShortUrl;
 import com.zeroone.star.payablemanagement.utils.TransformationUtils;
 import com.zeroone.star.project.dto.payablemanagement.PayableDTO;
@@ -13,9 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @SpringBootTest
 @Component
