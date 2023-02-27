@@ -19,3 +19,5 @@
 //	string sqlStr = sql.str();
 //	return sqlSession->executeQueryNumerical(sqlStr, params);
 //}
+
+//
