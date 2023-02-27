@@ -3,11 +3,8 @@ package com.zeroone.star.payablemanagement.service;
 import com.zeroone.star.payablemanagement.entity.FinPayableCheck;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
-import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
-import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
-import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 
 /**
  * <p>
@@ -25,7 +22,7 @@ public interface IFinPayableCheckService extends IService<FinPayableCheck> {
      * @return 查询结果
      * @author spk
      */
-    public PageVO<CheckPayableVO> queryAll(CheckPayableQuery condition);
+    public PageVO<CheckPayableVO> getAll(CheckPayableQuery condition);
 
 
 }

@@ -33,7 +33,7 @@ public class CheckPayableQuery extends PageQuery {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    @ApiModelProperty(value = "单据起始日期", example = "2023-02-07")
+    @ApiModelProperty(value = "单据起始日期", example = "2022-11-20")
     private Date billDateBegin;
 
     /**
@@ -51,7 +51,7 @@ public class CheckPayableQuery extends PageQuery {
     /**
      * 单据主题
      */
-    @ApiModelProperty(value = "单据主题", example = "3333333333")
+    @ApiModelProperty(value = "单据主题", example = "")
     private String subject;
 
     /**

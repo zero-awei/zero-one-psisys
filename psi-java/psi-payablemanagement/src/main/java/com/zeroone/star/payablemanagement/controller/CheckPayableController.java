@@ -24,8 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.spring.web.json.Json;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -50,14 +50,14 @@ public class CheckPayableController implements CheckPayableApis {
     @Override
     @GetMapping("entry")
     @ApiOperation("查询单据详情")
-    public JsonVO<List<CheckPayableEntryVO>> getByMainId(CheckPayableEntryQuery condition) {
+    public JsonVO<List<CheckPayableEntryVO>> getByMainId( CheckPayableEntryQuery condition) {
         return JsonVO.success(finPayableCheckEntry.getByMainId(condition));
     }
 
     @GetMapping("list")
     @ApiOperation("查询单据列表")
     public JsonVO<PageVO<CheckPayableVO>> queryAll(CheckPayableQuery condition) {
-        return  JsonVO.success(finPayableCheck.queryAll(condition));
+        return  JsonVO.success(finPayableCheck.getAll(condition));
     }
 
     @Override

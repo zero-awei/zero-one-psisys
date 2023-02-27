@@ -16,11 +16,6 @@ import java.util.Date;
  * @author spk
  * @since 2023-02-14
  * @description 应付核销单VO: fin_payable_check
- * ApiModelProperty value 以网页上显示的名称为准，如果没有则使用数据库名称
- * 相比于DTO，缺少以下字段：
- * 所有的Id字段
- * 对于拥有DictText字段和原字段两者的，只保留DictText字段
- * version
  */
 @Data
 @ApiModel("应付核销单显示对象")
@@ -77,23 +72,23 @@ public class CheckPayableVO {
     @ApiModelProperty(value = "ID", example = "1623386325943361538")
     private String id;
 
-    @ApiModelProperty(value = "自动单据", example = "否")
-    private String isAutoDictText;
+    @ApiModelProperty(value = "自动单据", example = "0")
+    private String isAuto;
 
-    @ApiModelProperty(value = "已关闭", example = "是")
-    private String isClosedDictText;
+    @ApiModelProperty(value = "已关闭", example = "1")
+    private String isClosed;
 
-    @ApiModelProperty(value = "已生效", example = "是")
-    private String isEffectiveDictText;
+    @ApiModelProperty(value = "已生效", example = "1")
+    private String isEffective;
 
-    @ApiModelProperty(value = "红字单据", example = "否")
-    private String isRubricDictText;
+    @ApiModelProperty(value = "红字单据", example = "0")
+    private String isRubric;
 
-    @ApiModelProperty(value = "已作废", example = "否")
-    private String isVoidedDictText;
+    @ApiModelProperty(value = "已作废", example = "0")
+    private String isVoided;
 
-    @ApiModelProperty(value = "核销类型", example = "应付核销")
-    private String payableCheckTypeDictText;
+//    @ApiModelProperty(value = "核销类型", example = "应付核销")
+//    private String payableCheckTypeDictText;
 
     @ApiModelProperty(value = "备注", example = "")
     private String remark;

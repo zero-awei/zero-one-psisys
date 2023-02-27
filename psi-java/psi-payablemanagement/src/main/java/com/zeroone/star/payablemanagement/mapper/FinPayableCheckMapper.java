@@ -2,7 +2,11 @@ package com.zeroone.star.payablemanagement.mapper;
 
 import com.zeroone.star.payablemanagement.entity.FinPayableCheck;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
+import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +19,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface FinPayableCheckMapper extends BaseMapper<FinPayableCheck> {
 
+    List<CheckPayableVO> getAllCheckPayable(CheckPayableQuery condition);
 }
