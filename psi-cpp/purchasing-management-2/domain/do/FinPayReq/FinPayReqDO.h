@@ -109,7 +109,7 @@ public:
 		//是否生效
 		is_effective = 0;
 		//生效时间
-		effective_time = "2023-2-22 22:22:22";
+		effective_time = "";
 		//是否已关闭
 		is_closed = 0;
 		//是否作废

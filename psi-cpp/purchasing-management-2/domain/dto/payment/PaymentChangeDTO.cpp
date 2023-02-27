@@ -23,6 +23,6 @@ void from_json(const json& j, PaymentChangeDTO& t) {
 	BIND_FROM_TO_NORMAL(j, t, id);
 	BIND_FROM_TO_I(j, t, opType);
 	BIND_FROM_TO_NORMAL(j, t, bill_no);
-	BIND_FROM_TO_B(j, t, is_closed);
-	BIND_FROM_TO_B(j, t, is_voided);
+	//BIND_FROM_TO_B(j, t, is_closed);
+	//BIND_FROM_TO_B(j, t, is_voided);
 }

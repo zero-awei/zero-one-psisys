@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PaymentService.h"
 #include "../../dao/Payment/PaymentDAO.h"
+#include "../lib-common/include/SimpleDateTimeFormat.h"
 
 // 通过ID删除数据
 bool PaymentService::DePayment(const DePaymentDTO& dto)
@@ -19,22 +20,25 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 }
 
 // 修改单据状态
-bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto)
+bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
-	//组装传输数据
 	FinPayReqDO data;
+
+	// 设置字段值
+	data.setUpdate_by(payload.getUsername());
+	data.setUpdate_time(SimpleDateTimeFormat::format());
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
-	//执行数据修改
+
 	PaymentDAO dao;
-	if (dto.getOpType() == PaymentChangeDTO::CLOSE || dto.getOpType() == PaymentChangeDTO::UNCLOSE)
+	if (dto.getOpType() == dto.CLOSE || dto.getOpType() == dto.UNCLOSE)
 	{
-		data.setIs_closed(dto.getIs_closed());
+		data.setIs_closed(dto.OPS[dto.getOpType()]);
 		return dao.ChangeStatusClose(data) == 1;
 	}
-	else if (dto.getOpType() == PaymentChangeDTO::CANCEL)
+	else if (dto.getOpType() == dto.CANCEL)
 	{
-		data.setIs_voided(dto.getIs_voided());
+		data.setIs_voided(dto.OPS[dto.getOpType()]);
 		return dao.ChangeStatusCancel(data) == 1;
 	}
 }

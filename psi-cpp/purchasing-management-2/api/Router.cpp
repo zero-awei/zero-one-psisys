@@ -205,7 +205,7 @@ void Router::createPurComRouter() {
 void Router::createPaymentRouter()
 {
 	//修改单据状态
-	BIND_PUT_ROUTER(server, "/payment-change", &PaymentController::changePayment, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-payment-status", &PaymentController::modifyPayment, nullptr);
 	//删除单据
 	BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::deleteById, nullptr);
 	//添加单据

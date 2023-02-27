@@ -19,14 +19,14 @@ class PaymentController
 {
 public:
 	//修改订单状态
-	CREATE_API_FUN_BODY(changePayment, execChangePayment, PaymentChangeDTO);
+	 CREATE_API_FUN_BODY_PAYLOAD(modifyPayment, execChangePayment, PaymentChangeDTO);
 	//删除
 	CREATE_API_FUN_BODY(deleteById, execDePayment, DePaymentDTO);
 	//添加
 	CREATE_API_FUN_BODY_PAYLOAD(AddPayment, execAddPayment, AddPaymentDTO);
 private:
 	//修改单据状态（关闭/作废/反关闭）
-	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto);
+	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& pl);
 	//删除数据
 	JsonVO<string> execDePayment(const DePaymentDTO& dto);
 	//添加数据

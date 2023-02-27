@@ -22,17 +22,20 @@ if (obj.getAmt() != -1) { \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAmt()); \
 } \
 
-//修改单据状态
-int PaymentDAO::ChangeStatusClose(const FinPayReqDO& uObj)
+// 修改单据状态(关闭/反关闭)
+// 负责人：zuichu
+int PaymentDAO::ChangeStatusClose(const FinPayReqDO & paydo)
 {
-	string sql = "UPDATE `fin_payment_req` SET `is_closed`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_closed(), uObj.getId());
+	string sql = "UPDATE `fin_payment_req` SET `update_by`=?, `update_time`=?, `is_closed`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%i%s", paydo.getUpdate_by(), paydo.getUpdate_time(), paydo.getIs_closed(), paydo.getId());
 }
 
-int PaymentDAO::ChangeStatusCancel(const FinPayReqDO& uObj)
+// 修改单据状态(作废)
+// 负责人：zuich 
+int PaymentDAO::ChangeStatusCancel(const FinPayReqDO& paydo)
 {
-	string sql = "UPDATE `fin_payment_req` SET `is_voided`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%s", uObj.getIs_voided(), uObj.getId());
+	string sql = "UPDATE `pur_order` SET `update_by`=?, `update_time`=?, `is_voided`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%i%s%s%s", paydo.getIs_voided(), paydo.getUpdate_by(), paydo.getUpdate_time(), paydo.getId());
 }
 
 // 删除申请单

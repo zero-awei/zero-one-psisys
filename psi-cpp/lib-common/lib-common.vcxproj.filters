@@ -57,6 +57,9 @@
     <ClInclude Include="..\..\..\..\..\..\..\Documents\Tencent Files\1207368051\FileRecv\ExcelComponent.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\SimpleDateTimeFormat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

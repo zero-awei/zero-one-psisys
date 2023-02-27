@@ -44,7 +44,8 @@ public:
 	// 通过ID删除数据
 	bool DePayment(const  DePaymentDTO& dto);
 	// 修改单据状态
-	bool ChangePayStatus(const PaymentChangeDTO& dto);
+	bool ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload);
+
 	// 添加数据
 	bool AddPay(const AddPaymentDTO& dto);
 	//插入数据
