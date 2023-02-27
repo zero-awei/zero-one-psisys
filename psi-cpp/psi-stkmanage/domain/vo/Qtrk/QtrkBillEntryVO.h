@@ -1,14 +1,14 @@
 #pragma once
 
-#ifndef _CGRK_BILL_Entry_VO_
-#define _CGRK_BILL_Entry_VO_
+#ifndef _QTRK_BILL_Entry_VO_
+#define _QTRK_BILL_Entry_VO_
 
 #include "../../GlobalInclude.h"
 
 /**
  * 单据明细
  */
-class CgrkBillEntryVO
+class QtrkBillEntryVO
 {
 	//批次号
 	CC_SYNTHESIZE(string, batchNo, BatchNo);
@@ -71,7 +71,7 @@ class CgrkBillEntryVO
 	//仓库
 	CC_SYNTHESIZE(string, warehouseId, WarehouseId);
 public:
-	CgrkBillEntryVO() {
+	QtrkBillEntryVO() {
 		batchNo = "";
 		billNo = "";
 		cost = -1;
@@ -91,7 +91,7 @@ public:
 		settleAmt = -1;
 		settleQty = -1;
 		srcBillId = "";
-		srcBillType: "";
+	srcBillType: "";
 		srcEntryId = "";
 		srcNo = "";
 		stockIoDirection = "";
@@ -105,9 +105,10 @@ public:
 
 	}
 	// 绑定JSON转换方法
-	BIND_TO_JSON(CgrkBillEntryVO, batchNo, billNo, cost, custom1, custom2, discountRate, entryNo, expense, id, invoicedAmt, invoicedQty,
+	BIND_TO_JSON(QtrkBillEntryVO, batchNo, billNo, cost, custom1, custom2, discountRate, entryNo, expense, id, invoicedAmt, invoicedQty,
 		materialId, mid, price, qty, remark, settleAmt, settleQty, srcBillId, srcBillType, srcEntryId, srcNo, stockIoDirection, supplierId, swellQty, tax,
 		taxRate, unitId, version, warehouseId);
 };
 
-#endif // !_CGRK_BILL_Entry_VO_
+#endif // !_QTRK_BILL_ENTRY_VO_
+

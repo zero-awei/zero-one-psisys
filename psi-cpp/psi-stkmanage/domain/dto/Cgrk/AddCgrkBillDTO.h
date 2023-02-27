@@ -36,56 +36,42 @@ class AddCgrkBillDTO : public FileDTO
 	CC_SYNTHESIZE(string, billNo, BillNo);//自动生成
 	//单据日期
 	CC_SYNTHESIZE(string, billDate, BillDate);//读取系统时间
+	//供应商
+	CC_SYNTHESIZE(string, supplierId , SupplierId);
+	//发票类型
+	CC_SYNTHESIZE(string, invoiceType, InvoiceType);
 
 	//选填############
+	//源单号
+	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
-	//业务部门
-	CC_SYNTHESIZE(string, opDept, OpDept);
 	//业务员
 	CC_SYNTHESIZE(string, operator1, Operator1);
+	//业务部门
+	CC_SYNTHESIZE(string, opDept, OpDept);
 	//入库经办
 	CC_SYNTHESIZE(string, handler, Handler);
-
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
+	//是否涨吨
+	CC_SYNTHESIZE(int, hasSwell, HasSwell);
 
-	//不可填######################
-	//单据阶段
-	CC_SYNTHESIZE(string, billStage, BillStage);
-	//已生效
-	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//已关闭
-	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//已作废
-	CC_SYNTHESIZE(int, isVoided, IsVoided);
-	//生效时间
-	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//核批人 
-	CC_SYNTHESIZE(string, approver, Approver);
-	//审批实例
-	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	//制单人*******
-	CC_SYNTHESIZE(string, createBy, CreateBy);
-	//制单时间
-	CC_SYNTHESIZE(string, createTime, CreateTime);
-	//制单部门
-	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	//修改时间
-	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	//修改人
-	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	//自动单据
+	//自动生成
 	CC_SYNTHESIZE(int, isAuto, IsAuto);
-	//红字单据
-	CC_SYNTHESIZE(int, isRubric, IsRubric);
-	//有应付
-	CC_SYNTHESIZE(int, hasRp, HasRp);
+
+
 
 	//单据明细
 	CC_SYNTHESIZE(list<CgrkBillEntryDTO>, entry, Entry);
+
+
+	// 保存or提交(0:保存, 1:提交)
+	CC_SYNTHESIZE(int, save, Save);
+
+
 
 public:
 	// 绑定JSON转换方法

@@ -23,6 +23,7 @@
 #include "../../dao/Cgrk/StkIoEntryMapper.h"
 #include "../../dao/Cgrk/PurOrderMapper.h"
 #include "../../dao/Cgrk/PurOrderEntryMapper.h"
+#include "../../dao/StringMapper.h"
 
 //定义宏
 #define BILL_LIST_TERAM_PARSE(obj, sql) \
@@ -65,11 +66,7 @@ if (obj.getIsClosed() != -1) { \
 
 
 
-////查询单据总条数
-//uint64_t CgrkDAO::count(const StkIoDO& iObj)
-//{
-//
-//}
+
 
 //查询单据列表
 std::list<StkIoDO> CgrkDAO::selectBillList(const QueryCgrkBillListQuery query)
@@ -187,13 +184,66 @@ list<PurOrderEntryDO> CgrkDAO::selectPurOrderEntry(const QueryPurOrderEntryQuery
 
 }
 
+int CgrkDAO::insertCgrkBill(const StkIoDO& iObj)
+{
+
+	string sql = "INSERT INTO `stk_io` (`id`,`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`stock_io_type`,`op_dept`,`operator`,`handler`,`has_rp`,`has_swell`,`supplier_id`,`invoice_type`,`cost`,`remark`,`is_auto`,`bill_stage`,`attachment`,`is_effective`,`is_closed`,`is_voided`,`sys_org_code`,`create_by`,`create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%i%i%s%s%d%s%i%s%s%i%i%i%s%s%s",
+		iObj.getId(), iObj.getBillNo(), iObj.getBillDate(), iObj.getSrcBillType(), iObj.getSrcBillId(), iObj.getSrcNo(), iObj.getSubject(), iObj.getStockIoType(), iObj.getOpDept(), iObj.getOperator1(), iObj.getHandler(), iObj.getHasRp(), iObj.getHasSwell(), iObj.getSupplierId(), iObj.getInvoiceType(), iObj.getCost(), iObj.getRemark(), iObj.getIsAuto(), iObj.getBillStage(), iObj.getAttachment(), iObj.getIsEffective(),iObj.getIsClosed(), iObj.getIsVoided(), iObj.getSysOrgCode(), iObj.getCreateBy(), iObj.getCreateTime());
+}
+
+int CgrkDAO::insertCgrkBillEntry(const StkIoEntryDO& iObj)
+{
+	string sql = "INSERT INTO `stk_io_entry` (`id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,`src_bill_id`,`src_entry_id`,`src_no`,`material_id`,`batch_no`,`warehouse_id`,`stock_io_direction`,`supplier_id`,`unit_id`,`swell_qty`,`qty`,`expense`,`cost`,`settle_qty`,`tax_rate`,`price`,`discount_rate`,`tax`,`settle_amt`,`invoiced_qty`,`invoiced_amt`,`remark`,`custom1`,`custom2`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	return sqlSession->executeUpdate(sql, "%s%s%i%s%s%s%s%s%s%s%s%s%s%s%f%f%f%f%f%f%f%f%f%f%f%f%s%s%s",
+		iObj.getId(), iObj.getMid(), iObj.getBillNo(), iObj.getEntryNo(),iObj.getSrcBillType(),iObj.getSrcBillId(),iObj.getSrcEntryId(),iObj.getSrcNo(), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(),iObj.getSupplierId(), iObj.getUnitId(),iObj.getSwellQty(),iObj.getQty(),iObj.getExpense(), iObj.getCost(),iObj.getSettleQty(),iObj.getTaxRate(), iObj.getPrice(),iObj.getDiscountRate(),iObj.getTax(),iObj.getSettleAmt(),iObj.getInvoicedQty(),iObj.getInvoicedAmt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
+
+}
+
+//通过源单号查询源单id
+string CgrkDAO::selectSrcBillIdBySrcNo(const string& srcNo)
+{
+	string sql = "SELECT id FROM  pur_order WHERE src_no=?";
+	StringMapper mapper;
+	list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", srcNo);
+	if (ret.empty()) {
+		return "";
+	}
+	return *ret.begin();
+}
+
+//通过源单号查询源单类型
+string CgrkDAO::selectSrcBillTypeBySrcNo(const string& srcNo)
+{
+	string sql = "SELECT pur_type FROM  pur_order WHERE src_no=?";
+	StringMapper mapper;
+	list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", srcNo);
+	if (ret.empty()) {
+		return "";
+	}
+	return *ret.begin();
+}
+//查询用户部门
+string CgrkDAO::selectOpDeptById(const string& id)
+{
+	string sql = "SELECT sys_depart.org_code FROM  sys_user_depart,sys_depart WHERE sys_user_depart.user_id =? AND sys_user_depart.dep_id=sys_depart.id";
+	StringMapper mapper;
+	list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", id);
+	if (ret.empty()) {
+		return "";
+	}
+	return *ret.begin();
+}
+
 
 //删除采购入库单据
-uint64_t CgrkDAO::deleteCgrkBill(string id)
+uint64_t CgrkDAO::deleteCgrkBill(const string& billNo)
 {
-	stringstream sql;
+
 	SqlParams params;
-	sql<<""
+	string sql = "DELETE FROM stk_io WHERE bill_no=?";
+	string sql2 = "DELETE FROM stk_io_entry WHERE bill_no=?";
+	return (sqlSession->executeUpdate(sql, "%s", billNo) + sqlSession->executeUpdate(sql2, "%s", billNo));
 }
 
 

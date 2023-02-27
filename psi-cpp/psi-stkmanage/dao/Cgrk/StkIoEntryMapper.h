@@ -38,7 +38,7 @@ public:
 		data.setId(resultSet->getString(1));
 		data.setMid(resultSet->getString(2));
 		data.setBillNo(resultSet->getString(3));
-		data.setEntryNo(resultSet->getString(4));
+		data.setEntryNo(resultSet->getInt(4));
 		data.setSrcBillType(resultSet->getString(5));
 		data.setSrcBillId(resultSet->getString(6));
 		data.setSrcEntryId(resultSet->getString(7));

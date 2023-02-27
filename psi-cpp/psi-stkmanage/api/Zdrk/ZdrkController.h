@@ -3,7 +3,7 @@
 #define _QUERYDOCLIST_CONTROLLER_
 
 #include "../../domain/query/Zdrk/QueryZdrkBillListQuery.h"
-#include "../../domain/query//Zdrk/QueryZdrkDBillDetailsQuery.h"
+#include "../../domain/query//Zdrk/QueryZdrkBillDetailsQuery.h"
 #include "../../domain/vo/Zdrk/QueryZdrkBillListVO.h"
 #include "../../domain/vo/Zdrk/QueryZdrkBillDetailsVO.h"
 #include "../../domain/dto/Zdrk/AddZdrkBillDTO.h"
@@ -14,6 +14,7 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/dto/IDDTO.h"
+#include "../../service/Zdrk/ZdrkService.h"
 
 /**
  * ÕÇ¶ÖÈë¿â¿ØÖÆÆ÷

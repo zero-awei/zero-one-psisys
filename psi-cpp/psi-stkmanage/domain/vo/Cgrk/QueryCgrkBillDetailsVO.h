@@ -111,23 +111,8 @@ class QueryCgrkBillDetailsVO
 	//是否退货退票
 	CC_SYNTHESIZE(int, isReturned, IsReturned);
 
-	CC_SYNTHESIZE(string, stockIoTypeDictText, StockIoTypeDictText);
-	CC_SYNTHESIZE(string, hasRpDictText, HasRpDictText);
-	CC_SYNTHESIZE(string, hasSwellDictText, HasSwellDictText);
-	CC_SYNTHESIZE(string, invoiceTypeDictText, InvoiceTypeDictTex);
-	CC_SYNTHESIZE(string, opDeptDictText, OpDeptDictText);
-	CC_SYNTHESIZE(string, operatorDictText, OperatorDictText);
-	CC_SYNTHESIZE(string, handlerDictText, HandlerDictText);
-	CC_SYNTHESIZE(string, updateByDictText, UpdateByDictText);
-	CC_SYNTHESIZE(string, isEffectiveDictText, IsEffectiveDictText);
-	CC_SYNTHESIZE(string, isVoidedDictText, IsVoidedDictText);
-	CC_SYNTHESIZE(string, srcBillTypeDictText, SrcBillTypeDictText);
-	CC_SYNTHESIZE(string, isAutoDictText, IsAutoDictText);
-	CC_SYNTHESIZE(string, isRubricDictText, IsRubricDictText);
-	CC_SYNTHESIZE(string, sysOrgCodeDictText, SysOrgCodeDictText);
-	CC_SYNTHESIZE(string, createByDictText, CreateByDictText);
-	CC_SYNTHESIZE(string, billStageDictText, BillStageDictText);
-	CC_SYNTHESIZE(string, isClosedDictText, IsClosedDictText);
+
+
 
 	CC_SYNTHESIZE(list<CgrkBillEntryVO>, entry, Entry);
 
@@ -175,23 +160,7 @@ public:
 		settledAmt = 0;
 		invoicedAmt = 0;
 		isReturned = 0;
-		stockIoTypeDictText = u8"采购入库";
-		hasRpDictText = u8"是";
-		hasSwellDictText = u8"否";
-		invoiceTypeDictText = u8"不开票";
-		opDeptDictText = u8"北京 F 公司";
-		operatorDictText = "jeecg";
-		handlerDictText = "jeecg";
-		updateByDictText = u8"管理员";
-		isEffectiveDictText = u8"否";
-		isVoidedDictText = u8"否";
-		srcBillTypeDictText = u8"采购订单";
-		isAutoDictText = u8"否";
-		isRubricDictText = u8"否";
-		sysOrgCodeDictText = u8"研发部";
-		createByDictText = u8"管理员";
-		billStageDictText = u8"编制完";
-		isClosedDictText = u8"否";
+
 
 
 		entry.push_back(CgrkBillEntryVO());
@@ -199,8 +168,7 @@ public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(QueryCgrkBillDetailsVO, remark, billNo, approvalResultType, updateBy, isEffective, isVoided, billType, approver, billDate, srcBillType, approvalRemark, srcNo, updateTime, isAuto,
 		isRubric, sysOrgCode, createTime, createBy, srcBillId, effectiveTime, billStage, version, attachment, subject, id, isClosed, bpmiInstanceId, stockIoType, hasRp, hasSwell, supplierId, customerId,
-		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned, stockIoTypeDictText, hasRpDictText, hasSwellDictText, invoiceTypeDictText, opDeptDictText, operatorDictText,
-		handlerDictText, updateByDictText, isEffectiveDictText, isVoidedDictText, srcBillTypeDictText, isAutoDictText, isRubricDictText, sysOrgCodeDictText, createByDictText, billStageDictText, isClosedDictText, entry);
+		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned, entry);
 };
 
 #endif // !_QUERY_CGRK_BILL_DETAILS_VO_

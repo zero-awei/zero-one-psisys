@@ -59,11 +59,11 @@ public:
 	PageVO<QueryPurOrderEntryVO> listPurOrderEntry(const QueryPurOrderEntryQuery& query);
 
 	//添加采购入库单
-	uint64_t saveCgrkBill(const AddCgrkBillDTO& DTO);
+	int saveCgrkBill(const AddCgrkBillDTO& DTO, const PayloadDTO& payload);
 
 
 	//删除采购入库单
-	uint64_t removeCgrkBill(string id);
+	bool removeCgrkBill(string id);
 	//// 保存数据
 	//uint64_t saveData(const SampleDTO& dto);
 	//// 修改数据

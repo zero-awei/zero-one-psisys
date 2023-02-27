@@ -54,7 +54,7 @@ public:
 	CREATE_API_FUN_QUERY(queryPurOrderList, execQueryPurOrderList, QueryPurOrderListQuery);
 	CREATE_API_FUN_QUERY(queryPurOrderEntry, execQueryPurOrderEntry, QueryPurOrderEntryQuery);
 
-	CREATE_API_FUN_BODY(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
 	CREATE_API_FUN_BODY(modifyCgrkBill, execModifyCgrkBill, ModifyCgrkBillDTO);
 	CREATE_API_FUN_BODY(removeCgrkBill, execRemoveCgrkBill, RemoveCgrkBillDTO);
 	CREATE_API_FUN_BODY(modifyCgrkBillState, execModifyCgrkBillState, ModifyCgrkBillStateDTO);
@@ -74,11 +74,11 @@ private:
 	//查看采购订单分录列表
 	JsonVO<PageVO<QueryPurOrderEntryVO>> execQueryPurOrderEntry(const QueryPurOrderEntryQuery& query);
 	//添加单据信息
-	JsonVO<uint64_t> execAddCgrkBill(const AddCgrkBillDTO& dto);
+	JsonVO<int> execAddCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& payload);
 	//修改单据信息
 	JsonVO<uint64_t>  execModifyCgrkBill(const ModifyCgrkBillDTO& dto);
 	//删除单据
-	JsonVO<uint64_t> execRemoveCgrkBill(const RemoveCgrkBillDTO& dto);
+	JsonVO<std::string> execRemoveCgrkBill(const RemoveCgrkBillDTO& dto);
 	//修改单据状态
 	JsonVO<uint64_t> execModifyCgrkBillState(const ModifyCgrkBillStateDTO& dto);
 	// 导入

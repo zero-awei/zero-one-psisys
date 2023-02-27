@@ -184,7 +184,10 @@
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\Zdrk\ZdrkController.cpp" />
     <ClCompile Include="dao\Cgrk\CgrkDAO.cpp" />
+    <ClCompile Include="dao\ComminDAO.cpp" />
     <ClCompile Include="dao\Pyrk\PyrkDao.cpp" />
+    <ClCompile Include="dao\Qtrk\QtrkDAO.cpp" />
+    <ClCompile Include="dao\Zdrk\ZdrkDAO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp" />
@@ -201,6 +204,8 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\Cgrk\CgrkService.cpp" />
+    <ClCompile Include="service\Qtrk\QtrkService.cpp" />
+    <ClCompile Include="service\Zdrk\ZdrkService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -220,8 +225,13 @@
     <ClInclude Include="dao\Cgrk\PurOrderMapper.h" />
     <ClInclude Include="dao\Cgrk\StkIoEntryMapper.h" />
     <ClInclude Include="dao\Cgrk\StkIoMapper.h" />
+    <ClInclude Include="dao\CommonDAO.h" />
+    <ClInclude Include="dao\IntMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDao.h" />
     <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
+    <ClInclude Include="dao\Qtrk\QtrkDAO.h" />
+    <ClInclude Include="dao\StringMapper.h" />
+    <ClInclude Include="dao\Zdrk\ZdrkDAO.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderDO.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderEntryDO.h" />
     <ClInclude Include="domain\do\Cgrk\QueryCgrkBillListDO.h" />
@@ -274,7 +284,7 @@
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillListQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h" />
-    <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h" />
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkBillDetailsQuery.h" />
     <ClInclude Include="domain\vo\Cgrk\CgrkBillEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryCgrkBillListVO.h" />
@@ -291,14 +301,18 @@
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ImportQtrkFileVO.h" />
+    <ClInclude Include="domain\vo\Qtrk\QtrkBillEntryVO.h" />
     <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillListVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h" />
+    <ClInclude Include="domain\vo\Zdrk\ZdrkBillEntryVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\Cgrk\CgrkService.h" />
+    <ClInclude Include="service\Qtrk\QtrkService.h" />
+    <ClInclude Include="service\Zdrk\ZdrkService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

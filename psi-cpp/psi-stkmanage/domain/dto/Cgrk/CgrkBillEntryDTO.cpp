@@ -12,7 +12,7 @@ void from_json(const json& j, CgrkBillEntryDTO& t)
 	BIND_FROM_TO_NORMAL(j, t, custom1);
 	BIND_FROM_TO_NORMAL(j, t, custom2);
 	BIND_FROM_TO_D(j, t, discountRate);
-	BIND_FROM_TO_NORMAL(j, t, entryNo);
+	BIND_FROM_TO_I(j, t, entryNo);
 	BIND_FROM_TO_D(j, t, expense);
 	BIND_FROM_TO_NORMAL(j, t, id);
 	BIND_FROM_TO_D(j, t, invoicedAmt);

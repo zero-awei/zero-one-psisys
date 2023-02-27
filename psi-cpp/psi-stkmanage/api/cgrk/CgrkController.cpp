@@ -21,6 +21,7 @@
 #include "../../service/Cgrk/CgrkService.h"
 
 
+
 //查询单据列表
 JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillList(const QueryCgrkBillListQuery& query)
 {
@@ -72,36 +73,50 @@ JsonVO<PageVO<QueryPurOrderEntryVO>> CgrkController::execQueryPurOrderEntry(cons
 }
 
 //添加采购入库单
-JsonVO<uint64_t> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto)
+JsonVO<int> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto,const PayloadDTO& payload)
 {
-	JsonVO<uint64_t> result;
+	JsonVO<int> result;
+	CgrkService service;
 
 
-	result.success(1);
+
+	// 执行新增数据
+	int row = service.saveCgrkBill(dto, payload);
+	if (row > 0) {
+		result.success(row);
+	}
+	else if (row == -1) {
+		result.setData(row);
+		result.setStatus(RS_PARAMS_INVALID);
+	}
+	else {
+		result.fail(row);
+	}
 	return result;
+
 }
 //修改采购入库单
 JsonVO<uint64_t>  CgrkController::execModifyCgrkBill(const ModifyCgrkBillDTO& dto)
 {
 
 	JsonVO<uint64_t> result;
-	result.success(1);
+	
 	return result;
 }
 
 //删除采购入库单
-JsonVO<uint64_t> CgrkController::execRemoveCgrkBill(const RemoveCgrkBillDTO& dto)
+JsonVO<std::string> CgrkController::execRemoveCgrkBill(const RemoveCgrkBillDTO& dto)
 {
 
 	CgrkService service;
-	JsonVO<uint64_t> result;
+	JsonVO<std::string> result;
 	//执行数据删除
 	if (service.removeCgrkBill(dto.getBillNo())) {
-		result.success();
+		result.success(dto.getBillNo());
 	}
 	else
 	{
-		result.fail(dto.getId());
+		result.fail(dto.getBillNo());
 	}
 	//响应结果
 	return result;

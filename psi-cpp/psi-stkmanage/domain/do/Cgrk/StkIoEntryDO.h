@@ -33,7 +33,7 @@ class StkIoEntryDO
 	//单据号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//分录号
-	CC_SYNTHESIZE(string, entryNo, EntryNo);
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
 	//源单类型（采购订单）
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
 	//源单id（采购订单）
@@ -95,7 +95,7 @@ public:
 		id = "";
 		mid = "";
 		billNo = "";
-		entryNo = "";
+		entryNo = -1;
 		srcBillType = "";
 		srcBillId = "";
 		srcEntryId = "";

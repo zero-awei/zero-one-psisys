@@ -1,36 +1,20 @@
 
 #include "stdafx.h"
 #include "QtrkController.h"
-//#include "../../service/sample/SampleService.h"
+#include "../../service/Qtrk/QtrkService.h"
 
 JsonVO<PageVO<QueryQtrkBillListVO>> QtrkController::execQueryQtrk(const QueryQtrkBillListQuery& query, const PayloadDTO& payload)
 {
-	//定义一个Service
-	//SampleService service;
-	//查询数据
-	PageVO<QueryQtrkBillListVO> data;
-	list<QueryQtrkBillListVO> rows;
-	rows.push_back(QueryQtrkBillListVO());
-	rows.push_back(QueryQtrkBillListVO());
-	rows.push_back(QueryQtrkBillListVO());
-	data.setRows(rows);
-	//响应结果
-	return JsonVO<PageVO<QueryQtrkBillListVO>>(data, RS_SUCCESS);
+	QtrkService service;
+	PageVO<QueryQtrkBillListVO> result = service.listQtrkBillList(query);
+	return JsonVO<PageVO<QueryQtrkBillListVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<PageVO<QueryQtrkBillDetailsVO>> QtrkController::execQueryDetailsQtrk(const QueryQtrkBillDetailsQuery& query, const PayloadDTO& payload)
+JsonVO<QueryQtrkBillDetailsVO> QtrkController::execQueryQtrkBillDetails(const QueryQtrkBillDetailsQuery& query)
 {
-	//定义一个Service
-	//SampleService service;
-	//查询数据
-	PageVO<QueryQtrkBillDetailsVO> data;
-	list<QueryQtrkBillDetailsVO> rows;
-	rows.push_back(QueryQtrkBillDetailsVO());
-	rows.push_back(QueryQtrkBillDetailsVO());
-	rows.push_back(QueryQtrkBillDetailsVO());
-	data.setRows(rows);
-	//响应结果
-	return JsonVO<PageVO<QueryQtrkBillDetailsVO>>(data, RS_SUCCESS);
+	QtrkService service;
+	QueryQtrkBillDetailsVO result = service.getQtrkBillDetails(query);
+	return JsonVO<QueryQtrkBillDetailsVO>(result, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto)

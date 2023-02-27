@@ -1,14 +1,14 @@
 #pragma once
 
-#ifndef _CGRK_BILL_Entry_VO_
-#define _CGRK_BILL_Entry_VO_
+#ifndef _ZDRK_BILL_Entry_VO_
+#define _ZDRK_BILL_Entry_VO_
 
 #include "../../GlobalInclude.h"
 
 /**
  * 单据明细
  */
-class CgrkBillEntryVO
+class ZdrkBillEntryVO
 {
 	//批次号
 	CC_SYNTHESIZE(string, batchNo, BatchNo);
@@ -71,43 +71,44 @@ class CgrkBillEntryVO
 	//仓库
 	CC_SYNTHESIZE(string, warehouseId, WarehouseId);
 public:
-	CgrkBillEntryVO() {
-		batchNo = "";
-		billNo = "";
-		cost = -1;
+	ZdrkBillEntryVO() {
+		batchNo = "CGRK-221110-001-10";
+		billNo = "CGRK-221110-001";
+		cost = 88000;
 		custom1 = "";
 		custom2 = "";
-		discountRate = -1;
-		entryNo = -1;
-		expense = -1;
-		id = "";
-		invoicedAmt = -1;
-		invoicedQty = -1;
-		materialId = "";
-		mid = "";
-		price = -1;
-		qty = -1;
+		discountRate = 100;
+		entryNo = 10;
+		expense = 0;
+		id = "1590717667725066242";
+		invoicedAmt = 0;
+		invoicedQty = 0;
+		materialId = "1584947805371310082";
+		mid = "1590717667678928898";
+		price = 8000;
+		qty = 11;
 		remark = "";
-		settleAmt = -1;
-		settleQty = -1;
-		srcBillId = "";
-		srcBillType: "";
-		srcEntryId = "";
-		srcNo = "";
-		stockIoDirection = "";
-		supplierId = "";
-		swellQty = -1;;
-		tax = -1;
-		taxRate = -1;
-		unitId = "";
+		settleAmt = 88000;
+		settleQty = 11;
+		srcBillId = "1590710155252645889";
+	srcBillType: "PurOrder";
+		srcEntryId = "1590710155294588930";
+		srcNo = "CGDD-221110-001:10";
+		stockIoDirection = "1";
+		supplierId = "1584950950470164481";
+		swellQty = 0;;
+		tax = 10123.89;
+		taxRate = 13;
+		unitId = "40288101710a4c6201710a6618cc0003";
 		version = "";
-		warehouseId = "";
+		warehouseId = "1584937486573969410";
 
 	}
 	// 绑定JSON转换方法
-	BIND_TO_JSON(CgrkBillEntryVO, batchNo, billNo, cost, custom1, custom2, discountRate, entryNo, expense, id, invoicedAmt, invoicedQty,
+	BIND_TO_JSON(ZdrkBillEntryVO, batchNo, billNo, cost, custom1, custom2, discountRate, entryNo, expense, id, invoicedAmt, invoicedQty,
 		materialId, mid, price, qty, remark, settleAmt, settleQty, srcBillId, srcBillType, srcEntryId, srcNo, stockIoDirection, supplierId, swellQty, tax,
 		taxRate, unitId, version, warehouseId);
 };
 
 #endif // !_CGRK_BILL_Entry_VO_
+

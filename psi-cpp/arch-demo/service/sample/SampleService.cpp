@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "SampleService.h"
 #include "../../dao/sample/SampleDAO.h"
+#include "../../../lib-common/include/SnowFlake.h"
 
 PageVO<SampleVO> SampleService::listAll(const SampleQuery& query)
 {

@@ -67,11 +67,9 @@ void Router::initRouter()
 	createIncreaseTonRouter();
 	createCgthckRouter();
 	createQtrkRouter();
-	//呼叫盘盈入库路由
 	createPyrkRouter();
 
-	//#TIP :系统扩展路由定义，写在这个后面
-	createPyrkRouter();
+
 
 
 }
@@ -141,7 +139,7 @@ void Router::createQtrkRouter()
 {
 	
 	BIND_GET_ROUTER(server, "/query-qtrk-bill-list", &QtrkController::queryQtrk, nullptr);
-	BIND_GET_ROUTER(server, "/query-qtrk-bill-details", &QtrkController::querydetailsQtrk, nullptr);
+	BIND_GET_ROUTER(server, "/query-qtrk-bill-details", &QtrkController::queryQtrkBillDetails, nullptr);
 	BIND_POST_ROUTER(server, "/add-qtrk-bill", &QtrkController::addQtrk, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-qtrk-bill", &QtrkController::modifyQtrk, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-qtrk-bill", &QtrkController::removeQtrk, nullptr);

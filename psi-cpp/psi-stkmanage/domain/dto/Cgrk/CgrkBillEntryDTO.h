@@ -23,7 +23,7 @@ class CgrkBillEntryDTO
 	//折扣率
 	CC_SYNTHESIZE(double, discountRate, DiscountRate);
 	//分录号
-	CC_SYNTHESIZE(string, entryNo, EntryNo);
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
 	//计入费用成本
 	CC_SYNTHESIZE(double, expense, Expense);
 	//ID

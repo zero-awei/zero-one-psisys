@@ -36,10 +36,6 @@
 class CgrkDAO : public BaseDAO
 {
 public:
-	//查询数据总条数
-		// 统计数据条数
-	uint64_t count(const StkIoDO& iObj);
-
 
 	//查询单据列表
 	std::list<StkIoDO> selectBillList(const QueryCgrkBillListQuery query);
@@ -58,22 +54,20 @@ public:
 	list<PurOrderEntryDO> selectPurOrderEntry(const QueryPurOrderEntryQuery& query);
 
 	//添加采购入库单
-	uint64_t insertCgrkBill(const AddCgrkBillDTO& obj);
+	int insertCgrkBill(const StkIoDO& iobj);
 
+	//添加采购入库单明细
+	int insertCgrkBillEntry(const StkIoEntryDO& iobj);
+
+	//通过源单号查询源单id
+	string selectSrcBillIdBySrcNo(const string& srcNo);
+	//通过源单号查询源单类型
+	string selectSrcBillTypeBySrcNo(const string& srcNo);
+	//查询用户部门
+	string selectOpDeptById(const string& id);
 	//删除采购入库单
-	uint64_t deleteCgrkBill(string id);
+	uint64_t deleteCgrkBill(const string& id);
 
-	//// 统计数据条数
-	//uint64_t count(const SampleDO& iObj);
-	//// 分页查询数据
-	//list<SampleDO> selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	//// 通过姓名查询数据
-	//list<SampleDO> selectByName(const string& name);
-	//// 插入数据
-	//uint64_t insert(const SampleDO& iObj);
-	//// 修改数据
-	//int update(const SampleDO& uObj);
-	//// 通过ID删除数据
-	//int deleteById(uint64_t id);
+
 };
 #endif // !_SAMPLE_DAO_
