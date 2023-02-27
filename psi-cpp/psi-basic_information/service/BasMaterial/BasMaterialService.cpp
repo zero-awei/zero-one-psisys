@@ -230,13 +230,13 @@ uint64_t BasMaterialService::saveExceData(const FileDTO& dto, const PayloadDTO& 
 {
 	ExcelComponent excel;
 	uint64_t res = 0;
-	//输出测试上传文件路径列表
 	for (auto file : dto.getFiles()) {
 		std::cout << "path " << file << std::endl;
 
 		//从文件中读取
 		BasMaterialDO data;
-		auto readData = excel.readIntoVector(file, u8"test");
+		string sheetName = CharsetConvertHepler::ansiToUtf8("物料信息");
+		auto readData = excel.readIntoVector(file, sheetName);
 		int rows = 0;
 		for (auto row : readData)
 		{

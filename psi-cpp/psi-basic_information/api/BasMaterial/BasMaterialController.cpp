@@ -134,15 +134,30 @@ JsonVO<string> BasMaterialController::execExportExecl(const BasMaterialQuery& qu
 {
 	BasMaterialService service;
 	// 创建excel表
-	string filename = u8"../../test/test.xlsx";
+	string filename = "../../test/material.xlsx";
 	vector<vector<string>> data;
-	
-	data.emplace_back(vector<std::string>({ u8"分类id",u8"编码", u8"名称", u8"助记名",\
-		u8"启用", u8"规格型号" , u8"单位id", u8"销售价格", u8"税务编码", u8"备注", u8"创建人",u8"创建时间", u8"修改人", u8"修改时间" }));
+	vector<std::string> header{
+	CharsetConvertHepler::ansiToUtf8("分类id"),
+	CharsetConvertHepler::ansiToUtf8("编码"),
+	CharsetConvertHepler::ansiToUtf8("名称"),
+	CharsetConvertHepler::ansiToUtf8("助记名"),
+	CharsetConvertHepler::ansiToUtf8("启用"),
+	CharsetConvertHepler::ansiToUtf8("规格型号"),
+	CharsetConvertHepler::ansiToUtf8("单位id"),
+	CharsetConvertHepler::ansiToUtf8("销售价格"),
+	CharsetConvertHepler::ansiToUtf8("税务编码"),
+	CharsetConvertHepler::ansiToUtf8("备注"),
+	CharsetConvertHepler::ansiToUtf8("创建人"),
+	CharsetConvertHepler::ansiToUtf8("创建时间"),
+	CharsetConvertHepler::ansiToUtf8("修改人"),
+	CharsetConvertHepler::ansiToUtf8("修改时间"),
+
+	};
+	data.push_back(header);
 	// 查询数据
 	if (!service.getExceData(query, data))
-		return JsonVO<string>(u8"导出失败", RS_FAIL);
-	string sheetname = u8"test";
+		return JsonVO<string>(filename, RS_FAIL);
+	string sheetname = CharsetConvertHepler::ansiToUtf8("物料信息");
 	ExcelComponent excel;
 	excel.writeVectorToFile(filename, sheetname, data);
 	// 上传到文件服务器
