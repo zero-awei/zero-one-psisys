@@ -11,10 +11,10 @@
     </psi-table>
 
     <!-- 弹出框 -->
-    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
+    <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
     </psi-dialog>
     <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
-    </psi-dialog>
+    </psi-dialog> -->
   </div>
 </template>
 
