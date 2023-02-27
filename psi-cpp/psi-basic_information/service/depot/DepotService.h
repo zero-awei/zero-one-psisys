@@ -43,15 +43,16 @@ public:
 	DepotActionInfoVO listInfo(const OnlyValueQuery& query);
 
 	bool getData(const DepotQuery& query, vector<vector<string>>& data);
-	// 保存数据
+	bool getDataById(const OnlyValueQuery& query, vector<vector<string>>& data);
 	int saveData(const DepotDTO& dto);
 	// 保存子级数据
-	int saveKidData(const DepotDTO& dto);
+	int saveKidData(const DepotDTO& dto, const string Username);
+	// 保存数据
+	int saveData(const DepotDTO& dto, const string Username);
 	// 删除数据
 	bool removeData(const OnlyValueQuery& query);
-	int modifyDepot(const DepotDTO& dto);
-	// 导入文件
-	bool saveFile(const std::list<DepotDTO>& dto);
+	int modifyDepot(const DepotDTO& dto, const string Username);
+	string gettime();
 };
 
 #endif // !_DEPOT_SERVICE_

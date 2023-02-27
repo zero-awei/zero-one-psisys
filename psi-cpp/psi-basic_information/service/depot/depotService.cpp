@@ -127,12 +127,13 @@ list<DepotVO> DepotService::getKid(const OnlyValueQuery& query)
 		vo.setCode(sub.getCode());
 		vo.setAuxName(sub.getAuxName());
 		vo.setPhone(sub.getPhone());
-		vo.setStart(sub.getStart());
+		vo.setStart(to_string(sub.getStart()));
 		vo.setRemarks(sub.getRemarks());
 		vo.setCreationPeo(sub.getCreationPeo());
 		vo.setCreationTime(sub.getCreationTime());
 		vo.setModiPeo(sub.getModiPeo());
 		vo.setModiTime(sub.getModiTime());
+		// 剩下的属性
 		vr.push_back(vo);
 	}
 	return vr;
@@ -205,19 +206,65 @@ bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data
 	}
 
 	//不分页查询数据
-	list<DepotDO> result = dao.selectWithPage(obj, -1, -1);
+	list<DepotDO> result = dao.selectWithPage(obj, 0, 0);
 	for (DepotDO sub : result)
 	{
 		vector<string> row;
 		row.emplace_back(sub.getName());
 		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getAuxName());
+		row.emplace_back(to_string(sub.getPhone()));
+		row.emplace_back(to_string(sub.getStart()));
+		row.emplace_back(sub.getRemarks());
+		row.emplace_back(sub.getCreationPeo());
+		row.emplace_back(sub.getCreationTime());
+		row.emplace_back(sub.getModiPeo());
+		row.emplace_back(sub.getModiTime());
 		// 剩下的属性
 		data.emplace_back(row);
 	}
 	return true;
 }
 
-int DepotService::saveData(const DepotDTO& dto)
+bool DepotService::getDataById(const OnlyValueQuery& query, vector<vector<string>>& data)
+{
+	//查询数据总条数
+	DepotDAO dao;
+	// 分割ID
+	string str = query.getId(), delimiters = " |";
+	vector<string>Ids;
+	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
+	string::size_type pos = str.find_first_of(delimiters, lastPos);
+	while (string::npos != pos || string::npos != lastPos)
+	{
+		Ids.push_back(str.substr(lastPos, pos - lastPos));
+		lastPos = str.find_first_not_of(delimiters, pos);
+		pos = str.find_first_of(delimiters, lastPos);
+	}
+	//查询数据
+	for(auto id:Ids){
+		DepotDO obj;
+		obj.setId(id);
+		list<DepotDO> result = dao.getDataById(obj);
+		DepotDO sub = result.front();
+		vector<string> row;
+		row.emplace_back(sub.getName());
+		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getAuxName());
+		row.emplace_back(to_string(sub.getPhone()));
+		row.emplace_back(to_string(sub.getStart()));
+		row.emplace_back(sub.getRemarks());
+		row.emplace_back(sub.getCreationPeo());
+		row.emplace_back(sub.getCreationTime());
+		row.emplace_back(sub.getModiPeo());
+		row.emplace_back(sub.getModiTime());
+		// 剩下的属性
+		data.emplace_back(row);
+	}
+	return true;
+}
+
+int DepotService::saveData(const DepotDTO& dto, const string Username)
 {
 	//组装数据
 	DepotDO data;
@@ -231,6 +278,8 @@ int DepotService::saveData(const DepotDTO& dto)
 	data.setPhone(dto.getPhone());
 	data.setStart(dto.getStart());
 	data.setRemarks(dto.getRemarks());
+	data.setCreationPeo(Username);
+	data.setCreationTime(gettime());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.insertDepot(data);
@@ -262,7 +311,7 @@ bool DepotService::removeData(const OnlyValueQuery& query)
 	return dao.deleteDepot(id);
 }
 
-int DepotService::modifyDepot(const DepotDTO& dto)
+int DepotService::modifyDepot(const DepotDTO& dto, const string Username)
 {
 	//组装数据
 	DepotDO data;
@@ -273,16 +322,18 @@ int DepotService::modifyDepot(const DepotDTO& dto)
 	data.setPhone(dto.getPhone());
 	data.setStart(dto.getStart());
 	data.setRemarks(dto.getRemarks());
+	data.setModiPeo(Username);
+	data.setModiTime(gettime());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.update(data);
 }
 
-bool DepotService::saveFile(const std::list<DepotDTO>& dto)
+string DepotService::gettime()
 {
-	bool saveSucceed = true;
-	for (auto d : dto) {
-		saveSucceed = saveSucceed && saveData(d);
-	}
-	return saveSucceed;
+	time_t timep;
+	time(&timep);
+	char tmp[256];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
+	return tmp;
 }

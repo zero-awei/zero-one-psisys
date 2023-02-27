@@ -56,13 +56,13 @@ JsonVO<DepotActionInfoVO> DepotController::execQueryActionInfo(const OnlyValueQu
     return JsonVO<DepotActionInfoVO>(result, RS_SUCCESS);
 }
 
-JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddDepot(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
     //定义一个Service
     DepotService service;
     //保存数据
-    if (service.saveData(dto)) {
+    if (service.saveData(dto, payload.getUsername())){
         result.success(true);
     }
     else {
@@ -77,7 +77,7 @@ JsonVO<bool> DepotController::execAddKidDepot(const DepotDTO& dto)
     //定义一个Service
     DepotService service;
     //保存数据
-    if (service.saveKidData(dto)) {
+    if (service.saveKidData(dto), payload.getUsername())) {
         result.success(true);
     }
     else {
@@ -86,12 +86,12 @@ JsonVO<bool> DepotController::execAddKidDepot(const DepotDTO& dto)
     return result;
 }
 
-JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto)
+JsonVO<bool> DepotController::execModifyDepot(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
     //定义一个Service
     DepotService service;
-    if (service.modifyDepot(dto)) {
+    if (service.modifyDepot(dto, payload.getUsername())) {
         result.success(true);
     }
     else
@@ -117,7 +117,7 @@ JsonVO<bool> DepotController::execRemoveDepot(const OnlyValueQuery& query)
     return result;
 }
 
-JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto)
+JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto, const PayloadDTO& payload)
 {
     JsonVO<bool> result;
     bool succeed = true;
@@ -148,7 +148,7 @@ JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto)
     // 新增仓库
     for (auto Dto : vDto) 
     { 
-        if (service.saveData(Dto)) 
+        if (service.saveData(Dto, payload.getUsername())) 
         {
             result.success(true);
         }
@@ -185,6 +185,23 @@ JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const P
 
 JsonVO<string> DepotController::execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload)
 {
-    return JsonVO<string>();
+    DepotService service;
+    // 创建excel表
+    string filename = u8"../../test/testids.xlsx";
+    vector<vector<string>> data;
+    data.emplace_back(vector<std::string>({ u8"名称", u8"编号", u8"助记名", u8"电话",\
+        u8"启用", u8"备注", u8"创建时间",u8"创建人", u8"修改时间", u8"修改人" }));
+    // 查询数据
+    if (!service.getDataById(query, data))
+        return JsonVO<string>(u8"导出失败", RS_FAIL);
+    string sheetname = u8"testids";
+    ExcelComponent excel;
+    excel.writeVectorToFile(filename, sheetname, data);
+    // 上传到文件服务器
+    FastDfsClient client("1.15.240.108");
+    filename = client.uploadFile(filename);
+    JsonVO<std::string> result(filename, RS_SUCCESS);
+    //响应结果
+    return result;
 }
 

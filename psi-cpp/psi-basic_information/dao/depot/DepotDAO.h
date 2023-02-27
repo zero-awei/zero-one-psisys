@@ -37,6 +37,7 @@ public:
 	std::list<DepotDO> selectKid(const DepotDO& obj);
 	//查询详细信息
 	list<DepotDO> selectDetail(DepotDO obj);
+	list<DepotDO> getDataById(const DepotDO& obj);
 	// 新建
 	int insertDepot(const DepotDO& iObj);
 	// 新建子级仓库
