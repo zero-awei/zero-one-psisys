@@ -6,7 +6,6 @@
         <include refid="allEntries" />
         <where>
                 and fe.mid = #{mainId}
-                and fe.src_bill_id = fp.id
         </where>
     </select>
     
@@ -15,6 +14,7 @@
         CASE WHEN fe.amt - fp.checked_amt &lt; 0 THEN 0
         ELSE fe.amt - fp.checked_amt
         END AS unchecked_amt
-        FROM fin_payable_check_entry fe, fin_payable fp
+        FROM fin_payable_check_entry fe
+        INNER JOIN fin_payable fp ON fe.src_bill_id = fp.id
     </sql>
 </mapper>

@@ -18,6 +18,6 @@ import javax.validation.constraints.NotNull;
 public class CheckPayableEntryQuery {
 
     @NotBlank(message = "单据ID不能为空")
-    @ApiModelProperty(value = "单据ID", example = "1590728272959815682")
+    @ApiModelProperty(value = "单据ID", example = "1591811712127950850")
     private String mainId;
 }
