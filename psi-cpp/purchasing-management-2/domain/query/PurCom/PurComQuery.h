@@ -26,52 +26,21 @@
  * 采购订单分页查询对象
  */
 class PurComQuery : public PageQuery {
-	// ID
-	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	// 单据主题
-	CC_SYNTHESIZE(string, subject, Subject);
-	// 供应商
-	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
-	// 业务员
-	CC_SYNTHESIZE(string, op_er, Op_er);
-	// 单据阶段		
-	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	// 是否生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	// 是否关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	// 是否作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	// 源单号
+	CC_SYNTHESIZE(string, src_no, Src_no);
 
 public:
-	// 绑定JSON转换方法
+	// 绑定from_json
 	friend void from_json(const json& j, PurComQuery& t) {
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		// ID
-		BIND_FROM_TO_ULL(j, t, id);
-		// 单据编号
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
-		// 单据日期
 		BIND_FROM_TO_NORMAL(j, t, bill_date);
-		// 单据主题
-		BIND_FROM_TO_NORMAL(j, t, subject);
-		// 供应商
-		BIND_FROM_TO_NORMAL(j, t, supplier_id);
-		// 业务员
-		BIND_FROM_TO_NORMAL(j, t, op_er);
-		// 单据阶段		
-		BIND_FROM_TO_NORMAL(j, t, bill_stage);
-		// 是否生效
-		BIND_FROM_TO_I(j, t, is_effective);
-		// 是否关闭
-		BIND_FROM_TO_I(j, t, is_closed);
-		// 是否作废
-		BIND_FROM_TO_I(j, t, is_voided);
+		BIND_FROM_TO_NORMAL(j, t, src_no);
 	}
 };
-#endif // !_PUR_ORDER_QUERY_
+#endif // !_PUR_COM_QUERY_
