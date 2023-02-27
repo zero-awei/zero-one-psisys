@@ -34,8 +34,8 @@ class AddDepartMoreDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddDepartMoreDTO& t) { // NOLINT
-		BIND_FROM_TO_I(j, t, id);
-		BIND_FROM_TO_OBJ(j, t, other, list<AddDepartDTO>);
+	BIND_FROM_TO_I(j, t, id);
+	BIND_FROM_TO_OBJ(j, t, other, list<AddDepartDTO>);
 	}
 };
 

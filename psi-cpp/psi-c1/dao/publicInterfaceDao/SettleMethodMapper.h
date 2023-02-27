@@ -9,7 +9,7 @@
 #define _SETTLEMETHOD_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/publicInterfaceDO/SettleMethodDO.h"
+#include "../../domain/do/publicInterfaceDO/SettleMethodDo.h"
 
 class SettleMethodMapper : public Mapper<SettleMethodDO>
 {

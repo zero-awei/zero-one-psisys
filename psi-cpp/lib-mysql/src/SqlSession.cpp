@@ -245,6 +245,8 @@ uint64_t SqlSession::executeQueryNumerical(const string& sql, const SqlParams& p
 			//4 处理查询结果
 			if (res->next()) {
 				result = res->getUInt64(1);
+				/*我的理解是，因为 res = pstmt->executeQuery();是拿到了查询的结果嘛，也就是符合查询条件的供应商，
+				然后if (res->next()) {result = res->getUInt64(1);}人意思就是判断查询到的结果是否为空，如果不为空就用查询到的数据来计算数据条数*/
 			}
 		},
 		[](std::exception e) {
@@ -252,7 +254,7 @@ uint64_t SqlSession::executeQueryNumerical(const string& sql, const SqlParams& p
 		},
 		[=] {
 			//4 释放资源
-			releaseResultSet();
+			releaseResultSet();//用于释放上面定义的res
 			releasePreparedStatement();
 		}
 	);

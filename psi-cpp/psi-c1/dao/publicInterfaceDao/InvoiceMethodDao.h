@@ -7,7 +7,7 @@
 #ifndef _INVOICEMETHOD_DAO_
 #define _INVOICEMETHOD_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/publicInterfaceDO/InvoiceMethodDO.h"
+#include "../../domain/do/publicInterfaceDO/InvoiceMethodDo.h"
 
 class InvoiceMethodDAO : public BaseDAO
 {

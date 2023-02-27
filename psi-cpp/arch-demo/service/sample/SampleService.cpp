@@ -23,21 +23,20 @@
 PageVO<SampleVO> SampleService::listAll(const SampleQuery& query)
 {
 	//构建返回对象
-	PageVO<SampleVO> pages;
+	PageVO<SampleVO> pages;//分页返回返回发就是页面，页面里面存储着数据
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//查询数据总条数
+	//查询数据总条数（如果不是分页的话这些都不需要）
 	SampleDO obj;
 	obj.setName(query.getName());
 	obj.setSex(query.getSex());
 	SampleDAO dao;
-	uint64_t count = dao.count(obj);
+	uint64_t count = dao.count(obj);//count函数就是执行在数据库中进行查找的函数
 	if (count <= 0)
 	{
 		return pages;
 	}
-
 	//分页查询数据
 	pages.setTotal(count);
 	pages.calcPages();

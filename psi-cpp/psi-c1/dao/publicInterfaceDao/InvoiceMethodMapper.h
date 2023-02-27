@@ -9,7 +9,7 @@
 #define _INVOICEMETHOD_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/publicInterfaceDO/InvoiceMethodDO.h"
+#include "../../domain/do/publicInterfaceDO/InvoiceMethodDo.h"
 
 class InvoiceMethodMapper : public Mapper<InvoiceMethodDO>
 {

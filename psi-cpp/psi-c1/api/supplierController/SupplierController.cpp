@@ -1,69 +1,125 @@
 #include "stdafx.h"
 #include "SupplierController.h"
-
-JsonVO<PageVO<AdvancedQueryVO>>  SupplierController::execAdvancedQuerySupplier(const AdvancedQuery& query)
+#include "../../service/supplierService/service-supplier-satan/SupplierServiceSatan.h"
+//高级查询
+JsonVO<PageVO<AdvancedQueryVO>>  SupplierController::execAdvancedQuerySupplier(const AdvancedQuery & query, const PayloadDTO& payload)
 {
 	//定义一个Service
-	//SampleService service;
+	SupplierService service;
 	//查询数据
-	//PageVO<SampleVO> result = service.listAll(query);
+	PageVO<AdvancedQueryVO> result = service.advancedListSupplierData(query);
 	//响应结果
-	
-	
-	PageVO< AdvancedQueryVO> data;
-
-	JsonVO<PageVO<AdvancedQueryVO>> result;
-	result.success(data);
-	return result;
+	return JsonVO<PageVO<AdvancedQueryVO>>(result, RS_SUCCESS);
 
 }
 
-//这里返回值错了，头文件的返回值也错了，就这些；ok等等我理一理
+//查询指定供应商
 JsonVO<SpecifiedSupplierDataQueryVO> SupplierController::execSpecifiedQuerySupplier(const SpecifiedSupplierDataQuery& query)
 {
-	
-
-
-	JsonVO<SpecifiedSupplierDataQueryVO> result;  
-	return result;
+	//定义一个Service
+	SupplierService service;
+	//查询数据（核心）
+	SpecifiedSupplierDataQueryVO result = service.specifiedListSupplierData(query);
+	//返回结果
+	return JsonVO<SpecifiedSupplierDataQueryVO>(result, RS_SUCCESS);
 }
 
-
-JsonVO<uint64_t> SupplierController::execAddSupplier(const AddSupplierDTO& dto)
+//添加供应商
+JsonVO<string> SupplierController::execAddSupplier(const AddSupplierDTO& dto, const PayloadDTO& payload)//返回string类型是因为code是string类型
 {
-	int code = dto.getCode();
-	string name = dto.getName();
-	string alias = dto.getAlias();
-	string enable = dto.getEnable();
-	string accessibleName = dto.getAccessibleName();
-	if (code == NULL||name==NULL|| alias==NULL||enable==NULL||accessibleName==NULL)
+	JsonVO<string> result;//返回文件保存的路径
+	SupplierService service;
+	//输出测试上传文件路径列表
+	for (auto file : dto.getFiles()) {
+		std::cout << "path " << file << std::endl;
+	}
+	//数据库中要求非空数据的检查
+	if (dto.getCode().empty()|| dto.getName().empty() || dto.getAux_Name().empty() || dto.getIs_Enabled() == -2)
 	{
-		JsonVO<uint64_t> result; 
-		result.fail(code);//使用状态码
+		result.fail(dto.getID());//使用状态码
 		return result;
 	}
-	JsonVO<uint64_t> result;
+	//执行数据插入数据库    (核心)
+	uint64_t id =service.addSupplierData(dto, payload);
+	cout <<"user_name"<< payload.getUsername() << endl;
+	//判断插入是否成功
+	if (id > 0) 
+	{
+		
+		string file_router;
+		for (auto file_segment : dto.getFiles())
+		{
+			file_router = file_router + file_segment;
+		}
+		result.success(file_router);
+	}
+	else
+	{
+		result.fail(dto.getID());
+	}
 	return result;
-
 }
-
-JsonVO<uint64_t> SupplierController::execModifySupplier(const ModifySupplierDTO& dto)
+//修改
+JsonVO<string> SupplierController::execModifySupplier(const ModifySupplierDTO& dto, const PayloadDTO& payload)//返回string类型是因为code是string类型
 {
+	JsonVO<string> result;//返回文件保存的路径
+	SupplierService service;
 
+	//输出测试上传文件路径列表
+	for (auto file : dto.getFiles()) {
+		std::cout << "path " << file << std::endl;
+	}
+	//数据库中要求非空数据的检查
+	if (dto.getCode().empty()|| dto.getName().empty()|| dto.getAux_Name().empty() || dto.getIs_Enabled() == -2)
+	{
 
-	JsonVO<uint64_t> result;
+		JsonVO<string> result;
+		result.fail(dto.getID());//使用状态码
+		return result;
+	}
+	//执行数据插入数据库
+	uint64_t id = service.modifySupplierData(dto, payload);
+	//判断插入是否成功
+	if (id > 0)
+	{
+
+		string file_router;
+		for (auto file_segment : dto.getFiles())
+		{
+			file_router = file_router + file_segment;
+		}
+		result.success(file_router);
+	}
+	else
+	{
+		result.fail(dto.getID());
+	}
 	return result;
 
 }
 
-JsonVO<uint64_t> SupplierController::execDeleteSupplier(const DeleteSupplierDTO& dto)
+JsonVO<string> SupplierController::execDeleteSupplier(const DeleteSupplierDTO& dto)//返回string类型是因为code是string类型
 {
-
-
-
-	JsonVO<uint64_t> result;
+	SupplierService service;
+	JsonVO<string> result;
+	//执行数据删除
+	DeleteSupplierDTO delete_supplier_code;
+	delete_supplier_code.setID(dto.getID());
+	if (service.deleteSupplierData(delete_supplier_code) )
+	{
+		result.success(dto.getID());
+	}
+	else
+	{
+		result.fail(dto.getID());
+	}
 	return result;
-
 }
+
+
+
+
+
+
 
 

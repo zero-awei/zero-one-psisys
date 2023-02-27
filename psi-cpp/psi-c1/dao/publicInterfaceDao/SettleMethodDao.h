@@ -7,7 +7,7 @@
 #ifndef _SETTLEMETHOD_DAO_
 #define _SETTLEMETHOD_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/publicInterfaceDO/SettleMethodDO.h"
+#include "../../domain/do/publicInterfaceDO/SettleMethodDo.h"
 
 class SettleMethodDAO : public BaseDAO
 {

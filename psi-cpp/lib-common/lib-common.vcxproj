@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\SimpleDateTimeFormat.h" />
     <ClInclude Include="include\CharsetConvertHepler.h" />
     <ClInclude Include="include\ExcelComponent.h" />
     <ClInclude Include="include\FastDfsClient.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="include\CommonMacros.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\SimpleDateTimeFormat.cpp" />
     <ClCompile Include="src\RedisClient.cpp" />
     <ClCompile Include="src\MongoClient.cpp" />
     <ClCompile Include="src\SimpleDateTimeFormat.cpp" />

@@ -235,6 +235,7 @@
     <ClCompile Include="dao\publicInterfaceDAO\TransportMethodDao.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\UserChoiceDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\WarehouseDAO.cpp" />
+    <ClCompile Include="dao\supplierDAO\dao-Supplier-satan\SupplierDAO.cpp" />
     <ClCompile Include="dao\supplierDAO\ExportSupplierDAO.cpp" />
     <ClCompile Include="dao\supplierDAO\ImportSupplierDAO.cpp" />
     <ClCompile Include="dao\supplierDAO\SupplierCategoryDAO.cpp" />
@@ -270,6 +271,7 @@
     <ClCompile Include="service\publicInterfaceService\WarehouseService.cpp" />
     <ClCompile Include="service\supplierService\ExportSupplierService.cpp" />
     <ClCompile Include="service\supplierService\ImportSupplierService.cpp" />
+    <ClCompile Include="service\supplierService\service-supplier-satan\SupplierServiceSatan.cpp" />
     <ClCompile Include="service\supplierService\SupplierCategoryService.cpp" />
     <ClCompile Include="service\supplierService\SupplierLevelService.cpp" />
     <ClCompile Include="service\supplierService\SupplierQueryCriteriaService.cpp" />
@@ -363,6 +365,9 @@
     <ClInclude Include="dao\publicInterfaceDAO\UserChoiceMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\WarehouseDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\WarehouseMapper.h" />
+    <ClInclude Include="dao\supplierDAO\dao-Supplier-satan\SupplierAdvancedMapper.h" />
+    <ClInclude Include="dao\supplierDAO\dao-Supplier-satan\SupplierDAO.h" />
+    <ClInclude Include="dao\supplierDAO\dao-Supplier-satan\SupplierSpecificMapper.h" />
     <ClInclude Include="dao\supplierDAO\ExportSupplierDAO.h" />
     <ClInclude Include="dao\supplierDAO\ExportSupplierMapper.h" />
     <ClInclude Include="dao\supplierDAO\ImportSupplierDAO.h" />
@@ -406,6 +411,7 @@
     <ClInclude Include="domain\do\publicInterfaceDO\UserChoiceReturnDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\UserDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\WarehouseDO.h" />
+    <ClInclude Include="domain\do\SupplierDO-satan\SupplierDO.h" />
     <ClInclude Include="domain\do\supplierDO\ExportSupplierDO.h" />
     <ClInclude Include="domain\do\supplierDO\ImportSupplierDO.h" />
     <ClInclude Include="domain\do\supplierDO\SupplierCategoryDO.h" />
@@ -500,6 +506,7 @@
     <ClInclude Include="service\publicInterfaceService\WarehouseService.h" />
     <ClInclude Include="service\supplierService\ExportSupplierService.h" />
     <ClInclude Include="service\supplierService\ImportSupplierService.h" />
+    <ClInclude Include="service\supplierService\service-supplier-satan\SupplierServiceSatan.h" />
     <ClInclude Include="service\supplierService\SupplierCategoryService.h" />
     <ClInclude Include="service\supplierService\SupplierLevelService.h" />
     <ClInclude Include="service\supplierService\SupplierQueryCriteriaService.h" />

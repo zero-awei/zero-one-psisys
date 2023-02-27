@@ -41,12 +41,6 @@ bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
 	std::string serverPort = "10";
 	// 数据库连接信息
-	/*std::string dbUsername = "root";
-	std::string dbPassword = "123456";
-	std::string dbName = "test";
-	std::string dbHost = "localhost";
-	int dbPort = 3306;
-	int dbMax = 25;*/
 	std::string dbUsername = "root";
 	std::string dbPassword = "psitxms9527";
 	std::string dbName = "zopsi_sys";
@@ -192,7 +186,7 @@ int main(int argc, char* argv[]) {
 	int code = HttpServer::startServer(ServerInfo::getInstance().getServerPort(),
 		[=](http_server* server) {
 			Router router(server);
-			router.initRouter();
+			router.initRouter();//调用内部我们定义函数的接口
 		}
 	);
 	// 释放数据库连接

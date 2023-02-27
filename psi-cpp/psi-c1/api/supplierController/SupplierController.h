@@ -19,28 +19,27 @@
 
 class SupplierController
 {
-	public://这里刚刚用错了函数                                                                                   
-	CREATE_API_FUN_QUERY(advancedquerySupplier,execAdvancedQuerySupplier,AdvancedQuery);//AdvancedQuery是查询时要传入的东西
-	/*宏也是定义函数啊，这里面定义的函数querySample会调用executeXXX，并且规定参数类型，然后宏定义的函数querySample被Router调用*/
-	CREATE_API_FUN_QUERY(specifiedquerySupplier,execSpecifiedQuerySupplier,SpecifiedSupplierDataQuery);//和这行导致的报错
-	CREATE_API_FUN_BODY(addSupplier, execAddSupplier, AddSupplierDTO);
-	CREATE_API_FUN_BODY(modifySupplier, execModifySupplier, ModifySupplierDTO);
+public:
+	CREATE_API_FUN_JSON_PAYLOAD(advancedquerySupplier, execAdvancedQuerySupplier, AdvancedQuery);//AdvancedQuery是查询时要传入的东西
+    /*宏也是定义函数啊，这里面定义的函数querySample会调用executeXXX，并且规定参数类型，然后宏定义的函数querySample被Router调用*/
+	CREATE_API_FUN_QUERY(specifiedquerySupplier, execSpecifiedQuerySupplier, SpecifiedSupplierDataQuery);//和这行导致的报错
+	//添加供应商时需要上传文件
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addSupplier, execAddSupplier, AddSupplierDTO);
+	//修改供应商时需要上传文件
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(modifySupplier, execModifySupplier, ModifySupplierDTO);
 	CREATE_API_FUN_BODY(deleteSupplier, execDeleteSupplier, DeleteSupplierDTO);
 
-
-
 private:
-	////演示高级查询数据
-	JsonVO<PageVO<AdvancedQueryVO>> execAdvancedQuerySupplier(const AdvancedQuery& query);
-	////演示查询指定供应商数据
+	//高级查询数据--分页查询
+	JsonVO<PageVO<AdvancedQueryVO>> execAdvancedQuerySupplier(const AdvancedQuery& query, const PayloadDTO& payload);
+	//查询指定供应商数据--不是分页查询
 	JsonVO<SpecifiedSupplierDataQueryVO> execSpecifiedQuerySupplier(const SpecifiedSupplierDataQuery& query);//就是这一行
-	//演示新增数据
-	JsonVO<uint64_t> execAddSupplier(const AddSupplierDTO& dto);
-	//演示修改数据
-	JsonVO<uint64_t> execModifySupplier(const ModifySupplierDTO& dto);
-	//演示删除数据
-	JsonVO<uint64_t> execDeleteSupplier(const DeleteSupplierDTO& dto);
-
+	//新增数据
+	JsonVO<string> execAddSupplier(const AddSupplierDTO& dto, const PayloadDTO& payload);
+	//修改数据
+	JsonVO<string> execModifySupplier(const ModifySupplierDTO& dto, const PayloadDTO& payload);
+	//删除数据
+	JsonVO<string> execDeleteSupplier(const DeleteSupplierDTO& dto);
 
 };
 

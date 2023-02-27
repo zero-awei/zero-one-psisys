@@ -5,7 +5,7 @@
  */
 
 #include "stdafx.h"
-#include "TransportMethodDAO.h"
+#include "TransportMethodDao.h"
 #include "TransportMethodMapper.h"
 #include <sstream>
 

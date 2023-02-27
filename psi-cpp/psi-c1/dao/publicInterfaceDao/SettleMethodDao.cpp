@@ -5,7 +5,7 @@
  */
 
 #include "stdafx.h"
-#include "SettleMethodDAO.h"
+#include "SettleMethodDao.h"
 #include "SettleMethodMapper.h"
 #include <sstream>
 

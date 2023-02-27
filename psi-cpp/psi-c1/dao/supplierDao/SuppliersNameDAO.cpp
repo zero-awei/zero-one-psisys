@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <sstream>
 #include "SuppliersNameDAO.h"
 #include "SuppliersNameMapper.h"
 

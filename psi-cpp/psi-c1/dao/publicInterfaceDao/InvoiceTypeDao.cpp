@@ -5,7 +5,7 @@
  */
 
 #include "stdafx.h"
-#include "InvoiceTypeDAO.h"
+#include "InvoiceTypeDao.h"
 #include "InvoiceTypeMapper.h"
 #include <sstream>
 

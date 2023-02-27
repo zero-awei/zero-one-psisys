@@ -61,12 +61,6 @@
 #include "bankAccountController/ImportAccountController.h"
 
 
-#ifdef HTTP_SERVER_DEMO
-#include "sample/SampleController.h"
-#include "user/DepartController.h"
-#include "uselib/ws/TestWs.h"
-#endif
-
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -157,25 +151,6 @@ void Router::initRouter()
 #endif
 }
 
-#ifdef HTTP_SERVER_DEMO
-void Router::createSampleRouter()
-{
-	BIND_GET_ROUTER(server, "/get", &SampleController::querySample, nullptr);
-	BIND_POST_ROUTER(server, "/post", &SampleController::addSample, nullptr);
-	BIND_PUT_ROUTER(server, "/put", &SampleController::modifySample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete", &SampleController::removeSample, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-by-id", &SampleController::removeById, nullptr);
-	BIND_POST_ROUTER(server, "/json", &SampleController::jsonSample, nullptr);
-	BIND_POST_ROUTER(server, "/modify-user-info", &SampleController::modifyUserInfo, nullptr);
-}
-
-void Router::createUserDepartRouter()
-{
-	BIND_POST_ROUTER(server, "/depart-add", &DepartController::addDepart, nullptr);
-	BIND_POST_ROUTER(server, "/depart-add-more", &DepartController::addDepartMore, nullptr);
-}
-
-#endif
 void Router::initAreaSetting()
 {
 	BIND_GET_ROUTER(server, "/get-area", &AreaController::queryArea, nullptr);
@@ -303,7 +278,7 @@ void Router::initbaSetting()
 void Router::initSupplier()
 {
 	//高级查询
-	BIND_GET_ROUTER(server, "/Advanced-Query", &SupplierController::advancedquerySupplier, nullptr);
+	BIND_POST_ROUTER(server, "/advanced-query", &SupplierController::advancedquerySupplier, nullptr);
 	//指定查询
 	BIND_GET_ROUTER(server, "/Specified-Supplier-Data-Query", &SupplierController::specifiedquerySupplier, nullptr);
 	//增加
@@ -319,5 +294,6 @@ void Router::initSupplier()
 	BIND_GET_ROUTER(server, "/qurey-supplier-level", &SupplierLevelController::querySupplierLevel, nullptr);
 	//供应商高级查询条件下拉列表
 	BIND_GET_ROUTER(server, "/qurey-supplier-advanced_criteria", &SupplierQueryCriteriaController::querySupplierQueryCriteria, nullptr);
+
 }
 

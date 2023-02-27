@@ -9,7 +9,7 @@
 #define _TRANSPORTMETHOD_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/publicInterfaceDO/TransportMethodDO.h"
+#include "../../domain/do/publicInterfaceDO/TransportMethodDo.h"
 
 class TransportMethodMapper : public Mapper<TransportMethodDO>
 {

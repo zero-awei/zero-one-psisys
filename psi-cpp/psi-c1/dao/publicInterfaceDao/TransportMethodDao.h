@@ -7,7 +7,7 @@
 #ifndef _TRANSPORTMETHOD_DAO_
 #define _TRANSPORTMETHOD_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/publicInterfaceDO/TransportMethodDO.h"
+#include "../../domain/do/publicInterfaceDO/TransportMethodDo.h"
 
 class TransportMethodDAO : public BaseDAO
 {

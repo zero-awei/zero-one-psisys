@@ -37,6 +37,7 @@ if (obj.getAge() != -1) { \
 	sql << " AND age=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getAge()); \
 }
+//上面的SQLPARAMS_PUSH的第二个参数是标识我们到底是int类型还是string类型的，主要是因为c++ 没有反射无法识别数据类型
 
 uint64_t SampleDAO::count(const SampleDO& iObj)
 {
@@ -51,7 +52,7 @@ std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t page
 {
 	stringstream sql;
 	sql << "SELECT * FROM sample";
-	SAMPLE_TERAM_PARSE(obj, sql);
+	SAMPLE_TERAM_PARSE(obj, sql);//创建好了填充字段。
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	SampleMapper mapper;
 	string sqlStr = sql.str();

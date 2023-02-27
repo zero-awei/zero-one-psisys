@@ -91,7 +91,7 @@ va_start(__args__, __fmt__); \
 std::string __curr_fmt__(__fmt__); \
 SQL_ARG_EXEC_1(__pstmt__, __curr_fmt__, __args__); \
 va_end(__args__); 
-
+//params是填充参数
 #define SQL_ARG_EXEC_3(__params__, __pstmt__) \
 if (!__params__.empty()) { \
 	int pos = 1; \
@@ -287,7 +287,7 @@ public:
 			//1 获取prepareStatement对象
 			pstmt = conn->prepareStatement(sql);
 			//2 处理参数
-			SQL_ARG_EXEC_2(pstmt, fmt);
+			SQL_ARG_EXEC_2(pstmt, fmt);//将SQL中?占位符替换成真实值
 			//3 执行查询
 			res = pstmt->executeQuery();
 			//4 处理查询结果
@@ -354,14 +354,14 @@ public:
 	// Parameter: const SqlParams & params SQL语句填充参数
 	//************************************
 	template<class T, typename M = Mapper<T>>
-	list<T> executeQuery(const string& sql, const M& mapper, const SqlParams& params) {
+	list<T> executeQuery(const string& sql, const M& mapper, const SqlParams& params) {//params是填充参数
 		list<T> list;
 		try
 		{
 			//1 获取prepareStatement对象
 			pstmt = conn->prepareStatement(sql);
 			//2 处理参数
-			SQL_ARG_EXEC_3(params, pstmt);
+			SQL_ARG_EXEC_3(params, pstmt);//将填充字段放进sql语句的？的位置
 			//3 执行查询
 			res = pstmt->executeQuery();
 			//4 处理查询结果

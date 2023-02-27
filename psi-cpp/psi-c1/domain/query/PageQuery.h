@@ -31,5 +31,10 @@ class PageQuery
 	CC_SYNTHESIZE(uint64_t, pageIndex, PageIndex);
 	//²éÑ¯ÌõÊý
 	CC_SYNTHESIZE(uint64_t, pageSize, PageSize);
+	PageQuery()
+	{
+		pageIndex = 1;
+		pageSize = 9;
+	}
 };
 #endif // !_PAGE_QUERY_
