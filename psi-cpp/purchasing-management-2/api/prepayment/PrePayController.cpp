@@ -38,7 +38,7 @@ JsonVO<PrepaymentDetailBillVO> PrePayController::execQueryPayDetailBill(const Pr
 		return JsonVO<PrepaymentDetailBillVO>({}, RS_PARAMS_INVALID);
 }
 	PrePayService service;
-	PageVO<PrepaymentDetailBillVO> result = service.getAll(query);
+	PrepaymentDetailBillVO result = service.getAll(query);
 	return JsonVO<PrepaymentDetailBillVO>({}, RS_SUCCESS);
 }
 

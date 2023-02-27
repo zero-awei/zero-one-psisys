@@ -34,7 +34,7 @@ uint64_t PrepaymentDAO::count(const PrepaymentDO & iObj)
 }
 
 //查询单据信息
-std::list<PrepaymentDO> PrepaymentDAO::selectWithPage(const PrepaymentDO & obj, uint64_t pageIndex, uint64_t pageSize)
+list<PrepaymentDO> PrepaymentDAO::selectWithPage(const PrepaymentDO & obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
 	sql << "SELECT * FROM `fin_payment_req`";
@@ -46,22 +46,20 @@ std::list<PrepaymentDO> PrepaymentDAO::selectWithPage(const PrepaymentDO & obj, 
 }
 
 //查询指定单据详细信息
-std::list<PrepaymentDO> PrepaymentDAO::selectByBill_no(const string& bill_no)
+list<PrepaymentDO> PrepaymentDAO::selectByBill_no(const PrepaymentDO& obj)
 {
 	string sql = "SELECT * FROM `fin_payment_req` WHERE `bill_no` LIKE CONCAT('%',?,'%')";
 	PrepaymentMapper mapper;
-	return sqlSession->executeQuery<PrepaymentDO, PrepaymentMapper>(sql, mapper, "%s", bill_no);
+	return sqlSession->executeQuery<PrepaymentDO, PrepaymentMapper>(sql, mapper, "%s", obj.getBill_no());
 
 }
 
-
-//查询指定单据明细
-std::list<PrepaymentEntryDO> PrepaymentDAO::selectBillEntry(const PrepaymentEntryDO& obj)
+//查询指定单据详细信息
+list<PrepaymentEntryDO> PrepaymentDAO::selectEntryByBill_no(const PrepaymentEntryDO& obj)
 {
 	string sql = "SELECT * FROM `fin_payment_req_entry` WHERE `bill_no` LIKE CONCAT('%',?,'%')";
 	PrepaymentEntryMapper mapper;
-	return sqlSession->executeQuery<PrepaymentEntryDO, PrepaymentEntryMapper>(sql, mapper, "%s", obj.getEntry_bill_no());
-
+	return sqlSession->executeQuery<PrepaymentEntryDO, PrepaymentEntryMapper>(sql, mapper, "%s", obj.getBill_no());
 }
 
 // 删除预付申请单

@@ -3,8 +3,8 @@
 #define _PREPAYMENT_DETAIL_BILL_VO_
 
 #include "../../GlobalInclude.h"
-#include "PrepaymentBillVO.h"
-
+#include "PrepaymentDetailEntryBillVO.h"
+#include<list>
 /**
  * 示例显示对象
  * 采购预付申请-查询单据列表显示详细信息
@@ -38,10 +38,12 @@ class PrepaymentDetailBillVO {
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 
+	CC_SYNTHESIZE(list<PrepaymentDetailEntryBillVO>, detailslist, DetailsList);
+
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PrepaymentBillVO, id, bill_no, bill_date, subject, supplier_id, op_dept, op, paid_amt, bill_stage,
-		is_effective, is_closed, is_voided, remark);
+	BIND_TO_JSON(PrepaymentDetailBillVO, id, bill_no, bill_date, subject, supplier_id, op_dept, op, paid_amt, bill_stage,
+		is_effective, is_closed, is_voided, detailslist, remark);
 
 };
 #endif // !_PREPAYMENT_DETAIL_BILL_VO_

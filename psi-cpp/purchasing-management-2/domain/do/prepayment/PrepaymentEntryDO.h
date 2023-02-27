@@ -34,7 +34,7 @@ class PrepaymentEntryDO {
 	//×Ô¶¨Òå2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	//±àºÅ
-	CC_SYNTHESIZE(string, entry_bill_no, Entry_bill_no);
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
 
 public:
 	PrepaymentEntryDO() {
@@ -42,7 +42,7 @@ public:
 		remark = "";
 		custom1 = "test";
 		custom2 = "";
-		entry_bill_no = "";
+		bill_no = "";
 
 	}
 };

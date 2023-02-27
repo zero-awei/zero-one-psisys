@@ -16,9 +16,9 @@ public:
 	// 分页查询数据
 	list<PrepaymentDO> selectWithPage(const PrepaymentDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	// 查询指定单据详细信息-通过单据编号查询数据
-	list<PrepaymentDO> selectByBill_no(const string& bill_no);
+	list<PrepaymentDO> selectByBill_no(const PrepaymentDO& obj);
 	// 指定单据明细分录
-	list<PrepaymentEntryDO> selectBillEntry(const PrepaymentEntryDO& obj);
+	list<PrepaymentEntryDO> selectEntryByBill_no(const PrepaymentEntryDO& obj);
 	// 通过ID删除数据
 	int deleteById(const PrepaymentDO& uObj);
 

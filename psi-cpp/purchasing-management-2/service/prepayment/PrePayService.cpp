@@ -81,16 +81,15 @@ PrepaymentDetailBillVO PrePayService::getAll(const PrepayDetailBillQuery& query)
 	PrepaymentDO obj;
 	obj.setBill_no(query.getBill_no());
 	PrepaymentEntryDO obj2;
-	obj2.setEntry_bill_no(query.getBill_no());
+	obj2.setBill_no(query.getBill_no());
 	
 
 	// 查询指定询价单数据
 	PrepaymentDAO dao;
 	list <PrepaymentDO> result=dao.selectByBill_no(obj);
-	list<PrepaymentDetailBillVO> vr;
 	for (PrepaymentDO sub : result)
 	{
-		PrepaymentBillVO detail;
+		PrepaymentDetailBillVO detail;
 		detail.setBill_no(sub.getBill_no());
 		detail.setBill_date(sub.getBill_date());
 		detail.setBill_stage(sub.getBill_stage());
@@ -106,7 +105,7 @@ PrepaymentDetailBillVO PrePayService::getAll(const PrepayDetailBillQuery& query)
 
 	
 	// 查询明细列表
-	list<PrepaymentEntryDO> details = dao.selectBillEntry(obj2.getEntry_bill_no());
+	list<PrepaymentEntryDO> details = dao.selectEntryByBill_no(obj2.getBill_no());
 	PrepaymentDetailEntryBillVO detailsvo;
 	list<PrepaymentDetailEntryBillVO> lvo;
 	for (PrepaymentEntryDO ones : details)
