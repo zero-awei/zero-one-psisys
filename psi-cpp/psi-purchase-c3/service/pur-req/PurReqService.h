@@ -2,25 +2,15 @@
 
 #ifndef _PUR_REQ_SERVICE_
 #define _PUR_REQ_SERVICE_
-#include <time.h>
 
-#include <cstdio> //C++
-
-#include "SnowFlake.h"
-#include "FastDfsClient.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/dto/pur-req/AddPurReqDTO.h"
 #include "../../domain/dto/pur-req/ModifyPurReqDTO.h"
 #include "../../domain/dto/pur-req/PurReqModBillStatusDTO.h"
-
-#include "ExcelComponent.h"
-#include "CharsetConvertHepler.h"
-
-
-#include"../../domain/vo/pur-req/PurReqFindBillVO.h"
-#include"../../domain/vo/pur-req/PurReqFindDetailBillVO.h"
-#include"../../domain/query/pur-req/PurReqFindBillQuery.h"
-#include"../../domain/query/pur-req/PurReqFindDetailBillQuery.h"
+#include "../../domain/vo/pur-req/PurReqFindBillVO.h"
+#include "../../domain/vo/pur-req/PurReqFindDetailBillVO.h"
+#include "../../domain/query/pur-req/PurReqFindBillQuery.h"
+#include "../../domain/query/pur-req/PurReqFindDetailBillQuery.h"
 
 /**
  * 示例服务实现
@@ -29,10 +19,10 @@ class PurReqService
 {
 public:
 	//插入数据
-	uint64_t saveData(const AddPurReqDTO& dto,  const PayloadDTO& payload);
+	uint64_t saveData(const AddPurReqDTO& dto, const PayloadDTO& payload);
 
 	//修改数据
-	uint64_t updateData(const ModifyPurReqDTO& dto,  const PayloadDTO& payload);
+	uint64_t updateData(const ModifyPurReqDTO& dto, const PayloadDTO& payload);
 
 	//修改数据状态
 	uint64_t updateBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload);

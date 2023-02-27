@@ -19,7 +19,6 @@
 #include "stdafx.h"
 #include "PurCompareService.h"
 #include "../../dao/pur-compare/PurCompareDAO.h"
-#include "../../dao/pur-compare/PurCompareDAO.h"
 #include "../../domain/do/pur-compare/AddPurComDO.h"
 #include "../../domain/do/pur-compare/ModPurComDO.h"
 #include "../../domain/do/pur-compare/DelPurComDO.h"

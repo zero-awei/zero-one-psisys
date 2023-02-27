@@ -5,7 +5,7 @@
 #include "BaseDAO.h"
 #include "../../domain/do/pur-req/PurReqAdamDO.h"
 #include "../../domain/do/pur-req/PurReqEntryAdamDO.h"
-#include "../../domain/do/pur-req/PurReqDo.h"
+#include "../../domain/do/pur-req/PurReqDO.h"
 
 
 /**

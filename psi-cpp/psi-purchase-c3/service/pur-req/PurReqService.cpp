@@ -18,6 +18,11 @@
 */
 #include "stdafx.h"
 #include "PurReqService.h"
+#include "SimpleDateTimeFormat.h"
+#include "SnowFlake.h"
+#include "FastDfsClient.h"
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
 #include "../../dao/pur-req/PurReqDAO.h"
 
 //定义一个宏用来进行默认值的修改
@@ -37,15 +42,7 @@
 
 string getTime()
 {
-	time_t now = time(0);
-	struct tm t;
-
-	localtime_s(&t, &now);
-
-	// 将信息输出到字符串流
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
+	return SimpleDateTimeFormat::format();
 }
 
 uint64_t PurReqService::saveData(const AddPurReqDTO& dto,  const PayloadDTO& payload)
@@ -542,7 +539,6 @@ string PurReqService::getToExecl(list<string> billNoList)
 
 	return  fieldName;
 }
-
 
 // 分页查询所有数据
 PageVO<PurReqFindBillVO> PurReqService::listAll(const PurReqFindBillQuery& query) {

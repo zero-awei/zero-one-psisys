@@ -17,7 +17,7 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "PurCompareDao.h"
+#include "PurCompareDAO.h"
 #include "PurComFindBillMapper.h"
 #include "PurComFindDetailBillMapper.h"
 #include "PurComDetailsMapper.h"
