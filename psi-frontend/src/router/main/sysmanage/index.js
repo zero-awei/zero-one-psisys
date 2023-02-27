@@ -218,6 +218,20 @@ const routes = [
     component: () =>
       import('@/views/kucunguanli/rukuguanli/CaiGouTuiHuoChuKu.vue')
   },
+  // 盘盈入库
+  {
+    path: '/inventory/inventoryprofit',
+    name: 'inventoryprofit',
+    component: () =>
+      import('@/views/kucunguanli/rukuguanli/PanYingRuKu.vue')
+  },
+  // 涨吨入库
+  {
+    path: 'inventory/rise',
+    name: 'Inrise',
+    component: () =>
+      import('@/views/kucunguanli/rukuguanli/ZhangDongRuKu.vue')
+  },
 
 ]
 
