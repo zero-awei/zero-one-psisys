@@ -6,6 +6,7 @@
         <include refid="allEntries" />
         <where>
                 and fe.mid = #{mainId}
+                and fe.src_bill_id = fp.id
         </where>
     </select>
     
