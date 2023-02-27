@@ -120,24 +120,42 @@ JsonVO<bool> DepotController::execRemoveDepot(const OnlyValueQuery& query)
 JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto)
 {
     JsonVO<bool> result;
-    //定义一个Service
-    DepotDTO Do;
-    std::list<DepotDTO> lDo;
-    // DepotService service;
+    bool succeed = true;
+    std::list<DepotDTO> vDto;
     ExcelComponent excel;
-    //输出测试上传文件路径列表
+
+    // 获取上传文件路径列表
     for (auto file : dto.getFiles()) {
-        std::cout << "path " << file << std::endl;
-        //从文件中读取
-        std::string sheetName = CharsetConvertHepler::ansiToUtf8("数据表");
+        // 读取文件到DTO
+        string sheetName = u8"test";
         auto readData = excel.readIntoVector(file, sheetName);
         for (auto row : readData)
         {
-            for (auto cellVal : row)
-            {
-                cout << CharsetConvertHepler::utf8ToAnsi(cellVal) << ",";
-            }
-            cout << endl;
+            DepotDTO Dto;
+            Dto.setName(row[0]);
+            Dto.setCode(row[1]);
+            Dto.setAuxName(row[2]);
+            int phone = 0;
+            istringstream ss(row[3]);
+            ss >> phone;
+            Dto.setPhone(phone);
+            Dto.setStart(row[4]);
+            Dto.setRemarks(row[5]);
+            vDto.push_back(Dto);
+        }
+    }
+    DepotService service;
+    // 新增仓库
+    for (auto Dto : vDto) 
+    { 
+        if (service.saveData(Dto)) 
+        {
+            result.success(true);
+        }
+        else 
+        {
+            result.fail(false);
+            break;
         }
     }
     return result;

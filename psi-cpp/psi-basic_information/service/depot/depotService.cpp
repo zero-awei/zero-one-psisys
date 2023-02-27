@@ -230,6 +230,7 @@ int DepotService::saveData(const DepotDTO& dto)
 	data.setAuxName(dto.getAuxName());
 	data.setPhone(dto.getPhone());
 	data.setStart(dto.getStart());
+	data.setRemarks(dto.getRemarks());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.insertDepot(data);
