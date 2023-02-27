@@ -58,8 +58,8 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "是否红字", example = "1")
     private String isRubric;
-    //@ApiModelProperty(value = "是否红字", example = "是")
-    //private String isRubricDictText;
+    @ApiModelProperty(value = "是否红字", example = "是")
+    private String isRubricDictText;
 
     /**
      * 供应商
@@ -108,8 +108,8 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "是否自动生成", example = "1")
     private String isAuto;
-    //@ApiModelProperty(value = "是否自动生成", example = "是")
-    //private String isAutoDictText;
+    @ApiModelProperty(value = "是否自动生成", example = "是")
+    private String isAutoDictText;
 
     /**
      * 处理状态
@@ -128,15 +128,16 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "是否通过", example = "1")
     private String isEffective;
-    //@ApiModelProperty(value = "是否通过", example = "是")
-    //private String isEffectiveDictText;
+    @ApiModelProperty(value = "是否通过", example = "是")
+    private String isEffectiveDictText;
 
     /**
      * 核批结果类型
      */
     @ApiModelProperty(value = "核批结果类型")
-    //private String approvalResultType;
     private String approvalResultType;
+    @ApiModelProperty(value = "核批结果类型")
+    private String approvalResultTypeDictText;
 
     /**
      * 核批意见
@@ -155,16 +156,16 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "已关闭", example = "0")
     private String isClosed;
-    //@ApiModelProperty(value = "已关闭", example = "否")
-    //private String isClosedDictText;
+    @ApiModelProperty(value = "已关闭", example = "否")
+    private String isClosedDictText;
 
     /**
      * 是否作废
      */
     @ApiModelProperty(value = "是否作废", example = "0")
     private String isVoided;
-    //@ApiModelProperty(value = "是否作废", example = "否")
-    //private String isVoidedDictText;
+    @ApiModelProperty(value = "是否作废", example = "否")
+    private String isVoidedDictText;
 
     /**
      * 创建部门
@@ -196,5 +197,4 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "修改时间", example = "2022-11-10 23:29:10")
     private LocalDateTime updateTime;
-
 }

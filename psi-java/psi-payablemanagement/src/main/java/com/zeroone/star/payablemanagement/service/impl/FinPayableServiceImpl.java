@@ -1,7 +1,7 @@
 package com.zeroone.star.payablemanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import org.springframework.context.annotation.Bean;
+import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBillNoQuery;
 import com.alibaba.nacos.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -16,8 +16,8 @@ import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -43,7 +43,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
     }
 
     @Override
-    public PayableVO getById(PayableBillNoQuery query) {
+    public PayableVO getByBillNO(PayableBillNoQuery query) {
         return mapper.getByBillNo(query.getBillNO());
     }
 
