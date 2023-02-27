@@ -21,6 +21,8 @@
 #define _PUR_COM_DO_H_
 #include "../DoInclude.h"
 
+//该DO修改过，修改人：J4nnA
+
 /**
  * 采购比价类
  */

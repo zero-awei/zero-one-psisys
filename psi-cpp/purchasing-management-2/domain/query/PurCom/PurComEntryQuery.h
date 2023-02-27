@@ -17,30 +17,24 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_COM_QUERY_
-#define _PUR_COM_QUERY_
+#ifndef _PUR_COM_ENTRY_QUERY_
+#define _PUR_COM_ENTRY_QUERY_
 
 #include "../PageQuery.h"
 
 /**
- * 采购比价分页查询对象
+ * 采购比价明细查询对象
  */
-class PurComQuery : public PageQuery {
+class PurComEntryQuery : public PageQuery {
 	// 单据编号
-	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// 单据日期
-	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	// 源单号
-	CC_SYNTHESIZE(string, src_no, Src_no);
+	CC_SYNTHESIZE(string, id, Id);
 
 public:
 	// 绑定from_json
-	friend void from_json(const json& j, PurComQuery& t) {
+	friend void from_json(const json& j, PurComEntryQuery& t) {
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, bill_no);
-		BIND_FROM_TO_NORMAL(j, t, bill_date);
-		BIND_FROM_TO_NORMAL(j, t, src_no);
+		BIND_FROM_TO_NORMAL(j, t, id);
 	}
 };
-#endif // !_PUR_COM_QUERY_
+#endif // !_PUR_COM_ENTRY_QUERY_

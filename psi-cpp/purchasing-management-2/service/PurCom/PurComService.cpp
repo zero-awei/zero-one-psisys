@@ -111,3 +111,76 @@ PurComVO PurComService::getData(uint64_t id) {
 
 	return data;
 }
+
+// 查询指定比价单的明细列表
+PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
+{
+	// 构造返回对象
+	PageVO<PurComEntryVO> pages;
+	pages.setPageIndex(query.getPageIndex());
+	pages.setPageSize(query.getPageSize());
+
+	// 构造DO
+	PurComEntryDO obj;
+	obj.setMid(query.getId());
+
+	// 生成DAO层对象
+	PurComDAO dao;
+
+	//------------------------------------------------------未实现
+	uint64_t count = 1;
+	
+	// 查询数据总条数
+	//uint64_t count = dao.countEntrys(obj);
+	//
+	// 待加入筛选条件
+	//
+	if (count <= 0)
+	{
+		return pages;
+	}
+	
+	// 调用DAO层功能,传入DO
+	pages.setTotal(count);
+	pages.calcPages();
+	list<PurComEntryDO> result = dao.selectPurComEntry(obj, query.getPageIndex(), query.getPageSize());
+	list<PurComEntryVO> vr;		//明细列表查询返回的VO列表
+
+	// 根据DAO层返回的DO，对VO成员进行赋值
+	for (PurComEntryDO sub : result)
+	{
+		// 构造用于返回的VO
+		PurComEntryVO vo;
+
+		vo.setId(sub.getId());
+		vo.setMid(sub.getMid());
+		vo.setBill_no(sub.getBill_no());
+		vo.setEntry_no(sub.getEntry_no());
+		vo.setSrc_bill_type(sub.getSrc_bill_type());
+		vo.setSrc_bill_id(sub.getSrc_bill_id());
+
+		vo.setSrc_entry_no(sub.getSrc_entry_no());
+		vo.setSrc_no(sub.getSrc_no());
+		vo.setSupplier_id(sub.getSupplier_id());
+
+		vo.setMaterial_id(sub.getMaterial_id());
+		vo.setUnit_id(sub.getUnit_id());
+		vo.setQty(sub.getQty());
+
+		vo.setTax_rate(sub.getTax_rate());
+		vo.setPrice(sub.getPrice());
+		vo.setDiscountRate(sub.getDiscountRate());
+
+		vo.setAmt(sub.getAmt());
+		vo.setRemark(sub.getRemark());
+		vo.setCustom1(sub.getCustom1());
+
+		vo.setCustom2(sub.getCustom2());
+		vo.setVersion(sub.getVersion());
+
+		vr.push_back(vo);
+	}
+	// 将vr填入pages中，并返回pages
+	pages.setRows(vr);
+	return pages;
+}

@@ -22,7 +22,7 @@
 
 #include "BaseDAO.h"
 #include "../../domain/do/PurCom/PurComDO.h"
-
+#include "../../domain/do/PurCom/PurComEntryDO.h"
 /*
 *	数据库操作实现 
 */
@@ -32,10 +32,12 @@ class PurComDAO : public BaseDAO {
 public:
 	// 统计数据条数
 	uint64_t count(const PurComDO& obj);
+	// 统计明细条数
+	uint64_t countEntrys(const PurComEntryDO& obj);
 	// 分页查询数据
 	list<PurComDO> selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// 指定单据明细
-	
+	// 查询指定比价单明细列表
+	list<PurComEntryDO> selectPurComEntry(const PurComEntryDO& obj, uint64_t pageIndex, uint64_t pageSize);
 };
 
 #endif // ! _PUR_COM_DAO_

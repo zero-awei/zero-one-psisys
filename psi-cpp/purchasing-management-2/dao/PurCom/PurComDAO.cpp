@@ -31,6 +31,19 @@ uint64_t PurComDAO::count(const PurComDO& obj)
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
+
+// 统计明细条数
+uint64_t countEntrys(const PurComEntryDO& obj) 
+{
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM pur_compare_entry";
+	SqlParams params;
+	//____待添加筛选条件___
+	string sqlStr = sql.str();
+	//return sqlSession->executeQueryNumerical(sqlStr, params);
+	return 1;
+}
+
 //分页查询数据
 list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
@@ -67,4 +80,30 @@ list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, 
 	string sqlStr = sql.str();
 	// 返回查询结果
 	return sqlSession->executeQuery<PurComDO, PurComMapper>(sqlStr, mapper, params);
+}
+
+list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint64_t pageIndex, uint64_t pageSize)
+{
+	stringstream sql;
+	// 添加查询语句
+
+	sql << "SELECT id, mid. bill_no, \
+					entry_no, src_bill_type, src_bill_id, \
+					src_entry_no, src_no, supplier_id,\
+					material_id, unit_id, qty,\
+					tax_rate, price, discountRate,\
+					amt, remark, custom1,\
+					custom2, version FROM pur_compare_entry";
+	SqlParams params;
+	// 添加筛选语句
+	sql << " WHERE 1=1";
+	//if (!obj.getMid().empty()) {
+	//	sql << "AND mid = ?";
+	//	params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getId())));
+	//}
+	// 分页显示
+	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+	PurComEntryMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurComEntryDO, PurComEntryMapper>(sqlStr, mapper, params);
 }

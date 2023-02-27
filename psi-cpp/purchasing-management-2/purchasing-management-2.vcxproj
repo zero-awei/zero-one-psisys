@@ -222,6 +222,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h" />
+    <ClInclude Include="domain\query\PurCom\PurComEntryQuery.h" />
     <ClInclude Include="domain\query\PurCom\PurComQuery.h" />
     <ClInclude Include="domain\query\PurOrder\PurOrderQuery.h" />
     <ClInclude Include="domain\query\PurReq\PurReqQuery.h" />
@@ -236,6 +237,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
+    <ClInclude Include="domain\vo\PurCom\PurComEntryVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComVO.h" />
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h" />
     <ClInclude Include="domain\vo\PurReq\PurReqVO.h" />

@@ -212,11 +212,15 @@ void Router::createPurReqRouter() {
 	BIND_GET_ROUTER(server, "/purReq/queryEntryByMainId", &PurReqController::getPurReq, nullptr);
 }
 
+//比价单列表查询及明细列表查询
+//负责人：J4nnA
 void Router::createPurComRouter() {
 	// 分页数据
 	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
 	// 单个数据
 	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
+	// 明细列表
+	BIND_GET_ROUTER(server, "/purCom/listEntrys", &PurComController::listPurComEntrys, nullptr);
 }
 
 void Router::createPaymentRouter()
