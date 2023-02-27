@@ -13,6 +13,7 @@ import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
+import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.query.payablemanagement.PaymentBySupplierQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -59,6 +60,7 @@ public class CheckPayableController implements CheckPayableApis {
         return JsonVO.success(finPayableCheckEntry.getByMainId(condition));
     }
 
+    @Override
     @GetMapping("list")
     @ApiOperation("查询单据列表")
     public JsonVO<PageVO<CheckPayableVO>> queryAll(CheckPayableQuery condition) {

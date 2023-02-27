@@ -196,5 +196,4 @@ public class PayableVO {
      */
     @ApiModelProperty(value = "修改时间", example = "2022-11-10 23:29:10")
     private LocalDateTime updateTime;
-
 }

@@ -13,6 +13,7 @@ import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 
 import java.util.List;
 
@@ -49,12 +50,16 @@ public interface CheckPayableApis {
     JsonVO<PageVO<PaymentVO>> listPaymentBySupplier(PaymentBySupplierQuery condition);
 
     /**
-     * 文件导出 return 返回下载路径 author naturezh
-     */
+    * 文件导出
+    * return 返回下载路径
+    * author naturezh
+    */
     JsonVO<String> fileExport();
 
     /**
-     * 文件导入 return 返回状态 author naturezh
+     * 文件导入
+     * return 返回状态
+     * author naturezh
      */
     JsonVO<String> fileImport(MultipartFile file);
 
