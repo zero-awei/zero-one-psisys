@@ -33,7 +33,7 @@
 
 /**
  * 解析启动参数
- * 注意：
+ * 注意：s
  * 参数中数据需要满足一定的格式，如：sp=8090、sn=feign-cpp-sample
  * 前缀与真实值之间使用=分隔
  */
@@ -42,8 +42,8 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "zhongxiaohui123";
-	std::string dbName = "qq";
+	std::string dbPassword = "111111";
+	std::string dbName = "zopsi_sys";
 	std::string dbHost = "localhost";
 	int dbPort = 3306;
 	int dbMax = 25;

@@ -46,7 +46,7 @@ class AddZdrkBillDTO
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 
-	//备注
+	//备注 
 	CC_SYNTHESIZE(string, remark, Remark);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
