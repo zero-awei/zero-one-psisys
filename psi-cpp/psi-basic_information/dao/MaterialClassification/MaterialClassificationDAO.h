@@ -57,6 +57,8 @@ public:
 	int deleteById(string id);
 	//通过pid删除数据
 	int deleteByPid(string pid);
+	
+
 	//应该还有个导入数据
 };
 #endif 

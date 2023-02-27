@@ -20,9 +20,10 @@
 #include "stdafx.h"
 #include "MaterialClassificationController.h"
 #include"../../service/MaterialClassification/MaterialClassificationService.h"
+#include "../../lib-common/include/ExcelComponent.h"
 
 //payload是使用者的信息
-JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::execQueryMaterialClassification(const MaterialClassificationQuery& query)
 {
 	//定义一个Service
 	MaterialClassificationService service;
@@ -39,7 +40,7 @@ JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::e
 }
 
 //查询子类列表
-JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::execQueryMaterialClassificationChild(const MaterialClassificationQuery& query)
 {
 	//定义一个Service
 	MaterialClassificationService service;
@@ -54,7 +55,7 @@ JsonVO<list<MaterialClassificationChildVO>> MaterialClassificationController::ex
 	return JsonVO<list<MaterialClassificationChildVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload)
+JsonVO<list<MaterialClassificationDetailVO>> MaterialClassificationController::execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query)
 {
 
 	//定义一个Service
@@ -75,7 +76,7 @@ JsonVO<uint64_t> MaterialClassificationController::execAddMaterialClassification
 	JsonVO<uint64_t> result;
 	MaterialClassificationService service;
 	//执行数据新增 
-	uint64_t id = service.saveData(dto,payload);
+	uint64_t id = service.saveData(dto,payload.getUsername());
 	if (id > 0) {
 		result.success(id);
 	}
@@ -124,14 +125,22 @@ JsonVO<uint64_t> MaterialClassificationController::execRemoveMaterialClassificat
 }
 
 //文件导入
-JsonVO<PageVO<MaterialClassificationBaseVO>> MaterialClassificationController::execImportMaterialClassification(const MaterialClassificationDTO& dto) {
-	JsonVO<PageVO<MaterialClassificationBaseVO>> result;
+JsonVO<int> MaterialClassificationController::execImportMaterialClassification(const MaterialClassificationDTO& dto) {
+	int result;
+	MaterialClassificationService service;
+	result = service.importData(dto);
 	//响应结果
-	return result;
+	if(result<0)
+		return JsonVO<int>(result, RS_FAIL);
+	return JsonVO<int>(result, RS_SUCCESS);
 }
 
-JsonVO<string> MaterialClassificationController::execExportMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload) {
-	JsonVO<string> result;
+JsonVO<string> MaterialClassificationController::execExportMaterialClassification(const StringIDs& IDs, const PayloadDTO& payload) {
+
+	string result;
+	MaterialClassificationService service;
+	result = service.exportData(IDs, payload);
+
 	//响应结果
-	return result;
+	return JsonVO<string>(result, RS_SUCCESS);
 }
