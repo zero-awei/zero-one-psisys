@@ -12,6 +12,8 @@
 */
 class ExportAccountDO
 {
+	// id
+	CC_SYNTHESIZE(string, id, Id);
 	// 账号
 	CC_SYNTHESIZE(string, accountNo, AccountNo);
 	// 账户名
@@ -32,15 +34,6 @@ class ExportAccountDO
 	CC_SYNTHESIZE(int, isEnabled, IsEnabled);
 public:
 	ExportAccountDO() {
-		accountNo = "1";
-		name = "1";
-		currency = "人民币";
-		init_bal = 23.00;
-		bankNo = "23.12";
-		bankAddress = "励志路996号";
-		manager = "李业武";
-		remark = "无";
-		isEnabled = 1;
 	}
 };
 

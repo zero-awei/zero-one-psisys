@@ -13,6 +13,7 @@ class ExportAccountDAO : public BaseDAO
 {
 public:
 	list<ExportAccountDO> selectAccount(const ExportAccountDO& obj);
+	list<ExportAccountDO> selectAllAccount(const ExportAccountDO& obj);
 };
 
 #endif // _EXPORTACCOUNTDAO_H_

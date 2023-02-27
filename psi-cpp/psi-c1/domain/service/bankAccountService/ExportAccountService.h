@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include "../../query/bankAccountQuery/ExportAccountQuery.h"
 #include "../../do/bankAccountDO/ExportAccountDO.h"
+#include "../../vo/JsonVO.h"
+#include "../../query/bankAccountQuery/ExportAccountQuery.h"
 #ifndef _BANKACCOUNTSERVICE_H_
 #define _BANKACCOUNTSERVICE_H_
 
@@ -14,7 +15,7 @@ class ExportAccountService
 {
 public:
 	// 银行账户导出功能
-	list<ExportAccountDO> listAll(const ExportAccountQuery& query);
+	JsonVO<std::string> listAll(const list<ExportAccountQuery>& query);
 };
 
 #endif // _BANKACCOUNTSERVICE_H_

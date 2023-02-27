@@ -10,6 +10,8 @@
 */
 class ImportAccountDO
 {
+	// id
+	CC_SYNTHESIZE(string, id, Id);
 	// 账号
 	CC_SYNTHESIZE(string, accountNo, AccountNo);
 	// 账户名
@@ -19,7 +21,7 @@ class ImportAccountDO
 	// 初始余额
 	CC_SYNTHESIZE(double, init_bal, Init_bal);
 	// 行号
-	CC_SYNTHESIZE(string, bankNo, BankNo); 
+	CC_SYNTHESIZE(string, bankNo, BankNo);
 	// 银行地址
 	CC_SYNTHESIZE(string, bankAddress, BankAddress);
 	// 账户管理员
@@ -30,6 +32,7 @@ class ImportAccountDO
 	CC_SYNTHESIZE(int, isEnabled, IsEnabled);
 public:
 	ImportAccountDO() {
+		id = "131234231";
 		accountNo = "1";
 		name = "1";
 		currency = "人民币";

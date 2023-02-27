@@ -9,8 +9,8 @@
 
 uint64_t ImportAccountDAO::insert(const ImportAccountDO& iObj)
 {
-	string sql = "INSERT INTO `bas_bank_account` (`account_no`, `name`, `currency`, `init_bal`,\
-	`bank_no`, `bank_address`, `manager`, `remark`, `is_enabled`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s", iObj.getAccountNo(), iObj.getName(), iObj.getCurrency(), \
+	string sql = "INSERT INTO `bas_bank_account` (`id`, `account_no`, `name`, `currency`, `init_bal`,\
+	`bank_no`, `bank_address`, `manager`, `remark`, `is_enabled`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%d%s%s%s%s%i", iObj.getId(), iObj.getAccountNo(), iObj.getName(), iObj.getCurrency(), \
 		iObj.getInit_bal(), iObj.getBankNo(), iObj.getBankAddress(), iObj.getManager(), iObj.getRemark(), iObj.getIsEnabled());
 }
