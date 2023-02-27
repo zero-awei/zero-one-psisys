@@ -128,7 +128,7 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
         BeanUtil.copyProperties(basCustomer,customerAddDTO);
         UserHolder userHolder = new UserHolder();
         try {
-            basCustomer.setCreateBy(userHolder.getCurrentUser().getUsername());
+            basCustomer.setCreateBy(null);
             basCustomer.setUpdateBy(userHolder.getCurrentUser().getUsername());
         } catch (Exception e) {
             throw new RuntimeException(e);

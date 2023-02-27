@@ -3,6 +3,7 @@ package com.zeroone.star.systemmanagement.service.positionmanagement.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
@@ -64,6 +65,12 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
 
     @Override
     public String insert(PositionDTO positionDTO) {
+        LambdaQueryWrapper<Position> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Position::getCode,positionDTO.getCode());
+        Position positionTest = positionMapper.selectOne(wrapper);
+        if(positionTest == null){
+            return "添加失败";
+        }
         Position position = new Position();
         BeanUtil.copyProperties(positionDTO, position);
         try {

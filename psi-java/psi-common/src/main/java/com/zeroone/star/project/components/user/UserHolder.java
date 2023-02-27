@@ -50,7 +50,7 @@ public class UserHolder {
         return UserDTO.builder()
                 .id(Convert.toInt(1))
                 .username("test2")
-                .isEnabled(Convert.toByte(0))
+                .isEnabled(Convert.toByte(1))
                 .roles(Convert.toList(String.class, null))
                 .build();
 
