@@ -45,7 +45,7 @@ if (!obj.getId().empty()) { \
 
 #define ONLY_FOR_KID(obj, sql, params) \
 sql<<" WHERE 1=1"; \
-sql << " AND `pid`=?"; \
+sql << " AND `id`=?"; \
 SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
 
 uint64_t DepotDAO::count(const DepotDO& iObj)
@@ -80,13 +80,9 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 
 std::list<DepotDO> DepotDAO::selectKid(const DepotDO& obj)
 {
-	stringstream sql;
-	SqlParams params;
-	sql << "SELECT name, code, aux_name, phone, remark, create_by, create_time, update_by, update_time FROM bas_warehouse";
-	SAMPLE_TERAM_PARSE(obj, sql, params);
+	string sql = "SELECT * FROM bas_warehouse WHERE `pid`=?";
 	DepotMapper mapper;
-	string sqlStr = sql.str();
-	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<DepotDO, DepotMapper>(sql, mapper, "%s", obj.getPid());
 }
 
 std::list<DepotDO> DepotDAO::selectDetail(DepotDO obj)

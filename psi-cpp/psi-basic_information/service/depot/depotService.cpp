@@ -122,10 +122,12 @@ list<DepotVO> DepotService::getKid(const OnlyValueQuery& query)
 	for (DepotDO sub : result)
 	{
 		DepotVO vo;
+		vo.setId(sub.getId());
 		vo.setName(sub.getName());
 		vo.setCode(sub.getCode());
 		vo.setAuxName(sub.getAuxName());
 		vo.setPhone(sub.getPhone());
+		vo.setStart(sub.getStart());
 		vo.setRemarks(sub.getRemarks());
 		vo.setCreationPeo(sub.getCreationPeo());
 		vo.setCreationTime(sub.getCreationTime());
