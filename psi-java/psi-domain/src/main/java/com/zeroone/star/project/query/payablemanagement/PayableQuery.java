@@ -36,7 +36,7 @@ public class PayableQuery extends PageQuery {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat
-    @ApiModelProperty(value = "单据起始日期", example = "2021-02-16")
+    @ApiModelProperty(value = "单据起始日期", example = "2020-02-13 00:00:00")
     private Date billDateBegin;
 
     /**
@@ -45,7 +45,7 @@ public class PayableQuery extends PageQuery {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat
-    @ApiModelProperty(value = "单据终止日期", example = "2023-02-16")
+    @ApiModelProperty(value = "单据终止日期", example = "2023-02-13 00:00:00")
     private Date billDateEnd;
 
     // @JsonFormat
@@ -64,7 +64,7 @@ public class PayableQuery extends PageQuery {
     /**
      * 单据主题
      */
-    @ApiModelProperty(value = "单据主题", example = "")
+    @ApiModelProperty(value = "单据主题")
     private String subject;
 
     /**

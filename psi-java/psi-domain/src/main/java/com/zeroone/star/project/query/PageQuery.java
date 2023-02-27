@@ -22,7 +22,7 @@ import javax.validation.constraints.Min;
 @ToString
 public class PageQuery {
     @Min(value = 1, message = "页码最小值为1")
-    @ApiModelProperty(value = "查询页码", example = "1")
+    @ApiModelProperty(value = "查询页码", example = "0")
     private long pageIndex;
     @Min(value = 1, message = "条数最小值为1")
     @ApiModelProperty(value = "查询条数", example = "10")
