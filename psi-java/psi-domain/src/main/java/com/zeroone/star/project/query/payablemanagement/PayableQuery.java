@@ -28,7 +28,7 @@ public class PayableQuery extends PageQuery {
     /**
      * 单据编号
      */
-    @ApiModelProperty(value = "单据编号", example = "CGAP-230218-001")
+    @ApiModelProperty(value = "单据编号", example = "CGAP-221121-001")
     private String billNo;
 
     /**
@@ -36,7 +36,7 @@ public class PayableQuery extends PageQuery {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat
-    @ApiModelProperty(value = "单据起始日期", example = "2023-02-16")
+    @ApiModelProperty(value = "单据起始日期", example = "2021-02-16")
     private Date billDateBegin;
 
     /**
@@ -64,19 +64,19 @@ public class PayableQuery extends PageQuery {
     /**
      * 单据主题
      */
-    @ApiModelProperty(value = "单据主题", example = "123")
+    @ApiModelProperty(value = "单据主题", example = "")
     private String subject;
 
     /**
      * 供应商
      */
-    @ApiModelProperty(value = "供应商", example = "1584950950470164481")
+    @ApiModelProperty(value = "供应商", example = "天津化工贸易公司")
     private String supplierId;
 
     /**
      * 单据阶段
      */
-    @ApiModelProperty(value = "单据阶段", example = "34")
+    @ApiModelProperty(value = "单据阶段", example = "执行完")
     private String billStage;
 
     /**
