@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 14:21:55
+ @Date: 2022/10/25 14:23:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,32 +17,28 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_MAPPER_
-#define _SAMPLE_MAPPER_
-
-#include "Mapper.h"
+#ifndef _SAMPLE_DAO_
+#define _SAMPLE_DAO_
+#include "BaseDAO.h"
 #include "../../domain/do/sample/SampleDO.h"
 
 /**
- * 示例表字段匹配映射
+ * 示例表数据库操作实现
  */
-class SampleMapper : public Mapper<SampleDO>
+class SampleDAO : public BaseDAO
 {
 public:
-	SampleDO mapper(ResultSet* resultSet) const override
-		//const加在函数前表示函数返回值为const，加在函数后表示不可修改class的所有成员变量,此时const修饰this指针。
-		//override关键字表示重写父类的虚函数
-		//const加在函数后面表示此函数“只读”。
-
-
-	{
-		SampleDO data;
-		data.setId(resultSet->getUInt64(1));
-		data.setName(resultSet->getString(2));
-		data.setSex(resultSet->getString(3));
-		data.setAge(resultSet->getInt(4));
-		return data;
-	}
+	// 统计数据条数
+	uint64_t count(const SampleDO& iObj);
+	// 分页查询数据
+	list<SampleDO> selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	// 通过姓名查询数据
+	list<SampleDO> selectByName(const string& name);
+	// 插入数据
+	uint64_t insert(const SampleDO& iObj);
+	// 修改数据
+	int update(const SampleDO& uObj);
+	// 通过ID删除数据
+	int deleteById(uint64_t id);
 };
-
-#endif // !_SAMPLE_MAPPER_
+#endif // !_SAMPLE_DAO_
