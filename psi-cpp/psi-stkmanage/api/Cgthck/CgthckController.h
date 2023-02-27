@@ -26,11 +26,11 @@ public:
 	// CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, QueryCgthckBillQuery);
 	
 	// 查询采购入库单据分录列表
-	CREATE_API_FUN_QUERY(queryCgrkBillList, execQueryCgrkBillList, QueryCgrkBillQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryCgrkEntryList, execQueryCgrkEntryList, QueryCgrkBillQuery);
 	// 添加采购退货出库(红入)单据接口
-	CREATE_API_FUN_JSON(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
 	// 修改采购退货出库(红入)单据接口
-	CREATE_API_FUN_JSON(modifyCgthckBill, execModifyCgthckBill, AddCgthckBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyCgthckBill, execModifyCgthckBill, AddCgthckBillDTO);
 	// 修改采购退货出库(红入)审批
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckApproval, execModifyCgthckApproval, ModifyCgthckBillDTO);
 	// 修改采购退货出库(红入)单据状态接口
@@ -41,24 +41,20 @@ public:
 	// 作废
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToVoided, execModifyCgthcStatusToVoided, ModifyCgthckBillDTO);
 	// 删除采购退货出库(红入)单据接口
-	CREATE_API_FUN_BODY(deleteCgthckBill, execDeleteCgthckBill, DeleteCgthckBillDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(deleteCgthckBill, execDeleteCgthckBill, DeleteCgthckBillDTO);
 	// 删除采购退货出库(红入)单明细接口
-	CREATE_API_FUN_JSON(deleteCgthckBillDetail, execDeleteCgthckBillDetail, DeleteCgthckBillDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(deleteCgthckBillDetail, execDeleteCgthckBillDetail, DeleteCgthckBillDTO);
 	// 导入
-	CREATE_API_FUN_BODY(importCgthckFile, execImportCgthckFile, ImportCgthckFileDTO);
+	CREATE_API_FUN_BODY_FILE(importCgthckFile, execImportCgthckFile, ImportCgthckFileDTO);
 	// 导出
-	CREATE_API_FUN_BODY(exportCgthckFile, execExportCgthckFile, ExportCgthckFileDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(exportCgthckFile, execExportCgthckFile, ExportCgthckFileDTO);
 private:
-	//// 测试查询数据
-	//JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
-	//// 测试查询详细数据
-	//JsonVO<PageVO<QueryCgthckBillDetailVO>> execQueryCgthckBillDetail(const QueryCgthckBillQuery& query);
 	// 测试分录查询采购入库单列表	
-	JsonVO<PageVO<QueryCgrkBillListsVO>> execQueryCgrkBillList(const QueryCgrkBillQuery& query);
+	JsonVO<std::list<QueryCgrkBillListsVO>> execQueryCgrkEntryList(const QueryCgrkBillQuery& query, const PayloadDTO& payload);
 	// 测试添加数据
-	JsonVO<uint64_t> execAddCgthckBill(const AddCgthckBillDTO& dto);
+	JsonVO<uint64_t> execAddCgthckBill(const AddCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 测试修改数据
-	JsonVO<uint64_t> execModifyCgthckBill(const AddCgthckBillDTO& dto);
+	JsonVO<uint64_t> execModifyCgthckBill(const AddCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 审批单据
 	JsonVO<uint64_t> execModifyCgthckApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 修改单据状态
@@ -69,14 +65,14 @@ private:
 	// 作废
 	JsonVO<uint64_t> execModifyCgthcStatusToVoided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 测试删除数据
-	JsonVO<uint64_t> execDeleteCgthckBill(const DeleteCgthckBillDTO& dto);
+	JsonVO<uint64_t> execDeleteCgthckBill(const DeleteCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 测试删除明细
-	JsonVO<uint64_t> execDeleteCgthckBillDetail(const DeleteCgthckBillDTO& dto);
+	JsonVO<uint64_t> execDeleteCgthckBillDetail(const DeleteCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 测试提交JSON
 	// 测试文件导入
 	JsonVO<uint64_t> execImportCgthckFile(const ImportCgthckFileDTO& dto);
 	// 测试文件导出
-	JsonVO<uint64_t> execExportCgthckFile(const ExportCgthckFileDTO& dto);
+	JsonVO<uint64_t> execExportCgthckFile(const ExportCgthckFileDTO& dto, const PayloadDTO& payload);
 };
 
 

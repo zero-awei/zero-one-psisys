@@ -5,39 +5,51 @@
 #include "../../GlobalInclude.h"
 class QueryCgrkBillListsVO
 {
-	// 单据编号
-	CC_SYNTHESIZE(std::string, billNo, BillNo);
-	// 单据日期
-	CC_SYNTHESIZE(std::string, billDate, BillDate);
-	// 单据主题
-	CC_SYNTHESIZE(std::string, subject, Subject);
-	// 入库类型
-	CC_SYNTHESIZE(std::string, stockIoType, StockIoType);
-	// 源单号
-	CC_SYNTHESIZE(std::string, srcNo, SrcNo);
-	// 供应商
-	CC_SYNTHESIZE(std::string, supplierId, SupplierId);
-	// 业务部门
-	CC_SYNTHESIZE(std::string, opDept, OpDept);
-	// 业务员
-	CC_SYNTHESIZE(std::string, srcOperator, SrcOperator);
-	// 结算金额
+	//分录号
+	CC_SYNTHESIZE(string, entryNo, EntryNo);
+	//源单号
+	CC_SYNTHESIZE(string, srcNo, SrcNo);
+	//物料
+	CC_SYNTHESIZE(string, materialId, MaterialId);
+	//仓库
+	CC_SYNTHESIZE(string, warehouseId, WarehouseId);
+	//批次号
+	CC_SYNTHESIZE(string, batchNo, BatchNo);
+	//计量单位
+	CC_SYNTHESIZE(string, unitId, UnitId);
+	//结算数量
+	CC_SYNTHESIZE(double, settleQty, SettleQty);
+	//税率%
+	CC_SYNTHESIZE(double, taxRate, TaxRate);
+	//含税单价
+	CC_SYNTHESIZE(double, price, Price);
+	//折扣率
+	CC_SYNTHESIZE(double, discountRate, DiscountRate);
+	//税额
+	CC_SYNTHESIZE(double, tax, Tax);
+	//结算金额（价税合计）
 	CC_SYNTHESIZE(double, settleAmt, SettleAmt);
-	// 已结算金额
-	CC_SYNTHESIZE(double, settledAmt, SettledAmt);
-	// 已开票金额
+	//数量
+	CC_SYNTHESIZE(double, qty, Qty);
+	//成本
+	CC_SYNTHESIZE(double, cost, Cost);
+	//已开票数量
+	CC_SYNTHESIZE(double, invoicedQty, InvoicedQty);
+	//已开票金额
 	CC_SYNTHESIZE(double, invoicedAmt, InvoicedAmt);
-	// 发票类型
-	CC_SYNTHESIZE(std::string, invoiceType, InvoiceType);
-	// 有涨吨
-	CC_SYNTHESIZE(bool, hasSwell, HasSwell);
-	// 已关闭
-	CC_SYNTHESIZE(bool, isClosed, IsClosed);
+	//备注
+	CC_SYNTHESIZE(string, remark, Remark);
+	//自定义1
+	CC_SYNTHESIZE(string, custom1, Custom1);
+	//自定义2
+	CC_SYNTHESIZE(string, custom2, Custom2);
+
 public:
 	BIND_TO_JSON
 	(
-		QueryCgrkBillListsVO, billNo, billDate, subject, stockIoType, srcNo, supplierId, 
-		opDept, srcOperator, settleAmt, settledAmt, invoicedAmt, invoiceType, hasSwell, isClosed
+		QueryCgrkBillListsVO, entryNo, srcNo, materialId, warehouseId, batchNo, unitId, settleQty, 
+		taxRate, price, discountRate, tax, settleAmt, qty, cost, invoicedQty, invoicedAmt, remark, 
+		custom1, custom2
 	);
 };
 

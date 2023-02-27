@@ -1,88 +1,44 @@
 #include "stdafx.h"
 #include "CgthckService.h"
 
-PageVO<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& query)
+list<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& query)
 {
-    // 构建时间区间
-    auto getTimeZone = [](const std::string & begin, const std::string & end)->std::string
-    {
-        if (!begin.empty() && !end.empty())
-        {
-            return string{ begin + '%' + end };
-        }
-        return string{ "" };
-    };
-    // 构建返回对象
-    PageVO<QueryCgrkBillListsVO> pages;
-    pages.setPageIndex(query.getPageIndex());
-    pages.setPageSize(query.getPageSize());
-
     // 组装查询数据
-    CgthckDO obj;
+    CgthckEntryDO obj;
     // 单据编号
     obj.setBillNo(query.getBillNo());
-    // 单据日期(开始时间-结束时间)
-    obj.setBillDate(getTimeZone(query.getBillDateStart(), query.getBillDateEnd()));
-    // 发票类型
-    obj.setInvoiceType(query.getInvoiceType());
-    // 供应商
-    obj.setSupplierId(query.getSupplierId());
-    // 业务员
-    obj.setOperator1(query.getSrcOperator());
-    // 业务部门
-    obj.setOpDept(query.getOpDept());
 
     CgthckDAO dao;
-    uint64_t count = dao.count(obj);
-    if (count <= 0)
-    {
-        return pages;
-    }
 
-    // 分页查询数据
-    pages.setTotal(count);
-    pages.calcPages();
-    list<CgthckDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
+    list<CgthckEntryDO> result = dao.selectWithId(obj);
     list< QueryCgrkBillListsVO> vr;
     for (auto sub : result)
     {
         QueryCgrkBillListsVO vo;
-        // 单据编号
-        vo.setBillNo(sub.getBillNo());
-        // 单据日期
-        vo.setBillDate(sub.getBillDate());
-        // 单据主题
-        vo.setSubject(sub.getSubject());
-        // 入库类型
-        vo.setStockIoType(sub.getStockIoType());
-        // 源单号
+        vo.setEntryNo(sub.getEntryNo());
         vo.setSrcNo(sub.getSrcNo());
-        // 供应商
-        vo.setSupplierId(sub.getSupplierId());
-        // 业务部门
-        vo.setOpDept(sub.getOpDept());
-        // 业务员
-        vo.setSrcOperator(sub.getOperator1());
-        // 结算金额
+        vo.setWarehouseId(sub.getWarehouseId());
+        vo.setBatchNo(sub.getBatchNo());
+        vo.setUnitId(sub.getUnitId());
+        vo.setSettleQty(sub.getSettleQty());
+        vo.setTaxRate(sub.getTaxRate());
+        vo.setPrice(sub.getPrice());
+        vo.setDiscountRate(sub.getDiscountRate());
+        vo.setTax(sub.getTax());
         vo.setSettleAmt(sub.getSettleAmt());
-        // 已结算金额
-        vo.setSettledAmt(sub.getSettledAmt());
-        // 已开票金额
+        vo.setQty(sub.getQty());
+        vo.setCost(sub.getCost());
+        vo.setInvoicedQty(sub.getInvoicedQty());
         vo.setInvoicedAmt(sub.getInvoicedAmt());
-        // 发票类型
-        vo.setInvoiceType(sub.getInvoiceType());
-        // 有涨吨
-        vo.setHasSwell(sub.getHasSwell());
-        // 已关闭
-        vo.setIsClosed(sub.getIsClosed());
-
+        vo.setRemark(sub.getRemark());
+        vo.setCustom1(sub.getCustom1());
+        vo.setCustom2(sub.getCustom2());
         vr.push_back(vo);
     }
-    pages.setRows(vr);
-    return pages;
+    return vr;
 }
 
-uint64_t CgthckService::saveData(const AddCgthckBillDTO& dto)
+int CgthckService::saveData(const AddCgthckBillDTO& dto)
 {
     // 辅助数据检验的函数
     auto check = [](const AddCgthckBillDTO& dto)
@@ -494,4 +450,107 @@ int CgthckService::voided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payl
 
     CgthckDAO dao;
     return dao.updateStatus(data);
+}
+
+int CgthckService::importData(const ImportCgthckFileDTO& dto)
+{
+    // 解析Excel中的数据
+    ExcelComponent excel;
+    string fileName = dto.getFiles().front();
+    string sheetName = CharsetConvertHepler::ansiToUtf8("出入库单");
+    string entrySheetName = CharsetConvertHepler::ansiToUtf8("明细");
+    // 将文件的数据转换成二维数组, 谨记:二维数组的第一行是header(文字), 不需要载入数据库
+    vector<vector<string>> data = excel.readIntoVector(fileName, sheetName);
+    vector<vector<string>> entryData = excel.readIntoVector(fileName, entrySheetName);
+
+    // 将二维数组转换为DO模型
+    list<CgthckDO> cgthckDo;
+    if (data.size() > 1)
+    {
+        for (int i = 1; i < data.size(); i++)
+        {
+            CgthckDO tmp_do;
+            int j = 0;
+            auto tmp_data = data[i];
+            // 出入库类型
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 是否有往来
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 是否有涨吨
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 供应商
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 客户
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 发票类型
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 业务部门
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 业务员
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 出入库经办
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 成本
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 结算金额
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 已结算金额
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 已开票金额
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 是否生效
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 附件
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 源单id
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 单据主题
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 单据阶段
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 源单号
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 是否自动生成
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 备注
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 审批实例id
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 已作废
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 单据编号
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 是否红字
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 源单类型
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 制单时间
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 生效时间
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 核批人
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 修改人
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 制单部门
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 已关闭
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 核批结合类型
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 单据日期
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 制单人
+            tmp_do.setStockIoType(tmp_data[j++]);
+            // 核批意见
+            tmp_do.setStockIoType(tmp_data[j++]);
+        }
+    }
+    
+    return 0;
+}
+
+int CgthckService::exportData(const ExportCgthckFileDTO& dto)
+{
+    return 0;
 }

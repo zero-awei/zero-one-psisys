@@ -4,46 +4,14 @@
 
 // 测试中
 
-// 分隔时间区间宏
-#define TIME_ZONE_SPLIT(__fmt__, __args__) \
-std::string __begin__, __end__; \
-if(__fmt__ != ""){ \
-	int __pos__ = __args__.find(__fmt__); \
-	if(__pos__ <= __args__.size()){ \
-		__begin__ = __args__.substr(0, __pos__); \
-		__end__ = __args__.substr(__pos__ + 1); \
-	} \
-}
-
 //定义条件解析宏，减少重复代码
 #define QUERY_CGRK_BILL_LIST_TERAM_PARSE(obj, sql) \
-SqlParams params; \
-sql<<" WHERE 1=1"; \
+SqlParams params;  \
+sql << " WHERE 1=1"; \
 if (!obj.getBillNo().empty()) { \
-	sql << " AND `bill_no`=?"; \
+	sql << " AND bill_no=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getBillNo()); \
 } \
-if (!obj.getSupplierId().empty()) { \
-	sql << " AND supplier_id=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getSupplierId()); \
-} \
-if (!obj.getInvoiceType().empty()) { \
-	sql << " AND invoice_type=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getInvoiceType()); \
-} \
-if (!obj.getOperator1().empty()) { \
-	sql << " AND operator=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getOperator1()); \
-} \
-if (!obj.getOpDept().empty()) { \
-	sql << " AND op_dept=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getOpDept()); \
-} \
-if(!obj.getBillDate().empty()) { \
-	TIME_ZONE_SPLIT("%", obj.getBillDate()) \
-	sql << " AND `bill_date` BETWEEN \"" << __begin__  << "\" " << "AND \"" << __end__ << "\" "; \
-}
-
 
 // 定义更新逻辑解析宏, 减少重复代码
 #define UPDATE_CGTHCK_TERAM_PARSE(obj, sql) \
@@ -190,44 +158,35 @@ bool CgthckDAO::deleteFile(const string& fileName)
 	return client.deleteFile(fileName);
 }
 
-uint64_t CgthckDAO::count(const CgthckDO& iobj)
+uint64_t CgthckDAO::count(const CgthckEntryDO& iobj)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM `stk_io`";
+	sql << "SELECT COUNT(*) FROM `stk_io_entry`";
 	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
-}
 
-list<CgthckDO> CgthckDAO::selectWithPage(const CgthckDO& iobj, uint64_t pageIndex, uint64_t pageSize)
+}
+list<CgthckEntryDO> CgthckDAO::selectWithId(const CgthckEntryDO& iobj)
 {
-	//string sql = "SELECT `bill_no`, `bill_date`, `supplier_id` FROM " + string{ DATABASE1 } + " WHERE `bill_no` LIKE CONCAT('%', ?, '%')";
-	//CgthckMapper mapper;
-	//return sqlSession->executeQuery<CgthckDO, CgthckMapper>(sql, mapper, "%s", id);
-	
-	// 组装查询
 	stringstream sql;
-	sql << "SELECT `bill_no`, `bill_date`, `subject`, `stock_io_type`, `src_no`, `supplier_id`, `op_dept`, `operator`, `settle_amt`, `settled_amt`, `invoiced_amt`, `invoice_type`, `has_swell`, `is_closed` FROM `stk_io`";
-	cout << sql.str() << endl;
+	sql << "SELECT `entry_no`, `src_no`, `material_id`, `warehouse_id`, `batch_no`, `unit_id`, `settle_qty`, `tax_rate`, `price`, `discount_rate`, `tax`, `settle_amt`, `qty`, `cost`, `invoiced_qty`, `invoiced_amt`, `remark`, `custom1`, `custom2` FROM `stk_io_entry`";
 	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);
-	cout << sql.str() << endl;
-	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	cout << sql.str() << endl;
-	string sqlStr = sql.str();
 	CgthckMapper mapper;
-	return sqlSession->executeQuery<CgthckDO, CgthckMapper>(sqlStr, mapper);
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<CgthckEntryDO, CgthckMapper>(sqlStr, mapper, params);
 }
 
 uint64_t CgthckDAO::insert(const CgthckDO& iobj)
 {
-	string sql = "INSERT INTO " + string{ DATABASE1 } + " (`id`, `bill_no`, `bill_date`, `supplier_id`, `src_bill_type`, `stock_io_type`, `src_no`, `is_effective`, `is_closed`, `is_voided`, `op_dept`, `subject`, `invoice_type`, `handler`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	string sql = "INSERT INTO `stk_io` (`id`, `bill_no`, `bill_date`, `supplier_id`, `src_bill_type`, `stock_io_type`, `src_no`, `is_effective`, `is_closed`, `is_voided`, `op_dept`, `subject`, `invoice_type`, `handler`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	int row = sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%i%i%i%s%s%s%s", iobj.getId(), iobj.getBillNo(), iobj.getBillDate(), iobj.getSupplierId(), iobj.getSrcBillType(), iobj.getStockIoType(), iobj.getSrcNo(), iobj.getIsEffective(), iobj.getIsClosed(), iobj.getIsVoided(), iobj.getOpDept(), iobj.getSubject(), iobj.getInvoiceType(), iobj.getHandler());
 	return row == 0 ? row : stoull(iobj.getId());
 }
 
 int CgthckDAO::insert(const CgthckEntryDO& iobj)
 {
-	string sql = "INSERT INTO " + string{ DATABASE2 } + " (`id`, `mid`, `bill_no`, `entry_no`, `material_id`, `batch_no`, `warehouse_id`, `stock_io_direction`, `unit_id`, `settle_qty`, `tax_rate`, `price`, `discount_rate`, `tax`, `settle_amt`, `qty`, `cost`, `invoiced_amt`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	string sql = "INSERT INTO `stk_io_entry` (`id`, `mid`, `bill_no`, `entry_no`, `material_id`, `batch_no`, `warehouse_id`, `stock_io_direction`, `unit_id`, `settle_qty`, `tax_rate`, `price`, `discount_rate`, `tax`, `settle_amt`, `qty`, `cost`, `invoiced_amt`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d", iobj.getId(), iobj.getMid(), iobj.getBillNo(), iobj.getEntryNo(), iobj.getMaterialId(), iobj.getBatchNo(), iobj.getWarehouseId(), iobj.getStockIoDirection(), iobj.getUnitId(), iobj.getSettleQty(), iobj.getTaxRate(), iobj.getPrice(), iobj.getDiscountRate(), iobj.getTax(), iobj.getSettleAmt(), iobj.getQty(), iobj.getCost(), iobj.getInvoicedAmt());
 }
 

@@ -9,15 +9,31 @@ using CgthckEntryDO = StkIoEntryDO;
 /**
 * ²É¹ºÍË»õ³ö¿â×Ö¶ÎÆ¥ÅäÓ³ÉäÀà
 */
-class CgthckMapper : public Mapper<CgthckDO>
+class CgthckMapper : public Mapper<CgthckEntryDO>
 {
 public:
-	CgthckDO mapper(ResultSet* resultSet) const override
+	CgthckEntryDO mapper(ResultSet* resultSet) const override
 	{
-		CgthckDO data;
-		data.setBillNo(resultSet->getString(1));
-		data.setBillDate(resultSet->getString(2));
-		data.setSupplierId(resultSet->getString(3));
+		CgthckEntryDO data;
+		data.setEntryNo(resultSet->getString(1));
+		data.setSrcNo(resultSet->getString(2));
+		data.setMaterialId(resultSet->getString(3));
+		data.setBatchNo(resultSet->getString(4));
+		data.setWarehouseId(resultSet->getString(5));
+		data.setUnitId(resultSet->getString(6));
+		data.setSettleQty(resultSet->getDouble(7));
+		data.setTaxRate(resultSet->getDouble(8));
+		data.setPrice(resultSet->getDouble(9));
+		data.setDiscountRate(resultSet->getDouble(10));
+		data.setTax(resultSet->getDouble(11));
+		data.setSettleAmt(resultSet->getDouble(12));
+		data.setQty(resultSet->getDouble(13));
+		data.setCost(resultSet->getDouble(14));
+		data.setInvoicedQty(resultSet->getDouble(15));
+		data.setInvoicedAmt(resultSet->getDouble(16));
+		data.setRemark(resultSet->getString(17));
+		data.setCustom1(resultSet->getString(18));
+		data.setCustom2(resultSet->getString(19));
 		return data;
 	}
 };

@@ -2,6 +2,9 @@
 #ifndef _CGTHCK_SERVICE_
 #define _CGTHCK_SERVICE_
 
+#include "ExcelComponent.h"
+#include "FastDfsClient.h"
+#include "CharsetConvertHepler.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../dao/Cgthck/CgthckDAO.h"
 #include "../../domain/do/Cgthck/CgthckDO.h"
@@ -19,9 +22,9 @@ class CgthckService
 {
 public:
 	// 采购入库单分录查询数据
-	PageVO<QueryCgrkBillListsVO> listAll(const QueryCgrkBillQuery& query);
+	std::list<QueryCgrkBillListsVO> listAll(const QueryCgrkBillQuery& query);
 	// 添加采购退货出库单(保存/提交)
-	uint64_t saveData(const AddCgthckBillDTO& dto);
+	int saveData(const AddCgthckBillDTO& dto);
 	// 修改采购退货出库单（保存/提交/审核）
 	int updateData(const AddCgthckBillDTO& dto);
 	// 审核单据
@@ -38,7 +41,9 @@ public:
 	// 作废
 	int voided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
 	// 导入
+	int importData(const ImportCgthckFileDTO& dto);
 	// 导出
+	int exportData(const ExportCgthckFileDTO& dto);
 };
 
 
