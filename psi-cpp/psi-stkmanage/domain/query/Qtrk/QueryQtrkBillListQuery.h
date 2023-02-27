@@ -17,7 +17,7 @@ public:
 	friend void from_json(const json& j, QueryQtrkBillListQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
-		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_ULL(j, t, id);
 		//BIND_FROM_TO_NORMAL(j, t, sex);
 	}
 };

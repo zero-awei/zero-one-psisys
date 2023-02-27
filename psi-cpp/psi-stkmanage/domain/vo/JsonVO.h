@@ -24,7 +24,7 @@
 #include "Message.h"
 
 /**
- * 前后端数据对接数据对象（Web->终端）
+ * 前后端数据对接数据对象
  */
 template<class T>
 class JsonVO
