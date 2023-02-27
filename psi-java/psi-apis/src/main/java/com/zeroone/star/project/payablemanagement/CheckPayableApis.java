@@ -10,7 +10,6 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableEntryVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
-import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public interface CheckPayableApis {
      * @param condition 查询条件
      * @return null
      */
-    JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition);
+    JsonVO<PageVO<PayableVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition);
 
     /**
      * 文件导出 return 返回下载路径 author naturezh

@@ -15,7 +15,6 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableEntryVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import com.zeroone.star.project.vo.payablemanagement.PayableVO;
-import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -63,7 +62,7 @@ public class CheckPayableController implements CheckPayableApis {
     @Override
     @GetMapping("queryPaymentBySupplier")
     @ApiOperation("根据供应商ID查询付款单")
-    public JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
+    public JsonVO<PageVO<PayableVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
         return null;
     }
 

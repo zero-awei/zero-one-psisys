@@ -1,8 +1,8 @@
 package com.zeroone.star.project.dto.payablemanagement;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * <p>
@@ -64,7 +63,9 @@ public class PayableDTO {
     /**
      * 单据日期
      */
-    @ApiModelProperty(value = "单据日期", example = "2022-01-13")
+    @ApiModelProperty(value = "单据日期", example = "2022-01-13 00:00:00")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime billDate;
 
     /**
@@ -192,20 +193,22 @@ public class PayableDTO {
      * 生效时间
      */
     @ApiModelProperty(value = "生效时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime effectiveTime;
 
-    /**
-     * 已关闭
-     */
-    @ApiModelProperty(value = "已关闭", example = "1")
-    private Integer isClosed;
-
-
-    /**
-     * 已作废
-     */
-    @ApiModelProperty(value = "已作废", example = "0")
-    private Integer isVoided;
+//    /**
+//     * 已关闭
+//     */
+//    @ApiModelProperty(value = "已关闭", example = "1")
+//    private Integer isClosed;
+//
+//
+//    /**
+//     * 已作废
+//     */
+//    @ApiModelProperty(value = "已作废", example = "0")
+//    private Integer isVoided;
 
 
     /**
@@ -225,6 +228,8 @@ public class PayableDTO {
      */
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**
@@ -237,6 +242,8 @@ public class PayableDTO {
      * 修改时间
      */
     @ApiModelProperty(value = "修改时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
     /**
