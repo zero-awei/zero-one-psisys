@@ -24,6 +24,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -61,8 +62,11 @@ public class CustomerController implements CustomerApis {
     @Override
     @GetMapping("query-advancedcondition")
     @ApiOperation(value = "高级条件分页查询")
-    public JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery,PageQuery pageQuery) {
-        return null;
+    public JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery) {
+        if(customerService.getByAdvancedCondition(CustomerCdvancedQuery)!=null){
+            return JsonVO.success(customerService.getByAdvancedCondition(CustomerCdvancedQuery));
+        }
+        return JsonVO.fail(null);
     }
 
     @Override
@@ -83,9 +87,9 @@ public class CustomerController implements CustomerApis {
 
     @Override
     @GetMapping("getcustomerbyid")
-    @ApiOperation(value = "查询指定id客户")
-    public JsonVO<CustomerShowVO> specifiedcustomer(String id) {
-        CustomerShowVO customervo = customerService.getById(id);
+    @ApiOperation(value = "查询指定code客户")
+    public JsonVO<CustomerShowVO> specifiedcustomer(@RequestParam(required = false)String code) {
+        CustomerShowVO customervo = customerService.getByCode(code);
         if(customervo!=null){
             return JsonVO.success(customervo);
         }

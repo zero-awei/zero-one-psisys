@@ -32,7 +32,7 @@ public interface CustomerApis {
      * @param CustomerCdvancedQuery 包含分页信息和客户高级查询条件
      * @return customer message
      */
-    JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery,PageQuery pageQuery);
+    JsonVO<PageVO<CustomerShowVO>> listCustomerByPageAndAdevanced(CustomerCdvancedQuery CustomerCdvancedQuery);
     /**
      * 客户分类查询
      * @return customer_category message
