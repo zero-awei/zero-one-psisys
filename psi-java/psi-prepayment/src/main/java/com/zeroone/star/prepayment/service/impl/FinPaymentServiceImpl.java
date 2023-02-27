@@ -57,7 +57,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         FinPayment finPayment = new FinPayment();
         BeanUtil.copyProperties(modifyDTO, finPayment);
         //时间
-        finPayment.setUpdateTime(LocalDateTime.now());
+//        finPayment.setUpdateTime(LocalDateTime.now());
         //用户信息
         finPayment.setUpdateBy(userDTO.getUsername());
         return updateById(finPayment);
@@ -74,8 +74,8 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         FinPayment finPayment = new FinPayment();
         BeanUtil.copyProperties(auditDTO, finPayment);
         //审核生效时间、修改时间
-        finPayment.setUpdateTime(LocalDateTime.now());
-        finPayment.setEffectiveTime(LocalDateTime.now());
+//        finPayment.setUpdateTime(LocalDateTime.now());
+//        finPayment.setEffectiveTime(LocalDateTime.now());
         //审核人、修改人信息
         finPayment.setApprover(userDTO.getUsername());
         finPayment.setUpdateBy(userDTO.getUsername());
@@ -95,7 +95,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         FinPayment finPayment = new FinPayment();
         BeanUtils.copyProperties(prepaymentDTO,finPayment);
         //时间
-        finPayment.setCreateTime(LocalDateTime.now());
+//        finPayment.setCreateTime(LocalDateTime.now());
         //用户信息
         finPayment.setCreateBy(userDTO.getUsername());
         return finPaymentMapper.insert(finPayment);

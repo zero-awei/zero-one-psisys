@@ -133,6 +133,7 @@ public class FinPayment implements Serializable {
     /**
      * 生效时间
      */
+    @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime effectiveTime;
 
     /**
@@ -164,6 +165,7 @@ public class FinPayment implements Serializable {
     /**
      * 修改时间
      */
+    @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;
 
     /**
