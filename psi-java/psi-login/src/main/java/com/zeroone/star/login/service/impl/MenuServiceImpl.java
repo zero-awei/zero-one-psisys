@@ -1,9 +1,9 @@
-package com.zeroone.star.payment.service.impl;
+package com.zeroone.star.login.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.payment.entity.Menu;
-import com.zeroone.star.payment.mapper.MenuMapper;
-import com.zeroone.star.payment.service.IMenuService;
+import com.zeroone.star.login.entity.Menu;
+import com.zeroone.star.login.mapper.MenuMapper;
+import com.zeroone.star.login.service.IMenuService;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

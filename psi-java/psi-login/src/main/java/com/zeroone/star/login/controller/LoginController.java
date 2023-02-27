@@ -1,8 +1,8 @@
-package com.zeroone.star.payment.controller;
+package com.zeroone.star.login.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.zeroone.star.payment.service.IMenuService;
-import com.zeroone.star.payment.service.OauthService;
+import com.zeroone.star.login.service.IMenuService;
+import com.zeroone.star.login.service.OauthService;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.constant.AuthConstant;
