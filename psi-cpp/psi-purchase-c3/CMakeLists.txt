@@ -5,8 +5,8 @@ cmake_minimum_required (VERSION 3.8)
 
 
 
-# 设置文件名称
-set (appName c3)
+# 设置文件名称''''
+set (appName psi-purchase-c3)
 
 # 包含库目录
 include_directories ("./")
