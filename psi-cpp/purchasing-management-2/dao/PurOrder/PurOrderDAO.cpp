@@ -21,11 +21,6 @@
 #include "PurOrderMapper.h"
 #include <sstream>
 
-string PurOrderDAO::insert(const PurOrderDO& iObj)
-{
-	return "";
-}
-
 // 删除采购订单-ID
 // 负责人：Andrew
 int PurOrderDAO::deleteById(string id)

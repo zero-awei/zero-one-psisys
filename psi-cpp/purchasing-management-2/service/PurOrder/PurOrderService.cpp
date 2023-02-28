@@ -24,12 +24,6 @@
 
 #define ASSIGN(key) data.set##key(dto.get##key());
 
-// 修改数据
-bool PurOrderService::updateData(const PurOrderDTO& dto)
-{
-	return true;
-}
-
 // 修改单据状态(关闭/反关闭/作废)
 // 负责人：Andrew
 bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload)

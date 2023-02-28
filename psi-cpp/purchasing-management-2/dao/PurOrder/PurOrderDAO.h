@@ -28,9 +28,6 @@
 class PurOrderDAO : public BaseDAO
 {
 public:
-	// 插入数据
-	string insert(const PurOrderDO& iObj);
-
 	// 删除采购订单-ID
 	// 负责人：Andrew
 	int deleteById(string id);

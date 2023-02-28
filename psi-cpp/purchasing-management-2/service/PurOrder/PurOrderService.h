@@ -31,15 +31,6 @@
 class PurOrderService
 {
 public:
-	// 分页查询所有数据
-	PageVO<PurOrderVO> listAll(const PurOrderQuery& query);
-	// 查询单个数据
-	PurOrderVO getData(string id);
-	// 保存数据
-	string saveData(const PurOrderDTO& dto);
-	// 修改数据
-	bool updateData(const PurOrderDTO& dto);
-	
 	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	bool updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload);

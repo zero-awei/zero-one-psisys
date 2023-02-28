@@ -22,26 +22,11 @@
 #include "../../domain/vo/PageVO.h"
 
 /**
- * 示例服务实现，演示基础的示例服务实现
  * 预付申请的服务实现
  */
 class PrePayService
 {
 public:
-	// 分页查询 预付申请单所有数据(多个对象)
-	PageVO<PrepaymentBillVO> listAll(const PrepayBillQuery& query);
-	// 查询预付申请单详细数据(单个对象)
-	PageVO<PrepaymentDetailBillVO> getAll(const PrepayDetailBillQuery& query);
-	// 保存数据
-	uint64_t saveData(const AddPayDTO& dto);
-	// 修改数据
-	bool updateData(const PrepaymentDTO& dto);
-	// 通过ID删除数据
-	bool removeData(uint64_t id);
-	// 保存导入数据
-	uint64_t saveInto(const PayIntoDTO& dto);
-
-
 	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	bool updateStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload);
