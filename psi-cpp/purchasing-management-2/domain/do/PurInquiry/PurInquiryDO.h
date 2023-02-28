@@ -22,7 +22,6 @@
 #define _PUR_INQUIRY_DO_
 #include "../DoInclude.h"
 
-// 青羽修正了DO
 class PurInquiryDO
 {
 	//ID
@@ -41,20 +40,26 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, subject, Subject);
 	//是否红字
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//采购类型
-	CC_SYNTHESIZE(string, pur_type, Pur_type);
-	//需求部门
-	CC_SYNTHESIZE(string, request_dept, Request_dept);
-	//需求人
-	CC_SYNTHESIZE(string, requester, Requester);
-	//需求时间
-	CC_SYNTHESIZE(string, request_time, Request_time);
+	//付款方式
+	CC_SYNTHESIZE(string, payment_method, Payment_method);
+	//交货地点
+	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
+	//交货时间
+	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
+	//联系人
+	CC_SYNTHESIZE(string, contact, Contact);
+	//联系电话
+	CC_SYNTHESIZE(string, phone, Phone);
+	//fax
+	CC_SYNTHESIZE(string, fax, Fax);
+	//email
+	CC_SYNTHESIZE(string, email, Email);
 	//数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	//参考金额
 	CC_SYNTHESIZE(double, amt, Amt);
-	//已订数量
-	CC_SYNTHESIZE(double, ordered_qty, Ordered_qty);
+	//生效的报价单数
+	CC_SYNTHESIZE(int, quot_count, Quot_count);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -91,6 +96,7 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
+
 
 public:
 	PurInquiryDO()

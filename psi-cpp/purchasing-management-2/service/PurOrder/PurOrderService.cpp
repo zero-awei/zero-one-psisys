@@ -509,13 +509,16 @@ PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 			pur_inquiry_vo.setSrc_no(do_data.getSrc_no());
 			pur_inquiry_vo.setSubject(do_data.getSubject());
 			pur_inquiry_vo.setIs_rubric(do_data.getIs_rubric());
-			pur_inquiry_vo.setPur_type(do_data.getPur_type());
-			pur_inquiry_vo.setRequest_dept(do_data.getRequest_dept());
-			pur_inquiry_vo.setRequester(do_data.getRequester());
-			pur_inquiry_vo.setRequest_time(do_data.getRequest_time());
+			pur_inquiry_vo.setPayment_method(do_data.getPayment_method());
+			pur_inquiry_vo.setDelivery_place(do_data.getDelivery_place());
+			pur_inquiry_vo.setDelivery_time(do_data.getDelivery_time());
+			pur_inquiry_vo.setContact(do_data.getContact());
+			pur_inquiry_vo.setPhone(do_data.getPhone());
+			pur_inquiry_vo.setFax(do_data.getFax());
+			pur_inquiry_vo.setEmail(do_data.getEmail());
 			pur_inquiry_vo.setQty(do_data.getQty());
 			pur_inquiry_vo.setAmt(do_data.getAmt());
-			pur_inquiry_vo.setOrdered_qty(do_data.getOrdered_qty());
+			pur_inquiry_vo.setQuot_count(do_data.getQuot_count());
 			pur_inquiry_vo.setAttachment(do_data.getAttachment());
 			pur_inquiry_vo.setRemark(do_data.getRemark());
 			pur_inquiry_vo.setIs_auto(do_data.getIs_auto());
@@ -654,7 +657,7 @@ PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 }
 
 // 保存数据
-uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
+uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payload)
 {
 	//组装数据
 	PurOrderDO data;
@@ -672,6 +675,8 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
 
 	data.setId(std::to_string(sf.nextId()));
 	SET_PUR_ORDER_DO();
+	// 创建人，从payload获取
+	data.setCreate_by(payload.getUsername());
 	data.setCreate_time(time);
 	result = dao.insert(data);
 	if (!result) return result;
@@ -694,7 +699,7 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
 }
 
 // 修改数据
-bool PurOrderService::updateData(const PurOrderDTO& dto)
+bool PurOrderService::updateData(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	//组装数据
 	PurOrderDO data;
@@ -707,6 +712,8 @@ bool PurOrderService::updateData(const PurOrderDTO& dto)
 
 	data.setId(dto.getId());
 	SET_PUR_ORDER_DO();
+	// 创建人，从payload获取
+	data.setUpdate_by(payload.getUsername());
 	data.setUpdate_time(time);
 
 	result = dao.update(data);

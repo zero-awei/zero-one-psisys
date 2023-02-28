@@ -20,6 +20,7 @@
 #ifndef _PUR_ORDER_SERVICE_
 #define _PUR_ORDER_SERVICE_
 #include <list>
+//#include "FastDfsClient.h"
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
 #include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
@@ -57,9 +58,9 @@ public:
 	// 查询单个数据
 	PurOrderDetailVO getPurOrder(string id);
 	// 保存数据
-	uint64_t saveData(const PurOrderDTO& dto);
+	uint64_t saveData(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改数据
-	bool updateData(const PurOrderDTO& dto);
+	bool updateData(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改状态
 	bool updateStatus(const PurOrderDTO& dto);
 	// 通过ID删除数据
