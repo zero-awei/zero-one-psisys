@@ -8,4 +8,4 @@
 import { } from './api/zhangdunruku.js'
 </script>
 
-<style></style>
+<style scoped></style>

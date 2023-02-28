@@ -8,4 +8,4 @@
 import { } from './api/qitaruku'
 </script>
 
-<style></style>
+<style scoped></style>

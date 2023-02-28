@@ -131,7 +131,7 @@ function handleConfirm(data){
 }
 </script>
 
-<style></style>
+<style scoped></style>
 ```
 
 组件需要 v-model 绑定一个 Boolean 值

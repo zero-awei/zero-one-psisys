@@ -342,3 +342,5 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 </script>
+
+<style scoped></style>

@@ -8,4 +8,4 @@
 import { } from './api/caigourukutuihuochuku.js'
 </script>
 
-<style></style>
+<style scoped></style>

@@ -322,4 +322,4 @@ function handleAdd() {
 }
 </script>
 
-<style></style>
+<style scoped></style>

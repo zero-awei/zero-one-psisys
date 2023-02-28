@@ -346,4 +346,4 @@ function handleStatus() {
 
 </script>
 
-<style></style>
+<style scoped></style>

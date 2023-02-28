@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-22 22:31:41
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-25 16:23:01
+ * @LastEditTime: 2023-02-28 17:37:09
  * @FilePath: \psi-frontend\src\views\HomeView.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -17,7 +17,9 @@
         </div>
         <!-- 使用自定义侧边菜单组件 -->
         <!-- <AsideCom /> -->
-        <test :label="collapse = !collapse" />
+        <div class="menu-class">
+          <test :label="collapse = !collapse" />
+        </div>
         <!-- @selectChange='addTab' -->
         <!-- 默认true -->
       </el-aside>
@@ -35,8 +37,8 @@
         </el-header>
 
         <!-- <div class="tag">
-                                                                                                                                                                                                                      <NavHeadCom />
-                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                <NavHeadCom />
+                                                                                                                                                                                                                                                                                                              </div> -->
 
         <el-main>
           <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs" @tab-remove="removeTab"
@@ -47,15 +49,18 @@
               <!-- :closable="item.title != '首页'" -->
             </el-tab-pane>
           </el-tabs>
-          <el-card>
-            <!-- 布局路由 -->
-            <!-- KeepAlive 不会用 -->
-            <!-- <KeepAlive> -->
-            <router-view />
+          <!-- <el-card> -->
+          <!-- 布局路由 -->
+          <!-- KeepAlive 不会用 -->
+          <!-- <KeepAlive> -->
+          <div class="right-main">
+            <el-card>
+              <router-view />
+            </el-card>
+          </div>
+          <!-- </KeepAlive> -->
 
-            <!-- </KeepAlive> -->
-
-          </el-card>
+          <!-- </el-card> -->
         </el-main>
       </el-container>
     </el-container>
@@ -97,7 +102,7 @@ export default {
       return this.collapse ? 'Expand' : 'Fold'
     },
     asideWidth() {
-      return this.collapse ? "80px" : "230px"
+      return this.collapse ? "65px" : "220px"
     },
 
   },
@@ -288,7 +293,7 @@ export default {
     background-color: #fff;
     //直接将计算属性的值拿过来
     width: v-bind(asideWidth);
-    // overflow: hidden;
+    overflow: hidden;
     transition: all 0.3s;
 
     .logo-box {
@@ -359,6 +364,28 @@ export default {
 
 :deep(.el-main) {
   --el-main-padding: 10px;
+}
+
+:deep(.demo-tabs) {
+  height: 40px;
+}
+
+:deep(.el-menu) {
+  border: none;
+}
+
+.el-aside {
+  // overflow: hidden;
+}
+
+.right-main {
+  background-color: #f2eeee80;
+  padding: 7px;
+}
+
+.menu-class {
+  height: 100%;
+  overflow: scroll;
 }
 </style>
 
