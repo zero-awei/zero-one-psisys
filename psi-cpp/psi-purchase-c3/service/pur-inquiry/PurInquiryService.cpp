@@ -34,13 +34,13 @@ string getTimeEleanor()
 {
 	time_t now = time(0);
 	struct tm t;
-#ifdef LINUX
-	//LINUX
-	localtime_r(&t, &now);
-#else
-	//windows
-	localtime_s(&t, &now);
-#endif
+//#ifdef LINUX
+//	//LINUX
+//	localtime_r(&t, &now);
+//#else
+//	//windows
+//	localtime_s(&t, &now);
+//#endif
 
 
 	// 将信息输出到字符串流
