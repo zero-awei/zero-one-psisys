@@ -235,3 +235,69 @@ int CgthckDAO::deleteEntryById(const string& billNo, const string& entryNo)
 	string sql = "DELETE FROM `stk_io_entry` WHERE `bill_no`=? AND `entry_no`=?";
 	return sqlSession->executeUpdate(sql, "%s%s", billNo, entryNo);
 }
+
+uint64_t CgthckDAO::importData(const CgthckDO& iobj)
+{
+	string sql = "INSERT INTO `stk_io` \
+				(`stock_io_type`, `has_rp`, `has_swell`, `supplier_id`, `customer_id, `invoice_type`, \
+				`op_dept`, `operator`, `handler`, `version`, `settle_amt`, `settled_amt, `invoiced_amt`, \
+				`is_effective`, `attachment`, `src_bill_id`, `subject`, `bill_stage`, `src_no`, `is_auto`, \
+				`remark`, `bpmi_instance_id`, `is_voided`, `bill_no`, `is_rubric`, `src_bill_type,` \
+				`create_time`, `effective_time`, `approver`, `update_by`, `sys_org_code`, `is_closed`, \
+				`approval_result_type`, `bill_date`, `create_by`, `approval_remark`) \
+				VALUES (?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?)";
+	uint64_t result = sqlSession->executeInsert(sql,
+					"%s%i%i%s%s%s\
+					%s%s%s%i%d%d%\
+					d%i%s%s%s%s\
+					%s%i%s%s%i%s\
+					%i%s%s%s%s%\
+					%s%i%s%s%s%s",
+					iobj.getStockIoType(), iobj.getHasRp(), iobj.getHasSwell(), iobj.getSupplierId(), iobj.getCustomerId(), iobj.getInvoiceType(), 
+					iobj.getOpDept(), iobj.getOperator1(), iobj.getHandler(), iobj.getVersion(), iobj.getSettleAmt(), iobj.getSettledAmt(), 
+					iobj.getInvoicedAmt(), iobj.getIsEffective(), iobj.getAttachment(), iobj.getSrcBillId(), iobj.getSubject(), iobj.getBillStage(), 
+					iobj.getSrcNo(), iobj.getIsAuto(), iobj.getRemark(), iobj.getBpmiInstanceId(), iobj.getIsVoided(), iobj.getBillNo(), 
+					iobj.getIsRubric(), iobj.getSrcBillType(), iobj.getCreateTime(), iobj.getEffectiveTime(), iobj.getApprover(), iobj.getUpdateBy(), 
+					iobj.getSysOrgCode(), iobj.getIsClosed(), iobj.getApprovalResultType(), iobj.getBillDate(), iobj.getCreateBy(), iobj.getApprovalRemark());
+	return result;
+}
+
+uint64_t CgthckDAO::importData(const CgthckEntryDO& iobj)
+{
+	string sql = "INSERT INTO `stk_io_entry` \
+				(`material_id`, `batch_no`, `warehouse_id`, `stock_io_direction`, `supplier_id`, `unit_id`, \
+				`swell_qty`, `qty`, `expense`, `cost`, `settle_qty`, `tax_rate`, \
+				`price`, `discount_rate`, `tax`, `settle_amt`, `invoiced_qty`, `invoiced_amt`, \
+				`custom1`, `src_no`, `entry_no`, `custom2`, `src_entry_id`, `src_bill_type`, \
+				`remark`, `bill_no`, `mid`) \
+				VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?, ?, ?, ?, \
+				?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	uint64_t result = sqlSession->executeInsert(sql,
+		"%s%s%s%s%s%s\
+					%d%d%d%d%d%d\
+					%d%d%d%d%d%d\
+					%s%s%s%s%s%s\
+					%s%s%s",
+					iobj.getMaterialId(), iobj.getBatchNo(), iobj.getWarehouseId(), iobj.getStockIoDirection(), iobj.getSupplierId(), iobj.getUnitId(),
+					iobj.getSwellQty(), iobj.getQty(), iobj.getExpense(), iobj.getCost(), iobj.getSettleQty(), iobj.getTaxRate(),
+					iobj.getPrice(), iobj.getDiscountRate(), iobj.getTax(), iobj.getSettleAmt(), iobj.getInvoicedQty(), iobj.getInvoicedAmt(),
+					iobj.getCustom1(), iobj.getSrcNo(), iobj.getEntryNo(), iobj.getCustom2(), iobj.getSrcEntryId(), iobj.getSrcBillType(),
+					iobj.getRemark(), iobj.getBillNo(), iobj.getMid());
+	return result;
+}
+
+list<CgthckDO> CgthckDAO::exportData(const CgthckDO& iobj)
+{
+	return list<CgthckDO>();
+}
+
+list<CgthckEntryDO> CgthckDAO::exportData(const CgthckEntryDO& iobj)
+{
+	return list<CgthckEntryDO>();
+}

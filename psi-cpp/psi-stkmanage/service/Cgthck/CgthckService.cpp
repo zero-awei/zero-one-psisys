@@ -469,88 +469,168 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
     {
         for (int i = 1; i < data.size(); i++)
         {
-            CgthckDO tmp_do;
+            CgthckDO tmpDo;
             int j = 0;
-            auto tmp_data = data[i];
+            auto tmpData = data[i];
             // 出入库类型
-            tmp_do.setStockIoType(tmp_data[j++]);
+            tmpDo.setStockIoType(tmpData[j++]);
             // 是否有往来
-            tmp_do.setHasRp(stoi(tmp_data[j++]));
+            tmpDo.setHasRp(stoi(tmpData[j++]));
             // 是否有涨吨
-            tmp_do.setHasSwell(stoi(tmp_data[j++]));
+            tmpDo.setHasSwell(stoi(tmpData[j++]));
             // 供应商
-            tmp_do.setSupplierId(tmp_data[j++]);
+            tmpDo.setSupplierId(tmpData[j++]);
             // 客户
-            tmp_do.setCustomerId(tmp_data[j++]);
+            tmpDo.setCustomerId(tmpData[j++]);
             // 发票类型
-            tmp_do.setInvoiceType(tmp_data[j++]);
+            tmpDo.setInvoiceType(tmpData[j++]);
             // 业务部门
-            tmp_do.setOpDept(tmp_data[j++]);
+            tmpDo.setOpDept(tmpData[j++]);
             // 业务员
-            tmp_do.setOperator1(tmp_data[j++]);
+            tmpDo.setOperator1(tmpData[j++]);
             // 出入库经办
-            tmp_do.setHandler(tmp_data[j++]);
+            tmpDo.setHandler(tmpData[j++]);
             // 成本
-            tmp_do.setCost(stod(tmp_data[j++]));
+            tmpDo.setCost(stod(tmpData[j++]));
             // 结算金额
-            tmp_do.setSettleAmt(stod(tmp_data[j++]));
+            tmpDo.setSettleAmt(stod(tmpData[j++]));
             // 已结算金额
-            tmp_do.setSettledAmt(stod(tmp_data[j++]));
+            tmpDo.setSettledAmt(stod(tmpData[j++]));
             // 已开票金额
-            tmp_do.setInvoicedAmt(stod(tmp_data[j++]));
+            tmpDo.setInvoicedAmt(stod(tmpData[j++]));
             // 是否生效
-            tmp_do.setIsEffective(stod(tmp_data[j++]));
+            tmpDo.setIsEffective(stod(tmpData[j++]));
             // 附件
-            tmp_do.setAttachment(tmp_data[j++]);
+            tmpDo.setAttachment(tmpData[j++]);
             // 源单id
-            tmp_do.setSrcBillId(tmp_data[j++]);
+            tmpDo.setSrcBillId(tmpData[j++]);
             // 单据主题
-            tmp_do.setSubject(tmp_data[j++]);
+            tmpDo.setSubject(tmpData[j++]);
             // 单据阶段
-            tmp_do.setBillStage(tmp_data[j++]);
+            tmpDo.setBillStage(tmpData[j++]);
             // 源单号
-            tmp_do.setSrcNo(tmp_data[j++]);
+            tmpDo.setSrcNo(tmpData[j++]);
             // 是否自动生成
-            tmp_do.setIsAuto(stoi(tmp_data[j++]));
+            tmpDo.setIsAuto(stoi(tmpData[j++]));
             // 备注
-            tmp_do.setRemark(tmp_data[j++]);
+            tmpDo.setRemark(tmpData[j++]);
             // 审批实例id
-            tmp_do.setBpmiInstanceId(tmp_data[j++]);
+            tmpDo.setBpmiInstanceId(tmpData[j++]);
             // 已作废
-            tmp_do.setIsVoided(stoi(tmp_data[j++]));
+            tmpDo.setIsVoided(stoi(tmpData[j++]));
             // 单据编号
-            tmp_do.setBillNo(tmp_data[j++]);
+            tmpDo.setBillNo(tmpData[j++]);
             // 是否红字
-            tmp_do.setIsRubric(stoi(tmp_data[j++]));
+            tmpDo.setIsRubric(stoi(tmpData[j++]));
             // 源单类型
-            tmp_do.setSrcBillType(tmp_data[j++]);
+            tmpDo.setSrcBillType(tmpData[j++]);
             // 制单时间
-            tmp_do.setCreateTime(tmp_data[j++]);
+            tmpDo.setCreateTime(tmpData[j++]);
             // 生效时间
-            tmp_do.setEffectiveTime(tmp_data[j++]);
+            tmpDo.setEffectiveTime(tmpData[j++]);
             // 核批人
-            tmp_do.setApprover(tmp_data[j++]);
+            tmpDo.setApprover(tmpData[j++]);
             // 修改人
-            tmp_do.setUpdateBy(tmp_data[j++]);
+            tmpDo.setUpdateBy(tmpData[j++]);
             // 制单部门
-            tmp_do.setSysOrgCode(tmp_data[j++]);
+            tmpDo.setSysOrgCode(tmpData[j++]);
             // 已关闭
-            tmp_do.setIsClosed(stoi(tmp_data[j++]));
+            tmpDo.setIsClosed(stoi(tmpData[j++]));
             // 核批结合类型
-            tmp_do.setApprovalResultType(tmp_data[j++]);
+            tmpDo.setApprovalResultType(tmpData[j++]);
             // 单据日期
-            tmp_do.setBillDate(tmp_data[j++]);
+            tmpDo.setBillDate(tmpData[j++]);
             // 制单人
-            tmp_do.setCreateBy(tmp_data[j++]);
+            tmpDo.setCreateBy(tmpData[j++]);
             // 核批意见
-            tmp_do.setApprovalRemark(tmp_data[j++]);
+            tmpDo.setApprovalRemark(tmpData[j++]);
+
+            //
+            cgthckDo.push_back(tmpDo);
         }
     }
-    
-    return 0;
+    list<CgthckEntryDO> cgthckEntryDo;
+    for (int i = 1; i < entryData.size(); i++)
+    {
+        CgthckEntryDO tmpEntryDo;
+        auto tmpData = entryData[i];
+        int j = 0;
+        // 物料
+        tmpEntryDo.setMaterialId(tmpData[j++]);
+        // 批次号
+        tmpEntryDo.setBatchNo(tmpData[j++]);
+        // 仓库
+        tmpEntryDo.setWarehouseId(tmpData[j++]);
+        // 出入方向
+        tmpEntryDo.setStockIoDirection(tmpData[j++]);
+        // 供应商
+        tmpEntryDo.setSupplierId(tmpData[j++]);
+        // 计量单位
+        tmpEntryDo.setUnitId(tmpData[j++]);
+        // 涨吨数量
+        tmpEntryDo.setSwellQty(stod(tmpData[j++]));
+        // 数量
+        tmpEntryDo.setQty(stod(tmpData[j++]));
+        // 计入成本数量
+        tmpEntryDo.setExpense(stod(tmpData[j++]));
+        // 成本
+        tmpEntryDo.setCost(stod(tmpData[j++]));
+        // 结算数量
+        tmpEntryDo.setSettleQty(stod(tmpData[j++]));
+        // 税率%
+        tmpEntryDo.setTaxRate(stod(tmpData[j++]));
+        // 含税单价
+        tmpEntryDo.setPrice(stod(tmpData[j++]));
+        // 折扣率%
+        tmpEntryDo.setDiscountRate(stod(tmpData[j++]));
+        // 税额
+        tmpEntryDo.setTax(stod(tmpData[j++]));
+        // 结算金额
+        tmpEntryDo.setSettleAmt(stod(tmpData[j++]));
+        // 已开票数量
+        tmpEntryDo.setInvoicedQty(stod(tmpData[j++]));
+        // 已开票金额
+        tmpEntryDo.setInvoicedQty(stod(tmpData[j++]));
+        // 自定义1
+        tmpEntryDo.setCustom1(tmpData[j++]);
+        // 源点分录号
+        tmpEntryDo.setSrcNo(tmpData[j++]);
+        // 分录号
+        tmpEntryDo.setEntryNo(tmpData[j++]);
+        // 自定义2
+        tmpEntryDo.setCustom2(tmpData[j++]);
+        // 源单分录id
+        tmpEntryDo.setSrcEntryId(tmpData[j++]);
+        // 源单类型
+        tmpEntryDo.setSrcBillType(tmpData[j++]);
+        // 备注
+        tmpEntryDo.setRemark(tmpData[j++]);
+        // 单据编号
+        tmpEntryDo.setBillNo(tmpData[j++]);
+        // 源单id
+        tmpEntryDo.setSrcBillId(tmpData[j++]);
+
+        //
+        cgthckEntryDo.push_back(tmpEntryDo);
+    }
+    // 处理list<CgthckDO>
+    uint64_t result = 0;
+    for (auto& sub : cgthckDo)
+    {
+        CgthckDAO dao;
+        result += dao.importData(sub);
+    }
+    // 处理list<CgthckEntryDO>
+    for (auto& sub : cgthckEntryDo)
+    {
+        CgthckDAO dao;
+        result += dao.importData(sub);
+    }
+    return result;
 }
 
 int CgthckService::exportData(const ExportCgthckFileDTO& dto)
 {
+    //
     return 0;
 }

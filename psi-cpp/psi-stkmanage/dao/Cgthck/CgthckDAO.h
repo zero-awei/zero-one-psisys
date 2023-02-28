@@ -9,11 +9,6 @@
 #include "../../service/Cgthck/CgthckMapper.h"
 #include "../lib-common/include/SnowFlake.h"
 
-constexpr auto DATABASE1 = "stk_io";
-constexpr auto DATABASE2 = "stk_io_entry";
-//using CgthckDO = StkIoDO;
-//using CgthckEntryDO = StkIoEntryDO;
-
 class CgthckDAO : public BaseDAO
 {
 public:
@@ -42,6 +37,13 @@ public:
 	// 删除通过单号明细
 	int deleteEntryById(const string& billNo);
 	int deleteEntryById(const string& billNo, const string& entryNo);
+	// 导入
+	uint64_t importData(const CgthckDO& iobj);
+	uint64_t importData(const CgthckEntryDO& iobj);
+	// 导出
+	list< CgthckDO> exportData(const CgthckDO& iobj);
+	list< CgthckEntryDO> exportData(const CgthckEntryDO& iobj);
+
 };
 
 #endif // !_CGTHCK_DAO_
