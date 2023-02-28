@@ -23,6 +23,14 @@ import { handleQueryInvoiceType } from './api/public.js'
 import { handleQueryBillStage } from './api/public.js'
 import { handleQueryPurchaseType } from './api/public.js'
 import { handleQueryTaxType } from './api/public.js'
+import { handleQueryTaxScaleType } from './api/public.js'
+import { handleQueryInvoiceMethodType } from './api/public.js'
+import { handleQueryTransportMethod } from './api/public.js'
+import { handleQuerySettleMethod } from './api/public.js'
+import { handleQueryCurrencyType } from './api/public.js'
+import { handleQueryDeliveryType } from './api/public.js'
+import { handleQueryWarehouse } from './api/public.js'
+
 import { handleQuery } from './api/addressbook.js'
 
 function handle() {
@@ -35,6 +43,14 @@ function handle() {
   // handleQueryBillStage()
   // handleQueryPurchaseType()
   handleQueryTaxType()
+
+  // handleQueryTaxScaleType()
+  // handleQueryInvoiceMethodType()
+  // handleQueryTransportMethod()
+  // handleQuerySettleMethod()
+  // handleQueryCurrencyType()
+  // handleQueryDeliveryType()
+  // handleQueryWarehouse()
 
   // handleQuery()
 
