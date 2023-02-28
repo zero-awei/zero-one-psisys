@@ -5,6 +5,7 @@
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/dto/bankAccountDTO/BankAccountDTO.h"
 #include "api/ApiHelper.h"
+#include "../arch-demo/domain/dto/IDDTO.h"
 
 /*
 * ÕË»§É¾³ý
@@ -14,9 +15,9 @@
 class DeleteAccountController
 {
 public:
-	CREATE_API_FUN_BODY(removeBankAccount, execRemoveBankAccount, BankAccountDTO);
+	CREATE_API_FUN_BODY(removeBankAccount, execRemoveBankAccount, StringID);
 private:
-	JsonVO<uint64_t> execRemoveBankAccount(const BankAccountDTO& dto);
+	JsonVO<std::string> execRemoveBankAccount(const StringID& id);
 };
 
 #endif // _DELETEACCOUNTCONTROLLER_H_

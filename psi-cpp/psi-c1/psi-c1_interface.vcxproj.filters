@@ -102,6 +102,15 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="dao\supplierDAO\dao-Supplier-satan\SupplierDAO.cpp" />
     <ClCompile Include="service\supplierService\service-supplier-satan\SupplierServiceSatan.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\ImportAccountDAO.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\AddAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\DeleteAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\ExportAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\ImportAccountService.cpp" />
+    <ClCompile Include="domain\service\bankAccountService\ModifyAccountService.cpp" />
+    <ClCompile Include="api\bankAccountController\ExportAccountController.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\BankAccountFunctionDAO.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\ExportAccountDAO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\publicInterfaceController\AreaController.h" />
@@ -333,5 +342,18 @@
     <ClInclude Include="dao\supplierDAO\dao-Supplier-satan\SupplierSpecificMapper.h" />
     <ClInclude Include="domain\do\SupplierDO-satan\SupplierDO.h" />
     <ClInclude Include="service\supplierService\service-supplier-satan\SupplierServiceSatan.h" />
+    <ClInclude Include="dao\bankAccountDAO\ImportAccountDAO.h" />
+    <ClInclude Include="domain\query\bankAccountQuery\ExportAccountQuery.h" />
+    <ClInclude Include="domain\service\bankAccountService\AddAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\DeleteAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\ExportAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\ImportAccountService.h" />
+    <ClInclude Include="domain\service\bankAccountService\ModifyAccountService.h" />
+    <ClInclude Include="dao\bankAccountDAO\BankAccountFunctionDAO.h" />
+    <ClInclude Include="dao\bankAccountDAO\ExportAccountDAO.h" />
+    <ClInclude Include="dao\bankAccountDAO\ExportAccountMapper.h" />
+    <ClInclude Include="domain\do\bankAccountDO\BankAccountFunctionDO.h" />
+    <ClInclude Include="domain\do\bankAccountDO\ExportAccountDO.h" />
+    <ClInclude Include="domain\do\bankAccountDO\ImportAccountDO.h" />
   </ItemGroup>
 </Project>

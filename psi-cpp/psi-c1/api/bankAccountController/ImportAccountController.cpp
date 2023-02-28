@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ImportAccountController.h"
+#include "domain/service/bankAccountService/ImportAccountService.h"
 
 /*
 * 账户信息导入
@@ -8,7 +9,15 @@
 */
 JsonVO<bool> ImportAccountController::execModifyAccountInfo(const FileDTO& dto)
 {
-	JsonVO <bool> res;
-	res.success(true);
+	JsonVO<bool> res;
+	ImportAccountService service;
+	uint64_t id = service.saveData(dto);
+	if (id > 0) {
+		res.success(id);
+	}
+	else
+	{
+		res.fail(id);
+	}
 	return res;
 }

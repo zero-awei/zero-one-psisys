@@ -14,9 +14,9 @@
 class EditAccountController
 {
 public:
-	CREATE_API_FUN_BODY(modifyBankAccount, execModifyBankAccount, BankAccountDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(modifyBankAccount, execModifyBankAccount, BankAccountDTO);
 private:
-	JsonVO<uint64_t> execModifyBankAccount(const BankAccountDTO& dto);
+	JsonVO<std::string> execModifyBankAccount(const BankAccountDTO& dto, const PayloadDTO& pdto);
 };
 
 #endif // _EDITACCOUNTCONTROLLER_H_
