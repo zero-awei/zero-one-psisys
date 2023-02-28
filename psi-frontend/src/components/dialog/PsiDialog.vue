@@ -2,27 +2,6 @@
   <div>
     <el-dialog v-model="visible" :title="attrs.title" :width="attrs.width ?? '30%'" :before-close="handleClose"
       class="my-dialog">
-      <!-- :fullscreen="attrs.fullscreen"
-<template #header="{ close, titleId, titleClass }">
-      <div class="my-header">
-        <h4 :id="titleId" :class="titleClass">{{ attrs.title }}</h4>
-        <div class="icon" style="margin-right: 20px">
-          <el-button circle @click="attrs.fullscreen = true">
-            <el-icon><FullScreen /></el-icon>
-          </el-button>
-          <el-button circle @click="close">
-            <el-icon><Close /></el-icon>
-          </el-button>
-           <el-icon><CircleCloseFilled /></el-icon>
-        </div>
-
-        <el-button type="danger" @click="close">
-          <el-icon class="el-icon--left" ><CircleCloseFilled /></el-icon>
-          Close
-        </el-button>
-      </div>
-    </template> -->
-      <!-- :before-close="handleClose" -->
       <slot></slot>
       <template #footer>
         <span class="dialog-footer">

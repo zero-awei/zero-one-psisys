@@ -1,7 +1,7 @@
 import Request from '../request'
 
 // 定义一个功能模块基础url，方便替换
-// const currBaseUrl = '/login/'
+const currBaseUrl = '/basic'
 
 /**
  * 1.供应商资金账户下拉列表
@@ -10,7 +10,11 @@ import Request from '../request'
  * @param fail 查询失败
  */
 export const queryBasBankAccount = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-bas-bank-account', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-bas-bank-account',
+    data
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -36,7 +40,7 @@ export const queryBasBankAccount = (data, success, fail) => {
  */
 
 export const queryInvoiceType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-invoice-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -62,7 +66,7 @@ export const queryInvoiceType = (data, success, fail) => {
  */
 
 export const queryBillStage = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-invoice-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -88,7 +92,7 @@ export const queryBillStage = (data, success, fail) => {
  */
 
 export const queryPurchaseType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-purchase-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-purchase-type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -114,7 +118,7 @@ export const queryPurchaseType = (data, success, fail) => {
  */
 
 export const queryTaxType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-tax-rate', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-tax-rate', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -140,7 +144,7 @@ export const queryTaxType = (data, success, fail) => {
  */
 
 export const queryTaxScaleType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-tax-scale', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-tax-scale', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -166,7 +170,7 @@ export const queryTaxScaleType = (data, success, fail) => {
  */
 
 export const queryInvoiceMethodType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-invoice-method', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-method', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -192,7 +196,11 @@ export const queryInvoiceMethodType = (data, success, fail) => {
  */
 
 export const queryTransportMethod = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-transport-method', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-transport-method',
+    data
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -218,7 +226,7 @@ export const queryTransportMethod = (data, success, fail) => {
  */
 
 export const querySettleMethod = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-settle-method', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-settle-method', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -244,7 +252,7 @@ export const querySettleMethod = (data, success, fail) => {
  */
 
 export const queryCurrencyType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-Currency-Type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-Currency-Type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -270,7 +278,7 @@ export const queryCurrencyType = (data, success, fail) => {
  */
 
 export const queryDeliveryType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-Delivery-Type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-Delivery-Type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -296,7 +304,7 @@ export const queryDeliveryType = (data, success, fail) => {
  */
 
 export const queryWarehouse = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-Warehouse', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-Warehouse', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -321,7 +329,7 @@ export const queryWarehouse = (data, success, fail) => {
  * @param fail 查询失败
  */
 export const queryArea = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/get-area', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-area', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -347,7 +355,7 @@ export const queryArea = (data, success, fail) => {
  */
 
 export const queryMaterialType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-material-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-material-type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -373,7 +381,7 @@ export const queryMaterialType = (data, success, fail) => {
  */
 
 export const queryPaymethodType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-paymethod-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-paymethod-type', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -399,7 +407,11 @@ export const queryPaymethodType = (data, success, fail) => {
  */
 
 export const queryDeliverymethodType = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-deliverymothod-type', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-deliverymothod-type',
+    data
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -425,7 +437,7 @@ export const queryDeliverymethodType = (data, success, fail) => {
  */
 
 export const querySuppliersName = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-suppliers-name', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-suppliers-name', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -451,7 +463,7 @@ export const querySuppliersName = (data, success, fail) => {
  */
 
 export const querySuppliersLevel = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/qurey-supplier-level', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/qurey-supplier-level', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -477,7 +489,11 @@ export const querySuppliersLevel = (data, success, fail) => {
  */
 
 export const querySupplierAdvancedCriteria = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/qurey-supplier-advanced_criteria', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/qurey-supplier-advanced_criteria',
+    data
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -531,7 +547,7 @@ export const queryDepart = (data, success, fail) => {
  * @param fail 查询失败
  */
 export const getUser = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/get-user', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-user', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -551,7 +567,7 @@ export const getUser = (data, success, fail) => {
 
 // 22.查询指定物料规格型号/单位
 export const getMaterial = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/get-material', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-material', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -571,7 +587,7 @@ export const getMaterial = (data, success, fail) => {
 
 // 23.业务部门结构（用于输入查询条件）
 export const getDepart = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/get-depart', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-depart', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -591,7 +607,11 @@ export const getDepart = (data, success, fail) => {
 
 // 24仓库树状结构列表
 export const queryBasWareHouseTreeList = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-bas-ware-house-tree-list', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-bas-ware-house-tree-list',
+    data
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -611,7 +631,11 @@ export const queryBasWareHouseTreeList = (data, success, fail) => {
 
 // 25 物料分类树状结构列表
 export const queryMaterialTreeList = (data, success, fail) => {
-  Request.requestForm(Request.GET, '/query-material-type-tree-list', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-material-type-tree-list',
+    data
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -631,7 +655,7 @@ export const queryMaterialTreeList = (data, success, fail) => {
 
 //26 请求新单据编号（根据新增类型生成新单据编号）
 export const createReceipt = (data, success, fail) => {
-  Request.requestForm(Request.PUT, '/create-receipt', data)
+  Request.requestForm(Request.PUT, currBaseUrl + '/create-receipt', data)
     .then((data) => {
       if (data.data) {
         // 执行成功回调

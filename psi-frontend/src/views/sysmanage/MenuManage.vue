@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:08
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-25 17:53:41
+ * @LastEditTime: 2023-02-28 11:08:38
  * @FilePath: \psi-frontend\src\views\sysmanage\MenuManage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,29 +13,36 @@
     <psi-form :items="items" :formData="formData" @query="handleQuery" @reset="handleReset">
     </psi-form>
     <!-- 表格 -->
-    <div style="margin-top:10px">
-      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
-        @selectionChange="selectionChange" @add="menuAddDialogVisible = true" @sizeChange="handleSizeChange"
-        @currentChange="handleCurrentChange" @prevClick="handlePrevClickChange" @nextClick="handleNextClickChange">
-        <template v-slot:labelText="slot">
-          <!-- {{ slot.data.type === 0 }} -->
-          <el-button v-if="slot.data.type === 0" type="primary" size="small">
+    <el-row style="margin-top:10px;margin-bottom:5px">
+      <el-button type="primary" @click="menuAddDialogVisible = true">新增</el-button>
+    </el-row>
+    <el-table :data="tableData" style="width: 100%" row-key="id" border lazy :load="load"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }" :height="400" :max-height="400">
+      <el-table-column fixed type="selection" width="50" align="center" />
+      <el-table-column fixed type="index" width="50" align="center" />
+      <el-table-column prop="name" label="菜单名称" sortablealign="center" />
+      <el-table-column prop="type" label="类型" align="center">
+        <template #default="scope">
+          <el-button v-if="scope.row.type === 0" type="primary" size="small">
             根目录
             <!-- {{ slot.data.type }} -->
           </el-button>
-          <el-button v-else-if="slot.data.type === 1" type="success" size="small">
+          <el-button v-else-if="scope.row.type === 1" type="success" size="small">
             一级菜单
           </el-button>
-          <el-button v-else-if="slot.data.type === 2" type="warning" size="small">
+          <el-button v-else-if="scope.row.type === 2" type="warning" size="small">
             二级菜单
           </el-button>
-          <el-button v-else="slot.data.type === 3" type="info" size="small">
+          <el-button v-else="scope.row.type === 3" type="info" size="small">
             三级菜单
           </el-button>
         </template>
-        <template v-slot:basicOperation="slot">
-          <!-- todo 有问题 -->
-          <!-- @click="popoverVisible = true"  :visible="popoverVisible"-->
+      </el-table-column>
+      <el-table-column prop="href" label="菜单url" sortable align="center" />
+      <el-table-column prop="permissionId" label="权限码" align="center" />
+      <el-table-column label="操作" :width="300" align="center">
+        <template #default="scope">
+          <!-- @click="handleEdit(scope.$index, scope.row) -->
           <el-popover placement="bottom" :width="300" trigger="click">
             <template #reference>
               <el-button style="margin-right: 16px">添加子目录</el-button>
@@ -51,16 +58,74 @@
                 <el-input v-model="addSubMenuData.permissionId" />
               </el-form-item>
             </el-form>
-            <el-button @click="handleAddSubMenu(slot.data)">确定</el-button>
+            <el-button @click="handleAddSubMenu(scope.row)">确定</el-button>
             <el-button @click="popoverVisible = false">取消</el-button>
           </el-popover>
           |
-          <el-button link type="primary" @click="editMenu(slot.data)">修改</el-button>
+          <el-button link type="primary" @click="editMenu(scope.row)">修改</el-button>
           |
-          <el-button link type="primary" @click="handleDeleteMenu(slot.data)">删除</el-button>
+          <el-button link type="primary" @click="handleDeleteMenu(scope.row)">删除</el-button>
+
         </template>
-      </psi-table>
+      </el-table-column>
+  </el-table>
+    <div class="demo-pagination-block">
+      <!-- <div class="demonstration">All combined</div> -->
+      <el-pagination v-model:current-page="pagination.currentPage" v-model:page-size="pagination.pageSize"
+      :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total"
+      @size-change="handleSizeChange" @current-change="handleCurrentChange" @prev-click="handlePrevClickChange"
+      @next-click="handleNextClickChange" />
+      <!--  @size-change="handleSizeChange"
+                                                      @current-change="handleCurrentChange" -->
     </div>
+    <!-- <div style="margin-top:10px"> -->
+    <!-- <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+                                    @selectionChange="selectionChange" @add="menuAddDialogVisible = true" @sizeChange="handleSizeChange"
+                                    @currentChange="handleCurrentChange" @prevClick="handlePrevClickChange" @nextClick="handleNextClickChange">
+                                    <template v-slot:labelText="slot"> -->
+  <!-- {{ slot.data.type === 0 }} -->
+  <!-- <el-button v-if="slot.data.type === 0" type="primary" size="small"> -->
+  <!-- 根目录 -->
+  <!-- {{ slot.data.type }} -->
+  <!-- </el-button> -->
+  <!-- <el-button v-else-if="slot.data.type === 1" type="success" size="small"> -->
+  <!-- 一级菜单 -->
+  <!-- </el-button>
+                                      <el-button v-else-if="slot.data.type === 2" type="warning" size="small">
+                                        二级菜单
+                                      </el-button>
+          <el-button v-else="slot.data.type === 3" type="info" size="small">
+            三级菜单
+          </el-button>
+        </template>
+        <template v-slot:basicOperation="slot"> -->
+  <!-- todo 有问题 -->
+  <!-- @click="popoverVisible = true"  :visible="popoverVisible"-->
+  <!-- <el-popover placement="bottom" :width="300" trigger="click">
+            <template #reference>
+              <el-button style="margin-right: 16px">添加子目录</el-button>
+            </template>
+            <el-form :model="addSubMenuData" label-position="right">
+              <el-form-item label="菜单名称">
+                <el-input v-model="addSubMenuData.name" />
+              </el-form-item>
+              <el-form-item label="url路径">
+                <el-input v-model="addSubMenuData.path" />
+              </el-form-item>
+              <el-form-item label="权限码">
+                <el-input v-model="addSubMenuData.permissionId" />
+              </el-form-item>
+            </el-form>
+            <el-button @click="handleAddSubMenu(slot.data)">确定</el-button>
+                                        <el-button @click="popoverVisible = false">取消</el-button>
+                                      </el-popover>
+                                      |
+                                      <el-button link type="primary" @click="editMenu(slot.data)">修改</el-button>
+                                      |
+                                      <el-button link type="primary" @click="handleDeleteMenu(slot.data)">删除</el-button>
+                                    </template>
+                                  </psi-table> -->
+    <!-- </div> -->
 
     <!-- 新增 对话框 -->
     <psi-dialog ref="menuAddDialog" v-model="menuAddDialogVisible" :attrs="menuAddDialogAttrs" @determine="handleAddMenu">
@@ -133,7 +198,7 @@ const tableState = reactive({
     {
       type: 'daterange',
       label: '菜单url',
-      prop: 'path',
+      prop: 'href',
       width: '120'
     },
     // TODO 权限码有问题
@@ -160,42 +225,35 @@ const tableState = reactive({
     border: true,
     maxHeight: '400',
     height: '400',
+    rowKey: 'id',//当 row 中包含 children 字段时，被视为树形数据。 渲染嵌套数据需要 prop 的 row-key(比如id)
+    defaultExpandAll: false,// 是否默认展开所有行，当 Table 包含展开行存在或者为树形表格时有效
+    lazy: true,
     headOperation: ['add', 'select']
   }
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)
 
 // 表格数据模拟
-let da = [{
-  "name": "根目录",
-  "type": 0,
-  "path": "/admin",
-  "parentId": '-1',
-  "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
-},
-{
-  "name": "一级菜单",
-  "type": 1,
-  "parentId": '0',
-  "path": "/one",
-  "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
-},
-{
-  "name": "二级菜单",
-  "type": 2,
-  "parentId": '2',
-  "path": "/two",
-  "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
-},
-{
-  "name": "三级菜单",
-  "type": 3,
-  "parentId": '3',
-  "path": "/three",
-  "permissionId": "f6817f48af4fb3af11b9e8bf182f618b",
-}
+let da = [
+  {
+    id: 1,
+    name: '系统管理',
+    icon: 'IconSetting',
+    type: 0,
+    hasChildren: true,
+    href: '/',
+  },
+  {
+
+    id: 2,
+    name: '库存管理',
+    icon: 'IconSetting',
+    type: 0,
+    href: '/',
+  }
 ]
 tableData.value = da
+
 
 // 添加子目录相关
 const addSubMenuData = reactive({
@@ -331,7 +389,7 @@ onMounted(() => {
 function getType() {
   // 父目录
   const temp = uStore.getParentMenus
-  console.log("获取父目录", temp)
+  // console.log("获取父目录", temp)
 
   temp.forEach((item) => {
     let temp = {}
@@ -392,8 +450,8 @@ function handleAddMenu() {
       pagination.pages = data.pages
     },
     // 4.执行失败给出提示信息
-    () => {
-      ElMessage.error('新增菜单出现错误')
+    (msg) => {
+      ElMessage.error(msg)
     }
   )
 
@@ -493,6 +551,59 @@ function handleEditMenu() {
   )
 }
 
+const load = (row, treeNode, resolve) => {
+  setTimeout(() => {
+    resolve([
+      {
+        id: 2,
+        name: '角色管理',
+        href: '/sysmanagement/rolemanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 3,
+        name: '菜单管理',
+        href: '/sysmanagement/menumanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 4,
+        name: '用户管理',
+        href: '/sysmanagement/usermanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 5,
+        name: '部门管理',
+        href: '/sysmanagement/sysposition',
+        icon: 'IconSetting',
+      },
+      {
+        id: 6,
+        name: '组织结构管理',
+        href: '/sysmanagement/orimanage',
+        icon: 'IconSetting',
+      },
+      {
+        id: 7,
+        name: '分类字典',
+        icon: 'IconTickets',
+        href: '/sysmanagement/Category',
+      },
+      {
+        id: 8,
+        name: '通讯录',
+        icon: 'IconTickets',
+        href: '/sysmanagement/addressbook',
+      }
+    ])
+  }, 1000)
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+.demo-pagination-block {
+  float: right;
+  margin: 10px 0;
+}
+</style>

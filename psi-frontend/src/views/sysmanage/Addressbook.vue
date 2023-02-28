@@ -2,21 +2,47 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-26 13:40:42
+ * @LastEditTime: 2023-02-27 19:59:46
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div>
     <!-- 通讯录 -->
-    <!-- 查询 -->
-    <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
+    <el-row gutter="20">
+      <el-col :span="6">
+        <el-card style="height:100vh">
+          <el-input placeholder="输入机构名称查询" v-modle="name">
+            <template #append>
+            <el-icon @click="handleQueryAddress">
+              <Search />
+              </el-icon>
+          </template>
+        </el-input>
+        <br/>
+        <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" />
+      </el-card>
+     
+      </el-col>
+      <el-col :span="18">
+        <el-card style="height:100vh">
+        <!-- 查询 -->
+        <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
 
-    <div style="margin-top:10px">
-      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
-      </psi-table>
-    </div>
+        <div style="margin-top:10px">
+          <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+            <template v-slot:basicOperation="slot">
+            <!-- 修改点2 -->
+            <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
 
+            <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+          </template>
+          
+          </psi-table>
+        </div>
+        </el-card>
+      </el-col>
+    </el-row>
 
   </div>
 </template>
@@ -25,6 +51,8 @@
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { query, queryAll } from './api/addressbook.js'
 
+
+const name = ref('')
 // 查询表单相关数据及方法
 const formState = reactive({
   // 查询表单每一项的配置
@@ -41,6 +69,13 @@ const formState = reactive({
       prop: 'workNo',
       placeholder: '请输入'
     },
+    {
+      type: 'slot',
+      label: '操作',
+      width: '120',
+      slotName: 'basicOperation',
+      fixed: 'right'
+    }
   ],
 
   // 配置数据绑定的字段
@@ -115,6 +150,36 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
+
+
+const handleNodeClick = (data) => {
+  console.log(data)
+}
+
+const data = [
+  {
+    label: '北京F公司',
+    children: [
+      {
+        label: '市场部',
+       
+      },
+       {
+        label: '研发部',
+
+      },
+       {
+        label: '财务部',
+
+      },
+    ],
+  },
+]
+
+const defaultProps = {
+  children: 'children',
+  label: 'label',
+}
 // --------------- 方法--------------
 // 点击查询按钮 
 function handleQuery() {
@@ -171,6 +236,9 @@ function handleQueryAll() {
   )
 }
 
+function handleQueryAddress() {
+
+}
 
 onMounted(() => {
   handleQueryAll()
