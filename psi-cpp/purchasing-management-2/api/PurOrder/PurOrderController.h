@@ -34,17 +34,6 @@
 class PurOrderController
 {
 public:
-	// 分页数据
-	CREATE_API_FUN_QUERY_PAYLOAD(listPurOrder, execListPurOrder, PurOrderQuery);
-	// 单个数据
-	CREATE_API_FUN_BODY(getPurOrder, execGetPurOrder, PurOrderDTO);
-	// 新增数据
-	CREATE_API_FUN_BODY(addPurOrder, execAddPurOrder, PurOrderDTO);
-	// 修改数据
-	CREATE_API_FUN_BODY(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
-	// 删除数据
-	CREATE_API_FUN_BODY(removePurOrder, execRemovePurOrder, PurOrderDTO);
-
 	// 删除采购订单
 	// 负责人：Andrew
 	CREATE_API_FUN_BODY(removeById, execRemoveById, StringID);
@@ -53,17 +42,6 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(statusPurOrder, execStatusPurOrder, PurOrderDTO);
 
 private:
-	// 请求分页数据
-	JsonVO<PageVO<PurOrderVO>> execListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
-	// 查询单个数据
-	JsonVO<PurOrderVO> execGetPurOrder(const PurOrderDTO& dto);
-	// 新增数据
-	JsonVO<string> execAddPurOrder(const PurOrderDTO& dto);
-	// 修改数据
-	JsonVO<string> execModifyPurOrder(const PurOrderDTO& dto);
-	//删除数据
-	JsonVO<string> execRemovePurOrder(const PurOrderDTO& dto);
-
 	// 删除采购订单
 	// 负责人：Andrew
 	JsonVO<string> execRemoveById(const StringID& id);

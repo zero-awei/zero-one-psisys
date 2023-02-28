@@ -196,6 +196,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
+    <ClInclude Include="domain\do\PurCompare\PurCompare.h" />
     <ClInclude Include="domain\do\PurCom\PurComDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
     <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h" />

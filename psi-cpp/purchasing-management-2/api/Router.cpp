@@ -21,25 +21,17 @@
 #include "api/Aspect.h"
 #include "domain/vo/JsonVO.h"
 
-#include "paymentBillImpl/PayApplyControlle.h"
-#include "payment/PaymentController.h"
-
-
-#define PURORDER
-#include "PurOrder/PurOrderController.h"
-#include "prepayment/PrePayController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "sample/SampleController.h"
 #include "user/DepartController.h"
 #include "uselib/ws/TestWs.h"
 #endif
 
+#define ANDREW
 #include "statis/StatisController.h"
-
-#define PURORDER
+#include "prepayment/PrePayController.h"
 #include "PurOrder/PurOrderController.h"
-#include "PueReq/PurReqController.h"
-#include "PurCom/PurComController.h"
+
 Router::Router(http_server* sever)
 {
 	this->server = sever;
@@ -87,52 +79,6 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	createAndrewRouter();
-	
-	////新增供应报价
-	//BIND_POST_ROUTER(server, "/post", &PurQuotController::addPurQuot, nullptr);
-	////修改供应报价
-	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::modPurQuot, nullptr);
-	////删除供应报价
-	//BIND_DEL_ROUTER(server, "/delete", &PurQuotController::delPurQuot, nullptr);
-	////修改供应报价状态（关闭、作弊、反关闭）
-	//BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
-
-	//createPayRouter();
-	
-#ifdef PURORDER
-	//createPurOrderRouter();
-	//createPurReqRouter();
-	//createPurComRouter();
-#endif
-
-	//// 分页数据
-	//BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
-	//// 单个数据
-	//BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
-	//// 新增数据
-	//BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
-	//// 修改数据
-	//BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-	//// 删除数据
-	//BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
-
-	//
-
-	////查询单据列表
-	//BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
-	////查询指定单据详细信息
-	//BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
-	////导出
-	//BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
-	////添加申请(保存/提交)
-	//BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
-	////修改申请(保存/提交/审核)
-	//BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
-	////删除申请
-	//BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-	////导入
-	//BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-	//createPaymentRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -186,60 +132,3 @@ void Router::createAndrewRouter() {
 	BIND_GET_ROUTER(server, "/export-bySupplier", &StatisController::exportStatisBySupplier, nullptr);
 	BIND_GET_ROUTER(server, "/export-byMaterial", &StatisController::exportStatisByMaterial, nullptr);
 }
-
-//void Router::createPayRouter() {
-//	//查询单据列表
-//	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
-//	//查询指定单据详细信息
-//	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
-//	//导出
-//	BIND_GET_ROUTER(server, "/pay-export", &PrePayController::queryPayExport, nullptr);
-//	//添加申请(保存/提交)
-//	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
-//	//修改申请(保存/提交/审核)
-//	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
-//	//删除申请
-//	BIND_DEL_ROUTER(server, "/delete-id", &PrePayController::removePayById, nullptr);
-//	//修改单据状态(关闭/作废/反关闭)
-//	BIND_POST_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
-//	//导入
-//	BIND_POST_ROUTER(server, "/pay-into", &PrePayController::modifyPayInto, nullptr);
-//}
-//
-//void Router::createPurOrderRouter()
-//{
-//	// 分页数据
-//	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::listPurOrder, nullptr);
-//	// 单个数据
-//	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
-//	// 新增数据
-//	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
-//	// 修改数据
-//	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
-//	// 删除数据
-//	BIND_DEL_ROUTER(server, "/purOrder/delete", &PurOrderController::removePurOrder, nullptr);
-//	// 删除ById
-//	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
-//}
-//
-//void Router::createPurReqRouter() {
-//	// 分页数据
-//	BIND_GET_ROUTER(server, "/purReq/list", &PurReqController::listPurReq, nullptr);
-//	// 单个数据
-//	BIND_GET_ROUTER(server, "/purReq/queryEntryByMainId", &PurReqController::getPurReq, nullptr);
-//}
-//
-//void Router::createPurComRouter() {
-//	// 分页数据
-//	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
-//	// 单个数据
-//	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
-//}
-//
-//void Router::createPaymentRouter()
-//{
-//	BIND_PUT_ROUTER(server, "/payment-change", &PaymentController::changePayment, nullptr);
-//	BIND_DEL_ROUTER(server, "/delete-by-id", &PaymentController::deleteById, nullptr);
-//	BIND_POST_ROUTER(server, "/payment-export", &PaymentController::exportPayment, nullptr);
-//	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
-//}

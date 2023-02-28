@@ -41,13 +41,6 @@ private:
 	//创建用户管理-部门管理路由
 	void createUserDepartRouter();
 #endif
-	//void createPaymentRouter();
-	//void createPayRouter();
-	//void createPurOrderRouter();
-	//void createPurReqRouter();
-	//void createPurComRouter();
-	//void createPayApplyRouter();
-
 	/**
 	* 负责人：Andrew
 	* 1. 采购订单-修改单据状态(关闭/反关闭/作废)
