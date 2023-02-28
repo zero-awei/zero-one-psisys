@@ -5,7 +5,6 @@
 
 
 #include "stdafx.h"
-#include<direct.h>
 #include "api/ApiHelper.h"
 #include "FastDfsClient.h"
 #include "../../domain/vo/PageVO.h"

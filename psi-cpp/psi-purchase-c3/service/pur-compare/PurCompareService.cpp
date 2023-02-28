@@ -25,14 +25,11 @@
 #include "SnowFlake.h"
 #include "SimpleDateTimeFormat.h"
 
-#include "PurCompareService.h"
 #include "../../dao/pur-compare/PurCompareDAO.h"
 #include "../../domain/do/pur-compare/AddPurComDO.h"
 #include "../../domain/do/pur-compare/ModPurComDO.h"
 #include "../../domain/do/pur-compare/DelPurComDO.h"
 #include "../../domain/do/pur-compare/PurComModBillStatusDO.h"
-#include "SnowFlake.h"
-#include "SimpleDateTimeFormat.h"
 
 
 
@@ -365,7 +362,7 @@ string PurCompareService::getPurComExport(const PurComExportQuery& query)
 	}
 	//上传到fastDfs并删除本地文件
 	std::string fieldName = client.uploadFile(fileName);
-	remove(fileName.c_str());
+	std::remove(fileName.c_str());
 	//返回下载地址
 	fieldName = "http://1.15.240.108:8888/" + fieldName;
 	return fieldName;

@@ -139,7 +139,7 @@ std::string execexport(vector<std::string> head, string sheetname, list<std::str
 	std::string fieldName = client.uploadFile(filename);
 	//删除本地文件 —— 待完善
 	//std::cout << "当前目录为" << std::filesystem::current_path() << endl;
-	//_rmdir(filename.c_str());
+	std::remove(filename.c_str());
 	//组装下载地址
 	fieldName = "http://1.15.240.108:8888/" + fieldName;
 
