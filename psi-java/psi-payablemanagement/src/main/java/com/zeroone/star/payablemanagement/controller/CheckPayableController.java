@@ -84,7 +84,8 @@ public class CheckPayableController implements CheckPayableApis {
     @ApiOperation("新增应付核销单")
     @PostMapping("/add/{action}")
     @Override
-    public JsonVO<String> addPayableCheck(@RequestBody CheckPayableDTO dto, @PathVariable String action) {
+    public JsonVO<String> addPayableCheck(@RequestBody CheckPayableDTO dto,
+        @ApiParam(value = "路径参数 submit-提交 save-保存", example = "submit") @PathVariable String action) {
         try {
             if ("submit".equals(action)) {
                 finPayableCheckService.submitAdd(dto);
@@ -101,7 +102,8 @@ public class CheckPayableController implements CheckPayableApis {
     @ApiOperation("修改应付核销单")
     @PutMapping("/modify/{action}")
     @Override
-    public JsonVO<String> modifyPayableCheck(@RequestBody CheckPayableDTO dto, @PathVariable String action) {
+    public JsonVO<String> modifyPayableCheck(@RequestBody CheckPayableDTO dto,
+        @ApiParam(value = "路径参数 submit-提交 save-保存", example = "submit") @PathVariable String action) {
         try {
             if ("submit".equals(action)) {
                 finPayableCheckService.submitModify(dto);
@@ -161,8 +163,8 @@ public class CheckPayableController implements CheckPayableApis {
     @PutMapping("/check")
     @Override
     public JsonVO<String> checkPayableCheck(@ApiParam("单据id") @RequestParam String id,
-        @ApiParam("核批结果 1-通过 2-不通过") @RequestParam String approvalResultType,
-        @ApiParam(value = "核批意见") @RequestParam(defaultValue = "") String approvalRemark) {
+        @ApiParam(value = "核批结果 1-通过 2-不通过", example = "1") @RequestParam String approvalResultType,
+        @ApiParam(value = "核批意见 可不填", example = "通过") @RequestParam(defaultValue = "") String approvalRemark) {
         try {
             boolean flag = finPayableCheckService.isCheckPass(id, approvalResultType, approvalRemark);
             return JsonVO.success(BooleanUtil.isTrue(flag) ? "审核通过！" : "审核不通过！");
