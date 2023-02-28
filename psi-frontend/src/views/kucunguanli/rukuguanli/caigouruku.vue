@@ -7,6 +7,7 @@
   </div>
   <div style="margin-top:10px">
     <!-- 表格数据 -->
+    <!-- 导入导出 采购入库详情？？？？？？ -->
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
       @add="handleAdd">
     </psi-table>
@@ -256,9 +257,9 @@ const pagination = reactive({
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
+
+
 // ------------ 方法 ------------
-
-
 // 7.5 普通查询
 function handleQuery(data) {
   // // // console.log('父组件接收')
@@ -298,6 +299,16 @@ function handleReset() {
   //查询表单重置，表格也要刷新
   // doGetTableList()
 }
+
+//新增
+function handleAdd() {
+//弹出采购入库新增组件
+}
+
+//点击页面初始化数据
+onMounted(() => {
+  // handleQueryAll()
+})
 </script>
 
 

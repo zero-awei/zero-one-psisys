@@ -1,33 +1,29 @@
 <template>
-<!-- 采购应付 -->
+  <!-- 采购退货出库 -->
   <div>
-    <!-- 查询 -->
+    <!-- 查询-->
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
       @reset="handleReset"></psi-form>
   </div>
-  <!-- 表格数据（导入导出） -->
+  <div style="margin-top:10px">
+    <!-- 表格数据 -->
+    <!-- 导入导出 采购退货出库详情？？？？？？ -->
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
-      @add="handleAdd" >
+      @add="handleAdd">
     </psi-table>
+  </div>
 
-    <!-- 弹出框 -->
-    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
-    </psi-dialog>
-    <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
-    </psi-dialog>
+  <!-- 弹出框 -->
+  <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
+  </psi-dialog>
+  <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
+  </psi-dialog> -->
 </template>
-
-<style scoped>
-.psi-table{
-  padding:0 15px;
-  margin-top:24px;
-}
-</style>
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
 // 引入方法
-
+import { } from './api/caigoutuihuochuku.js'
 // 引入日期格式化方法
 import { format } from '@/apis/date/index.js'
 
@@ -125,7 +121,8 @@ const formState = reactive({
         {
           label: '否',
           value: 1
-        }, {
+        },
+        {
           label: '是',
           value: 0
         }
@@ -145,13 +142,12 @@ const formState = reactive({
     supplierId: ''
   }
 })
-
 const { items, toggleItems, formData } = toRefs(formState)
-// 表格相关数据
-const tableState = reactive({
-  // 查询表单每一项的配置
+
+const tableStatus = reactive({
+  // table列配置
   tableItems: [
-     {
+    {
       label: '单据编号',
       prop: 'name',
       width: '160',
@@ -166,77 +162,92 @@ const tableState = reactive({
     {
       type: 'text',
       label: '单据日期',
-      prop: 'billDate',
-      width: '120'
+      prop: 'date',
+      width: '100'
+    },
+    {
+      type: 'text',
+      label: '单据主题',
+      prop: 'city',
+      width: '184'
+    },
+    {
+      type: 'text',
+      label: '源单号',
+      prop: 'address',
+      width: '160'
     },
     {
       type: 'text',
       label: '供应商',
-      prop: 'supplierIdDictText',
-      width: '120'
+      prop: 'zip',
+      width: '184'
     },
-    {
-      type: 'daterange',
-      label: '单据阶段',
-      prop: 'billStageDictText',
-      width: '120'
-    },
+    // tag?????????????????? 操作怎么写
     {
       type: 'text',
-      label: '已生效',
-      prop: 'isEffectiveDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '已关闭',
-      prop: 'isClosedDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '自动单据',
-      prop: 'isAutoDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '备注',
-      prop: 'remark',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '核批人',
-      prop: 'approverDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '制单人',
-      prop: 'createByDictText',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '修改时间',
-      prop: 'updateTime',
+      label: '操作',
+      prop: 'tag',
       width: '120'
     }
+    // {
+    //   type: 'slot',
+    //   label: '操作',
+    //   prop: 'operation',
+    //   slotName: 'operation'
+    // }
   ],
-
-  // 配置数据绑定的字段
-  tableData: [],
+  // table 数据
+  tableData: [
+    {
+      date: '2016-05-03',
+      name: 'Tom1',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Home'
+    },
+    {
+      date: '2016-05-02',
+      name: 'Tom2',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Office'
+    },
+    {
+      date: '2016-05-04',
+      name: 'Tom3',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Home'
+    },
+    {
+      date: '2016-05-01',
+      name: 'Tom4',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Office'
+    }
+  ],
+  // table 总体配置
   attributes: {
     selection: true, //是否多选框
     index: true, // 索引
-    border: true,
-    maxHeight: '400',
-    height: '400',
+    border: true, //表格边框
+    maxHeight: '400', // 表格最大高度
+    height: '400',    //表格高度
     headOperation: ['add', 'importData', 'exportData', 'select']
   }
 })
-const { tableItems, tableData, attributes } = toRefs(tableState)
+
+const { tableItems, tableData, attributes } = toRefs(tableStatus)
 
 // 分页相关配置
 const pagination = reactive({
@@ -248,19 +259,14 @@ const pagination = reactive({
 })
 
 
-
-
-
 // ------------ 方法 ------------
-
-
 // 7.5 普通查询
 function handleQuery(data) {
-  // console.log('父组件接收')
-  // console.log('params--', params.daterange)
-  // console.log('data.daterange[0]', data.daterange[0])
-  // console.log('data.daterange[1]', data.daterange[1])
-  // console.log('typeof', typeof data.daterange[1])
+  // // // console.log('父组件接收')
+  // // // console.log('params--', params.daterange)
+  // // console.log('data.daterange[0]', data.daterange[0])
+  // // console.log('data.daterange[1]', data.daterange[1])
+  // // console.log('typeof', typeof data.daterange[1])
   // 处理表单数据 主要是开始日期和结束日期
   let params = {}
   params.billNo = data.billNo
@@ -294,8 +300,21 @@ function handleReset() {
   // doGetTableList()
 }
 
-// 点击新增按钮触发方法
+//新增
 function handleAdd() {
-
+//弹出采购退货出库新增组件
 }
+
+//点击页面初始化数据
+onMounted(() => {
+  // handleQueryAll()
+})
 </script>
+
+
+<style scoped>
+.psi-table {
+  padding: 0 15px;
+  margin-top: 24px;
+}
+</style>
