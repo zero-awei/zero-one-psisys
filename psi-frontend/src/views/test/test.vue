@@ -31,6 +31,18 @@ import { handleQueryCurrencyType } from './api/public.js'
 import { handleQueryDeliveryType } from './api/public.js'
 import { handleQueryWarehouse } from './api/public.js'
 
+import { handleQueryMaterialType } from './api/public.js'
+import { handleQueryPaymethodType } from './api/public.js'
+import { handleQueryDeliverymethodType } from './api/public.js'
+import { handleQuerySuppliersName } from './api/public.js'
+import { handleQuerySuppliersLevel } from './api/public.js'
+import { handleQuerySupplierAdvancedCriteria } from './api/public.js'
+import { handleQueryDepart } from './api/public.js'
+// import { handleQuerySettleMethod } from './api/public.js'
+// import { handleQueryCurrencyType } from './api/public.js'
+// import { handleQueryDeliveryType } from './api/public.js'
+// import { handleQueryWarehouse } from './api/public.js'
+
 import { handleQuery } from './api/addressbook.js'
 
 function handle() {
@@ -42,8 +54,7 @@ function handle() {
   // handleQueryInvoiceType()
   // handleQueryBillStage()
   // handleQueryPurchaseType()
-  handleQueryTaxType()
-
+  // handleQueryTaxType()
   // handleQueryTaxScaleType()
   // handleQueryInvoiceMethodType()
   // handleQueryTransportMethod()
@@ -51,6 +62,13 @@ function handle() {
   // handleQueryCurrencyType()
   // handleQueryDeliveryType()
   // handleQueryWarehouse()
+  // handleQueryMaterialType()
+  // handleQueryPaymethodType()
+  // handleQueryDeliverymethodType()
+  // handleQuerySuppliersName()
+  // handleQuerySuppliersLevel()
+  // handleQuerySupplierAdvancedCriteria()
+  handleQueryDepart()
 
   // handleQuery()
 
