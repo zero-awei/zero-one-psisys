@@ -40,9 +40,9 @@ class DepotDTO : public FileDTO
 	// 助记名
 	CC_SYNTHESIZE(string, auxName, AuxName);
 	// 电话
-	CC_SYNTHESIZE(int, phone, Phone);
+	CC_SYNTHESIZE(string, phone, Phone);
 	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	CC_SYNTHESIZE(int, start, Start);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 	//// 创建时间
@@ -61,7 +61,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);
 		BIND_FROM_TO_NORMAL(j, t, auxName);
-		BIND_FROM_TO_I(j, t, phone);
+		BIND_FROM_TO_NORMAL(j, t, phone);
 		BIND_FROM_TO_I(j, t, start);
 		BIND_FROM_TO_NORMAL(j, t, remarks);
 		/*BIND_FROM_TO_NORMAL(j, t, creationTime);

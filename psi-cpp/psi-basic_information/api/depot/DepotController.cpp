@@ -134,18 +134,17 @@ JsonVO<bool> DepotController::execAddDepots(const DepotDTO& dto, const PayloadDT
             Dto.setName(row[0]);
             Dto.setCode(row[1]);
             Dto.setAuxName(row[2]);
-            // 将string转为int
-            int phone = 0;
-            istringstream ss(row[3]);
-            ss >> phone;
-            Dto.setPhone(phone);
-            Dto.setStart(row[4]);
+            Dto.setPhone(row[3]);
+            // string转int
+            auto str = row[4];
+            int i = atoi(str.c_str());
+            Dto.setStart(i);
             Dto.setRemarks(row[5]);
             vDto.push_back(Dto);
         }
     }
+    // 批量新增仓库
     DepotService service;
-    // 新增仓库
     for (auto Dto : vDto) 
     { 
         if (service.saveData(Dto, payload.getUsername())) 

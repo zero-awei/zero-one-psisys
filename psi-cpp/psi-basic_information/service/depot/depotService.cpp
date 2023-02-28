@@ -165,7 +165,7 @@ DepotDetailVO DepotService::listDetail(const OnlyValueQuery& query)
 	vo.setName(sub.getName());
 	vo.setAuxName(sub.getAuxName());
 	vo.setPhone(sub.getPhone());
-	vo.setStart(sub.getStart() + "0");
+	vo.setStart(sub.getStart());
 	vo.setRemarks(sub.getRemarks());
 	return vo;
 }
@@ -213,8 +213,8 @@ bool DepotService::getData(const DepotQuery& query, vector<vector<string>>& data
 		row.emplace_back(sub.getName());
 		row.emplace_back(sub.getCode());
 		row.emplace_back(sub.getAuxName());
-		row.emplace_back(to_string(sub.getPhone()));
-		row.emplace_back(sub.getStart());
+		row.emplace_back(sub.getPhone());
+		row.emplace_back(to_string(sub.getStart()));
 		row.emplace_back(sub.getRemarks());
 		row.emplace_back(sub.getCreationPeo());
 		row.emplace_back(sub.getCreationTime());
@@ -251,8 +251,8 @@ bool DepotService::getDataById(const OnlyValueQuery& query, vector<vector<string
 		row.emplace_back(sub.getName());
 		row.emplace_back(sub.getCode());
 		row.emplace_back(sub.getAuxName());
-		row.emplace_back(to_string(sub.getPhone()));
-		row.emplace_back(sub.getStart());
+		row.emplace_back(sub.getPhone());
+		row.emplace_back(to_string(sub.getStart()));
 		row.emplace_back(sub.getRemarks());
 		row.emplace_back(sub.getCreationPeo());
 		row.emplace_back(sub.getCreationTime());

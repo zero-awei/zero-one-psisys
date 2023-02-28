@@ -37,8 +37,8 @@ public:
 		data.setName(resultSet->getString(2));
 		data.setCode(resultSet->getString(3));
 		data.setAuxName(resultSet->getString(4));
-		data.setPhone(resultSet->getInt(5));
-		data.setStart(resultSet->getString(6));
+		data.setPhone(resultSet->getString(5));
+		data.setStart(resultSet->getInt(6));
 		data.setRemarks(resultSet->getString(7));
 		data.setCreationPeo(resultSet->getString(8));
 		data.setCreationTime(resultSet->getString(9));
