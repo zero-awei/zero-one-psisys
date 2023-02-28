@@ -8,7 +8,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,30 +24,12 @@
 #include "../../dao/pur-inquiry/PurInquiryDAO.h"
 #include "../../api/pur-inquiry/PurInquiryController.h"
 #include "SimpleDateTimeFormat.h"
-#include <time.h>
+
 //定义一个宏用来进行值从导入主的数据表进入DO中
 #define GET_VALUE1(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r1[i++])));
 //定义一个宏用来进行值从导入主的数据表进入DO中
 #define GET_VALUE2(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r2[i++])));
 
-string getTimeEleanor()
-{
-	time_t now = time(0);
-	struct tm t;
-//#ifdef LINUX
-//	//LINUX
-//	localtime_r(&t, &now);
-//#else
-//	//windows
-//	localtime_s(&t, &now);
-//#endif
-
-
-	// 将信息输出到字符串流
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
-}
 
 // 查询采购询价单列表
 PageVO<PurInquiryFindBillVO> PurInquiryService::listAll(const PurInquiryFindBillQuery& query)
@@ -182,8 +164,8 @@ PurInquiryFindDetailBillVO PurInquiryService::listPurInquiryFindDetailBill(const
 // 导入
 uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& payload)
 {
-//对一些值进行初始化
-	//excel对象
+	//对一些值进行初始化
+		//excel对象
 	ExcelComponent excel;
 	//雪花生成器
 	SnowFlake sf(1, 3);
@@ -207,13 +189,13 @@ uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& pa
 		string id = to_string(sf.nextId());
 		data.setId(id);
 		//获取时间
-		string time = getTimeEleanor();
+		SimpleDateTimeFormat time;
+		data.setCreate_time(time.format());
+		data.setUpdate_time(time.format());
 		//获取身份
 		data.setSys_org_code(payload.getDepartment());
 		data.setCreate_by(payload.getUsername());
-		data.setCreate_time(time);
 		data.setUpdate_by(payload.getUsername());
-		data.setUpdate_time(time);
 		//获取数据表的信息
 		GET_VALUE1(Bill_no, );
 		GET_VALUE1(Bill_date, );
@@ -292,7 +274,7 @@ uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& pa
 
 			//数据检验
 			//进行明细检验
-			if (data.getEntry_no() < 0|| data.getMaterial_id() == "" || data.getUnit_id() == ""
+			if (data.getEntry_no() < 0 || data.getMaterial_id() == "" || data.getUnit_id() == ""
 				|| data.getEntry_qty() < 0) {
 				return 0;
 			}

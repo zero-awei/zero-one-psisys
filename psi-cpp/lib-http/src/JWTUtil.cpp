@@ -111,6 +111,7 @@ std::string JWTUtil::generateTokenByRsa(PayloadDTO payloadDto, std::string rsaPr
 	obj.add_claim("authorities", payloadDto.getAuthorities());
 	obj.add_claim("user_name", payloadDto.getUsername());
 	obj.add_claim("id", payloadDto.getId());
+	obj.add_claim("department", payloadDto.getDepartment());
 	obj.add_claim("exp", std::chrono::system_clock::now() + std::chrono::seconds{ payloadDto.getExp() });
 	return obj.signature();
 }

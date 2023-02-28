@@ -5,6 +5,7 @@
 #include "api/Router.h"
 #include "ServerInfo.h"
 #include "StringUtil.h"
+#include "uselib/jwt/TestToken.h"
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
 #endif

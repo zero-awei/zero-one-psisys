@@ -464,7 +464,6 @@ uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, const PayloadDTO
 	data.setIsClosed(dto.getIsClosed());
 	data.setIsVoided(dto.getIsVoided());
 	// 创建部门，从payload获取
-	data.setSysOrgCode(payload.getUserDept());
 
 	// 创建人，从payload获取
 	data.setCreateBy(payload.getUsername());
