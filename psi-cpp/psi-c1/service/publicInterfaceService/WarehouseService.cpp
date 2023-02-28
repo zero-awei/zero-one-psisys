@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "WarehouseService.h"
-#include "../../dao/publicInterfaceDao/WarehouseDAO.h"
+#include "../../dao/publicInterfaceDAO/WarehouseDAO.h"
 
 list<WarehouseVO> WarehouseService::listAll()
 {

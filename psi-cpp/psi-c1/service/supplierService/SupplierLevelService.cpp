@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SupplierLevelService.h"
-#include "../../dao/supplierDao/SupplierLevelDAO.h"
+#include "../../dao/supplierDAO/SupplierLevelDAO.h"
 
 list<SupplierLevelVO> SupplierLevelService::listAll()
 {

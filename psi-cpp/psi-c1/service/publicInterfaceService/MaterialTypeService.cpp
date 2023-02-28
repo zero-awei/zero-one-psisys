@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "dao/publicInterfaceDao/MaterialTypeDAO.h"
+#include "dao/publicInterfaceDAO/MaterialTypeDAO.h"
 #include "MaterialTypeService.h"
 
 std::list<MaterialType> MaterialTypeService::listAll()

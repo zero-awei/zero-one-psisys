@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CurrencyTypeService.h"
-#include "../../dao/publicInterfaceDao/CurrencyTypeDAO.h"
+#include "../../dao/publicInterfaceDAO/CurrencyTypeDAO.h"
 
 list<CurrencyTypeVO> CurrencyTypeService::listAll()
 {

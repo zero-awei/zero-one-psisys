@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "BillStageService.h"
 
-#include "../../dao/publicInterfaceDao/BillStageDAO.h"
+#include "../../dao/publicInterfaceDAO/BillStageDAO.h"
 
 list<BillStageVO> BillStageService::listAll()
 {

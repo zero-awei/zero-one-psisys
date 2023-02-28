@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SupplierQueryCriteriaService.h"
-#include "../../dao/supplierDao/SupplierQueryCriteriaDAO.h"
+#include "../../dao/supplierDAO/SupplierQueryCriteriaDAO.h"
 
 list<SupplierQueryCriteriaVO> SupplierQueryCriteriaService::listAll()
 {

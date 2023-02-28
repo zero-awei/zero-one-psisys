@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "dao/supplierDao/SuppliersNameDAO.h"
+#include "dao/supplierDAO/SuppliersNameDAO.h"
 #include "SuppliersNameService.h"
 
 std::list<SuppliersName> SuppliersNameService::listAll()

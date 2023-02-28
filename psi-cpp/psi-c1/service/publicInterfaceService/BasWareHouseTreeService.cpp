@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BasWareHouseTreeService.h"
-#include"./dao/publicInterfaceDao/BasWareHouseTreeDAO.h"
+#include"./dao/publicInterfaceDAO/BasWareHouseTreeDAO.h"
 
 PageVO<BasWareHouseTreeListVO> BasWareHouseTreeService::listAll(const BasWareHouseItemQuery& query)
 {

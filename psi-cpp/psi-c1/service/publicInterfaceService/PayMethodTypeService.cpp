@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PayMethodTypeService.h"
-#include "domain/do/publicInterfaceDO/PayMethodTypeDO.h"
-#include "dao/publicInterfaceDao/PayMethodTypeDAO.h"
+#include "../../domain/do/publicInterfaceDO/PayMethodTypeDO.h"
+#include "../../dao/publicInterfaceDAO/PayMethodTypeDAO.h"
 
 std::list<PayMethodType> PayMethodTypeService::listAll()
 {

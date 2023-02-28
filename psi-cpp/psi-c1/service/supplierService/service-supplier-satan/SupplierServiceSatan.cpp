@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SupplierServiceSatan.h"
-#include "../../../dao/supplierDao/dao-Supplier-satan/SupplierDAO.h"
+#include "../../../dao/supplierDAO/dao-Supplier-satan/SupplierDAO.h"
 #include "../lib-common/include/SnowFlake.h"
 #include <sstream>
 #include "../lib-common/include/SimpleDateTimeFormat.h"
