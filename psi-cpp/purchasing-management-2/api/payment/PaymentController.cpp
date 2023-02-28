@@ -2,54 +2,54 @@
 #include "PaymentController.h"
 #include "../../service/Payment/PaymentService.h"
 #include "../lib-common/include/CharsetConvertHepler.h"
-//
-////修改单据状态
-//JsonVO<string>  PaymentController::execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload)
-//{
-//
-//	// 数据校验
-//	if (dto.getId().empty() || dto.getBill_no().empty()) // 如果id或者单据编号为空
-//		return JsonVO<string>({}, RS_PARAMS_INVALID);
-//	// 如果操作类型未知
-//	if (dto.getOpType() != dto.CLOSE && dto.getOpType() != dto.UNCLOSE && dto.getOpType() != dto.CANCEL)
-//		return JsonVO<string>({}, RS_PARAMS_INVALID);
-//
-//	PaymentService service;
-//	JsonVO<string> result;
-//	// 执行
-//	if (service.ChangePayStatus(dto, payload)) {
-//		result.success(dto.getId());
-//		switch (dto.getOpType())
-//		{
-//		case dto.CLOSE:
-//			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭成功"));
-//			break;
-//		case dto.UNCLOSE:
-//			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭成功"));
-//			break;
-//		case dto.CANCEL:
-//			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废成功"));
-//			break;
-//		}
-//	}
-//	else
-//	{
-//		result.fail(dto.getId());
-//		switch (dto.getOpType())
-//		{
-//		case dto.CLOSE:
-//			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭失败"));
-//			break;
-//		case dto.UNCLOSE:
-//			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭失败"));
-//			break;
-//		case dto.CANCEL:
-//			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废失败"));
-//			break;
-//		}
-//	}
-//	return result;
-//}
+
+//修改单据状态
+JsonVO<string>  PaymentController::execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload)
+{
+
+	// 数据校验
+	if (dto.getId().empty() || dto.getBill_no().empty()) // 如果id或者单据编号为空
+		return JsonVO<string>({}, RS_PARAMS_INVALID);
+	// 如果操作类型未知
+	if (dto.getOpType() != dto.CLOSE && dto.getOpType() != dto.UNCLOSE && dto.getOpType() != dto.CANCEL)
+		return JsonVO<string>({}, RS_PARAMS_INVALID);
+
+	PaymentService service;
+	JsonVO<string> result;
+	// 执行
+	if (service.ChangePayStatus(dto, payload)) {
+		result.success(dto.getId());
+		switch (dto.getOpType())
+		{
+		case dto.CLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭成功"));
+			break;
+		case dto.UNCLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭成功"));
+			break;
+		case dto.CANCEL:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废成功"));
+			break;
+		}
+	}
+	else
+	{
+		result.fail(dto.getId());
+		switch (dto.getOpType())
+		{
+		case dto.CLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("关闭失败"));
+			break;
+		case dto.UNCLOSE:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("反关闭失败"));
+			break;
+		case dto.CANCEL:
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("作废失败"));
+			break;
+		}
+	}
+	return result;
+}
 
 // 删除申请单
 JsonVO<string> PaymentController::execDePayment(const DePaymentDTO& dto)

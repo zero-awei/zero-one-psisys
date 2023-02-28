@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PaymentService.h"
 #include "../../dao/Payment/PaymentDAO.h"
-#include "../lib-common/include/SimpleDateTimeFormat.h"
 
 // 通过ID删除数据
 bool PaymentService::DePayment(const DePaymentDTO& dto)
@@ -19,14 +18,28 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 	}
 }
 
+string getTime()
+{
+	time_t now = time(0);
+	struct tm t;
+
+	localtime_s(&t, &now);
+
+	// 将信息输出到字符串流
+	stringstream ss;
+	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
+	return ss.str();
+}
 // 修改单据状态
 bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
 	FinPayReqDO data;
 
-	// 设置字段值
+	string time = getTime();
+
+	// 设置用户数据
 	data.setUpdate_by(payload.getUsername());
-	data.setUpdate_time(SimpleDateTimeFormat::format());
+	data.setUpdate_time(time);
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
 
@@ -44,18 +57,6 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadD
 }
 
 
-string getTime()
-{
-	time_t now = time(0);
-	struct tm t;
-
-	localtime_s(&t, &now);
-
-	// 将信息输出到字符串流
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
-}
 
 //定义一个宏用来进行值的修改
 #define MODIFY(name) data.set##name(dto.get##name());

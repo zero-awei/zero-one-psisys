@@ -34,8 +34,8 @@ int PaymentDAO::ChangeStatusClose(const FinPayReqDO & paydo)
 // 负责人：zuich 
 int PaymentDAO::ChangeStatusCancel(const FinPayReqDO& paydo)
 {
-	string sql = "UPDATE `pur_order` SET `update_by`=?, `update_time`=?, `is_voided`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%i%s%s%s", paydo.getIs_voided(), paydo.getUpdate_by(), paydo.getUpdate_time(), paydo.getId());
+	string sql = "UPDATE `fin_payment_req` SET `update_by`=?, `update_time`=?, `is_voided`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%i%s", paydo.getUpdate_by(), paydo.getUpdate_time(), paydo.getIs_voided(), paydo.getId());
 }
 
 // 删除申请单
