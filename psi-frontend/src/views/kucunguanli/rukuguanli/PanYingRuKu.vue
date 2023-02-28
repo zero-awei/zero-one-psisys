@@ -1,26 +1,26 @@
 <template>
-<!-- 采购应付 -->
+  <!-- 采购应付 -->
   <div>
     <!-- 查询 -->
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
       @reset="handleReset"></psi-form>
   </div>
   <!-- 表格数据（导入导出） -->
-    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
-      @add="handleAdd" >
-    </psi-table>
+  <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+    @add="handleAdd">
+  </psi-table>
 
-    <!-- 弹出框 -->
-    <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
+  <!-- 弹出框 -->
+  <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
     </psi-dialog>
     <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
-    </psi-dialog>
+    </psi-dialog> -->
 </template>
 
 <style scoped>
-.psi-table{
-  padding:0 15px;
-  margin-top:24px;
+.psi-table {
+  padding: 0 15px;
+  margin-top: 24px;
 }
 </style>
 
