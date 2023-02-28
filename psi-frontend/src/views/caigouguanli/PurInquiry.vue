@@ -127,7 +127,7 @@ const searchState = reactive({
     },
     {
       type: 'select',
-      label: '供应商',
+      label: '源单号',
       prop: 'supplier',
       placeholder: '请选择',
       options: [
@@ -276,25 +276,7 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: '采购类型',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '需求部门',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '需求人',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '需求日期',
+      label: '交货日期',
       prop: 'tag',
       width: '120'
     },
@@ -306,19 +288,25 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: '已订数量',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
       label: '参考金额',
       prop: 'tag',
       width: '120'
     },
     {
       type: 'text',
+      label: '报价单数',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
       label: '单据阶段',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '已订数量',
       prop: 'tag',
       width: '120'
     },
@@ -337,6 +325,36 @@ const status = reactive({
     {
       type: 'text',
       label: '已作废',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '交货地点',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '联系人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '联系电话',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '传真',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '电子邮件',
       prop: 'tag',
       width: '120'
     },
