@@ -1,5 +1,4 @@
-package com.zeroone.star.payablemanagement.service.impl.Other;
-
+package com.zeroone.star.payablemanagement.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import org.springframework.context.annotation.Bean;
