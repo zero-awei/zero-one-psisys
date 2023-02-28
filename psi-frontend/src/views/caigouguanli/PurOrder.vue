@@ -68,7 +68,8 @@ let dialogVisible = ref(false)
 const state = reactive({
   attrs: {
     title: '单据',
-    width: '80%'
+    width: '80%',
+    determine: true  //对话框的确定按钮生效
   }
 })
 const { attrs } = toRefs(state)

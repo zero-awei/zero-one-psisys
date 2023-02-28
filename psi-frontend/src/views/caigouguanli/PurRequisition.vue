@@ -93,9 +93,11 @@ let dialogVisible = ref(false)
 const state = reactive({
   attrs: {
     title: '单据',
-    width: '80%'
+    width: '80%',
+    determine: true  //对话框的确定按钮生效
   }
 })
+
 const { attrs } = toRefs(state)
 
 const searchState = reactive({
@@ -183,7 +185,7 @@ const searchState = reactive({
     vaildate: 0,
     subject: '石化结款',
     supplier: 0,
-    num: 200
+    num: 200,
   }
 })
 // const dialogref = ref()
@@ -215,7 +217,7 @@ const footState = reactive({
   footFormData: {
     note: '',
     advice: '',
-    outcome: ''
+    outcome: '',
   }
 })
 const { dialogItems, dialogToggleItems, dialogFormData } = toRefs(searchState)
