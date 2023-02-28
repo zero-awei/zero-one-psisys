@@ -46,12 +46,12 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 	createDepotRouter();
 
-	
+
 #ifdef HTTP_SERVER_DEMO
-		//绑定首页页面
-		BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
+	//绑定首页页面
+	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
 		res.render_raw_view("./public/test.html");
-			}, nullptr);
+		}, nullptr);
 
 	//初始化一个文件上传接口示例
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
