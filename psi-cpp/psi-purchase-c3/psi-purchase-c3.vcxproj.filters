@@ -411,6 +411,9 @@
     <ClInclude Include="dao\pur-quot\PurQuotMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="uselib\jwt\TestToken.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -489,6 +492,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\pur-req\PurReqService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="uselib\jwt\TestToken.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
