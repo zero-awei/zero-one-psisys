@@ -55,6 +55,11 @@ public:
 		BIND_FROM_TO_I(j, t, isClose);
 		BIND_FROM_TO_I(j, t, isVoided);
 	}
+	PurReqFindBillQuery() {
+		isEffective = -1;
+			isClose = -1;
+			isVoided = -1;
+	}
 };
 #endif // !
 

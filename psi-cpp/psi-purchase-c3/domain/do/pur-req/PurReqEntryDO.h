@@ -84,4 +84,4 @@ public:
 		custom2 = "";
 	}
 };
-#endif
+#endif;

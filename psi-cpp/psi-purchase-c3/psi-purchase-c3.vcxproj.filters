@@ -369,12 +369,6 @@
     <ClInclude Include="dao\pur-req\PurReqEntryMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\pur-req\PurReqFindBillMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\pur-req\PurReqFindDetailBillMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="dao\pur-req\ReqMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -403,6 +397,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryExportVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-req\PurReqFindBillMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-req\PurReqFindDetailBillMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -91,6 +91,8 @@ std::list<PurReqDO>  PurReqDAO::selectByNo(const string& no)
 	return Bills;
 }
 
+
+
 // 添加申请(保存/提交) 插入总表数据
 uint64_t PurReqDAO::insert(const PurReqAdamDO& obj)
 {
