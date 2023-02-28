@@ -30,6 +30,7 @@ string getTime()
 	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
 	return ss.str();
 }
+
 // 修改单据状态
 bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
@@ -39,6 +40,7 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadD
 
 	// 设置用户数据
 	data.setUpdate_by(payload.getUsername());
+	data.setCreate_by(payload.getUsername());
 	data.setUpdate_time(time);
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
@@ -85,6 +87,7 @@ uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& pa
 	data.setOperator(payload.getUsername());
 	data.setCreate_time(time);
 	data.setUpdate_by(payload.getUsername());
+	data.setCreate_by(payload.getUsername());
 	data.setUpdate_time(time);
 	//存在默认值时的处理
 	MODIFY_DEFAULT(Src_bill_type);
