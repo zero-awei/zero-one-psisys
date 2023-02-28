@@ -63,8 +63,6 @@ private:
 	PayloadCode code;
 	//部门
 	std::string department;
-	//部门--人情
-	std::string userDept;
 public:
 	PayloadDTO();
 	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _department);
@@ -85,9 +83,6 @@ public:
 	std::string getDepartment() const { return department; }
 	void setDepartment(std::string val) { department = val; }
 
-
-	std::string getUserDept() const { return userDept; }
-	void setUserDept(std::string val) { userDept = val; }
 	// 绑定JSON转换方法
 	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, department);
 
