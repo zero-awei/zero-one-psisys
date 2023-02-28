@@ -1,21 +1,4 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/24 23:38:25
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
@@ -31,6 +14,9 @@
 #include "statis/StatisController.h"
 #include "prepayment/PrePayController.h"
 #include "PurOrder/PurOrderController.h"
+
+#define ZUICHU
+#include "payment/PaymentController.h"
 
 Router::Router(http_server* sever)
 {
@@ -79,6 +65,7 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	createAndrewRouter();
+	createPaymentRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -131,4 +118,14 @@ void Router::createAndrewRouter() {
 	BIND_GET_ROUTER(server, "/export-byOperator", &StatisController::exportStatisByOperator, nullptr);
 	BIND_GET_ROUTER(server, "/export-bySupplier", &StatisController::exportStatisBySupplier, nullptr);
 	BIND_GET_ROUTER(server, "/export-byMaterial", &StatisController::exportStatisByMaterial, nullptr);
+}
+
+void Router::createPaymentRouter()
+{
+	//修改单据状态
+	BIND_PUT_ROUTER(server, "/modify-payment-status", &PaymentController::modifyPayment, nullptr);
+	//删除单据
+	BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::deleteById, nullptr);
+	//添加单据
+	BIND_PUT_ROUTER(server, "/AppPayment", &PaymentController::AddPayment, nullptr);
 }

@@ -33,7 +33,7 @@
 
 /**
  * 解析启动参数
- * 注意：
+ * 注意： 
  * 参数中数据需要满足一定的格式，如：sp=8090、sn=feign-cpp-sample
  * 前缀与真实值之间使用=分隔
  */
@@ -43,8 +43,8 @@ bool getStartArg(int argc, char* argv[]) {
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
-	std::string dbName = "test";
-	std::string dbHost = "192.168.220.128";
+	std::string dbName = "zopsi_sys";
+	std::string dbHost = "192.168.108.8";
 	int dbPort = 3306;
 	int dbMax = 25;
 #ifdef USE_NACOS

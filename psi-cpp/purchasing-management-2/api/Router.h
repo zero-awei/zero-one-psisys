@@ -50,6 +50,13 @@ private:
 	* 备注：包含采购统计接口
 	*/
 	void createAndrewRouter();
+	/**
+	* 负责人：最初
+	* 1. 删除采购付款申请单
+	* 2. 修改单据状态(关闭/作废/反关闭)
+	* 3. 添加采购付款申请单(保存/提交)
+	*/
+	void createPaymentRouter();
 };
 
 #endif // !_ROUTER_

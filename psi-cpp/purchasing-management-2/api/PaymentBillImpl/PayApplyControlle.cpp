@@ -14,11 +14,11 @@ JsonVO<PaymentBillDetailVO> PayApplyControlle::execQueryPayDetailBill(const Paym
 }
 
 
-JsonVO<uint64_t> PayApplyControlle::execAddPayHandle(const AddPayApplyDTO& dto, const PayloadDTO& payload)
-{
-	JsonVO<uint64_t> result;
-	return result;
-}
+//JsonVO<uint64_t> PayApplyControlle::execAddPayHandle(const AddPayApplyDTO& dto, const PayloadDTO& payload)
+//{
+//	JsonVO<uint64_t> result;
+//	return result;
+//}
 
 
 JsonVO<uint64_t> PayApplyControlle::execModPayHandle(const ModPayApplyDTO& dto, const PayloadDTO& payload)
