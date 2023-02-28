@@ -106,23 +106,23 @@ JsonVO<uint64_t> PurQuotController::execPurQuotModBillStatus(const PurQuotModBil
 }
 
 
-
 //导出
-JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload)
+JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExportQuery& query, const PayloadDTO& payload)
 {
-	//构建一个测试VO
-	PurQuotExportVO vo;
-	//响应结果
-	return JsonVO<PurQuotExportVO>(vo, RS_SUCCESS);;
+	//暂未完成数据校验
+	PurQuotService service;
+	PurQuotExportVO result = service.listPurQuotExportVO(query);
+	std::cout << result.getFile_name() << std::endl;
+	return JsonVO<PurQuotExportVO>(result, RS_SUCCESS);
 }
 
 //导入
-JsonVO<PurQuotIntoVO> PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
+uint64_t PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 {
-	//构建一个测试VO
-	PurQuotIntoVO vo;
-	//响应结果
-	return JsonVO<PurQuotIntoVO>(vo, RS_SUCCESS);;
+	PurQuotService service;
+	uint64_t result = service.updatePurQuotInto(dto);
+
+	return result;
 }
 
 //查询单据列表

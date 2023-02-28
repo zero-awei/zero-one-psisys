@@ -9,6 +9,274 @@
 #include "../lib-common/include/SnowFlake.h"
 #include <cstdlib>
 #include <stdlib.h>
+#include "CharsetConvertHepler.h"
+#include "ExcelComponent.h"
+#include "FastDfsClient.h"
+//导入
+uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
+	//解析excel中的数据
+	ExcelComponent excel;
+	std::string file_name = dto.getFiles().front();
+	std::string sheet_name = CharsetConvertHepler::ansiToUtf8("供应报价单");
+	std::string entry_sheet_name = CharsetConvertHepler::ansiToUtf8("明细");
+	//将文件的数据转换成二维数组, 谨记:二维数组的第一行是header(文字), 不需要载入数据库
+	vector<vector<string>> data = excel.readIntoVector(file_name, sheet_name);
+	vector<vector<string>> entry_data = excel.readIntoVector(file_name, entry_sheet_name);
+
+	//将二维数组转换为DO模型
+	list<PurQuotDO> pur_quot_do;
+	if (data.size() > 1) {
+		for (int i = 1; i < data.size(); ++i) {
+			//str是一个字符串,是二维数组中的每一个元素
+			PurQuotDO tmp_do;
+			int j = 0;
+			auto tmp_data = data[i];
+			tmp_do.setSupplier_name(tmp_data[j++]);
+			tmp_do.setSupplier_id(tmp_data[j++]);
+			tmp_do.setPayment_method(tmp_data[j++]);
+			tmp_do.setDelivery_place(tmp_data[j++]);
+			tmp_do.setDelivery_time(tmp_data[j++]);
+			tmp_do.setContact(tmp_data[j++]);
+			tmp_do.setPhone(tmp_data[j++]);
+			tmp_do.setFax(tmp_data[j++]);
+			tmp_do.setEmail(tmp_data[j++]);
+			tmp_do.setQty(stod(tmp_data[j++]));
+			tmp_do.setAmt(stod(tmp_data[j++]));
+			tmp_do.setIs_effective(stoi(tmp_data[j++]));
+			tmp_do.setAttachment(tmp_data[j++]);
+			tmp_do.setSrc_bill_type(tmp_data[j++]);
+			tmp_do.setSubject(tmp_data[j++]);
+			tmp_do.setBill_stage(tmp_data[j++]);
+			tmp_do.setSrc_no(tmp_data[j++]);
+			tmp_do.setIs_auto(stoi(tmp_data[j++]));
+			tmp_do.setRemark(tmp_data[j++]);
+			tmp_do.setBpmi_instance_id(tmp_data[j++]);
+			tmp_do.setIs_voided(stoi(tmp_data[j++]));
+			tmp_do.setBill_no(tmp_data[j++]);
+			tmp_do.setIs_rubric(stoi(tmp_data[j++]));
+			tmp_do.setSrc_bill_type(tmp_data[j++]);
+			tmp_do.setCreate_time(tmp_data[j++]);
+			tmp_do.setEffective_time(tmp_data[j++]);
+			tmp_do.setApprover(tmp_data[j++]);
+			tmp_do.setUpdate_by(tmp_data[j++]);
+			tmp_do.setSys_org_code(tmp_data[j++]);
+			tmp_do.setIs_closed(stoi(tmp_data[j++]));
+			tmp_do.setApproval_result_type(tmp_data[j++]);
+			tmp_do.setBill_date(tmp_data[j++]);
+			tmp_do.setCreate_by(tmp_data[j++]);
+			tmp_do.setApproval_remark(tmp_data[j++]);
+			pur_quot_do.push_back(tmp_do);
+		}
+	}
+
+	list<PurQuotEntryDO> pur_quot_entry_do;
+	if (entry_data.size() > 1) {
+		for (int i = 1; i < entry_data.size(); ++i) {
+			//str是一个字符串,是二维数组中的每一个元素
+			PurQuotEntryDO tmp_entry_do;
+			int j = 0;
+			auto tmp_data = entry_data[i];
+			tmp_entry_do.setMaterial_id(tmp_data[j++]);
+			tmp_entry_do.setUnit_id(tmp_data[j++]);
+			tmp_entry_do.setQty(stoi(tmp_data[j++]));
+			tmp_entry_do.setTax_rate(stod(tmp_data[j++]));
+			tmp_entry_do.setPrice(stod(tmp_data[j++]));
+			tmp_entry_do.setDiscount_rate(stod(tmp_data[j++]));
+			tmp_entry_do.setAmt(stod(tmp_data[j++]));
+			tmp_entry_do.setCustom1(tmp_data[j++]);
+			tmp_entry_do.setSrc_no(tmp_data[j++]);
+			tmp_entry_do.setEntry_no(stoi(tmp_data[j++]));
+			tmp_entry_do.setCustom2(tmp_data[j++]);
+			tmp_entry_do.setSrc_entry_id(tmp_data[j++]);
+			tmp_entry_do.setSrc_bill_type(tmp_data[j++]);
+			tmp_entry_do.setRemark(tmp_data[j++]);
+			tmp_entry_do.setBill_no(tmp_data[j++]);
+			tmp_entry_do.setSrc_bill_id(tmp_data[j++]);
+			pur_quot_entry_do.push_back(tmp_entry_do);
+		}
+	}
+	//处理list<PurQuotDO>中的pur_quot_do;
+	uint64_t result = 0;
+	for (auto sub : pur_quot_do) {
+		PurQuotDAO dao;
+		result = dao.insertPurQuotInto(sub);
+	}
+	//处理list<PurQuotEntryDO>中的pur_quot_entry_do;
+	for (auto sub : pur_quot_entry_do) {
+		PurQuotDAO dao;
+		result = dao.insertPurQuotInto(sub);
+	}
+	return result;
+}
+
+//导出: 获取多个PurQuotExportVO对象
+PurQuotExportVO PurQuotService::listPurQuotExportVO(const PurQuotExportQuery& query) {
+	//创建查询对象
+	PurQuotDAO dao;
+	PurQuotDO pur_quot_do;
+	PurQuotEntryDO pur_quot_entry_do;
+	//设置sql语句的查询条件
+	pur_quot_do.setBill_no(query.getBill_no());
+	pur_quot_entry_do.setBill_no(query.getBill_no());
+	//返回正确的查询对象
+	list<PurQuotDO> list_do = dao.selectPurQuotExport(pur_quot_do);
+	list<PurQuotEntryDO> list_entry_do = dao.selectPurQuotEntryExport(pur_quot_entry_do);
+	//报表的抽象-->二维数组																			
+	vector<vector<std::string>> data;
+	vector<vector<std::string>> entry_data;
+	//表头, 用于填充报表的第一行数据
+	vector<string> header{
+		CharsetConvertHepler::ansiToUtf8("是否临时供应商"),
+		CharsetConvertHepler::ansiToUtf8("供应商名称"),
+		CharsetConvertHepler::ansiToUtf8("供应商"),
+		CharsetConvertHepler::ansiToUtf8("付款方式"),
+		CharsetConvertHepler::ansiToUtf8("交货地点"),
+		CharsetConvertHepler::ansiToUtf8("交货时间"),
+		CharsetConvertHepler::ansiToUtf8("联系人"),
+		CharsetConvertHepler::ansiToUtf8("联系电话"),
+		CharsetConvertHepler::ansiToUtf8("传真"),
+		CharsetConvertHepler::ansiToUtf8("电子邮件"),
+		CharsetConvertHepler::ansiToUtf8("数量"),
+		CharsetConvertHepler::ansiToUtf8("金额"),
+		CharsetConvertHepler::ansiToUtf8("是否生效"),
+		CharsetConvertHepler::ansiToUtf8("附件"),
+		CharsetConvertHepler::ansiToUtf8("源单id"),
+		CharsetConvertHepler::ansiToUtf8("单据主题"),
+		CharsetConvertHepler::ansiToUtf8("单据阶段"),
+		CharsetConvertHepler::ansiToUtf8("源单号"),
+		CharsetConvertHepler::ansiToUtf8("是否自动生成"),
+		CharsetConvertHepler::ansiToUtf8("备注"),
+		CharsetConvertHepler::ansiToUtf8("审批实例id"),
+		CharsetConvertHepler::ansiToUtf8("已作废"),
+		CharsetConvertHepler::ansiToUtf8("单据编号"),
+		CharsetConvertHepler::ansiToUtf8("是否红字"),
+		CharsetConvertHepler::ansiToUtf8("源单类型"),
+		CharsetConvertHepler::ansiToUtf8("制单时间"),
+		CharsetConvertHepler::ansiToUtf8("生效时间"),
+		CharsetConvertHepler::ansiToUtf8("核批人"),
+		CharsetConvertHepler::ansiToUtf8("修改人"),
+		CharsetConvertHepler::ansiToUtf8("制单部门"),
+		CharsetConvertHepler::ansiToUtf8("已关闭"),
+		CharsetConvertHepler::ansiToUtf8("核批结果类型"),
+		CharsetConvertHepler::ansiToUtf8("单据日期"),
+		CharsetConvertHepler::ansiToUtf8("制单人"),
+		CharsetConvertHepler::ansiToUtf8("核批意见"),
+	};
+	data.push_back(header);
+	vector<string> entry_header{
+		CharsetConvertHepler::ansiToUtf8("单据编号"),
+		CharsetConvertHepler::ansiToUtf8("物料"),
+		CharsetConvertHepler::ansiToUtf8("计量单位"),
+		CharsetConvertHepler::ansiToUtf8("数量"),
+		CharsetConvertHepler::ansiToUtf8("税率%"),
+		CharsetConvertHepler::ansiToUtf8("含税单价"),
+		CharsetConvertHepler::ansiToUtf8("折扣率%"),
+		CharsetConvertHepler::ansiToUtf8("含税金额"),
+		CharsetConvertHepler::ansiToUtf8("自定义1"),
+		CharsetConvertHepler::ansiToUtf8("源单分录号"),
+		CharsetConvertHepler::ansiToUtf8("分录号"),
+		CharsetConvertHepler::ansiToUtf8("自定义2"),
+		CharsetConvertHepler::ansiToUtf8("源单分录id"),
+		CharsetConvertHepler::ansiToUtf8("源单类型"),
+		CharsetConvertHepler::ansiToUtf8("备注"),
+		CharsetConvertHepler::ansiToUtf8("单据编号"),
+		CharsetConvertHepler::ansiToUtf8("源单id"),
+	};
+	entry_data.push_back(entry_header);
+	//如果查询对象不为空
+	if (!list_do.empty()) {
+		for (auto tmp_do : list_do) {
+			vector<string> sub{
+				to_string(tmp_do.getIs_temp_supplier()),
+				tmp_do.getSupplier_name(),
+				tmp_do.getSupplier_id(),
+				tmp_do.getPayment_method(),
+				tmp_do.getDelivery_place(),
+				tmp_do.getDelivery_time(),
+				tmp_do.getContact(),
+				tmp_do.getPhone(),
+				tmp_do.getFax(),
+				tmp_do.getEmail(),
+				to_string(tmp_do.getQty()),
+				to_string(tmp_do.getAmt()),
+				to_string(tmp_do.getIs_effective()),
+				tmp_do.getAttachment(),
+				tmp_do.getSrc_bill_type(),
+				tmp_do.getSubject(),
+				tmp_do.getBill_stage(),
+				tmp_do.getSrc_no(),
+				to_string(tmp_do.getIs_auto()),
+				tmp_do.getRemark(),
+				tmp_do.getBpmi_instance_id(),
+				to_string(tmp_do.getIs_voided()),
+				tmp_do.getBill_no(),
+				to_string(tmp_do.getIs_rubric()),
+				tmp_do.getSrc_bill_type(),
+				tmp_do.getCreate_time(),
+				tmp_do.getEffective_time(),
+				tmp_do.getApprover(),
+				tmp_do.getUpdate_by(),
+				tmp_do.getSys_org_code(),
+				to_string(tmp_do.getIs_closed()),
+				tmp_do.getApproval_result_type(),
+				tmp_do.getBill_date(),
+				tmp_do.getCreate_by(),
+				tmp_do.getApproval_remark()
+			};
+			data.push_back(sub);
+		}
+	}
+	if (!list_entry_do.empty()) {
+		for (auto tmp_entry_do : list_entry_do) {
+			vector<string> entry_sub{
+						tmp_entry_do.getBill_no(),
+						tmp_entry_do.getMaterial_id(),
+						tmp_entry_do.getUnit_id(),
+						to_string(tmp_entry_do.getQty()),
+						to_string(tmp_entry_do.getTax_rate()),
+						to_string(tmp_entry_do.getPrice()),
+						to_string(tmp_entry_do.getDiscount_rate()),
+						to_string(tmp_entry_do.getAmt()),
+						tmp_entry_do.getCustom1(),
+						tmp_entry_do.getSrc_no(),
+						to_string(tmp_entry_do.getEntry_no()),
+						tmp_entry_do.getCustom2(),
+						tmp_entry_do.getSrc_entry_id(),
+						tmp_entry_do.getSrc_bill_type(),
+						tmp_entry_do.getRemark(),
+						tmp_entry_do.getBill_no(),
+						tmp_entry_do.getSrc_bill_id(),
+			};
+			entry_data.push_back(entry_sub);
+		}
+	}
+	//定义保存数据位置和页签名称
+	std::string file_name = "./public/excel/c3_pur_quot.xlsx";
+	std::string sheet_name = CharsetConvertHepler::ansiToUtf8("供应报价单");
+	std::string entry_sheet_name = CharsetConvertHepler::ansiToUtf8("明细");
+
+	//保存到文件
+	ExcelComponent excel;
+	excel.writeVectorToFile(file_name, sheet_name, data);
+	excel.writeVectorToFile(file_name, entry_sheet_name, entry_data);
+
+
+	//定义fastdfs客户端对象
+#ifdef LINUX
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	FastDfsClient client("1.15.240.108");
+#endif
+	//将文件上传到fastDFS
+	std::string field_name = client.uploadFile(file_name);
+	//删除本地文件
+	std::remove(file_name.c_str());
+	//返回下载地址
+	field_name = "http://1.15.240.108:8888/" + field_name;
+	PurQuotExportVO result(field_name);
+	return result;
+}
+
 
 //获取多个PurQuotFindBillVO对象
 PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFindBillQuery& query) {

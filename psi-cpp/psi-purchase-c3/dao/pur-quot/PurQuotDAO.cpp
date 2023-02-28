@@ -7,6 +7,13 @@
 #include "PurQuotDividedListMapper.h"
 #include "PurQuotBaseMapper.h"
 #include "PurQuotDetailMapper.h"
+#include "PurQuotFindBillMapper.h"
+#include "PurQuotListMapper.h"
+#include "PurQuotDividedListMapper.h"
+#include "PurQuotBaseMapper.h"
+#include "PurQuotDetailMapper.h"
+#include "PurQuotMapper.h"
+#include "PurQuotEntryMapper.h"
 
 
 //和PurQuotDO相关的宏
@@ -46,6 +53,15 @@ sql << " AND bill_no=?"; \
 SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); 
 
 
+//导出相关的宏
+#define PUR_QUOT_EXPORT_PARSE(obj, sql) \
+SqlParams params;  \
+sql << " WHERE 1=1"; \
+if (!obj.getBill_no().empty()) { \
+	sql << " AND bill_no=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
+} 
+
 uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_quot";
@@ -61,7 +77,79 @@ uint64_t PurQuotDAO::count(const PurQuotEntryDO& iObj) {
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
+//导出, 此DO用于填充PurQuotVO
+list<PurQuotDO> PurQuotDAO::selectPurQuotExport(const PurQuotDO& obj) {
+	stringstream sql;
+	sql << "SELECT is_temp_supplier, supplier_name, supplier_id, payment_method, delivery_place, delivery_time, contact,\
+	phone, fax, email, qty, amt, is_effective, attachment, src_bill_type, subject, bill_stage, src_no, is_auto, remark,\
+	bpmi_instance_id, is_voided, bill_no, is_rubric, src_bill_type, create_time, effective_time, approver, update_by,\
+	sys_org_code, is_closed, approval_result_type, bill_date, create_by, approval_remark FROM pur_quot";
+	PUR_QUOT_EXPORT_PARSE(obj, sql);
+	PurQuotMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sqlStr, mapper, params);
+}
+//导出, 此DO用于填充PurQuotEntryVO
+list<PurQuotEntryDO> PurQuotDAO::selectPurQuotEntryExport(const PurQuotEntryDO& obj) {
 
+	stringstream sql;
+	sql << "	SELECT bill_no, material_id, unit_id, qty, tax_rate, price, discount_rate, amt,\
+		custom1, src_no, entry_no, custom2, src_entry_id, src_bill_type, remark, bill_no, src_bill_id FROM pur_quot_entry";
+	PUR_QUOT_EXPORT_PARSE(obj, sql);
+	PurQuotEntryMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurQuotEntryDO, PurQuotEntryMapper>(sqlStr, mapper, params);
+
+}
+
+//导入
+uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotDO& obj) {
+	string sql = "INSERT INTO `pur_quot` \
+		(`is_temp_supplier`, `supplier_name`, `supplier_id`, `payment_method`, `delivery_place`, \
+		`delivery_time`, `contact`,`phone`, `fax`, `email`,\
+		`qty`, `amt`, `is_effective`, `attachment`, `src_bill_type`,\
+		`subject`, `bill_stage`, `src_no`, `is_auto`, `remark`,\
+		`bpmi_instance_id`, `is_voided`, `bill_no`, `is_rubric`, `src_bill_type`,\
+		`create_time`, `effective_time`, `approver`, `update_by`,`sys_org_code`, \
+		`is_closed`, `approval_result_type`, `bill_date`, `create_by`, `approval_remark`) \
+		VALUES(?,?,?,?,?,\
+		?, ?, ?, ?, ?, \
+		?, ?, ?, ?, ?, \
+		?, ?, ?, ?, ?, \
+		?, ?, ?, ?, ?, \
+		?, ?, ?, ?, ?, \
+?, ?, ?, ?, ?)";
+	uint64_t result = sqlSession->executeInsert(sql,
+		"%i%s%s%s%s\
+		%s%s%s%s%s\
+		%d%d%i%s%s\
+		%s%s%s%i%s\
+		%s%i%s%i%s\
+		%s%s%s%s%s\
+		%i%s%s%s%s",
+		obj.getIs_temp_supplier(), obj.getSupplier_name(), obj.getSupplier_id(), obj.getPayment_method(), obj.getDelivery_place(),
+		obj.getDelivery_time(), obj.getContact(), obj.getPhone(), obj.getFax(), obj.getEmail(),
+		obj.getQty(), obj.getAmt(), obj.getIs_effective(), obj.getAttachment(), obj.getSrc_bill_type(),
+		obj.getSubject(), obj.getBill_stage(), obj.getSrc_no(), obj.getIs_auto(), obj.getRemark(),
+		obj.getBpmi_instance_id(), obj.getIs_voided(), obj.getBill_no(), obj.getIs_rubric(), obj.getSrc_bill_type(),
+		obj.getCreate_time(), obj.getEffective_time(), obj.getApprover(), obj.getUpdate_by(), obj.getSys_org_code(),
+		obj.getIs_closed(), obj.getApproval_result_type(), obj.getBill_date(), obj.getCreate_by(), obj.getApproval_remark());
+	return result;
+}
+
+//导入
+uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotEntryDO& obj) {
+
+	string sql = "INSERT INTO `pur_quot_entry (`bill_no`, `material_id`, `unit_id`, `qty`, `tax_rate`, `price`, `discount_rate`, `amt`,\
+		`custom1`, `src_no`, `entry_no`, `custom2`, `src_entry_id`, `src_bill_type`, `remark`, `src_bill_id`) \
+		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	uint64_t result = sqlSession->executeInsert(sql, "%s%s%s%d%d%d%d%d%s%s%i%s%s%s%s%s",
+		obj.getBill_no(), obj.getMaterial_id(), obj.getUnit_id(), obj.getQty(), obj.getTax_rate(), obj.getPrice(),
+		obj.getDiscount_rate(), obj.getAmt(), obj.getCustom1(), obj.getSrc_no(), obj.getEntry_no(), obj.getCustom2(), obj.getSrc_entry_id(),
+		obj.getSrc_bill_type(), obj.getRemark(), obj.getSrc_bill_id());
+	return result;
+
+}
 //查询单据列表
 list<PurQuotDO> PurQuotDAO::selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize) {
 	stringstream sql;

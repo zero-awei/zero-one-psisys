@@ -19,12 +19,21 @@ public:
 	//报价单分录列表(多个对象)
 	list<PurQuotEntryDO> selectPurQuotDividedList(const PurQuotEntryDO& obj);
 
-	//此DO用于填充BaseVO
+	//此DO用于填充PurQuotBaseVO
 	list<PurQuotDO> selectPurQuotBase(const PurQuotDO& obj);
-	//此DO用于填充DetailVO
+	//此DO用于填充PurQuotDetailVO
 	list<PurQuotEntryDO> selectPurQuotDetail(const PurQuotEntryDO& obj);
 
 
+	//此DO用于填充PurQuotVO
+	list<PurQuotDO> selectPurQuotExport(const PurQuotDO& obj);
+	//此DO用于填充PurQuotEntryVO
+	list<PurQuotEntryDO> selectPurQuotEntryExport(const PurQuotEntryDO& obj);
+
+	//导入
+	uint64_t insertPurQuotInto(const PurQuotDO& obj);
+	uint64_t insertPurQuotInto(const PurQuotEntryDO& obj);
+	
 	// 插入数据
 	uint64_t insert(const PurQuotNaiGuanDO& iObj);
 	// 修改数据

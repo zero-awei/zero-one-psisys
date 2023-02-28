@@ -83,9 +83,9 @@ private:
 	// 查询询价单分录列表
 	JsonVO<list<PurQuotDividedListVO>> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
 	//导出
-	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& dto, const PayloadDTO& payload);
+	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& query, const PayloadDTO& payload);
 	//导入
-	JsonVO<PurQuotIntoVO> execPurQuotInto(const PurQuotIntoDTO& dto);
+	uint64_t execPurQuotInto(const PurQuotIntoDTO& dto);
 
 };
 

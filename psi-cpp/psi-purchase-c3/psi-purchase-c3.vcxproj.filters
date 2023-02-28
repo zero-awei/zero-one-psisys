@@ -405,6 +405,12 @@
     <ClInclude Include="dao\pur-req\PurReqFindDetailBillMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\pur-quot\PurQuotEntryMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-quot\PurQuotMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">

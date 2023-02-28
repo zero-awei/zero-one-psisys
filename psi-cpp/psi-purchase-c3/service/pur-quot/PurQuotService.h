@@ -27,6 +27,31 @@
 #include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
 #include "../../domain/dto/pur-quot/PurQuotDetailDTO.h"
 #include "../lib-http/include/JWTUtil.h"
+//vo
+#include "../../domain/vo/pur-quot/PurQuotFindBillVO.h"
+#include "../../domain/vo/pur-quot/PurQuotListVO.h"
+#include "../../domain/vo/pur-quot/PurQuotDividedListVO.h"
+#include "../../domain/vo/pur-quot/PurQuotFindDetailBillVO.h"
+#include "../../domain/vo/pur-quot/PurQuotDetailVO.h"
+#include "../../domain/vo/pur-quot/PurQuotBaseVO.h"
+#include "../../domain/vo/pur-quot/PurQuotExportVO.h"
+
+//query
+#include "../../domain/query/pur-quot/PurQuotFindBillQuery.h"
+#include "../../domain/query/pur-quot/PurQuotListQuery.h"
+#include "../../domain/query/pur-quot/PurQuotDividedListQuery.h"
+#include "../../domain/query/pur-quot/PurQuotFindDetailBillQuery.h"
+#include "../../domain/query/pur-quot/PurQuotExportQuery.h"
+
+//dto
+#include "../../domain/dto/pur-quot/PurQuotIntoDTO.h"
+#include "../../domain/dto/pur-quot/AddPurQuotDTO.h"
+#include "../../domain/dto/pur-quot/ModPurQuotDTO.h"
+#include "../../domain/dto/pur-quot/DelPurQuotDTO.h"
+#include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
+#include "../../domain/dto/pur-quot/PurQuotDetailDTO.h"
+#include "../lib-http/include/JWTUtil.h"
+
 /**
  * 示例服务实现，演示基础的示例服务实现
  */
@@ -44,6 +69,10 @@ public:
 
 	PurQuotFindDetailBillVO getPurQuotFindDetailBillVO(const PurQuotFindDetailBillQuery& query);
 
+	//导出
+	PurQuotExportVO listPurQuotExportVO(const PurQuotExportQuery& query);
+	//导入
+	uint64_t updatePurQuotInto(const PurQuotIntoDTO& dto);
 
 	// 分页查询所有数据
 	//PageVO<SampleVO> listAll(const SampleQuery& query);
