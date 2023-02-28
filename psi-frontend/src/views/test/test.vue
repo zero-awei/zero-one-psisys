@@ -19,6 +19,10 @@
 // TODO 引入的方法需要改 import {Xxx} from ''
 import { handleAddMenu } from './api/menu.js'   // 引入 业务接口测试方法
 import { handleQueryBasBankAccount } from './api/public.js'  //引入公共接口测试方法
+import { handleQueryInvoiceType } from './api/public.js'
+import { handleQueryBillStage } from './api/public.js'
+import { handleQueryPurchaseType } from './api/public.js'
+import { handleQueryTaxType } from './api/public.js'
 import { handleQuery } from './api/addressbook.js'
 
 function handle() {
@@ -27,8 +31,12 @@ function handle() {
   // handleAddMenu()
   // // 测试公共接口
   // handleQueryBasBankAccount()
+  // handleQueryInvoiceType()
+  // handleQueryBillStage()
+  // handleQueryPurchaseType()
+  handleQueryTaxType()
 
-  handleQuery()
+  // handleQuery()
 
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())
