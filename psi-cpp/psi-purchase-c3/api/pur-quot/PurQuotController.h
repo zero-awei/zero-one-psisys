@@ -1,9 +1,9 @@
-
-//¹«¹²Í·ÎÄ¼ş
+ï»¿
+//å…¬å…±å¤´æ–‡ä»¶
 #pragma once
 #ifndef _PUR_QUOT_CONTROLLER_H_
 #define _PUR_QUOT_CONTROLLER_H_
-//¹«¹²½Ó¿Ú
+//å…¬å…±æ¥å£
 #include "domain/dto/IDDTO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/PageVO.h"
@@ -38,52 +38,52 @@ using namespace std;
 class PurQuotController
 {
 public:
-	// Ìí¼Ó±¨¼Û
+	// æ·»åŠ æŠ¥ä»·
 	// CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurQuot, execAddPurQuot, AddPurQuotDTO);
-	// ÓÃbody¿ÉÒÔË³Àû½ÓÊÕAPIPostÖĞÓÃbody¸ñÊ½·¢µÄÊı¾İ£¬µ«ÊÇµ¼³öÎªjson-raw¸ñÊ½£¬²¢¸´ÖÆÔÚrawÖĞ·¢ËÍ£¬È´ÎŞ·¨½ÓÊÕ
-	// Òò´Ë£¬Ô¤¼Æ¸ÄÎªJSON_PAYLOAD_FILEÀ´³¢ÊÔ¿´¿´¡ª¡ª¡ªÕâ¸ö¼ÙÉè±»ÑéÖ¤ÊÇ¶ÔµÄ£¬¿´À´ÏÂÃæModÒ²¿ÉÒÔ´ÓBODY¸ÄÎªJSON£»
+	// ç”¨bodyå¯ä»¥é¡ºåˆ©æ¥æ”¶APIPostä¸­ç”¨bodyæ ¼å¼å‘çš„æ•°æ®ï¼Œä½†æ˜¯å¯¼å‡ºä¸ºjson-rawæ ¼å¼ï¼Œå¹¶å¤åˆ¶åœ¨rawä¸­å‘é€ï¼Œå´æ— æ³•æ¥æ”¶
+	// å› æ­¤ï¼Œé¢„è®¡æ”¹ä¸ºJSON_PAYLOAD_FILEæ¥å°è¯•çœ‹çœ‹â€”â€”â€”è¿™ä¸ªå‡è®¾è¢«éªŒè¯æ˜¯å¯¹çš„ï¼Œçœ‹æ¥ä¸‹é¢Modä¹Ÿå¯ä»¥ä»BODYæ”¹ä¸ºJSONï¼›
 	CREATE_API_FUN_JSON_PAYLOAD(addPurQuot, execAddPurQuot, AddPurQuotDTO);
-	//ĞŞ¸Ä±¨¼Û
+	//ä¿®æ”¹æŠ¥ä»·
 	CREATE_API_FUN_JSON_PAYLOAD(modPurQuot, execModPurQuot, ModPurQuotDTO);
-	//É¾³ı±¨¼Û
+	//åˆ é™¤æŠ¥ä»·
 	CREATE_API_FUN_BODY(delPurQuotById, execDelPurQuot, DelPurQuotDTO);
-	//ĞŞ¸Ä±¨¼Û×´Ì¬£¨¹Ø±Õ¡¢×÷·Ï¡¢·´¹Ø±Õ£©
+	//ä¿®æ”¹æŠ¥ä»·çŠ¶æ€ï¼ˆå…³é—­ã€ä½œåºŸã€åå…³é—­ï¼‰
 	CREATE_API_FUN_BODY_PAYLOAD(purQuotModBillStatus, execPurQuotModBillStatus, PurQuotModBillStatusDTO);
 
-	//µ¼³ö
+	//å¯¼å‡º
 	CREATE_API_FUN_BODY_PAYLOAD(queryPurQuotExport, execPurQuotExport, PurQuotExportQuery);
-	//µ¼Èë
+	//å¯¼å…¥
 	CREATE_API_FUN_BODY_FILE(modifyPurQuotInto, execPurQuotInto, PurQuotIntoDTO);
-	//Ñ¯¼Ûµ¥ÁĞ±í
+	//è¯¢ä»·å•åˆ—è¡¨
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotList, execQueryPurQuotList, PurQuotListQuery);
-	//Ñ¯¼Ûµ¥·ÖÂ¼ÁĞ±í
+	//è¯¢ä»·å•åˆ†å½•åˆ—è¡¨
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotDividedList, execQueryPurQuotDividedList, PurQuotDividedListQuery);
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindBill, execQueryPurQuotFindBill, PurQuotFindBillQuery);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindDetailBill, execQueryPurQuotFindDetailBill, PurQuotFindDetailBillQuery);
 private:
 
-	//ĞÂÔö±¨¼Û
+	//æ–°å¢æŠ¥ä»·
 	JsonVO<uint64_t> execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload);
-	//ĞŞ¸Ä±¨¼Û
+	//ä¿®æ”¹æŠ¥ä»·
 	JsonVO<uint64_t> execModPurQuot(const ModPurQuotDTO& dto, const PayloadDTO& payload);
-	//É¾³ı±¨¼Û
+	//åˆ é™¤æŠ¥ä»·
 	JsonVO<uint64_t> execDelPurQuot(const DelPurQuotDTO& dto);
-	//ĞŞ¸Ä±¨¼Û×´Ì¬£¨¹Ø±Õ¡¢×÷·Ï¡¢·´¹Ø±Õ£©
+	//ä¿®æ”¹æŠ¥ä»·çŠ¶æ€ï¼ˆå…³é—­ã€ä½œåºŸã€åå…³é—­ï¼‰
 	JsonVO<uint64_t> execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto, const PayloadDTO& payload);
 
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	JsonVO<PageVO<PurQuotFindBillVO>> execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload);
-	//²éÑ¯Ö¸¶¨µ¥¾İÁĞ±í
+	//æŸ¥è¯¢æŒ‡å®šå•æ®åˆ—è¡¨
 	JsonVO<PurQuotFindDetailBillVO> execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload);
-	// ²éÑ¯Ñ¯¼Ûµ¥ÁĞ±í
+	// æŸ¥è¯¢è¯¢ä»·å•åˆ—è¡¨
 	JsonVO<list<PurQuotListVO>> execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload);
-	// ²éÑ¯Ñ¯¼Ûµ¥·ÖÂ¼ÁĞ±í
+	// æŸ¥è¯¢è¯¢ä»·å•åˆ†å½•åˆ—è¡¨
 	JsonVO<list<PurQuotDividedListVO>> execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload);
-	//µ¼³ö
+	//å¯¼å‡º
 	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& query, const PayloadDTO& payload);
-	//µ¼Èë
+	//å¯¼å…¥
 	uint64_t execPurQuotInto(const PurQuotIntoDTO& dto);
 
 };

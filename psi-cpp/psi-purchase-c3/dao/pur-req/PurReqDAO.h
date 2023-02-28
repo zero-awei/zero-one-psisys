@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef _PUR_REQ_DAO_
 #define _PUR_REQ_DAO_
@@ -9,35 +9,35 @@
 
 
 /**
- * Ê¾Àı±íÊı¾İ¿â²Ù×÷ÊµÏÖ
+ * ç¤ºä¾‹è¡¨æ•°æ®åº“æ“ä½œå®ç°
  */
 class PurReqDAO : public BaseDAO
 {
 public:
-	// Ìí¼ÓÉêÇë(±£´æ/Ìá½») ²åÈëÊı¾İ
+	// æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤) æ’å…¥æ•°æ®
 	uint64_t insert(const PurReqAdamDO& obj);
 
-	// Ìí¼ÓÃ÷Ï¸ÉêÇë(±£´æ/Ìá½») ²åÈëÊı¾İ
+	// æ·»åŠ æ˜ç»†ç”³è¯·(ä¿å­˜/æäº¤) æ’å…¥æ•°æ®
 	uint64_t insertEntry(const PurReqEntryAdamDO& obj);
 
-	// ĞŞ¸Ä×´Ì¬Êı¾İ
+	// ä¿®æ”¹çŠ¶æ€æ•°æ®
 	int update(const PurReqAdamDO& obj);
 
-	// Í¨¹ıbillNoÉ¾³ıÊı¾İ
+	// é€šè¿‡billNoåˆ é™¤æ•°æ®
 	int deleteByBillNo(string billNo);
 
-	//Í¨¹ıBillNo²éÕÒÖ÷±íÊı¾İ ÓÉÓÚÖ÷±íÖ»ÓĞÒ»¸öËùÒÔÖ»·µ»ØÒ»¸ö
+	//é€šè¿‡BillNoæŸ¥æ‰¾ä¸»è¡¨æ•°æ® ç”±äºä¸»è¡¨åªæœ‰ä¸€ä¸ªæ‰€ä»¥åªè¿”å›ä¸€ä¸ª
 	list<PurReqAdamDO> selectByBillNo(const string& billNo);
 
-	//Í¨¹ıBillNo²éÕÒÃ÷Ï¸±íÊı¾İ
+	//é€šè¿‡BillNoæŸ¥æ‰¾æ˜ç»†è¡¨æ•°æ®
 	list<PurReqEntryAdamDO> selectEntryByBillNo(const string& billNo);
 
 
-	// Í³¼ÆÊı¾İÌõÊı
+	// ç»Ÿè®¡æ•°æ®æ¡æ•°
 	uint64_t count(const PurReqDO& iObj);
-	// ·ÖÒ³²éÑ¯Êı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	list<PurReqDO> selectWithPage(const PurReqDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// Í¨¹ı±àºÅ²é¿´ÏêÏ¸ĞÅÏ¢
+	// é€šè¿‡ç¼–å·æŸ¥çœ‹è¯¦ç»†ä¿¡æ¯
 	list<PurReqDO> selectByNo(const string& no);
 
 };

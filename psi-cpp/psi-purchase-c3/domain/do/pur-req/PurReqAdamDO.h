@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,133 +22,133 @@
 #include "../DoInclude.h"
 
 /**
- * Ê¾ÀıÊı¾İ¿âÊµÌåÀà
+ * ç¤ºä¾‹æ•°æ®åº“å®ä½“ç±»
  */
 class PurReqAdamDO
 {
-	//µ¥¾İid
+	//å•æ®id
 	CC_SYNTHESIZE(string, id, Id);
-	//µ¥¾İ±àºÅ 
+	//å•æ®ç¼–å· 
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//µ¥¾İÈÕÆÚ 
+	//å•æ®æ—¥æœŸ 
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	//Ô´µ¥id
+	//æºå•id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	//Ô´µ¥ºÅ
+	//æºå•å·
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//ÊÇ·ñºì×Ö
+	//æ˜¯å¦çº¢å­—
 	CC_SYNTHESIZE(int, isRubric, IsRubric);
-	//²É¹ºÀàĞÍ
+	//é‡‡è´­ç±»å‹
 	CC_SYNTHESIZE(string, purType, PurType);
 
-	//ĞèÇó²¿ÃÅ
+	//éœ€æ±‚éƒ¨é—¨
 	CC_SYNTHESIZE(string, requestDept, RequestDept);
-	//ĞèÇóÈË
+	//éœ€æ±‚äºº
 	CC_SYNTHESIZE(string, requester, Requester);
-	//ĞèÇóÊ±¼ä
+	//éœ€æ±‚æ—¶é—´
 	CC_SYNTHESIZE(string, requestTime, RequestTime);
 
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//²Î¿¼½ğ¶î
+	//å‚è€ƒé‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//ÒÑ¶©ÊıÁ¿
+	//å·²è®¢æ•°é‡
 	CC_SYNTHESIZE(double, orderedQty, OrderedQty);
 
-	//¸½¼ş
+	//é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//ÊÇ·ñ×Ô¶¯Éú³É
+	//æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
 	CC_SYNTHESIZE(int, isAuto, IsAuto);
 
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	//ÉóºËÈË
+	//å®¡æ ¸äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	//ÉóÅúid
+	//å®¡æ‰¹id
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
 
-	//ºËÅú½á¹ûÀàĞÍ
+	//æ ¸æ‰¹ç»“æœç±»å‹
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	//ºËÅúÒâ¼û
+	//æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-	//ÊÇ·ñÉúĞ§
+	//æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
 
-	//ÉúĞ§Ê±¼ä
+	//ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//ÊÇ·ñÒÑ¹Ø±Õ
+	//æ˜¯å¦å·²å…³é—­
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//ÊÇ·ñ×÷·Ï
+	//æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 
-	//´´½¨²¿ÃÅ
+	//åˆ›å»ºéƒ¨é—¨
 	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	//´´½¨ÈË
+	//åˆ›å»ºäºº
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	CC_SYNTHESIZE(string, createTime, CreateTime);
 
-	//ĞŞ¸ÄÈË
+	//ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
 
 public:
 	PurReqAdamDO() {
-		//Ô´µ¥ÀàĞÍ
+		//æºå•ç±»å‹
 		srcBillType = "";
-		//Ô´µ¥id
+		//æºå•id
 		srcBillId = "";
-		//Ô´µ¥ºÅ
+		//æºå•å·
 		srcNo = "";
-		//µ¥¾İÖ÷Ìâ
+		//å•æ®ä¸»é¢˜
 		subject = "";
-		//ÊÇ·ñºì×Ö
+		//æ˜¯å¦çº¢å­—
 		isRubric = 0;
-		//²É¹ºÀàĞÍ
+		//é‡‡è´­ç±»å‹
 		purType = "";
-		//ÊıÁ¿
+		//æ•°é‡
 		qty = 0.000000;
-		//²Î¿¼½ğ¶î
+		//å‚è€ƒé‡‘é¢
 		amt = 0.00;
-		//ÒÑ¶©ÊıÁ¿
+		//å·²è®¢æ•°é‡
 		orderedQty = 0.000000;
-		//¸½¼ş
+		//é™„ä»¶
 		attachment = "";
-		//±¸×¢
+		//å¤‡æ³¨
 		remark = "";
-		//ÊÇ·ñ×Ô¶¯Éú³É
+		//æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
 		isAuto = 0;
-		//ÉóºËÈË
+		//å®¡æ ¸äºº
 		approver = "";
-		//ÉóÅúid
+		//å®¡æ‰¹id
 		bpmiInstanceId = "";
-		//ºËÅú½á¹ûÀàĞÍ
+		//æ ¸æ‰¹ç»“æœç±»å‹
 		approvalResultType = "";
-		//ºËÅúÒâ¼û
+		//æ ¸æ‰¹æ„è§
 		approvalRemark = "";
-		//ÊÇ·ñÉúĞ§
+		//æ˜¯å¦ç”Ÿæ•ˆ
 		isEffective = 0;
-		//ÉúĞ§Ê±¼ä
+		//ç”Ÿæ•ˆæ—¶é—´
 		effectiveTime = "";
-		//ÊÇ·ñÒÑ¹Ø±Õ
+		//æ˜¯å¦å·²å…³é—­
 		isClosed = 0;
-		//ÊÇ·ñ×÷·Ï
+		//æ˜¯å¦ä½œåºŸ
 		isVoided = 0;
-		//ĞŞ¸ÄÈË
+		//ä¿®æ”¹äºº
 		updateBy = "";
-		//ĞŞ¸ÄÊ±¼ä
+		//ä¿®æ”¹æ—¶é—´
 		updateTime = "";
-		//°æ±¾
+		//ç‰ˆæœ¬
 		version = -1;
 	}
 };

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -42,30 +42,30 @@
 #include "../../domain/query/pur-compare/PurComExportQuery.h"
 
 /**
- * Ê¾Àı·şÎñÊµÏÖ£¬ÑİÊ¾»ù´¡µÄÊ¾Àı·şÎñÊµÏÖ
+ * ç¤ºä¾‹æœåŠ¡å®ç°ï¼Œæ¼”ç¤ºåŸºç¡€çš„ç¤ºä¾‹æœåŠ¡å®ç°
  */
 class PurCompareService
 {
 public:
-	// ·ÖÒ³²éÑ¯±È¼Ûµ¥µ¥¾İÁĞ±í
+	// åˆ†é¡µæŸ¥è¯¢æ¯”ä»·å•å•æ®åˆ—è¡¨
 	PageVO<PurComFindBillVO> listPurComFindBill(const PurComFindBillQuery& query);
-	// ²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢
+	// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯
 	PurComFindDetailBillVO getPurComFindDetailBill(const PurComFindDetailBillQuery& query);
-	// ±¨¼Ûµ¥ÁĞ±í
+	// æŠ¥ä»·å•åˆ—è¡¨
 	std::list<PurComListVO> listPurComList(const PurComListQuery& query);
-	// ±¨¼Ûµ¥·ÖÂ¼ÁĞ±í
+	// æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨
 	std::list<PurComDividedListVO> listPurComDividedList(const PurComDividedListQuery& query);
-	// µ¼³ö±¨¼Ûµ¥
+	// å¯¼å‡ºæŠ¥ä»·å•
 	string getPurComExport(const PurComExportQuery& query);
-	// µ¼Èë±È¼Ûµ¥¼°·ÖÂ¼
+	// å¯¼å…¥æ¯”ä»·å•åŠåˆ†å½•
 	uint64_t savePurComInto(const PurComIntoDTO& dto, const PayloadDTO& payload);
-	// ±£´æÊı¾İ
+	// ä¿å­˜æ•°æ®
 	uint64_t savePurCom(const AddPurComDTO& dto, const PayloadDTO& payload);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	bool updatePurCom(const ModPurComDTO& dto, PayloadDTO payload);
-	// É¾³ıÊı¾İ
+	// åˆ é™¤æ•°æ®
 	bool removePurCom(const DelPurComDTO& dto);
-	// ĞŞ¸Äµ¥¾İ×´Ì¬
+	// ä¿®æ”¹å•æ®çŠ¶æ€
 	bool updatePurComBillStatus(const PurComModBillStatusDTO& dto, PayloadDTO payload);
 };
 

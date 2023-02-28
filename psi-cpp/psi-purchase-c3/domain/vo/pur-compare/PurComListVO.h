@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,35 +23,35 @@
 #include "../../GlobalInclude.h"
 
 /**
- * ±¨¼Ûµ¥ÁĞ±íÏÔÊ¾¶ÔÏó
+ * æŠ¥ä»·å•åˆ—è¡¨æ˜¾ç¤ºå¯¹è±¡
  */
 class PurComListVO
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	// µ¥¾İÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	// µ¥¾İÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// ¹©Ó¦ÉÌ
+	// ä¾›åº”å•†
 	CC_SYNTHESIZE(string, supplierName, SupplierName);
-	// ¸¶¿î·½Ê½
+	// ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, paymentMethod, PaymentMethod);
-	// ½»»õÈÕÆÚ
+	// äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
-	// ½»»õµØµã
+	// äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurComListVO, billNo, billDate, subject, supplierName, \
 		paymentMethod, deliveryTime, deliveryPlace, remark);
-	//ÓÃÓÚ²âÊÔ
+	//ç”¨äºæµ‹è¯•
 	//PurComListVO()
 	//{
 	//	this->setBillNo("CGBJ100QZP");
-	//	this->setSubject("²âÊÔ½Ó¿Ú");
+	//	this->setSubject("æµ‹è¯•æ¥å£");
 	//}
 };
 

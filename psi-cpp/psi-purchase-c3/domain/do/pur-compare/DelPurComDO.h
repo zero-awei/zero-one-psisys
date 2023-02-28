@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,11 +22,11 @@
 #include "../DoInclude.h"
 
 /**
- * Ê¾ÀıÊı¾İ¿âÊµÌåÀà
+ * ç¤ºä¾‹æ•°æ®åº“å®ä½“ç±»
  */
 class DelPurComDO
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billId, BillId);
 public:
 	DelPurComDO() {

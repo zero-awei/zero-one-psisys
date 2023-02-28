@@ -1,33 +1,33 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_DIVIDED_LIST_VO_H_
 #define _PUR_QUOT_DIVIDED_LIST_VO_H_
 #include "../../GlobalInclude.h"
-//Ñ¯¼Ûµ¥·ÖÂ¼ÁĞ±íµÄVO
+//è¯¢ä»·å•åˆ†å½•åˆ—è¡¨çš„VO
 class PurQuotDividedListVO
 {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	//¹æ¸ñĞÍºÅ
-	//µ¥Î»
+	//è§„æ ¼å‹å·
+	//å•ä½
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//Ë°ÂÊ
+	//ç¨ç‡
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	//²Î¿¼º¬Ë°µ¥¼Û
+	//å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	//²Î¿¼º¬Ë°½ğ¶î
+	//å‚è€ƒå«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurQuotDividedListVO, bill_no, material_id, unit_id, qty, tax_rate, price, amt,remark, custom1, custom2);
 };
 #endif

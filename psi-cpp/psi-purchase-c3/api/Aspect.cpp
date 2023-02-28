@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
  
  @Author: awei
@@ -33,17 +33,17 @@
 // zwIDAQAB
 // -----END PUBLIC KEY-----)");
 
-// RSA¹«Ô¿
+// RSAå…¬é’¥
 std::unique_ptr<std::string> RSA_PUB_KEY = nullptr;
 
 #ifndef CHECK_TOKEN
 
-//¿ªÆôÆ¾Ö¤¼ì²é£¬½â¿ªÏÂÒ»ĞĞ×¢ÊÍ¼´¿É
+//å¼€å¯å‡­è¯æ£€æŸ¥ï¼Œè§£å¼€ä¸‹ä¸€è¡Œæ³¨é‡Šå³å¯
 //#define CHECK_TOKEN
 
 #endif
 
-//²âÊÔ¸ºÔØÊı¾İ×¢Èë
+//æµ‹è¯•è´Ÿè½½æ•°æ®æ³¨å…¥
 #define TEST_PAYLOAD_INJECTION(__req__) \
 PayloadDTO payload; \
 payload.setId("1"); \
@@ -67,7 +67,7 @@ bool CROS::before(request& req, response& res)
 	res.add_header("Access-Control-Allow-Origin", "*");
 	res.add_header("Access-Control-Allow-Methods", "*");
 	res.add_header("Access-Control-Expose-Headers", "*");
-	//ÔÊĞíĞ¯´øcookieÆ¾Ö¤
+	//å…è®¸æºå¸¦cookieå‡­è¯
 	res.add_header("Access-Control-Allow-Credentials", "true");
 	res.add_header("Access-Control-Allow-Headers", "Content-Type,Access-Token");
 	if (req.get_method() == "OPTIONS") {
@@ -80,7 +80,7 @@ bool CROS::before(request& req, response& res)
 
 Check::Check()
 {
-	//¶ÁÈ¡¹«Ô¿
+	//è¯»å–å…¬é’¥
 	if (!RSA_PUB_KEY)
 	{
 		std::string pubKey = "";
@@ -101,21 +101,21 @@ Check::Check()
 bool Check::before(request& req, response& res)
 {
 #ifdef CHECK_TOKEN
-	//»ñÈ¡ÇëÇóÆ¾Ö¤
+	//è·å–è¯·æ±‚å‡­è¯
 	string_view token = req.get_header_value("Authorization");
 	if (token.empty()) {
 		checkCommonSender("empty token", &res);
 		return false;
 	}
-	//½âÎöÆ¾Ö¤
+	//è§£æå‡­è¯
 	string_view prefix = "Bearer ";
 	if (token.find_first_of(prefix) != 0) {
 		checkCommonSender("prefix error", &res);
 		return false;
 	}
-	//1 È¥µôÇ°×º
+	//1 å»æ‰å‰ç¼€
 	token.remove_prefix(prefix.size());
-	//2 ½âÎöÆ¾Ö¤
+	//2 è§£æå‡­è¯
 	PayloadDTO payload = JWTUtil::verifyTokenByRsa(string(token), RSA_PUB_KEY->c_str());
 	if (payload.getCode() != PayloadCode::SUCCESS) {
 		stringstream ss;
@@ -123,7 +123,7 @@ bool Check::before(request& req, response& res)
 		checkCommonSender(ss.str(), &res);
 		return false;
 	}
-	//3 ½«½âÎöÊı¾İ·Åµ½ÇëÇó¶ÔÏóÖĞ
+	//3 å°†è§£ææ•°æ®æ”¾åˆ°è¯·æ±‚å¯¹è±¡ä¸­
 	req.set_user_payload(nlohmann::json(payload));
 	return true;
 #else

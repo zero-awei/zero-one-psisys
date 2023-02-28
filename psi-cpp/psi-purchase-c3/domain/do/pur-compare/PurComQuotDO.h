@@ -1,87 +1,87 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_COM_QUOT_DO_H_
 #define _PUR_COM_QUOT_DO_H_
 #include "../../GlobalInclude.h"
-//Êı¾İ¿â±ípur_quotµÄÊµÌå
+//æ•°æ®åº“è¡¨pur_quotçš„å®ä½“
 class PurComQuotDO {
     //ID
     CC_SYNTHESIZE(string, id, Id);
-    //µ¥¾İ±àºÅ
+    //å•æ®ç¼–å·
     CC_SYNTHESIZE(string, billNo, BillNo);
-    //µ¥¾İÈÕÆÚ
+    //å•æ®æ—¥æœŸ
     CC_SYNTHESIZE(string, billDate, BillDate);
-    //Ô´µ¥ÀàĞÍ
+    //æºå•ç±»å‹
     CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-    //Ô´µ¥ID
+    //æºå•ID
     CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-    //Ô´µ¥ºÅ
+    //æºå•å·
     CC_SYNTHESIZE(string, srcNo, SrcNo);
-    //Ö÷Ìâ
+    //ä¸»é¢˜
     CC_SYNTHESIZE(string, subject, Subject);
-    //ÊÇ·ñºì×Ö
+    //æ˜¯å¦çº¢å­—
     CC_SYNTHESIZE(string, isRubric, IsRubric);
-    //ÊÇ·ñÁÙÊ±¹©Ó¦ÉÌ
+    //æ˜¯å¦ä¸´æ—¶ä¾›åº”å•†
     CC_SYNTHESIZE(string, isTempSupplier, IsTempSupplier);
-    //¹©Ó¦ÉÌ
+    //ä¾›åº”å•†
     CC_SYNTHESIZE(string, supplierId, SupplierId);
-    //¹©Ó¦ÉÌÃû³Æ
+    //ä¾›åº”å•†åç§°
     CC_SYNTHESIZE(string, supplierName, SupplierName);
-    //¸¶¿î·½Ê½
+    //ä»˜æ¬¾æ–¹å¼
     CC_SYNTHESIZE(string, paymentMethod, PaymentMethod);
-    //½»»õÊ±¼ä
+    //äº¤è´§æ—¶é—´
     CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
-    //½»»õµØµã
+    //äº¤è´§åœ°ç‚¹
     CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
-    //ÁªÏµÈË
+    //è”ç³»äºº
     CC_SYNTHESIZE(string, contact, Contact);
-    //ÁªÏµµç»°
+    //è”ç³»ç”µè¯
     CC_SYNTHESIZE(string, phone, Phone);
-    //´«Õæ
+    //ä¼ çœŸ
     CC_SYNTHESIZE(string, fax, Fax);
-    //µç×ÓÓÊ¼ş
+    //ç”µå­é‚®ä»¶
     CC_SYNTHESIZE(string, email, Email);
-    //ÊıÁ¿
+    //æ•°é‡
     CC_SYNTHESIZE(string, qty, Qty);
-    //½ğ¶î
+    //é‡‘é¢
     CC_SYNTHESIZE(string, amt, Amt);
-    //¸½¼ş
+    //é™„ä»¶
     CC_SYNTHESIZE(string, attachment, Attachment);
-    //±¸×¢
+    //å¤‡æ³¨
     CC_SYNTHESIZE(string, remark, Remark);
-    //ÊÇ·ñ×Ô¶¯Éú³É
+    //æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
     CC_SYNTHESIZE(string, isAuto, IsAuto);
-    //µ¥¾İ½×¶Î
+    //å•æ®é˜¶æ®µ
     CC_SYNTHESIZE(string, billStage, BillStage);
-    //ÉóºËÈË
+    //å®¡æ ¸äºº
     CC_SYNTHESIZE(string, approver, Approver);
-    //ÉóÅúÊµÀıID
+    //å®¡æ‰¹å®ä¾‹ID
     CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-    //ºËÅú½á¹ûÀàĞÍ
+    //æ ¸æ‰¹ç»“æœç±»å‹
     CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-    //ºËÅúÒâ¼û
+    //æ ¸æ‰¹æ„è§
     CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-    //ÊÇ·ñÉúĞ§
+    //æ˜¯å¦ç”Ÿæ•ˆ
     CC_SYNTHESIZE(string, isEffective, IsEffective);
-    //ÉúĞ§Ê±¼ä
+    //ç”Ÿæ•ˆæ—¶é—´
     CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-    //ÒÑ¹Ø±Õ
+    //å·²å…³é—­
     CC_SYNTHESIZE(string, isClosed, IsClosed);
-    //ÊÇ·ñ×÷·Ï
+    //æ˜¯å¦ä½œåºŸ
     CC_SYNTHESIZE(string, isVoided, IsVoided);
-    //´´½¨²¿ÃÅ
+    //åˆ›å»ºéƒ¨é—¨
     CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-    //´´½¨ÈË
+    //åˆ›å»ºäºº
     CC_SYNTHESIZE(string, createBy, CreateBy);
-    //´´½¨Ê±¼ä
+    //åˆ›å»ºæ—¶é—´
     CC_SYNTHESIZE(string, createTime, CreateTime);
-    //ĞŞ¸ÄÈË
+    //ä¿®æ”¹äºº
     CC_SYNTHESIZE(string, updateBy, UpdateBy);
-    //ĞŞ¸ÄÊ±¼ä
+    //ä¿®æ”¹æ—¶é—´
     CC_SYNTHESIZE(string, updateTime, UpdateTime);
-    //°æ±¾
+    //ç‰ˆæœ¬
     CC_SYNTHESIZE(string, version, Version);
 public:
-    //Êı¾İ¿â±í¶ÔÏó³õÊ¼»¯
+    //æ•°æ®åº“è¡¨å¯¹è±¡åˆå§‹åŒ–
     PurComQuotDO() {
         billNo = "";
     }

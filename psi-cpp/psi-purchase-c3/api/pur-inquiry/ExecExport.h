@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #ifndef __EXECEXPORT_H__
 #define __EXECEXPORT_H__

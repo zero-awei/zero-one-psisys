@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,45 +22,45 @@
 
 #include "../../GlobalInclude.h"
 
-//¶©µ¥Ã÷Ï¸ÁĞ±íĞèÒªµÄÄÚÈİ
+//è®¢å•æ˜ç»†åˆ—è¡¨éœ€è¦çš„å†…å®¹
 class PurReqEntryDTO
 {
-	//·ÖÂ¼ºÅ
+	//åˆ†å½•å·
 	CC_SYNTHESIZE(int, entryNo, EntryNo);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	//Ô´µ¥id
+	//æºå•id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	//Ô´µ¥·ÖÂ¼id
+	//æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(string, materialId, MaterialId);
-	//¼ÆÁ¿µ¥Î»
+	//è®¡é‡å•ä½
 	CC_SYNTHESIZE(string, unitId, UnitId);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//Ë°ÂÊ%
+	//ç¨ç‡%
 	CC_SYNTHESIZE(double, taxRate, TaxRate);
-	//º¬Ë°µ¥¼Û
+	//å«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	//º¬Ë°½ğ¶î
+	//å«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//½¨Òé¹©Ó¦ÉÌ
+	//å»ºè®®ä¾›åº”å•†
 	CC_SYNTHESIZE(string, suggestSupplierId, SuggestSupplierId);
-	//ÒÑ¶©¹ºÊıÁ¿
+	//å·²è®¢è´­æ•°é‡
 	CC_SYNTHESIZE(double, orderedQty, OrderedQty);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
 public:
-	//°ó¶¨JSON×ª»»·½·¨
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurReqEntryDTO& t);
 };
 

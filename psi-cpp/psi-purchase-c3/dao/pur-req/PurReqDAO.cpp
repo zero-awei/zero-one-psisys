@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: adam
@@ -93,7 +93,7 @@ std::list<PurReqDO>  PurReqDAO::selectByNo(const string& no)
 
 
 
-// Ìí¼ÓÉêÇë(±£´æ/Ìá½») ²åÈë×Ü±íÊı¾İ
+// æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤) æ’å…¥æ€»è¡¨æ•°æ®
 uint64_t PurReqDAO::insert(const PurReqAdamDO& obj)
 {
 	string sql = "INSERT INTO `pur_req` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";

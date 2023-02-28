@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: huilai
@@ -20,56 +20,56 @@
 #define _ADD_PUR_INQUIRY_DO_H_
 #include "../../GlobalInclude.h"
 
-//ĞŞ¸ÄºÍÉ¾³ıDO
+//ä¿®æ”¹å’Œåˆ é™¤DO
 class AddPurInquiryDO
 {
 	//1ID
 	CC_SYNTHESIZE(string, id, Id);
-	//2µ¥¾İ±àºÅ
+	//2å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//3µ¥¾İÖ÷Ìâ
+	//3å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//4¸¶¿î·½Ê½
+	//4ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	//5½»»õµØµã
+	//5äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	////6ÁªÏµÈË			;
+	////6è”ç³»äºº			;
 	CC_SYNTHESIZE(string, contact, Contact);
-	////7ÁªÏµµç»°	   ;
+	////7è”ç³»ç”µè¯	   ;
 	CC_SYNTHESIZE(string, phone, Phone);
-	////8´«Õæ			 ;
+	////8ä¼ çœŸ			 ;
 	CC_SYNTHESIZE(string, fax, Fax);
-	////9µç×ÓÓÊÏä	   ;
+	////9ç”µå­é‚®ç®±	   ;
 	CC_SYNTHESIZE(string, email, Email);
-	////10±¸×¢			 ;
+	////10å¤‡æ³¨			 ;
 	CC_SYNTHESIZE(string, remark, Remark);
-	//11ºì×Öµ¥¾İ(ÊÇ·ñºì×Ö)
+	//11çº¢å­—å•æ®(æ˜¯å¦çº¢å­—)
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	////12×Ô¶¯µ¥¾İ	   ;
+	////12è‡ªåŠ¨å•æ®	   ;
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	////15ÉúĞ§Ê±¼ä	   ;
+	////15ç”Ÿæ•ˆæ—¶é—´	   ;
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	//16µ¥¾İ½×¶Î		   ;
+	//16å•æ®é˜¶æ®µ		   ;
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	//17µ¥¾İÈÕÆÚ
+	//17å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_Date);
-	//18ºËÅúÈË
+	//18æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	//19ÖÆµ¥Ê±¼ä
+	//19åˆ¶å•æ—¶é—´
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	//20ÖÆµ¥²¿ÃÅ
+	//20åˆ¶å•éƒ¨é—¨
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	//21´´½¨ÈË
+	//21åˆ›å»ºäºº
 	CC_SYNTHESIZE(string, create_by, Create_by);
 
-	/*ĞŞ¸Ä×¨Êô*/
-	//ÉóºËÊÇ·ñÍ¨¹ı
+	/*ä¿®æ”¹ä¸“å±*/
+	//å®¡æ ¸æ˜¯å¦é€šè¿‡
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
-	//ÉóºËÒâ¼û
+	//å®¡æ ¸æ„è§
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-    //13ĞŞ¸ÄÊ±¼ä		   ;
+    //13ä¿®æ”¹æ—¶é—´		   ;
 	CC_SYNTHESIZE(string, update_time, update_time);
-	//14ĞŞ¸ÄÈË			;
+	//14ä¿®æ”¹äºº			;
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
 public:

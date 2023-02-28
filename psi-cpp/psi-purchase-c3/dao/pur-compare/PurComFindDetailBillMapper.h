@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,9 +24,9 @@
 #include "../../domain/do/pur-compare/PurCompareDO.h"
 #include "CharsetConvertHepler.h"
 
-#define ITOWORD(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("ÊÇ"):CharsetConvertHepler::ansiToUtf8("·ñ"))
+#define ITOWORD(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("æ˜¯"):CharsetConvertHepler::ansiToUtf8("å¦"))
 /**
- * ²é¿´Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢×Ö¶ÎÆ¥ÅäÓ³Éä
+ * æŸ¥çœ‹æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurComFindDetailBillMapper : public Mapper<PurCompareDO>
 {
@@ -59,7 +59,7 @@ public:
 		data.setRemark(resultSet->getString("remark"));
 		data.setApprovalResultType(resultSet->getString("approval_result_type"));
 		data.setApprovalRemark(resultSet->getString("approval_remark"));
-		//todo£º¸½¼ş
+		//todoï¼šé™„ä»¶
 		data.setAttachment(resultSet->getString("attachment"));
 		return data;
 	}

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef _PUR_REQ_SERVICE_
 #define _PUR_REQ_SERVICE_
@@ -16,32 +16,32 @@
 #include "../../domain/query/pur-req/PurReqFindDetailBillQuery.h"
 
 /**
- * Ê¾Àı·şÎñÊµÏÖ
+ * ç¤ºä¾‹æœåŠ¡å®ç°
  */
 class PurReqService
 {
 public:
-	//²åÈëÊı¾İ
+	//æ’å…¥æ•°æ®
 	uint64_t saveData(const AddPurReqDTO& dto, const PayloadDTO& payload);
 
-	//ĞŞ¸ÄÊı¾İ
+	//ä¿®æ”¹æ•°æ®
 	uint64_t updateData(const ModifyPurReqDTO& dto, const PayloadDTO& payload);
 
-	//ĞŞ¸ÄÊı¾İ×´Ì¬
+	//ä¿®æ”¹æ•°æ®çŠ¶æ€
 	uint64_t updateBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload);
 
-	// Í¨¹ıÖ÷Ä¿Â¼billNoÉ¾³ıÊı¾İ
+	// é€šè¿‡ä¸»ç›®å½•billNoåˆ é™¤æ•°æ®
 	bool removeData(string billNo);
 
-	//½øĞĞ´Óexecl×ª»»³ÉÊı¾İ¸ñÊ½
+	//è¿›è¡Œä»execlè½¬æ¢æˆæ•°æ®æ ¼å¼
 	uint64_t getFromExecl(string fieldName, const PayloadDTO& payload);
 
-	//Í¨¹ıbill_noÁĞ±í»ñµÃexecl±í¸ñ
+	//é€šè¿‡bill_noåˆ—è¡¨è·å¾—execlè¡¨æ ¼
 	string getToExecl(list<string> billNoList);
 
-	// ·ÖÒ³²éÑ¯ËùÓĞÊı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ‰€æœ‰æ•°æ®
 	PageVO<PurReqFindBillVO> listAll(const PurReqFindBillQuery& query);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	PurReqFindDetailBillVO detailsOne(const PurReqFindDetailBillQuery& query);
 
 };

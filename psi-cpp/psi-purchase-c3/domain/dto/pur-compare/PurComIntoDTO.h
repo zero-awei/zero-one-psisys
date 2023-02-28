@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
  @Author: QZP
@@ -20,13 +20,13 @@
 #include "../FileDTO.h"
 
 /**
- * µ¼ÈëµÄ´«ÈëDTO
+ * å¯¼å…¥çš„ä¼ å…¥DTO
  */
 
 class PurComIntoDTO : public FileDTO
 {
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurComIntoDTO& t)
 	{
 	}; // NOLINT

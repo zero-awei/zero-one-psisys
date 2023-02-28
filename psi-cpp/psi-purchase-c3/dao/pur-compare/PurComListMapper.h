@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,7 +24,7 @@
 #include "../../domain/do/pur-compare/PurComQuotDO.h"
 
 /**
- * ±¨¼Ûµ¥ÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * æŠ¥ä»·å•åˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurComListMapper : public Mapper<PurComQuotDO>
 {

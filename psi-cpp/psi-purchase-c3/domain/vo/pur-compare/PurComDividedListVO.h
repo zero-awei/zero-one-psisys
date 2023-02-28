@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -25,45 +25,45 @@
 
 
 /**
- * ±¨¼Ûµ¥·ÖÂ¼ÁÐ±íÏÔÊ¾¶ÔÏó
+ * æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨æ˜¾ç¤ºå¯¹è±¡
  */
 class PurComDividedListVO
 {
-	// µ¥¾Ý±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	// # ·ÖÂ¼±àºÅ
+	// # åˆ†å½•ç¼–å·
 	CC_SYNTHESIZE(string, entryNo, EntryNo);
-	// ÎïÁÏ
+	// ç‰©æ–™
 	CC_SYNTHESIZE(string, materialName, MaterialName);
-	// ¹æ¸ñÐÍºÅ
+	// è§„æ ¼åž‹å·
 	CC_SYNTHESIZE(string, specifications, Specifications);
-	// µ¥Î»
+	// å•ä½
 	CC_SYNTHESIZE(string, unitName, UnitName);
-	// ÊýÁ¿
+	// æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	// Ë°ÂÊ
+	// ç¨ŽçŽ‡
 	CC_SYNTHESIZE(double, taxRate, TaxRate);
-	// º¬Ë°¼Û¸ñ
+	// å«ç¨Žä»·æ ¼
 	CC_SYNTHESIZE(double, price, Price);
-	// ÕÛ¿ÛÂÊ
+	// æŠ˜æ‰£çŽ‡
 	CC_SYNTHESIZE(double, discountRate, DiscountRate);
-	// º¬Ë°½ð¶î
+	// å«ç¨Žé‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ×Ô¶¨Òå1
+	// è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// ×Ô¶¨Òå2
+	// è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurComDividedListVO, billNo, entryNo, materialName, specifications, unitName, qty, taxRate, \
 		price, discountRate, amt, remark, custom1, custom2);
 	//PurComDividedListVO()
 	//{
 	//	this->setBillNo("CGBJ100QZP");
 	//	this->setSrcEntryId("214");
-	//	this->setRemark("²âÊÔ");
+	//	this->setRemark("æµ‹è¯•");
 	//}
 };
 

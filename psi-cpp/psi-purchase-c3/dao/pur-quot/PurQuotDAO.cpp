@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PurQuotDAO.h"
 #include <sstream>
 //mapper
@@ -11,7 +11,7 @@
 #include "PurQuotEntryMapper.h"
 
 
-//ºÍPurQuotDOÏà¹ØµÄºê
+//å’ŒPurQuotDOç›¸å…³çš„å®
 #define PUR_QUOT_TERAM_PARSE(obj, sql) \
 SqlParams params;  \
 sql << " WHERE 1=1"; \
@@ -40,7 +40,7 @@ if (obj.getIs_voided() != -1) {  \
 	SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
 } 
 
-//ºÍPurQuotEntryDOÏà¹ØµÄºê
+//å’ŒPurQuotEntryDOç›¸å…³çš„å®
 #define PUR_QUOT_ENTRY_TERAM_PARSE(obj, sql) \
 SqlParams params;  \
 sql << " WHERE 1=1"; \
@@ -48,7 +48,7 @@ sql << " AND bill_no=?"; \
 SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); 
 
 
-//µ¼³öÏà¹ØµÄºê
+//å¯¼å‡ºç›¸å…³çš„å®
 #define PUR_QUOT_EXPORT_PARSE(obj, sql) \
 SqlParams params;  \
 sql << " WHERE 1=1"; \
@@ -72,7 +72,7 @@ uint64_t PurQuotDAO::count(const PurQuotEntryDO& iObj) {
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-//µ¼³ö, ´ËDOÓÃÓÚÌî³äPurQuotVO
+//å¯¼å‡º, æ­¤DOç”¨äºå¡«å……PurQuotVO
 list<PurQuotDO> PurQuotDAO::selectPurQuotExport(const PurQuotDO& obj) {
 	stringstream sql;
 	sql << "SELECT is_temp_supplier, supplier_name, supplier_id, payment_method, delivery_place, delivery_time, contact,\
@@ -84,7 +84,7 @@ list<PurQuotDO> PurQuotDAO::selectPurQuotExport(const PurQuotDO& obj) {
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<PurQuotDO, PurQuotMapper>(sqlStr, mapper, params);
 }
-//µ¼³ö, ´ËDOÓÃÓÚÌî³äPurQuotEntryVO
+//å¯¼å‡º, æ­¤DOç”¨äºå¡«å……PurQuotEntryVO
 list<PurQuotEntryDO> PurQuotDAO::selectPurQuotEntryExport(const PurQuotEntryDO& obj) {
 
 	stringstream sql;
@@ -97,7 +97,7 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotEntryExport(const PurQuotEntryDO& 
 
 }
 
-//µ¼Èë
+//å¯¼å…¥
 uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotDO& obj) {
 	string sql = "INSERT INTO `pur_quot` \
 		(`is_temp_supplier`, `supplier_name`, `supplier_id`, `payment_method`, `delivery_place`, \
@@ -132,7 +132,7 @@ uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotDO& obj) {
 	return result;
 }
 
-//µ¼Èë
+//å¯¼å…¥
 uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotEntryDO& obj) {
 
 	string sql = "INSERT INTO `pur_quot_entry (`bill_no`, `material_id`, `unit_id`, `qty`, `tax_rate`, `price`, `discount_rate`, `amt`,\
@@ -145,7 +145,7 @@ uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotEntryDO& obj) {
 	return result;
 
 }
-//²éÑ¯µ¥¾İÁĞ±í
+//æŸ¥è¯¢å•æ®åˆ—è¡¨
 list<PurQuotDO> PurQuotDAO::selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize) {
 	stringstream sql;
 	sql << "SELECT bill_no, bill_date, subject,src_no,supplier_id,supplier_name, delivery_time,qty,amt,bill_stage, is_effective, is_closed, is_voided, \
@@ -158,7 +158,7 @@ list<PurQuotDO> PurQuotDAO::selectPurQuotFindBill(const PurQuotDO& obj, uint64_t
 	return sqlSession->executeQuery<PurQuotDO, PurQuotFindBillMapper>(sqlStr, mapper, params);
 }
 
-//±¨¼Ûµ¥ÁĞ±í(¶à¸ö¶ÔÏó)
+//æŠ¥ä»·å•åˆ—è¡¨(å¤šä¸ªå¯¹è±¡)
 list<PurQuotEntryDO> PurQuotDAO::selectPurQuotList(const PurQuotEntryDO& obj) {
 	stringstream sql;
 	sql << "SELECT src_no, material_id, unit_id, qty, tax_rate, price, discount_rate, \
@@ -168,7 +168,7 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotList(const PurQuotEntryDO& obj) {
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<PurQuotEntryDO, PurQuotListMapper>(sqlStr, mapper, params);
 }
-//±¨¼Ûµ¥·ÖÂ¼ÁĞ±í(¶à¸ö¶ÔÏó)
+//æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨(å¤šä¸ªå¯¹è±¡)
 list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDividedList(const PurQuotEntryDO& obj) {
 	stringstream sql;
 	sql << "SELECT bill_no, material_id, unit_id, qty, tax_rate, price, \
@@ -180,7 +180,7 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDividedList(const PurQuotEntryDO& 
 }
 
 
-//²éÑ¯Ö¸¶¨µ¥¾İµÄÏêÏ¸ĞÅÏ¢---pur_quot±í
+//æŸ¥è¯¢æŒ‡å®šå•æ®çš„è¯¦ç»†ä¿¡æ¯---pur_quotè¡¨
 list<PurQuotDO> PurQuotDAO::selectPurQuotBase(const PurQuotDO& obj) {
 	stringstream sql;
 	sql << "SELECT bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided, subject,\
@@ -193,7 +193,7 @@ list<PurQuotDO> PurQuotDAO::selectPurQuotBase(const PurQuotDO& obj) {
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<PurQuotDO, PurQuotBaseMapper>(sqlStr, mapper, params);
 }
-//²éÑ¯Ö¸¶¨µ¥¾İµÄÏêÏ¸ĞÅÏ¢----pur_quot_entry±í
+//æŸ¥è¯¢æŒ‡å®šå•æ®çš„è¯¦ç»†ä¿¡æ¯----pur_quot_entryè¡¨
 list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDetail(const PurQuotEntryDO& obj) {
 	stringstream sql;
 	sql << "SELECT src_no, material_id, unit_id, qty, tax_rate, price, discount_rate,\
@@ -208,10 +208,10 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDetail(const PurQuotEntryDO& obj) 
 
 
 
-//Æ´½ÓsqlÓï¾ä£¬²åÈë²Ù×÷
+//æ‹¼æ¥sqlè¯­å¥ï¼Œæ’å…¥æ“ä½œ
 uint64_t PurQuotDAO::insert(const PurQuotNaiGuanDO& iObj)
 {
-	//ÔÚ·ÖÂ¼±ípur_quot_entryÖĞ£¬ĞÂÔö¹©Ó¦±¨¼ÛÃ÷Ï¸ÖĞµÄÊı¾İ
+	//åœ¨åˆ†å½•è¡¨pur_quot_entryä¸­ï¼Œæ–°å¢ä¾›åº”æŠ¥ä»·æ˜ç»†ä¸­çš„æ•°æ®
 	for (PurQuotDetailDTO Add : iObj.getDetail()) {
 		string sqlEntry = "INSERT INTO `pur_quot_entry` (\
 `id`, `mid`, `bill_no`, `entry_no`, \
@@ -235,7 +235,7 @@ Add.getMaterial_id(), Add.getUnit_id(), Add.getQty(), Add.getTax_rate(),
 Add.getPrice(), Add.getDiscount_rate(), Add.getAmt(), Add.getRemark(),
 Add.getCustom1(), Add.getCustom2(), Add.getVersion());
 	}
-	//ÔÚpur_quotÖĞ£¬ĞÂÔö¹©Ó¦±¨¼ÛÊı¾İ
+	//åœ¨pur_quotä¸­ï¼Œæ–°å¢ä¾›åº”æŠ¥ä»·æ•°æ®
 	string sql = "INSERT INTO `pur_quot` (\
 `id`, `bill_no`, `bill_date`, `src_bill_type`, \
 `src_bill_id`, `src_no`, `subject`, `is_rubric`, \
@@ -279,16 +279,16 @@ iObj.getSysOrdCode(), iObj.getCreateBy(), iObj.getCreateTime(), iObj.getUpdateBy
 iObj.getUpdateTime(), iObj.getVersion());
 }
 
-//Æ´½ÓsqlÓï¾ä£¬ĞŞ¸Ä²Ù×÷
+//æ‹¼æ¥sqlè¯­å¥ï¼Œä¿®æ”¹æ“ä½œ
 int PurQuotDAO::update(const PurQuotNaiGuanDO& uObj)
 {
 
-	//É¾³ıÈ«²¿ÒÑÓĞµÄÃ÷Ï¸Êı¾İ
+	//åˆ é™¤å…¨éƒ¨å·²æœ‰çš„æ˜ç»†æ•°æ®
 	std::cout << uObj.getBillNo() << endl;
 	string sqlClear = "DELETE FROM `pur_quot_entry` WHERE `bill_no`=?";
 	sqlSession->executeUpdate(sqlClear, "%s", uObj.getBillNo());
 
-	//ÖØĞÂ²åÈëËùÓĞÃ÷Ï¸Êı¾İ
+	//é‡æ–°æ’å…¥æ‰€æœ‰æ˜ç»†æ•°æ®
 	for (PurQuotDetailDTO Add : uObj.getDetail()) {
 		std::cout << Add.getId() << endl;
 
@@ -349,28 +349,28 @@ uObj.getBillNo());
 }
 
 
-//Æ´½ÓsqlÓï¾ä£¬Í¨¹ıid²éÑ¯²Ù×÷
+//æ‹¼æ¥sqlè¯­å¥ï¼Œé€šè¿‡idæŸ¥è¯¢æ“ä½œ
 int PurQuotDAO::deleteById(uint64_t id)
 {
 	string sql = "DELETE FROM `pur_quot` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%ull", id);
 }
 
-//Æ´½ÓsqlÓï¾ä£¬Í¨¹ıbill_noÉ¾³ıÊı¾İ
+//æ‹¼æ¥sqlè¯­å¥ï¼Œé€šè¿‡bill_noåˆ é™¤æ•°æ®
 int PurQuotDAO::deleteByBillNo(const PurQuotNaiGuanDO& dObj)
 {
-	//É¾³ı¹©Ó¦±¨¼Û·ÖÂ¼pur_quot_entryÊı¾İ
+	//åˆ é™¤ä¾›åº”æŠ¥ä»·åˆ†å½•pur_quot_entryæ•°æ®
 	string sqlClearEntry = "DELETE FROM `pur_quot_entry` WHERE `bill_no`=?";
 	sqlSession->executeUpdate(sqlClearEntry, "%s", dObj.getBillNo());
-	//É¾³ı¹©Ó¦±¨¼ÛÄ¿Â¼pur_quotÊı¾İ
+	//åˆ é™¤ä¾›åº”æŠ¥ä»·ç›®å½•pur_quotæ•°æ®
 	string sqlClear = "DELETE FROM `pur_quot` WHERE `bill_no`=?";
 	return sqlSession->executeUpdate(sqlClear, "%s", dObj.getBillNo());
 }
 
-//Æ´½ÓsqlÓï¾ä£¬Í¨¹ıbill_noĞŞ¸Ä±¨¼Û×´Ì¬
+//æ‹¼æ¥sqlè¯­å¥ï¼Œé€šè¿‡bill_noä¿®æ”¹æŠ¥ä»·çŠ¶æ€
 int PurQuotDAO::updateBillStatus(const PurQuotNaiGuanDO& ubsObj)
 {
-	//ĞŞ¸Ä±¨¼Û×´Ì¬
+	//ä¿®æ”¹æŠ¥ä»·çŠ¶æ€
 	string sql = "UPDATE `pur_quot` SET `is_effective`=?, `effective_time`=?, `is_closed`=?, `is_voided`=?, `approval_result_type`=?, `approval_remark`=?, `bill_stage`=?, `approver`=? WHERE `bill_no`=?";
 	return sqlSession->executeUpdate(sql, "%i%s%i%i%s%s%s%s%s",
 		ubsObj.getIsEffective(), ubsObj.getEffectiveTime(), ubsObj.getIsClosed(), ubsObj.getIsVoided(),

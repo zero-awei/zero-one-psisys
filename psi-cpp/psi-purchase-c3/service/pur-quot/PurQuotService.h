@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef _PUR_QUOT_SERVICE_H_
 #define _PUR_QUOT_SERVICE_H_
@@ -32,39 +32,39 @@
 
 
 /**
- * Ê¾Àı·şÎñÊµÏÖ£¬ÑİÊ¾»ù´¡µÄÊ¾Àı·şÎñÊµÏÖ
+ * ç¤ºä¾‹æœåŠ¡å®ç°ï¼Œæ¼”ç¤ºåŸºç¡€çš„ç¤ºä¾‹æœåŠ¡å®ç°
  */
 class PurQuotService
 {
 public:
-	//»ñÈ¡¶à¸öPurQuotFindBillVO¶ÔÏó
+	//è·å–å¤šä¸ªPurQuotFindBillVOå¯¹è±¡
 	PageVO<PurQuotFindBillVO> listPurQuotFindBillVO(const PurQuotFindBillQuery& query);
 
-	//»ñÈ¡¶à¸öPurQuotList¶ÔÏó
+	//è·å–å¤šä¸ªPurQuotListå¯¹è±¡
 	list<PurQuotListVO> listPurQuotListVO(const PurQuotListQuery& query);
 
-	//»ñÈ¡¶à¸öPurQuotDividedListVO¶ÔÏó
+	//è·å–å¤šä¸ªPurQuotDividedListVOå¯¹è±¡
 	list<PurQuotDividedListVO> listPurQuotDividedListVO(const PurQuotDividedListQuery& query);
 
 	PurQuotFindDetailBillVO getPurQuotFindDetailBillVO(const PurQuotFindDetailBillQuery& query);
 
-	//µ¼³ö
+	//å¯¼å‡º
 	PurQuotExportVO listPurQuotExportVO(const PurQuotExportQuery& query);
-	//µ¼Èë
+	//å¯¼å…¥
 	uint64_t updatePurQuotInto(const PurQuotIntoDTO& dto);
 
-	// ·ÖÒ³²éÑ¯ËùÓĞÊı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ‰€æœ‰æ•°æ®
 	//PageVO<SampleVO> listAll(const SampleQuery& query);
-	// ±£´æÊı¾İ
+	// ä¿å­˜æ•°æ®
 	uint64_t saveData(const AddPurQuotDTO& dto, const PayloadDTO& payload);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	bool updateData(const ModPurQuotDTO& dto, const PayloadDTO& payload);
-	// Í¨¹ıbill_noÉ¾³ıÊı¾İ
+	// é€šè¿‡bill_noåˆ é™¤æ•°æ®
 	bool removeData(const DelPurQuotDTO& dto);
-	// Í¨¹ıbill_noĞŞ¸Ä±¨¼Û×´Ì¬
+	// é€šè¿‡bill_noä¿®æ”¹æŠ¥ä»·çŠ¶æ€
 	bool UpdateDataBillStatus(const PurQuotModBillStatusDTO& dto);
-	// Í¨¹ıIDÉ¾³ıÊı¾İ
-	//bool removeData(uint64_t id);				//sample°¸Àı
+	// é€šè¿‡IDåˆ é™¤æ•°æ®
+	//bool removeData(uint64_t id);				//sampleæ¡ˆä¾‹
 
 };
 

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,16 +23,16 @@
 #include "../PageQuery.h"
 
 /**
- * Ê¾Àı²éÑ¯¶ÔÏó ¡ª¡ª Ö¸¶¨²É¹ºÑ¯¼Ûµ¥ÏêÇé£¨¸ù¾İµ¥¾İ±àºÅ²éÑ¯£©
+ * ç¤ºä¾‹æŸ¥è¯¢å¯¹è±¡ â€”â€” æŒ‡å®šé‡‡è´­è¯¢ä»·å•è¯¦æƒ…ï¼ˆæ ¹æ®å•æ®ç¼–å·æŸ¥è¯¢ï¼‰
  */
 
 class PurInquiryFindDetailBillQuery : public PageQuery
 {
-	//µ¥¾İ±àºÅ
-	CC_SYNTHESIZE(string, bill_no, Bill_no);    // ¶ÔÓ¦mysqlÊı¾İ¿âÖĞbill_no×Ö¶Î
+	//å•æ®ç¼–å·
+	CC_SYNTHESIZE(string, bill_no, Bill_no);    // å¯¹åº”mysqlæ•°æ®åº“ä¸­bill_noå­—æ®µ
 
 public:
-	// °ó¶¨from_json
+	// ç»‘å®šfrom_json
 	friend void from_json(const json& j, PurInquiryFindDetailBillQuery& t) { 
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);

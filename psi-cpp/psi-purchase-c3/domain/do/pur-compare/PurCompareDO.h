@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,73 +22,73 @@
 #include "../DoInclude.h"
 
 /**
- * pur_compareÊı¾İ¿âÊµÌåÀà
+ * pur_compareæ•°æ®åº“å®ä½“ç±»
  */
 class PurCompareDO
 {
 	// id
 	CC_SYNTHESIZE(string, id, Id);
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	// µ¥¾İÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	// Ô´µ¥ÀàĞÍ
+	// æºå•ç±»å‹
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	// Ô´µ¥ºÅ(²É¹ºÑ¯¼Ûµ¥)
+	// æºå•å·(é‡‡è´­è¯¢ä»·å•)
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	// µ¥¾İÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// ºì×Öµ¥¾İ
+	// çº¢å­—å•æ®
 	CC_SYNTHESIZE(string, isRubric, IsRubric);
-	// ºòÑ¡±¨¼Ûµ¥ids
+	// å€™é€‰æŠ¥ä»·å•ids
 	CC_SYNTHESIZE(string, candidateQuotIds, CandidateQuotIds);
-	// ¸¶¿î·½Ê½
+	// ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, paymentMethod, PaymentMethod);
-	// ½»»õµØµã
+	// äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
-	// ½»»õÈÕÆÚ
+	// äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
-	// ¸½¼ş
+	// é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ×Ô¶¯µ¥¾İ
+	// è‡ªåŠ¨å•æ®
 	CC_SYNTHESIZE(string, isAuto, IsAuto);
-	// µ¥¾İ½×¶Î
+	// å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	// ºËÅúÈË
+	// æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	// ºËÅúÊµÀı
+	// æ ¸æ‰¹å®ä¾‹
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	// ºËÅú½á¹û
+	// æ ¸æ‰¹ç»“æœ
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	// ºËÅúÒâ¼û
+	// æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-	// ÒÑÉúĞ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(string, isEffective, IsEffective);
-	// ÉúĞ§Ê±¼ä
+	// ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(string, isClosed, IsClosed);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(string, isVoided, IsVoided);
-	// ÖÆµ¥²¿ÃÅ
+	// åˆ¶å•éƒ¨é—¨
 	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	// ÖÆµ¥ÈË
+	// åˆ¶å•äºº
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	// ÖÆµ¥Ê±¼ä
+	// åˆ¶å•æ—¶é—´
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// ĞŞ¸ÄÈË
+	// ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	// ĞŞ¸ÄÊ±¼ä
+	// ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	// °æ±¾
+	// ç‰ˆæœ¬
 	CC_SYNTHESIZE(string, version, Version);
-	// µ¥¾İÈÕÆÚ_¿ªÊ¼
+	// å•æ®æ—¥æœŸ_å¼€å§‹
 	CC_SYNTHESIZE(string, billDateBegin, BillDateBegin);
-	// µ¥¾İÈÕÆÚ_½áÊø
+	// å•æ®æ—¥æœŸ_ç»“æŸ
 	CC_SYNTHESIZE(string, billDateEnd, BillDateEnd);
 public:
 	PurCompareDO() {

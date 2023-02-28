@@ -1,4 +1,4 @@
-
+ï»¿
 #include "stdafx.h"
 #include "PurInquiryController.h"
 #include "../../service/pur-inquiry/PurInquiryService.h"
@@ -6,32 +6,32 @@
 #include "CharsetConvertHepler.h"
 
 
-// ²éÑ¯²É¹ºÑ¯¼Ûµ¥·ÖÒ³ÁĞ±í
+// æŸ¥è¯¢é‡‡è´­è¯¢ä»·å•åˆ†é¡µåˆ—è¡¨
 JsonVO<PageVO<PurInquiryFindBillVO>> PurInquiryController::execQueryPurInquiryFindBill(const PurInquiryFindBillQuery& query, const PayloadDTO& payload)
 {
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	PurInquiryService service;
-	// ²éÑ¯Êı¾İ
+	// æŸ¥è¯¢æ•°æ®
 	PageVO<PurInquiryFindBillVO> result = service.listAll(query);
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	return JsonVO<PageVO<PurInquiryFindBillVO>>(result, RS_SUCCESS);
 }
 
-// ²é¿´Ö¸¶¨Ñ¯¼Ûµ¥ÏêÏ¸ĞÅÏ¢
+// æŸ¥çœ‹æŒ‡å®šè¯¢ä»·å•è¯¦ç»†ä¿¡æ¯
 JsonVO<PurInquiryFindDetailBillVO> PurInquiryController::execQueryPurInquiryFindDetailBill(const PurInquiryFindDetailBillQuery& query, const PayloadDTO& payload)
 {
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	PurInquiryService service;
-	//Êı¾İĞ£Ñé
+	//æ•°æ®æ ¡éªŒ
 	PurInquiryFindDetailBillVO result;
 	if (query.getBill_no() == "") return JsonVO<PurInquiryFindDetailBillVO>(result, RS_PARAMS_INVALID);
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	result = service.listPurInquiryFindDetailBill(query);
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	return JsonVO<PurInquiryFindDetailBillVO>(result, RS_SUCCESS);
 }
 
-//Ìí¼Ó²É¹ºÑ¯¼Û
+//æ·»åŠ é‡‡è´­è¯¢ä»·
 JsonVO<uint64_t> PurInquiryController::execAddPurInquiry(const AddPurInquiryDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
@@ -50,7 +50,7 @@ JsonVO<uint64_t> PurInquiryController::execAddPurInquiry(const AddPurInquiryDTO&
 	return result;
 }
 
-//ĞŞ¸Ä²É¹ºÑ¯¼Û
+//ä¿®æ”¹é‡‡è´­è¯¢ä»·
 JsonVO<std::string> PurInquiryController::execModifyPurInquiry(const AddPurInquiryDTO& dto, const PayloadDTO& payload)
 {
 	PurInquiryService service;
@@ -65,7 +65,7 @@ JsonVO<std::string> PurInquiryController::execModifyPurInquiry(const AddPurInqui
 	return result;
 }
 
-//É¾³ı²É¹ºÑ¯¼Û
+//åˆ é™¤é‡‡è´­è¯¢ä»·
 JsonVO<string> PurInquiryController::execRemovePurInquiry(const PurInquiryRemoveDTO& dto)
 {
 	JsonVO<string> result;
@@ -83,7 +83,7 @@ JsonVO<string> PurInquiryController::execRemovePurInquiry(const PurInquiryRemove
 	return result;
 }
 
-//ĞŞ¸Äµ¥¾İ±àºÅ
+//ä¿®æ”¹å•æ®ç¼–å·
 JsonVO<string> PurInquiryController::execModifyPurQuotModBillStatus(const PurInquiryModBillStatusDTO& dto)
 {
 	JsonVO<string> result;
@@ -101,54 +101,54 @@ JsonVO<string> PurInquiryController::execModifyPurQuotModBillStatus(const PurInq
 }
 
 
-// µ¼³ö£¨°´µ¥¾İ±àºÅÅúÁ¿²éÑ¯ºó£¬·ÅÈëxml£¬ÔÙÏÂÔØÎÄ¼ş£©
+// å¯¼å‡ºï¼ˆæŒ‰å•æ®ç¼–å·æ‰¹é‡æŸ¥è¯¢åï¼Œæ”¾å…¥xmlï¼Œå†ä¸‹è½½æ–‡ä»¶ï¼‰
 JsonVO<std::string> PurInquiryController::execQueryPurInquiryExport(const PurInquiryExportQuery& query, const PayloadDTO& payload)
 {
-	// ¹¹½¨·µ»Ø¶ÔÏóÊı¾İ
+	// æ„å»ºè¿”å›å¯¹è±¡æ•°æ®
 	JsonVO<std::string> result;
-	// ÉèÖÃexlce±íÍ·Ãû³Æ
+	// è®¾ç½®exlceè¡¨å¤´åç§°
 	vector<std::string> head = {
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),CharsetConvertHepler::ansiToUtf8("µ¥¾İÈÕÆÚ"), \
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ½×¶Î"), CharsetConvertHepler::ansiToUtf8("µ¥¾İÖ÷Ìâ"),\
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ºÅ"), CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),\
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),CharsetConvertHepler::ansiToUtf8("¸¶¿î·½Ê½"),\
-		CharsetConvertHepler::ansiToUtf8("½»»õµØµã"), CharsetConvertHepler::ansiToUtf8("½»»õÊ±¼ä"),\
-		CharsetConvertHepler::ansiToUtf8("ÁªÏµÈË"), CharsetConvertHepler::ansiToUtf8("ÁªÏµµç»°"),\
+		CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),CharsetConvertHepler::ansiToUtf8("å•æ®æ—¥æœŸ"), \
+		CharsetConvertHepler::ansiToUtf8("å•æ®é˜¶æ®µ"), CharsetConvertHepler::ansiToUtf8("å•æ®ä¸»é¢˜"),\
+		CharsetConvertHepler::ansiToUtf8("æºå•å·"), CharsetConvertHepler::ansiToUtf8("æºå•id"),\
+		CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),CharsetConvertHepler::ansiToUtf8("ä»˜æ¬¾æ–¹å¼"),\
+		CharsetConvertHepler::ansiToUtf8("äº¤è´§åœ°ç‚¹"), CharsetConvertHepler::ansiToUtf8("äº¤è´§æ—¶é—´"),\
+		CharsetConvertHepler::ansiToUtf8("è”ç³»äºº"), CharsetConvertHepler::ansiToUtf8("è”ç³»ç”µè¯"),\
 		CharsetConvertHepler::ansiToUtf8("fax"), CharsetConvertHepler::ansiToUtf8("email"),\
-		CharsetConvertHepler::ansiToUtf8("ÊıÁ¿"), CharsetConvertHepler::ansiToUtf8("²Î¿¼½ğ¶î"),\
-		CharsetConvertHepler::ansiToUtf8("ÉúĞ§µÄ±¨¼Ûµ¥Êı"), CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÉúĞ§"), CharsetConvertHepler::ansiToUtf8("ÉúĞ§Ê±¼ä"),\
-		CharsetConvertHepler::ansiToUtf8("ÒÑ¹Ø±Õ"), CharsetConvertHepler::ansiToUtf8("ÒÑ×÷·Ï"),\
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñ×Ô¶¯Éú³É"), CharsetConvertHepler::ansiToUtf8("ÊÇ·ñºì×Ö"),\
-		CharsetConvertHepler::ansiToUtf8("ÖÆµ¥ÈË"), CharsetConvertHepler::ansiToUtf8("ÖÆµ¥Ê±¼ä"),\
-		CharsetConvertHepler::ansiToUtf8("ÖÆµ¥²¿ÃÅ"), CharsetConvertHepler::ansiToUtf8("ĞŞ¸ÄÈË"),\
-		CharsetConvertHepler::ansiToUtf8("¸½¼ş"), CharsetConvertHepler::ansiToUtf8("ÉóÅúÊµÀıid"),\
-		CharsetConvertHepler::ansiToUtf8("ºËÅúÈË"), CharsetConvertHepler::ansiToUtf8("ºËÅú½á¹ûÀàĞÍ"),\
-		CharsetConvertHepler::ansiToUtf8("ºËÅúÒâ¼û"), CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),\
-		CharsetConvertHepler::ansiToUtf8("·ÖÂ¼ºÅ"), CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),\
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼ºÅ"), CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼id"),\
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"), CharsetConvertHepler::ansiToUtf8("ÎïÁÏ"),\
-		CharsetConvertHepler::ansiToUtf8("¼ÆÁ¿µ¥Î»"), CharsetConvertHepler::ansiToUtf8("ÊıÁ¿"),\
-		CharsetConvertHepler::ansiToUtf8("Ë°ÂÊ%"), CharsetConvertHepler::ansiToUtf8("²Î¿¼º¬Ë°µ¥¼Û"),\
-		CharsetConvertHepler::ansiToUtf8("²Î¿¼º¬Ë°½ğ¶î"), CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå1"),\
-		CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå2"), CharsetConvertHepler::ansiToUtf8("±¸×¢")};
-	// ²éÑ¯Òªµ¼³öµÄµ¥¾İ±àºÅÁĞ±í
+		CharsetConvertHepler::ansiToUtf8("æ•°é‡"), CharsetConvertHepler::ansiToUtf8("å‚è€ƒé‡‘é¢"),\
+		CharsetConvertHepler::ansiToUtf8("ç”Ÿæ•ˆçš„æŠ¥ä»·å•æ•°"), CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦ç”Ÿæ•ˆ"), CharsetConvertHepler::ansiToUtf8("ç”Ÿæ•ˆæ—¶é—´"),\
+		CharsetConvertHepler::ansiToUtf8("å·²å…³é—­"), CharsetConvertHepler::ansiToUtf8("å·²ä½œåºŸ"),\
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ"), CharsetConvertHepler::ansiToUtf8("æ˜¯å¦çº¢å­—"),\
+		CharsetConvertHepler::ansiToUtf8("åˆ¶å•äºº"), CharsetConvertHepler::ansiToUtf8("åˆ¶å•æ—¶é—´"),\
+		CharsetConvertHepler::ansiToUtf8("åˆ¶å•éƒ¨é—¨"), CharsetConvertHepler::ansiToUtf8("ä¿®æ”¹äºº"),\
+		CharsetConvertHepler::ansiToUtf8("é™„ä»¶"), CharsetConvertHepler::ansiToUtf8("å®¡æ‰¹å®ä¾‹id"),\
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹äºº"), CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹ç»“æœç±»å‹"),\
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹æ„è§"), CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),\
+		CharsetConvertHepler::ansiToUtf8("åˆ†å½•å·"), CharsetConvertHepler::ansiToUtf8("æºå•id"),\
+		CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•å·"), CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•id"),\
+		CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"), CharsetConvertHepler::ansiToUtf8("ç‰©æ–™"),\
+		CharsetConvertHepler::ansiToUtf8("è®¡é‡å•ä½"), CharsetConvertHepler::ansiToUtf8("æ•°é‡"),\
+		CharsetConvertHepler::ansiToUtf8("ç¨ç‡%"), CharsetConvertHepler::ansiToUtf8("å‚è€ƒå«ç¨å•ä»·"),\
+		CharsetConvertHepler::ansiToUtf8("å‚è€ƒå«ç¨é‡‘é¢"), CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰1"),\
+		CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰2"), CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨")};
+	// æŸ¥è¯¢è¦å¯¼å‡ºçš„å•æ®ç¼–å·åˆ—è¡¨
 	list<std::string> exres = query.getBill_no_list();
-	// ¶ÁÈëexcel±í£¬²¢·µ»ØfastDfsµØÖ·
-	std::string url = execexport(head, CharsetConvertHepler::ansiToUtf8("²É¹ºÑ¯¼Ûµ¥"), exres);
+	// è¯»å…¥excelè¡¨ï¼Œå¹¶è¿”å›fastDfsåœ°å€
+	std::string url = execexport(head, CharsetConvertHepler::ansiToUtf8("é‡‡è´­è¯¢ä»·å•"), exres);
 	if (url == "")
 		result.fail("");
 	else 
 		result.success(url);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<std::string>(result);
 }
 
-// µ¼Èë£¨ÉÏ´«ÎÄ¼şºó£¬½«xml½âÎö³Éjson/cpp·ÅÈëÊı¾İ¿â£¬±£´æÊı¾İ£©
+// å¯¼å…¥ï¼ˆä¸Šä¼ æ–‡ä»¶åï¼Œå°†xmlè§£ææˆjson/cppæ”¾å…¥æ•°æ®åº“ï¼Œä¿å­˜æ•°æ®ï¼‰
 JsonVO<uint64_t> PurInquiryController::execaddPurInquiryInto(const PurInquiryIntoDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
-	//ÏÂÔØÎÄ¼ş²¢ÇÒ½øĞĞexecl½âÎö
+	//ä¸‹è½½æ–‡ä»¶å¹¶ä¸”è¿›è¡Œexeclè§£æ
 	PurInquiryService service;
 	uint64_t ret = 1;
 	for (string file : dto.getFiles()) {
@@ -159,7 +159,7 @@ JsonVO<uint64_t> PurInquiryController::execaddPurInquiryInto(const PurInquiryInt
 			break;
 		}
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	if (ret)
 	{
 		result.success(100);

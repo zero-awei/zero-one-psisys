@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 #ifndef __PUR_INQUIRY_MOD_BILL_STATUS_DTO_H__
 #define __PUR_INQUIRY_MOD_BILL_STATUS_DTO_H__
 #include "../../GlobalInclude.h"
 
-//µ¥¾İ×´Ì¬DTO
+//å•æ®çŠ¶æ€DTO
 class PurInquiryModBillStatusDTO
 {
-	//ÒÑ¹Ø±Õ			;
+	//å·²å…³é—­			;
 	CC_SYNTHESIZE(int, is_close, Is_close);
-	//ÊÇ·ñ×÷·Ï			;
+	//æ˜¯å¦ä½œåºŸ			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	//¶©µ¥±àºÅ
+	//è®¢å•ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:
 	friend void from_json(const json& j, PurInquiryModBillStatusDTO& t)

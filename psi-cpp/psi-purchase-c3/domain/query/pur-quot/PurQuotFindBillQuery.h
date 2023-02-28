@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 #ifndef __PUR_QUOT_FIND_BILL_QUERY_H_
 #define __PUR_QUOT_FIND_BILL_QUERY_H_
 #include "../PageQuery.h"
 class PurQuotFindBillQuery : public PageQuery{
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//µ¥¾İÈÕÆÚ--¿ªÊ¼
+	//å•æ®æ—¥æœŸ--å¼€å§‹
 	CC_SYNTHESIZE(string, bill_date_begin, Bill_date_begin);
-	//µ¥¾İÈÕÆÚ--½áÊø
+	//å•æ®æ—¥æœŸ--ç»“æŸ
 	CC_SYNTHESIZE(string, bill_date_end, Bill_date_end);
-	// µ¥¾İÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// µ¥¾İ½×¶Î
+	// å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	// ÒÑÉúĞ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
 public:
 	friend void from_json(const json& j, PurQuotFindBillQuery& t) {

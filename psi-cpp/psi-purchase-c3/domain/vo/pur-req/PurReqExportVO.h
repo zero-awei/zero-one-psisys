@@ -1,100 +1,100 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef _PUR_REQ_EXPORT_VO_H_
 #define _PUR_REQ_EXPORT_VO_H_
 
 #include "../../GlobalInclude.h"
 
-//µ¼³ö
+//å¯¼å‡º
 class PurReqExportVO
 {
-//µ¼³ö¶ÔÏóµÄĞÅÏ¢
-	// ²É¹ºÀàĞÍ	£¨¹«¹²½Ó¿Ú£©
+//å¯¼å‡ºå¯¹è±¡çš„ä¿¡æ¯
+	// é‡‡è´­ç±»å‹	ï¼ˆå…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, purReqType, PurReqType);
-	// ĞèÇó²¿ÃÅ	£¨¹«¹²½Ó¿Ú£©
+	// éœ€æ±‚éƒ¨é—¨	ï¼ˆå…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, purReqRequestDept, PurReqRequestDept);
-	// ĞèÇóÈË	£¨Ñ¡ÔñÓÃ»§¹«¹²½Ó¿Ú£©
+	// éœ€æ±‚äºº	ï¼ˆé€‰æ‹©ç”¨æˆ·å…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, purReqRequester, PurReqRequester);
-	// ĞèÇóÊ±¼ä	
+	// éœ€æ±‚æ—¶é—´	
 	CC_SYNTHESIZE(string, purReqRequestTime, PurReqRequestTime);
-	// ÊıÁ¿	
+	// æ•°é‡	
 	CC_SYNTHESIZE(double, purReqQty, PurReqQty);
-	// ²Î¿¼½ğ¶î	
+	// å‚è€ƒé‡‘é¢	
 	CC_SYNTHESIZE(double, purReqAmt, PurReqAmt);
-	// ÒÑ¶©¹ºÊıÁ¿
+	// å·²è®¢è´­æ•°é‡
 	CC_SYNTHESIZE(double, purReqOrderQty, PurReqOrderQty);
-	// ÊÇ·ñÉúĞ§	
+	// æ˜¯å¦ç”Ÿæ•ˆ	
 	CC_SYNTHESIZE(int, purReqIsEffective, PurReqIsEffective);
-	// ¸½¼ş	
+	// é™„ä»¶	
 	CC_SYNTHESIZE(string, purReqAttachment, PurReqAttachment);
-	// Ô´µ¥id	
+	// æºå•id	
 	CC_SYNTHESIZE(string, purReqSrcBillId, PurReqSrcBillId);
-	// µ¥¾İÖ÷Ìâ	
+	// å•æ®ä¸»é¢˜	
 	CC_SYNTHESIZE(string, purReqSubject, PurReqSubject);
-	// µ¥¾İ½×¶Î	£¨¹«¹²½Ó¿Ú£©
+	// å•æ®é˜¶æ®µ	ï¼ˆå…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, purReqStage, PurReqStage);
-	// Ô´µ¥ºÅ	
+	// æºå•å·	
 	CC_SYNTHESIZE(string, purReqSrcNo, PurReqSrcNo);
-	// ÊÇ·ñ×Ô¶¯Éú³É	
+	// æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ	
 	CC_SYNTHESIZE(int, purReqIsAuto, PurReqIsAuto);
-	// ±¸×¢	
+	// å¤‡æ³¨	
 	CC_SYNTHESIZE(string, purReqRemark, PurReqReqRemark);
-	// ÉóÅúÊµÀıid	
+	// å®¡æ‰¹å®ä¾‹id	
 	CC_SYNTHESIZE(string, purReqBpmiInstenceId, PurReqBpmiInstenceId);
-	// ÊÇ·ñ×÷·Ï	
+	// æ˜¯å¦ä½œåºŸ	
 	CC_SYNTHESIZE(int, purReqIsVoided, PurReqIsVoided);
-	// µ¥¾İ±àºÅ	
+	// å•æ®ç¼–å·	
 	CC_SYNTHESIZE(string, purReqBillNo, PurReqBillNo);
-	// ÊÇ·ñºì×Ö	
+	// æ˜¯å¦çº¢å­—	
 	CC_SYNTHESIZE(int, purReqIsRubric, PurReqIsRubric);
-	// Ô´µ¥ÀàĞÍ	
+	// æºå•ç±»å‹	
 	CC_SYNTHESIZE(string, purReqSrcBillType, PurReqSrcBillType);
-	// ÖÆµ¥Ê±¼ä	
+	// åˆ¶å•æ—¶é—´	
 	CC_SYNTHESIZE(string, purReqCreateTime, PurReqCreateTime);
-	// ÉúĞ§Ê±¼ä	
+	// ç”Ÿæ•ˆæ—¶é—´	
 	CC_SYNTHESIZE(string, purReqEffectiveTime, PurReqEffectiveTime);
-	// ºËÅúÈË	
+	// æ ¸æ‰¹äºº	
 	CC_SYNTHESIZE(string, purReqApprover, PurReqApprover);
-	// ĞŞ¸ÄÈË	
+	// ä¿®æ”¹äºº	
 	CC_SYNTHESIZE(string, purReqUpdateBy, PurReqUpdateBy);
-	// ÖÆµ¥²¿ÃÅ	
+	// åˆ¶å•éƒ¨é—¨	
 	CC_SYNTHESIZE(string, purReqSysOrgCode, PurReqSysOrgCode);
-	// ÊÇ·ñ¹Ø±Õ	
+	// æ˜¯å¦å…³é—­	
 	CC_SYNTHESIZE(int, purReqIsClosed, PurReqIsClosed);
-	// ºËÅú½á¹ûÀàĞÍ	
+	// æ ¸æ‰¹ç»“æœç±»å‹	
 	CC_SYNTHESIZE(string, purReqApprovalResultType, PurReqApprovalResultType);
-	// µ¥¾İÈÕÆÚ	
+	// å•æ®æ—¥æœŸ	
 	CC_SYNTHESIZE(string, purReqBillDate, PurReqBillDate);
-	// ÖÆµ¥ÈË	
+	// åˆ¶å•äºº	
 	CC_SYNTHESIZE(string, purReqCreateBy, PurReqCreateBy);
-	// ºËÅúÒâ¼û
+	// æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, purReqApprovalRemark, PurReqApprovalRemark);
 	
-//Ã÷Ï¸
-	// ÎïÁÏ	
+//æ˜ç»†
+	// ç‰©æ–™	
 	CC_SYNTHESIZE(string, purReqMaterialId, PurReqMaterialId);
-	// ¼ÆÁ¿µ¥Î»	
+	// è®¡é‡å•ä½	
 	CC_SYNTHESIZE(string, purReqUnitId, PurReqUnitId);
-	// Ë°ÂÊ% 
+	// ç¨ç‡% 
 	CC_SYNTHESIZE(double, purReqTaxRate, PurReqTaxRate);
-	//²Î¿¼º¬Ë°µ¥¼Û
+	//å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, purReqPrice, PurReqPrice);
-	// ½¨Òé¹©Ó¦ÉÌ£¨¹«¹²½Ó¿Ú£©
+	// å»ºè®®ä¾›åº”å•†ï¼ˆå…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, purReqSuggestSupplierId, PurReqSuggestSupplierId);
-	// ×Ô¶¨Òå1	
+	// è‡ªå®šä¹‰1	
 	CC_SYNTHESIZE(string,purReqCustom1, PurReqCustom1);
-	// Ô´µ¥·ÖÂ¼ºÅ	
+	// æºå•åˆ†å½•å·	
 	CC_SYNTHESIZE(string, purReqSrcEntryNo, PurReqSrcEntryNo);
-	// ·ÖÂ¼ºÅ	
+	// åˆ†å½•å·	
 	CC_SYNTHESIZE(string, purReqEntryNo, PurReqEntryNo);
-	// ×Ô¶¨Òå2	
+	// è‡ªå®šä¹‰2	
 	CC_SYNTHESIZE(string, purReqCustom2, PurReqCustom2);
-	// Ô´µ¥·ÖÂ¼id	
+	// æºå•åˆ†å½•id	
 	CC_SYNTHESIZE(string, purReqSrcEntryId, PurReqSrcEntryId);
 
 
 public:
-// °ó¶¨JSON×ª»»·½·¨
+// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurReqExportVO, purReqType, purReqRequestDept, purReqRequester, purReqRequestTime, purReqQty,
 		purReqAmt,purReqOrderQty, purReqIsEffective, purReqAttachment, purReqSrcBillId, purReqSubject, purReqStage, 
 		purReqSrcNo, purReqIsAuto, purReqRemark, purReqBpmiInstenceId, purReqIsVoided, purReqBillNo,purReqIsRubric,

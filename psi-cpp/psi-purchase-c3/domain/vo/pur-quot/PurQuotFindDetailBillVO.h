@@ -1,17 +1,17 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_FIND_DETAIL_BILL_VO_H_
 #define _PUR_QUOT_FIND_DETAIL_BILL_VO_H_
 #include "../../GlobalInclude.h"
 #include "PurQuotBaseVO.h"
 #include "PurQuotDetailVO.h"
 
-//Ö¸¶¨µ¥¾İÃ÷Ï¸ÁĞ±íµÄVO
+//æŒ‡å®šå•æ®æ˜ç»†åˆ—è¡¨çš„VO
 class PurQuotFindDetailBillVO{
 	CC_SYNTHESIZE(PurQuotBaseVO, base_vo, Base_vo);
 	CC_SYNTHESIZE(list<PurQuotDetailVO>, detail_vo, Detail_vo);
 public:
 	BIND_TO_JSON(PurQuotFindDetailBillVO, base_vo, detail_vo);
-	//Ä¬ÈÏ¹¹Ôìº¯Êı
+	//é»˜è®¤æ„é€ å‡½æ•°
 	PurQuotFindDetailBillVO() {}
 	PurQuotFindDetailBillVO(PurQuotBaseVO &b_vo, list<PurQuotDetailVO> &entry_vo) :base_vo(b_vo), detail_vo(entry_vo){}
 };

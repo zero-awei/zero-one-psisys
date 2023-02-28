@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,45 +22,45 @@
 #include "../DoInclude.h"
 
 /**
- * Ê¾ÀıÊı¾İ¿âÊµÌåÀà
+ * ç¤ºä¾‹æ•°æ®åº“å®ä½“ç±»
  */
 
 class PurReqEntryDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
-	//µ¥¾İºÅ
+	//å•æ®å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//·ÖÂ¼ºÅ
+	//åˆ†å½•å·
 	CC_SYNTHESIZE(int, entry_no, Entry_no);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//Ô´µ¥·ÖÂ¼id
+	//æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	//¼ÆÁ¿µ¥Î»
+	//è®¡é‡å•ä½
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//Ë°ÂÊ
+	//ç¨ç‡
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	//²Î¿¼º¬Ë°µ¥¼Û
+	//å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	//²Î¿¼º¬Ë°½ğ¶î
+	//å‚è€ƒå«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//½¨Òé¹©Ó¦ÉÌ
+	//å»ºè®®ä¾›åº”å•†
 	CC_SYNTHESIZE(string, suggest_supplier_id, Suggest_supplier_id);
-	//ÒÑ¶©ÊıÁ¿
+	//å·²è®¢æ•°é‡
 	CC_SYNTHESIZE(double, ordered_qty, Ordered_qty);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
 	PurReqEntryDO() {

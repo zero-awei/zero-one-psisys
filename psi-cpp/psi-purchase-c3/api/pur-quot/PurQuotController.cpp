@@ -1,42 +1,42 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PurQuotController.h"
 #include "../../service/pur-quot/PurQuotService.h"
 
 #if 0
-¿ª·¢ÈÕÖ¾2023Äê2ÔÂ18ÈÕ15:34 : 30£º³É¹¦ÊµÏÖ½«²¿·Ö×Ö¶Î£¨id¡¢bill_no¡¢bill_date¡¢qty£©ÉÏ´«ÖÁÊı¾İ¿â
-Ô¤¼Æ¿ª·¢¹¦ÄÜ£º
-¢ÙÔÚControllerÖĞ£¬¼ì²éÊÇ·ñÊÕµ½´«ÈëÊı¾İ¿âµÄ±Ø´«×Ö¶Îid¡¢bill_no¡¢bill_date
-¢Ú¼ì²éÊÇ·ñÊÕµ½ÒµÎñµÄ±Ø´«×Ö¶Î....£¨ÂŞÁĞ³ö±Ø´«×Ö¶Î£©
-¢ÚĞÂÔö¸½¼şÉÏ´«¹¦ÄÜ
-¢ÛĞÂÔö¶ÔÃ÷Ï¸ÁĞ±íµÄ»ñÈ¡ºÍÉÏ´«£¬²¢¼ì²éÃ÷Ï¸ÁĞ±íÊÇ·ñÓĞ±Ø´«×Ö¶Î
-¢ÜÍê³ÉÉ¾³ı±¨¼Û¹¦ÄÜ
-¢İÍê³ÉĞŞ¸Ä±¨¼Û×´Ì¬£¨¹Ø±Õ¡¢×÷·Ï¡¢·´¹Ø±Õ£©¹¦ÄÜ
-£¨ĞèÒªÅĞ¶¨µ±ÇÒ±¨¼Û×´Ì¬£¬À´¿´ÊÇ·ñ¿ÉÒÔ¹Ø±Õ / ·´¹Ø±Õ£¬ÄÇÕâ¸ö´ÓÊı¾İ¿âÖĞ»ñÈ¡±¨¼Û×´Ì¬ÄÚÈİµÄ¹¤×÷£¬ÊÇÎÒÃÇÕâ¸ö½Ó¿Ú¸ºÔğÂğ£¿Ç°¶ËÈçºÎ´«ÈëĞŞ¸Ä±¨¼Û×´Ì¬µÄ×Ö¶Î£¿
-ÎÒÃÇ¿ÉÒÔÓÃÆäËû²»±ä£¬Í¨¹ı±äµÃÄÇ¸öÀ´½øĞĞÕûÌåÅĞ¶Ï£¬ÕâÑùµÄ±ä»¯ÊÇ·ñ·ûºÏÒµÎñ£©
-¢ŞAPIPostµÄÅú×¢
+å¼€å‘æ—¥å¿—2023å¹´2æœˆ18æ—¥15:34 : 30ï¼šæˆåŠŸå®ç°å°†éƒ¨åˆ†å­—æ®µï¼ˆidã€bill_noã€bill_dateã€qtyï¼‰ä¸Šä¼ è‡³æ•°æ®åº“
+é¢„è®¡å¼€å‘åŠŸèƒ½ï¼š
+â‘ åœ¨Controllerä¸­ï¼Œæ£€æŸ¥æ˜¯å¦æ”¶åˆ°ä¼ å…¥æ•°æ®åº“çš„å¿…ä¼ å­—æ®µidã€bill_noã€bill_date
+â‘¡æ£€æŸ¥æ˜¯å¦æ”¶åˆ°ä¸šåŠ¡çš„å¿…ä¼ å­—æ®µ....ï¼ˆç½—åˆ—å‡ºå¿…ä¼ å­—æ®µï¼‰
+â‘¡æ–°å¢é™„ä»¶ä¸Šä¼ åŠŸèƒ½
+â‘¢æ–°å¢å¯¹æ˜ç»†åˆ—è¡¨çš„è·å–å’Œä¸Šä¼ ï¼Œå¹¶æ£€æŸ¥æ˜ç»†åˆ—è¡¨æ˜¯å¦æœ‰å¿…ä¼ å­—æ®µ
+â‘£å®Œæˆåˆ é™¤æŠ¥ä»·åŠŸèƒ½
+â‘¤å®Œæˆä¿®æ”¹æŠ¥ä»·çŠ¶æ€ï¼ˆå…³é—­ã€ä½œåºŸã€åå…³é—­ï¼‰åŠŸèƒ½
+ï¼ˆéœ€è¦åˆ¤å®šå½“ä¸”æŠ¥ä»·çŠ¶æ€ï¼Œæ¥çœ‹æ˜¯å¦å¯ä»¥å…³é—­ / åå…³é—­ï¼Œé‚£è¿™ä¸ªä»æ•°æ®åº“ä¸­è·å–æŠ¥ä»·çŠ¶æ€å†…å®¹çš„å·¥ä½œï¼Œæ˜¯æˆ‘ä»¬è¿™ä¸ªæ¥å£è´Ÿè´£å—ï¼Ÿå‰ç«¯å¦‚ä½•ä¼ å…¥ä¿®æ”¹æŠ¥ä»·çŠ¶æ€çš„å­—æ®µï¼Ÿ
+æˆ‘ä»¬å¯ä»¥ç”¨å…¶ä»–ä¸å˜ï¼Œé€šè¿‡å˜å¾—é‚£ä¸ªæ¥è¿›è¡Œæ•´ä½“åˆ¤æ–­ï¼Œè¿™æ ·çš„å˜åŒ–æ˜¯å¦ç¬¦åˆä¸šåŠ¡ï¼‰
+â‘¥APIPostçš„æ‰¹æ³¨
 
-¼ÛÖµÅÅĞò
-¢ÙÊµÏÖÃ÷Ï¸ÁĞ±íµÄÉÏ´«¡ª¡ª¡ª¡ª¡ª¡ª¡ªĞÂÔöPurQuotDetailDTO£¬²¢ÔÚservice.cppºÍdao.cppÖĞÌí¼Ó´¦ÀíÃ÷Ï¸µÄ´úÂë¡ª¡ª2023Äê2ÔÂ21ÈÕ18:13 : 24£¬Íê³É
-¢ÚÊµÏÖĞÂÔö¸½¼şµÄÉÏ´«¹¦ÄÜ¡ª¡ª¡ª¡ª¡ªController.cppÖĞÊµÏÖ
-¢ÛÊµÏÖ×Ö¶Î¼ì²é¹¦ÄÜ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªController.cppÖĞÊµÏÖ
-¢ÜÊµÏÖĞŞ¸Ä±¨¼Û×´Ì¬¹¦ÄÜ¡ª¡ª¡ª¡ª¡ª¡ªController.cpp, service.cpp, dao.cppÖĞÊµÏÖ¡ª¡ª¡ª¡ª2023Äê2ÔÂ21ÈÕ21 : 15 : 40£¬ÊµÏÖ
-¢İÊµÏÖÉ¾³ı¹¦ÄÜ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªController.cpp, service.cpp, dao.cppÖĞÊµÏÖ¡ª¡ª¡ª¡ª2023Äê2ÔÂ21ÈÕ18 : 46 : 08£¬ÊµÏÖ
-¢ŞAPIPostµÄÅú×¢¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªAPIPost.exe
+ä»·å€¼æ’åº
+â‘ å®ç°æ˜ç»†åˆ—è¡¨çš„ä¸Šä¼ â€”â€”â€”â€”â€”â€”â€”æ–°å¢PurQuotDetailDTOï¼Œå¹¶åœ¨service.cppå’Œdao.cppä¸­æ·»åŠ å¤„ç†æ˜ç»†çš„ä»£ç â€”â€”2023å¹´2æœˆ21æ—¥18:13 : 24ï¼Œå®Œæˆ
+â‘¡å®ç°æ–°å¢é™„ä»¶çš„ä¸Šä¼ åŠŸèƒ½â€”â€”â€”â€”â€”Controller.cppä¸­å®ç°
+â‘¢å®ç°å­—æ®µæ£€æŸ¥åŠŸèƒ½â€”â€”â€”â€”â€”â€”â€”â€”Controller.cppä¸­å®ç°
+â‘£å®ç°ä¿®æ”¹æŠ¥ä»·çŠ¶æ€åŠŸèƒ½â€”â€”â€”â€”â€”â€”Controller.cpp, service.cpp, dao.cppä¸­å®ç°â€”â€”â€”â€”2023å¹´2æœˆ21æ—¥21 : 15 : 40ï¼Œå®ç°
+â‘¤å®ç°åˆ é™¤åŠŸèƒ½â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”Controller.cpp, service.cpp, dao.cppä¸­å®ç°â€”â€”â€”â€”2023å¹´2æœˆ21æ—¥18 : 46 : 08ï¼Œå®ç°
+â‘¥APIPostçš„æ‰¹æ³¨â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”APIPost.exe
 
-2023Äê2ÔÂ20ÈÕ14:52 : 45
-ÎÒÃÇ×¢Òâµ½£¬ÔÚapi¡¢domain / do¡¢domain / voÖĞ¶¼ÓĞuserÎÄ¼ş¼Ğ£¬ÓÃÓÚ¸´ÔÓÊı¾İÉÏ´«£¬
-ÎÒÃÇÖ®Ç°Ö»×¢Òâµ½ÁËdomain / doÀïµÄÄÚÈİ£¬AddDepartDTO¡¢AddDepartMoreDTO
-¶øºöÂÔÁËapi¡¢domain / voÖĞDepartController£¬AddDepartVO¡¢AddDepartMoreVOÖĞµÄÄÚÈİ
-ÏÖÔÚ£¬ÎÒÃÇĞèÒªÀûÓÃºÃÕâ²¿·ÖµÄÄÚÈİ£¬À´¸ÄÔì¹ıÈ¥µÄĞÂÔö±¨¼ÛµÄ´úÂë
+2023å¹´2æœˆ20æ—¥14:52 : 45
+æˆ‘ä»¬æ³¨æ„åˆ°ï¼Œåœ¨apiã€domain / doã€domain / voä¸­éƒ½æœ‰useræ–‡ä»¶å¤¹ï¼Œç”¨äºå¤æ‚æ•°æ®ä¸Šä¼ ï¼Œ
+æˆ‘ä»¬ä¹‹å‰åªæ³¨æ„åˆ°äº†domain / doé‡Œçš„å†…å®¹ï¼ŒAddDepartDTOã€AddDepartMoreDTO
+è€Œå¿½ç•¥äº†apiã€domain / voä¸­DepartControllerï¼ŒAddDepartVOã€AddDepartMoreVOä¸­çš„å†…å®¹
+ç°åœ¨ï¼Œæˆ‘ä»¬éœ€è¦åˆ©ç”¨å¥½è¿™éƒ¨åˆ†çš„å†…å®¹ï¼Œæ¥æ”¹é€ è¿‡å»çš„æ–°å¢æŠ¥ä»·çš„ä»£ç 
 
 
 
 #endif
 
-//Ìí¼Ó¹©Ó¦±¨¼Û
+//æ·»åŠ ä¾›åº”æŠ¥ä»·
 JsonVO<uint64_t> PurQuotController::execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload)
 {
-	//Êı¾İĞ£ÑéÃ»ÓĞ
+	//æ•°æ®æ ¡éªŒæ²¡æœ‰
 	JsonVO<uint64_t> result;
 	PurQuotService service;
 	uint64_t id = service.saveData(dto, payload);
@@ -50,7 +50,7 @@ JsonVO<uint64_t> PurQuotController::execAddPurQuot(const AddPurQuotDTO& dto, con
 	return result;
 }
 
-//ĞŞ¸Ä¹©Ó¦±¨¼Û
+//ä¿®æ”¹ä¾›åº”æŠ¥ä»·
 JsonVO<uint64_t> PurQuotController::execModPurQuot(const ModPurQuotDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
@@ -66,12 +66,12 @@ JsonVO<uint64_t> PurQuotController::execModPurQuot(const ModPurQuotDTO& dto, con
 	return result;
 }
 
-//É¾³ı¹©Ó¦±¨¼Û
+//åˆ é™¤ä¾›åº”æŠ¥ä»·
 JsonVO<uint64_t> PurQuotController::execDelPurQuot(const DelPurQuotDTO& dto)
 {
 	PurQuotService service;
 	JsonVO<uint64_t> result;
-	//Ö´ĞĞÊı¾İÉ¾³ı
+	//æ‰§è¡Œæ•°æ®åˆ é™¤
 	uint64_t id = service.removeData(dto);
 
 	if (id > 0) {
@@ -81,17 +81,17 @@ JsonVO<uint64_t> PurQuotController::execDelPurQuot(const DelPurQuotDTO& dto)
 	{
 		result.fail(id);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 
 }
 
-//ĞŞ¸Ä±¨¼Û×´Ì¬¡ª¡ªÑİÊ¾£¬ÉĞÎ´ÊµÏÖ
+//ä¿®æ”¹æŠ¥ä»·çŠ¶æ€â€”â€”æ¼”ç¤ºï¼Œå°šæœªå®ç°
 JsonVO<uint64_t> PurQuotController::execPurQuotModBillStatus(const PurQuotModBillStatusDTO& dto, const PayloadDTO& payload)
 {
 	PurQuotService service;
 	JsonVO<uint64_t> result;
-	//Ö´ĞĞ±¨¼Û×´Ì¬ĞŞ¸Ä
+	//æ‰§è¡ŒæŠ¥ä»·çŠ¶æ€ä¿®æ”¹
 	uint64_t id = service.UpdateDataBillStatus(dto);
 
 	if (id > 0) {
@@ -101,22 +101,22 @@ JsonVO<uint64_t> PurQuotController::execPurQuotModBillStatus(const PurQuotModBil
 	{
 		result.fail(id);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 }
 
 
-//µ¼³ö
+//å¯¼å‡º
 JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExportQuery& query, const PayloadDTO& payload)
 {
-	//ÔİÎ´Íê³ÉÊı¾İĞ£Ñé
+	//æš‚æœªå®Œæˆæ•°æ®æ ¡éªŒ
 	PurQuotService service;
 	PurQuotExportVO result = service.listPurQuotExportVO(query);
 	std::cout << result.getFile_name() << std::endl;
 	return JsonVO<PurQuotExportVO>(result, RS_SUCCESS);
 }
 
-//µ¼Èë
+//å¯¼å…¥
 uint64_t PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 {
 	PurQuotService service;
@@ -125,53 +125,53 @@ uint64_t PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 	return result;
 }
 
-//²éÑ¯µ¥¾İÁĞ±í
+//æŸ¥è¯¢å•æ®åˆ—è¡¨
 JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload) {
-	//ÔİÎ´¿ªÊ¼Êı¾İĞ£Ñé
+	//æš‚æœªå¼€å§‹æ•°æ®æ ¡éªŒ
 
-	//¶¨ÒåÒ»¸öService
+	//å®šä¹‰ä¸€ä¸ªService
 	PurQuotService service;
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	PageVO<PurQuotFindBillVO> result	= service.listPurQuotFindBillVO(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
 }
 
 
 
-//²éÑ¯Ö¸¶¨µ¥¾İÁĞ±í
+//æŸ¥è¯¢æŒ‡å®šå•æ®åˆ—è¡¨
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
 	PurQuotFindDetailBillVO result;
-	//ÔİÊ±Î´½øĞĞÊı¾İĞ£Ñé
+	//æš‚æ—¶æœªè¿›è¡Œæ•°æ®æ ¡éªŒ
 	if(query.getBill_no() == "") return JsonVO<PurQuotFindDetailBillVO>(result, RS_PARAMS_INVALID);
 	PurQuotService service;
 	result = service.getPurQuotFindDetailBillVO(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<PurQuotFindDetailBillVO>(result, RS_SUCCESS);
 }
 
-//Ñ¯¼Ûµ¥ÁĞ±í
+//è¯¢ä»·å•åˆ—è¡¨
 JsonVO<list<PurQuotListVO>> PurQuotController::execQueryPurQuotList(const PurQuotListQuery& query, const PayloadDTO& payload)
 {
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	list<PurQuotListVO> result;
-	//Êı¾İĞ£Ñé
+	//æ•°æ®æ ¡éªŒ
 	if(query.getBill_no() == "") return JsonVO<list<PurQuotListVO>>(result, RS_PARAMS_INVALID);
 
-	//Êı¾İĞ£Ñé³É¹¦,·µ»Ø¶ÔÓ¦µÄ¶ÔÏó
+	//æ•°æ®æ ¡éªŒæˆåŠŸ,è¿”å›å¯¹åº”çš„å¯¹è±¡
 	PurQuotService service;	
 	result = service.listPurQuotListVO(query);
 	return JsonVO<list<PurQuotListVO>>(result, RS_SUCCESS);
 }
-//Ñ¯¼Ûµ¥·ÖÂ¼ÁĞ±í
+//è¯¢ä»·å•åˆ†å½•åˆ—è¡¨
 JsonVO<list<PurQuotDividedListVO>> PurQuotController::execQueryPurQuotDividedList(const PurQuotDividedListQuery& query, const PayloadDTO& payload)
 {
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	list<PurQuotDividedListVO> result;
-	//Êı¾İĞ£Ñé
+	//æ•°æ®æ ¡éªŒ
 	if(query.getBill_no() == "") return JsonVO<list<PurQuotDividedListVO>>(result, RS_PARAMS_INVALID);
 
-	//Êı¾İĞ£Ñé³É¹¦,·µ»Ø¶ÔÓ¦µÄ¶ÔÏó
+	//æ•°æ®æ ¡éªŒæˆåŠŸ,è¿”å›å¯¹åº”çš„å¯¹è±¡
 	PurQuotService service;
 	result = service.listPurQuotDividedListVO(query);
 	return JsonVO<list<PurQuotDividedListVO>>(result, RS_SUCCESS);

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -25,16 +25,16 @@
 
 
 /**
- * Ç°ºó¶ËÊı¾İ¶Ô½ÓÊı¾İ¶ÔÏó
+ * å‰åç«¯æ•°æ®å¯¹æ¥æ•°æ®å¯¹è±¡
  */
 template<class T>
 class JsonVO
 {
-	// ×´Ì¬Âë
+	// çŠ¶æ€ç 
 	CC_SYNTHESIZE(int, code, Code);
-	// ÌáÊ¾ÏûÏ¢
+	// æç¤ºæ¶ˆæ¯
 	CC_SYNTHESIZE(string, message, Message);
-	// Êı¾İ¶ÔÏó
+	// æ•°æ®å¯¹è±¡
 	CC_SYNTHESIZE(T, data, Data);
 public:
 	JsonVO() {
@@ -44,22 +44,22 @@ public:
 		this->setStatus(resultStatus);
 		this->setData(data);
 	}
-	// ÉèÖÃ×´Ì¬
+	// è®¾ç½®çŠ¶æ€
 	void setStatus(ResultStatus resultStatus) {
 		this->message = resultStatus.getMessage();
 		this->code = resultStatus.getCode();
 	}
-	// ¹¹½¨³É¹¦ÏûÏ¢
+	// æ„å»ºæˆåŠŸæ¶ˆæ¯
 	void success(T data) {
 		this->setStatus(RS_SUCCESS);
 		this->setData(data);
 	}
-	// ¹¹½¨Ê§°ÜÏûÏ¢
+	// æ„å»ºå¤±è´¥æ¶ˆæ¯
 	void fail(T data) {
 		this->setStatus(RS_FAIL);
 		this->setData(data);
 	}
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void to_json(json& j, const JsonVO<T>& t) { // NOLINT
 		j = json{ {"code", t.code}, {"message", t.message}, {"data",t.data} };
 	}

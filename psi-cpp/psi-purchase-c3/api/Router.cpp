@@ -1,5 +1,5 @@
-
-//¹«¹²½Ó¿Ú
+ï»¿
+//å…¬å…±æ¥å£
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
@@ -25,18 +25,18 @@ Router::Router(http_server* sever)
 
 void Router::initRouter()
 {
-	//ÉèÖÃ¾²Ì¬ÎÄ¼şÄ¿Â¼
+	//è®¾ç½®é™æ€æ–‡ä»¶ç›®å½•
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
 
 
 #ifdef HTTP_SERVER_DEMO
-	//°ó¶¨Ê×Ò³Ò³Ãæ
+	//ç»‘å®šé¦–é¡µé¡µé¢
 	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
 		res.render_raw_view("./public/test.html");
 		}, nullptr);
 
-	//³õÊ¼»¯Ò»¸öÎÄ¼şÉÏ´«½Ó¿ÚÊ¾Àı
+	//åˆå§‹åŒ–ä¸€ä¸ªæ–‡ä»¶ä¸Šä¼ æ¥å£ç¤ºä¾‹
 	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
 		if (req.get_content_type() != content_type::multipart)
 		{
@@ -46,10 +46,10 @@ void Router::initRouter()
 			res.render_json(jvo);
 			return;
 		}
-	//»ñÈ¡±íµ¥²ÎÊı
+	//è·å–è¡¨å•å‚æ•°
 	std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
 	std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-	//»ñÈ¡ÎÄ¼şÂ·¾¶
+	//è·å–æ–‡ä»¶è·¯å¾„
 	auto& files = req.get_upload_files();
 	std::vector<string> filePaths;
 	for (auto& file : files) {
@@ -63,7 +63,7 @@ void Router::initRouter()
 	createUserDepartRouter();
 	TestWs::addChatHandler(server);
 #endif
-	//#TIP :ÏµÍ³À©Õ¹Â·ÓÉ¶¨Òå£¬Ğ´ÔÚÕâ¸öºóÃæ
+	//#TIP :ç³»ç»Ÿæ‰©å±•è·¯ç”±å®šä¹‰ï¼Œå†™åœ¨è¿™ä¸ªåé¢
 	createPurQuotRouter();
 	createPurCompareRouter();
 	createPurInquiryRouter();
@@ -77,13 +77,13 @@ void Router::initRouter()
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	//ĞÂÔö¹©Ó¦±¨¼Û
+	//æ–°å¢ä¾›åº”æŠ¥ä»·
 	BIND_POST_ROUTER(server, "/post", &PurQuotController::addPurQuot, nullptr);
-	//ĞŞ¸Ä¹©Ó¦±¨¼Û
+	//ä¿®æ”¹ä¾›åº”æŠ¥ä»·
 	BIND_PUT_ROUTER(server, "/put", &PurQuotController::modPurQuot, nullptr);
-	//É¾³ı¹©Ó¦±¨¼Û
+	//åˆ é™¤ä¾›åº”æŠ¥ä»·
 	BIND_DEL_ROUTER(server, "/delete", &PurQuotController::delPurQuot, nullptr);
-	//ĞŞ¸Ä¹©Ó¦±¨¼Û×´Ì¬£¨¹Ø±Õ¡¢×÷±×¡¢·´¹Ø±Õ£©
+	//ä¿®æ”¹ä¾›åº”æŠ¥ä»·çŠ¶æ€ï¼ˆå…³é—­ã€ä½œå¼Šã€åå…³é—­ï¼‰
 	BIND_PUT_ROUTER(server, "/put", &PurQuotController::purQuotModBillStatus, nullptr);
 }
 
@@ -97,88 +97,88 @@ void Router::createUserDepartRouter()
 
 
 
-//²É¹ºÉêÇë
+//é‡‡è´­ç”³è¯·
 void Router::createPurReqRouter() {
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/pur-req-get-com-bill-list", &PurReqController::queryPurReqFindBill, nullptr);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	BIND_GET_ROUTER(server, "/pur-req-get-one-combill", &PurReqController::queryPurReqFindDetailBill, nullptr);
-	//Ìí¼ÓÉêÇë(±£´æ/Ìá½»)
+	//æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤)
 	BIND_POST_ROUTER(server, "/pur-req/post", &PurReqController::addPurReq, nullptr);
-	//ĞŞ¸ÄÉêÇë(±£´æ/Ìá½»/ÉóºË)
+	//ä¿®æ”¹ç”³è¯·(ä¿å­˜/æäº¤/å®¡æ ¸)
 	BIND_PUT_ROUTER(server, "/pur-req/put", &PurReqController::modifyPurReq, nullptr);
-	//É¾³ıÉêÇë
+	//åˆ é™¤ç”³è¯·
 	BIND_DEL_ROUTER(server, "/pur-req/delete-by-id", &PurReqController::removePurReqById, nullptr);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ/×÷·Ï/·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­/ä½œåºŸ/åå…³é—­)
 	BIND_POST_ROUTER(server, "/pur-req/modify-bill-status", &PurReqController::modifyPurReqBillStatus, nullptr);
-	//µ¼Èë
+	//å¯¼å…¥
 	BIND_POST_ROUTER(server, "/pur-req-into", &PurReqController::modifyPurReqInto, nullptr);
-	//µ¼³ö
+	//å¯¼å‡º
 	BIND_GET_ROUTER(server, "/pur-req-export", &PurReqController::queryPurReqExport, nullptr);
 }
 
 
-//¹©Ó¦±¨¼Û
+//ä¾›åº”æŠ¥ä»·
 void Router::createPurQuotRouter()
 {
-	//Ìí¼Ó±¨¼Û(±£´æ/Ìá½»)
+	//æ·»åŠ æŠ¥ä»·(ä¿å­˜/æäº¤)
 	BIND_POST_ROUTER(server, "/pur-quot-add", &PurQuotController::addPurQuot, nullptr);
-	//ĞŞ¸Ä±¨¼Û(±£´æ/Ìá½»/ÉóºË)
+	//ä¿®æ”¹æŠ¥ä»·(ä¿å­˜/æäº¤/å®¡æ ¸)
 	BIND_PUT_ROUTER(server, "/pur-quot-mod", &PurQuotController::modPurQuot, nullptr);
-	//É¾³ı±¨¼Û
+	//åˆ é™¤æŠ¥ä»·
 BIND_DEL_ROUTER(server, "/pur-quot-del", &PurQuotController::delPurQuotById, nullptr);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ/×÷·Ï/·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­/ä½œåºŸ/åå…³é—­)
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
-	//µ¼Èë
+	//å¯¼å…¥
 	BIND_POST_ROUTER(server, "/pur-quot-mod-into", &PurQuotController::modifyPurQuotInto, nullptr);
-	//µ¼³ö
+	//å¯¼å‡º
 	BIND_GET_ROUTER(server, "/pur-quot-query-export", &PurQuotController::queryPurQuotExport, nullptr);
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/pur-quot-find-bill", &PurQuotController::queryPurInquiryFindBill, nullptr);
-	//²éÑ¯Ö¸¶¨µ¥¾İÁĞ±í
+	//æŸ¥è¯¢æŒ‡å®šå•æ®åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/pur-quot-detail-find-bill", &PurQuotController::queryPurInquiryFindDetailBill, nullptr);
-	//±¨¼Ûµ¥ÁĞ±í
+	//æŠ¥ä»·å•åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/pur-quot-get-of-combill", &PurQuotController::queryPurQuotList, nullptr);
-	//±¨¼Ûµ¥·ÖÂ¼ÁĞ±í
+	//æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/pur-quot-get-more-of-combill", &PurQuotController::queryPurQuotDividedList, nullptr);
 }
 void Router::createPurCompareRouter()
 {
-	//²éÑ¯±È¼Ûµ¥ÁĞ±í½Ó¿ÚÂ·ÓÉ°ó¶¨
+	//æŸ¥è¯¢æ¯”ä»·å•åˆ—è¡¨æ¥å£è·¯ç”±ç»‘å®š
 	BIND_GET_ROUTER(server, "/pur-com-get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
-	//²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢½Ó¿ÚÂ·ÓÉ°ó¶¨
+	//æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯æ¥å£è·¯ç”±ç»‘å®š
 	BIND_GET_ROUTER(server, "/pur-com-get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
-	//²éÑ¯±¨¼Ûµ¥½Ó¿ÚÂ·ÓÉ°ó¶¨
+	//æŸ¥è¯¢æŠ¥ä»·å•æ¥å£è·¯ç”±ç»‘å®š
 	BIND_GET_ROUTER(server, "/pur-com-get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
-	//²éÑ¯±¨¼Ûµ¥·ÖÂ¼½Ó¿ÚÂ·ÓÉ°ó¶¨
+	//æŸ¥è¯¢æŠ¥ä»·å•åˆ†å½•æ¥å£è·¯ç”±ç»‘å®š
 	BIND_GET_ROUTER(server, "/pur-com-get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
-	//µ¼³ö½Ó¿ÚÂ·ÓÉ°ó¶¨
+	//å¯¼å‡ºæ¥å£è·¯ç”±ç»‘å®š
 	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
-	//µ¼Èë½Ó¿ÚÂ·ÓÉ°ó¶¨
+	//å¯¼å…¥æ¥å£è·¯ç”±ç»‘å®š
 	BIND_POST_ROUTER(server, "/pur-com-pur-into-into", &PurCompareController::addPurComInto, nullptr);
-	//Ìí¼Ó±È¼Û(±£´æ/Ìá½»)
+	//æ·»åŠ æ¯”ä»·(ä¿å­˜/æäº¤)
 	BIND_POST_ROUTER(server, "/pur-com-add", &PurCompareController::addPurCom, nullptr);
-	//ĞŞ¸Ä±È½Ï(±£´æ/Ìá½»/ÉóºË)
+	//ä¿®æ”¹æ¯”è¾ƒ(ä¿å­˜/æäº¤/å®¡æ ¸)
 	BIND_PUT_ROUTER(server, "/pur-com-mod", &PurCompareController::modifyPurCom, nullptr);
-	//É¾³ı±È¼Û
+	//åˆ é™¤æ¯”ä»·
 	BIND_DEL_ROUTER(server, "/pur-com-del", &PurCompareController::removePurCom, nullptr);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ/×÷·Ï/·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­/ä½œåºŸ/åå…³é—­)
 	BIND_PUT_ROUTER(server, "/pur-com-mod-bill-status", &PurCompareController::purComModBillStatus, nullptr);
 }
 
 
-//²É¹ºÑ¯¼Û
+//é‡‡è´­è¯¢ä»·
 void Router::createPurInquiryRouter() {
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-bill", &PurInquiryController::queryPurInquiryFindBill, nullptr);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	BIND_GET_ROUTER(server, "/pur-inquiry-find-detail-bill", &PurInquiryController::queryPurInquiryFindDetailBill, nullptr);
 	BIND_POST_ROUTER(server, "/pur-inquiry-add", &PurInquiryController::addPurInquiry, nullptr);
 	BIND_PUT_ROUTER(server, "/pur-inquiry-modify", &PurInquiryController::modifyPurInquiry, nullptr);
 	BIND_DEL_ROUTER(server, "/pur-inquiry-delete", &PurInquiryController::removePurInquiry, nullptr);
 	BIND_PUT_ROUTER(server, "/pur-inquiry-modify-status", &PurInquiryController::modifyPurQuotModBillStatus, nullptr);
-	// µ¼³ö
+	// å¯¼å‡º
 	BIND_GET_ROUTER(server, "/pur-inquiry-export", &PurInquiryController::queryPurInquiryExport, nullptr);
-	// µ¼Èë
+	// å¯¼å…¥
 	BIND_POST_ROUTER(server, "/pur-inquiry-into", &PurInquiryController::addPurInquiryInto, nullptr);
 }

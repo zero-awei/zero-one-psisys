@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #ifndef __PUR_QUOT_FIND_DETAIL_QUERY_H_
 #define __PUR_QUOT_FIND_DETAIL_QUERY_H_
 
@@ -6,7 +6,7 @@
 
 class PurQuotFindDetailBillQuery
 {
-	// µ•æ›±‡∫≈
+	// ÂçïÊçÆÁºñÂè∑
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 
 public:

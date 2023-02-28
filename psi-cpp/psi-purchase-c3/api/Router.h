@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef _ROUTER_
 #define _ROUTER_
@@ -6,24 +6,24 @@
 #include "api/ApiHelper.h"
 
 /**
- * Ç°¶Ë·ÃÎÊ·şÎñÆ÷Â·ÓÉ°ó¶¨£¬ÓÃÓÚ¶¨ÒåÇ°¶Ë·ÃÎÊºó¶Ë½Ó¿ÚºÍ·ÃÎÊÂ·¾¶°ó¶¨
+ * å‰ç«¯è®¿é—®æœåŠ¡å™¨è·¯ç”±ç»‘å®šï¼Œç”¨äºå®šä¹‰å‰ç«¯è®¿é—®åç«¯æ¥å£å’Œè®¿é—®è·¯å¾„ç»‘å®š
  */
 class Router
 {
 private:
 	http_server* server;
 public:
-	//¹¹Ôì³õÊ¼»¯
+	//æ„é€ åˆå§‹åŒ–
 	explicit Router(http_server* sever);
-	//ºô½Ğ³õÊ¼»¯
+	//å‘¼å«åˆå§‹åŒ–
 	void initRouter();
 
 private:
 
 #ifdef HTTP_SERVER_DEMO
-	//´´½¨ÑİÊ¾Â·ÓÉ
+	//åˆ›å»ºæ¼”ç¤ºè·¯ç”±
 	void createSampleRouter();
-	//´´½¨ÓÃ»§¹ÜÀí-²¿ÃÅ¹ÜÀíÂ·ÓÉ
+	//åˆ›å»ºç”¨æˆ·ç®¡ç†-éƒ¨é—¨ç®¡ç†è·¯ç”±
 	void createUserDepartRouter();
 #endif
 	void createPurQuotRouter();

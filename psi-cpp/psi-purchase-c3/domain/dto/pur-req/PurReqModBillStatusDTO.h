@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: Adam
- @Date: 2023Äê2ÔÂ15ÈÕ
+ @Date: 2023å¹´2æœˆ15æ—¥
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -22,20 +22,20 @@
 
 #include "../../GlobalInclude.h"
 
-//ĞŞ¸Ä¶©µ¥×´Ì¬µÄDTO Ç°¶ËĞèÒª´«µİÒ»¸öµ¥¾İ±àºÅÒÔ¼°×´Ì¬ĞŞ¸ÄĞÅÏ¢
+//ä¿®æ”¹è®¢å•çŠ¶æ€çš„DTO å‰ç«¯éœ€è¦ä¼ é€’ä¸€ä¸ªå•æ®ç¼–å·ä»¥åŠçŠ¶æ€ä¿®æ”¹ä¿¡æ¯
 class PurReqModBillStatusDTO {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//ÊÇ·ñÉúĞ§
+	//æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//ÉúĞ§Ê±¼ä
+	//ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//ÊÇ·ñÒÑ¹Ø±Õ
+	//æ˜¯å¦å·²å…³é—­
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//ÊÇ·ñ×÷·Ï
+	//æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 public:
-	//°ó¶¨JSON×ª»»·½·¨
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurReqModBillStatusDTO& t);
 };
 #endif // !_PUR_REQ_MOD_BILL_STATUS_DTO_

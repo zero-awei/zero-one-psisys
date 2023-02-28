@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _PUR_QUOT_INTO_DTO_H_
 #define _PUR_QUOT_INTO_DTO_H_
 #include "../FileDTO.h"

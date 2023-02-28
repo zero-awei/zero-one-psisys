@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,7 +24,7 @@
 #include "../../domain/do/pur-req/PurReqEntryAdamDO.h"
 
 /**
- * Ê¾ÀıÖ÷±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * ç¤ºä¾‹ä¸»è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurReqEntryMapper : public Mapper<PurReqEntryAdamDO>
 {

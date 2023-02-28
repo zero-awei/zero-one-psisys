@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -25,15 +25,15 @@
 #include "PurReqDetailBillVO.h"
 
 /*
-²éÑ¯µ¥¾İÁĞ±íÏÔÊ¾¶ÔÏó
+æŸ¥è¯¢å•æ®åˆ—è¡¨æ˜¾ç¤ºå¯¹è±¡
 */
-//±¸×¢:ÀàµÄºêÀïÃæµÄ×Ö¶ÎÀàĞÍĞèÒª¸ü¸Ä
+//å¤‡æ³¨:ç±»çš„å®é‡Œé¢çš„å­—æ®µç±»å‹éœ€è¦æ›´æ”¹
 class PurReqFindDetailBillVO : public PurReqFindBillVO {
-	//Ã÷Ï¸ÁĞ±í
+	//æ˜ç»†åˆ—è¡¨
 	CC_SYNTHESIZE(list<PurReqDetailBillVO>, detailBillsVO, DetailBillsVO);
 
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurReqFindDetailBillVO, bill_no, bill_date, is_effective, is_closed,\
 		is_voided,subject, pur_type, requester, request_dept, request_time, ordered_qty, detailBillsVO);
 };

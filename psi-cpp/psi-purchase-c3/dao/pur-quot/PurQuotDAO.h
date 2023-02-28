@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef _PUR_QUOT_DAO_H_
 #define _PUR_QUOT_DAO_H_
 #include "BaseDAO.h"
@@ -8,42 +8,42 @@
 
 class PurQuotDAO : public BaseDAO {
 public:
-	//Í³¼ÆÊı¾İÌõÊı
+	//ç»Ÿè®¡æ•°æ®æ¡æ•°
 	uint64_t count(const PurQuotDO& iObj);
 	uint64_t count(const PurQuotEntryDO& iObj);
 
-	//²éÑ¯µ¥¾İÁĞ±í,·µ»Ø¶à¸ö¶ÔÏó
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨,è¿”å›å¤šä¸ªå¯¹è±¡
 	list<PurQuotDO> selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	//±¨¼Ûµ¥ÁĞ±í(¶à¸ö¶ÔÏó)
+	//æŠ¥ä»·å•åˆ—è¡¨(å¤šä¸ªå¯¹è±¡)
 	list<PurQuotEntryDO> selectPurQuotList(const PurQuotEntryDO& obj);
-	//±¨¼Ûµ¥·ÖÂ¼ÁĞ±í(¶à¸ö¶ÔÏó)
+	//æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨(å¤šä¸ªå¯¹è±¡)
 	list<PurQuotEntryDO> selectPurQuotDividedList(const PurQuotEntryDO& obj);
 
-	//´ËDOÓÃÓÚÌî³äPurQuotBaseVO
+	//æ­¤DOç”¨äºå¡«å……PurQuotBaseVO
 	list<PurQuotDO> selectPurQuotBase(const PurQuotDO& obj);
-	//´ËDOÓÃÓÚÌî³äPurQuotDetailVO
+	//æ­¤DOç”¨äºå¡«å……PurQuotDetailVO
 	list<PurQuotEntryDO> selectPurQuotDetail(const PurQuotEntryDO& obj);
 
 
-	//´ËDOÓÃÓÚÌî³äPurQuotVO
+	//æ­¤DOç”¨äºå¡«å……PurQuotVO
 	list<PurQuotDO> selectPurQuotExport(const PurQuotDO& obj);
-	//´ËDOÓÃÓÚÌî³äPurQuotEntryVO
+	//æ­¤DOç”¨äºå¡«å……PurQuotEntryVO
 	list<PurQuotEntryDO> selectPurQuotEntryExport(const PurQuotEntryDO& obj);
 
-	//µ¼Èë
+	//å¯¼å…¥
 	uint64_t insertPurQuotInto(const PurQuotDO& obj);
 	uint64_t insertPurQuotInto(const PurQuotEntryDO& obj);
 	
-	// ²åÈëÊı¾İ
+	// æ’å…¥æ•°æ®
 	uint64_t insert(const PurQuotNaiGuanDO& iObj);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	int update(const PurQuotNaiGuanDO& uObj);
-	// Í¨¹ıbill_noÉ¾³ıÊı¾İ
+	// é€šè¿‡bill_noåˆ é™¤æ•°æ®
 	int deleteByBillNo(const PurQuotNaiGuanDO& dObj);
-	// Í¨¹ıbill_noĞŞ¸Ä±¨¼Û×´Ì¬
+	// é€šè¿‡bill_noä¿®æ”¹æŠ¥ä»·çŠ¶æ€
 	int updateBillStatus(const PurQuotNaiGuanDO& ubsObj);
 
-	// Í¨¹ıIDÉ¾³ıÊı¾İ
+	// é€šè¿‡IDåˆ é™¤æ•°æ®
 	int deleteById(uint64_t id);
 	
 };

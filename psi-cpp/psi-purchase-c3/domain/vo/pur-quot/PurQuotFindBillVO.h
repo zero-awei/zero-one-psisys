@@ -1,69 +1,69 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_FIND_BILL_VO_H_
 #define _PUR_QUOT_FIND_BILL_VO_H_
 #include "../../GlobalInclude.h"
 class PurQuotFindBillVO 
 {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//Ô´µ¥ºÅ
+	//æºå•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//¹©Ó¦ÉÌ
+	//ä¾›åº”å•†
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
-	//ÁÙÊ±¹©Ó¦ÉÌÃû³Æ
+	//ä¸´æ—¶ä¾›åº”å•†åç§°
 	CC_SYNTHESIZE(string, supplier_name, Supplier_name);
-	//½»»õÈÕÆÚ
+	//äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//½ğ¶î
+	//é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	//ÒÑÉúĞ§
+	//å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	//ÒÑ¹Ø±Õ
+	//å·²å…³é—­
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	//ÒÑ×÷·Ï
+	//å·²ä½œåºŸ
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	//¸¶¿î·½Ê½
+	//ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	//½»»õµØµã
+	//äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	//ÁªÏµÈË
+	//è”ç³»äºº
 	CC_SYNTHESIZE(string, contact, Contact);
-	//ÁªÏµµç»°
+	//è”ç³»ç”µè¯
 	CC_SYNTHESIZE(string, phone, Phone);
-	//´«Õæ
+	//ä¼ çœŸ
 	CC_SYNTHESIZE(string, fax, Fax);
-	//µç×ÓÓÊ¼ş
+	//ç”µå­é‚®ä»¶
 	CC_SYNTHESIZE(string, email, Email);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//×Ô¶¯µ¥¾İ
+	//è‡ªåŠ¨å•æ®
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	//ºì×Öµ¥¾İ
+	//çº¢å­—å•æ®
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//ÉúĞ§Ê±¼ä
+	//ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	//ºËÅúÈË
+	//æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	//ÖÆµ¥Ê±¼ä
+	//åˆ¶å•æ—¶é—´
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	//ÖÆµ¥ÈË
+	//åˆ¶å•äºº
 	CC_SYNTHESIZE(string, create_by, Create_by);
-	//ÖÆµ¥²¿ÃÅ
+	//åˆ¶å•éƒ¨é—¨
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	//ĞŞ¸ÄÈË
+	//ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurQuotFindBillVO, bill_no, bill_date, subject, src_no, supplier_id,
 		supplier_name, delivery_time, qty, amt, bill_stage, is_effective, is_closed, is_voided,
 		payment_method, delivery_place, contact, phone, fax, email, remark, is_auto, is_rubric,

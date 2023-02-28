@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -19,7 +19,7 @@
 */
 #ifndef _PUR_COMPARE_CONTROLLER_
 #define _PUR_COMPARE_CONTROLLER_
-//¹«¹²½Ó¿Ú
+//å…¬å…±æ¥å£
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
@@ -43,19 +43,19 @@
 #include "../../domain/vo/pur-compare/PurComListVO.h"
 #include "../../domain/vo/pur-compare/PurComDividedListVO.h"
 /**
- * ±È¼Ûµ¥¿ØÖÆÆ÷
+ * æ¯”ä»·å•æ§åˆ¶å™¨
  */
 class PurCompareController
 {
 public:
-	// ĞÂÔö±È¼Û
+	// æ–°å¢æ¯”ä»·
 	CREATE_API_FUN_JSON_PAYLOAD(addPurCom, execAddPurCom, AddPurComDTO);
 
-	// ĞŞ¸Ä±È¼Û
+	// ä¿®æ”¹æ¯”ä»·
 	CREATE_API_FUN_JSON_PAYLOAD(modifyPurCom, execModifyPurCom, ModPurComDTO);
-	// É¾³ı±È¼Û
+	// åˆ é™¤æ¯”ä»·
 	CREATE_API_FUN_BODY(removePurCom, execRemovePurCom, DelPurComDTO);
-	// ĞŞ¸Äµ¥¾İ×´Ì¬
+	// ä¿®æ”¹å•æ®çŠ¶æ€
 	CREATE_API_FUN_BODY_PAYLOAD(purComModBillStatus, execPurComModBillStatus, PurComModBillStatusDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComFindBill, execQueryPurComFindBill, PurComFindBillQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComFindDetailBill, execQueryPurComFindDetailBill, PurComFindDetailBillQuery);
@@ -64,25 +64,25 @@ public:
 	CREATE_API_FUN_JSON_PAYLOAD(queryPurComExport, execPurComExport, PurComExportQuery)
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurComInto, execPurComInto, PurComIntoDTO);
 private:
-	//ÑİÊ¾ĞÂÔö±È¼Û
+	//æ¼”ç¤ºæ–°å¢æ¯”ä»·
 	JsonVO<uint64_t> execAddPurCom(const AddPurComDTO& dto, PayloadDTO payload);
-	//ÑİÊ¾ĞŞ¸Ä±È¼Û
+	//æ¼”ç¤ºä¿®æ”¹æ¯”ä»·
 	JsonVO<uint64_t> execModifyPurCom(const ModPurComDTO& dto, PayloadDTO payload);
-	//ÑİÊ¾É¾³ı±È¼Û
+	//æ¼”ç¤ºåˆ é™¤æ¯”ä»·
 	JsonVO<uint64_t> execRemovePurCom(const DelPurComDTO& dto);
-	//ÑİÊ¾ĞŞ¸Äµ¥¾İ×´Ì¬
+	//æ¼”ç¤ºä¿®æ”¹å•æ®çŠ¶æ€
 	JsonVO<uint64_t> execPurComModBillStatus(const PurComModBillStatusDTO& dto, PayloadDTO payload);
-	// ²éÑ¯±È¼Ûµ¥µ¥¾İÁĞ±í
+	// æŸ¥è¯¢æ¯”ä»·å•å•æ®åˆ—è¡¨
 	JsonVO<PageVO<PurComFindBillVO>> execQueryPurComFindBill(const PurComFindBillQuery& query, const PayloadDTO& payload);
-	// ²éÑ¯Ö¸¶¨±È¼Ûµ¥µ¥¾İÏêÏ¸ĞÅÏ¢
+	// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•å•æ®è¯¦ç»†ä¿¡æ¯
 	JsonVO<PurComFindDetailBillVO> execQueryPurComFindDetailBill(const PurComFindDetailBillQuery& query, const PayloadDTO& payload);
-	// ²éÑ¯±¨¼Ûµ¥ÁĞ±í
+	// æŸ¥è¯¢æŠ¥ä»·å•åˆ—è¡¨
 	JsonVO<list<PurComListVO>> execQueryPurComList(const PurComListQuery& query, const PayloadDTO& payload);
-	// ²éÑ¯±¨¼Ûµ¥·ÖÂ¼ÁĞ±í
+	// æŸ¥è¯¢æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨
 	JsonVO<list<PurComDividedListVO>> execQueryPurComDividedList(const PurComDividedListQuery& query, const PayloadDTO& payload);
-	// µ¼³ö
+	// å¯¼å‡º
 	JsonVO<std::string> execPurComExport(const PurComExportQuery& query, const PayloadDTO& payload);
-	// µ¼Èë
+	// å¯¼å…¥
 	JsonVO<uint64_t> execPurComInto(const PurComIntoDTO& dto, const PayloadDTO& payload);
 };
 

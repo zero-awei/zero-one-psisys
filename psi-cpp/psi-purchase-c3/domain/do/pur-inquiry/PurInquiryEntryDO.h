@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -27,39 +27,39 @@ class PurInquiryEntryDO
 {
 	// ID
 	CC_SYNTHESIZE(string, entry_id, Entry_id);
-	// Ö÷±í
+	// ä¸»è¡¨
 	CC_SYNTHESIZE(string, mid, Mid);
-	// µ¥¾İºÅ
+	// å•æ®å·
 	CC_SYNTHESIZE(string, entry_bill_no, Entry_bill_no);
 	
 	CC_SYNTHESIZE(list<string>, entry_bill_no_list, Entry_bill_no_list);
-	// ·ÖÂ¼ºÅ
+	// åˆ†å½•å·
 	CC_SYNTHESIZE(int, entry_no, Entry_no);
-	// Ô´µ¥ÀàĞÍ
+	// æºå•ç±»å‹
 	CC_SYNTHESIZE(string, entry_src_bill_type, Entry_src_bill_type);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, entry_src_bill_id, Entry_src_bill_id);
-	// Ô´µ¥·ÖÂ¼id
+	// æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	// Ô´µ¥·ÖÂ¼ºÅ
+	// æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, entry_src_no, Entry_src_no);
-	// ÎïÁÏ
+	// ç‰©æ–™
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	// ¼ÆÁ¿µ¥Î»
+	// è®¡é‡å•ä½
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	// ÊıÁ¿
+	// æ•°é‡
 	CC_SYNTHESIZE(double, entry_qty, Entry_qty);
-	// Ë°ÂÊ%
+	// ç¨ç‡%
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	// ²Î¿¼º¬Ë°µ¥¼Û
+	// å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	// ²Î¿¼º¬Ë°½ğ¶î
+	// å‚è€ƒå«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, entry_amt, Entry_Amt);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, entry_remark, Entry_remark);
-	// ×Ô¶¨Òå1
+	// è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// ×Ô¶¨Òå2
+	// è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	// Version
 	CC_SYNTHESIZE(int, entry_version, Entry_version);

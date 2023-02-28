@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,14 +23,14 @@
 
 
 /**
- *  Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢²éÑ¯¶ÔÏó
+ *  æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯æŸ¥è¯¢å¯¹è±¡
  */
 class PurComFindDetailBillQuery
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
 public:
-	// °ó¶¨from_json
+	// ç»‘å®šfrom_json
 	friend void from_json(const json& j, PurComFindDetailBillQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 	}

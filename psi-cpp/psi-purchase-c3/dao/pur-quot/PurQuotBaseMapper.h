@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_BASE_MAPPER_H_
 #define _PUR_QUOT_BASE_MAPPER_H_
 
@@ -6,7 +6,7 @@
 #include "../../domain/do/pur-quot/PurQuotDO.h"
 
 /**
- * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * ç¤ºä¾‹è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurQuotBaseMapper : public Mapper<PurQuotDO>{
 public:
