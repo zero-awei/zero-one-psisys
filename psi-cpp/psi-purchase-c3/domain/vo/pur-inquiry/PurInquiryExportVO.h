@@ -22,7 +22,7 @@
 
 #include "../../GlobalInclude.h"
 #include "PurInquiryFindBillVO.h"
-#include "EntryPurInquiryVO.h"
+#include "EntryPurInquiryExportVO.h"
 
 /**
  * 显示对象 —— 采购询价单列表
@@ -33,6 +33,8 @@ class PurInquiryExportVO
 {
 	// 单据编号  
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	
+	CC_SYNTHESIZE(list<string>, bill_no_list, Bill_no_list);
 	// 单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
 	// 源单类型
@@ -66,7 +68,7 @@ class PurInquiryExportVO
 	// 生效的报价单数
 	CC_SYNTHESIZE(int, quot_count, Quot_count);
 	// 明细列表
-	CC_SYNTHESIZE(list<EntryPurInquiryVO>, detailslist, DetailsList);
+	CC_SYNTHESIZE(list<EntryPurInquiryExportVO>, detailslist, DetailsList);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	// 备注

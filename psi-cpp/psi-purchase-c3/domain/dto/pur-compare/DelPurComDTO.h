@@ -16,5 +16,5 @@ public:
 
 };
 
-#endif // !_ADD_PUR_COM_DTO_
+#endif // !_DEL_PUR_COM_DTO_H_
 

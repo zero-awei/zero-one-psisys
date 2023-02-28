@@ -48,6 +48,7 @@ std::unique_ptr<std::string> RSA_PUB_KEY = nullptr;
 PayloadDTO payload; \
 payload.setId("1"); \
 payload.setUsername("admin"); \
+payload.setUserDept("develop"); \
 payload.getAuthorities().push_back("ADMIN"); \
 payload.getAuthorities().push_back("TEST"); \
 __req__.set_user_payload(nlohmann::json(payload));

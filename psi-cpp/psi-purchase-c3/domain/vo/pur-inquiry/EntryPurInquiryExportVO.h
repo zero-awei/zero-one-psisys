@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -17,8 +18,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _ENTRY_PUR_INQUIRY_VO_H_
-#define _ENTRY_PUR_INQUIRY_VO_H_
+#ifndef _ENTRY_PUR_INQUIRY_EXPORT_VO_H_
+#define _ENTRY_PUR_INQUIRY_EXPORT_VO_H_
 #include "../../GlobalInclude.h"
 
 /**
@@ -26,39 +27,45 @@
  */
 
 
-//采购询价单明细—采购申请单
-class EntryPurInquiryVO
+ //采购询价单明细—采购申请单
+class EntryPurInquiryExportVO
 {
-	//源单类型
-	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	//源单分录号
-	CC_SYNTHESIZE(string, src_entry_no, Src_entry_no);
-	//物料
+	// 物料
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	//规格型号（公共接口）
-
-	//单位
+	// 单位
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	//数量
+	// 数量
 	CC_SYNTHESIZE(double, entry_qty, Entry_qty);
-	//税率%
+	// 税率%
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	//参考含税单价
+	// 参考含税单价
 	CC_SYNTHESIZE(double, price, Price);
-	//参考含税金额
+	// 参考含税金额
 	CC_SYNTHESIZE(double, amt, Amt);
-	//备注
-	CC_SYNTHESIZE(string, remark, Remark);
-	//自定义1
+	// 自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//自定义2
+	// 源单分录号
+	CC_SYNTHESIZE(string, src_entry_no, Src_entry_no);
+	// 分录号
+	CC_SYNTHESIZE(int, entry_no, Entry_no);
+	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
+	// 源单分录id
+	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
+	// 源单类型
+	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
+	// 备注
+	CC_SYNTHESIZE(string, remark, Remark);
+	// 单据编号
+	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	// 源单id
+	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(EntryPurInquiryVO, src_bill_type, src_entry_no, material_id, unit_id,
-		entry_qty, tax_rate, price, amt, remark, custom1, custom2);
+	BIND_TO_JSON(EntryPurInquiryExportVO, material_id, unit_id, entry_qty, tax_rate, price, amt, custom1,
+				 src_entry_no, entry_no, custom2, src_entry_id, src_bill_type, remark, bill_no,src_bill_id);
 };
 
 
-#endif // !_ENTRY_PUR_INQUIRY_VO_
+#endif // !_ENTRY_PUR_INQUIRY_EXPORT_VO_

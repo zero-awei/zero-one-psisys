@@ -45,5 +45,16 @@ public:
 	std::vector<std::vector<std::string>> readIntoVector(const std::string& fileName, const std::string& sheetName);
 	//保存指定页签内容到文件,注意文件路径使用/
 	void writeVectorToFile(const std::string& fileName, const std::string& sheetName, const std::vector<std::vector<std::string>>& data);
+
+
+//--十二
+	// 清空工作薄
+	void clearWorkbook();
+	// 工作表命名
+	void makeName(const std::string& title);
+	// 合并单元格
+	void mergeCell(std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
+	// 单元格赋值
+	void cellVaule(const std::string& sheetName, std::string& cell, std::string value);
 };
 #endif // _EXCELCOMPONENT_H_

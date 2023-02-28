@@ -1,4 +1,3 @@
-
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -70,6 +69,27 @@ JsonVO<list<PurComDividedListVO>> PurCompareController::execQueryPurComDividedLi
 	//响应结果
 	return JsonVO<list<PurComDividedListVO>>(result, RS_SUCCESS);
 }
+//导出
+JsonVO<std::string> PurCompareController::execPurComExport(const PurComExportQuery& query, const PayloadDTO& payload)
+{
+	//定义一个Service
+	PurCompareService service;
+	//查询数据
+	string result = service.getPurComExport(query);
+	return JsonVO<std::string>(result, RS_SUCCESS);
+}
+// 导入
+JsonVO<uint64_t> PurCompareController::execPurComInto(const PurComIntoDTO& dto, const PayloadDTO& payload)
+{
+	//数据校验
+	//定义一个Service
+	PurCompareService service;
+	//查询数据
+	uint64_t result = service.savePurComInto(dto,payload);
+	//响应结果
+	if (result==9999) return JsonVO<uint64_t>(result, RS_FAIL);
+	else return JsonVO<uint64_t>(result, RS_SUCCESS);
+}
 
 //演示新增比价
 JsonVO<uint64_t> PurCompareController::execAddPurCom(const AddPurComDTO& dto, PayloadDTO payload)
@@ -129,4 +149,3 @@ JsonVO<uint64_t> PurCompareController::execPurComModBillStatus(const PurComModBi
 
 	return result;
 }
-

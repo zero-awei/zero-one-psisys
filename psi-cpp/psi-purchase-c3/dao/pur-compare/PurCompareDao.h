@@ -29,37 +29,44 @@
 #include "../../domain/do/pur-compare/DelPurComDO.h"
 #include "../../domain/do/pur-compare/PurComModBillStatusDO.h"
 
-
 /**
- * Ê¾Àı±íÊı¾İ¿â²Ù×÷ÊµÏÖ
+ * ç¤ºä¾‹è¡¨æ•°æ®åº“æ“ä½œå®ç°
  */
 class PurCompareDAO : public BaseDAO
 {
 public:
-	// Í³¼ÆÊı¾İÌõÊı
-	uint64_t count(const PurCompareDO& iObj);
-	// ·ÖÒ³²éÑ¯±È¼Ûµ¥µ¥¾İÁĞ±í
-	list<PurCompareDO> selectPurComFindBill(const PurCompareDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// ²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢¡ª±È¼Ûµ¥
-	list<PurCompareDO> selectPurComFindDetailBill(const PurCompareDO& obj);
-	// ²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢¡ª±È¼Ûµ¥Ã÷Ï¸
-	list<PurCompareEntryDO> selectPurComFindDetailBillEntry(const PurCompareEntryDO& obj);
-	// ²éÑ¯ºòÑ¡±¨¼Ûµ¥
-	list<PurCompareDO> selectCandidateQuot(const PurCompareDO& obj);
-	// ²éÑ¯±¨¼Ûµ¥ÁĞ±í
-	list<PurComQuotDO> selectPurComList(const PurCompareDO& obj);
-	// ²éÑ¯±¨¼Ûµ¥·ÖÂ¼ÁĞ±í
-	list<PurComQuotEntryDO> selectPurComDividedList(const PurComQuotEntryDO& obj);
-	// ²åÈëÊı¾İ
+	// æ’å…¥æ•°æ®
 	uint64_t insertPurCom(const AddPurComDO& iObj);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	int updatePurCom(const ModPurComDO& uObj);
-	// É¾³ıÊı¾İ
+	// åˆ é™¤æ•°æ®
 	int deletePurCom(const DelPurComDO& dObj);
-	// ĞŞ¸Äµ¥¾İ×´Ì¬
+	// ä¿®æ”¹å•æ®çŠ¶æ€
 	int updatePurComBillStatus(const ModPurComBillStatusDO& uObj);
 
 
+	// ç»Ÿè®¡æ•°æ®æ¡æ•°
+	uint64_t count(const PurCompareDO& iObj);
+	// åˆ†é¡µæŸ¥è¯¢æ¯”ä»·å•å•æ®åˆ—è¡¨
+	list<PurCompareDO> selectPurComFindBill(const PurCompareDO& obj, uint64_t pageIndex, uint64_t pageSize);
+	// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯â€”æ¯”ä»·å•
+	list<PurCompareDO> selectPurComFindDetailBill(const PurCompareDO& obj);
+	// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯â€”æ¯”ä»·å•æ˜ç»†
+	list<PurCompareEntryDO> selectPurComFindDetailBillEntry(const PurCompareEntryDO& obj);
+	// æŸ¥è¯¢å€™é€‰æŠ¥ä»·å•
+	list<PurCompareDO> selectCandidateQuot(const PurCompareDO& obj);
+	// æŸ¥è¯¢æŠ¥ä»·å•åˆ—è¡¨
+	list<PurComQuotDO> selectPurComList(const PurCompareDO& obj);
+	// æŸ¥è¯¢æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨
+	list<PurComQuotEntryDO> selectPurComDividedList(const PurComQuotEntryDO& obj);
+	// å¯¼å‡ºâ€”æŸ¥è¯¢æ¯”ä»·å•å•æ®ä¿¡æ¯
+	list<PurCompareDO> selectPurComExport(const PurCompareDO& obj, bool lsAll);
+	// å¯¼å‡ºâ€”æŸ¥è¯¢æ¯”ä»·å•åˆ†å½•å•æ®ä¿¡æ¯
+	list<PurCompareEntryDO> selectPurComEntryExport(const PurCompareEntryDO& obj, bool lsAll);
+	// å¯¼å…¥â€”æ’å…¥æ¯”ä»·å•å•æ®ä¿¡æ¯
+	uint64_t insertPurCom(const PurCompareDO& obj);
+	// å¯¼å…¥â€”æ’å…¥æ¯”ä»·å•åˆ†å½•å•æ®ä¿¡æ¯
+	uint64_t insertPurComEntry(const PurCompareEntryDO& obj);
 };
-#endif // !_SAMPLE_DAO_
+#endif 
 

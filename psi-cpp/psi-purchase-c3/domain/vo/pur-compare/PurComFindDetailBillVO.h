@@ -77,7 +77,7 @@ class PurComFindDetailBillVO
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 附件
-	CC_SYNTHESIZE(std::list<std::string>, attachment, Attachment);
+	CC_SYNTHESIZE(string, attachment, Attachment);
 	// 核批意见
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
 	// 核批结果

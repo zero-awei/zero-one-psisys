@@ -34,12 +34,12 @@ class AddPurInquiryDTO : public FileDTO
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
 	////自动单据	   ;
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	//修改时间		   ;
-	CC_SYNTHESIZE(string, create_time, Create_time);
-	//修改人			;
-	CC_SYNTHESIZE(string, update_by, Update_by);
 	////生效时间	   ;
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
+	//制单时间
+	CC_SYNTHESIZE(string, create_time, Create_time);
+	//制单部门
+	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
 	//单据阶段		   ;
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//单据日期
@@ -47,6 +47,17 @@ class AddPurInquiryDTO : public FileDTO
 	//明细
 	CC_SYNTHESIZE(list<AddPurInquiryEntryDTO>, detail, Detail);
 
+	/*修改专属*/
+	//审核是否通过
+	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
+	//审核意见
+	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
+	//修改时间		   ;
+	CC_SYNTHESIZE(string, update_time, Update_time);
+	//修改人			;
+	CC_SYNTHESIZE(string, update_by, Update_by);
+	//核批人
+	CC_SYNTHESIZE(string, approver, Approver);
 
 public:
 	friend void from_json(const json& j, AddPurInquiryDTO& t)
@@ -63,11 +74,16 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, remark);
 		BIND_FROM_TO_I(j, t, is_rubric);
 		BIND_FROM_TO_I(j, t, is_auto);
-		BIND_FROM_TO_NORMAL(j, t, create_time);
+		BIND_FROM_TO_NORMAL(j, t, update_time);
 		BIND_FROM_TO_NORMAL(j, t, update_by);
 		BIND_FROM_TO_NORMAL(j, t, effective_time);
+		BIND_FROM_TO_NORMAL(j, t, approver);
+		BIND_FROM_TO_NORMAL(j, t, create_time);
+		BIND_FROM_TO_NORMAL(j, t, sys_org_code);
 		BIND_FROM_TO_NORMAL(j, t, bill_stage);
 		BIND_FROM_TO_NORMAL(j, t, bill_date);
+		BIND_FROM_TO_NORMAL(j, t, approval_result_type);
+		BIND_FROM_TO_NORMAL(j, t, approval_remark);
 		BIND_FROM_TO_OBJ(j, t, detail,list<AddPurInquiryEntryDTO>);
 	}
 

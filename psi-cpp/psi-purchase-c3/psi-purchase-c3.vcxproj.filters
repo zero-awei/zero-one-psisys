@@ -135,9 +135,6 @@
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="api\pur-inquiry\PurInquiryFastDfs.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\do\pur-compare\AddPurComDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -393,6 +390,21 @@
     <ClInclude Include="service\pur-req\PurReqService.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\pur-compare\PurComEntryExportMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\pur-compare\PurComExportMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\pur-compare\PurComDetailDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\pur-compare\PurComExportQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryExportVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp">
@@ -423,9 +435,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="api\pur-inquiry\PurInquiryFastDfs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\pur-req\AddPurReqDTO.cpp">

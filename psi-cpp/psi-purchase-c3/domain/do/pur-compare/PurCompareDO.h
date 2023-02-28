@@ -51,7 +51,7 @@ class PurCompareDO
 	// 交货日期
 	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
 	// 附件
-	CC_SYNTHESIZE(std::list<std::string>, attachment, Attachment);
+	CC_SYNTHESIZE(string, attachment, Attachment);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 自动单据
@@ -93,6 +93,46 @@ class PurCompareDO
 public:
 	PurCompareDO() {
 		billNo = "";
+	}
+	PurCompareDO(vector<string> vecStr) {
+		int i = 0;
+		setBillNo(vecStr[i++]);
+		setBillDate(vecStr[i++]);
+		setSrcBillType(vecStr[i++]);
+		setSrcBillId(vecStr[i++]);
+		setSrcNo(vecStr[i++]);
+		setSubject(vecStr[i++]);
+		setIsRubric(vecStr[i++]);
+		setCandidateQuotIds(vecStr[i++]);
+		setPaymentMethod(vecStr[i++]);
+		setDeliveryPlace(vecStr[i++]);
+		setDeliveryTime(vecStr[i++]);
+		setAttachment(vecStr[i++]);
+		setRemark(vecStr[i++]);
+		setIsAuto(vecStr[i++]);
+		setBillStage(vecStr[i++]);
+		setApprover(vecStr[i++]);
+		setBpmiInstanceId(vecStr[i++]);
+		setApprovalResultType(vecStr[i++]);
+		setApprovalRemark(vecStr[i++]);
+		setIsEffective(vecStr[i++]);
+		setEffectiveTime(vecStr[i++]);
+		setIsClosed(vecStr[i++]);
+		setIsVoided(vecStr[i++]);
+		setSysOrgCode(vecStr[i++]);
+		setCreateBy(vecStr[i++]);
+		setCreateTime(vecStr[i++]);
+		setUpdateBy(vecStr[i++]);
+		/*setUpdateTime(vecStr[i++]);*/
+	}
+	vector<string> purCompareDOToVecStr() {
+		vector<string> vecStr{getBillNo(),getBillDate(),getSrcBillType(),getSrcBillId(),getSrcNo(),
+			getSubject(),getIsRubric(),getCandidateQuotIds(),getPaymentMethod(),getDeliveryPlace(),
+			getDeliveryTime(),getAttachment(),getRemark(),getIsAuto(),getBillStage(),getApprover(),
+			getBpmiInstanceId(),getApprovalResultType(),getApprovalRemark(),getIsEffective(),
+			getEffectiveTime(),getIsClosed(),getIsVoided(),getSysOrgCode(),getCreateBy(),getCreateTime(),
+			getUpdateBy()/*,getUpdateTime()*/};
+		return vecStr;
 	}
 };
 

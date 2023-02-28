@@ -191,13 +191,14 @@
     <ClInclude Include="api\pur-compare\PurCompareController.h" />
     <ClInclude Include="api\pur-inquiry\ExecExport.h" />
     <ClInclude Include="api\pur-inquiry\PurInquiryController.h" />
-    <ClInclude Include="api\pur-inquiry\PurInquiryFastDfs.h" />
     <ClInclude Include="api\pur-quot\PurQuotController.h" />
     <ClInclude Include="api\pur-req\PurReqController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="dao\pur-compare\PurCandidateQuotMapper.h" />
     <ClInclude Include="dao\pur-compare\PurComDetailsMapper.h" />
     <ClInclude Include="dao\pur-compare\PurComDividedListMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComEntryExportMapper.h" />
+    <ClInclude Include="dao\pur-compare\PurComExportMapper.h" />
     <ClInclude Include="dao\pur-compare\PurComFindBillMapper.h" />
     <ClInclude Include="dao\pur-compare\PurComFindDetailBillMapper.h" />
     <ClInclude Include="dao\pur-compare\PurComListMapper.h" />
@@ -238,6 +239,7 @@
     <ClInclude Include="domain\dto\pur-compare\AddPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\DelPurComDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\ModPurComDTO.h" />
+    <ClInclude Include="domain\dto\pur-compare\PurComDetailDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-compare\PurComModBillStatusDTO.h" />
     <ClInclude Include="domain\dto\pur-inquiry\AddPurInquiryDTO.h" />
@@ -254,6 +256,7 @@
     <ClInclude Include="domain\dto\pur-req\PurReqIntoDTO.h" />
     <ClInclude Include="domain\dto\pur-req\PurReqModBillStatusDTO.h" />
     <ClInclude Include="domain\query\pur-compare\PurComDividedListQuery.h" />
+    <ClInclude Include="domain\query\pur-compare\PurComExportQuery.h" />
     <ClInclude Include="domain\query\pur-compare\PurComFindBillQuery.h" />
     <ClInclude Include="domain\query\pur-compare\PurComFindDetailBillQuery.h" />
     <ClInclude Include="domain\query\pur-compare\PurComListQuery.h" />
@@ -268,6 +271,7 @@
     <ClInclude Include="domain\vo\pur-compare\PurComFindDetailBillVO.h" />
     <ClInclude Include="domain\vo\pur-compare\PurComListVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\AddPurInquiryVO.h" />
+    <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryExportVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\EntryPurInquiryVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryExportVO.h" />
     <ClInclude Include="domain\vo\pur-inquiry\PurInquiryFindBillVO.h" />
@@ -320,7 +324,6 @@
     <ClCompile Include="api\pur-compare\PurCompareController.cpp" />
     <ClCompile Include="api\pur-inquiry\ExecExport.cpp" />
     <ClCompile Include="api\pur-inquiry\PurInquiryController.cpp" />
-    <ClCompile Include="api\pur-inquiry\PurInquiryFastDfs.cpp" />
     <ClCompile Include="api\pur-quot\PurQuotController.cpp" />
     <ClCompile Include="api\pur-req\PurReqController.cpp" />
     <ClCompile Include="api\Router.cpp" />

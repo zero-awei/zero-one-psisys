@@ -19,13 +19,24 @@
 #include "stdafx.h"
 #include "PurCompareService.h"
 #include "../../dao/pur-compare/PurCompareDAO.h"
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
+#include "FastDfsClient.h"
+#include "SnowFlake.h"
+#include "SimpleDateTimeFormat.h"
+
+#include "PurCompareService.h"
+#include "../../dao/pur-compare/PurCompareDAO.h"
 #include "../../domain/do/pur-compare/AddPurComDO.h"
 #include "../../domain/do/pur-compare/ModPurComDO.h"
 #include "../../domain/do/pur-compare/DelPurComDO.h"
 #include "../../domain/do/pur-compare/PurComModBillStatusDO.h"
 #include "SnowFlake.h"
+#include "SimpleDateTimeFormat.h"
 
 
+
+// 分页查询比价单单据列表
 PageVO<PurComFindBillVO> PurCompareService::listPurComFindBill(const PurComFindBillQuery& query)
 {
 	//构建返回对象
@@ -85,7 +96,7 @@ PageVO<PurComFindBillVO> PurCompareService::listPurComFindBill(const PurComFindB
 	pages.setRows(vr);
 	return pages;
 }
-
+// 查询指定比价单详细信息
 PurComFindDetailBillVO PurCompareService::getPurComFindDetailBill(const PurComFindDetailBillQuery& query)
 {
 	// 领域模型转换
@@ -134,11 +145,11 @@ PurComFindDetailBillVO PurCompareService::getPurComFindDetailBill(const PurComFi
 	for (PurCompareEntryDO ones : details)
 	{
 		detailsvo.setEntryNo(ones.getEntryNo());
-		detailsvo.setSupplierName(ones.getSupplierName());//tomodify:supplierId->suppliername
+		detailsvo.setSupplierName(ones.getSupplierName());
 		detailsvo.setSrcNo(ones.getSrcNo());
 		detailsvo.setMaterialName(ones.getMaterialName());
 		detailsvo.setSpecifications(ones.getSpecifications());
-		detailsvo.setUnitName(ones.getUnitName());//tomodify:unitId->unitname
+		detailsvo.setUnitName(ones.getUnitName());
 		detailsvo.setQty(ones.getQty());
 		detailsvo.setTaxRate(ones.getTaxRate());
 		detailsvo.setPrice(ones.getPrice());
@@ -153,7 +164,6 @@ PurComFindDetailBillVO PurCompareService::getPurComFindDetailBill(const PurComFi
 	vo.setDetailsList(lvo);
 	return vo;
 }
-
 // 报价单列表
 std::list<PurComListVO> PurCompareService::listPurComList(const PurComListQuery& query)
 {
@@ -215,43 +225,289 @@ std::list<PurComDividedListVO> PurCompareService::listPurComDividedList(const Pu
 	}
 	return lvo;
 }
+// 导出比价单及分录
+string PurCompareService::getPurComExport(const PurComExportQuery& query)
+{
+	//定义fastdfs客户端对象
+	#ifdef LINUX
+		FastDfsClient client("conf/client.conf", 3);
+	#else
+		FastDfsClient client("1.15.240.108");
+	#endif
+	// 判断是否有上传参数，并用lsAll记录
+	bool lsAll = false;
+	if (query.getBillNo().size() == 0) lsAll = true;
+	// 定义保存数据位置
+	ExcelComponent excel;
+	std::string fileName = "./public/excel/export.xlsx";
+	// 导出采购比价单主表
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("采购比价单");
+	vector<vector<std::string>> data;
+	vector<string> headers{
+		CharsetConvertHepler::ansiToUtf8("单据编号"),
+		CharsetConvertHepler::ansiToUtf8("单据日期"),
+		CharsetConvertHepler::ansiToUtf8("源单类型"),
+		CharsetConvertHepler::ansiToUtf8("源单id"),
+		CharsetConvertHepler::ansiToUtf8("源单号"),
+		CharsetConvertHepler::ansiToUtf8("主题"),
+		CharsetConvertHepler::ansiToUtf8("是否红字"),
+		CharsetConvertHepler::ansiToUtf8("候选报价单ids"),
+		CharsetConvertHepler::ansiToUtf8("付款方式"),
+		CharsetConvertHepler::ansiToUtf8("交货地点"),
+		CharsetConvertHepler::ansiToUtf8("交货时间"),
+		CharsetConvertHepler::ansiToUtf8("附件"),
+		CharsetConvertHepler::ansiToUtf8("备注"),
+		CharsetConvertHepler::ansiToUtf8("是否自动生成"),
+		CharsetConvertHepler::ansiToUtf8("单据阶段"),
+		CharsetConvertHepler::ansiToUtf8("审核人"),
+		CharsetConvertHepler::ansiToUtf8("审批实例id"),
+		CharsetConvertHepler::ansiToUtf8("核批结果类型"),
+		CharsetConvertHepler::ansiToUtf8("核批意见"),
+		CharsetConvertHepler::ansiToUtf8("是否生效"),
+		CharsetConvertHepler::ansiToUtf8("生效时间"),
+		CharsetConvertHepler::ansiToUtf8("已关闭"),
+		CharsetConvertHepler::ansiToUtf8("是否作废"),
+		CharsetConvertHepler::ansiToUtf8("创建部门"),
+		CharsetConvertHepler::ansiToUtf8("创建人"),
+		CharsetConvertHepler::ansiToUtf8("创建时间"),
+		CharsetConvertHepler::ansiToUtf8("修改人"),
+		//CharsetConvertHepler::ansiToUtf8("修改时间")
+	};
+	data.push_back(headers);
+	// 判断是否有上传参数，若没有则导出所有单据，否则根据单据编号导出
+	if (lsAll) {
+		PurCompareDO obj;
+		PurCompareDAO dao;
+		list<PurCompareDO> result = dao.selectPurComExport(obj,lsAll);
+		vector<string> vec;
+		for (PurCompareDO ls : result)
+		{
+			vec = ls.purCompareDOToVecStr();
+			data.push_back(vec);
+		}
+		excel.writeVectorToFile(fileName, sheetName, data);
+	}
+	else {
+		for (string ones : query.getBillNo())
+		{
+			// 领域模型转换
+			PurCompareDO obj;
+			obj.setBillNo(ones);
+			// 查询结果
+			PurCompareDAO dao;
+			list<PurCompareDO> result = dao.selectPurComExport(obj,lsAll);
+			vector<string> vec;
+			if (!result.empty())
+			{
+				vec = result.front().purCompareDOToVecStr();
+				data.push_back(vec);
+			}
+		}
+		excel.writeVectorToFile(fileName, sheetName, data);
+	}
+	
+
+	//导出采购比价单分录
+	sheetName = CharsetConvertHepler::ansiToUtf8("采购比价单分录");
+	data.clear();
+	headers.clear();
+	headers={
+		CharsetConvertHepler::ansiToUtf8("单据号"),
+		CharsetConvertHepler::ansiToUtf8("分录号"),
+		CharsetConvertHepler::ansiToUtf8("源单类型"),
+		CharsetConvertHepler::ansiToUtf8("源单id"),
+		CharsetConvertHepler::ansiToUtf8("源单分录id"),
+		CharsetConvertHepler::ansiToUtf8("源单分录号"),
+		CharsetConvertHepler::ansiToUtf8("供应商"),
+		CharsetConvertHepler::ansiToUtf8("物料"),
+		CharsetConvertHepler::ansiToUtf8("计量单位"),
+		CharsetConvertHepler::ansiToUtf8("数量"),
+		CharsetConvertHepler::ansiToUtf8("税率%"),
+		CharsetConvertHepler::ansiToUtf8("含税单价"),
+		CharsetConvertHepler::ansiToUtf8("折扣率"),
+		CharsetConvertHepler::ansiToUtf8("含税金额"),
+		CharsetConvertHepler::ansiToUtf8("排名"),
+		CharsetConvertHepler::ansiToUtf8("备注"),
+		CharsetConvertHepler::ansiToUtf8("自定义1"),
+		CharsetConvertHepler::ansiToUtf8("自定义2")
+	};
+	data.push_back(headers);
+	// 判断是否有上传参数，若没有则导出所有单据，否则根据单据编号导出
+	if (lsAll) {
+		PurCompareEntryDO obj2;
+		PurCompareDAO dao;
+		list<PurCompareEntryDO> result = dao.selectPurComEntryExport(obj2, lsAll);
+		vector<string> vec;
+		for (PurCompareEntryDO ls : result)
+		{
+			vec = ls.purCompareEntryDOToVecStr();
+			data.push_back(vec);
+		}
+		excel.writeVectorToFile(fileName, sheetName, data);
+	}
+	else {
+		for (string ones : query.getBillNo())
+		{
+			// 领域模型转换
+			PurCompareEntryDO obj2;
+			obj2.setBillNo(ones);
+			// 查询结果
+			PurCompareDAO dao;
+			list<PurCompareEntryDO> result = dao.selectPurComEntryExport(obj2,lsAll);
+			vector<string> vec;
+			for (PurCompareEntryDO ls : result)
+			{
+				vec = ls.purCompareEntryDOToVecStr();
+				data.push_back(vec);
+			}
+		}
+		excel.writeVectorToFile(fileName, sheetName, data);
+	}
+	//上传到fastDfs并删除本地文件
+	std::string fieldName = client.uploadFile(fileName);
+	remove(fileName.c_str());
+	//返回下载地址
+	fieldName = "http://1.15.240.108:8888/" + fieldName;
+	return fieldName;
+}
+// 导入比价单及分录
+uint64_t PurCompareService::savePurComInto(const PurComIntoDTO& dto,const PayloadDTO& payload)
+{
+	//雪花生成器
+	SnowFlake sf(1, 13);
+	PurCompareDAO dao;
+	// 获取数据:加载主表数据和分录数据
+	ExcelComponent excel;
+	string fileName = dto.getFiles().front();
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("采购比价单");
+	vector<vector<string>> readData = excel.readIntoVector(fileName, sheetName);
+	sheetName = CharsetConvertHepler::ansiToUtf8("采购比价单分录");
+	vector<vector<string>> readEntryData = excel.readIntoVector(fileName, sheetName);
+	// 导入数据
+	int row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
+	for (; row1 < readData.size(); ++row1)
+	{
+		//每个行数据的数组
+		vector<string> r1 = readData[row1];
+		PurCompareDO data(r1);
+		data.setId(to_string(sf.nextId())); //随机生成id
+		//获取时间
+		SimpleDateTimeFormat time;
+		data.setCreateTime(time.format());
+		data.setUpdateTime(time.format());
+		//获取身份
+		data.setSysOrgCode(payload.getDepartment());
+		data.setCreateBy(payload.getUsername());
+		data.setUpdateBy(payload.getUsername());
+		// todo：进行权限验证
+		// 进行数据验证
+		//进行必填参数检验
+		if (data.getBillNo() == "" || data.getBillDate() == "") {return 9999;}
+		//将其加载进数据库
+		dao.insertPurCom(data);
+	
+		//开始导入对应的分录
+		string billNo = data.getBillNo(); //主表单号
+		string mid = data.getId(); //主表id
+		for (; row2 < readEntryData.size() && readEntryData[row2][0] == billNo; ++row2)
+		{
+			//每个行数据的数组
+			vector<string> r2 = readEntryData[row2];
+			PurCompareEntryDO data(r2);
+			data.setMid(mid);  
+			data.setId(to_string(sf.nextId())); //随机生成id
+			//数据检验
+			if (data.getEntryNo() == -1 || data.getSupplierName() == ""|| data.getMaterialName() == "" || data.getUnitName() == ""
+				|| data.getQty() == -1 || data.getTaxRate() == -1 || data.getPrice() == -1 || data.getAmt() == -1) 
+			{
+				return 9999;
+			}
+			//将其加载进数据库
+			dao.insertPurComEntry(data);
+		}
+	}
+	return 10000;
+}
 
 
-uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, PayloadDTO payload)
+
+uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, const PayloadDTO& payload)
 {
 	//组装数据
 	AddPurComDO data;
 	// 雪花算法生成id
-	SnowFlake randomId(21, 22);
-	data.setId(randomId.nextId());
+	SnowFlake randomId(1, 3);
+	data.setId(to_string(randomId.nextId()));
 
-	data.setBillId(dto.getBillId());
+	data.setBillNo(dto.getBillNo());
 	data.setBillDate(dto.getBillDate());
-	data.setIsEffect(dto.getIsEffect());
-	data.setIsClose(dto.getIsClose());
-	data.setIsCancelled(dto.getIsCancelled());
-	data.setEffectDate(dto.getEffectDate());
-	data.setApprover(dto.getApprover());
-	// 创建时间的数据暂时使用sql语句的now()
-	//data.setMakeBillDate(dto.getMakeBillDate());
-	data.setMakeBillDept(dto.getMakeBillDept());
-	// 从payload中获取创建人
-	data.setMakeBillPerson(payload.getUsername());
+	data.setSrcBillType(dto.getSrcBillType());
+	data.setSrcBillId(dto.getSrcBillId());
 
-	data.setUdpateDate(dto.getUdpateDate());
-	data.setUdpatePerson(dto.getUdpatePerson());
-	data.setAutoBill(dto.getAutoBill());
-	data.setRedBill(dto.getRedBill());
-	data.setBillType(dto.getBillType());
-	data.setBillTheme(dto.getBillTheme());
-	data.setBillStatus(dto.getBillStatus());
-	data.setInqueryBill(dto.getInqueryBill());
-	data.setPayMethod(dto.getPayMethod());
-	data.setDeliveryDate(dto.getDeliveryDate());
+	data.setSrcNo(dto.getSrcNo());
+	data.setSubject(dto.getSubject());
+	data.setIsRubric(dto.getIsRubric());
+	data.setCandidateQuotIds(dto.getCandidateQuotIds());
+	data.setPaymentMethod(dto.getPaymentMethod());
+
 	data.setDeliveryPlace(dto.getDeliveryPlace());
+	data.setDeliveryTime(dto.getDeliveryTime());
+	data.setAttachment(dto.getAttachment());
 	data.setRemark(dto.getRemark());
+	data.setIsAuto(dto.getIsAuto());
 
+	data.setBillStage(dto.getBillStage());
+	data.setApprover(dto.getApprover());
+	data.setBpmiInstanceId(dto.getBpmiInstanceId());
+	data.setApprovalResultType(dto.getApprovalResultType());
+	data.setApprovalRemark(dto.getApprovalRemark());
 
+	data.setIsEffective(dto.getIsEffective());
+	data.setEffectiveTime(dto.getEffectiveTime());
+	data.setIsClosed(dto.getIsClosed());
+	data.setIsVoided(dto.getIsVoided());
+	// 创建部门，从payload获取
+	data.setSysOrgCode(payload.getUserDept());
+
+	// 创建人，从payload获取
+	data.setCreateBy(payload.getUsername());
+	// 创建时间，由后端生成
+	data.setCreateTime(SimpleDateTimeFormat::format("%Y-%m-%d %H:%M:%S"));
+	data.setUpdateBy(dto.getUpdateBy());
+	data.setUpdateTime(dto.getUpdateTime());
+	data.setVersion(dto.getVersion());
+
+	list<PurComDetailDTO> Addlist;
+	for (PurComDetailDTO i : dto.getDetail())
+	{
+		// bill_no和entry_no都不能重复
+		PurComDetailDTO detail;
+		detail.setId(to_string(randomId.nextId()));
+		detail.setMid("pur_compare");
+
+		detail.setBill_no(i.getBill_no());
+		detail.setEntry_no(i.getEntry_no());
+		detail.setSrc_bill_type(i.getSrc_bill_type());
+		detail.setSrc_bill_id(i.getSrc_bill_id());
+		detail.setSrc_entry_id(i.getSrc_entry_id());
+		detail.setSrc_no(i.getSrc_no());
+		detail.setSupplier_id(i.getSupplier_id());
+		detail.setMaterial_id(i.getMaterial_id());
+		detail.setUnit_id(i.getUnit_id());
+		detail.setQty(i.getQty());
+		detail.setTax_rate(i.getTax_rate());
+		detail.setPrice(i.getPrice());
+		detail.setDiscount_rate(i.getDiscount_rate());
+		detail.setAmt(i.getAmt());
+		detail.setRanking(i.getRanking());
+		detail.setRemark(i.getRemark());
+		detail.setCustom1(i.getCustom1());
+		detail.setCustom2(i.getCustom2());
+		detail.setVersion(i.getVersion());
+
+		Addlist.push_back(detail);
+	}
+	data.setDetail(Addlist);
 	//执行数据添加
 	PurCompareDAO dao;
 	return dao.insertPurCom(data);
@@ -261,33 +517,83 @@ bool PurCompareService::updatePurCom(const ModPurComDTO& dto, PayloadDTO payload
 {
 	//组装传输数据
 	ModPurComDO data;
-	data.setBillId(dto.getBillId());
-	data.setBillDate(dto.getBillDate());
-	data.setIsEffect(dto.getIsEffect());
-	data.setIsClose(dto.getIsClose());
-	data.setIsCancelled(dto.getIsCancelled());
-	data.setEffectDate(dto.getEffectDate());
-	data.setApprover(dto.getApprover());
-	data.setMakeBillDate(dto.getMakeBillDate());
-	data.setMakeBillDept(dto.getMakeBillDept());
-	data.setMakeBillPerson(dto.getMakeBillPerson());
-	// 修改时间的数据暂时用sql语句的now()
-	//data.setUdpateDate(dto.getUdpateDate());
-	// 从payload中获取修改人
-	data.setUdpatePerson(payload.getUsername());
 
-	data.setAutoBill(dto.getAutoBill());
-	data.setRedBill(dto.getRedBill());
-	data.setBillType(dto.getBillType());
-	data.setBillTheme(dto.getBillTheme());
-	data.setBillStatus(dto.getBillStatus());
-	data.setInqueryBill(dto.getInqueryBill());
-	data.setPayMethod(dto.getPayMethod());
-	data.setDeliveryDate(dto.getDeliveryDate());
+	// 雪花算法生成id
+	//SnowFlake randomId(1, 3);
+	//data.setId(to_string(randomId.nextId()));
+
+	data.setBillNo(dto.getBillNo());
+	data.setBillDate(dto.getBillDate());
+	data.setSrcBillType(dto.getSrcBillType());
+	data.setSrcBillId(dto.getSrcBillId());
+
+	data.setSrcNo(dto.getSrcNo());
+	data.setSubject(dto.getSubject());
+	data.setIsRubric(dto.getIsRubric());
+	data.setCandidateQuotIds(dto.getCandidateQuotIds());
+	data.setPaymentMethod(dto.getPaymentMethod());
+
 	data.setDeliveryPlace(dto.getDeliveryPlace());
+	data.setDeliveryTime(dto.getDeliveryTime());
+	data.setAttachment(dto.getAttachment());
 	data.setRemark(dto.getRemark());
-	data.setAuditResult(dto.getAuditResult());
-	data.setAuditRemark(dto.getAuditRemark());
+	data.setIsAuto(dto.getIsAuto());
+
+	data.setBillStage(dto.getBillStage());
+	data.setApprover(dto.getApprover());
+	data.setBpmiInstanceId(dto.getBpmiInstanceId());
+	data.setApprovalResultType(dto.getApprovalResultType());
+	data.setApprovalRemark(dto.getApprovalRemark());
+
+	data.setIsEffective(dto.getIsEffective());
+	data.setEffectiveTime(dto.getEffectiveTime());
+	data.setIsClosed(dto.getIsClosed());
+	data.setIsVoided(dto.getIsVoided());
+	// 创建部门，不变
+	//data.setSysOrgCode(payload.getUserDept());
+
+	// 创建人，不变
+	//data.setCreateBy(payload.getUsername());
+	// 创建时间，不变
+	//data.setCreateTime(SimpleDateTimeFormat::format("%Y-%m-%d %H:%M:%S"));
+	data.setUpdateBy(payload.getUsername());
+	data.setUpdateTime(SimpleDateTimeFormat::format("%Y-%m-%d %H:%M:%S"));
+	data.setVersion(dto.getVersion());
+
+	list<PurComDetailDTO> Addlist;
+	for (PurComDetailDTO i : dto.getDetail())
+	{
+		// bill_no和entry_no都不能重复
+		PurComDetailDTO detail;
+		//detail.setId(to_string(randomId.nextId()));
+		//detail.setMid("pur_compare");
+
+		detail.setBill_no(i.getBill_no());
+		//detail.setEntry_no(i.getEntry_no());
+		//detail.setSrc_bill_type(i.getSrc_bill_type());
+
+		//detail.setSrc_bill_id(i.getSrc_bill_id());
+		//detail.setSrc_entry_id(i.getSrc_entry_id());
+		//detail.setSrc_no(i.getSrc_no());
+		//detail.setSupplier_id(i.getSupplier_id());
+		//detail.setMaterial_id(i.getMaterial_id());
+
+		detail.setUnit_id(i.getUnit_id());
+		//detail.setQty(i.getQty());
+		//detail.setTax_rate(i.getTax_rate());
+		//detail.setPrice(i.getPrice());
+		//detail.setDiscount_rate(i.getDiscount_rate());
+
+		//detail.setAmt(i.getAmt());
+		detail.setRanking(i.getRanking());
+		detail.setRemark(i.getRemark());
+		detail.setCustom1(i.getCustom1());
+		detail.setCustom2(i.getCustom2());
+		detail.setVersion(i.getVersion());
+
+		Addlist.push_back(detail);
+	}
+	data.setDetail(Addlist);
 
 	//执行数据修改
 	PurCompareDAO dao;

@@ -23,5 +23,5 @@ public:
 	}
 };
 
-#endif
+#endif //!_PUR_COM_MOD_BILL_STATUS_DTO_H_
 

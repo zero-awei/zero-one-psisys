@@ -126,3 +126,34 @@ void ExcelComponent::writeVectorToFile(const std::string& fileName, const std::s
 	//保存到文件
 	wb.save(fileName);
 }
+
+
+void ExcelComponent::clearWorkbook()
+{
+	wb.empty();
+}
+
+void ExcelComponent::makeName(const std::string& title)
+{
+	wb.title("title");
+}
+
+void ExcelComponent::mergeCell(std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend)
+{
+	// 如果存在sheet，那么对指定单元格进行合并
+	if (wb.contains(sheetName))
+	{
+		sheet = wb.sheet_by_title(sheetName);
+		sheet.merge_cells(xlnt::range_reference(columnbegin, columnend));
+	}
+}
+
+void ExcelComponent::cellVaule(const std::string& sheetName, std::string& cell, std::string value)
+{
+	// 如果存在sheet，那么对指定单元格进行赋值
+	if (wb.contains(sheetName))
+	{
+		sheet = wb.sheet_by_title(sheetName);
+		sheet.cell(cell).value(value);
+	}
+}

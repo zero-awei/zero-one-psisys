@@ -22,8 +22,9 @@
 
 #include "Mapper.h"
 #include "../../domain/do/pur-compare/PurCompareDO.h"
+#include "CharsetConvertHepler.h"
 
-#define ITOWORD(t) (t==1 ? u8"是":u8"否")
+#define ITOWORD(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("是"):CharsetConvertHepler::ansiToUtf8("否"))
 /**
  * 查询单据列表字段匹配映射
  */

@@ -30,13 +30,13 @@
 #include "../../domain/query/pur-compare/PurComFindBillQuery.h"
 #include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
 #include "../../domain/query/pur-compare/PurComListQuery.h"
+#include "../../domain/query/pur-compare/PurComExportQuery.h"
+#include "../../domain/dto/pur-compare/PurComIntoDTO.h"
 
-//dto
 #include "../../domain/dto/pur-compare/AddPurComDTO.h"
 #include "../../domain/dto/pur-compare/ModPurComDTO.h"
 #include "../../domain/dto/pur-compare/DelPurComDTO.h"
 #include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
-
 /**
  * 示例服务实现，演示基础的示例服务实现
  */
@@ -51,9 +51,12 @@ public:
 	std::list<PurComListVO> listPurComList(const PurComListQuery& query);
 	// 报价单分录列表
 	std::list<PurComDividedListVO> listPurComDividedList(const PurComDividedListQuery& query);
-
+	// 导出报价单
+	string getPurComExport(const PurComExportQuery& query);
+	// 导入比价单及分录
+	uint64_t savePurComInto(const PurComIntoDTO& dto, const PayloadDTO& payload);
 	// 保存数据
-	uint64_t savePurCom(const AddPurComDTO& dto, PayloadDTO payload);
+	uint64_t savePurCom(const AddPurComDTO& dto, const PayloadDTO& payload);
 	// 修改数据
 	bool updatePurCom(const ModPurComDTO& dto, PayloadDTO payload);
 	// 删除数据

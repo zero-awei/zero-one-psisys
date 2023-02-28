@@ -52,156 +52,10 @@ if (obj.getIs_voided() != -1) { \
 #define PUR_INQUIRY_EXPORT_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
-if (!obj.getBill_no().empty()) { \
+if (!obj.getBill_no_list().empty()) { \
 	sql << " AND `bill_no`=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
+	SQLPARAMS_PUSH(params, "s", list<std::string>, obj.getBill_no_list()); \
 } 
-
-
-// 定义条件解析宏，减少重复代码
-#define PUR_INQUIRY_INTO_TERAM_PARSE(obj, sql) \
-SqlParams params; \
-sql<<" WHERE 1=1"; \
-if (!obj.getBill_no().empty()) { \
-	sql << " AND bill_no=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
-} 
-//if (!obj.getBill_date().empty()) { \
-//	sql << " AND bill_date=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_date()); \
-//} \
-//if (!obj.getSrc_bill_type().empty()) { \
-//	sql << " AND src_bill_type=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_bill_type()); \
-//}\
-//if (!obj.getSrc_bill_id().empty()) { \
-//	sql << " AND src_bill_id=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_bill_id()); \
-//} \
-//if (!obj.getSrc_no().empty()) { \
-//	sql << " AND src_no=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getSrc_no()); \
-//} \
-//if (!obj.getSubject().empty()) { \
-//	sql << " AND subject=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getSubject()); \
-//} \
-//if (!obj.getDelivery_time().empty()) { \
-//	sql << " AND delivery_time=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getDelivery_time()); \
-//} \
-//if (obj.getIs_rubric() != -1) { \
-//	sql << " AND is_rubric=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getIs_rubric()); \
-//} \
-//if (!obj.getPayment_method().empty()) { \
-//	sql << " AND payment_method=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getPayment_method()); \
-//} \
-//if (!obj.getDelivery_place().empty()) { \
-//	sql << " AND delivery_place=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getDelivery_place()); \
-//} \
-//if (!obj.getDelivery_time().empty()) { \
-//	sql << " AND delivery_time=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getDelivery_time()); \
-//} \
-//if (!obj.getContact().empty()) { \
-//	sql << " AND contact=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getContact()); \
-//} \
-//if (!obj.getPhone().empty()) { \
-//	sql << " AND phone=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getPhone()); \
-//} \
-//if (!obj.getFax().empty()) { \
-//	sql << " AND fax=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getFax()); \
-//} \
-//if (!obj.getEmail().empty()) { \
-//	sql << " AND email=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getEmail()); \
-//} \
-//if (obj.getQty() != -1) { \
-//	sql << " AND qty=?"; \
-//	SQLPARAMS_PUSH(params, "d", double, obj.getQty()); \
-//} \
-//if (obj.getAmt() != -1) { \
-//	sql << " AND amt=?"; \
-//	SQLPARAMS_PUSH(params, "d", double, obj.getAmt()); \
-//} \
-//if (obj.getQuot_count() != -1) { \
-//	sql << " AND quot_count=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getQuot_count()); \
-//} \
-//if (!obj.getAttachment().empty()) { \
-//	sql << " AND attachment=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getAttachment()); \
-//} \
-//if (!obj.getRemark().empty()) { \
-//	sql << " AND remark=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getRemark()); \
-//} \
-//if (obj.getIs_auto() != -1) { \
-//	sql << " AND is_auto=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getIs_auto()); \
-//} \
-//if (!obj.getBill_stage().empty()) { \
-//	sql << " AND bill_stage=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getBill_stage()); \
-//} \
-//if (!obj.getApprover().empty()) { \
-//	sql << " AND approver=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getApprover()); \
-//} \
-//if (!obj.getBpmi_instance_id().empty()) { \
-//	sql << " AND bpmi_instance_id=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getBpmi_instance_id()); \
-//} \
-//if (!obj.getApproval_result_type().empty()) { \
-//	sql << " AND approval_result_type=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getApproval_result_type()); \
-//} \
-//if (!obj.getApproval_remark().empty()) { \
-//	sql << " AND approval_remark=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getApproval_remark()); \
-//} \
-//if (obj.getIs_effective() != -1) { \
-//	sql << " AND is_effective=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getIs_effective()); \
-//} \
-//if (!obj.getEffective_time().empty()) { \
-//	sql << " AND effective_time=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getEffective_time()); \
-//} \
-//if (obj.getIs_closed() != -1) { \
-//	sql << " AND is_closed=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getIs_closed()); \
-//} \
-//if (obj.getIs_voided() != -1) { \
-//	sql << " AND is_voided=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
-//} \
-//if (!obj.getSys_org_code().empty()) { \
-//	sql << " AND sys_org_code=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getSys_org_code()); \
-//} \
-//if (!obj.getCreate_by().empty()) { \
-//	sql << " AND create_by=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getCreate_by()); \
-//} \
-//if (!obj.getCreate_time().empty()) { \
-//	sql << " AND create_time=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getCreate_time()); \
-// } \
-//if (!obj.getUpdate_by().empty()) { \
-//	sql << " AND update_by=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getUpdate_by()); \
-//} \
-//if (!obj.getUpdate_time().empty()) { \
-//	sql << " AND update_time=?"; \
-//	SQLPARAMS_PUSH(params, "s",  std::string, obj.getUpdate_time()); \
-//}
 
 
 // 统计数据条数
@@ -213,29 +67,6 @@ uint64_t PurInquiryDAO::count(const PurInquiryDO& iObj)
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
-
-// 统计导出的数据条数
-uint64_t PurInquiryDAO::countExport(PurInquiryDO iObj)
-{
-	stringstream sql;
-
-	// 暂时用于测试（要修改！！！！！！！！！！！！！！！！！！！！！）
-	sql << "SELECT COUNT(*) FROM pur_inquiry";
-	PUR_INQUIRY_EXPORT_TERAM_PARSE(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
-}
-
-// 统计导入的数据条数
-uint64_t PurInquiryDAO::countInto(PurInquiryDO iObj)
-{
-	stringstream sql;
-	sql << "SELECT COUNT(*) FROM pur_inquiry";
-	PUR_INQUIRY_INTO_TERAM_PARSE(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
-}
-
 
 
 // 分页查询询价单列表
@@ -253,6 +84,7 @@ list<PurInquiryDO> PurInquiryDAO::selectPurInquiryFindBillWithPage(const PurInqu
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<PurInquiryDO, PurInquiryFindBillMapper>(sqlStr, mapper, params);
 }
+
 
 //按指定单据编号查询询价单详情
 list<PurInquiryDO> PurInquiryDAO::selectPurInquiryFindDetailBill(const PurInquiryDO& obj)
@@ -278,44 +110,93 @@ list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryFindDetailBillEntry(cons
 	return sqlSession->executeQuery<PurInquiryEntryDO, PurInquiryEntryMapper>(sql, mapper, "%s", obj.getEntry_bill_no());
 }
 
-// 导出
-list<PurInquiryDO> PurInquiryDAO::selectPurInquiryExport(const PurInquiryDO& obj, long pageIndex, long pageSize)
+
+// 导出询价单
+list<PurInquiryDO> PurInquiryDAO::selectPurInquiryExport(const string& bill_no) //const PurInquiryDO& obj
 {
-	stringstream sql;
-	sql << "SELECT id,payment_method, delivery_place, delivery_time,contact, phone, fax, email,\
-				qty, amt, quot_count, is_effective, attachment, src_bill_id, subject, bill_stage, src_no,\
-				is_auto, remark, bpmi_instance_id, is_voided, bill_no, is_rubric, src_bill_type, create_time,\
-				effective_time, approver, update_by, sys_org_code, is_closed, approval_result_type, bill_date, create_by, approval_remark\
-				FROM pur_inquiry WHERE `bill_no` LIKE CONCAT('%',?,'%')";
-	PUR_INQUIRY_EXPORT_TERAM_PARSE(obj, sql);
-	//sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+	string sql = "SELECT id,bill_no,bill_date,bill_stage,subject,src_no,src_bill_id,src_bill_type,payment_method,\
+				  delivery_place, delivery_time,contact, phone, fax, email, qty, amt, quot_count, remark,\
+				  is_effective, effective_time, is_closed, is_voided, is_auto, is_rubric, create_by, create_time, \
+				  sys_org_code, update_by,  attachment, bpmi_instance_id, approver,approval_result_type, approval_remark\
+				  FROM pur_inquiry WHERE `bill_no`=?";
 	PurInquiryExportMapper mapper;
-	string sqlStr = sql.str();
-	return sqlSession->executeQuery<PurInquiryDO, PurInquiryExportMapper>(sqlStr, mapper,params);
+	return sqlSession->executeQuery<PurInquiryDO, PurInquiryExportMapper>(sql, mapper, "%s", bill_no);
 }
 
-// 导出对应明细
-list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryExportEntry(const PurInquiryEntryDO& obj)
+
+// 导出询价单对应明细
+list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryExportEntry(const string& bill_no)
 {
-	string sql;
-	sql = "SELECT material_id,unit_id,qty,price,amt,custom1,src_no,entry_no,custom2,src_bill_id,src_bill_type,\
-		   remark, bill_no, src_bill_id	FROM pur_inquiry_entry as pie WHERE `bill_no` LIKE CONCAT('%',?,'%')";
+	string sql = "SELECT  bill_no, entry_no,src_entry_id,src_no,src_bill_id,src_bill_type,material_id,unit_id,\
+				  qty,tax_rate,price,amt,custom1,custom2,remark \
+				  FROM pur_inquiry_entry as pie WHERE `bill_no`=?";
 	PurInquiryExportEntryMapper mapper;
-	return sqlSession->executeQuery<PurInquiryEntryDO, PurInquiryExportEntryMapper>(sql, mapper, "%s", obj.getEntry_bill_no());
+	return sqlSession->executeQuery<PurInquiryEntryDO, PurInquiryExportEntryMapper>(sql, mapper, "%s", bill_no);
 }
 
+
+// 导入pur_inquiry
+uint64_t PurInquiryDAO::input(const PurInquiryDO& obj)
+{
+	string sql = "INSERT INTO `pur_inquiry` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
+	if (obj.getEffective_time() != "") {
+		sql += ", '" + obj.getEffective_time() + "'";
+	}
+	else {
+		sql += ", null";
+	}
+	sql += ", ?, ?, ?, ?, ?, ?";
+	if (obj.getUpdate_time() != "") {
+		sql += ", '" + obj.getUpdate_time() + "'";
+	}
+	else {
+		sql += ", null";
+	}
+	if (obj.getVersion() != -1) {
+		sql += ", " + to_string(obj.getVersion());
+	}
+	else {
+		sql += ", null";
+	}
+	sql += ")";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%i%s%s%s%s%s%s%s%d%d%i%s%s%i%s%s%s%s%s%i%i%i%s%s%s%s",
+		obj.getId(), obj.getBill_no(), obj.getBill_date(), obj.getSrc_bill_type(), obj.getSrc_bill_id(),obj.getSrc_no(), obj.getSubject(), 
+		obj.getIs_rubric(), obj.getPayment_method(), obj.getDelivery_place(),obj.getDelivery_time(), obj.getContact(), obj.getPhone(),\
+		obj.getFax(), obj.getEmail(),obj.getQty(),obj.getAmt(), obj.getQuot_count(), obj.getAttachment(), obj.getRemark(),\
+		obj.getIs_auto(),obj.getBill_stage(), obj.getApprover(), obj.getBpmi_instance_id(), obj.getApproval_result_type(),\
+		obj.getApproval_remark(),obj.getIs_effective(),	obj.getIs_closed(), obj.getIs_voided(),	obj.getSys_org_code(), \
+		obj.getCreate_by(),obj.getCreate_time(), obj.getUpdate_by());
+}
+
+// 导入明细 pur_inquiry_entry
+uint64_t PurInquiryDAO::inputEntry(const PurInquiryEntryDO& obj)
+{
+	string sql = "INSERT INTO `pur_inquiry_entry` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
+	if (obj.getEntry_version() != 1) {
+		sql += ", " + to_string(obj.getEntry_version());
+	}
+	else {
+		sql += ", null";
+	}
+	sql += ")";
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%s%s%d%d%d%d%s%s%s",
+		obj.getEntry_id(),obj.getMid(),obj.getEntry_bill_no(),obj.getEntry_no(),obj.getEntry_src_bill_type(),
+		obj.getEntry_src_bill_id(), obj.getSrc_entry_id(), obj.getEntry_src_no(), obj.getMaterial_id(),obj.getUnit_id(),
+		obj.getEntry_qty(),obj.getTax_rate(),obj.getPrice(), obj.getEntry_Amt(), obj.getEntry_remark(),obj.getCustom1(),obj.getCustom2());
+}
 
 
 uint64_t PurInquiryDAO::insert(const AddPurInquiryDO& iObj)
 {// 
-	string sql = "INSERT INTO `pur_inquiry` ( `id`,`bill_no`, `subject`, \
+	string sql = "INSERT INTO `pur_inquiry` (create_by,create_time,sys_org_code,`id`,`bill_no`, `subject`, \
     `payment_method`,contact,phone,fax,email,remark,is_rubric \
-	,is_auto,create_time,update_by,effective_time,bill_stage,bill_date,delivery_place) VALUES (?, \
-	?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?,?)";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%i%i%s%s%s%s%s%s", iObj.getId(), \
+	,is_auto,effective_time,bill_stage,bill_date,delivery_place) VALUES (?, \
+	?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?,?,?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%i%i%s%s%s%s", iObj.getCreate_by(), \
+		iObj.getCreate_time(), iObj.getSys_org_code(), iObj.getId(), \
 		iObj.getBill_no(), iObj.getSubject(), iObj.getPayment_method(), \
 		iObj.getContact(), iObj.getPhone(), iObj.getFax(), iObj.getEmail(), iObj.getRemark(), \
-		iObj.getIs_rubric(), iObj.getIs_auto(), iObj.getCreate_time(), iObj.getUpdate_by(), \
+		iObj.getIs_rubric(), iObj.getIs_auto(), \
 		iObj.getEffective_time(), iObj.getBill_stage(), iObj.getBill_Date(), iObj.getDelivery_place());
 }
 
@@ -331,12 +212,13 @@ uint64_t PurInquiryDAO::insertByEntry(const AddPurInquiryEntryDO& iObj)
 
 int PurInquiryDAO::update(const AddPurInquiryDO& iObj)
 {
-	string sql = "UPDATE `pur_inquiry` SET `subject`=?, \
-    `payment_method`=?,contact=?,phone=?,fax=?,email=?,remark=? \
+	string sql = "UPDATE `pur_inquiry` SET `subject`=?,update_by=?,update_time=?, approval_result_type=?,approval_remark=?,\
+    `payment_method`=?,contact=?,phone=?,fax=?,email=?,remark=? ,approver=?\
 	,bill_date=?,delivery_place=? WHERE bill_no=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s", \
-		iObj.getSubject(), iObj.getPayment_method(), iObj.getContact(), \
-		iObj.getPhone(), iObj.getFax(), iObj.getEmail(), iObj.getRemark(), \
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", \
+		iObj.getSubject(), iObj.getUpdate_by(), iObj.getupdate_time(), \
+		iObj.getApproval_result_type(), iObj.getApproval_remark(), iObj.getPayment_method(), iObj.getContact(), \
+		iObj.getPhone(), iObj.getFax(), iObj.getEmail(), iObj.getRemark(), iObj.getApprover(), \
 		iObj.getBill_Date(), iObj.getDelivery_place(), iObj.getBill_no());
 }
 

@@ -34,6 +34,8 @@ class PurInquiryDO
 	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号  
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
+	// 单据编号列表
+	CC_SYNTHESIZE(list<string>, bill_no_list, Bill_no_list);
 	// 单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
 	// 源单类型
@@ -106,8 +108,9 @@ class PurInquiryDO
 
 public:
 	PurInquiryDO() {
-		//id = "";
+		id = "";
 		bill_no = "CGXJ-230112-005";
+		bill_no_list = {};
 		bill_date = "2023-2-22";
 		src_bill_type = "测试";
 		src_bill_id = "";
@@ -145,7 +148,5 @@ public:
 	}
 	
 };
-
-
 
 #endif  //  !__PUR_INQUIRY_FIND_BILL_DO_H__

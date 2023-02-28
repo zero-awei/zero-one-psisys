@@ -31,8 +31,10 @@ class PurInquiryEntryDO
 	CC_SYNTHESIZE(string, mid, Mid);
 	// 单据号
 	CC_SYNTHESIZE(string, entry_bill_no, Entry_bill_no);
+	
+	CC_SYNTHESIZE(list<string>, entry_bill_no_list, Entry_bill_no_list);
 	// 分录号
-	CC_SYNTHESIZE(string, entry_no, Entry_no);
+	CC_SYNTHESIZE(int, entry_no, Entry_no);
 	// 源单类型
 	CC_SYNTHESIZE(string, entry_src_bill_type, Entry_src_bill_type);
 	// 源单id
@@ -59,27 +61,30 @@ class PurInquiryEntryDO
 	CC_SYNTHESIZE(string, custom1, Custom1);
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-
+	// Version
+	CC_SYNTHESIZE(int, entry_version, Entry_version);
 
 public:
 	PurInquiryEntryDO() {
 		entry_id = "";
 		mid = "";
 		entry_bill_no = "";
-		entry_no = 1;
+		entry_bill_no_list = {};
+		entry_no = -1;
 		entry_src_bill_type = "";
 		entry_src_bill_id = "";
 		src_entry_id;
 		entry_src_no = "";
 		material_id = "";
 		unit_id = "";
-		entry_qty = -1;
-		tax_rate = 0.1;
-		price = 1;
-		entry_amt = 1;
+		entry_qty = -1.0;
+		tax_rate = -1.0;
+		price = -1.0;
+		entry_amt = -1.0;
 		entry_remark = "";
 		custom1 = "";
 		custom2 = "";
+		entry_version = -1;
 	}
 
 };

@@ -20,6 +20,17 @@
 #ifndef _PUR_INQUIRY_SERVICE_
 #define _PUR_INQUIRY_SERVICE_
 #include <list>
+#include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
+#include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"
+#include "../../domain/vo/pur-inquiry/PurInquiryExportVO.h"
+#include "../../domain/vo/pur-inquiry/EntryPurInquiryExportVO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/Message.h"
+#include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
+#include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
+#include "../../domain/query/pur-inquiry/PurInquiryExportQuery.h"
+#include "../../domain/dto/pur-inquiry/PurInquiryIntoDTO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/Message.h"
@@ -37,8 +48,7 @@
 #include "../../domain/dto/pur-inquiry/AddPurInquiryDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryModBillStatusDTO.h"
-
-
+#include "JWTUtil.h"
 /**
  * 示例服务实现
  */
@@ -49,25 +59,18 @@ public:
 	PageVO<PurInquiryFindBillVO> listAll(const PurInquiryFindBillQuery& query);
 	// 查看指定采购询价单详情
 	PurInquiryFindDetailBillVO listPurInquiryFindDetailBill(const PurInquiryFindDetailBillQuery& query);
-
-	// 导出（按id批量查询后，放入xml，再下载文件）
-	PageVO<PurInquiryExportVO>  PurInquiryExport(const PurInquiryExportQuery& query);
-	
-	// 导入（上传文件后，将xml解析成json/cpp放入数据库，保存数据）
-	bool  PurInquiryInto(const PurInquiryIntoDTO& dto);
-	// 保存数据
-	uint64_t saveData(const PurInquiryIntoDTO& dto);
+	// 导入
+	uint64_t PurInquiryInto(string fieldName, const PayloadDTO& payload);
 
 
 	// 保存数据(插入询价)
-	uint64_t saveData(const AddPurInquiryDTO& dto);
+	uint64_t saveData(const AddPurInquiryDTO& dto, const PayloadDTO& pdto);
 	// 修改询价
-	bool updateData(const AddPurInquiryDTO& dto);
+	bool updateData(const AddPurInquiryDTO& dto, const PayloadDTO& pdto);
 	//删除询价
 	bool removeData(const PurInquiryRemoveDTO& dto);
 	//修改单据状态
 	bool updateDataByStatus(const PurInquiryModBillStatusDTO& dto);
-	
 };
 
 #endif // !_PUR_INQUIRY_SERVICE_

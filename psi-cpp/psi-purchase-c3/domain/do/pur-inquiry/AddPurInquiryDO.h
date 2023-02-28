@@ -19,7 +19,6 @@
 #ifndef _ADD_PUR_INQUIRY_DO_H_
 #define _ADD_PUR_INQUIRY_DO_H_
 #include "../../GlobalInclude.h"
-#include <list>
 
 //修改和删除DO
 class AddPurInquiryDO
@@ -48,16 +47,31 @@ class AddPurInquiryDO
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
 	////12自动单据	   ;
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	//13修改时间		   ;
-	CC_SYNTHESIZE(string, create_time, Create_time);
-	//14修改人			;
-	CC_SYNTHESIZE(string, update_by, Update_by);
 	////15生效时间	   ;
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
 	//16单据阶段		   ;
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//17单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_Date);
+	//18核批人
+	CC_SYNTHESIZE(string, approver, Approver);
+	//19制单时间
+	CC_SYNTHESIZE(string, create_time, Create_time);
+	//20制单部门
+	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
+	//21创建人
+	CC_SYNTHESIZE(string, create_by, Create_by);
+
+	/*修改专属*/
+	//审核是否通过
+	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
+	//审核意见
+	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
+    //13修改时间		   ;
+	CC_SYNTHESIZE(string, update_time, update_time);
+	//14修改人			;
+	CC_SYNTHESIZE(string, update_by, Update_by);
+
 public:
 	AddPurInquiryDO()
 	{

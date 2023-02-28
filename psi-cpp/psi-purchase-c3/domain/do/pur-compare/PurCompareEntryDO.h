@@ -21,25 +21,26 @@
 #define _PUR_COMPARE_ENTRY_DO_
 #include "../DoInclude.h"
 
+
 /**
  * pur_compare_entry数据库实体类
  */
 class PurCompareEntryDO
 {
-	//// id
-	//CC_SYNTHESIZE(string, id, Id);
-	//// 主表
-	//CC_SYNTHESIZE(string, mid, Mid);
+	// id
+	CC_SYNTHESIZE(string, id, Id);
+	// 主表
+	CC_SYNTHESIZE(string, mid, Mid);
 	// 单据号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 分录号
 	CC_SYNTHESIZE(int64_t, entryNo, EntryNo);
-	//// 源单类型
-	//CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	//// 源单id
-	//CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	//// 源单分录id
-	//CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
+	// 源单类型
+	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
+	// 源单id
+	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
+	// 源单分录id
+	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
 	// 源单分录号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	// 供应商id
@@ -59,7 +60,7 @@ class PurCompareEntryDO
 	// 含税金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	// 排名
-	CC_SYNTHESIZE(uint32_t, ranking, Ranking);
+	CC_SYNTHESIZE(int64_t, ranking, Ranking);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 自定义1
@@ -84,6 +85,35 @@ public:
 		amt = -1;
 		taxRate = -1;
 		discountRate = -1;
+		ranking = -1;
+	}
+	PurCompareEntryDO(vector<string> vecStr) {
+		int i = 0;
+		setBillNo(vecStr[i++]);
+		setEntryNo(vecStr[i++] != "" ? stoi(vecStr[i-1]) :-1);
+		setSrcBillType(vecStr[i++]); 
+		setSrcBillId(vecStr[i++]);
+		setSrcEntryId(vecStr[i++]);
+		setSrcNo(vecStr[i++]);
+		setSupplierName(vecStr[i++]); 
+		setMaterialName(vecStr[i++]); 
+		setUnitName(vecStr[i++]); 
+		setQty(vecStr[i++]!=""?stod(vecStr[i-1]):-1);
+		setTaxRate(vecStr[i++] != "" ? stod(vecStr[i-1]) : -1);
+		setPrice(vecStr[i++] != "" ? stod(vecStr[i-1]) : -1);
+		setDiscountRate(vecStr[i++] != "" ? stod(vecStr[i-1]) : -1);
+		setAmt(vecStr[i++] != "" ? stod(vecStr[i-1]) : -1);
+		setRanking(vecStr[i++] != "" ? stoi(vecStr[i-1]) : -1);
+		setRemark(vecStr[i++]); 
+		setCustom1(vecStr[i++]); 
+		setCustom2(vecStr[i++]);
+	}
+	vector<string> purCompareEntryDOToVecStr() {
+		vector<string> vecStr{ getBillNo(),to_string(getEntryNo()),getSrcBillType(),getSrcBillId(),getSrcEntryId(),
+			getSrcNo(),getSupplierName(),getMaterialName(),getUnitName(),to_string(getQty()),
+			to_string(getTaxRate()),to_string(getPrice()),to_string(getDiscountRate()),to_string(getAmt()),
+			to_string(getRanking()),getRemark(),getCustom1(),getCustom2() };
+		return vecStr;
 	}
 };
 #endif 

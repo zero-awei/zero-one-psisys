@@ -17,8 +17,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_INQUIRY_DAO_
-#define _PUR_INQUIRY_DAO_
+#ifndef _PUR_INQUIRY_FIND_BILL_DAO_
+#define _PUR_INQUIRY_FIND_BILL_DAO_
+#include "BaseDAO.h"
+#include "../../domain/do/pur-inquiry/PurInquiryDO.h"
+#include "../../domain/do/pur-inquiry/PurInquiryEntryDO.h"
+#include "../../domain/do/pur-inquiry/PurReqDO.h"
+#include "../../domain/do/pur-inquiry/PurReqEntryDO.h"
 #include "BaseDAO.h"
 #include "../../domain/do/pur-inquiry/PurInquiryDO.h"
 #include "../../domain/do/pur-inquiry/PurInquiryEntryDO.h"
@@ -29,7 +34,6 @@
 #include "../../domain/do/pur-inquiry/AddPurInquiryEntryDO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
 #include "../../domain/do/pur-inquiry/PurInquiryModBillStatusDO.h"
-
 /*
 *  数据库操作实现
 */
@@ -51,12 +55,14 @@ public:
 	//修改单据状态
 	int updateByModBillStatus(const PurInquiryModBillStatusDO& uObj);
 
+
+
 	// 统计数据条数
 	uint64_t count(const PurInquiryDO& iObj);
 	// 统计导出的数据条数
-	uint64_t countExport(PurInquiryDO iObj);
+	uint64_t countExport(const PurInquiryDO& iObj);
 	// 统计导入的数据条数
-	uint64_t countInto(PurInquiryDO iObj);	
+	uint64_t countInto(const PurInquiryDO& iObj);
 	// 分页查询数据
 	list<PurInquiryDO> selectPurInquiryFindBillWithPage(const PurInquiryDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	// 查看指定单据详情（按单据编号查询）
@@ -70,15 +76,17 @@ public:
 	//list<PurReqEntryDO> selectPurReqEntry(const PurReqEntryDO& obj);
 
 	// 导出（按单据编号批量查询后，放入xml，再下载文件）
-	list<PurInquiryDO> selectPurInquiryExport(const PurInquiryDO& obj, long pageIndex, long pageSize);
+	list<PurInquiryDO> selectPurInquiryExport(const string& bill_no);
 
-	list<PurInquiryEntryDO> selectPurInquiryExportEntry(const PurInquiryEntryDO& obj);
-	
-
+	list<PurInquiryEntryDO> selectPurInquiryExportEntry(const string& bill_no);
 
 
 	// 导入（上传文件后，将xml解析成json/cpp放入数据库，保存数据）
-	 
+	uint64_t input(const PurInquiryDO& obj);
+
+	// 导入明细
+	uint64_t inputEntry(const PurInquiryEntryDO& obj);
+
 };
 
 
