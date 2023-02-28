@@ -7,11 +7,6 @@
 #include "PurQuotDividedListMapper.h"
 #include "PurQuotBaseMapper.h"
 #include "PurQuotDetailMapper.h"
-#include "PurQuotFindBillMapper.h"
-#include "PurQuotListMapper.h"
-#include "PurQuotDividedListMapper.h"
-#include "PurQuotBaseMapper.h"
-#include "PurQuotDetailMapper.h"
 #include "PurQuotMapper.h"
 #include "PurQuotEntryMapper.h"
 

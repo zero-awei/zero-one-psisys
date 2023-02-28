@@ -27,7 +27,6 @@
 #include "PurComDividedListMapper.h"
 #include "PurCandidateQuotMapper.h"
 #include <sstream>
-#include "CharsetConvertHepler.h"
 
 #define WORDTOI(s) (s==CharsetConvertHepler::ansiToUtf8("是")? 1 : 0)
 // 定义宏用于是否为空判断与类型转换

@@ -3,17 +3,18 @@
 #pragma once
 #ifndef _PUR_QUOT_CONTROLLER_H_
 #define _PUR_QUOT_CONTROLLER_H_
+//公共接口
 #include "domain/dto/IDDTO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/PageVO.h"
-
+#include "cinatra.hpp"
+#include "JWTUtil.h"
 //query
-#include "../../domain/query/pur-quot/PurQuotExportQuery.h"
 #include "../../domain/query/pur-quot/PurQuotFindBillQuery.h"
 #include "../../domain/query/pur-quot/PurQuotFindDetailBillQuery.h"
-#include "../../domain/query/pur-quot/PurQuotDividedListQuery.h"
 #include "../../domain/query/pur-quot/PurQuotListQuery.h"
-
+#include "../../domain/query/pur-quot/PurQuotDividedListQuery.h"
+#include "../../domain/query/pur-quot/PurQuotExportQuery.h"
 
 //dto
 #include "../../domain/dto/pur-quot/PurQuotIntoDTO.h"
@@ -22,16 +23,14 @@
 #include "../../domain/dto/pur-quot/ModPurQuotDTO.h"
 #include "../../domain/dto/pur-quot/PurQuotModBillStatusDTO.h"
 //vo
-
-#include "../../domain/vo/pur-quot/PurQuotIntoVO.h"
-#include "../../domain/vo/pur-quot/PurQuotExportVO.h"
-#include "../../domain/vo/pur-quot/PurQuotDividedListVO.h"
 #include "../../domain/vo/pur-quot/PurQuotFindBillVO.h"
 #include "../../domain/vo/pur-quot/PurQuotFindDetailBillVO.h"
 #include "../../domain/vo/pur-quot/PurQuotListVO.h"
+#include "../../domain/vo/pur-quot/PurQuotDividedListVO.h"
+#include "../../domain/vo/pur-quot/PurQuotIntoVO.h"
+#include "../../domain/vo/pur-quot/PurQuotExportVO.h"
 
-#include "cinatra.hpp"
-#include "JWTUtil.h"
+
 using namespace cinatra;
 using namespace nlohmann;
 using namespace std;

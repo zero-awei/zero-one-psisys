@@ -20,25 +20,18 @@
 #ifndef _PUR_INQUIRY_SERVICE_
 #define _PUR_INQUIRY_SERVICE_
 #include <list>
-#include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
-#include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"
-#include "../../domain/vo/pur-inquiry/PurInquiryExportVO.h"
-#include "../../domain/vo/pur-inquiry/EntryPurInquiryExportVO.h"
+//公共接口
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/Message.h"
-#include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
-#include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
-#include "../../domain/query/pur-inquiry/PurInquiryExportQuery.h"
-#include "../../domain/dto/pur-inquiry/PurInquiryIntoDTO.h"
-#include "../../domain/vo/PageVO.h"
-#include "../../domain/vo/JsonVO.h"
-#include "../../domain/vo/Message.h"
+#include "JWTUtil.h"
 
 //vo
 #include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryExportVO.h"
+#include "../../domain/vo/pur-inquiry/EntryPurInquiryExportVO.h"
+
 //query
 #include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
 #include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
@@ -48,7 +41,6 @@
 #include "../../domain/dto/pur-inquiry/AddPurInquiryDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryModBillStatusDTO.h"
-#include "JWTUtil.h"
 /**
  * 示例服务实现
  */

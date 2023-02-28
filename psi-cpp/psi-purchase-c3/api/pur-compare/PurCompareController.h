@@ -19,28 +19,29 @@
 */
 #ifndef _PUR_COMPARE_CONTROLLER_
 #define _PUR_COMPARE_CONTROLLER_
+//公共接口
+#include "../../domain/dto/IDDTO.h"
+#include "../../domain/vo/PageVO.h"
+#include "../../domain/vo/JsonVO.h"
 
+//query
 #include "../../domain/query/pur-compare/PurComFindBillQuery.h"
 #include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
 #include "../../domain/query/pur-compare/PurComDividedListQuery.h"
 #include "../../domain/query/pur-compare/PurComListQuery.h"
 #include "../../domain/query/pur-compare/PurComExportQuery.h"
+//dto
 #include "../../domain/dto/pur-compare/PurComIntoDTO.h"
-#include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/pur-compare/PurComFindBillVO.h"
-#include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
-#include "../../domain/vo/pur-compare/PurComListVO.h"
-#include "../../domain/vo/pur-compare/PurComDividedListVO.h"
-#include "../../domain/vo/PageVO.h"
-#include "../../domain/vo/JsonVO.h"
-//#include "../../domain/dto/sample/SampleDTO.h"
-//#include "../../domain/dto/user/UserDTO.h"
-//#include "../../domain/vo/user/UserVO.h"
 #include "../../domain/dto/pur-compare/AddPurComDTO.h"
 #include "../../domain/dto/pur-compare/ModPurComDTO.h"
 #include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
 #include "../../domain/dto/pur-compare/DelPurComDTO.h"
-#include "../../domain/dto/pur-compare/PurComIntoDTO.h"
+
+//vo
+#include "../../domain/vo/pur-compare/PurComFindBillVO.h"
+#include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
+#include "../../domain/vo/pur-compare/PurComListVO.h"
+#include "../../domain/vo/pur-compare/PurComDividedListVO.h"
 /**
  * 比价单控制器
  */

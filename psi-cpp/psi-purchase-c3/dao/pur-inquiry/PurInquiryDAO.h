@@ -24,12 +24,6 @@
 #include "../../domain/do/pur-inquiry/PurInquiryEntryDO.h"
 #include "../../domain/do/pur-inquiry/PurReqDO.h"
 #include "../../domain/do/pur-inquiry/PurReqEntryDO.h"
-#include "BaseDAO.h"
-#include "../../domain/do/pur-inquiry/PurInquiryDO.h"
-#include "../../domain/do/pur-inquiry/PurInquiryEntryDO.h"
-#include "../../domain/do/pur-inquiry/PurReqDO.h"
-#include "../../domain/do/pur-inquiry/PurReqEntryDO.h"
-
 #include "../../domain/do/pur-inquiry/AddPurInquiryDO.h"
 #include "../../domain/do/pur-inquiry/AddPurInquiryEntryDO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"

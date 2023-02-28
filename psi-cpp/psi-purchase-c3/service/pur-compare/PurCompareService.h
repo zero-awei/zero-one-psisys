@@ -21,22 +21,26 @@
 #define _PUR_COMPARE_SERVICE_
 #include <list>
 #include "../../domain/vo/PageVO.h"
+//dto
+#include "../../domain/dto/pur-compare/PurComIntoDTO.h"
+#include "../../domain/dto/pur-compare/AddPurComDTO.h"
+#include "../../domain/dto/pur-compare/ModPurComDTO.h"
+#include "../../domain/dto/pur-compare/DelPurComDTO.h"
+#include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
+//vo
 #include "../../domain/vo/pur-compare/PurComDetailsVO.h"
 #include "../../domain/vo/pur-compare/PurComDividedListVO.h"
 #include "../../domain/vo/pur-compare/PurComFindBillVO.h"
 #include "../../domain/vo/pur-compare/PurComFindDetailBillVO.h"
 #include "../../domain/vo/pur-compare/PurComListVO.h"
+
+//query
 #include "../../domain/query/pur-compare/PurComDividedListQuery.h"
 #include "../../domain/query/pur-compare/PurComFindBillQuery.h"
 #include "../../domain/query/pur-compare/PurComFindDetailBillQuery.h"
 #include "../../domain/query/pur-compare/PurComListQuery.h"
 #include "../../domain/query/pur-compare/PurComExportQuery.h"
-#include "../../domain/dto/pur-compare/PurComIntoDTO.h"
 
-#include "../../domain/dto/pur-compare/AddPurComDTO.h"
-#include "../../domain/dto/pur-compare/ModPurComDTO.h"
-#include "../../domain/dto/pur-compare/DelPurComDTO.h"
-#include "../../domain/dto/pur-compare/PurComModBillStatusDTO.h"
 /**
  * 示例服务实现，演示基础的示例服务实现
  */

@@ -11,37 +11,18 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/dto/IDDTO.h"
-//dto
-#include "../../domain/dto/pur-inquiry/AddPurInquiryDTO.h"
-#include "../../domain/dto/pur-inquiry/PurInquiryIntoDTO.h"
-#include "../../domain/dto/pur-inquiry/PurInquiryModBillStatusDTO.h"
 
-
-//query
-#include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
-#include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
-#include "../../domain/query/pur-inquiry/PurInquiryExportQuery.h"
-//vo
-#include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
-#include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"
-#include "../../domain/vo/pur-inquiry/EntryPurInquiryVO.h"
-#include "../../domain/vo/pur-inquiry/PurInquiryExportVO.h"
-#include "stdafx.h"
-#include "../../domain/vo/PageVO.h"
-#include "../../domain/vo/JsonVO.h"
-#include "../../domain/dto/IDDTO.h"
 //dto
 #include "../../domain/dto/pur-inquiry/AddPurInquiryDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryIntoDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryModBillStatusDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
-#include "../../domain/dto/pur-inquiry/PurInquiryIntoDTO.h"
-
 
 //query
 #include "../../domain/query/pur-inquiry/PurInquiryFindBillQuery.h"
 #include "../../domain/query/pur-inquiry/PurInquiryFindDetailBillQuery.h"
 #include "../../domain/query/pur-inquiry/PurInquiryExportQuery.h"
+
 //vo
 #include "../../domain/vo/pur-inquiry/PurInquiryFindBillVO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryFindDetailBillVO.h"
@@ -49,13 +30,6 @@
 #include "../../domain/vo/pur-inquiry/PurInquiryExportVO.h"
 #include "../../domain/vo/pur-inquiry/PurInquiryIntoVO.h"
 
-
-//存在问题的命名
-#include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
-//#include "../../domain/dto/pur-inquiry/PurInquiryIntoDTO.h"
-
-
-#include "../../domain/vo/pur-inquiry/PurInquiryIntoVO.h"
 
 
 
