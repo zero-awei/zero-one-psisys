@@ -137,7 +137,12 @@ PayloadDTO JWTUtil::verifyTokenByRsa(std::string token, std::string rsaPubKey)
 		{
 			p.setId(_payload["id"].get<std::string>());
 		}
-		p.setDepartment(payload.get_claim_value<std::string>("deparement"));
+		if (_payload.contains("department")) {
+			p.setDepartment(payload.get_claim_value<std::string>("department"));
+		}
+		else {
+			p.setDepartment("0000");
+		}
 	}
 	JU_VERIFY_CATCH(p);
 	return p;
