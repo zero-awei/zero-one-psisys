@@ -2,7 +2,7 @@
 #ifndef _PREPAYMENT_DO_
 #define _PREPAYMENT_DO_
 #include "../DoInclude.h"
-
+#include "PrepaymentDetailDO.h"
 /**
  * 示例数据库实体类-采购预付实体类
  */
@@ -73,6 +73,8 @@ class PrepaymentDO {
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
+	//版本
+	CC_SYNTHESIZE(std::list<PrepaymentDetailDO>, detail, Detail);
 
 public:           
 	PrepaymentDO() {

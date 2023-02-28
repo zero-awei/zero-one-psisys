@@ -228,6 +228,9 @@
     <ClInclude Include="dao\prepayment\PrepaymentDetailMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\dto\prepayment\AddPayDetailDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -249,9 +252,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="service\PurOrder\PurOrderService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp">

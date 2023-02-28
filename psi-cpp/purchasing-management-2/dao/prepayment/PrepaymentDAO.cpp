@@ -61,7 +61,12 @@ JUDGE_INT_SQL(obj,sql,params,Is_voided, is_voided)\
 #define MODIFT_TYPE "%s%s%s%s\
 %s%s%s%s%i\
 %i%s%s%s%s"
-
+#define MODIFT_DETAIL_LIST "(`bill_no`,`entry_no`,`src_bill_type`,\
+`src_bill_id`,`src_entry_id`,`src_no`,`amt`,`paid_amt`,\
+`remark`,`custom1`,`custom2`)"
+#define DETAIL_TYPE "%s%s%s\
+%s%s%s%s%s\
+%s%s%s%s"
 
 
 
@@ -121,7 +126,7 @@ std::list <PrepaymentDetailDO> PrepaymentDAO::selectByBill_no(const string& bill
 	return sqlSession->executeQuery<PrepaymentDetailDO, PrepaymentDetailMapper>(sqlStr, mapper, params);
 }
 //新增预付申请单
-uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj, const PrepaymentDetailDO& dtObj)
+uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
 {
 	uint64_t result;
 	stringstream sql;
@@ -136,33 +141,52 @@ uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj, const PrepaymentD
 	sql.clear();
 	sql << "INSERT INTO `fin_payment_req_entry` " << DETAIL_LIST << "VALUES (" << ValueNum(13) << ")";
 	sqlStr = sql.str();
-	sqlSession->executeInsert(sqlStr, DETAIL_TYPE,
-		dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), dtObj.getSrc_bill_id(),
-		dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), dtObj.getRemark(),
-		dtObj.getCustom1(), dtObj.getCustom2()
-	);
+	for (PrepaymentDetailDO dtObj : iObj.getDetail()) {
+		sqlSession->executeInsert(sqlStr, DETAIL_TYPE,
+			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), dtObj.getSrc_bill_id(),
+			dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), dtObj.getRemark(),
+			dtObj.getCustom1(), dtObj.getCustom2()
+		);
+	}
 	return result;
 }
 
 //修改预付申请单
+/*
+	（1）接受前端传来的id,对比主表并修改对应的内容
+	（2）删除所有明细表中Mid和前端传来的ID一样的
+	（3）重新插入对应的新的明细表
+*/
 int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 {
-	/*string sql = "UPDATE `fin_payment_req` SET `subject`=? WHERE `id`=?";
-	cout << uObj.getId() << endl;
-	cout << uObj.getSubject() << endl;
-	return sqlSession->executeUpdate(sql, "%s%s", uObj.getSubject(), uObj.getId());*/
 	stringstream sql;
-	sql << "UPDATE `fin_payment_req` SET " << MODIFT_LIST << ",`update_date`=NOW() WHERE `id`=?" ;
+	sql << "UPDATE `fin_payment_req` SET " << MODIFT_LIST << ",`update_time`=NOW() WHERE `id`=?" ;
 	string sqlStr = sql.str();
-	return sqlSession->executeUpdate(sqlStr, MODIFT_TYPE, uObj.getBill_begin_date(), uObj.getSrc_bill_type(), uObj.getSrc_bill_id(), uObj.getSrc_no(),
+	int result;
+	result = sqlSession->executeUpdate(sqlStr, MODIFT_TYPE, uObj.getBill_begin_date(), uObj.getSrc_bill_type(), uObj.getSrc_bill_id(), uObj.getSrc_no(),
 		uObj.getSubject(), uObj.getSupplier_id(), uObj.getOp_dept(), uObj.getOperator(), uObj.getAmt(),
-		uObj.getPaid_amt(), uObj.getAttachment(), uObj.getRemark(), uObj.getUpdate_by(), uObj.getId()); 
-
-
-
-
-
-
+		uObj.getPaid_amt(), uObj.getAttachment(), uObj.getRemark(), uObj.getUpdate_by(), uObj.getId()
+	); 
+	sql.clear();
+	sql << "DELETE FROM `fin_payment_req_entry` WHERE `mid`= ? ";
+	sqlStr = sql.str();
+	sqlSession->executeUpdate(sqlStr, "%s", uObj.getId());
+	sql.clear();
+	sql << "INSERT INTO `fin_payment_req_entry` " << DETAIL_LIST << "VALUES (" << ValueNum(13) << ")";
+	sqlStr = sql.str();
+	bool flag = false;
+	for (PrepaymentDetailDO dtObj : uObj.getDetail()) {
+		uint64_t result_detail = sqlSession->executeInsert(sqlStr, DETAIL_TYPE,
+			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), dtObj.getSrc_bill_id(),
+			dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), dtObj.getRemark(),
+			dtObj.getCustom1(), dtObj.getCustom2()
+		);
+		if (result_detail != 0 && !flag) {
+			flag = true;
+		}
+	}
+	if (flag == true || result != 0);
+	return result;
 }
 
 

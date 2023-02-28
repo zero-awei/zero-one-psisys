@@ -52,6 +52,7 @@ public:
 		MAPPER_GETSTR(Update_time, 31);
 		MAPPER_GETINT(Version, 32);
 
+
 		return data;
 	}
 };
