@@ -77,7 +77,31 @@ class FinPaymentReqManageDO
 
 public:
 	FinPaymentReqManageDO() {
-
+		srcBillType = "";
+		srcBillId = "";
+		srcNo = "";
+		subject = "";
+		isRubric = 0;
+		paymentType = "";
+		supplierId = "";
+		opDept = "";
+		operator1 = "";
+		amt = 0.00;
+		paidAmt = 0.00;
+		attachment = "";
+		remark = "";
+		isAuto = 0;
+		approver = "";
+		bpmiInstanceId = "";
+		approvalResultType = "";
+		approvalRemark = "";
+		isEffective = 0;
+		effectiveTime = "";
+		isClosed = 0;
+		isVoided = 0;
+		updateBy = "";
+		updateTime = "";
+		version = -1;
 	}
 };
 

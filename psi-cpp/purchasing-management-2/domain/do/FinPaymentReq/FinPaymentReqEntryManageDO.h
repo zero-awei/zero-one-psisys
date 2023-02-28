@@ -38,7 +38,16 @@ class FinPaymentReqEntryManageDO {
 	CC_SYNTHESIZE(int, version, Version);
 public:
 	FinPaymentReqEntryManageDO() {
-
+		srcBillType = "";
+		srcBillId = "";
+		srcEntryId = "";
+		srcNo = "";
+		amt = 0.00;
+		paidAmt = 0.00;
+		remark = "";
+		custom1 = "";
+		custom2 = "";
+		version = -1;
 	}
 };
 

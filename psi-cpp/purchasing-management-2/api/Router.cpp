@@ -227,9 +227,9 @@ void Router::createPaymentRouter()
 	BIND_POST_ROUTER(server, "/payment-import", &PaymentController::importPayment, nullptr);
 }
 
-void Router::createPayApplyRouter() {
-	BIND_GET_ROUTER(server, "/finPaymenReq", &FinPaymentReqControlle::finPaymentReq, nullptr);
-	BIND_GET_ROUTER(server, "/finPaymentReqEntry", &FinPaymentReqControlle::finPaymentReqEntry, nullptr);
+void Router::createPaymentReqRouter() {
+	BIND_GET_ROUTER(server, "/finPaymenReq", &FinPaymentReqControlle::queryFinPaymentReq, nullptr);
+	BIND_GET_ROUTER(server, "/finPaymentReqEntry", &FinPaymentReqControlle::queryFinPaymentReqEntry, nullptr);
 	BIND_POST_ROUTER(server, "/paymentReq/add", &FinPaymentReqControlle::addPaymentReq, nullptr);
 	BIND_PUT_ROUTER(server, "/paymentReq/mod", &FinPaymentReqControlle::modPaymentReq, nullptr);
 }

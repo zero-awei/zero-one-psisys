@@ -17,7 +17,7 @@
 //定义一个宏用来进行值从导入主的数据表进入DO中
 #define GET_VALUE2(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r2[i++])));
 
-string getTime()
+string getTime1()
 {
 	time_t now = time(0);
 	struct tm t;
@@ -38,7 +38,7 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	SnowFlake sf(1, 3);
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
-	string time = getTime();
+	string time = getTime1();
 	//首先是进行id设置使用雪花算法
 	data.setId(id);
 	//获取必填信息
@@ -118,7 +118,7 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	MODIFY(CreateTime);
 	//获取修改用户的信息，此处为添加订单人信息
 	data.setUpdateBy(payload.getUsername());
-	data.setUpdateTime(getTime());
+	data.setUpdateTime(getTime1());
 	//存在默认值时的处理
 	MODIFY_DEFAULT(SrcBillType);
 	MODIFY_DEFAULT(SrcBillId);

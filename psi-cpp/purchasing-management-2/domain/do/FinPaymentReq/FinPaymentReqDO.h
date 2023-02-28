@@ -21,6 +21,7 @@
 #ifndef _FIN_PAYMENT_REQ_DO_
 #define _FIN_PAYMENT_REQ_DO_
 #include "../DoInclude.h"
+#include "FinPaymentReqEntryDO.h"
 
 /*
  *≤È—Ø±Ìµ•
@@ -96,7 +97,37 @@ class FinPaymentReqDO
 public:
 	FinPaymentReqDO()
 	{
-
+		id = "";
+		bill_no = "";
+		bill_date = "";
+		src_bill_type = "";
+		src_bill_id = "";
+		src_no = "";
+		subject = "";
+		is_rubric = -1;
+		payment_type = "";
+		supplier_id = "";
+		op_dept = "";
+		operator1 = "";
+		amt = -1;
+		paid_amt = -1;
+		attachment = "";
+		remark = "";
+		is_auto = -1;
+		bill_stage = "";
+		approver = "";
+		bpmi_instance_id = "";
+		approval_result_type = "";
+		approval_remark = "";
+		is_effective = -1;
+		effective_time = -1;
+		is_closed = -1;
+		is_voided = -1;
+		sys_org_code = "";
+		create_by = "";
+		create_time = "";
+		update_by = "";
+		update_time = "";
 	}
 
 };

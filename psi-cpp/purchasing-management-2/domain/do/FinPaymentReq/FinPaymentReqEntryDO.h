@@ -34,7 +34,18 @@ class FinPaymentReqEntryDO {
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
 	FinPaymentReqEntryDO() {
-
+		id = "";
+		billNo = "";
+		entryNo = 0;
+		srcBillType = "";
+		srcBillId = "";
+		srcEntryId = "";
+		srcNo = "";
+		amt = -1;
+		paidAmt = -1;
+		remark = "";
+		custom1 = "";
+		custom2 = "";
 	}
 };
 

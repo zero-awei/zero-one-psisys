@@ -47,7 +47,7 @@ private:
 	void createPurOrderRouter();
 	void createPurReqRouter();
 	void createPurComRouter();
-	void createPayApplyRouter();
+	void createPaymentReqRouter();
 };
 
 #endif // !_ROUTER_
