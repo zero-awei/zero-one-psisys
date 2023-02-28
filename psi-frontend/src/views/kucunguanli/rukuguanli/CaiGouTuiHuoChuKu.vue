@@ -123,12 +123,11 @@ const formState = reactive({
       prop: 'isVoided',
       options: [
         {
-          label: '是',
-          value: 0
-        },
-        {
           label: '否',
           value: 1
+        }, {
+          label: '是',
+          value: 0
         }
       ]
     }
@@ -141,7 +140,7 @@ const formState = reactive({
     daterange: [],
     isClosed: 0,
     isEffective: 0,
-    isVoided: 0,
+    isVoided: 1,
     subject: '',
     supplierId: ''
   }
@@ -152,6 +151,18 @@ const { items, toggleItems, formData } = toRefs(formState)
 const tableState = reactive({
   // 查询表单每一项的配置
   tableItems: [
+     {
+      label: '单据编号',
+      prop: 'name',
+      width: '160',
+      align: 'center',
+      type: 'function',
+      fixed: true,
+      // ES6 的 Template Strings 模版字符串
+      callback: (data) => {
+        return `<span style="color:#409eff"> ${data.name}</span>`
+      }
+    },
     {
       type: 'text',
       label: '单据日期',
