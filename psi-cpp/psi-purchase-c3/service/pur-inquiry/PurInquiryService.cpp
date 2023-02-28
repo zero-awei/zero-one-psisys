@@ -24,6 +24,7 @@
 #include "../../dao/pur-inquiry/PurInquiryDAO.h"
 #include "../../api/pur-inquiry/PurInquiryController.h"
 #include "SimpleDateTimeFormat.h"
+#include <time.h>
 //定义一个宏用来进行值从导入主的数据表进入DO中
 #define GET_VALUE1(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r1[i++])));
 //定义一个宏用来进行值从导入主的数据表进入DO中
@@ -33,8 +34,14 @@ string getTimeEleanor()
 {
 	time_t now = time(0);
 	struct tm t;
-
+#ifdef LINUX
+	//LINUX
+	localtime_r(&t, &now);
+#else
+	//windows
 	localtime_s(&t, &now);
+#endif
+
 
 	// 将信息输出到字符串流
 	stringstream ss;
