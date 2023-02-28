@@ -42,9 +42,9 @@ public:
 	// 新增数据
 	CREATE_API_FUN_JSON_PAYLOAD(addPurOrder, execAddPurOrder, PurOrderDTO);
 	// 修改数据
-	CREATE_API_FUN_JSON(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
 	// 修改状态
-	CREATE_API_FUN_BODY(statusPurOrder, execStatusPurOrder, PurOrderDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(statusPurOrder, execStatusPurOrder, PurOrderDTO);
 	// 删除数据
 	CREATE_API_FUN_BODY(removePurOrder, execRemovePurOrder, PurOrderDTO);
 	// 删除ById
@@ -58,9 +58,9 @@ private:
 	// 新增数据
 	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改数据
-	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto);
+	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改状态
-	JsonVO<uint64_t> execStatusPurOrder(const PurOrderDTO& dto);
+	JsonVO<uint64_t> execStatusPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 	//删除数据
 	JsonVO<uint64_t> execRemovePurOrder(const PurOrderDTO& dto);
 	// 删除数据-ID

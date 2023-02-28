@@ -46,7 +46,7 @@ JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, con
 	PurOrderService service;
 
 	//执行数据新增
-	uint64_t id = service.saveData(dto);
+	uint64_t id = service.saveData(dto, payload);
 	if (id > 0) {
 		result.setStatus(RS_SUCCESS);
 	}
@@ -62,13 +62,13 @@ JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, con
 	return result;
 }
 // 修改数据
-JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
+JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	//定义一个Service
 	PurOrderService service;
 
 	JsonVO<uint64_t> result;
-	uint64_t id = service.updateData(dto);
+	uint64_t id = service.updateData(dto, payload);
 	if (id > 0) {
 		result.setStatus(RS_SUCCESS);
 	}
@@ -85,12 +85,12 @@ JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto)
 }
 
 // 修改状态
-JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto)
+JsonVO<uint64_t> PurOrderController::execStatusPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	PurOrderService service;
 
-	uint64_t id = service.updateData(dto);
+	uint64_t id = service.updateData(dto, payload);
 	if (id > 0) {
 		result.setStatus(RS_SUCCESS);
 	}
