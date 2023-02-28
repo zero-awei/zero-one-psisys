@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _DELETEACCOUNTSERVICE_H_
 #define _DELETEACCOUNTSERVICE_H_
-
+#include <string>
 /*
 * ÕË»§É¾³ý
 * @Author: Oxygen

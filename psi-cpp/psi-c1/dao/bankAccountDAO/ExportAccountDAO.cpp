@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ExportAccountDAO.h"
 #include "ExportAccountMapper.h"
-
+#include <sstream>
 /*
 * 账户信息导出
 * @Author: Oxygen

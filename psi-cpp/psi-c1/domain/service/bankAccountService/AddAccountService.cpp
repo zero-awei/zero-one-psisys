@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "AddAccountService.h"
-#include "../../domain/do/bankAccountDO/BankAccountFunctionDO.h"
+#include "../../do/bankAccountDO/BankAccountFunctionDO.h"
 #include "../../../dao/bankAccountDAO/BankAccountFunctionDAO.h"
 #include "SnowFlake.h"
 

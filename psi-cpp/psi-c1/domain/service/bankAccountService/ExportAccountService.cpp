@@ -3,7 +3,7 @@
 #include "ExcelComponent.h"
 #include "CharsetConvertHepler.h"
 #include "FastDfsClient.h"
-#include "../../dao/bankAccountDAO/ExportAccountDAO.h"
+#include "../../../dao/bankAccountDAO/ExportAccountDAO.h"
 #include "../../do/bankAccountDO/ExportAccountDO.h"
 
 /*

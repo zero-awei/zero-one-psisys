@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ModifyAccountService.h"
-#include "../../domain/do/bankAccountDO/BankAccountFunctionDO.h"
-#include "../../dao/bankAccountDAO/BankAccountFunctionDAO.h"
+#include "../../do/bankAccountDO/BankAccountFunctionDO.h"
+#include "../../../dao/bankAccountDAO/BankAccountFunctionDAO.h"
 
 /*
 * 账户信息修改
