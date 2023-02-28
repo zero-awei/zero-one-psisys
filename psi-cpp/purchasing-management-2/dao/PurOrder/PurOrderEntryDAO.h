@@ -51,6 +51,8 @@ public:
 	// ÊÇ·ñ´æÔÚ
 	uint64_t count(const PurOrderEntryDO& iObj);
 
+	list<PurReqDO> selectPurReqList();
+
 	list<PurOrderEntryDO> selectPurOrderEntry(const string bill_no);
 	list<PurReqDO> selectPurReq(const string id);
 	list<PurReqEntryDO> selectPurReqEntry(const string id);

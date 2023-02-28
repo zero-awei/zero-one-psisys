@@ -291,6 +291,9 @@
     <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PurReqDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -363,6 +366,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\PurOrder\PurOrderEntryDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PurReqDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

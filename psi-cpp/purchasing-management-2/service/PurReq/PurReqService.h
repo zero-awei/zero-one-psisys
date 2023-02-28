@@ -23,6 +23,7 @@
 #include "../../domain/vo/PurReq/PurReqVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurReq/PurReqQuery.h"
+#include "../../dao/PurOrder/PurOrderEntryDAO.h"
 
 /**
  * 采购请求服务实现，基础采购订单服务实现
@@ -30,6 +31,8 @@
 class PurReqService
 {
 public:
+	// 查询所有数据
+	list<PurReqVO> listAllData(const PurReqQuery& query);
 	// 分页查询所有数据
 	PageVO<PurReqVO> listAll(const PurReqQuery& query);
 	// 查询单个数据

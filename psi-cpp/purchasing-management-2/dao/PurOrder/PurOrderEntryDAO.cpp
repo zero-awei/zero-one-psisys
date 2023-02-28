@@ -339,3 +339,11 @@ list<PurQuotEntryDO> PurOrderEntryDAO::selectPurQuotEntry(const string id)
     SQLPARAMS_PUSH(params, "s", std::string, id);
     return sqlSession->executeQuery<PurQuotEntryDO, PurQuotEntryMapper>(sql, mapper, params);
 }
+
+list<PurReqDO> PurOrderEntryDAO::selectPurReqList()
+{
+    string sql;
+    sql = "SELECT * FROM `pur_req`";
+    PurReqMapper mapper;
+    return sqlSession->executeQuery<PurReqDO, PurReqMapper>(sql, mapper);
+}

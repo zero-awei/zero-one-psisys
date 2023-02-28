@@ -31,12 +31,16 @@
  */
 class PurReqController {
 public:
+	// 所有数据
+	CREATE_API_FUN_QUERY_PAYLOAD(listPurReqList, execListPurReqList, PurReqQuery);
 	// 分页数据
 	CREATE_API_FUN_QUERY_PAYLOAD(listPurReq, execListPurReq, PurReqQuery);
 	// 单个数据
 	CREATE_API_FUN_BODY(getPurReq, execGetPurReq, PurReqQuery);
 
 private:
+	// 请求列表
+	JsonVO<list<PurReqVO>> execListPurReqList(const PurReqQuery& query, const PayloadDTO& payload);
 	// 请求分页数据
 	JsonVO<PageVO<PurReqVO>> execListPurReq(const PurReqQuery& query, const PayloadDTO& payload);
 	// 查询单个数据

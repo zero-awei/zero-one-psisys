@@ -264,6 +264,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Macros.h" />
     <ClInclude Include="domain\dto\PurOrder\PurOrderEntryDTO.h" />
     <ClInclude Include="dao\PurOrder\PurOrderEntryDAO.h" />
+    <ClInclude Include="PurReqDAO.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\prepayment\PrePayService.h" />
     <ClInclude Include="service\PurCom\PurComService.h" />
@@ -291,6 +292,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="domain\dto\PurOrder\PurOrderEntryDTO.cpp" />
     <ClCompile Include="dao\PurOrder\PurOrderEntryDAO.cpp" />
+    <ClCompile Include="PurReqDAO.cpp" />
     <ClCompile Include="service\prepayment\PrePayService.cpp" />
     <ClCompile Include="service\PurCom\PurComService.cpp" />
     <ClCompile Include="service\PurOrder\PurOrderService.cpp" />

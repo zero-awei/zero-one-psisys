@@ -192,6 +192,8 @@ void Router::createPayRouter() {
 }
 
 void Router::createPurReqRouter() {
+	// 全部数据
+	BIND_GET_ROUTER(server, "/purReq/listAll", &PurReqController::listPurReqList, nullptr);
 	// 分页数据
 	BIND_GET_ROUTER(server, "/purReq/list", &PurReqController::listPurReq, nullptr);
 	// 单个数据
