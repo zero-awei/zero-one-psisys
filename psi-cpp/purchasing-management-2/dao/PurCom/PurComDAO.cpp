@@ -33,15 +33,14 @@ uint64_t PurComDAO::count(const PurComDO& obj)
 
 
 // 统计明细条数
-uint64_t countEntrys(const PurComEntryDO& obj) 
+uint64_t PurComDAO::countEntrys(const PurComEntryDO& obj) 
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare_entry";
 	SqlParams params;
 	//____待添加筛选条件___
 	string sqlStr = sql.str();
-	//return sqlSession->executeQueryNumerical(sqlStr, params);
-	return 1;
+	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 //分页查询数据
