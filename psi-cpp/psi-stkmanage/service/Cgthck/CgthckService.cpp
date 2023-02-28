@@ -631,6 +631,12 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
 
 int CgthckService::exportData(const ExportCgthckFileDTO& dto)
 {
-    //
+    // 创建查询对象
+    CgthckDAO dao;
+    CgthckDO cgthckDo;
+    CgthckEntryDO cgthckDo;
+
+    // 设置sql语句的查询条件
+
     return 0;
 }

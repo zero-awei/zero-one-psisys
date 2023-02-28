@@ -172,9 +172,9 @@ list<CgthckEntryDO> CgthckDAO::selectWithId(const CgthckEntryDO& iobj)
 	stringstream sql;
 	sql << "SELECT `entry_no`, `src_no`, `material_id`, `warehouse_id`, `batch_no`, `unit_id`, `settle_qty`, `tax_rate`, `price`, `discount_rate`, `tax`, `settle_amt`, `qty`, `cost`, `invoiced_qty`, `invoiced_amt`, `remark`, `custom1`, `custom2` FROM `stk_io_entry`";
 	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);
-	CgthckMapper mapper;
+	CgthckEntryMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<CgthckEntryDO, CgthckMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<CgthckEntryDO, CgthckEntryMapper>(sqlStr, mapper, params);
 }
 
 uint64_t CgthckDAO::insert(const CgthckDO& iobj)
@@ -294,10 +294,29 @@ uint64_t CgthckDAO::importData(const CgthckEntryDO& iobj)
 
 list<CgthckDO> CgthckDAO::exportData(const CgthckDO& iobj)
 {
-	return list<CgthckDO>();
+	stringstream sql;
+	sql << "SELECT `stock_io_type`, `has_rp`, `has_swell`, `supplier_id`, `customer_id, `invoice_type`, \
+				`op_dept`, `operator`, `handler`, `version`, `settle_amt`, `settled_amt, `invoiced_amt`, \
+				`is_effective`, `attachment`, `src_bill_id`, `subject`, `bill_stage`, `src_no`, `is_auto`, \
+				`remark`, `bpmi_instance_id`, `is_voided`, `bill_no`, `is_rubric`, `src_bill_type,` \
+				`create_time`, `effective_time`, `approver`, `update_by`, `sys_org_code`, `is_closed`, \
+				`approval_result_type`, `bill_date`, `create_by`, `approval_remark` FROM `stk_io`";
+	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);
+	CgthckSheetMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<CgthckDO, CgthckSheetMapper>(sqlStr, mapper, params);
 }
 
 list<CgthckEntryDO> CgthckDAO::exportData(const CgthckEntryDO& iobj)
 {
-	return list<CgthckEntryDO>();
+	stringstream sql;
+	sql << "SELECT `material_id`, `batch_no`, `warehouse_id`, `stock_io_direction`, `supplier_id`, `unit_id`, \
+				`swell_qty`, `qty`, `expense`, `cost`, `settle_qty`, `tax_rate`, \
+				`price`, `discount_rate`, `tax`, `settle_amt`, `invoiced_qty`, `invoiced_amt`, \
+				`custom1`, `src_no`, `entry_no`, `custom2`, `src_entry_id`, `src_bill_type`, \
+				`remark`, `bill_no`, `mid` FROM `stk_io_entry`";
+	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);
+	CgthckSheetEntryMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<CgthckEntryDO, CgthckSheetEntryMapper>(sqlStr, mapper, params);
 }

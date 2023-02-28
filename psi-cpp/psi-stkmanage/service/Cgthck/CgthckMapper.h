@@ -7,34 +7,60 @@
 using CgthckDO = StkIoDO;
 using CgthckEntryDO = StkIoEntryDO;
 /**
-* 采购退货出库字段匹配映射类
+* 采购退货出库明细字段匹配映射类
 */
-class CgthckMapper : public Mapper<CgthckEntryDO>
+class CgthckEntryMapper : public Mapper<CgthckEntryDO>
 {
 public:
 	CgthckEntryDO mapper(ResultSet* resultSet) const override
 	{
 		CgthckEntryDO data;
-		data.setEntryNo(resultSet->getString(1));
-		data.setSrcNo(resultSet->getString(2));
-		data.setMaterialId(resultSet->getString(3));
-		data.setBatchNo(resultSet->getString(4));
-		data.setWarehouseId(resultSet->getString(5));
-		data.setUnitId(resultSet->getString(6));
-		data.setSettleQty(resultSet->getDouble(7));
-		data.setTaxRate(resultSet->getDouble(8));
-		data.setPrice(resultSet->getDouble(9));
-		data.setDiscountRate(resultSet->getDouble(10));
-		data.setTax(resultSet->getDouble(11));
-		data.setSettleAmt(resultSet->getDouble(12));
-		data.setQty(resultSet->getDouble(13));
-		data.setCost(resultSet->getDouble(14));
-		data.setInvoicedQty(resultSet->getDouble(15));
-		data.setInvoicedAmt(resultSet->getDouble(16));
-		data.setRemark(resultSet->getString(17));
-		data.setCustom1(resultSet->getString(18));
-		data.setCustom2(resultSet->getString(19));
+		data.setEntryNo(resultSet->getString("entry_no"));
+		data.setSrcNo(resultSet->getString("src_no"));
+		data.setMaterialId(resultSet->getString("material_id"));
+		data.setBatchNo(resultSet->getString("bill_no"));
+		data.setWarehouseId(resultSet->getString("warehouse_id"));
+		data.setUnitId(resultSet->getString("unit_id"));
+		data.setSettleQty(resultSet->getDouble("settle_qty"));
+		data.setTaxRate(resultSet->getDouble("tax_rate"));
+		data.setPrice(resultSet->getDouble("price"));
+		data.setDiscountRate(resultSet->getDouble("discount_rate"));
+		data.setTax(resultSet->getDouble("tax"));
+		data.setSettleAmt(resultSet->getDouble("settle_amt"));
+		data.setQty(resultSet->getDouble("qty"));
+		data.setCost(resultSet->getDouble("cost"));
+		data.setInvoicedQty(resultSet->getDouble("invoiced_qty"));
+		data.setInvoicedAmt(resultSet->getDouble("invoiced_amt"));
+		data.setRemark(resultSet->getString("remark"));
+		data.setCustom1(resultSet->getString("custom1"));
+		data.setCustom2(resultSet->getString("custom2"));
 		return data;
+	}
+};
+
+/**
+* 采购退货出库字段导出匹配映射类
+*/
+class CgthckSheetMapper : public Mapper<CgthckDO>
+{
+public:
+	CgthckDO mapper(ResultSet* resultSet) const override
+	{
+		CgthckDO data;
+		// TO DO
+	}
+};
+
+/**
+* 采购退货出库字段明细导出匹配映射类
+*/
+class CgthckSheetEntryMapper : public Mapper<CgthckEntryDO>
+{
+public:
+	CgthckEntryDO mapper(ResultSet* resultSet) const override
+	{
+		CgthckEntryDO data;
+		// TO DO
 	}
 };
 #endif // !_CGTHCK_MAPPER_

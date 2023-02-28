@@ -356,5 +356,8 @@
     <ClInclude Include="domain\vo\Cgthck\QueryCgrkBillListsVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\vo\Cgthck\ExportCgthckVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

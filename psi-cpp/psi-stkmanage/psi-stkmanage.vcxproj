@@ -275,6 +275,7 @@
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\ExportCgthckVO.h" />
     <ClInclude Include="domain\vo\Cgthck\QueryCgrkBillListsVO.h" />
     <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
