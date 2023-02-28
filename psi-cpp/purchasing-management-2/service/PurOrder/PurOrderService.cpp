@@ -217,6 +217,7 @@ PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 	PurOrderDAO dao;
 	list<PurOrderDO> do_datas;
 	do_datas = dao.selectDetail(bill_no);
+	if (do_datas.empty()) return vo;
 	for (auto do_data : do_datas)
 	{
 		vo.setId(do_data.getId());

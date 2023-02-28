@@ -33,6 +33,7 @@ JsonVO<PurOrderDetailVO> PurOrderController::execGetPurOrder(const PurOrderDTO& 
 {
 	PurOrderService service;
 	PurOrderDetailVO result = service.getPurOrder(dto.getBill_no());
+	if(result.getBill_no().empty()) return  JsonVO(result, RS_FAIL);
 	JsonVO<PurOrderDetailVO> jsresult = JsonVO(result, RS_SUCCESS);
 
 	return jsresult;
