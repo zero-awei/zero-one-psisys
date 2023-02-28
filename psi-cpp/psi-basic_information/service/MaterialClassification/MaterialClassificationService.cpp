@@ -20,8 +20,8 @@
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
-#include "../../../lib-common/src/FastDfsClient.cpp"
-#include "../../../lib-common/src/CharsetConvertHepler.cpp"
+#include "../../../lib-common/include/FastDfsClient.h"
+#include "../../../lib-common/include/CharsetConvertHepler.h"
 #include "../../lib-common/include/ExcelComponent.h"
 
 //可能vo不需要分父类子类
@@ -211,7 +211,7 @@ int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto
 	MaterialClassificationDAO dao;
 
 	int modify = 1;
-	if (dto.getPid() != "") {//有父节点
+	if (dto.getPid() != "" && dto.getPid() !="0") {//有父节点
 		list<MaterialClassificationDO> father = dao.selectById(dto.getPid());
 		MaterialClassificationDO f;
 		for (MaterialClassificationDO sub : father) {
@@ -317,18 +317,18 @@ int MaterialClassificationService::importData(const MaterialClassificationDTO& d
 	MaterialClassificationDAO dao;
 	ExcelComponent excel;
 	list<MaterialClassificationDTO> Dto;
-	//输出测试上传文件路径列表
+	//输出上传文件路径列表
 	for (auto file : dto.getFiles()) {
-		string sheetName = CharsetConvertHepler::ansiToUtf8("物料分类");
+		string sheetName = CharsetConvertHepler::ansiToUtf8("test");
 		auto readData = excel.readIntoVector(file, sheetName);
 		for (auto data : readData) {
 			MaterialClassificationDTO saveDto;
 			saveDto.setPid(CharsetConvertHepler::ansiToUtf8(data[0]));
-			saveDto.setHasChild(CharsetConvertHepler::ansiToUtf8(data[1])=="是"? "1":"0");
+			saveDto.setHasChild(CharsetConvertHepler::ansiToUtf8(data[1]));
 			saveDto.setName(CharsetConvertHepler::ansiToUtf8(data[2]));
 			saveDto.setCode(CharsetConvertHepler::ansiToUtf8(data[3]));
 			saveDto.setFullname(CharsetConvertHepler::ansiToUtf8(data[4]));
-			saveDto.setIsEnabled(CharsetConvertHepler::ansiToUtf8(data[5])=="是"? 1:0);
+			saveDto.setIsEnabled(CharsetConvertHepler::ansiToUtf8(data[5])=="1"? 1:0);
 
 			Dto.push_back(saveDto);
 		}
@@ -337,20 +337,19 @@ int MaterialClassificationService::importData(const MaterialClassificationDTO& d
 
 	int result = 1;
 	for (MaterialClassificationDTO data:Dto) //把数据存入数据库
-		result = saveData(data,"管理员");			//暂时还不知道怎么把创建人的信息输入进去，如果导入格式和导出文件格式一样，就可以截取出来
+		result = saveData(data,"admin");			//暂时还不知道怎么把创建人的信息输入进去，如果导入格式和导出文件格式一样，就可以截取出来
 
 	return result;
 }
 
 //导出数据
-string  MaterialClassificationService::exportData(const StringIDs& IDS,const PayloadDTO& payload) {
-	list<string> ids = IDS.getId();
+string  MaterialClassificationService::exportData(const string& id,const PayloadDTO& payload) {
 	MaterialClassificationDAO dao;
 	list<MaterialClassificationDO> dos;
 	//获取每个id的信息
-	for (string id : ids) {
+
 		dos.push_back((dao.selectById(id)).front());
-	}
+
 	//装入表框架
 	string head = CharsetConvertHepler::ansiToUtf8("物料分类报表");	//表名
 	string exporter = payload.getUsername();						//导出人
@@ -368,9 +367,7 @@ string  MaterialClassificationService::exportData(const StringIDs& IDS,const Pay
 	//装入表数据
 	for (MaterialClassificationDO sub:dos) {
 		vector<string> rows;
-		list<MaterialClassificationDO> father = dao.selectByPid(sub.getPid());
-		string fName = father.front().getName();
-		rows.push_back(CharsetConvertHepler::ansiToUtf8(fName));
+		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getPid()));
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getHasChild()=="1" ? "是":"否"));
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getName()));
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getCode()));
@@ -381,7 +378,7 @@ string  MaterialClassificationService::exportData(const StringIDs& IDS,const Pay
 	}
 
 	// 定义保存数据位置和页签名称
-	std::string fileName = CharsetConvertHepler::ansiToUtf8("../../public/excel/test.xlsx");
+	std::string fileName = CharsetConvertHepler::ansiToUtf8("../../public/excel/test_by_shiyi.xlsx");
 	std::string sheetName = CharsetConvertHepler::ansiToUtf8("物料分类");//excel中sheetName
 	//保存到文件
 	ExcelComponent excel;

@@ -51,7 +51,7 @@ public:
 	int importData(const MaterialClassificationDTO& dto);
 
 	//导出数据
-	string exportData(const StringIDs& ids, const PayloadDTO& payload);
+	string exportData(const string& id, const PayloadDTO& payload);
 };
 
 #endif // !_SAMPLE_SERVICE_

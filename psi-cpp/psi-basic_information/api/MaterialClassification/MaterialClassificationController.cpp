@@ -130,16 +130,16 @@ JsonVO<int> MaterialClassificationController::execImportMaterialClassification(c
 	MaterialClassificationService service;
 	result = service.importData(dto);
 	//响应结果
-	if(result<0)
+	if(result==0)
 		return JsonVO<int>(result, RS_FAIL);
 	return JsonVO<int>(result, RS_SUCCESS);
 }
 
-JsonVO<string> MaterialClassificationController::execExportMaterialClassification(const StringIDs& IDs, const PayloadDTO& payload) {
+JsonVO<string> MaterialClassificationController::execExportMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload) {
 
 	string result;
 	MaterialClassificationService service;
-	result = service.exportData(IDs, payload);
+	result = service.exportData(query.getId(), payload);
 
 	//响应结果
 	return JsonVO<string>(result, RS_SUCCESS);
