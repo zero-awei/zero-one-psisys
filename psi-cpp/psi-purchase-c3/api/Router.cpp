@@ -122,11 +122,11 @@ void Router::createPurReqRouter() {
 void Router::createPurQuotRouter()
 {
 	//添加报价(保存/提交)
-	BIND_POST_ROUTER(server, "/pur-quot-add-pur-quot", &PurQuotController::addPurQuot, nullptr);
+	BIND_POST_ROUTER(server, "/pur-quot-add", &PurQuotController::addPurQuot, nullptr);
 	//修改报价(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/pur-quot-mod-pur-quot", &PurQuotController::modPurQuot, nullptr);
+	BIND_PUT_ROUTER(server, "/pur-quot-mod", &PurQuotController::modPurQuot, nullptr);
 	//删除报价
-BIND_DEL_ROUTER(server, "/pur-quot-del-pur-quot", &PurQuotController::delPurQuotById, nullptr);
+BIND_DEL_ROUTER(server, "/pur-quot-del", &PurQuotController::delPurQuotById, nullptr);
 	//修改单据状态(关闭/作废/反关闭)
 	BIND_PUT_ROUTER(server, "/pur-quot-mod-bill-status", &PurQuotController::purQuotModBillStatus, nullptr);
 	//导入
@@ -138,32 +138,32 @@ BIND_DEL_ROUTER(server, "/pur-quot-del-pur-quot", &PurQuotController::delPurQuot
 	//查询指定单据列表
 	BIND_GET_ROUTER(server, "/pur-quot-detail-find-bill", &PurQuotController::queryPurInquiryFindDetailBill, nullptr);
 	//报价单列表
-	BIND_GET_ROUTER(server, "/get-pur-quot-of-combill", &PurQuotController::queryPurQuotList, nullptr);
+	BIND_GET_ROUTER(server, "/pur-quot-get-of-combill", &PurQuotController::queryPurQuotList, nullptr);
 	//报价单分录列表
-	BIND_GET_ROUTER(server, "/get-pur-quot-more-of-combill", &PurQuotController::queryPurQuotDividedList, nullptr);
+	BIND_GET_ROUTER(server, "/pur-quot-get-more-of-combill", &PurQuotController::queryPurQuotDividedList, nullptr);
 }
 void Router::createPurCompareRouter()
 {
 	//查询比价单列表接口路由绑定
-	BIND_GET_ROUTER(server, "/get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
+	BIND_GET_ROUTER(server, "/pur-com-get-combill-list", &PurCompareController::queryPurComFindBill, nullptr);
 	//查询指定比价单详细信息接口路由绑定
-	BIND_GET_ROUTER(server, "/get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
+	BIND_GET_ROUTER(server, "/pur-com-get-one-combill", &PurCompareController::queryPurComFindDetailBill, nullptr);
 	//查询报价单接口路由绑定
-	BIND_GET_ROUTER(server, "/get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
+	BIND_GET_ROUTER(server, "/pur-com-get-quot-of-combill", &PurCompareController::queryPurComList, nullptr);
 	//查询报价单分录接口路由绑定
-	BIND_GET_ROUTER(server, "/get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
+	BIND_GET_ROUTER(server, "/pur-com-get-quotentry-of-combill", &PurCompareController::queryPurComDividedList, nullptr);
 	//导出接口路由绑定
 	BIND_GET_ROUTER(server, "/pur-com-export", &PurCompareController::queryPurComExport, nullptr);
 	//导入接口路由绑定
-	BIND_POST_ROUTER(server, "/pur-into-into", &PurCompareController::addPurComInto, nullptr);
+	BIND_POST_ROUTER(server, "/pur-com-pur-into-into", &PurCompareController::addPurComInto, nullptr);
 	//添加比价(保存/提交)
-	BIND_POST_ROUTER(server, "/add-pur-com", &PurCompareController::addPurCom, nullptr);
+	BIND_POST_ROUTER(server, "/pur-com-add", &PurCompareController::addPurCom, nullptr);
 	//修改比较(保存/提交/审核)
-	BIND_PUT_ROUTER(server, "/mod-pur-com", &PurCompareController::modifyPurCom, nullptr);
+	BIND_PUT_ROUTER(server, "/pur-com-mod", &PurCompareController::modifyPurCom, nullptr);
 	//删除比价
-	BIND_DEL_ROUTER(server, "/del-pur-com", &PurCompareController::removePurCom, nullptr);
+	BIND_DEL_ROUTER(server, "/pur-com-del", &PurCompareController::removePurCom, nullptr);
 	//修改单据状态(关闭/作废/反关闭)
-	BIND_PUT_ROUTER(server, "/mod-pur-com-bill-status", &PurCompareController::purComModBillStatus, nullptr);
+	BIND_PUT_ROUTER(server, "/pur-com-mod-bill-status", &PurCompareController::purComModBillStatus, nullptr);
 }
 
 
