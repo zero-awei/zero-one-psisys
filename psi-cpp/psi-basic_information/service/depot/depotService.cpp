@@ -302,7 +302,7 @@ int DepotService::saveKidData(const DepotDTO& dto, const string Username)
 	data.setCreationTime(gettime());
 	//执行数据添加
 	DepotDAO dao;
-	return dao.insertKidDepot(data);
+	return dao.insertKidDepot(data) && dao.updateParent(data);
 }
 
 bool DepotService::removeData(const OnlyValueQuery& query)

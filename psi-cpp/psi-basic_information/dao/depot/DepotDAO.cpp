@@ -122,13 +122,16 @@ int DepotDAO::insertDepot(const DepotDO& iObj)
 
 int DepotDAO::insertKidDepot(const DepotDO& iObj)
 {
-	string sqlInsert = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)";
-	string sqlUpdate = "UPDATE `bas_warehouse` SET `has_child`=1 WHERE `id`=?";
-	return sqlSession->executeUpdate(sqlInsert, "%s%s%s%s%s%s%i%s%s%s", \
+	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%i%s%s%s", \
 		iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), \
 		iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks(), \
-		iObj.getCreationPeo(), iObj.getCreationTime()) \
-		&& sqlSession->executeUpdate(sqlUpdate, "%s", iObj.getPid());
+		iObj.getCreationPeo(), iObj.getCreationTime());
+}
+
+int DepotDAO::updateParent(const DepotDO& iObj) {
+	string sql = "UPDATE `bas_warehouse` SET `has_child`=1 WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", iObj.getPid());
 }
 
 int DepotDAO::deleteDepot(const DepotDO& iObj)

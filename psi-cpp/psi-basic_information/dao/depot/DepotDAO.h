@@ -42,6 +42,8 @@ public:
 	int insertDepot(const DepotDO& iObj);
 	// 新建子级仓库
 	int insertKidDepot(const DepotDO& iObj);
+	// 更新父级仓库has_child
+	int updateParent(const DepotDO& iObj);
 	// 通过ID删除数据
 	int deleteDepot(const DepotDO& iObj);
 	// 通过ID修改
