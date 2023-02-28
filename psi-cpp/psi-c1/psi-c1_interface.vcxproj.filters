@@ -168,7 +168,7 @@
     <ClCompile Include="domain\service\bankAccountService\AddAccountService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dao\bankAccountDAO\BankAccountDAO.cpp">
+    <ClCompile Include="dao\bankAccountDAO\BankAccountFunctionDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\service\bankAccountService\ModifyAccountService.cpp">
@@ -509,10 +509,10 @@
     <ClInclude Include="domain\service\bankAccountService\AddAccountService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\bankAccountDO\BankAccountDO.h">
+    <ClInclude Include="domain\do\bankAccountDO\BankAccountFunctionDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\bankAccountDAO\BankAccountDAO.h">
+    <ClInclude Include="dao\bankAccountDAO\BankAccountFunctionDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\service\bankAccountService\ModifyAccountService.h">

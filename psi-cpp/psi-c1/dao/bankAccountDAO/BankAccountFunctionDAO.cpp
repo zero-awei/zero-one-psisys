@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "BankAccountDAO.h"
+#include "BankAccountFunctionDAO.h"
 
 /*
-* 账户添加
+* 账户添加、修改和删除
 * @Author: Oxygen
 * @Date: 2023/2/22 13:13:29
 */
-int BankAccountDAO::insertAccount(const BankAccountDO& iObj, uint64_t ID)
+int BankAccountFunctionDAO::insertAccount(const BankAccountFunctionDO& iObj, uint64_t ID)
 {
 	string id = to_string(ID);
 	string sql = "INSERT INTO `bas_bank_account` (`id`, `account_no`, `name`, `currency`,`bank_no`,`bank_address`,`manager`,\
@@ -17,7 +17,7 @@ int BankAccountDAO::insertAccount(const BankAccountDO& iObj, uint64_t ID)
 		iObj.getCreateBy());
 }
 
-int BankAccountDAO::updateAccount(const BankAccountDO& uObj)
+int BankAccountFunctionDAO::updateAccount(const BankAccountFunctionDO& uObj)
 {
 	string sql = "UPDATE `bas_bank_account` SET `name`=?, `currency`=?, `bank_no`=?, `bank_address`=?, `manager`=?,\
 	`is_enabled`=?, `remark`=?, `update_by`=? WHERE `account_no`=?";
@@ -26,7 +26,7 @@ int BankAccountDAO::updateAccount(const BankAccountDO& uObj)
 		uObj.getUpdateBy(), uObj.getAccountNo());
 }
 
-int BankAccountDAO::deleteAccount(std::string id)
+int BankAccountFunctionDAO::deleteAccount(std::string id)
 {
 	string sql = "DELETE FROM `bas_bank_account` WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s", id);

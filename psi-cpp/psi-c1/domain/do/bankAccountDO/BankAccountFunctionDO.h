@@ -4,11 +4,11 @@
 #define _BANKACCOUNTDO_H_
 
 /*
-* 账户添加
+* 账户添加、修改
 * @Author: Oxygen
 * @Date: 2023/2/22 12:59:24
 */
-class BankAccountDO
+class BankAccountFunctionDO
 {
 	// 账号
 	CC_SYNTHESIZE(string, accountNo, AccountNo);
@@ -35,7 +35,7 @@ class BankAccountDO
 	// 修改时间
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 public:
-	BankAccountDO() {
+	BankAccountFunctionDO() {
 		accountNo = "1234";
 		name = "张三";
 		currency = "人民币";

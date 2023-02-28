@@ -215,7 +215,7 @@
     <ClCompile Include="api\publicInterfaceController\TaxScaleController.cpp" />
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
-    <ClCompile Include="dao\bankAccountDAO\BankAccountDAO.cpp" />
+    <ClCompile Include="dao\bankAccountDAO\BankAccountFunctionDAO.cpp" />
     <ClCompile Include="dao\bankAccountDAO\ExportAccountDAO.cpp" />
     <ClCompile Include="domain\dto\bankAccountDTO\BankAccountDTO.cpp" />
     <ClCompile Include="dao\bankAccountDAO\ImportAccountDAO.cpp" />
@@ -275,10 +275,10 @@
     <ClInclude Include="api\publicInterfaceController\TaxScaleController.h" />
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
-    <ClInclude Include="dao\bankAccountDAO\BankAccountDAO.h" />
+    <ClInclude Include="dao\bankAccountDAO\BankAccountFunctionDAO.h" />
     <ClInclude Include="dao\bankAccountDAO\ExportAccountDAO.h" />
     <ClInclude Include="dao\bankAccountDAO\ExportAccountMapper.h" />
-    <ClInclude Include="domain\do\bankAccountDO\BankAccountDO.h" />
+    <ClInclude Include="domain\do\bankAccountDO\BankAccountFunctionDO.h" />
     <ClInclude Include="domain\do\bankAccountDO\ExportAccountDO.h" />
     <ClInclude Include="domain\do\bankAccountDO\ImportAccountDO.h" />
     <ClInclude Include="domain\do\publicInterfaceDO\areaDO.h" />
