@@ -42,7 +42,7 @@ class PurComEntryVO
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 
 	// 源单分录id
-	CC_SYNTHESIZE(string, src_entry_no, Src_entry_no);
+	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
 	// 源单分录号
 	CC_SYNTHESIZE(string, src_no, Src_no);
 	// 供应商
@@ -60,15 +60,17 @@ class PurComEntryVO
 	// 含税单价
 	CC_SYNTHESIZE(float, price, Price);
 	// 折扣率
-	CC_SYNTHESIZE(float, discountRate, DiscountRate);
+	CC_SYNTHESIZE(float, discount_rate, Discount_rate);
 
 	// 含税金额
 	CC_SYNTHESIZE(float, amt, Amt);
+	// 排名
+	CC_SYNTHESIZE(string, ranking, Ranking);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
+
 	// 自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	// 版本
@@ -78,10 +80,10 @@ public:
 	// 绑定JSON转换方法
 	BIND_TO_JSON(PurComEntryVO, id, mid, bill_no, \
 									entry_no, src_bill_type, src_bill_id, \
-									src_entry_no, src_no, supplier_id, \
+									src_entry_id, src_no, supplier_id, \
 									material_id, unit_id, qty, \
-									tax_rate, price, discountRate, \
-									amt, remark, custom1, \
+									tax_rate, price, discount_rate, \
+									amt, remark, ranking,  custom1, \
 									custom2, version);
 };
 

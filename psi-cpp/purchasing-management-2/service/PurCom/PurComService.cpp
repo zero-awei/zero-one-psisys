@@ -159,7 +159,7 @@ PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 		vo.setSrc_bill_type(sub.getSrc_bill_type());
 		vo.setSrc_bill_id(sub.getSrc_bill_id());
 
-		vo.setSrc_entry_no(sub.getSrc_entry_no());
+		vo.setSrc_entry_id(sub.getSrc_entry_id());
 		vo.setSrc_no(sub.getSrc_no());
 		vo.setSupplier_id(sub.getSupplier_id());
 
@@ -169,9 +169,10 @@ PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 
 		vo.setTax_rate(sub.getTax_rate());
 		vo.setPrice(sub.getPrice());
-		vo.setDiscountRate(sub.getDiscountRate());
+		vo.setDiscount_rate(sub.getDiscount_rate());
 
 		vo.setAmt(sub.getAmt());
+		vo.setRanking(sub.getRanking());
 		vo.setRemark(sub.getRemark());
 		vo.setCustom1(sub.getCustom1());
 

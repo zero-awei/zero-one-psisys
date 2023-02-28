@@ -86,24 +86,26 @@ list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint6
 {
 	stringstream sql;
 	// 添加查询语句
-
-	sql << "SELECT id, mid. bill_no, \
-					entry_no, src_bill_type, src_bill_id, \
-					src_entry_no, src_no, supplier_id,\
-					material_id, unit_id, qty,\
-					tax_rate, price, discountRate,\
-					amt, remark, custom1,\
-					custom2, version FROM pur_compare_entry";
+	sql << "SELECT id, mid, bill_no, \
+			entry_no, src_bill_type, src_bill_id, \
+			src_entry_id, src_no, supplier_id, \
+			material_id, unit_id, qty, \
+			tax_rate, price, discount_rate, \
+			amt, ranking, remark, \
+			custom1, custom2, version \
+			FROM pur_compare_entry";
 	SqlParams params;
 	// 添加筛选语句
 	sql << " WHERE 1=1";
-	//if (!obj.getMid().empty()) {
-	//	sql << "AND mid = ?";
-	//	params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getId())));
-	//}
+	if (!obj.getMid().empty()) {
+		sql << " AND `mid`=?";
+		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getMid())));
+	}
 	// 分页显示
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComEntryMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<PurComEntryDO, PurComEntryMapper>(sqlStr, mapper, params);
+	list<PurComEntryDO> temp = sqlSession->executeQuery<PurComEntryDO, PurComEntryMapper>(sqlStr, mapper, params);
+
+	return temp;
 }

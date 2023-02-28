@@ -84,24 +84,20 @@ public:
 		data.setId(resultSet->getString("id"));
 		data.setMid(resultSet->getString("mid"));
 		data.setBill_no(resultSet->getString("bill_no"));
-
 		data.setEntry_no(resultSet->getString("entry_no"));
 		data.setSrc_bill_type(resultSet->getString("src_bill_type"));
 		data.setSrc_bill_id(resultSet->getString("src_bill_id"));
-
-		data.setSrc_entry_no(resultSet->getString("src_entry_no"));
+		data.setSrc_entry_id(resultSet->getString("src_entry_id"));
 		data.setSrc_no(resultSet->getString("src_no"));
 		data.setSupplier_id(resultSet->getString("supplier_id"));
-
 		data.setMaterial_id(resultSet->getString("material_id"));
 		data.setUnit_id(resultSet->getString("unit_id"));
 		data.setQty(resultSet->getDouble("qty"));
-
 		data.setTax_rate(resultSet->getDouble("tax_rate"));
 		data.setPrice(resultSet->getDouble("price"));
-		data.setDiscountRate(resultSet->getDouble("discountRate"));
-
+		data.setDiscount_rate(resultSet->getDouble("discount_rate"));
 		data.setAmt(resultSet->getDouble("amt"));
+		data.setRanking(resultSet->getString("ranking"));
 		data.setRemark(resultSet->getString("remark"));
 		data.setCustom1(resultSet->getString("custom1"));
 		data.setCustom2(resultSet->getString("custom2"));
