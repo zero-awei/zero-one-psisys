@@ -8,24 +8,6 @@
 //查询单据信息
 JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload)
 {
-	//todo：数据校验
-	//if (query.getBill_no() == "") {
-	//	return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	//}
-	//if (query.getBill_date() == "") {
-	//	return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	//}
-	//if (query.getSubject() == "") {
-	//	return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	//}
-	//if (query.getSupplier_id() == "") {
-	//	return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	//}
-	//if (query.getBill_stage() == "") {
-	//	return JsonVO<PageVO<PrepaymentBillVO>>({}, RS_PARAMS_INVALID);
-	//}
-
-	//查询成功
 	PrePayService service;
 	PageVO<PrepaymentBillVO> result = service.listAll(query);
 	return JsonVO<PageVO<PrepaymentBillVO>>(result, RS_SUCCESS);

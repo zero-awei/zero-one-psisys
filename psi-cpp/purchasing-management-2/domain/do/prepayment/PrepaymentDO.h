@@ -67,20 +67,7 @@ class PrepaymentDO {
 	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
 	PrepaymentDO() {
-		id = "";
-		bill_no = "CGXJ-230112-005";
-		bill_date = "";
-		subject = "";
-		supplier_id = "";
-		op_dept = "";
-		op = "";
-		amt = 0;
-		paid_amt = 0;
-		bill_stage = "";
-		is_effective = -1;
-		effective_time = "";
-		is_closed = -1;
-		is_voided = -1;
+		
 	}
 };
 #endif // !_PREPAYMENT_DO_

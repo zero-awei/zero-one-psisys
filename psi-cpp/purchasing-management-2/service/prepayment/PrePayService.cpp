@@ -105,7 +105,7 @@ PrepaymentDetailBillVO PrePayService::getAll(const PrepayDetailBillQuery& query)
 
 	
 	// 查询明细列表
-	list<PrepaymentEntryDO> details = dao.selectEntryByBill_no(obj2.getBill_no());
+	list<PrepaymentEntryDO> details = dao.selectEntryByBill_no(obj2);
 	PrepaymentDetailEntryBillVO detailsvo;
 	list<PrepaymentDetailEntryBillVO> lvo;
 	for (PrepaymentEntryDO ones : details)
