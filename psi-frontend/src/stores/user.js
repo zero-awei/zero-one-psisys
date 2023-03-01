@@ -259,7 +259,7 @@ const kucunguanli = {
         },
         {
           id: 4002,
-          text: '采购入库退货出库（红入）',
+          text: '采购退货出库（红入）',
           href: '/inventory/salesreturn',
           pid: 993
         },
