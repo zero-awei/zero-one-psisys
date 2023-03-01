@@ -1,9 +1,11 @@
 package com.zeroone.star.prepayment.service;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.query.prepayment.FinPaymentReqQuery;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.prepayment.entity.FinPaymentReq;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
+import com.zeroone.star.project.vo.prepayment.ReqVO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -40,8 +42,6 @@ public interface IFinPaymentReqService extends IService<FinPaymentReq> {
      * author neigui
      * since 2023-02-18
      */
-    PageVO<FinPaymentReqVO> listFinPaymentReq(FinPaymentReqQuery query);
-
-    List<FinPaymentReq> listBySrcBillId(String id);
+    PageVO<ReqVO> listFinPaymentReq(FinPaymentReqQuery query);
 
 }

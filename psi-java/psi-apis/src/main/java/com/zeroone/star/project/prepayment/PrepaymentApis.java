@@ -83,20 +83,6 @@ public interface PrepaymentApis {
     JsonVO<DetNoVO> queryByBillNo (PreDetQuery condition);
 
     /**
-     * 获取导出文件
-     * return 返回响应对象
-     * author 明破
-     */
-    ResponseEntity<byte[]> download();
-
-    /**
-     * 获取导出链接
-     * return 返回下载路径
-     * author 明破
-     */
-    JsonVO<String> downloadUrl();
-
-    /**
      * 删除预付单功能
      * param deleteDTO 包含付款单id
      * return 删除结果
@@ -113,58 +99,13 @@ public interface PrepaymentApis {
      */
     JsonVO<String> prepaymentForPurchaseRequisitions(PrepaymentDTO prepaymentDTO);
 
-    /**
-     * 获取供应商列表
-     * return 供应商列表
-     * author 空
-     */
-    JsonVO<List<SupplierVO>> querySupplierList();
-
-
-    /**
-     * 获取采购项目清单
-     * param purchaseListQuery
-     * return 采购项目清单
-     * author 空
-     */
-    JsonVO<PageVO<FinPaymentReqVO>> queryForPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
-
-    /**
-     * 获取采购项目清单（有申请）
-     * param purchaseListQuery
-     * return 采购项目清单
-     * author 空
-     */
-    JsonVO<PageVO<PurOrderVO>> queryForAppliedPurchaseRequisitions(PurchaseListQuery purchaseListQuery);
-
-
-    /**
-     * 获取系统用户列表
-     * @return
-     * author 空
-     */
-    JsonVO<List<SysUserVO>> getSysUsersName();
-
-    /**
-     * 获取组织机构表
-     * @return
-     * author 空
-     */
-    JsonVO<List<SysDepartVO>> getSysDepart();
-
-    /**
-     * 获取银行账户列表
-     * @return
-     * author 空
-     */
-    JsonVO<List<BasBankAccountVO>> getBankAccount();
 
     /**
      * 导入功能
      * author 内鬼
      */
-    JsonVO<PageVO<FinPaymentReqVO>> queryAllReq(FinPaymentReqQuery query);
-    JsonVO<String> excelImport(MultipartFile file);
+    JsonVO<PageVO<ReqVO>> queryAllReq(FinPaymentReqQuery query);
+
 
     /**
      * 修改状态——关闭

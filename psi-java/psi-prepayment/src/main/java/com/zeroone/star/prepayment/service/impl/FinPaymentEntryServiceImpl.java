@@ -114,14 +114,7 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
             return finPaymentEntries;
         return null;
     }
-    @Override
-    public List<FinPaymentEntry> listBySrcBillId(String srcBillId) {
-        QueryWrapper<FinPaymentEntry> FinEntryQueryWrapper = new QueryWrapper<>();
-        FinEntryQueryWrapper.eq("src_bill_id",srcBillId);
-        List<FinPaymentEntry> finPaymentEntryList = baseMapper.selectList(FinEntryQueryWrapper);
-        return finPaymentEntryList;
 
-    }
 }
 
 

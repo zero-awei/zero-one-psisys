@@ -11,6 +11,7 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.jws.soap.SOAPBinding;
 

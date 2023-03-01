@@ -1,5 +1,6 @@
 package com.zeroone.star.prepayment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.IdUtil;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -8,9 +9,11 @@ import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.prepayment.AuditDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
+import com.zeroone.star.project.utils.easyExcel.EasyExcelUtils;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.DocListVO;
@@ -34,7 +37,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 /**
  * <p>
@@ -238,5 +243,27 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     @Override
     public void importExcelOfPayment(MultipartFile file) throws Exception {
         EasyExcel.read(file.getInputStream(), FinPayment.class, EasyExcelUtils.getListener(this.process(), 2)).sheet().doRead();
+    }
+
+    // 用于获取当前登录的用户信息
+    @Resource
+    UserHolder userHolder;
+    /**
+     * 返回一个接口实现
+     */
+    public Consumer<List<FinPayment>> process() {
+        return payments -> {
+            for (FinPayment payment : payments) {
+                payment.setId(IdUtil.getSnowflake().nextIdStr());
+                payment.setCreateTime(LocalDateTime.now());
+                try {
+                    UserDTO currentUser = userHolder.getCurrentUser();
+                    payment.setCreateBy(currentUser.getUsername());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            paymentMapper.addBatch(payments);
+        };
     }
 }

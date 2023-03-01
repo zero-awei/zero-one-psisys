@@ -9,6 +9,7 @@ import com.zeroone.star.prepayment.service.IFinPaymentReqService;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
+import com.zeroone.star.project.vo.prepayment.ReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -69,7 +70,7 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
         return null;
     }
     @Override
-    public PageVO<FinPaymentReqVO> listFinPaymentReq(FinPaymentReqQuery query) {
+    public PageVO<ReqVO> listFinPaymentReq(FinPaymentReqQuery query) {
         // 构建分页对象
         Page<FinPaymentReq> paymentReqPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件
@@ -92,6 +93,6 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
 //        }
         // 执行分页查询
         Page<FinPaymentReq> resPage = baseMapper.selectPage(paymentReqPage, paymentReqQueryWrapper);
-        return PageVO.create(resPage, FinPaymentReqVO.class);
+        return PageVO.create(resPage, ReqVO.class);
     }
 }
