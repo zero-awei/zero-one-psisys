@@ -22,6 +22,7 @@
 #include "api/Router.h"
 #include "ServerInfo.h"
 #include "StringUtil.h"
+#include "uselib/jwt/TestToken.h"
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
 #endif
@@ -39,7 +40,7 @@
  */
 bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
-	std::string serverPort = "10";
+	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "psitxms9527";
@@ -49,9 +50,9 @@ bool getStartArg(int argc, char* argv[]) {
 	int dbMax = 25;
 #ifdef USE_NACOS
 	// Nacos配置参数
-	std::string nacosAddr = "192.168.220.128:8848";
-	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
-	std::string serviceName = "feign-cpp-sample";
+	std::string nacosAddr = "43.138.51.248:8848";
+	std::string nacosNs = "7fc50d88-3410-44a3-acff-9108d2bfe2b2";
+	std::string serviceName = "psi-c1";
 	std::string regIp = "192.168.220.128";
 #endif
 
@@ -134,7 +135,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-
+    TestToken::generateToken();
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
 	NacosClient nacosClient(

@@ -111,6 +111,7 @@
     <ClCompile Include="api\bankAccountController\ExportAccountController.cpp" />
     <ClCompile Include="dao\bankAccountDAO\BankAccountFunctionDAO.cpp" />
     <ClCompile Include="dao\bankAccountDAO\ExportAccountDAO.cpp" />
+    <ClCompile Include="uselib\jwt\TestToken.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\publicInterfaceController\AreaController.h" />
@@ -355,5 +356,6 @@
     <ClInclude Include="domain\do\bankAccountDO\BankAccountFunctionDO.h" />
     <ClInclude Include="domain\do\bankAccountDO\ExportAccountDO.h" />
     <ClInclude Include="domain\do\bankAccountDO\ImportAccountDO.h" />
+    <ClInclude Include="uselib\jwt\TestToken.h" />
   </ItemGroup>
 </Project>
