@@ -18,7 +18,7 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 	}
 }
 
-string getTime()
+string getPayTime()
 {
 	time_t now = time(0);
 	struct tm t;
@@ -36,7 +36,7 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadD
 {
 	FinPayReqDO data;
 
-	string time = getTime();
+	string time = getPayTime();
 
 	// 设置用户数据
 	data.setUpdate_by(payload.getUsername());
@@ -73,7 +73,7 @@ uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& pa
 	SnowFlake sf(1, 4);
 	string id = to_string(sf.nextId());
 	string Bill_no = dto.getBill_no();
-	string time = getTime();
+	string time = getPayTime();
 	//首先是进行id设置使用雪花算法
 	data.setId(id);
 	//获取必填信息

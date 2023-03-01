@@ -94,3 +94,68 @@ JsonVO<string> PurOrderController::execRemoveById(const StringID& id)
 	//响应结果
 	return result;
 }
+
+// 新增数据
+JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
+{
+	JsonVO<uint64_t> result;
+	//定义一个Service
+	PurOrderService service;
+
+	//执行数据新增
+	uint64_t id = service.saveData(dto, payload);
+	if (id > 0) {
+		result.setStatus(RS_SUCCESS);
+	}
+	else if (id == -1)
+	{
+		result.setStatus(RS_PARAMS_INVALID); // 9995
+		return result;
+	}
+	else
+	{
+		result.setStatus(RS_FAIL); // 9999
+	}
+	return result;
+}
+// 修改数据
+JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
+{
+	//定义一个Service
+	PurOrderService service;
+
+	JsonVO<uint64_t> result;
+	uint64_t id = service.updateData(dto, payload);
+	if (id > 0) {
+		result.setStatus(RS_SUCCESS);
+	}
+	else if (id == -1)
+	{
+		result.setStatus(RS_PARAMS_INVALID); // 9995
+		return result;
+	}
+	else
+	{
+		result.setStatus(RS_FAIL); // 9999
+	}
+	return result;
+}
+
+// 查询list数据
+JsonVO<PageVO<PurOrderVO>> PurOrderController::execQueryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
+{
+	PurOrderService service;
+	PageVO<PurOrderVO> result = service.listPurOrder(query);
+	return JsonVO<PageVO<PurOrderVO>>(result, RS_SUCCESS);
+}
+
+// 查询单个数据byDTO
+JsonVO<PurOrderDetailVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
+{
+	PurOrderService service;
+	PurOrderDetailVO result = service.getPurOrder(dto.getBill_no());
+	if (result.getBill_no().empty()) return  JsonVO(result, RS_FAIL);
+	JsonVO<PurOrderDetailVO> jsresult = JsonVO(result, RS_SUCCESS);
+
+	return jsresult;
+}

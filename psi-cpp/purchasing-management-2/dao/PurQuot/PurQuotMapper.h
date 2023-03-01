@@ -14,7 +14,7 @@ public:
 	PurQuotDO mapper(ResultSet* resultSet) const override
 	{
 		PurQuotDO data;
-		data.setId(resultSet->getUInt64(1));
+		data.setId(resultSet->getString(1));
 		data.setBill_no(resultSet->getString(2));
 		data.setBill_date(resultSet->getString(3));
 		data.setSubject(resultSet->getString(4));

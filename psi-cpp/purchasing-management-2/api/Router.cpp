@@ -70,6 +70,7 @@ void Router::initRouter()
 	createPaymentRouter();
 	createPrePayRouter();
 	createPurComRouter();
+	createPurOrderRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -112,6 +113,8 @@ void Router::createStatisRouter() {
 	BIND_GET_ROUTER(server, "/export-byMaterial", &StatisController::exportStatisByMaterial, nullptr);
 }
 
+// 采购付款申请
+// 负责人：最初
 void Router::createPaymentRouter()
 {
 	//修改单据状态
@@ -136,13 +139,14 @@ void Router::createPrePayRouter()
 	//修改申请(保存/提交/审核)
 	// 负责人：Qi
 	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
+
 	// 采购预付申请-修改单据状态(关闭/作废/反关闭)
 	// 负责人：Andrew
 	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 }
 
 // 比价单列表查询及明细列表查询
-// 负责人：J4nnA
+// 负责人：J4nnA, Andrew
 void Router::createPurComRouter() {
 	// 分页数据
 	// 负责人：J4nnA
@@ -157,8 +161,19 @@ void Router::createPurComRouter() {
 	// 采购订单删除
 	// 负责人：Andrew
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
-
 	// 采购订单-修改状态
 	// 负责人：Andrew
 	BIND_PUT_ROUTER(server, "/purOrder/modifyStatus", &PurOrderController::statusPurOrder, nullptr);
+}
+
+void Router::createPurOrderRouter()
+{
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purOrder/list", &PurOrderController::querylistPurOrder, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purOrder/queryEntryByMainId", &PurOrderController::getPurOrder, nullptr);
+	// 新增数据
+	BIND_POST_ROUTER(server, "/purOrder/add", &PurOrderController::addPurOrder, nullptr);
+	// 修改数据
+	BIND_PUT_ROUTER(server, "/purOrder/edit", &PurOrderController::modifyPurOrder, nullptr);
 }

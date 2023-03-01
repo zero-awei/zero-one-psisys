@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: qingyu
- @Date: 2023/02/15 12:02:32
+ @Date: 2023/02/26 13:12:23
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,14 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_ORDER_DO_
-#define _PUR_ORDER_DO_
-#include "../DoInclude.h"
+#ifndef _PUR_ORDER_DETAIL_VO_
+#define _PUR_ORDER_DETAIL_VO_
+
+#include "../../GlobalInclude.h"
+
+#include "../PurReq/PurReqVO.h"
+#include "../PurOrderSub/PurReqEntryVO.h"
+#include "../PurOrderSub/PurCompareVO.h"
+#include "../PurOrderSub/PurCompareEntryVO.h"
+#include "../PurOrderSub/PurInquiryVO.h"
+#include "../PurOrderSub/PurInquiryEntryVO.h"
+#include "../PurOrderSub/PurQuotVO.h"
+#include "../PurOrderSub/PurQuotEntryVO.h"
+
 
 /**
- * 采购订单数据库实体类
+ * 示例显示对象
  */
-class PurOrderDO
+class PurOrderDetailVO
 {
 	// ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -83,21 +94,21 @@ class PurOrderDO
 	// 数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	// 金额
-	CC_SYNTHESIZE(double, amt, Amt);
+	CC_SYNTHESIZE(float, amt, Amt);
 	// 预付余款	
-	CC_SYNTHESIZE(double, prepayment_bal, Prepayment_bal);
+	CC_SYNTHESIZE(float, prepayment_bal, Prepayment_bal);
 	// 结算数量
 	CC_SYNTHESIZE(double, settle_qty, Settle_qty);
 	// 结算金额
-	CC_SYNTHESIZE(double, settle_amt, Settle_amt);
+	CC_SYNTHESIZE(float, settle_amt, Settle_amt);
 	// 已入库数量		
 	CC_SYNTHESIZE(double, in_qty, In_qty);
 	// 已入库成本
-	CC_SYNTHESIZE(double, in_cost, In_cost);
+	CC_SYNTHESIZE(float, in_cost, In_cost);
 	// 已结算金额
-	CC_SYNTHESIZE(double, settled_amt, Settled_amt);
+	CC_SYNTHESIZE(float, settled_amt, Settled_amt);
 	// 已开票金额
-	CC_SYNTHESIZE(double, invoiced_amt, Invoiced_amt);
+	CC_SYNTHESIZE(float, invoiced_amt, Invoiced_amt);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -134,63 +145,47 @@ class PurOrderDO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
 	CC_SYNTHESIZE(int, version, Version);
+	// Entry
+	CC_SYNTHESIZE(list<PurOrderEntryVO>, entry, Entry);
+	// Pur_req
+	CC_SYNTHESIZE(list<PurReqVO>, pur_req, Pur_req);
+	// Pur_req_entry
+	CC_SYNTHESIZE(list<PurReqEntryVO>, pur_req_entry, Pur_req_entry);
+	// Pur_compare
+	CC_SYNTHESIZE(list<PurCompareVO>, pur_compare, Pur_compare);
+	// Pur_compare_entry
+	CC_SYNTHESIZE(list<PurCompareEntryVO>, pur_compare_entry, Pur_compare_entry);
+	// Pur_inquiry
+	CC_SYNTHESIZE(list<PurInquiryVO>, pur_inquiry, Pur_inquiry);
+	// Pur_inquiry_entry
+	CC_SYNTHESIZE(list<PurInquiryEntryVO>, pur_inquiry_entry, Pur_inquiry_entry);
+	// Pur_quot
+	CC_SYNTHESIZE(list<PurQuotVO>, pur_quot, Pur_quot);
+	// Pur_quot_entry
+	CC_SYNTHESIZE(list<PurQuotEntryVO>, pur_quot_entry, Pur_quot_entry);
 
 public:
-	PurOrderDO() {
-		id = "";
-		bill_no = "";
-		bill_date = "";
-		src_bill_type = "";
-		src_bill_id = "";
-		src_no = "";
-		subject = "";
-		is_rubric = -1;
-		pur_type = "";
-		qty = -1;
-		amt = -1;
-		attachment = "";
-		remark = "";
-		is_auto = -1;
-		bill_stage = "";
-		approver = "";
-		bpmi_instance_id = "";
-		approval_result_type = "";
-		approval_remark = "";
-		is_effective = -1;
-		effective_time = -1;
-		is_closed = -1;
-		is_voided = -1;
-		sys_org_code = "";
-		create_by = "";
-		create_time = "";
-		update_by = "";
-		update_time = "";
-		supplier_id = "";
-		contact = "";
-		phone = "";
-		fax = "";
-		email = "";
-		op_dept = "";
-		op_er = "";
-		delivery_method = "";
-		delivery_place = "";
-		delivery_time = "";
-		transport_method = "";
-		payment_method = "";
-		settle_method = "";
-		settle_time = "";
-		invoice_method = "";
-		invoice_type = "";
-		currency = "";
-		exchange_rate = -1;
-		prepayment_bal = -1;
-		settle_qty = -1;
-		settle_amt = -1;
-		in_qty = -1;
-		in_cost = -1;
-		invoiced_amt = -1;
-		version = -1;
+	//测试用无参构造
+	PurOrderDetailVO()
+	{
+
 	}
+	// 绑定JSON转换方法
+	BIND_TO_JSON(PurOrderDetailVO, id, bill_no, bill_date, src_bill_type, \
+		src_bill_id, src_no, subject, \
+		is_rubric, pur_type, supplier_id, \
+		contact, phone, fax, email, \
+		op_dept, op_er, \
+		delivery_method, delivery_place, delivery_time, transport_method, \
+		payment_method, settle_method, settle_time, \
+		invoice_method, invoice_type, currency, exchange_rate, \
+		qty, amt, prepayment_bal, settle_qty, \
+		settle_amt, in_qty, in_cost, settled_amt, invoiced_amt, attachment, \
+		remark, is_auto, bill_stage, approver, bpmi_instance_id, \
+		approval_result_type, approval_remark, is_effective, \
+		effective_time, is_closed, is_voided, sys_org_code, \
+		create_by, create_time, update_by, update_time, version, \
+		entry, pur_req, pur_req_entry, pur_compare, pur_compare_entry, pur_inquiry, pur_inquiry_entry, pur_quot, pur_quot_entry);
 };
 
-#endif // !_PUR_ORDER_DO_
+#endif // !_PUR_ORDER_DETAIL_VO_

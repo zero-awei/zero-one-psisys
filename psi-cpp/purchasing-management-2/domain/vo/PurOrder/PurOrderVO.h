@@ -21,9 +21,9 @@
 #define _PUR_ORDER_VO_
 
 #include "../../GlobalInclude.h"
-
+#include "PurOrderEntryVO.h"
 /**
- * 示例显示对象
+ * 显示对象
  */
 class PurOrderVO
 {
@@ -140,13 +140,9 @@ public:
 	//测试用无参构造
 	PurOrderVO()
 	{
-		id = 1231232;
-		bill_no = "0123";
 
 	}
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PurOrderVO& t); // NOLINT
-	friend void to_json(const json& j, PurOrderVO& t); // NOLINT
 	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \
 		src_bill_id, src_no, subject, \
 		is_rubric, pur_type, supplier_id, \

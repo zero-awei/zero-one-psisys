@@ -30,6 +30,9 @@
     <ClCompile Include="service\PurOrder\PurOrderService.cpp" />
     <ClCompile Include="service\PurReq\PurReqService.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="domain\dto\PurOrder\PurOrderEntryDTO.cpp" />
+    <ClCompile Include="dao\PurReq\PurReqDAO.cpp" />
+    <ClCompile Include="dao\PurOrder\PurOrderEntryDAO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h" />
@@ -122,5 +125,27 @@
     <ClInclude Include="service\PurOrder\PurOrderService.h" />
     <ClInclude Include="service\PurReq\PurReqService.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="domain\dto\PurOrder\PurOrderEntryDTO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurOrderDetailVO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurOrderEntryVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurCompareEntryVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurCompareVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurInquiryEntryVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurInquiryVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurQuotEntryVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurQuotVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\PurReqEntryVO.h" />
+    <ClInclude Include="dao\PurReq\PurReqDAO.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderDetailMapper.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderEntryDAO.h" />
+    <ClInclude Include="dao\PurOrderSub\PurCompareEntryMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurCompareMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurInquiryEntryMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurInquiryMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurOrderEntryMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurQuotEntryMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurQuotMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurReqEntryMapper.h" />
+    <ClInclude Include="dao\PurOrderSub\PurReqMapper.h" />
   </ItemGroup>
 </Project>

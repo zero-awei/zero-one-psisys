@@ -99,7 +99,7 @@ void from_json(const json& j, PurOrderDTO& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, remark);
 	// 是否自动生成:自动单据
 	BIND_FROM_TO_I(j, t, is_auto);
-	// 单据阶段		
+	// 单据阶段
 	BIND_FROM_TO_NORMAL(j, t, bill_stage);
 	// 审核人
 	BIND_FROM_TO_NORMAL(j, t, approver);
@@ -129,4 +129,6 @@ void from_json(const json& j, PurOrderDTO& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, update_time);
 	// 版本
 	BIND_FROM_TO_I(j, t, version);
+	// 子表
+	BIND_FROM_TO_OBJ(j, t, detail, list<PurOrderEntryDTO>);
 }

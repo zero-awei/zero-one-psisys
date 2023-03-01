@@ -20,10 +20,32 @@
 #ifndef _PUR_ORDER_SERVICE_
 #define _PUR_ORDER_SERVICE_
 #include <list>
+//#include "FastDfsClient.h"
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
+#include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
 #include "../../domain/dto/PurOrder/PurOrderDTO.h"
+#include "../../domain/dto/PurOrder/PurOrderEntryDTO.h"
+#include "../../dao/PurOrder/PurOrderDAO.h"
+#include "../../dao/PurOrder/PurOrderEntryDAO.h"
+
+#include "../../domain/do/PurReq/PurReqDO.h"
+#include "../../domain/do/PurReqEntry/PurReqEntryDO.h"
+#include "../../domain/do/PurCom/PurComDO.h"
+#include "../../domain/do/PurCom/PurComEntryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryDO.h"
+#include "../../domain/do/PurInquiry/PurInquiryEntryDO.h"
+#include "../../domain/do/PurQuot/PurQuotDO.h"
+#include "../../domain/do/PurQuot/PurQuotEntryDO.h"
+
+#include "../../domain/vo/PurOrderSub/PurReqEntryVO.h"
+#include "../../domain/vo/PurOrderSub/PurCompareVO.h"
+#include "../../domain/vo/PurOrderSub/PurCompareEntryVO.h"
+#include "../../domain/vo/PurOrderSub/PurInquiryVO.h"
+#include "../../domain/vo/PurOrderSub/PurInquiryEntryVO.h"
+#include "../../domain/vo/PurOrderSub/PurQuotVO.h"
+#include "../../domain/vo/PurOrderSub/PurQuotEntryVO.h"
 
 /**
  * 采购订单服务实现，基础采购订单服务实现
@@ -36,7 +58,16 @@ public:
 	bool updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload);
 	
 	// 删除采购订单-ID
+	// 负责人：Andrew
 	bool removeData(string id);
+	// 分页查询所有数据
+	PageVO<PurOrderVO> listPurOrder(const PurOrderQuery& query);
+	// 查询单个数据
+	PurOrderDetailVO getPurOrder(string id);
+	// 保存数据
+	uint64_t saveData(const PurOrderDTO& dto, const PayloadDTO& payload);
+	// 修改数据
+	bool updateData(const PurOrderDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // !_PUR_ORDER_SERVICE_

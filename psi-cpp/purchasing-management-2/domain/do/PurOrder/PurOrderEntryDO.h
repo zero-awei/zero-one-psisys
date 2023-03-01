@@ -28,72 +28,81 @@
 class PurOrderEntryDO
 {
 private:
-	// id
-	CC_SYNTHESIZE(uint64_t, id, Id);
-	// 主表编号
+	//ID
+	CC_SYNTHESIZE(string, id, Id);
+	//主表
 	CC_SYNTHESIZE(string, mid, Mid);
-	// 单据号
+	//单据号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// 分录号
-	CC_SYNTHESIZE(string, entry_no, Entry_no);
-	// 源单类型
+	//分录号
+	CC_SYNTHESIZE(int, entry_no, Entry_no);
+	//源单类型
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	// 源单id
+	//srcBillId
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	// 源单分录id
+	//源单分录id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	// 源单分录号
+	//源单分录号
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	// 物料
+	//物料
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	// 计量单位
+	//计量单位
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	// 数量
+	//数量
 	CC_SYNTHESIZE(double, qty, Qty);
-	// 税率
+	//税率%
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	// 含税单价
+	//含税单价
 	CC_SYNTHESIZE(double, price, Price);
-	// 折扣率
+	//折扣率%
 	CC_SYNTHESIZE(double, discount_rate, Discount_rate);
-	// 税额
+	//税额
 	CC_SYNTHESIZE(double, tax, Tax);
-	// 含税金额
+	//含税金额
 	CC_SYNTHESIZE(double, amt, Amt);
-	// 已入库数量
+	//已入库数量
 	CC_SYNTHESIZE(double, in_qty, In_qty);
-	// 已入库成本
+	//已入库成本
 	CC_SYNTHESIZE(double, in_cost, In_cost);
-	// 结算数量
+	//结算数量
 	CC_SYNTHESIZE(double, settle_qty, Settle_qty);
-	// 结算金额
+	//结算金额
 	CC_SYNTHESIZE(double, settle_amt, Settle_amt);
-	// 已开票数量
+	//已开票数量
 	CC_SYNTHESIZE(double, invoiced_qty, Invoiced_qty);
-	// 已开票金额
+	//已开票金额
 	CC_SYNTHESIZE(double, invoiced_amt, Invoiced_amt);
-	// 备注
+	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
-	// 自定义1
+	//自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// 自定义2
+	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	// 版本
+	//版本
 	CC_SYNTHESIZE(int, version, Version);
-public:
+	
 	PurOrderEntryDO() {
-		tax_rate = 0.0;
-		qty = 0.0;
-		amt = 0.0;
-		price = 0.0;
-		discount_rate = 0.0;
-		settle_amt = 0.0;
-		settle_qty = 0.0;
-		in_qty = 0.0;
-		in_cost = 0.0;
-		tax = 0.0;
-		invoiced_amt = 0.0;
-		invoiced_qty = 0.0;
+		id = "";
+		bill_no = "";
+		entry_no = -1;
+		src_bill_type = "";
+		src_bill_id = "";
+		src_no = "";
+		unit_id = "";
+		qty = -1;
+		amt = -1;
+		remark = "";
+		custom1 = "";
+		custom2 = "";
+		mid = "";
+		discount_rate = -1;
+		tax = -1;
+		in_qty = -1;
+		in_cost = -1;
+		settle_qty = -1;
+		settle_amt = -1;
+		invoiced_qty = -1;
+		invoiced_amt = -1;
 	}
 };
 

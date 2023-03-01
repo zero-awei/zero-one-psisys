@@ -20,7 +20,7 @@
 #include "PurReqController.h"
 #include "../../service/PurReq/PurReqService.h"
 
-// 查询list数据
+// 查询list分页数据
 JsonVO<PageVO<PurReqVO>> PurReqController::execListPurReq(const PurReqQuery& query, const PayloadDTO& payload) {
 	// 定义一个Service
 	PurReqService service;
@@ -36,4 +36,14 @@ JsonVO<PurReqVO> PurReqController::execGetPurReq(const PurReqQuery& query)
 	PurReqService service;
 	JsonVO<PurReqVO> result = JsonVO(service.getData(query.getId()), RS_SUCCESS);
 	return result;
+}
+// 查询list数据
+JsonVO<list<PurReqVO>> PurReqController::execListPurReqList(const PurReqQuery& query, const PayloadDTO& payload)
+{
+	// 定义一个Service
+	PurReqService service;
+	// 查询数据
+	list<PurReqVO> result = service.listAllData(query);
+	// 响应结果
+	return JsonVO<list<PurReqVO>>(result, RS_SUCCESS);
 }

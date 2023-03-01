@@ -75,6 +75,14 @@ private:
 	* 6. 比价单分录列表
 	*/
 	void createPurComRouter();
+	/**
+	* 负责人：青羽
+	* 1. 查询单据列表
+	* 2. 查看指定单据详细信息
+	* 3. 添加采购订单（保存/提交）
+	* 4. 修改采购订单（保存/提交/审核）
+	*/
+	void createPurOrderRouter();
 };
 
 #endif // !_ROUTER_

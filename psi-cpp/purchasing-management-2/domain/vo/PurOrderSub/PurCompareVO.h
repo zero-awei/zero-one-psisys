@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: qingyu
- @Date: 2023/02/15 13:12:23
+ @Date: 2023/02/26 13:12:23
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,15 +17,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_REQ_VO_
-#define _PUR_REQ_VO_
+#ifndef _PUR_COMPARE_VO_
+#define _PUR_COMPARE_VO_
 
 #include "../../GlobalInclude.h"
-
 /**
- * 示例显示对象
+ * 显示对象
  */
-class PurReqVO
+class PurCompareVO
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -43,20 +42,14 @@ class PurReqVO
 	CC_SYNTHESIZE(string, subject, Subject);
 	//是否红字
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//采购类型
-	CC_SYNTHESIZE(string, pur_type, Pur_type);
-	//需求部门
-	CC_SYNTHESIZE(string, request_dept, Request_dept);
-	//需求人
-	CC_SYNTHESIZE(string, requester, Requester);
-	//需求时间
-	CC_SYNTHESIZE(string, request_time, Request_time);
-	//数量
-	CC_SYNTHESIZE(double, qty, Qty);
-	//参考金额
-	CC_SYNTHESIZE(double, amt, Amt);
-	//已订数量
-	CC_SYNTHESIZE(double, ordered_qty, Ordered_qty);
+	//候选报价单ids
+	CC_SYNTHESIZE(string, candidate_quot_ids, Candidate_quot_ids);
+	//付款方式
+	CC_SYNTHESIZE(string, payment_method, Payment_method);
+	//交货地点
+	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
+	//交货时间
+	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -93,10 +86,13 @@ class PurReqVO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
+
 public:
-	PurReqVO()
+	//测试用无参构造
+	PurCompareVO()
 	{
+
 	}
-	BIND_TO_JSON(PurReqVO, id, bill_no, bill_date, src_bill_type, src_bill_id, src_no, subject, is_rubric, pur_type, request_dept, requester, request_time, qty, amt, ordered_qty, attachment, remark, is_auto, bill_stage, approver, bpmi_instance_id, approval_result_type, approval_remark, is_effective, effective_time, is_closed, is_voided, sys_org_code, create_by, create_time, update_by, update_time, version);
+	BIND_TO_JSON(PurCompareVO, id, bill_no, bill_date, src_bill_type, src_bill_id, src_no, subject, is_rubric, candidate_quot_ids, payment_method, delivery_place, delivery_time, attachment, remark, is_auto, bill_stage, approver, bpmi_instance_id, approval_result_type, approval_remark, is_effective, effective_time, is_closed, is_voided, sys_org_code, create_by, create_time, update_by, update_time, version);
 };
-#endif // !_PUR_REQ_VO_
+#endif

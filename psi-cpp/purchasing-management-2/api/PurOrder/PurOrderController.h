@@ -25,6 +25,7 @@
 #include "../../domain/dto/PurOrder/PurOrderDTO.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
+#include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
@@ -41,6 +42,18 @@ public:
 	// 负责人：Andrew
 	CREATE_API_FUN_BODY_PAYLOAD(statusPurOrder, execStatusPurOrder, PurOrderDTO);
 
+	// 分页数据
+	// 负责人：青羽
+	CREATE_API_FUN_QUERY_PAYLOAD(querylistPurOrder, execQueryListPurOrder, PurOrderQuery);
+	// 单个数据
+	// 负责人：青羽
+	CREATE_API_FUN_BODY(getPurOrder, execGetPurOrder, PurOrderDTO);
+	// 新增数据
+	// 负责人：青羽
+	CREATE_API_FUN_JSON_PAYLOAD(addPurOrder, execAddPurOrder, PurOrderDTO);
+	// 修改数据
+	// 负责人：青羽
+	CREATE_API_FUN_JSON_PAYLOAD(modifyPurOrder, execModifyPurOrder, PurOrderDTO);
 private:
 	// 删除采购订单
 	// 负责人：Andrew
@@ -48,6 +61,19 @@ private:
 	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	JsonVO<string> execStatusPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
+
+	// 请求分页数据
+	// 负责人：青羽
+	JsonVO<PageVO<PurOrderVO>> execQueryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
+	// 查询单个数据
+	// 负责人：青羽
+	JsonVO<PurOrderDetailVO> execGetPurOrder(const PurOrderDTO& dto);
+	// 新增数据
+	// 负责人：青羽
+	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
+	// 修改数据
+	// 负责人：青羽
+	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
 
 };
 

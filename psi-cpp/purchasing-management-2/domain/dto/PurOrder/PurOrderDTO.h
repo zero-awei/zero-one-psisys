@@ -21,7 +21,7 @@
 #define _PUR_ORDER_DTO_
 
 #include "../../GlobalInclude.h"
-
+#include "PurOrderEntryDTO.h"
 /**
  * 采购订单传输对象
  */
@@ -137,6 +137,8 @@ class PurOrderDTO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
 	CC_SYNTHESIZE(int, version, Version);
+	// 子表
+	CC_SYNTHESIZE(list<PurOrderEntryDTO>, detail, Detail);
 
 public:
 	enum OPTYPE { CLOSE, UNCLOSE, CANCEL }; // 操作类型枚举类

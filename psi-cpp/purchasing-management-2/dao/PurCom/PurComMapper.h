@@ -84,7 +84,7 @@ public:
 		data.setId(resultSet->getString("id"));
 		data.setMid(resultSet->getString("mid"));
 		data.setBill_no(resultSet->getString("bill_no"));
-		data.setEntry_no(resultSet->getString("entry_no"));
+		data.setEntry_no(resultSet->getInt("entry_no"));
 		data.setSrc_bill_type(resultSet->getString("src_bill_type"));
 		data.setSrc_bill_id(resultSet->getString("src_bill_id"));
 		data.setSrc_entry_id(resultSet->getString("src_entry_id"));
@@ -97,7 +97,7 @@ public:
 		data.setPrice(resultSet->getDouble("price"));
 		data.setDiscount_rate(resultSet->getDouble("discount_rate"));
 		data.setAmt(resultSet->getDouble("amt"));
-		data.setRanking(resultSet->getString("ranking"));
+		data.setRanking(resultSet->getInt("ranking"));
 		data.setRemark(resultSet->getString("remark"));
 		data.setCustom1(resultSet->getString("custom1"));
 		data.setCustom2(resultSet->getString("custom2"));

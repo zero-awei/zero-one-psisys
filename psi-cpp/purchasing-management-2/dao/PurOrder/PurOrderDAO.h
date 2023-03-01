@@ -21,13 +21,23 @@
 #define _PUR_ORDER_DAO_
 #include "BaseDAO.h"
 #include "../../domain/do/PurOrder/PurOrderDO.h"
-
+#include "../../dao/PurOrder/PurOrderDetailMapper.h"
 /**
  * 采购订单表数据库操作实现
  */
 class PurOrderDAO : public BaseDAO
 {
 public:
+	// 插入数据
+	uint64_t insert(const PurOrderDO& iObj);
+	// 更新数据
+	uint64_t update(const PurOrderDO& iObj);
+	// 查询详细信息
+	list<PurOrderDO> selectDetail(const string bill_no);
+	// 统计数据条数
+	uint64_t count(const PurOrderDO& iObj);
+	// 分页查询数据
+	list<PurOrderDO> selectWithPage(const PurOrderDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	// 删除采购订单-ID
 	// 负责人：Andrew
 	int deleteById(string id);
