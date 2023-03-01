@@ -34,9 +34,9 @@ class PrepaymentDO {
 	//业务员
 	CC_SYNTHESIZE(string, op, Operator);
 	//申请金额
-	CC_SYNTHESIZE(int, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
-	CC_SYNTHESIZE(int, paid_amt, Paid_amt);
+	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -75,7 +75,6 @@ class PrepaymentDO {
 	CC_SYNTHESIZE(int, version, Version);
 	//版本
 	CC_SYNTHESIZE(std::list<PrepaymentDetailDO>, detail, Detail);
-
 public:           
 	PrepaymentDO() {
 		is_rubric = -1;

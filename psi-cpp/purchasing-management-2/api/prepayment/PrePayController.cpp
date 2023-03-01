@@ -38,7 +38,7 @@ JsonVO<uint64_t> PrePayController::execAddPay(const AddPayDTO& dto, const Payloa
 	JsonVO<uint64_t> result;
 	PrePayService service;
 	uint64_t id = service.saveData(dto, payload);
-	if (id > 0) {
+	if (id != 0) {
 		result.success(id);
 	}
 	else {
