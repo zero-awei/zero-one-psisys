@@ -41,7 +41,7 @@ enum opcode : std::uint8_t {
 	rsv5 = 5,
 	rsv6 = 6,
 	rsv7 = 7,
-	close = 8,
+	cinatra_close = 8,
 	ping = 9,
 	pong = 10,
 	crsvb = 11,
