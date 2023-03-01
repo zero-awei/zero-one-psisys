@@ -29,7 +29,7 @@ class PurOrderEntryDO
 {
 private:
 	// id
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 主表编号
 	CC_SYNTHESIZE(string, mid, Mid);
 	// 单据号
@@ -79,7 +79,7 @@ private:
 	// 自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	// 版本
-	CC_SYNTHESIZE(string, version, Version);
+	CC_SYNTHESIZE(int, version, Version);
 };
 
 #endif

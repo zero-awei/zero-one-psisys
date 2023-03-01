@@ -44,7 +44,6 @@ JsonVO<PurOrderVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
 	PurOrderVO test;
 
 	JsonVO<PurOrderVO> result = JsonVO(service.getData(dto.getId()), RS_SUCCESS);
-	test.setId(dto.getId());
 	result = JsonVO(test, RS_SUCCESS);
 
 	return result;

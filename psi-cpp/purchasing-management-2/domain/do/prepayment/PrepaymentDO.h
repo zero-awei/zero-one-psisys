@@ -23,14 +23,24 @@
  * 示例数据库实体类-采购预付实体类-`fin_payment_req`
  */
 class PrepaymentDO {
-	// 编号
+	// ID
 	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
+	// 源单类型
+	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
+	// 源单id
+	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
+	// 源单号
+	CC_SYNTHESIZE(string, src_no, Src_no);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
+	// 是否红字
+	CC_SYNTHESIZE(string, is_rubric, Is_rubric);
+	// 付款类型
+	CC_SYNTHESIZE(string, payment_type, Payment_type);
 	//供应商
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
 	//业务部门
@@ -41,33 +51,78 @@ class PrepaymentDO {
 	CC_SYNTHESIZE(int, amt, Amt);
 	//已付金额
 	CC_SYNTHESIZE(int, paid_amt, Paid_amt);
-	// 单据阶段
-	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	// 已生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	// 已关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	// 已作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	// 附件
+	CC_SYNTHESIZE(string, attachment, Attachment);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
+	// 是否自动生成
+	CC_SYNTHESIZE(int, is_auto, Is_auto);
+	// 单据阶段
+	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
+	// 审核人
+	CC_SYNTHESIZE(string, approver, Approver);
+	// 审批实例id
+	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
+	// 核批结果类型
+	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
+	// 核批意见
+	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
+	// 是否生效
+	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	// 生效时间
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	// 核批人
-	CC_SYNTHESIZE(string, approver, Approver);
-	// 制单时间
-	CC_SYNTHESIZE(string, create_time, Create_time);
-	// 制单人
-	CC_SYNTHESIZE(string, create_by, Create_by);
-	// 制单部门
+	// 已关闭
+	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	// 是否作废
+	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	// 创建部门
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	// 修改时间
-	CC_SYNTHESIZE(string, update_time, Update_time);
+	// 创建人
+	CC_SYNTHESIZE(string, create_by, Create_by);
+	// 创建时间
+	CC_SYNTHESIZE(string, create_time, Create_time);
 	// 修改人
 	CC_SYNTHESIZE(string, update_by, Update_by);
+	// 修改时间
+	CC_SYNTHESIZE(string, update_time, Update_time);
+	//版本
+	CC_SYNTHESIZE(int, version, Version);
+
 public:
 	PrepaymentDO() {
-		
+		id = "";
+		bill_no = "";
+		bill_date = "";
+		src_bill_type = "";
+		src_bill_id = "";
+		src_no = "";
+		subject = "";
+		is_rubric = "";
+		payment_type = "";
+		supplier_id = "";
+		op_dept = "";
+		op = "";
+		amt = 0;
+		paid_amt = 0;
+		attachment = "";
+		remark = "";
+		is_auto = 0;
+		bill_stage = "";
+		approver = "";
+		bpmi_instance_id = "";
+		approval_result_type = "";
+		approval_remark = "";
+		is_effective = 0;
+		effective_time = "";
+		is_closed = 0;
+		is_voided = 0;
+		sys_org_code = "";
+		create_by = "";
+		create_time = "";
+		update_by = "";
+		update_time = "";
+		version = 0;
+
 	}
 };
 #endif // !_PREPAYMENT_DO_

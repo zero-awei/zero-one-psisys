@@ -1,29 +1,29 @@
-
 #include "stdafx.h"
 #include "PrePayController.h"
 #include "../../domain/query/prepaymentbill/PrepayExportQuery.h"
 #include "../../service/prepayment/PrePayService.h"
 #include "../lib-common/include/CharsetConvertHepler.h"
 
-//查询单据信息
-JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload)
+//采购订单列表
+JsonVO<PageVO<PurOrderVO>> PrePayController::execQuerypayFindBill(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	PrePayService service;
-	PageVO<PrepaymentBillVO> result = service.listAll(query);
-	return JsonVO<PageVO<PrepaymentBillVO>>(result, RS_SUCCESS);
+	PageVO<PurOrderVO> result = service.listAll(query);
+	return JsonVO<PageVO<PurOrderVO>>(result, RS_SUCCESS);
 }
 
-//查询指定单据详细信息
-JsonVO<PrepaymentDetailBillVO> PrePayController::execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload)
+//采购订单分列表
+JsonVO<PurOrderVO> PrePayController::execQueryPayDetailBill(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	if (query.getBill_no() == "") {
-		return JsonVO<PrepaymentDetailBillVO>({}, RS_PARAMS_INVALID);
+		return JsonVO<PurOrderVO>({}, RS_PARAMS_INVALID);
 }
 	PrePayService service;
-	PrepaymentDetailBillVO result = service.getAll(query);
-	return JsonVO<PrepaymentDetailBillVO>({}, RS_SUCCESS);
+	PurOrderVO result = service.getAll(query);
+	return JsonVO<PurOrderVO>({}, RS_SUCCESS);
 }
 
+//删除
 JsonVO<string> PrePayController::execRemoveDePayId(const DePayDTO& dto)
 {
 	PrePayService service;

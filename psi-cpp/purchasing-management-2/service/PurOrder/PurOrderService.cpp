@@ -47,7 +47,6 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto)
 	PurOrderDAO dao;
 
 	//调用雪花算法
-	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
 	data.setBill_date(dto.getBill_date());
 	data.setSrc_bill_type(dto.getSrc_bill_type());

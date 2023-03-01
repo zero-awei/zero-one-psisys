@@ -159,9 +159,9 @@ void Router::createUserDepartRouter()
 //采购预付
 void Router::createPrePayRouter() {
 	//xubuxi
-	//查询单据列表
+	//采购订单列表
 	BIND_GET_ROUTER(server, "/get-prepaybill", &PrePayController::queryPayFindBill, nullptr);
-	//查询指定单据详细信息
+	//指定订单详细信息
 	BIND_GET_ROUTER(server, "/get-prepaybill-detail", &PrePayController::queryPayFinDetailBill, nullptr);
 	//删除申请
 	BIND_DEL_ROUTER(server, "/delete-t-prepay-id", &PrePayController::removeDePayId, nullptr);

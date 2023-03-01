@@ -27,8 +27,6 @@
  */
 class PurOrderVO
 {
-	// ID
-	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期
@@ -140,14 +138,11 @@ public:
 	//测试用无参构造
 	PurOrderVO()
 	{
-		id = 1231232;
-		bill_no = "0123";
-
 	}
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurOrderVO& t); // NOLINT
 	friend void to_json(const json& j, PurOrderVO& t); // NOLINT
-	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \
+	BIND_TO_JSON(PurOrderVO, bill_no, bill_date, src_bill_type, \
 		src_bill_id, src_no, subject, \
 		is_rubric, pur_type, supplier_id, \
 		contact, phone, fax, email, \
