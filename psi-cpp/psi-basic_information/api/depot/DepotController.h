@@ -41,7 +41,7 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(modifyDepot, execModifyDepot, DepotDTO);
 	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, OnlyValueQuery);
 	// 这里直接用FileDTO报错
-	CREATE_API_FUN_BODY_PAYLOAD(addDepots, execAddDepots, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addDepots, execAddDepots, DepotDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, DepotQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueQuery);
 private:
