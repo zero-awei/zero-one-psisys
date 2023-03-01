@@ -45,10 +45,10 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
 	//添加订单
 	// 负责人：Qi
-	CREATE_API_FUN_BODY_PAYLOAD(addPay, execAddPay, AddPayDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addPay, execAddPay, AddPayDTO);
 	//修改订单
 	// 负责人：Qi
-	CREATE_API_FUN_BODY_PAYLOAD(modifyPay, execModifyPay, AddPayDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyPay, execModifyPay, AddPayDTO);
 private:
 	//修改单据状态(关闭、作废、反关闭)
 	// 负责人：Andrew

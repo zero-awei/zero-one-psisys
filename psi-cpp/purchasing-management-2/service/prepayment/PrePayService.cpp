@@ -122,8 +122,7 @@ PageVO<PrepaymentDetailBillVO> PrePayService::getAll(const PrepayDetailBillQuery
 uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload)
 {
 	PrepaymentDO data;
-	PrepaymentDetailDO dtdata;
-	SnowFlake sf(1, 4);
+	SnowFlake sf(1,4);
 	//组装DO
 	data.setId(to_string(sf.nextId()));
 	SET_X_FROM_Y(data, dto, Bill_no);
@@ -139,36 +138,37 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 	SET_X_FROM_Y(data, dto, Is_effective);
 	SET_X_FROM_Y(data, dto, Is_closed);
 	SET_X_FROM_Y(data, dto, Is_voided);
-	SET_X_FROM_Y(data, dto, Src_bill_type);
-	SET_X_FROM_Y(data, dto, Src_bill_id);
-	SET_X_FROM_Y(data, dto, Amt);
-	SET_X_FROM_Y(data, dto, Paid_amt);
-	SET_X_FROM_Y(data, dto, Remark);
 	data.setCreate_by(payload.getUsername());
-
-
-	//组装DetailDO
-	dtdata.setId(to_string(sf.nextId()));
-	SET_X_FROM_Y(dtdata, dto, Mid);
-	SET_X_FROM_Y(dtdata, dto, Bill_no);
-	SET_X_FROM_Y(dtdata, dto, Entry_no);
-	SET_X_FROM_Y(dtdata, dto, Src_bill_type);
-	SET_X_FROM_Y(dtdata, dto, Src_bill_id);
-	SET_X_FROM_Y(dtdata, dto, Src_entry_id);
-	SET_X_FROM_Y(dtdata, dto, Src_no);
-	SET_X_FROM_Y(dtdata, dto, Amt);
-	SET_X_FROM_Y(dtdata, dto, Paid_amt);
-	SET_X_FROM_Y(dtdata, dto, Remark);
-	SET_X_FROM_Y(dtdata, dto, Paid_amt);
-	SET_X_FROM_Y(dtdata, dto, Custom1);
-	SET_X_FROM_Y(dtdata, dto, Custom2);
-
+	for (AddPayDetailDTO x : dto.getDetail()) {
+		//组装明细
+		PrepaymentDetailDO dtdata;
+		dtdata.setId(to_string(sf.nextId()));
+		dtdata.setMid(data.getId());
+		dtdata.setBill_no(data.getBill_no());
+		SET_X_FROM_Y(dtdata, x, Entry_no);
+		SET_X_FROM_Y(dtdata, x, Src_bill_type);
+		SET_X_FROM_Y(dtdata, x, Src_bill_id);
+		SET_X_FROM_Y(dtdata, x, Src_entry_id);
+		SET_X_FROM_Y(dtdata, x, Src_no);
+		SET_X_FROM_Y(dtdata, x, Amt);
+		SET_X_FROM_Y(dtdata, x, Paid_amt);
+		SET_X_FROM_Y(dtdata, x, Remark);
+		SET_X_FROM_Y(dtdata, x, Paid_amt);
+		SET_X_FROM_Y(dtdata, x, Custom1);
+		SET_X_FROM_Y(dtdata, x, Custom2);
+		data.getDetail().push_back(dtdata);
+	}
 	//执行数据添加
 	PrepaymentDAO dao;
-	return dao.insertPrepay(data, dtdata);
+	return dao.insertPrepay(data);
 }
 
 // 修改数据
+/*
+	（1）接受前端传来的id,对比主表并修改对应的内容
+	（2）删除所有明细表中Mid和前端传来的ID一样的
+	（3）重新插入对应的新的明细表
+*/
 // 负责人：Qi
 bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 {
@@ -178,7 +178,6 @@ bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 
 	//组装DO
 	SET_X_FROM_Y(data, dto, Id);
-	SET_X_FROM_Y(data, dto, Bill_no);
 	data.setBill_begin_date(dto.getBill_date());
 	data.setBill_end_date(dto.getBill_date());
 	SET_X_FROM_Y(data, dto, Subject);
@@ -191,28 +190,27 @@ bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 	SET_X_FROM_Y(data, dto, Is_effective);
 	SET_X_FROM_Y(data, dto, Is_closed);
 	SET_X_FROM_Y(data, dto, Is_voided);
-	SET_X_FROM_Y(data, dto, Src_bill_type);
-	SET_X_FROM_Y(data, dto, Src_bill_id);
-	SET_X_FROM_Y(data, dto, Amt);
-	SET_X_FROM_Y(data, dto, Paid_amt);
-	SET_X_FROM_Y(data, dto, Remark);
 	data.setUpdate_by(payload.getUsername());
-
-	//组装DetailDO
-	SET_X_FROM_Y(dtdata, dto, Mid);
-	SET_X_FROM_Y(dtdata, dto, Bill_no);
-	SET_X_FROM_Y(dtdata, dto, Entry_no);
-	SET_X_FROM_Y(dtdata, dto, Src_bill_type);
-	SET_X_FROM_Y(dtdata, dto, Src_bill_id);
-	SET_X_FROM_Y(dtdata, dto, Src_entry_id);
-	SET_X_FROM_Y(dtdata, dto, Src_no);
-	SET_X_FROM_Y(dtdata, dto, Amt);
-	SET_X_FROM_Y(dtdata, dto, Paid_amt);
-	SET_X_FROM_Y(dtdata, dto, Remark);
-	SET_X_FROM_Y(dtdata, dto, Paid_amt);
-	SET_X_FROM_Y(dtdata, dto, Custom1);
-	SET_X_FROM_Y(dtdata, dto, Custom2);
-
+	SnowFlake sf(1, 4);
+	for (AddPayDetailDTO x : dto.getDetail()) {
+		//组装明细
+		PrepaymentDetailDO dtdata;
+		dtdata.setId(to_string(sf.nextId()));
+		dtdata.setMid(data.getId());
+		dtdata.setBill_no(data.getBill_no());
+		SET_X_FROM_Y(dtdata, x, Entry_no);
+		SET_X_FROM_Y(dtdata, x, Src_bill_type);
+		SET_X_FROM_Y(dtdata, x, Src_bill_id);
+		SET_X_FROM_Y(dtdata, x, Src_entry_id);
+		SET_X_FROM_Y(dtdata, x, Src_no);
+		SET_X_FROM_Y(dtdata, x, Amt);
+		SET_X_FROM_Y(dtdata, x, Paid_amt);
+		SET_X_FROM_Y(dtdata, x, Remark);
+		SET_X_FROM_Y(dtdata, x, Paid_amt);
+		SET_X_FROM_Y(dtdata, x, Custom1);
+		SET_X_FROM_Y(dtdata, x, Custom2);
+		data.getDetail().push_back(dtdata);
+	}
 	//执行数据修改
 	PrepaymentDAO dao;
 	return dao.updatePrepay(data);

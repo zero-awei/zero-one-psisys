@@ -3,7 +3,7 @@
 #define _ADD_PAY_DTO_
 
 #include "../../GlobalInclude.h"
-
+#include "AddPayDetailDTO.h"
 /**
  * 采购预付申请-添加预付申请-输入对象
  * 付款申请单——fin_payment_req
@@ -29,7 +29,8 @@ class AddPayDTO
 	CC_SYNTHESIZE(string, at_remark, At_remark);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
-
+	// 明细
+	CC_SYNTHESIZE(std::list<AddPayDetailDTO>, detail, Detail);
 	//------------------不填入------------------------
 	// 单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
@@ -39,35 +40,27 @@ class AddPayDTO
 	CC_SYNTHESIZE(bool, is_closed, Is_closed);
 	// 已作废
 	CC_SYNTHESIZE(bool, is_voided, Is_voided);
-
-	// 主表
-	CC_SYNTHESIZE(string, mid, Mid);
-	//分录号
-	CC_SYNTHESIZE(int, entry_no, Entry_no);
-	//源单类型
-	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	//源单id
-	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//源单分录id
-	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	//源单分录号
-	CC_SYNTHESIZE(string, src_no, Src_no);
-	// 申请金额
-	CC_SYNTHESIZE(double, amt, Amt);
-	// 已付金额
-	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
-	// 备注
-	CC_SYNTHESIZE(string, remark, Remark);
-	// 自定义1
-	CC_SYNTHESIZE(string, custom1, Custom1);
-	// 自定义2
-	CC_SYNTHESIZE(string, custom2, Custom2);
-
+	
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, AddPayDTO& t); // NOLINT
-	BIND_TO_JSON(AddPayDTO, id,bill_no, bill_date, subject, op, op_dept, supplier_id, at_remark, attachment, bill_stage, is_effective, is_closed, is_voided,
-		mid, entry_no, src_bill_type, src_bill_id, src_entry_id, src_no, amt, paid_amt, remark, custom1, custom2);
+	friend void from_json(const json& j, AddPayDTO& t) {
+		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, bill_no);
+		BIND_FROM_TO_NORMAL(j, t, bill_date);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, op);
+		BIND_FROM_TO_NORMAL(j, t, op_dept);
+		BIND_FROM_TO_NORMAL(j, t, supplier_id);
+		BIND_FROM_TO_NORMAL(j, t, at_remark);
+		BIND_FROM_TO_NORMAL(j, t, attachment);
+		BIND_FROM_TO_OBJ(j, t, detail, std::list<AddPayDetailDTO>);
+
+		BIND_FROM_TO_NORMAL(j, t, bill_stage);
+		BIND_FROM_TO_B(j, t, is_effective);
+		BIND_FROM_TO_B(j, t, is_closed);
+		BIND_FROM_TO_B(j, t, is_voided);
+	} // NOLINT
+	BIND_TO_JSON(AddPayDTO, id, bill_no, bill_date, subject, op, op_dept, supplier_id, at_remark, attachment, detail, bill_stage, is_effective, is_closed, is_voided);
 };
 
 #endif // !_SAMPLE_DTO_

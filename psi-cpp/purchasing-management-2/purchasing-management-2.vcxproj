@@ -233,6 +233,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\dto\payment\DePaymentDTO.h" />
     <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h" />
     <ClInclude Include="domain\dto\payment\PaymentImportDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\AddPayDetailDTO.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
     <ClInclude Include="domain\dto\prepayment\DePayDTO.h" />
     <ClInclude Include="domain\dto\prepayment\PayIntoDTO.h" />
@@ -309,7 +310,6 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="domain\dto\payment\AddPaymentDTO.cpp" />
     <ClCompile Include="domain\dto\payment\DePaymentDTO.cpp" />
     <ClCompile Include="domain\dto\payment\PaymentChangeDTO.cpp" />
-    <ClCompile Include="domain\dto\prepayment\AddPayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp" />
     <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp" />

@@ -22,7 +22,7 @@ public:
 	// 查询指定单据详细信息-通过单据编号查询数据
 	list<PrepaymentDetailDO> selectByBill_no(const string& bill_no);
 	// 添加预付申请单数据
-	uint64_t insertPrepay(const PrepaymentDO& iObj, const PrepaymentDetailDO& dtObj);
+	uint64_t insertPrepay(const PrepaymentDO& iObj);
 	// 修改预付申请单数据
 	int updatePrepay(const PrepaymentDO& uObj);
 	

@@ -32,7 +32,7 @@ JsonVO<PageVO<PrepaymentDetailBillVO>> PrePayController::execQueryPayDetailBill(
 
 //新增预付申请单
 // 负责人：Qi
-JsonVO<uint64_t> PrePayController::execAddPay(const  AddPayDTO& dto, const PayloadDTO& payload)
+JsonVO<uint64_t> PrePayController::execAddPay(const AddPayDTO& dto, const PayloadDTO& payload)
 {
 	//响应结果
 	JsonVO<uint64_t> result;
@@ -50,7 +50,7 @@ JsonVO<uint64_t> PrePayController::execAddPay(const  AddPayDTO& dto, const Paylo
 
 //修改预付申请单
 // 负责人：Qi
-JsonVO<uint64_t> PrePayController::execModifyPay(const  AddPayDTO& dto, const PayloadDTO& payload)
+JsonVO<uint64_t> PrePayController::execModifyPay(const AddPayDTO& dto, const PayloadDTO& payload)
 {
 	PrePayService service;
 	JsonVO<uint64_t> result;
