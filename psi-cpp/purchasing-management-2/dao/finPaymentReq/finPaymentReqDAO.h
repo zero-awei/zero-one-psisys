@@ -21,6 +21,9 @@ public:
 	// 添加明细申请(保存/提交) 插入数据
 	uint64_t insertEntry(const FinPaymentReqEntryManageDO& obj);
 
+	// 通过billNo删除数据
+	int deleteByBillNo(string billNo);
+
 	//通过BillNo查找主表数据 由于主表只有一个所以只返回一个
 	list<FinPaymentReqManageDO> selectByBillNo(const string& billNo);
 

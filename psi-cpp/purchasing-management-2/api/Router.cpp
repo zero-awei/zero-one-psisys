@@ -115,6 +115,7 @@ void Router::initRouter()
 	createPurOrderRouter();
 	createPurReqRouter();
 	createPurComRouter();
+	createPaymentReqRouter();
 #endif
 
 	// 分页数据

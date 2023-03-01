@@ -109,10 +109,8 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	//获取必填信息
 	data.setBillNo(BillNo);
 	MODIFY(BillDate);
-	MODIFY(PaymentType);
 	MODIFY(SupplierId);
 	MODIFY(OpDept);
-	MODIFY(BillStage);
 	MODIFY(Operator);
 	MODIFY(CreateBy);
 	MODIFY(CreateTime);
@@ -154,6 +152,34 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 		dao.insertEntry(data);
 	}
 	return dao.insert(data);
+}
+
+bool FinPyamentReqService::removeData(string billNo)
+{
+	FinPaymentReqDAO dao;
+	//首先获取附件信息
+	list<FinPaymentReqManageDO> getdata = dao.selectByBillNo(billNo);
+	if (getdata.size() == 1)
+	{
+		FinPaymentReqManageDO data = getdata.front();
+		if (data.getAttachment() != "")
+		{
+#ifdef LINUX
+			//定义客户端对象
+			FastDfsClient client("conf/client.conf", 3);
+#else
+			//定义客户端对象
+			FastDfsClient client("1.15.240.108");
+#endif
+			string fieldName = data.getAttachment();
+			//删除文件
+			if (!fieldName.empty())
+			{
+				client.deleteFile(fieldName);
+			}
+		}
+	}
+	return dao.deleteByBillNo(billNo);
 }
 
 PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery& query) {

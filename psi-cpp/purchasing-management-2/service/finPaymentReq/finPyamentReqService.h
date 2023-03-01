@@ -28,11 +28,14 @@ public:
 	//更新数据
 	uint64_t updateData(const ModPyamentReqDTO& dto, const PayloadDTO& payload);
 
+	// 通过主目录billNo删除数据
+	bool removeData(string billNo);
+	
 	// 分页查询所有数据
 	PageVO<FinPaymentReqVO> queryList(const FinPaymentReqQuery& query);
 	//查询指定单据详细信息
 	FinPaymentDetailVO detailDate(const FinPaymentReqEntryQuery& query);
-
+	
 };
 
 

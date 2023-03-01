@@ -10,7 +10,6 @@
 /*
 查询单据列表显示对象
 */
-//备注:类的宏里面的字段类型需要更改
 class FinPaymentDetailVO : public FinPaymentReqVO {
 	//明细列表
 	CC_SYNTHESIZE(list<FinPaymentReqEntryVO>, detailBillsVO, DetailBillsVO);

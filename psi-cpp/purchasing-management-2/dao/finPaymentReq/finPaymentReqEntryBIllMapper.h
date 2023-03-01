@@ -19,11 +19,11 @@ public:
 		data.setSrcBillId(resultSet->getString(5));
 		data.setSrcEntryId(resultSet->getString(6));
 		data.setSrcNo(resultSet->getString(7));
-		data.setAmt(resultSet->getDouble(13));
-		data.setPaidAmt(resultSet->getDouble(15));
-		data.setRemark(resultSet->getString(16));
-		data.setCustom1(resultSet->getString(17));
-		data.setCustom2(resultSet->getString(18));
+		data.setAmt(resultSet->getDouble(8));
+		data.setPaidAmt(resultSet->getDouble(9));
+		data.setRemark(resultSet->getString(10));
+		data.setCustom1(resultSet->getString(11));
+		data.setCustom2(resultSet->getString(12));
 		return data;
 	}
 };

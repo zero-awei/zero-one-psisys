@@ -21,9 +21,9 @@
 
 class ModPyamentReqDTO :public FileDTO
 {
-	//单据编号
+	//单据编号/
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//单据日期
+	//单据日期/
 	CC_SYNTHESIZE(string, billDate, BillDate);
 	//源单类型
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
@@ -35,11 +35,11 @@ class ModPyamentReqDTO :public FileDTO
 	CC_SYNTHESIZE(string, subject, Subject);
 	//付款类型
 	CC_SYNTHESIZE(string, paymentType, PaymentType);
-	//供应商
+	//供应商/
 	CC_SYNTHESIZE(string, supplierId, SupplierId);
-	//业务部门
+	//业务部门/
 	CC_SYNTHESIZE(string, opDept, OpDept);
-	//业务员
+	//业务员/
 	CC_SYNTHESIZE(string, operator1, Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
@@ -78,7 +78,7 @@ class ModPyamentReqDTO :public FileDTO
 	//修改人
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//修改时间
-	CC_SYNTHESIZE(string, updateTime, updateTime);
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
 	//明细列表
@@ -87,34 +87,23 @@ class ModPyamentReqDTO :public FileDTO
 public:
 	//绑定JSON转换方法
 	friend void from_json(const json& j, ModPyamentReqDTO& t) {
-		BIND_FROM_TO_ULL(j, t, billNo);
-		BIND_FROM_TO_ULL(j, t, billDate);
-		BIND_FROM_TO_ULL(j, t, srcBillType);
-		BIND_FROM_TO_ULL(j, t, srcBillId);
-		BIND_FROM_TO_ULL(j, t, srcNo);
-		BIND_FROM_TO_ULL(j, t, subject);
-		BIND_FROM_TO_ULL(j, t, paymentType);
-		BIND_FROM_TO_ULL(j, t, supplierId);
-		BIND_FROM_TO_ULL(j, t, opDept);
-		BIND_FROM_TO_ULL(j, t, operator1);
-		BIND_FROM_TO_ULL(j, t, remark);
-		BIND_FROM_TO_ULL(j, t, billStage);
-		BIND_FROM_TO_ULL(j, t, approver);
-		BIND_FROM_TO_ULL(j, t, bpmiInstanceId);
-		BIND_FROM_TO_ULL(j, t, approvalRemark);
-		BIND_FROM_TO_ULL(j, t, effectiveTime);
-		BIND_FROM_TO_ULL(j, t, attachment);
-		BIND_FROM_TO_ULL(j, t, sysOrdCode);
-		BIND_FROM_TO_ULL(j, t, createBy);
-		BIND_FROM_TO_ULL(j, t, createTime);
-		BIND_FROM_TO_ULL(j, t, updateBy);
-		BIND_FROM_TO_ULL(j, t, updateTime);
-		BIND_FROM_TO_ULL(j, t, version);
+		BIND_FROM_TO_NORMAL(j, t, billNo);
+		BIND_FROM_TO_NORMAL(j, t, billDate);
+		BIND_FROM_TO_NORMAL(j, t, srcBillType);
+		BIND_FROM_TO_NORMAL(j, t, srcBillId);
+		BIND_FROM_TO_NORMAL(j, t, srcNo);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, paymentType);
+		BIND_FROM_TO_NORMAL(j, t, supplierId);
+		BIND_FROM_TO_NORMAL(j, t, opDept);
+		BIND_FROM_TO_NORMAL(j, t, operator1);
+		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_NORMAL(j, t, attachment);
+		BIND_FROM_TO_NORMAL(j, t, updateBy);
+		BIND_FROM_TO_NORMAL(j, t, updateTime);
 
 		BIND_FROM_TO_D(j, t, amt);
-		BIND_FROM_TO_D(j, t, paidAmt);
 
-		BIND_FROM_TO_I(j, t, isAuto);
 		BIND_FROM_TO_I(j, t, isEffective);
 		BIND_FROM_TO_I(j, t, isClosed);
 		BIND_FROM_TO_I(j, t, isVoided);

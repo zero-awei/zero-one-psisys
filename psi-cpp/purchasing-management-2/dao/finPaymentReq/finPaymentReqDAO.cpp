@@ -97,17 +97,17 @@ uint64_t FinPaymentReqDAO::insert(const FinPaymentReqManageDO& obj)
 		sql += ", null";
 	}
 	sql += ")";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%i%s%s%s%s%d%d%s%s%i%s%s%s%s%s%i%i%i%s%s%s",
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%i%s%s%s%s%d%d%s%s%i%s%s%s%s%s%i%i%i%s%s%s%s",
 		obj.getId(), obj.getBillNo(), obj.getBillDate(), obj.getSrcBillType(),
 		obj.getSrcBillId(), obj.getSrcNo(), obj.getSubject(),
 		obj.getIsRubric(), obj.getPaymentType(), obj.getSupplierId(),
 		obj.getOpDept(), obj.getOperator(), obj.getAmt(), 
-		obj.getPaidAmt(), obj.getAttachment(),obj.getRemark(),
+		obj.getPaidAmt(), obj.getAttachment(), obj.getRemark(),
 		obj.getIsAuto(), obj.getBillStage(),obj.getApprover(),
 		obj.getBpmiInstanceId(), obj.getApprovalResultType(),
 		obj.getApprovalRemark(), obj.getIsEffective(),
 		obj.getIsClosed(), obj.getIsVoided(), obj.getSysOrgCode(),
-		obj.getCreateBy(), obj.getCreateTime(), obj.getUpdateBy());
+		obj.getCreateBy(), obj.getCreateTime(), obj.getUpdateBy()/**/);
 }
 
 uint64_t FinPaymentReqDAO::insertEntry(const FinPaymentReqEntryManageDO& obj)
@@ -120,12 +120,20 @@ uint64_t FinPaymentReqDAO::insertEntry(const FinPaymentReqEntryManageDO& obj)
 		sql += ", null";
 	}
 	sql += ")";
-	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%s%s%d%d%s%s%s",
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%d%d%s%s%s%i",
 		obj.getId(), obj.getMid(), obj.getBillNo(),
 		obj.getEntryNo(), obj.getSrcBillType(), obj.getSrcEntryId(),
 		obj.getSrcEntryId(), obj.getSrcNo(), obj.getAmt(),
 		obj.getPaidAmt(),  obj.getRemark(), obj.getCustom1(),
 		obj.getCustom2());
+}
+
+int FinPaymentReqDAO::deleteByBillNo(string billNo)
+{
+	string sql = "DELETE FROM `fin_payment_req` WHERE `bill_no`=?";
+	int flag = sqlSession->executeUpdate(sql, "%s", billNo);
+	sql = "DELETE FROM `fin_payment_req_entry` WHERE `bill_no`=?";
+	return (flag && sqlSession->executeUpdate(sql, "%s", billNo));
 }
 
 list<FinPaymentReqManageDO> FinPaymentReqDAO::selectByBillNo(const string& billNo)
