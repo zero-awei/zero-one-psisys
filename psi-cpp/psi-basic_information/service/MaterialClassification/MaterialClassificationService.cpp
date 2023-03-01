@@ -178,14 +178,20 @@ list<MaterialClassificationDetailVO> MaterialClassificationService::listDetail(c
 int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto, const string& userName)
 {
 	//新增数据应该不用管修改相关的信息
+	//先看看编码有没有重复
+	MaterialClassificationDAO dao;
+	list<MaterialClassificationDO> code = dao.selectByCode(dto.getCode());
+	//code中什么都没有的时候就可以插入数据，否则直接返回失败0
+	if (!code.empty())
+		return 0;
 
 	//组装数据
 	MaterialClassificationDO data;
-	//应该是在这里生成id
+	//生成id
 	SnowFlake sf(datacenterId, machineId);
 	data.setId(to_string(sf.nextId()));
 
-	//添加下级的时候要获得pid，如果pid的父类一开始没有下级，则还要修改父类的has_child
+	//添加下级的时候要获得pid父类，如果pid父类一开始没有下级，则还要修改父类的has_child
 	data.setPid(dto.getPid()==""? "0":dto.getPid());
 	data.setHasChild(dto.getHasChild()==""? "0":dto.getHasChild());
 	data.setName(dto.getName());
@@ -197,7 +203,7 @@ int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto
 	//设置时间
 	SimpleDateTimeFormat sdt;
 	
-	string nowTime  = sdt.format();//使用阿伟给的工具类
+	string nowTime  = sdt.format();//使用阿伟学长给的工具类
 	//time_t nowtime;
 	//time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
 	//tm p;
@@ -208,15 +214,13 @@ int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto
 	data.setCreateTime(nowTime);
 	data.setVersion(dto.getVersion());
 	//执行数据添加
-	MaterialClassificationDAO dao;
 
 	int modify = 1;
 	if (dto.getPid() != "" && dto.getPid() !="0") {//有父节点
 		list<MaterialClassificationDO> father = dao.selectById(dto.getPid());
 		MaterialClassificationDO f;
-		for (MaterialClassificationDO sub : father) {
+		for (MaterialClassificationDO sub : father) //如果直接用front或者back函数会出问题，暂时先这么用
 			f.setHasChild(sub.getHasChild());
-		}
 		if (f.getHasChild() == "0")
 			modify = dao.updateHasChildById(dto.getPid(), "1");//通过id修改父节点的has_child
 	}
@@ -264,10 +268,9 @@ void removeNode(const MaterialClassificationDO& nodeChild) {
 		return;
 	}
 	list<MaterialClassificationDO> children = dao.selectByPid(nodeChild.getId());
-	for (MaterialClassificationDO node : children) {
+	for (MaterialClassificationDO node : children) 
 		removeNode(node);
-	}
-	return;
+	return ;
 }
 
 int MaterialClassificationService::removeData(const MaterialClassificationDTO& dto)
@@ -320,15 +323,15 @@ int MaterialClassificationService::importData(const MaterialClassificationDTO& d
 	//输出上传文件路径列表
 	for (auto file : dto.getFiles()) {
 		string sheetName = CharsetConvertHepler::ansiToUtf8("test");
-		auto readData = excel.readIntoVector(file, sheetName);
+		auto readData = excel.readIntoVector(file, sheetName);			//从文件提取数据
 		for (auto data : readData) {
 			MaterialClassificationDTO saveDto;
-			saveDto.setPid(CharsetConvertHepler::ansiToUtf8(data[0]));
-			saveDto.setHasChild(CharsetConvertHepler::ansiToUtf8(data[1]));
-			saveDto.setName(CharsetConvertHepler::ansiToUtf8(data[2]));
-			saveDto.setCode(CharsetConvertHepler::ansiToUtf8(data[3]));
-			saveDto.setFullname(CharsetConvertHepler::ansiToUtf8(data[4]));
-			saveDto.setIsEnabled(CharsetConvertHepler::ansiToUtf8(data[5])=="1"? 1:0);
+			saveDto.setPid(data[0]);
+			saveDto.setHasChild(data[1]);
+			saveDto.setName(data[2]);
+			saveDto.setCode(data[3]);
+			saveDto.setFullname(data[4]);
+			saveDto.setIsEnabled(data[5]=="1"? 1:0);
 
 			Dto.push_back(saveDto);
 		}
@@ -367,9 +370,9 @@ string  MaterialClassificationService::exportData(const string& id,const Payload
 	//装入表数据
 	for (MaterialClassificationDO sub:dos) {
 		vector<string> rows;
-		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getPid()));
+		rows.push_back(sub.getPid());
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getHasChild()=="1" ? "是":"否"));
-		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getName()));
+		rows.push_back(sub.getName());
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getCode()));
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getFullname()));
 		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getIsEnabled() ==1 ? "是":"否"));
