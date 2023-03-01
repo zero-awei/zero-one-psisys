@@ -1,10 +1,11 @@
 #pragma once
-#ifndef _Q_C_B_L_R_DO
-#define _Q_C_B_L_R_DO
+#ifndef _QUERY_CGTHCK_BILL_DEILED_VO_
+#define _QUERY_CGTHCK_BILL_DEILED_VO_
 
 #include "../../GlobalInclude.h"
-
-class QueryCgthrkBillListReturnDO {
+#include"BillEntryDetailedVO.h"
+class QueryCgthrkDetailedBillVO {
+	//单据列表信息  开始---------
 	// 单据编号
 	CC_SYNTHESIZE(std::string, billNo, BillNo);
 	// 单据日期
@@ -59,7 +60,25 @@ class QueryCgthrkBillListReturnDO {
 	CC_SYNTHESIZE(std::string, updateTime, UpdateTime);
 	// 修改人
 	CC_SYNTHESIZE(std::string, updateBy, UpdateBy);
+	//单据列表信息  结束---------
+
+	//详细信息额外的 开始----------
+	//详细信息额外的 结束----------
+
+
+
+	//退货出库明细（这又是一个list）
+	CC_SYNTHESIZE(list<BillEntryDetailedVO>, detail, Detail);
+
+	BIND_TO_JSON
+	(
+		QueryCgthrkDetailedBillVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,
+		inAmt, settleAmt, settledAmt, invoicedAmt, invoiceType, handler, billStage, isEff,
+		isClosed, isVoided, isAuto, isRubric, remark, effTime, approver, createTime, createBy,
+		sysOrgCode, updateTime, updateBy, detail
+	);
 };
+
 
 
 #endif

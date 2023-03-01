@@ -37,15 +37,15 @@ class QueryCgthckBillVO
 	// 单据阶段
 	CC_SYNTHESIZE(std::string, billStage, BillStage);
 	// 是否生效
-	CC_SYNTHESIZE(bool, isEff, IsEff);
+	CC_SYNTHESIZE(int, isEff, IsEff);
 	// 是否关闭
-	CC_SYNTHESIZE(bool, isClosed, IsClosed);
+	CC_SYNTHESIZE(int, isClosed, IsClosed);
 	// 是否作废
-	CC_SYNTHESIZE(bool, isVoided, IsVoided);
+	CC_SYNTHESIZE(int, isVoided, IsVoided);
 	// 自动单据
-	CC_SYNTHESIZE(bool, isAuto, IsAuto);
+	CC_SYNTHESIZE(int, isAuto, IsAuto);
 	// 红字单据
-	CC_SYNTHESIZE(bool, isRubric, IsRubric);
+	CC_SYNTHESIZE(int, isRubric, IsRubric);
 	// 备注
 	CC_SYNTHESIZE(std::string, remark, Remark);
 	// 生效时间

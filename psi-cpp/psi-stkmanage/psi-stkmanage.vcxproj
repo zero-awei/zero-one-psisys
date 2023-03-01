@@ -220,14 +220,17 @@
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="dao\Cgrk\CgrkDao.h" />
     <ClInclude Include="dao\Cgthrk\CgthrkDao.h" />
+    <ClInclude Include="dao\Cgthrk\QueryCgthrkBillListDetailedMapper.h" />
     <ClInclude Include="dao\Cgthrk\QueryCgthrkBillListDOMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDao.h" />
     <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
     <ClInclude Include="domain\do\Cgrk\ModifyCgrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillDetailedReturnDO.h" />
     <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListDO.h" />
     <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListReturnDO.h" />
     <ClInclude Include="domain\do\Cgthck\SysUserRoleDO.h" />
+    <ClInclude Include="domain\do\Cgthck\BillDetailedDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
@@ -241,6 +244,7 @@
     <ClInclude Include="domain\dto\Cgrk\RemoveCgrkBillDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillStateDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\AddCgthckBillDTO.h" />
+    <ClInclude Include="domain\dto\Cgthck\CgthckBillDetailedDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\DeleteCgthckBillDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\ExportCgthckFileDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\ImportCgthckFileDTO.h" />
@@ -281,7 +285,9 @@
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\BillEntryDetailedVO.h" />
     <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\QueryCgthrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />

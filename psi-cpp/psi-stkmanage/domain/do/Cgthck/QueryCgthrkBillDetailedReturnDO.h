@@ -1,10 +1,10 @@
 #pragma once
-#ifndef _Q_C_B_L_R_DO
-#define _Q_C_B_L_R_DO
+#ifndef _Q_C_B_D_R_DO
+#define _Q_C_B_D_R_DO
 
 #include "../../GlobalInclude.h"
-
-class QueryCgthrkBillListReturnDO {
+#include"domain/vo/Cgthck/BillEntryDetailedVO.h"
+class QueryCgthrkBillDetailedReturnDO {
 	// 单据编号
 	CC_SYNTHESIZE(std::string, billNo, BillNo);
 	// 单据日期
@@ -59,7 +59,20 @@ class QueryCgthrkBillListReturnDO {
 	CC_SYNTHESIZE(std::string, updateTime, UpdateTime);
 	// 修改人
 	CC_SYNTHESIZE(std::string, updateBy, UpdateBy);
+	//详细信息
+	CC_SYNTHESIZE(list<BillEntryDetailedVO>, detail, Detail);
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 #endif

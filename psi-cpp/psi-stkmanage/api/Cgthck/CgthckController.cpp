@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CgthckController.h"
 #include"../../service/Cgthck/CgthrkService.h"
+#include"domain/dto/Cgthck/CgthckBillDetailedDTO.h"
 JsonVO<PageVO<QueryCgthckBillVO>> CgthckController::execQueryCgthckBill(const QueryCgthckBillQuery& query)
 {
     //定义一个Service
@@ -11,13 +12,16 @@ JsonVO<PageVO<QueryCgthckBillVO>> CgthckController::execQueryCgthckBill(const Qu
     return JsonVO<PageVO<QueryCgthckBillVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<PageVO<QueryCgthckBillDetailVO>> CgthckController::execQueryCgthckBillDetail(const QueryCgthckBillQuery& query)
+JsonVO<QueryCgthrkDetailedBillVO> CgthckController::execQueryCgthckBillDetail(const CgthckBillDetailedDTO& query)
 {
-    PageVO<QueryCgthckBillDetailVO> result;
-    list<QueryCgthckBillDetailVO> rows;
-    rows.push_back(QueryCgthckBillDetailVO());
-    result.setRows(rows);
-    return JsonVO<PageVO<QueryCgthckBillDetailVO>>(result, RS_SUCCESS);
+    //定义一个Service
+    CgthrkService service;
+
+    //查询结果
+    QueryCgthrkDetailedBillVO result = service.queryBillDetial(query);
+
+    //响应结果
+    return JsonVO<QueryCgthrkDetailedBillVO>(result, RS_SUCCESS);
 }
 
 JsonVO<uint64_t> CgthckController::execAddCgthckBill(const AddCgthckBillDTO& dto)

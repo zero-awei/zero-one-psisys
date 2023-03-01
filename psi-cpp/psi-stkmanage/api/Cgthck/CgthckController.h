@@ -11,7 +11,8 @@
 #include "../psi-stkmanage/domain/dto/Cgthck/ModifyCgthckBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ImportCgthckFileDTO.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgthckBillVO.h"
-
+#include "../psi-stkmanage/domain/vo/Cgthck/QueryCgthrkDetailedBillVO.h"
+#include"../../domain/dto/Cgthck/CgthckBillDetailedDTO.h"
 /**
 * 控制器, 采购退货出库接口的使用
 */
@@ -21,7 +22,7 @@ public:
 	// 查询单据接口
 	CREATE_API_FUN_QUERY(queryCgthcBillk, execQueryCgthckBill, QueryCgthckBillQuery);
 	// 查询指定单据明细接口
-	CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, QueryCgthckBillQuery);
+	CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, CgthckBillDetailedDTO);
 	// 添加采购退货出库(红入)单据接口
 	CREATE_API_FUN_BODY(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
 	// 修改采购退货出库(红入)单据接口
@@ -36,7 +37,7 @@ private:
 	// 测试查询数据
 	JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
 	// 测试查询详细数据
-	JsonVO<PageVO<QueryCgthckBillDetailVO>> execQueryCgthckBillDetail(const QueryCgthckBillQuery& query);
+	JsonVO<QueryCgthrkDetailedBillVO> execQueryCgthckBillDetail(const CgthckBillDetailedDTO& query);
 	// 测试添加数据
 	JsonVO<uint64_t> execAddCgthckBill(const AddCgthckBillDTO& dto);
 	// 测试修改数据
