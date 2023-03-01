@@ -30,7 +30,7 @@ import { handleQuerySettleMethod } from './api/public.js'
 import { handleQueryCurrencyType } from './api/public.js'
 import { handleQueryDeliveryType } from './api/public.js'
 import { handleQueryWarehouse } from './api/public.js'
-
+import { handleQueryArea } from './api/public.js'
 import { handleQueryMaterialType } from './api/public.js'
 import { handleQueryPaymethodType } from './api/public.js'
 import { handleQueryDeliverymethodType } from './api/public.js'
@@ -38,10 +38,13 @@ import { handleQuerySuppliersName } from './api/public.js'
 import { handleQuerySuppliersLevel } from './api/public.js'
 import { handleQuerySupplierAdvancedCriteria } from './api/public.js'
 import { handleQueryDepart } from './api/public.js'
-// import { handleQuerySettleMethod } from './api/public.js'
-// import { handleQueryCurrencyType } from './api/public.js'
-// import { handleQueryDeliveryType } from './api/public.js'
-// import { handleQueryWarehouse } from './api/public.js'
+
+import { handleGetUser } from './api/public.js'
+import { handleGetMaterial } from './api/public.js'
+import { handleGetDepart } from './api/public.js'
+import { handleQueryBasWareHouseTreeList } from './api/public.js'
+import { handleQueryMaterialTreeList } from './api/public.js'
+import { handleCreateReceipt } from './api/public.js'
 
 import { handleQuery } from './api/addressbook.js'
 
@@ -50,7 +53,7 @@ function handle() {
   // 测试业务接口
   // handleAddMenu()
   // // 测试公共接口
-  // handleQueryBasBankAccount()
+  handleQueryBasBankAccount()
   // handleQueryInvoiceType()
   // handleQueryBillStage()
   // handleQueryPurchaseType()
@@ -62,13 +65,20 @@ function handle() {
   // handleQueryCurrencyType()
   // handleQueryDeliveryType()
   // handleQueryWarehouse()
+  // handleQueryArea()
   // handleQueryMaterialType()
   // handleQueryPaymethodType()
   // handleQueryDeliverymethodType()
   // handleQuerySuppliersName()
   // handleQuerySuppliersLevel()
   // handleQuerySupplierAdvancedCriteria()
-  handleQueryDepart()
+  // handleQueryDepart()
+  // handleGetUser()
+  // handleGetMaterial()
+  // handleGetDepart()
+  // handleQueryBasWareHouseTreeList()
+  // handleQueryMaterialTreeList()
+  // handleCreateReceipt()
 
   // handleQuery()
 
