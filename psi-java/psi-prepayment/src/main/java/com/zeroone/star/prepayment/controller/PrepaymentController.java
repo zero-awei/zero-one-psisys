@@ -87,9 +87,20 @@ public class PrepaymentController implements PrepaymentApis {
      * since 2023-02-13
      */
     @Override
-    @GetMapping("query-all")
-    @ApiOperation(value = "查询采购预付单功能")
-    public JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition) {
+    @GetMapping("query-all-hav")
+    @ApiOperation(value = "查询采购预付单功能（有申请）")
+    @ResponseBody
+    public JsonVO<PageVO<DocListVO>> queryAllHav(DocListQuery condition) {
+        condition.setPaymentType("2011");
+        return JsonVO.success(prepaymentService.queryAll(condition));
+    }
+
+    @Override
+    @GetMapping("query-all-no")
+    @ApiOperation(value = "查询采购预付单功能（无申请）")
+    @ResponseBody
+    public JsonVO<PageVO<DocListVO>> queryAllNo(DocListQuery condition) {
+        condition.setPaymentType("2010");
         return JsonVO.success(prepaymentService.queryAll(condition));
     }
 

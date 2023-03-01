@@ -58,13 +58,14 @@ public interface PrepaymentApis {
     JsonVO<String> auditById(AuditDTO auditDTO);
 
     /**
-     * 单据列表查询
+     * 单据列表查询(有申请)和(无申请)
      * param condition 查询条件
      * return 查询结果
      * author husj
      * version 1.0.0
      */
-    JsonVO<PageVO<DocListVO>> queryAll(DocListQuery condition);
+    JsonVO<PageVO<DocListVO>> queryAllHav(DocListQuery condition);
+    JsonVO<PageVO<DocListVO>> queryAllNo(DocListQuery condition);
 
     /**
      * 通过单据编号查询数据-采购预付有申请
