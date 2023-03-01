@@ -261,6 +261,27 @@
     <ClInclude Include="api\finPaymenReq\FinPaymentReqControlle.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\PurCompare\PurCompare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\finPaymentReq\addPaymentReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\dto\finPaymentReq\modPyamentReqDTO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqEntryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

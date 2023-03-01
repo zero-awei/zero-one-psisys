@@ -130,7 +130,7 @@ uint64_t FinPaymentReqDAO::insertEntry(const FinPaymentReqEntryManageDO& obj)
 
 list<FinPaymentReqManageDO> FinPaymentReqDAO::selectByBillNo(const string& billNo)
 {
-	string sql = "SELECT `id`,`bill_no` ,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`is_rubric`,`payment_type`,`supplier_id`,`op_dept`,`operator` ,`amt`,`paid_amt`,`attachment`,`remark`,`is_auto`,`bill_stage` ,`approver` ,`bpmi_instance_id` ,`approval_result_type`,`approval_remark`,`is_effective`,`effective_time` ,`is_closed`,`is_voided` ,`sys_org_code`,`create_by` ,`create_time`,`update_by`,`update_time` ,`version` FROM pur_req WHERE `bill_no` = ?";
+	string sql = "SELECT `id`,`bill_no` ,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`is_rubric`,`payment_type`,`supplier_id`,`op_dept`,`operator` ,`amt`,`paid_amt`,`attachment`,`remark`,`is_auto`,`bill_stage` ,`approver` ,`bpmi_instance_id` ,`approval_result_type`,`approval_remark`,`is_effective`,`effective_time` ,`is_closed`,`is_voided` ,`sys_org_code`,`create_by` ,`create_time`,`update_by`,`update_time` ,`version` FROM fin_payment_req WHERE `bill_no` = ?";
 	FinPaymentReqMapper mapper;
 	return sqlSession->executeQuery<FinPaymentReqManageDO, FinPaymentReqMapper>(sql, mapper, "%s", billNo);
 }

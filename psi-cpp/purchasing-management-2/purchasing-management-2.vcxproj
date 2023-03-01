@@ -204,6 +204,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\finPaymentReq\FinPaymentReqEntryManageDO.h" />
     <ClInclude Include="domain\do\finPaymentReq\FinPaymentReqDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
+    <ClInclude Include="domain\do\PurCompare\PurCompare.h" />
     <ClInclude Include="domain\do\PurCom\PurComDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
     <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h" />
@@ -214,6 +215,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\PurQuot\PurQuotEntryDO.h" />
     <ClInclude Include="domain\do\PurReqEntry\PurReqEntryDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\addPaymentReqDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\modPyamentReqDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\finPaymentReq\finPaymentReqEntryDTO.h" />
     <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h" />
@@ -226,6 +229,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\dto\PurOrdDTO.h" />
     <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqEntryQuery.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h" />
@@ -235,6 +240,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\query\PurReq\PurReqQuery.h" />
     <ClInclude Include="domain\query\StatisQuery\ExeStatusQuery.h" />
     <ClInclude Include="domain\query\StatisQuery\StatisQuery.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqEntryVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
