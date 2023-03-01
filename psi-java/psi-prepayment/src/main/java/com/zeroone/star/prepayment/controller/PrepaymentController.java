@@ -53,7 +53,11 @@ public class PrepaymentController implements PrepaymentApis {
     IFinPaymentReqService finPaymentReqService;
     @Resource
     IPurOrderService purOrderService;
+    @Resource
+    IFinPaymentReqService paymentReqService;
 
+    @Resource
+    IFinPaymentService paymentService;
 
     /**
      * 修改采购预付单功能
@@ -266,15 +270,17 @@ public class PrepaymentController implements PrepaymentApis {
 
     /**
      * 付款申请单分录明细列表查询
-     * param billNo 分录单号
+     * param supplierName 供应商名
      * return 分录明细列表
      * author 内鬼
      */
-    @GetMapping("query-all-by-billno")
     @Override
+    @GetMapping("query-all-paymentReq")
+    @ResponseBody
     @ApiOperation("付款申请单分录列表查询")
-    public JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo) {
-        return null;
+    public JsonVO<PageVO<FinPaymentReqVO>> queryAllReq(FinPaymentReqQuery query) {
+        PageVO<FinPaymentReqVO> paymentReqEntryPage = paymentReqService.listFinPaymentReq(query);
+        return JsonVO.success(paymentReqEntryPage);
     }
 
     /**
@@ -284,11 +290,17 @@ public class PrepaymentController implements PrepaymentApis {
      * author 内鬼
      */
     @Override
-    @PostMapping("import")
+    @PostMapping("import-payments-excel")
     @ResponseBody
     @ApiOperation("导入功能（返回值data值表示导入成功与否）")
     public JsonVO<String> excelImport(@RequestParam("file") MultipartFile file) {
-        return JsonVO.success("文件上传成功！");
+        try {
+            paymentService.importExcelOfPayment(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonVO.fail("文件导入失败");
+        }
+        return JsonVO.success("文件导入成功！");
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.zeroone.star.prepayment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.prepayment.entity.FinPayment;
@@ -31,6 +32,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Random;
 
@@ -228,5 +230,13 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
             return JsonVO.success("修改成功");
         }
         return JsonVO.fail("修改失败");
+    }
+
+    @Resource
+    FinPaymentMapper paymentMapper;
+
+    @Override
+    public void importExcelOfPayment(MultipartFile file) throws Exception {
+        EasyExcel.read(file.getInputStream(), FinPayment.class, EasyExcelUtils.getListener(this.process(), 2)).sheet().doRead();
     }
 }

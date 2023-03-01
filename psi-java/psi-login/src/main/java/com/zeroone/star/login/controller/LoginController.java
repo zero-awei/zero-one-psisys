@@ -52,8 +52,8 @@ public class LoginController implements LoginApis {
     @PostMapping("auth-login")
     @Override
     public JsonVO<Oauth2TokenDTO> authLogin(LoginDTO loginDTO) {
-        //TODO:未实现验证码验证
-        //账号密码认证
+        // TODO:未实现验证码验证
+        // 账号密码认证
         Map<String, String> params = new HashMap<>(5);
         params.put("grant_type", "password");
         params.put("client_id", loginDTO.getClientId());
@@ -61,7 +61,7 @@ public class LoginController implements LoginApis {
         params.put("username", loginDTO.getUsername());
         params.put("password", loginDTO.getPassword());
         return oAuthService.postAccessToken(params);
-        //TODO:未实现认证成功后如何实现注销凭证（如记录凭证到内存数据库）
+        // TODO:未实现认证成功后如何实现注销凭证（如记录凭证到内存数据库）
     }
 
     @ApiOperation(value = "刷新登录")
@@ -101,7 +101,7 @@ public class LoginController implements LoginApis {
     @GetMapping("logout")
     @Override
     public JsonVO<String> logout() {
-        //TODO:登出逻辑，需要配合登录逻辑实现
+        // TODO:登出逻辑，需要配合登录逻辑实现
         return null;
     }
 
@@ -115,7 +115,7 @@ public class LoginController implements LoginApis {
     @GetMapping("get-menus")
     @Override
     public JsonVO<List<TreeNodeVO<MenuTreeVO>>> getMenus() throws Exception {
-        //TODO:未实现根据实际数据库设计业务逻辑，下面逻辑属于示例逻辑
+        // TODO:未实现根据实际数据库设计业务逻辑，下面逻辑属于示例逻辑
         //1 获取当前用户
         UserDTO currentUser = userHolder.getCurrentUser();
         //2 获取当前用户拥有的菜单

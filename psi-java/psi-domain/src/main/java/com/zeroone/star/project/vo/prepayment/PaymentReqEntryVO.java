@@ -13,8 +13,8 @@ public class PaymentReqEntryVO {
     /**
      * 单据编号
      */
-    @ApiModelProperty(value = "源单号", example = "CGYFSQ-221120-001")
-    private String billNo;
+    @ApiModelProperty(value = "源单号", example = "CGDD-221120-001")
+    private String srcNo;
 
     /**
      * 结算方式

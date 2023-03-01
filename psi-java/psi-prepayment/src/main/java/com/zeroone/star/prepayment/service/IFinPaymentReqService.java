@@ -6,6 +6,8 @@ import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * <p>
  * 付款申请单 服务类
@@ -30,5 +32,16 @@ public interface IFinPaymentReqService extends IService<FinPaymentReq> {
      * @return 查询结果
      */
     FinPaymentReq getBySrcBillId(String srcBillId);
+
+
+    /**
+     * FinPaymentReq 服务类
+     * TODO FinPaymentReqVO需要更换，新建ReqVO
+     * author neigui
+     * since 2023-02-18
+     */
+    PageVO<FinPaymentReqVO> listFinPaymentReq(FinPaymentReqQuery query);
+
+    List<FinPaymentReq> listBySrcBillId(String id);
 
 }

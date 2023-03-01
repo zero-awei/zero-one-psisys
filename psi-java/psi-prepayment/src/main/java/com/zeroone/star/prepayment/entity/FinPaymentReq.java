@@ -55,6 +55,9 @@ public class FinPaymentReq implements Serializable {
      */
     private String srcNo;
 
+    /**
+     * 单据主题
+     */
     private String subject;
 
     /**
@@ -176,6 +179,7 @@ public class FinPaymentReq implements Serializable {
     /**
      * 修改时间
      */
+    @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;
 
     /**

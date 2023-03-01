@@ -163,7 +163,7 @@ public interface PrepaymentApis {
      * 导入功能
      * author 内鬼
      */
-    JsonVO<PageVO<PaymentReqEntryVO>> queryAllByBillNo(String billNo);
+    JsonVO<PageVO<FinPaymentReqVO>> queryAllReq(FinPaymentReqQuery query);
     JsonVO<String> excelImport(MultipartFile file);
 
     /**

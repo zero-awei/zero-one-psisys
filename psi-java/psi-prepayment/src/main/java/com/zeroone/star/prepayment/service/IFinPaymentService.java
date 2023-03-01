@@ -30,7 +30,7 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * 修改付款单
      * author forever爱
      */
-    public boolean updateById(ModifyDTO modifyDTO, UserDTO userDTO);
+    boolean updateById(ModifyDTO modifyDTO, UserDTO userDTO);
     /**
      * 审核采购预付单功能
      * param auditDTO 审核DTO
@@ -45,7 +45,7 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * return
      * author KONG
      */
-    public int insert(PrepaymentDTO prepaymentDTO, UserDTO userDTO);
+    int insert(PrepaymentDTO prepaymentDTO, UserDTO userDTO);
 
     PageVO<DocListVO> listAll(DocListQuery condition);
 
@@ -62,24 +62,32 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * 根据id查询付款单
      * author yuhang
      */
-    public FinPayment selectById(String id);
+    FinPayment selectById(String id);
 
     /**
      * 关闭功能
      * author yuhang
      */
-    public JsonVO<String> closeById(String id,UserDTO userDTO);
+    JsonVO<String> closeById(String id,UserDTO userDTO);
 
     /**
      * 反关闭功能
      * author yuhang
      */
-    public JsonVO<String> uncloseById(String id,UserDTO userDTO);
+    JsonVO<String> uncloseById(String id,UserDTO userDTO);
 
     /**
      * 作废功能
      * author yuhang
      */
-    public JsonVO<String> voidById(String id,UserDTO userDTO);
+    JsonVO<String> voidById(String id,UserDTO userDTO);
+
+    /**
+     * 导入
+     * author neigui
+     */
+    void importExcelOfPayment(MultipartFile file) throws Exception;
 
 }
+
+
