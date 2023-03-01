@@ -162,7 +162,7 @@ void Router::createCurrencyRouter()
 	BIND_DEL_ROUTER(server, "/currency-remove", &CurrencyController::removeCurrency, nullptr);
 	BIND_POST_ROUTER(server, "/currency-add-Currencys", &CurrencyController::addCurrencys, nullptr);
 	BIND_GET_ROUTER(server, "/currency-export", &CurrencyController::exportExecl, nullptr);
-	BIND_GET_ROUTER(server, "/currency-export-only", &CurrencyController::exportExeclOnly, nullptr);
+	//BIND_GET_ROUTER(server, "/currency-export-only", &CurrencyController::exportExeclOnly, nullptr);
 }
 
 void Router::createMeasurementRouter()

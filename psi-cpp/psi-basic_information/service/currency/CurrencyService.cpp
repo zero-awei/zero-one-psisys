@@ -154,3 +154,44 @@ bool CurrencyService::removeData(string id)
 	CurrencyDAO dao;
 	return dao.deleteById(id) == 1;
 }
+
+bool CurrencyService::saveFile(const std::list<CurrencyDTO>& dto, const PayloadDTO& payload)
+{
+	bool saveSucceed = true;
+	for (auto d : dto) {
+		saveSucceed = saveSucceed && saveData(d, payload);
+	}
+	return saveSucceed;
+}
+
+bool CurrencyService::getData(const CurrencyQuery& query, vector<vector<string>>& data)
+{
+	//查询数据总条数
+	CurrencyDO obj;
+	obj.setName(query.getName());
+	obj.setCode(query.getCode());
+	CurrencyDAO dao;
+	uint64_t count = dao.count(obj);
+	if (count <= 0)
+	{
+		return false;
+	}
+
+	list<CurrencyDO> result = dao.selectWithPage(obj, -1, -1);
+	for (CurrencyDO sub : result)
+	{
+		vector<string> row;
+		row.emplace_back(sub.getCode());
+		row.emplace_back(sub.getName());
+		row.emplace_back(to_string(sub.getIsFunctional()));
+		row.emplace_back(to_string(sub.getIsEnabled()));
+		row.emplace_back(sub.getCreateBy());
+		row.emplace_back(sub.getCreateTime());
+		row.emplace_back(sub.getUpdateBy());
+		row.emplace_back(sub.getUpdateTime());
+		row.emplace_back(sub.getRemarks());
+		data.emplace_back(row);
+	}
+
+	return true;
+}
