@@ -20,6 +20,7 @@
 #include "CurrencyService.h"
 #include "../../dao/currency/CurrencyDAO.h"
 #include "../../../lib-common/include/SnowFlake.h"
+#include "../../../lib-common/include/SimpleDateTimeFormat.h"
 
 PageVO<CurrencyVO> CurrencyService::listAll(const CurrencyQuery& query)
 {
@@ -104,10 +105,7 @@ uint64_t CurrencyService::saveData(const CurrencyDTO& dto, const PayloadDTO& pay
 	reverse(s_id.begin(), s_id.end());
 
 	//获得当前系统时间
-	auto t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	std::stringstream ss;
-	ss << std::put_time(std::localtime(&t), "%Y-%m-%d %H:%M:%S");
-	string str_time = ss.str();
+	string str_time = SimpleDateTimeFormat::format();
 
 	//组装DO对象数据
 	data.setId(s_id);
@@ -130,10 +128,7 @@ bool CurrencyService::updateData(const CurrencyDTO& dto, const PayloadDTO& paylo
 	CurrencyDO data;
 	
 	//获得当前系统时间
-	auto t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	std::stringstream ss;
-	ss << std::put_time(std::localtime(&t), "%Y-%m-%d %H:%M:%S");
-	string str_time = ss.str();
+	string str_time = SimpleDateTimeFormat::format();
 
 	//组装传输数据
 	data.setId(dto.getId());

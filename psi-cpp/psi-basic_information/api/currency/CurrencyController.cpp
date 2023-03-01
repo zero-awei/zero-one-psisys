@@ -136,18 +136,18 @@ JsonVO<string> CurrencyController::execExportExecl(const CurrencyQuery& query, c
     // 创建excel表
     string filename = u8"../../test/test2.xlsx";
     vector<vector<string>> data;
-    data.emplace_back(vector<std::string>({ u8"code", u8"name", u8"is_functional", u8"is_enabled",\
-        u8"create_by", u8"create_time", u8"update_by",u8"update_time", u8"remark" }));
+    data.emplace_back(vector<std::string>({ "code", "name", "is_functional", "is_enabled",\
+        "create_by", "create_time", "update_by","update_time", "remark" }));
     // 查询数据
     if (!service.getData(query, data))
-        return JsonVO<string>(u8"导出失败", RS_FAIL);
+        return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
     string sheetname = u8"currency";
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器
     FastDfsClient client("1.15.240.108");
     filename = client.uploadFile(filename);
-    if (filename == "") return JsonVO<string>(u8"导出失败", RS_FAIL);
+    if (filename == "") return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
     JsonVO<std::string> result(filename, RS_SUCCESS);
     //响应结果
     return result;
