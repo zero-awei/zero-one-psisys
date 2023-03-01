@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
  
  @Author: awei
- @Date: 2022/10/24 23:31:55
+ @Date: 2022/10/25 11:17:48
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,15 +17,28 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _TESTEXCEL_H_
-#define _TESTEXCEL_H_
+#ifndef _RESULT_STATUS_
+#define _RESULT_STATUS_
+
+#include <string>
 
 /**
- * 测试Excel组件
+ * 响应结果状态
  */
-class TestExcel{
+class ResultStatus
+{
 public:
-	static void testExcel();
+	// 构造初始化
+	explicit ResultStatus(std::string message, int code = 10000);
+	// 获取状态提示信息
+	std::string getMessage();
+	// 获取状态码
+	int getCode();
+private:
+	// 状态码
+	int code;
+	// 状态提示信息
+	std::string message;
 };
 
-#endif // _TESTEXCEL_H_
+#endif // !_RESULT_STATUS_

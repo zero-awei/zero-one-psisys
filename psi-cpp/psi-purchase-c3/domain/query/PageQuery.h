@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/11/18 16:53:08
+ @Date: 2022/10/25 11:35:41
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,16 +17,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _TESTMONGO_H_
-#define _TESTMONGO_H_
+#ifndef _PAGE_QUERY_
+#define _PAGE_QUERY_
+
+#include "../GlobalInclude.h"
 
 /**
- * 测试MongoDB使用
+ * 分页查询对象父类，后续分页查询对象可以继承它
  */
-class TestMongo
+class PageQuery
 {
-public:
-	void static testUseMongo();
+	//查询页码
+	CC_SYNTHESIZE(uint64_t, pageIndex, PageIndex);
+	//查询条数
+	CC_SYNTHESIZE(uint64_t, pageSize, PageSize);
 };
-
-#endif // _TESTMONGO_H_
+#endif // !_PAGE_QUERY_

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
  
  @Author: awei
- @Date: 2022/10/24 23:29:24
+ @Date: 2022/10/25 11:16:58
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,17 +17,10 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _TESTFASTDFS_H_
-#define _TESTFASTDFS_H_
-#include <string>
-using namespace std;
+#ifndef _GLOBAL_INCLUDE_
+#define _GLOBAL_INCLUDE_
 
-/**
- * ≤‚ ‘FastDFS
- */
-class TestFastDfs {
-public:
-	static void testDfs(string fileName);
-};
+#include "api/ApiHelper.h"
+#include "../Macros.h"
 
-#endif // _TESTFASTDFS_H_
+#endif // !_GLOBAL_INCLUDE_

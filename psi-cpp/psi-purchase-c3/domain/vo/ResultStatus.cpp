@@ -1,9 +1,8 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
  
  @Author: awei
- @Date: 2022/10/24 23:18:38
+ @Date: 2022/10/25 11:19:43
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,19 +16,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _TEST_DB_
-#define _TEST_DB_
+#include "stdafx.h"
+#include "ResultStatus.h"
 
-/**
- * 定义一个测试数据操作测试类
- */
-class TestDb
+ResultStatus::ResultStatus(std::string message, int code /*= 10000*/)
 {
-public:
-	// 测试SqlSession
-	void testSS();
-	// 测试事务管理
-	void testTM();
-};
+	this->message = message;
+	this->code = code;
+}
 
-#endif // !_TEST_DB_
+std::string ResultStatus::getMessage()
+{
+	return message;
+}
+
+int ResultStatus::getCode()
+{
+	return code;
+}

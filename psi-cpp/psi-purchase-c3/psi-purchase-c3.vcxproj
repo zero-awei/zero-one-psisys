@@ -21,35 +21,34 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{634af60f-bb31-439b-98c1-805bc34265f6}</ProjectGuid>
-    <RootNamespace>httplib</RootNamespace>
+    <ProjectGuid>{770d34d7-cadd-44ea-a933-53f0481d54c2}</ProjectGuid>
+    <RootNamespace>psipurchasec3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>lib-http</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -83,26 +82,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Label="Vcpkg">
-    <VcpkgEnabled>false</VcpkgEnabled>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>path=%path%;../lib-dy/lib/debug</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -110,39 +109,46 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>path=%path%;../lib-dy/lib64/debug</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -150,81 +156,72 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\HttpLibMacros.h" />
-    <ClInclude Include="include\api\ApiHelper.h" />
-    <ClInclude Include="include\api\Aspect.h" />
-    <ClInclude Include="include\HttpServer.h" />
-    <ClInclude Include="include\JWTUtil.h" />
-    <ClInclude Include="include\nlohmann\adl_serializer.hpp" />
-    <ClInclude Include="include\nlohmann\byte_container_with_subtype.hpp" />
-    <ClInclude Include="include\nlohmann\detail\conversions\from_json.hpp" />
-    <ClInclude Include="include\nlohmann\detail\conversions\to_chars.hpp" />
-    <ClInclude Include="include\nlohmann\detail\conversions\to_json.hpp" />
-    <ClInclude Include="include\nlohmann\detail\exceptions.hpp" />
-    <ClInclude Include="include\nlohmann\detail\hash.hpp" />
-    <ClInclude Include="include\nlohmann\detail\input\binary_reader.hpp" />
-    <ClInclude Include="include\nlohmann\detail\input\input_adapters.hpp" />
-    <ClInclude Include="include\nlohmann\detail\input\json_sax.hpp" />
-    <ClInclude Include="include\nlohmann\detail\input\lexer.hpp" />
-    <ClInclude Include="include\nlohmann\detail\input\parser.hpp" />
-    <ClInclude Include="include\nlohmann\detail\input\position_t.hpp" />
-    <ClInclude Include="include\nlohmann\detail\iterators\internal_iterator.hpp" />
-    <ClInclude Include="include\nlohmann\detail\iterators\iteration_proxy.hpp" />
-    <ClInclude Include="include\nlohmann\detail\iterators\iterator_traits.hpp" />
-    <ClInclude Include="include\nlohmann\detail\iterators\iter_impl.hpp" />
-    <ClInclude Include="include\nlohmann\detail\iterators\json_reverse_iterator.hpp" />
-    <ClInclude Include="include\nlohmann\detail\iterators\primitive_iterator.hpp" />
-    <ClInclude Include="include\nlohmann\detail\json_pointer.hpp" />
-    <ClInclude Include="include\nlohmann\detail\json_ref.hpp" />
-    <ClInclude Include="include\nlohmann\detail\macro_scope.hpp" />
-    <ClInclude Include="include\nlohmann\detail\macro_unscope.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\call_std\begin.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\call_std\end.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\cpp_future.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\detected.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\identity_tag.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\is_sax.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\type_traits.hpp" />
-    <ClInclude Include="include\nlohmann\detail\meta\void_t.hpp" />
-    <ClInclude Include="include\nlohmann\detail\output\binary_writer.hpp" />
-    <ClInclude Include="include\nlohmann\detail\output\output_adapters.hpp" />
-    <ClInclude Include="include\nlohmann\detail\output\serializer.hpp" />
-    <ClInclude Include="include\nlohmann\detail\string_concat.hpp" />
-    <ClInclude Include="include\nlohmann\detail\string_escape.hpp" />
-    <ClInclude Include="include\nlohmann\detail\value_t.hpp" />
-    <ClInclude Include="include\nlohmann\json.hpp" />
-    <ClInclude Include="include\nlohmann\json_fwd.hpp" />
-    <ClInclude Include="include\nlohmann\ordered_map.hpp" />
-    <ClInclude Include="include\nlohmann\thirdparty\hedley\hedley.hpp" />
-    <ClInclude Include="include\nlohmann\thirdparty\hedley\hedley_undef.hpp" />
-    <ClInclude Include="pch.h" />
+    <ProjectReference Include="..\lib-common\lib-common.vcxproj">
+      <Project>{213f58ad-9943-4155-8a45-1b2dab0bb8f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib-http\lib-http.vcxproj">
+      <Project>{634af60f-bb31-439b-98c1-805bc34265f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib-mysql\lib-mysql.vcxproj">
+      <Project>{8293b741-b019-444f-80bc-70321a47868e}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\JWTUtil.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClInclude Include="api\PurOrder\PurOrderControoler.h" />
+    <ClInclude Include="api\Router.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
+    <ClInclude Include="dao\PurOrder\PurOrderDividedListMapper.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderDividedListDO.h" />
+    <ClInclude Include="domain\query\PurOrder\PurOrderDividedListQuery.h" />
+    <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\Message.h" />
+    <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\PurOrder\PurOrderDividedListVO.h" />
+    <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="Macros.h" />
+    <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\PurOrder\PurOrderService.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\PurOrder\PurOrderDAO.cpp" />
+    <ClCompile Include="domain\vo\ResultStatus.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\PurOrder\PurOrderService.cpp" />
+    <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\HttpServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
