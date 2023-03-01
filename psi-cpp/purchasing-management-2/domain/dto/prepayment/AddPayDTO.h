@@ -26,7 +26,7 @@ class AddPayDTO
 	// 供应商
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
 	// 附件备注
-	CC_SYNTHESIZE(string, at_remark, At_remark);
+	CC_SYNTHESIZE(string, remark, At_remark);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	// 明细
@@ -61,7 +61,7 @@ public:
 		BIND_FROM_TO_B(j, t, is_closed);
 		BIND_FROM_TO_B(j, t, is_voided);
 	}; // NOLINT
-	BIND_TO_JSON(AddPayDTO, id, bill_no, bill_date, subject, op, op_dept, supplier_id, at_remark, attachment, detail, bill_stage, is_effective, is_closed, is_voided);
+	BIND_TO_JSON(AddPayDTO, id, bill_no, bill_date, subject, op, op_dept, supplier_id, remark, attachment, detail, bill_stage, is_effective, is_closed, is_voided);
 };
 
 #endif // !_SAMPLE_DTO_
