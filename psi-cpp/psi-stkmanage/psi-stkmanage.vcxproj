@@ -291,7 +291,6 @@
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
     <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h" />
-    <ClInclude Include="domain\vo\Pyrk\ImportPyrkFileVO.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h" />

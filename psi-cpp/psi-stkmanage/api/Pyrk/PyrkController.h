@@ -11,7 +11,6 @@
 #include"../psi-stkmanage/domain/query/Pyrk/QueryPyrkBillListQuery.h"
 #include"../psi-stkmanage/domain/dto/Pyrk/PyrkBillDetailDTO.h"
 #include "../../domain/dto/Pyrk/ImportPyrkFileDTO.h"
-#include "../../domain/vo/Pyrk/ImportPyrkFileVO.h"
 #include "../../domain/dto/Pyrk/ApprovalDTO.h"
 
 class PyrkController {
@@ -54,7 +53,7 @@ private:
 	// 作废
 	JsonVO<int> execModifyPyrkBillStateToVoid(const StringID& id, const PayloadDTO& payload);
 	// 导入
-	JsonVO<ImportPyrkFileVO> execImportPyrkFile(const ImportPyrkFileDTO& dto, const PayloadDTO& payload);
+	JsonVO<int> execImportPyrkFile(const ImportPyrkFileDTO& dto, const PayloadDTO& payload);
 	// 导出
 	JsonVO<string> execExportPyrkFile(const StringIDs& ids);
 };

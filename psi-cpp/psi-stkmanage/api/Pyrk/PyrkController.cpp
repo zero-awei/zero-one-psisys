@@ -139,12 +139,12 @@ JsonVO<int> PyrkController::execModifyPyrkBillStateToVoid(const StringID& id, co
 	return result;
 }
 
-JsonVO<ImportPyrkFileVO> PyrkController::execImportPyrkFile(const ImportPyrkFileDTO& dto, const PayloadDTO& payload)
+JsonVO<int> PyrkController::execImportPyrkFile(const ImportPyrkFileDTO& dto, const PayloadDTO& payload)
 {
-	JsonVO<ImportPyrkFileVO> result;
-	ImportPyrkFileVO vo;
+	JsonVO<int> result;
+	int vo;
 	result.success(vo);
-	return JsonVO<ImportPyrkFileVO>(vo, RS_API_UN_IMPL);
+	return JsonVO<int>(vo, RS_API_UN_IMPL);
 }
 
 JsonVO<string> PyrkController::execExportPyrkFile(const StringIDs& ids)
