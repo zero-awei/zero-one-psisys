@@ -43,8 +43,8 @@ public class PaymentVO {
 //    @ApiModelProperty(value = "源单类型", example = "")
 //    private String srcBillType;
 
-    @ApiModelProperty(value = "源单类型",example = "")
-    private String srcBillTypeDictText;
+//    @ApiModelProperty(value = "源单类型",example = "")
+//    private String srcBillTypeDictText;
 
     /**
      * 源单id
@@ -67,11 +67,11 @@ public class PaymentVO {
     /**
      * 是否红字
      */
-//    @ApiModelProperty(value = "是否红字", example = "0")
-//    private Integer isRubric;
+    @ApiModelProperty(value = "是否红字", example = "0")
+    private Integer isRubric;
 
-    @ApiModelProperty(value = "是否红字", example = "否")
-    private String isRubricDictText;
+//    @ApiModelProperty(value = "是否红字", example = "否")
+//    private String isRubricDictText;
 
     /**
      * 付款类型
@@ -80,7 +80,7 @@ public class PaymentVO {
 //    private String paymentType;
 
     @ApiModelProperty(value = "付款类型", example = "采购预付(有申请)")
-    private String payableTypeDictText;
+    private String paymentTypeDictText;
 
     /**
      * 供应商
@@ -89,7 +89,7 @@ public class PaymentVO {
 //    private String supplierId;
 
     @ApiModelProperty(value = "供应商", example = "光缆厂家1")
-    private String supplierIdDicText;
+    private String supplierIdDictText;
 
     /**
      * 金额
@@ -124,11 +124,11 @@ public class PaymentVO {
     /**
      * 是否自动生成
      */
-//    @ApiModelProperty(value = "是否自动单据", example = "0")
-//    private Integer isAuto;
+    @ApiModelProperty(value = "是否自动单据", example = "0")
+    private Integer isAuto;
 
-    @ApiModelProperty(value = "是否自动单据", example = "否")
-    private String isAutoDictText;
+//    @ApiModelProperty(value = "是否自动单据", example = "否")
+//    private String isAutoDictText;
 
     /**
      * 处理状态
@@ -157,11 +157,11 @@ public class PaymentVO {
     /**
      * 核批结果类型
      */
-//    @ApiModelProperty(value = "核批结果类型", example = "1")
-//    private String approvalResultType;
+    @ApiModelProperty(value = "核批结果类型", example = "1")
+    private String approvalResultType;
 
-    @ApiModelProperty(value = "核批结果类型", example = "通过")
-    private String approvalResultTypeDictText;
+//    @ApiModelProperty(value = "核批结果类型", example = "通过")
+//    private String approvalResultTypeDictText;
 
 
     /**
@@ -173,11 +173,11 @@ public class PaymentVO {
     /**
      * 是否通过
      */
-//    @ApiModelProperty(value = "是否通过", example = "1")
-//    private Integer isEffective;
+    @ApiModelProperty(value = "是否通过", example = "1")
+    private Integer isEffective;
 
-    @ApiModelProperty(value = "是否通过", example = "是")
-    private String isEffectiveDictText;
+//    @ApiModelProperty(value = "是否通过", example = "是")
+//    private String isEffectiveDictText;
 
     /**
      * 生效时间
@@ -188,20 +188,20 @@ public class PaymentVO {
     /**
      * 已关闭
      */
-//    @ApiModelProperty(value = "已关闭", example = "0")
-//    private Integer isClosed;
+    @ApiModelProperty(value = "已关闭", example = "0")
+    private Integer isClosed;
 
-    @ApiModelProperty(value = "已关闭", example = "否")
-    private String isClosedDictText;
+//    @ApiModelProperty(value = "已关闭", example = "否")
+//    private String isClosedDictText;
 
     /**
      * 是否作废
      */
-//    @ApiModelProperty(value = "是否作废", example = "0")
-//    private Integer isVoided;
+    @ApiModelProperty(value = "是否作废", example = "0")
+    private Integer isVoided;
 
-    @ApiModelProperty(value = "是否作废", example = "否")
-    private String isVoidedDictText;
+//    @ApiModelProperty(value = "是否作废", example = "否")
+//    private String isVoidedDictText;
 
     /**
      * 创建部门

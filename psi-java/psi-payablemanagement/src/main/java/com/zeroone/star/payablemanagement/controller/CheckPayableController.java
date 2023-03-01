@@ -1,14 +1,19 @@
 package com.zeroone.star.payablemanagement.controller;
 
 
+import com.zeroone.star.payablemanagement.service.IFinPayableCheckEntryService;
 import cn.hutool.core.util.BooleanUtil;
 import com.zeroone.star.payablemanagement.entity.FinPayableCheck;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
+import com.zeroone.star.payablemanagement.service.IFinPayableService;
+import com.zeroone.star.payablemanagement.service.IFinPaymentService;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.payablemanagement.CheckPayableApis;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
+import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
+import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.query.payablemanagement.PaymentBySupplierQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -24,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -37,35 +43,44 @@ import java.util.List;
 public class CheckPayableController implements CheckPayableApis {
 
     @Autowired
+    IFinPayableService finPayable;
+    @Autowired
+    IFinPayableCheckEntryService finPayableCheckEntry;
+
+    @Autowired
+    IFinPaymentService finPaymentService;
+
+    @Autowired
     IFinPayableCheckService finPayableCheckService;
 
     @Override
     @GetMapping("entry")
-    @ApiOperation("查询单据详情")
-    public JsonVO<PageVO<CheckPayableEntryVO>> getById(CheckPayableEntryQuery condition) {
-        return null;
+    @ApiOperation("查询指定单据详情信息（明细列表）")
+    public JsonVO<List<CheckPayableEntryVO>> getByMainId( CheckPayableEntryQuery condition) {
+        return JsonVO.success(finPayableCheckEntry.getByMainId(condition));
     }
 
     @Override
     @GetMapping("list")
     @ApiOperation("查询单据列表")
-    public JsonVO<PageVO<CheckPayableVO>> listFinPayableCheck(CheckPayableQuery condition) {
-        return null;
-    }
-
-    @Override
-    @GetMapping("queryPayableBySupplier")
-    @ApiOperation("根据供应商ID查询应付单")
-    public JsonVO<PageVO<PayableVO>> listFinPayableBySupplier(PayableBySupplierQuery condition) {
-        return null;
+    public JsonVO<PageVO<CheckPayableVO>> queryAll(CheckPayableQuery condition) {
+        return  JsonVO.success(finPayableCheckService.getAll(condition));
     }
 
     @Override
     @GetMapping("queryPaymentBySupplier")
     @ApiOperation("根据供应商ID查询付款单")
-    public JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition) {
-        return null;
+    public JsonVO<PageVO<PaymentVO>> listPaymentBySupplier(PaymentBySupplierQuery condition) {
+        return JsonVO.success(finPaymentService.queryBySupplierId(condition));
     }
+
+    @Override
+    @GetMapping("queryPayableBySupplier")
+    @ApiOperation("根据供应商ID查询应付单")
+    public JsonVO<PageVO<PayableVO>> listPayableBySupplier(PayableBySupplierQuery condition) {
+        return JsonVO.success(finPayable.queryPayableBySupplierId(condition));
+    }
+
 
     @PostMapping("/export")
     @ApiOperation(value = "应付核销导出功能")
@@ -82,7 +97,7 @@ public class CheckPayableController implements CheckPayableApis {
     }
 
     @ApiOperation("新增应付核销单")
-    @PostMapping("/add/{action}")
+    @PostMapping("/save")
     @Override
     public JsonVO<String> addPayableCheck(@RequestBody CheckPayableDTO dto,
         @ApiParam(value = "路径参数 submit-提交 save-保存", example = "submit") @PathVariable String action) {

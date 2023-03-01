@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 /**
  * <p>
  * 应付单 前端控制器 采购应付模块
@@ -45,7 +47,7 @@ public class PurchasePayableController implements PurchasePayableApis {
     @GetMapping("query/get/select/purchase/detail")
     @Override
     public JsonVO<PayableVO> getById(@Validated PayableBillNoQuery query) {
-        return JsonVO.success(service.getById(query));
+        return JsonVO.success(service.getByBillNO(query));
     }
 
     @PostMapping("/export")

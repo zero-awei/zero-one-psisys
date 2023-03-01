@@ -13,54 +13,53 @@ import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import com.zeroone.star.project.vo.paymentmanagement.PaymentVO;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
+
 import java.util.List;
 
 /**
  * @author spk, naturezh, the end
  * @description 应付核销接口
- */
+*/
 
 public interface CheckPayableApis {
 
     /**
      * 在应付核销首页上查询
-     *
      * @param condition 查询条件
-     * @return null
      */
-    JsonVO<PageVO<CheckPayableVO>> listFinPayableCheck(CheckPayableQuery condition);
+    JsonVO<PageVO<CheckPayableVO>> queryAll(CheckPayableQuery condition);
 
     /**
      * 根据ID查询单据详情
-     *
      * @param condition 单据id
      * @return null
      */
-    JsonVO<PageVO<CheckPayableEntryVO>> getById(CheckPayableEntryQuery condition);
+    JsonVO<List<CheckPayableEntryVO>> getByMainId(CheckPayableEntryQuery condition);
 
     /**
      * 在新增界面上根据供应商ID查询应付单
-     *
      * @param condition 查询条件
-     * @return null
      */
-    JsonVO<PageVO<PayableVO>> listFinPayableBySupplier(PayableBySupplierQuery condition);
+    JsonVO<PageVO<PayableVO>> listPayableBySupplier(PayableBySupplierQuery condition);
 
     /**
      * 在新增页面上根据供应商ID查询付款单
-     *
      * @param condition 查询条件
-     * @return null
      */
-    JsonVO<PageVO<PaymentVO>> listFinPaymentBySupplier(PaymentBySupplierQuery condition);
+    JsonVO<PageVO<PaymentVO>> listPaymentBySupplier(PaymentBySupplierQuery condition);
 
     /**
-     * 文件导出 return 返回下载路径 author naturezh
-     */
+    * 文件导出
+    * return 返回下载路径
+    * author naturezh
+    */
     JsonVO<String> fileExport();
 
     /**
-     * 文件导入 return 返回状态 author naturezh
+     * 文件导入
+     * return 返回状态
+     * author naturezh
      */
     JsonVO<String> fileImport(MultipartFile file);
 

@@ -1,5 +1,10 @@
 package com.zeroone.star.payablemanagement.service.impl;
 
+import com.alibaba.nacos.common.utils.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.payablemanagement.entity.FinPayable;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -8,6 +13,11 @@ import com.zeroone.star.payablemanagement.entity.FinPayableCheckEntry;
 import com.zeroone.star.payablemanagement.mapper.FinPayableCheckMapper;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckEntryService;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
+import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
+import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
+import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableEntryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +29,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -94,6 +109,26 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
         // 执行写库操作
         updateWithEntry(dto);
     }
+
+    @Resource
+    FinPayableCheckMapper mapper;
+
+    /**
+     * 重构
+     * @author spk
+     * @param query 查询条件
+     * @return 分页后VO
+     */
+    @Override
+    public PageVO<CheckPayableVO> getAll(CheckPayableQuery query) {
+
+        List<CheckPayableVO> list = mapper.getAllCheckPayable(query);
+        if(list.isEmpty()) {
+            return null;
+        }
+        return new PageVO<>(query.getPageIndex(), query.getPageSize(), (long) list.size(), (long) 100, list);
+    }
+
 
     private void updateWithEntry(CheckPayableDTO dto) {
         FinPayableCheck finPayableCheck = new FinPayableCheck();

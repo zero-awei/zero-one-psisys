@@ -2,6 +2,10 @@ package com.zeroone.star.payablemanagement.service;
 
 import com.zeroone.star.payablemanagement.entity.FinPayableCheckEntry;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery;
+import com.zeroone.star.project.vo.payablemanagement.CheckPayableEntryVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-02-14
  */
 public interface IFinPayableCheckEntryService extends IService<FinPayableCheckEntry> {
-
+    public List<CheckPayableEntryVO> getByMainId(CheckPayableEntryQuery query);
 }
