@@ -193,7 +193,7 @@ uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& pa
 		data.setCreate_time(time.format());
 		data.setUpdate_time(time.format());
 		//获取身份
-		data.setSys_org_code(payload.getOrgCode());
+		//data.setSys_org_code(payload.getOrgCode());
 		data.setCreate_by(payload.getUsername());
 		data.setUpdate_by(payload.getUsername());
 		//获取数据表的信息

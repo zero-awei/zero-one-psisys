@@ -120,7 +120,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-	TestToken::generateToken();
+	//TestToken::generateToken();
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
 	NacosClient nacosClient(

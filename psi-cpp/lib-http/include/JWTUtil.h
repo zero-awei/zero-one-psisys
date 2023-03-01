@@ -62,7 +62,7 @@ private:
 	// 数据状态系信息
 	PayloadCode code;
 	//部门
-	std::string orgCode;
+	//std::string orgCode;
 public:
 	PayloadDTO();
 	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _department);
@@ -80,11 +80,11 @@ public:
 	void setCode(PayloadCode val) { code = val; }
 	std::string getId() const { return id; }
 	void setId(std::string val) { id = val; }
-	std::string getOrgCode() const { return orgCode; }
-	void setOrgCode(std::string val) { orgCode = val; }
+	//std::string getOrgCode() const { return orgCode; }
+	//void setOrgCode(std::string val) { orgCode = val; }
 
 	// 绑定JSON转换方法
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, orgCode);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities) //, orgCode);
 
 };
 

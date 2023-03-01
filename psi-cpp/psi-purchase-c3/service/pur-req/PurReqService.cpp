@@ -64,7 +64,7 @@ uint64_t PurReqService::saveData(const AddPurReqDTO& dto,  const PayloadDTO& pay
 	MODIFY(RequestTime);
 	MODIFY(BillStage);
 	//获取用户的信息，此处为添加订单人信息
-	data.setSysOrgCode(payload.getOrgCode());
+	//data.setSysOrgCode(payload.getOrgCode());
 	data.setCreateBy(payload.getUsername());
 	data.setCreateTime(time);
 	data.setUpdateBy(payload.getUsername());
@@ -265,7 +265,7 @@ uint64_t PurReqService::getFromExecl(string fileName, const PayloadDTO& payload)
 		//获取时间
 		string time = getTime();
 		//获取身份
-		data.setSysOrgCode(payload.getOrgCode());
+		//data.setSysOrgCode(payload.getOrgCode());
 		data.setCreateBy(payload.getUsername());
 		data.setCreateTime(time);
 		data.setUpdateBy(payload.getUsername());
