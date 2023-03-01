@@ -135,6 +135,7 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 	SET_X_FROM_Y(data, dto, Is_closed);
 	SET_X_FROM_Y(data, dto, Is_voided);
 	data.setCreate_by(payload.getUsername());
+	list<PrepaymentDetailDO> d;
 	for (AddPayDetailDTO x : dto.getDetail()) {
 		//组装明细
 		PrepaymentDetailDO dtdata;
@@ -152,8 +153,9 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 		SET_X_FROM_Y(dtdata, x, Paid_amt);
 		SET_X_FROM_Y(dtdata, x, Custom1);
 		SET_X_FROM_Y(dtdata, x, Custom2);
-		data.getDetail().push_back(dtdata);
+		d.push_back(dtdata);
 	}
+	data.setDetail(d);
 	//执行数据添加
 	PrepaymentDAO dao;
 	return dao.insertPrepay(data);

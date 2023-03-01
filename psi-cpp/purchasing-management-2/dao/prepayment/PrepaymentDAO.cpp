@@ -132,17 +132,18 @@ uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
 	stringstream sql;
 	sql << "INSERT INTO `fin_payment_req` " << TABLE_LIST << "VALUES ("<< ValueNum(19)<<",NOW())";
 	string sqlStr = sql.str();
-	result = sqlSession->executeInsert(sqlStr, TABLE_TYPE,
+	result = sqlSession->executeUpdate(sqlStr, TABLE_TYPE,
 		iObj.getId(),iObj.getBill_no(), iObj.getBill_begin_date(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), iObj.getSrc_no(),
 		iObj.getSubject(), iObj.getPayment_type(), iObj.getSupplier_id(), iObj.getOp_dept(), iObj.getOperator(),
 		iObj.getAmt(), iObj.getPaid_amt(), iObj.getAttachment(), iObj.getRemark(), iObj.getIs_auto(),
 		iObj.getBill_stage(), iObj.getSys_org_code(), iObj.getCreate_by()
 	);
 	sql.clear();
+	sql.str("");
 	sql << "INSERT INTO `fin_payment_req_entry` " << DETAIL_LIST << "VALUES (" << ValueNum(13) << ")";
 	sqlStr = sql.str();
 	for (PrepaymentDetailDO dtObj : iObj.getDetail()) {
-		sqlSession->executeInsert(sqlStr, DETAIL_TYPE,
+		sqlSession->executeUpdate(sqlStr, DETAIL_TYPE,
 			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), dtObj.getSrc_bill_id(),
 			dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), dtObj.getRemark(),
 			dtObj.getCustom1(), dtObj.getCustom2()

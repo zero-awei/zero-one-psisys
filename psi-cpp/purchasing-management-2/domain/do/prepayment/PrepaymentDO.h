@@ -75,7 +75,6 @@ class PrepaymentDO {
 	CC_SYNTHESIZE(int, version, Version);
 	//°æ±¾
 	CC_SYNTHESIZE(std::list<PrepaymentDetailDO>, detail, Detail);
-
 public:           
 	PrepaymentDO() {
 		is_rubric = -1;
