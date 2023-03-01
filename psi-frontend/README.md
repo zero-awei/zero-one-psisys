@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-07 13:55:16
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 20:27:15
+ * @LastEditTime: 2023-02-26 20:46:18
  * @FilePath: \psi-frontend\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -74,10 +74,19 @@ npm run lint
 - `start.sh`：`Linux`下面的启动脚本
 
 ## 后端使用说明
-1.git clone
+
+前置环境
+vscode  nodejs
+插件
+Vetur Volar  ESlint  Prettier  GitGraph
+
+运行步骤
+1.git clone   f1
 2.打开psi-frontend文件夹
 3.npm i  安装依赖
 4.npm run dev 运行项目
+
+admin 123456
 
 
 ## 业务页面目录

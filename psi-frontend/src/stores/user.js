@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-24 22:06:10
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-26 11:35:02
+ * @LastEditTime: 2023-02-28 17:06:51
  * @FilePath: \psi-frontend\src\stores\user.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -77,56 +77,56 @@ const baseDataRouter = {
       text: '客户',
       href: '/Client',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 802,
       text: '供应商',
       href: '/Provider',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 803,
       text: '仓库',
       href: '/Store',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 804,
       text: '物料分类',
       href: '/MaterialSort',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 805,
       text: '物料',
       href: '/Material',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 806,
       text: '计量单位',
       href: '/Measurement',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 807,
       text: '币种',
       href: '/Currency',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     },
     {
       id: 808,
       text: '银行账户',
       href: '/Account',
       icon: 'IconTickets',
-      pid: 4
+      pid: 800
     }
   ]
 }
@@ -142,49 +142,49 @@ const purManagement = {
       text: '采购申请',
       href: '/PurRequisition',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     },
     {
       id: 702,
       text: '采购询价',
       href: '/PurInquiry',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     },
     {
       id: 703,
       text: '供应报价',
       href: '/SupplyQuotation',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     },
     {
       id: 704,
       text: '采购比价',
       href: '/PurComparison',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     },
     {
       id: 705,
       text: '采购订单',
       href: '/PurOrder',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     },
     {
       id: 706,
       text: '采购预付申请',
       href: '/PurPrepaymentApply',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     },
     {
       id: 707,
       text: '采购申请',
       href: '/PurPaymentApply',
       icon: 'IconTickets',
-      pid: 5
+      pid: 700
     }
     // {
     //   id: 708,
@@ -242,49 +242,44 @@ const purManagement = {
 
 // 库存管理
 const kucunguanli = {
-  id: 2,
+  id: 994,
   text: '库存管理',
   icon: 'IconSetting',
   children: [
     {
-      id: 1,
+      id: 993,
       text: '入库管理',
-      icon: 'IconSetting',
+      pid: 994,
       children: [
         {
-          id: 2,
+          id: 4001,
           text: '采购入库',
           href: '/inventory/purchase',
-          icon: 'IconSetting',
-          pid: 2
+          pid: 993
         },
         {
-          id: 3,
-          text: '采购入库退货出库（红入）',
+          id: 4002,
+          text: '采购退货出库（红入）',
           href: '/inventory/salesreturn',
-          icon: 'IconSetting',
-          pid: 2
+          pid: 993
         },
         {
-          id: 4,
+          id: 4003,
           text: '盘盈入库',
           href: '/inventory/inventoryprofit',
-          icon: 'IconSetting',
-          pid: 2
+          pid: 993
         },
         {
-          id: 2,
+          id: 4004,
           text: '涨吨入库',
           href: '/inventory/rise',
-          icon: 'IconSetting',
-          pid: 2
+          pid: 993
         },
         {
-          id: 2,
+          id: 4005,
           text: '其他入库',
           href: '/inventory/other',
-          icon: 'IconSetting',
-          pid: 2
+          pid: 993
         }
       ]
     }
@@ -298,82 +293,71 @@ const yingfuyufukuan = {
   icon: 'IconTickets',
   children: [
     {
-      id: 3,
+      id: 997,
       text: '应付管理',
-      icon: 'IconTickets',
       pid: 998,
       children: [
         {
-          id: 3,
+          id: 3001,
           text: '采购应付',
           href: '/pay/payable/purchase',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 997
         },
         {
-          id: 3,
+          id: 3002,
           text: '其他应付',
           href: '/pay/payable/other',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 997
         },
         {
-          id: 3,
+          id: 3003,
           text: '应付核销',
           href: '/pay/payable/check',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 997
         }
       ]
     },
     {
-      id: 3,
+      id: 996,
       text: '预付管理',
-      icon: 'IconTickets',
       pid: 998,
       children: [
         {
-          id: 3,
+          id: 3004,
           text: '采购预付(有申请)',
           href: '/paymentApply',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 996
         },
         {
-          id: 3,
+          id: 3005,
           text: '采购预付(无申请)',
           href: '/payment',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 996
         }
       ]
     },
     {
-      id: 3,
+      id: 995,
       text: '付款管理',
-      icon: 'IconTickets',
       pid: 998,
       children: [
         {
-          id: 3,
+          id: 3006,
           text: '采购付款(有申请)',
           href: '/purchaseApply',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 995
         },
         {
-          id: 3,
+          id: 3007,
           text: '采购付款(无申请)应付',
           href: '/purchase',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 995
         },
         {
-          id: 3,
+          id: 3008,
           text: '采购退货退款(红付)',
           href: '/purchaseHongfu',
-          icon: 'IconTickets',
-          pid: 2
+          pid: 995
         }
       ]
     }
@@ -387,46 +371,46 @@ const componentRouter = {
   icon: 'IconTickets',
   children: [
     {
-      id: 2,
+      id: 2001,
       text: '表单组件',
       href: '/component/form',
       icon: 'IconTickets',
-      pid: 3
+      pid: 999
     },
     {
-      id: 3,
+      id: 2002,
       text: '表格组件',
       href: '/component/table',
       icon: 'IconTickets',
-      pid: 3
+      pid: 999
     },
     {
-      id: 4,
+      id: 2003,
       text: '弹出框组件',
       href: '/component/dialog',
       icon: 'IconTickets',
-      pid: 3
+      pid: 999
     },
     {
-      id: 5,
+      id: 2004,
       text: '抽屉组件',
       href: '/component/drawer',
       icon: 'IconTickets',
-      pid: 3
+      pid: 999
     },
     {
-      id: 6,
+      id: 2005,
       text: '自定义列组件',
       href: '/component/custom',
       icon: 'IconTickets',
-      pid: 3
+      pid: 999
     },
     {
-      id: 6,
+      id: 2006,
       text: 'center组件',
       href: '/component/center',
       icon: 'IconTickets',
-      pid: 3
+      pid: 999
     }
   ]
 }
@@ -551,7 +535,7 @@ export const userStore = defineStore('user', {
         let itemi = this.menus[i] // 一级菜单
         // console.log('-----------一级菜单', itemi)
         if (itemi.children) {
-          console.log('-----------一级菜单', itemi)
+          // console.log('-----------一级菜单', itemi)
           this.parentMenus.push(itemi)
           // 如果有二级菜单
           for (let j in itemi.children) {
@@ -559,14 +543,14 @@ export const userStore = defineStore('user', {
 
             let itemj = itemi.children[j]
             if (itemj.children) {
-              console.log('-----------二级菜单', itemj)
+              // console.log('-----------二级菜单', itemj)
               this.parentMenus.push(itemj)
               // 如果有三级菜单
               for (let k in itemj.children) {
                 // 遍历三级菜单
                 let itemk = itemj.children[k]
                 if (itemk.children) {
-                  console.log('-----------三级菜单', itemk)
+                  // console.log('-----------三级菜单', itemk)
                   this.parentMenus.push(itemk)
                 } else {
                   this.routeMenus.push(itemk)

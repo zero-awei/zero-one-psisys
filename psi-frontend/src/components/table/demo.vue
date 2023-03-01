@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="main">
     <psi-table :items="items" :tableData="tableData" :attributes="attributes" :pagination="pagination" />
 
@@ -121,4 +121,226 @@ const pagination = reactive({
 })
 </script>
 
-<style></style>
+<style></style> -->
+
+<template>
+  <div>
+    <el-table :data="tableData0" style="width: 100%; margin-bottom: 20px" row-key="id" border default-expand-all>
+      <el-table-column fixed type="selection" width="50" />
+      <el-table-column type="index" width="50" />
+      <el-table-column prop="name" label="菜单名称" sortable />
+      <el-table-column prop="href" label="菜单url" sortable />
+    </el-table>
+
+    <el-table :data="tableData1" style="width: 100%" row-key="id" border lazy :load="load"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+      <el-table-column fixed type="selection" width="50" />
+      <el-table-column type="index" width="50" />
+      <el-table-column type="index" width="50" />
+      <el-table-column prop="name" label="菜单名称" sortable />
+      <el-table-column prop="href" label="菜单url" sortable />
+
+    </el-table>
+    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"></psi-table>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref, reactive, toRefs } from 'vue'
+interface Menu {
+  id: number
+  href: string
+  name: string
+  icon: string
+  hasChildren?: boolean
+  children?: Menu[]
+}
+
+const load = (
+  row: Menu,
+  treeNode: unknown,
+  resolve: (date: Menu[]) => void
+) => {
+  setTimeout(() => {
+    resolve([
+      {
+        id: 2,
+        name: '角色管理',
+        href: '/sysmanagement/rolemanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 3,
+        name: '菜单管理',
+        href: '/sysmanagement/menumanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 4,
+        name: '用户管理',
+        href: '/sysmanagement/usermanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 5,
+        name: '部门管理',
+        href: '/sysmanagement/sysposition',
+        icon: 'IconSetting',
+      },
+      {
+        id: 6,
+        name: '组织结构管理',
+        href: '/sysmanagement/orimanage',
+        icon: 'IconSetting',
+      },
+      {
+        id: 7,
+        name: '分类字典',
+        icon: 'IconTickets',
+        href: '/sysmanagement/Category',
+      },
+      {
+        id: 8,
+        name: '通讯录',
+        icon: 'IconTickets',
+        href: '/sysmanagement/addressbook',
+      }
+    ])
+  }, 1000)
+}
+
+const tableData0: Menu[] = [
+  {
+    id: 1,
+    name: '系统管理',
+    icon: 'IconSetting',
+    href: '/',
+    children: [
+      {
+        id: 2,
+        name: '角色管理',
+        href: '/sysmanagement/rolemanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 3,
+        name: '菜单管理',
+        href: '/sysmanagement/menumanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 4,
+        name: '用户管理',
+        href: '/sysmanagement/usermanagement',
+        icon: 'IconSetting',
+      },
+      {
+        id: 5,
+        name: '部门管理',
+        href: '/sysmanagement/sysposition',
+        icon: 'IconSetting',
+      },
+      {
+        id: 6,
+        name: '组织结构管理',
+        href: '/sysmanagement/orimanage',
+        icon: 'IconSetting',
+      },
+      {
+        id: 7,
+        name: '分类字典',
+        icon: 'IconTickets',
+        href: '/sysmanagement/Category',
+      },
+      {
+        id: 8,
+        name: '通讯录',
+        icon: 'IconTickets',
+        href: '/sysmanagement/addressbook',
+      }
+    ]
+
+  },
+  {
+
+    id: 2,
+    name: '库存管理',
+    icon: 'IconSetting',
+    href: '/',
+  }
+]
+
+const tableData1: Menu[] = [
+  {
+    id: 1,
+    name: '系统管理',
+    icon: 'IconSetting',
+    href: '/',
+    hasChildren: true
+  },
+  {
+    id: 2,
+    name: '库存管理',
+    icon: 'IconSetting',
+    href: '/',
+  },
+
+]
+
+// 表格相关
+const tableState = reactive({
+  // 查询表单每一项的配置
+  tableItems: [
+    {
+      type: 'text',
+      label: '菜单名称',
+      prop: 'name',
+      width: '120'
+    },
+    {
+      type: 'daterange',
+      label: '菜单url',
+      prop: 'href',
+      width: '120'
+    },
+  ],
+
+  // 配置数据绑定的字段
+  tableData: [
+    {
+      id: 1,
+      name: '系统管理',
+      icon: 'IconSetting',
+      href: '/',
+      hasChildren: true
+    },
+    {
+      id: 2,
+      name: '库存管理',
+      icon: 'IconSetting',
+      href: '/',
+    },
+  ],
+  attributes: {
+    selection: true, //是否多选框
+    index: true, // 索引
+    border: true,
+    maxHeight: '400',
+    height: '400',
+    rowKey: 'id',//当 row 中包含 children 字段时，被视为树形数据。 渲染嵌套数据需要 prop 的 row-key(比如id)
+    defaultExpandAll: false,// 是否默认展开所有行，当 Table 包含展开行存在或者为树形表格时有效
+    lazy: true,
+    headOperation: ['add', 'select']
+  }
+})
+const { tableItems, tableData, attributes } = toRefs(tableState)
+
+const pagination = reactive({
+  currentPage: 2, // 当前页
+  pageSize: 100, // 每页数据量
+  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  total: 400, //数据总量
+  layout: 'total, sizes, prev, pager, next, jumper'
+})
+</script>
+
+<style scoped></style>

@@ -8,4 +8,4 @@
 import { } from './api/panyingruku.js'
 </script>
 
-<style></style>
+<style scoped></style>

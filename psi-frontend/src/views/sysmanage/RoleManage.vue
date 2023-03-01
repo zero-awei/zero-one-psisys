@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:40
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-25 20:02:15
+ * @LastEditTime: 2023-02-28 10:43:48
  * @FilePath: \psi-frontend\src\views\sysmanage\RoleManage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -21,16 +21,19 @@
           <el-button type="primary" @click="batchDeleteRole">批量删除</el-button>
         </template>
         <!-- // 表格列 el-table-column 插槽 -->
+        <!-- 菜单操作 -->
         <template v-slot:menuOperation="slot">
           <!-- {{ slot.data }} -->
           <!-- slot.data是子组件的scope.row -->
           <el-button link type="primary" @click="menuEdit(slot.data)">编辑</el-button>
         </template>
+        <!-- 权限操作 -->
         <template v-slot:permissionOperation="slot">
-          <el-button link type="primary" @click="permissonEditDialogVisible = true">编辑</el-button>
+          <el-button link type="primary" @click="permissonEdit = (slot.data)">编辑</el-button>
         </template>
+        <!-- 角色操作 -->
         <template v-slot:basicOperation="slot">
-          <el-button link type="primary" @click="roleEditDialogVisible = true">编辑</el-button>
+          <el-button link type="primary" @click="editRole(slot.data)">编辑</el-button>
 
           <el-button link type="primary" @click="handleDeleteRole(slot.data)">删除</el-button>
         </template>
@@ -38,25 +41,40 @@
     </div>
 
     <!-- 对话框 -->
-  <!-- 新增 对话框 -->
-  <psi-dialog v-model="addDialogVisible" :attrs="addDialogAttrs" @determine="handleAddRole">
+    <!-- 新增 对话框 -->
+    <psi-dialog v-model="addDialogVisible" :attrs="addDialogAttrs" @determine="handleAddRole">
       <psi-form :items="addRoleItems" :formData="addRoleFormData" :buttonShow="false"></psi-form>
     </psi-dialog>
     <!-- 菜单编辑对话框 -->
     <psi-dialog v-model="menuEditDialogVisible" :attrs="menuEditDialogAttrs">
 
-    <!-- <psi-table>
+      <psi-table :items="editMenuTableItems" :tableData="editMenuTableData" :attributes="editMenuAttr">
+        <template v-slot:menuOperation="slot">
+          <!-- {{ slot.data }} -->
+          <!-- slot.data是子组件的scope.row -->
+          <el-button link type="primary" @click="">编辑</el-button>
+          <el-button link type="primary" @click="">删除</el-button>
 
-        </psi-table> -->
+        </template>
+      </psi-table>
     </psi-dialog>
     <!-- 权限编辑对话框 -->
     <psi-dialog v-model="permissonEditDialogVisible" :attrs="permissonEditDialogAttrs">
-      <!-- <psi-table>
+      <psi-table :items="editPermisssionTableItems" :tableData="editPermisssionTableData"
+        :attributes="editPermisssionAttr">
+        <template v-slot:permissonOperation="slot">
+          <!-- {{ slot.data }} -->
+          <!-- slot.data是子组件的scope.row -->
+          <el-button link type="primary" @click="">编辑</el-button>
+          <el-button link type="primary" @click="">删除</el-button>
 
-        </psi-table> -->
+        </template>
+      </psi-table>
     </psi-dialog>
     <!-- 角色编辑对话框 -->
     <psi-dialog v-model="roleEditDialogVisible" :attrs="roleEditDialogAttrs" @determine="handleEditRole">
+      <psi-form :items="editRoleItems" :formData="editRoleFormData" :buttonShow="false"></psi-form>
+
     </psi-dialog>
   </div>
 </template>
@@ -240,48 +258,57 @@ const addRoleFormState = reactive({
   addRoleItems: [
     {
       type: 'input',
-      label: '角色名称',
-      prop: 'roleName'
+      label: '创建人',
+      prop: 'createBy'
     },
-    // {
-    //   type: 'input',
-    //   label: '创建人',
-    //   prop: 'createBy'
-    // },
-    // {
-    //   type: 'datePicker',
-    //   label: '创建时间',
-    //   prop: 'createTime',
-    // },
+    {
+      type: 'datePicker',
+      label: '创建时间',
+      prop: 'createTime'
+    },
     {
       type: 'input',
       label: '描述',
       prop: 'description',
     },
-    // {
-    //   type: 'input',
-    //   label: '角色id',
-    //   prop: 'id',
-    // },
-    // {
-    //   type: 'input',
-    //   label: '角色编码',
-    //   prop: 'roleCode',
-    // },
-    //   type: 'input',
-    //   label: '更新人',
-    //   prop: 'roleCode',
-    // },
-    //   type: 'datePicker',
-    //   label: '更新时间',
-    //   prop: 'dateTime',
-    // },
+    {
+      type: 'input',
+      label: '角色id',
+      prop: 'id',
+    },
+    {
+      type: 'input',
+      label: '角色编码',
+      prop: 'roleCode',
+    },
+    {
+      type: 'input',
+      label: '角色名称',
+      prop: 'roleName',
+    },
+
+    {
+      type: 'input',
+      label: '更新人',
+      prop: 'updateBy',
+    },
+    {
+      type: 'datePicker',
+      label: '更新时间',
+      prop: 'updateTime'
+    },
   ],
 
   // 配置数据绑定的字段
   addRoleFormData: {
-    roleName: '',
+    createBy: '',
+    createTime: '',
     description: '',
+    id: '',
+    roleCode: '',
+    roleName: '',
+    updateBy: '',
+    updateTime: '',
   },
 })
 const { addRoleItems, addRoleFormData, } = toRefs(addRoleFormState)
@@ -320,6 +347,95 @@ const menuEditDialogState = reactive({
 })
 const { menuEditDialogAttrs } = toRefs(menuEditDialogState)
 
+const editMenuTableState = reactive({
+  // 查询表单每一项的配置
+  editMenuTableItems: [
+    {
+      type: 'text',
+      label: '菜单id',
+      prop: 'id',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '菜单名',
+      prop: 'roleName',
+      width: '120'
+    },
+    {
+      type: 'daterange',
+      label: '描述',
+      prop: 'roleCode',
+      width: '120'
+    },
+    {
+      type: 'slot',
+      label: '菜单操作',
+      width: '120',
+      slotName: 'menuOperation',
+      fixed: 'right'
+    },
+
+  ],
+
+  // 配置数据绑定的字段
+  editMenuTableData: [],
+  editMenuAttr: {
+    selection: true, //是否多选框
+    index: true, // 索引
+    border: true,
+    maxHeight: '400',
+    height: '400',
+    headOperation: ['add', 'select']
+  }
+})
+const { editMenuTableItems, editMenuTableData, editMenuAttr } = toRefs(editMenuTableState)
+
+// 表格相关
+const editPermissionTableState = reactive({
+  // 查询表单每一项的配置
+  editPermissionTableItems: [
+    {
+      type: 'text',
+      label: '权限id',
+      prop: 'id',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '权限名',
+      prop: 'roleName',
+      width: '120'
+    },
+    {
+      type: 'daterange',
+      label: '描述',
+      prop: 'roleCode',
+      width: '120'
+    },
+    {
+      type: 'slot',
+      label: '权限操作',
+      width: '120',
+      slotName: 'permissonOperation',
+      fixed: 'right'
+    },
+
+  ],
+
+  // 配置数据绑定的字段
+  editPermissionTableData: [],
+  editPermissionAttr: {
+    selection: true, //是否多选框
+    index: true, // 索引
+    border: true,
+    maxHeight: '400',
+    height: '400',
+    headOperation: ['add', 'select']
+  }
+})
+const { editPermissionTableItems, editPermissionTableData, editPermissionAttr } = toRefs(editPermissionTableState)
+
 
 
 // 权限编辑permissonEditDialog配置
@@ -342,7 +458,65 @@ const roleEditDialogState = reactive({
   }
 })
 const { roleEditDialogAttrs } = toRefs(roleEditDialogState)
+const editRoleFormState = reactive({
+  // 查询表单每一项的配置
+  editRoleItems: [
+    {
+      type: 'input',
+      label: '创建人',
+      prop: 'createBy'
+    },
+    {
+      type: 'datePicker',
+      label: '创建时间',
+      prop: 'createTime'
+    },
+    {
+      type: 'input',
+      label: '描述',
+      prop: 'description',
+    },
+    {
+      type: 'input',
+      label: '角色id',
+      prop: 'id',
+    },
+    {
+      type: 'input',
+      label: '角色编码',
+      prop: 'roleCode',
+    },
+    {
+      type: 'input',
+      label: '角色名称',
+      prop: 'roleName',
+    },
 
+    {
+      type: 'input',
+      label: '更新人',
+      prop: 'updateBy',
+    },
+    {
+      type: 'datePicker',
+      label: '更新时间',
+      prop: 'updateTime'
+    },
+  ],
+
+  // 配置数据绑定的字段
+  editRoleFormData: {
+    createBy: '',
+    createTime: '',
+    description: '',
+    id: '',
+    roleCode: '',
+    roleName: '',
+    updateBy: '',
+    updateTime: '',
+  }
+})
+const { editRoleItems, editRoleFormData } = toRefs(editRoleFormState)
 // 进入页面时查询表格所有单据
 onMounted(() => {
   doGetTableList()
@@ -409,6 +583,10 @@ function handleDeleteRole() {
 
 }
 
+
+function editRole(data) {
+  roleEditDialogVisible.value = true
+}
 // 6.4 编辑角色
 function handleEditRole() {
 
@@ -435,4 +613,4 @@ function batchDeleteRole() {
 }
 </script>
 
-<style></style>
+<style scoped></style>

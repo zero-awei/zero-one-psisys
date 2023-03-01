@@ -110,4 +110,4 @@ const searchReset = () => {
 }
 </script>
 
-<style></style>
+<style scoped></style>

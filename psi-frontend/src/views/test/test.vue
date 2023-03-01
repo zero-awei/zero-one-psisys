@@ -37,4 +37,4 @@ function handle() {
 
 </script>
 
-<style></style>
+<style scoped></style>

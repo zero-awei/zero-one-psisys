@@ -5,20 +5,11 @@
     </el-card>
     <br />
     <el-card>
-      <psi-form
-        :items="items"
-        :toggleItems="toggleItems"
-        :formData="formData"
-      />
+      <psi-form :items="items" :toggleItems="toggleItems" :formData="formData" />
     </el-card>
     <br />
     <el-card>
-      <psi-form
-        :items="items2"
-        :toggleItems="toggleItems2"
-        :formData="formData2"
-        @search="search"
-      />
+      <psi-form :items="items2" :toggleItems="toggleItems2" :formData="formData2" @search="search" />
     </el-card>
   </div>
 </template>
@@ -273,4 +264,4 @@ function search(res) {
 }
 </script>
 
-<style></style>
+<style scoped></style>

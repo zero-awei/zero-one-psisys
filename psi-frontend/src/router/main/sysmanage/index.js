@@ -2,7 +2,7 @@
  * @Author: Kyle5 nnkyle@163.com
  * @Date: 2023-02-20 18:51:04
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-26 11:42:13
+ * @LastEditTime: 2023-03-01 15:07:13
  * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -251,7 +251,7 @@ const routes = [
     path: '/inventory/salesreturn',
     name: 'salesreturn',
     component: () =>
-      import('@/views/kucunguanli/rukuguanli/CaiGouRuKuTuiHuoChuKu.vue')
+      import('@/views/kucunguanli/rukuguanli/CaiGouTuiHuoChuKu.vue')
   },
   // 盘盈入库
   {

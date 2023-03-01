@@ -8,7 +8,7 @@
         <el-input v-model="formData.username"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="formData.password" type="password"></el-input>
+        <el-input v-model="formData.password" type="password" @keyup.native.enter="submitForm()"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm()">登录</el-button>
@@ -24,7 +24,7 @@
     :imgSize="{ width: '400px', height: '200px' }"
     ref="verify"
     @success="handleSuccess">
-    </Verify> -->
+      </Verify> -->
 </template>
 
 <script setup>

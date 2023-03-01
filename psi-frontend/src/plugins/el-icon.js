@@ -10,6 +10,8 @@ import { ArrowDown } from '@element-plus/icons-vue'
 import { FullScreen } from '@element-plus/icons-vue'
 import { Close } from '@element-plus/icons-vue'
 import { Search } from '@element-plus/icons-vue'
+import { Edit } from '@element-plus/icons-vue'
+import { House } from '@element-plus/icons-vue'
 
 export default (app) => {
   app.component('IconMenu', Menu)
@@ -22,4 +24,6 @@ export default (app) => {
   app.component('FullScreen', FullScreen)
   app.component('Close', Close)
   app.component('Search', Search)
+  app.component('Edit', Edit)
+  app.component('House', House)
 }

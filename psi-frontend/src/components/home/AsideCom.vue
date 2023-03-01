@@ -1,15 +1,15 @@
 <script>
 import { userStore } from '../stores/user'
 const store = userStore()
-    // 菜单数据
-    const menus = store.getMenus
+// 菜单数据
+const menus = store.getMenus
 </script>
 
 <template>
     <el-menu default-active="2" class="el-menu-vertical-demo">
 
         <!-- <el-menu-item>首页</el-menu-item> -->
-         <el-sub-menu index="1">
+        <el-sub-menu index="1">
             <template #title>
                 <el-icon>
                     <Discount />
@@ -51,7 +51,7 @@ const store = userStore()
                 <span>应付与付款</span>
             </template>
             <el-menu-item></el-menu-item>
-            </el-sub-menu>
+        </el-sub-menu>
 
         <el-sub-menu index="5">
             <template #title>
@@ -63,7 +63,7 @@ const store = userStore()
             <el-menu-item></el-menu-item>
         </el-sub-menu>
 
-            <el-sub-menu index="6">
+        <el-sub-menu index="6">
             <template #title>
                 <el-icon>
                     <MessageBox />

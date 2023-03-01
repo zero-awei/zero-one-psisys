@@ -14,8 +14,7 @@ import router from './router'
 import 'element-plus/theme-chalk/src/message.scss'
 // import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './assets/main.css'
-import * as echarts from "echarts"
-
+import * as echarts from 'echarts'
 
 const app = createApp(App)
 app.use(createPinia())
@@ -41,7 +40,11 @@ import PsiForm from './components/form/PsiForm.vue'
 import PsiTable from './components/table/PsiTable.vue'
 import PsiDialog from './components/dialog/PsiDialog.vue'
 import PsiDrawer from './components/drawer/com/PsiDrawer.vue'
+import SubMenu from './components/home/SubMenu.vue'
+import Menu from './components/home/Menu.vue'
 app.component('PsiForm', PsiForm)
 app.component('PsiTable', PsiTable)
 app.component('PsiDialog', PsiDialog)
 app.component('PsiDrawer', PsiDrawer)
+app.component('SubMenu', SubMenu)
+app.component('Menu', Menu)
