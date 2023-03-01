@@ -38,33 +38,16 @@ JUDGE_INT_SQL(obj,sql,params,Is_effective, is_effective)\
 JUDGE_INT_SQL(obj,sql,params,Is_closed, is_closed)\
 JUDGE_INT_SQL(obj,sql,params,Is_voided, is_voided)\
 
-#define TABLE_LIST "(`id`,`bill_no`,`bill_date`, `src_bill_type`,`src_bill_id`,`src_no`,\
-`subject`,`payment_type`,`supplier_id`,`op_dept`,`operator`,\
-`amt`,`paid_amt`,`attachment`,`remark`,`is_auto`,\
-`bill_stage`,`sys_org_code`,`create_by`,`create_time`) "
-#define TABLE_TYPE "%s%s%s%s%s%s\
-%s%d%s%s%s\
-%i%i%s%s%i\
-%s%s%s"
-#define DETAIL_LIST "(`id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,\
-`src_bill_id`,`src_entry_id`,`src_no`,`amt`,`paid_amt`,\
-`remark`,`custom1`,`custom2`)"
-#define DETAIL_TYPE "%s%s%s%s%s\
-%s%s%s%s%s\
-%s%s%s"
 
 
 
-#define MODIFT_LIST "`bill_date`=?, `src_bill_type`=?,`src_bill_id`=?,`src_no`=?,\
-`subject`=?,`supplier_id`=?,`op_dept`=?,`operator`=?,`amt`=?,\
-`paid_amt`=?,`attachment`=?,`remark`=?,`update_by`=?"
-#define MODIFT_TYPE "%s%s%s%s\
-%s%s%s%s%i\
-%i%s%s%s%s"
+
+
+#define MODIFT_TYPE 
 #define MODIFT_DETAIL_LIST "(`bill_no`,`entry_no`,`src_bill_type`,\
 `src_bill_id`,`src_entry_id`,`src_no`,`amt`,`paid_amt`,\
 `remark`,`custom1`,`custom2`)"
-#define DETAIL_TYPE "%s%s%s\
+#define MODIFT_DETAIL_TYPE "%s%s%s\
 %s%s%s%s%s\
 %s%s%s%s"
 
@@ -130,23 +113,32 @@ uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
 {
 	uint64_t result;
 	stringstream sql;
-	sql << "INSERT INTO `fin_payment_req` " << TABLE_LIST << "VALUES ("<< ValueNum(19)<<",NOW())";
+	sql << "INSERT INTO `fin_payment_req` (" 
+		<< "`id`,`bill_no`,`bill_date`, `src_bill_type`,`src_bill_id`,"
+		<< "`src_no`,`subject`,`payment_type`,`supplier_id`,`op_dept`,"
+		<< "`operator`,`amt`,`paid_amt`,`attachment`,`remark`," 
+		<< "`is_auto`,`bill_stage`,`sys_org_code`,`create_by`,`create_time`"
+		<< ") VALUES ("<< ValueNum(19)<<",NOW())";
 	string sqlStr = sql.str();
-	result = sqlSession->executeUpdate(sqlStr, TABLE_TYPE,
-		iObj.getId(),iObj.getBill_no(), iObj.getBill_begin_date(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), iObj.getSrc_no(),
-		iObj.getSubject(), iObj.getPayment_type(), iObj.getSupplier_id(), iObj.getOp_dept(), iObj.getOperator(),
-		iObj.getAmt(), iObj.getPaid_amt(), iObj.getAttachment(), iObj.getRemark(), iObj.getIs_auto(),
-		iObj.getBill_stage(), iObj.getSys_org_code(), iObj.getCreate_by()
+	result = sqlSession->executeUpdate(sqlStr, "%s%s%s%s%s%s%s%s%s%s%s%d%d%s%s%i%s%s%s",
+		iObj.getId(),iObj.getBill_no(), iObj.getBill_begin_date(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(), 
+		iObj.getSrc_no(),iObj.getSubject(), iObj.getPayment_type(), iObj.getSupplier_id(), iObj.getOp_dept(), 
+		iObj.getOperator(),iObj.getAmt(), iObj.getPaid_amt(), iObj.getAttachment(), iObj.getRemark(), 
+		iObj.getIs_auto(),iObj.getBill_stage(), iObj.getSys_org_code(), iObj.getCreate_by()
 	);
 	sql.clear();
 	sql.str("");
-	sql << "INSERT INTO `fin_payment_req_entry` " << DETAIL_LIST << "VALUES (" << ValueNum(13) << ")";
+	sql << "INSERT INTO `fin_payment_req_entry` "
+		<< "(`id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,"
+		<< "`src_bill_id`,`src_entry_id`,`src_no`,`amt`,`paid_amt`,"
+		<< "`remark`,`custom1`,`custom2`)"
+		<< " VALUES (" << ValueNum(13) << ")";
 	sqlStr = sql.str();
 	for (PrepaymentDetailDO dtObj : iObj.getDetail()) {
-		sqlSession->executeUpdate(sqlStr, DETAIL_TYPE,
-			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), dtObj.getSrc_bill_id(),
-			dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), dtObj.getRemark(),
-			dtObj.getCustom1(), dtObj.getCustom2()
+		sqlSession->executeUpdate(sqlStr, "%s%s%s%i%s%s%s%s%d%d%s%s%s",
+			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), 
+			dtObj.getSrc_bill_id(),dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), 
+			dtObj.getRemark(),dtObj.getCustom1(), dtObj.getCustom2()
 		);
 	}
 	return result;
@@ -161,26 +153,39 @@ uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
 int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 {
 	stringstream sql;
-	sql << "UPDATE `fin_payment_req` SET " << MODIFT_LIST << ",`update_time`=NOW() WHERE `id`=?" ;
+	sql << "UPDATE `fin_payment_req` SET " 
+		<< "`bill_date`=?, `src_bill_type`=?,`src_bill_id`=?,`src_no`=?,`subject`=?,"
+		<< "`supplier_id`=?,`op_dept`=?,`operator`=?,`amt`=?,`paid_amt`=?,"
+		<< "`attachment`=?,`remark`=?,`update_by`=?,"
+        << "`update_time`=NOW() WHERE `id`=?";
 	string sqlStr = sql.str();
 	int result;
-	result = sqlSession->executeUpdate(sqlStr, MODIFT_TYPE, uObj.getBill_begin_date(), uObj.getSrc_bill_type(), uObj.getSrc_bill_id(), uObj.getSrc_no(),
+	result = sqlSession->executeUpdate(sqlStr, "%s%s%s%s%s%s%s%s%d%d%s%s%s%s",
+		uObj.getBill_begin_date(), uObj.getSrc_bill_type(), uObj.getSrc_bill_id(), uObj.getSrc_no(),
 		uObj.getSubject(), uObj.getSupplier_id(), uObj.getOp_dept(), uObj.getOperator(), uObj.getAmt(),
 		uObj.getPaid_amt(), uObj.getAttachment(), uObj.getRemark(), uObj.getUpdate_by(), uObj.getId()
 	); 
+	//清除明细
 	sql.clear();
+	sql.str("");
 	sql << "DELETE FROM `fin_payment_req_entry` WHERE `mid`= ? ";
 	sqlStr = sql.str();
 	sqlSession->executeUpdate(sqlStr, "%s", uObj.getId());
+	//插入明细
 	sql.clear();
-	sql << "INSERT INTO `fin_payment_req_entry` " << DETAIL_LIST << "VALUES (" << ValueNum(13) << ")";
+	sql.str("");
+	sql << "INSERT INTO `fin_payment_req_entry` "
+		<< "(`id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,"
+		<< "`src_bill_id`,`src_entry_id`,`src_no`,`amt`,`paid_amt`,"
+		<< "`remark`,`custom1`,`custom2`)"
+		<< " VALUES (" << ValueNum(13) << ")";
 	sqlStr = sql.str();
 	bool flag = false;
 	for (PrepaymentDetailDO dtObj : uObj.getDetail()) {
-		uint64_t result_detail = sqlSession->executeInsert(sqlStr, DETAIL_TYPE,
-			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(), dtObj.getSrc_bill_id(),
-			dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(), dtObj.getRemark(),
-			dtObj.getCustom1(), dtObj.getCustom2()
+		uint64_t result_detail = sqlSession->executeUpdate(sqlStr, "%s%s%s%i%s%s%s%s%d%d%s%s%s",
+			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(),
+			dtObj.getSrc_bill_id(), dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(),
+			dtObj.getRemark(), dtObj.getCustom1(), dtObj.getCustom2()
 		);
 		if (result_detail != 0 && !flag) {
 			flag = true;

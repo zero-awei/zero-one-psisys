@@ -136,6 +136,9 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 	SET_X_FROM_Y(data, dto, Is_voided);
 	data.setCreate_by(payload.getUsername());
 	list<PrepaymentDetailDO> d;
+
+	double amt_count = 0;
+	double paid_amt_count = 0;
 	for (AddPayDetailDTO x : dto.getDetail()) {
 		//组装明细
 		PrepaymentDetailDO dtdata;
@@ -149,6 +152,8 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 		SET_X_FROM_Y(dtdata, x, Src_no);
 		SET_X_FROM_Y(dtdata, x, Amt);
 		SET_X_FROM_Y(dtdata, x, Paid_amt);
+		amt_count += x.getAmt();
+		paid_amt_count += x.getPaid_amt();
 		SET_X_FROM_Y(dtdata, x, Remark);
 		SET_X_FROM_Y(dtdata, x, Paid_amt);
 		SET_X_FROM_Y(dtdata, x, Custom1);
@@ -156,6 +161,10 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 		d.push_back(dtdata);
 	}
 	data.setDetail(d);
+	//统计金额
+	data.setAmt(amt_count);
+	data.setPaid_amt(paid_amt_count);
+
 	//执行数据添加
 	PrepaymentDAO dao;
 	return dao.insertPrepay(data);
@@ -190,6 +199,10 @@ bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 	SET_X_FROM_Y(data, dto, Is_voided);
 	data.setUpdate_by(payload.getUsername());
 	SnowFlake sf(1, 4);
+	list<PrepaymentDetailDO> d;
+
+	double amt_count = 0;
+	double paid_amt_count = 0;
 	for (AddPayDetailDTO x : dto.getDetail()) {
 		//组装明细
 		PrepaymentDetailDO dtdata;
@@ -203,12 +216,19 @@ bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 		SET_X_FROM_Y(dtdata, x, Src_no);
 		SET_X_FROM_Y(dtdata, x, Amt);
 		SET_X_FROM_Y(dtdata, x, Paid_amt);
+		amt_count += x.getAmt();
+		paid_amt_count += x.getPaid_amt();
 		SET_X_FROM_Y(dtdata, x, Remark);
 		SET_X_FROM_Y(dtdata, x, Paid_amt);
 		SET_X_FROM_Y(dtdata, x, Custom1);
 		SET_X_FROM_Y(dtdata, x, Custom2);
-		data.getDetail().push_back(dtdata);
+		d.push_back(dtdata);
 	}
+	data.setDetail(d);
+	//统计金额
+	data.setAmt(amt_count);
+	data.setPaid_amt(paid_amt_count);
+
 	//执行数据修改
 	PrepaymentDAO dao;
 	return dao.updatePrepay(data);
