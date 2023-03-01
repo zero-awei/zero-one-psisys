@@ -22,6 +22,6 @@ public class SwaggerConfig {
     Docket sampleApi() {
         return SwaggerCore.defaultDocketBuilder("应付管理模块",
                 "com.zeroone.star.payablemanagement.controller",
-                "应付管理模块");
+                "payable");
     }
 }
