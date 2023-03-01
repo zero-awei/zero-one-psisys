@@ -21,13 +21,15 @@
 #define _PUR_COM_DO_H_
 #include "../DoInclude.h"
 
+//该DO修改过，修改人：J4nnA
+
 /**
  * 采购比价类
  */
 class PurComDO
 {
 	// ID
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	// 单据日期

@@ -65,6 +65,16 @@ private:
 	* 5. 采购预付申请单-修改单据状态(关闭/反关闭/作废)
 	*/
 	void createPrePayRouter();
+	/**
+	* 负责人：J4nnA, Andrew
+	* 1. 采购订单-修改单据状态(关闭/反关闭/作废)
+	* 2. 采购订单-删除采购订单(通过id)
+	* 3. 采购申请单列表
+	* 4. 采购申请单分录列表
+	* 5. 比价单列表
+	* 6. 比价单分录列表
+	*/
+	void createPurComRouter();
 };
 
 #endif // !_ROUTER_

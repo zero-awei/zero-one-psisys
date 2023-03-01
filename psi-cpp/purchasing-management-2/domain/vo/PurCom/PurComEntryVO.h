@@ -17,14 +17,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_COM_ENTRY_DO_H_
-#define _PUR_COM_ENTRY_DO_H_
-#include "../DoInclude.h"
+#ifndef _PUR_COM_ENTRY_VO_H_
+#define _PUR_COM_ENTRY_VO_H_
+#include "../../GlobalInclude.h"
 
 /**
  * 采购比价明细类
  */
-class PurComEntryDO
+
+class PurComEntryVO
 {
 	// ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -68,7 +69,6 @@ class PurComEntryDO
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 
-
 	// 自定义1
 	CC_SYNTHESIZE(string, custom1, Custom1);
 	// 自定义2
@@ -77,8 +77,14 @@ class PurComEntryDO
 	CC_SYNTHESIZE(int, version, Version);
 
 public:
-	PurComEntryDO() {
-
-	}
+	// 绑定JSON转换方法
+	BIND_TO_JSON(PurComEntryVO, id, mid, bill_no, \
+									entry_no, src_bill_type, src_bill_id, \
+									src_entry_id, src_no, supplier_id, \
+									material_id, unit_id, qty, \
+									tax_rate, price, discount_rate, \
+									amt, remark, ranking,  custom1, \
+									custom2, version);
 };
-#endif // !_PUR_COM_ENTRY_DO_H_ 
+
+#endif // !_PUR_COM_ENTRY_VO_H_ 

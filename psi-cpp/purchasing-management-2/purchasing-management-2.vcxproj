@@ -192,6 +192,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
     <ClInclude Include="dao\prepayment\PrepaymentDetailMapper.h" />
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
+    <ClInclude Include="dao\PurCom\PurComDAO.h" />
+    <ClInclude Include="dao\PurCom\PurComMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
     <ClInclude Include="dao\PurQuot\PurQuotDAO.h" />
@@ -233,6 +235,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h" />
     <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h" />
+    <ClInclude Include="domain\query\PurCom\PurComEntryQuery.h" />
     <ClInclude Include="domain\query\PurCom\PurComQuery.h" />
     <ClInclude Include="domain\query\PurOrder\PurOrderQuery.h" />
     <ClInclude Include="domain\query\PurReq\PurReqQuery.h" />
@@ -249,6 +252,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
+    <ClInclude Include="domain\vo\PurCom\PurComEntryVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComVO.h" />
     <ClInclude Include="domain\vo\PurOrder\PurOrderVO.h" />
     <ClInclude Include="domain\vo\PurReq\PurReqVO.h" />
@@ -276,6 +280,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="dao\payment\PaymentDAO.cpp" />
     <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
+    <ClCompile Include="dao\PurCom\PurComDAO.cpp" />
     <ClCompile Include="dao\PurOrder\PurOrderDAO.cpp" />
     <ClCompile Include="dao\PurQuot\PurQuotDAO.cpp" />
     <ClCompile Include="domain\dto\payment\AddPaymentDTO.cpp" />

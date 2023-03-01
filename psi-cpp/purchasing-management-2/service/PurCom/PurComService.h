@@ -21,8 +21,10 @@
 #define _PUR_COM_SERVICE_
 #include <list>
 #include "../../domain/vo/PurCom/PurComVO.h"
+#include "../../domain/vo/PurCom/PurComEntryVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurCom/PurComQuery.h"
+#include "../../domain/query/PurCom/PurComEntryQuery.h"
 
 /**
  * 采购请求服务实现，基础采购订单服务实现
@@ -34,6 +36,9 @@ public:
 	PageVO<PurComVO> listAll(const PurComQuery& query);
 	// 查询单个数据
 	PurComVO getData(uint64_t id);
+	// 查询指定比价单详情列表
+	PageVO<PurComEntryVO>listEntry(const PurComEntryQuery& query);
+	//PageVO<PurComEntryVO> listEntrys(const PurComEntryQuery& query);
 };
 
 #endif // ! _PUR_COM_SERVICE_

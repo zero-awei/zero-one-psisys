@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
@@ -17,6 +16,9 @@
 
 #define ZUICHU
 #include "payment/PaymentController.h"
+
+#define J4NNA
+#include "PurCom/PurComController.h"
 
 Router::Router(http_server* sever)
 {
@@ -67,6 +69,7 @@ void Router::initRouter()
 	createStatisRouter();
 	createPaymentRouter();
 	createPrePayRouter();
+	createPurComRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -92,14 +95,6 @@ void Router::createUserDepartRouter()
 * Router绑定接口函数实现
 */
 void Router::createStatisRouter() {
-	// 采购订单删除
-	// 负责人：Andrew
-	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
-
-	// 采购订单-修改状态
-	// 负责人：Andrew
-	BIND_PUT_ROUTER(server, "/purOrder/modifyStatus", &PurOrderController::statusPurOrder, nullptr);
-
 	// 采购统计Router
 	// 查询
 	BIND_GET_ROUTER(server, "/query/ExecuteStatus", &StatisController::queryExeStatus, nullptr);
@@ -144,4 +139,23 @@ void Router::createPrePayRouter()
 	// 采购预付申请-修改单据状态(关闭/作废/反关闭)
 	// 负责人：Andrew
 	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
+}
+
+//比价单列表查询及明细列表查询
+//负责人：J4nnA
+void Router::createPurComRouter() {
+	// 分页数据
+	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
+	// 单个数据
+	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
+	// 明细列表
+	BIND_GET_ROUTER(server, "/purCom/listEntrys", &PurComController::listPurComEntrys, nullptr);
+
+	// 采购订单删除
+	// 负责人：Andrew
+	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
+
+	// 采购订单-修改状态
+	// 负责人：Andrew
+	BIND_PUT_ROUTER(server, "/purOrder/modifyStatus", &PurOrderController::statusPurOrder, nullptr);
 }

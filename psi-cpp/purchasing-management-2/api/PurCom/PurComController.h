@@ -22,7 +22,9 @@
 #define _PUR_COM_CONTROLLER_
 
 #include "../../domain/query/PurCom/PurComQuery.h"
+#include "../../domain/query/PurCom/PurComEntryQuery.h"
 #include "../../domain/vo/PurCom/PurComVO.h"
+#include "../../domain/vo/PurCom/PurComEntryVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
@@ -35,13 +37,15 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(listPurCom, execListPurCom, PurComQuery);
 	// 单个数据
 	CREATE_API_FUN_BODY(getPurCom, execGetPurCom, PurComQuery);
-
+	// 明细列表
+	CREATE_API_FUN_QUERY_PAYLOAD(listPurComEntrys, execListPurComEntrys, PurComEntryQuery);
 private:
 	// 请求分页数据
 	JsonVO<PageVO<PurComVO>> execListPurCom(const PurComQuery& query, const PayloadDTO& payload);
 	// 查询单个数据
 	JsonVO<PurComVO> execGetPurCom(const PurComQuery& query);
-
+	// 查询指定比价单的明细列表
+	JsonVO<PageVO<PurComEntryVO>> execListPurComEntrys(const PurComEntryQuery& query, const PayloadDTO& payload);
 };
 
 #endif // ! _PUR_COM_CONTROLLER_
