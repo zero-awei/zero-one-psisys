@@ -48,6 +48,11 @@ sql<<" WHERE 1=1"; \
 sql << " AND `id`=?"; \
 SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
 
+#define ONLY_FOR_ID(obj, sql, params) \
+sql<<" WHERE 1=1"; \
+sql << " AND `id`=?"; \
+SQLPARAMS_PUSH(params, "s", std::string, obj.getId()); \
+
 uint64_t DepotDAO::count(const DepotDO& iObj)
 {
 	stringstream sql;
@@ -68,8 +73,8 @@ uint64_t DepotDAO::count(const DepotDO& iObj)
 std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	SqlParams params; 
-	sql << "SELECT * FROM bas_warehouse";
+	SqlParams params;
+	sql << "SELECT `id`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`, `update_by`, `update_time` FROM bas_warehouse";
 	SAMPLE_TERAM_PARSE(obj, sql, params);
 	if(pageIndex > 0 && pageSize > 0)
 		sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
@@ -80,7 +85,7 @@ std::list<DepotDO> DepotDAO::selectWithPage(const DepotDO& obj, uint64_t pageInd
 
 std::list<DepotDO> DepotDAO::selectKid(const DepotDO& obj)
 {
-	string sql = "SELECT * FROM bas_warehouse WHERE `pid`=?";
+	string sql = "SELECT `id`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`, `update_by`, `update_time` FROM bas_warehouse WHERE `pid`=?";
 	DepotMapper mapper;
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sql, mapper, "%s", obj.getPid());
 }
@@ -96,18 +101,37 @@ std::list<DepotDO> DepotDAO::selectDetail(DepotDO obj)
 	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
 }
 
+std::list<DepotDO> DepotDAO::getDataById(const DepotDO& obj) {
+	stringstream sql;
+	SqlParams params; 
+	sql << "SELECT `id`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`, `update_by`, `update_time` FROM bas_warehouse";
+	ONLY_FOR_ID(obj, sql, params);
+	DepotMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<DepotDO, DepotMapper>(sqlStr, mapper, params);
+}
+
 int DepotDAO::insertDepot(const DepotDO& iObj)
 {
-	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks());
+	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%i%s%s%s",\
+		iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(),\
+		iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks(),\
+		iObj.getCreationPeo(), iObj.getCreationTime());
 }
 
 int DepotDAO::insertKidDepot(const DepotDO& iObj)
 {
-	string sqlInsert = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?)";
-	string sqlUpdate = "UPDATE `bas_warehouse` SET `has_child`=1 WHERE `id`=?";
-	return sqlSession->executeUpdate(sqlInsert, "%s%s%s%s%s%i%i%s", iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks())
-		&& sqlSession->executeUpdate(sqlUpdate, "%s", iObj.getPid());
+	string sql = "INSERT INTO `bas_warehouse` (`id`, `pid`, `has_child`, `name`, `code`, `aux_name`, `phone`, `is_enabled`, `remark`, `create_by`, `create_time`) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%i%s%s%s", \
+		iObj.getId(), iObj.getPid(), iObj.getName(), iObj.getCode(), \
+		iObj.getAuxName(), iObj.getPhone(), iObj.getStart(), iObj.getRemarks(), \
+		iObj.getCreationPeo(), iObj.getCreationTime());
+}
+
+int DepotDAO::updateParent(const DepotDO& iObj) {
+	string sql = "UPDATE `bas_warehouse` SET `has_child`=1 WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", iObj.getPid());
 }
 
 int DepotDAO::deleteDepot(const DepotDO& iObj)
@@ -118,7 +142,6 @@ int DepotDAO::deleteDepot(const DepotDO& iObj)
 
 int DepotDAO::update(const DepotDO& uObj)
 {
-	// 缺了修改人和修改时间
-	string sql = "UPDATE `bas_warehouse` SET `name`=?, `code`=?, `aux_name`=?, `phone`=?, `is_enabled`=?, `remark`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%i%i%s%s", uObj.getName(), uObj.getCode(), uObj.getAuxName(), uObj.getPhone(), uObj.getStart(), uObj.getRemarks(), uObj.getId());
+	string sql = "UPDATE `bas_warehouse` SET `name`=?, `code`=?, `aux_name`=?, `phone`=?, `is_enabled`=?, `remark`=? , `update_by`=?, `update_time`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%i%s%s%s%s", uObj.getName(), uObj.getCode(), uObj.getAuxName(), uObj.getPhone(), uObj.getStart(), uObj.getRemarks(), uObj.getModiPeo(), uObj.getModiTime(), uObj.getId());
 }

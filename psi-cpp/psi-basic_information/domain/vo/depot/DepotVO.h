@@ -36,9 +36,9 @@ class DepotVO
 	// 助记名
 	CC_SYNTHESIZE(string, auxName, AuxName);
 	// 电话
-	CC_SYNTHESIZE(int, phone, Phone);
+	CC_SYNTHESIZE(string, phone, Phone);
 	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	CC_SYNTHESIZE(int, start, Start);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 	// 创建时间
@@ -67,9 +67,9 @@ class DepotDetailVO
 	// 助记名
 	CC_SYNTHESIZE(string, auxName, AuxName);
 	// 电话
-	CC_SYNTHESIZE(int, phone, Phone);
+	CC_SYNTHESIZE(string, phone, Phone);
 	// 启用
-	CC_SYNTHESIZE(string, start, Start);
+	CC_SYNTHESIZE(int, start, Start);
 	// 备注
 	CC_SYNTHESIZE(string, remarks, Remarks);
 public:

@@ -36,33 +36,33 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryKidDepot, execQueryKidDepot, OnlyValueQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailDepot, execQueryDetail, OnlyValueQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryActionInfolDepot, execQueryActionInfo, OnlyValueQuery);
-	CREATE_API_FUN_BODY(addDepot, execAddDepot, DepotDTO);
-	CREATE_API_FUN_BODY(addKidDepot, execAddKidDepot, DepotDTO);
-	CREATE_API_FUN_BODY(modifyDepot, execModifyDepot, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(addKidDepot, execAddKidDepot, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(addDepot, execAddDepot, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(modifyDepot, execModifyDepot, DepotDTO);
 	CREATE_API_FUN_BODY(removeDepot, execRemoveDepot, OnlyValueQuery);
 	// 这里直接用FileDTO报错
-	CREATE_API_FUN_BODY_FILE(addDepots, execAddDepots, DepotDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addDepots, execAddDepots, DepotDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, DepotQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueQuery);
 private:
-	//默认查询数据
+	// 默认查询数据
 	JsonVO<PageVO<DepotVO>> execQueryDepot(const DepotQuery& query, const PayloadDTO& payload);
-	//查询子级列表
+	// 查询子级列表
 	JsonVO<list<DepotVO>> execQueryKidDepot(const OnlyValueQuery& query, const PayloadDTO& payload);
 	// 查询详情
 	JsonVO<DepotDetailVO> execQueryDetail(const OnlyValueQuery& query, const PayloadDTO& payload);
 	JsonVO<DepotActionInfoVO> execQueryActionInfo(const OnlyValueQuery& query, const PayloadDTO& payload);
-	// 新增仓库
-	JsonVO<bool> execAddDepot(const DepotDTO& dto);
+	// 新增仓库	
+	JsonVO<bool> execAddDepot(const DepotDTO& dto, const PayloadDTO& payload);
 	// 新增子级仓库
-	JsonVO<bool> execAddKidDepot(const DepotDTO& dto);
-	//修改仓库
-	JsonVO<bool> execModifyDepot(const DepotDTO& dto);
-	//删除仓库 
+	JsonVO<bool> execAddKidDepot(const DepotDTO& dto, const PayloadDTO& payload);
+	// 修改仓库
+	JsonVO<bool> execModifyDepot(const DepotDTO& dto, const PayloadDTO& payload);
+	// 删除仓库 
 	JsonVO<bool> execRemoveDepot(const OnlyValueQuery& query);
-	//文件导入
-	JsonVO<bool> execAddDepots(const DepotDTO& dto);
-	//文件导出
+	// 文件导入
+	JsonVO<bool> execAddDepots(const DepotDTO& dto, const PayloadDTO& payload);
+	// 文件导出
 	JsonVO<string> execExportExecl(const DepotQuery& query, const PayloadDTO& payload);
 	// 通过唯一值批量导出
 	JsonVO<string> execExportExeclOnly(const OnlyValueQuery& query, const PayloadDTO& payload);
