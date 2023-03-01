@@ -49,9 +49,11 @@ public:
 	// 工作表命名
 	void makeName(const std::string& title);
 	// 合并单元格
-	void mergeCell(std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
-	// 单元格赋值
-	void cellVaule(const std::string& sheetName, std::string& cell, std::string value);
+	void mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
+	// 创建新Sheet
+	void createNewSheet(const std::string& sheetName);
+	// 单元格对齐
+	void cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt);  //1 居中，2居左，三居右
 
 
 	//************************************

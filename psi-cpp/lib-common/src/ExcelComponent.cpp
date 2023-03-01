@@ -160,10 +160,10 @@ void ExcelComponent::writeVectorToFile(const std::string& fileName, const std::s
 
 void ExcelComponent::makeName(const std::string& title)
 {
-	wb.title("title");
+	wb.title(title);
 }
 
-void ExcelComponent::mergeCell(std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend)
+void ExcelComponent::mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend)
 {
 	// 如果存在sheet，那么对指定单元格进行合并
 	if (wb.contains(sheetName))
@@ -173,12 +173,47 @@ void ExcelComponent::mergeCell(std::string& sheetName, const xlnt::cell_referenc
 	}
 }
 
-void ExcelComponent::cellVaule(const std::string& sheetName, std::string& cell, std::string value)
+// 创建新Sheet
+void ExcelComponent::createNewSheet(const std::string& sheetName)
 {
-	// 如果存在sheet，那么对指定单元格进行赋值
+	// 如果指定页签不存在，那么创建新页签
+	if (!wb.contains(sheetName))
+	{
+		createSheet(sheetName);
+	}
+}
+
+void ExcelComponent::cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt)
+{
+	xlnt::horizontal_alignment center = xlnt::horizontal_alignment::center;
+	xlnt::horizontal_alignment left = xlnt::horizontal_alignment::left;
+	xlnt::horizontal_alignment right = xlnt::horizontal_alignment::right;
+	xlnt::vertical_alignment vcenter = xlnt::vertical_alignment::center;
 	if (wb.contains(sheetName))
 	{
 		sheet = wb.sheet_by_title(sheetName);
-		sheet.cell(cell).value(value);
+		sheet = wb.active_sheet();
+		//xlnt::alignment alignment = sheet.cell(cell).alignment();
+		switch (opt)
+		{
+		case 1:
+			// 水平居中
+			sheet.cell(cell_ref).alignment().horizontal(center);
+			// 垂直居中
+			//sheet.cell(cell).alignment().vertical(vcenter);
+			break;
+		case 2:
+			// 水平居左
+			//sheet.cell(cell).alignment(alignment.horizontal(left).vertical(vcenter));
+			sheet.cell(cell_ref).alignment().horizontal(left);
+			break;
+		case 3:
+			// 水平居右
+			sheet.cell(cell_ref).alignment().horizontal(right);
+			break;
+		default:
+			break;
+		}
 	}
+
 }

@@ -102,6 +102,7 @@ JsonVO<string> PurInquiryController::execModifyPurQuotModBillStatus(const PurInq
 
 
 // 导出（按单据编号批量查询后，放入xml，再下载文件）
+// 导出（按单据编号批量查询后，放入xml，再下载文件）
 JsonVO<std::string> PurInquiryController::execQueryPurInquiryExport(const PurInquiryExportQuery& query, const PayloadDTO& payload)
 {
 	// 构建返回对象数据
@@ -131,14 +132,16 @@ JsonVO<std::string> PurInquiryController::execQueryPurInquiryExport(const PurInq
 		CharsetConvertHepler::ansiToUtf8("计量单位"), CharsetConvertHepler::ansiToUtf8("数量"),\
 		CharsetConvertHepler::ansiToUtf8("税率%"), CharsetConvertHepler::ansiToUtf8("参考含税单价"),\
 		CharsetConvertHepler::ansiToUtf8("参考含税金额"), CharsetConvertHepler::ansiToUtf8("自定义1"),\
-		CharsetConvertHepler::ansiToUtf8("自定义2"), CharsetConvertHepler::ansiToUtf8("备注")};
+		CharsetConvertHepler::ansiToUtf8("自定义2"), CharsetConvertHepler::ansiToUtf8("备注") };
 	// 查询要导出的单据编号列表
 	list<std::string> exres = query.getBill_no_list();
+	// 设置sheet名称
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("采购询价单");
 	// 读入excel表，并返回fastDfs地址
-	std::string url = execexport(head, CharsetConvertHepler::ansiToUtf8("采购询价单"), exres);
+	std::string url = execexport(head, sheetName, exres);
 	if (url == "")
 		result.fail("");
-	else 
+	else
 		result.success(url);
 	//响应结果
 	return JsonVO<std::string>(result);
