@@ -129,5 +129,6 @@ public class SysDepart implements Serializable {
     /**
      * 更新日期
      */
-    private String updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
 }

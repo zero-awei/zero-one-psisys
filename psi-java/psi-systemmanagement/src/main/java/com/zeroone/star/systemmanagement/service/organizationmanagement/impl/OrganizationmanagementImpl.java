@@ -74,9 +74,6 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
         } catch (Exception e) {
             return e.getMessage();
         }
-        Date date = new Date();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
-        sysDepart.setUpdateTime(dateFormat.format(date));
         int result = mapper.insert(sysDepart);
         if (result == 0) {
             return "新增失败";
@@ -94,9 +91,6 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
         } catch (Exception e) {
             return e.getMessage();
         }
-        Date date = new Date();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
-        sysDepart.setUpdateTime(dateFormat.format(date));
         int result = mapper.updateById(sysDepart);
         if (result == 0) {
             return "更新失败";
