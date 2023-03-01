@@ -41,9 +41,9 @@ public:
 	//µ¼³öÉêÇëµ¥
 	CREATE_API_FUN_BODY_PAYLOAD(queryPayExport, execPrepayExport, PrePayExportQuery);
 	//Ìí¼Ó¶©µ¥
-	CREATE_API_FUN_BODY_PAYLOAD(addPay, execAddPay, AddPayDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addPay, execAddPay, AddPayDTO);
 	//ÐÞ¸Ä¶©µ¥
-	CREATE_API_FUN_BODY_PAYLOAD(modifyPay, execModifyPay, AddPayDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyPay, execModifyPay, AddPayDTO);
 	//É¾³ý¶©µ¥
 	CREATE_API_FUN_BODY(removeDePay, execRemoveDePay, DePayDTO);
 	CREATE_API_FUN_BODY(removePayById, execRemovePayById, IntID);
