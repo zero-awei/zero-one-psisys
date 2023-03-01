@@ -97,7 +97,7 @@ public class CheckPayableController implements CheckPayableApis {
     }
 
     @ApiOperation("新增应付核销单")
-    @PostMapping("/save")
+    @PostMapping("/add/{action}")
     @Override
     public JsonVO<String> addPayableCheck(@RequestBody CheckPayableDTO dto,
         @ApiParam(value = "路径参数 submit-提交 save-保存", example = "submit") @PathVariable String action) {
