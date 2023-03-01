@@ -177,10 +177,11 @@ bool CurrencyService::getData(const CurrencyQuery& query, vector<vector<string>>
 		return false;
 	}
 
-	list<CurrencyDO> result = dao.selectWithPage(obj, -1, -1);
+	list<CurrencyDO> result = dao.selectWithPage(obj, 1, count);
 	for (CurrencyDO sub : result)
 	{
 		vector<string> row;
+		//cout << sub.getCode() << endl;
 		row.emplace_back(sub.getCode());
 		row.emplace_back(sub.getName());
 		row.emplace_back(to_string(sub.getIsFunctional()));

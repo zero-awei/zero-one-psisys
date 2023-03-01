@@ -48,8 +48,7 @@ std::list<CurrencyDO> CurrencyDAO::selectWithPage(const CurrencyDO& obj, uint64_
 	stringstream sql;
 	sql << "SELECT * FROM bas_currency";
 	CURRENCY_TERAM_PARSE(obj, sql);
-	if (pageIndex > 0 && pageSize > 0)
-		sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
+	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	CurrencyMapper mapper;
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<CurrencyDO, CurrencyMapper>(sqlStr, mapper, params);
