@@ -393,7 +393,7 @@ uint64_t PurCompareService::savePurComInto(const PurComIntoDTO& dto,const Payloa
 		data.setCreateTime(time.format());
 		data.setUpdateTime(time.format());
 		//获取身份
-		data.setSysOrgCode(payload.getDepartment());
+		data.setSysOrgCode(payload.getOrgCode());
 		data.setCreateBy(payload.getUsername());
 		data.setUpdateBy(payload.getUsername());
 		// todo：进行权限验证

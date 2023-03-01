@@ -41,6 +41,7 @@ void TestToken::generateToken()
 	p.getAuthorities().push_back("SUPER_ADMIN");
 	p.setUsername(u8"roumiou");
 	p.setId("1");
+	p.setOrgCode("123");
 	p.setExp(3600 * 30);
 	std::cout << JWTUtil::generateTokenByRsa(p, RSA_PRIV_KEY->c_str()) << std::endl;
 }

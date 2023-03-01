@@ -51,7 +51,7 @@ PayloadDTO::PayloadDTO()
 }
 
 PayloadDTO::PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _department) :
-	sub(_sub), exp(_exp), username(_username), authorities(_authorities), department(_department)
+	sub(_sub), exp(_exp), username(_username), authorities(_authorities), orgCode(_department)
 {
 	this->setCode(PayloadCode::SUCCESS);
 }
@@ -111,7 +111,7 @@ std::string JWTUtil::generateTokenByRsa(PayloadDTO payloadDto, std::string rsaPr
 	obj.add_claim("authorities", payloadDto.getAuthorities());
 	obj.add_claim("user_name", payloadDto.getUsername());
 	obj.add_claim("id", payloadDto.getId());
-	obj.add_claim("department", payloadDto.getDepartment());
+	obj.add_claim("orgCode", payloadDto.getOrgCode());
 	obj.add_claim("exp", std::chrono::system_clock::now() + std::chrono::seconds{ payloadDto.getExp() });
 	return obj.signature();
 }
@@ -137,12 +137,7 @@ PayloadDTO JWTUtil::verifyTokenByRsa(std::string token, std::string rsaPubKey)
 		{
 			p.setId(_payload["id"].get<std::string>());
 		}
-		if (_payload.contains("department")) {
-			p.setDepartment(payload.get_claim_value<std::string>("department"));
-		}
-		else {
-			p.setDepartment("0000");
-		}
+		p.setOrgCode(payload.get_claim_value<std::string>("orgCode"));
 	}
 	JU_VERIFY_CATCH(p);
 	return p;
