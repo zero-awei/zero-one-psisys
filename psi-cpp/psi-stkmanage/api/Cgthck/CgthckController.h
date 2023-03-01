@@ -12,6 +12,7 @@
 #include "../psi-stkmanage/domain/dto/Cgthck/ExportCgthckFileDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ModifyCgthckBillDTO.h"
 #include "../psi-stkmanage/domain/dto/Cgthck/ImportCgthckFileDTO.h"
+#include "../psi-stkmanage/domain/vo/Cgthck/ExportCgthckVO.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgthckBillVO.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgrkBillListsVO.h"
 /**
@@ -72,7 +73,7 @@ private:
 	// 测试文件导入
 	JsonVO<uint64_t> execImportCgthckFile(const ImportCgthckFileDTO& dto);
 	// 测试文件导出
-	JsonVO<uint64_t> execExportCgthckFile(const ExportCgthckFileDTO& dto, const PayloadDTO& payload);
+	JsonVO<ExportCgthckVO> execExportCgthckFile(const ExportCgthckFileDTO& dto, const PayloadDTO& payload);
 };
 
 

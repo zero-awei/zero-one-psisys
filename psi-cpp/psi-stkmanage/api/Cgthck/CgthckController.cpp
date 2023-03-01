@@ -183,13 +183,27 @@ JsonVO<uint64_t> CgthckController::execDeleteCgthckBillDetail(const DeleteCgthck
 
 JsonVO<uint64_t> CgthckController::execImportCgthckFile(const ImportCgthckFileDTO& dto)
 {
+    // 定义返回对象
+    JsonVO<uint64_t> result;
+
     CgthckService service;
-    uint64_t res = service.
+    uint64_t res = service.importData(dto);
+
+    if (res > 0)
+    {
+        result.success(res);
+    }
+    else
+    {
+        result.fail(res);
+    }
+    return result;
 }
 
-JsonVO<uint64_t> CgthckController::execExportCgthckFile(const ExportCgthckFileDTO& dto, const PayloadDTO& payload)
+JsonVO<ExportCgthckVO> CgthckController::execExportCgthckFile(const ExportCgthckFileDTO& dto, const PayloadDTO& payload)
 {
-    JsonVO<uint64_t> result;
-    result.success(1);
-    return result;
+    CgthckService service;
+    ExportCgthckVO result = service.exportData(dto);
+    std::cout << result.getFileName() << std::endl;
+    return JsonVO<ExportCgthckVO>(result, RS_SUCCESS);
 }

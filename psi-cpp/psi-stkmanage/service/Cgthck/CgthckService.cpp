@@ -590,7 +590,7 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
         // 已开票数量
         tmpEntryDo.setInvoicedQty(stod(tmpData[j++]));
         // 已开票金额
-        tmpEntryDo.setInvoicedQty(stod(tmpData[j++]));
+        tmpEntryDo.setInvoicedAmt(stod(tmpData[j++]));
         // 自定义1
         tmpEntryDo.setCustom1(tmpData[j++]);
         // 源点分录号
@@ -629,14 +629,203 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
     return result;
 }
 
-int CgthckService::exportData(const ExportCgthckFileDTO& dto)
+ExportCgthckVO CgthckService::exportData(const ExportCgthckFileDTO& dto)
 {
     // 创建查询对象
     CgthckDAO dao;
     CgthckDO cgthckDo;
-    CgthckEntryDO cgthckDo;
+    CgthckEntryDO cgthckEntryDo;
 
     // 设置sql语句的查询条件
+    cgthckDo.setBillNo(dto.getBillNo());
+    cgthckEntryDo.setBillNo(dto.getBillNo());
 
-    return 0;
+    // 返回正确的查询对象
+    list<CgthckDO> listDo = dao.exportData(cgthckDo);
+    list<CgthckEntryDO> listEntryDo = dao.exportData(cgthckEntryDo);
+
+    // 报表的抽象 ---> 二维数组
+    vector<vector<std::string>> data;
+    vector<vector<std::string>> entryData;
+
+    // 表头 用来填充第一行数据
+    vector<string> header{
+        CharsetConvertHepler::ansiToUtf8("出入库类型"),
+        CharsetConvertHepler::ansiToUtf8("是否有往来"),
+        CharsetConvertHepler::ansiToUtf8("是否有涨吨"),
+        CharsetConvertHepler::ansiToUtf8("供应商"),
+        CharsetConvertHepler::ansiToUtf8("客户"),
+        CharsetConvertHepler::ansiToUtf8("发票类型"),
+        CharsetConvertHepler::ansiToUtf8("业务部门"),
+        CharsetConvertHepler::ansiToUtf8("业务员"),
+        CharsetConvertHepler::ansiToUtf8("出入库经办"),
+        CharsetConvertHepler::ansiToUtf8("成本"),
+        CharsetConvertHepler::ansiToUtf8("结算金额"),
+        CharsetConvertHepler::ansiToUtf8("已结算金额"),
+        CharsetConvertHepler::ansiToUtf8("已开票金额"),
+        CharsetConvertHepler::ansiToUtf8("是否生效"),
+        CharsetConvertHepler::ansiToUtf8("附件"),
+        CharsetConvertHepler::ansiToUtf8("源单id"),
+        CharsetConvertHepler::ansiToUtf8("单据主题"),
+        CharsetConvertHepler::ansiToUtf8("单据阶段"),
+        CharsetConvertHepler::ansiToUtf8("源单号"),
+        CharsetConvertHepler::ansiToUtf8("是否自动生成"),
+        CharsetConvertHepler::ansiToUtf8("备注"),
+        CharsetConvertHepler::ansiToUtf8("审批实例id"),
+        CharsetConvertHepler::ansiToUtf8("已作废"),
+        CharsetConvertHepler::ansiToUtf8("单据编号"),
+        CharsetConvertHepler::ansiToUtf8("是否红字"),
+        CharsetConvertHepler::ansiToUtf8("源单类型"),
+        CharsetConvertHepler::ansiToUtf8("制单时间"),
+        CharsetConvertHepler::ansiToUtf8("生效时间"),
+        CharsetConvertHepler::ansiToUtf8("核批人"),
+        CharsetConvertHepler::ansiToUtf8("修改人"),
+        CharsetConvertHepler::ansiToUtf8("制单部门"),
+        CharsetConvertHepler::ansiToUtf8("已关闭"),
+        CharsetConvertHepler::ansiToUtf8("核批结果类型"),
+        CharsetConvertHepler::ansiToUtf8("单据日期"),
+        CharsetConvertHepler::ansiToUtf8("制单人"),
+        CharsetConvertHepler::ansiToUtf8("核批意见"),
+    };
+    data.push_back(header);
+    vector<string> entryHeader{
+        CharsetConvertHepler::ansiToUtf8("物料"),
+        CharsetConvertHepler::ansiToUtf8("批次号"),
+        CharsetConvertHepler::ansiToUtf8("仓库"),
+        CharsetConvertHepler::ansiToUtf8("出入方向"),
+        CharsetConvertHepler::ansiToUtf8("供应商"),
+        CharsetConvertHepler::ansiToUtf8("计量单位"),
+        CharsetConvertHepler::ansiToUtf8("涨吨数量+/-"),
+        CharsetConvertHepler::ansiToUtf8("数量"),
+        CharsetConvertHepler::ansiToUtf8("计入成本费用"),
+        CharsetConvertHepler::ansiToUtf8("成本"),
+        CharsetConvertHepler::ansiToUtf8("结算数量"),
+        CharsetConvertHepler::ansiToUtf8("税率%"),
+        CharsetConvertHepler::ansiToUtf8("含税单价"),
+        CharsetConvertHepler::ansiToUtf8("折扣率%"),
+        CharsetConvertHepler::ansiToUtf8("税额"),
+        CharsetConvertHepler::ansiToUtf8("结算金额"),
+        CharsetConvertHepler::ansiToUtf8("已开票数量"),
+        CharsetConvertHepler::ansiToUtf8("已开票金额"),
+        CharsetConvertHepler::ansiToUtf8("自定义1"),
+        CharsetConvertHepler::ansiToUtf8("源单分录号"),
+        CharsetConvertHepler::ansiToUtf8("分录号"),
+        CharsetConvertHepler::ansiToUtf8("自定义2"),
+        CharsetConvertHepler::ansiToUtf8("源单分录id"),
+        CharsetConvertHepler::ansiToUtf8("源单类型"),
+        CharsetConvertHepler::ansiToUtf8("备注"),
+        CharsetConvertHepler::ansiToUtf8("单据编号"),
+        CharsetConvertHepler::ansiToUtf8("源单id")
+    };
+    data.push_back(entryHeader);
+
+    // 如果查询对象不为空
+    if (!listDo.empty())
+    {
+        for (auto& tmpDo : listDo)
+        {
+            vector<string> sub{
+                tmpDo.getStockIoType(),
+                to_string(tmpDo.getHasRp()),
+                to_string(tmpDo.getHasSwell()),
+                tmpDo.getSupplierId(),
+                tmpDo.getCustomerId(),
+                tmpDo.getInvoiceType(),
+                tmpDo.getOpDept(),
+                tmpDo.getOperator1(),
+                tmpDo.getHandler(),
+                to_string(tmpDo.getCost()),
+                to_string(tmpDo.getSettleAmt()),
+                to_string(tmpDo.getSettledAmt()),
+                to_string(tmpDo.getInvoicedAmt()),
+                to_string(tmpDo.getIsEffective()),
+                tmpDo.getAttachment(),
+                tmpDo.getSrcBillId(),
+                tmpDo.getSubject(),
+                tmpDo.getBillStage(),
+                tmpDo.getSrcNo(),
+                to_string(tmpDo.getIsAuto()),
+                tmpDo.getRemark(),
+                tmpDo.getBpmiInstanceId(),
+                to_string(tmpDo.getIsVoided()),
+                tmpDo.getBillNo(),
+                to_string(tmpDo.getIsRubric()),
+                tmpDo.getSrcBillType(),
+                tmpDo.getCreateTime(),
+                tmpDo.getEffectiveTime(),
+                tmpDo.getApprover(),
+                tmpDo.getUpdateBy(),
+                tmpDo.getSysOrgCode(),
+                to_string(tmpDo.getIsClosed()),
+                tmpDo.getApprovalResultType(),
+                tmpDo.getBillDate(),
+                tmpDo.getCreateBy(),
+                tmpDo.getApprovalRemark()
+            };
+            data.push_back(sub);
+        }
+    }
+    if (!listEntryDo.empty())
+    {
+        for (auto& tempEntryDo : listEntryDo)
+        {
+            vector<string> sub
+            {
+                tempEntryDo.getMaterialId(),
+                tempEntryDo.getBatchNo(),
+                tempEntryDo.getWarehouseId(),
+                tempEntryDo.getStockIoDirection(),
+                tempEntryDo.getSupplierId(),
+                tempEntryDo.getUnitId(),
+                to_string(tempEntryDo.getSwellQty()),
+                to_string(tempEntryDo.getQty()),
+                to_string(tempEntryDo.getExpense()),
+                to_string(tempEntryDo.getCost()),
+                to_string(tempEntryDo.getSettleQty()),
+                to_string(tempEntryDo.getTaxRate()),
+                to_string(tempEntryDo.getPrice()),
+                to_string(tempEntryDo.getDiscountRate()),
+                to_string(tempEntryDo.getTax()),
+                to_string(tempEntryDo.getSettleAmt()),
+                to_string(tempEntryDo.getInvoicedQty()),
+                to_string(tempEntryDo.getInvoicedAmt()),
+                tempEntryDo.getCustom1(),
+                tempEntryDo.getSrcNo(),
+                tempEntryDo.getEntryNo(),
+                tempEntryDo.getCustom2(),
+                tempEntryDo.getSrcEntryId(),
+                tempEntryDo.getSrcBillType(),
+                tempEntryDo.getRemark(),
+                tempEntryDo.getBillNo(),
+                tempEntryDo.getSrcBillId()
+            };
+            data.push_back(sub);
+        }
+    }
+    
+    //定义保存数据位置和页签名称
+    string fileName = "./public/excel/c5-cgthck.xlsx";
+    string sheetName = CharsetConvertHepler::ansiToUtf8("出入库单");
+ /*   string entrySheetName = CharsetConvertHepler::ansiToUtf8("明细");*/
+
+    // 保存文件
+    ExcelComponent excel;
+    excel.writeVectorToFile(fileName, sheetName, data);
+    //excel.writeVectorToFile(fileName, entrySheetName, entryData);
+
+    // 定义fastdfs客户端对象
+#ifdef LINUX
+    FastDfsClient client("conf/client.conf", 3);
+#else
+    FastDfsClient client("1.15.240.108");
+#endif
+    // 将文件上传到fastdfs
+    string fieldName = client.uploadFile(fileName);
+    // 删除本地文件
+    std::remove(fieldName.c_str());
+    // 返回下载地址
+    fieldName = "http://1.15.240.108:8888/" + fieldName;
+
+    ExportCgthckVO result(fieldName);
+    return result;
 }

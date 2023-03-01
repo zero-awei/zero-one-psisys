@@ -8,6 +8,7 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../dao/Cgthck/CgthckDAO.h"
 #include "../../domain/do/Cgthck/CgthckDO.h"
+#include "../../domain/vo/Cgthck/ExportCgthckVO.h"
 #include "../../domain/vo/Cgthck/QueryCgrkBillListsVO.h"
 #include "../../domain/vo/Cgthck/QueryCgthckBillVO.h"
 #include "../../domain/query/Cgthck/QueryCgrkBillQuery.h"
@@ -43,7 +44,7 @@ public:
 	// 导入
 	int importData(const ImportCgthckFileDTO& dto);
 	// 导出
-	int exportData(const ExportCgthckFileDTO& dto);
+	ExportCgthckVO exportData(const ExportCgthckFileDTO& dto);
 };
 
 

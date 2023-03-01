@@ -295,10 +295,10 @@ uint64_t CgthckDAO::importData(const CgthckEntryDO& iobj)
 list<CgthckDO> CgthckDAO::exportData(const CgthckDO& iobj)
 {
 	stringstream sql;
-	sql << "SELECT `stock_io_type`, `has_rp`, `has_swell`, `supplier_id`, `customer_id, `invoice_type`, \
-				`op_dept`, `operator`, `handler`, `version`, `settle_amt`, `settled_amt, `invoiced_amt`, \
+	sql << "SELECT `stock_io_type`, `has_rp`, `has_swell`, `supplier_id`, `customer_id`, `invoice_type`, \
+				`op_dept`, `operator`, `handler`, `cost`, `settle_amt`, `settled_amt`, `invoiced_amt`, \
 				`is_effective`, `attachment`, `src_bill_id`, `subject`, `bill_stage`, `src_no`, `is_auto`, \
-				`remark`, `bpmi_instance_id`, `is_voided`, `bill_no`, `is_rubric`, `src_bill_type,` \
+				`remark`, `bpmi_instance_id`, `is_voided`, `bill_no`, `is_rubric`, `src_bill_type`, \
 				`create_time`, `effective_time`, `approver`, `update_by`, `sys_org_code`, `is_closed`, \
 				`approval_result_type`, `bill_date`, `create_by`, `approval_remark` FROM `stk_io`";
 	QUERY_CGRK_BILL_LIST_TERAM_PARSE(iobj, sql);

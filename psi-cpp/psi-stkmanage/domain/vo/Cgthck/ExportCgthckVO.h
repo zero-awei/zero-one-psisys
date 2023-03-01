@@ -8,6 +8,7 @@ class ExportCgthckVO
 	CC_SYNTHESIZE(std::string, fileName, FileName);
 public:
 	BIND_TO_JSON(ExportCgthckVO, fileName);
+	ExportCgthckVO() = default;
 	ExportCgthckVO(std::string& fName) : fileName(fName){}
 };
 
