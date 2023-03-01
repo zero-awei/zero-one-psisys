@@ -27,6 +27,7 @@
 #include "../../domain/dto/prepayment/PayIntoDTO.h"
 
 
+
 /**
  * 采购预付申请控制器
  */
@@ -36,11 +37,34 @@ public:
 	//修改单据状态(关闭、作废、反关闭)
 	// 负责人：Andrew
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPurReqBillStatus, execModifyPayBillStatus, PayModBillStatusDTO);
-
+	//查询
+	// 负责人：Qi
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill, execQueryPrepayFindBill, PrepayBillQuery);
+	//查询指定单据详细信息
+	// 负责人：Qi
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
+	//添加订单
+	// 负责人：Qi
+	CREATE_API_FUN_BODY_PAYLOAD(addPay, execAddPay, AddPayDTO);
+	//修改订单
+	// 负责人：Qi
+	CREATE_API_FUN_BODY_PAYLOAD(modifyPay, execModifyPay, AddPayDTO);
 private:
 	//修改单据状态(关闭、作废、反关闭)
 	// 负责人：Andrew
 	JsonVO<string> execModifyPayBillStatus(const PayModBillStatusDTO& dto, const PayloadDTO& pl);
+	//查询
+	// 负责人：Qi
+	JsonVO<PageVO<PrepaymentBillVO>> execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload);
+	//查询指定单据详细信息
+	// 负责人：Qi
+	JsonVO<PageVO<PrepaymentDetailBillVO>> execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload);
+	//新增订单
+	// 负责人：Qi
+	JsonVO<uint64_t> execAddPay(const AddPayDTO& dto, const PayloadDTO& payload);
+	//修改订单
+	// 负责人：Qi
+	JsonVO<uint64_t> execModifyPay(const AddPayDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // _SAMPLE_CONTROLLER_

@@ -12,8 +12,10 @@ class PrepayBillQuery : public PageQuery
 
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// 单据日期
-	CC_SYNTHESIZE(string, bill_date, Bill_date);
+	// 单据开始日期
+	CC_SYNTHESIZE(string, bill_begin_date, Bill_begin_date);
+	// 单据结束日期
+	CC_SYNTHESIZE(string, bill_end_date, Bill_end_date);
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 供应商
@@ -33,13 +35,19 @@ public:
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
-		BIND_FROM_TO_NORMAL(j, t, bill_date);
+		BIND_FROM_TO_NORMAL(j, t, bill_begin_date);
+		BIND_FROM_TO_NORMAL(j, t, bill_end_date);
 		BIND_FROM_TO_NORMAL(j, t, subject);
 		BIND_FROM_TO_NORMAL(j, t, supplier_id);
 		BIND_FROM_TO_NORMAL(j, t, bill_stage);
 		BIND_FROM_TO_I(j, t, is_effective);
 		BIND_FROM_TO_I(j, t, is_closed);
 		BIND_FROM_TO_I(j, t, is_voided);
+	}
+	PrepayBillQuery() {
+		is_effective = -1;
+		is_closed = -1;
+		is_voided = -1;
 	}
 };
 

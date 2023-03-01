@@ -267,6 +267,12 @@
     <ClInclude Include="dao\payment\PaymentMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dao\prepayment\PrepaymentDetailMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\prepayment\PrepaymentDetailDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

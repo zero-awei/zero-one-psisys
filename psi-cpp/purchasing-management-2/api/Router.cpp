@@ -64,8 +64,9 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	createAndrewRouter();
+	createStatisRouter();
 	createPaymentRouter();
+	createPrePayRouter();
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -90,11 +91,7 @@ void Router::createUserDepartRouter()
 /**
 * Router绑定接口函数实现
 */
-void Router::createAndrewRouter() {
-	// 采购预付申请-修改单据状态(关闭/作废/反关闭)
-	// 负责人：Andrew
-	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
-
+void Router::createStatisRouter() {
 	// 采购订单删除
 	// 负责人：Andrew
 	BIND_DEL_ROUTER(server, "/purOrder/deleteById", &PurOrderController::removeById, nullptr);
@@ -128,4 +125,23 @@ void Router::createPaymentRouter()
 	BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::deleteById, nullptr);
 	//添加单据
 	BIND_PUT_ROUTER(server, "/AppPayment", &PaymentController::AddPayment, nullptr);
+}
+
+void Router::createPrePayRouter()
+{
+	//查询单据列表
+	// 负责人：Qi
+	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
+	//查询指定单据详细信息
+	// 负责人：Qi
+	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
+	//添加申请(保存/提交)
+	// 负责人：Qi
+	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
+	//修改申请(保存/提交/审核)
+	// 负责人：Qi
+	BIND_PUT_ROUTER(server, "/put-modifyPay", &PrePayController::modifyPay, nullptr);
+	// 采购预付申请-修改单据状态(关闭/作废/反关闭)
+	// 负责人：Andrew
+	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
 }

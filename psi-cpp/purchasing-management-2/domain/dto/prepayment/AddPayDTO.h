@@ -43,7 +43,7 @@ class AddPayDTO
 	// 主表
 	CC_SYNTHESIZE(string, mid, Mid);
 	//分录号
-	CC_SYNTHESIZE(double, entry_on, Entry_on);
+	CC_SYNTHESIZE(int, entry_no, Entry_no);
 	//源单类型
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	//源单id
@@ -51,11 +51,11 @@ class AddPayDTO
 	//源单分录id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
 	//源单分录号
-	CC_SYNTHESIZE(double, src_on, Src_on);
+	CC_SYNTHESIZE(string, src_no, Src_no);
 	// 申请金额
-	CC_SYNTHESIZE(int, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	// 已付金额
-	CC_SYNTHESIZE(int, paid_amt, Paid_amt);
+	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 自定义1
@@ -66,8 +66,8 @@ class AddPayDTO
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddPayDTO& t); // NOLINT
-	BIND_TO_JSON(AddPayDTO, id, bill_no, bill_date, subject, op, op_dept, supplier_id, at_remark, attachment, bill_stage, is_effective, is_closed, is_voided,
-		mid, entry_on, src_bill_type, src_bill_id, src_entry_id, src_on, amt, paid_amt, remark, custom1, custom2);
+	BIND_TO_JSON(AddPayDTO, id,bill_no, bill_date, subject, op, op_dept, supplier_id, at_remark, attachment, bill_stage, is_effective, is_closed, is_voided,
+		mid, entry_no, src_bill_type, src_bill_id, src_entry_id, src_no, amt, paid_amt, remark, custom1, custom2);
 };
 
 #endif // !_SAMPLE_DTO_

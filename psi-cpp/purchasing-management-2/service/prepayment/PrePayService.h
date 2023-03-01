@@ -30,6 +30,18 @@ public:
 	// 修改单据状态(关闭/反关闭/作废)
 	// 负责人：Andrew
 	bool updateStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload);
+	// 分页查询 预付申请单所有数据(多个对象)
+	// 负责人：Qi
+	PageVO<PrepaymentBillVO> listAll(const PrepayBillQuery& query);
+	// 查询预付申请单详细数据(单个对象)
+	// 负责人：Qi
+	PageVO<PrepaymentDetailBillVO> getAll(const PrepayDetailBillQuery& query);
+	// 保存数据
+	// 负责人：Qi
+	uint64_t saveData(const AddPayDTO& dto, const PayloadDTO& payload);
+	// 修改数据
+	// 负责人：Qi
+	bool updateData(const AddPayDTO& dto, const PayloadDTO& payload);
 };
 
 #endif // !_PRE_PAY_SERVICE_
