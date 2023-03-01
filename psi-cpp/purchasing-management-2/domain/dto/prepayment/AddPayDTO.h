@@ -51,7 +51,7 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, op);
 		BIND_FROM_TO_NORMAL(j, t, op_dept);
 		BIND_FROM_TO_NORMAL(j, t, supplier_id);
-		BIND_FROM_TO_NORMAL(j, t, at_remark);
+		BIND_FROM_TO_NORMAL(j, t, remark);
 		BIND_FROM_TO_NORMAL(j, t, attachment);
 		BIND_FROM_TO_OBJ(j, t, detail, std::list<AddPayDetailDTO>);
 
