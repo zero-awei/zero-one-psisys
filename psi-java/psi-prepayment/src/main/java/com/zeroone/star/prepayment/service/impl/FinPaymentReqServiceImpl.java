@@ -35,19 +35,20 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
         QueryWrapper<FinPaymentReq> paymentReqQueryWrapper = new QueryWrapper<>();
         // 获取供应商id
         String supplierId = query.getSupplierId();
-        if (StrUtil.isNotBlank(supplierId)) {
-            paymentReqQueryWrapper.eq("supplier_id", supplierId);
-        }
+//        if (StrUtil.isNotBlank(supplierId)) {
+//            paymentReqQueryWrapper.eq("supplier_id", supplierId);
+//        }
+        paymentReqQueryWrapper.eq("supplier_id", supplierId);
         // 约束单据日期
-        LocalDate stDate = query.getStartDate();
-        LocalDate edDate = query.getEndDate();
-        if (stDate != null && edDate != null && stDate.isBefore(edDate)) {
-            paymentReqQueryWrapper.between("billDate", stDate, edDate);
-        } else if (stDate != null && edDate == null) {
-            paymentReqQueryWrapper.gt("billDate", stDate);
-        } else if (stDate == null && edDate != null) {
-            paymentReqQueryWrapper.lt("billDate", edDate);
-        }
+//        LocalDate stDate = query.getStartDate();
+//        LocalDate edDate = query.getEndDate();
+//        if (stDate != null && edDate != null && stDate.isBefore(edDate)) {
+//            paymentReqQueryWrapper.between("billDate", stDate, edDate);
+//        } else if (stDate != null && edDate == null) {
+//            paymentReqQueryWrapper.gt("billDate", stDate);
+//        } else if (stDate == null && edDate != null) {
+//            paymentReqQueryWrapper.lt("billDate", edDate);
+//        }
         // 执行分页查询
         Page<FinPaymentReq> resPage = baseMapper.selectPage(paymentReqPage, paymentReqQueryWrapper);
         return PageVO.create(resPage, FinPaymentReqVO.class);
