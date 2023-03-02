@@ -32,8 +32,8 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
      */
     @Override
     public Page<FinPaymentReqVO> queryAll(FinPaymentReqQuery condition) {
-        Page<FinPaymentReq> finPaymentReqPage = new Page<>(condition.getPageIndex(),condition.getPageSize());
-        return finPaymentReqMapper.queryAll(finPaymentReqPage, condition.getBillNo(), condition.getBillDate(), condition.getSupplierId());
+        Page<FinPaymentReq> page = new Page<>(1,10);
+        return  finPaymentReqMapper.queryAll(page, condition.getBillNo(), condition.getBillDate(), condition.getSupplierId());
     }
 
     @Override
@@ -41,4 +41,5 @@ public class FinPaymentReqServiceImpl extends ServiceImpl<FinPaymentReqMapper, F
         List<FinPaymentReq> finPaymentReqs = finPaymentReqMapper.selectList(null);
         return finPaymentReqs;
     }
+
 }

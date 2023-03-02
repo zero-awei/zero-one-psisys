@@ -3,6 +3,7 @@ package com.zeroone.star.paymentmanagement.controller;
 import com.alibaba.excel.EasyExcel;
 import com.zeroone.star.paymentmanagement.service.PaymentManagerService;
 import com.zeroone.star.project.dto.paymentManager.ChosenExportDto;
+import com.zeroone.star.project.dto.paymentManager.UpdateBillStageDto;
 import com.zeroone.star.project.paymentManager.PaymentManagerApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.paymentManager.ChosenExportVo;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("paymentmanager")
-@Api(tags = "支付管理")
+@Api(tags = "应付与付款-付款管理")
 @Validated
 public class PaymentManagerController implements PaymentManagerApis {
     @Resource
@@ -30,13 +31,13 @@ public class PaymentManagerController implements PaymentManagerApis {
     @PostMapping("/import")
     @Override
     public JsonVO importAll(MultipartFile file) {
-        paymentManagerService.importAll();
+        paymentManagerService.importAll(file);
         return null;
     }
 
     @Override
-    public JsonVO updateBillStage(Integer id) {
-        paymentManagerService.updateBillStage(id);
+    public JsonVO updateBillStage(UpdateBillStageDto updateBillStageDto) {
+        paymentManagerService.updateBillStage(updateBillStageDto);
         return null;
     }
 

@@ -27,9 +27,9 @@ import java.util.List;
  * @author pyramid
  * @since 2023-02-15
  */
-@Api(value = "/onlytype/fin-payment-req", tags = {"付款申请单 前端控制器"})
+@Api(value = "/onlytype/fin-payment-req", tags = {"应付与付款-付款管理"})
 @RestController
-@RequestMapping("/onlytype/fin-payment-req")
+@RequestMapping("/paymentmanagement/fin-payment-req")
 public class FinPaymentReqController implements FinPaymentReqApis {
     @Autowired
     private IFinPaymentReqService iFinPaymentReqService;
@@ -41,18 +41,18 @@ public class FinPaymentReqController implements FinPaymentReqApis {
      * @author 白也
      */
 
-    @ApiOperation(value = "付款申请查询", notes = "付款申请查询")
+    @ApiOperation(value = "(采购付款-有申请)付款申请查询", notes = "付款申请查询")
     @Override
     @GetMapping
     public JsonVO<Page<FinPaymentReqVO>> queryAll(FinPaymentReqQuery finPayment) {
         return JsonVO.success(iFinPaymentReqService.queryAll(finPayment));
     }
 
-    @ApiOperation(value = "测试查询所有", notes = "test")
-    @PostMapping
-    public JsonVO<List<FinPaymentReq>> test() {
-        return JsonVO.success(iFinPaymentReqService.test());
-    }
+//    @ApiOperation(value = "测试查询所有", notes = "test")
+//    @PostMapping
+//    public JsonVO<List<FinPaymentReq>> test() {
+//        return JsonVO.success(iFinPaymentReqService.test());
+//    }
 
 }
 

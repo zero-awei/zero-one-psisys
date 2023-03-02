@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @RequestMapping("/purchase")
-@Api(tags = "付款管理-采购付款")
+@Api(tags = "应付与付款-付款管理")
 @Validated
 public class PurchasePaymentController implements PurchasePaymentApis {
     @Autowired

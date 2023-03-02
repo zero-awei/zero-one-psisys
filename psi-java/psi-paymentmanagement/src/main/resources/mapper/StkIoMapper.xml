@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.paymentmanagement.mapper.StkIoMapper">
+
+    <resultMap id="BaseResultMap" type="com.zeroone.star.paymentmanagement.entity.StkIo">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="billNo" column="bill_no" jdbcType="VARCHAR"/>
+        <result property="billDate" column="bill_date" jdbcType="TIMESTAMP"/>
+        <result property="srcBillType" column="src_bill_type" jdbcType="VARCHAR"/>
+        <result property="srcBillId" column="src_bill_id" jdbcType="VARCHAR"/>
+        <result property="srcNo" column="src_no" jdbcType="VARCHAR"/>
+        <result property="subject" column="subject" jdbcType="VARCHAR"/>
+        <result property="isRubric" column="is_rubric" jdbcType="INTEGER"/>
+        <result property="stockIoType" column="stock_io_type" jdbcType="VARCHAR"/>
+        <result property="opDept" column="op_dept" jdbcType="VARCHAR"/>
+        <result property="operator" column="operator" jdbcType="VARCHAR"/>
+        <result property="handler" column="handler" jdbcType="VARCHAR"/>
+        <result property="hasRp" column="has_rp" jdbcType="INTEGER"/>
+        <result property="hasSwell" column="has_swell" jdbcType="INTEGER"/>
+        <result property="supplierId" column="supplier_id" jdbcType="VARCHAR"/>
+        <result property="customerId" column="customer_id" jdbcType="VARCHAR"/>
+        <result property="invoiceType" column="invoice_type" jdbcType="VARCHAR"/>
+        <result property="cost" column="cost" jdbcType="DECIMAL"/>
+        <result property="settleAmt" column="settle_amt" jdbcType="DECIMAL"/>
+        <result property="settledAmt" column="settled_amt" jdbcType="DECIMAL"/>
+        <result property="invoicedAmt" column="invoiced_amt" jdbcType="DECIMAL"/>
+        <result property="attachment" column="attachment" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="isAuto" column="is_auto" jdbcType="INTEGER"/>
+        <result property="billStage" column="bill_stage" jdbcType="VARCHAR"/>
+        <result property="approver" column="approver" jdbcType="VARCHAR"/>
+        <result property="bpmiInstanceId" column="bpmi_instance_id" jdbcType="VARCHAR"/>
+        <result property="approvalResultType" column="approval_result_type" jdbcType="VARCHAR"/>
+        <result property="approvalRemark" column="approval_remark" jdbcType="VARCHAR"/>
+        <result property="isEffective" column="is_effective" jdbcType="INTEGER"/>
+        <result property="effectiveTime" column="effective_time" jdbcType="TIMESTAMP"/>
+        <result property="isClosed" column="is_closed" jdbcType="INTEGER"/>
+        <result property="isVoided" column="is_voided" jdbcType="INTEGER"/>
+        <result property="sysOrgCode" column="sys_org_code" jdbcType="VARCHAR"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="version" column="version" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,bill_no,bill_date,
+        src_bill_type,src_bill_id,src_no,
+        subject,is_rubric,stock_io_type,
+        op_dept,operator,handler,
+        has_rp,has_swell,supplier_id,
+        customer_id,invoice_type,cost,
+        settle_amt,settled_amt,invoiced_amt,
+        attachment,remark,is_auto,
+        bill_stage,approver,bpmi_instance_id,
+        approval_result_type,approval_remark,is_effective,
+        effective_time,is_closed,is_voided,
+        sys_org_code,create_by,create_time,
+        update_by,update_time,version
+    </sql>
+    <select id="deliveryOrder" resultType="com.zeroone.star.project.vo.paymentmanagement.StkIoVO">
+        SELECT
+        a.bill_no,
+        a.bill_date,
+        a.`subject`,
+        d.item_text,
+        a.src_no,
+        b.`name`,
+        c.depart_name,
+        a.operator,
+        a.settle_amt,
+        a.settled_amt,
+        a.invoiced_amt,
+        a.invoice_type,
+        a.has_swell,
+        a.is_closed
+        FROM
+        stk_io AS a
+        INNER JOIN bas_supplier AS b ON a.supplier_id = b.id
+        INNER JOIN sys_depart AS c ON a.op_dept = c.org_code
+        INNER JOIN jimu_dict_item d ON a.stock_io_type = d.item_value
+
+
+        <where>
+
+            d.item_text = '采购入库-红字'
+
+            <if test="billNo != null and billNo != ''">
+                a.bill_no = #{billNo}
+            </if>
+            <if test="billDate != null and billDate != ''">
+                AND a.bill_date=#{billDate}
+            </if>
+            <if test="supplierId != null and supplierId != ''">
+                AND a.`name` = #{supplierId}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.zeroone.star.project.vo.paymentmanagement.StkIoVO">
+
+        SELECT
+        a.bill_no,
+        a.bill_date,
+        a.`subject`,
+        d.item_text,
+        a.src_no,
+        b.`name`,
+        c.depart_name,
+        a.operator,
+        a.settle_amt,
+        a.settled_amt,
+        a.invoiced_amt,
+        a.invoice_type,
+        a.has_swell,
+        a.is_closed
+        FROM
+        stk_io AS a
+        INNER JOIN bas_supplier AS b ON a.supplier_id = b.id
+        INNER JOIN sys_depart AS c ON a.op_dept = c.org_code
+        INNER JOIN jimu_dict_item d ON a.stock_io_type = d.item_value
+        <where>
+
+            d.item_text = '采购入库'
+
+            <if test="billNo != null and billNo != ''">
+                a.bill_no = #{billNo}
+            </if>
+            <if test="billDate != null and billDate != ''">
+                AND a.bill_date=#{billDate}
+            </if>
+            <if test="supplierId != null and supplierId != ''">
+                AND a.`name` = #{supplierId}
+            </if>
+        </where>
+    </select>
+</mapper>

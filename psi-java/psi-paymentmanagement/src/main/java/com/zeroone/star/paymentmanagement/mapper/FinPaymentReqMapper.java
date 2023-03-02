@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * <p>
@@ -19,6 +20,6 @@ import java.time.LocalDate;
  */
 @Mapper
 public interface FinPaymentReqMapper extends BaseMapper<FinPaymentReq> {
-    Page<FinPaymentReqVO> queryAll(@Param("page")Page<FinPaymentReq> page, @Param("billNo") String billNo, @Param("billDate") LocalDate billDate, @Param("supplierId") String supplierId);
 
+    Page<FinPaymentReqVO> queryAll(@Param("page")Page<FinPaymentReq> page, @Param("billNo") String billNo, @Param("billDate") LocalDate billDate, @Param("supplierId") String supplierId);
 }
