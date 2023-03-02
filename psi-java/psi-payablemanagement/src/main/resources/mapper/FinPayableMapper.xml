@@ -86,4 +86,42 @@
                  JOIN sys_dict_item sdi ON t.bill_stage = sdi.item_value
                  JOIN sys_dict sdict ON sdi.dict_id = sdict.id
     </sql>
+
+    <select id="queryPayable" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO" parameterType="com.zeroone.star.project.query.payablemanagement.PayableQuery">
+        <include refid="multiCondition"/>
+        <where>
+            <if test="billNo != null">
+                and t.bill_no = #{billNo}
+            </if>
+            <if test="subject != null">
+                and t.subject = #{subject}
+            </if>
+            <if test="supplierId != null">
+                and bs.`name` = #{supplierId}
+            </if>
+            <if test="billStage != null">
+                and sdi.item_text = #{billStage}
+            </if>
+            <if test="isEffective != null">
+                and t.is_effective = #{isEffective}
+            </if>
+            <if test="isClosed != null">
+                and t.is_closed = #{isClosed}
+            </if>
+            <if test="isVoided != null">
+                and t.is_voided = #{isVoided}
+            </if>
+            <if test="billDateEnd != null">
+                and t.bill_date &lt;= #{billDateEnd}
+            </if>
+            <if test="billDateBegin != null">
+                and t.bill_date &gt;= #{billDateBegin}
+            </if>
+            and sdict.dict_name = "单据阶段"
+        </where>
+    </select>
+
+    <select id="getOneByBillNo" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO">
+        <include refid="selectBase"/> where sdict.dict_name = "单据阶段" and t.bill_no = #{billNo};
+    </select>
 </mapper>

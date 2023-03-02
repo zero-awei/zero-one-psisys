@@ -32,7 +32,7 @@ public class OtherPayableController implements OtherPayableApis {
 
 
     @GetMapping("query-one")
-    @ApiOperation(value = "示例单据编号查询")
+    @ApiOperation(value = "根据单据编号查询")
     @Override
     public JsonVO<PayableVO> queryByBillNo(String bill_no) {
         return JsonVO.success(service.getByBillNo(bill_no));
