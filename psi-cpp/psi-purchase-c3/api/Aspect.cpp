@@ -1,15 +1,15 @@
 /*
  Copyright Zero One Star. All rights reserved.
- 
+
  @Author: awei
  @Date: 2022/10/24 23:38:49
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
-      https://www.apache.org/licenses/LICENSE-2.0
- 
+
+			https://www.apache.org/licenses/LICENSE-2.0
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,7 +39,7 @@ std::unique_ptr<std::string> RSA_PUB_KEY = nullptr;
 #ifndef CHECK_TOKEN
 
 //开启凭证检查，解开下一行注释即可
-//#define CHECK_TOKEN
+#define CHECK_TOKEN
 
 #endif
 
@@ -48,7 +48,6 @@ std::unique_ptr<std::string> RSA_PUB_KEY = nullptr;
 PayloadDTO payload; \
 payload.setId("1"); \
 payload.setUsername("admin"); \
-payload.setUserDept("develop"); \
 payload.getAuthorities().push_back("ADMIN"); \
 payload.getAuthorities().push_back("TEST"); \
 __req__.set_user_payload(nlohmann::json(payload));

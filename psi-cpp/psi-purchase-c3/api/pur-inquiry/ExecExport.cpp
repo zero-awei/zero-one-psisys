@@ -8,7 +8,7 @@
 #include "CharsetConvertHepler.h"
 
 
-std::string execexport(vector<std::string> head, string sheetname, list<std::string>& bill_list) 
+std::string execexport(vector<std::string> head, const std::string& sheetName, list<std::string>& bill_list)
 {
 	PurInquiryDAO dao;
 	// 创建文件
@@ -24,19 +24,21 @@ std::string execexport(vector<std::string> head, string sheetname, list<std::str
 	FastDfsClient client("1.15.240.108");
 #endif
 	// 单元格索引
-	xlnt::cell_reference A1("A1");
-	xlnt::cell_reference AV1("AV1");
-	xlnt::cell_reference A2("A2");
-	xlnt::cell_reference AV2("AV2");
+	xlnt::cell_reference A1("$A1");
+	xlnt::cell_reference AV1("$AV1");
+	xlnt::cell_reference A2("$A2");
+	xlnt::cell_reference AV2("$AV2");
 	// 合并单元格
-	excel.mergeCell(sheetname, A1, AV1);
-	row.push_back(sheetname);
+	excel.createNewSheet(sheetName);
+	excel.mergeCell(sheetName, A1, AV1);
+	row.push_back(CharsetConvertHepler::ansiToUtf8("采购询价单"));
 	data.push_back(row);
 	row.clear();
-	excel.mergeCell(sheetname, A2, AV2);
+	excel.mergeCell(sheetName, A2, AV2);
 	row.push_back(CharsetConvertHepler::ansiToUtf8("导出人：管理员"));
 	data.push_back(row);
 	row.clear();
+
 	// 读入表头
 	data.push_back(head);
 
@@ -61,7 +63,7 @@ std::string execexport(vector<std::string> head, string sheetname, list<std::str
 		row.emplace_back(ex.getDelivery_place());
 		row.emplace_back(ex.getDelivery_time());
 		row.emplace_back(ex.getContact());
-;		row.emplace_back(ex.getPhone());
+		row.emplace_back(ex.getPhone());
 		row.emplace_back(ex.getFax());
 		row.emplace_back(ex.getEmail());
 		row.emplace_back(to_string(ex.getQty()));
@@ -83,19 +85,18 @@ std::string execexport(vector<std::string> head, string sheetname, list<std::str
 		row.emplace_back(ex.getApprover());
 		row.emplace_back(ex.getApproval_result_type());
 		row.emplace_back(ex.getApproval_remark());
-		
+
 		// 明细
 		int count = 0;  // 记录明细条数 
 		list<PurInquiryEntryDO> exdat = dao.selectPurInquiryExportEntry(exbill_no);
 		for (PurInquiryEntryDO ex_entry : exdat)
 		{
-			//PurInquiryEntryDO ex_entry = exdat.front();
 			// 如果当前明细的单据编号和当前单据编号不匹配，则跳过该条明细
 			if (exbill_no != ex_entry.getEntry_bill_no())
 			{
 				continue;
 			}
-			count++;  
+			count++;
 			// 如果不是第一条明细，就换行
 			if (count > 1)
 			{
@@ -127,14 +128,14 @@ std::string execexport(vector<std::string> head, string sheetname, list<std::str
 			row.clear();
 		}
 	}
-	
+
 	//定义保存数据位置（到本地，方便调试）
 	std::string filename = CharsetConvertHepler::ansiToUtf8("../../public/temporaryfile/testExportExcel.xlsx");
 	// 工作表命名 —— 待完善
 	//excel.makeName("采购询价单");
 	//设置行高，写入数据
 	excel.setRowHeight(38);
-	excel.writeVectorToFile(filename, sheetname, data);
+	excel.writeVectorToFile(filename, sheetName, data);
 	//将文件上传到fastdfs
 	std::string fieldName = client.uploadFile(filename);
 	//删除本地文件 —— 待完善

@@ -6,12 +6,14 @@
 #include "../../domain/do/pur-quot/PurQuotDO.h"
 
 /**
- * 示例表字段匹配映射
+ * 导出的Mapper
  */
 class PurQuotMapper : public Mapper<PurQuotDO> {
 public:
 	PurQuotDO mapper(ResultSet* resultSet) const override {
 		PurQuotDO data;
+		data.setBill_no(resultSet->getString("bill_no"));
+
 		data.setIs_temp_supplier(resultSet->getInt("is_temp_supplier"));
 		data.setSupplier_name(resultSet->getString("supplier_name"));
 		data.setSupplier_id(resultSet->getString("supplier_id"));
@@ -38,7 +40,6 @@ public:
 
 		data.setBpmi_instance_id(resultSet->getString("bpmi_instance_id"));
 		data.setIs_voided(resultSet->getInt("is_voided"));
-		data.setBill_no(resultSet->getString("bill_no"));
 		data.setIs_rubric(resultSet->getInt("is_rubric"));
 		data.setSrc_bill_type(resultSet->getString("src_bill_type"));
 

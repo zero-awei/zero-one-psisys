@@ -34,7 +34,7 @@
 #endif
 
 //添加供应报价
-JsonVO<uint64_t> PurQuotController::execAddPurQuot(const AddPurQuotDTO& dto, const PayloadDTO& payload)
+JsonVO<uint64_t> PurQuotController::execAddPurQuot(const AddPurQuotDTO & dto, const PayloadDTO & payload)
 {
 	//数据校验没有
 	JsonVO<uint64_t> result;
@@ -112,12 +112,11 @@ JsonVO<PurQuotExportVO> PurQuotController::execPurQuotExport(const PurQuotExport
 	//暂未完成数据校验
 	PurQuotService service;
 	PurQuotExportVO result = service.listPurQuotExportVO(query);
-	std::cout << result.getFile_name() << std::endl;
 	return JsonVO<PurQuotExportVO>(result, RS_SUCCESS);
 }
 
 //导入
-uint64_t PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
+uint64_t PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto, const PayloadDTO& payload)
 {
 	PurQuotService service;
 	uint64_t result = service.updatePurQuotInto(dto);
@@ -127,13 +126,13 @@ uint64_t PurQuotController::execPurQuotInto(const PurQuotIntoDTO& dto)
 
 //查询单据列表
 JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(const PurQuotFindBillQuery& query, const PayloadDTO& payload) {
-	//暂未开始数据校验
+	PageVO<PurQuotFindBillVO> result;
+	//数据校验失败, 返回错误信息
+	if (query.getBill_date_begin() > query.getBill_date_end()) return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_PARAMS_INVALID);
 
-	//定义一个Service
+	//数据校验成功,返回JSON对象以及成功信息
 	PurQuotService service;
-	//构建返回对象
-	PageVO<PurQuotFindBillVO> result	= service.listPurQuotFindBillVO(query);
-	//响应结果
+	result = service.listPurQuotFindBillVO(query);
 	return JsonVO<PageVO<PurQuotFindBillVO>>(result, RS_SUCCESS);
 }
 
@@ -143,7 +142,7 @@ JsonVO<PageVO<PurQuotFindBillVO>> PurQuotController::execQueryPurQuotFindBill(co
 JsonVO<PurQuotFindDetailBillVO> PurQuotController::execQueryPurQuotFindDetailBill(const PurQuotFindDetailBillQuery& query, const PayloadDTO& payload) {
 	PurQuotFindDetailBillVO result;
 	//暂时未进行数据校验
-	if(query.getBill_no() == "") return JsonVO<PurQuotFindDetailBillVO>(result, RS_PARAMS_INVALID);
+	if (query.getBill_no() == "") return JsonVO<PurQuotFindDetailBillVO>(result, RS_PARAMS_INVALID);
 	PurQuotService service;
 	result = service.getPurQuotFindDetailBillVO(query);
 	//响应结果
@@ -156,10 +155,10 @@ JsonVO<list<PurQuotListVO>> PurQuotController::execQueryPurQuotList(const PurQuo
 	//构建返回对象
 	list<PurQuotListVO> result;
 	//数据校验
-	if(query.getBill_no() == "") return JsonVO<list<PurQuotListVO>>(result, RS_PARAMS_INVALID);
+	if (query.getBill_no() == "") return JsonVO<list<PurQuotListVO>>(result, RS_PARAMS_INVALID);
 
 	//数据校验成功,返回对应的对象
-	PurQuotService service;	
+	PurQuotService service;
 	result = service.listPurQuotListVO(query);
 	return JsonVO<list<PurQuotListVO>>(result, RS_SUCCESS);
 }
@@ -169,7 +168,7 @@ JsonVO<list<PurQuotDividedListVO>> PurQuotController::execQueryPurQuotDividedLis
 	//构建返回对象
 	list<PurQuotDividedListVO> result;
 	//数据校验
-	if(query.getBill_no() == "") return JsonVO<list<PurQuotDividedListVO>>(result, RS_PARAMS_INVALID);
+	if (query.getBill_no() == "") return JsonVO<list<PurQuotDividedListVO>>(result, RS_PARAMS_INVALID);
 
 	//数据校验成功,返回对应的对象
 	PurQuotService service;

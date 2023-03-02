@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: Eleanor
@@ -8,7 +8,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,40 +24,22 @@
 #include "../../dao/pur-inquiry/PurInquiryDAO.h"
 #include "../../api/pur-inquiry/PurInquiryController.h"
 #include "SimpleDateTimeFormat.h"
-#include <time.h>
-//¶¨ÒåÒ»¸öºêÓÃÀ´½øĞĞÖµ´Óµ¼ÈëÖ÷µÄÊı¾İ±í½øÈëDOÖĞ
+
+//å®šä¹‰ä¸€ä¸ªå®ç”¨æ¥è¿›è¡Œå€¼ä»å¯¼å…¥ä¸»çš„æ•°æ®è¡¨è¿›å…¥DOä¸­
 #define GET_VALUE1(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r1[i++])));
-//¶¨ÒåÒ»¸öºêÓÃÀ´½øĞĞÖµ´Óµ¼ÈëÖ÷µÄÊı¾İ±í½øÈëDOÖĞ
+//å®šä¹‰ä¸€ä¸ªå®ç”¨æ¥è¿›è¡Œå€¼ä»å¯¼å…¥ä¸»çš„æ•°æ®è¡¨è¿›å…¥DOä¸­
 #define GET_VALUE2(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r2[i++])));
 
-string getTimeEleanor()
-{
-	time_t now = time(0);
-	struct tm t;
-//#ifdef LINUX
-//	//LINUX
-//	localtime_r(&t, &now);
-//#else
-//	//windows
-//	localtime_s(&t, &now);
-//#endif
 
-
-	// ½«ĞÅÏ¢Êä³öµ½×Ö·û´®Á÷
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
-}
-
-// ²éÑ¯²É¹ºÑ¯¼Ûµ¥ÁĞ±í
+// æŸ¥è¯¢é‡‡è´­è¯¢ä»·å•åˆ—è¡¨
 PageVO<PurInquiryFindBillVO> PurInquiryService::listAll(const PurInquiryFindBillQuery& query)
 {
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	PageVO<PurInquiryFindBillVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//²éÑ¯Êı¾İ×ÜÌõÊı
+	//æŸ¥è¯¢æ•°æ®æ€»æ¡æ•°
 	PurInquiryDO obj;
 	obj.setBill_no(query.getBill_no());
 	obj.setBill_date(query.getBill_date());
@@ -72,7 +54,7 @@ PageVO<PurInquiryFindBillVO> PurInquiryService::listAll(const PurInquiryFindBill
 		return pages;
 	}
 
-	//·ÖÒ³²éÑ¯Êı¾İ
+	//åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	pages.setTotal(count);
 	pages.calcPages();
 	list<PurInquiryDO> result = dao.selectPurInquiryFindBillWithPage(obj, query.getPageIndex(), query.getPageSize());
@@ -116,19 +98,19 @@ PageVO<PurInquiryFindBillVO> PurInquiryService::listAll(const PurInquiryFindBill
 
 
 
-// ²é¿´Ö¸¶¨²É¹ºÑ¯¼Ûµ¥ÏêÇé
+// æŸ¥çœ‹æŒ‡å®šé‡‡è´­è¯¢ä»·å•è¯¦æƒ…
 PurInquiryFindDetailBillVO PurInquiryService::listPurInquiryFindDetailBill(const PurInquiryFindDetailBillQuery& query)
 {
-	// ¹¹½¨·µ»Ø¶ÔÏó
+	// æ„å»ºè¿”å›å¯¹è±¡
 	PurInquiryFindDetailBillVO detail;
 
-	// ÁìÓòÄ£ĞÍ×ª»»
+	// é¢†åŸŸæ¨¡å‹è½¬æ¢
 	PurInquiryDO obj;
 	obj.setBill_no(query.getBill_no());
 	PurInquiryEntryDO obj2;
 	obj2.setEntry_bill_no(query.getBill_no());
 
-	// ²éÑ¯Ö¸¶¨Ñ¯¼Ûµ¥Êı¾İ
+	// æŸ¥è¯¢æŒ‡å®šè¯¢ä»·å•æ•°æ®
 	PurInquiryDAO dao;
 	list<PurInquiryDO> result = dao.selectPurInquiryFindDetailBill(obj);
 	for (PurInquiryDO sub : result)
@@ -154,7 +136,7 @@ PurInquiryFindDetailBillVO PurInquiryService::listPurInquiryFindDetailBill(const
 		detail.setApproval_result_type(sub.getApproval_result_type());
 	}
 
-	// ²éÑ¯Ã÷Ï¸ÁĞ±í
+	// æŸ¥è¯¢æ˜ç»†åˆ—è¡¨
 	list<PurInquiryEntryDO> details = dao.selectPurInquiryExportEntry(obj2.getEntry_bill_no());
 	EntryPurInquiryVO detailsvo;
 	list<EntryPurInquiryVO> lvo;
@@ -163,7 +145,7 @@ PurInquiryFindDetailBillVO PurInquiryService::listPurInquiryFindDetailBill(const
 		detailsvo.setSrc_bill_type(ones.getEntry_src_bill_type());
 		detailsvo.setSrc_entry_no(ones.getEntry_src_no());
 		detailsvo.setMaterial_id(ones.getMaterial_id());
-		// ¹æ¸ñĞÍºÅ
+		// è§„æ ¼å‹å·
 		detailsvo.setUnit_id(ones.getUnit_id());
 		detailsvo.setEntry_qty(ones.getEntry_qty());
 		detailsvo.setTax_rate(ones.getTax_rate());
@@ -179,42 +161,42 @@ PurInquiryFindDetailBillVO PurInquiryService::listPurInquiryFindDetailBill(const
 	return detail;
 }
 
-// µ¼Èë
+// å¯¼å…¥
 uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& payload)
 {
-//¶ÔÒ»Ğ©Öµ½øĞĞ³õÊ¼»¯
-	//excel¶ÔÏó
+	//å¯¹ä¸€äº›å€¼è¿›è¡Œåˆå§‹åŒ–
+		//excelå¯¹è±¡
 	ExcelComponent excel;
-	//Ñ©»¨Éú³ÉÆ÷
+	//é›ªèŠ±ç”Ÿæˆå™¨
 	SnowFlake sf(1, 3);
-	//¼ÆÊıÆ÷
+	//è®¡æ•°å™¨
 	int i = 0;
 	PurInquiryDAO dao;
-	//Ê×ÏÈ¼ÓÔØÖ÷±íÊı¾İ
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("²É¹ºÑ¯¼Ûµ¥");
+	//é¦–å…ˆåŠ è½½ä¸»è¡¨æ•°æ®
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("é‡‡è´­è¯¢ä»·å•");
 	auto readData = excel.readIntoVector(fileName, sheetName);
-	//È»ºó¼ÓÔØÃ÷Ï¸Êı¾İ
-	std::string sheetName2 = CharsetConvertHepler::ansiToUtf8("²É¹ºÑ¯¼Ûµ¥Ã÷Ï¸");
+	//ç„¶ååŠ è½½æ˜ç»†æ•°æ®
+	std::string sheetName2 = CharsetConvertHepler::ansiToUtf8("é‡‡è´­è¯¢ä»·å•æ˜ç»†");
 	auto readEntryData = excel.readIntoVector(fileName, sheetName2);
-	int row1 = 1, row2 = 1;//row1´ú±íÖ÷±íĞĞºÅ£¬ row2´ú±íÃ÷Ï¸±íĞĞºÅ
+	int row1 = 1, row2 = 1;//row1ä»£è¡¨ä¸»è¡¨è¡Œå·ï¼Œ row2ä»£è¡¨æ˜ç»†è¡¨è¡Œå·
 	for (; row1 < readData.size(); ++row1)
 	{
-		//Ã¿¸öĞĞÊı¾İµÄÊı×é
+		//æ¯ä¸ªè¡Œæ•°æ®çš„æ•°ç»„
 		vector<string> r1 = readData[row1];
 		PurInquiryDO data;
 		i = 0;
-		//Ê×ÏÈÉú³Éid
+		//é¦–å…ˆç”Ÿæˆid
 		string id = to_string(sf.nextId());
 		data.setId(id);
-		//»ñÈ¡Ê±¼ä
-		string time = getTimeEleanor();
-		//»ñÈ¡Éí·İ
-		data.setSys_org_code(payload.getDepartment());
+		//è·å–æ—¶é—´
+		SimpleDateTimeFormat time;
+		data.setCreate_time(time.format());
+		data.setUpdate_time(time.format());
+		//è·å–èº«ä»½
+		data.setSys_org_code(payload.getOrgCode());
 		data.setCreate_by(payload.getUsername());
-		data.setCreate_time(time);
 		data.setUpdate_by(payload.getUsername());
-		data.setUpdate_time(time);
-		//»ñÈ¡Êı¾İ±íµÄĞÅÏ¢
+		//è·å–æ•°æ®è¡¨çš„ä¿¡æ¯
 		GET_VALUE1(Bill_no, );
 		GET_VALUE1(Bill_date, );
 		GET_VALUE1(Src_bill_type, );
@@ -250,30 +232,30 @@ uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& pa
 		GET_VALUE1(Update_by, );
 
 
-		//½øĞĞÊı¾İÑéÖ¤
-		//½øĞĞ±ØÌî²ÎÊı¼ìÑé
+		//è¿›è¡Œæ•°æ®éªŒè¯
+		//è¿›è¡Œå¿…å¡«å‚æ•°æ£€éªŒ
 		if (data.getBill_no() == "" || data.getBill_date() == "" || data.getSubject() == "") {
 			return 0;
 		}
-		//½«Æä¼ÓÔØ½øÊı¾İ¿â
+		//å°†å…¶åŠ è½½è¿›æ•°æ®åº“
 		if (dao.input(data) == 0)
 		{
 			return  0;
 		}
 		string billNo = data.getBill_no();
 
-		// Ã÷Ï¸ sheet
+		// æ˜ç»† sheet
 		for (; row2 < readEntryData.size() && readEntryData[row2][0] == billNo; ++row2)
 		{
 			PurInquiryEntryDO data;
-			//Ã¿¸öĞĞÊı¾İµÄÊı×é
+			//æ¯ä¸ªè¡Œæ•°æ®çš„æ•°ç»„
 			vector<string> r2 = readEntryData[row2];
 			i = 0;
-			//Ê×ÏÈÉú³Éid
+			//é¦–å…ˆç”Ÿæˆid
 			string id1 = to_string(sf.nextId());
 			data.setEntry_id(id1);
 			data.setMid(id);
-			//»ñÈ¡Êı¾İ±íµÄĞÅÏ¢
+			//è·å–æ•°æ®è¡¨çš„ä¿¡æ¯
 			GET_VALUE2(Entry_bill_no, );
 			GET_VALUE2(Entry_no, stoi);
 			GET_VALUE2(Entry_src_bill_type, );
@@ -290,13 +272,13 @@ uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& pa
 			GET_VALUE2(Custom1, );
 			GET_VALUE2(Custom2, );
 
-			//Êı¾İ¼ìÑé
-			//½øĞĞÃ÷Ï¸¼ìÑé
-			if (data.getEntry_no() < 0|| data.getMaterial_id() == "" || data.getUnit_id() == ""
+			//æ•°æ®æ£€éªŒ
+			//è¿›è¡Œæ˜ç»†æ£€éªŒ
+			if (data.getEntry_no() < 0 || data.getMaterial_id() == "" || data.getUnit_id() == ""
 				|| data.getEntry_qty() < 0) {
 				return 0;
 			}
-			//½«Æä¼ÓÔØ½øÊı¾İ¿â
+			//å°†å…¶åŠ è½½è¿›æ•°æ®åº“
 			if (dao.inputEntry(data) == 0)
 			{
 				return 0;

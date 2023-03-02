@@ -9,7 +9,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -61,7 +61,7 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComFindDetailBill, execQueryPurComFindDetailBill, PurComFindDetailBillQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComList, execQueryPurComList, PurComListQuery);
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurComDividedList, execQueryPurComDividedList, PurComDividedListQuery);
-	CREATE_API_FUN_JSON_PAYLOAD(queryPurComExport, execPurComExport, PurComExportQuery)
+	CREATE_API_FUN_JSON_PAYLOAD(queryPurComExport, execPurComExport, PurComExportQuery);
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurComInto, execPurComInto, PurComIntoDTO);
 private:
 	//演示新增比价

@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: QZP
@@ -33,15 +33,15 @@
 
 
 
-// ·ÖÒ³²éÑ¯±È¼Ûµ¥µ¥¾İÁĞ±í
+// åˆ†é¡µæŸ¥è¯¢æ¯”ä»·å•å•æ®åˆ—è¡¨
 PageVO<PurComFindBillVO> PurCompareService::listPurComFindBill(const PurComFindBillQuery& query)
 {
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	PageVO<PurComFindBillVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//²éÑ¯Êı¾İ×ÜÌõÊı
+	//æŸ¥è¯¢æ•°æ®æ€»æ¡æ•°
 	PurCompareDO obj;
 	obj.setBillNo(query.getBillNo());
 	obj.setSubject(query.getSubject());
@@ -58,7 +58,7 @@ PageVO<PurComFindBillVO> PurCompareService::listPurComFindBill(const PurComFindB
 		return pages;
 	}
 
-	//·ÖÒ³²éÑ¯Êı¾İ
+	//åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	pages.setTotal(count);
 	pages.calcPages();
 	list<PurCompareDO> result = dao.selectPurComFindBill(obj, query.getPageIndex(), query.getPageSize());
@@ -93,15 +93,15 @@ PageVO<PurComFindBillVO> PurCompareService::listPurComFindBill(const PurComFindB
 	pages.setRows(vr);
 	return pages;
 }
-// ²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢
+// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯
 PurComFindDetailBillVO PurCompareService::getPurComFindDetailBill(const PurComFindDetailBillQuery& query)
 {
-	// ÁìÓòÄ£ĞÍ×ª»»
+	// é¢†åŸŸæ¨¡å‹è½¬æ¢
 	PurCompareDO obj;
 	obj.setBillNo(query.getBillNo());
 	PurCompareEntryDO obj2;
 	obj2.setBillNo(query.getBillNo());
-	// ²éÑ¯Êı¾İ£º±È¼Ûµ¥ĞÅÏ¢
+	// æŸ¥è¯¢æ•°æ®ï¼šæ¯”ä»·å•ä¿¡æ¯
 	PurCompareDAO dao;
 	list<PurCompareDO> result = dao.selectPurComFindDetailBill(obj);
 	PurComFindDetailBillVO vo;
@@ -135,7 +135,7 @@ PurComFindDetailBillVO PurCompareService::getPurComFindDetailBill(const PurComFi
 		vo.setApprovalRemark(sub.getApprovalRemark());
 		vo.setApprovalResultType(sub.getApprovalResultType());
 	}
-	// ²éÑ¯Êı¾İ£ºÃ÷Ï¸ÁĞ±í
+	// æŸ¥è¯¢æ•°æ®ï¼šæ˜ç»†åˆ—è¡¨
 	list<PurCompareEntryDO> details = dao.selectPurComFindDetailBillEntry(obj2);
 	PurComDetailsVO detailsvo;
 	list<PurComDetailsVO> lvo;
@@ -161,20 +161,20 @@ PurComFindDetailBillVO PurCompareService::getPurComFindDetailBill(const PurComFi
 	vo.setDetailsList(lvo);
 	return vo;
 }
-// ±¨¼Ûµ¥ÁĞ±í
+// æŠ¥ä»·å•åˆ—è¡¨
 std::list<PurComListVO> PurCompareService::listPurComList(const PurComListQuery& query)
 {
-	// ¹¹½¨·µ»Ø¶ÔÏó
+	// æ„å»ºè¿”å›å¯¹è±¡
 	list<PurComListVO> lvo;
-	// ÁìÓòÄ£ĞÍ×ª»»
+	// é¢†åŸŸæ¨¡å‹è½¬æ¢
 	PurCompareDO obj,obj2;
 	obj.setBillNo(query.getBillNo());
-	// ²éÑ¯ºòÑ¡±¨¼Ûµ¥ids
+	// æŸ¥è¯¢å€™é€‰æŠ¥ä»·å•ids
 	PurCompareDAO dao;
 	list<PurCompareDO> CanIds = dao.selectCandidateQuot(obj);
 	if (CanIds.empty()) return lvo;
 	else obj2.setCandidateQuotIds(CanIds.front().getCandidateQuotIds());
-	// ²éÑ¯±¨¼Ûµ¥ÁĞ±í
+	// æŸ¥è¯¢æŠ¥ä»·å•åˆ—è¡¨
 	list<PurComQuotDO> result = dao.selectPurComList(obj2);
 	PurComListVO vo;
 	for (PurComQuotDO ones : result)
@@ -191,15 +191,15 @@ std::list<PurComListVO> PurCompareService::listPurComList(const PurComListQuery&
 	}
 	return lvo;
 }
-// ±¨¼Ûµ¥·ÖÂ¼ÁĞ±í
+// æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨
 std::list<PurComDividedListVO> PurCompareService::listPurComDividedList(const PurComDividedListQuery& query)
 {
-	// ¹¹½¨·µ»Ø¶ÔÏó
+	// æ„å»ºè¿”å›å¯¹è±¡
 	list<PurComDividedListVO> lvo;
-	// ÁìÓòÄ£ĞÍ×ª»»
+	// é¢†åŸŸæ¨¡å‹è½¬æ¢
 	PurComQuotEntryDO obj;
 	obj.setBillNo(query.getBillNo());
-	// ²éÑ¯±¨¼Ûµ¥·ÖÂ¼ÁĞ±í
+	// æŸ¥è¯¢æŠ¥ä»·å•åˆ†å½•åˆ—è¡¨
 	PurCompareDAO dao;
 	list<PurComQuotEntryDO> result = dao.selectPurComDividedList(obj);
 	PurComDividedListVO vo;
@@ -222,56 +222,56 @@ std::list<PurComDividedListVO> PurCompareService::listPurComDividedList(const Pu
 	}
 	return lvo;
 }
-// µ¼³ö±È¼Ûµ¥¼°·ÖÂ¼
+// å¯¼å‡ºæ¯”ä»·å•åŠåˆ†å½•
 string PurCompareService::getPurComExport(const PurComExportQuery& query)
 {
-	//¶¨Òåfastdfs¿Í»§¶Ë¶ÔÏó
+	//å®šä¹‰fastdfså®¢æˆ·ç«¯å¯¹è±¡
 	#ifdef LINUX
 		FastDfsClient client("conf/client.conf", 3);
 	#else
 		FastDfsClient client("1.15.240.108");
 	#endif
-	// ÅĞ¶ÏÊÇ·ñÓĞÉÏ´«²ÎÊı£¬²¢ÓÃlsAll¼ÇÂ¼
+	// åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šä¼ å‚æ•°ï¼Œå¹¶ç”¨lsAllè®°å½•
 	bool lsAll = false;
 	if (query.getBillNo().size() == 0) lsAll = true;
-	// ¶¨Òå±£´æÊı¾İÎ»ÖÃ
+	// å®šä¹‰ä¿å­˜æ•°æ®ä½ç½®
 	ExcelComponent excel;
 	std::string fileName = "./public/excel/export.xlsx";
-	// µ¼³ö²É¹º±È¼Ûµ¥Ö÷±í
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("²É¹º±È¼Ûµ¥");
+	// å¯¼å‡ºé‡‡è´­æ¯”ä»·å•ä¸»è¡¨
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("é‡‡è´­æ¯”ä»·å•");
 	vector<vector<std::string>> data;
 	vector<string> headers{
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İÈÕÆÚ"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("Ö÷Ìâ"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñºì×Ö"),
-		CharsetConvertHepler::ansiToUtf8("ºòÑ¡±¨¼Ûµ¥ids"),
-		CharsetConvertHepler::ansiToUtf8("¸¶¿î·½Ê½"),
-		CharsetConvertHepler::ansiToUtf8("½»»õµØµã"),
-		CharsetConvertHepler::ansiToUtf8("½»»õÊ±¼ä"),
-		CharsetConvertHepler::ansiToUtf8("¸½¼ş"),
-		CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñ×Ô¶¯Éú³É"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ½×¶Î"),
-		CharsetConvertHepler::ansiToUtf8("ÉóºËÈË"),
-		CharsetConvertHepler::ansiToUtf8("ÉóÅúÊµÀıid"),
-		CharsetConvertHepler::ansiToUtf8("ºËÅú½á¹ûÀàĞÍ"),
-		CharsetConvertHepler::ansiToUtf8("ºËÅúÒâ¼û"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÉúĞ§"),
-		CharsetConvertHepler::ansiToUtf8("ÉúĞ§Ê±¼ä"),
-		CharsetConvertHepler::ansiToUtf8("ÒÑ¹Ø±Õ"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñ×÷·Ï"),
-		CharsetConvertHepler::ansiToUtf8("´´½¨²¿ÃÅ"),
-		CharsetConvertHepler::ansiToUtf8("´´½¨ÈË"),
-		CharsetConvertHepler::ansiToUtf8("´´½¨Ê±¼ä"),
-		CharsetConvertHepler::ansiToUtf8("ĞŞ¸ÄÈË"),
-		//CharsetConvertHepler::ansiToUtf8("ĞŞ¸ÄÊ±¼ä")
+		CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®æ—¥æœŸ"),
+		CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),
+		CharsetConvertHepler::ansiToUtf8("æºå•id"),
+		CharsetConvertHepler::ansiToUtf8("æºå•å·"),
+		CharsetConvertHepler::ansiToUtf8("ä¸»é¢˜"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦çº¢å­—"),
+		CharsetConvertHepler::ansiToUtf8("å€™é€‰æŠ¥ä»·å•ids"),
+		CharsetConvertHepler::ansiToUtf8("ä»˜æ¬¾æ–¹å¼"),
+		CharsetConvertHepler::ansiToUtf8("äº¤è´§åœ°ç‚¹"),
+		CharsetConvertHepler::ansiToUtf8("äº¤è´§æ—¶é—´"),
+		CharsetConvertHepler::ansiToUtf8("é™„ä»¶"),
+		CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®é˜¶æ®µ"),
+		CharsetConvertHepler::ansiToUtf8("å®¡æ ¸äºº"),
+		CharsetConvertHepler::ansiToUtf8("å®¡æ‰¹å®ä¾‹id"),
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹ç»“æœç±»å‹"),
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹æ„è§"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦ç”Ÿæ•ˆ"),
+		CharsetConvertHepler::ansiToUtf8("ç”Ÿæ•ˆæ—¶é—´"),
+		CharsetConvertHepler::ansiToUtf8("å·²å…³é—­"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦ä½œåºŸ"),
+		CharsetConvertHepler::ansiToUtf8("åˆ›å»ºéƒ¨é—¨"),
+		CharsetConvertHepler::ansiToUtf8("åˆ›å»ºäºº"),
+		CharsetConvertHepler::ansiToUtf8("åˆ›å»ºæ—¶é—´"),
+		CharsetConvertHepler::ansiToUtf8("ä¿®æ”¹äºº"),
+		//CharsetConvertHepler::ansiToUtf8("ä¿®æ”¹æ—¶é—´")
 	};
 	data.push_back(headers);
-	// ÅĞ¶ÏÊÇ·ñÓĞÉÏ´«²ÎÊı£¬ÈôÃ»ÓĞÔòµ¼³öËùÓĞµ¥¾İ£¬·ñÔò¸ù¾İµ¥¾İ±àºÅµ¼³ö
+	// åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šä¼ å‚æ•°ï¼Œè‹¥æ²¡æœ‰åˆ™å¯¼å‡ºæ‰€æœ‰å•æ®ï¼Œå¦åˆ™æ ¹æ®å•æ®ç¼–å·å¯¼å‡º
 	if (lsAll) {
 		PurCompareDO obj;
 		PurCompareDAO dao;
@@ -287,10 +287,10 @@ string PurCompareService::getPurComExport(const PurComExportQuery& query)
 	else {
 		for (string ones : query.getBillNo())
 		{
-			// ÁìÓòÄ£ĞÍ×ª»»
+			// é¢†åŸŸæ¨¡å‹è½¬æ¢
 			PurCompareDO obj;
 			obj.setBillNo(ones);
-			// ²éÑ¯½á¹û
+			// æŸ¥è¯¢ç»“æœ
 			PurCompareDAO dao;
 			list<PurCompareDO> result = dao.selectPurComExport(obj,lsAll);
 			vector<string> vec;
@@ -304,32 +304,32 @@ string PurCompareService::getPurComExport(const PurComExportQuery& query)
 	}
 	
 
-	//µ¼³ö²É¹º±È¼Ûµ¥·ÖÂ¼
-	sheetName = CharsetConvertHepler::ansiToUtf8("²É¹º±È¼Ûµ¥·ÖÂ¼");
+	//å¯¼å‡ºé‡‡è´­æ¯”ä»·å•åˆ†å½•
+	sheetName = CharsetConvertHepler::ansiToUtf8("é‡‡è´­æ¯”ä»·å•åˆ†å½•");
 	data.clear();
 	headers.clear();
 	headers={
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İºÅ"),
-		CharsetConvertHepler::ansiToUtf8("·ÖÂ¼ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼id"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌ"),
-		CharsetConvertHepler::ansiToUtf8("ÎïÁÏ"),
-		CharsetConvertHepler::ansiToUtf8("¼ÆÁ¿µ¥Î»"),
-		CharsetConvertHepler::ansiToUtf8("ÊıÁ¿"),
-		CharsetConvertHepler::ansiToUtf8("Ë°ÂÊ%"),
-		CharsetConvertHepler::ansiToUtf8("º¬Ë°µ¥¼Û"),
-		CharsetConvertHepler::ansiToUtf8("ÕÛ¿ÛÂÊ"),
-		CharsetConvertHepler::ansiToUtf8("º¬Ë°½ğ¶î"),
-		CharsetConvertHepler::ansiToUtf8("ÅÅÃû"),
-		CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-		CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå1"),
-		CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå2")
+		CharsetConvertHepler::ansiToUtf8("å•æ®å·"),
+		CharsetConvertHepler::ansiToUtf8("åˆ†å½•å·"),
+		CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),
+		CharsetConvertHepler::ansiToUtf8("æºå•id"),
+		CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•id"),
+		CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•å·"),
+		CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†"),
+		CharsetConvertHepler::ansiToUtf8("ç‰©æ–™"),
+		CharsetConvertHepler::ansiToUtf8("è®¡é‡å•ä½"),
+		CharsetConvertHepler::ansiToUtf8("æ•°é‡"),
+		CharsetConvertHepler::ansiToUtf8("ç¨ç‡%"),
+		CharsetConvertHepler::ansiToUtf8("å«ç¨å•ä»·"),
+		CharsetConvertHepler::ansiToUtf8("æŠ˜æ‰£ç‡"),
+		CharsetConvertHepler::ansiToUtf8("å«ç¨é‡‘é¢"),
+		CharsetConvertHepler::ansiToUtf8("æ’å"),
+		CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+		CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰1"),
+		CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰2")
 	};
 	data.push_back(headers);
-	// ÅĞ¶ÏÊÇ·ñÓĞÉÏ´«²ÎÊı£¬ÈôÃ»ÓĞÔòµ¼³öËùÓĞµ¥¾İ£¬·ñÔò¸ù¾İµ¥¾İ±àºÅµ¼³ö
+	// åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šä¼ å‚æ•°ï¼Œè‹¥æ²¡æœ‰åˆ™å¯¼å‡ºæ‰€æœ‰å•æ®ï¼Œå¦åˆ™æ ¹æ®å•æ®ç¼–å·å¯¼å‡º
 	if (lsAll) {
 		PurCompareEntryDO obj2;
 		PurCompareDAO dao;
@@ -345,10 +345,10 @@ string PurCompareService::getPurComExport(const PurComExportQuery& query)
 	else {
 		for (string ones : query.getBillNo())
 		{
-			// ÁìÓòÄ£ĞÍ×ª»»
+			// é¢†åŸŸæ¨¡å‹è½¬æ¢
 			PurCompareEntryDO obj2;
 			obj2.setBillNo(ones);
-			// ²éÑ¯½á¹û
+			// æŸ¥è¯¢ç»“æœ
 			PurCompareDAO dao;
 			list<PurCompareEntryDO> result = dao.selectPurComEntryExport(obj2,lsAll);
 			vector<string> vec;
@@ -360,66 +360,66 @@ string PurCompareService::getPurComExport(const PurComExportQuery& query)
 		}
 		excel.writeVectorToFile(fileName, sheetName, data);
 	}
-	//ÉÏ´«µ½fastDfs²¢É¾³ı±¾µØÎÄ¼ş
+	//ä¸Šä¼ åˆ°fastDfså¹¶åˆ é™¤æœ¬åœ°æ–‡ä»¶
 	std::string fieldName = client.uploadFile(fileName);
 	std::remove(fileName.c_str());
-	//·µ»ØÏÂÔØµØÖ·
+	//è¿”å›ä¸‹è½½åœ°å€
 	fieldName = "http://1.15.240.108:8888/" + fieldName;
 	return fieldName;
 }
-// µ¼Èë±È¼Ûµ¥¼°·ÖÂ¼
+// å¯¼å…¥æ¯”ä»·å•åŠåˆ†å½•
 uint64_t PurCompareService::savePurComInto(const PurComIntoDTO& dto,const PayloadDTO& payload)
 {
-	//Ñ©»¨Éú³ÉÆ÷
+	//é›ªèŠ±ç”Ÿæˆå™¨
 	SnowFlake sf(1, 13);
 	PurCompareDAO dao;
-	// »ñÈ¡Êı¾İ:¼ÓÔØÖ÷±íÊı¾İºÍ·ÖÂ¼Êı¾İ
+	// è·å–æ•°æ®:åŠ è½½ä¸»è¡¨æ•°æ®å’Œåˆ†å½•æ•°æ®
 	ExcelComponent excel;
 	string fileName = dto.getFiles().front();
-	std::string sheetName = CharsetConvertHepler::ansiToUtf8("²É¹º±È¼Ûµ¥");
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("é‡‡è´­æ¯”ä»·å•");
 	vector<vector<string>> readData = excel.readIntoVector(fileName, sheetName);
-	sheetName = CharsetConvertHepler::ansiToUtf8("²É¹º±È¼Ûµ¥·ÖÂ¼");
+	sheetName = CharsetConvertHepler::ansiToUtf8("é‡‡è´­æ¯”ä»·å•åˆ†å½•");
 	vector<vector<string>> readEntryData = excel.readIntoVector(fileName, sheetName);
-	// µ¼ÈëÊı¾İ
-	int row1 = 1, row2 = 1;//row1´ú±íÖ÷±íĞĞºÅ£¬ row2´ú±íÃ÷Ï¸±íĞĞºÅ
+	// å¯¼å…¥æ•°æ®
+	int row1 = 1, row2 = 1;//row1ä»£è¡¨ä¸»è¡¨è¡Œå·ï¼Œ row2ä»£è¡¨æ˜ç»†è¡¨è¡Œå·
 	for (; row1 < readData.size(); ++row1)
 	{
-		//Ã¿¸öĞĞÊı¾İµÄÊı×é
+		//æ¯ä¸ªè¡Œæ•°æ®çš„æ•°ç»„
 		vector<string> r1 = readData[row1];
 		PurCompareDO data(r1);
-		data.setId(to_string(sf.nextId())); //Ëæ»úÉú³Éid
-		//»ñÈ¡Ê±¼ä
+		data.setId(to_string(sf.nextId())); //éšæœºç”Ÿæˆid
+		//è·å–æ—¶é—´
 		SimpleDateTimeFormat time;
 		data.setCreateTime(time.format());
 		data.setUpdateTime(time.format());
-		//»ñÈ¡Éí·İ
-		data.setSysOrgCode(payload.getDepartment());
+		//è·å–èº«ä»½
+		data.setSysOrgCode(payload.getOrgCode());
 		data.setCreateBy(payload.getUsername());
 		data.setUpdateBy(payload.getUsername());
-		// todo£º½øĞĞÈ¨ÏŞÑéÖ¤
-		// ½øĞĞÊı¾İÑéÖ¤
-		//½øĞĞ±ØÌî²ÎÊı¼ìÑé
+		// todoï¼šè¿›è¡Œæƒé™éªŒè¯
+		// è¿›è¡Œæ•°æ®éªŒè¯
+		//è¿›è¡Œå¿…å¡«å‚æ•°æ£€éªŒ
 		if (data.getBillNo() == "" || data.getBillDate() == "") {return 9999;}
-		//½«Æä¼ÓÔØ½øÊı¾İ¿â
+		//å°†å…¶åŠ è½½è¿›æ•°æ®åº“
 		dao.insertPurCom(data);
 	
-		//¿ªÊ¼µ¼Èë¶ÔÓ¦µÄ·ÖÂ¼
-		string billNo = data.getBillNo(); //Ö÷±íµ¥ºÅ
-		string mid = data.getId(); //Ö÷±íid
+		//å¼€å§‹å¯¼å…¥å¯¹åº”çš„åˆ†å½•
+		string billNo = data.getBillNo(); //ä¸»è¡¨å•å·
+		string mid = data.getId(); //ä¸»è¡¨id
 		for (; row2 < readEntryData.size() && readEntryData[row2][0] == billNo; ++row2)
 		{
-			//Ã¿¸öĞĞÊı¾İµÄÊı×é
+			//æ¯ä¸ªè¡Œæ•°æ®çš„æ•°ç»„
 			vector<string> r2 = readEntryData[row2];
 			PurCompareEntryDO data(r2);
 			data.setMid(mid);  
-			data.setId(to_string(sf.nextId())); //Ëæ»úÉú³Éid
-			//Êı¾İ¼ìÑé
+			data.setId(to_string(sf.nextId())); //éšæœºç”Ÿæˆid
+			//æ•°æ®æ£€éªŒ
 			if (data.getEntryNo() == -1 || data.getSupplierName() == ""|| data.getMaterialName() == "" || data.getUnitName() == ""
 				|| data.getQty() == -1 || data.getTaxRate() == -1 || data.getPrice() == -1 || data.getAmt() == -1) 
 			{
 				return 9999;
 			}
-			//½«Æä¼ÓÔØ½øÊı¾İ¿â
+			//å°†å…¶åŠ è½½è¿›æ•°æ®åº“
 			dao.insertPurComEntry(data);
 		}
 	}
@@ -430,9 +430,9 @@ uint64_t PurCompareService::savePurComInto(const PurComIntoDTO& dto,const Payloa
 
 uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, const PayloadDTO& payload)
 {
-	//×é×°Êı¾İ
+	//ç»„è£…æ•°æ®
 	AddPurComDO data;
-	// Ñ©»¨Ëã·¨Éú³Éid
+	// é›ªèŠ±ç®—æ³•ç”Ÿæˆid
 	SnowFlake randomId(1, 3);
 	data.setId(to_string(randomId.nextId()));
 
@@ -463,12 +463,11 @@ uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, const PayloadDTO
 	data.setEffectiveTime(dto.getEffectiveTime());
 	data.setIsClosed(dto.getIsClosed());
 	data.setIsVoided(dto.getIsVoided());
-	// ´´½¨²¿ÃÅ£¬´Ópayload»ñÈ¡
-	data.setSysOrgCode(payload.getUserDept());
+	// åˆ›å»ºéƒ¨é—¨ï¼Œä»payloadè·å–
 
-	// ´´½¨ÈË£¬´Ópayload»ñÈ¡
+	// åˆ›å»ºäººï¼Œä»payloadè·å–
 	data.setCreateBy(payload.getUsername());
-	// ´´½¨Ê±¼ä£¬ÓÉºó¶ËÉú³É
+	// åˆ›å»ºæ—¶é—´ï¼Œç”±åç«¯ç”Ÿæˆ
 	data.setCreateTime(SimpleDateTimeFormat::format("%Y-%m-%d %H:%M:%S"));
 	data.setUpdateBy(dto.getUpdateBy());
 	data.setUpdateTime(dto.getUpdateTime());
@@ -477,7 +476,7 @@ uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, const PayloadDTO
 	list<PurComDetailDTO> Addlist;
 	for (PurComDetailDTO i : dto.getDetail())
 	{
-		// bill_noºÍentry_no¶¼²»ÄÜÖØ¸´
+		// bill_noå’Œentry_noéƒ½ä¸èƒ½é‡å¤
 		PurComDetailDTO detail;
 		detail.setId(to_string(randomId.nextId()));
 		detail.setMid("pur_compare");
@@ -505,17 +504,17 @@ uint64_t PurCompareService::savePurCom(const AddPurComDTO& dto, const PayloadDTO
 		Addlist.push_back(detail);
 	}
 	data.setDetail(Addlist);
-	//Ö´ĞĞÊı¾İÌí¼Ó
+	//æ‰§è¡Œæ•°æ®æ·»åŠ 
 	PurCompareDAO dao;
 	return dao.insertPurCom(data);
 }
 
 bool PurCompareService::updatePurCom(const ModPurComDTO& dto, PayloadDTO payload)
 {
-	//×é×°´«ÊäÊı¾İ
+	//ç»„è£…ä¼ è¾“æ•°æ®
 	ModPurComDO data;
 
-	// Ñ©»¨Ëã·¨Éú³Éid
+	// é›ªèŠ±ç®—æ³•ç”Ÿæˆid
 	//SnowFlake randomId(1, 3);
 	//data.setId(to_string(randomId.nextId()));
 
@@ -546,12 +545,12 @@ bool PurCompareService::updatePurCom(const ModPurComDTO& dto, PayloadDTO payload
 	data.setEffectiveTime(dto.getEffectiveTime());
 	data.setIsClosed(dto.getIsClosed());
 	data.setIsVoided(dto.getIsVoided());
-	// ´´½¨²¿ÃÅ£¬²»±ä
+	// åˆ›å»ºéƒ¨é—¨ï¼Œä¸å˜
 	//data.setSysOrgCode(payload.getUserDept());
 
-	// ´´½¨ÈË£¬²»±ä
+	// åˆ›å»ºäººï¼Œä¸å˜
 	//data.setCreateBy(payload.getUsername());
-	// ´´½¨Ê±¼ä£¬²»±ä
+	// åˆ›å»ºæ—¶é—´ï¼Œä¸å˜
 	//data.setCreateTime(SimpleDateTimeFormat::format("%Y-%m-%d %H:%M:%S"));
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(SimpleDateTimeFormat::format("%Y-%m-%d %H:%M:%S"));
@@ -560,7 +559,7 @@ bool PurCompareService::updatePurCom(const ModPurComDTO& dto, PayloadDTO payload
 	list<PurComDetailDTO> Addlist;
 	for (PurComDetailDTO i : dto.getDetail())
 	{
-		// bill_noºÍentry_no¶¼²»ÄÜÖØ¸´
+		// bill_noå’Œentry_noéƒ½ä¸èƒ½é‡å¤
 		PurComDetailDTO detail;
 		//detail.setId(to_string(randomId.nextId()));
 		//detail.setMid("pur_compare");
@@ -592,7 +591,7 @@ bool PurCompareService::updatePurCom(const ModPurComDTO& dto, PayloadDTO payload
 	}
 	data.setDetail(Addlist);
 
-	//Ö´ĞĞÊı¾İĞŞ¸Ä
+	//æ‰§è¡Œæ•°æ®ä¿®æ”¹
 	PurCompareDAO dao;
 	return dao.updatePurCom(data) == 1;
 }

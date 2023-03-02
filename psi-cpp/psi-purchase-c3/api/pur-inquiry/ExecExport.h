@@ -13,6 +13,6 @@
 #include "../../dao/pur-inquiry/PurInquiryDAO.h"
 
 
-std::string execexport(vector<std::string> head, string sheetname, list<std::string>& exl);
+std::string execexport(vector<std::string> head, const std::string& sheetName, list<std::string>& bill_list);
 
 #endif  //__EXECEXPORT_H__

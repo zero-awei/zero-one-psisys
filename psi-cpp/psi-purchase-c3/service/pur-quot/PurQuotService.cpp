@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PurQuotService.h"
 #include "../../dao/pur-quot/PurQuotDAO.h"
 #include <list>
@@ -12,25 +12,33 @@
 #include "CharsetConvertHepler.h"
 #include "ExcelComponent.h"
 #include "FastDfsClient.h"
-//µ¼Èë
+
+
+#define PUR_QUOT_I_TO_STRING(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("æ˜¯"):CharsetConvertHepler::ansiToUtf8("å¦"))
+#define PUR_QUOT_STRING_TO_I(s) (s==CharsetConvertHepler::ansiToUtf8("æ˜¯")? 1 : 0)
+
+//å¯¼å…¥
 uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
-	//½âÎöexcelÖĞµÄÊı¾İ
+	//è§£æexcelä¸­çš„æ•°æ®
 	ExcelComponent excel;
 	std::string file_name = dto.getFiles().front();
-	std::string sheet_name = CharsetConvertHepler::ansiToUtf8("¹©Ó¦±¨¼Ûµ¥");
-	std::string entry_sheet_name = CharsetConvertHepler::ansiToUtf8("Ã÷Ï¸");
-	//½«ÎÄ¼şµÄÊı¾İ×ª»»³É¶şÎ¬Êı×é, ½÷¼Ç:¶şÎ¬Êı×éµÄµÚÒ»ĞĞÊÇheader(ÎÄ×Ö), ²»ĞèÒªÔØÈëÊı¾İ¿â
-	vector<vector<string>> data = excel.readIntoVector(file_name, sheet_name);
-	vector<vector<string>> entry_data = excel.readIntoVector(file_name, entry_sheet_name);
+	std::string sheet_name = CharsetConvertHepler::ansiToUtf8("ä¾›åº”æŠ¥ä»·å•");
+	std::string entry_sheet_name = CharsetConvertHepler::ansiToUtf8("æ˜ç»†");
+	//å°†æ–‡ä»¶çš„æ•°æ®è½¬æ¢æˆäºŒç»´æ•°ç»„, è°¨è®°:äºŒç»´æ•°ç»„çš„ç¬¬ä¸€è¡Œæ˜¯header(æ–‡å­—), ä¸éœ€è¦è½½å…¥æ•°æ®åº“
+	auto data = excel.readIntoVector(file_name, sheet_name);
+	auto entry_data = excel.readIntoVector(file_name, entry_sheet_name);
 
-	//½«¶şÎ¬Êı×é×ª»»ÎªDOÄ£ĞÍ
+	//å°†äºŒç»´æ•°ç»„è½¬æ¢ä¸ºDOæ¨¡å‹
 	list<PurQuotDO> pur_quot_do;
 	if (data.size() > 1) {
 		for (int i = 1; i < data.size(); ++i) {
-			//strÊÇÒ»¸ö×Ö·û´®,ÊÇ¶şÎ¬Êı×éÖĞµÄÃ¿Ò»¸öÔªËØ
+			//stræ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²,æ˜¯äºŒç»´æ•°ç»„ä¸­çš„æ¯ä¸€ä¸ªå…ƒç´ 
 			PurQuotDO tmp_do;
 			int j = 0;
 			auto tmp_data = data[i];
+			auto t = tmp_do.getBill_no();
+			tmp_do.setBill_no(tmp_data[j++]);
+			t = tmp_do.getBill_no();
 			tmp_do.setSupplier_name(tmp_data[j++]);
 			tmp_do.setSupplier_id(tmp_data[j++]);
 			tmp_do.setPayment_method(tmp_data[j++]);
@@ -52,7 +60,6 @@ uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
 			tmp_do.setRemark(tmp_data[j++]);
 			tmp_do.setBpmi_instance_id(tmp_data[j++]);
 			tmp_do.setIs_voided(stoi(tmp_data[j++]));
-			tmp_do.setBill_no(tmp_data[j++]);
 			tmp_do.setIs_rubric(stoi(tmp_data[j++]));
 			tmp_do.setSrc_bill_type(tmp_data[j++]);
 			tmp_do.setCreate_time(tmp_data[j++]);
@@ -72,13 +79,14 @@ uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
 	list<PurQuotEntryDO> pur_quot_entry_do;
 	if (entry_data.size() > 1) {
 		for (int i = 1; i < entry_data.size(); ++i) {
-			//strÊÇÒ»¸ö×Ö·û´®,ÊÇ¶şÎ¬Êı×éÖĞµÄÃ¿Ò»¸öÔªËØ
+			//stræ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²,æ˜¯äºŒç»´æ•°ç»„ä¸­çš„æ¯ä¸€ä¸ªå…ƒç´ 
 			PurQuotEntryDO tmp_entry_do;
 			int j = 0;
 			auto tmp_data = entry_data[i];
+			tmp_entry_do.setBill_no(tmp_data[j++]);
 			tmp_entry_do.setMaterial_id(tmp_data[j++]);
 			tmp_entry_do.setUnit_id(tmp_data[j++]);
-			tmp_entry_do.setQty(stoi(tmp_data[j++]));
+			tmp_entry_do.setQty(stod(tmp_data[j++]));
 			tmp_entry_do.setTax_rate(stod(tmp_data[j++]));
 			tmp_entry_do.setPrice(stod(tmp_data[j++]));
 			tmp_entry_do.setDiscount_rate(stod(tmp_data[j++]));
@@ -90,103 +98,101 @@ uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
 			tmp_entry_do.setSrc_entry_id(tmp_data[j++]);
 			tmp_entry_do.setSrc_bill_type(tmp_data[j++]);
 			tmp_entry_do.setRemark(tmp_data[j++]);
-			tmp_entry_do.setBill_no(tmp_data[j++]);
 			tmp_entry_do.setSrc_bill_id(tmp_data[j++]);
 			pur_quot_entry_do.push_back(tmp_entry_do);
 		}
 	}
-	//´¦Àílist<PurQuotDO>ÖĞµÄpur_quot_do;
+	//å¤„ç†list<PurQuotDO>ä¸­çš„pur_quot_do;
 	uint64_t result = 0;
 	for (auto sub : pur_quot_do) {
 		PurQuotDAO dao;
 		result = dao.insertPurQuotInto(sub);
 	}
-	//´¦Àílist<PurQuotEntryDO>ÖĞµÄpur_quot_entry_do;
+	//å¤„ç†list<PurQuotEntryDO>ä¸­çš„pur_quot_entry_do;
 	for (auto sub : pur_quot_entry_do) {
 		PurQuotDAO dao;
 		result = dao.insertPurQuotInto(sub);
 	}
 	return result;
 }
-
-//µ¼³ö: »ñÈ¡¶à¸öPurQuotExportVO¶ÔÏó
+//å¯¼å‡º: è·å–å¤šä¸ªPurQuotExportVOå¯¹è±¡
+//å¯¼å‡ºçš„æ€è·¯æ˜¯: å…ˆé€šè¿‡ç¼–å·æŸ¥è¯¢å¯¹åº”çš„pur_quot, ç„¶åé€šè¿‡è¿™ä¸ªç¼–å·æŸ¥è¯¢å¯¹åº”çš„æ˜ç»†, è¿™æ ·å¯ä»¥ä¿è¯: å¯¼å‡ºçš„æ•°æ®é¡ºåº
 PurQuotExportVO PurQuotService::listPurQuotExportVO(const PurQuotExportQuery& query) {
-	//´´½¨²éÑ¯¶ÔÏó
+	//åˆ›å»ºæŸ¥è¯¢å¯¹è±¡
 	PurQuotDAO dao;
 	PurQuotDO pur_quot_do;
 	PurQuotEntryDO pur_quot_entry_do;
-	//ÉèÖÃsqlÓï¾äµÄ²éÑ¯Ìõ¼ş
+	//è®¾ç½®sqlè¯­å¥çš„æŸ¥è¯¢æ¡ä»¶
 	pur_quot_do.setBill_no(query.getBill_no());
-	pur_quot_entry_do.setBill_no(query.getBill_no());
-	//·µ»ØÕıÈ·µÄ²éÑ¯¶ÔÏó
+	//è¿”å›æ­£ç¡®çš„æŸ¥è¯¢å¯¹è±¡
 	list<PurQuotDO> list_do = dao.selectPurQuotExport(pur_quot_do);
-	list<PurQuotEntryDO> list_entry_do = dao.selectPurQuotEntryExport(pur_quot_entry_do);
-	//±¨±íµÄ³éÏó-->¶şÎ¬Êı×é																			
+	//æŠ¥è¡¨çš„æŠ½è±¡-->äºŒç»´æ•°ç»„																			
 	vector<vector<std::string>> data;
 	vector<vector<std::string>> entry_data;
-	//±íÍ·, ÓÃÓÚÌî³ä±¨±íµÄµÚÒ»ĞĞÊı¾İ
+	//è¡¨å¤´, ç”¨äºå¡«å……æŠ¥è¡¨çš„ç¬¬ä¸€è¡Œæ•°æ®
 	vector<string> header{
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÁÙÊ±¹©Ó¦ÉÌ"),
-		CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌÃû³Æ"),
-		CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌ"),
-		CharsetConvertHepler::ansiToUtf8("¸¶¿î·½Ê½"),
-		CharsetConvertHepler::ansiToUtf8("½»»õµØµã"),
-		CharsetConvertHepler::ansiToUtf8("½»»õÊ±¼ä"),
-		CharsetConvertHepler::ansiToUtf8("ÁªÏµÈË"),
-		CharsetConvertHepler::ansiToUtf8("ÁªÏµµç»°"),
-		CharsetConvertHepler::ansiToUtf8("´«Õæ"),
-		CharsetConvertHepler::ansiToUtf8("µç×ÓÓÊ¼ş"),
-		CharsetConvertHepler::ansiToUtf8("ÊıÁ¿"),
-		CharsetConvertHepler::ansiToUtf8("½ğ¶î"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÉúĞ§"),
-		CharsetConvertHepler::ansiToUtf8("¸½¼ş"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İÖ÷Ìâ"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ½×¶Î"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñ×Ô¶¯Éú³É"),
-		CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-		CharsetConvertHepler::ansiToUtf8("ÉóÅúÊµÀıid"),
-		CharsetConvertHepler::ansiToUtf8("ÒÑ×÷·Ï"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñºì×Ö"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),
-		CharsetConvertHepler::ansiToUtf8("ÖÆµ¥Ê±¼ä"),
-		CharsetConvertHepler::ansiToUtf8("ÉúĞ§Ê±¼ä"),
-		CharsetConvertHepler::ansiToUtf8("ºËÅúÈË"),
-		CharsetConvertHepler::ansiToUtf8("ĞŞ¸ÄÈË"),
-		CharsetConvertHepler::ansiToUtf8("ÖÆµ¥²¿ÃÅ"),
-		CharsetConvertHepler::ansiToUtf8("ÒÑ¹Ø±Õ"),
-		CharsetConvertHepler::ansiToUtf8("ºËÅú½á¹ûÀàĞÍ"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İÈÕÆÚ"),
-		CharsetConvertHepler::ansiToUtf8("ÖÆµ¥ÈË"),
-		CharsetConvertHepler::ansiToUtf8("ºËÅúÒâ¼û"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦ä¸´æ—¶ä¾›åº”å•†"),
+		CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†åç§°"),
+		CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†"),
+		CharsetConvertHepler::ansiToUtf8("ä»˜æ¬¾æ–¹å¼"),
+		CharsetConvertHepler::ansiToUtf8("äº¤è´§åœ°ç‚¹"),
+		CharsetConvertHepler::ansiToUtf8("äº¤è´§æ—¶é—´"),
+		CharsetConvertHepler::ansiToUtf8("è”ç³»äºº"),
+		CharsetConvertHepler::ansiToUtf8("è”ç³»ç”µè¯"),
+		CharsetConvertHepler::ansiToUtf8("ä¼ çœŸ"),
+		CharsetConvertHepler::ansiToUtf8("ç”µå­é‚®ä»¶"),
+		CharsetConvertHepler::ansiToUtf8("æ•°é‡"),
+		CharsetConvertHepler::ansiToUtf8("é‡‘é¢"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦ç”Ÿæ•ˆ"),
+		CharsetConvertHepler::ansiToUtf8("é™„ä»¶"),
+		CharsetConvertHepler::ansiToUtf8("æºå•id"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®ä¸»é¢˜"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®é˜¶æ®µ"),
+		CharsetConvertHepler::ansiToUtf8("æºå•å·"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ"),
+		CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+		CharsetConvertHepler::ansiToUtf8("å®¡æ‰¹å®ä¾‹id"),
+		CharsetConvertHepler::ansiToUtf8("å·²ä½œåºŸ"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦çº¢å­—"),
+		CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),
+		CharsetConvertHepler::ansiToUtf8("åˆ¶å•æ—¶é—´"),
+		CharsetConvertHepler::ansiToUtf8("ç”Ÿæ•ˆæ—¶é—´"),
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹äºº"),
+		CharsetConvertHepler::ansiToUtf8("ä¿®æ”¹äºº"),
+		CharsetConvertHepler::ansiToUtf8("åˆ¶å•éƒ¨é—¨"),
+		CharsetConvertHepler::ansiToUtf8("å·²å…³é—­"),
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹ç»“æœç±»å‹"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®æ—¥æœŸ"),
+		CharsetConvertHepler::ansiToUtf8("åˆ¶å•äºº"),
+		CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹æ„è§"),
 	};
 	data.push_back(header);
 	vector<string> entry_header{
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),
-		CharsetConvertHepler::ansiToUtf8("ÎïÁÏ"),
-		CharsetConvertHepler::ansiToUtf8("¼ÆÁ¿µ¥Î»"),
-		CharsetConvertHepler::ansiToUtf8("ÊıÁ¿"),
-		CharsetConvertHepler::ansiToUtf8("Ë°ÂÊ%"),
-		CharsetConvertHepler::ansiToUtf8("º¬Ë°µ¥¼Û"),
-		CharsetConvertHepler::ansiToUtf8("ÕÛ¿ÛÂÊ%"),
-		CharsetConvertHepler::ansiToUtf8("º¬Ë°½ğ¶î"),
-		CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå1"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("·ÖÂ¼ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå2"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼id"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),
-		CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-		CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),
-		CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),
+		CharsetConvertHepler::ansiToUtf8("ç‰©æ–™"),
+		CharsetConvertHepler::ansiToUtf8("è®¡é‡å•ä½"),
+		CharsetConvertHepler::ansiToUtf8("æ•°é‡"),
+		CharsetConvertHepler::ansiToUtf8("ç¨ç‡%"),
+		CharsetConvertHepler::ansiToUtf8("å«ç¨å•ä»·"),
+		CharsetConvertHepler::ansiToUtf8("æŠ˜æ‰£ç‡%"),
+		CharsetConvertHepler::ansiToUtf8("å«ç¨é‡‘é¢"),
+		CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰1"),
+		CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•å·"),
+		CharsetConvertHepler::ansiToUtf8("åˆ†å½•å·"),
+		CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰2"),
+		CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•id"),
+		CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),
+		CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+		CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),
+		CharsetConvertHepler::ansiToUtf8("æºå•id"),
 	};
 	entry_data.push_back(entry_header);
-	//Èç¹û²éÑ¯¶ÔÏó²»Îª¿Õ
+	//å¦‚æœæŸ¥è¯¢å¯¹è±¡ä¸ä¸ºç©º
 	if (!list_do.empty()) {
 		for (auto tmp_do : list_do) {
 			vector<string> sub{
+				tmp_do.getBill_no(),
 				to_string(tmp_do.getIs_temp_supplier()),
 				tmp_do.getSupplier_name(),
 				tmp_do.getSupplier_id(),
@@ -209,7 +215,6 @@ PurQuotExportVO PurQuotService::listPurQuotExportVO(const PurQuotExportQuery& qu
 				tmp_do.getRemark(),
 				tmp_do.getBpmi_instance_id(),
 				to_string(tmp_do.getIs_voided()),
-				tmp_do.getBill_no(),
 				to_string(tmp_do.getIs_rubric()),
 				tmp_do.getSrc_bill_type(),
 				tmp_do.getCreate_time(),
@@ -224,92 +229,97 @@ PurQuotExportVO PurQuotService::listPurQuotExportVO(const PurQuotExportQuery& qu
 				tmp_do.getApproval_remark()
 			};
 			data.push_back(sub);
+			//æ ¹æ®ç¼–å·å»æŸ¥æ˜ç»†	
+			pur_quot_entry_do.setBill_no(tmp_do.getBill_no());
+			//è¿”å›æ­¤ç¼–å·å¯¹åº”çš„æ˜ç»†
+			list<PurQuotEntryDO> list_entry_do = dao.selectPurQuotEntryExport(pur_quot_entry_do);
+			if (!list_entry_do.empty()) {
+				for (auto tmp_entry_do : list_entry_do) {
+					vector<string> entry_sub{
+								tmp_entry_do.getBill_no(),
+								tmp_entry_do.getMaterial_id(),
+								tmp_entry_do.getUnit_id(),
+								to_string(tmp_entry_do.getQty()),
+								to_string(tmp_entry_do.getTax_rate()),
+								to_string(tmp_entry_do.getPrice()),
+								to_string(tmp_entry_do.getDiscount_rate()),
+								to_string(tmp_entry_do.getAmt()),
+								tmp_entry_do.getCustom1(),
+								tmp_entry_do.getSrc_no(),
+								to_string(tmp_entry_do.getEntry_no()),
+								tmp_entry_do.getCustom2(),
+								tmp_entry_do.getSrc_entry_id(),
+								tmp_entry_do.getSrc_bill_type(),
+								tmp_entry_do.getRemark(),
+								tmp_entry_do.getSrc_bill_id(),
+					};
+					entry_data.push_back(entry_sub);
+				}
+			}
 		}
 	}
-	if (!list_entry_do.empty()) {
-		for (auto tmp_entry_do : list_entry_do) {
-			vector<string> entry_sub{
-						tmp_entry_do.getBill_no(),
-						tmp_entry_do.getMaterial_id(),
-						tmp_entry_do.getUnit_id(),
-						to_string(tmp_entry_do.getQty()),
-						to_string(tmp_entry_do.getTax_rate()),
-						to_string(tmp_entry_do.getPrice()),
-						to_string(tmp_entry_do.getDiscount_rate()),
-						to_string(tmp_entry_do.getAmt()),
-						tmp_entry_do.getCustom1(),
-						tmp_entry_do.getSrc_no(),
-						to_string(tmp_entry_do.getEntry_no()),
-						tmp_entry_do.getCustom2(),
-						tmp_entry_do.getSrc_entry_id(),
-						tmp_entry_do.getSrc_bill_type(),
-						tmp_entry_do.getRemark(),
-						tmp_entry_do.getBill_no(),
-						tmp_entry_do.getSrc_bill_id(),
-			};
-			entry_data.push_back(entry_sub);
-		}
-	}
-	//¶¨Òå±£´æÊı¾İÎ»ÖÃºÍÒ³Ç©Ãû³Æ
+	//å®šä¹‰ä¿å­˜æ•°æ®ä½ç½®å’Œé¡µç­¾åç§°
 	std::string file_name = "./public/excel/c3_pur_quot.xlsx";
-	std::string sheet_name = CharsetConvertHepler::ansiToUtf8("¹©Ó¦±¨¼Ûµ¥");
-	std::string entry_sheet_name = CharsetConvertHepler::ansiToUtf8("Ã÷Ï¸");
+	std::string sheet_name = CharsetConvertHepler::ansiToUtf8("ä¾›åº”æŠ¥ä»·å•");
+	std::string entry_sheet_name = CharsetConvertHepler::ansiToUtf8("æ˜ç»†");
 
-	//±£´æµ½ÎÄ¼ş
+	//ä¿å­˜åˆ°æ–‡ä»¶
 	ExcelComponent excel;
 	excel.writeVectorToFile(file_name, sheet_name, data);
 	excel.writeVectorToFile(file_name, entry_sheet_name, entry_data);
 
 
-	//¶¨Òåfastdfs¿Í»§¶Ë¶ÔÏó
+	//å®šä¹‰fastdfså®¢æˆ·ç«¯å¯¹è±¡
 #ifdef LINUX
 	FastDfsClient client("conf/client.conf", 3);
 #else
 	FastDfsClient client("1.15.240.108");
 #endif
-	//½«ÎÄ¼şÉÏ´«µ½fastDFS
+	//å°†æ–‡ä»¶ä¸Šä¼ åˆ°fastDFS
 	std::string field_name = client.uploadFile(file_name);
-	//É¾³ı±¾µØÎÄ¼ş
+	//åˆ é™¤æœ¬åœ°æ–‡ä»¶
 	std::remove(file_name.c_str());
-	//·µ»ØÏÂÔØµØÖ·
+	//è¿”å›ä¸‹è½½åœ°å€
 	field_name = "http://1.15.240.108:8888/" + field_name;
 	PurQuotExportVO result(field_name);
 	return result;
 }
 
-
-//»ñÈ¡¶à¸öPurQuotFindBillVO¶ÔÏó
+//æŸ¥è¯¢å•æ®åˆ—è¡¨
 PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFindBillQuery& query) {
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	PageVO<PurQuotFindBillVO> pages;
-	//ÉèÖÃ·µ»Ø¶ÔÏóµÄIndexºÍSize 
+	//è®¾ç½®è¿”å›å¯¹è±¡çš„Indexå’ŒSize 
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 	
-	//ÉèÖÃ²éÑ¯Ìõ¼ş
+	//è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 	PurQuotDO obj;
 	obj.setBill_no(query.getBill_no());
-	//ÈÕÆÚ´æÒÉ,ÔİÊ±²»¸ã
 	obj.setSubject(query.getSubject());
 	obj.setBill_stage(query.getBill_stage());
-	obj.setIs_effective(query.getIs_effective());
-	obj.setIs_closed(query.getIs_closed());
-	obj.setIs_voided(query.getIs_voided());
-	
-	//¼ì²é²éÑ¯µ½µÄÊı¾İ×ÜÊı
+	obj.setIs_effective(PUR_QUOT_STRING_TO_I(query.getIs_effective()));
+	obj.setIs_closed(PUR_QUOT_STRING_TO_I(query.getIs_closed()));
+	obj.setIs_voided(PUR_QUOT_STRING_TO_I(query.getIs_voided()));
+	//å•æ®æ—¥æœŸå¼€å§‹æ—¶é—´
+	obj.setBill_date(query.getBill_date_begin());
+	//å•æ®æ—¥æœŸæˆªæ­¢æ—¶é—´
+	std::string bill_date_end = query.getBill_date_end();
+	//æ£€æŸ¥æŸ¥è¯¢åˆ°çš„æ•°æ®æ€»æ•°
+
 	PurQuotDAO dao;
-	uint64_t count = dao.count(obj);
-	//Êı¾İ×ÜÊıĞ¡ÓÚµÈÓÚ0, Ö±½Ó·µ»Øpages
+	uint64_t count = dao.count(obj, bill_date_end);
+	//æ•°æ®æ€»æ•°å°äºç­‰äº0, ç›´æ¥è¿”å›pages
 	if (count <= 0)
 	{
 		return pages;
 	}
-	//Êı¾İ×ÜÊı´óÓÚ0, ·µ»Ø·ÖÒ³²éÑ¯µ½µÄVO
+	//æ•°æ®æ€»æ•°å¤§äº0, è¿”å›åˆ†é¡µæŸ¥è¯¢åˆ°çš„VO
 	pages.setTotal(count);
 	pages.calcPages();
-	//½ÓÊÕ²éÑ¯µ½µÄDO
-	list<PurQuotDO> result = dao.selectPurQuotFindBill(obj, query.getPageIndex(), query.getPageSize());
-	//vrÊÇ½ÓÊÕDOµÄVO¶ÔÏó
+	//æ¥æ”¶æŸ¥è¯¢åˆ°çš„DO
+	list<PurQuotDO> result = dao.selectPurQuotFindBill(obj, query.getPageIndex(), query.getPageSize(), bill_date_end);
+	//vræ˜¯æ¥æ”¶DOçš„VOå¯¹è±¡
 	list<PurQuotFindBillVO> vr; 
 	for (PurQuotDO sub : result) {
 		PurQuotFindBillVO vo;
@@ -322,9 +332,9 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 		vo.setQty(sub.getQty());
 		vo.setAmt(sub.getAmt());
 		vo.setBill_stage(sub.getBill_stage());
-		vo.setIs_effective(sub.getIs_effective());
-		vo.setIs_closed(sub.getIs_closed());
-		vo.setIs_voided(sub.getIs_voided());
+		vo.setIs_effective(PUR_QUOT_I_TO_STRING(sub.getIs_effective()));
+		vo.setIs_closed(PUR_QUOT_I_TO_STRING(sub.getIs_closed()));
+		vo.setIs_voided(PUR_QUOT_I_TO_STRING(sub.getIs_voided()));
 		vo.setPayment_method(sub.getPayment_method());
 		vo.setDelivery_place(sub.getDelivery_place());
 		vo.setContact(sub.getContact());
@@ -332,8 +342,8 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 		vo.setFax(sub.getFax());
 		vo.setEmail(sub.getEmail());
 		vo.setRemark(sub.getRemark());
-		vo.setIs_auto(sub.getIs_auto());
-		vo.setIs_rubric(sub.getIs_rubric());
+		vo.setIs_auto(PUR_QUOT_I_TO_STRING(sub.getIs_auto()));
+		vo.setIs_rubric(PUR_QUOT_I_TO_STRING(sub.getIs_rubric()));
 		vo.setEffective_time(sub.getEffective_time());
 		vo.setApprover(sub.getApprover());
 		vo.setCreate_time(sub.getCreate_time());
@@ -347,16 +357,16 @@ PageVO<PurQuotFindBillVO> PurQuotService::listPurQuotFindBillVO(const PurQuotFin
 	return pages;
 }
 
-//»ñÈ¡¶à¸öPurQuotList¶ÔÏó
+//è·å–å¤šä¸ªPurQuotListå¯¹è±¡
 list<PurQuotListVO> PurQuotService::listPurQuotListVO(const PurQuotListQuery& query) {
-	//ÉèÖÃ²éÑ¯Ìõ¼ş
+	//è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 	PurQuotEntryDO obj;
 	obj.setBill_no(query.getBill_no());
 
-	//½ÓÊÕ²éÑ¯µ½µÄDO
+	//æ¥æ”¶æŸ¥è¯¢åˆ°çš„DO
 	PurQuotDAO dao;
 	list<PurQuotEntryDO> result = dao.selectPurQuotList(obj);
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	list<PurQuotListVO> vr;
 	for (PurQuotEntryDO sub : result) {
 		PurQuotListVO vo;
@@ -376,18 +386,18 @@ list<PurQuotListVO> PurQuotService::listPurQuotListVO(const PurQuotListQuery& qu
 	return vr;
 }
 
-//»ñÈ¡¶à¸öPurQuotDividedListVO¶ÔÏó
+//è·å–å¤šä¸ªPurQuotDividedListVOå¯¹è±¡
 list<PurQuotDividedListVO> PurQuotService::listPurQuotDividedListVO(const PurQuotDividedListQuery& query) {
 
-	//ÉèÖÃ²éÑ¯Ìõ¼ş
+	//è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 	PurQuotEntryDO obj;
 	obj.setBill_no(query.getBill_no());
 
-	//½ÓÊÕ²éÑ¯µ½µÄDO
+	//æ¥æ”¶æŸ¥è¯¢åˆ°çš„DO
 	PurQuotDAO dao;
 	list<PurQuotEntryDO> result = dao.selectPurQuotDividedList(obj);
 
-	//¹¹½¨·µ»Ø¶ÔÏóvo
+	//æ„å»ºè¿”å›å¯¹è±¡vo
 	list<PurQuotDividedListVO> vr;
 	for (PurQuotEntryDO sub : result) {
 		PurQuotDividedListVO vo;
@@ -406,29 +416,28 @@ list<PurQuotDividedListVO> PurQuotService::listPurQuotDividedListVO(const PurQuo
 	return vr;
 }
 
-//»ñÈ¡Ò»¸öPurQuotFindDetailBillVO¶ÔÏó
+//è·å–ä¸€ä¸ªPurQuotFindDetailBillVOå¯¹è±¡
 PurQuotFindDetailBillVO PurQuotService::getPurQuotFindDetailBillVO(const PurQuotFindDetailBillQuery& query) {
 
-//----------¶ÔÓÚBaseVO
-	//ÉèÖÃ²éÑ¯Ìõ¼ş
+//----------å¯¹äºBaseVO
+	//è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 	PurQuotDO obj;
 	obj.setBill_no(query.getBill_no());
-
-	//½ÓÊÕ²éÑ¯µ½µÄDO
+	//æ¥æ”¶æŸ¥è¯¢åˆ°çš„DO
 	PurQuotDAO dao;
-	list<PurQuotDO> result = dao.selectPurQuotBase(obj); //Ò»¸öBase¶ÔÏó
-	//¹¹½¨BaseVO¶ÔÏó
+	list<PurQuotDO> result = dao.selectPurQuotBase(obj); //ä¸€ä¸ªBaseå¯¹è±¡
+	//æ„å»ºBaseVOå¯¹è±¡
 	PurQuotBaseVO vo;
 	if (!result.empty()) {
 		auto sub = result.front();
 		vo.setBill_no(sub.getBill_no());
 		vo.setBill_date(sub.getBill_date());
 		vo.setBill_stage(sub.getBill_stage());
-		vo.setIs_effective(sub.getIs_effective());
-		vo.setIs_closed(sub.getIs_closed());
-		vo.setIs_voided(sub.getIs_voided());
+		vo.setIs_effective(PUR_QUOT_I_TO_STRING(sub.getIs_effective()));
+		vo.setIs_closed(PUR_QUOT_I_TO_STRING(sub.getIs_closed()));
+		vo.setIs_voided(PUR_QUOT_I_TO_STRING(sub.getIs_voided()));
 		vo.setSubject(sub.getSubject());
-		vo.setIs_temp_supplier(sub.getIs_temp_supplier());
+		vo.setIs_temp_supplier(PUR_QUOT_I_TO_STRING(sub.getIs_temp_supplier()));
 		vo.setSupplier_id(sub.getSupplier_id());
 		vo.setSupplier_name(sub.getSupplier_name());
 		vo.setPayment_method(sub.getPayment_method());
@@ -449,19 +458,18 @@ PurQuotFindDetailBillVO PurQuotService::getPurQuotFindDetailBillVO(const PurQuot
 		vo.setCreate_by(sub.getCreate_by());
 		vo.setUpdate_time(sub.getUpdate_time());
 		vo.setUpdate_by(sub.getUpdate_by());
-		vo.setIs_auto(sub.getIs_auto());
-		vo.setIs_rubric(sub.getIs_rubric());
+		vo.setIs_auto(PUR_QUOT_I_TO_STRING(sub.getIs_auto()));
+		vo.setIs_rubric(PUR_QUOT_I_TO_STRING(sub.getIs_rubric()));
 		vo.setSrc_bill_type(sub.getSrc_bill_type());
 	}
-//---------¶ÔÓÚDetailVO
-	//ÉèÖÃ²éÑ¯Ìõ¼ş
+//---------å¯¹äºDetailVO
+	//è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 	PurQuotEntryDO entry_obj;
 	entry_obj.setBill_no(query.getBill_no());
-	//½ÓÊÕ²éÑ¯µ½µÄDO
-	list<PurQuotEntryDO> entry_result = dao.selectPurQuotDetail(entry_obj); //¶à¸öBase¶ÔÏó
+	//æ¥æ”¶æŸ¥è¯¢åˆ°çš„DO
+	list<PurQuotEntryDO> entry_result = dao.selectPurQuotDetail(entry_obj); //å¤šä¸ªBaseå¯¹è±¡
 	PurQuotDetailVO entry_vo;
-
-	//¹¹½¨DetailVO¶ÔÏó
+	//æ„å»ºDetailVOå¯¹è±¡
 	list<PurQuotDetailVO> entry_vr;
 	for (PurQuotEntryDO sub : entry_result) {
 		PurQuotDetailVO entry_vo;
@@ -478,36 +486,35 @@ PurQuotFindDetailBillVO PurQuotService::getPurQuotFindDetailBillVO(const PurQuot
 		entry_vo.setEntry_custom2(sub.getCustom2());
 		entry_vr.push_back(entry_vo);
 	}
-	
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	PurQuotFindDetailBillVO vr(vo, entry_vr);
 	return vr;
 }
 
 
-// ĞÂÔö±¨¼Û£¬½«AddPurQuotDTOÖĞµÄÄÚÈİ·Å½øPurQuotDOÖĞ
+// æ–°å¢æŠ¥ä»·ï¼Œå°†AddPurQuotDTOä¸­çš„å†…å®¹æ”¾è¿›PurQuotDOä¸­
 uint64_t PurQuotService::saveData(const AddPurQuotDTO& dto, const PayloadDTO& payload)
 {
-	//TestFastDfs Test;											//¸½¼şÉÏ´«²âÊÔ£¬ÀïÃæµÄIPÒªĞ´FastDFS·şÎñÆ÷µÄIPµØÖ·
+	//TestFastDfs Test;											//é™„ä»¶ä¸Šä¼ æµ‹è¯•ï¼Œé‡Œé¢çš„IPè¦å†™FastDFSæœåŠ¡å™¨çš„IPåœ°å€
 	//Test.testDfs("C:\\Program Files\\architecture.jpg");
 
-	//Éú³ÉÊ±¼ä
-	time_t t;					//½«tÉùÃ÷ÎªÊ±¼ä±äÁ¿
-	struct tm* p;				//struct tmÊÇÒ»¸ö½á¹¹Ìå£¬ÉùÃ÷Ò»¸ö½á¹¹ÌåÖ¸Õë
+	//ç”Ÿæˆæ—¶é—´
+	time_t t;					//å°†tå£°æ˜ä¸ºæ—¶é—´å˜é‡
+	struct tm* p;				//struct tmæ˜¯ä¸€ä¸ªç»“æ„ä½“ï¼Œå£°æ˜ä¸€ä¸ªç»“æ„ä½“æŒ‡é’ˆ
 	time(&t);
-	p = localtime(&t);			//»ñµÃµ±µØµÄÊ±¼ä
+	p = localtime(&t);			//è·å¾—å½“åœ°çš„æ—¶é—´
 	char timestr[30];
 	sprintf(timestr, "%d-%d-%d %d:%d:%d", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, p->tm_hour, p->tm_min, p->tm_sec);
 	std::cout << timestr << std::endl;
 
-	// Ñ©»¨Ëã·¨£¬Éú³Éid
+	// é›ªèŠ±ç®—æ³•ï¼Œç”Ÿæˆid
 	SnowFlake autoId(1, 1);
 	std::cout << autoId.nextId() << std::endl;
 	auto a = autoId.nextId();
 	char autoIdStr[25];
 	sprintf(autoIdStr, "%llu", autoId.nextId());
 
-	//×é×°¹©Ó¦µ¥¾İÊı¾İ
+	//ç»„è£…ä¾›åº”å•æ®æ•°æ®
 	PurQuotNaiGuanDO data;
 
 	data.setId(autoIdStr);
@@ -535,7 +542,7 @@ uint64_t PurQuotService::saveData(const AddPurQuotDTO& dto, const PayloadDTO& pa
 	data.setQty(dto.getQty());
 	data.setAmt(dto.getAmt());
 
-	std::string fileAddress = "group1" + dto.getAttachment();				//Æ´½ÓÎÄ¼şµØÖ·
+	std::string fileAddress = "group1" + dto.getAttachment();				//æ‹¼æ¥æ–‡ä»¶åœ°å€
 	data.setAttachment(fileAddress);
 	data.setRemark(dto.getRemark());
 	data.setIsAuto(dto.getIsAuto());
@@ -559,11 +566,11 @@ uint64_t PurQuotService::saveData(const AddPurQuotDTO& dto, const PayloadDTO& pa
 	data.setUpdateTime(dto.getUpdateTime());
 	data.setVersion(dto.getVersion());
 
-	//ÓÃÓÚ½ÓÊÕDTOÖĞµÄlist£¬´«µİ¸øDOÖĞµÄlist
+	//ç”¨äºæ¥æ”¶DTOä¸­çš„listï¼Œä¼ é€’ç»™DOä¸­çš„list
 	list<PurQuotDetailDTO> Addlist;
-	//×é×°¹©Ó¦µ¥¾İÃ÷Ï¸Êı¾İ
+	//ç»„è£…ä¾›åº”å•æ®æ˜ç»†æ•°æ®
 	for (PurQuotDetailDTO i : dto.getDetail()) {
-		// Ñ©»¨Ëã·¨£¬Éú³Éid
+		// é›ªèŠ±ç®—æ³•ï¼Œç”Ÿæˆid
 		SnowFlake autoIdEntry(1, 1);
 		auto a = autoIdEntry.nextId();
 		char autoIdStrEntry[25];
@@ -573,7 +580,7 @@ uint64_t PurQuotService::saveData(const AddPurQuotDTO& dto, const PayloadDTO& pa
 		Addone.setId(autoIdStrEntry);
 		Addone.setMid("pur_quot");
 		Addone.setBill_no(i.getBill_no());
-		Addone.setEntry_no(i.getEntry_no());						//Ç°¶Ë×Ô¶¯Éú³É
+		Addone.setEntry_no(i.getEntry_no());						//å‰ç«¯è‡ªåŠ¨ç”Ÿæˆ
 
 		Addone.setSrc_bill_type(i.getSrc_bill_type());
 		Addone.setSrc_bill_id(i.getSrc_bill_id());
@@ -595,27 +602,27 @@ uint64_t PurQuotService::saveData(const AddPurQuotDTO& dto, const PayloadDTO& pa
 		Addone.setVersion(i.getVersion());
 		Addlist.push_back(Addone);
 	}
-	//½²AddlistÖĞµÄ¶«Î÷´«µİµ½DOÖĞµÄlist
+	//è®²Addlistä¸­çš„ä¸œè¥¿ä¼ é€’åˆ°DOä¸­çš„list
 	data.setDetail(Addlist);
 	PurQuotDAO dao;
 	return dao.insert(data);
 }
 
-// ĞŞ¸Ä±¨¼Û£¬½«ModPurQuotDTOÖĞµÄÊı¾İ·ÅÈëPurQuotDOÖĞ
+// ä¿®æ”¹æŠ¥ä»·ï¼Œå°†ModPurQuotDTOä¸­çš„æ•°æ®æ”¾å…¥PurQuotDOä¸­
 bool PurQuotService::updateData(const ModPurQuotDTO& dto, const PayloadDTO& payload)
 {
-	//Éú³ÉÊ±¼ä
-	time_t t;					//½«tÉùÃ÷ÎªÊ±¼ä±äÁ¿
-	struct tm* p;				//struct tmÊÇÒ»¸ö½á¹¹Ìå£¬ÉùÃ÷Ò»¸ö½á¹¹ÌåÖ¸Õë
+	//ç”Ÿæˆæ—¶é—´
+	time_t t;					//å°†tå£°æ˜ä¸ºæ—¶é—´å˜é‡
+	struct tm* p;				//struct tmæ˜¯ä¸€ä¸ªç»“æ„ä½“ï¼Œå£°æ˜ä¸€ä¸ªç»“æ„ä½“æŒ‡é’ˆ
 	time(&t);
-	p = localtime(&t);			//»ñµÃµ±µØµÄÊ±¼ä
+	p = localtime(&t);			//è·å¾—å½“åœ°çš„æ—¶é—´
 	char timestr[30];
 	sprintf(timestr, "%d-%d-%d %d:%d:%d", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, p->tm_hour, p->tm_min, p->tm_sec);
 	std::cout << timestr << endl;
 
-	//×é×°¹©Ó¦µ¥¾İÊı¾İ
+	//ç»„è£…ä¾›åº”å•æ®æ•°æ®
 	PurQuotNaiGuanDO data;
-	data.setId(dto.getId());						//ĞŞ¸ÄºÍidÎŞ¹Ø
+	data.setId(dto.getId());						//ä¿®æ”¹å’Œidæ— å…³
 	data.setBillNo(dto.getBillNo());
 	data.setBillDate(dto.getBillDate());
 	data.setSrcBillType(dto.getSrcBillType());
@@ -656,18 +663,18 @@ bool PurQuotService::updateData(const ModPurQuotDTO& dto, const PayloadDTO& payl
 	data.setIsVoided(dto.getIsVoided());
 
 	data.setSysOrdCode(dto.getSysOrdCode());
-	//data.setCreateBy(dto.getCreateBy());						//ĞŞ¸Äµ¥¾İ£¬²»ĞèÒªÉæ¼°´´½¨ÈËºÍ´´½¨Ê±¼ä
+	//data.setCreateBy(dto.getCreateBy());						//ä¿®æ”¹å•æ®ï¼Œä¸éœ€è¦æ¶‰åŠåˆ›å»ºäººå’Œåˆ›å»ºæ—¶é—´
 	//data.setCreateTime(dto.getCreateTime());
 	data.setUpdateBy(payload.getUsername());
 
 	data.setUpdateTime(timestr);
 	data.setVersion(dto.getVersion());
 
-	//ÓÃÓÚ½ÓÊÕDTOÖĞµÄlist£¬´«µİ¸øDOÖĞµÄlist
+	//ç”¨äºæ¥æ”¶DTOä¸­çš„listï¼Œä¼ é€’ç»™DOä¸­çš„list
 	list<PurQuotDetailDTO> Addlist;
-	//×é×°¹©Ó¦µ¥¾İÃ÷Ï¸Êı¾İ
+	//ç»„è£…ä¾›åº”å•æ®æ˜ç»†æ•°æ®
 	for (PurQuotDetailDTO i : dto.getDetail()) {
-		// Ñ©»¨Ëã·¨£¬Éú³Éid
+		// é›ªèŠ±ç®—æ³•ï¼Œç”Ÿæˆid
 		SnowFlake autoIdEntry(1, 1);
 		auto a = autoIdEntry.nextId();
 		char autoIdStrEntry[25];
@@ -699,13 +706,13 @@ bool PurQuotService::updateData(const ModPurQuotDTO& dto, const PayloadDTO& payl
 		Addone.setVersion(i.getVersion());
 		Addlist.push_back(Addone);
 	}
-	//½²AddlistÖĞµÄ¶«Î÷´«µİµ½DOÖĞµÄlist
+	//è®²Addlistä¸­çš„ä¸œè¥¿ä¼ é€’åˆ°DOä¸­çš„list
 	data.setDetail(Addlist);
 	PurQuotDAO dao;
 	return dao.update(data) == 1;
 }
 
-// Í¨¹ıbill_noÉ¾³ı±¨¼ÛÒÔ¼°¶ÔÓ¦µÄÃ÷Ï¸£¬½«DelPurQuotDTOÖĞµÄbill_no·Å½øPurQuotDOÖĞ
+// é€šè¿‡bill_noåˆ é™¤æŠ¥ä»·ä»¥åŠå¯¹åº”çš„æ˜ç»†ï¼Œå°†DelPurQuotDTOä¸­çš„bill_noæ”¾è¿›PurQuotDOä¸­
 bool PurQuotService::removeData(const DelPurQuotDTO& dto)
 {
 	PurQuotNaiGuanDO data;
@@ -714,7 +721,7 @@ bool PurQuotService::removeData(const DelPurQuotDTO& dto)
 	return dao.deleteByBillNo(data) == 1;
 }
 
-// ĞŞ¸Ä±¨¼Û×´Ì¬£¬½«PurQuotModBillStatusDTOÖĞµÄÊı¾İ·Å½øPurQuotDOÖĞ
+// ä¿®æ”¹æŠ¥ä»·çŠ¶æ€ï¼Œå°†PurQuotModBillStatusDTOä¸­çš„æ•°æ®æ”¾è¿›PurQuotDOä¸­
 bool PurQuotService::UpdateDataBillStatus(const PurQuotModBillStatusDTO& dto)
 {
 	PurQuotNaiGuanDO data;

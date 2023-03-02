@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -20,7 +20,7 @@
 #ifndef _PUR_INQUIRY_SERVICE_
 #define _PUR_INQUIRY_SERVICE_
 #include <list>
-//¹«¹²½Ó¿Ú
+//å…¬å…±æ¥å£
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../domain/vo/Message.h"
@@ -42,26 +42,26 @@
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
 #include "../../domain/dto/pur-inquiry/PurInquiryModBillStatusDTO.h"
 /**
- * Ê¾Àı·şÎñÊµÏÖ
+ * ç¤ºä¾‹æœåŠ¡å®ç°
  */
 class PurInquiryService
 {
 public:
-	// ·ÖÒ³²éÑ¯ËùÓĞÊı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ‰€æœ‰æ•°æ®
 	PageVO<PurInquiryFindBillVO> listAll(const PurInquiryFindBillQuery& query);
-	// ²é¿´Ö¸¶¨²É¹ºÑ¯¼Ûµ¥ÏêÇé
+	// æŸ¥çœ‹æŒ‡å®šé‡‡è´­è¯¢ä»·å•è¯¦æƒ…
 	PurInquiryFindDetailBillVO listPurInquiryFindDetailBill(const PurInquiryFindDetailBillQuery& query);
-	// µ¼Èë
+	// å¯¼å…¥
 	uint64_t PurInquiryInto(string fieldName, const PayloadDTO& payload);
 
 
-	// ±£´æÊı¾İ(²åÈëÑ¯¼Û)
+	// ä¿å­˜æ•°æ®(æ’å…¥è¯¢ä»·)
 	uint64_t saveData(const AddPurInquiryDTO& dto, const PayloadDTO& pdto);
-	// ĞŞ¸ÄÑ¯¼Û
+	// ä¿®æ”¹è¯¢ä»·
 	bool updateData(const AddPurInquiryDTO& dto, const PayloadDTO& pdto);
-	//É¾³ıÑ¯¼Û
+	//åˆ é™¤è¯¢ä»·
 	bool removeData(const PurInquiryRemoveDTO& dto);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬
+	//ä¿®æ”¹å•æ®çŠ¶æ€
 	bool updateDataByStatus(const PurInquiryModBillStatusDTO& dto);
 };
 

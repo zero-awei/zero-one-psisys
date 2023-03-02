@@ -8,10 +8,9 @@
 /**
  * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
-class PurQuotFindBillMapper : public Mapper<PurQuotDO>
-{
+class PurQuotFindBillMapper : public Mapper<PurQuotDO> {
 public:
-	PurQuotDO mapper(ResultSet* resultSet) const override{
+	PurQuotDO mapper(ResultSet* resultSet) const override {
 		PurQuotDO data;
 		data.setBill_no(resultSet->getString("bill_no"));
 		data.setBill_date(resultSet->getString("bill_date"));

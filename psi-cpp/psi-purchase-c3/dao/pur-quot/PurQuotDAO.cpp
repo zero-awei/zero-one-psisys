@@ -27,6 +27,10 @@ if (!obj.getBill_stage().empty()) { \
 	sql << " AND bill_stage=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_stage()); \
 } \
+if (!obj.getBill_date().empty()) { \
+	sql << " AND bill_date>=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_date()); \
+} \
 if (obj.getIs_effective() != -1) { \
 	sql << " AND is_effective=?"; \
 	SQLPARAMS_PUSH(params, "i", int, obj.getIs_effective()); \
@@ -57,27 +61,23 @@ if (!obj.getBill_no().empty()) { \
 	SQLPARAMS_PUSH(params, "s", std::string, obj.getBill_no()); \
 } 
 
-uint64_t PurQuotDAO::count(const PurQuotDO & iObj) {
+uint64_t PurQuotDAO::count(const PurQuotDO& iObj, std::string bill_date_end) {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_quot";
 	PUR_QUOT_TERAM_PARSE(iObj, sql);
+	if (!bill_date_end.empty()) {
+		sql << " AND bill_date<=?";
+		SQLPARAMS_PUSH(params, "s", std::string, bill_date_end);
+	}
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
-uint64_t PurQuotDAO::count(const PurQuotEntryDO& iObj) {
-	stringstream sql;
-	sql << "SELECT COUNT(*) FROM pur_quot";
-	PUR_QUOT_ENTRY_TERAM_PARSE(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
-}
-
 //导出, 此DO用于填充PurQuotVO
 list<PurQuotDO> PurQuotDAO::selectPurQuotExport(const PurQuotDO& obj) {
 	stringstream sql;
-	sql << "SELECT is_temp_supplier, supplier_name, supplier_id, payment_method, delivery_place, delivery_time, contact,\
+	sql << "SELECT  bill_no, is_temp_supplier, supplier_name, supplier_id, payment_method, delivery_place, delivery_time, contact,\
 	phone, fax, email, qty, amt, is_effective, attachment, src_bill_type, subject, bill_stage, src_no, is_auto, remark,\
-	bpmi_instance_id, is_voided, bill_no, is_rubric, src_bill_type, create_time, effective_time, approver, update_by,\
+	bpmi_instance_id, is_voided, is_rubric, src_bill_type, create_time, effective_time, approver, update_by,\
 	sys_org_code, is_closed, approval_result_type, bill_date, create_by, approval_remark FROM pur_quot";
 	PUR_QUOT_EXPORT_PARSE(obj, sql);
 	PurQuotMapper mapper;
@@ -89,7 +89,7 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotEntryExport(const PurQuotEntryDO& 
 
 	stringstream sql;
 	sql << "	SELECT bill_no, material_id, unit_id, qty, tax_rate, price, discount_rate, amt,\
-		custom1, src_no, entry_no, custom2, src_entry_id, src_bill_type, remark, bill_no, src_bill_id FROM pur_quot_entry";
+		custom1, src_no, entry_no, custom2, src_entry_id, src_bill_type, remark, src_bill_id FROM pur_quot_entry";
 	PUR_QUOT_EXPORT_PARSE(obj, sql);
 	PurQuotEntryMapper mapper;
 	string sqlStr = sql.str();
@@ -135,7 +135,7 @@ uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotDO& obj) {
 //导入
 uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotEntryDO& obj) {
 
-	string sql = "INSERT INTO `pur_quot_entry (`bill_no`, `material_id`, `unit_id`, `qty`, `tax_rate`, `price`, `discount_rate`, `amt`,\
+	string sql = "INSERT INTO `pur_quot_entry` (`bill_no`, `material_id`, `unit_id`, `qty`, `tax_rate`, `price`, `discount_rate`, `amt`,\
 		`custom1`, `src_no`, `entry_no`, `custom2`, `src_entry_id`, `src_bill_type`, `remark`, `src_bill_id`) \
 		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	uint64_t result = sqlSession->executeInsert(sql, "%s%s%s%d%d%d%d%d%s%s%i%s%s%s%s%s",
@@ -146,12 +146,18 @@ uint64_t PurQuotDAO::insertPurQuotInto(const PurQuotEntryDO& obj) {
 
 }
 //查询单据列表
-list<PurQuotDO> PurQuotDAO::selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize) {
+list<PurQuotDO> PurQuotDAO::selectPurQuotFindBill(const PurQuotDO& obj, uint64_t pageIndex, uint64_t pageSize, std::string bill_date_end) {
+
 	stringstream sql;
 	sql << "SELECT bill_no, bill_date, subject,src_no,supplier_id,supplier_name, delivery_time,qty,amt,bill_stage, is_effective, is_closed, is_voided, \
 	payment_method, delivery_place, contact,phone, fax, email, remark, is_auto, is_rubric, effective_time, approver, create_time, \
 	create_by, sys_org_code, update_time, update_by FROM pur_quot";
 	PUR_QUOT_TERAM_PARSE(obj, sql);
+	//单据截止日期
+	if (!bill_date_end.empty()) {
+		sql << " AND bill_date<=?";
+		SQLPARAMS_PUSH(params, "s", std::string, bill_date_end);
+	}
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurQuotFindBillMapper mapper;
 	string sqlStr = sql.str();

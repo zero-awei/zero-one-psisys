@@ -53,7 +53,8 @@ public:
 	//导出
 	CREATE_API_FUN_BODY_PAYLOAD(queryPurQuotExport, execPurQuotExport, PurQuotExportQuery);
 	//导入
-	CREATE_API_FUN_BODY_FILE(modifyPurQuotInto, execPurQuotInto, PurQuotIntoDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(modifyPurQuotInto, execPurQuotInto, PurQuotIntoDTO);
+
 	//询价单列表
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurQuotList, execQueryPurQuotList, PurQuotListQuery);
 	//询价单分录列表
@@ -84,7 +85,7 @@ private:
 	//导出
 	JsonVO<PurQuotExportVO> execPurQuotExport(const PurQuotExportQuery& query, const PayloadDTO& payload);
 	//导入
-	uint64_t execPurQuotInto(const PurQuotIntoDTO& dto);
+	uint64_t execPurQuotInto(const PurQuotIntoDTO& dto, const PayloadDTO& payload);
 
 };
 

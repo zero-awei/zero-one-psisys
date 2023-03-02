@@ -5,6 +5,7 @@
 #include "Mapper.h"
 #include "../../domain/do/pur-quot/PurQuotEntryDO.h"
 
+//µ¼³öµÄMapper
 class PurQuotEntryMapper : public Mapper<PurQuotEntryDO> {
 public:
 	PurQuotEntryDO mapper(ResultSet* resultSet) const override {
@@ -24,7 +25,6 @@ public:
 		data.setSrc_entry_id(resultSet->getString("src_entry_id"));
 		data.setSrc_bill_type(resultSet->getString("src_bill_type"));
 		data.setRemark(resultSet->getString("remark"));
-		data.setBill_no(resultSet->getString("bill_no"));
 		data.setSrc_bill_id(resultSet->getString("src_bill_id"));
 		return data;
 	}

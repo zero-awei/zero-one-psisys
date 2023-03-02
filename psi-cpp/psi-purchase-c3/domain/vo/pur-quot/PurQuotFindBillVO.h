@@ -2,7 +2,7 @@
 #ifndef _PUR_QUOT_FIND_BILL_VO_H_
 #define _PUR_QUOT_FIND_BILL_VO_H_
 #include "../../GlobalInclude.h"
-class PurQuotFindBillVO 
+class PurQuotFindBillVO
 {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
@@ -25,11 +25,11 @@ class PurQuotFindBillVO
 	//单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	//已生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
+	CC_SYNTHESIZE(string, is_effective, Is_effective);
 	//已关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	CC_SYNTHESIZE(string, is_closed, Is_closed);
 	//已作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	CC_SYNTHESIZE(string, is_voided, Is_voided);
 	//付款方式
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
 	//交货地点
@@ -45,9 +45,9 @@ class PurQuotFindBillVO
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//自动单据
-	CC_SYNTHESIZE(int, is_auto, Is_auto);
+	CC_SYNTHESIZE(string, is_auto, Is_auto);
 	//红字单据
-	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
+	CC_SYNTHESIZE(string, is_rubric, Is_rubric);
 	//生效时间
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
 	//核批人
