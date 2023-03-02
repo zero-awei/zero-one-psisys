@@ -230,9 +230,9 @@
     <ClInclude Include="dao\Qtrk\QtrkDAO.h" />
     <ClInclude Include="dao\StringMapper.h" />
     <ClInclude Include="dao\Zdrk\ZdrkDAO.h" />
+    <ClInclude Include="domain\do\Cgrk\ModifyCgrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderDO.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderEntryDO.h" />
-    <ClInclude Include="domain\do\Cgrk\QueryCgrkBillListDO.h" />
     <ClInclude Include="domain\do\Cgrk\StkIoDO.h" />
     <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
