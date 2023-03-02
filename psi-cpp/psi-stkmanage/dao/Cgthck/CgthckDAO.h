@@ -1,0 +1,49 @@
+#pragma once
+#ifndef _CGTHCK_DAO_
+#define _CGTHCK_DAO_
+
+#include "BaseDAO.h"
+#include "FastDfsClient.h"
+#include "../../domain/do/Cgrk/StkIoDO.h"
+#include "../../domain/do/Cgrk/StkIoEntryDO.h"
+#include "../../service/Cgthck/CgthckMapper.h"
+#include "../lib-common/include/SnowFlake.h"
+
+class CgthckDAO : public BaseDAO
+{
+public:
+	// 统计数据条数
+	uint64_t count(const CgthckEntryDO& iobj);
+	// 分页查询数据
+	list<CgthckEntryDO> selectWithId(const CgthckEntryDO& iobj);
+	// 插入单据数据
+	uint64_t insert(const CgthckDO& iobj);
+	// 插入单据明细
+	int insert(const CgthckEntryDO& iobj);
+	// 插入文件
+	string insertFile(const string& fileName);
+	// 删除文件
+	bool deleteFile(const string& fileName);
+	// 修改单据数据
+	int update(const CgthckDO& iobj);
+	// 修改单据明细
+	int update(const CgthckEntryDO& iobj);
+	// 审批
+	int updateApproval(const CgthckDO& iobj);
+	// 修改状态
+	int updateStatus(const CgthckDO& iobj);
+	// 删除通过单号数据
+	int deleteBillById(const string& billNo);
+	// 删除通过单号明细
+	int deleteEntryById(const string& billNo);
+	int deleteEntryById(const string& billNo, const string& entryNo);
+	// 导入
+	uint64_t importData(const CgthckDO& iobj);
+	uint64_t importData(const CgthckEntryDO& iobj);
+	// 导出
+	list< CgthckDO> exportData(const CgthckDO& iobj);
+	list< CgthckEntryDO> exportData(const CgthckEntryDO& iobj);
+
+};
+
+#endif // !_CGTHCK_DAO_
