@@ -24,6 +24,8 @@
 #include <ctime>
 #include "../../../lib-common/include/SnowFlake.h"
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
+#include"../../dao/Cgrk/CgrkDao.h"
+#include"../../domain/do/Cgrk/ModifyCgrkBillStatusDO.h"
 
 //查询单据列表
 PageVO<QueryCgrkBillListVO> CgrkService::listCgrkBillList(const QueryCgrkBillListQuery& query)
@@ -614,6 +616,19 @@ int CgrkService::updateCgrkBill(const ModifyCgrkBillDTO dto, const PayloadDTO& p
 bool CgrkService::removeCgrkBill(string billNo)
 {
 	CgrkDAO dao;
-	return dao.deleteCgrkBill(billNo)>=1;
+	return dao.deleteCgrkBill(billNo) >= 1;
+}
+
+
+bool CgrkService::updataBillStatus(const ModifyCgrkBillStateDTO& dto) {
+	//组装传输数据
+	ModifyCgrkBillStatusDO data;
+	data.setBillNo(dto.getBillNo());
+	data.setIsClosed(dto.getIsClosed());
+	data.setIsVoided(dto.getIsVoided());
+
+	//执行数据修改
+	CgrkDAO cd;
+	return cd.updataBillStatus(data) == 1;
 
 }

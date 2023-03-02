@@ -17,8 +17,6 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _CGRK_SERVICE_
-#define _CGRK_SERVICE_
 #include <list>
 #include "../../domain/query/Cgrk/QueryCgrkBillListQuery.h"
 #include "../../domain/query/Cgrk/QueryCgrkBillListAdvancedQuery.h"
@@ -38,8 +36,10 @@
 #include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
 #include "../../domain/vo/Cgrk/QueryPurOrderEntryVO.h"
 #include "../../domain/vo/Cgrk/QueryPurOrderEntryListVO.h"
+#include"../../domain/dto/Cgrk/ModifyCgrkBillStateDTO.h"
 
-
+#ifndef CGRK_SERVERICE
+#define CGRK_SERVERICE
 /**
  * 采购入库服务实现
  */
@@ -70,13 +70,11 @@ public:
 
 	//删除采购入库单
 	bool removeCgrkBill(string id);
-	//// 保存数据
-	//uint64_t saveData(const SampleDTO& dto);
-	//// 修改数据
-	//bool updateData(const SampleDTO& dto);
-	//// 通过ID删除数据
-	//bool removeData(uint64_t id);
+
+	//修改单据状态
+	bool updataBillStatus(const ModifyCgrkBillStateDTO& dto);
 };
 
-#endif // !_SAMPLE_SERVICE_
+
+#endif // !CGRK_SERVERICE
 
