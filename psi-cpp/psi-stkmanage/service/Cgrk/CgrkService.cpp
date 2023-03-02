@@ -23,14 +23,13 @@
 #include <algorithm>
 #include <ctime>
 #include "../../../lib-common/include/SnowFlake.h"
+#include "../../../lib-common/include/SimpleDateTimeFormat.h"
 
 //查询单据列表
 PageVO<QueryCgrkBillListVO> CgrkService::listCgrkBillList(const QueryCgrkBillListQuery& query)
 {
 	//构建返回对象
 	PageVO<QueryCgrkBillListVO> billList;
-	StkIoDO obj;
-	obj.setBillNo(query.getBillNo());
 
 	CgrkDAO dao;
 
@@ -86,6 +85,65 @@ PageVO<QueryCgrkBillListVO> CgrkService::listCgrkBillList(const QueryCgrkBillLis
 	billList.setRows(vr);
 	 
 	return billList;
+}
+
+//高级查询单据列表
+PageVO<QueryCgrkBillListVO>  CgrkService::listCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query)
+{
+	//构建返回对象
+	PageVO<QueryCgrkBillListVO> billList;
+	CgrkDAO dao;
+	list<StkIoDO> result = dao.selectBillListAnvanced(query);
+	list<QueryCgrkBillListVO> vr;
+	for (StkIoDO sub : result)
+	{
+		QueryCgrkBillListVO vo;
+		vo.setId(sub.getId());
+		vo.setBillNo(sub.getBillNo());
+		vo.setBillDate(sub.getBillDate());
+		vo.setSrcBillType(sub.getSrcBillType());
+		vo.setSrcBillId(sub.getSrcBillId());
+		vo.setSrcNo(sub.getSrcNo());
+		vo.setSubject(sub.getSubject());
+		vo.setIsRubric(sub.getIsRubric());
+		vo.setStockIoType(sub.getStockIoType());
+		vo.setOpDept(sub.getOpDept());
+		vo.setOperator1(sub.getOperator1());
+		vo.setHandler(sub.getHandler());
+		vo.setHasRp(sub.getHasRp());
+		vo.setHasSwell(sub.getHasSwell());
+		vo.setSupplierId(sub.getSupplierId());
+		vo.setCustomerId(sub.getCustomerId());
+		vo.setInvoiceType(sub.getInvoiceType());
+		vo.setCost(sub.getCost());
+		vo.setSettleAmt(sub.getSettleAmt());
+		vo.setSettledAmt(sub.getSettledAmt());
+		vo.setInvoicedAmt(sub.getInvoicedAmt());
+		vo.setAttachment(sub.getAttachment());
+		vo.setRemark(sub.getRemark());
+		vo.setIsAuto(sub.getIsAuto());
+		vo.setBillStage(sub.getBillStage());
+		vo.setApprover(sub.getApprover());
+		vo.setBpmiInstanceId(sub.getBpmiInstanceId());
+		vo.setApprovalResultType(sub.getApprovalResultType());
+		vo.setApprovalRemark(sub.getApprovalRemark());
+		vo.setIsEffective(sub.getIsEffective());
+		vo.setEffectiveTime(sub.getEffectiveTime());
+		vo.setIsClosed(sub.getIsClosed());
+		vo.setIsVoided(sub.getIsVoided());
+		vo.setSysOrgCode(sub.getSysOrgCode());
+		vo.setCreateBy(sub.getCreateBy());
+		vo.setCreateTime(sub.getCreateTime());
+		vo.setUpdateBy(sub.getUpdateBy());
+		vo.setUpdateTime(sub.getUpdateTime());
+		vo.setVersion(sub.getVersion());
+
+		vr.push_back(vo);
+	}
+	billList.setRows(vr);
+
+	return billList;
+
 }
 
 
@@ -302,18 +360,6 @@ PageVO<QueryPurOrderEntryVO> CgrkService::listPurOrderEntry(const QueryPurOrderE
 //添加采购入库单
 int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& payload)
 {
-	// 数据校验
-	//if ((dto.getSave() != 0 && dto.getSave() != 1) ||
-	//	[](const CgrkBillEntryDTO& dto) {
-	//		for (auto& list : dto.getDetail()) {
-	//			if (list.getEntryNo() < 0 || list.getQty() < 0 || list.getCost() < 0) {
-	//				return true;
-	//			}
-	//		}
-	//		return false;
-	//	}(dto)) {
-	//	return -1;
-	//}
 
 	// 定义DAO层对象
 	CgrkDAO dao;
@@ -362,7 +408,6 @@ int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& paylo
 		}
 		return cost;
 		}(dto.getEntry()));
-	//data1.setSettleAmt();
 	data1.setAttachment(attachment);
 	data1.setRemark(dto.getRemark());
 	data1.setIsAuto(0);
@@ -373,14 +418,7 @@ int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& paylo
 	data1.setSysOrgCode(cDao.selectOrgCodeByUsername(payload.getUsername()));
 	data1.setCreateBy(payload.getUsername());
 	// 生成当前时间
-	time_t rawtime;
-	struct tm* info;
-	char buffer[80];
-	time(&rawtime);
-	info = localtime(&rawtime);
-	strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
-
-	data1.setCreateTime(string(buffer));
+	data1.setCreateTime(SimpleDateTimeFormat::format());
 	// 事务开始
 	dao.getSqlSession()->beginTransaction();
 	// 执行数据添加
@@ -429,18 +467,8 @@ int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& paylo
 		data2.setRemark(entry.getRemark());
 		data2.setCustom1(entry.getCustom1());
 		data2.setCustom2(entry.getCustom2());
-		if (dao.insertCgrkBillEntry(data2) == 0) {
-			// 回滚
-			dao.getSqlSession()->rollbackTransaction();
-			// 删除附件
-			vector<string_view> fileNames = split(attachment, ",");
-			if (!fileNames.empty()) {
-				for (const auto& file : fileNames) {
-					cDao.deleteAttachment(string(file));
-				}
-			}
-			return -3;
-		}
+		dao.insertCgrkBillEntry(data2);
+
 	}
 	// 提交
 	dao.getSqlSession()->commitTransaction();
@@ -449,7 +477,137 @@ int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& paylo
 
 
 //修改采购入库单
+int CgrkService::updateCgrkBill(const ModifyCgrkBillDTO dto, const PayloadDTO& payload)
+{
 
+	// 定义DAO层对象
+	CgrkDAO dao;
+	CommonDAO cDao;
+
+	// 上传附件
+	// 定义传入数据库内的附件名称
+	string attachment = "";
+	for (auto& file : dto.getFiles()) {
+		string fileName = cDao.insertAttachment(file);
+		if (!fileName.empty()) {
+			if (attachment.size() != 0) {
+				attachment += ",";
+			}
+			attachment += fileName;
+		}
+		else {
+			return -4;
+		}
+	}
+
+	// 组装数据stk_io表
+	StkIoDO data1;
+	SnowFlake sf(1, 5);
+
+	data1.setBillNo(dto.getBillNo());
+	data1.setBillDate(dto.getBillDate());
+	data1.setSupplierId(dto.getSupplierId());
+	data1.setSrcBillType(dao.selectSrcBillTypeBySrcNo(dto.getSrcNo()));
+	data1.setSrcBillId(dao.selectSrcBillIdBySrcNo(dto.getSrcNo()));
+	data1.setSrcNo(dto.getSrcNo());
+	data1.setSubject(dto.getSubject());
+	data1.setOpDept(dao.selectOpDeptById(dto.getOperator1()));
+	data1.setOperator1(dto.getOperator1());
+	data1.setHandler(dto.getHandler());
+	data1.setHasSwell(dto.getHasSwell());
+	data1.setSupplierId(dto.getSupplierId());
+	data1.setInvoiceType(dto.getInvoiceType());
+	data1.setCost([](const list<CgrkBillEntryDTO>& details) {
+		double cost = 0;
+		for (const auto& entry : details) {
+			cost += entry.getCost();
+		}
+		return cost;
+		}(dto.getEntry()));
+	data1.setAttachment(attachment);
+	data1.setRemark(dto.getRemark());
+	data1.setIsAuto(0);
+	if (dto.getApprove() == 1)
+	{
+		data1.setBillStage("24");//"24"核批完
+	}
+	else
+	{
+		data1.setBillStage((dto.getSave() == 0 ? "12" : "14")); // "12":编制中, "14":编制完
+	}
+
+	if ((dto.getApprove() == 1)&& (dto.getApprovalResultType() == "1")) {
+
+			data1.setIsEffective(1);
+			data1.setIsClosed(1);
+
+	}
+	else
+	{
+		data1.setIsEffective(0);
+		data1.setIsClosed(0);
+	}
+
+	data1.setApprovalRemark(dto.getApprovalRemark());
+	data1.setSysOrgCode(cDao.selectOrgCodeByUsername(payload.getUsername()));
+	data1.setUpdateBy(payload.getId());
+	// 生成当前时间
+	data1.setUpdateTime(SimpleDateTimeFormat::format());
+	// 事务开始
+	dao.getSqlSession()->beginTransaction();
+	// 执行数据更新
+	int row = dao.updateCgrkBill(data1);
+	if (row == 0) {
+		// 回滚
+		dao.getSqlSession()->rollbackTransaction();
+		// 删除附件
+		vector<string_view> fileNames = split(attachment, ",");
+		if (!fileNames.empty()) {
+			for (const auto& file : fileNames) {
+				cDao.deleteAttachment(string(file));
+			}
+		}
+		return -2;
+	}
+	// 组装明细数据stk_io_entry
+	dao.deleteCgrkBillEntry(dto.getBillNo());
+	StkIoEntryDO data2;
+	for (auto& entry : dto.getEntry()) {
+		data2.setId(to_string(sf.nextId()));
+		data2.setMid(dao.selectIdBySrcNo(dto.getSrcNo()));
+		data2.setBillNo(dto.getBillNo());
+		data2.setEntryNo(entry.getEntryNo());
+		data2.setSrcBillType(data1.getSrcBillType());
+		data2.setSrcBillId(data1.getSrcBillId());
+		data2.setSrcEntryId(entry.getSrcEntryId());
+		data2.setSrcNo(data1.getSrcNo());
+		data2.setMaterialId(entry.getMaterialId());
+		data2.setBatchNo(dto.getBillNo() + "-" + to_string(entry.getEntryNo()));
+		data2.setWarehouseId(entry.getWarehouseId());
+		data2.setStockIoDirection("1");
+		data2.setSupplierId(entry.getSupplierId());
+		data2.setUnitId(entry.getUnitId());
+		data2.setSwellQty(entry.getSwellQty());
+		data2.setQty(entry.getQty());
+		data2.setExpense(entry.getExpense());
+		data2.setCost(entry.getCost());
+		data2.setSettleQty(entry.getSettleQty());
+		data2.setTaxRate(entry.getTaxRate());
+		data2.setPrice(entry.getPrice());
+		data2.setDiscountRate(entry.getDiscountRate());
+		data2.setTax(entry.getTax());
+		data2.setSettleAmt(entry.getSettleAmt());
+		data2.setInvoicedQty(entry.getInvoicedQty());
+		data2.setInvoicedAmt(entry.getInvoicedAmt());
+		data2.setRemark(entry.getRemark());
+		data2.setCustom1(entry.getCustom1());
+		data2.setCustom2(entry.getCustom2());
+		dao.insertCgrkBillEntry(data2);
+	}
+	// 提交
+	dao.getSqlSession()->commitTransaction();
+	return row;
+}
 
 
 //删除采购入库单

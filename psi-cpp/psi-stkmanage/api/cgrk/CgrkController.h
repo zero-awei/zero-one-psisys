@@ -48,14 +48,14 @@ class CgrkController
 {
 public:
 	CREATE_API_FUN_QUERY(queryCgrkBillList, execQueryCgrkBillList, QueryCgrkBillListQuery);
-	CREATE_API_FUN_QUERY(queryCgrkBillListAdvanced, execQueryCgrkBillListAdvanced, QueryCgrkBillListAdvancedQuery);
+	CREATE_API_FUN_JSON(queryCgrkBillListAdvanced, execQueryCgrkBillListAdvanced, QueryCgrkBillListAdvancedQuery);
 	CREATE_API_FUN_QUERY(queryCgrkBillDetails, execQueryCgrkBillDetails, QueryCgrkBillDetailsQuery);
 
 	CREATE_API_FUN_QUERY(queryPurOrderList, execQueryPurOrderList, QueryPurOrderListQuery);
 	CREATE_API_FUN_QUERY(queryPurOrderEntry, execQueryPurOrderEntry, QueryPurOrderEntryQuery);
 
-	CREATE_API_FUN_BODY_PAYLOAD(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
-	CREATE_API_FUN_BODY(modifyCgrkBill, execModifyCgrkBill, ModifyCgrkBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyCgrkBill, execModifyCgrkBill, ModifyCgrkBillDTO);
 	CREATE_API_FUN_BODY(removeCgrkBill, execRemoveCgrkBill, RemoveCgrkBillDTO);
 	CREATE_API_FUN_BODY(modifyCgrkBillState, execModifyCgrkBillState, ModifyCgrkBillStateDTO);
 	CREATE_API_FUN_BODY_FILE(importCgrkFile, execImportCgrkFile, ImportCgrkFileDTO);
@@ -76,7 +76,7 @@ private:
 	//添加单据信息
 	JsonVO<int> execAddCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& payload);
 	//修改单据信息
-	JsonVO<uint64_t>  execModifyCgrkBill(const ModifyCgrkBillDTO& dto);
+	JsonVO<int>  execModifyCgrkBill(const ModifyCgrkBillDTO& dto, const PayloadDTO& payload);
 	//删除单据
 	JsonVO<std::string> execRemoveCgrkBill(const RemoveCgrkBillDTO& dto);
 	//修改单据状态

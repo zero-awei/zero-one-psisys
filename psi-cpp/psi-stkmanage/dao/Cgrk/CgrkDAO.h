@@ -28,6 +28,7 @@
 #include "../../domain/query/Cgrk/QueryCgrkBillListQuery.h"
 #include "../../domain/query/Cgrk/QueryPurOrderListQuery.h"
 #include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
+#include "../../domain/query/Cgrk/QueryCgrkBillListAdvancedQuery.h"
 #include "../../domain/dto/Cgrk/AddCgrkBillDTO.h"
 
 /**
@@ -39,6 +40,9 @@ public:
 
 	//查询单据列表
 	std::list<StkIoDO> selectBillList(const QueryCgrkBillListQuery query);
+
+	//高级查询单据列表
+	std::list<StkIoDO> selectBillListAnvanced(const QueryCgrkBillListAdvancedQuery& query);
 
 	//查询单个单据列表信息
 	list<StkIoDO>selectBillListByBillNo(string BillNo);
@@ -54,10 +58,10 @@ public:
 	list<PurOrderEntryDO> selectPurOrderEntry(const QueryPurOrderEntryQuery& query);
 
 	//添加采购入库单
-	int insertCgrkBill(const StkIoDO& iobj);
+	int insertCgrkBill(const StkIoDO& iObj);
 
 	//添加采购入库单明细
-	int insertCgrkBillEntry(const StkIoEntryDO& iobj);
+	int insertCgrkBillEntry(const StkIoEntryDO& iObj);
 
 	//通过源单号查询源单id
 	string selectSrcBillIdBySrcNo(const string& srcNo);
@@ -65,6 +69,14 @@ public:
 	string selectSrcBillTypeBySrcNo(const string& srcNo);
 	//查询用户部门
 	string selectOpDeptById(const string& id);
+	//查询单据id
+	string selectIdBySrcNo(const string& srcNo);
+
+	//修改采购入库单
+	int updateCgrkBill(const StkIoDO& iObj);
+	//删除采购入库单明细
+	int deleteCgrkBillEntry(const string& billNo);
+
 	//删除采购入库单
 	uint64_t deleteCgrkBill(const string& id);
 

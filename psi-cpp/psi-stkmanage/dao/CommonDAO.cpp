@@ -89,7 +89,7 @@ string CommonDAO::insertAttachment(const string& fileName)
     FastDfsClient client("conf/client.conf", 3);
 #else
     // 定义客户端对象
-    FastDfsClient client("192.168.235.251");
+    FastDfsClient client("1.15.240.108");
 #endif
     return client.uploadFile(fileName);
 }

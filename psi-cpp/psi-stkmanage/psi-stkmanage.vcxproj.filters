@@ -78,12 +78,6 @@
     <ClCompile Include="api\Pyrk\PyrkController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -93,7 +87,7 @@
     <ClCompile Include="dao\Cgrk\CgrkDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dao\ComminDAO.cpp">
+    <ClCompile Include="dao\CommonDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\Zdrk\ZdrkDAO.cpp">
@@ -236,36 +230,6 @@
     <ClInclude Include="api\Cgthck\CgthckController.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\Cgthck\CgthckDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Cgthck\AddCgthckBillDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Cgthck\DeleteCgthckBillDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Cgthck\ExportCgthckFileDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Cgthck\ImportCgthckFileDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Cgthck\ModifyCgthckBillDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\Qtrk\AddQtrkBillDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -285,12 +249,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillListDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h">
@@ -315,30 +273,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="api\Pyrk\PyrkController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Pyrk\PyrkBillDetailDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Pyrk\ImportPyrkFileDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Pyrk\ImportPyrkFileVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h">

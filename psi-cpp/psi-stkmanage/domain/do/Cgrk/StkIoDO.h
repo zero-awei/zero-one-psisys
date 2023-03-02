@@ -80,7 +80,7 @@ class StkIoDO
 	CC_SYNTHESIZE(string, approver, Approver);
 	//审批实例id
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	//核批结果类型
+	//核批结果类型(1通过，0拒绝)
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
 	//核批意见
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);

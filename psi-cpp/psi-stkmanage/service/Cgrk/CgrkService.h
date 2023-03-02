@@ -49,8 +49,12 @@ public:
 	// 分页查询所有数据
 	PageVO<QueryCgrkBillListVO> listCgrkBillList(const QueryCgrkBillListQuery& query);
 
+	//高级分页查询数据
+	PageVO<QueryCgrkBillListVO>  listCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query);
+
 	//查询单据详细信息
 	QueryCgrkBillDetailsVO getCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
+
 
 	//查询采购订单列表
 	PageVO<QueryPurOrderListVO> listPurOrderList(const QueryPurOrderListQuery& query);
@@ -59,8 +63,10 @@ public:
 	PageVO<QueryPurOrderEntryVO> listPurOrderEntry(const QueryPurOrderEntryQuery& query);
 
 	//添加采购入库单
-	int saveCgrkBill(const AddCgrkBillDTO& DTO, const PayloadDTO& payload);
+	int saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& payload);
 
+	//修改采购入库单
+	int updateCgrkBill(const ModifyCgrkBillDTO dto, const PayloadDTO& payload);
 
 	//删除采购入库单
 	bool removeCgrkBill(string id);

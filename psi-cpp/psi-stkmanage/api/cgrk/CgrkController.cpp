@@ -36,12 +36,9 @@ JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillList(const 
 //高级查询单据列表
 JsonVO<PageVO<QueryCgrkBillListVO>> CgrkController::execQueryCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query)
 {
-	PageVO<QueryCgrkBillListVO> result;
-	list<QueryCgrkBillListVO> rows;
-	rows.push_back(QueryCgrkBillListVO());
-	rows.push_back(QueryCgrkBillListVO());
-	rows.push_back(QueryCgrkBillListVO());
-	result.setRows(rows);
+	CgrkService service;
+	PageVO<QueryCgrkBillListVO> result = service.listCgrkBillListAdvanced(query);
+
 	return JsonVO<PageVO<QueryCgrkBillListVO>>(result, RS_SUCCESS);
 }
 
@@ -78,8 +75,6 @@ JsonVO<int> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto,const Payl
 	JsonVO<int> result;
 	CgrkService service;
 
-
-
 	// 执行新增数据
 	int row = service.saveCgrkBill(dto, payload);
 	if (row > 0) {
@@ -95,13 +90,29 @@ JsonVO<int> CgrkController::execAddCgrkBill(const AddCgrkBillDTO& dto,const Payl
 	return result;
 
 }
-//修改采购入库单
-JsonVO<uint64_t>  CgrkController::execModifyCgrkBill(const ModifyCgrkBillDTO& dto)
-{
 
-	JsonVO<uint64_t> result;
-	
+
+
+//修改采购入库单
+JsonVO<int>  CgrkController::execModifyCgrkBill(const ModifyCgrkBillDTO& dto, const PayloadDTO& payload)
+{
+	JsonVO<int> result;
+	CgrkService service;
+
+	// 执行修改数据
+	int row = service.updateCgrkBill(dto, payload);
+	if (row > 0) {
+		result.success(row);
+	}
+	else if (row == -1) {
+		result.setData(row);
+		result.setStatus(RS_PARAMS_INVALID);
+	}
+	else {
+		result.fail(row);
+	}
 	return result;
+
 }
 
 //删除采购入库单

@@ -80,6 +80,26 @@ std::list<StkIoDO> CgrkDAO::selectBillList(const QueryCgrkBillListQuery query)
 	return sqlSession->executeQuery<StkIoDO, StkIoMapper>(sqlStr, mapper, params);
 }
 
+//高级查询单据列表
+std::list<StkIoDO> CgrkDAO::selectBillListAnvanced(const QueryCgrkBillListAdvancedQuery& query)
+{
+	stringstream sql;
+	SqlParams params;
+	sql << "SELECT * FROM stk_io WHERE 1=1 ";
+	for (auto& condition : query.getConditionsList())
+	{
+		sql << query.getLogic()<<" ";
+		sql << condition.getField()<<condition.getOperator1()<<"? ";
+		SQLPARAMS_PUSH(params, "s", std::string, condition.getValue());
+
+	}
+
+	sql << " LIMIT " << ((query.getPageIndex() - 1) * query.getPageSize()) << "," << query.getPageSize();
+	StkIoMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<StkIoDO, StkIoMapper>(sqlStr, mapper, params);
+}
+
 //查询单个单据列表信息
 list<StkIoDO> CgrkDAO::selectBillListByBillNo(string BillNo)
 {
@@ -195,10 +215,41 @@ int CgrkDAO::insertCgrkBill(const StkIoDO& iObj)
 int CgrkDAO::insertCgrkBillEntry(const StkIoEntryDO& iObj)
 {
 	string sql = "INSERT INTO `stk_io_entry` (`id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,`src_bill_id`,`src_entry_id`,`src_no`,`material_id`,`batch_no`,`warehouse_id`,`stock_io_direction`,`supplier_id`,`unit_id`,`swell_qty`,`qty`,`expense`,`cost`,`settle_qty`,`tax_rate`,`price`,`discount_rate`,`tax`,`settle_amt`,`invoiced_qty`,`invoiced_amt`,`remark`,`custom1`,`custom2`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	return sqlSession->executeUpdate(sql, "%s%s%i%s%s%s%s%s%s%s%s%s%s%s%f%f%f%f%f%f%f%f%f%f%f%f%s%s%s",
+	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%d%d%s%s%s",
 		iObj.getId(), iObj.getMid(), iObj.getBillNo(), iObj.getEntryNo(),iObj.getSrcBillType(),iObj.getSrcBillId(),iObj.getSrcEntryId(),iObj.getSrcNo(), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(),iObj.getSupplierId(), iObj.getUnitId(),iObj.getSwellQty(),iObj.getQty(),iObj.getExpense(), iObj.getCost(),iObj.getSettleQty(),iObj.getTaxRate(), iObj.getPrice(),iObj.getDiscountRate(),iObj.getTax(),iObj.getSettleAmt(),iObj.getInvoicedQty(),iObj.getInvoicedAmt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
 
 }
+
+int CgrkDAO::updateCgrkBill(const StkIoDO& iObj)
+{
+	stringstream sql;
+	sql << "UPDATE `stk_io` SET `update_by`=?,`update_time`=?,`bill_date`=?,`subject`=?,`attachment`=?,`remark`=?,`operator`=?,`op_dept`=?,`supplier_id`=?,src_no=?,src_bill_type=?,src_bill_id=?,invoice_type=? ,handler=?,has_swell=?,is_effective=?,is_closed=?,bill_stage=? WHERE bill_no = ?";
+	SqlParams params;
+	SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateBy());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getUpdateTime());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getBillDate());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getSubject());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getAttachment());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getRemark());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getOperator1());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getOpDept());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getSupplierId());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getSrcNo());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getSrcBillType());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getSrcBillId());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getInvoiceType());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getHandler());
+	SQLPARAMS_PUSH(params, "i", int, iObj.getHasSwell());
+	SQLPARAMS_PUSH(params, "i", int, iObj.getIsEffective());
+	SQLPARAMS_PUSH(params, "i", int, iObj.getIsClosed());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getBillStage());
+	SQLPARAMS_PUSH(params, "s", string, iObj.getBillNo());
+	// 解析条件
+
+	return sqlSession->executeUpdate(sql.str(), params);
+
+}
+
 
 //通过源单号查询源单id
 string CgrkDAO::selectSrcBillIdBySrcNo(const string& srcNo)
@@ -234,79 +285,31 @@ string CgrkDAO::selectOpDeptById(const string& id)
 	}
 	return *ret.begin();
 }
+string CgrkDAO::selectIdBySrcNo(const string& srcNo)
+{
+	string sql = "SELECT id FROM  stk_io WHERE src_no=?";
+	StringMapper mapper;
+	list<string> ret = sqlSession->executeQuery<string, StringMapper>(sql, mapper, "%s", srcNo);
+	if (ret.empty()) {
+		return "";
+	}
+	return *ret.begin();
+}
 
 
 //删除采购入库单据
 uint64_t CgrkDAO::deleteCgrkBill(const string& billNo)
 {
 
-	SqlParams params;
 	string sql = "DELETE FROM stk_io WHERE bill_no=?";
 	string sql2 = "DELETE FROM stk_io_entry WHERE bill_no=?";
 	return (sqlSession->executeUpdate(sql, "%s", billNo) + sqlSession->executeUpdate(sql2, "%s", billNo));
 }
 
+//删除单据详细信息
 
-
-
-////定义条件解析宏，减少重复代码
-//#define SAMPLE_TERAM_PARSE(obj, sql) \
-//SqlParams params; \
-//sql<<" WHERE 1=1"; \
-//if (!obj.getName().empty()) { \
-//	sql << " AND `name`=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getName()); \
-//} \
-//if (!obj.getSex().empty()) { \
-//	sql << " AND sex=?"; \
-//	SQLPARAMS_PUSH(params, "s", std::string, obj.getSex()); \
-//} \
-//if (obj.getAge() != -1) { \
-//	sql << " AND age=?"; \
-//	SQLPARAMS_PUSH(params, "i", int, obj.getAge()); \
-//}
-//
-//uint64_t SampleDAO::count(const SampleDO& iObj)
-//{
-//	stringstream sql;
-//	sql << "SELECT COUNT(*) FROM sample";
-//	SAMPLE_TERAM_PARSE(iObj, sql);
-//	string sqlStr = sql.str();
-//	return sqlSession->executeQueryNumerical(sqlStr, params);
-//}
-//
-//std::list<SampleDO> SampleDAO::selectWithPage(const SampleDO& obj, uint64_t pageIndex, uint64_t pageSize)
-//{
-//	stringstream sql;
-//	sql << "SELECT * FROM sample";
-//	SAMPLE_TERAM_PARSE(obj, sql);
-//	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-//	SampleMapper mapper;
-//	string sqlStr = sql.str();
-//	return sqlSession->executeQuery<SampleDO, SampleMapper>(sqlStr, mapper, params);
-//}
-//
-//std::list<SampleDO> SampleDAO::selectByName(const string& name)
-//{
-//	string sql = "SELECT * FROM sample WHERE `name` LIKE CONCAT('%',?,'%')";
-//	SampleMapper mapper;
-//	return sqlSession->executeQuery<SampleDO, SampleMapper>(sql, mapper, "%s", name);
-//}
-//
-//uint64_t SampleDAO::insert(const SampleDO& iObj)
-//{
-//	string sql = "INSERT INTO `sample` (`name`, `sex`, `age`) VALUES (?, ?, ?)";
-//	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getName(), iObj.getSex(), iObj.getAge());
-//}
-//
-//int SampleDAO::update(const SampleDO& uObj)
-//{
-//	string sql = "UPDATE `sample` SET `name`=?, `sex`=?, `age`=? WHERE `id`=?";
-//	return sqlSession->executeUpdate(sql, "%s%s%i%ull", uObj.getName(), uObj.getSex(), uObj.getAge(), uObj.getId());
-//}
-//
-//int SampleDAO::deleteById(uint64_t id)
-//{
-//	string sql = "DELETE FROM `sample` WHERE `id`=?";
-//	return sqlSession->executeUpdate(sql, "%ull", id);
-//}
+int CgrkDAO::deleteCgrkBillEntry(const string& billNo)
+{
+	string sql = "DELETE FROM stk_io_entry WHERE bill_no=?";
+	return sqlSession->executeUpdate(sql, "%s", billNo);
+}

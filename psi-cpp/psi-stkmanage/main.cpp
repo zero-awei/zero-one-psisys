@@ -175,7 +175,7 @@ int main(int argc, char* argv[]) {
 #endif
 
 	// 初始数据库连接
-	DbInit::initDbPool(DBConfig(
+ 	DbInit::initDbPool(DBConfig(
 		ServerInfo::getInstance().getDbUsername(),
 		ServerInfo::getInstance().getDbPassword(),
 		ServerInfo::getInstance().getDbName(),

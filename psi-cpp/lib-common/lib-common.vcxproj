@@ -185,6 +185,7 @@
   <ItemGroup>
     <ClCompile Include="src\RedisClient.cpp" />
     <ClCompile Include="src\MongoClient.cpp" />
+    <ClCompile Include="src\SimpleDateTimeFormat.cpp" />
     <ClCompile Include="src\SnowFlake.cpp" />
     <ClCompile Include="src\KafkaClient.cpp" />
     <ClCompile Include="src\RocketClient.cpp" />
