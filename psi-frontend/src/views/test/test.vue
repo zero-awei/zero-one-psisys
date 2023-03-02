@@ -20,7 +20,7 @@
 import { handleAddMenu } from './api/menu.js'   // 引入 业务接口测试方法
 import { handleQueryBasBankAccount } from './api/public.js'  //引入公共接口测试方法
 import { handleQuery } from './api/addressbook.js'
-
+import { handleGetBillList } from './api/purprepaymentapply.js'
 function handle() {
   // TODO 改的是下面这行
   // 测试业务接口
@@ -28,7 +28,7 @@ function handle() {
   // // 测试公共接口
   // handleQueryBasBankAccount()
 
-  handleQuery()
+  handleGetBillList()
 
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())
