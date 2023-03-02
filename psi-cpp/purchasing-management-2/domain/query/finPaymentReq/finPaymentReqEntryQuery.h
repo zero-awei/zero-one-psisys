@@ -13,38 +13,23 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_DETAIL_QUERY_
-#define _PAYMENT_BILL_DETAIL_QUERY_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_QUERY_
+#define _FIN_PAYMENT_REQ_ENTRY_QUERY_
 
 
 #include "../PageQuery.h"
 /*
 查询单据列表
 */
-class PaymentBillDetailQuery {
-	//源单号
-	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	//申请金额
-	CC_SYNTHESIZE(double, amt, Amt);
-	// 已付金额
-	CC_SYNTHESIZE(double, paidAmt, PaidAmt);
-	//备注
-	CC_SYNTHESIZE(string, remark, Remark);
-	//自定义1
-	CC_SYNTHESIZE(string, custom1, Custom1);
-	//自定义2
-	CC_SYNTHESIZE(string, custom2, Custom2);
+class FinPaymentReqEntryQuery {
+
+	CC_SYNTHESIZE(string, billNo, BillNo);
 
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, PaymentBillDetailQuery& t) {
-		BIND_FROM_TO_ULL(j, t, srcNo);
-		BIND_FROM_TO_ULL(j, t, remark);
-		BIND_FROM_TO_ULL(j, t, custom1);
-		BIND_FROM_TO_ULL(j, t, custom2);
-		BIND_FROM_TO_D(j, t, amt);
-		BIND_FROM_TO_D(j, t, paidAmt);
+	friend void from_json(const json& j, FinPaymentReqEntryQuery& t) {
+		BIND_FROM_TO_NORMAL(j, t, billNo);
 	}
 };
 
-#endif
+#endif //_FIN_PAYMENT_REQ_ENTRY_QUERY_

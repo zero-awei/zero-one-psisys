@@ -19,11 +19,11 @@
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 
-class ModPayApplyDTO :public FileDTO
+class ModPyamentReqDTO :public FileDTO
 {
-	//单据编号
+	//单据编号/
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//单据日期
+	//单据日期/
 	CC_SYNTHESIZE(string, billDate, BillDate);
 	//源单类型
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
@@ -34,17 +34,19 @@ class ModPayApplyDTO :public FileDTO
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//付款类型
-	CC_SYNTHESIZE(string, paymentType, paymentType);
-	//供应商
-	CC_SYNTHESIZE(string, supplierId, supplierId);
-	//业务部门
-	CC_SYNTHESIZE(string, opDept, opDept);
-	//业务员
+	CC_SYNTHESIZE(string, paymentType, PaymentType);
+	//供应商/
+	CC_SYNTHESIZE(string, supplierId, SupplierId);
+	//业务部门/
+	CC_SYNTHESIZE(string, opDept, OpDept);
+	//业务员/
 	CC_SYNTHESIZE(string, operator1, Operator);
 	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
 	CC_SYNTHESIZE(double, paidAmt, PaidAmt);
+	//附件
+	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	//是否自动生成
@@ -76,40 +78,37 @@ class ModPayApplyDTO :public FileDTO
 	//修改人
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 	//修改时间
-	CC_SYNTHESIZE(string, updateTime, updateTime);
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
+	//版本
+	CC_SYNTHESIZE(int, version, Version);
+	//明细列表
+	CC_SYNTHESIZE(list<FinPaymentReqEtryDTO>, detail, Detail);
 
 public:
 	//绑定JSON转换方法
-	friend void from_json(const json& j, ModPayApplyDTO& mdt) {
-		BIND_FROM_TO_ULL(j, mdt, billNo);
-		BIND_FROM_TO_ULL(j, mdt, billDate);
-		BIND_FROM_TO_ULL(j, mdt, srcBillType);
-		BIND_FROM_TO_ULL(j, mdt, srcBillId);
-		BIND_FROM_TO_ULL(j, mdt, srcNo);
-		BIND_FROM_TO_ULL(j, mdt, subject);
-		BIND_FROM_TO_ULL(j, mdt, paymentType);
-		BIND_FROM_TO_ULL(j, mdt, supplierId);
-		BIND_FROM_TO_ULL(j, mdt, opDept);
-		BIND_FROM_TO_ULL(j, mdt, operator1);
-		BIND_FROM_TO_ULL(j, mdt, remark);
-		BIND_FROM_TO_ULL(j, mdt, billStage);
-		BIND_FROM_TO_ULL(j, mdt, approver);
-		BIND_FROM_TO_ULL(j, mdt, bpmiInstanceId);
-		BIND_FROM_TO_ULL(j, mdt, approvalRemark);
-		BIND_FROM_TO_ULL(j, mdt, effectiveTime);
-		BIND_FROM_TO_ULL(j, mdt, sysOrdCode);
-		BIND_FROM_TO_ULL(j, mdt, createBy);
-		BIND_FROM_TO_ULL(j, mdt, createTime);
-		BIND_FROM_TO_ULL(j, mdt, updateBy);
-		BIND_FROM_TO_ULL(j, mdt, updateTime);
+	friend void from_json(const json& j, ModPyamentReqDTO& t) {
+		BIND_FROM_TO_NORMAL(j, t, billNo);
+		BIND_FROM_TO_NORMAL(j, t, billDate);
+		BIND_FROM_TO_NORMAL(j, t, srcBillType);
+		BIND_FROM_TO_NORMAL(j, t, srcBillId);
+		BIND_FROM_TO_NORMAL(j, t, srcNo);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, paymentType);
+		BIND_FROM_TO_NORMAL(j, t, supplierId);
+		BIND_FROM_TO_NORMAL(j, t, opDept);
+		BIND_FROM_TO_NORMAL(j, t, operator1);
+		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_NORMAL(j, t, attachment);
+		BIND_FROM_TO_NORMAL(j, t, createBy);
+		BIND_FROM_TO_NORMAL(j, t, createTime);
 
-		BIND_FROM_TO_D(j, mdt, amt);
-		BIND_FROM_TO_D(j, mdt, paidAmt);
+		BIND_FROM_TO_D(j, t, amt);
 
-		BIND_FROM_TO_I(j, mdt, isAuto);
-		BIND_FROM_TO_I(j, mdt, isEffective);
-		BIND_FROM_TO_I(j, mdt, isClosed);
-		BIND_FROM_TO_I(j, mdt, isVoided);
+		BIND_FROM_TO_I(j, t, isEffective);
+		BIND_FROM_TO_I(j, t, isClosed);
+		BIND_FROM_TO_I(j, t, isVoided);
+
+		BIND_FROM_TO_OBJ(j, t, detail, list<FinPaymentReqEtryDTO>);
 	}
 };
 

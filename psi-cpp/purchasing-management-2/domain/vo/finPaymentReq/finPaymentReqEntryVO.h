@@ -13,16 +13,26 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_DETAIL_VO_
-#define _PAYMENT_BILL_DETAIL_VO_
+#ifndef _FIN_PAYMENT_REQ_ENTRY_VO_
+#define _FIN_PAYMENT_REQ_ENTRY_VO_
 
 #include "../../GlobalInclude.h"
-#include "PaymentBillVO.h"
+#include "finPaymentReqVO.h"
 
 /*
 查询单据列表
 */
-class PaymentBillDetailVO:public PaymentBillVO {
+class FinPaymentReqEntryVO : public FinPaymentReqVO {
+	//单据号
+	CC_SYNTHESIZE(string, billNo, BillNo);
+	//分录号
+	CC_SYNTHESIZE(int, entryNo, EntryNo);
+	//源单类型
+	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
+	// 源单id
+	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
+	//源单分录id
+	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
 	//源单号
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
 	//申请金额
@@ -38,10 +48,8 @@ class PaymentBillDetailVO:public PaymentBillVO {
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PaymentBillDetailVO, billNo, billDate, subject, supplierId, opDept,
-		operator_, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
-		isAuto, isRubric, remark, effectiveTime,
-		approver, createTime, createBy, sysOrgCode, updateTime, updateBy, custom1, custom2);
+	BIND_TO_JSON(FinPaymentReqEntryVO, billNo, entryNo, srcBillType, srcBillId, srcEntryId,
+		srcNo, amt, paidAmt, remark, custom1, custom2);
 };
 
-#endif
+#endif //_FIN_PAYMENT_REQ_ENTRY_VO_

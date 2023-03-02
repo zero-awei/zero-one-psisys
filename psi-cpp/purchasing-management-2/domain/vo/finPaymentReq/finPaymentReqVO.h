@@ -13,27 +13,27 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PAYMENT_BILL_VO_
-#define _PAYMENT_BILL_VO_
+#ifndef _FIN_PAYMENT_REQ_VO
+#define _FIN_PAYMENT_REQ_VO
 
 #include "../../GlobalInclude.h"
 
 /*
 查询单据列表
 */
-class PaymentBillVO {
+class FinPaymentReqVO {
 	// 单据编号
-	CC_SYNTHESIZE(string, billNo, Bill_no);
+	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期
-	CC_SYNTHESIZE(string, billDate, Bill_date);
+	CC_SYNTHESIZE(string, billDate, BillDate);
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 供应商
-	CC_SYNTHESIZE(string, supplierId, Supplier_id)
+	CC_SYNTHESIZE(string, supplierId, SupplierId)
 	// 业务部门
-	CC_SYNTHESIZE(string, opDept, Op_dept)
+	CC_SYNTHESIZE(string, opDept, OpDept)
 	// 业务员
-	CC_SYNTHESIZE(string, operator_, Operator)
+	CC_SYNTHESIZE(string, operator1, Operator)
 	// 源单号
 	CC_SYNTHESIZE(string, srcNo, SrcNo)
 	// 申请金额
@@ -55,7 +55,7 @@ class PaymentBillVO {
 	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 生效时间
-	CC_SYNTHESIZE(int, effectiveTime, EffectiveTime);
+	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
 	// 核批人
 	CC_SYNTHESIZE(string, approver, Approver);
 	// 制单时间
@@ -71,10 +71,10 @@ class PaymentBillVO {
 
 public:
 	// 绑定JSON转换方法
-	BIND_TO_JSON(PaymentBillVO, billNo, billDate, subject, supplierId, opDept,
-		operator_, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
+	BIND_TO_JSON(FinPaymentReqVO, billNo, billDate, subject, supplierId, opDept,
+		operator1, srcNo, amt, paidAmt, billStage, isEffective, isClosed, isVoided,
 		isAuto, isRubric, remark, effectiveTime,
 		approver, createTime, createBy, sysOrgCode, updateTime, updateBy);
 };
 
-#endif
+#endif //_FIN_PAYMENT_REQ_VO

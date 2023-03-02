@@ -84,7 +84,7 @@ public:
 	void setDepartment(std::string val) { department = val; }
 
 	// 绑定JSON转换方法
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, department);
 	
 };
 
