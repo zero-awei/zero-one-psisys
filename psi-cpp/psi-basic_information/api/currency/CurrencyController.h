@@ -36,9 +36,8 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCurrency, execModifyCurrency, CurrencyDTO);
 	CREATE_API_FUN_BODY(removeCurrency, execRemoveCurrency, CurrencyDTO);
 	
-	CREATE_API_FUN_BODY_FILE(addCurrencys, execAddCurrencys, CurrencyDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addCurrencys, execAddCurrencys, CurrencyDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, CurrencyQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(exportExeclOnly, execExportExeclOnly, OnlyValueCurrencyQuery);
 private:
 	//默认查询数据
 	JsonVO<PageVO<CurrencyVO>> execQueryCurrency(const CurrencyQuery& query, const PayloadDTO& payload);
@@ -52,11 +51,9 @@ private:
 	//删除币种 
 	JsonVO<uint64_t>  execRemoveCurrency(const CurrencyDTO& dto);
 	//文件导入
-	JsonVO<PageVO<CurrencyVO>> execAddCurrencys(const CurrencyDTO& dto);
+	JsonVO<bool>  execAddCurrencys(const CurrencyDTO& dto, const PayloadDTO& payload);
 	//文件导出
 	JsonVO<string> execExportExecl(const CurrencyQuery& query, const PayloadDTO& payload);
-	// 通过唯一值批量导出
-	JsonVO<string> execExportExeclOnly(const OnlyValueCurrencyQuery& query, const PayloadDTO& payload);
 };
 
 #endif // _Currency_CONTROLLER_

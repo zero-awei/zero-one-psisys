@@ -42,6 +42,10 @@ public:
 	
 	// 通过ID删除数据
 	bool removeData(string code);
+	//导入文件
+	bool saveFile(const std::list<CurrencyDTO>& dto, const PayloadDTO& payload);
+	//导入文件
+	bool getData(const CurrencyQuery& query, vector<vector<string>>& data);
 	
 };
 
