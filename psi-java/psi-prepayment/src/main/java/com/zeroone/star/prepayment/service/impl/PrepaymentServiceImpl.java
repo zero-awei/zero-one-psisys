@@ -2,7 +2,6 @@ package com.zeroone.star.prepayment.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
@@ -14,42 +13,25 @@ import com.zeroone.star.prepayment.service.IFinPaymentService;
 import com.zeroone.star.prepayment.service.IPrepaymentService;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.*;
-import com.zeroone.star.project.query.prepayment.*;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.*;
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import cn.hutool.core.bean.BeanUtil;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.prepayment.entity.FinPayment;
-import com.zeroone.star.prepayment.entity.FinPaymentEntry;
+
 import com.zeroone.star.prepayment.entity.FinPaymentReq;
 import com.zeroone.star.prepayment.entity.PurOrder;
-import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.service.*;
-import com.zeroone.star.project.dto.prepayment.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
-import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.*;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 付款单 服务类
@@ -57,7 +39,7 @@ import java.util.List;
  * since 2023-02-13
  */
 @Service
-public class PrepaymentService extends ServiceImpl<FinPaymentEntryMapper, FinPaymentEntry> implements IPrepaymentService {
+public class PrepaymentServiceImpl extends ServiceImpl<FinPaymentEntryMapper, FinPaymentEntry> implements IPrepaymentService {
 
     @Resource
     IFinPaymentService finPaymentService;
