@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp" />
     <ClCompile Include="api\payment\PaymentController.cpp" />
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
     <ClCompile Include="api\PueReq\PurReqController.cpp" />
@@ -32,9 +31,11 @@
     <ClCompile Include="domain\dto\PurOrder\PurOrderEntryDTO.cpp" />
     <ClCompile Include="dao\PurReq\PurReqDAO.cpp" />
     <ClCompile Include="dao\PurOrder\PurOrderEntryDAO.cpp" />
+    <ClCompile Include="api\finPaymenReq\FinPaymentReqControlle.cpp" />
+    <ClCompile Include="service\finPaymentReq\finPyamentReqService.cpp" />
+    <ClCompile Include="dao\finPaymentReq\finPaymentReqDAO.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h" />
     <ClInclude Include="api\payment\PaymentController.h" />
     <ClInclude Include="api\prepayment\PrePayController.h" />
     <ClInclude Include="api\PueReq\PurReqController.h" />
@@ -147,5 +148,28 @@
     <ClInclude Include="dao\PurOrderSub\PurReqMapper.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDetailDTO.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqDO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryDO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryManageDO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqManageDO.h" />
+    <ClInclude Include="api\finPaymenReq\FinPaymentReqControlle.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\addPaymentReqDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\finPaymentReqEntryDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\modPyamentReqDTO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentDetailVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqEntryVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqVO.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqEntryQuery.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqQuery.h" />
+    <ClInclude Include="service\finPaymentReq\finPyamentReqService.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqBillMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqDAO.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqEntryBIllMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqEntryMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqMapper.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryManageDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqManageDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
   </ItemGroup>
 </Project>

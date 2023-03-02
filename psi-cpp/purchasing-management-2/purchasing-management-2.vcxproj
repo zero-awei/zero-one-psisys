@@ -178,7 +178,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="api\PaymentBillImpl\PayApplyControlle.h" />
+    <ClInclude Include="api\finPaymenReq\FinPaymentReqControlle.h" />
     <ClInclude Include="api\payment\PaymentController.h" />
     <ClInclude Include="api\prepayment\PrePayController.h" />
     <ClInclude Include="api\PueReq\PurReqController.h" />
@@ -187,6 +187,11 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\statis\StatisController.h" />
     <ClInclude Include="dao\DoInclude.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqBillMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqDAO.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqEntryBIllMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqEntryMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\finPaymentReqMapper.h" />
     <ClInclude Include="dao\payment\PaymentDAO.h" />
     <ClInclude Include="dao\payment\PaymentMapper.h" />
     <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
@@ -211,6 +216,10 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\PurQuot\PurQuotMapper.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryManageDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqManageDO.h" />
     <ClInclude Include="domain\do\FinPayReq\FinPayReqDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDetailDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
@@ -226,6 +235,9 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\PurReqEntry\PurReqEntryDO.h" />
     <ClInclude Include="domain\do\PurReq\PurReqDO.h" />
     <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\addPaymentReqDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\finPaymentReqEntryDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\modPyamentReqDTO.h" />
     <ClInclude Include="domain\dto\IDDTO.h" />
     <ClInclude Include="domain\dto\PaymentBillImpl\addPayApplyDTO.h" />
     <ClInclude Include="domain\dto\PaymentBillImpl\modPayApplyDTO.h" />
@@ -242,6 +254,8 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\dto\PurOrder\PurOrderDTO.h" />
     <ClInclude Include="domain\dto\PurOrder\PurOrderEntryDTO.h" />
     <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqEntryQuery.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillDetailQuery.h" />
     <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillQuery.h" />
@@ -254,6 +268,9 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\query\PurReq\PurReqQuery.h" />
     <ClInclude Include="domain\query\StatisQuery\ExeStatusQuery.h" />
     <ClInclude Include="domain\query\StatisQuery\StatisQuery.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentDetailVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqEntryVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
@@ -267,6 +284,10 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComEntryVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComVO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqDO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryDO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryManageDO.h" />
+    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqManageDO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurCompareEntryVO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurCompareVO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurInquiryEntryVO.h" />
@@ -285,6 +306,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Macros.h" />
     <ClInclude Include="dao\PurReq\PurReqDAO.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\finPaymentReq\finPyamentReqService.h" />
     <ClInclude Include="service\Payment\PaymentService.h" />
     <ClInclude Include="service\prepayment\PrePayService.h" />
     <ClInclude Include="service\PurCom\PurComService.h" />
@@ -294,13 +316,14 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
-    <ClCompile Include="api\PaymentBillImpl\PayApplyControlle.cpp" />
+    <ClCompile Include="api\finPaymenReq\FinPaymentReqControlle.cpp" />
     <ClCompile Include="api\payment\PaymentController.cpp" />
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
     <ClCompile Include="api\PueReq\PurReqController.cpp" />
     <ClCompile Include="api\PurCom\PurComController.cpp" />
     <ClCompile Include="api\PurOrder\PurOrderController.cpp" />
     <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\finPaymentReq\finPaymentReqDAO.cpp" />
     <ClCompile Include="dao\payment\PaymentDAO.cpp" />
     <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
     <ClCompile Include="dao\PurCom\PurComDAO.cpp" />
@@ -318,6 +341,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="dao\PurReq\PurReqDAO.cpp" />
+    <ClCompile Include="service\finPaymentReq\finPyamentReqService.cpp" />
     <ClCompile Include="service\Payment\PaymentService.cpp" />
     <ClCompile Include="service\prepayment\PrePayService.cpp" />
     <ClCompile Include="service\PurCom\PurComService.cpp" />

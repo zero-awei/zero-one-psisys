@@ -1,26 +1,32 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
+
  @Author: qingyu
- @Date: 2023/02/26 13:12:23
+ @Date: 2023/02/22 22:02:32
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
+
 	  https://www.apache.org/licenses/LICENSE-2.0
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PUR_COMPARE_VO_
-#define _PUR_COMPARE_VO_
 
-#include "../../GlobalInclude.h"
-/**
- * 显示对象
+#ifndef _FIN_PAYMENT_REQ_DO_
+#define _FIN_PAYMENT_REQ_DO_
+#include "../DoInclude.h"
+#include "FinPaymentReqEntryDO.h"
+
+/*
+ *查询表单
  */
-class PurCompareVO
+class FinPaymentReqDO
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
@@ -38,14 +44,18 @@ class PurCompareVO
 	CC_SYNTHESIZE(string, subject, Subject);
 	//是否红字
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//候选报价单ids
-	CC_SYNTHESIZE(string, candidate_quot_ids, Candidate_quot_ids);
-	//付款方式
-	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	//交货地点
-	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	//交货时间
-	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
+	//付款类型
+	CC_SYNTHESIZE(string, payment_type, Payment_type);
+	//供应商
+	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
+	//业务部门
+	CC_SYNTHESIZE(string, op_dept, Op_dept);
+	//业务员
+	CC_SYNTHESIZE(string, operator1,Operator);
+	//申请金额
+	CC_SYNTHESIZE(double, amt, Amt);
+	//已付金额
+	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
@@ -65,7 +75,7 @@ class PurCompareVO
 	//是否生效
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
 	//生效时间
-	CC_SYNTHESIZE(string, effective_time, Effective_time);
+	CC_SYNTHESIZE(string,effective_time, Effective_time);
 	//已关闭
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
 	//是否作废
@@ -82,13 +92,44 @@ class PurCompareVO
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	//版本
 	CC_SYNTHESIZE(int, version, Version);
-
+	//明细
+	CC_SYNTHESIZE(list<FinPaymentReqEntryDO>, detail, Detail);
 public:
-	//测试用无参构造
-	PurCompareVO()
+	FinPaymentReqDO()
 	{
-
+		id = "";
+		bill_no = "";
+		bill_date = "";
+		src_bill_type = "";
+		src_bill_id = "";
+		src_no = "";
+		subject = "";
+		is_rubric = -1;
+		payment_type = "";
+		supplier_id = "";
+		op_dept = "";
+		operator1 = "";
+		amt = -1;
+		paid_amt = -1;
+		attachment = "";
+		remark = "";
+		is_auto = -1;
+		bill_stage = "";
+		approver = "";
+		bpmi_instance_id = "";
+		approval_result_type = "";
+		approval_remark = "";
+		is_effective = -1;
+		effective_time = -1;
+		is_closed = -1;
+		is_voided = -1;
+		sys_org_code = "";
+		create_by = "";
+		create_time = "";
+		update_by = "";
+		update_time = "";
 	}
-	BIND_TO_JSON(PurCompareVO, id, bill_no, bill_date, src_bill_type, src_bill_id, src_no, subject, is_rubric, candidate_quot_ids, payment_method, delivery_place, delivery_time, attachment, remark, is_auto, bill_stage, approver, bpmi_instance_id, approval_result_type, approval_remark, is_effective, effective_time, is_closed, is_voided, sys_org_code, create_by, create_time, update_by, update_time, version);
+
 };
-#endif
+
+#endif //!_FIN_PAYMENT_REQ_DO_
