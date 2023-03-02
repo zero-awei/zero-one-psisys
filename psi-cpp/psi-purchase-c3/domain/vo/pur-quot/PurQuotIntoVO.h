@@ -1,63 +1,63 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_INTO_VO_H_
 #define _PUR_QUOT_INTO_VO_H_
 #include "../../GlobalInclude.h"
 class PurQuotIntoVO
 {
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject)
-		//²É¹ºÑ¯¼Ûµ¥±àºÅ--pur-inquiryÀïÃæµÄ×Ö¶Î
+		//é‡‡è´­è¯¢ä»·å•ç¼–å·--pur-inquiryé‡Œé¢çš„å­—æ®µ
 		CC_SYNTHESIZE(string, pur_inquiry_bill_no, Pur_inquiry_bill_no)
-		//ÊÇ·ñÁÙÊ±¹©Ó¦ÉÌ
+		//æ˜¯å¦ä¸´æ—¶ä¾›åº”å•†
 		CC_SYNTHESIZE(string, is_temp_supplier, Is_temp_supplier);
-	//¹©Ó¦ÉÌ/ÁÙÊ±¹©Ó¦ÉÌÃû
+	//ä¾›åº”å•†/ä¸´æ—¶ä¾›åº”å•†å
 	CC_SYNTHESIZE(string, supplier_name, Supplier_name);
-	//¸¶¿î·½Ê½
+	//ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	//½»»õÈÕÆÚ
+	//äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
-	//½»»õµØµã
+	//äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	//ÁªÏµÈË
+	//è”ç³»äºº
 	CC_SYNTHESIZE(string, contact, Contact);
-	//ÁªÏµµç»°
+	//è”ç³»ç”µè¯
 	CC_SYNTHESIZE(string, phone, Phone);
-	//´«Õæ
+	//ä¼ çœŸ
 	CC_SYNTHESIZE(string, fax, Fax);
-	//µç×ÓÓÊ¼ş
+	//ç”µå­é‚®ä»¶
 	CC_SYNTHESIZE(string, email, Email);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//¸½¼ş
+	//é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//-----------------Ã÷Ï¸¿ªÊ¼
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//-----------------æ˜ç»†å¼€å§‹
+	//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, entry_src_no, Entry_src_no);
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(string, entry_material_id, Entry_material_id);
-	//¹æ¸ñĞÍºÅ
-	//µ¥Î»
+	//è§„æ ¼å‹å·
+	//å•ä½
 	CC_SYNTHESIZE(string, entry_unit_id, Entry_unit_id);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(string, entry_qty, Entry_qty);
-	//Ë°ÂÊ
+	//ç¨ç‡
 	CC_SYNTHESIZE(string, entry_tax_rate, Entry_tax_rate);
-	//º¬Ë°µ¥¼Û
+	//å«ç¨å•ä»·
 	CC_SYNTHESIZE(string, entry_price, Entry_price);
-	//ÕÛ¿ÛÂÊ
+	//æŠ˜æ‰£ç‡
 	CC_SYNTHESIZE(string, entry_discount_rate, Entry_discount_rate);
-	//º¬Ë°½ğ¶î
+	//å«ç¨é‡‘é¢
 	CC_SYNTHESIZE(string, entry_amt, Entry_amt);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, entry_remark, Entry_remark);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, entry_custom1, Entry_custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, entry_custom2, Entry_custom2);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurQuotIntoVO, bill_date, subject, pur_inquiry_bill_no, is_temp_supplier, supplier_name, payment_method, 
 		delivery_time, delivery_place, contact, phone, fax,email, remark, attachment,
 		entry_src_no, entry_material_id, entry_unit_id, entry_qty, entry_tax_rate, entry_price, entry_discount_rate, entry_amt, entry_remark,

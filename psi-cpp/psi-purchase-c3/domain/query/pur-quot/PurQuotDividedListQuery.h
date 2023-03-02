@@ -1,11 +1,11 @@
-#pragma once
+Ôªø#pragma once
 #ifndef __PUR_QUOT_DIVIDED_LIST_QUERY_H_
 #define __PUR_QUOT_DIVIDED_LIST_QUERY_H_
 
 #include "../PageQuery.h"
 
 class PurQuotDividedListQuery : public PageQuery{
-	//µ•æ›±‡∫≈
+	//ÂçïÊçÆÁºñÂè∑
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:
 	friend void from_json(const json& j, PurQuotDividedListQuery& t) {

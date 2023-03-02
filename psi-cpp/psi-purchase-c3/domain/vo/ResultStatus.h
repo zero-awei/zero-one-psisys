@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
  
@@ -23,21 +23,21 @@
 #include <string>
 
 /**
- * ÏìÓ¦½á¹û×´Ì¬
+ * å“åº”ç»“æœçŠ¶æ€
  */
 class ResultStatus
 {
 public:
-	// ¹¹Ôì³õÊ¼»¯
+	// æ„é€ åˆå§‹åŒ–
 	explicit ResultStatus(std::string message, int code = 10000);
-	// »ñÈ¡×´Ì¬ÌáÊ¾ĞÅÏ¢
+	// è·å–çŠ¶æ€æç¤ºä¿¡æ¯
 	std::string getMessage();
-	// »ñÈ¡×´Ì¬Âë
+	// è·å–çŠ¶æ€ç 
 	int getCode();
 private:
-	// ×´Ì¬Âë
+	// çŠ¶æ€ç 
 	int code;
-	// ×´Ì¬ÌáÊ¾ĞÅÏ¢
+	// çŠ¶æ€æç¤ºä¿¡æ¯
 	std::string message;
 };
 

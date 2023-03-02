@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_FIND_DETAIL_BILL_MAPPER_H_
 #define _PUR_QUOT_FIND_DETAIL_BILL_MAPPER_H_
 
@@ -7,7 +7,7 @@
 #include "../../domain/do/pur-quot/PurQuotEntryDO.h"
 
 /**
- * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * ç¤ºä¾‹è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurQuotDetailMapper : public Mapper<PurQuotEntryDO>
 {
@@ -26,7 +26,7 @@ public:
 		data.setRemark(resultSet->getString("remark"));
 		data.setCustom1(resultSet->getString("custom1"));
 		data.setCustom2(resultSet->getString("custom2"));
-//Ã÷Ï¸×Ö¶Î
+//æ˜ç»†å­—æ®µ
 		return data;
 	}
 };

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _PUR_QUOT_ENTRY_MAPPER_H_
 #define _PUR_QUOT_ENTRY_MAPPER_H_
 

@@ -1,4 +1,4 @@
-
+Ôªø
 #pragma once
 #ifndef _DEL_PUR_COM_DTO_H_
 #define _DEL_PUR_COM_DTO_H_
@@ -6,10 +6,10 @@
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 class DelPurComDTO{
-	// µ•æ›±‡∫≈
+	// ÂçïÊçÆÁºñÂè∑
 	CC_SYNTHESIZE(string, billId, BillId);
 public:
-	// ∞Û∂®JSON◊™ªª∑Ω∑®
+	// ÁªëÂÆöJSONËΩ¨Êç¢ÊñπÊ≥ï
 	friend void from_json(const json& j, DelPurComDTO& t) {
 		BIND_FROM_TO_NORMAL(j, t, billId);
 	}

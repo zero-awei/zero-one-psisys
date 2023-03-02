@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,60 +23,60 @@
 #include "../../GlobalInclude.h"
 
 /**
- * ±È¼Ûµ¥ÁÐ±íÏÔÊ¾¶ÔÏó
+ * æ¯”ä»·å•åˆ—è¡¨æ˜¾ç¤ºå¯¹è±¡
  */
 class PurComFindBillVO
 {
-	// ±àºÅ(·ÇÊý¾Ý¿â±íÖÐµÄid×Ö¶Î£¬Ö»ÊÇÇ°¶ËµÄ#)
+	// ç¼–å·(éžæ•°æ®åº“è¡¨ä¸­çš„idå­—æ®µï¼Œåªæ˜¯å‰ç«¯çš„#)
 	CC_SYNTHESIZE(string, id, Id);
-	// µ¥¾Ý±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	// µ¥¾ÝÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	// µ¥¾ÝÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// Ô´µ¥ºÅ
+	// æºå•å·
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	// ¸¶¿î·½Ê½
+	// ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, paymentMethod, PaymentMethod);
-	// ½»»õÈÕÆÚ
+	// äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
-	// µ¥¾Ý½×¶Î
+	// å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	// ÒÑÉúÐ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(string, isEffective, IsEffective);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(string, isClosed, IsClosed);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(string, isVoided, IsVoided);
-	// ½»»õµØµã
+	// äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ×Ô¶¯µ¥¾Ý
+	// è‡ªåŠ¨å•æ®
 	CC_SYNTHESIZE(string, isAuto, IsAuto);
-	// ºì×Öµ¥¾Ý
+	// çº¢å­—å•æ®
 	CC_SYNTHESIZE(string, isRubric, IsRubric);
-	// ÉúÐ§Ê±¼ä
+	// ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	// ºËÅúÈË
+	// æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	// ÖÆµ¥Ê±¼ä
+	// åˆ¶å•æ—¶é—´
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// ÖÆµ¥ÈË
+	// åˆ¶å•äºº
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	// ÖÆµ¥²¿ÃÅ
+	// åˆ¶å•éƒ¨é—¨
 	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	// ÐÞ¸ÄÊ±¼ä
+	// ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	// ÐÞ¸ÄÈË
+	// ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurComFindBillVO, id, billNo, billDate, subject, srcNo, paymentMethod, deliveryTime, \
 		billStage, isEffective, isClosed, isVoided, deliveryPlace, remark, isAuto, isRubric, \
 		effectiveTime, approver, createTime, createBy, sysOrgCode, updateTime, updateBy);
-	// ÓÃÓÚ²âÊÔÓÃ
+	// ç”¨äºŽæµ‹è¯•ç”¨
 	/*PurComFindBillVO() {
 		this->setId(100);
 		this->setBillNo("CGBJ100QZP");

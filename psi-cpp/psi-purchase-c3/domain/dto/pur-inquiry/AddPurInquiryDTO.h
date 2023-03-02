@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef __ADD_PUR_INQUIRY_DTO_H__
 #define __ADD_PUR_INQUIRY_DTO_H__
@@ -7,56 +7,56 @@
 #include "../IDDTO.h"
 #include <list>
 #include "AddPurInquiryEntryDTO.h"
-//Ôö¼ÓºÍĞŞ¸ÄDTO
+//å¢åŠ å’Œä¿®æ”¹DTO
 class AddPurInquiryDTO : public FileDTO
 {
 	//ID
 	CC_SYNTHESIZE(std::string, id, Id);
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//¸¶¿î·½Ê½
+	//ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	//½»»õµØµã
+	//äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	////ÁªÏµÈË			;
+	////è”ç³»äºº			;
 	CC_SYNTHESIZE(string, contact, Contact);
-	////ÁªÏµµç»°	   ;
+	////è”ç³»ç”µè¯	   ;
 	CC_SYNTHESIZE(string, phone, Phone);
-	////´«Õæ			 ;
+	////ä¼ çœŸ			 ;
 	CC_SYNTHESIZE(string, fax, Fax);
-	////µç×ÓÓÊÏä	   ;
+	////ç”µå­é‚®ç®±	   ;
 	CC_SYNTHESIZE(string, email, Email);
-	////±¸×¢			 ;
+	////å¤‡æ³¨			 ;
 	CC_SYNTHESIZE(string, remark, Remark);
-	//ºì×Öµ¥¾İ(ÊÇ·ñºì×Ö)
+	//çº¢å­—å•æ®(æ˜¯å¦çº¢å­—)
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	////×Ô¶¯µ¥¾İ	   ;
+	////è‡ªåŠ¨å•æ®	   ;
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	////ÉúĞ§Ê±¼ä	   ;
+	////ç”Ÿæ•ˆæ—¶é—´	   ;
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	//ÖÆµ¥Ê±¼ä
+	//åˆ¶å•æ—¶é—´
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	//ÖÆµ¥²¿ÃÅ
+	//åˆ¶å•éƒ¨é—¨
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	//µ¥¾İ½×¶Î		   ;
+	//å•æ®é˜¶æ®µ		   ;
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_Date);
-	//Ã÷Ï¸
+	//æ˜ç»†
 	CC_SYNTHESIZE(list<AddPurInquiryEntryDTO>, detail, Detail);
 
-	/*ĞŞ¸Ä×¨Êô*/
-	//ÉóºËÊÇ·ñÍ¨¹ı
+	/*ä¿®æ”¹ä¸“å±*/
+	//å®¡æ ¸æ˜¯å¦é€šè¿‡
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
-	//ÉóºËÒâ¼û
+	//å®¡æ ¸æ„è§
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-	//ĞŞ¸ÄÊ±¼ä		   ;
+	//ä¿®æ”¹æ—¶é—´		   ;
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	//ĞŞ¸ÄÈË			;
+	//ä¿®æ”¹äºº			;
 	CC_SYNTHESIZE(string, update_by, Update_by);
-	//ºËÅúÈË
+	//æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
 
 public:

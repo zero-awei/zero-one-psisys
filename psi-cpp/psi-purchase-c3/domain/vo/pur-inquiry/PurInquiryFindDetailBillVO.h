@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -25,54 +25,54 @@
 #include<list>
 
 /**
- * ÏÔÊ¾¶ÔÏó ¡ª¡ª Ö¸¶¨²É¹ºÑ¯¼Ûµ¥ÏêÇé
+ * æ˜¾ç¤ºå¯¹è±¡ â€”â€” æŒ‡å®šé‡‡è´­è¯¢ä»·å•è¯¦æƒ…
  */
 
 
-//Ö¸¶¨Ñ¯¼Ûµ¥ÏêÏ¸ĞÅÏ¢
+//æŒ‡å®šè¯¢ä»·å•è¯¦ç»†ä¿¡æ¯
 class PurInquiryFindDetailBillVO
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// µ¥¾İÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	//µ¥¾İ½×¶Î£¨¹«¹²½Ó¿Ú£©
+	//å•æ®é˜¶æ®µï¼ˆå…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	// ÊÇ·ñÉúĞ§
+	// æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
-	// ÊÇ·ñ¹Ø±Õ
+	// æ˜¯å¦å…³é—­
 	CC_SYNTHESIZE(int,  is_closed, Is_closed);
-	// ÊÇ·ñ×÷·Ï
+	// æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	// µ¥¾İÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// ¸¶¿î·½Ê½
+	// ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	// ½»»õµØµã
+	// äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	// ÁªÏµÈË
+	// è”ç³»äºº
 	CC_SYNTHESIZE(string, contact, Contact);
-	// ÁªÏµµç»°
+	// è”ç³»ç”µè¯
 	CC_SYNTHESIZE(string, phone, Phone);
-	// ´«Õæ
+	// ä¼ çœŸ
 	CC_SYNTHESIZE(string, fax, Fax);
-	// µç×ÓÓÊ¼ş
+	// ç”µå­é‚®ä»¶
 	CC_SYNTHESIZE(string, email, Email);
-	// ±¨¼Ûµ¥Êı
+	// æŠ¥ä»·å•æ•°
 	CC_SYNTHESIZE(int, quot_count, Quot_count);
-	// Ã÷Ï¸ÁĞ±í
+	// æ˜ç»†åˆ—è¡¨
 	CC_SYNTHESIZE(list<EntryPurInquiryVO>, detailslist, DetailsList);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ºËÅúÒâ¼û
+	// æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-	// ¸½¼ş
+	// é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	// ºËÅú½á¹û
+	// æ ¸æ‰¹ç»“æœ
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
 
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurInquiryFindDetailBillVO, bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided,
 		subject, payment_method, delivery_place, contact, phone, fax, email, quot_count, detailslist, remark, 
 		approval_remark,attachment, approval_result_type);

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
@@ -23,46 +23,46 @@
 #include "../../GlobalInclude.h"
 
 /**
- * ÏÔÊ¾¶ÔÏó ¡ª¡ª ²É¹ºÑ¯¼Ûµ¥Ã÷Ï¸ÁĞ±í£¬¼´²É¹ºÉêÇëµ¥ĞÅÏ¢
+ * æ˜¾ç¤ºå¯¹è±¡ â€”â€” é‡‡è´­è¯¢ä»·å•æ˜ç»†åˆ—è¡¨ï¼Œå³é‡‡è´­ç”³è¯·å•ä¿¡æ¯
  */
 
 
- //²É¹ºÑ¯¼Ûµ¥Ã÷Ï¸¡ª²É¹ºÉêÇëµ¥
+ //é‡‡è´­è¯¢ä»·å•æ˜ç»†â€”é‡‡è´­ç”³è¯·å•
 class EntryPurInquiryExportVO
 {
-	// ÎïÁÏ
+	// ç‰©æ–™
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	// µ¥Î»
+	// å•ä½
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	// ÊıÁ¿
+	// æ•°é‡
 	CC_SYNTHESIZE(double, entry_qty, Entry_qty);
-	// Ë°ÂÊ%
+	// ç¨ç‡%
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	// ²Î¿¼º¬Ë°µ¥¼Û
+	// å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	// ²Î¿¼º¬Ë°½ğ¶î
+	// å‚è€ƒå«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	// ×Ô¶¨Òå1
+	// è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// Ô´µ¥·ÖÂ¼ºÅ
+	// æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, src_entry_no, Src_entry_no);
-	// ·ÖÂ¼ºÅ
+	// åˆ†å½•å·
 	CC_SYNTHESIZE(int, entry_no, Entry_no);
-	// ×Ô¶¨Òå2
+	// è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	// Ô´µ¥·ÖÂ¼id
+	// æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	// Ô´µ¥ÀàĞÍ
+	// æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
 
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(EntryPurInquiryExportVO, material_id, unit_id, entry_qty, tax_rate, price, amt, custom1,
 				 src_entry_no, entry_no, custom2, src_entry_id, src_bill_type, remark, bill_no,src_bill_id);
 };

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,29 +23,29 @@
 #include <list>
 
 /**
- * ·ÖÒ³Êı¾İÊµÌå
+ * åˆ†é¡µæ•°æ®å®ä½“
  */
 template <class T>
 class PageVO
 {
 	/**
-	 * µ±Ç°Ò³Âë
+	 * å½“å‰é¡µç 
 	 */
 	CC_SYNTHESIZE(uint64_t, pageIndex, PageIndex);
 	/**
-	 * Ã¿Ò³ÏÔÊ¾×î´óÊı¾İÌõÊı
+	 * æ¯é¡µæ˜¾ç¤ºæœ€å¤§æ•°æ®æ¡æ•°
 	 */
 	CC_SYNTHESIZE(uint64_t, pageSize, PageSize);
 	/**
-	 * Êı¾İµÄ×ÜÌõÊı
+	 * æ•°æ®çš„æ€»æ¡æ•°
 	 */
 	CC_SYNTHESIZE(uint64_t, total, Total);
 	/**
-	 * Êı¾İµÄ×ÜÒ³Êı
+	 * æ•°æ®çš„æ€»é¡µæ•°
 	 */
 	CC_SYNTHESIZE(uint64_t, pages, Pages);
 	/**
-	 * µ±Ç°Ò³Êı¾İÁĞ±í
+	 * å½“å‰é¡µæ•°æ®åˆ—è¡¨
 	 */
 	CC_SYNTHESIZE(std::list<T>, rows, Rows);
 public:
@@ -64,13 +64,13 @@ public:
 		this->setRows(rows);
 	}
 
-	// ¼ÆËã×ÜÒ³Êı
+	// è®¡ç®—æ€»é¡µæ•°
 	void calcPages() {
 		this->pages = total / pageSize;
 		this->pages = total % pageSize == 0 ? this->pages : this->pages + 1;
 	}
 
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void to_json(json& j, const PageVO<T>& t) { //NOLINT
 		j = json{ {"pageIndex", t.pageIndex}, {"pageSize", t.pageSize}, {"total",t.total}, {"pages",t.pages}, {"rows",t.rows} };
 	}

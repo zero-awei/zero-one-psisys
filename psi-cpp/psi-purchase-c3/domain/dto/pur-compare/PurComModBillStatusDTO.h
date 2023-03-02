@@ -1,20 +1,20 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_COM_MOD_BILL_STATUS_DTO_H_
 #define _PUR_COM_MOD_BILL_STATUS_DTO_H_
 
 #include "../../GlobalInclude.h"
 #include "../FileDTO.h"
 class PurComModBillStatusDTO{
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billId, BillId);
-	// ÒÑÉúĞ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(string, isEffect, IsEffect);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(string, isClose, IsClose);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(string, isCancelled, IsCancelled);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurComModBillStatusDTO& t) {
 		BIND_FROM_TO_NORMAL(j, t, billId);
 		BIND_FROM_TO_NORMAL(j, t, isEffect);

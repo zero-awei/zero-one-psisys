@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: QZP
@@ -28,8 +28,8 @@
 #include "PurCandidateQuotMapper.h"
 #include <sstream>
 
-#define WORDTOI(s) (s==CharsetConvertHepler::ansiToUtf8("ÊÇ")? 1 : 0)
-// ¶¨ÒåºêÓÃÓÚÊÇ·ñÎª¿ÕÅĞ¶ÏÓëÀàĞÍ×ª»»
+#define WORDTOI(s) (s==CharsetConvertHepler::ansiToUtf8("æ˜¯")? 1 : 0)
+// å®šä¹‰å®ç”¨äºæ˜¯å¦ä¸ºç©ºåˆ¤æ–­ä¸ç±»å‹è½¬æ¢
 #define FROMSTRING(s) \
 if (obj.get##s() != "") {\
 sql += ", '" + obj.get##s() + "'";}\
@@ -50,7 +50,7 @@ else {return 0;}
 if (obj.get##s() != -1) {\
 sql += ", " + to_string(obj.get##s());}\
 else {sql+=","+dstr;}
-//¶¨ÒåÌõ¼ş½âÎöºê£¬¼õÉÙÖØ¸´´úÂë
+//å®šä¹‰æ¡ä»¶è§£æå®ï¼Œå‡å°‘é‡å¤ä»£ç 
 #define PURCOMPARE_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
@@ -87,7 +87,7 @@ if (!obj.getIsVoided().empty()) {\
 	else sql << " AND `is_voided`= 0 "; \
 }
 
-// Í³¼ÆÊı¾İÌõÊı
+// ç»Ÿè®¡æ•°æ®æ¡æ•°
 uint64_t PurCompareDAO::count(const PurCompareDO& iObj)
 {
 	stringstream sql;
@@ -96,7 +96,7 @@ uint64_t PurCompareDAO::count(const PurCompareDO& iObj)
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
-// ·ÖÒ³²éÑ¯±È¼Ûµ¥µ¥¾İÁĞ±í
+// åˆ†é¡µæŸ¥è¯¢æ¯”ä»·å•å•æ®åˆ—è¡¨
 std::list<PurCompareDO> PurCompareDAO::selectPurComFindBill(const PurCompareDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
@@ -109,7 +109,7 @@ std::list<PurCompareDO> PurCompareDAO::selectPurComFindBill(const PurCompareDO& 
 	PurComFindBillMapper mapper;
 	return sqlSession->executeQuery<PurCompareDO, PurComFindBillMapper>(sqlStr, mapper, params);
 }
-// ²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢¡ª±È¼Ûµ¥
+// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯â€”æ¯”ä»·å•
 std::list<PurCompareDO> PurCompareDAO::selectPurComFindDetailBill(const PurCompareDO& obj)
 {
 	string sql;
@@ -122,7 +122,7 @@ std::list<PurCompareDO> PurCompareDAO::selectPurComFindDetailBill(const PurCompa
 	PurComFindDetailBillMapper mapper;
 	return sqlSession->executeQuery<PurCompareDO, PurComFindDetailBillMapper>(sql, mapper, "%s", obj.getBillNo());
 }
-// ²éÑ¯Ö¸¶¨±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢¡ª±È¼Ûµ¥Ã÷Ï¸
+// æŸ¥è¯¢æŒ‡å®šæ¯”ä»·å•è¯¦ç»†ä¿¡æ¯â€”æ¯”ä»·å•æ˜ç»†
 std::list<PurCompareEntryDO> PurCompareDAO::selectPurComFindDetailBillEntry(const PurCompareEntryDO& obj)
 {
 	string sql;
@@ -138,7 +138,7 @@ std::list<PurCompareEntryDO> PurCompareDAO::selectPurComFindDetailBillEntry(cons
 	return sqlSession->executeQuery<PurCompareEntryDO, PurComDetailsMapper>(sql, mapper, "%s", obj.getBillNo());
 }
 
-// ²éÑ¯ºòÑ¡±¨¼Ûµ¥
+// æŸ¥è¯¢å€™é€‰æŠ¥ä»·å•
 std::list<PurCompareDO> PurCompareDAO::selectCandidateQuot(const PurCompareDO& obj)
 {
 	string sql;
@@ -146,7 +146,7 @@ std::list<PurCompareDO> PurCompareDAO::selectCandidateQuot(const PurCompareDO& o
 	PurCandidateQuotMapper mapper;
 	return sqlSession->executeQuery<PurCompareDO, PurCandidateQuotMapper>(sql, mapper, "%s", obj.getBillNo());
 }
-// ²éÑ¯±¨¼Ûµ¥
+// æŸ¥è¯¢æŠ¥ä»·å•
 std::list<PurComQuotDO> PurCompareDAO::selectPurComList(const PurCompareDO& obj)
 {
 	string sql;
@@ -157,7 +157,7 @@ std::list<PurComQuotDO> PurCompareDAO::selectPurComList(const PurCompareDO& obj)
 	PurComListMapper mapper;
 	return sqlSession->executeQuery<PurComQuotDO, PurComListMapper>(sql, mapper, "%s", obj.getCandidateQuotIds());
 }
-// ²éÑ¯±¨¼Ûµ¥·ÖÂ¼
+// æŸ¥è¯¢æŠ¥ä»·å•åˆ†å½•
 std::list<PurComQuotEntryDO> PurCompareDAO::selectPurComDividedList(const PurComQuotEntryDO& obj)
 {
 	string sql;
@@ -172,11 +172,11 @@ std::list<PurComQuotEntryDO> PurCompareDAO::selectPurComDividedList(const PurCom
 	return sqlSession->executeQuery< PurComQuotEntryDO, PurComDividedListMapper>(sql, mapper, "%s", obj.getBillNo());
 }
 
-// µ¼³ö¡ª²éÑ¯±È¼Ûµ¥µ¥¾İĞÅÏ¢
+// å¯¼å‡ºâ€”æŸ¥è¯¢æ¯”ä»·å•å•æ®ä¿¡æ¯
 std::list<PurCompareDO> PurCompareDAO::selectPurComExport(const PurCompareDO& obj, bool lsAll)
 {
 	string sql;
-	// ²»ÊäÈëµ¥¾İºÅÔòµ¼³öÈ«²¿£¬·ñÔò°´ÕÕ¸ø¶¨µ¥¾İºÅµ¼³ö
+	// ä¸è¾“å…¥å•æ®å·åˆ™å¯¼å‡ºå…¨éƒ¨ï¼Œå¦åˆ™æŒ‰ç…§ç»™å®šå•æ®å·å¯¼å‡º
 	if (lsAll)
 	{
 		sql = "SELECT bill_no,bill_date,bill_stage,is_effective,is_closed,is_voided,\
@@ -199,11 +199,11 @@ std::list<PurCompareDO> PurCompareDAO::selectPurComExport(const PurCompareDO& ob
 		return sqlSession->executeQuery<PurCompareDO, PurComExportMapper>(sql, mapper, "%s", obj.getBillNo());
 	}
 }
-// µ¼³ö¡ª²éÑ¯±È¼Ûµ¥·ÖÂ¼µ¥¾İĞÅÏ¢
+// å¯¼å‡ºâ€”æŸ¥è¯¢æ¯”ä»·å•åˆ†å½•å•æ®ä¿¡æ¯
 std::list<PurCompareEntryDO> PurCompareDAO::selectPurComEntryExport(const PurCompareEntryDO& obj, bool lsAll)
 {
 	string sql;
-	// ²»ÊäÈëµ¥¾İºÅÔòµ¼³öÈ«²¿£¬·ñÔò°´ÕÕ¸ø¶¨µ¥¾İºÅµ¼³ö
+	// ä¸è¾“å…¥å•æ®å·åˆ™å¯¼å‡ºå…¨éƒ¨ï¼Œå¦åˆ™æŒ‰ç…§ç»™å®šå•æ®å·å¯¼å‡º
 	if (lsAll)
 	{
 		sql = "SELECT entry_no,bs.name as supplier_name,src_no,bm.name as material_name,\
@@ -227,7 +227,7 @@ std::list<PurCompareEntryDO> PurCompareDAO::selectPurComEntryExport(const PurCom
 	PurComEntryExportMapper mapper;
 	return sqlSession->executeQuery<PurCompareEntryDO, PurComEntryExportMapper>(sql, mapper, "%s", obj.getBillNo());
 }
-// µ¼Èë¡ª²åÈë±È¼Ûµ¥µ¥¾İĞÅÏ¢
+// å¯¼å…¥â€”æ’å…¥æ¯”ä»·å•å•æ®ä¿¡æ¯
 uint64_t PurCompareDAO::insertPurCom(const PurCompareDO& obj)
 {
 	string sql = "INSERT INTO `pur_compare` (id,bill_no,bill_date,src_bill_type,src_bill_id,src_no,subject,\
@@ -252,11 +252,11 @@ uint64_t PurCompareDAO::insertPurCom(const PurCompareDO& obj)
 		WORDTOI(obj.getIsVoided()), obj.getSysOrgCode(), obj.getCreateBy(), /*obj.getCreateTime(),*/obj.getUpdateBy()
 	/*, obj.getUpdateTime()*/);
 }
-// µ¼Èë¡ª²åÈë±È¼Ûµ¥·ÖÂ¼µ¥¾İĞÅÏ¢
+// å¯¼å…¥â€”æ’å…¥æ¯”ä»·å•åˆ†å½•å•æ®ä¿¡æ¯
 uint64_t PurCompareDAO::insertPurComEntry(const PurCompareEntryDO& obj)
 {
-	// todo:½«materialµÈName×ªÎªid
-	// todo:²¿·Önot null×Ö¶ÎÊÇ·ñ´«Öµ¼ìÑé	
+	// todo:å°†materialç­‰Nameè½¬ä¸ºid
+	// todo:éƒ¨åˆ†not nullå­—æ®µæ˜¯å¦ä¼ å€¼æ£€éªŒ	
 	string sql = "INSERT INTO `pur_compare_entry` (id,mid,bill_no,entry_no,src_bill_type,src_bill_id,src_entry_id,\
 		src_no,supplier_id,material_id,unit_id,qty,tax_rate,price,discount_rate,amt,ranking,remark,custom1,custom2)\
 		VALUES (?, ?, ?, ?";
@@ -285,7 +285,7 @@ uint64_t PurCompareDAO::insertPurComEntry(const PurCompareEntryDO& obj)
 
 uint64_t PurCompareDAO::insertPurCom(const AddPurComDO& iObj)
 {
-	// Â¼ÈëÃ÷Ï¸Êı¾İ
+	// å½•å…¥æ˜ç»†æ•°æ®
 	for (PurComDetailDTO AddDetail : iObj.getDetail())
 	{
 		string sqlEntry = "INSERT INTO `pur_compare_entry` (`id`, mid, bill_no, entry_no, src_bill_type, "
@@ -319,7 +319,7 @@ uint64_t PurCompareDAO::insertPurCom(const AddPurComDO& iObj)
 
 int PurCompareDAO::updatePurCom(const ModPurComDO& uObj)
 {
-	// Â¼ÈëÃ÷Ï¸Êı¾İ
+	// å½•å…¥æ˜ç»†æ•°æ®
 	for (PurComDetailDTO ModDetail : uObj.getDetail())
 	{
 		string sqlEntry = "UPDATE `pur_compare_entry` SET unit_id=?, ranking=?, remark=?, custom1=?, custom2=?, version=?"

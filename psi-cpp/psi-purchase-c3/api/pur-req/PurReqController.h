@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_REQ_CONTROLLER_H_
 #define _PUR_REQ_CONTROLLER_H_
 
@@ -7,7 +7,7 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
-//²éÑ¯µ¥¾İÁĞ±í
+//æŸ¥è¯¢å•æ®åˆ—è¡¨
 //query
 #include "../../domain/query/pur-req/PurReqFindBillQuery.h"
 #include "../../domain/query/pur-req/PurReqFindDetailBillQuery.h"
@@ -25,43 +25,43 @@
 #include "../../domain/dto/pur-req/PurReqExportDTO.h"
 
 /**
- * ²É¹ºÉêÇë¹¦ÄÜµã
+ * é‡‡è´­ç”³è¯·åŠŸèƒ½ç‚¹
  */
 class PurReqController
 {
 public:
-	//µ¼³ö
+	//å¯¼å‡º
 	CREATE_API_FUN_JSON_PAYLOAD(queryPurReqExport, execPurReqExport, PurReqExportDTO);
-	//µ¼Èë
+	//å¯¼å…¥
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(modifyPurReqInto, execPurReqInto, PurReqIntoDTO);
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurReqFindBill, execQueryPurReqFindBill, PurReqFindBillQuery);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurReqFindDetailBill, execQueryPurReqFindDetailBill, PurReqFindDetailBillQuery);
-	//Ìí¼ÓÉêÇë(±£´æ/Ìá½»)
+	//æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤)
 	CREATE_API_FUN_JSON_PAYLOAD(addPurReq, execAddPurReq, AddPurReqDTO);
-	//ĞŞ¸ÄÉêÇë(±£´æ/Ìá½»/ÉóºË)
+	//ä¿®æ”¹ç”³è¯·(ä¿å­˜/æäº¤/å®¡æ ¸)
 	CREATE_API_FUN_JSON_PAYLOAD(modifyPurReq, execModifyPurReq, ModifyPurReqDTO);
-	//É¾³ıÉêÇë
+	//åˆ é™¤ç”³è¯·
 	CREATE_API_FUN_BODY(removePurReqById, execRemovePurReqById, DeletePurReqDTO);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ¡¢×÷·Ï¡¢·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­ã€ä½œåºŸã€åå…³é—­)
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPurReqBillStatus, execModifyPurReqBillStatus, PurReqModBillStatusDTO);
 private:
-	//²éÑ¯µ¥¾İÁĞ±í
+	//æŸ¥è¯¢å•æ®åˆ—è¡¨
 	JsonVO<PageVO<PurReqFindBillVO>> execQueryPurReqFindBill(const PurReqFindBillQuery& query, const PayloadDTO& payload);
-	//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+	//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 	JsonVO<PurReqFindDetailBillVO> execQueryPurReqFindDetailBill(const PurReqFindDetailBillQuery& query, const PayloadDTO& payload);
-	//Ìí¼ÓÉêÇë(±£´æ/Ìá½»)
+	//æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤)
 	JsonVO<uint64_t> execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload);
-	//ĞŞ¸ÄÉêÇë
+	//ä¿®æ”¹ç”³è¯·
 	JsonVO<uint64_t> execModifyPurReq(const ModifyPurReqDTO& dto, const PayloadDTO& payload);
-	//É¾³ıÉêÇë
+	//åˆ é™¤ç”³è¯·
 	JsonVO<uint64_t> execRemovePurReqById(const DeletePurReqDTO& id);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬(¹Ø±Õ¡¢×÷·Ï¡¢·´¹Ø±Õ)
+	//ä¿®æ”¹å•æ®çŠ¶æ€(å…³é—­ã€ä½œåºŸã€åå…³é—­)
 	JsonVO<uint64_t> execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload);
-	//µ¼Èë
+	//å¯¼å…¥
 	JsonVO<uint64_t> execPurReqInto(const PurReqIntoDTO& dto, const PayloadDTO& payload);
-	//µ¼³ö
+	//å¯¼å‡º
 	JsonVO<string> execPurReqExport(const PurReqExportDTO& dto, const PayloadDTO &payload);
 };
 #endif 

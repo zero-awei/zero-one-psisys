@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "stdafx.h"
 #ifndef __PUR_REQ_ENTRY_DO_H__
 #define __PUR_REQ_ENTRY_DO_H__
@@ -10,43 +10,43 @@ class PurReqEntryDO
 {
 	// ID
 	CC_SYNTHESIZE(string, entry_id, Entry_id);
-	// Ö÷±í
+	// ä¸»è¡¨
 	CC_SYNTHESIZE(string, mid, Mid);
-	// µ¥¾İºÅ
+	// å•æ®å·
 	CC_SYNTHESIZE(string, entry_bill_no, Entry_bill_no);
-	// ·ÖÂ¼ºÅ
+	// åˆ†å½•å·
 	CC_SYNTHESIZE(string, entry_no, Entry_no);
-	// Ô´µ¥ÀàĞÍ
+	// æºå•ç±»å‹
 	CC_SYNTHESIZE(string, entry_src_bill_type, Entry_src_bill_type);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, entry_src_bill_id, Entry_src_bill_id);
-	// Ô´µ¥·ÖÂ¼id
+	// æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, src_entry_id, src_entry_id);
-	// Ô´µ¥·ÖÂ¼ºÅ
+	// æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, entry_src_no, Entry_src_no);
-	// ÎïÁÏ
+	// ç‰©æ–™
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	// ¼ÆÁ¿µ¥Î»
+	// è®¡é‡å•ä½
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	// ÊıÁ¿
+	// æ•°é‡
 	CC_SYNTHESIZE(double, entry_qty, Entry_qty);
-	// Ë°ÂÊ%
+	// ç¨ç‡%
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	// ²Î¿¼º¬Ë°µ¥¼Û
+	// å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);	
-	// ²Î¿¼º¬Ë°½ğ¶î
+	// å‚è€ƒå«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, entry_amt, Entry_Amt);
-	// ½¨Òé¹©Ó¦ÉÌ
+	// å»ºè®®ä¾›åº”å•†
 	CC_SYNTHESIZE(string, suggest_supplier_id, Suggest_supplier_id);
-	// ÒÑ¶©¹ºÊıÁ¿
+	// å·²è®¢è´­æ•°é‡
 	CC_SYNTHESIZE(double, ordered_qty, Ordered_qty);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, entry_remark, Entry_remark);
-	// ×Ô¶¨Òå1
+	// è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// ×Ô¶¨Òå2
+	// è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	// °æ±¾
+	// ç‰ˆæœ¬
 	CC_SYNTHESIZE(string, version, Version);
 
 public:

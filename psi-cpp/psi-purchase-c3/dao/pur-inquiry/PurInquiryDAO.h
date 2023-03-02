@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -29,56 +29,56 @@
 #include "../../domain/dto/pur-inquiry/PurInquiryRemoveDTO.h"
 #include "../../domain/do/pur-inquiry/PurInquiryModBillStatusDO.h"
 /*
-*  Êı¾İ¿â²Ù×÷ÊµÏÖ
+*  æ•°æ®åº“æ“ä½œå®ç°
 */
 
 
 class PurInquiryDAO : public BaseDAO
 {
 public:
-	// ²åÈëÊı¾İ
+	// æ’å…¥æ•°æ®
 	uint64_t insert(const AddPurInquiryDO& iObj);
-	//²åÈëÃ÷Ï¸
+	//æ’å…¥æ˜ç»†
 	uint64_t insertByEntry(const AddPurInquiryEntryDO& iObj);
-	// ĞŞ¸ÄÊı¾İ
+	// ä¿®æ”¹æ•°æ®
 	int update(const AddPurInquiryDO& uObj);
-	//ĞŞ¸ÄÃ÷Ï¸
+	//ä¿®æ”¹æ˜ç»†
 	int updateByEntry(const AddPurInquiryEntryDO& uObj);
-	// Í¨¹ıµ¥¾İ±àºÅÉ¾³ıÑ¯¼Û
+	// é€šè¿‡å•æ®ç¼–å·åˆ é™¤è¯¢ä»·
 	int deleteById(string bill_no);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬
+	//ä¿®æ”¹å•æ®çŠ¶æ€
 	int updateByModBillStatus(const PurInquiryModBillStatusDO& uObj);
 
 
 
-	// Í³¼ÆÊı¾İÌõÊı
+	// ç»Ÿè®¡æ•°æ®æ¡æ•°
 	uint64_t count(const PurInquiryDO& iObj);
-	// Í³¼Æµ¼³öµÄÊı¾İÌõÊı
+	// ç»Ÿè®¡å¯¼å‡ºçš„æ•°æ®æ¡æ•°
 	uint64_t countExport(const PurInquiryDO& iObj);
-	// Í³¼Æµ¼ÈëµÄÊı¾İÌõÊı
+	// ç»Ÿè®¡å¯¼å…¥çš„æ•°æ®æ¡æ•°
 	uint64_t countInto(const PurInquiryDO& iObj);
-	// ·ÖÒ³²éÑ¯Êı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	list<PurInquiryDO> selectPurInquiryFindBillWithPage(const PurInquiryDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// ²é¿´Ö¸¶¨µ¥¾İÏêÇé£¨°´µ¥¾İ±àºÅ²éÑ¯£©
+	// æŸ¥çœ‹æŒ‡å®šå•æ®è¯¦æƒ…ï¼ˆæŒ‰å•æ®ç¼–å·æŸ¥è¯¢ï¼‰
 	list<PurInquiryDO> selectPurInquiryFindDetailBill(const PurInquiryDO& obj);
-	// Ö¸¶¨µ¥¾İÃ÷Ï¸·ÖÂ¼
+	// æŒ‡å®šå•æ®æ˜ç»†åˆ†å½•
 	list<PurInquiryEntryDO> selectPurInquiryFindDetailBillEntry(const PurInquiryEntryDO& obj);
 
-	//// Ö¸¶¨µ¥¾İÉêÇëµ¥·ÖÂ¼
+	//// æŒ‡å®šå•æ®ç”³è¯·å•åˆ†å½•
 	//list<PurReqDO> selectPurReq(const PurReqDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	//// Ö¸¶¨µ¥¾İÉêÇëµ¥Ã÷Ï¸
+	//// æŒ‡å®šå•æ®ç”³è¯·å•æ˜ç»†
 	//list<PurReqEntryDO> selectPurReqEntry(const PurReqEntryDO& obj);
 
-	// µ¼³ö£¨°´µ¥¾İ±àºÅÅúÁ¿²éÑ¯ºó£¬·ÅÈëxml£¬ÔÙÏÂÔØÎÄ¼ş£©
+	// å¯¼å‡ºï¼ˆæŒ‰å•æ®ç¼–å·æ‰¹é‡æŸ¥è¯¢åï¼Œæ”¾å…¥xmlï¼Œå†ä¸‹è½½æ–‡ä»¶ï¼‰
 	list<PurInquiryDO> selectPurInquiryExport(const string& bill_no);
 
 	list<PurInquiryEntryDO> selectPurInquiryExportEntry(const string& bill_no);
 
 
-	// µ¼Èë£¨ÉÏ´«ÎÄ¼şºó£¬½«xml½âÎö³Éjson/cpp·ÅÈëÊı¾İ¿â£¬±£´æÊı¾İ£©
+	// å¯¼å…¥ï¼ˆä¸Šä¼ æ–‡ä»¶åï¼Œå°†xmlè§£ææˆjson/cppæ”¾å…¥æ•°æ®åº“ï¼Œä¿å­˜æ•°æ®ï¼‰
 	uint64_t input(const PurInquiryDO& obj);
 
-	// µ¼ÈëÃ÷Ï¸
+	// å¯¼å…¥æ˜ç»†
 	uint64_t inputEntry(const PurInquiryEntryDO& obj);
 
 };

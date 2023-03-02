@@ -1,10 +1,10 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PurReqController.h"
 #include "../../service/pur-req/PurReqService.h"
 
 
 
-//²éÑ¯µ¥¾İĞÅÏ¢
+//æŸ¥è¯¢å•æ®ä¿¡æ¯
 JsonVO<PageVO<PurReqFindBillVO>> PurReqController::execQueryPurReqFindBill(const PurReqFindBillQuery& query, const PayloadDTO& payload) {
 	PurReqService service;
 	PageVO<PurReqFindBillVO> result = service.listAll(query);
@@ -12,7 +12,7 @@ JsonVO<PageVO<PurReqFindBillVO>> PurReqController::execQueryPurReqFindBill(const
 	return JsonVO<PageVO<PurReqFindBillVO>>(result, RS_SUCCESS);
 }
 
-//²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+//æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 JsonVO<PurReqFindDetailBillVO> PurReqController::execQueryPurReqFindDetailBill(const PurReqFindDetailBillQuery& query, const PayloadDTO& payload) {
 	PurReqService service;
 	PurReqFindDetailBillVO result = service.detailsOne(query);
@@ -28,19 +28,19 @@ JsonVO<PurReqFindDetailBillVO> PurReqController::execQueryPurReqFindDetailBill(c
 
 
 
-//Ìí¼ÓÉêÇë
+//æ·»åŠ ç”³è¯·
 JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	PurReqService service;
-	//½øĞĞ±ØÌî²ÎÊı¼ìÑé
+	//è¿›è¡Œå¿…å¡«å‚æ•°æ£€éªŒ
 	if (dto.getBillNo() == "" || dto.getBillDate() == "" || dto.getRequestDept() == "" 
 		|| dto.getRequester()=="" || dto.getRequestTime() == "" ||dto.getBillStage() == "") {
 		result.setStatus(RS_PARAMS_INVALID);
 		result.setData(9999);
 		return result;
 	}
-	//½øĞĞÃ÷Ï¸¼ìÑé
+	//è¿›è¡Œæ˜ç»†æ£€éªŒ
 	if (dto.getDetail().size() != 0) {
 		for (auto d : dto.getDetail())
 		{
@@ -54,7 +54,7 @@ JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const 
 	}
 
 
-	//Ö´ĞĞÊı¾İĞÂÔö
+	//æ‰§è¡Œæ•°æ®æ–°å¢
 	uint64_t id = service.saveData(dto, payload);
 	if (id > 0) {
 		result.success(100);
@@ -63,16 +63,16 @@ JsonVO<uint64_t> PurReqController::execAddPurReq(const AddPurReqDTO& dto, const 
 	{
 		result.fail(9995);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 }
 
-//ĞŞ¸ÄÉêÇë
+//ä¿®æ”¹ç”³è¯·
 JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	PurReqService service;
-	//½øĞĞ±ØÌî²ÎÊı¼ìÑé
+	//è¿›è¡Œå¿…å¡«å‚æ•°æ£€éªŒ
 	if (dto.getBillNo() == "" || dto.getBillDate() == "" || dto.getRequestDept() == ""
 		|| dto.getRequester() == "" || dto.getRequestTime() == "" || dto.getBillStage() == ""
 		|| dto.getSysOrgCode() == "" || dto.getCreateBy() == "" || dto.getCreateTime() == "") {
@@ -80,7 +80,7 @@ JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, 
 		result.setData(9999);
 		return result;
 	}
-	//½øĞĞÃ÷Ï¸¼ìÑé
+	//è¿›è¡Œæ˜ç»†æ£€éªŒ
 	if (dto.getDetail().size() != 0) {
 		for (auto d : dto.getDetail())
 		{
@@ -92,14 +92,14 @@ JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, 
 			}
 		}
 	}
-	//½øĞĞ¸ñÊ½¼ìÑé ÔİÊ±²»»á
+	//è¿›è¡Œæ ¼å¼æ£€éªŒ æš‚æ—¶ä¸ä¼š
 	
-	//Ö´ĞĞÊı¾İÉ¾³ı
-	if (!service.removeData(dto.getBillNo())) //Èç¹ûÉ¾³ıÊ§°Ü
+	//æ‰§è¡Œæ•°æ®åˆ é™¤
+	if (!service.removeData(dto.getBillNo())) //å¦‚æœåˆ é™¤å¤±è´¥
 	{
 		result.fail(9995);
 	}
-	//Ö´ĞĞÊı¾İÌí¼Ó
+	//æ‰§è¡Œæ•°æ®æ·»åŠ 
 	uint64_t id = service.updateData(dto, payload);
 	if (id > 0) {
 		result.success(100);
@@ -108,22 +108,22 @@ JsonVO<uint64_t> PurReqController::execModifyPurReq(const ModifyPurReqDTO& dto, 
 	{
 		result.fail(9995);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 }
 
-//É¾³ıÉêÇë Íê³É
+//åˆ é™¤ç”³è¯· å®Œæˆ
 JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& dto)
 {
 	PurReqService service;
 	JsonVO<uint64_t> result;
-	//½øĞĞ±ØÌî²ÎÊı¼ìÑé
+	//è¿›è¡Œå¿…å¡«å‚æ•°æ£€éªŒ
 	if (dto.getBillNo() == "") {
 		result.setStatus(RS_PARAMS_INVALID);
 		result.setData(9999);
 		return result;
 	}
-	//Ö´ĞĞÊı¾İÉ¾³ı
+	//æ‰§è¡Œæ•°æ®åˆ é™¤
 	if (service.removeData(dto.getBillNo())) {
 		result.success(100);
 	}
@@ -131,24 +131,24 @@ JsonVO<uint64_t> PurReqController::execRemovePurReqById(const DeletePurReqDTO& d
 	{
 		result.fail(9995);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 }
 
-//ĞŞ¸Äµ¥¾İ×´Ì¬ Íê³É
+//ä¿®æ”¹å•æ®çŠ¶æ€ å®Œæˆ
 JsonVO<uint64_t> PurReqController::execModifyPurReqBillStatus(const PurReqModBillStatusDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
 	PurReqService service;
 
-	//½øĞĞ±ØÌî²ÎÊı¼ìÑé
+	//è¿›è¡Œå¿…å¡«å‚æ•°æ£€éªŒ
 	if (dto.getBillNo() == "") {
 		result.setStatus(RS_PARAMS_INVALID);
 		result.setData(9999);
 		return result;
 	}
 
-	//Ö´ĞĞÊı¾İ×´Ì¬ĞŞ¸Ä
+	//æ‰§è¡Œæ•°æ®çŠ¶æ€ä¿®æ”¹
 	uint64_t id = service.updateBillStatus(dto, payload);
 	if (id > 0) {
 		result.success(100);
@@ -157,15 +157,15 @@ JsonVO<uint64_t> PurReqController::execModifyPurReqBillStatus(const PurReqModBil
 	{
 		result.fail(9995);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 }
 
-//µ¼Èë
+//å¯¼å…¥
 JsonVO<uint64_t> PurReqController::execPurReqInto(const PurReqIntoDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
-	//ÏÂÔØÎÄ¼ş²¢ÇÒ½øĞĞexecl½âÎö
+	//ä¸‹è½½æ–‡ä»¶å¹¶ä¸”è¿›è¡Œexeclè§£æ
 	PurReqService service;
 	uint64_t ret = 1;
 	for (string file : dto.getFiles()) {
@@ -176,7 +176,7 @@ JsonVO<uint64_t> PurReqController::execPurReqInto(const PurReqIntoDTO& dto, cons
 			break;
 		}
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	if (ret)
 	{
 		result.success(100);
@@ -184,7 +184,7 @@ JsonVO<uint64_t> PurReqController::execPurReqInto(const PurReqIntoDTO& dto, cons
 	return result;
 }
 
-//µ¼³ö
+//å¯¼å‡º
 JsonVO<string> PurReqController::execPurReqExport(const PurReqExportDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<string> result;
@@ -197,7 +197,7 @@ JsonVO<string> PurReqController::execPurReqExport(const PurReqExportDTO& dto, co
 	else {
 		result.success(url);
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return result;
 }
 

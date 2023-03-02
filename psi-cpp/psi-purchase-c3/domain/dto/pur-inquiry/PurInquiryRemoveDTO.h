@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #ifndef __PUR_INQUIRY_REMOVE_DTO_H__
 #define __PUR_INQUIRY_REMOVE_DTO_H__
 #include "../../GlobalInclude.h"
-//É¾³ıDTO
+//åˆ é™¤DTO
 class PurInquiryRemoveDTO
 {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 
 public:

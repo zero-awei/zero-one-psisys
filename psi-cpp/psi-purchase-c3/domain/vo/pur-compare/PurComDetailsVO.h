@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -25,42 +25,42 @@
 
 
 /**
- * ±È¼Ûµ¥Ã÷Ï¸ÏÔÊ¾¶ÔÏó
+ * æ¯”ä»·å•æ˜ç»†æ˜¾ç¤ºå¯¹è±¡
  */
 class PurComDetailsVO
 {
-	// # ·ÖÂ¼±àºÅ
+	// # åˆ†å½•ç¼–å·
 	CC_SYNTHESIZE(int64_t, entryNo, EntryNo);
-	// ¹©Ó¦ÉÌ
+	// ä¾›åº”å•†
 	CC_SYNTHESIZE(string, supplierName, SupplierName);
-	// Ô´µ¥·ÖÂ¼ºÅ
+	// æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	// ÎïÁÏ
+	// ç‰©æ–™
 	CC_SYNTHESIZE(string, materialName, MaterialName);
-	// ¹æ¸ñĞÍºÅ
+	// è§„æ ¼å‹å·
 	CC_SYNTHESIZE(string, specifications, Specifications);
-	// µ¥Î»
+	// å•ä½
 	CC_SYNTHESIZE(string, unitName, UnitName);
-	// ÊıÁ¿
+	// æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	// Ë°ÂÊ
+	// ç¨ç‡
 	CC_SYNTHESIZE(double, taxRate, TaxRate);
-	// º¬Ë°µ¥¼Û
+	// å«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	// ÕÛ¿ÛÂÊ
+	// æŠ˜æ‰£ç‡
 	CC_SYNTHESIZE(double, discountRate, DiscountRate);
-	// º¬Ë°½ğ¶î
+	// å«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	// ÅÅÃû
+	// æ’å
 	CC_SYNTHESIZE(int, ranking, Ranking);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ×Ô¶¨Òå1
+	// è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	// ×Ô¶¨Òå2
+	// è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurComDetailsVO, entryNo, supplierName, srcNo, materialName, specifications, unitName, qty, taxRate, \
 		price, discountRate, amt, ranking, remark, custom1, custom2);
 

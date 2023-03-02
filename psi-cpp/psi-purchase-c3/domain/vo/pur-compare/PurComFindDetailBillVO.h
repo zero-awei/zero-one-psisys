@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,68 +24,68 @@
 #include "PurComDetailsVO.h"
 
 /**
- * Ö¸¶¨µÄ±È¼Ûµ¥ÏêÏ¸ĞÅÏ¢ÏÔÊ¾¶ÔÏó
+ * æŒ‡å®šçš„æ¯”ä»·å•è¯¦ç»†ä¿¡æ¯æ˜¾ç¤ºå¯¹è±¡
  */
 class PurComFindDetailBillVO
 {
 	//// id
 	//CC_SYNTHESIZE(string, id, Id);
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	// µ¥¾İÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	// µ¥¾İ½×¶Î
+	// å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	// ÒÑÉúĞ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(string, isEffective, IsEffective);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(string, isClosed, IsClosed);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(string, isVoided, IsVoided);
-	// ÉúĞ§Ê±¼ä
+	// ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	// ºËÅúÈË
+	// æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	// ºËÅúÊµÀı
+	// æ ¸æ‰¹å®ä¾‹
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	// ÖÆµ¥Ê±¼ä
+	// åˆ¶å•æ—¶é—´
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// ÖÆµ¥²¿ÃÅ
+	// åˆ¶å•éƒ¨é—¨
 	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	// ÖÆµ¥ÈË
+	// åˆ¶å•äºº
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	// ĞŞ¸ÄÊ±¼ä
+	// ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	// ĞŞ¸ÄÈË
+	// ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	// ×Ô¶¯µ¥¾İ
+	// è‡ªåŠ¨å•æ®
 	CC_SYNTHESIZE(string, isAuto, IsAuto);
-	// ºì×Öµ¥¾İ
+	// çº¢å­—å•æ®
 	CC_SYNTHESIZE(string, isRubric, IsRubric);
-	// Ô´µ¥ÀàĞÍ
+	// æºå•ç±»å‹
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	// µ¥¾İÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// Ô´µ¥ºÅ(²É¹ºÑ¯¼Ûµ¥)
+	// æºå•å·(é‡‡è´­è¯¢ä»·å•)
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	// ¸¶¿î·½Ê½
+	// ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, paymentMethod, PaymentMethod);
-	// ½»»õÈÕÆÚ
+	// äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
-	// ½»»õµØµã
+	// äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ¸½¼ş
+	// é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	// ºËÅúÒâ¼û
+	// æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-	// ºËÅú½á¹û
+	// æ ¸æ‰¹ç»“æœ
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	// Ã÷Ï¸ÁĞ±í
+	// æ˜ç»†åˆ—è¡¨
 	CC_SYNTHESIZE(list<PurComDetailsVO>, detailslist, DetailsList);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurComFindDetailBillVO, billNo, billDate, billStage, isEffective, isClosed, isVoided, \
 		effectiveTime, approver, bpmiInstanceId, createTime, sysOrgCode, createBy, updateTime, \
 		updateBy, isAuto, isRubric, srcBillType, subject, srcNo, paymentMethod, deliveryTime, \
@@ -95,12 +95,12 @@ public:
 		this->setBillNo("CGBJ-230214-001");
 		this->setBillDate("2023-02-14");
 		this->setSubject("test function");
-		this->setBillStage(u8"±àÖÆÖĞ");
+		this->setBillStage(u8"ç¼–åˆ¶ä¸­");
 		this->setIsAuto("No");
 		this->setIsEffective("No");
 		this->setIsVoided("No");
 		this->setCreateTime("2023-02-14");
-		this->setSysOrgCode(u8"ÑĞ·¢²¿");
+		this->setSysOrgCode(u8"ç ”å‘éƒ¨");
 		this->setCreateBy("QZP");
 		this->setIsAuto("No");
 		this->setIsRubric("No");

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
  @Author: akun,modify by QZP
@@ -19,10 +19,10 @@
 #include "../PageQuery.h"
 
 class PurComExportQuery {
-	//Ö¸¶¨µÄµ¥¾İºÅ
+	//æŒ‡å®šçš„å•æ®å·
 	CC_SYNTHESIZE(std::list<string>, billNo, BillNo);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurComExportQuery& t) {
 		BIND_FROM_TO_OBJ(j, t, billNo, std::list<string>);
 	}

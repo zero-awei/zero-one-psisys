@@ -1,4 +1,4 @@
-
+ï»¿
 
 
 
@@ -6,7 +6,7 @@
 #ifndef _PUR_INQUIRY_CONTROLLER_H_
 #define _PUR_INQUIRY_CONTROLLER_H_
 
-//¹«¹²½Ó¿Ú
+//å…¬å…±æ¥å£
 #include "stdafx.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
@@ -35,43 +35,43 @@
 
 
 /**
- * Ê¾Àı¿ØÖÆÆ÷£¬ÑİÊ¾½Ó¿ÚµÄÊ¹ÓÃ
+ * ç¤ºä¾‹æ§åˆ¶å™¨ï¼Œæ¼”ç¤ºæ¥å£çš„ä½¿ç”¨
  */
 class PurInquiryController
 {
 public:
-	//½Ó¿Ú1 ²éÑ¯²É¹ºÑ¯¼Ûµ¥·ÖÒ³ÁĞ±í
+	//æ¥å£1 æŸ¥è¯¢é‡‡è´­è¯¢ä»·å•åˆ†é¡µåˆ—è¡¨
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindBill, execQueryPurInquiryFindBill, PurInquiryFindBillQuery);
-	//½Ó¿Ú2 ²é¿´Ö¸¶¨Ñ¯¼Ûµ¥ÏêÏ¸ĞÅÏ¢
+	//æ¥å£2 æŸ¥çœ‹æŒ‡å®šè¯¢ä»·å•è¯¦ç»†ä¿¡æ¯
 	CREATE_API_FUN_QUERY_PAYLOAD(queryPurInquiryFindDetailBill, execQueryPurInquiryFindDetailBill, PurInquiryFindDetailBillQuery);
-	//Ôö¼ÓÑ¯¼Û
+	//å¢åŠ è¯¢ä»·
 	CREATE_API_FUN_JSON_PAYLOAD(addPurInquiry, execAddPurInquiry, AddPurInquiryDTO);
-	//ĞŞ¸ÄÑ¯¼Û
+	//ä¿®æ”¹è¯¢ä»·
 	CREATE_API_FUN_JSON_PAYLOAD(modifyPurInquiry, execModifyPurInquiry, AddPurInquiryDTO);
-	//É¾³ıÑ¯¼Û
+	//åˆ é™¤è¯¢ä»·
 	CREATE_API_FUN_BODY(removePurInquiry, execRemovePurInquiry, PurInquiryRemoveDTO);
-	//ĞŞ¸ÄÑ¯¼Ûµ¥¾İ
+	//ä¿®æ”¹è¯¢ä»·å•æ®
 	CREATE_API_FUN_BODY(modifyPurQuotModBillStatus, execModifyPurQuotModBillStatus, PurInquiryModBillStatusDTO);
-	// µ¼³ö
+	// å¯¼å‡º
 	CREATE_API_FUN_JSON_PAYLOAD(queryPurInquiryExport, execQueryPurInquiryExport, PurInquiryExportQuery);
-	// µ¼Èë
+	// å¯¼å…¥
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPurInquiryInto, execaddPurInquiryInto, PurInquiryIntoDTO);
 private:
-	//²éÑ¯²É¹ºÑ¯¼Ûµ¥·ÖÒ³ÁĞ±í
+	//æŸ¥è¯¢é‡‡è´­è¯¢ä»·å•åˆ†é¡µåˆ—è¡¨
 	JsonVO<PageVO<PurInquiryFindBillVO>> execQueryPurInquiryFindBill(const PurInquiryFindBillQuery& query, const PayloadDTO& payload);
-	//²é¿´Ö¸¶¨Ñ¯¼Ûµ¥ÏêÏ¸ĞÅÏ¢
+	//æŸ¥çœ‹æŒ‡å®šè¯¢ä»·å•è¯¦ç»†ä¿¡æ¯
 	JsonVO<PurInquiryFindDetailBillVO> execQueryPurInquiryFindDetailBill(const PurInquiryFindDetailBillQuery& query, const PayloadDTO& payload);
-	//Ìí¼ÓÊı¾İ
+	//æ·»åŠ æ•°æ®
 	JsonVO<uint64_t> execAddPurInquiry(const AddPurInquiryDTO& dto, const PayloadDTO& payload);
-	//ĞŞ¸ÄÊı¾İ
+	//ä¿®æ”¹æ•°æ®
 	JsonVO<std::string> execModifyPurInquiry(const AddPurInquiryDTO& dto, const PayloadDTO& payload);
-	//É¾³ıÊı¾İ
+	//åˆ é™¤æ•°æ®
 	JsonVO<string> execRemovePurInquiry(const PurInquiryRemoveDTO& dto);
-	//ĞŞ¸Äµ¥¾İ×´Ì¬
+	//ä¿®æ”¹å•æ®çŠ¶æ€
 	JsonVO<string> execModifyPurQuotModBillStatus(const PurInquiryModBillStatusDTO& dto);
-	//µ¼³ö£¨°´µ¥¾İ±àºÅÅúÁ¿²éÑ¯ºó£¬·ÅÈëxml£¬ÔÙÏÂÔØÎÄ¼ş£©
+	//å¯¼å‡ºï¼ˆæŒ‰å•æ®ç¼–å·æ‰¹é‡æŸ¥è¯¢åï¼Œæ”¾å…¥xmlï¼Œå†ä¸‹è½½æ–‡ä»¶ï¼‰
 	JsonVO<std::string> execQueryPurInquiryExport(const PurInquiryExportQuery& query,const PayloadDTO& payload);
-	//µ¼Èë£¨ÉÏ´«ÎÄ¼şºó£¬½«xml½âÎö³Éjson/cpp·ÅÈëÊı¾İ¿â£¬±£´æÊı¾İ£©
+	//å¯¼å…¥ï¼ˆä¸Šä¼ æ–‡ä»¶åï¼Œå°†xmlè§£ææˆjson/cppæ”¾å…¥æ•°æ®åº“ï¼Œä¿å­˜æ•°æ®ï¼‰
 	JsonVO<uint64_t> execaddPurInquiryInto(const PurInquiryIntoDTO& dto, const PayloadDTO& payload);
 };
 

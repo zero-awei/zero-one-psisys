@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,28 +23,28 @@
 #include "../PageQuery.h"
 
 /**
- *  ±È¼Ûµ¥ÁĞ±í²éÑ¯¶ÔÏó
+ *  æ¯”ä»·å•åˆ—è¡¨æŸ¥è¯¢å¯¹è±¡
  */
 class PurComFindBillQuery : public PageQuery
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	// µ¥¾İÈÕÆÚ_¿ªÊ¼
+	// å•æ®æ—¥æœŸ_å¼€å§‹
 	CC_SYNTHESIZE(string, billDateBegin, BillDateBegin);
-	// µ¥¾İÈÕÆÚ_½áÊø
+	// å•æ®æ—¥æœŸ_ç»“æŸ
 	CC_SYNTHESIZE(string, billDateEnd, BillDateEnd);
-	// µ¥¾İÖ÷Ìâ
+	// å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	// µ¥¾İ½×¶Î
+	// å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	// ÒÑÉúĞ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(string, isEffective, IsEffective);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(string, isClosed, IsClosed);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(string, isVoided, IsVoided);
 public:
-	// °ó¶¨from_json
+	// ç»‘å®šfrom_json
 	friend void from_json(const json& j, PurComFindBillQuery& t) { // NOLINT
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);

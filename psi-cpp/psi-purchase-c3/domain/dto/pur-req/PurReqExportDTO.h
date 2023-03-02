@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,17 +24,17 @@
 //#include "../FileDTO.h"
 
 /**
- * ������� ���� ���ݱ�ţ����õ��ݱ�Ų�ѯ�뵼���Ķ�����
+ * 传输对象 —— 单据编号（利用单据编号查询想导出的订单）
  */
 
- //����
+ //导出
 class PurReqExportDTO
 {
-	//���������Ϣ ���� ���õ��ݱ�Ų�ѯ�뵼���Ķ���
+	//传输对象信息 —— 利用单据编号查询想导出的订单
 	CC_SYNTHESIZE(list<string>, billNoList, BillNoList);
 
 public:
-	// ��JSONת������
+	// 绑定JSON转换方法
 	friend void from_json(const json& j, PurReqExportDTO& t);
 };
 

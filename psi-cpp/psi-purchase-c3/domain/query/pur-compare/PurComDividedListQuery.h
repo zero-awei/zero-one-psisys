@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,14 +23,14 @@
 #include "../PageQuery.h"
 
 /**
- *  ±¨¼Ûµ¥ÁĞ±í²éÑ¯¶ÔÏó
+ *  æŠ¥ä»·å•åˆ—è¡¨æŸ¥è¯¢å¯¹è±¡
  */
 class PurComDividedListQuery
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
 public:
-	// °ó¶¨from_json
+	// ç»‘å®šfrom_json
 	friend void from_json(const json& j, PurComDividedListQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, billNo);
 	}
