@@ -279,7 +279,7 @@ int DepotService::saveData(const DepotDTO& dto, const string Username)
 	data.setStart(dto.getStart());
 	data.setRemarks(dto.getRemarks());
 	data.setCreationPeo(Username);
-	data.setCreationTime(gettime());
+	data.setCreationTime(SimpleDateTimeFormat::format());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.insertDepot(data);
@@ -299,7 +299,7 @@ int DepotService::saveKidData(const DepotDTO& dto, const string Username)
 	data.setStart(dto.getStart());
 	data.setRemarks(dto.getRemarks());
 	data.setCreationPeo(Username);
-	data.setCreationTime(gettime());
+	data.setCreationTime(SimpleDateTimeFormat::format());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.insertKidDepot(data) && dao.updateParent(data);
@@ -326,17 +326,8 @@ int DepotService::modifyDepot(const DepotDTO& dto, const string Username)
 	data.setStart(dto.getStart());
 	data.setRemarks(dto.getRemarks());
 	data.setModiPeo(Username);
-	data.setModiTime(gettime());
+	data.setModiTime(SimpleDateTimeFormat::format());
 	//执行数据添加
 	DepotDAO dao;
 	return dao.update(data);
-}
-
-string DepotService::gettime()
-{
-	time_t timep;
-	time(&timep);
-	char tmp[256];
-	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
-	return tmp;
 }

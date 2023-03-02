@@ -26,6 +26,7 @@
 #include "../../domain/dto/depot/DepotDTO.h"
 #include "../../domain/do/depot/DepotDO.h"
 #include "../../dao/depot/DepotDAO.h"
+#include"../../psi-cpp/lib-common/include/SimpleDateTimeFormat.h"
 
 /**
  * 仓库基础功能
@@ -51,7 +52,6 @@ public:
 	// 删除数据
 	bool removeData(const OnlyValueQuery& query);
 	int modifyDepot(const DepotDTO& dto, const string Username);
-	string gettime();
 };
 
 #endif // !_DEPOT_SERVICE_
