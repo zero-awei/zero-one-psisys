@@ -99,8 +99,8 @@ public:
 		BIND_FROM_TO_NORMAL(j, t, operator1);
 		BIND_FROM_TO_NORMAL(j, t, remark);
 		BIND_FROM_TO_NORMAL(j, t, attachment);
-		BIND_FROM_TO_NORMAL(j, t, updateBy);
-		BIND_FROM_TO_NORMAL(j, t, updateTime);
+		BIND_FROM_TO_NORMAL(j, t, createBy);
+		BIND_FROM_TO_NORMAL(j, t, createTime);
 
 		BIND_FROM_TO_D(j, t, amt);
 

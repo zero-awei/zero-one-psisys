@@ -229,8 +229,11 @@ void Router::createPaymentRouter()
 }
 
 void Router::createPaymentReqRouter() {
+	//查询列表
 	BIND_GET_ROUTER(server, "/finPaymenReq", &FinPaymentReqControlle::queryFinPaymentReq, nullptr);
+	//查询单个详情
 	BIND_GET_ROUTER(server, "/finPaymentReqEntry", &FinPaymentReqControlle::queryFinPaymentReqEntry, nullptr);
 	BIND_POST_ROUTER(server, "/paymentReq/add", &FinPaymentReqControlle::addPaymentReq, nullptr);
+	//修改订单
 	BIND_PUT_ROUTER(server, "/paymentReq/mod", &FinPaymentReqControlle::modPaymentReq, nullptr);
 }

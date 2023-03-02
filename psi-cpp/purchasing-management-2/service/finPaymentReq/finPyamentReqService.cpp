@@ -8,15 +8,6 @@
 //定义一个宏用来进行值的修改
 #define MODIFY(name) data.set##name(dto.get##name());
 
-//定义一个宏用来进行值压入导出数据表中
-#define PUSH_VALUE(value) row.emplace_back(CharsetConvertHepler::ansiToUtf8(value));
-
-//定义一个宏用来进行值从导入主的数据表进入DO中
-#define GET_VALUE1(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r1[i++])));
-
-//定义一个宏用来进行值从导入主的数据表进入DO中
-#define GET_VALUE2(name, stox) data.set##name(stox(CharsetConvertHepler::utf8ToAnsi(r2[i++])));
-
 string getTime1()
 {
 	time_t now = time(0);
