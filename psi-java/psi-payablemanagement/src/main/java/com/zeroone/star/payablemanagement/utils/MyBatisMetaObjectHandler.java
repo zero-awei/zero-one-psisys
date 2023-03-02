@@ -33,7 +33,7 @@ public class MyBatisMetaObjectHandler implements MetaObjectHandler {
         } catch (Exception e) {
             metaObject.setValue("createBy", "");
             metaObject.setValue("updateBy", "");
-            throw new RuntimeException("无法获取当前用户！", e);
+            log.error("无法获取当前用户！", e);
         }
     }
 
@@ -48,7 +48,7 @@ public class MyBatisMetaObjectHandler implements MetaObjectHandler {
             metaObject.setValue("updateBy", userHolder.getCurrentUser().getUsername());
         } catch (Exception e) {
             metaObject.setValue("updateBy", "");
-            throw new RuntimeException("无法获取当前用户！", e);
+            log.error("无法获取当前用户！", e);
         }
     }
 
