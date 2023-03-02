@@ -60,6 +60,7 @@ class AddPurInquiryEntryDTO
 public:
 	friend void from_json(const json& j, AddPurInquiryEntryDTO& t)
 	{
+		BIND_FROM_TO_I(j, t, entry_no);
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		BIND_FROM_TO_NORMAL(j, t, mid);
 		BIND_FROM_TO_NORMAL(j, t, id);
