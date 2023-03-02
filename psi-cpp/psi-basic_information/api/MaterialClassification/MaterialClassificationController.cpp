@@ -125,10 +125,10 @@ JsonVO<uint64_t> MaterialClassificationController::execRemoveMaterialClassificat
 }
 
 //文件导入
-JsonVO<int> MaterialClassificationController::execImportMaterialClassification(const MaterialClassificationDTO& dto) {
+JsonVO<int> MaterialClassificationController::execImportMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload) {
 	int result;
 	MaterialClassificationService service;
-	result = service.importData(dto);
+	result = service.importData(dto,payload);
 	//响应结果
 	if(result==0)
 		return JsonVO<int>(result, RS_FAIL);

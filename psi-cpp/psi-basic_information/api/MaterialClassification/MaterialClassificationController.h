@@ -41,7 +41,7 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(addMaterialClassification, execAddMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY_PAYLOAD(modifyMaterialClassification, execModifyMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY(removeMaterialClassification, execRemoveMaterialClassification, MaterialClassificationDTO);
-	CREATE_API_FUN_BODY_FILE(importMaterialClassification, execImportMaterialClassification, MaterialClassificationDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(importMaterialClassification, execImportMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportMaterialClassification, execExportMaterialClassification, MaterialClassificationQuery);
 private:
 
@@ -63,7 +63,7 @@ private:
 	JsonVO<uint64_t> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
 	
 	//文件导入
-	JsonVO<int> execImportMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<int> execImportMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	//文件导出
 	JsonVO<string> execExportMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 };

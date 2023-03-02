@@ -48,7 +48,7 @@ public:
 	int removeData(const MaterialClassificationDTO& dto);
 
 	//导入数据
-	int importData(const MaterialClassificationDTO& dto);
+	int importData(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 
 	//导出数据
 	string exportData(const string& id, const PayloadDTO& payload);

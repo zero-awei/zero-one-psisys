@@ -52,11 +52,11 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	pages.calcPages();
 
 	
-	if (query.getCode() != "" || query.getName() != "") {//判断是不是子级，是则寻找根节点
+	if (!query.getCode().empty() || !query.getName().empty()) {//判断是不是子级，是则寻找根节点
 		list<MaterialClassificationDO> father;
-		if (query.getCode() != "") 
+		if (!query.getCode().empty())
 			father = dao.selectByCode(query.getCode());
-		else if (query.getName() != "")
+		else if (!query.getName().empty())
 			father = dao.selectByName(query.getName());
 		MaterialClassificationDO f;
 		for (MaterialClassificationDO sub : father) {
@@ -91,7 +91,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 			pages.setRows(vr);
 			return pages;
 	}
-	else if (query.getCode() == "" && query.getName() == "") {//全空显示全部根节点
+	else if (query.getCode().empty() && query.getName().empty()) {//全空显示全部根节点
 
 		list<MaterialClassificationDO> result = dao.selectWithPage( "0",query.getPageIndex(), query.getPageSize());
 		list<MaterialClassificationBaseVO> vr;
@@ -115,7 +115,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	}
 }
 
-//查询子类列表
+//查询子类列表,前提是父类确定存在
 list<MaterialClassificationChildVO> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
 	obj.setCode(query.getCode());//父类编码
@@ -219,7 +219,7 @@ int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto
 	if (dto.getPid() != "" && dto.getPid() !="0") {//有父节点
 		list<MaterialClassificationDO> father = dao.selectById(dto.getPid());
 		MaterialClassificationDO f;
-		for (MaterialClassificationDO sub : father) //如果直接用front或者back函数会出问题，暂时先这么用
+		for (MaterialClassificationDO sub : father) //如果直接用front或者back函数会出问题，因为还有list为空的情况，暂时先这么用
 			f.setHasChild(sub.getHasChild());
 		if (f.getHasChild() == "0")
 			modify = dao.updateHasChildById(dto.getPid(), "1");//通过id修改父节点的has_child
@@ -316,7 +316,7 @@ int MaterialClassificationService::removeData(const MaterialClassificationDTO& d
 
 
 //导入数据
-int MaterialClassificationService::importData(const MaterialClassificationDTO& dto) {
+int MaterialClassificationService::importData(const MaterialClassificationDTO& dto, const PayloadDTO& payload) {
 	MaterialClassificationDAO dao;
 	ExcelComponent excel;
 	list<MaterialClassificationDTO> Dto;
@@ -340,8 +340,7 @@ int MaterialClassificationService::importData(const MaterialClassificationDTO& d
 
 	int result = 1;
 	for (MaterialClassificationDTO data:Dto) //把数据存入数据库
-		result = saveData(data,"admin");			//暂时还不知道怎么把创建人的信息输入进去，如果导入格式和导出文件格式一样，就可以截取出来
-
+		result = saveData(data,payload.getUsername());			
 	return result;
 }
 
@@ -387,8 +386,8 @@ string  MaterialClassificationService::exportData(const string& id,const Payload
 	ExcelComponent excel;
 	excel.writeVectorToFile(fileName, sheetName, data);
 	// 上传到文件服务器
-	/*FastDfsClient client("1.15.240.108");
-	fileName = client.uploadFile(fileName)*/;
+	FastDfsClient client("1.15.240.108");
+	fileName = client.uploadFile(fileName);
 
 	return fileName;
 }
