@@ -25,7 +25,12 @@
 #include "../../domain/vo/prepayment_req/PrepaymentExportVO.h"
 #include "../../domain/vo/prepayment_req/PrepaymentIntoVO.h"
 #include "../../domain/dto/prepayment/PayIntoDTO.h"
-
+//删除
+#include "../../domain/dto/prepayment/DePayDTO.h"
+#include "../../domain/vo/prepayment/PrepaymentVO.h"
+// 采购订单列表
+#include "../../domain/query/PurOrder/PurOrderQuery.h"
+#include "../../domain/vo/PurOrder/PurOrderVO.h"
 
 
 /**
@@ -39,16 +44,25 @@ public:
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPurReqBillStatus, execModifyPayBillStatus, PayModBillStatusDTO);
 	//查询
 	// 负责人：Qi
-	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill, execQueryPrepayFindBill, PrepayBillQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill1, execQueryPrepayFindBill, PrepayBillQuery);
 	//查询指定单据详细信息
 	// 负责人：Qi
-	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill, execQueryPayDetailBill, PrepayDetailBillQuery);
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill1, execQueryPayDetailBill, PrepayDetailBillQuery);
 	//添加订单
 	// 负责人：Qi
 	CREATE_API_FUN_JSON_PAYLOAD(addPay, execAddPay, AddPayDTO);
 	//修改订单
 	// 负责人：Qi
 	CREATE_API_FUN_JSON_PAYLOAD(modifyPay, execModifyPay, AddPayDTO);
+	//查询
+	//负责人：徐不洗
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFindBill2, execQuerypayFindBill, PurOrderQuery);
+	//查询指定单据详细信息
+	//负责人：徐不洗
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPayFinDetailBill2, execQueryPayDetailBill, PurOrderQuery);
+	//删除订单
+	//负责人：徐不洗
+	CREATE_API_FUN_BODY(removeDePayId, execRemoveDePayId, DePayDTO);
 private:
 	//修改单据状态(关闭、作废、反关闭)
 	// 负责人：Andrew
@@ -65,6 +79,15 @@ private:
 	//修改订单
 	// 负责人：Qi
 	JsonVO<uint64_t> execModifyPay(const AddPayDTO& dto, const PayloadDTO& payload);
+	//查询
+	//负责人：徐不洗
+	JsonVO<PageVO<PurOrderVO>> execQuerypayFindBill(const PurOrderQuery& query, const PayloadDTO& payload);
+	//查询指定单据详细信息
+	//负责人：徐不洗
+	JsonVO<PurOrderVO> execQueryPayDetailBill(const PurOrderQuery& query, const PayloadDTO& payload);
+	//删除订单
+	//负责人：徐不洗
+	JsonVO<string> execRemoveDePayId(const DePayDTO& dto);
 };
 
 #endif // _SAMPLE_CONTROLLER_

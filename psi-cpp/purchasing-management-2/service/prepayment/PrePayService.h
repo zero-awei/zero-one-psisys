@@ -20,6 +20,12 @@
 #include "../../domain/vo/prepayment_req/PrepaymentExportVO.h"
 
 #include "../../domain/vo/PageVO.h"
+//删除
+#include "../../domain/dto/prepayment/DePayDTO.h"
+#include "../../domain/vo/prepayment/PrepaymentVO.h"
+// 采购订单列表
+#include "../../domain/query/PurOrder/PurOrderQuery.h"
+#include "../../domain/vo/PurOrder/PurOrderVO.h"
 
 /**
  * 预付申请的服务实现
@@ -42,6 +48,13 @@ public:
 	// 修改数据
 	// 负责人：Qi
 	bool updateData(const AddPayDTO& dto, const PayloadDTO& payload);
+
+	// 分页查询 预付申请单所有数据(多个对象)
+	PageVO<PurOrderVO> listAll(const PurOrderQuery& query);
+	// 查询预付申请单详细数据(单个对象)
+	PurOrderVO getAll(const PurOrderQuery& query);
+	// 通过ID删除数据
+	bool DePrePayId(const DePayDTO& dto);
 };
 
 #endif // !_PRE_PAY_SERVICE_

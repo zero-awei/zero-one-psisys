@@ -140,7 +140,6 @@ public:
 	//测试用无参构造
 	PurOrderVO()
 	{
-
 	}
 	// 绑定JSON转换方法
 	BIND_TO_JSON(PurOrderVO,id, bill_no, bill_date, src_bill_type, \

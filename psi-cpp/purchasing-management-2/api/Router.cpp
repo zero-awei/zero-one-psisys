@@ -129,10 +129,10 @@ void Router::createPrePayRouter()
 {
 	//查询单据列表
 	// 负责人：Qi
-	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill, nullptr);
+	BIND_GET_ROUTER(server, "/get-bill-list", &PrePayController::queryPayFindBill1, nullptr);
 	//查询指定单据详细信息
 	// 负责人：Qi
-	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill, nullptr);
+	BIND_GET_ROUTER(server, "/get-detail-bill", &PrePayController::queryPayFinDetailBill1, nullptr);
 	//添加申请(保存/提交)
 	// 负责人：Qi
 	BIND_POST_ROUTER(server, "/post-add", &PrePayController::addPay, nullptr);
@@ -143,6 +143,14 @@ void Router::createPrePayRouter()
 	// 采购预付申请-修改单据状态(关闭/作废/反关闭)
 	// 负责人：Andrew
 	BIND_PUT_ROUTER(server, "/modify-bill-status", &PrePayController::modifyPurReqBillStatus, nullptr);
+
+	//xubuxi
+	//采购订单列表
+	BIND_GET_ROUTER(server, "/get-prepaybill", &PrePayController::queryPayFindBill2, nullptr);
+	//指定订单详细信息
+	BIND_GET_ROUTER(server, "/get-prepaybill-detail", &PrePayController::queryPayFinDetailBill2, nullptr);
+	//删除申请
+	BIND_DEL_ROUTER(server, "/delete-t-prepay-id", &PrePayController::removeDePayId, nullptr);
 }
 
 // 比价单列表查询及明细列表查询
