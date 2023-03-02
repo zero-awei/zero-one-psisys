@@ -11,46 +11,63 @@
     <!-- 通讯录 -->
     <el-row gutter="20">
       <el-col :span="6">
-        <el-card style="height:100vh">
+        <el-card style="height: 100vh">
           <el-input placeholder="输入机构名称查询" v-modle="name">
             <template #append>
-            <el-icon @click="handleQueryAddress">
-              <Search />
+              <el-icon @click="handleQueryAddress">
+                <Search />
               </el-icon>
-          </template>
-        </el-input>
-        <br/>
-        <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" />
-      </el-card>
-     
+            </template>
+          </el-input>
+          <br />
+          <el-tree
+            :data="data"
+            :props="defaultProps"
+            @node-click="handleNodeClick"
+          />
+        </el-card>
       </el-col>
       <el-col :span="18">
-        <el-card style="height:100vh">
-        <!-- 查询 -->
-        <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
+        <el-card style="height: 100vh">
+          <!-- 查询 -->
+          <psi-form
+            :items="formItems"
+            :formData="formData"
+            @query="handleQuery"
+            @reset="handleReset"
+          ></psi-form>
 
-        <div style="margin-top:10px">
-          <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
-            <template v-slot:basicOperation="slot">
-            <!-- 修改点2 -->
-            <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+          <div style="margin-top: 10px">
+            <psi-table
+              :items="tableItems"
+              :tableData="tableData"
+              :attributes="attributes"
+              :pagination="pagination"
+            >
+              <template v-slot:basicOperation="slot">
+                <!-- 修改点2 -->
+                <el-button
+                  link
+                  type="primary"
+                  @click="clientEditDialogVisible = true"
+                  >编辑</el-button
+                >
 
-            <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
-          </template>
-          
-          </psi-table>
-        </div>
+                <el-button link type="primary" @click="deleteRole(slot.data)"
+                  >删除</el-button
+                >
+              </template>
+            </psi-table>
+          </div>
         </el-card>
       </el-col>
     </el-row>
-
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { query, queryAll } from './api/addressbook.js'
-
 
 const name = ref('')
 // 查询表单相关数据及方法
@@ -59,7 +76,7 @@ const formState = reactive({
   formItems: [
     {
       type: 'input',
-      label: '姓名',  // 标签名
+      label: '姓名', // 标签名
       prop: 'realname', // 对应字段
       placeholder: '请输入'
     },
@@ -81,7 +98,7 @@ const formState = reactive({
   // 配置数据绑定的字段
   formData: {
     realname: '',
-    workNo: '',
+    workNo: ''
   }
 })
 const { formItems, formData } = toRefs(formState)
@@ -150,8 +167,6 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
-
-
 const handleNodeClick = (data) => {
   console.log(data)
 }
@@ -161,27 +176,24 @@ const data = [
     label: '北京F公司',
     children: [
       {
-        label: '市场部',
-       
+        label: '市场部'
       },
-       {
-        label: '研发部',
-
+      {
+        label: '研发部'
       },
-       {
-        label: '财务部',
-
-      },
-    ],
-  },
+      {
+        label: '财务部'
+      }
+    ]
+  }
 ]
 
 const defaultProps = {
   children: 'children',
-  label: 'label',
+  label: 'label'
 }
 // --------------- 方法--------------
-// 点击查询按钮 
+// 点击查询按钮
 function handleQuery() {
   // 处理请求参数
   let params = {}
@@ -200,10 +212,10 @@ function handleQuery() {
       tableData.value = data.rows
     },
     (msg) => {
+      // eslint-disable-next-line no-undef
       ElMessage.warning(msg)
     }
   )
-
 }
 
 // 点击重置按钮
@@ -213,9 +225,7 @@ function handleReset() {
 
 function handleQueryAll() {
   queryAll(
-    {
-
-    },
+    {},
     // 成功回调函数
 
     (data) => {
@@ -227,18 +237,16 @@ function handleQueryAll() {
 
       // 表格数据
       tableData.value = data.rows
-
     },
     // 失败回调函数
     (msg) => {
+      // eslint-disable-next-line no-undef
       ElMessage.warning(msg)
     }
   )
 }
 
-function handleQueryAddress() {
-
-}
+function handleQueryAddress() {}
 
 onMounted(() => {
   handleQueryAll()
