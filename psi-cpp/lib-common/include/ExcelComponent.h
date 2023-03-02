@@ -1,16 +1,16 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
- 
+
  @Author: awei
  @Date: 2022/10/24 15:33:44
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
-      https://www.apache.org/licenses/LICENSE-2.0
- 
+
+			https://www.apache.org/licenses/LICENSE-2.0
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,37 +24,63 @@
 #include <vector>
 /**
  * Excel组件
+ * 注意：xlnt只支持xlsx文件格式
  */
 class ExcelComponent
 {
 private:
 	xlnt::workbook wb;
 	xlnt::worksheet sheet;
+	// 行高
 	double rowHeight = 20;
+	// 列宽
 	double colWidth = 20;
-	//初始化工作薄
-	void initWorkbook(const std::string& fileName = "");
-	//创建Sheet
+	// 创建Sheet
 	void createSheet(const std::string& sheetName);
 public:
-	//设置行高
+	ExcelComponent();
+	// 设置行高
 	void setRowHeight(double rowHeight);
-	//设置列宽
+	// 设置列宽
 	void setColWidth(double colWidth);
-	//读取指定页签内容到容器,注意文件路径使用/
-	std::vector<std::vector<std::string>> readIntoVector(const std::string& fileName, const std::string& sheetName);
-	//保存指定页签内容到文件,注意文件路径使用/
-	void writeVectorToFile(const std::string& fileName, const std::string& sheetName, const std::vector<std::vector<std::string>>& data);
-
-
-//--十二
 	// 清空工作薄
 	void clearWorkbook();
+
 	// 工作表命名
 	void makeName(const std::string& title);
 	// 合并单元格
-	void mergeCell(std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
-	// 单元格赋值
-	void cellVaule(const std::string& sheetName, std::string& cell, std::string value);
+	void mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
+	// 创建新Sheet
+	void createNewSheet(const std::string& sheetName);
+	// 单元格对齐
+	void cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt);  //1 居中，2居左，三居右
+
+
+	//************************************
+	// Method:    readIntoVector
+	// FullName:  ExcelComponent::readIntoVector
+	// Access:    public 
+	// Returns:   std::vector<std::vector<std::string>> 指定页签内容的二维vector
+	// Qualifier: 读取指定文件指定页签的内容
+	// Parameter: const std::string & fileName 文件名称的全路径，注意文件路径分隔符使用/
+	// Parameter: const std::string & sheetName 页签名称
+	//************************************
+	std::vector<std::vector<std::string>> readIntoVector(const std::string& fileName, const std::string& sheetName);
+
+	//************************************
+	// Method:    writeVectorToFile
+	// FullName:  ExcelComponent::writeVectorToFile
+	// Access:    public 
+	// Returns:   void
+	// Qualifier: 新增内容到指定页签，并保存到文件中
+	// Parameter: const std::string & fileName 文件名称的全路径，注意文件路径分隔符使用/
+	// Parameter: const std::string & sheetName 新增内容保存到的页签名称
+	// Parameter: const std::vector<std::vector<std::string>> & data 新增保存的数据
+	//************************************
+	void writeVectorToFile(const std::string& fileName, const std::string& sheetName, const std::vector<std::vector<std::string>>& data);
 };
 #endif // _EXCELCOMPONENT_H_
+
+
+
+

@@ -9,7 +9,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -62,12 +62,10 @@ private:
 	// 数据状态系信息
 	PayloadCode code;
 	//部门
-	std::string department;
-	//部门--人情
-	std::string userDept;
+	std::string orgCode;
 public:
 	PayloadDTO();
-	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _department);
+	PayloadDTO(std::string _sub, int64_t _exp, std::string _username, std::list<std::string> _authorities, std::string _orgCode);
 
 	// getter/setter
 	std::string getSub() const { return sub; }
@@ -82,14 +80,11 @@ public:
 	void setCode(PayloadCode val) { code = val; }
 	std::string getId() const { return id; }
 	void setId(std::string val) { id = val; }
-	std::string getDepartment() const { return department; }
-	void setDepartment(std::string val) { department = val; }
+	std::string getOrgCode() const { return orgCode; }
+	void setOrgCode(std::string val) { orgCode = val; }
 
-
-	std::string getUserDept() const { return userDept; }
-	void setUserDept(std::string val) { userDept = val; }
 	// 绑定JSON转换方法
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, department);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(PayloadDTO, id, username, authorities, orgCode);
 
 };
 

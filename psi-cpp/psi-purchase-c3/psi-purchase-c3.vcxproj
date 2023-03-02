@@ -320,6 +320,7 @@
     <ClInclude Include="service\pur-req\PurReqService.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="uselib\fastdfs\TestFastDfs.h" />
+    <ClInclude Include="uselib\jwt\TestToken.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
@@ -353,6 +354,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="uselib\fastdfs\TestFastDfs.cpp" />
+    <ClCompile Include="uselib\jwt\TestToken.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
