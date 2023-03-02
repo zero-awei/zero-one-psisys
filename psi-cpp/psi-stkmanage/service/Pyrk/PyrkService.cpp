@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PyrkService.h"
-#include "../../dao/Pyrk/PyrkDao.h"
+#include "../../dao/Pyrk/PyrkDAO.h"
 #include "../../dao/CommonDAO.h"
 #include "../../../lib-common/include/SnowFlake.h"
 #include "../../../lib-common/include/StringUtil.h"
