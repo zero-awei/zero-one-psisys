@@ -45,6 +45,7 @@ public:
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, name);
 		BIND_FROM_TO_NORMAL(j, t, code);
+		BIND_FROM_TO_NORMAL(j, t, id);
 	}
 };
 

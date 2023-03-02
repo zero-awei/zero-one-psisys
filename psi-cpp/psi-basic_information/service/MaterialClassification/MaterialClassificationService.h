@@ -19,13 +19,13 @@
 */
 #ifndef _MATERIALCLASSIFICATION_SERVICE_
 #define _MATERIALCLASSIFICATION_SERVICE_
-#include <list>
 #include "../../domain/vo/MaterialClassification/MaterialClassificationVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/MaterialClassification/MaterialClassificationQuery.h"
 #include "../../domain/dto/MaterialClassification/MaterialClassificationDTO.h"
 #include "../../domain/vo/JsonVO.h"
 #include "../../lib-common/include/SnowFlake.h"
+#include "../../domain/dto/IDDTO.h"
 /**
  * 物料分类服务实现，演示基础的示例服务实现
  */
@@ -41,11 +41,17 @@ public:
 	//查询指定分类详细信息
 	list<MaterialClassificationDetailVO> listDetail(const MaterialClassificationQuery& query);
 	// 保存数据
-	int saveData(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
+	int saveData(const MaterialClassificationDTO& dto, const string& userName);
 	// 修改数据
 	int updateData(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	// 通过ID删除数据
 	int removeData(const MaterialClassificationDTO& dto);
+
+	//导入数据
+	int importData(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
+
+	//导出数据
+	string exportData(const string& id, const PayloadDTO& payload);
 };
 
 #endif // !_SAMPLE_SERVICE_

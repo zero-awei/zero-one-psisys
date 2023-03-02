@@ -19,11 +19,15 @@
 #include "stdafx.h"
 #include "MaterialClassificationService.h"
 #include "../../dao/MaterialClassification/MaterialClassificationDAO.h"
-#include<ctime>
-#include<stack>
+#include "../../../lib-common/include/SimpleDateTimeFormat.h"
+#include "../../../lib-common/include/FastDfsClient.h"
+#include "../../../lib-common/include/CharsetConvertHepler.h"
+#include "../../lib-common/include/ExcelComponent.h"
+
 //可能vo不需要分父类子类
 
-
+const int datacenterId = 1;
+const int machineId = 2;
 PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(const MaterialClassificationQuery& query)
 {
 	//构建返回对象
@@ -48,11 +52,11 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	pages.calcPages();
 
 	
-	if (query.getCode() != "" || query.getName() != "") {//判断是不是子级，是则寻找根节点
+	if (!query.getCode().empty() || !query.getName().empty()) {//判断是不是子级，是则寻找根节点
 		list<MaterialClassificationDO> father;
-		if (query.getCode() != "") 
+		if (!query.getCode().empty())
 			father = dao.selectByCode(query.getCode());
-		else if (query.getName() != "")
+		else if (!query.getName().empty())
 			father = dao.selectByName(query.getName());
 		MaterialClassificationDO f;
 		for (MaterialClassificationDO sub : father) {
@@ -87,7 +91,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 			pages.setRows(vr);
 			return pages;
 	}
-	else if (query.getCode() == "" && query.getName() == "") {//全空显示全部根节点
+	else if (query.getCode().empty() && query.getName().empty()) {//全空显示全部根节点
 
 		list<MaterialClassificationDO> result = dao.selectWithPage( "0",query.getPageIndex(), query.getPageSize());
 		list<MaterialClassificationBaseVO> vr;
@@ -111,16 +115,15 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 	}
 }
 
-//查询子类列表
+//查询子类列表,前提是父类确定存在
 list<MaterialClassificationChildVO> MaterialClassificationService::listChildren(const MaterialClassificationQuery& query) {
 	MaterialClassificationDO obj;
 	obj.setCode(query.getCode());//父类编码
 	MaterialClassificationDAO dao;
 	list<MaterialClassificationDO> father = dao.selectByCode(obj.getCode());//返回的是list
 	MaterialClassificationDO f;
-	for (MaterialClassificationDO sub : father) {
-		f.setId(sub.getId());
-	}
+	f.setId(father.front().getId());
+	
 	list<MaterialClassificationDO> result = dao.selectByPid(f.getId());
 	list<MaterialClassificationChildVO> vr;
 	for (MaterialClassificationDO sub : result)
@@ -172,47 +175,54 @@ list<MaterialClassificationDetailVO> MaterialClassificationService::listDetail(c
 	return  vr;
 }
 
-int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto, const PayloadDTO& payload)
+int MaterialClassificationService::saveData(const MaterialClassificationDTO& dto, const string& userName)
 {
 	//新增数据应该不用管修改相关的信息
+	//先看看编码有没有重复
+	MaterialClassificationDAO dao;
+	list<MaterialClassificationDO> code = dao.selectByCode(dto.getCode());
+	//code中什么都没有的时候就可以插入数据，否则直接返回失败0
+	if (!code.empty())
+		return 0;
 
 	//组装数据
 	MaterialClassificationDO data;
-	//应该是在这里生成id
-	SnowFlake sf(1, 2);
+	//生成id
+	SnowFlake sf(datacenterId, machineId);
 	data.setId(to_string(sf.nextId()));
 
-	//添加下级的时候要获得pid，如果pid的父类一开始没有下级，则还要修改父类的has_child
+	//添加下级的时候要获得pid父类，如果pid父类一开始没有下级，则还要修改父类的has_child
 	data.setPid(dto.getPid()==""? "0":dto.getPid());
 	data.setHasChild(dto.getHasChild()==""? "0":dto.getHasChild());
 	data.setName(dto.getName());
 	data.setCode(dto.getCode());
 	data.setFullname(dto.getFullname());
 	data.setIsEnabled(dto.getIsEnabled());
-	data.setCreateBy(payload.getUsername());
+	data.setCreateBy(userName);
 
 	//设置时间
-	time_t nowtime;
-	time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
-	tm p;
-	localtime_s(&p,&nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
-	//printf("%04d:%02d:%02d %02d:%02d:%02d\n", p.tm_year + 1900, p.tm_mon + 1, p.tm_mday,p.tm_hour,p.tm_min,p.tm_sec);
-	string nowTime = to_string(p.tm_year+1900) + "-" +to_string(p.tm_mon+1)+"-"+to_string(p.tm_mday) + " " + to_string(p.tm_hour)+":"+to_string(p.tm_min) +":"+to_string(p.tm_sec);
+	SimpleDateTimeFormat sdt;
+	
+	string nowTime  = sdt.format();//使用阿伟学长给的工具类
+	//time_t nowtime;
+	//time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
+	//tm p;
+	//localtime_s(&p,&nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	////printf("%04d:%02d:%02d %02d:%02d:%02d\n", p.tm_year + 1900, p.tm_mon + 1, p.tm_mday,p.tm_hour,p.tm_min,p.tm_sec);
+	//string nowTime = to_string(p.tm_year+1900) + "-" +to_string(p.tm_mon+1)+"-"+to_string(p.tm_mday) + " " + to_string(p.tm_hour)+":"+to_string(p.tm_min) +":"+to_string(p.tm_sec);
 
 	data.setCreateTime(nowTime);
 	data.setVersion(dto.getVersion());
 	//执行数据添加
-	MaterialClassificationDAO dao;
 
 	int modify = 1;
-	if (dto.getPid() != "") {//有父节点
+	if (dto.getPid() != "" && dto.getPid() !="0") {//有父节点
 		list<MaterialClassificationDO> father = dao.selectById(dto.getPid());
 		MaterialClassificationDO f;
-		for (MaterialClassificationDO sub : father) {
+		for (MaterialClassificationDO sub : father) //如果直接用front或者back函数会出问题，因为还有list为空的情况，暂时先这么用
 			f.setHasChild(sub.getHasChild());
-		}
 		if (f.getHasChild() == "0")
-			modify = dao.updateById(dto.getPid(), "1");//通过id修改父节点的has_child
+			modify = dao.updateHasChildById(dto.getPid(), "1");//通过id修改父节点的has_child
 	}
 
 	return (modify * dao.insert(data))==1;
@@ -233,11 +243,14 @@ int MaterialClassificationService::updateData(const MaterialClassificationDTO& d
 	data.setFullname(dto.getFullname());
 	data.setIsEnabled(dto.getIsEnabled());
 
-	time_t nowtime;
-	time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
-	tm p;
-	localtime_s(&p, &nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
-	string nowTime = to_string(p.tm_year + 1900) + "-" + to_string(p.tm_mon + 1) + "-" + to_string(p.tm_mday) + " " + to_string(p.tm_hour) + ":" + to_string(p.tm_min) + ":" + to_string(p.tm_sec);
+
+	SimpleDateTimeFormat sdt;
+	string nowTime = sdt.format();
+	//time_t nowtime;
+	//time(&nowtime); //获取1900年1月1日0点0分0秒到现在经过的秒数
+	//tm p;
+	//localtime_s(&p, &nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	//string nowTime = to_string(p.tm_year + 1900) + "-" + to_string(p.tm_mon + 1) + "-" + to_string(p.tm_mday) + " " + to_string(p.tm_hour) + ":" + to_string(p.tm_min) + ":" + to_string(p.tm_sec);
 
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(nowTime);
@@ -255,24 +268,131 @@ void removeNode(const MaterialClassificationDO& nodeChild) {
 		return;
 	}
 	list<MaterialClassificationDO> children = dao.selectByPid(nodeChild.getId());
-	for (MaterialClassificationDO node : children) {
+	for (MaterialClassificationDO node : children) 
 		removeNode(node);
-	}
-	return;
+	return ;
 }
-
 
 int MaterialClassificationService::removeData(const MaterialClassificationDTO& dto)
 {
 	MaterialClassificationDAO dao;
-	list<MaterialClassificationDO> c = dao.selectById(dto.getId());//当前节点的所有子级
-	
+	list<MaterialClassificationDO> info = dao.selectById(dto.getId());//获取当前节点的信息
+	MaterialClassificationDO bro ;
+	for (MaterialClassificationDO node : info) {
+		bro.setPid(node.getPid());
+		bro.setHasChild(node.getHasChild());
+	}
+		
 	int d = 1;
-	for (MaterialClassificationDO node : c) {
-		if (node.getHasChild() == "1") {//如果有子级节点则删除
-			removeNode(node);
+	if (bro.getHasChild() == "1"){//如果有子级节点则删除
+		for (MaterialClassificationDO node : info) {
+			bro.setPid(node.getPid());
+			if (node.getHasChild() == "1") {
+				removeNode(node);
+			}
+		}
+		d = dao.deleteByPid(dto.getId());
+	}
+	int myself = dao.deleteById(dto.getId());//删除自身
+
+	//如果刚好其父节点没有了子节点，则还要修改父节点的has_child
+	
+	list<MaterialClassificationDO> brother = dao.selectByPid(bro.getPid());
+
+	int tag = 0;
+	for (MaterialClassificationDO sub : brother) {
+		if (sub.getPid() != "0") {//有兄弟,不用改父节点
+			tag++;
+			break;
 		}
 	}
-	d = dao.deleteByPid(dto.getId());
-	return (d*dao.deleteById(dto.getId())) == 1;
+	
+	int father = 1;
+	if (tag == 0) {//没有兄弟，要修改父节点
+		int father = dao.updateHasChildById(bro.getPid(),"0");
+	}
+	return (myself*d*father) == 1;
 }
+
+
+//导入数据
+int MaterialClassificationService::importData(const MaterialClassificationDTO& dto, const PayloadDTO& payload) {
+	MaterialClassificationDAO dao;
+	ExcelComponent excel;
+	list<MaterialClassificationDTO> Dto;
+	//输出上传文件路径列表
+	for (auto file : dto.getFiles()) {
+		string sheetName = CharsetConvertHepler::ansiToUtf8("test");
+		auto readData = excel.readIntoVector(file, sheetName);			//从文件提取数据
+		for (auto data : readData) {
+			MaterialClassificationDTO saveDto;
+			saveDto.setPid(data[0]);
+			saveDto.setHasChild(data[1]);
+			saveDto.setName(data[2]);
+			saveDto.setCode(data[3]);
+			saveDto.setFullname(data[4]);
+			saveDto.setIsEnabled(data[5]=="1"? 1:0);
+
+			Dto.push_back(saveDto);
+		}
+
+	} 
+
+	int result = 1;
+	for (MaterialClassificationDTO data:Dto) //把数据存入数据库
+		result = saveData(data,payload.getUsername());			
+	return result;
+}
+
+//导出数据
+string  MaterialClassificationService::exportData(const string& id,const PayloadDTO& payload) {
+
+	if (id == "")
+		return "";
+	MaterialClassificationDAO dao;
+	list<MaterialClassificationDO> dos;
+	//获取每个id的信息
+
+		dos.push_back((dao.selectById(id)).front());
+
+	//装入表框架
+	string head = CharsetConvertHepler::ansiToUtf8("物料分类报表");	//表名
+	string exporter = payload.getUsername();						//导出人
+	//这两项怎么装入数组呢
+
+	vector<vector<string>> data{ vector<string>{					//报表项
+		CharsetConvertHepler::ansiToUtf8("父节点"),
+			CharsetConvertHepler::ansiToUtf8("是否有子节点"),
+			CharsetConvertHepler::ansiToUtf8("名称"),
+			CharsetConvertHepler::ansiToUtf8("编码"),
+			CharsetConvertHepler::ansiToUtf8("全名"),
+			CharsetConvertHepler::ansiToUtf8("是否启用")
+	}};
+
+	//装入表数据
+	for (MaterialClassificationDO sub:dos) {
+		vector<string> rows;
+		rows.push_back(sub.getPid());
+		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getHasChild()=="1" ? "是":"否"));
+		rows.push_back(sub.getName());
+		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getCode()));
+		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getFullname()));
+		rows.push_back(CharsetConvertHepler::ansiToUtf8(sub.getIsEnabled() ==1 ? "是":"否"));
+
+		data.push_back(rows);
+	}
+
+	// 定义保存数据位置和页签名称
+	std::string fileName = CharsetConvertHepler::ansiToUtf8("../../public/excel/test_by_shiyi.xlsx");
+	std::string sheetName = CharsetConvertHepler::ansiToUtf8("物料分类");//excel中sheetName
+	//保存到文件
+	ExcelComponent excel;
+	excel.writeVectorToFile(fileName, sheetName, data);
+	// 上传到文件服务器
+	FastDfsClient client("1.15.240.108");
+	fileName = client.uploadFile(fileName);
+
+	return fileName;
+}
+
+

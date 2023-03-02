@@ -26,7 +26,7 @@
 #include "../../domain/vo/MaterialClassification/MaterialClassificationVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
-
+#include "../../domain/dto/IDDTO.h"
 
 
 /**
@@ -35,24 +35,24 @@
 class MaterialClassificationController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassification, execQueryMaterialClassification, MaterialClassificationQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationChild, execQueryMaterialClassificationChild,MaterialClassificationQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryMaterialClassificationDetail, execQueryMaterialClassificationDetail,MaterialClassificationQuery);
+	CREATE_API_FUN_QUERY(queryMaterialClassification, execQueryMaterialClassification, MaterialClassificationQuery);
+	CREATE_API_FUN_QUERY(queryMaterialClassificationChild, execQueryMaterialClassificationChild,MaterialClassificationQuery);
+	CREATE_API_FUN_QUERY(queryMaterialClassificationDetail, execQueryMaterialClassificationDetail,MaterialClassificationQuery);
 	CREATE_API_FUN_BODY_PAYLOAD(addMaterialClassification, execAddMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY_PAYLOAD(modifyMaterialClassification, execModifyMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_BODY(removeMaterialClassification, execRemoveMaterialClassification, MaterialClassificationDTO);
-	CREATE_API_FUN_BODY_FILE(importMaterialClassification, execImportMaterialClassification, MaterialClassificationDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(importMaterialClassification, execImportMaterialClassification, MaterialClassificationDTO);
 	CREATE_API_FUN_QUERY_PAYLOAD(exportMaterialClassification, execExportMaterialClassification, MaterialClassificationQuery);
 private:
 
 	//普通（分页）查询
-	JsonVO<PageVO<MaterialClassificationBaseVO>> execQueryMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<MaterialClassificationBaseVO>> execQueryMaterialClassification(const MaterialClassificationQuery& query);
 
 	//查询子级列表   暂时先不分页显示
-	JsonVO<list<MaterialClassificationChildVO>> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query, const PayloadDTO& payload);
+	JsonVO<list<MaterialClassificationChildVO>> execQueryMaterialClassificationChild(const MaterialClassificationQuery& query);
 	
 	//查询指定分类详细信息
-	JsonVO<list<MaterialClassificationDetailVO>> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query, const PayloadDTO& payload);
+	JsonVO<list<MaterialClassificationDetailVO>> execQueryMaterialClassificationDetail(const MaterialClassificationQuery& query);
 
 
 	//新增分类 ,添加、修改、删除下级应该也可以用这种方式  #返回的是id,但是数据库用的是varchar
@@ -63,7 +63,7 @@ private:
 	JsonVO<uint64_t> execRemoveMaterialClassification(const MaterialClassificationDTO& dto);
 	
 	//文件导入
-	JsonVO<PageVO<MaterialClassificationBaseVO>> execImportMaterialClassification(const MaterialClassificationDTO& dto);
+	JsonVO<int> execImportMaterialClassification(const MaterialClassificationDTO& dto, const PayloadDTO& payload);
 	//文件导出
 	JsonVO<string> execExportMaterialClassification(const MaterialClassificationQuery& query, const PayloadDTO& payload);
 };

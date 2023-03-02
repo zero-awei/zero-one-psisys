@@ -137,7 +137,7 @@ int MaterialClassificationDAO::update(const MaterialClassificationDO& iObj)
 }
 
 //按id修改，添加下级时要同时修改父节点的“是否有子节点项”,当添加的子节点pid不为0时才会调用
-int MaterialClassificationDAO::updateById(const string& id, const string child)
+int MaterialClassificationDAO::updateHasChildById(const string& id, const string child)
 {
 	string sql = "UPDATE `bas_material_category` SET `has_child`=?  WHERE `id`=?";
 	return sqlSession->executeUpdate(sql, "%s%s",child, id);

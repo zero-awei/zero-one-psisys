@@ -192,7 +192,9 @@
     <ClCompile Include="src\RocketClient.cpp" />
     <ClCompile Include="src\YamlHelper.cpp" />
     <ClCompile Include="src\FastDfsClient.cpp" />
-    <ClCompile Include="src\CharsetConvertHepler.cpp" />
+    <ClCompile Include="src\CharsetConvertHepler.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
