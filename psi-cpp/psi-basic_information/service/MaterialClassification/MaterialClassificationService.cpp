@@ -346,6 +346,9 @@ int MaterialClassificationService::importData(const MaterialClassificationDTO& d
 
 //导出数据
 string  MaterialClassificationService::exportData(const string& id,const PayloadDTO& payload) {
+
+	if (id == "")
+		return "";
 	MaterialClassificationDAO dao;
 	list<MaterialClassificationDO> dos;
 	//获取每个id的信息
