@@ -1,68 +1,45 @@
 <template>
   <div>
     <!-- 采购申请 -->
-    <psi-form
-      :items="items"
-      :formData="formData"
-      :toggleItems="toggleItems"
-      @query="doQuery"
-      @reset="doReset"
-    ></psi-form>
+    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="doQuery" @reset="doReset"></psi-form>
 
     <!-- 表格数据 -->
     <!-- 修改点1 -->
     <div style="margin-top:10px">
-      <psi-table
-      :items="tableItems"
-      :tableData="tableData"
-      :attributes="attributes"
-      :pagination="pagination" 
-      @add="addClient"
-    >
-      <template v-slot:basicOperation="slot">
-      <!-- 修改点2 -->
-        <el-button link type="primary" @click="dialogVisible = true">编辑</el-button>
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+        @add="addClient">
+        <template v-slot:basicOperation="slot">
+          <!-- 修改点2 -->
+          <el-button link type="primary" @click="dialogVisible = true">编辑</el-button>
 
-        <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
-      </template>
-  
-    </psi-table>
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+        </template>
+
+      </psi-table>
     </div>
 
     <psi-dialog v-model="dialogVisible" :attrs="attrs">
-      <template #default>
-        <div class="search">
-          <psi-form
-            :items="items"
-            :toggle-items="toggleItems"
-            :formData="formData"
-          ></psi-form>
-        </div>
+      <!-- <template #default> -->
+      <div class="search">
+        <psi-form :items="items" :toggle-items="toggleItems" :formData="formData"></psi-form>
+      </div>
 
-        <div class="tabs">
-          <el-tabs v-model="activeName" class="demo-tabs">
-            <el-tab-pane label="明细" name="first"> 明细表格</el-tab-pane>
-          </el-tabs>
-        </div>
+      <div class="tabs">
+        <el-tabs v-model="activeName" class="demo-tabs" style="height:400px">
+          <el-tab-pane label="明细" name="first"> 明细表格</el-tab-pane>
+        </el-tabs>
+      </div>
 
-        <div class="footer">
-          <psi-form
-            :buttonShow="false"
-            :items="footItems"
-            :formData="footFormData"
-          ></psi-form>
-        </div>
-      </template>
+      <div class="footer">
+        <psi-form :buttonShow="false" :items="footItems" :formData="footFormData"></psi-form>
+      </div>
+      <!-- </template> -->
     </psi-dialog>
 
     <psi-dialog v-model="dialogVisible" :attrs="attrs">
       <template #default>
         <div class="search">
-          <psi-form
-            :items="items"
-            :toggle-items="toggleItems"
-            :formData="formData"
-          ></psi-form>
+          <psi-form :items="items" :toggle-items="toggleItems" :formData="formData"></psi-form>
         </div>
 
         <div class="tabs">
@@ -72,11 +49,7 @@
         </div>
 
         <div class="footer">
-          <psi-form
-            :buttonShow="false"
-            :items="footItems"
-            :formData="footFormData"
-          ></psi-form>
+          <psi-form :buttonShow="false" :items="footItems" :formData="footFormData"></psi-form>
         </div>
       </template>
     </psi-dialog>
@@ -469,7 +442,7 @@ const status = reactive({
       address: 'No. 189, Grove St, Los Angeles',
       zip: 'CA 90036',
       tag: 'Home'
-    } 
+    }
   ],
   // table 总体配置
   attributes: {

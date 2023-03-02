@@ -32,7 +32,7 @@ const routes = [
   {
     path: '/component/form',
     name: 'search',
-    component: () => import('@/components/form/fromDemo.vue')
+    component: () => import('@/components/form/formDemo.vue')
     // component: () => import('../../../components/psiSearch/demo.vue')
   },
   {

@@ -24,13 +24,13 @@
     :imgSize="{ width: '400px', height: '200px' }"
     ref="verify"
     @success="handleSuccess">
-      </Verify> -->
+          </Verify> -->
 </template>
 
 <script setup>
 import Verify from '@/components/verifition/Verify.vue'
 import Request from '@/apis/request'
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { login } from '@/apis/login'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -78,6 +78,23 @@ function doLogin(code) {
     }
   )
 }
+
+// 点击回车键登录
+function keyDown(e) {
+  // 回车则执行登录方法 enter键的ASCII是13
+  if (e.keyCode === 13) {
+    doLogin(); // 定义的登录方法
+  }
+}
+onMounted(() => {
+  // 绑定监听事件
+  window.addEventListener("keydown", keyDown);
+})
+onUnmounted(() => {
+  // 销毁事件
+  window.removeEventListener("keydown", keyDown, false);
+})
+
 
 // 定义登录提交函数
 function submitForm() {
