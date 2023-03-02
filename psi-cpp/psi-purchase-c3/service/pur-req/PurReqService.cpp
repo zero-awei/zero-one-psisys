@@ -24,6 +24,11 @@
 #include "ExcelComponent.h"
 #include "CharsetConvertHepler.h"
 #include "../../dao/pur-req/PurReqDAO.h"
+#ifdef LINUX
+#include "NacosClient.h"
+#include "ServerInfo.h"
+#include "YamlHelper.h"
+#endif
 
 //定义一个宏用来进行默认值的修改
 #define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
@@ -47,6 +52,9 @@ string getTime()
 
 uint64_t PurReqService::saveData(const AddPurReqDTO& dto,  const PayloadDTO& payload)
 {
+	//存放主表和明细表数据的列表，方便后续进行事务操作
+	list<PurReqAdamDO> midList;
+	list<PurReqEntryAdamDO> entryList;
 	//首先将订单本体添加进数据库
 	//组装传输数据
 	PurReqAdamDO data;
@@ -111,9 +119,12 @@ uint64_t PurReqService::saveData(const AddPurReqDTO& dto,  const PayloadDTO& pay
 		MODIFY_DEFAULT(Custom1);
 		MODIFY_DEFAULT(Custom2);
 		MODIFY_DEFAULT(Version);
-		dao.insertEntry(data);
+		//将数据插入到表中进行存储
+		entryList.emplace_back(data);
 	}
-	return dao.insert(data);
+	//将数据插入到表中进行存储
+	midList.emplace_back(data);
+	return dao.insertData(midList, entryList);
 }
 
 uint64_t PurReqService::updateData(const ModifyPurReqDTO& dto, const PayloadDTO& payload)
@@ -213,6 +224,11 @@ bool PurReqService::removeData(string billNo)
 	PurReqDAO dao;
 	//首先获取附件信息
 	list<PurReqAdamDO> getdata = dao.selectByBillNo(billNo);
+	if (getdata.size() == 0)
+	{
+		return 0;
+	}
+
 	if (getdata.size() == 1)
 	{
 		PurReqAdamDO data = getdata.front();
@@ -239,6 +255,9 @@ bool PurReqService::removeData(string billNo)
 uint64_t PurReqService::getFromExecl(string fileName, const PayloadDTO& payload)
 {
 	//对一些值进行初始化
+		//存放主表和明细表数据的列表，方便后续进行事务操作
+	list<PurReqAdamDO> midList;
+	list<PurReqEntryAdamDO> entryList;
 		//excel对象
 	ExcelComponent excel;
 		//雪花生成器
@@ -252,6 +271,9 @@ uint64_t PurReqService::getFromExecl(string fileName, const PayloadDTO& payload)
 	//然后加载明细数据
 	sheetName = CharsetConvertHepler::ansiToUtf8("采购申请单明细");
 	auto readEntryData = excel.readIntoVector(fileName, sheetName);
+	//获取完数据进行删除
+	remove(fileName.c_str());
+
 	int row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
 	for (; row1 < readData.size(); ++row1)
 	{
@@ -304,11 +326,8 @@ uint64_t PurReqService::getFromExecl(string fileName, const PayloadDTO& payload)
 			|| data.getRequester() == "" || data.getRequestTime() == "" || data.getBillStage() == "") {
 			return 0;
 		}
-		//将其加载进数据库
-		if (dao.insert(data) == 0)
-		{
-			return  0;
-		}
+		//将数据插入到表中进行存储
+		midList.emplace_back(data);
 		string billNo = data.getBillNo();
 		for (; row2 < readEntryData.size() && readEntryData[row2][0] == billNo; ++row2)
 		{
@@ -346,14 +365,11 @@ uint64_t PurReqService::getFromExecl(string fileName, const PayloadDTO& payload)
 				|| data.getQty() < 0 || data.getOrderedQty() < 0) {
 				return 0;
 			}
-			//将其加载进数据库
-			if (dao.insertEntry(data) == 0)
-			{
-				return 0;
-			}
+			//将数据插入到表中进行存储
+			entryList.emplace_back(data);
 		}
 	}
-	return 1;
+	return dao.insertData(midList, entryList);;
 }
 
 string PurReqService::getToExecl(list<string> billNoList)
@@ -366,9 +382,17 @@ string PurReqService::getToExecl(list<string> billNoList)
 #ifdef LINUX
 	//定义客户端对象
 	FastDfsClient client("conf/client.conf", 3);
+	//获取配置
+	NacosClient nacosClient(ServerInfo::getInstance().getNacosAddr(), ServerInfo::getInstance().getNacosNs());
+	YAML::Node node = nacosClient.getConfig("third-services.yaml");
+	//获取fastdfs相关配置
+	YamlHelper yaml;
+	string nginxServers = yaml.getString(&node, "fastdfs.nginx-servers");
 #else
 	//定义客户端对象
 	FastDfsClient client("1.15.240.108");
+
+	string nginxServers = "1.15.240.108:8888";
 #endif
 	//首先将列名加载进去
 	vector<std::string> name = {
@@ -523,7 +547,7 @@ string PurReqService::getToExecl(list<string> billNoList)
 	}
 	//将值加入到execl中
 	//定义保存数据位置和页签名称
-	sheetName = CharsetConvertHepler::ansiToUtf8("采购申请单明细'");
+	sheetName = CharsetConvertHepler::ansiToUtf8("采购申请单明细");
 	//保存文件
 	excel.writeVectorToFile(fileName, sheetName, data);
 
@@ -535,7 +559,7 @@ string PurReqService::getToExecl(list<string> billNoList)
 	remove(fileName.c_str());
 
 	//组装下载地址
-	fieldName = "http://1.15.240.108:8888/" + fieldName;
+	fieldName = "http://"+ nginxServers +"/" + fieldName;
 
 	return  fieldName;
 }

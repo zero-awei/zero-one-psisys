@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,47 +23,47 @@
 #include <string>
 #include <vector>
 /**
- * Excel×é¼ş
- * ×¢Òâ£ºxlntÖ»Ö§³ÖxlsxÎÄ¼ş¸ñÊ½
+ * Excelç»„ä»¶
+ * æ³¨æ„ï¼šxlntåªæ”¯æŒxlsxæ–‡ä»¶æ ¼å¼
  */
 class ExcelComponent
 {
 private:
 	xlnt::workbook wb;
 	xlnt::worksheet sheet;
-	// ĞĞ¸ß
+	// è¡Œé«˜
 	double rowHeight = 20;
-	// ÁĞ¿í
+	// åˆ—å®½
 	double colWidth = 20;
-	// ´´½¨Sheet
+	// åˆ›å»ºSheet
 	void createSheet(const std::string& sheetName);
 public:
 	ExcelComponent();
-	// ÉèÖÃĞĞ¸ß
+	// è®¾ç½®è¡Œé«˜
 	void setRowHeight(double rowHeight);
-	// ÉèÖÃÁĞ¿í
+	// è®¾ç½®åˆ—å®½
 	void setColWidth(double colWidth);
-	// Çå¿Õ¹¤×÷±¡
+	// æ¸…ç©ºå·¥ä½œè–„
 	void clearWorkbook();
 
-	// ¹¤×÷±íÃüÃû
+	// å·¥ä½œè¡¨å‘½å
 	void makeName(const std::string& title);
-	// ºÏ²¢µ¥Ôª¸ñ
+	// åˆå¹¶å•å…ƒæ ¼
 	void mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
-	// ´´½¨ĞÂSheet
+	// åˆ›å»ºæ–°Sheet
 	void createNewSheet(const std::string& sheetName);
-	// µ¥Ôª¸ñ¶ÔÆë
-	void cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt);  //1 ¾ÓÖĞ£¬2¾Ó×ó£¬Èı¾ÓÓÒ
+	// å•å…ƒæ ¼å¯¹é½
+	void cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt);  //1 å±…ä¸­ï¼Œ2å±…å·¦ï¼Œä¸‰å±…å³
 
 
 	//************************************
 	// Method:    readIntoVector
 	// FullName:  ExcelComponent::readIntoVector
 	// Access:    public 
-	// Returns:   std::vector<std::vector<std::string>> Ö¸¶¨Ò³Ç©ÄÚÈİµÄ¶şÎ¬vector
-	// Qualifier: ¶ÁÈ¡Ö¸¶¨ÎÄ¼şÖ¸¶¨Ò³Ç©µÄÄÚÈİ
-	// Parameter: const std::string & fileName ÎÄ¼şÃû³ÆµÄÈ«Â·¾¶£¬×¢ÒâÎÄ¼şÂ·¾¶·Ö¸ô·ûÊ¹ÓÃ/
-	// Parameter: const std::string & sheetName Ò³Ç©Ãû³Æ
+	// Returns:   std::vector<std::vector<std::string>> æŒ‡å®šé¡µç­¾å†…å®¹çš„äºŒç»´vector
+	// Qualifier: è¯»å–æŒ‡å®šæ–‡ä»¶æŒ‡å®šé¡µç­¾çš„å†…å®¹
+	// Parameter: const std::string & fileName æ–‡ä»¶åç§°çš„å…¨è·¯å¾„ï¼Œæ³¨æ„æ–‡ä»¶è·¯å¾„åˆ†éš”ç¬¦ä½¿ç”¨/
+	// Parameter: const std::string & sheetName é¡µç­¾åç§°
 	//************************************
 	std::vector<std::vector<std::string>> readIntoVector(const std::string& fileName, const std::string& sheetName);
 
@@ -72,10 +72,10 @@ public:
 	// FullName:  ExcelComponent::writeVectorToFile
 	// Access:    public 
 	// Returns:   void
-	// Qualifier: ĞÂÔöÄÚÈİµ½Ö¸¶¨Ò³Ç©£¬²¢±£´æµ½ÎÄ¼şÖĞ
-	// Parameter: const std::string & fileName ÎÄ¼şÃû³ÆµÄÈ«Â·¾¶£¬×¢ÒâÎÄ¼şÂ·¾¶·Ö¸ô·ûÊ¹ÓÃ/
-	// Parameter: const std::string & sheetName ĞÂÔöÄÚÈİ±£´æµ½µÄÒ³Ç©Ãû³Æ
-	// Parameter: const std::vector<std::vector<std::string>> & data ĞÂÔö±£´æµÄÊı¾İ
+	// Qualifier: æ–°å¢å†…å®¹åˆ°æŒ‡å®šé¡µç­¾ï¼Œå¹¶ä¿å­˜åˆ°æ–‡ä»¶ä¸­
+	// Parameter: const std::string & fileName æ–‡ä»¶åç§°çš„å…¨è·¯å¾„ï¼Œæ³¨æ„æ–‡ä»¶è·¯å¾„åˆ†éš”ç¬¦ä½¿ç”¨/
+	// Parameter: const std::string & sheetName æ–°å¢å†…å®¹ä¿å­˜åˆ°çš„é¡µç­¾åç§°
+	// Parameter: const std::vector<std::vector<std::string>> & data æ–°å¢ä¿å­˜çš„æ•°æ®
 	//************************************
 	void writeVectorToFile(const std::string& fileName, const std::string& sheetName, const std::vector<std::vector<std::string>>& data);
 };

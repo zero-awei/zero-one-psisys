@@ -20,6 +20,9 @@ public:
 	// 添加明细申请(保存/提交) 插入数据
 	uint64_t insertEntry(const PurReqEntryAdamDO& obj);
 
+	//通过启动事务插入明细表和主表
+	uint64_t insertData(const list<PurReqAdamDO> & obj, const list<PurReqEntryAdamDO>& objEntry);
+
 	// 修改状态数据
 	int update(const PurReqAdamDO& obj);
 

@@ -157,6 +157,38 @@ uint64_t PurReqDAO::insertEntry(const PurReqEntryAdamDO& obj)
 		obj.getCustom2());
 }
 
+uint64_t PurReqDAO::insertData(const list<PurReqAdamDO>& obj, const list<PurReqEntryAdamDO>& objEntry)
+{
+	//事务开启
+	sqlSession->beginTransaction();
+	int result = 0;
+	//首先插入主表数据
+	for (auto data : obj)
+	{
+		result = insert(data);
+		if (result == 0) {
+			sqlSession->rollbackTransaction();
+			return result;
+		}
+	}
+	//然后插入明细数据
+	for (auto data : objEntry)
+	{
+		result = insertEntry(data);
+		if (result == 0) {
+			sqlSession->rollbackTransaction();
+			return result;
+		}
+	}
+	if (result != 0)
+	{
+		sqlSession->commitTransaction();
+		return result;
+	}
+	sqlSession->rollbackTransaction();
+	return 0;
+}
+
 int PurReqDAO::update(const PurReqAdamDO& obj)
 {
 	string sql = "UPDATE `pur_req` SET `is_effective`=?, `effective_time`=?, `is_closed`=?, `is_voided`=?, `update_by`=?, `update_time`=?  WHERE `bill_no`=?";
@@ -168,7 +200,7 @@ int PurReqDAO::deleteByBillNo(string billNo)
 	string sql = "DELETE FROM `pur_req` WHERE `bill_no`=?";
 	int flag = sqlSession->executeUpdate(sql, "%s", billNo);
 	sql = "DELETE FROM `pur_req_entry` WHERE `bill_no`=?";
-	return (flag && sqlSession->executeUpdate(sql, "%s", billNo));
+	return (flag || sqlSession->executeUpdate(sql, "%s", billNo));
 }
 
 list<PurReqAdamDO> PurReqDAO::selectByBillNo(const string& billNo)

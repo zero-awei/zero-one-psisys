@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
@@ -24,22 +24,22 @@
 
 void ExcelComponent::createSheet(const std::string& sheetName)
 {
-	// Èç¹û´æÔÚsheetÄÇÃ´É¾³ısheet
+	// å¦‚æœå­˜åœ¨sheeté‚£ä¹ˆåˆ é™¤sheet
 	if (wb.contains(sheetName))
 	{
 		sheet = wb.sheet_by_title(sheetName);
 		wb.remove_sheet(sheet);
 	}
-	// ´´½¨sheet
+	// åˆ›å»ºsheet
 	sheet = wb.create_sheet();
 	sheet.title(sheetName);
 }
 
 ExcelComponent::ExcelComponent()
 {
-	// ³õÊ¼»¯¹¤×÷±¡
+	// åˆå§‹åŒ–å·¥ä½œè–„
 	wb = xlnt::workbook();
-	// É¾³ıÄ¬ÈÏ¹¤×÷±í
+	// åˆ é™¤é»˜è®¤å·¥ä½œè¡¨
 	if (wb.contains("Sheet1"))
 	{
 		wb.remove_sheet(wb.active_sheet());
@@ -63,10 +63,10 @@ void ExcelComponent::clearWorkbook()
 
 std::vector<std::vector<std::string>> ExcelComponent::readIntoVector(const std::string& fileName, const std::string& sheetName)
 {
-	// ¶¨ÒåÒ»¸ö·µ»Ø½á¹ûµÄ¶şÎ¬±í
+	// å®šä¹‰ä¸€ä¸ªè¿”å›ç»“æœçš„äºŒç»´è¡¨
 	std::vector<std::vector<std::string>> result;
 
-	// ¶¨ÒåÒ»¸öÁÙÊ±µÄ¹¤×÷±í£¬²¢¼ÓÔØÎÄ¼ş
+	// å®šä¹‰ä¸€ä¸ªä¸´æ—¶çš„å·¥ä½œè¡¨ï¼Œå¹¶åŠ è½½æ–‡ä»¶
 	auto tmpWb = xlnt::workbook();
 	try
 	{
@@ -78,14 +78,14 @@ std::vector<std::vector<std::string>> ExcelComponent::readIntoVector(const std::
 		return result;
 	}
 
-	// ÅĞ¶ÏÊÇ·ñ´æÔÚÖ¸¶¨Ò³Ç©
+	// åˆ¤æ–­æ˜¯å¦å­˜åœ¨æŒ‡å®šé¡µç­¾
 	if (!tmpWb.contains(sheetName))
 	{
 		std::cout << "ExcelComponent 83: read sheet fail(" << CharsetConvertHepler::utf8ToAnsi(sheetName) << " is not contain)" << std::endl;
 		return result;
 	}
 
-	// ÖğĞĞ¶ÁÈ¡Êı¾İ
+	// é€è¡Œè¯»å–æ•°æ®
 	auto sheet = tmpWb.sheet_by_title(sheetName);
 	for (auto row : sheet.rows(false))
 	{
@@ -97,16 +97,16 @@ std::vector<std::vector<std::string>> ExcelComponent::readIntoVector(const std::
 		result.push_back(aSingleRow);
 	}
 
-	// ·µ»Ø¶ÁÈ¡½á¹û
+	// è¿”å›è¯»å–ç»“æœ
 	return result;
 }
 
 void ExcelComponent::writeVectorToFile(const std::string& fileName, const std::string& sheetName, const std::vector<std::vector<std::string>>& data)
 {
-	// ´´½¨Ò³Ç©
+	// åˆ›å»ºé¡µç­¾
 	createSheet(sheetName);
 
-	// ÖğĞĞĞ´ÈëÊı¾İ
+	// é€è¡Œå†™å…¥æ•°æ®
 	int row = 1;
 	int col = 1;
 	for (auto aSignRow : data)
@@ -114,20 +114,20 @@ void ExcelComponent::writeVectorToFile(const std::string& fileName, const std::s
 		col = 1;
 		for (auto cellVal : aSignRow)
 		{
-			//ÉèÖÃµ¥Ôª¸ñÖµ
+			//è®¾ç½®å•å…ƒæ ¼å€¼
 			sheet.cell(xlnt::cell_reference(col, row)).value(cellVal);
-			//ÉèÖÃÁĞ¿í¶È
+			//è®¾ç½®åˆ—å®½åº¦
 			sheet.column_properties(col).custom_width = true;
 			sheet.column_properties(col).width = colWidth;
 			col++;
 		}
-		//ÉèÖÃĞĞ¸ß¶È
+		//è®¾ç½®è¡Œé«˜åº¦
 		sheet.row_properties(row).custom_height = true;
 		sheet.row_properties(row).height = rowHeight;
 		row++;
 	}
 
-	//ÅĞ¶ÏÄ¿Â¼ÊÇ·ñ´æÔÚ£¬²»´æÔÚ´´½¨Ä¿Â¼
+	//åˆ¤æ–­ç›®å½•æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨åˆ›å»ºç›®å½•
 	auto dir = fileName.substr(0, fileName.find_last_of("/") + 1);
 	const size_t dirLen = dir.length();
 	if (dirLen > MAX_DIR_LEN)
@@ -152,7 +152,7 @@ void ExcelComponent::writeVectorToFile(const std::string& fileName, const std::s
 		}
 	}
 
-	//±£´æµ½ÎÄ¼ş
+	//ä¿å­˜åˆ°æ–‡ä»¶
 	wb.save(fileName);
 }
 
@@ -165,7 +165,7 @@ void ExcelComponent::makeName(const std::string& title)
 
 void ExcelComponent::mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend)
 {
-	// Èç¹û´æÔÚsheet£¬ÄÇÃ´¶ÔÖ¸¶¨µ¥Ôª¸ñ½øĞĞºÏ²¢
+	// å¦‚æœå­˜åœ¨sheetï¼Œé‚£ä¹ˆå¯¹æŒ‡å®šå•å…ƒæ ¼è¿›è¡Œåˆå¹¶
 	if (wb.contains(sheetName))
 	{
 		sheet = wb.sheet_by_title(sheetName);
@@ -173,10 +173,10 @@ void ExcelComponent::mergeCell(const std::string& sheetName, const xlnt::cell_re
 	}
 }
 
-// ´´½¨ĞÂSheet
+// åˆ›å»ºæ–°Sheet
 void ExcelComponent::createNewSheet(const std::string& sheetName)
 {
-	// Èç¹ûÖ¸¶¨Ò³Ç©²»´æÔÚ£¬ÄÇÃ´´´½¨ĞÂÒ³Ç©
+	// å¦‚æœæŒ‡å®šé¡µç­¾ä¸å­˜åœ¨ï¼Œé‚£ä¹ˆåˆ›å»ºæ–°é¡µç­¾
 	if (!wb.contains(sheetName))
 	{
 		createSheet(sheetName);
@@ -197,18 +197,18 @@ void ExcelComponent::cellCpation(const std::string& sheetName, const xlnt::cell_
 		switch (opt)
 		{
 		case 1:
-			// Ë®Æ½¾ÓÖĞ
+			// æ°´å¹³å±…ä¸­
 			sheet.cell(cell_ref).alignment().horizontal(center);
-			// ´¹Ö±¾ÓÖĞ
+			// å‚ç›´å±…ä¸­
 			//sheet.cell(cell).alignment().vertical(vcenter);
 			break;
 		case 2:
-			// Ë®Æ½¾Ó×ó
+			// æ°´å¹³å±…å·¦
 			//sheet.cell(cell).alignment(alignment.horizontal(left).vertical(vcenter));
 			sheet.cell(cell_ref).alignment().horizontal(left);
 			break;
 		case 3:
-			// Ë®Æ½¾ÓÓÒ
+			// æ°´å¹³å±…å³
 			sheet.cell(cell_ref).alignment().horizontal(right);
 			break;
 		default:
