@@ -89,7 +89,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <configuration>
                     <!-- Docker 远程管理地址-->
-                    <dockerHost>http://192.168.220.128:2375</dockerHost>
+                    <dockerHost>http://8.130.20.243:2375</dockerHost>
                     <images>
                         <image>
                             <!-- Docker 镜像名称定义 -->
