@@ -67,7 +67,7 @@ public class OtherPayableController implements OtherPayableApis {
         return service.updateOtherPayable(update) > 0 ? JsonVO.success("编辑保存成功") : JsonVO.fail("编辑保存失败");
     }
 
-    @DeleteMapping("deleteOtherPayable}")
+    @DeleteMapping("deleteOtherPayable")
     @ApiOperation(value = "删除其他应付单")
     @Override
     public JsonVO<String> deleteOtherPayable(DeleteDTO delete) {
