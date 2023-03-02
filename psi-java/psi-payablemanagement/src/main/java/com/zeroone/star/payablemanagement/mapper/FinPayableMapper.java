@@ -33,4 +33,7 @@ public interface FinPayableMapper extends BaseMapper<FinPayable>{
     List<PayableVO> getBySupplierId(PayableBySupplierQuery condition);
     PayableVO getByBillNo(String billNo);
 
+    List<PayableVO> queryPayable(PayableQuery query);
+
+    PayableVO getOneByBillNo(String billNo);
 }
