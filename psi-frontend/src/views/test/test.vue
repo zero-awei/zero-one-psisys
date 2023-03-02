@@ -20,15 +20,36 @@
 import { handleAddMenu } from './api/menu.js'   // 引入 业务接口测试方法
 import { handleQueryBasBankAccount } from './api/public.js'  //引入公共接口测试方法
 import { handleQuery } from './api/addressbook.js'
+import { handleQueryOrganizationName } from './api/addressbook.js'
+import { handleQueryOrganizationTreeName } from './api/addressbook.js'
+import { handleExcel } from './api/addressbook.js'
+import { handleExcelUrl } from './api/addressbook.js'
+
+import { handleDelete } from './api/classifieddictionary.js'
+import { handleInsert } from './api/classifieddictionary.js'
+import { handleQueryAll } from './api/classifieddictionary.js'
+import { handleUpdateOne } from './api/classifieddictionary.js'
+import { handleQueryOne } from './api/classifieddictionary.js'
 
 function handle() {
+  //=====================================通讯录
   // TODO 改的是下面这行
   // 测试业务接口
   // handleAddMenu()
   // // 测试公共接口
   // handleQueryBasBankAccount()
+  // handleQuery()
+  // handleQueryOrganizationName()
+  // handleQueryOrganizationTreeName()
+  // handleExcel()
+  // handleExcelUrl()
+  //===================================根字典
+  // handleDelete()
+  // handleInsert()
+  // handleQueryAll()
+  // handleUpdateOne()
+  handleQueryOne()
 
-  handleQuery()
 
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())
