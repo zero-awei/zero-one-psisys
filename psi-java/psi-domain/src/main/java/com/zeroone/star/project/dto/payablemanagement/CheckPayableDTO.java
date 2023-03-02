@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -33,22 +34,22 @@ public class CheckPayableDTO {
     private String approvalResultType;
 
 
-    @ApiModelProperty(value = "核批人", example = "psi")
+    @ApiModelProperty(value = "核批人（后端自动生成）", example = "psi")
     private String approver;
 
 
-    @ApiModelProperty(value = "附件")
+    @ApiModelProperty(value = "附件（文件下载地址）")
     private String attachment;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @ApiModelProperty(value = "单据日期", example = "2023-02-07")
-    private Date billDate;
+    private LocalDate billDate;
 
     @ApiModelProperty(value = "单据编号", example = "YFHX-230209-009")
     private String billNo;
 
-    @ApiModelProperty(value = "单据阶段 1-编制中 2-编制完 3-执行完 4-核批完", example = "34")
+    @ApiModelProperty(value = "单据阶段 1-编制中 2-编制完 3-执行完 4-核批完", example = "1")
     private String billStage;
 
 
@@ -59,43 +60,43 @@ public class CheckPayableDTO {
     private String billType;
 
 
-    @ApiModelProperty(value = "流程id", example = "")
+    @ApiModelProperty(value = "流程id")
     private String bpmiInstanceId;
 
-    @ApiModelProperty(value = "制单人", example = "psi")
+    @ApiModelProperty(value = "创建人（后端自动生成）", example = "psi")
     private String createBy;
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @ApiModelProperty(value = "制单时间", example = "2023-02-09 02:20:36")
-    private Date createTime;
+    @ApiModelProperty(value = "创建时间（后端自动生成）", example = "2023-02-09 02:20:36")
+    private LocalDateTime createTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @ApiModelProperty(value = "生效时间", example = "2023-02-09 03:27:18")
-    private Date effectiveTime;
+    @ApiModelProperty(value = "生效时间（后端自动生成）", example = "2023-02-09 03:27:18")
+    private LocalDateTime effectiveTime;
 
     @ApiModelProperty(value = "ID", example = "1623386325943361538")
     private String id;
 
-    @ApiModelProperty(value = "自动单据", example = "0")
+    @ApiModelProperty(value = "是否为自动单据 0-否 1-是", example = "0")
     private Integer isAuto;
 
 
-    @ApiModelProperty(value = "已关闭", example = "1")
+    @ApiModelProperty(value = "已关闭 0-未关闭 1-已关闭", example = "1")
     private Integer isClosed;
 
 
-    @ApiModelProperty(value = "已生效", example = "1")
+    @ApiModelProperty(value = "已生效 0-未生效 1-已生效", example = "1")
     private Integer isEffective;
 
 
-    @ApiModelProperty(value = "红字单据", example = "0")
+    @ApiModelProperty(value = "是否为红字单据 0-否 1-是", example = "0")
     private Integer isRubric;
 
 
-    @ApiModelProperty(value = "已作废", example = "0")
+    @ApiModelProperty(value = "已作废 0-未作废 1-已作废", example = "0")
     private Integer isVoided;
 
     @ApiModelProperty(value = "核销类型", example = "2")
@@ -116,20 +117,20 @@ public class CheckPayableDTO {
     @ApiModelProperty(value = "单据主题", example = "3333333333")
     private String subject;
 
-    @ApiModelProperty(value = "供应商", example = "1623284221748748290")
+    @ApiModelProperty(value = "供应商id", example = "1623284221748748290")
     private String supplierId;
 
     @ApiModelProperty(value = "制单部门", example = "A01A05")
     private String sysOrgCode;
 
-    @ApiModelProperty(value = "修改人", example = "psi")
+    @ApiModelProperty(value = "修改人（后端自动生成）", example = "psi")
     private String updateBy;
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @ApiModelProperty(value = "修改时间", example = "2023-02-09 03:27:18")
-    private Date updateTime;
+    @ApiModelProperty(value = "修改时间（后端自动生成）", example = "2023-02-09 03:27:18")
+    private LocalDateTime updateTime;
 
     @ApiModelProperty(value = "版本")
     private Integer version;

@@ -64,9 +64,9 @@ public class CheckPayableEntryDTO {
     private String srcNo;
 
     /**
-     * 核销方向 1 为核销明细-应付 2 为核销明细-
+     * 核销方向
      */
-    @ApiModelProperty(value = "核销方向", example = "1")
+    @ApiModelProperty(value = "核销方向 1-应付单方向 2-付款单方向", example = "1")
     private String checkSide;
 
     /**
