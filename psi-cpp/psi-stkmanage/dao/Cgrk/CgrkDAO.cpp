@@ -1,15 +1,11 @@
 /*
  Copyright Zero One Star. All rights reserved.
-
  @Author: awei
  @Date: 2022/10/25 14:26:52
-
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
 	  https://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -88,8 +84,8 @@ std::list<StkIoDO> CgrkDAO::selectBillListAnvanced(const QueryCgrkBillListAdvanc
 	sql << "SELECT * FROM stk_io WHERE 1=1 ";
 	for (auto& condition : query.getConditionsList())
 	{
-		sql << query.getLogic()<<" ";
-		sql << condition.getField()<<condition.getOperator1()<<"? ";
+		sql << query.getLogic() << " ";
+		sql << condition.getField() << condition.getOperator1() << "? ";
 		SQLPARAMS_PUSH(params, "s", std::string, condition.getValue());
 
 	}
@@ -122,7 +118,7 @@ list<StkIoEntryDO> CgrkDAO::selectBillDetails(string BillNo)
 {
 	stringstream sql;
 	SqlParams params;
-	sql << "SELECT * FROM stk_io_entry WHERE bill_no =? " ;
+	sql << "SELECT * FROM stk_io_entry WHERE bill_no =? ";
 	SQLPARAMS_PUSH(params, "s", std::string, BillNo);
 	string sqlStr = sql.str();
 	StkIoEntryMapper mapper;
@@ -140,17 +136,17 @@ list<PurOrderDO> CgrkDAO::selectPurOrderList(const QueryPurOrderListQuery& query
 	sql << "invoiced_amt,invoice_type,amt,is_closed,op_dept,operator,qty,remark,settle_amt,settled_amt,src_no,subject,supplier_id	FROM pur_order ";
 	sql << "WHERE 1=1 ";
 	if (!query.getBillNo().empty()) {
-		
-		sql << " AND bill_no=?"; 
+
+		sql << " AND bill_no=?";
 		SQLPARAMS_PUSH(params, "s", std::string, query.getBillNo());
-	} 
+	}
 	if ((!query.getBillDateStart().empty()) && (!query.getBillDateEnd().empty())) {
-			
-		sql << " AND DATE(bill_date) BETWEEN ? "; 
+
+		sql << " AND DATE(bill_date) BETWEEN ? ";
 		SQLPARAMS_PUSH(params, "s", std::string, query.getBillDateStart());
-		sql << "AND ?"; 
+		sql << "AND ?";
 		SQLPARAMS_PUSH(params, "s", std::string, query.getBillDateEnd());
-	} 
+	}
 	if (!query.getPurType().empty()) {
 
 		sql << " AND pur_type=?";
@@ -209,14 +205,14 @@ int CgrkDAO::insertCgrkBill(const StkIoDO& iObj)
 
 	string sql = "INSERT INTO `stk_io` (`id`,`bill_no`,`bill_date`,`src_bill_type`,`src_bill_id`,`src_no`,`subject`,`stock_io_type`,`op_dept`,`operator`,`handler`,`has_rp`,`has_swell`,`supplier_id`,`invoice_type`,`cost`,`remark`,`is_auto`,`bill_stage`,`attachment`,`is_effective`,`is_closed`,`is_voided`,`sys_org_code`,`create_by`,`create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%i%i%s%s%d%s%i%s%s%i%i%i%s%s%s",
-		iObj.getId(), iObj.getBillNo(), iObj.getBillDate(), iObj.getSrcBillType(), iObj.getSrcBillId(), iObj.getSrcNo(), iObj.getSubject(), iObj.getStockIoType(), iObj.getOpDept(), iObj.getOperator1(), iObj.getHandler(), iObj.getHasRp(), iObj.getHasSwell(), iObj.getSupplierId(), iObj.getInvoiceType(), iObj.getCost(), iObj.getRemark(), iObj.getIsAuto(), iObj.getBillStage(), iObj.getAttachment(), iObj.getIsEffective(),iObj.getIsClosed(), iObj.getIsVoided(), iObj.getSysOrgCode(), iObj.getCreateBy(), iObj.getCreateTime());
+		iObj.getId(), iObj.getBillNo(), iObj.getBillDate(), iObj.getSrcBillType(), iObj.getSrcBillId(), iObj.getSrcNo(), iObj.getSubject(), iObj.getStockIoType(), iObj.getOpDept(), iObj.getOperator1(), iObj.getHandler(), iObj.getHasRp(), iObj.getHasSwell(), iObj.getSupplierId(), iObj.getInvoiceType(), iObj.getCost(), iObj.getRemark(), iObj.getIsAuto(), iObj.getBillStage(), iObj.getAttachment(), iObj.getIsEffective(), iObj.getIsClosed(), iObj.getIsVoided(), iObj.getSysOrgCode(), iObj.getCreateBy(), iObj.getCreateTime());
 }
 
 int CgrkDAO::insertCgrkBillEntry(const StkIoEntryDO& iObj)
 {
 	string sql = "INSERT INTO `stk_io_entry` (`id`,`mid`,`bill_no`,`entry_no`,`src_bill_type`,`src_bill_id`,`src_entry_id`,`src_no`,`material_id`,`batch_no`,`warehouse_id`,`stock_io_direction`,`supplier_id`,`unit_id`,`swell_qty`,`qty`,`expense`,`cost`,`settle_qty`,`tax_rate`,`price`,`discount_rate`,`tax`,`settle_amt`,`invoiced_qty`,`invoiced_amt`,`remark`,`custom1`,`custom2`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%d%d%s%s%s",
-		iObj.getId(), iObj.getMid(), iObj.getBillNo(), iObj.getEntryNo(),iObj.getSrcBillType(),iObj.getSrcBillId(),iObj.getSrcEntryId(),iObj.getSrcNo(), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(),iObj.getSupplierId(), iObj.getUnitId(),iObj.getSwellQty(),iObj.getQty(),iObj.getExpense(), iObj.getCost(),iObj.getSettleQty(),iObj.getTaxRate(), iObj.getPrice(),iObj.getDiscountRate(),iObj.getTax(),iObj.getSettleAmt(),iObj.getInvoicedQty(),iObj.getInvoicedAmt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
+		iObj.getId(), iObj.getMid(), iObj.getBillNo(), iObj.getEntryNo(), iObj.getSrcBillType(), iObj.getSrcBillId(), iObj.getSrcEntryId(), iObj.getSrcNo(), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(), iObj.getSupplierId(), iObj.getUnitId(), iObj.getSwellQty(), iObj.getQty(), iObj.getExpense(), iObj.getCost(), iObj.getSettleQty(), iObj.getTaxRate(), iObj.getPrice(), iObj.getDiscountRate(), iObj.getTax(), iObj.getSettleAmt(), iObj.getInvoicedQty(), iObj.getInvoicedAmt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
 
 }
 
@@ -307,9 +303,15 @@ uint64_t CgrkDAO::deleteCgrkBill(const string& billNo)
 }
 
 //删除单据详细信息
-
 int CgrkDAO::deleteCgrkBillEntry(const string& billNo)
 {
 	string sql = "DELETE FROM stk_io_entry WHERE bill_no=?";
 	return sqlSession->executeUpdate(sql, "%s", billNo);
+}
+
+
+//修改单据状态
+int CgrkDAO::updataBillStatus(const ModifyCgrkBillStatusDO& doObject) {
+	string sql = "UPDATE `stk_io` SET `is_closed`=?, `is_voided`=? WHERE `bill_no`=?";
+	return sqlSession->executeUpdate(sql, "%i%i%s", doObject.getIsClosed(),doObject.getIsVoided(),doObject.getBillNo());
 }

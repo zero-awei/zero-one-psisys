@@ -1,16 +1,12 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
  @Author: awei
  @Date: 2022/10/25 14:23:49
-
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
 	  https://www.apache.org/licenses/LICENSE-2.0
-
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +26,7 @@
 #include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
 #include "../../domain/query/Cgrk/QueryCgrkBillListAdvancedQuery.h"
 #include "../../domain/dto/Cgrk/AddCgrkBillDTO.h"
+#include"../../domain/do/Cgrk/ModifyCgrkBillStatusDO.h"
 
 /**
  * 采购入库数据库操作实现
@@ -79,7 +76,10 @@ public:
 
 	//删除采购入库单
 	uint64_t deleteCgrkBill(const string& id);
-
-
+	//修改单据状态
+	int updataBillStatus(const ModifyCgrkBillStatusDO& doObject);
 };
-#endif // !_SAMPLE_DAO_
+#endif // !_CGRK_DAO_
+
+
+
