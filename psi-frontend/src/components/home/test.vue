@@ -7,11 +7,12 @@
       @close="handleClose">
       <el-menu-item index="/home">
         <el-icon>
-          <icon-menu />
+          <!-- <icon-menu /> -->
+          <House />
         </el-icon>
         <span>首页</span>
       </el-menu-item>
-      <el-sub-menu v-for="item in menus" :key="item.id" :index="item.id + ''">
+      <el-sub-menu v-for="item in menus" :key="item.id" :index="item.id + ''" class="submenu">
         <!-- 一级菜单 item-->
         <!-- TODO 这里加div或template都会报错 -->
         <template #title>
@@ -34,6 +35,7 @@
           <!-- 如果有三级菜单 -->
           <template v-else-if="iTwo.children">
             <el-sub-menu :key="iTwo.id" :index="iTwo.id + ''">
+
               <template #title>
                 <!-- <el-icon><component :is="iTwo.icon" /></el-icon> -->
                 <span>{{ iTwo.text }}</span>
@@ -61,6 +63,9 @@ const store = userStore()
 // 菜单数据
 const menus = store.getMenus
 
+// document.getElementsByClassName('el - sub - menu__title').setAttribute('style', '');
+console.log('')
+console.log('00000000000', document.getElementsByClassName('el-sub-menu__title'))
 const props = defineProps({
   label: {
     type: Boolean,
@@ -92,14 +97,20 @@ function menuSelect(index, indexPath, item, routeResult) {
 .el-menu-demo {
   :deep(.el-menu-item) {
     height: 50px;
-  }
-
-  :deep(.el-sub-menu__title) {
-    height: 50px;
+    // color: white;
+    // background-color: #363637;
   }
 
   :deep(.el-menu-item-group__title) {
     display: none
+  }
+}
+
+.el-menu-demo {
+  :deep(.el-sub-menu__title) {
+    height: 50px;
+    color: white;
+    background-color: #363637;
   }
 }
 </style>

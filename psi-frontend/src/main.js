@@ -1,8 +1,8 @@
 /*
  * @Author: Kyle5 nnkyle@163.com
  * @Date: 2023-02-20 18:51:04
- * @LastEditors: Kyle5 nnkyle@163.com
- * @LastEditTime: 2023-02-22 23:12:02
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-03-02 18:05:55
  * @FilePath: \psi-frontend\src\main.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,6 +12,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import 'element-plus/theme-chalk/src/message.scss'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 // import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './assets/main.css'
 import * as echarts from 'echarts'

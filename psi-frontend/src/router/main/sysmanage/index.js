@@ -1,11 +1,3 @@
-/*
- * @Author: Kyle5 nnkyle@163.com
- * @Date: 2023-02-20 18:51:04
- * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-01 15:07:13
- * @FilePath: \psi-frontend\src\router\main\sysmanage\index.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 const routes = [
   {
     path: '/un-1',
@@ -40,23 +32,23 @@ const routes = [
   {
     path: '/component/form',
     name: 'search',
-    component: () => import('@/components/form/demo.vue')
+    component: () => import('@/components/form/fromDemo.vue')
     // component: () => import('../../../components/psiSearch/demo.vue')
   },
   {
     path: '/component/table',
     name: 'table',
-    component: () => import('@/components/table/demo.vue')
+    component: () => import('@/components/table/tableDemo.vue')
   },
   {
     path: '/component/dialog',
     name: 'dialog',
-    component: () => import('@/components/dialog/demo.vue')
+    component: () => import('@/components/dialog/dialogDemo.vue')
   },
   {
     path: '/component/drawer',
     name: 'drawer',
-    component: () => import('@/components/drawer/demo.vue')
+    component: () => import('@/components/drawer/drawerDemo.vue')
   },
   {
     path: '/component/custom',

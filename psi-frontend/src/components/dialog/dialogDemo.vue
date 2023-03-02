@@ -1,5 +1,7 @@
 <template>
   <div>
+    <el-switch v-model="switchMode" class="mt-2" inline-prompt :active-icon="Sunny" :inactive-icon="MoonNight"
+      style="--el-switch-on-color: #dcdfe6; --el-switch-off-color: #2c2c2c" />
     <el-button @click="dialogVisible = true">弹出对话框</el-button>
 
     <psi-dialog v-model="dialogVisible" :attrs="attrs" @determine="handleConfirm">
@@ -52,7 +54,9 @@
 
 <script setup>
 import { ref, reactive, toRefs } from 'vue'
+import { Sunny, MoonNight } from '@element-plus/icons-vue'
 
+const switchMode = ref(true)
 let dialogVisible = ref(false)
 const state = reactive({
   attrs: {

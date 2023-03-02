@@ -1,8 +1,8 @@
 /*
  * @Author: 160405103 1348313766@qq.com
- * @Date: 2023-02-24 22:06:10
+ * @Date: 2023-03-01 15:20:47
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-28 17:06:51
+ * @LastEditTime: 2023-03-01 20:23:56
  * @FilePath: \psi-frontend\src\stores\user.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -70,7 +70,7 @@ let sysmanageRouter = {
 const baseDataRouter = {
   id: 800,
   text: '基础资料',
-  icon: 'IconTickets',
+  icon: 'MessageBox',
   children: [
     {
       id: 801,
@@ -135,7 +135,7 @@ const baseDataRouter = {
 const purManagement = {
   id: 700,
   text: '采购管理',
-  icon: 'IconTickets',
+  icon: 'ShoppingCart',
   children: [
     {
       id: 701,
@@ -244,7 +244,7 @@ const purManagement = {
 const kucunguanli = {
   id: 994,
   text: '库存管理',
-  icon: 'IconSetting',
+  icon: 'SuitcaseLine',
   children: [
     {
       id: 993,
@@ -290,7 +290,7 @@ const kucunguanli = {
 const yingfuyufukuan = {
   id: 998,
   text: '应付与付款',
-  icon: 'IconTickets',
+  icon: 'Money',
   children: [
     {
       id: 997,

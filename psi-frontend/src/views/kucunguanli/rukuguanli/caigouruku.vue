@@ -1,12 +1,13 @@
 <template>
   <!-- 采购入库 -->
   <div>
-    <!-- 查询 -->
+    <!-- 查询 （高级查询？？？？）-->
     <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
       @reset="handleReset"></psi-form>
   </div>
   <div style="margin-top:10px">
     <!-- 表格数据 -->
+    <!-- 导入导出 采购入库详情？？？？？？ -->
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
       @add="handleAdd">
     </psi-table>
@@ -118,12 +119,12 @@ const formState = reactive({
       prop: 'isVoided',
       options: [
         {
-          label: '是',
-          value: 0
-        },
-        {
           label: '否',
           value: 1
+        },
+        {
+          label: '是',
+          value: 0
         }
       ]
     }
@@ -136,7 +137,7 @@ const formState = reactive({
     daterange: [],
     isClosed: 0,
     isEffective: 0,
-    isVoided: 0,
+    isVoided: 1,
     subject: '',
     supplierId: ''
   }
@@ -147,9 +148,9 @@ const tableStatus = reactive({
   // table列配置
   tableItems: [
     {
-      label: 'Name',
+      label: '单据编号',
       prop: 'name',
-      width: '120',
+      width: '160',
       align: 'center',
       type: 'function',
       fixed: true,
@@ -160,31 +161,32 @@ const tableStatus = reactive({
     },
     {
       type: 'text',
-      label: 'Date',
+      label: '单据日期',
       prop: 'date',
-      width: '120'
+      width: '100'
     },
     {
       type: 'text',
-      label: 'City',
+      label: '单据主题',
       prop: 'city',
-      width: '120'
+      width: '184'
     },
     {
       type: 'text',
-      label: 'Address',
+      label: '源单号',
       prop: 'address',
-      width: '600'
+      width: '160'
     },
     {
       type: 'text',
-      label: 'Zip',
+      label: '供应商',
       prop: 'zip',
-      width: '120'
+      width: '184'
     },
+    // tag?????????????????? 操作怎么写
     {
       type: 'text',
-      label: 'Tag',
+      label: '操作',
       prop: 'tag',
       width: '120'
     }
@@ -255,9 +257,9 @@ const pagination = reactive({
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
+
+
 // ------------ 方法 ------------
-
-
 // 7.5 普通查询
 function handleQuery(data) {
   // // // console.log('父组件接收')
@@ -297,7 +299,22 @@ function handleReset() {
   //查询表单重置，表格也要刷新
   // doGetTableList()
 }
+
+//新增
+function handleAdd() {
+//弹出采购入库新增组件
+}
+
+//点击页面初始化数据
+onMounted(() => {
+  // handleQueryAll()
+})
 </script>
 
 
-<style scoped></style>
+<style scoped>
+.psi-table {
+  padding: 0 15px;
+  margin-top: 24px;
+}
+</style>
