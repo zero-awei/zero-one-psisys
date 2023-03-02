@@ -188,7 +188,7 @@ uint64_t PurInquiryDAO::inputEntry(const PurInquiryEntryDO& obj)
 
 uint64_t PurInquiryDAO::insert(const AddPurInquiryDO& iObj)
 {// 
-	string sql = "INSERT INTO `pur_inquiry` (create_by,create_time,sys_org_code,`id`,`bill_no`, `subject`, \
+	string sql = "INSERT INTO `pur_inquiry` (create_by,create_time,sys_org_code,`id`,`bill_no`,`subject`, \
     `payment_method`,contact,phone,fax,email,remark,is_rubric \
 	,is_auto,effective_time,bill_stage,bill_date,delivery_place) VALUES (?, \
 	?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?,?,?)";
@@ -205,8 +205,11 @@ uint64_t PurInquiryDAO::insertByEntry(const AddPurInquiryEntryDO& iObj)
 	//
 	string sql = "INSERT INTO `pur_inquiry_entry` (bill_no,entry_no,mid,id,src_bill_type,src_no,material_id,unit_id,qty ,\
 		tax_rate,price,amt,remark,custom1,custom2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	return sqlSession->executeInsert(sql, "%s%i%s%s%s%s%s%s%i%i%i%i%s%s%s", iObj.getBill_no(), iObj.getEntry_no(), iObj.getMid(), iObj.getId(), iObj.getSrc_bill_type(), \
-		iObj.getSrc_no(), iObj.getMaterial_id(), iObj.getUnit_id(), iObj.getQty(), iObj.getTax_rate(), iObj.getPrice(), \
+	return sqlSession->executeInsert(sql, "%s%i%s%s%s%s%s%s%i%i%i%i%s%s%s", iObj.getBill_no(),\
+		iObj.getEntry_no(), \
+		iObj.getMid(), iObj.getId(), iObj.getSrc_bill_type(), \
+		iObj.getSrc_no(), iObj.getMaterial_id(), iObj.getUnit_id(),\
+		iObj.getQty(), iObj.getTax_rate(), iObj.getPrice(), \
 		iObj.getAmt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
 }
 
