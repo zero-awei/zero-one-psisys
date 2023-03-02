@@ -260,6 +260,7 @@ public class BasCustomer implements Serializable {
      * 创建人
      */
     @ExcelIgnore
+    @TableField(fill = FieldFill.INSERT)
     private String createBy;
 
     /**
@@ -273,12 +274,14 @@ public class BasCustomer implements Serializable {
      * 修改人
      */
     @ExcelIgnore
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
     /**
      * 修改时间
      */
     @ExcelIgnore
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     /**

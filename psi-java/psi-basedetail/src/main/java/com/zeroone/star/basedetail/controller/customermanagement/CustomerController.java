@@ -18,11 +18,13 @@ import com.zeroone.star.project.vo.basedetail.customermanagement.*;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -165,11 +167,13 @@ public class CustomerController implements CustomerApis {
     @ApiOperation("添加客户")
     @PostMapping("add-Customer")
     @Override
-    public JsonVO<String> saveCustomer(CustomerAddDTO customerAddDTO, BindingResult bindingResult) {
+    public JsonVO<String> saveCustomer(@RequestBody CustomerAddDTO customerAddDTO, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return JsonVO.fail(bindingResult.getFieldError().getDefaultMessage());
         }
-        BasCustomer basCustomer = basCustomerService.insertIntoCustomerEntity(customerAddDTO);
+        BasCustomer basCustomer = new BasCustomer();
+        BeanUtils.copyProperties(customerAddDTO, basCustomer);
+        basCustomer.setIsEnabled(customerAddDTO.getIsEnabled() + "");
         basCustomerService.save(basCustomer);
         return JsonVO.success("添加成功");
     }
@@ -187,7 +191,9 @@ public class CustomerController implements CustomerApis {
         if(bindingResult.hasErrors()){
             return JsonVO.fail(bindingResult.getFieldError().getDefaultMessage());
         }
-        BasCustomer basCustomer = basCustomerService.insertIntoCustomerEntity(customerAddDTO);
+        BasCustomer basCustomer = new BasCustomer();
+        BeanUtils.copyProperties(customerAddDTO, basCustomer);
+        basCustomer.setIsEnabled(customerAddDTO.getIsEnabled() + "");
         if(basCustomerService.updateCustomer(basCustomer)){
             return JsonVO.success("修改成功");
         }

@@ -34,8 +34,8 @@ public class CustomerHandler implements MetaObjectHandler {
         }
         this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
         this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("createBy", currentUser, metaObject);
-        this.setFieldValByName("updateBy", currentUser, metaObject);
+        this.setFieldValByName("createBy", currentUser.getUsername(), metaObject);
+        this.setFieldValByName("updateBy", currentUser.getUsername(), metaObject);
     }
 
     /**
@@ -50,6 +50,6 @@ public class CustomerHandler implements MetaObjectHandler {
             currentUser = null;
         }
         this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("updateBy", currentUser, metaObject);
+        this.setFieldValByName("updateBy", currentUser.getUsername(), metaObject);
     }
 }
