@@ -20,6 +20,7 @@
 import { handleAddMenu } from './api/menu.js'   // 引入 业务接口测试方法
 import { handleQueryBasBankAccount } from './api/public.js'  //引入公共接口测试方法
 import { handleQuery } from './api/addressbook.js'
+import * as payable from './api/payable.js'
 
 function handle() {
   // TODO 改的是下面这行
@@ -28,7 +29,30 @@ function handle() {
   // // 测试公共接口
   // handleQueryBasBankAccount()
 
-  handleQuery()
+  // handleQuery()
+
+  //SECTION 测试应付核销接口
+
+  // 查询
+  // payable.queryTableEntries()
+  // payable.getTableList()
+  // payable.queryPayableBySupplier()
+  // payable.queryPaymentBySupplier()
+
+  //!SECTION 测试应付核销接口
+
+  //SECTION 测试其他应付接口
+
+  //查询
+  // payable.listOtherTable()
+  payable.getTableByBillNo()
+
+  //!SECTION 测试其他应付接口
+
+
+  //SECTION 测试采购应付接口
+  // payable.getTableByBillNO()
+  //!SECTION 测试采购应付接口
 
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())

@@ -20,7 +20,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { getTableList, query } from './api/yingfuhexiao.js'
+import { getTableList } from './api/yingfuhexiao.js'
 import { format } from '@/apis/date/index.js'
 // 查询表单相关数据及方法
 const formState = reactive({
@@ -164,7 +164,7 @@ function handleQuery(data) {
   params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
   // // console.log('params', params)
   // 后端调用接口
-  query(
+  getTableList(
     {
       params
     },

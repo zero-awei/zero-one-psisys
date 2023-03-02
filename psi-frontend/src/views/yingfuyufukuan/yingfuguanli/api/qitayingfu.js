@@ -87,7 +87,7 @@ export function importTable(data, success, fail) {
 
 // ANCHOR 根据条件分页查询
 
-export function listTable(data, success, fail) {
+export function listOtherTable(data, success, fail) {
   Request.requestForm(Request.GET, currBaseUrl + 'query-all', data)
     .then((data) => {
       if (data.data) {

@@ -176,7 +176,7 @@ export function importTable(data, success, fail) {
 
 //ANCHOR 查询单据列表
 
-export function listTable(data, success, fail) {
+export function getTableList(data, success, fail) {
   Request.requestForm(Request.GET, currBaseUrl + 'list', data)
     .then((data) => {
       if (data.data) {
