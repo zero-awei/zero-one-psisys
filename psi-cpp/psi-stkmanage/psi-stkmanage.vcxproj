@@ -186,13 +186,12 @@
     <ClCompile Include="dao\Cgrk\CgrkDao.cpp" />
     <ClCompile Include="dao\Cgthrk\CgthrkDao.cpp" />
     <ClCompile Include="dao\Pyrk\PyrkDao.cpp" />
+    <ClCompile Include="dao\Qtrk\QtrkDao.cpp" />
     <ClCompile Include="domain\dto\Cgrk\AddCgrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\CgrkBillEntryDTO.cpp" />
     <ClCompile Include="domain\dto\Cgrk\ModifyCgrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp" />
-    <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp" />
-    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillListDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
@@ -204,6 +203,7 @@
     <ClCompile Include="service\Cgrk\CgrkService.cpp" />
     <ClCompile Include="service\Cgthck\CgthrkService.cpp" />
     <ClCompile Include="service\Pyrk\PyrkService.cpp" />
+    <ClCompile Include="service\Qtrk\QtrkService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -224,6 +224,7 @@
     <ClInclude Include="dao\Cgthrk\QueryCgthrkBillListDOMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDao.h" />
     <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
+    <ClInclude Include="dao\Qtrk\QtrkDao.h" />
     <ClInclude Include="domain\do\Cgrk\ModifyCgrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
     <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillDetailedReturnDO.h" />
@@ -233,6 +234,8 @@
     <ClInclude Include="domain\do\Cgthck\BillDetailedDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
+    <ClInclude Include="domain\do\Qtrk\DeleteBill.h" />
+    <ClInclude Include="domain\do\Qtrk\ModifyQtrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
@@ -307,6 +310,7 @@
     <ClInclude Include="service\Cgrk\CgrkService.h" />
     <ClInclude Include="service\Cgthck\CgthrkService.h" />
     <ClInclude Include="service\Pyrk\PyrkService.h" />
+    <ClInclude Include="service\Qtrk\QtrkService.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

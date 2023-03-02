@@ -60,12 +60,6 @@
     <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -100,6 +94,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\Cgrk\CgrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="service\Qtrk\QtrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Qtrk\QtrkDao.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -390,6 +390,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\Cgthck\BillDetailedDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Qtrk\QtrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Qtrk\ModifyQtrkBillStatusDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Qtrk\QtrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Qtrk\DeleteBill.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

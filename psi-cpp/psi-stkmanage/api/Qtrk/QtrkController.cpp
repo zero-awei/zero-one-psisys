@@ -1,6 +1,7 @@
 
 #include "stdafx.h"
 #include "QtrkController.h"
+#include"service/Qtrk/QtrkService.h"
 //#include "../../service/sample/SampleService.h"
 
 JsonVO<PageVO<QueryQtrkBillListVO>> QtrkController::execQueryQtrk(const QueryQtrkBillListQuery& query, const PayloadDTO& payload)
@@ -52,29 +53,31 @@ JsonVO<uint64_t> QtrkController::execAddQtrk(const AddQtrkBillDTO& dto)
 
 JsonVO<uint64_t> QtrkController::execModifyQtrk(const ModifyQtrkBillDTO& dto)
 {
-	//SampleService service;
+	QtrkService cs;
 	JsonVO<uint64_t> result;
-	if (1/*service.updateData(dto)*/) {
-		result.success(1/*dto.getId()*/);
+
+	if (cs.updataBillStatus(dto)) {
+		result.success(1);
 	}
 	else
 	{
-		result.fail(1/*dto.getId()*/);
+		result.fail(0);
 	}
 	return result;
 }
 
 JsonVO<uint64_t> QtrkController::execRemoveQtrk(const DeleteQtrkBillDTO& dto)
 {
-	//SampleService service;
 	JsonVO<uint64_t> result;
 	//执行数据删除
-	if (1/*service.removeData(dto.getId())*/) {
-		result.success(dto.getId());
+	QtrkService cs;
+
+	if (cs.deleteBill(dto)) {
+		result.success(1);
 	}
 	else
 	{
-		result.fail(dto.getId());
+		result.fail(0);
 	}
 	//响应结果
 	return result;
