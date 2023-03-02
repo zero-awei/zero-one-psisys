@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,11 +24,11 @@
 
 class PurInquiryModBillStatusDO
 {
-	//ÒÑ¹Ø±Õ			;
+	//å·²å…³é—­			;
 	CC_SYNTHESIZE(int, is_close, Is_close);
-	//ÊÇ·ñ×÷·Ï			;
+	//æ˜¯å¦ä½œåºŸ			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	//¶©µ¥±àºÅ
+	//è®¢å•ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:
 	PurInquiryModBillStatusDO()

@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: QZP
@@ -22,76 +22,76 @@
 
 JsonVO<PageVO<PurComFindBillVO>> PurCompareController::execQueryPurComFindBill(const PurComFindBillQuery& query, const PayloadDTO& payload)
 {
-	//Êı¾İĞ£Ñé
-	//¶¨ÒåÒ»¸öService
+	//æ•°æ®æ ¡éªŒ
+	//å®šä¹‰ä¸€ä¸ªService
 	PurCompareService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	PageVO<PurComFindBillVO> result = service.listPurComFindBill(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<PageVO<PurComFindBillVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<PurComFindDetailBillVO> PurCompareController::execQueryPurComFindDetailBill(const PurComFindDetailBillQuery& query, const PayloadDTO& payload)
 {
 	PurComFindDetailBillVO result;
-	//Êı¾İĞ£Ñé
+	//æ•°æ®æ ¡éªŒ
 	if (query.getBillNo() == "") return JsonVO<PurComFindDetailBillVO>(result, RS_PARAMS_INVALID);
-	//¶¨ÒåÒ»¸öService
+	//å®šä¹‰ä¸€ä¸ªService
 	PurCompareService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	result = service.getPurComFindDetailBill(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<PurComFindDetailBillVO>(result, RS_SUCCESS);
 }
 
 JsonVO<list<PurComListVO>> PurCompareController::execQueryPurComList(const PurComListQuery& query, const PayloadDTO& payload)
 {
 	list<PurComListVO> result;
-	//Êı¾İĞ£Ñé
+	//æ•°æ®æ ¡éªŒ
 	if (query.getBillNo()=="") return JsonVO<list<PurComListVO>>(result, RS_PARAMS_INVALID);
-	//¶¨ÒåÒ»¸öService
+	//å®šä¹‰ä¸€ä¸ªService
 	PurCompareService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	result = service.listPurComList(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<list<PurComListVO>>(result, RS_SUCCESS);
 }
 
 JsonVO<list<PurComDividedListVO>> PurCompareController::execQueryPurComDividedList(const PurComDividedListQuery& query, const PayloadDTO& payload)
 {
 	list<PurComDividedListVO> result;
-	//Êı¾İĞ£Ñé
+	//æ•°æ®æ ¡éªŒ
 	if (query.getBillNo() == "") return JsonVO<list<PurComDividedListVO>>(result, RS_PARAMS_INVALID);
-	//¶¨ÒåÒ»¸öService
+	//å®šä¹‰ä¸€ä¸ªService
 	PurCompareService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	result = service.listPurComDividedList(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<list<PurComDividedListVO>>(result, RS_SUCCESS);
 }
-//µ¼³ö
+//å¯¼å‡º
 JsonVO<std::string> PurCompareController::execPurComExport(const PurComExportQuery& query, const PayloadDTO& payload)
 {
-	//¶¨ÒåÒ»¸öService
+	//å®šä¹‰ä¸€ä¸ªService
 	PurCompareService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	string result = service.getPurComExport(query);
 	return JsonVO<std::string>(result, RS_SUCCESS);
 }
-// µ¼Èë
+// å¯¼å…¥
 JsonVO<uint64_t> PurCompareController::execPurComInto(const PurComIntoDTO& dto, const PayloadDTO& payload)
 {
-	//Êı¾İĞ£Ñé
-	//¶¨ÒåÒ»¸öService
+	//æ•°æ®æ ¡éªŒ
+	//å®šä¹‰ä¸€ä¸ªService
 	PurCompareService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	uint64_t result = service.savePurComInto(dto,payload);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	if (result==9999) return JsonVO<uint64_t>(result, RS_FAIL);
 	else return JsonVO<uint64_t>(result, RS_SUCCESS);
 }
 
-//ÑİÊ¾ĞÂÔö±È¼Û
+//æ¼”ç¤ºæ–°å¢æ¯”ä»·
 JsonVO<uint64_t> PurCompareController::execAddPurCom(const AddPurComDTO& dto, PayloadDTO payload)
 {
 	JsonVO<uint64_t> result;
@@ -108,7 +108,7 @@ JsonVO<uint64_t> PurCompareController::execAddPurCom(const AddPurComDTO& dto, Pa
 
 	return result;
 }
-//ÑİÊ¾ĞŞ¸Ä±È¼Û
+//æ¼”ç¤ºä¿®æ”¹æ¯”ä»·
 JsonVO<uint64_t> PurCompareController::execModifyPurCom(const ModPurComDTO& dto, PayloadDTO payload) {
 	JsonVO<uint64_t> result;
 	PurCompareService service;
@@ -122,7 +122,7 @@ JsonVO<uint64_t> PurCompareController::execModifyPurCom(const ModPurComDTO& dto,
 
 	return result;
 }
-//ÑİÊ¾É¾³ı±È¼Û
+//æ¼”ç¤ºåˆ é™¤æ¯”ä»·
 JsonVO<uint64_t> PurCompareController::execRemovePurCom(const DelPurComDTO& dto) {
 	JsonVO<uint64_t> result;
 	PurCompareService service;
@@ -135,7 +135,7 @@ JsonVO<uint64_t> PurCompareController::execRemovePurCom(const DelPurComDTO& dto)
 	}
 	return result;
 }
-//ÑİÊ¾ĞŞ¸Äµ¥¾İ×´Ì¬
+//æ¼”ç¤ºä¿®æ”¹å•æ®çŠ¶æ€
 JsonVO<uint64_t> PurCompareController::execPurComModBillStatus(const PurComModBillStatusDTO& dto, PayloadDTO payload) {
 	JsonVO<uint64_t> result;
 	PurCompareService service;

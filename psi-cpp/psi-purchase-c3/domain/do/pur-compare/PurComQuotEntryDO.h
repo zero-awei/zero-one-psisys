@@ -1,55 +1,55 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_COM_QUOT_ENTRY_DO_H_
 #define _PUR_COM_QUOT_ENTRY_DO_H_
 #include "../../GlobalInclude.h"
-//Êı¾İ¿â±ípur_quot_entryµÄÊµÌå
+//æ•°æ®åº“è¡¨pur_quot_entryçš„å®ä½“
 class PurComQuotEntryDO {
     //ID
     CC_SYNTHESIZE(string, id, Id);
-    //Ö÷±í
+    //ä¸»è¡¨
     CC_SYNTHESIZE(string, mid, Mid);
-    //µ¥¾İºÅ
+    //å•æ®å·
     CC_SYNTHESIZE(string, billNo, BillNo);
-    //·ÖÂ¼ºÅ
+    //åˆ†å½•å·
     CC_SYNTHESIZE(string, entryNo, EntryNo);
-    //Ô´µ¥ÀàĞÍ
+    //æºå•ç±»å‹
     CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-    //Ô´µ¥ID
+    //æºå•ID
     CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-    //Ô´µ¥·ÖÂ¼ID
+    //æºå•åˆ†å½•ID
     CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
-    //Ô´µ¥·ÖÂ¼ºÅ
+    //æºå•åˆ†å½•å·
     CC_SYNTHESIZE(string, srcNo, SrcNo);
-    //ÎïÁÏ
+    //ç‰©æ–™
     CC_SYNTHESIZE(string, materialId, MaterialId);
-    //¼ÆÁ¿µ¥Î»
+    //è®¡é‡å•ä½
     CC_SYNTHESIZE(string, unitId, UnitId);
-    //ÊıÁ¿
+    //æ•°é‡
     CC_SYNTHESIZE(string, qty, Qty);
-    //Ë°ÂÊ
+    //ç¨ç‡
     CC_SYNTHESIZE(string, taxRate, TaxRate);
-    //º¬Ë°µ¥¼Û
+    //å«ç¨å•ä»·
     CC_SYNTHESIZE(string, price, Price);
-    //ÕÛ¿ÛÂÊ
+    //æŠ˜æ‰£ç‡
     CC_SYNTHESIZE(string, discountRate, DiscountRate);
-    //º¬Ë°½ğ¶î
+    //å«ç¨é‡‘é¢
     CC_SYNTHESIZE(string, amt, Amt);
-    //±¸×¢
+    //å¤‡æ³¨
     CC_SYNTHESIZE(string, remark, Remark);
-    //×Ô¶¨Òå1
+    //è‡ªå®šä¹‰1
     CC_SYNTHESIZE(string, custom1, Custom1);
-    //×Ô¶¨Òå2
+    //è‡ªå®šä¹‰2
     CC_SYNTHESIZE(string, custom2, Custom2);
-    //°æ±¾
+    //ç‰ˆæœ¬
     CC_SYNTHESIZE(string, version, version);
-    // ÎïÁÏÃû×Ö
+    // ç‰©æ–™åå­—
     CC_SYNTHESIZE(string, materialName, MaterialName);
-    // µ¥Î»Ãû×Ö
+    // å•ä½åå­—
     CC_SYNTHESIZE(string, unitName, UnitName);
-    // ¹æ¸ñĞÍºÅ
+    // è§„æ ¼å‹å·
     CC_SYNTHESIZE(string, specifications, Specifications);
 public:
-    //Êı¾İ¿â±í¶ÔÏó³õÊ¼»¯
+    //æ•°æ®åº“è¡¨å¯¹è±¡åˆå§‹åŒ–
     PurComQuotEntryDO() {
         billNo = "";
     }

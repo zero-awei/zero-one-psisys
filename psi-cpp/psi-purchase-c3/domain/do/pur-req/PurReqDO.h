@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,76 +22,76 @@
 #include "../DoInclude.h"
 #include "PurReqEntryDO.h"
 /**
- * Ê¾ÀıÊı¾İ¿âÊµÌåÀà
+ * ç¤ºä¾‹æ•°æ®åº“å®ä½“ç±»
  */
 
-//Ö÷±í
+//ä¸»è¡¨
 class PurReqDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// µ¥¾İÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//Ô´µ¥ºÅ
+	//æºå•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	// Ö÷Ìâ
+	// ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//ÊÇ·ñºì×Ö
+	//æ˜¯å¦çº¢å­—
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	// ²É¹ºÀàĞÍ
+	// é‡‡è´­ç±»å‹
 	CC_SYNTHESIZE(string, pur_type, Pur_type);
-	// ĞèÇó²¿ÃÅ
+	// éœ€æ±‚éƒ¨é—¨
 	CC_SYNTHESIZE(string, request_dept, Request_dept);
-	// ĞèÇóÈË
+	// éœ€æ±‚äºº
 	CC_SYNTHESIZE(string, requester, Requester);
-	//ĞèÇóÊ±¼ä
+	//éœ€æ±‚æ—¶é—´
 	CC_SYNTHESIZE(string, request_time, Request_time);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	// ²Î¿¼½ğ¶î
+	// å‚è€ƒé‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	// ÒÑ¶©ÊıÁ¿
+	// å·²è®¢æ•°é‡
 	CC_SYNTHESIZE(double, ordered_qty, Ordered_qty);
-	//¸½¼ş
+	//é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ÊÇ·ñ×Ô¶¯Éú³É
+	// æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	// µ¥¾İ½×¶Î--¹«¹²½Ó¿Ú
+	// å•æ®é˜¶æ®µ--å…¬å…±æ¥å£
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	// ÉóºËÈË
+	// å®¡æ ¸äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	// ÉóÅúÊµÀıid
+	// å®¡æ‰¹å®ä¾‹id
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
-	// ºËÅú½á¹ûÀàĞÍ
+	// æ ¸æ‰¹ç»“æœç±»å‹
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
-	// ºËÅúÒâ¼û
+	// æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-	// ÊÇ·ñÉúĞ§
+	// æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	// ÉúĞ§Ê±¼ä
+	// ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(int, effective_time, Effective_time);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	// ÊÇ·ñ×÷·Ï
+	// æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	// ´´½¨²¿ÃÅ
+	// åˆ›å»ºéƒ¨é—¨
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	// ´´½¨ÈË
+	// åˆ›å»ºäºº
 	CC_SYNTHESIZE(string, create_by, Create_by);
-	// ´´½¨Ê±¼ä
+	// åˆ›å»ºæ—¶é—´
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	// ĞŞ¸ÄÈË
+	// ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, update_by, Update_by);
-	// ĞŞ¸ÄÊ±¼ä
+	// ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	//Ã÷Ï¸
+	//æ˜ç»†
 	CC_SYNTHESIZE(list<PurReqEntryDO>,detail, Detail);
 public:
 	PurReqDO(){

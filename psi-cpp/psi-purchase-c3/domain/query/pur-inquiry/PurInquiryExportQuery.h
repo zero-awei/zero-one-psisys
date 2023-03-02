@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef __PUR_INQUIRY_EXPORT_QUERY_H__
 #define __PUR_INQUIRY_EXPORT_QUERY_H__
 
@@ -6,13 +6,13 @@
 #include "../PageQuery.h"
 
 /**
- * ´«Êä¶ÔÏó ¡ª¡ª µ¥¾İ±àºÅ£¨ÀûÓÃµ¥¾İ±àºÅ²éÑ¯Ïëµ¼³öµÄ¶©µ¥£©
+ * ä¼ è¾“å¯¹è±¡ â€”â€” å•æ®ç¼–å·ï¼ˆåˆ©ç”¨å•æ®ç¼–å·æŸ¥è¯¢æƒ³å¯¼å‡ºçš„è®¢å•ï¼‰
  */
 
-//µ¼³ö
+//å¯¼å‡º
 class PurInquiryExportQuery : public PageQuery
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	CC_SYNTHESIZE(list<string>, bill_no_list, Bill_no_list);
 

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,13 +22,13 @@
 
 #include "../PageQuery.h"
 /*
-²éÑ¯Ö¸¶¨µ¥¾İÏêÏ¸ĞÅÏ¢
+æŸ¥è¯¢æŒ‡å®šå•æ®è¯¦ç»†ä¿¡æ¯
 */
 class PurReqFindDetailBillQuery {
-	//Ö¸¶¨µÄµ¥¾İºÅ
+	//æŒ‡å®šçš„å•æ®å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurReqFindDetailBillQuery& t) {
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 	}

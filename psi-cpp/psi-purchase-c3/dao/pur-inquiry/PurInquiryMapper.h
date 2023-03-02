@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -27,7 +27,7 @@
 #include "../../domain/do/pur-inquiry/PurReqEntryDO.h"
 
 /**
- * ÆÕÍ¨²éÑ¯ÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * æ™®é€šæŸ¥è¯¢åˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurInquiryFindBillMapper : public Mapper<PurInquiryDO>
 {
@@ -76,7 +76,7 @@ public:
 
 
 /**
- * Ö¸¶¨µ¥¾İÏêÇé»ù´¡ĞÅÏ¢×Ö¶ÎÆ¥ÅäÓ³Éä
+ * æŒ‡å®šå•æ®è¯¦æƒ…åŸºç¡€ä¿¡æ¯å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurInquiryFindDetailBillMapper : public Mapper<PurInquiryDO>
 {
@@ -108,7 +108,7 @@ public:
 };
 
 
-// Ã÷Ï¸·ÖÂ¼ÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+// æ˜ç»†åˆ†å½•åˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
 class PurInquiryEntryMapper : public Mapper<PurInquiryEntryDO>
 {
 public:
@@ -118,7 +118,7 @@ public:
 		data.setEntry_src_bill_type(resultSet->getString("src_bill_type"));
 		data.setEntry_src_no(resultSet->getString("src_no"));
 		data.setMaterial_id(resultSet->getString("material_id"));
-		// ¹æ¸ñĞÍºÅ
+		// è§„æ ¼å‹å·
 		data.setUnit_id(resultSet->getString("unit_id"));
 		data.setEntry_qty(resultSet->getDouble("qty"));
 		data.setTax_rate(resultSet->getDouble("tax_rate"));
@@ -133,7 +133,7 @@ public:
 };
 
 
-// ÉêÇëµ¥·ÖÂ¼ÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+// ç”³è¯·å•åˆ†å½•åˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
 //class PurReqMapper : public Mapper<PurReqDO>
 //{
 //public:
@@ -154,7 +154,7 @@ public:
 //	}
 //};
 //
-//// ÉêÇëµ¥·ÖÂ¼Ã÷Ï¸ÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+//// ç”³è¯·å•åˆ†å½•æ˜ç»†åˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
 //class PurReqEntryMapper : public Mapper<PurReqEntryDO>
 //{
 //public:
@@ -164,7 +164,7 @@ public:
 //		data.setEntry_bill_no(resultSet->getString("bill_no"));
 //		data.setEntry_no(resultSet->getString("entry_no"));
 //		data.setMaterial_id(resultSet->getString("material_id"));
-//		// ¹æ¸ñĞÍºÅ
+//		// è§„æ ¼å‹å·
 //		data.setUnit_id(resultSet->getString("unit_id"));
 //		data.setEntry_qty(resultSet->getDouble("qty"));
 //		data.setOrdered_qty(resultSet->getDouble("ordered_qty"));
@@ -182,7 +182,7 @@ public:
 
 
 
-// µ¼³öÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+// å¯¼å‡ºåˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
 class PurInquiryExportMapper : public Mapper<PurInquiryDO>
 {
 public:
@@ -229,7 +229,7 @@ public:
 };
 
 
-// µ¼³öÁĞ±íÃ÷Ï¸×Ö¶ÎÆ¥ÅäÓ³Éä
+// å¯¼å‡ºåˆ—è¡¨æ˜ç»†å­—æ®µåŒ¹é…æ˜ å°„
 class PurInquiryExportEntryMapper : public Mapper<PurInquiryEntryDO>
 {
 public:

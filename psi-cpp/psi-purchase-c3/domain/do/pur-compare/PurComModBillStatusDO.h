@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,21 +22,21 @@
 #include "../DoInclude.h"
 
 /**
- * Ê¾ÀıÊı¾İ¿âÊµÌåÀà
+ * ç¤ºä¾‹æ•°æ®åº“å®ä½“ç±»
  */
 class ModPurComBillStatusDO
 {
-	// µ¥¾İ±àºÅ
+	// å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billId, BillId);
-	// ÒÑÉúĞ§
+	// å·²ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(string, isEffect, IsEffect);
-	// ÒÑ¹Ø±Õ
+	// å·²å…³é—­
 	CC_SYNTHESIZE(string, isClose, IsClose);
-	// ÒÑ×÷·Ï
+	// å·²ä½œåºŸ
 	CC_SYNTHESIZE(string, isCancelled, IsCancelled);
-	// ĞŞ¸ÄÊ±¼ä
+	// ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, updateDate, UpdateDate);
-	// ĞŞ¸ÄÈË
+	// ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, updatePerson, UpdatePerson);
 
 public:

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_MOD_BILL_STATUS_DTO_H_
 #define _PUR_QUOT_MOD_BILL_STATUS_DTO_H_
 #include "../../GlobalInclude.h"
@@ -13,30 +13,30 @@ using namespace nlohmann;
 
 class PurQuotModBillStatusDTO
 {
-	//ÒÔÏÂÓĞÒ»Ğ©×Ö¶Î£¬ÎÒ²»È·¶¨ÊÇ·ñÕæµÄ»áÓÃµ½£¬Èç¹ûÖ®ºóĞ´´úÂë£¬·¢ÏÖ»¹ĞèÒªÆäËû×Ö¶Î£¬¾ÍÌí¼ÓÉÏÈ¥£»²»ĞèÒªÔÙÉ¾³ı£»
-	// µ¥¾İid
+	//ä»¥ä¸‹æœ‰ä¸€äº›å­—æ®µï¼Œæˆ‘ä¸ç¡®å®šæ˜¯å¦çœŸçš„ä¼šç”¨åˆ°ï¼Œå¦‚æœä¹‹åå†™ä»£ç ï¼Œå‘ç°è¿˜éœ€è¦å…¶ä»–å­—æ®µï¼Œå°±æ·»åŠ ä¸Šå»ï¼›ä¸éœ€è¦å†åˆ é™¤ï¼›
+	// å•æ®id
 	CC_SYNTHESIZE(string, id, Id);
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	//ÉóºËÈË
+	//å®¡æ ¸äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	//ºËÅú½á¹ûÀàĞÍ
+	//æ ¸æ‰¹ç»“æœç±»å‹
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	//ºËÅúÒâ¼û
+	//æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-	//ÊÇ·ñÉúĞ§
+	//æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//ÉúĞ§Ê±¼ä
+	//ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//ÊÇ·ñÒÑ¹Ø±Õ
+	//æ˜¯å¦å·²å…³é—­
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//ÊÇ·ñ×÷·Ï
+	//æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 
 public:
-	//°ó¶¨JSON×ª»»·½·¨
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurQuotModBillStatusDTO& t) {
 		BIND_FROM_TO_I(j, t, isEffective);
 		BIND_FROM_TO_I(j, t, isClosed);

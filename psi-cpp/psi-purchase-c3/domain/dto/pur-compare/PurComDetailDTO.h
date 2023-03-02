@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,58 +23,58 @@
 #include "../../GlobalInclude.h"
 
 /**
- * Ê¾Àı´«Êä¶ÔÏó
+ * ç¤ºä¾‹ä¼ è¾“å¯¹è±¡
  */
 class PurComDetailDTO
 {
-	// µ¥¾İid
+	// å•æ®id
 	CC_SYNTHESIZE(string, id, Id);
-	//Ö÷±í
+	//ä¸»è¡¨
 	CC_SYNTHESIZE(string, mid, Mid);
-	//µ¥¾İºÅ
+	//å•æ®å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//·ÖÂ¼ºÅ
+	//åˆ†å½•å·
 	CC_SYNTHESIZE(int, entry_no, Entry_no);
 
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	//srcbillid
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//Ô´µ¥·ÖÂ¼id
+	//æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
 
-	// ¹©Ó¦ÉÌ
+	// ä¾›åº”å•†
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
-	//ÎïÁÏ
-	CC_SYNTHESIZE(string, material_id, Material_id);			//Êı¾İ¿â±Ø´«Öµ
-	//¼ÆÁ¿µ¥Î»
-	CC_SYNTHESIZE(string, unit_id, Unit_id);					//Êı¾İ¿â±Ø´«Öµ
-	//ÊıÁ¿
-	CC_SYNTHESIZE(double, qty, Qty);							//Êı¾İ¿â±Ø´«Öµ
-	//Ë°ÂÊ%
-	CC_SYNTHESIZE(double, tax_rate, Tax_rate);					//Êı¾İ¿â±Ø´«Öµ
+	//ç‰©æ–™
+	CC_SYNTHESIZE(string, material_id, Material_id);			//æ•°æ®åº“å¿…ä¼ å€¼
+	//è®¡é‡å•ä½
+	CC_SYNTHESIZE(string, unit_id, Unit_id);					//æ•°æ®åº“å¿…ä¼ å€¼
+	//æ•°é‡
+	CC_SYNTHESIZE(double, qty, Qty);							//æ•°æ®åº“å¿…ä¼ å€¼
+	//ç¨ç‡%
+	CC_SYNTHESIZE(double, tax_rate, Tax_rate);					//æ•°æ®åº“å¿…ä¼ å€¼
 
-	//º¬Ë°µ¥¼Û
-	CC_SYNTHESIZE(double, price, Price);						//Êı¾İ¿â±Ø´«Öµ
-	//ÕÛ¿ÛÂÊ%
+	//å«ç¨å•ä»·
+	CC_SYNTHESIZE(double, price, Price);						//æ•°æ®åº“å¿…ä¼ å€¼
+	//æŠ˜æ‰£ç‡%
 	CC_SYNTHESIZE(double, discount_rate, Discount_rate);
-	//º¬Ë°½ğ¶î
-	CC_SYNTHESIZE(double, amt, Amt);							//Êı¾İ¿â±Ø´«Öµ
-	//ÅÅÃû
+	//å«ç¨é‡‘é¢
+	CC_SYNTHESIZE(double, amt, Amt);							//æ•°æ®åº“å¿…ä¼ å€¼
+	//æ’å
 	CC_SYNTHESIZE(int, ranking, Ranking);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
 
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurComDetailDTO& t)
 	{
 		//BIND_FROM_TO_NORMAL(j, t, id);

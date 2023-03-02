@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,42 +24,43 @@
 
 class AddPurInquiryEntryDTO
 {
-	//Ó¦¸ÃÊÇÖ÷±íµÄµ¥¾İ±àºÅ
+	//åº”è¯¥æ˜¯ä¸»è¡¨çš„å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//·ÖÂ¼ºÅ
+	//åˆ†å½•å·
 	CC_SYNTHESIZE(int, entry_no, Entry_no);
-	//Ö÷±í
+	//ä¸»è¡¨
 	CC_SYNTHESIZE(std::string, mid, Mid);
 	//ID
 	CC_SYNTHESIZE(std::string, id, Id);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(std::string, src_bill_type, Src_bill_type);
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(std::string, src_no, Src_no);
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(std::string, material_id, Material_id);
-	//¹æ¸ñĞÍºÅ
+	//è§„æ ¼å‹å·
 	//CC_SYNTHESIZE(std::string, model, Model);
-	//µ¥Î»
+	//å•ä½
 	CC_SYNTHESIZE(std::string, unit_id, Unit_id);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//Ë°ÂÊ
+	//ç¨ç‡
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	//²Î¿¼º¬Ë°µ¥¼Û
+	//å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	//²Î¿¼º¬Ë°½ğ¶î
+	//å‚è€ƒå«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(std::string, remark, Remark);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(std::string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(std::string, custom2, Custom2);
 
 public:
 	friend void from_json(const json& j, AddPurInquiryEntryDTO& t)
 	{
+		BIND_FROM_TO_I(j, t, entry_no);
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		BIND_FROM_TO_NORMAL(j, t, mid);
 		BIND_FROM_TO_NORMAL(j, t, id);

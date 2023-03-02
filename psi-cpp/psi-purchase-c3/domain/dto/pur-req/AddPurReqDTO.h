@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -23,48 +23,48 @@
 #include "../../GlobalInclude.h"
 #include "PurReqEntryDTO.h"
 
-//¿¼ÂÇµ½ĞŞ¸ÄºÍÌí¼Ó²É¹º¶©µ¥µÄ²Ù×÷ÀàËÆËùÒÔºÏ²¢ÎªÒ»¸öDTO
-//Ìí¼Ó¶©µ¥µÄDTO(²»°üÀ¨Ã÷Ï¸ÄÚÈİ),Í¬Ê±ÓÉÓÚÓĞ¸½¼şÄÚÈİ¿ÉÄÜÌí¼Ó,ËùÒÔ¼Ì³ĞFileDTO
+//è€ƒè™‘åˆ°ä¿®æ”¹å’Œæ·»åŠ é‡‡è´­è®¢å•çš„æ“ä½œç±»ä¼¼æ‰€ä»¥åˆå¹¶ä¸ºä¸€ä¸ªDTO
+//æ·»åŠ è®¢å•çš„DTO(ä¸åŒ…æ‹¬æ˜ç»†å†…å®¹),åŒæ—¶ç”±äºæœ‰é™„ä»¶å†…å®¹å¯èƒ½æ·»åŠ ,æ‰€ä»¥ç»§æ‰¿FileDTO
 class AddPurReqDTO
 {
-	//µ¥¾İ±àºÅ 
+	//å•æ®ç¼–å· 
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//µ¥¾İÈÕÆÚ 
+	//å•æ®æ—¥æœŸ 
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	//Ô´µ¥id
+	//æºå•id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	//Ô´µ¥ºÅ
+	//æºå•å·
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//²É¹ºÀàĞÍ
+	//é‡‡è´­ç±»å‹
 	CC_SYNTHESIZE(string, purType, PurType);
-	//ĞèÇó²¿ÃÅ
+	//éœ€æ±‚éƒ¨é—¨
 	CC_SYNTHESIZE(string, requestDept, RequestDept);
-	//ĞèÇóÈË
+	//éœ€æ±‚äºº
 	CC_SYNTHESIZE(string, requester, Requester);
-	//ĞèÇóÊ±¼ä
+	//éœ€æ±‚æ—¶é—´
 	CC_SYNTHESIZE(string, requestTime, RequestTime);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//²Î¿¼½ğ¶î
+	//å‚è€ƒé‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//ÒÑ¶©ÊıÁ¿
+	//å·²è®¢æ•°é‡
 	CC_SYNTHESIZE(double, orderedQty, OrderedQty);
-	//¸½¼ş
+	//é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
-	//Ã÷Ï¸ÁĞ±í
+	//æ˜ç»†åˆ—è¡¨
 	CC_SYNTHESIZE(list<PurReqEntryDTO>, detail, Detail);
 public:
-	//°ó¶¨JSON×ª»»·½·¨
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, AddPurReqDTO& t);
 };
 

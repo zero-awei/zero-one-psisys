@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: adam
@@ -93,7 +93,7 @@ std::list<PurReqDO>  PurReqDAO::selectByNo(const string& no)
 
 
 
-// Ìí¼ÓÉêÇë(±£´æ/Ìá½») ²åÈë×Ü±íÊı¾İ
+// æ·»åŠ ç”³è¯·(ä¿å­˜/æäº¤) æ’å…¥æ€»è¡¨æ•°æ®
 uint64_t PurReqDAO::insert(const PurReqAdamDO& obj)
 {
 	string sql = "INSERT INTO `pur_req` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
@@ -157,6 +157,38 @@ uint64_t PurReqDAO::insertEntry(const PurReqEntryAdamDO& obj)
 		obj.getCustom2());
 }
 
+uint64_t PurReqDAO::insertData(const list<PurReqAdamDO>& obj, const list<PurReqEntryAdamDO>& objEntry)
+{
+	//äº‹åŠ¡å¼€å¯
+	sqlSession->beginTransaction();
+	int result = 0;
+	//é¦–å…ˆæ’å…¥ä¸»è¡¨æ•°æ®
+	for (auto data : obj)
+	{
+		result = insert(data);
+		if (result == 0) {
+			sqlSession->rollbackTransaction();
+			return result;
+		}
+	}
+	//ç„¶åæ’å…¥æ˜ç»†æ•°æ®
+	for (auto data : objEntry)
+	{
+		result = insertEntry(data);
+		if (result == 0) {
+			sqlSession->rollbackTransaction();
+			return result;
+		}
+	}
+	if (result != 0)
+	{
+		sqlSession->commitTransaction();
+		return result;
+	}
+	sqlSession->rollbackTransaction();
+	return 0;
+}
+
 int PurReqDAO::update(const PurReqAdamDO& obj)
 {
 	string sql = "UPDATE `pur_req` SET `is_effective`=?, `effective_time`=?, `is_closed`=?, `is_voided`=?, `update_by`=?, `update_time`=?  WHERE `bill_no`=?";
@@ -168,7 +200,7 @@ int PurReqDAO::deleteByBillNo(string billNo)
 	string sql = "DELETE FROM `pur_req` WHERE `bill_no`=?";
 	int flag = sqlSession->executeUpdate(sql, "%s", billNo);
 	sql = "DELETE FROM `pur_req_entry` WHERE `bill_no`=?";
-	return (flag && sqlSession->executeUpdate(sql, "%s", billNo));
+	return (flag || sqlSession->executeUpdate(sql, "%s", billNo));
 }
 
 list<PurReqAdamDO> PurReqDAO::selectByBillNo(const string& billNo)

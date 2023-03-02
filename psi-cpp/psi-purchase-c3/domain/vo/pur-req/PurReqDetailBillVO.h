@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,28 +24,28 @@
 #include "PurReqFindBillVO.h"
 
 /*
-²éÑ¯µ¥¾İÁĞ±íÏÔÊ¾¶ÔÏó
+æŸ¥è¯¢å•æ®åˆ—è¡¨æ˜¾ç¤ºå¯¹è±¡
 */
-//±¸×¢:ÀàµÄºêÀïÃæµÄ×Ö¶ÎÀàĞÍĞèÒª¸ü¸Ä
+//å¤‡æ³¨:ç±»çš„å®é‡Œé¢çš„å­—æ®µç±»å‹éœ€è¦æ›´æ”¹
 class PurReqDetailBillVO : public PurReqFindBillVO {
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(string, material_id, Material_id);
-	//¹æÔòĞÍºÅ---------->¹æÔòĞÍºÅÊ¹ÓÃµÄpur_req_entry±íÖĞµÄÔ´µ¥ÀàĞÍ
+	//è§„åˆ™å‹å·---------->è§„åˆ™å‹å·ä½¿ç”¨çš„pur_req_entryè¡¨ä¸­çš„æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	//µ¥Î»
+	//å•ä½
 	CC_SYNTHESIZE(string, unit_id, Unit_id);
-	//Ë°ÂÊ
+	//ç¨ç‡
 	CC_SYNTHESIZE(double, tax_rate, Tax_rate);
-	//²Î¿¼º¬Ë°µ¥¼Û
+	//å‚è€ƒå«ç¨å•ä»·
 	CC_SYNTHESIZE(double, price, Price);
-	//½¨Òé¹©Ó¦ÉÌ
+	//å»ºè®®ä¾›åº”å•†
 	CC_SYNTHESIZE(string, suggest_supplier_id, Suggest_supplier_id);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurReqDetailBillVO, src_no, material_id, src_bill_type, unit_id, qty, ordered_qty, tax_rate,
 		price, amt, suggest_supplier_id, remark, custom1, custom2);
 };

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,7 +24,7 @@
 #include "../../domain/do/pur-compare/PurCompareEntryDO.h"
 
 /**
- * µ¼³ö±È¼Ûµ¥Ã÷Ï¸±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * å¯¼å‡ºæ¯”ä»·å•æ˜ç»†è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurComEntryExportMapper : public Mapper<PurCompareEntryDO>
 {

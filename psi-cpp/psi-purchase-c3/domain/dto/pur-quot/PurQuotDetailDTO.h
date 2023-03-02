@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_DETAIL_DTO_
 #define _PUR_QUOT_DETAIL_DTO_
 
@@ -7,53 +7,53 @@
 
 class PurQuotDetailDTO
 {
-	//ÒÔÏÂ×Ö¶ÎÊôÓÚ£¬pur_quot_entry±íÖĞµÄ×Ö¶Î£»
-	// µ¥¾İid
-	CC_SYNTHESIZE(string, id, Id);								//Ö÷¼ü£¬Ä¬ÈÏÎª0£¬²»ÄÜÖØ¸´
-	//Ö÷±í
-	CC_SYNTHESIZE(string, mid, Mid);							//Êı¾İ¿â±Ø´«Öµ£¬Î¨Ò»Ô¼Êø£¬²»ÄÜÖØ¸´
-	//µ¥¾İºÅ
+	//ä»¥ä¸‹å­—æ®µå±äºï¼Œpur_quot_entryè¡¨ä¸­çš„å­—æ®µï¼›
+	// å•æ®id
+	CC_SYNTHESIZE(string, id, Id);								//ä¸»é”®ï¼Œé»˜è®¤ä¸º0ï¼Œä¸èƒ½é‡å¤
+	//ä¸»è¡¨
+	CC_SYNTHESIZE(string, mid, Mid);							//æ•°æ®åº“å¿…ä¼ å€¼ï¼Œå”¯ä¸€çº¦æŸï¼Œä¸èƒ½é‡å¤
+	//å•æ®å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//·ÖÂ¼ºÅ
-	CC_SYNTHESIZE(int, entry_no, Entry_no);						//Êı¾İ¿â±Ø´«Öµ£¬£¬Î¨Ò»Ô¼Êø£¬²»ÄÜÖØ¸´
+	//åˆ†å½•å·
+	CC_SYNTHESIZE(int, entry_no, Entry_no);						//æ•°æ®åº“å¿…ä¼ å€¼ï¼Œï¼Œå”¯ä¸€çº¦æŸï¼Œä¸èƒ½é‡å¤
 
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	//srcbillid
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//Ô´µ¥·ÖÂ¼id
+	//æºå•åˆ†å½•id
 	CC_SYNTHESIZE(string, src_entry_id, Src_entry_id);
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
 
-	//ÎïÁÏ
-	CC_SYNTHESIZE(string, material_id, Material_id);			//Êı¾İ¿â±Ø´«Öµ
-	//¼ÆÁ¿µ¥Î»
-	CC_SYNTHESIZE(string, unit_id, Unit_id);					//Êı¾İ¿â±Ø´«Öµ
-	//ÊıÁ¿
-	CC_SYNTHESIZE(double, qty, Qty);							//Êı¾İ¿â±Ø´«Öµ
-	//Ë°ÂÊ%
-	CC_SYNTHESIZE(double, tax_rate, Tax_rate);					//Êı¾İ¿â±Ø´«Öµ
+	//ç‰©æ–™
+	CC_SYNTHESIZE(string, material_id, Material_id);			//æ•°æ®åº“å¿…ä¼ å€¼
+	//è®¡é‡å•ä½
+	CC_SYNTHESIZE(string, unit_id, Unit_id);					//æ•°æ®åº“å¿…ä¼ å€¼
+	//æ•°é‡
+	CC_SYNTHESIZE(double, qty, Qty);							//æ•°æ®åº“å¿…ä¼ å€¼
+	//ç¨ç‡%
+	CC_SYNTHESIZE(double, tax_rate, Tax_rate);					//æ•°æ®åº“å¿…ä¼ å€¼
 
-	//º¬Ë°µ¥¼Û
-	CC_SYNTHESIZE(double, price, Price);						//Êı¾İ¿â±Ø´«Öµ
-	//ÕÛ¿ÛÂÊ%
+	//å«ç¨å•ä»·
+	CC_SYNTHESIZE(double, price, Price);						//æ•°æ®åº“å¿…ä¼ å€¼
+	//æŠ˜æ‰£ç‡%
 	CC_SYNTHESIZE(double, discount_rate, Discount_rate);
-	//º¬Ë°½ğ¶î
-	CC_SYNTHESIZE(double, amt, Amt);							//Êı¾İ¿â±Ø´«Öµ
-	//±¸×¢
+	//å«ç¨é‡‘é¢
+	CC_SYNTHESIZE(double, amt, Amt);							//æ•°æ®åº“å¿…ä¼ å€¼
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
 
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
 
 public:
-	//ÕâÑùĞ´ÒÔºó£¬Ç°¶ËjsonÊı¾İ´«¹ıÀ´ºó£¬Èç¹ûdetailÖĞÓĞÈıÌõÊı¾İ£¬»á×Ô¶¯ĞÎ³ÉÈıÌõÊı¾İÂğ£¿
-	//°ó¶¨JSON×ª»»·½·¨
+	//è¿™æ ·å†™ä»¥åï¼Œå‰ç«¯jsonæ•°æ®ä¼ è¿‡æ¥åï¼Œå¦‚æœdetailä¸­æœ‰ä¸‰æ¡æ•°æ®ï¼Œä¼šè‡ªåŠ¨å½¢æˆä¸‰æ¡æ•°æ®å—ï¼Ÿ
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurQuotDetailDTO& t) {
 
 		BIND_FROM_TO_I(j, t, entry_no);
@@ -65,7 +65,7 @@ public:
 		BIND_FROM_TO_D(j, t, price);
 		BIND_FROM_TO_D(j, t, discount_rate);
 
-		//BIND_FROM_TO_NORMAL(j, t, mid);		²»ÓÃÁíÍâ½ÓÊÕ£¬¶øÊÇÔÚ×é×°Êı¾İµÄÊ±ºò£¬½«Ö÷±íÃû³Æ·Å½øÈ¥
+		//BIND_FROM_TO_NORMAL(j, t, mid);		ä¸ç”¨å¦å¤–æ¥æ”¶ï¼Œè€Œæ˜¯åœ¨ç»„è£…æ•°æ®çš„æ—¶å€™ï¼Œå°†ä¸»è¡¨åç§°æ”¾è¿›å»
 		BIND_FROM_TO_NORMAL(j, t, id);
 		BIND_FROM_TO_NORMAL(j, t, bill_no);
 		BIND_FROM_TO_NORMAL(j, t, src_bill_type);

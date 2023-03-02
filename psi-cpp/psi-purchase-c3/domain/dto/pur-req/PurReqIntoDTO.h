@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,14 +24,14 @@
 #include "../FileDTO.h"
 
 /**
- * ´«Êä¶ÔÏó ¡ª¡ª µ¼Èë¶ÔÏóµÄĞÅÏ¢£¨Í¬ĞÂÔöÉêÇëµ¥ËùĞèĞÅÏ¢£©
+ * ä¼ è¾“å¯¹è±¡ â€”â€” å¯¼å…¥å¯¹è±¡çš„ä¿¡æ¯ï¼ˆåŒæ–°å¢ç”³è¯·å•æ‰€éœ€ä¿¡æ¯ï¼‰
  */
 
-//µ¼Èë
+//å¯¼å…¥
 class PurReqIntoDTO : public FileDTO
 {
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurReqIntoDTO& t); // NOLINT
 };
 

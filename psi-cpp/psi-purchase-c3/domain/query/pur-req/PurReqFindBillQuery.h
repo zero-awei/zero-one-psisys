@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,28 +22,28 @@
 #include "../PageQuery.h"
 
 /*
-²éÑ¯µ¥¾İÁĞ±íÏÔÊ¾¶ÔÏó
+æŸ¥è¯¢å•æ®åˆ—è¡¨æ˜¾ç¤ºå¯¹è±¡
 */
-//±¸×¢
-// 1. ÀàµÄºêÀïÃæµÄ×Ö¶ÎÀàĞÍĞèÒª¸ü¸Ä
-// 2. from_json·½·¨ÔİÎ´ÊµÏÖ
+//å¤‡æ³¨
+// 1. ç±»çš„å®é‡Œé¢çš„å­—æ®µç±»å‹éœ€è¦æ›´æ”¹
+// 2. from_jsonæ–¹æ³•æš‚æœªå®ç°
 class PurReqFindBillQuery : public PageQuery {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	//ÒÑÉúĞ§			
+	//å·²ç”Ÿæ•ˆ			
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//ÒÑ¹Ø±Õ			
+	//å·²å…³é—­			
 	CC_SYNTHESIZE(int, isClose, IsClose);
-	//ÒÑ×÷·Ï			
+	//å·²ä½œåºŸ			
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, PurReqFindBillQuery& t) {
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);

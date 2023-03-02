@@ -1,55 +1,55 @@
-#pragma once
+ï»¿#pragma once
 #ifndef __PUR_INQUIRY_INTO_VO_H__
 #define __PUR_INQUIRY_INTO_VO_H__
 #include "../../GlobalInclude.h"
 
 
-//ÎÄ¼şÉÏ´«VO
+//æ–‡ä»¶ä¸Šä¼ VO
 class PurInquiryIntoVO
 {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_Date);
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//Ô´µ¥ºÅ			;
+	//æºå•å·			;
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//½»»õÈÕÆÚ		   ;
+	//äº¤è´§æ—¥æœŸ		   ;
 	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
-	//ÊıÁ¿			 ;
+	//æ•°é‡			 ;
 	CC_SYNTHESIZE(double, qty, Qty);
-	//²Î¿¼½ğ¶î		   ;
+	//å‚è€ƒé‡‘é¢		   ;
 	CC_SYNTHESIZE(double, amt, Amt);
-	//±¨¼Ûµ¥Êı		   ;
+	//æŠ¥ä»·å•æ•°		   ;
 	CC_SYNTHESIZE(int, quot_count, Quot_count);
-	//µ¥¾İ½×¶Î		   ;
+	//å•æ®é˜¶æ®µ		   ;
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	//ÒÑÉúĞ§			;
+	//å·²ç”Ÿæ•ˆ			;
 	CC_SYNTHESIZE(int, is_effective, Is_effective)
-	//ÒÑ¹Ø±Õ			;
+	//å·²å…³é—­			;
 	CC_SYNTHESIZE(int, is_close, Is_close);
-	//ÒÑ×÷·Ï			;
+	//å·²ä½œåºŸ			;
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	//½»»õµØµã		   ;
+	//äº¤è´§åœ°ç‚¹		   ;
 	CC_SYNTHESIZE(string, deliver_place, Deliver_place);
-	////ÁªÏµÈË			;
+	////è”ç³»äºº			;
 	CC_SYNTHESIZE(string, contact, Contact);
-	////ÁªÏµµç»°	   ;
+	////è”ç³»ç”µè¯	   ;
 	CC_SYNTHESIZE(string, phone, Phone);
-	////´«Õæ			 ;
+	////ä¼ çœŸ			 ;
 	CC_SYNTHESIZE(string, fax, Fax);
-	////µç×ÓÓÊÏä	   ;
+	////ç”µå­é‚®ç®±	   ;
 	CC_SYNTHESIZE(string, email, Email);
-	////±¸×¢			 ;
+	////å¤‡æ³¨			 ;
 	CC_SYNTHESIZE(string, remark, Remark);
-	////×Ô¶¯µ¥¾İ	   ;
+	////è‡ªåŠ¨å•æ®	   ;
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	////ÉúĞ§Ê±¼ä	   ;
+	////ç”Ÿæ•ˆæ—¶é—´	   ;
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	//ĞŞ¸ÄÊ±¼ä		   ;
+	//ä¿®æ”¹æ—¶é—´		   ;
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	//ĞŞ¸ÄÈË			;
+	//ä¿®æ”¹äºº			;
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
 

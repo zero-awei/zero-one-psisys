@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _ADD_PUR_QUOT_DTO_
 #define _ADD_PUR_QUOT_DTO_
 
@@ -16,99 +16,99 @@ using namespace nlohmann;
 
 class AddPurQuotDTO :public FileDTO{
 
-	// µ¥¾İid
+	// å•æ®id
 	CC_SYNTHESIZE(string, id, Id);								
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);						
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, billDate, BillDate);					
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);			
 
-	//Ô´µ¥id
+	//æºå•id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);				
-	//Ô´µ¥ºÅ
+	//æºå•å·
 	CC_SYNTHESIZE(string, srcNo, SrcNo);						
-	//µ¥¾İÖ÷Ìâ
+	//å•æ®ä¸»é¢˜
 	CC_SYNTHESIZE(string, subject, Subject);
-	//ÊÇ·ñºì×Ö
+	//æ˜¯å¦çº¢å­—
 	CC_SYNTHESIZE(int, isRubric, IsRubric);
 
 
-	//ÊÇ·ñÁÙÊ±¹©Ó¦ÉÌ
+	//æ˜¯å¦ä¸´æ—¶ä¾›åº”å•†
 	CC_SYNTHESIZE(int, isTempSupplier, IsTempSupplier);
-	//¹©Ó¦ÉÌ
+	//ä¾›åº”å•†
 	CC_SYNTHESIZE(string, supplierId, SupplierId);
-	//ÁÙÊ±¹©Ó¦ÉÌÃû³Æ
+	//ä¸´æ—¶ä¾›åº”å•†åç§°
 	CC_SYNTHESIZE(string, tempSupplierName, TempSupplierName);
-	//¸¶¿î·½Ê½
+	//ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, deliveryMethod, DeliveryMethod);
 
 
-	//½»»õÈÕÆÚ
+	//äº¤è´§æ—¥æœŸ
 	CC_SYNTHESIZE(string, deliveryDate, DeliveryDate);
-	//½»»õµØµã
+	//äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, deliveryAddress, DeliveryAddress);
-	//ÁªÏµÈË
+	//è”ç³»äºº
 	CC_SYNTHESIZE(string, contact, Contact);
-	//ÁªÏµµç»°
+	//è”ç³»ç”µè¯
 	CC_SYNTHESIZE(string, phone, Phone);
 
-	//´«Õæ
+	//ä¼ çœŸ
 	CC_SYNTHESIZE(string, fax, Fax);
-	//µç×ÓÓÊ¼ş
+	//ç”µå­é‚®ä»¶
 	CC_SYNTHESIZE(string, email, Email);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	//½ğ¶î
+	//é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
 
-	//¸½¼ş
+	//é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//ÊÇ·ñ×Ô¶¯Éú³É
+	//æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
 	CC_SYNTHESIZE(int, isAuto, IsAuto);
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, billStage, BillStage);
 
-	//ÉóºËÈË
+	//å®¡æ ¸äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	//Ê¾Àıid
+	//ç¤ºä¾‹id
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
-	//ºËÅú½á¹ûÀàĞÍ
+	//æ ¸æ‰¹ç»“æœç±»å‹
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	//ºËÅúÒâ¼û
+	//æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
 
-	//ÊÇ·ñÉúĞ§
+	//æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//ÉúĞ§Ê±¼ä
+	//ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//ÊÇ·ñÒÑ¹Ø±Õ
+	//æ˜¯å¦å·²å…³é—­
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//ÊÇ·ñ×÷·Ï
+	//æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 
-	//´´½¨²¿ÃÅ
+	//åˆ›å»ºéƒ¨é—¨
 	CC_SYNTHESIZE(string, sysOrdCode, SysOrdCode);
-	//´´½¨ÈË
+	//åˆ›å»ºäºº
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	//ĞŞ¸ÄÈË
+	//ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
 
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
 
-	//ĞÂÔöÃ÷Ï¸
+	//æ–°å¢æ˜ç»†
 	CC_SYNTHESIZE(list<PurQuotDetailDTO>, detail, Detail);
 
 public:
-	//°ó¶¨JSON×ª»»·½·¨
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, AddPurQuotDTO& t) {
 
 		BIND_FROM_TO_D(j, t, qty);

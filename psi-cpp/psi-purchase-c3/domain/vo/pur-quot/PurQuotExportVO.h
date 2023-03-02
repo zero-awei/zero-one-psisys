@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _PUR_QUOT_EXPORT_VO_
 #define _PUR_QUOT_EXPORT_VO_
 

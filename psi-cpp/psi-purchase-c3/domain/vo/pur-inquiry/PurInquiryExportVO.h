@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -25,83 +25,83 @@
 #include "EntryPurInquiryExportVO.h"
 
 /**
- * ÏÔÊ¾¶ÔÏó ¡ª¡ª ²É¹ºÑ¯¼Ûµ¥ÁĞ±í
+ * æ˜¾ç¤ºå¯¹è±¡ â€”â€” é‡‡è´­è¯¢ä»·å•åˆ—è¡¨
  */
 
- //²É¹ºÑ¯¼Ûµ¥ÁĞ±í - »ù±¾ĞÅÏ¢
+ //é‡‡è´­è¯¢ä»·å•åˆ—è¡¨ - åŸºæœ¬ä¿¡æ¯
 class PurInquiryExportVO
 {
-	// µ¥¾İ±àºÅ  
+	// å•æ®ç¼–å·  
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	
 	CC_SYNTHESIZE(list<string>, bill_no_list, Bill_no_list);
-	// µ¥¾İÈÕÆÚ
+	// å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	// Ô´µ¥ÀàĞÍ
+	// æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	// Ô´µ¥id
+	// æºå•id
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	// Ô´µ¥ºÅ
+	// æºå•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	// µ¥¾İÖ÷Ìâ 
+	// å•æ®ä¸»é¢˜ 
 	CC_SYNTHESIZE(string, subject, Subject);
-	// ÊÇ·ñºì×Ö
+	// æ˜¯å¦çº¢å­—
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	// ¸¶¿î·½Ê½
+	// ä»˜æ¬¾æ–¹å¼
 	CC_SYNTHESIZE(string, payment_method, Payment_method);
-	// ½»»õµØµã
+	// äº¤è´§åœ°ç‚¹
 	CC_SYNTHESIZE(string, delivery_place, Delivery_place);
-	// ½»»õÊ±¼ä 
+	// äº¤è´§æ—¶é—´ 
 	CC_SYNTHESIZE(string, delivery_time, Delivery_time);
-	// ÁªÏµÈË
+	// è”ç³»äºº
 	CC_SYNTHESIZE(string, contact, Contact);
-	// ÁªÏµµç»°
+	// è”ç³»ç”µè¯
 	CC_SYNTHESIZE(string, phone, Phone);
-	// ´«Õæ
+	// ä¼ çœŸ
 	CC_SYNTHESIZE(string, fax, Fax);
-	// µç×ÓÓÊ¼ş
+	// ç”µå­é‚®ä»¶
 	CC_SYNTHESIZE(string, email, Email);
-	// ÊıÁ¿
+	// æ•°é‡
 	CC_SYNTHESIZE(double, qty, Qty);
-	// ²Î¿¼½ğ¶î
+	// å‚è€ƒé‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	// ÉúĞ§µÄ±¨¼Ûµ¥Êı
+	// ç”Ÿæ•ˆçš„æŠ¥ä»·å•æ•°
 	CC_SYNTHESIZE(int, quot_count, Quot_count);
-	// Ã÷Ï¸ÁĞ±í
+	// æ˜ç»†åˆ—è¡¨
 	CC_SYNTHESIZE(list<EntryPurInquiryExportVO>, detailslist, DetailsList);
-	// ¸½¼ş
+	// é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	// ±¸×¢
+	// å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	// ÊÇ·ñ×Ô¶¯Éú³É
+	// æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	// µ¥¾İ½×¶Î£¨¹«¹²½Ó¿Ú£©
+	// å•æ®é˜¶æ®µï¼ˆå…¬å…±æ¥å£ï¼‰
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	// ºËÅúÈË
+	// æ ¸æ‰¹äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	// ºËÅúÊµÀıid
+	// æ ¸æ‰¹å®ä¾‹id
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
-	// ºËÅú½á¹ûÀàĞÍ
+	// æ ¸æ‰¹ç»“æœç±»å‹
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
-	// ºËÅúÒâ¼û
+	// æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-	// ÊÇ·ñÉúĞ§
+	// æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	// ÉúĞ§Ê±¼ä
+	// ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	// ÊÇ·ñ¹Ø±Õ
+	// æ˜¯å¦å…³é—­
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	// ÊÇ·ñ×÷·Ï
+	// æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	// ´´½¨²¿ÃÅ
+	// åˆ›å»ºéƒ¨é—¨
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	// ´´½¨ÈË
+	// åˆ›å»ºäºº
 	CC_SYNTHESIZE(string, create_by, Create_by);
-	// ´´½¨Ê±¼ä
+	// åˆ›å»ºæ—¶é—´
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	// ĞŞ¸ÄÈË
+	// ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, update_by, Update_by);
-	// ĞŞ¸ÄÊ±¼ä
+	// ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, update_time, Update_time);
 
 

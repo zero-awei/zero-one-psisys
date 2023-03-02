@@ -1,36 +1,36 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _PUR_QUOT_DETAIL_VO_H_
 #define _PUR_QUOT_DETAIL_VO_H_
 #include "../../GlobalInclude.h"
 
-//Ã÷Ï¸µÄVO
+//æ˜ç»†çš„VO
 class PurQuotDetailVO {
-	//----Ã÷Ï¸(pur-quot-entryµÄ×Ö¶Î)
-		//Ô´µ¥·ÖÂ¼ºÅ
+	//----æ˜ç»†(pur-quot-entryçš„å­—æ®µ)
+		//æºå•åˆ†å½•å·
 	CC_SYNTHESIZE(string, entry_src_no, Entry_src_no);
-	//ÎïÁÏ
+	//ç‰©æ–™
 	CC_SYNTHESIZE(string, entry_material_id, Entry_material_id);
-	//¹æ¸ñĞÍºÅ
-	//µ¥Î»
+	//è§„æ ¼å‹å·
+	//å•ä½
 	CC_SYNTHESIZE(string, entry_unit_id, Entry_unit_id);
-	//ÊıÁ¿
+	//æ•°é‡
 	CC_SYNTHESIZE(double, entry_qty, Entry_qty);
-	//Ë°ÂÊ
+	//ç¨ç‡
 	CC_SYNTHESIZE(double, entry_tax_rate, Entry_tax_rate);
-	//º¬Ë°µ¥¼Û
+	//å«ç¨å•ä»·
 	CC_SYNTHESIZE(double, entry_price, Entry_price);
-	//ÕÛ¿ÛÂÊ
+	//æŠ˜æ‰£ç‡
 	CC_SYNTHESIZE(double, entry_discount_rate, Entry_discount_rate);
-	//º¬Ë°½ğ¶î
+	//å«ç¨é‡‘é¢
 	CC_SYNTHESIZE(double, entry_amt, Entry_amt);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, entry_remark, Entry_remark);
-	//×Ô¶¨Òå1
+	//è‡ªå®šä¹‰1
 	CC_SYNTHESIZE(string, entry_custom1, Entry_custom1);
-	//×Ô¶¨Òå2
+	//è‡ªå®šä¹‰2
 	CC_SYNTHESIZE(string, entry_custom2, Entry_custom2);
 public:
-	// °ó¶¨JSON×ª»»·½·¨
+	// ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	BIND_TO_JSON(PurQuotDetailVO, entry_src_no, entry_material_id, entry_unit_id, entry_qty, entry_tax_rate, entry_price, entry_discount_rate,
 		entry_amt, entry_remark, entry_custom1, entry_custom2);
 };

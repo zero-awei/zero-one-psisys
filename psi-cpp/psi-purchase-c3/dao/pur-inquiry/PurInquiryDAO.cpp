@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  Copyright Zero One Star. All rights reserved.
 
  @Author: Eleanor
@@ -23,7 +23,7 @@
 
 
 
-//¶¨ÒåÌõ¼ş½âÎöºê£¬¼õÉÙÖØ¸´´úÂë
+//å®šä¹‰æ¡ä»¶è§£æå®ï¼Œå‡å°‘é‡å¤ä»£ç 
 #define PUR_INQUIRY_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
@@ -48,7 +48,7 @@ if (obj.getIs_voided() != -1) { \
 	SQLPARAMS_PUSH(params, "i", int, obj.getIs_voided()); \
 } 
 
-//¶¨ÒåÌõ¼ş½âÎöºê£¬¼õÉÙÖØ¸´´úÂë
+//å®šä¹‰æ¡ä»¶è§£æå®ï¼Œå‡å°‘é‡å¤ä»£ç 
 #define PUR_INQUIRY_EXPORT_TERAM_PARSE(obj, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
@@ -58,7 +58,7 @@ if (!obj.getBill_no_list().empty()) { \
 } 
 
 
-// Í³¼ÆÊı¾İÌõÊı
+// ç»Ÿè®¡æ•°æ®æ¡æ•°
 uint64_t PurInquiryDAO::count(const PurInquiryDO& iObj)
 {
 	stringstream sql;
@@ -69,7 +69,7 @@ uint64_t PurInquiryDAO::count(const PurInquiryDO& iObj)
 }
 
 
-// ·ÖÒ³²éÑ¯Ñ¯¼Ûµ¥ÁĞ±í
+// åˆ†é¡µæŸ¥è¯¢è¯¢ä»·å•åˆ—è¡¨
 list<PurInquiryDO> PurInquiryDAO::selectPurInquiryFindBillWithPage(const PurInquiryDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
@@ -86,7 +86,7 @@ list<PurInquiryDO> PurInquiryDAO::selectPurInquiryFindBillWithPage(const PurInqu
 }
 
 
-//°´Ö¸¶¨µ¥¾İ±àºÅ²éÑ¯Ñ¯¼Ûµ¥ÏêÇé
+//æŒ‰æŒ‡å®šå•æ®ç¼–å·æŸ¥è¯¢è¯¢ä»·å•è¯¦æƒ…
 list<PurInquiryDO> PurInquiryDAO::selectPurInquiryFindDetailBill(const PurInquiryDO& obj)
 {
 	string sql = "SELECT bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided,\
@@ -99,7 +99,7 @@ list<PurInquiryDO> PurInquiryDAO::selectPurInquiryFindDetailBill(const PurInquir
 }
 
 
-// Ö¸¶¨Ñ¯¼Ûµ¥¶ÔÓ¦Ã÷Ï¸
+// æŒ‡å®šè¯¢ä»·å•å¯¹åº”æ˜ç»†
 list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryFindDetailBillEntry(const PurInquiryEntryDO& obj)
 {
 	string sql;
@@ -111,7 +111,7 @@ list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryFindDetailBillEntry(cons
 }
 
 
-// µ¼³öÑ¯¼Ûµ¥
+// å¯¼å‡ºè¯¢ä»·å•
 list<PurInquiryDO> PurInquiryDAO::selectPurInquiryExport(const string& bill_no) //const PurInquiryDO& obj
 {
 	string sql = "SELECT id,bill_no,bill_date,bill_stage,subject,src_no,src_bill_id,src_bill_type,payment_method,\
@@ -124,7 +124,7 @@ list<PurInquiryDO> PurInquiryDAO::selectPurInquiryExport(const string& bill_no) 
 }
 
 
-// µ¼³öÑ¯¼Ûµ¥¶ÔÓ¦Ã÷Ï¸
+// å¯¼å‡ºè¯¢ä»·å•å¯¹åº”æ˜ç»†
 list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryExportEntry(const string& bill_no)
 {
 	string sql = "SELECT  bill_no, entry_no,src_entry_id,src_no,src_bill_id,src_bill_type,material_id,unit_id,\
@@ -135,7 +135,7 @@ list<PurInquiryEntryDO>  PurInquiryDAO::selectPurInquiryExportEntry(const string
 }
 
 
-// µ¼Èëpur_inquiry
+// å¯¼å…¥pur_inquiry
 uint64_t PurInquiryDAO::input(const PurInquiryDO& obj)
 {
 	string sql = "INSERT INTO `pur_inquiry` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
@@ -168,7 +168,7 @@ uint64_t PurInquiryDAO::input(const PurInquiryDO& obj)
 		obj.getCreate_by(),obj.getCreate_time(), obj.getUpdate_by());
 }
 
-// µ¼ÈëÃ÷Ï¸ pur_inquiry_entry
+// å¯¼å…¥æ˜ç»† pur_inquiry_entry
 uint64_t PurInquiryDAO::inputEntry(const PurInquiryEntryDO& obj)
 {
 	string sql = "INSERT INTO `pur_inquiry_entry` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
@@ -188,7 +188,7 @@ uint64_t PurInquiryDAO::inputEntry(const PurInquiryEntryDO& obj)
 
 uint64_t PurInquiryDAO::insert(const AddPurInquiryDO& iObj)
 {// 
-	string sql = "INSERT INTO `pur_inquiry` (create_by,create_time,sys_org_code,`id`,`bill_no`, `subject`, \
+	string sql = "INSERT INTO `pur_inquiry` (create_by,create_time,sys_org_code,`id`,`bill_no`,`subject`, \
     `payment_method`,contact,phone,fax,email,remark,is_rubric \
 	,is_auto,effective_time,bill_stage,bill_date,delivery_place) VALUES (?, \
 	?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?,?,?)";
@@ -205,8 +205,11 @@ uint64_t PurInquiryDAO::insertByEntry(const AddPurInquiryEntryDO& iObj)
 	//
 	string sql = "INSERT INTO `pur_inquiry_entry` (bill_no,entry_no,mid,id,src_bill_type,src_no,material_id,unit_id,qty ,\
 		tax_rate,price,amt,remark,custom1,custom2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	return sqlSession->executeInsert(sql, "%s%i%s%s%s%s%s%s%i%i%i%i%s%s%s", iObj.getBill_no(), iObj.getEntry_no(), iObj.getMid(), iObj.getId(), iObj.getSrc_bill_type(), \
-		iObj.getSrc_no(), iObj.getMaterial_id(), iObj.getUnit_id(), iObj.getQty(), iObj.getTax_rate(), iObj.getPrice(), \
+	return sqlSession->executeInsert(sql, "%s%i%s%s%s%s%s%s%i%i%i%i%s%s%s", iObj.getBill_no(),\
+		iObj.getEntry_no(), \
+		iObj.getMid(), iObj.getId(), iObj.getSrc_bill_type(), \
+		iObj.getSrc_no(), iObj.getMaterial_id(), iObj.getUnit_id(),\
+		iObj.getQty(), iObj.getTax_rate(), iObj.getPrice(), \
 		iObj.getAmt(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
 }
 

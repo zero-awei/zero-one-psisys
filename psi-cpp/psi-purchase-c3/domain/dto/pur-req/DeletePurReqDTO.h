@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -22,12 +22,12 @@
 
 #include "../../GlobalInclude.h"
 
-//É¾³ı¶©µ¥µÄDTO Ç°¶ËÖ»ĞèÒª´«µİÒ»¸öµ¥¾İ±àºÅ¸øÎÒ¼´¿É½øĞĞĞŞ¸Ä
+//åˆ é™¤è®¢å•çš„DTO å‰ç«¯åªéœ€è¦ä¼ é€’ä¸€ä¸ªå•æ®ç¼–å·ç»™æˆ‘å³å¯è¿›è¡Œä¿®æ”¹
 class DeletePurReqDTO {
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, billNo, BillNo);
 public:
-	//°ó¶¨JSON×ª»»·½·¨
+	//ç»‘å®šJSONè½¬æ¢æ–¹æ³•
 	friend void from_json(const json& j, DeletePurReqDTO& t);
 };
 

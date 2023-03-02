@@ -293,6 +293,11 @@ uint64_t PurInquiryService::saveData(const AddPurInquiryDTO& dto, const PayloadD
 {
 	PurInquiryDAO dao;
 	AddPurInquiryDO data;
+	//进行必填的数据验证
+	//利用雪花算法自动生成id
+	SnowFlake randomId(1, 3);
+
+
 	data.setBill_Date(dto.getBill_Date());
 	data.setBill_no(dto.getBill_no());
 	data.setBill_stage(dto.getBill_stage());
@@ -301,7 +306,7 @@ uint64_t PurInquiryService::saveData(const AddPurInquiryDTO& dto, const PayloadD
 	data.setEffective_time(dto.getEffective_time());
 	data.setEmail(dto.getEmail());
 	data.setFax(dto.getFax());
-	data.setId(dto.getId());
+	data.setId(to_string(randomId.nextId()));
 	data.setIs_auto(dto.getIs_auto());
 	data.setIs_rubric(dto.getIs_rubric());
 	data.setPayment_method(dto.getPayment_method());
@@ -325,7 +330,7 @@ uint64_t PurInquiryService::saveData(const AddPurInquiryDTO& dto, const PayloadD
 			datas.setAmt(it.getAmt());
 			datas.setCustom1(it.getCustom1());
 			datas.setCustom2(it.getCustom2());
-			datas.setId(it.getId());
+			datas.setId(to_string(randomId.nextId()));
 			datas.setMaterial_id(it.getMaterial_id());
 			datas.setPrice(it.getPrice());
 			datas.setQty(it.getQty());
@@ -346,6 +351,10 @@ bool PurInquiryService::updateData(const AddPurInquiryDTO& dto, const PayloadDTO
 {
 	PurInquiryDAO dao;
 	AddPurInquiryDO data;
+
+	//进行必填的数据验证
+	SnowFlake randomId(1, 3);
+
 
 	data.setApprover(pdto.getUsername());
 	data.setApproval_result_type(dto.getApproval_result_type());
@@ -383,7 +392,7 @@ bool PurInquiryService::updateData(const AddPurInquiryDTO& dto, const PayloadDTO
 			datas.setAmt(it.getAmt());
 			datas.setCustom1(it.getCustom1());
 			datas.setCustom2(it.getCustom2());
-			datas.setId(it.getId());
+			datas.setId(to_string(randomId.nextId()));
 			datas.setMaterial_id(it.getMaterial_id());
 			datas.setPrice(it.getPrice());
 			datas.setQty(it.getQty());

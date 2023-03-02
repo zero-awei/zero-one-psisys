@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,9 +24,9 @@
 #include "../../domain/do/pur-compare/PurCompareDO.h"
 #include "CharsetConvertHepler.h"
 
-#define ITOWORD(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("ÊÇ"):CharsetConvertHepler::ansiToUtf8("·ñ"))
+#define ITOWORD(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("æ˜¯"):CharsetConvertHepler::ansiToUtf8("å¦"))
 /**
- * ²éÑ¯µ¥¾İÁĞ±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * æŸ¥è¯¢å•æ®åˆ—è¡¨å­—æ®µåŒ¹é…æ˜ å°„
  */
 class PurComFindBillMapper : public Mapper<PurCompareDO>
 {
