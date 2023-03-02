@@ -1,10 +1,5 @@
 package com.zeroone.star.payablemanagement.service.impl;
 
-import com.alibaba.nacos.common.utils.StringUtils;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.payablemanagement.entity.FinPayable;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,27 +8,22 @@ import com.zeroone.star.payablemanagement.entity.FinPayableCheckEntry;
 import com.zeroone.star.payablemanagement.mapper.FinPayableCheckMapper;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckEntryService;
 import com.zeroone.star.payablemanagement.service.IFinPayableCheckService;
-import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
-import com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
-import com.zeroone.star.project.vo.payablemanagement.PayableVO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableDTO;
 import com.zeroone.star.project.dto.payablemanagement.CheckPayableEntryDTO;
+import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
+import com.zeroone.star.project.vo.PageVO;
+import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -50,6 +40,9 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
 
     @Autowired
     private IFinPayableCheckEntryService finPayableCheckEntryService;
+
+    @Resource
+    private UserHolder userHolder;
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -115,15 +108,16 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
 
     /**
      * 重构
-     * @author spk
+     *
      * @param query 查询条件
      * @return 分页后VO
+     * @author spk
      */
     @Override
     public PageVO<CheckPayableVO> getAll(CheckPayableQuery query) {
 
         List<CheckPayableVO> list = mapper.getAllCheckPayable(query);
-        if(list.isEmpty()) {
+        if (list.isEmpty()) {
             return null;
         }
         return new PageVO<>(query.getPageIndex(), query.getPageSize(), (long) list.size(), (long) 100, list);
@@ -157,12 +151,19 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
 
     @Override
     public boolean isCheckPass(String id, String approvalResultType, String approvalRemark) {
+        String username = "";
+        try {
+            username = userHolder.getCurrentUser().getUsername();
+        } catch (Exception e) {
+            log.error("无法获取当前用户！", e);
+        }
         if ("1".equals(approvalResultType)) {
             this.lambdaUpdate()
                 .set(FinPayableCheck::getApprovalResultType, approvalResultType)
                 .set(FinPayableCheck::getApprovalRemark, approvalRemark)
                 .set(FinPayableCheck::getIsClosed, 1)
                 .set(FinPayableCheck::getBillStage, "3")
+                .set(FinPayableCheck::getApprover, username)
                 .eq(FinPayableCheck::getId, id)
                 .update();
             return true;
@@ -172,6 +173,7 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
                 .set(FinPayableCheck::getApprovalRemark, approvalRemark)
                 .set(FinPayableCheck::getIsClosed, 0)
                 .set(FinPayableCheck::getBillStage, "4")
+                .set(FinPayableCheck::getApprover, username)
                 .eq(FinPayableCheck::getId, id)
                 .update();
             return false;
