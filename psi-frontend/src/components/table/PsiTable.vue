@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-13 14:25:07
- * @LastEditTime: 2023-02-24 13:07:55
+ * @LastEditTime: 2023-02-28 00:27:48
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\table\PsiTable.vue
@@ -36,7 +36,13 @@
     </el-row>
     <el-table style="margin-top: 10px;" ref="singleTableRef" :data="tableData" :border="attributes.border"
       table-layout="fixed" :default-sort="{ prop: 'date', order: 'descending' }" :max-height="attributes.maxHeight"
-      :height="attributes.height" @selection-change="handleSelectionChange">
+      :height="attributes.height" 
+      :row-key="attributes.rowKey"
+      :default-expand-all="attributes.defaultExpandAll"
+      :lazy="attributes.lazy"
+      :load="load"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+      @selection-change="handleSelectionChange">
       <el-table-column v-if="attributes.selection" fixed type="selection" width="50">
       </el-table-column>
       <el-table-column v-if="attributes.index" fixed type="index" width="50" align="center">
@@ -61,46 +67,15 @@
       <el-table-column v-else :label="item.label ?? ''" :prop="item.prop ?? ''" :width="item.width ?? 50"
         :type="item.type ?? ''" :fixed="item.fixed ?? false" :align="item.align ?? 'center'"></el-table-column>
     </template>
-    <!-- <el-table-column v-if="attributes.rightOperation" fixed="right" label="操作" width="150" align="center">
-        <template #default="scope">
-          <el-button link type="primary" @click="edit(scope.row)">编辑</el-button>
-          |
-          <el-dropdown>
-            <span class="el-dropdown-link" style="padding-top: 2px; color: #409eff">
-              更多
-              <el-icon class="el-icon--right" style="padding-top: 2px; color: #409eff">
-                <arrow-down />
-              </el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                      <el-dropdown-item>删除</el-dropdown-item>
-                      <el-dropdown-item>审核</el-dropdown-item>
-                      <el-dropdown-item>作废</el-dropdown-item>
-              <el-dropdown-item disabled>打印</el-dropdown-item>
-                      <el-dropdown-item divided>反关闭</el-dropdown-item>
-                    </el-dropdown-menu>
-                  </template>
-                </el-dropdown>
-              </template>    -->
-      <!-- <template #default> -->
-      <!-- <slot></slot> -->
-      <!-- <el-button link type="primary" size="small">Detail</el-button>
-          <el-button link type="primary" size="small">Edit</el-button> -->
-      <!-- </template> -->
-      <!-- </el-table-column> -->
     </el-table>
-    <div class="demo-pagination-block">
+    <div class="demo-pagination-block" v-if="pagination">
       <!-- <div class="demonstration">All combined</div> -->
       <el-pagination v-model:current-page="pagination.currentPage" v-model:page-size="pagination.pageSize"
-        :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total" 
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        @prev-click = "handlePrevClickChange"
-        @next-click="handleNextClickChange"
-        />
+        :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total"
+        @size-change="handleSizeChange" @current-change="handleCurrentChange" @prev-click="handlePrevClickChange"
+        @next-click="handleNextClickChange" />
       <!--  @size-change="handleSizeChange"
-                                    @current-change="handleCurrentChange" -->
+                                      @current-change="handleCurrentChange" -->
     </div>
   </div>
 </template>
@@ -127,12 +102,12 @@ const prop = defineProps({
 })
 
 const selectNum = ref(0)
-const emit = defineEmits(['selectionChange', 'add', 'importData', 'exportData','sizeChange','currentChange','prevClick','nextClick'])
+const emit = defineEmits(['selectionChange', 'add', 'importData', 'exportData', 'sizeChange', 'currentChange', 'prevClick', 'nextClick'])
 const exportDataList = ref([])
 const handleSelectionChange = (val) => {
   // // console.log('---', val)
   selectNum.value = val.length
-  exportDataList = val //不知道能不能赋值
+  exportDataList.value = val //不知道能不能赋值
   emit('selectionChange', val)
 }
 function add() {
@@ -162,7 +137,7 @@ const customStatus = reactive({
   items: []
 })
 
-function handleCustomChange(){}
+function handleCustomChange() { }
 function refToColumn() {
   prop.items.forEach((value, index) => {
     // // // console.log(index, '--', value)
@@ -177,7 +152,7 @@ function refToColumn() {
 
 function handleSizeChange(value) {
   console.log("handleSizeChange", value)
-  emit('sizeChange',value)
+  emit('sizeChange', value)
 }
 
 function handleCurrentChange(value) {
@@ -197,7 +172,11 @@ function handleNextClickChange(value) {
   emit('nextClick', value)
 }
 
-
+function load(row,treeNode,resolve){
+  console.log("row", row)
+  console.log("treeNode", treeNode)
+  console.log("resolve", resolve)
+}
 
 
 onMounted(() => {

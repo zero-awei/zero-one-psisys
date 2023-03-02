@@ -217,6 +217,9 @@ tableData 表格数据中的对象属性需要和items属性中的prop对应
 | border     |  是否有边框          |Boolean       |false
 | maxHeight     |  表格最大高度          |string       |——
 | height     | 表格高度         |string       | ——
+| rowKey     | 当 row 中包含 children 字段时，被视为树形数据。 渲染嵌套数据需要 prop 的 row-key(比如id)         |string       | ——
+| defaultExpandAll     | 是否默认展开所有行，当 Table 包含展开行存在或者为树形表格时有效        |boolean       | false
+| lazy     | 是否懒加载       |boolean       | false
 | headOperation     |  表格头部操作行['add','importData','exportData','select']          |  Array     | ——
 
 headOperation:['add','importData','exportData','select'] 表示有新增按钮、导入导出按钮、共选择xxx项
