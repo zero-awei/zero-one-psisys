@@ -4,6 +4,7 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zeroone.star.login.entity.SysMenu;
 import com.zeroone.star.login.entity.SysRole;
 import com.zeroone.star.login.entity.SysUser;
@@ -30,6 +31,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -180,11 +183,45 @@ public class LoginController implements LoginApis {
 
             currentUser.setRoles(roleNameList);
 
+            /*
+            通过用户名查询机构编码
+             */
+
+            String orgCode = roleService.getOrgCodeByUsername(currentUser.getUsername());
+            currentUser.setOrgCode(orgCode);
+
             //TODO:这里需要根据业务逻辑接口，重新实现
             LoginVO vo = new LoginVO();
             BeanUtil.copyProperties(currentUser, vo);
             return JsonVO.success(vo);
         }
+    }
+
+    @ApiOperation(value = "修改密码")
+    @GetMapping("change-password")
+    @Override
+    public JsonVO<String> changePassword(LoginDTO loginDTO) {
+
+        // 当前用户名
+        String username = loginDTO.getUsername();
+        // 要修改的密码
+        String loginDTOPassword = loginDTO.getPassword();
+
+        // 查询数据库，查看当前密码
+        String currentPassword = userService.getCurrentPassword(username);
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        if (passwordEncoder.matches(loginDTOPassword, currentPassword)) {
+            return JsonVO.fail("修改的密码不能与原密码相同！");
+        }
+
+        String password = passwordEncoder.encode(loginDTOPassword);
+        Boolean isUpdate = userService.updatePassword(username, password);
+        if (isUpdate == true) {
+            return JsonVO.success("修改成功！");
+        }
+        return JsonVO.fail("修改失败！");
     }
 
     @ApiOperation(value = "退出登录")

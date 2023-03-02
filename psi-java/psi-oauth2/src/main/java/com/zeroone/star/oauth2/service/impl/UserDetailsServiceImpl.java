@@ -52,11 +52,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             //2 通过用户ID获取角色列表
             List<SysRole> roles = roleService.listRoleByUserId(user.getId());
 
+            /*
+            通过username查询orgCode
+             */
+            String orgCode = roleService.getOrgCodeByUsername(user.getUsername());
+
             //3 将数据库角色转换成Security权限对象
             List<GrantedAuthority> authorities = new ArrayList<>();
             roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleCode())));
             //4 构建权限角色对象 TODO: 扩展存储对象在这里通过数据库查询获取并注入到SecurityUser对象中
-            return new SecurityUser(user, authorities);
+            return new SecurityUser(user, orgCode, authorities);
 
         } else if (AuthConstant.CLIENT_APP.equals(clientId)) {
             throw new UsernameNotFoundException("用户端查找用户尚未实现");

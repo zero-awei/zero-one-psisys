@@ -30,4 +30,12 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * @return 角色列表
      */
     List<SysRole> selectByMenuPath(String path);
+
+
+    /**
+     * 通过用户名查询机构编码
+     * @param username 用户名
+     * @return 机构编码
+     */
+    String selectOrgCodeByUsername(String username);
 }

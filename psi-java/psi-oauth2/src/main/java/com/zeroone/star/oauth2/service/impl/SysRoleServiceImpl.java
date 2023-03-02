@@ -28,4 +28,8 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
         return baseMapper.selectByMenuPath(path);
     }
 
+    @Override
+    public String getOrgCodeByUsername(String username) {
+        return baseMapper.selectOrgCodeByUsername(username);
+    }
 }

@@ -19,4 +19,8 @@
             in (select role_id from sys_role_menu where menu_id=(
                 select id from sys_menu where url=#{path}))
     </select>
+
+    <select id="selectOrgCodeByUsername" resultType="java.lang.String">
+        SELECT org_code FROM sys_depart WHERE id = (SELECT dept_id FROM sys_user_dept WHERE username = #{username});
+    </select>
 </mapper>

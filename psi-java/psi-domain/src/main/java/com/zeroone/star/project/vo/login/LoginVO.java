@@ -30,4 +30,7 @@ public class LoginVO {
 
     @ApiModelProperty(value = "用户角色列表", example = "['ADMIN','MANAGER']")
     private List<String> roles;
+
+    @ApiModelProperty(value = "机构编码", example = "A01A103")
+    private String orgCode;
 }

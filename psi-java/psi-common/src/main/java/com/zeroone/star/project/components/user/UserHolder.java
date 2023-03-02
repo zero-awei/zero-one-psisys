@@ -51,6 +51,7 @@ public class UserHolder {
                 .username(userJsonObject.getStr("user_name"))
                 .isEnabled(Convert.toBool(1))
                 .roles(Convert.toList(String.class, userJsonObject.get("authorities")))
+                .orgCode(userJsonObject.getStr("org_code"))
                 .build();
     }
 

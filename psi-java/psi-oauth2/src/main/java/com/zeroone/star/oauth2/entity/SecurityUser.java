@@ -27,13 +27,19 @@ public class SecurityUser extends org.springframework.security.core.userdetails.
     private SysUser user;
 
     /**
+     * 关联一个机构编码
+     */
+    private String orgCode;
+
+    /**
      * 构造初始化
      *
      * @param user        数据库的User对象
      * @param authorities 权限列表
      */
-    public SecurityUser(SysUser user, Collection<? extends GrantedAuthority> authorities) {
+    public SecurityUser(SysUser user, String orgCode, Collection<? extends GrantedAuthority> authorities) {
         super(user.getUsername(), user.getPassword(), authorities);
         this.user = user;
+        this.orgCode = orgCode;
     }
 }

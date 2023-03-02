@@ -27,4 +27,12 @@ public interface ISysRoleService extends IService<SysRole> {
      * @return 角色列表
      */
     List<SysRole> listRoleByMenuPath(String path);
+
+    /**
+     * 通过用户名查询机构编码
+     * @param username 用户名
+     * @return 机构编码
+     */
+    String getOrgCodeByUsername(String username);
+
 }
