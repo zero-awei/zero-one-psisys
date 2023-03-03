@@ -1,7 +1,6 @@
 <template>
   <div>
-    <el-button @click="dialogVisible = true">弹出对话框</el-button>
-
+    <button @click="dialogVisible = true">新增弹出框</button>
     <psi-dialog v-model="dialogVisible" :attrs="attrs" @determine="handleConfirm">
 
       <psi-form :items="items" :toggle-items="toggleItems" :formData="formData"></psi-form>
@@ -51,9 +50,22 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRefs } from 'vue'
+import { ref, reactive, toRefs,inject } from 'vue'
 
-let dialogVisible = ref(false)
+/* let data = defineProps({
+	  control:{
+		type:Boolean,
+		default:false
+	}
+})
+let dialogVisible = data.control
+console.log(data.control) */
+
+//调用 inject 函数，通过指定的数据名称获取到父级共享的数据
+/* const dialogVisible = inject("control");
+console.log(dialogVisible)
+ */
+const dialogVisible = ref(false)
 const state = reactive({
   attrs: {
     title: '单据',

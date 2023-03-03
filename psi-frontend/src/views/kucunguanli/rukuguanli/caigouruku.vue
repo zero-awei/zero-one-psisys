@@ -2,35 +2,128 @@
   <!-- 采购入库 -->
   <div>
     <!-- 查询 （高级查询？？？？）-->
-    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
-      @reset="handleReset"></psi-form>
+    <psi-form
+      :items="itemsTop"
+      :formData="formDataTop"
+      :toggleItems="toggleItemsTop"
+      @query="handleQuery"
+      @reset="handleReset"
+    ></psi-form>
   </div>
-  <div style="margin-top:10px">
+  <div style="margin-top: 10px">
     <!-- 表格数据 -->
     <!-- 导入导出 采购入库详情？？？？？？ -->
-    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
-      @add="handleAdd">
+    <psi-table
+      :items="tableItemsCen"
+      :tableData="tableDataCen"
+      :attributesCen="attributes"
+      :pagination="pagination"
+      @add="handleAdd"
+    >
     </psi-table>
-  </div>
 
-  <!-- 弹出框 -->
-  <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
-  </psi-dialog>
-  <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
-  </psi-dialog> -->
+    <!-- <psi-dialog v-model="dialogVisible" :attrs="attrs" @determine="handleConfirm"> -->
+    <!-- 弹出窗口 -->
+    <psi-dialog
+      v-model="dialogVisible"
+      :attrs="attrs"
+      @determine="handleConfirm"
+    >
+      <psi-form
+        :items="items"
+        :toggle-items="toggleItems"
+        :formData="formData"
+      ></psi-form>
+
+      <el-tabs v-model="activeName" class="demo-tabs" style="height: 400px">
+        <el-tab-pane label="采购明细" name="first">
+          <!-- el-table方式 -->
+          <el-button @click="addEl">新增</el-button>
+          <el-table
+            :data="elTableData"
+            height="300px"
+            max-height="300px"
+            border
+          >
+            <el-table-column prop="name" label="el姓名" width="180">
+              <el-input v-model="elTableData.name"></el-input>
+            </el-table-column>
+            <el-table-column prop="age" label="el年龄" width="180">
+              <el-input v-model="elTableData.age"></el-input>
+            </el-table-column>
+            <el-table-column prop="option" label="选项" width="180">
+              <el-select
+                v-model="elTableData.option"
+                class="m-2"
+                placeholder="Select"
+                size="large"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+        <el-tab-pane label="明细" name="two">
+          <!-- psi-table方式 -->
+          <psi-table
+            :items="tableItems"
+            :tableData="tableData"
+            :attributes="attributes"
+            @add="add"
+          >
+            <template v-slot:inputName="slot">
+              <el-input v-model="slot.data.name"></el-input>
+            </template>
+            <template v-slot:inputAge="slot">
+              <el-input v-model="slot.data.age"></el-input>
+            </template>
+            <template v-slot:selectOption="slot">
+              <el-select
+                v-model="slot.data.option"
+                class="m-2"
+                placeholder="Select"
+                size="large"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </template>
+          </psi-table>
+        </el-tab-pane>
+      </el-tabs>
+
+      <psi-form
+        :buttonShow="false"
+        :items="footItems"
+        :formData="footFormData"
+      ></psi-form>
+
+    </psi-dialog>
+  </div>
 </template>
 
 <script setup>
-import { ref, reactive, toRefs, onMounted } from 'vue'
+import { ref, reactive, toRefs, onMounted, provide } from 'vue'
 // 引入方法
-import { } from './api/caigouruku.js'
+import {} from './api/caigouruku.js'
 // 引入日期格式化方法
 import { format } from '@/apis/date/index.js'
 
+const dialogVisible = ref(false)
+
 // 查询表单相关数据及方法
-const formState = reactive({
+const formStateTop = reactive({
   // 查询表单每一项的配置
-  items: [
+  itemsTop: [
     {
       type: 'input',
       label: '单据编号',
@@ -131,7 +224,7 @@ const formState = reactive({
   ],
 
   // 配置数据绑定的字段
-  formData: {
+  formDataTop: {
     billNo: '',
     billStage: '',
     daterange: [],
@@ -142,11 +235,11 @@ const formState = reactive({
     supplierId: ''
   }
 })
-const { items, toggleItems, formData } = toRefs(formState)
+const { itemsTop, toggleItemsTop, formDataTop } = toRefs(formStateTop)
 
-const tableStatus = reactive({
+const tableStatusCen = reactive({
   // table列配置
-  tableItems: [
+  tableItemsCen: [
     {
       label: '单据编号',
       prop: 'name',
@@ -198,7 +291,7 @@ const tableStatus = reactive({
     // }
   ],
   // table 数据
-  tableData: [
+  tableDataCen: [
     {
       date: '2016-05-03',
       name: 'Tom1',
@@ -237,17 +330,17 @@ const tableStatus = reactive({
     }
   ],
   // table 总体配置
-  attributes: {
+  attributesCen: {
     selection: true, //是否多选框
     index: true, // 索引
     border: true, //表格边框
     maxHeight: '400', // 表格最大高度
-    height: '400',    //表格高度
+    height: '400', //表格高度
     headOperation: ['add', 'importData', 'exportData', 'select']
   }
 })
 
-const { tableItems, tableData, attributes } = toRefs(tableStatus)
+const { tableItemsCen, tableDataCen, attributesCen } = toRefs(tableStatusCen)
 
 // 分页相关配置
 const pagination = reactive({
@@ -257,6 +350,13 @@ const pagination = reactive({
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
+
+//弹出框配置
+
+
+
+
+
 
 
 // ------------ 方法 ------------
@@ -298,11 +398,13 @@ function handleQuery(data) {
 function handleReset() {
   //查询表单重置，表格也要刷新
   // doGetTableList()
+  console.log(1)
 }
-
 //新增
 function handleAdd() {
-//弹出采购入库新增组件
+  //弹出采购入库新增组件
+  /* dialogVisible = true
+console.log(dialogVisible) */
 }
 
 //点击页面初始化数据
