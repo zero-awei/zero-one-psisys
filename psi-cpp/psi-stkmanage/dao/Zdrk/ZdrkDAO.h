@@ -3,8 +3,8 @@
 #define _ZDRK_DAO_
 #include "BaseDAO.h"
 #include "../../domain/do/SysDictDO.h"
-#include "../../domain/do/StkIoDO.h"
-#include "../../domain/do/StkIoEntryDO.h"
+#include "../../domain/do/Cgrk/StkIoDO.h"
+#include "../../domain/do/Cgrk/StkIoEntryDO.h"
 #endif //!_ZDRK_DAO_
 
 /**
@@ -31,5 +31,3 @@ public:
 	// 根据单据编号删除所有明细
 	int deleteDetailById(const string& billNo); 
 };
-
-

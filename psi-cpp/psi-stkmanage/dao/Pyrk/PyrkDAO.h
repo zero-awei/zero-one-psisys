@@ -4,6 +4,8 @@
 #include "BaseDAO.h"
 #include "../../domain/do/Cgrk/StkIoDO.h"
 #include "../../domain/do/Cgrk/StkIoEntryDO.h"
+#include "../../domain/vo/Pyrk/QueryPyrkBillDetailsVO.h"
+#include "../../domain/query/Pyrk/QueryPyrkBillListQuery.h"
 
 class PyrkDAO : public BaseDAO {
 public:
@@ -25,5 +27,14 @@ public:
 	int deleteDetailById(const string& billNo, const int& entryNo);
 	// 根据单据编号删除所有明细
 	int deleteDetailById(const string& billNo);
+	
+	//查询单据列表
+	std::list<StkIoDO> selectBillList(const QueryPyrkBillListQuery query);
+
+	//查询单个单据列表信息
+	list<StkIoDO>selectBillListByBillNo(string BillNo);
+
+	//查询单据详细信息
+	list<StkIoEntryDO> selectBillDetails(string billNo);
 };
 #endif

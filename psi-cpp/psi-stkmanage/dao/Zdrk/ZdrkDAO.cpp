@@ -68,7 +68,7 @@ int ZdrkDAO::insert(const StkIoEntryDO& iObj)
 {
 	string sql = "INSERT INTO `stk_io_entry` (`id`,`mid`,`bill_no`,`entry_no`,`material_id`,`batch_no`,`warehouse_id`,`stock_io_direction`,`supplier_id`,`unit_id`,`qty`,`price`,`cost`,`remark`,`custom1`,`custom2`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	return sqlSession->executeUpdate(sql, "%s%s%s%i%s%s%s%s%s%s%d%d%d%s%s%s",
-		iObj.getId(), iObj.getMid(), iObj.getBillNo(), atoi(iObj.getEntryNo().c_str()), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(), iObj.getSupplierId(), iObj.getUnitId(), iObj.getQty(), iObj.getPrice(), iObj.getCost(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
+		iObj.getId(), iObj.getMid(), iObj.getBillNo(), iObj.getEntryNo(), iObj.getMaterialId(), iObj.getBatchNo(), iObj.getWarehouseId(), iObj.getStockIoDirection(), iObj.getSupplierId(), iObj.getUnitId(), iObj.getQty(), iObj.getPrice(), iObj.getCost(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2());
 }
 
 int ZdrkDAO::updateApproval(const StkIoDO& iObj)
@@ -110,7 +110,7 @@ int ZdrkDAO::updateState(const StkIoDO& iObj)
 int ZdrkDAO::update(const StkIoEntryDO& iObj)
 {
     string sql = "UPDATE `stk_io_entry` SET `material_id`=?,`warehouse_id`=?,`unit_id`=?,`qty`=?,`cost`=?,`remark`=?,`custom1`=?,`custom2`=? WHERE `bill_no`=? AND `entry_no`=?";
-    return sqlSession->executeUpdate(sql, "%s%s%s%d%d%s%s%s%s%i", iObj.getMaterialId(), iObj.getWarehouseId(), iObj.getUnitId(), iObj.getQty(), iObj.getCost(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2(), iObj.getBillNo(), atoi(iObj.getEntryNo().c_str()));
+    return sqlSession->executeUpdate(sql, "%s%s%s%d%d%s%s%s%s%i", iObj.getMaterialId(), iObj.getWarehouseId(), iObj.getUnitId(), iObj.getQty(), iObj.getCost(), iObj.getRemark(), iObj.getCustom1(), iObj.getCustom2(), iObj.getBillNo(), iObj.getEntryNo());
 }
 
 int ZdrkDAO::deleteBillById(const string& billNo)
@@ -130,5 +130,4 @@ int ZdrkDAO::deleteDetailById(const string& billNo)
     string sql = "DELETE FROM `stk_io_entry` WHERE `bill_no`=?";
     return sqlSession->executeUpdate(sql, "%s", billNo);
 }
-
 

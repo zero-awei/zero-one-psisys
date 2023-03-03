@@ -13,15 +13,17 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _QUERY_PYRK_BILL_LIST_VO_
-#define _QUERY_PYRK_BILL_LIST_VO_
+
+#ifndef _QUERY_PYRK_BILL_DETAILS_VO_
+#define _QUERY_PYRK_BILL_DETAILS_VO_
 
 #include "../../GlobalInclude.h"
+#include "PyrkBillEntryVO.h"
 
 /**
- * 查询单据列表
+ * 查询单据详细信息
  */
-class QueryPyrkBillListVO
+class QueryPyrkBillDetailsVO
 {
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
@@ -109,11 +111,12 @@ class QueryPyrkBillListVO
 
 
 
+	CC_SYNTHESIZE(list<PyrkBillEntryVO>, entry, Entry);
 
 public:
-	QueryPyrkBillListVO() {
+	QueryPyrkBillDetailsVO() {
 		remark = "";
-		billNo = "PYRK-230101-001";
+		billNo = "PyRK-230101-001";
 		approvalResultType = "123";
 		approvalResultType = "";
 		updateBy = "psi";
@@ -124,7 +127,7 @@ public:
 		billDate = "2023-02-11";
 		srcBillType = "PurOrder";
 		approvalRemark = "";
-		srcNo = "CGDD-230211-005";
+		srcNo = "PyDD-230211-005";
 		updateTime = "2023-02-12 11:35:31";
 		isAuto = 0;
 		isRubric = 0;
@@ -157,12 +160,12 @@ public:
 
 
 
-
+		entry.push_back(PyrkBillEntryVO());
 	}
 	// 绑定JSON转换方法
-	BIND_TO_JSON(QueryPyrkBillListVO, remark, billNo, approvalResultType, updateBy, isEffective, isVoided, billType, approver, billDate, srcBillType, approvalRemark, srcNo, updateTime, isAuto,
+	BIND_TO_JSON(QueryPyrkBillDetailsVO, remark, billNo, approvalResultType, updateBy, isEffective, isVoided, billType, approver, billDate, srcBillType, approvalRemark, srcNo, updateTime, isAuto,
 		isRubric, sysOrgCode, createTime, createBy, srcBillId, effectiveTime, billStage, version, attachment, subject, id, isClosed, bpmiInstanceId, stockIoType, hasRp, hasSwell, supplierId, customerId,
-		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned);
+		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned, entry);
 };
 
-#endif // !_QUERY_CGRK_BILL_LIST_VO_
+#endif // !_QUERY_PyRK_BILL_DETAILS_VO_

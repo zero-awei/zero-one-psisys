@@ -78,7 +78,16 @@
     <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
+    <ClCompile Include="service\Pyrk\PyrkService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\Zdrk\ZdrkDAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dao\CommonDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\dto\Pyrk\DetailDTO.cpp">
@@ -320,13 +329,7 @@
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\Pyrk\ImportPyrkFileDTO.h">
@@ -395,12 +398,6 @@
     <ClInclude Include="domain\do\SysDictDO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="domain\do\StkIoDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\StkIoEntryDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="domain\dto\Zdrk\ApprovalDTO.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -408,6 +405,48 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dao\Zdrk\ZdrkMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\query\Pyrk\QueryPyrkBillDetailsQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="service\Pyrk\PyrkService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Pyrk\PyrkDao.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Zdrk\ZdrkDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\Zdrk\ZdrkMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\PurOrderDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\PurOrderEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\StkIoDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillDetailsVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\vo\Pyrk\PyrkBillEntryVO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\CommonDAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\StringMapper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dao\IntMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

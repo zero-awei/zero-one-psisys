@@ -88,7 +88,7 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 		data2.setId(to_string(sf.nextId()));
 		data2.setMid(mid);
 		data2.setBillNo(dto.getBillNo());
-		data2.setEntryNo(to_string(entry.getEntryNo()));
+		data2.setEntryNo(entry.getEntryNo());
 		data2.setMaterialId(entry.getMaterial());
 		data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
 		data2.setWarehouseId(entry.getWarehouse());
@@ -214,7 +214,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 		list<int> oldEntryNo = cDao.selectEntryNoByBillNo(dto.getBillNo());
 		for (auto& entry : dto.getDetail()) {
 			data2.setBillNo(dto.getBillNo());
-			data2.setEntryNo(to_string(entry.getEntryNo()));
+			data2.setEntryNo(entry.getEntryNo());
 			data2.setMaterialId(entry.getMaterial());
 			data2.setBatchNo((dto.getBillNo() + "-" + to_string(entry.getEntryNo())));
 			data2.setWarehouseId(entry.getWarehouse());
@@ -226,7 +226,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 			data2.setRemark(entry.getRemark());
 			data2.setCustom1(entry.getCustom1());
 			data2.setCustom2(entry.getCustom2());
-			auto it = find(oldEntryNo.begin(), oldEntryNo.end(), atoi(data2.getEntryNo().c_str()));
+			auto it = find(oldEntryNo.begin(), oldEntryNo.end(), data2.getEntryNo());
 			if (it != oldEntryNo.end()) { // 更新原有的明细
 				pDao.update(data2);
 				oldEntryNo.erase(it);

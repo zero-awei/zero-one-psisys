@@ -9,7 +9,7 @@
  * 添加单据传输对象
  */
 class AddZdrkBillDTO : public FileDTO
-{	
+{
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	// 单据日期

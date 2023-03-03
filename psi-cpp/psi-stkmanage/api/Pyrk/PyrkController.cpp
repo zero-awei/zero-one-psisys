@@ -4,15 +4,23 @@
 
 
 
-JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryBillList(const QueryPyrkBillListQuery& query)
+//查询单据列表
+JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryPyrkBillList (const QueryPyrkBillListQuery& query)
 {
-    PageVO<QueryPyrkBillListVO> result;
-    return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+
+	PyrkService service;
+	PageVO<QueryPyrkBillListVO> result = service.listPyrkBillList(query);
+	return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+
+
 }
 
-JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const QueryPyrkBillListQuery& query) {
-    QueryPyrkDetailedBillVO result;
-    return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
+//查看指定单据详细信息
+JsonVO<QueryPyrkBillDetailsVO> PyrkController::execQueryPyrkBillDetails(const QueryPyrkBillDetailsQuery& query)
+{
+	PyrkService service;
+	QueryPyrkBillDetailsVO result = service.getPyrkBillDetails(query);
+	return JsonVO<QueryPyrkBillDetailsVO>(result, RS_SUCCESS);
 }
 
 JsonVO<int> PyrkController::execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload) 

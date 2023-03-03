@@ -200,7 +200,6 @@
     <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\DocFileDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp" />
-    <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\Pyrk\PyrkService.cpp" />
@@ -238,8 +237,6 @@
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h" />
-    <ClInclude Include="domain\do\StkIoDO.h" />
-    <ClInclude Include="domain\do\StkIoEntryDO.h" />
     <ClInclude Include="domain\do\SysDictDO.h" />
     <ClInclude Include="domain\do\SysDictItemDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
@@ -284,6 +281,7 @@
     <ClInclude Include="domain\query\Cgrk\QueryPurOrderListQuery.h" />
     <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\Pyrk\QueryPyrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h" />
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillListQuery.h" />
@@ -299,9 +297,9 @@
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
-    <ClInclude Include="domain\vo\Pyrk\DetailedMessage.h" />
+    <ClInclude Include="domain\vo\Pyrk\PyrkBillEntryVO.h" />
+    <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h" />
-    <ClInclude Include="domain\vo\Pyrk\QueryPyrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ImportQtrkFileVO.h" />
     <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillDetailsVO.h" />

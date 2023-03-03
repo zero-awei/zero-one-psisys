@@ -73,7 +73,6 @@ public:
 		subject = "sgrg";
 		supplierId = "wangwu";
 		handler = "aafef";
-		
 	}
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, QueryQtrkBillDetailsVO& t); // NOLINT

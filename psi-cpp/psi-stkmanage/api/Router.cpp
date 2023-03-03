@@ -115,6 +115,8 @@ void Router::createCgrkRouter()
 //涨吨入库路由
 void Router::createIncreaseTonRouter()
 {
+	BIND_GET_ROUTER(server, "/query-zdrk-bill-list", &ZdrkController::queryZdrkBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-zdrk-bill-details", &ZdrkController::queryZdrkBillDetails, nullptr);
 	BIND_POST_ROUTER(server, "/post-zdrk-bill", &ZdrkController::addZdrkrkBill, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-approval", &ZdrkController::modifyBillApproval, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-zdrk-bill", &ZdrkController::modifyZdrkBill, nullptr);
@@ -178,10 +180,10 @@ void Router::createQtrkRouter()
 //盘盈入库路由
 void Router::createPyrkRouter()
 {
-	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryQueryBillList, nullptr);
-	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryQueryBillDetailed, nullptr);
-	BIND_POST_ROUTER(server, "/post-pyrk-bill", &PyrkController::addBillDetailed, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-pyrk-bill-approval", &PyrkController::modifyBillApproval, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryPyrkBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryPyrkBillDetails, nullptr);
+	BIND_POST_ROUTER(server, "/add-pyrk-bill", &PyrkController::addBillDetailed, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-pyrk-bill", &PyrkController::updateBillDetailed, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-pyrk-bill-by-id", &PyrkController::removePyrkBillById, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-pyrk-bill-state-to-close", &PyrkController::modifyPyrkBillStateToClose, nullptr);

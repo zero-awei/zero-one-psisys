@@ -2,23 +2,24 @@
 #ifndef _PYRK_CONTROLLER_
 #define _PYRK_CONTROLLER_
 
-#include "../psi-stkmanage/domain/vo/JsonVO.h"
-#include "../psi-stkmanage/domain/vo/Message.h"
-#include "../psi-stkmanage/domain/vo/PageVO.h"
+#include "../../domain/vo/JsonVO.h"
+#include "../../domain/vo/Message.h"
+#include "../../domain/vo/PageVO.h"
 #include "../../domain/dto/IDDTO.h"
-#include "../psi-stkmanage/domain/vo/Pyrk/QueryPyrkBillListVO.h"
-#include "../psi-stkmanage/domain/vo/Pyrk/QueryPyrkDetailedBillVO.h"
-#include"../psi-stkmanage/domain/query/Pyrk/QueryPyrkBillListQuery.h"
-#include"../psi-stkmanage/domain/dto/Pyrk/PyrkBillDetailDTO.h"
+#include "../../domain/vo/Pyrk/QueryPyrkBillListVO.h"
+#include "../../domain/vo/Pyrk/QueryPyrkBillDetailsVO.h"
+#include "../../domain/query/Pyrk/QueryPyrkBillListQuery.h"
+#include "../../domain/query/Pyrk/QueryPyrkBillDetailsQuery.h"
+#include "../../domain/dto/Pyrk/PyrkBillDetailDTO.h"
 #include "../../domain/dto/Pyrk/ImportPyrkFileDTO.h"
 #include "../../domain/dto/Pyrk/ApprovalDTO.h"
 
 class PyrkController {
 public:
 	// 查询单据列表
-	CREATE_API_FUN_QUERY(queryQueryBillList, execQueryBillList, QueryPyrkBillListQuery);
+	CREATE_API_FUN_QUERY(queryPyrkBillList, execQueryPyrkBillList, QueryPyrkBillListQuery);
 	// 查询单据详细信息
-	CREATE_API_FUN_QUERY(queryQueryBillDetailed, exeQueryBillDetailed, QueryPyrkBillListQuery);
+	CREATE_API_FUN_QUERY(queryPyrkBillDetails, execQueryPyrkBillDetails, QueryPyrkBillDetailsQuery);
 	// 新增单据详细信息
 	CREATE_API_FUN_JSON_PAYLOAD(addBillDetailed, execAddBillDetailed, PyrkBillDetailDTO);
 	// 审核单据
@@ -34,9 +35,9 @@ public:
 	CREATE_API_FUN_JSON(exportPyrkFile, execExportPyrkFile, StringIDs);
 private:
 	// 查询单据列表
-	JsonVO<PageVO<QueryPyrkBillListVO>> execQueryBillList(const QueryPyrkBillListQuery& query);
+	JsonVO<PageVO<QueryPyrkBillListVO>> execQueryPyrkBillList(const QueryPyrkBillListQuery& query);
 	// 查询单据详细信息
-	JsonVO<QueryPyrkDetailedBillVO> exeQueryBillDetailed(const QueryPyrkBillListQuery& query);
+	JsonVO<QueryPyrkBillDetailsVO> execQueryPyrkBillDetails(const QueryPyrkBillDetailsQuery& query);
 	// 新增单据详细信息
 	JsonVO<int> execAddBillDetailed(const PyrkBillDetailDTO& addMessage, const PayloadDTO& payload);
 	// 审核单据
