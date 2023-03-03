@@ -164,7 +164,7 @@ JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const P
 {
     DepotService service;
     // 创建excel表
-    string filename = CharsetConvertHepler::ansiToUtf8("../../test/test.xlsx");
+    string filename = CharsetConvertHepler::ansiToUtf8("./tmp/depot.xlsx");
     vector<vector<string>> data;
     vector<std::string> head({ "名称", "编号", "助记名", "电话",\
         "启用", "备注", "创建时间","创建人", "修改时间", "修改人" });
@@ -173,7 +173,7 @@ JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const P
     // 查询数据
     if (!service.getData(query, data))
         return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
-    string sheetname = CharsetConvertHepler::ansiToUtf8("test");
+    string sheetname = CharsetConvertHepler::ansiToUtf8("导出仓库数据表");
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器
@@ -194,7 +194,7 @@ JsonVO<string> DepotController::execExportExeclOnly(const OnlyValueQuery& query,
 {
     DepotService service;
     // 创建excel表
-    string filename = CharsetConvertHepler::ansiToUtf8("../../test/testids.xlsx");
+    string filename = CharsetConvertHepler::ansiToUtf8("./tmp/depot_by_ids.xlsx");
     vector<vector<string>> data;
     vector<std::string> head({ "名称", "编号", "助记名", "电话",\
         "启用", "备注", "创建时间","创建人", "修改时间", "修改人" });
@@ -203,7 +203,7 @@ JsonVO<string> DepotController::execExportExeclOnly(const OnlyValueQuery& query,
     // 查询数据
     if (!service.getDataById(query, data))
         return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
-    string sheetname = CharsetConvertHepler::ansiToUtf8("testids");
+    string sheetname = CharsetConvertHepler::ansiToUtf8("导出仓库数据表");
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器

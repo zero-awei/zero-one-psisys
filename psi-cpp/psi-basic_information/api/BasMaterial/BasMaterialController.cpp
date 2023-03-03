@@ -134,7 +134,7 @@ JsonVO<string> BasMaterialController::execExportExecl(const BasMaterialQuery& qu
 {
 	BasMaterialService service;
 	// 创建excel表
-	string filename = "../../test/material.xlsx";
+	string filename = "。/tmp/material.xlsx";
 	vector<vector<string>> data;
 	vector<std::string> header{
 	CharsetConvertHepler::ansiToUtf8("分类id"),

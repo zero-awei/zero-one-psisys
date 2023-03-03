@@ -134,14 +134,14 @@ JsonVO<string> CurrencyController::execExportExecl(const CurrencyQuery& query, c
 {
     CurrencyService service;
     // 创建excel表
-    string filename = u8"../../test/test2.xlsx";
+    string filename = CharsetConvertHepler::ansiToUtf8("./tmp/Currency.xlsx");
     vector<vector<string>> data;
     data.emplace_back(vector<std::string>({ "code", "name", "is_functional", "is_enabled",\
         "create_by", "create_time", "update_by","update_time", "remark" }));
     // 查询数据
     if (!service.getData(query, data))
         return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
-    string sheetname = u8"currency";
+    string sheetname = CharsetConvertHepler::ansiToUtf8("currency");
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器
