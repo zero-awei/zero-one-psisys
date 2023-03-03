@@ -368,7 +368,7 @@
     <ClInclude Include="dao\Cgrk\CgrkDAO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\Cgthck\QueryCgthrkBillListDOMapper.h">
+    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDOMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListReturnDO.h">
@@ -380,7 +380,7 @@
     <ClInclude Include="domain\vo\Cgthck\BillEntryDetailedVO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dao\Cgthck\QueryCgthrkBillListDetailedMapper.h">
+    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDetailedMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\dto\Cgthck\CgthckBillDetailedDTO.h">

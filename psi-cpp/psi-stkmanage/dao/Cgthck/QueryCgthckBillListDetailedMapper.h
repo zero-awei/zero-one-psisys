@@ -5,7 +5,7 @@
 
 #include "Mapper.h"
 #include "../../domain/vo/Cgthck/BillEntryDetailedVO.h"
-class QueryCgthrkBillListDetailedMapper :public Mapper<BillEntryDetailedVO> {
+class QueryCgthckBillListDetailedMapper :public Mapper<BillEntryDetailedVO> {
 public:
 	BillEntryDetailedVO mapper(ResultSet* resultSet) const override
 	{

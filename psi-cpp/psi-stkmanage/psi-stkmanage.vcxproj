@@ -220,8 +220,8 @@
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
     <ClInclude Include="dao\Cgrk\CgrkDAO.h" />
     <ClInclude Include="dao\Cgthck\CgthckDAO.h" />
-    <ClInclude Include="dao\Cgthck\QueryCgthrkBillListDetailedMapper.h" />
-    <ClInclude Include="dao\Cgthck\QueryCgthrkBillListDOMapper.h" />
+    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDetailedMapper.h" />
+    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDOMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDao.h" />
     <ClInclude Include="dao\Pyrk\PyrkMapper.h" />
     <ClInclude Include="dao\Qtrk\QtrkDAO.h" />

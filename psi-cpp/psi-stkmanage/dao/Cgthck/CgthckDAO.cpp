@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CgthckDAO.h"
-#include "QueryCgthrkBillListDOMapper.h"
-#include"QueryCgthrkBillListDetailedMapper.h"
+#include "QueryCgthckBillListDOMapper.h"
+#include"QueryCgthckBillListDetailedMapper.h"
 #include <sstream>
 
 uint64_t CgthckDAO::count(const QueryCgthrkBillListDO& Obj) {
@@ -95,9 +95,9 @@ list<QueryCgthrkBillListReturnDO> CgthckDAO::selectCgthckBillList(const QueryCgt
 		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getEndData())));
 	}
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	QueryCgthrkBillListDOMapper mapper;
+	QueryCgthckBillListDOMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<QueryCgthrkBillListReturnDO, QueryCgthrkBillListDOMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<QueryCgthrkBillListReturnDO, QueryCgthckBillListDOMapper>(sqlStr, mapper, params);
 }
 
 QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const BillDetailedDO& Obj) {
@@ -111,9 +111,9 @@ QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const Bi
 		sql << " AND `bill_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getBillNo())));
 	}
-	QueryCgthrkBillListDetailedMapper mapper;
+	QueryCgthckBillListDetailedMapper mapper;
 	string sqlStr = sql.str();
-	list<BillEntryDetailedVO> entry = sqlSession->executeQuery<BillEntryDetailedVO, QueryCgthrkBillListDetailedMapper>(sqlStr, mapper, params);
+	list<BillEntryDetailedVO> entry = sqlSession->executeQuery<BillEntryDetailedVO, QueryCgthckBillListDetailedMapper>(sqlStr, mapper, params);
 
 	stringstream sql1;
 	sql1 << "SELECT stk_io.bill_no,stk_io.bill_date,stk_io.subject,stk_io.src_no,bas_supplier.`name`,sys_depart.depart_name,operator,cost,settle_amt,settled_amt,invoiced_amt,invoice_type,`handler`,bill_stage,is_effective,is_closed,is_voided,is_auto,is_rubric,stk_io.remark,effective_time,approver, stk_io.create_time, stk_io.create_by, sys_depart.depart_name, stk_io.update_time, stk_io.update_by from stk_io, sys_depart, bas_supplier";
@@ -126,8 +126,8 @@ QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const Bi
 		params1.push_back(SqlParam("s", std::make_shared<string>(Obj.getBillNo())));
 	}
 	sqlStr = sql1.str();
-	QueryCgthrkBillListDOMapper mapper2;
-	list<QueryCgthrkBillListReturnDO> l = sqlSession->executeQuery<QueryCgthrkBillListReturnDO, QueryCgthrkBillListDOMapper>(sqlStr, mapper2, params1);
+	QueryCgthckBillListDOMapper mapper2;
+	list<QueryCgthrkBillListReturnDO> l = sqlSession->executeQuery<QueryCgthrkBillListReturnDO, QueryCgthckBillListDOMapper>(sqlStr, mapper2, params1);
 
 	q.setBillNo(l.front().getBillNo());
 	q.setBillDate(l.front().getBillDate());

@@ -5,7 +5,7 @@
 #include "Mapper.h"
 #include "../../domain/do/Cgthck/QueryCgthrkBillListReturnDO.h"
 
-class QueryCgthrkBillListDOMapper : public Mapper<QueryCgthrkBillListReturnDO> {
+class QueryCgthckBillListDOMapper : public Mapper<QueryCgthrkBillListReturnDO> {
 public:
 	QueryCgthrkBillListReturnDO mapper(ResultSet* resultSet) const override
 	{
