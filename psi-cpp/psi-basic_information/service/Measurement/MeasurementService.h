@@ -21,8 +21,8 @@
 #define _MEASUREMENT_SERVICE_
 #include <list>
 #include "../../domain/vo/Measurement/MeasurementVo.h"
+#include "../../domain/query/Measurement/MeasurementQuery.h"
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/query/measurement/MeasurementQuery.h"
 #include "../../domain/dto/Measurement/MeasurementDTO.h"
 
 /**

@@ -17,7 +17,5 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "../../domain/do/Measurement/MeasurementDO.h"
 #include "MeasurementService.h"
-#include "../../dao/Measurement/MeasurementDao.h"
 

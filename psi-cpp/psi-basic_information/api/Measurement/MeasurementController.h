@@ -22,8 +22,8 @@
 
 #include "../../domain/query/Measurement/MeasurementQuery.h"
 #include "../../domain/dto/Measurement/MeasurementDTO.h"
+#include "../../domain/vo/Measurement/MeasurementVo.h"
 #include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/Measurement/MeasurementVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 

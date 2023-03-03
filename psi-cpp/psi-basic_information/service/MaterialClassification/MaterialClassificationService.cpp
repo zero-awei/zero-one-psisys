@@ -113,6 +113,7 @@ PageVO<MaterialClassificationBaseVO> MaterialClassificationService::listAll(cons
 		pages.setRows(vr);
 		return pages;
 	}
+	return pages;
 }
 
 //查询子类列表,前提是父类确定存在
