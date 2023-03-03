@@ -1,6 +1,6 @@
 /***
  * 根节点url 路径定义不同
- *
+ * 对应public.js中的编辑等公共模块
  */
 
 //付款管理
@@ -8,6 +8,7 @@ import Request from '../request'
 
 // 定义一个功能模块基础url，方便替换
 const currBaseUrl = '/purchase-payment'
+
 // 删除单据
 export function deleteList(data, success, fail) {
     Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)

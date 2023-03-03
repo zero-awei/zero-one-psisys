@@ -1,8 +1,7 @@
-// 应付与管理
-//付款管理
 import Request from '../request'
 
 // 定义一个功能模块基础url，方便替换
+
 const currBaseUrl = '/paymentmanagement'
 
 // j5.2(采购付款-有申请)付款申请查询
