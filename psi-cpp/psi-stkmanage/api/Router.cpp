@@ -178,8 +178,8 @@ void Router::createQtrkRouter()
 //≈Ã”Ø»Îø‚¬∑”…
 void Router::createPyrkRouter()
 {
-	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryQueryBillList, nullptr);
-	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryQueryBillDetailed, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-list", &PyrkController::queryPyrkBillList, nullptr);
+	BIND_GET_ROUTER(server, "/query-pyrk-bill-details", &PyrkController::queryPyrkBillDetails, nullptr);
 	BIND_POST_ROUTER(server, "/add-pyrk-bill", &PyrkController::addBillDetailed, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-pyrk-bill", &PyrkController::updateBillDetailed, nullptr);
 	BIND_DEL_ROUTER(server, "/delete-pyrk-bill-by-id", &PyrkController::removePyrkBillById, nullptr);

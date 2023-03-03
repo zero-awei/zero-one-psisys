@@ -93,11 +93,15 @@ class StkIoDO
 	//已作废
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 	//制单部门
-	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);	
+	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
 	//制单人
 	CC_SYNTHESIZE(string, createBy, CreateBy);
 	//制单时间
 	CC_SYNTHESIZE(string, createTime, CreateTime);
+	//修改人
+	CC_SYNTHESIZE(string, updateBy, UpdateBy);
+	//修改时间
+	CC_SYNTHESIZE(string, updateTime, UpdateTime);
 	//版本
 	CC_SYNTHESIZE(string, version, Version);
 

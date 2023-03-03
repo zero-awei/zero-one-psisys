@@ -1,24 +1,26 @@
 #include "stdafx.h"
 #include "PyrkController.h"
+#include "../../service/Pyrk/PyrkService.h"
 
 
 
-JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryBillList(const QueryPyrkBillListQuery& query)
-{	
-	//PageVO<QueryPyrkBillListVO> result;   // 测试 
-	//list<QueryPyrkBillListVO> rows;
-	//rows.push_back(QueryPyrkBillListVO());
-	//result.setRows(rows);
-	//return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
+//查询单据列表
+JsonVO<PageVO<QueryPyrkBillListVO>> PyrkController::execQueryPyrkBillList (const QueryPyrkBillListQuery& query)
+{
+
+	PyrkService service;
+	PageVO<QueryPyrkBillListVO> result = service.listPyrkBillList(query);
+	return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
 
 
-   PageVO<QueryPyrkBillListVO> result;    
-   return JsonVO<PageVO<QueryPyrkBillListVO>>(result, RS_SUCCESS);
 }
 
-JsonVO<QueryPyrkDetailedBillVO> PyrkController::exeQueryBillDetailed(const QueryPyrkBillListQuery& query) {
-	QueryPyrkDetailedBillVO result;
-    return JsonVO<QueryPyrkDetailedBillVO>(result, RS_SUCCESS);
+//查看指定单据详细信息
+JsonVO<QueryPyrkBillDetailsVO> PyrkController::execQueryPyrkBillDetails(const QueryPyrkBillDetailsQuery& query)
+{
+	PyrkService service;
+	QueryPyrkBillDetailsVO result = service.getPyrkBillDetails(query);
+	return JsonVO<QueryPyrkBillDetailsVO>(result, RS_SUCCESS);
 }
 
 JsonVO<int> PyrkController::exeAddBillDetailed(const PyrkBillDetailDTO& addMessage) {

@@ -22,22 +22,14 @@ if (obj.getAge() != -1) { \
 
 uint64_t ZdrkDAO::count(const queryZdrkBillListDO & iObj)
 {
-	stringstream sql;
-	sql << "SELECT COUNT(*) FROM sample";
-	SAMPLE_TERAM_PARSE(iObj, sql);
-	string sqlStr = sql.str();
-	return sqlSession->executeQueryNumerical(sqlStr, params);
+	uint64_t a = 1;
+	return a;
 }
 
 std::list<queryZdrkBillListDO> ZdrkDAO::selectWithPage(const queryZdrkBillListDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
-	stringstream sql;
-	sql << "SELECT * FROM sample";
-	SAMPLE_TERAM_PARSE(obj, sql);
-	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
-	SampleMapper mapper;
-	string sqlStr = sql.str();
-	return sqlSession->executeQuery<queryZdrkBillListDO, ZdrkMapper>(sqlStr, mapper, params);
+	list<queryZdrkBillListDO> result;
+	return result;
 }
 
 
