@@ -1,3 +1,4 @@
+
 <template>
   <!-- 采购退货出库 -->
   <div>
@@ -14,10 +15,10 @@
   </div>
 
   <!-- 弹出框 -->
-  <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
+<!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
   </psi-dialog>
   <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
-  </psi-dialog> -->
+    </psi-dialog> -->
 </template>
 
 <script setup>
@@ -302,7 +303,7 @@ function handleReset() {
 
 //新增
 function handleAdd() {
-//弹出采购退货出库新增组件
+  //弹出采购退货出库新增组件
 }
 
 //点击页面初始化数据

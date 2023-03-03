@@ -24,7 +24,6 @@
         </el-col>
       </el-row>
     </div>
-    <SearchCom />
   </div>
 </template>
 
@@ -45,7 +44,6 @@
 </style>
 
 <script>
-import SearchCom from '@/components/Home/SearchCom.vue'
 import CenterCom1 from "@/components/Home/CenterCom1.vue"
 import CenterTabCom from "@/components/Home/CenterTabCom.vue"
 import CenterDivCom from "@/components/Home/CenterDivCom.vue"
@@ -57,7 +55,6 @@ export default {
     // NavHeadCom,
     CenterPicCom,
     CenterDivCom,
-    SearchCom
   },
   data() {
     return {

@@ -173,7 +173,7 @@ function handleNextClickChange(value) {
 
 </script>
 
-<style></style>
+<style scoped></style>
 ```
 
 ## psi-table 属性

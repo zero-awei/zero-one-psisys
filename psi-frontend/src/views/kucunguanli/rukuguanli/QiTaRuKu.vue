@@ -286,7 +286,7 @@ function handleReset() {
 
 //新增
 function handleAdd() {
-//弹出其他入库新增组件
+  //弹出其他入库新增组件
 }
 
 //点击页面初始化数据

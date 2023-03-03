@@ -124,12 +124,12 @@ export default {
           }
         },
       }
-      axios.get(".././testData.json").then(
-        res => {
-          // // console.log(res.data)
-          // let datalist=JSON.parse(res.data)
-        }
-      )
+      // axios.get(".././testData.json").then(
+      //   res => {
+      //     // // console.log(res.data)
+      //     // let datalist=JSON.parse(res.data)
+      //   }
+      // )
       myEcharts.setOption(option1);
       myEcharts.setOption(
         {
@@ -252,4 +252,5 @@ div {
   text-overflow: ellipsis;
   color: black;
   font-size: 16px;
-}</style>
+}
+</style>

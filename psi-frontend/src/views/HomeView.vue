@@ -1,23 +1,19 @@
-<!--
- * @Author: 160405103 1348313766@qq.com
- * @Date: 2023-02-22 22:31:41
- * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-25 16:23:01
- * @FilePath: \psi-frontend\src\views\HomeView.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template>
   <div class="layout-container">
     <el-container>
       <!-- 左侧侧边栏 -->
-      <el-aside>
-        <div class="logo-box" style="background-color: #1890ff">
+      <el-aside :class="{ 'dark-aside': isDarkThem }">
+        <!-- background-color: #ffffff -->
+        <div class="logo-box" style="">
           <el-image style="width: 28px; height: 32px" :src="url"></el-image>
-          <span class="manage-title" v-show="collapse = !collapse">进销存</span>
+          <span class="manage-title" v-if="collapse = !collapse">进销存</span>
         </div>
         <!-- 使用自定义侧边菜单组件 -->
         <!-- <AsideCom /> -->
-        <test :label="collapse = !collapse" />
+        <div class="menu-class">
+          <test :label="collapse = !collapse" />
+          <!-- <Menu :label="collapse = !collapse" :menuList="menus"></Menu> -->
+        </div>
         <!-- @selectChange='addTab' -->
         <!-- 默认true -->
       </el-aside>
@@ -26,18 +22,17 @@
       <el-container>
         <!-- 导航栏 -->
         <!-- 头部 -->
-        <el-header>
-        <el-icon size="30" @click="collapse = !collapse" color="white">
-          <!-- <Fold /> -->
+        <el-header style="">
+          <el-icon size="30" @click="collapse = !collapse" style="color:#1890ff">
+            <!-- <Fold /> -->
             <component :is="headerleft"></component>
           </el-icon>
-          <HeadSideCom />
+          <HeadSideCom>
+
+
+          </HeadSideCom>
         </el-header>
-
-        <!-- <div class="tag">
-                                                                                                                                                                                                                      <NavHeadCom />
-                                                                                                                                                                                                                    </div> -->
-
+        <!--  style="background-color: #363637;" -->
         <el-main>
           <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs" @tab-remove="removeTab"
             @tab-click="tabClick">
@@ -47,15 +42,18 @@
               <!-- :closable="item.title != '首页'" -->
             </el-tab-pane>
           </el-tabs>
-          <el-card>
-            <!-- 布局路由 -->
-            <!-- KeepAlive 不会用 -->
-            <!-- <KeepAlive> -->
-            <router-view />
+          <!-- <el-card> -->
+          <!-- 布局路由 -->
+          <!-- KeepAlive 不会用 -->
+          <!-- <KeepAlive> -->
+          <div class="right-main">
+            <el-card>
+              <router-view />
+            </el-card>
+          </div>
+          <!-- </KeepAlive> -->
 
-            <!-- </KeepAlive> -->
-
-          </el-card>
+          <!-- </el-card> -->
         </el-main>
       </el-container>
     </el-container>
@@ -63,12 +61,14 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, } from 'vue'
+import { storeToRefs } from 'pinia'
 import { userStore } from '../stores/user'
 import { pathStore } from '../stores/path'
+import { themeStore } from '@/stores/theme'
 import { useRouter } from 'vue-router'
 //引入图标
-import { Fold, Expand } from '@element-plus/icons-vue'
+import { Fold, Expand, Sunny, MoonNight } from '@element-plus/icons-vue'
 //导入侧边栏组件 @代表src路径
 // import AsideCom from "@/components/Home/AsideCom.vue"
 import test from '@/components/home/test.vue'
@@ -79,16 +79,18 @@ import HeadSideCom from "@/components/Home/HeadSideCom.vue"
 //导入面包屑 
 import NavHeadCom from "@/components/Home/NavHeadCom.vue"
 
+import { useDark, useToggle } from '@vueuse/core'
 const store = userStore()
 const pathstore = pathStore()
 
-
+const isDark = useDark()
+// let themIsDark = themStore.getIsDark
 export default {
   data() {
     return {
       url: File,
       collapse: false,
-      label: true
+      label: true,
     }
   },
   //计算属性
@@ -97,9 +99,8 @@ export default {
       return this.collapse ? 'Expand' : 'Fold'
     },
     asideWidth() {
-      return this.collapse ? "80px" : "230px"
+      return this.collapse ? "60px" : "200px"
     },
-
   },
   //注册组件
   components: {
@@ -111,6 +112,16 @@ export default {
     NavHeadCom
   },
   setup() {
+    // 亮色、黑暗模式选择
+    const switchMode = ref(true)
+    const isDarkThem = ref(false)
+    const themStore = themeStore()
+    const { isDarkTheme } = storeToRefs(themStore)
+    const subscribe = themStore.$subscribe((mutation, state) => {
+      console.log('77777777', state.isDarkTheme)
+      isDarkThem.value = state.isDarkTheme
+
+    })
     // 标签页相关
     const editableTabsValue = ref('1')
     const editableTabs = ref([
@@ -245,6 +256,9 @@ export default {
       //   editableTabsValue.value = tabItem.name
       // }
     }
+
+    const menus = ref([])
+    menus.value = store.getMenus
     return {
       editableTabsValue,
       editableTabs,
@@ -254,7 +268,10 @@ export default {
       pathList,
       pathIdSet,
       // lastPath,
-      handleTabs
+      handleTabs,
+      menus,
+      switchMode,
+      isDarkThem
     }
   },
   watch: {
@@ -271,6 +288,17 @@ export default {
       handler(newVal) {
         // // console.log('监听lastPath-------------------', newVal);
       }
+    },
+    // themIsDark: {
+    //   handler(newVal) {
+    //     console.log('监听themStore-------------------', newVal);
+    //   }
+    // }
+  },
+  methods: {
+    switchThemes() {
+      const toggleDark = useToggle(isDark)
+      console.log(toggleDark())
     }
   }
 }
@@ -285,10 +313,10 @@ export default {
 
   //  background-color:rgba(226, 225, 225, 0.03);
   .el-aside {
-    background-color: #fff;
+    // background-color: #fff;
     //直接将计算属性的值拿过来
     width: v-bind(asideWidth);
-    // overflow: hidden;
+    overflow: hidden;
     transition: all 0.3s;
 
     .logo-box {
@@ -303,7 +331,7 @@ export default {
       }
 
       .manage-title {
-        color: #fff;
+        color: #1890ff;
         font-size: 18px;
         left: 10px;
         margin: 0 0 0 8px;
@@ -315,7 +343,8 @@ export default {
 }
 
 .el-header {
-  background-color: #1890ff;
+  // background-color: #1890ff;
+  // background-color: #363637;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -329,36 +358,49 @@ export default {
 }
 
 
-.el-header {
-  background-color: #1890ff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .el-icon {
-    top: 2px;
-    width: 2em;
-    height: 2em;
-    color: white;
-  }
-}
-
-.el-header {
-  background-color: #1890ff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .el-icon {
-    top: 2px;
-    width: 2em;
-    height: 2em;
-    color: white;
-  }
-}
 
 :deep(.el-main) {
   --el-main-padding: 10px;
+}
+
+:deep(.demo-tabs) {
+  height: 40px;
+}
+
+:deep(.el-menu) {
+  border: none;
+}
+
+
+
+.right-main {
+  background-color: #f2eeee80;
+  padding: 7px;
+}
+
+.menu-class {
+  height: 100%;
+  // overflow: scroll;
+}
+
+.dark-aside {
+  background-color: #1c1c1d;
+
+  span {
+    color: white;
+  }
+
+  .menu-class {
+    background-color: #1c1c1d;
+  }
+
+  :deep(.el-sub-menu__title) {
+    background-color: #1c1c1d !important;
+  }
+
+  :deep(.el-menu-item) {
+    background-color: #1c1c1d !important;
+  }
 }
 </style>
 

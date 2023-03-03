@@ -30,7 +30,7 @@ function confirm(){
 }
 </script>
 
-<style></style>
+<style scoped></style>
 ```
 
 ## psi-dialog 属性
