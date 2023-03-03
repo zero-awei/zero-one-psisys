@@ -7,12 +7,12 @@
 */
 class ExportCgthckFileDTO
 {
-	CC_SYNTHESIZE(std::list<std::string>, ids, Ids);
+	CC_SYNTHESIZE(std::string, billNo, BillNo);
 public:
 	// 绑定Json转换方法
 	friend void from_json(const json& j, ExportCgthckFileDTO& t)
 	{
-		BIND_FROM_TO_OBJ(j, t, ids, std::list<std::string>);
+		BIND_FROM_TO_NORMAL(j, t, billNo);
 	}
 };
 

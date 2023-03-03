@@ -60,6 +60,12 @@
     <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="domain\dto\Qtrk\ModifyQtrkBillDTO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -76,30 +82,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="domain\query\Pyrk\QueryPyrkBillListQuery.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\Pyrk\PyrkService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\Cgthck\CgthckService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="dao\Cgthck\CgthckDAO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\Cgrk\CgrkService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="dao\Cgrk\CgrkDAO.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="service\Qtrk\QtrkService.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="dao\Qtrk\QtrkDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -336,72 +318,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="service\Pyrk\PyrkService.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="service\Cgthck\CgthckService.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Pyrk\PyrkDao.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Pyrk\PyrkMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Cgthck\CgthckDAO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Cgthck\SysUserRoleDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="service\Cgrk\CgrkService.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Cgrk\ModifyCgrkBillStatusDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Cgrk\CgrkDAO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDOMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListReturnDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Cgthck\QueryCgthrkDetailedBillVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\vo\Cgthck\BillEntryDetailedVO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDetailedMapper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\dto\Cgthck\CgthckBillDetailedDTO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillDetailedReturnDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Cgthck\BillDetailedDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="service\Qtrk\QtrkService.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\ModifyQtrkBillStatusDO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dao\Qtrk\QtrkDAO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="domain\do\Qtrk\DeleteBill.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
