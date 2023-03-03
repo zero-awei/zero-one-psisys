@@ -8,7 +8,6 @@ import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 import com.zeroone.star.project.vo.prepayment.ReqVO;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 
 /**
  * <p>

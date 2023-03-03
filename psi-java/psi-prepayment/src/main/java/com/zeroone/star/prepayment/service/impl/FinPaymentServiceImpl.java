@@ -18,27 +18,12 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
 import java.time.LocalDateTime;
-import java.util.Date;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.prepayment.entity.FinPayment;
-import com.zeroone.star.prepayment.entity.FinPaymentEntry;
-import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
-import com.zeroone.star.prepayment.service.IFinPaymentEntryService;
-import com.zeroone.star.prepayment.service.IFinPaymentService;
-import com.zeroone.star.project.dto.prepayment.FinPaymentEntryDTO;
 import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
 
 /**

@@ -1,5 +1,4 @@
 package com.zeroone.star.prepayment.service.impl;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,29 +11,9 @@ import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
 import com.zeroone.star.project.vo.prepayment.ReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.prepayment.entity.FinPaymentReq;
-import com.zeroone.star.prepayment.mapper.FinPaymentReqMapper;
-import com.zeroone.star.prepayment.service.IFinPaymentReqService;
-import org.springframework.stereotype.Service;
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.prepayment.entity.FinPaymentReq;
-import com.zeroone.star.prepayment.mapper.FinPaymentReqMapper;
-import com.zeroone.star.prepayment.service.IFinPaymentReqService;
 import com.zeroone.star.project.query.prepayment.FinPaymentReqQuery;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.FinPaymentReqVO;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.time.LocalDate;
-import java.util.List;
 /**
- * @Author: Kong
+ * Author: Kong
  */
 
 @Service

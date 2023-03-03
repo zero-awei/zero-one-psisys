@@ -4,10 +4,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.PurOrderVO;
-
-import com.zeroone.star.project.query.prepayment.PurchaseListQuery;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.PurOrderVO;
 import org.springframework.stereotype.Component;
 
 /**
