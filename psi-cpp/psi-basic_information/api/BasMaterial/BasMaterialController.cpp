@@ -161,7 +161,12 @@ JsonVO<string> BasMaterialController::execExportExecl(const BasMaterialQuery& qu
 	ExcelComponent excel;
 	excel.writeVectorToFile(filename, sheetname, data);
 	// 上传到文件服务器
-	FastDfsClient client("1.15.240.108");
+	#ifdef LINUX
+		FastDfsClient client("conf/client.conf", 3);
+	#else
+		FastDfsClient client("1.15.240.108");
+
+	#endif // #ifdef LINUX
 	filename = client.uploadFile(filename);
 	JsonVO<std::string> result(filename, RS_SUCCESS);
 	//响应结果

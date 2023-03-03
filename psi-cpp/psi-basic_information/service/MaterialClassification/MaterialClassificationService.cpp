@@ -389,7 +389,12 @@ string  MaterialClassificationService::exportData(const string& id,const Payload
 	ExcelComponent excel;
 	excel.writeVectorToFile(fileName, sheetName, data);
 	// 上传到文件服务器
-	FastDfsClient client("1.15.240.108");
+	#ifdef LINUX
+		FastDfsClient client("conf/client.conf", 3);
+	#else
+		FastDfsClient client("1.15.240.108");
+
+	#endif // #ifdef LINUX
 	fileName = client.uploadFile(fileName);
 
 	return fileName;

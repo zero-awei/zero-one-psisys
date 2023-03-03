@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "DepotService.h"
-#include "../../../lib-common/include/SnowFlake.h"
+
 
 const int datacenterId = 1;
 const int machineId = 2;

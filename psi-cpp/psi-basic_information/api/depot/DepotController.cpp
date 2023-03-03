@@ -177,7 +177,13 @@ JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const P
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器
+#ifdef LINUX
+    FastDfsClient client("conf/client.conf", 3);
+#else
     FastDfsClient client("1.15.240.108");
+
+#endif // #ifdef LINUX
+
     filename = client.uploadFile(filename);
     JsonVO<std::string> result(filename, RS_SUCCESS);
     //响应结果
@@ -201,7 +207,12 @@ JsonVO<string> DepotController::execExportExeclOnly(const OnlyValueQuery& query,
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器
+#ifdef LINUX
+    FastDfsClient client("conf/client.conf", 3);
+#else
     FastDfsClient client("1.15.240.108");
+
+#endif // #ifdef LINUX
     filename = client.uploadFile(filename);
     JsonVO<std::string> result(filename, RS_SUCCESS);
     //响应结果

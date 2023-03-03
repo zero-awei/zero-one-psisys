@@ -145,7 +145,12 @@ JsonVO<string> CurrencyController::execExportExecl(const CurrencyQuery& query, c
     ExcelComponent excel;
     excel.writeVectorToFile(filename, sheetname, data);
     // 上传到文件服务器
-    FastDfsClient client("1.15.240.108");
+    #ifdef LINUX
+        FastDfsClient client("conf/client.conf", 3);
+    #else
+        FastDfsClient client("1.15.240.108");
+
+    #endif // #ifdef LINUX
     filename = client.uploadFile(filename);
     if (filename == "") return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
     JsonVO<std::string> result(filename, RS_SUCCESS);
