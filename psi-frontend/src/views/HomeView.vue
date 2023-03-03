@@ -171,21 +171,26 @@ export default {
     function removeTab(targetName) {
 
       const tabs = editableTabs.value
-      // // console.log("标签关闭前editableTabs", tabs)
-      let activeName = editableTabsValue.value
-      // // console.log("标签关闭前activeName", activeName)
+      // console.log("标签关闭前editableTabs", tabs)
+      // [ { title: '首页', name: 'Home', href: '/home', id: 0 }]
+      let activeName = editableTabsValue.value  // menus的name
+      // console.log("标签关闭前activeName", activeName)
       // // console.log("标签关闭前targetName", targetName)
+      let removeId = ''
       if (activeName === targetName) {
         // 如果要关闭的tab和已经激活的tab是同一个
         tabs.forEach((tab, index) => {
           if (tab.name === targetName) {
-            const removeId = tab.id
-            const nextTab = tabs[index + 1] || tabs[index - 1]
+            removeId = tab.id
+            // 前后随机选一个跳转
+            // const nextTab = tabs[index + 1] || tabs[index - 1]
+            // 选一个跳转
+            const nextTab = tabs[index - 1]
             if (nextTab) {
               activeName = nextTab.name
               // // console.log("nextTab", nextTab)
-              $router.push(nextTab.href)
               pathstore.removePathIdSet(removeId)
+              $router.push(nextTab.href)
             }
           }
         })
@@ -195,6 +200,7 @@ export default {
       // // console.log("标签关闭后activeName", activeName)
       editableTabsValue.value = activeName
       editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
+      pathstore.removePathIdSet(removeId)
       // // console.log("结束editableTabs", editableTabs)
       // $router.push()
     }
@@ -217,12 +223,14 @@ export default {
 
     // // console.log("---------pathstore.getPathIdSet-------------", pathIdSet)
     function handleTabs(list) {
+      console.log("关闭时")
       let nextTab = list[list.length - 1]
-      // // console.log("---------pathIdSet-------------", pathIdSet)
-      // console.log("---------nextTab-------------", nextTab)
+      console.log("---------pathIdSet-------------", pathIdSet)
+      console.log("---------nextTab-------------", nextTab)
       const pathIdList = [...pathIdSet]
       // pathIdSet 和 pathList是同步更新，所以pathIdSet.has(nextTab.id)一定为true
-      if (pathIdList[pathIdList.length - 1] === nextTab.id) {
+      // if (pathIdList[pathIdList.length - 1] === nextTab.id) {
+      if (!pathIdSet.has(nextTab.id)) {
         // 如果是同步更新，说明是新的标签页
         let tabItem = {}
         tabItem.title = nextTab.text
@@ -234,7 +242,7 @@ export default {
           editableTabs.value.push(tabItem)
           editableTabsValue.value = tabItem.name
         }
-
+        pathstore.addPathIdSet(tabItem.id)
       } else if (pathIdSet.has(nextTab.id)) {
         // 如果不同步，而且已经打开了这个路由，激活该tab,
         editableTabsValue.value = nextTab.name
@@ -283,12 +291,12 @@ export default {
         this.handleTabs(newVal)
       }
     },
-    lastPath: {
-      deep: true,
-      handler(newVal) {
-        // // console.log('监听lastPath-------------------', newVal);
-      }
-    },
+    // lastPath: {
+    //   deep: true,
+    //   handler(newVal) {
+    //     // // console.log('监听lastPath-------------------', newVal);
+    //   }
+    // },
     // themIsDark: {
     //   handler(newVal) {
     //     console.log('监听themStore-------------------', newVal);
