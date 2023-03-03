@@ -11,7 +11,7 @@
 #include"../../domain/do/Cgthck/QueryCgthrkBillDetailedReturnDO.h"
 
 #include"list"
-class CgthrkDao : public BaseDAO {
+class CgthckDAO : public BaseDAO {
 public:
 	// 统计数据条数
 	uint64_t count(const QueryCgthrkBillListDO& Obj);

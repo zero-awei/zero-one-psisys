@@ -4,7 +4,7 @@
 #include "BaseDAO.h"
 #include"domain/do/Qtrk/ModifyQtrkBillStatusDO.h"
 #include"domain/do/Qtrk/DeleteBill.h"
-class QtrkDao : public BaseDAO {
+class QtrkDAO : public BaseDAO {
 public:
 	int updataBillStatus(const ModifyQtrkBillStatusDO& doObject);
 

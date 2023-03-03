@@ -9,7 +9,7 @@ bool QtrkService::updataBillStatus(const ModifyQtrkBillDTO& dto) {
 	data.setIsVoided(dto.getIsVoided());
 
 	//执行数据修改
-	QtrkDao cd;
+	QtrkDAO cd;
 	return cd.updataBillStatus(data) == 1;
 }
 bool QtrkService::deleteBill(const DeleteQtrkBillDTO& dto) {
@@ -18,6 +18,6 @@ bool QtrkService::deleteBill(const DeleteQtrkBillDTO& dto) {
 	data.setId(dto.getId());
 
 	//执行数据修改
-	QtrkDao cd;
+	QtrkDAO cd;
 	return cd.deleteBill(data) == 1;
 }

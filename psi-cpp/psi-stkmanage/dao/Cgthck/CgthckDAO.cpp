@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "CgthrkDao.h"
+#include "CgthckDAO.h"
 #include "QueryCgthrkBillListDOMapper.h"
 #include"QueryCgthrkBillListDetailedMapper.h"
 #include <sstream>
 
-uint64_t CgthrkDao::count(const QueryCgthrkBillListDO& Obj) {
+uint64_t CgthckDAO::count(const QueryCgthrkBillListDO& Obj) {
 	stringstream sql;
 		sql << "SELECT COUNT(*) FROM stk_io,sys_depart,bas_supplier";//需要多表联查（待修改）
 	
@@ -52,7 +52,7 @@ uint64_t CgthrkDao::count(const QueryCgthrkBillListDO& Obj) {
 		return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-list<QueryCgthrkBillListReturnDO> CgthrkDao::selectCgthckBillList(const QueryCgthrkBillListDO& Obj, uint64_t pageIndex, uint64_t pageSize) {
+list<QueryCgthrkBillListReturnDO> CgthckDAO::selectCgthckBillList(const QueryCgthrkBillListDO& Obj, uint64_t pageIndex, uint64_t pageSize) {
 	stringstream sql;
 	sql << "SELECT stk_io.bill_no,stk_io.bill_date,stk_io.subject,stk_io.src_no,bas_supplier.`name`,sys_depart.depart_name,operator,cost,settle_amt,settled_amt,invoiced_amt,invoice_type,`handler`,bill_stage,is_effective,is_closed,is_voided,is_auto,is_rubric,stk_io.remark,effective_time,approver, stk_io.create_time, stk_io.create_by, sys_depart.depart_name, stk_io.update_time, stk_io.update_by from stk_io, sys_depart, bas_supplier";
 
@@ -100,7 +100,7 @@ list<QueryCgthrkBillListReturnDO> CgthrkDao::selectCgthckBillList(const QueryCgt
 	return sqlSession->executeQuery<QueryCgthrkBillListReturnDO, QueryCgthrkBillListDOMapper>(sqlStr, mapper, params);
 }
 
-QueryCgthrkBillDetailedReturnDO CgthrkDao::selectCgthckBillListDetailed(const BillDetailedDO& Obj) {
+QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const BillDetailedDO& Obj) {
 	QueryCgthrkBillDetailedReturnDO q;
 	stringstream sql;
 	sql << "SELECT src_entry_id, material_id,batch_no, warehouse_id,unit_id,qty,tax_rate,price,discount_rate,tax,settle_amt,settle_qty,expense,invoiced_amt,invoiced_qty,invoiced_amt,remark,custom1,custom2 FROM `stk_io_entry`";

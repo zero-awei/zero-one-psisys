@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CgthrkService.h"
 #include"domain/do/Cgthck/QueryCgthrkBillListDO.h"
-#include"../../dao/Cgthrk/CgthrkDao.h"
+#include"../../dao/Cgthck/CgthckDAO.h"
 
 PageVO<QueryCgthckBillVO> CgthrkService::queryAllFitBill(const QueryCgthckBillQuery& query) {
 	//构建返回对象
@@ -19,7 +19,7 @@ PageVO<QueryCgthckBillVO> CgthrkService::queryAllFitBill(const QueryCgthckBillQu
 	obj.setIsClosed(query.getIsClosed());
 	obj.setIsEffective(query.getIsEff());
 	obj.setIsVoided(query.getIsVoided());
-	CgthrkDao dao;
+	CgthckDAO dao;
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
 	{
@@ -75,7 +75,7 @@ QueryCgthrkDetailedBillVO CgthrkService::queryBillDetial(const CgthckBillDetaile
 
 	BillDetailedDO obj; //这是查询数据库的条件  封装成类
 	obj.setBillNo(query.getBillNo());
-	CgthrkDao dao;
+	CgthckDAO dao;
 
 	QueryCgthrkBillDetailedReturnDO sub = dao.selectCgthckBillListDetailed(obj);
 	//分页查询数据

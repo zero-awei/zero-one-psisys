@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CgrkService.h"
-#include"../../dao/Cgrk/CgrkDao.h"
+#include"../../dao/Cgrk/CgrkDAO.h"
 #include"../../domain/do/Cgrk/ModifyCgrkBillStatusDO.h"
 bool CgrkService::updataBillStatus(const ModifyCgrkBillStateDTO& dto) {
 	//组装传输数据
@@ -10,6 +10,6 @@ bool CgrkService::updataBillStatus(const ModifyCgrkBillStateDTO& dto) {
 	data.setIsVoided(dto.getIsVoided());
 
 	//执行数据修改
-	CgrkDao cd;
+	CgrkDAO cd;
 	return cd.updataBillStatus(data) == 1;
 }
