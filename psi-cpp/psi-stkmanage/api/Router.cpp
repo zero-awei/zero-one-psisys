@@ -115,14 +115,13 @@ void Router::createCgrkRouter()
 //涨吨入库路由
 void Router::createIncreaseTonRouter()
 {
-	BIND_GET_ROUTER(server, "/query-zdrk-bill-list", &ZdrkController::queryZdrkBillList, nullptr);
-	BIND_GET_ROUTER(server, "/query-zdrk-bill-details", &ZdrkController::queryZdrkBillDetails, nullptr);
-	BIND_POST_ROUTER(server, "/add-zdrk-bill", &ZdrkController::addZdrkBill, nullptr);
+	BIND_POST_ROUTER(server, "/post-zdrk-bill", &ZdrkController::addZdrkrkBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-approval", &ZdrkController::modifyBillApproval, nullptr);
 	BIND_PUT_ROUTER(server, "/modify-zdrk-bill", &ZdrkController::modifyZdrkBill, nullptr);
-	BIND_DEL_ROUTER(server, "/delete-zdrk-bill", &ZdrkController::removeZdrkBill, nullptr);
-	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state", &ZdrkController::modifyZdrkBillState, nullptr);
-	BIND_POST_ROUTER(server, "/import-zdrk-file", &ZdrkController::ImportZdrkFile, nullptr);
-	BIND_GET_ROUTER(server, "/emport-zdrk-file", &ZdrkController::EmportZdrkFile, nullptr);
+	BIND_DEL_ROUTER(server, "/delete-zdrk-bill-by-id", &ZdrkController::removeZdrkBill, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state-to-close", &ZdrkController::modifyZdrkBillStateToClose, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state-to-unclose", &ZdrkController::modifyZdrkBillStateToUnclose, nullptr);
+	BIND_PUT_ROUTER(server, "/modify-zdrk-bill-state-to-void", &ZdrkController::modifyZdrkBillStateToVoid, nullptr);
 }
 //采购退货出库路由
 void Router::createCgthckRouter()
