@@ -10,7 +10,7 @@
 #include"../../domain/dto/Cgthck/CgthckBillDetailedDTO.h"
 #include"../../domain/do/Cgthck/QueryCgthrkBillDetailedReturnDO.h"
 
-class CgthrkService {
+class CgthckService {
 public:
 	// 分页查询单据列表
 	PageVO<QueryCgthckBillVO> queryAllFitBill(const QueryCgthckBillQuery& query);

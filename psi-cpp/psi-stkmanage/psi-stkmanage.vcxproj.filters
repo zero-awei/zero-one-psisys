@@ -81,7 +81,7 @@
     <ClCompile Include="service\Pyrk\PyrkService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="service\Cgthck\CgthrkService.cpp">
+    <ClCompile Include="service\Cgthck\CgthckService.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dao\Pyrk\PyrkDao.cpp">
@@ -341,7 +341,7 @@
     <ClInclude Include="service\Pyrk\PyrkService.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="service\Cgthck\CgthrkService.h">
+    <ClInclude Include="service\Cgthck\CgthckService.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListDO.h">

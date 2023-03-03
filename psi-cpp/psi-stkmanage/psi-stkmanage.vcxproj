@@ -201,7 +201,7 @@
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="service\Cgrk\CgrkService.cpp" />
-    <ClCompile Include="service\Cgthck\CgthrkService.cpp" />
+    <ClCompile Include="service\Cgthck\CgthckService.cpp" />
     <ClCompile Include="service\Pyrk\PyrkService.cpp" />
     <ClCompile Include="service\Qtrk\QtrkService.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -308,7 +308,7 @@
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
     <ClInclude Include="service\Cgrk\CgrkService.h" />
-    <ClInclude Include="service\Cgthck\CgthrkService.h" />
+    <ClInclude Include="service\Cgthck\CgthckService.h" />
     <ClInclude Include="service\Pyrk\PyrkService.h" />
     <ClInclude Include="service\Qtrk\QtrkService.h" />
     <ClInclude Include="stdafx.h" />

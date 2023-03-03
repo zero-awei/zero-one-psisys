@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "CgthrkService.h"
+#include "CgthckService.h"
 #include"domain/do/Cgthck/QueryCgthrkBillListDO.h"
 #include"../../dao/Cgthck/CgthckDAO.h"
 
-PageVO<QueryCgthckBillVO> CgthrkService::queryAllFitBill(const QueryCgthckBillQuery& query) {
+PageVO<QueryCgthckBillVO> CgthckService::queryAllFitBill(const QueryCgthckBillQuery& query) {
 	//构建返回对象
 	PageVO<QueryCgthckBillVO> pages;
 	pages.setPageIndex(query.getPageIndex());
@@ -69,7 +69,7 @@ PageVO<QueryCgthckBillVO> CgthrkService::queryAllFitBill(const QueryCgthckBillQu
 
 
 
-QueryCgthrkDetailedBillVO CgthrkService::queryBillDetial(const CgthckBillDetailedDTO& query) {
+QueryCgthrkDetailedBillVO CgthckService::queryBillDetial(const CgthckBillDetailedDTO& query) {
 	//构建返回对象
 	QueryCgthrkDetailedBillVO vo;
 

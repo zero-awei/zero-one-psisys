@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "CgthckController.h"
-#include"../../service/Cgthck/CgthrkService.h"
+#include"../../service/Cgthck/CgthckService.h"
 #include"domain/dto/Cgthck/CgthckBillDetailedDTO.h"
 JsonVO<PageVO<QueryCgthckBillVO>> CgthckController::execQueryCgthckBill(const QueryCgthckBillQuery& query)
 {
     //定义一个Service
-    CgthrkService service;
+    CgthckService service;
     //查询结果
     PageVO<QueryCgthckBillVO> result = service.queryAllFitBill(query);
     //响应结果
@@ -15,7 +15,7 @@ JsonVO<PageVO<QueryCgthckBillVO>> CgthckController::execQueryCgthckBill(const Qu
 JsonVO<QueryCgthrkDetailedBillVO> CgthckController::execQueryCgthckBillDetail(const CgthckBillDetailedDTO& query)
 {
     //定义一个Service
-    CgthrkService service;
+    CgthckService service;
 
     //查询结果
     QueryCgthrkDetailedBillVO result = service.queryBillDetial(query);
