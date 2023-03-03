@@ -53,7 +53,7 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string nacosAddr = "43.138.51.248:8848";
 	std::string nacosNs = "7fc50d88-3410-44a3-acff-9108d2bfe2b2";
 	std::string serviceName = "psi-c1";
-	std::string regIp = "192.168.220.128";
+	std::string regIp = "172.28.6.229";
 #endif
 
 	// ¿ªÊ¼½âÎö
