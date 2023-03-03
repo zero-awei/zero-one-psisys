@@ -1,10 +1,10 @@
-ï»¿#pragma once
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
+ //
  @Author: awei
  @Date: 2022/10/25 11:52:32
-
+ //
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -22,93 +22,134 @@
 #include "../DoInclude.h"
 
 /**
- * stk_ioæ•°æ®åº“å®ä½“ç±»
+ * stk_ioÊı¾İ¿âÊµÌåÀà
  */
 class StkIoDO
 {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
-	// å•æ®ç¼–å·
+	// µ¥¾İ±àºÅ
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//å•æ®æ—¥æœŸ
+	//µ¥¾İÈÕÆÚ
 	CC_SYNTHESIZE(string, billDate, BillDate);
-	//æºå•ç±»å‹
+	//Ô´µ¥ÀàĞÍ
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	//æºå•id
+	//Ô´µ¥id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	//æºå•å·
+	//Ô´µ¥ºÅ
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	//å•æ®ä¸»é¢˜
+	//µ¥¾İÖ÷Ìâ
 	CC_SYNTHESIZE(string, subject, Subject);
-	//çº¢å­—å•æ®
+	//ºì×Öµ¥¾İ
 	CC_SYNTHESIZE(int, isRubric, IsRubric);
-	//å‡ºå…¥åº“ç±»å‹
+	//³öÈë¿âÀàĞÍ
 	CC_SYNTHESIZE(string, stockIoType, StockIoType);
-	//ä¸šåŠ¡éƒ¨é—¨
+	//ÒµÎñ²¿ÃÅ
 	CC_SYNTHESIZE(string, opDept, OpDept);
-	//ä¸šåŠ¡å‘˜
+	//ÒµÎñÔ±
 	CC_SYNTHESIZE(string, operator1, Operator1);
-	//å‡ºå…¥åº“ç»åŠ
+	//³öÈë¿â¾­°ì
 	CC_SYNTHESIZE(string, handler, Handler);
-	//æœ‰æ¥å¾€
+	//ÓĞÀ´Íù
 	CC_SYNTHESIZE(int, hasRp, HasRp);
-	//æ˜¯å¦æœ‰æ¶¨å¨
+	//ÊÇ·ñÓĞÕÇ¶Ö
 	CC_SYNTHESIZE(int, hasSwell, HasSwell);
-	//ä¾›åº”å•†
+	//¹©Ó¦ÉÌ
 	CC_SYNTHESIZE(string, supplierId, SupplierId);
-	//å®¢æˆ·
+	//¿Í»§
 	CC_SYNTHESIZE(string, customerId, CustomerId);
-	//å‘ç¥¨ç±»å‹
+	//·¢Æ±ÀàĞÍ
 	CC_SYNTHESIZE(string, invoiceType, InvoiceType);
-	//æˆæœ¬
+	//³É±¾
 	CC_SYNTHESIZE(double, cost, Cost);
-	//ç»“ç®—é‡‘é¢
+	//½áËã½ğ¶î
 	CC_SYNTHESIZE(double, settleAmt, SettleAmt);
-	//å·²ç»“ç®—é‡‘é¢
+	//ÒÑ½áËã½ğ¶î
 	CC_SYNTHESIZE(double, settledAmt, SettledAmt);
-	//å·²å¼€ç¥¨é‡‘é¢
+	//ÒÑ¿ªÆ±½ğ¶î
 	CC_SYNTHESIZE(double, invoicedAmt, InvoicedAmt);
-	//é™„ä»¶
+	//¸½¼ş
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//å¤‡æ³¨
+	//±¸×¢
 	CC_SYNTHESIZE(string, remark, Remark);
-	//æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
+	//ÊÇ·ñ×Ô¶¯Éú³É
 	CC_SYNTHESIZE(int, isAuto, IsAuto);
-	//å•æ®é˜¶æ®µ
+	//µ¥¾İ½×¶Î
 	CC_SYNTHESIZE(string, billStage, BillStage);
-	//æ ¸æ‰¹äºº
+	//ºËÅúÈË
 	CC_SYNTHESIZE(string, approver, Approver);
-	//å®¡æ‰¹å®ä¾‹id
+	//ÉóÅúÊµÀıid
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	//æ ¸æ‰¹ç»“æœç±»å‹
+	//ºËÅú½á¹ûÀàĞÍ(1Í¨¹ı£¬0¾Ü¾ø)
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
-	//æ ¸æ‰¹æ„è§
+	//ºËÅúÒâ¼û
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);
-	//å·²ç”Ÿæ•ˆ
+	//ÒÑÉúĞ§
 	CC_SYNTHESIZE(int, isEffective, IsEffective);
-	//ç”Ÿæ•ˆæ—¶é—´
+	//ÉúĞ§Ê±¼ä
 	CC_SYNTHESIZE(string, effectiveTime, EffectiveTime);
-	//å·²å…³é—­
+	//ÒÑ¹Ø±Õ
 	CC_SYNTHESIZE(int, isClosed, IsClosed);
-	//å·²ä½œåºŸ
+	//ÒÑ×÷·Ï
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
-	//åˆ¶å•éƒ¨é—¨
-	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);
-	//åˆ¶å•äºº
+	//ÖÆµ¥²¿ÃÅ
+	CC_SYNTHESIZE(string, sysOrgCode, SysOrgCode);	
+	//ÖÆµ¥ÈË
 	CC_SYNTHESIZE(string, createBy, CreateBy);
-	//åˆ¶å•æ—¶é—´
+	//ÖÆµ¥Ê±¼ä
 	CC_SYNTHESIZE(string, createTime, CreateTime);
-	// ä¿®æ”¹äºº
+	//ĞŞ¸ÄÈË
 	CC_SYNTHESIZE(string, updateBy, UpdateBy);
-	// ä¿®æ”¹æ—¶é—´
+	//ĞŞ¸ÄÊ±¼ä
 	CC_SYNTHESIZE(string, updateTime, UpdateTime);
-	//ç‰ˆæœ¬
+	//°æ±¾
 	CC_SYNTHESIZE(string, version, Version);
 
 
 
 public:
 	StkIoDO() {
+		id = "";
+		billNo = "";
+		billDate = "";
+		srcBillType = "";
+		srcBillId = "";
+		srcNo = "";
+		subject = "";
+		isRubric = -1;
+		stockIoType = "";
+		opDept = "";
+		operator1 = "";
+		handler = "";
+		hasRp = -1;
+		hasSwell = -1;
+		supplierId = "";
+		customerId = "";
+		invoiceType = "";
+		cost = -1;
+		settleAmt = -1;
+		settledAmt = -1;
+		invoicedAmt = -1;
+		attachment = "";
+		remark = "";
+		isAuto = -1;
+		billStage = "";
+		approver = "";
+		bpmiInstanceId = "";
+		approvalResultType = "";
+		approvalRemark = "";
+		isEffective = -1;
+		effectiveTime = "";
+		isClosed = -1;
+		isVoided = -1;
+		sysOrgCode = "";
+		createBy = "";
+		createTime = "";
+		updateBy = "";
+		updateTime = "";
+		version = "";
+
+
 
 
 	}

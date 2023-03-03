@@ -41,7 +41,7 @@ class QueryCgrkBillDetailsVO
 	//已作废
 	CC_SYNTHESIZE(int, isVoided, IsVoided);
 	//单据类型
-	CC_SYNTHESIZE(int, billType, BillType);
+	CC_SYNTHESIZE(string, billType, BillType);
 	//核批人
 	CC_SYNTHESIZE(string, approver, Approver);
 	//单据日期
@@ -75,7 +75,7 @@ class QueryCgrkBillDetailsVO
 	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//单据主题
-	CC_SYNTHESIZE(string, sudject, Subject);
+	CC_SYNTHESIZE(string, subject, Subject);
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
 	//已关闭
@@ -111,36 +111,64 @@ class QueryCgrkBillDetailsVO
 	//是否退货退票
 	CC_SYNTHESIZE(int, isReturned, IsReturned);
 
-	CC_SYNTHESIZE(string, stockIoTypeDictText, StockIoTypeDictText);
-	CC_SYNTHESIZE(string, hasRpDictText, HasRpDictText);
-	CC_SYNTHESIZE(string, hasSwellDictText, HasSwellDictText);
-	CC_SYNTHESIZE(string, invoiceTypeDictTex, InvoiceTypeDictTex);
-	CC_SYNTHESIZE(string, opDeptDictText, OpDeptDictText);
-	CC_SYNTHESIZE(string, operatorDictText, OperatorDictText);
-	CC_SYNTHESIZE(string, handlerDictText, HandlerDictText);
-	CC_SYNTHESIZE(string, updateByDictText, UpdateByDictText);
-	CC_SYNTHESIZE(string, isEffectiveDictText, IsEffectiveDictText);
-	CC_SYNTHESIZE(string, isVoidedDictText, IsVoidedDictText);
-	CC_SYNTHESIZE(string, srcBillTypeDictText, SrcBillTypeDictText);
-	CC_SYNTHESIZE(string, isAutoDictText, IsAutoDictText);
-	CC_SYNTHESIZE(string, isRubricDictText, IsRubricDictText);
-	CC_SYNTHESIZE(string, sysOrgCodeDictText, SysOrgCodeDictText);
-	CC_SYNTHESIZE(string, createByDictText, CreateByDictText);
-	CC_SYNTHESIZE(string, billStageDictText, BillStageDictText);
-	CC_SYNTHESIZE(string, isClosedDictText, IsClosedDictText);
+
+
 
 	CC_SYNTHESIZE(list<CgrkBillEntryVO>, entry, Entry);
 
 public:
 	QueryCgrkBillDetailsVO() {
-		billNo = "CGRK-230203-974";
+		remark = "";
+		billNo = "CGRK-230101-001";
+		approvalResultType = "123";
+		approvalResultType = "";
+		updateBy = "psi";
+		isEffective = 0;
+		isVoided = 0;
+		billType = "StkIo:101";
+		approver = "";
+		billDate = "2023-02-11";
+		srcBillType = "PurOrder";
+		approvalRemark = "";
+		srcNo = "CGDD-230211-005";
+		updateTime = "2023-02-12 11:35:31";
+		isAuto = 0;
+		isRubric = 0;
+		sysOrgCode = "A01A05";
+		createTime = "2023-02-11 14:26:56";
+		createBy = "psi";
+		srcBillId = "1624292548494532610";
+		effectiveTime = "";
+		billStage = "14";
+		version = "";
+		attachment = "";
+		subject = u8"饮料";
+		id = "1624293891909132289";
+		isClosed = 0;
+		bpmiInstanceId = "";
+		stockIoType = "101";
+		hasRp = 1;
+		hasSwell = 0;
+		supplierId = "1624286740595646466";
+		customerId = "";
+		invoiceType = "0";
+		opDept = "A01";
+		operator1 = "jeecg";
+		handler = "jeecg";
+		cost = 3;
+		settleAmt = 3;
+		settledAmt = 0;
+		invoicedAmt = 0;
+		isReturned = 0;
+
+
+
 		entry.push_back(CgrkBillEntryVO());
 	}
 	// 绑定JSON转换方法
 	BIND_TO_JSON(QueryCgrkBillDetailsVO, remark, billNo, approvalResultType, updateBy, isEffective, isVoided, billType, approver, billDate, srcBillType, approvalRemark, srcNo, updateTime, isAuto,
-		isRubric, sysOrgCode, createTime, createBy, srcBillId, effectiveTime, billStage, version, attachment, sudject, id, isClosed, bpmiInstanceId, stockIoType, hasRp, hasSwell, supplierId, customerId,
-		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned, stockIoTypeDictText, hasRpDictText, hasSwellDictText, invoiceTypeDictTex, opDeptDictText, operatorDictText,
-		handlerDictText, updateByDictText, isEffectiveDictText, isVoidedDictText, srcBillTypeDictText, isAutoDictText, isRubricDictText, sysOrgCodeDictText, createByDictText, billStageDictText, isClosedDictText, entry);
+		isRubric, sysOrgCode, createTime, createBy, srcBillId, effectiveTime, billStage, version, attachment, subject, id, isClosed, bpmiInstanceId, stockIoType, hasRp, hasSwell, supplierId, customerId,
+		invoiceType, opDept, operator1, handler, cost, settleAmt, settledAmt, invoicedAmt, isReturned, entry);
 };
 
 #endif // !_QUERY_CGRK_BILL_DETAILS_VO_

@@ -12,8 +12,10 @@ class QueryZdrkBillListQuery		:public PageQuery
 {
 	// 单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//单据日期
-	CC_SYNTHESIZE(string, billDate, BillDate);
+	//单据日期(开始)
+	CC_SYNTHESIZE(string, billDateStart, BillDateStart);
+	//单据日期(结束)
+	CC_SYNTHESIZE(string, billDateEnd, BillDateEnd);
 	//单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	//单据阶段
@@ -27,12 +29,24 @@ class QueryZdrkBillListQuery		:public PageQuery
 
 
 public:
+	QueryZdrkBillListQuery()
+	{
+		billNo = "";
+		billDateStart = "";
+		billDateEnd = "";
+		subject = "";
+		billStage = "";
+		isEffective = -1;
+		isVoided = -1;
+		isClosed = -1;
+	}
 	// 绑定from_json
 	friend void from_json(const json& j, QueryZdrkBillListQuery& t) { // NOLINTq
 		BIND_FROM_TO_ULL(j, t, pageIndex);
 		BIND_FROM_TO_ULL(j, t, pageSize);
 		BIND_FROM_TO_NORMAL(j, t, billNo);
-		BIND_FROM_TO_NORMAL(j, t, billDate);
+		BIND_FROM_TO_NORMAL(j, t, billDateStart);
+		BIND_FROM_TO_NORMAL(j, t, billDateEnd);
 		BIND_FROM_TO_NORMAL(j, t, subject);
 		BIND_FROM_TO_NORMAL(j, t, billStage);
 		BIND_FROM_TO_I(j, t, isEffective);

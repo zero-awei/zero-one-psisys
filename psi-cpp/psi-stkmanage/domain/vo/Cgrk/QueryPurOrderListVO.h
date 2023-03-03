@@ -20,11 +20,13 @@
 #ifndef _QUERY_PUR_ORDER_LIST_VO_
 #define _QUERY_PUR_ORDER_LIST_VO_
 
-
+/**
+ * 查询采购订单列表
+ */
 class QueryPurOrderListVO 
 {
 	//ID
-	CC_SYNTHESIZE(string, id, ID);
+	CC_SYNTHESIZE(string, id, Id);
 	//单据编号
 	CC_SYNTHESIZE(string, billNo, BillNo);
 	//单据日期
@@ -48,7 +50,7 @@ class QueryPurOrderListVO
 	//已入库成本
 	CC_SYNTHESIZE(double, inCost, InCost);	
 	//已开票金额
-	CC_SYNTHESIZE(double, invoicedAmt, InvoiceAmt);
+	CC_SYNTHESIZE(double, invoicedAmt, InvoicedAmt);
 	//发票类型
 	CC_SYNTHESIZE(string, invoiceType, InvoiceType);
 	//金额
@@ -77,7 +79,31 @@ class QueryPurOrderListVO
 public:
 	QueryPurOrderListVO()
 	{
-		id = "123456";
+		amt = -1;
+		billDate = "";
+		billNo = "7";
+		deliveryMethod = "";
+		deliveryPlace = "";
+		deliveryTime = "";
+		id = "";
+		inCost = -1;
+		inQty = -1;
+		invoiceType = "";
+		invoicedAmt = -1;
+		isClosed = -1;
+		opDept = "";
+		operator1 = "";
+		paymentMethod = "";
+		prePaymentBal = -1;
+		purType = "";
+		qty = -1;
+		remark = "";
+		settleAmt = -1;
+		settleMethod = "";
+		settledAmt = -1;
+		srcNo = "";
+		subject = "";
+		supplierId = "";
 	}
 
 	BIND_TO_JSON(QueryPurOrderListVO, id, billNo, billDate, purType, paymentMethod, prePaymentBal, settleMethod, deliveryTime, deliveryPlace,

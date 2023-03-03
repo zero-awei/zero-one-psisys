@@ -37,11 +37,11 @@ class QueryPurOrderListQuery : public PageQuery
 	//结算方式
 	CC_SYNTHESIZE(string, settleMethod, SettleMethod);
 	//交货日期（开始）
-	CC_SYNTHESIZE(string, deliveryTimeStart, DeliverTimeStart);
+	CC_SYNTHESIZE(string, deliveryTimeStart, DeliveryTimeStart);
 	//交货日期（结束）
-	CC_SYNTHESIZE(string, deliveryTimeEnd, DeliverTimeEnd);
+	CC_SYNTHESIZE(string, deliveryTimeEnd, DeliveryTimeEnd);
 	//交货方式
-	CC_SYNTHESIZE(string, deliveryMethod, DeliverMethod);
+	CC_SYNTHESIZE(string, deliveryMethod, DeliveryMethod);
 	//发票类型
 	CC_SYNTHESIZE(string, invoiceType, InvoiceType);
 

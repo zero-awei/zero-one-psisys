@@ -48,14 +48,14 @@ class CgrkController
 {
 public:
 	CREATE_API_FUN_QUERY(queryCgrkBillList, execQueryCgrkBillList, QueryCgrkBillListQuery);
-	CREATE_API_FUN_QUERY(queryCgrkBillListAdvanced, execQueryCgrkBillListAdvanced, QueryCgrkBillListAdvancedQuery);
+	CREATE_API_FUN_JSON(queryCgrkBillListAdvanced, execQueryCgrkBillListAdvanced, QueryCgrkBillListAdvancedQuery);
 	CREATE_API_FUN_QUERY(queryCgrkBillDetails, execQueryCgrkBillDetails, QueryCgrkBillDetailsQuery);
 
 	CREATE_API_FUN_QUERY(queryPurOrderList, execQueryPurOrderList, QueryPurOrderListQuery);
 	CREATE_API_FUN_QUERY(queryPurOrderEntry, execQueryPurOrderEntry, QueryPurOrderEntryQuery);
 
-	CREATE_API_FUN_BODY(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
-	CREATE_API_FUN_BODY(modifyCgrkBill, execModifyCgrkBill, ModifyCgrkBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(addCgrkBill, execAddCgrkBill, AddCgrkBillDTO);
+	CREATE_API_FUN_JSON_PAYLOAD(modifyCgrkBill, execModifyCgrkBill, ModifyCgrkBillDTO);
 	CREATE_API_FUN_BODY(removeCgrkBill, execRemoveCgrkBill, RemoveCgrkBillDTO);
 	CREATE_API_FUN_BODY(modifyCgrkBillState, execModifyCgrkBillState, ModifyCgrkBillStateDTO);
 	CREATE_API_FUN_BODY_FILE(importCgrkFile, execImportCgrkFile, ImportCgrkFileDTO);
@@ -68,23 +68,23 @@ private:
 	//高级查询采购入库表单
 	JsonVO<PageVO<QueryCgrkBillListVO>> execQueryCgrkBillListAdvanced(const QueryCgrkBillListAdvancedQuery& query);
 	//查询单据详细信息
-	JsonVO<PageVO<QueryCgrkBillDetailsVO>> execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
+	JsonVO<QueryCgrkBillDetailsVO> execQueryCgrkBillDetails(const QueryCgrkBillDetailsQuery& query);
 	//查询采购订单列表
 	JsonVO<PageVO<QueryPurOrderListVO>> execQueryPurOrderList(const QueryPurOrderListQuery& query);
 	//查看采购订单分录列表
 	JsonVO<PageVO<QueryPurOrderEntryVO>> execQueryPurOrderEntry(const QueryPurOrderEntryQuery& query);
 	//添加单据信息
-	JsonVO<uint64_t> execAddCgrkBill(const AddCgrkBillDTO& dto);
+	JsonVO<int> execAddCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& payload);
 	//修改单据信息
-	JsonVO<uint64_t>  execModifyCgrkBill(const ModifyCgrkBillDTO& dto);
+	JsonVO<int>  execModifyCgrkBill(const ModifyCgrkBillDTO& dto, const PayloadDTO& payload);
 	//删除单据
-	JsonVO<uint64_t> execRemoveCgrkBill(const RemoveCgrkBillDTO& dto);
+	JsonVO<std::string> execRemoveCgrkBill(const RemoveCgrkBillDTO& dto);
 	//修改单据状态
 	JsonVO<uint64_t> execModifyCgrkBillState(const ModifyCgrkBillStateDTO& dto);
 	// 导入
 	JsonVO<uint64_t> execImportCgrkFile(const ImportCgrkFileDTO& dto);
 	// 导出
-	JsonVO<std::string> execExportCgrkFile( );
+	JsonVO<std::string> execExportCgrkFile();
 
 	//JsonVO<uint64_t> execRemoveById(const IntID& id);
 	////演示JSON提交
