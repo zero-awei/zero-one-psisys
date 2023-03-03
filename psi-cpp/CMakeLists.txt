@@ -75,5 +75,5 @@ add_subdirectory ("lib-http")
 add_subdirectory ("lib-mysql")
 add_subdirectory ("lib-common")
 # 这是示例模块，后期可以不编译它
-add_subdirectory ("arch-demo")
+add_subdirectory ("purchasing-management-2")
 # 在后面添加你的模块

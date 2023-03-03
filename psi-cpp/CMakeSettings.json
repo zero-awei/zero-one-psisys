@@ -4,7 +4,7 @@
       "name": "Linux-GCC-Debug",
       "generator": "Ninja",
       "configurationType": "Debug",
-      "cmakeExecutable": "cmake",
+      "cmakeExecutable": "/usr/cmake-3.26.0/bin/cmake",
       "remoteCopySourcesExclusionList": [ ".vs", ".git", "out", "[Dd]ebug", "[Rr]elease", "x64", "imgs", "*.lib", "*.dll", "*.vcxproj*", "*.md", "*.sln", "*.bat" ],
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
