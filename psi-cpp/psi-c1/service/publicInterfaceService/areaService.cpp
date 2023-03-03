@@ -1,6 +1,6 @@
 #include"stdafx.h"
-#include "AreaService.h"
-#include "../../dao/publicInterfaceDAO/AreaDAO.h"
+#include "areaService.h"
+#include "../../dao/publicInterfaceDAO/areaDAO.h"
 
 
 std::list<AreaVO> AreaService::listAll(const AreaQuery& query)

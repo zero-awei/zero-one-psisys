@@ -21,16 +21,16 @@
 #define _ROUTER_
 
 #include "api/ApiHelper.h"
-#include "publicInterfaceController/AreaController.h"
-#include "publicInterfaceController/UserChoiceController.h"
-#include "publicInterfaceController/MaterialQueryController.h"
-#include "publicInterfaceController/DepartChoiceController.h"
-#include "supplierController/SupplierCategoryController.h"
-#include "bankAccountController/BasBankAccountController.h"
-#include "publicInterfaceController/MaterialTypeTreeListController.h"
-#include "publicInterfaceController/BasWareHouseTreeListController.h"
-#include "bankAccountController/BankAccountController.h"
-#include "publicInterfaceController/CreateReceiptController.h"
+#include "./publicInterfaceController/areaController.h"
+#include "./publicInterfaceController/UserChoiceController.h"
+#include "./publicInterfaceController/MaterialQueryController.h"
+#include "./publicInterfaceController/DepartChoiceController.h"
+#include "./supplierController/SupplierCategoryController.h"
+#include "./bankAccountController/BasBankAccountController.h"
+#include "./publicInterfaceController/MaterialTypeTreeListController.h"
+#include "./publicInterfaceController/BasWareHouseTreeListController.h"
+#include "./bankAccountController/BankAccountController.h"
+#include "./publicInterfaceController/CreateReceiptController.h"
 
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定

@@ -6,7 +6,7 @@
 #ifndef _BANKACCOUNT_SERVICE_
 #define _BANKACCOUNT_SERVICE_
 #include <list>
-#include "../../domain/vo/bankAccountVO/BankAccountlistVO.h"
+#include "../../domain/vo/bankAccountVO/BankAccountListVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/bankAccountQuery/BankAccountQuery.h"
 
