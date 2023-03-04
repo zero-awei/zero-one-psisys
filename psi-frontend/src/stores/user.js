@@ -1,11 +1,4 @@
-/*
- * @Author: 160405103 1348313766@qq.com
- * @Date: 2023-03-01 15:20:47
- * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-01 20:23:56
- * @FilePath: \psi-frontend\src\stores\user.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
+
 import { defineStore } from 'pinia'
 import Request from '@/apis/request'
 // 系统管理
@@ -181,7 +174,7 @@ const purManagement = {
     },
     {
       id: 707,
-      text: '采购申请',
+      text: '采购付款申请',
       href: '/PurPaymentApply',
       icon: 'IconTickets',
       pid: 700

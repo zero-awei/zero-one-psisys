@@ -40,8 +40,31 @@
         </div>
 
         <div class="tabs">
-          <el-tabs v-model="activeName" class="demo-tabs">
-            <el-tab-pane label="明细" name="first"> 明细表格</el-tab-pane>
+          <!-- el-tabs表格怎么写：
+            如果用psi-table要用插槽
+            
+          -->
+          <el-tabs v-model="activeName" class="demo-tabs" style="height:300px">
+              <el-tab-pane label="明细" name="two">
+              <!-- psi-table方式 -->
+              <psi-table 
+              :items="dialogTableItems" 
+              :tableData="dialogTableData" 
+              :attributes="dialogattributes" 
+              @add="add">
+                <template v-slot:inputName="slot">
+                  <el-input v-model="slot.data.name"></el-input>
+                </template>
+                <template v-slot:inputAge="slot">
+                  <el-input v-model="slot.data.age"></el-input>
+                </template>
+                <template v-slot:selectOption="slot">
+                  <el-select v-model="slot.data.option" class="m-2" placeholder="Select" size="large">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+                  </el-select>
+                </template>
+              </psi-table>
+            </el-tab-pane>
           </el-tabs>
         </div>
 
@@ -60,6 +83,101 @@
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
 
+// 
+const tableState = reactive({
+  // 查询表单每一项的配置
+  dialogTableItems: [
+    {
+      type: 'slot',
+      label: '源单分录号',
+      width: '200',
+      slotName: 'inputName',
+      prop: 'name'
+    },
+    {
+      type: 'slot',
+      label: '物料',
+      width: '200',
+      slotName: 'inputAge',
+      prop: 'age'
+    },
+    {
+      type: 'slot',
+      label: '规格型号',
+      width: '200',
+      slotName: 'inputName',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '单位',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '数量',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '税率%',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '参考含税单价',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '参考含税金额',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '建议供应商',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+    {
+      type: 'slot',
+      label: '备注',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+  ],
+
+  // 配置数据绑定的字段
+  dialogTableData: [
+    {
+      name: 'name1',
+      age: 12,
+      option: "Option1"
+    }
+  ],
+  dialogattributes: {
+    selection: true, //是否多选框
+    index: true, // 索引
+    border: true,
+    maxHeight: '500px',
+    height: '500px',
+    headOperation: ['add']
+  }
+})
+
+const { dialogTableItems, dialogTableData, dialogattributes } = toRefs(tableState)
 
 
 // 弹出框
@@ -127,7 +245,7 @@ const searchState = reactive({
     },
     {
       type: 'select',
-      label: '供应商',
+      label: '源单号',
       prop: 'supplier',
       placeholder: '请选择',
       options: [
@@ -165,7 +283,7 @@ const searchState = reactive({
 // const dialogref = ref()
 // // // console.log('----', dialogref)
 
-let activeName = ref('first')
+let activeName = ref('two')
 
 const footState = reactive({
   footItems: [
@@ -276,25 +394,7 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: '采购类型',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '需求部门',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '需求人',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '需求日期',
+      label: '交货日期',
       prop: 'tag',
       width: '120'
     },
@@ -306,19 +406,25 @@ const status = reactive({
     },
     {
       type: 'text',
-      label: '已订数量',
-      prop: 'tag',
-      width: '120'
-    },
-    {
-      type: 'text',
       label: '参考金额',
       prop: 'tag',
       width: '120'
     },
     {
       type: 'text',
+      label: '报价单数',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
       label: '单据阶段',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '已订数量',
       prop: 'tag',
       width: '120'
     },
@@ -337,6 +443,36 @@ const status = reactive({
     {
       type: 'text',
       label: '已作废',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '交货地点',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '联系人',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '联系电话',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '传真',
+      prop: 'tag',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '电子邮件',
       prop: 'tag',
       width: '120'
     },
