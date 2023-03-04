@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../../dao/publicInterfaceDAO/areaDAO.h"
+#include "../../dao/publicInterfaceDao/areaDAO.h"
 #include "areaMapper.h"
 #include <sstream>
 
