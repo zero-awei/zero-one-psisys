@@ -1,16 +1,16 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "CgthckService.h"
 #include"domain/do/Cgthck/QueryCgthrkBillListDO.h"
 #include"../../dao/Cgthck/CgthckDAO.h"
 
 PageVO<QueryCgthckBillVO> CgthckService::queryAllFitBill(const QueryCgthckBillQuery& query) {
-    //¹¹½¨·µ»Ø¶ÔÏó
+    //æ„å»ºè¿”å›å¯¹è±¡
     PageVO<QueryCgthckBillVO> pages;
     pages.setPageIndex(query.getPageIndex());
     pages.setPageSize(query.getPageSize());
 
-    //²éÑ¯Êı¾İ×ÜÌõÊı
-    QueryCgthrkBillListDO obj; //ÕâÊÇ²éÑ¯Êı¾İ¿âµÄÌõ¼ş  ·â×°³ÉÀà//
+    //æŸ¥è¯¢æ•°æ®æ€»æ¡æ•°
+    QueryCgthrkBillListDO obj; //è¿™æ˜¯æŸ¥è¯¢æ•°æ®åº“çš„æ¡ä»¶  å°è£…æˆç±»//
     obj.setId(query.getBillNo());
     obj.setBeginData(query.getBeginData());
     obj.setEndData(query.getEndData());
@@ -26,7 +26,7 @@ PageVO<QueryCgthckBillVO> CgthckService::queryAllFitBill(const QueryCgthckBillQu
         return pages;
     }
 
-    //·ÖÒ³²éÑ¯Êı¾İ
+    //åˆ†é¡µæŸ¥è¯¢æ•°æ®
     pages.setTotal(count);
     pages.calcPages();
     list<QueryCgthrkBillListReturnDO> result = dao.selectCgthckBillList(obj, query.getPageIndex(), query.getPageSize());
@@ -70,15 +70,15 @@ PageVO<QueryCgthckBillVO> CgthckService::queryAllFitBill(const QueryCgthckBillQu
 
 
 QueryCgthrkDetailedBillVO CgthckService::queryBillDetial(const CgthckBillDetailedDTO& query) {
-    //¹¹½¨·µ»Ø¶ÔÏó
+    //æ„å»ºè¿”å›å¯¹è±¡
     QueryCgthrkDetailedBillVO vo;
 
-    BillDetailedDO obj; //ÕâÊÇ²éÑ¯Êı¾İ¿âµÄÌõ¼ş  ·â×°³ÉÀà
+    BillDetailedDO obj; //è¿™æ˜¯æŸ¥è¯¢æ•°æ®åº“çš„æ¡ä»¶  å°è£…æˆç±»
     obj.setBillNo(query.getBillNo());
     CgthckDAO dao;
 
     QueryCgthrkBillDetailedReturnDO sub = dao.selectCgthckBillListDetailed(obj);
-    //·ÖÒ³²éÑ¯Êı¾İ
+    //åˆ†é¡µæŸ¥è¯¢æ•°æ®
     vo.setBillNo(sub.getBillNo());
     vo.setBillDate(sub.getBillDate());
     vo.setSubject(sub.getSubject());
@@ -112,9 +112,9 @@ QueryCgthrkDetailedBillVO CgthckService::queryBillDetial(const CgthckBillDetaile
 }
 list<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& query)
 {
-    // ×é×°²éÑ¯Êı¾İ
+    // ç»„è£…æŸ¥è¯¢æ•°æ®
     CgthckEntryDO obj;
-    // µ¥¾İ±àºÅ
+    // å•æ®ç¼–å·
     obj.setBillNo(query.getBillNo());
 
     CgthckDAO dao;
@@ -149,26 +149,26 @@ list<QueryCgrkBillListsVO> CgthckService::listAll(const QueryCgrkBillQuery& quer
 
 int CgthckService::saveData(const AddCgthckBillDTO& dto)
 {
-    // ¸¨ÖúÊı¾İ¼ìÑéµÄº¯Êı
+    // è¾…åŠ©æ•°æ®æ£€éªŒçš„å‡½æ•°
     auto check = [](const AddCgthckBillDTO& dto)
     {
         for (auto& ety : dto.getEntry())
         {
-            // ·ÖÂ¼ºÅ²»ÄÜÎª¸ºÊı²¢ÇÒºì×Öµ¥¾ÍÊı¾İ²»ÄÜÎªÕıÊı
+            // åˆ†å½•å·ä¸èƒ½ä¸ºè´Ÿæ•°å¹¶ä¸”çº¢å­—å•å°±æ•°æ®ä¸èƒ½ä¸ºæ­£æ•°
             if (ety.getEntryNo() < 0 || ety.getSettleQty() > 0 || ety.getTax() > 0 || ety.getSettleAmt() > 0)
                 return true;
         }
         return false;
     };
 
-    // Êı¾İĞ£Ñé
+    // æ•°æ®æ ¡éªŒ
     if (check(dto))
         return -1;
 
-    // ¶¨Òådao²ã¶ÔÏó
+    // å®šä¹‰daoå±‚å¯¹è±¡
     CgthckDAO dao;
 
-    // ÉÏ´«¸½¼ş
+    // ä¸Šä¼ é™„ä»¶
     string attachment{ "" };
     for (auto& f : dto.getFiles())
     {
@@ -180,109 +180,109 @@ int CgthckService::saveData(const AddCgthckBillDTO& dto)
     }
 
 
-    // ¸¨Öú×é×°Åú´ÎºÅº¯Êı
+    // è¾…åŠ©ç»„è£…æ‰¹æ¬¡å·å‡½æ•°
     auto getBanchNo = [](string billNO, string entryNo) -> std::string
     {
         string banchNo = billNO + '-' + entryNo;
         return banchNo;
     };
 
-    // Éú³ÉÑ©»¨ID
+    // ç”Ÿæˆé›ªèŠ±ID
     SnowFlake sf(1, 5);
     string id = to_string(sf.nextId());
 
-    // ×é×°µ¥¾İÊı¾İ
+    // ç»„è£…å•æ®æ•°æ®
     CgthckDO data;
     // id
     data.setId(id);
-    // µ¥¾İ±àºÅ
+    // å•æ®ç¼–å·
     data.setBillNo(dto.getBillNo());
-    // µ¥¾İÈÕÆÚ
+    // å•æ®æ—¥æœŸ
     data.setBillDate(dto.getBillDate());
-    // ¹©Ó¦ÉÌ
+    // ä¾›åº”å•†
     data.setSupplierId(dto.getSupplierId());
-    // Ô´µ¥ÀàĞÍ
+    // æºå•ç±»å‹
     data.setSrcBillType(dto.getSrcBillType());
-    // ²É¹ºÈë¿âµ¥±àºÅ
+    // é‡‡è´­å…¥åº“å•ç¼–å·
     data.setSrcNo(dto.getSrcNo());
-    // ÒÑÉúĞ§
+    // å·²ç”Ÿæ•ˆ
     data.setIsEffective(dto.getIsEff());
-    // ÒÑ¹Ø±Õ
+    // å·²å…³é—­
     data.setIsClosed(dto.getIsClosed());
-    // ÒÑ×÷·Ï
+    // å·²ä½œåºŸ
     data.setIsVoided(dto.getIsVoided());
-    // ÒµÎñ²¿ÃÅ
+    // ä¸šåŠ¡éƒ¨é—¨
     data.setOpDept(dto.getOpDept());
-    // Ö÷Ìâ
+    // ä¸»é¢˜
     data.setSubject(dto.getSubject());
-    // ·¢Æ±ÀàĞÍ
+    // å‘ç¥¨ç±»å‹
     data.setInvoiceType(dto.getInvoiceType());
-    // ³ö¿â¾­°ì
+    // å‡ºåº“ç»åŠ
     data.setHandler(dto.getHandler());
 
-    // ¿ªÆôÊÂÎñ
+    // å¼€å¯äº‹åŠ¡
     dao.getSqlSession()->beginTransaction();
 
-    // Ö´ĞĞÊı¾İÌí¼Ó
-     int cnt = 0; // ¼ÇÂ¼²åÈëÃ÷Ï¸µÄ×ÜÌõÊı
-    // »ñÈ¡mid
+    // æ‰§è¡Œæ•°æ®æ·»åŠ 
+     int cnt = 0; // è®°å½•æ’å…¥æ˜ç»†çš„æ€»æ¡æ•°
+    // è·å–mid
     uint64_t mid = dao.insert(data);
     if (mid > 0)
     {
-        // ×é×°Ã÷Ï¸Êı¾İ
+        // ç»„è£…æ˜ç»†æ•°æ®
         list<CgthckBillEntryDTO> entries = dto.getEntry();
         for (auto& ety : entries)
         {
             CgthckEntryDO entryData;
             // id
             entryData.setId(to_string(sf.nextId()));
-            // Ö÷±íid
+            // ä¸»è¡¨id
             entryData.setMid(to_string(mid));
-            // µ¥¾İ±àºÅ
+            // å•æ®ç¼–å·
             entryData.setBillNo(dto.getBillNo());
-            // ·ÖÂ¼ºÅ
+            // åˆ†å½•å·
             entryData.setEntryNo(ety.getEntryNo());
-            // ÎïÁÏ
+            // ç‰©æ–™
             entryData.setMaterialId(ety.getMaterialId());
-            // Åú´ÎºÅ
+            // æ‰¹æ¬¡å·
             entryData.setBatchNo(getBanchNo(dto.getBillNo(), to_string(ety.getEntryNo())));
-            // ²Ö¿â
+            // ä»“åº“
             entryData.setWarehouseId(ety.getWarehouseId());
-            // ³öÈë·½Ïò
-            entryData.setStockIoDirection("1"); // ÔİÊ±²»ÖªµÀÄÄ¸ö·½Ïò´ú±í³ö¿â
-            // ¼ÆÁ¿µ¥Î»
+            // å‡ºå…¥æ–¹å‘
+            entryData.setStockIoDirection("1"); // æš‚æ—¶ä¸çŸ¥é“å“ªä¸ªæ–¹å‘ä»£è¡¨å‡ºåº“
+            // è®¡é‡å•ä½
             entryData.setUnitId(ety.getUnitId());
-            // ½áËãÊıÁ¿
+            // ç»“ç®—æ•°é‡
             entryData.setSettleQty(ety.getSettleQty());
-            // Ë°ÂÊ
+            // ç¨ç‡
             entryData.setTaxRate(ety.getTaxRate());
-            // º¬Ë°µ¥¼Û
+            // å«ç¨å•ä»·
             entryData.setPrice(ety.getPrice());
-            // ÕÛ¿ÛÂÊ
+            // æŠ˜æ‰£ç‡
             entryData.setDiscountRate(ety.getDiscountRate());
-            // Ë°¶î
+            // ç¨é¢
             entryData.setTax(ety.getTax());
-            // ½áËã½ğ¶î
+            // ç»“ç®—é‡‘é¢
             entryData.setSettleAmt(ety.getSettleAmt());
-            // Èë¿âÊıÁ¿
+            // å…¥åº“æ•°é‡
             entryData.setQty(ety.getQty());
-            // ²É¹º·ÑÓÃ(³É±¾)
+            // é‡‡è´­è´¹ç”¨(æˆæœ¬)
             entryData.setCost(ety.getCost());
-            // Èë¿â½ğ¶î
+            // å…¥åº“é‡‘é¢
             entryData.setInvoicedAmt(ety.getInAmt());
 
-            // Ö´ĞĞÊı¾İÌí¼Ó, ·µ»Ø²åÈë³É¹¦µÄÌõÊı
+            // æ‰§è¡Œæ•°æ®æ·»åŠ , è¿”å›æ’å…¥æˆåŠŸçš„æ¡æ•°
             cnt += dao.insert(entryData);
         }
     }
     if (mid <= 0 || cnt <= 0)
     {
-        // ²åÈëÊ§°Ü, »Ø¹ö
+        // æ’å…¥å¤±è´¥, å›æ»š
         dao.getSqlSession()->rollbackTransaction();
     }
     else
     {
-        // ²åÈë³É¹¦, Ìá½»
+        // æ’å…¥æˆåŠŸ, æäº¤
         dao.getSqlSession()->commitTransaction();
     }
     return cnt;
@@ -290,28 +290,28 @@ int CgthckService::saveData(const AddCgthckBillDTO& dto)
 
 int CgthckService::updateData(const AddCgthckBillDTO& dto)
 {
-    // Êı¾İ¼ìÑé
+    // æ•°æ®æ£€éªŒ
     auto check = [](const AddCgthckBillDTO& dto)
     {
         for (auto& ety : dto.getEntry())
         {
-            // ·ÖÂ¼ºÅ²»ÄÜÎª¸ºÊı²¢ÇÒºì×Öµ¥¾ÍÊı¾İ²»ÄÜÎªÕıÊı
+            // åˆ†å½•å·ä¸èƒ½ä¸ºè´Ÿæ•°å¹¶ä¸”çº¢å­—å•å°±æ•°æ®ä¸èƒ½ä¸ºæ­£æ•°
             if (ety.getEntryNo() < 0 || ety.getSettleQty() > 0 || ety.getTax() > 0 || ety.getSettleAmt() > 0)
                 return true;
         }
         return false;
     };
 
-    // Èç¹ûµ¥¾İ´¦ÓÚ"ÒÑÉúĞ§"½×¶Î Ôò²»ÄÜĞŞ¸Ä
+    // å¦‚æœå•æ®å¤„äº"å·²ç”Ÿæ•ˆ"é˜¶æ®µ åˆ™ä¸èƒ½ä¿®æ”¹
     if (dto.getIsClosed() || check(dto))
     {
         return -1;
     }
     
-    // ¶¨Òådao²ã¶ÔÏó
+    // å®šä¹‰daoå±‚å¯¹è±¡
     CgthckDAO dao;
 
-    // ÉÏ´«¸½¼ş
+    // ä¸Šä¼ é™„ä»¶
     string attachment{ "" };
     for (auto& f : dto.getFiles())
     {
@@ -322,81 +322,81 @@ int CgthckService::updateData(const AddCgthckBillDTO& dto)
         }
     }
 
-    // ¸¨Öú×é×°Åú´ÎºÅº¯Êı
+    // è¾…åŠ©ç»„è£…æ‰¹æ¬¡å·å‡½æ•°
     auto getBanchNo = [](string billNO, string entryNo) -> std::string
     {
         string banchNo = billNO + '-' + entryNo;
         return banchNo;
     };
 
-    // ×é×°µ¥¾İÊı¾İ
+    // ç»„è£…å•æ®æ•°æ®
     CgthckDO data;
-    // µ¥¾İ±àºÅ
+    // å•æ®ç¼–å·
     data.setBillNo(dto.getBillNo());
-    // µ¥¾İÈÕÆÚ
+    // å•æ®æ—¥æœŸ
     data.setBillDate(dto.getBillDate());
-    // ¹©Ó¦ÉÌ
+    // ä¾›åº”å•†
     data.setSupplierId(dto.getSupplierId());
-    // ²É¹ºÈë¿âµ¥±àºÅ
+    // é‡‡è´­å…¥åº“å•ç¼–å·
     data.setSrcNo(dto.getSrcNo());
-    // ÒÑÉúĞ§
+    // å·²ç”Ÿæ•ˆ
     data.setIsEffective(dto.getIsEff());
-    // ÒÑ¹Ø±Õ
+    // å·²å…³é—­
     data.setIsClosed(dto.getIsClosed());
-    // ÒÑ×÷·Ï
+    // å·²ä½œåºŸ
     data.setIsVoided(dto.getIsVoided());
-    // ÒµÎñ²¿ÃÅ
+    // ä¸šåŠ¡éƒ¨é—¨
     data.setOpDept(dto.getOpDept());
-    // Ö÷Ìâ
+    // ä¸»é¢˜
     data.setSubject(dto.getSubject());
-    // ·¢Æ±ÀàĞÍ
+    // å‘ç¥¨ç±»å‹
     data.setInvoiceType(dto.getInvoiceType());
-    // ³ö¿â¾­°ì
+    // å‡ºåº“ç»åŠ
     data.setHandler(dto.getHandler());
-    // µ¥¾İ½×¶Î
+    // å•æ®é˜¶æ®µ
     data.setBillStage(dto.getBillStage());
-    // ¸½¼ş
+    // é™„ä»¶
     data.setAttachment(attachment);
-    // ±¸×¢
+    // å¤‡æ³¨
     data.setRemark(dto.getRemark());
 
-    // ¿ªÆôÊÂÎñ
+    // å¼€å¯äº‹åŠ¡
     dao.getSqlSession()->beginTransaction();
 
-    // Ö´ĞĞÊı¾İÌí¼Ó
+    // æ‰§è¡Œæ•°æ®æ·»åŠ 
     int row = dao.update(data);
     if (row == 0)
     {
         dao.getSqlSession()->rollbackTransaction();
-        // É¾³ıĞÂÔöµÄ¸½¼ş
+        // åˆ é™¤æ–°å¢çš„é™„ä»¶
         dao.deleteFile(attachment);
         return -2;
     }
 
-    // ×é×°Ã÷Ï¸Êı¾İ
+    // ç»„è£…æ˜ç»†æ•°æ®
     CgthckEntryDO entryData;
     list<CgthckBillEntryDTO> entries = dto.getEntry();
     for (auto& ety : entries)
     {
-        // Åú´Î±àºÅ
+        // æ‰¹æ¬¡ç¼–å·
         entryData.setBatchNo(getBanchNo(dto.getBillNo(), to_string(ety.getEntryNo())));
-        // ·ÖÂ¼ºÅ
+        // åˆ†å½•å·
         entryData.setEntryNo(ety.getEntryNo());
-        // ½áËãÊıÁ¿
+        // ç»“ç®—æ•°é‡
         entryData.setSettleQty(ety.getSettleQty());
-        //Ë°ÂÊ
+        //ç¨ç‡
         entryData.setTaxRate(ety.getTaxRate());
-        // ½áËã½ğ¶î
+        // ç»“ç®—é‡‘é¢
         entryData.setSettleAmt(ety.getSettleAmt());
-        // ²É¹º·ÑÓÃ
+        // é‡‡è´­è´¹ç”¨
         entryData.setCost(ety.getCost());
-        // Èë¿âÊıÁ¿
+        // å…¥åº“æ•°é‡
         entryData.setQty(ety.getQty());
-        // ±¸×¢
+        // å¤‡æ³¨
         entryData.setRemark(ety.getRemark());
-        // ×Ô¶¨Òå1
+        // è‡ªå®šä¹‰1
         entryData.setCustom1(ety.getCustom1());
-        // ×Ô¶¨Òå2
+        // è‡ªå®šä¹‰2
         entryData.setCustom2(ety.getCustom2());
 
         if (dao.update(entryData) == 0)
@@ -405,20 +405,20 @@ int CgthckService::updateData(const AddCgthckBillDTO& dto)
             return -3;
         }
     }
-    // ²åÈë³É¹¦, Ìá½»
+    // æ’å…¥æˆåŠŸ, æäº¤
     dao.getSqlSession()->commitTransaction();
     return row;
 }
 
 int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    // Êı¾İ¼ìÑé Ö»ÓĞ´¦ÓÚ±àÖÆÍê²ÅÄÜÉóºË
-    if (dto.getBillStage().compare("14")) // 12±àÖÆÖĞ, 14±àÖÆÍê 
+    // æ•°æ®æ£€éªŒ åªæœ‰å¤„äºç¼–åˆ¶å®Œæ‰èƒ½å®¡æ ¸
+    if (dto.getBillStage().compare("14")) // 12ç¼–åˆ¶ä¸­, 14ç¼–åˆ¶å®Œ 
     {
         return -1;
     }
 
-    // ×é×°Êı¾İ
+    // ç»„è£…æ•°æ®
     CgthckDO data;
     data.setBillNo(dto.getBillNo());
     data.setRemark(dto.getRemark());
@@ -426,7 +426,7 @@ int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadD
     data.setApprovalResultType(dto.getApprovalResultType());
     data.setApprover(payload.getUsername());
 
-    // Éú³Éµ±Ç°Ê±¼ä
+    // ç”Ÿæˆå½“å‰æ—¶é—´
     time_t rawtime;
     struct tm* info;
     char buffer[80];
@@ -434,22 +434,22 @@ int CgthckService::updateApproval(const ModifyCgthckBillDTO& dto, const PayloadD
     info = localtime(&rawtime);
     strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", info);
 
-    // ÉóÅú²âÊÔ
-    if (stoi(data.getApprovalResultType()) == 1) // ÉóºËÍ¨¹ı
+    // å®¡æ‰¹æµ‹è¯•
+    if (stoi(data.getApprovalResultType()) == 1) // å®¡æ ¸é€šè¿‡
     {
         data.setIsEffective(1);
         data.setEffectiveTime(string(buffer));
         data.setIsClosed(1);
-        data.setBillStage("34"); // 34:Ö´ĞĞÍê
+        data.setBillStage("34"); // 34:æ‰§è¡Œå®Œ
     }
     else
     {
-        data.setBillStage("24"); // 24:ºËÅúÍê
+        data.setBillStage("24"); // 24:æ ¸æ‰¹å®Œ
     }
 
-    // ¶¨ÒåDAO²ã
+    // å®šä¹‰DAOå±‚
     CgthckDAO dao;
-    // ÊÂÎñ¿ªÊ¼
+    // äº‹åŠ¡å¼€å§‹
     dao.getSqlSession()->beginTransaction();
     int row = dao.updateApproval(data);
     if (row == 0)
@@ -466,12 +466,12 @@ int CgthckService::removeData(const DeleteCgthckBillDTO& dto)
     CgthckDAO dao;
     int row = -1;
     
-    // ¼ì²éµ¥¾İ±àºÅÊÇ·ñÎª¿Õ
+    // æ£€æŸ¥å•æ®ç¼–å·æ˜¯å¦ä¸ºç©º
     if (!dto.getBillNo().empty())
     {
-        // É¾³ıµ¥¾İ
+        // åˆ é™¤å•æ®
         row = dao.deleteBillById(dto.getBillNo());
-        // É¾³ıÃ÷Ï¸
+        // åˆ é™¤æ˜ç»†
         row += dao.deleteEntryById(dto.getBillNo());
     }
     return row;
@@ -482,13 +482,13 @@ int CgthckService::removeEntry(const DeleteCgthckBillDTO& dto)
     CgthckDAO dao;
 
     int row = -1;
-    // ¼ì²éÃ÷Ï¸ÁĞ±íÊÇ·ñÎª¿Õ
+    // æ£€æŸ¥æ˜ç»†åˆ—è¡¨æ˜¯å¦ä¸ºç©º
     if (!dto.getBillNo().empty() && !dto.getEntries().empty())
     {
         string billNo = dto.getBillNo();
         for (auto& entry : dto.getEntries())
         {
-            // É¾³ıÃ÷Ï¸
+            // åˆ é™¤æ˜ç»†
             row += dao.deleteEntryById(billNo, entry);
         }
     }
@@ -497,12 +497,12 @@ int CgthckService::removeEntry(const DeleteCgthckBillDTO& dto)
 
 int CgthckService::closed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    // ×é×°Êı¾İ
+    // ç»„è£…æ•°æ®
     CgthckDO data;
     data.setBillNo(dto.getBillNo());
     data.setIsClosed(1);
 
-    // Éú³Éµ±Ç°Ê±¼ä
+    // ç”Ÿæˆå½“å‰æ—¶é—´
     time_t rawtime;
     struct tm* info;
     char buffer[80];
@@ -519,12 +519,12 @@ int CgthckService::closed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payl
 
 int CgthckService::unclosed(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    // ×é×°Êı¾İ
+    // ç»„è£…æ•°æ®
     CgthckDO data;
     data.setBillNo(dto.getBillNo());
     data.setIsClosed(0);
 
-    // Éú³Éµ±Ç°Ê±¼ä
+    // ç”Ÿæˆå½“å‰æ—¶é—´
     time_t rawtime;
     struct tm* info;
     char buffer[80];
@@ -541,12 +541,12 @@ int CgthckService::unclosed(const ModifyCgthckBillDTO& dto, const PayloadDTO& pa
 
 int CgthckService::voided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload)
 {
-    // ×é×°Êı¾İ
+    // ç»„è£…æ•°æ®
     CgthckDO data;
     data.setBillNo(dto.getBillNo());
     data.setIsVoided(1);
 
-    // Éú³Éµ±Ç°Ê±¼ä
+    // ç”Ÿæˆå½“å‰æ—¶é—´
     time_t rawtime;
     struct tm* info;
     char buffer[80];
@@ -563,20 +563,20 @@ int CgthckService::voided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payl
 
 int CgthckService::importData(const ImportCgthckFileDTO& dto)
 {
-    // Éú³ÉÑ©»¨id
+    // ç”Ÿæˆé›ªèŠ±id
     SnowFlake sf(1, 5);
 
-    // ÓÃÀ´¼ÇÂ¼µ¥¾İ±í±àºÅ Ìá¹©¸øÆä¶ÔÓ¦µÄÃ÷Ï¸Mid
+    // ç”¨æ¥è®°å½•å•æ®è¡¨ç¼–å· æä¾›ç»™å…¶å¯¹åº”çš„æ˜ç»†Mid
     map<string, string> billToMid;
     vector<string> noList;
-    // ¼ìÑéÃ÷Ï¸±íµÄÖ÷±íÊÇË­
+    // æ£€éªŒæ˜ç»†è¡¨çš„ä¸»è¡¨æ˜¯è°
     auto check = [](const map<string, string> mp, const string& batchNo)
     {
-        // »ñÈ¡Ã÷Ï¸µÄÔ´µã±àºÅ
+        // è·å–æ˜ç»†çš„æºç‚¹ç¼–å·
         int pos = batchNo.find_last_of('-');
         string srcBillNo = batchNo.substr(0, pos);
 
-        // ²éÕÒsrcBillNoÊÇ·ñ´æÔÚ
+        // æŸ¥æ‰¾srcBillNoæ˜¯å¦å­˜åœ¨
         auto it = mp.find(srcBillNo);
         if (it != mp.end())
         {
@@ -585,16 +585,16 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
         return string{ "" };
     };
 
-    // ½âÎöExcelÖĞµÄÊı¾İ
+    // è§£æExcelä¸­çš„æ•°æ®
     ExcelComponent excel;
     string fileName = dto.getFiles().front();
-    string sheetName = CharsetConvertHepler::ansiToUtf8("³öÈë¿âµ¥");
-    string entrySheetName = CharsetConvertHepler::ansiToUtf8("Ã÷Ï¸");
-    // ½«ÎÄ¼şµÄÊı¾İ×ª»»³É¶şÎ¬Êı×é, ½÷¼Ç:¶şÎ¬Êı×éµÄµÚÒ»ĞĞÊÇheader(ÎÄ×Ö), ²»ĞèÒªÔØÈëÊı¾İ¿â
+    string sheetName = CharsetConvertHepler::ansiToUtf8("å‡ºå…¥åº“å•");
+    string entrySheetName = CharsetConvertHepler::ansiToUtf8("æ˜ç»†");
+    // å°†æ–‡ä»¶çš„æ•°æ®è½¬æ¢æˆäºŒç»´æ•°ç»„, è°¨è®°:äºŒç»´æ•°ç»„çš„ç¬¬ä¸€è¡Œæ˜¯header(æ–‡å­—), ä¸éœ€è¦è½½å…¥æ•°æ®åº“
     vector<vector<string>> data = excel.readIntoVector(fileName, sheetName);
     vector<vector<string>> entryData = excel.readIntoVector(fileName, entrySheetName);
 
-    // ½«¶şÎ¬Êı×é×ª»»ÎªDOÄ£ĞÍ
+    // å°†äºŒç»´æ•°ç»„è½¬æ¢ä¸ºDOæ¨¡å‹
     list<CgthckDO> cgthckDo;
     if (data.size() > 1)
     {
@@ -604,86 +604,86 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
             int j = 0;
             auto tmpData = data[i];
 
-            // Éú³Éid
+            // ç”Ÿæˆid
             string id = to_string(sf.nextId());
 
             // ID
             tmpDo.setId(id);
-            // ³öÈë¿âÀàĞÍ
+            // å‡ºå…¥åº“ç±»å‹
             tmpDo.setStockIoType(tmpData[j++]);
-            // ÊÇ·ñÓĞÍùÀ´
+            // æ˜¯å¦æœ‰å¾€æ¥
             tmpDo.setHasRp(stoi(tmpData[j++]));
-            // ÊÇ·ñÓĞÕÇ¶Ö
+            // æ˜¯å¦æœ‰æ¶¨å¨
             tmpDo.setHasSwell(stoi(tmpData[j++]));
-            // ¹©Ó¦ÉÌ
+            // ä¾›åº”å•†
             tmpDo.setSupplierId(tmpData[j++]);
-            // ¿Í»§
+            // å®¢æˆ·
             tmpDo.setCustomerId(tmpData[j++]);
-            // ·¢Æ±ÀàĞÍ
+            // å‘ç¥¨ç±»å‹
             tmpDo.setInvoiceType(tmpData[j++]);
-            // ÒµÎñ²¿ÃÅ
+            // ä¸šåŠ¡éƒ¨é—¨
             tmpDo.setOpDept(tmpData[j++]);
-            // ÒµÎñÔ±
+            // ä¸šåŠ¡å‘˜
             tmpDo.setOperator1(tmpData[j++]);
-            // ³öÈë¿â¾­°ì
+            // å‡ºå…¥åº“ç»åŠ
             tmpDo.setHandler(tmpData[j++]);
-            // ³É±¾
+            // æˆæœ¬
             tmpDo.setCost(stod(tmpData[j++]));
-            // ½áËã½ğ¶î
+            // ç»“ç®—é‡‘é¢
             tmpDo.setSettleAmt(stod(tmpData[j++]));
-            // ÒÑ½áËã½ğ¶î
+            // å·²ç»“ç®—é‡‘é¢
             tmpDo.setSettledAmt(stod(tmpData[j++]));
-            // ÒÑ¿ªÆ±½ğ¶î
+            // å·²å¼€ç¥¨é‡‘é¢
             tmpDo.setInvoicedAmt(stod(tmpData[j++]));
-            // ÊÇ·ñÉúĞ§
+            // æ˜¯å¦ç”Ÿæ•ˆ
             tmpDo.setIsEffective(stod(tmpData[j++]));
-            // ¸½¼ş
+            // é™„ä»¶
             tmpDo.setAttachment(tmpData[j++]);
-            // Ô´µ¥id
+            // æºå•id
             tmpDo.setSrcBillId(tmpData[j++]);
-            // µ¥¾İÖ÷Ìâ
+            // å•æ®ä¸»é¢˜
             tmpDo.setSubject(tmpData[j++]);
-            // µ¥¾İ½×¶Î
+            // å•æ®é˜¶æ®µ
             tmpDo.setBillStage(tmpData[j++]);
-            // Ô´µ¥ºÅ
+            // æºå•å·
             tmpDo.setSrcNo(tmpData[j++]);
-            // ÊÇ·ñ×Ô¶¯Éú³É
+            // æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
             tmpDo.setIsAuto(stoi(tmpData[j++]));
-            // ±¸×¢
+            // å¤‡æ³¨
             tmpDo.setRemark(tmpData[j++]);
-            // ÉóÅúÊµÀıid
+            // å®¡æ‰¹å®ä¾‹id
             tmpDo.setBpmiInstanceId(tmpData[j++]);
-            // ÒÑ×÷·Ï
+            // å·²ä½œåºŸ
             tmpDo.setIsVoided(stoi(tmpData[j++]));
-            // µ¥¾İ±àºÅ
+            // å•æ®ç¼–å·
             string billNo = tmpData[j++];
             tmpDo.setBillNo(billNo);
-            // ÊÇ·ñºì×Ö
+            // æ˜¯å¦çº¢å­—
             tmpDo.setIsRubric(stoi(tmpData[j++]));
-            // Ô´µ¥ÀàĞÍ
+            // æºå•ç±»å‹
             tmpDo.setSrcBillType(tmpData[j++]);
-            // ÖÆµ¥Ê±¼ä
+            // åˆ¶å•æ—¶é—´
             tmpDo.setCreateTime(tmpData[j++]);
-            // ÉúĞ§Ê±¼ä
+            // ç”Ÿæ•ˆæ—¶é—´
             tmpDo.setEffectiveTime(tmpData[j++]);
-            // ºËÅúÈË
+            // æ ¸æ‰¹äºº
             tmpDo.setApprover(tmpData[j++]);
-            // ĞŞ¸ÄÈË
+            // ä¿®æ”¹äºº
             tmpDo.setUpdateBy(tmpData[j++]);
-            // ÖÆµ¥²¿ÃÅ
+            // åˆ¶å•éƒ¨é—¨
             tmpDo.setSysOrgCode(tmpData[j++]);
-            // ÒÑ¹Ø±Õ
+            // å·²å…³é—­
             tmpDo.setIsClosed(stoi(tmpData[j++]));
-            // ºËÅú½áºÏÀàĞÍ
+            // æ ¸æ‰¹ç»“åˆç±»å‹
             tmpDo.setApprovalResultType(tmpData[j++]);
-            // µ¥¾İÈÕÆÚ
+            // å•æ®æ—¥æœŸ
             tmpDo.setBillDate(tmpData[j++]);
-            // ÖÆµ¥ÈË
+            // åˆ¶å•äºº
             tmpDo.setCreateBy(tmpData[j++]);
-            // ºËÅúÒâ¼û
+            // æ ¸æ‰¹æ„è§
             tmpDo.setApprovalRemark(tmpData[j++]);
 
-            // ¹¹½¨pair(billNo, id) ·ÅÈëmapÖĞ
+            // æ„å»ºpair(billNo, id) æ”¾å…¥mapä¸­
             billToMid[billNo] = id;
 
             //
@@ -699,60 +699,60 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
 
         // id
         tmpEntryDo.setId(to_string(sf.nextId()));
-        // ÎïÁÏ
+        // ç‰©æ–™
         tmpEntryDo.setMaterialId(tmpData[j++]);
-        // Åú´ÎºÅ
+        // æ‰¹æ¬¡å·
         string batchNo = tmpData[j++];
         tmpEntryDo.setBatchNo(batchNo);
-        // ²Ö¿â
+        // ä»“åº“
         tmpEntryDo.setWarehouseId(tmpData[j++]);
-        // ³öÈë·½Ïò
+        // å‡ºå…¥æ–¹å‘
         tmpEntryDo.setStockIoDirection(tmpData[j++]);
-        // ¹©Ó¦ÉÌ
+        // ä¾›åº”å•†
         tmpEntryDo.setSupplierId(tmpData[j++]);
-        // ¼ÆÁ¿µ¥Î»
+        // è®¡é‡å•ä½
         tmpEntryDo.setUnitId(tmpData[j++]);
-        // ÕÇ¶ÖÊıÁ¿
+        // æ¶¨å¨æ•°é‡
         tmpEntryDo.setSwellQty(stod(tmpData[j++]));
-        // ÊıÁ¿
+        // æ•°é‡
         tmpEntryDo.setQty(stod(tmpData[j++]));
-        // ¼ÆÈë³É±¾ÊıÁ¿
+        // è®¡å…¥æˆæœ¬æ•°é‡
         tmpEntryDo.setExpense(stod(tmpData[j++]));
-        // ³É±¾
+        // æˆæœ¬
         tmpEntryDo.setCost(stod(tmpData[j++]));
-        // ½áËãÊıÁ¿
+        // ç»“ç®—æ•°é‡
         tmpEntryDo.setSettleQty(stod(tmpData[j++]));
-        // Ë°ÂÊ%
+        // ç¨ç‡%
         tmpEntryDo.setTaxRate(stod(tmpData[j++]));
-        // º¬Ë°µ¥¼Û
+        // å«ç¨å•ä»·
         tmpEntryDo.setPrice(stod(tmpData[j++]));
-        // ÕÛ¿ÛÂÊ%
+        // æŠ˜æ‰£ç‡%
         tmpEntryDo.setDiscountRate(stod(tmpData[j++]));
-        // Ë°¶î
+        // ç¨é¢
         tmpEntryDo.setTax(stod(tmpData[j++]));
-        // ½áËã½ğ¶î
+        // ç»“ç®—é‡‘é¢
         tmpEntryDo.setSettleAmt(stod(tmpData[j++]));
-        // ÒÑ¿ªÆ±ÊıÁ¿
+        // å·²å¼€ç¥¨æ•°é‡
         tmpEntryDo.setInvoicedQty(stod(tmpData[j++]));
-        // ÒÑ¿ªÆ±½ğ¶î
+        // å·²å¼€ç¥¨é‡‘é¢
         tmpEntryDo.setInvoicedAmt(stod(tmpData[j++]));
-        // ×Ô¶¨Òå1
+        // è‡ªå®šä¹‰1
         tmpEntryDo.setCustom1(tmpData[j++]);
-        // Ô´µã·ÖÂ¼ºÅ
+        // æºç‚¹åˆ†å½•å·
         tmpEntryDo.setSrcNo(tmpData[j++]);
-        // ·ÖÂ¼ºÅ
+        // åˆ†å½•å·
         tmpEntryDo.setEntryNo(stoi(tmpData[j++]));
-        // ×Ô¶¨Òå2
+        // è‡ªå®šä¹‰2
         tmpEntryDo.setCustom2(tmpData[j++]);
-        // Ô´µ¥·ÖÂ¼id
+        // æºå•åˆ†å½•id
         tmpEntryDo.setSrcEntryId(tmpData[j++]);
-        // Ô´µ¥ÀàĞÍ
+        // æºå•ç±»å‹
         tmpEntryDo.setSrcBillType(tmpData[j++]);
-        // ±¸×¢
+        // å¤‡æ³¨
         tmpEntryDo.setRemark(tmpData[j++]);
-        // µ¥¾İ±àºÅ
+        // å•æ®ç¼–å·
         tmpEntryDo.setBillNo(tmpData[j++]);
-        // Ô´µ¥id
+        // æºå•id
         tmpEntryDo.setSrcBillId(tmpData[j++]);
         // mid
         tmpEntryDo.setMid(check(billToMid, batchNo));
@@ -760,14 +760,14 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
         // 
         cgthckEntryDo.push_back(tmpEntryDo);
     }
-    // ´¦Àílist<CgthckDO>
+    // å¤„ç†list<CgthckDO>
     CgthckDAO dao;
     int result = 0;
     for (auto& sub : cgthckDo)
     {
         result += dao.importData(sub);
     }
-    // ´¦Àílist<CgthckEntryDO>
+    // å¤„ç†list<CgthckEntryDO>
     for (auto& sub : cgthckEntryDo)
     {
         result += dao.importData(sub);
@@ -777,64 +777,64 @@ int CgthckService::importData(const ImportCgthckFileDTO& dto)
 
 ExportCgthckVO CgthckService::exportData(const ExportCgthckFileDTO& dto)
 {
-    // ´´½¨²éÑ¯¶ÔÏó
+    // åˆ›å»ºæŸ¥è¯¢å¯¹è±¡
     CgthckDAO dao;
     CgthckDO cgthckDo;
     CgthckEntryDO cgthckEntryDo;
 
-    // ÉèÖÃsqlÓï¾äµÄ²éÑ¯Ìõ¼ş
+    // è®¾ç½®sqlè¯­å¥çš„æŸ¥è¯¢æ¡ä»¶
     cgthckDo.setBillNo(dto.getBillNo());
     cgthckEntryDo.setBillNo(dto.getBillNo());
 
-    // ·µ»ØÕıÈ·µÄ²éÑ¯¶ÔÏó
+    // è¿”å›æ­£ç¡®çš„æŸ¥è¯¢å¯¹è±¡
     list<CgthckDO> listDo = dao.exportData(cgthckDo);
     list<CgthckEntryDO> listEntryDo = dao.exportData(cgthckEntryDo);
 
-    // ±¨±íµÄ³éÏó ---> ¶şÎ¬Êı×é
+    // æŠ¥è¡¨çš„æŠ½è±¡ ---> äºŒç»´æ•°ç»„
     vector<vector<std::string>> data;
     vector<vector<std::string>> entryData;
 
-    // ±íÍ· ÓÃÀ´Ìî³äµÚÒ»ĞĞÊı¾İ
+    // è¡¨å¤´ ç”¨æ¥å¡«å……ç¬¬ä¸€è¡Œæ•°æ®
     vector<string> header{
-        CharsetConvertHepler::ansiToUtf8("³öÈë¿âÀàĞÍ"),
-        CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÓĞÍùÀ´"),
-        CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÓĞÕÇ¶Ö"),
-        CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌ"),
-        CharsetConvertHepler::ansiToUtf8("¿Í»§"),
-        CharsetConvertHepler::ansiToUtf8("·¢Æ±ÀàĞÍ"),
-        CharsetConvertHepler::ansiToUtf8("ÒµÎñ²¿ÃÅ"),
-        CharsetConvertHepler::ansiToUtf8("ÒµÎñÔ±"),
-        CharsetConvertHepler::ansiToUtf8("³öÈë¿â¾­°ì"),
-        CharsetConvertHepler::ansiToUtf8("³É±¾"),
-        CharsetConvertHepler::ansiToUtf8("½áËã½ğ¶î"),
-        CharsetConvertHepler::ansiToUtf8("ÒÑ½áËã½ğ¶î"),
-        CharsetConvertHepler::ansiToUtf8("ÒÑ¿ªÆ±½ğ¶î"),
-        CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÉúĞ§"),
-        CharsetConvertHepler::ansiToUtf8("¸½¼ş"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥id"),
-        CharsetConvertHepler::ansiToUtf8("µ¥¾İÖ÷Ìâ"),
-        CharsetConvertHepler::ansiToUtf8("µ¥¾İ½×¶Î"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥ºÅ"),
-        CharsetConvertHepler::ansiToUtf8("ÊÇ·ñ×Ô¶¯Éú³É"),
-        CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-        CharsetConvertHepler::ansiToUtf8("ÉóÅúÊµÀıid"),
-        CharsetConvertHepler::ansiToUtf8("ÒÑ×÷·Ï"),
-        CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),
-        CharsetConvertHepler::ansiToUtf8("ÊÇ·ñºì×Ö"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),
-        CharsetConvertHepler::ansiToUtf8("ÖÆµ¥Ê±¼ä"),
-        CharsetConvertHepler::ansiToUtf8("ÉúĞ§Ê±¼ä"),
-        CharsetConvertHepler::ansiToUtf8("ºËÅúÈË"),
-        CharsetConvertHepler::ansiToUtf8("ĞŞ¸ÄÈË"),
-        CharsetConvertHepler::ansiToUtf8("ÖÆµ¥²¿ÃÅ"),
-        CharsetConvertHepler::ansiToUtf8("ÒÑ¹Ø±Õ"),
-        CharsetConvertHepler::ansiToUtf8("ºËÅú½á¹ûÀàĞÍ"),
-        CharsetConvertHepler::ansiToUtf8("µ¥¾İÈÕÆÚ"),
-        CharsetConvertHepler::ansiToUtf8("ÖÆµ¥ÈË"),
-        CharsetConvertHepler::ansiToUtf8("ºËÅúÒâ¼û"),
+        CharsetConvertHepler::ansiToUtf8("å‡ºå…¥åº“ç±»å‹"),
+        CharsetConvertHepler::ansiToUtf8("æ˜¯å¦æœ‰å¾€æ¥"),
+        CharsetConvertHepler::ansiToUtf8("æ˜¯å¦æœ‰æ¶¨å¨"),
+        CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†"),
+        CharsetConvertHepler::ansiToUtf8("å®¢æˆ·"),
+        CharsetConvertHepler::ansiToUtf8("å‘ç¥¨ç±»å‹"),
+        CharsetConvertHepler::ansiToUtf8("ä¸šåŠ¡éƒ¨é—¨"),
+        CharsetConvertHepler::ansiToUtf8("ä¸šåŠ¡å‘˜"),
+        CharsetConvertHepler::ansiToUtf8("å‡ºå…¥åº“ç»åŠ"),
+        CharsetConvertHepler::ansiToUtf8("æˆæœ¬"),
+        CharsetConvertHepler::ansiToUtf8("ç»“ç®—é‡‘é¢"),
+        CharsetConvertHepler::ansiToUtf8("å·²ç»“ç®—é‡‘é¢"),
+        CharsetConvertHepler::ansiToUtf8("å·²å¼€ç¥¨é‡‘é¢"),
+        CharsetConvertHepler::ansiToUtf8("æ˜¯å¦ç”Ÿæ•ˆ"),
+        CharsetConvertHepler::ansiToUtf8("é™„ä»¶"),
+        CharsetConvertHepler::ansiToUtf8("æºå•id"),
+        CharsetConvertHepler::ansiToUtf8("å•æ®ä¸»é¢˜"),
+        CharsetConvertHepler::ansiToUtf8("å•æ®é˜¶æ®µ"),
+        CharsetConvertHepler::ansiToUtf8("æºå•å·"),
+        CharsetConvertHepler::ansiToUtf8("æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ"),
+        CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+        CharsetConvertHepler::ansiToUtf8("å®¡æ‰¹å®ä¾‹id"),
+        CharsetConvertHepler::ansiToUtf8("å·²ä½œåºŸ"),
+        CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),
+        CharsetConvertHepler::ansiToUtf8("æ˜¯å¦çº¢å­—"),
+        CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),
+        CharsetConvertHepler::ansiToUtf8("åˆ¶å•æ—¶é—´"),
+        CharsetConvertHepler::ansiToUtf8("ç”Ÿæ•ˆæ—¶é—´"),
+        CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹äºº"),
+        CharsetConvertHepler::ansiToUtf8("ä¿®æ”¹äºº"),
+        CharsetConvertHepler::ansiToUtf8("åˆ¶å•éƒ¨é—¨"),
+        CharsetConvertHepler::ansiToUtf8("å·²å…³é—­"),
+        CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹ç»“æœç±»å‹"),
+        CharsetConvertHepler::ansiToUtf8("å•æ®æ—¥æœŸ"),
+        CharsetConvertHepler::ansiToUtf8("åˆ¶å•äºº"),
+        CharsetConvertHepler::ansiToUtf8("æ ¸æ‰¹æ„è§"),
     };
     data.push_back(header);
-    // Èç¹û²éÑ¯¶ÔÏó²»Îª¿Õ
+    // å¦‚æœæŸ¥è¯¢å¯¹è±¡ä¸ä¸ºç©º
     if (!listDo.empty())
     {
         for (auto& tmpDo : listDo)
@@ -882,33 +882,33 @@ ExportCgthckVO CgthckService::exportData(const ExportCgthckFileDTO& dto)
     }
 
     vector<string> entryHeader{
-        CharsetConvertHepler::ansiToUtf8("ÎïÁÏ"),
-        CharsetConvertHepler::ansiToUtf8("Åú´ÎºÅ"),
-        CharsetConvertHepler::ansiToUtf8("²Ö¿â"),
-        CharsetConvertHepler::ansiToUtf8("³öÈë·½Ïò"),
-        CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌ"),
-        CharsetConvertHepler::ansiToUtf8("¼ÆÁ¿µ¥Î»"),
-        CharsetConvertHepler::ansiToUtf8("ÕÇ¶ÖÊıÁ¿+/-"),
-        CharsetConvertHepler::ansiToUtf8("ÊıÁ¿"),
-        CharsetConvertHepler::ansiToUtf8("¼ÆÈë³É±¾·ÑÓÃ"),
-        CharsetConvertHepler::ansiToUtf8("³É±¾"),
-        CharsetConvertHepler::ansiToUtf8("½áËãÊıÁ¿"),
-        CharsetConvertHepler::ansiToUtf8("Ë°ÂÊ%"),
-        CharsetConvertHepler::ansiToUtf8("º¬Ë°µ¥¼Û"),
-        CharsetConvertHepler::ansiToUtf8("ÕÛ¿ÛÂÊ%"),
-        CharsetConvertHepler::ansiToUtf8("Ë°¶î"),
-        CharsetConvertHepler::ansiToUtf8("½áËã½ğ¶î"),
-        CharsetConvertHepler::ansiToUtf8("ÒÑ¿ªÆ±ÊıÁ¿"),
-        CharsetConvertHepler::ansiToUtf8("ÒÑ¿ªÆ±½ğ¶î"),
-        CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå1"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼ºÅ"),
-        CharsetConvertHepler::ansiToUtf8("·ÖÂ¼ºÅ"),
-        CharsetConvertHepler::ansiToUtf8("×Ô¶¨Òå2"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥·ÖÂ¼id"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥ÀàĞÍ"),
-        CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-        CharsetConvertHepler::ansiToUtf8("µ¥¾İ±àºÅ"),
-        CharsetConvertHepler::ansiToUtf8("Ô´µ¥id")
+        CharsetConvertHepler::ansiToUtf8("ç‰©æ–™"),
+        CharsetConvertHepler::ansiToUtf8("æ‰¹æ¬¡å·"),
+        CharsetConvertHepler::ansiToUtf8("ä»“åº“"),
+        CharsetConvertHepler::ansiToUtf8("å‡ºå…¥æ–¹å‘"),
+        CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†"),
+        CharsetConvertHepler::ansiToUtf8("è®¡é‡å•ä½"),
+        CharsetConvertHepler::ansiToUtf8("æ¶¨å¨æ•°é‡+/-"),
+        CharsetConvertHepler::ansiToUtf8("æ•°é‡"),
+        CharsetConvertHepler::ansiToUtf8("è®¡å…¥æˆæœ¬è´¹ç”¨"),
+        CharsetConvertHepler::ansiToUtf8("æˆæœ¬"),
+        CharsetConvertHepler::ansiToUtf8("ç»“ç®—æ•°é‡"),
+        CharsetConvertHepler::ansiToUtf8("ç¨ç‡%"),
+        CharsetConvertHepler::ansiToUtf8("å«ç¨å•ä»·"),
+        CharsetConvertHepler::ansiToUtf8("æŠ˜æ‰£ç‡%"),
+        CharsetConvertHepler::ansiToUtf8("ç¨é¢"),
+        CharsetConvertHepler::ansiToUtf8("ç»“ç®—é‡‘é¢"),
+        CharsetConvertHepler::ansiToUtf8("å·²å¼€ç¥¨æ•°é‡"),
+        CharsetConvertHepler::ansiToUtf8("å·²å¼€ç¥¨é‡‘é¢"),
+        CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰1"),
+        CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•å·"),
+        CharsetConvertHepler::ansiToUtf8("åˆ†å½•å·"),
+        CharsetConvertHepler::ansiToUtf8("è‡ªå®šä¹‰2"),
+        CharsetConvertHepler::ansiToUtf8("æºå•åˆ†å½•id"),
+        CharsetConvertHepler::ansiToUtf8("æºå•ç±»å‹"),
+        CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+        CharsetConvertHepler::ansiToUtf8("å•æ®ç¼–å·"),
+        CharsetConvertHepler::ansiToUtf8("æºå•id")
     };
     data.push_back(entryHeader);
 
@@ -950,27 +950,27 @@ ExportCgthckVO CgthckService::exportData(const ExportCgthckFileDTO& dto)
         }
     }
     
-    //¶¨Òå±£´æÊı¾İÎ»ÖÃºÍÒ³Ç©Ãû³Æ
+    //å®šä¹‰ä¿å­˜æ•°æ®ä½ç½®å’Œé¡µç­¾åç§°
     string fileName = "./public/excel/c5-cgthck.xlsx";
-    string sheetName = CharsetConvertHepler::ansiToUtf8("³öÈë¿âµ¥");
- /*   string entrySheetName = CharsetConvertHepler::ansiToUtf8("Ã÷Ï¸");*/
+    string sheetName = CharsetConvertHepler::ansiToUtf8("å‡ºå…¥åº“å•");
+ /*   string entrySheetName = CharsetConvertHepler::ansiToUtf8("æ˜ç»†");*/
 
-    // ±£´æÎÄ¼ş
+    // ä¿å­˜æ–‡ä»¶
     ExcelComponent excel;
     excel.writeVectorToFile(fileName, sheetName, data);
     //excel.writeVectorToFile(fileName, entrySheetName, entryData);
 
-//    // ¶¨Òåfastdfs¿Í»§¶Ë¶ÔÏó
+//    // å®šä¹‰fastdfså®¢æˆ·ç«¯å¯¹è±¡
 //#ifdef LINUX
 //    FastDfsClient client("conf/client.conf", 3);
 //#else
 //    FastDfsClient client("1.15.240.108");
 //#endif
-//    // ½«ÎÄ¼şÉÏ´«µ½fastdfs
+//    // å°†æ–‡ä»¶ä¸Šä¼ åˆ°fastdfs
 //    string fieldName = client.uploadFile(fileName);
-//    // É¾³ı±¾µØÎÄ¼ş
+//    // åˆ é™¤æœ¬åœ°æ–‡ä»¶
 //    std::remove(fieldName.c_str());
-//    // ·µ»ØÏÂÔØµØÖ·
+//    // è¿”å›ä¸‹è½½åœ°å€
 //    fieldName = "http://1.15.240.108:8888/" + fieldName;
 
     ExportCgthckVO result(fileName);

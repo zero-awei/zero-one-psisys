@@ -1,4 +1,4 @@
-#ifndef _CGTHCK_CONTROLLER_
+ï»¿#ifndef _CGTHCK_CONTROLLER_
 #define _CGTHCK_CONTROLLER_
 
 #include "../psi-stkmanage/domain/vo/JsonVO.h"
@@ -18,66 +18,66 @@
 #include"../../domain/dto/Cgthck/CgthckBillDetailedDTO.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgrkBillListsVO.h"
 /**
-* ¿ØÖÆÆ÷, ²É¹ºÍË»õ³ö¿â½Ó¿ÚµÄÊ¹ÓÃ
+* æ§åˆ¶å™¨, é‡‡è´­é€€è´§å‡ºåº“æ¥å£çš„ä½¿ç”¨
 */
 class CgthckController
 {
 public:
-	// ²éÑ¯µ¥¾İ½Ó¿Ú
+	// æŸ¥è¯¢å•æ®æ¥å£
 	CREATE_API_FUN_QUERY(queryCgthcBillk, execQueryCgthckBill, QueryCgthckBillQuery);
-	// ²éÑ¯Ö¸¶¨µ¥¾İÃ÷Ï¸½Ó¿Ú
+	// æŸ¥è¯¢æŒ‡å®šå•æ®æ˜ç»†æ¥å£
 	CREATE_API_FUN_QUERY(queryCgthckBillDetail, execQueryCgthckBillDetail, CgthckBillDetailedDTO);
-	// ²éÑ¯²É¹ºÈë¿âµ¥¾İ·ÖÂ¼ÁĞ±í
+	// æŸ¥è¯¢é‡‡è´­å…¥åº“å•æ®åˆ†å½•åˆ—è¡¨
 	CREATE_API_FUN_QUERY_PAYLOAD(queryCgrkEntryList, execQueryCgrkEntryList, QueryCgrkBillQuery);
-	// Ìí¼Ó²É¹ºÍË»õ³ö¿â(ºìÈë)µ¥¾İ½Ó¿Ú
+	// æ·»åŠ é‡‡è´­é€€è´§å‡ºåº“(çº¢å…¥)å•æ®æ¥å£
 	CREATE_API_FUN_JSON_PAYLOAD(addCgthckBill, execAddCgthckBill, AddCgthckBillDTO);
-	// ĞŞ¸Ä²É¹ºÍË»õ³ö¿â(ºìÈë)µ¥¾İ½Ó¿Ú
+	// ä¿®æ”¹é‡‡è´­é€€è´§å‡ºåº“(çº¢å…¥)å•æ®æ¥å£
 	CREATE_API_FUN_JSON_PAYLOAD(modifyCgthckBill, execModifyCgthckBill, AddCgthckBillDTO);
-	// ĞŞ¸Ä²É¹ºÍË»õ³ö¿â(ºìÈë)ÉóÅú
+	// ä¿®æ”¹é‡‡è´­é€€è´§å‡ºåº“(çº¢å…¥)å®¡æ‰¹
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckApproval, execModifyCgthckApproval, ModifyCgthckBillDTO);
-	// ĞŞ¸Ä²É¹ºÍË»õ³ö¿â(ºìÈë)µ¥¾İ×´Ì¬½Ó¿Ú
-	// ¹Ø±Õ
+	// ä¿®æ”¹é‡‡è´­é€€è´§å‡ºåº“(çº¢å…¥)å•æ®çŠ¶æ€æ¥å£
+	// å…³é—­
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToClosed, execModifyCgthcStatusToClose, ModifyCgthckBillDTO);
-	// ·´¹Ø±Õ
+	// åå…³é—­
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToUnclosed, execModifyCgthcStatusToUnclose, ModifyCgthckBillDTO);
-	// ×÷·Ï
+	// ä½œåºŸ
 	CREATE_API_FUN_BODY_PAYLOAD(modifyCgthckBillStatusToVoided, execModifyCgthcStatusToVoided, ModifyCgthckBillDTO);
-	// É¾³ı²É¹ºÍË»õ³ö¿â(ºìÈë)µ¥¾İ½Ó¿Ú
+	// åˆ é™¤é‡‡è´­é€€è´§å‡ºåº“(çº¢å…¥)å•æ®æ¥å£
 	CREATE_API_FUN_BODY_PAYLOAD(deleteCgthckBill, execDeleteCgthckBill, DeleteCgthckBillDTO);
-	// É¾³ı²É¹ºÍË»õ³ö¿â(ºìÈë)µ¥Ã÷Ï¸½Ó¿Ú
+	// åˆ é™¤é‡‡è´­é€€è´§å‡ºåº“(çº¢å…¥)å•æ˜ç»†æ¥å£
 	CREATE_API_FUN_BODY_PAYLOAD(deleteCgthckBillDetail, execDeleteCgthckBillDetail, DeleteCgthckBillDTO);
-	// µ¼Èë
+	// å¯¼å…¥
 	CREATE_API_FUN_BODY_FILE(importCgthckFile, execImportCgthckFile, ImportCgthckFileDTO);
-	// µ¼³ö
+	// å¯¼å‡º
 	CREATE_API_FUN_BODY_PAYLOAD(exportCgthckFile, execExportCgthckFile, ExportCgthckFileDTO);
 private:
-	// ²âÊÔ²éÑ¯Êı¾İ
+	// æµ‹è¯•æŸ¥è¯¢æ•°æ®
 	JsonVO<PageVO<QueryCgthckBillVO>> execQueryCgthckBill(const QueryCgthckBillQuery& query);
-	// ²âÊÔ²éÑ¯ÏêÏ¸Êı¾İ
+	// æµ‹è¯•æŸ¥è¯¢è¯¦ç»†æ•°æ®
 	JsonVO<QueryCgthrkDetailedBillVO> execQueryCgthckBillDetail(const CgthckBillDetailedDTO& query);
-	// ²âÊÔ·ÖÂ¼²éÑ¯²É¹ºÈë¿âµ¥ÁĞ±í	
+	// æµ‹è¯•åˆ†å½•æŸ¥è¯¢é‡‡è´­å…¥åº“å•åˆ—è¡¨	
 	JsonVO<std::list<QueryCgrkBillListsVO>> execQueryCgrkEntryList(const QueryCgrkBillQuery& query, const PayloadDTO& payload);
-	// ²âÊÔÌí¼ÓÊı¾İ
+	// æµ‹è¯•æ·»åŠ æ•°æ®
 	JsonVO<uint64_t> execAddCgthckBill(const AddCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ²âÊÔĞŞ¸ÄÊı¾İ
+	// æµ‹è¯•ä¿®æ”¹æ•°æ®
 	JsonVO<uint64_t> execModifyCgthckBill(const AddCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ÉóÅúµ¥¾İ
+	// å®¡æ‰¹å•æ®
 	JsonVO<uint64_t> execModifyCgthckApproval(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ĞŞ¸Äµ¥¾İ×´Ì¬
-	// ¹Ø±Õ
+	// ä¿®æ”¹å•æ®çŠ¶æ€
+	// å…³é—­
 	JsonVO<uint64_t> execModifyCgthcStatusToClose (const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ·´¹Ø±Õ
+	// åå…³é—­
 	JsonVO<uint64_t> execModifyCgthcStatusToUnclose(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ×÷·Ï
+	// ä½œåºŸ
 	JsonVO<uint64_t> execModifyCgthcStatusToVoided(const ModifyCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ²âÊÔÉ¾³ıÊı¾İ
+	// æµ‹è¯•åˆ é™¤æ•°æ®
 	JsonVO<uint64_t> execDeleteCgthckBill(const DeleteCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ²âÊÔÉ¾³ıÃ÷Ï¸
+	// æµ‹è¯•åˆ é™¤æ˜ç»†
 	JsonVO<uint64_t> execDeleteCgthckBillDetail(const DeleteCgthckBillDTO& dto, const PayloadDTO& payload);
-	// ²âÊÔÌá½»JSON
-	// ²âÊÔÎÄ¼şµ¼Èë
+	// æµ‹è¯•æäº¤JSON
+	// æµ‹è¯•æ–‡ä»¶å¯¼å…¥
 	JsonVO<uint64_t> execImportCgthckFile(const ImportCgthckFileDTO& dto);
-	// ²âÊÔÎÄ¼şµ¼³ö
+	// æµ‹è¯•æ–‡ä»¶å¯¼å‡º
 	JsonVO<ExportCgthckVO> execExportCgthckFile(const ExportCgthckFileDTO& dto, const PayloadDTO& payload);
 };
 
