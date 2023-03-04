@@ -10,7 +10,7 @@
 import Request from '@/apis/request.js'
 
 // 定义一个功能模块基础url，方便替换
-const currBaseUrl = '/sysmanagement/rolemanagement'
+const currBaseUrl = '/sysmanagement/rolemanagement/'
 
 // 6.3 分页查询角色信息
 export function getTableList(data, success, fail) {

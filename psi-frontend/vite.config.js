@@ -40,6 +40,11 @@ export default ({ mode }) =>
           changeOrigin: true,
           target: 'http://localhost:10680',
           rewrite: (path) => path.replace(/^\/captcha/, '')
+        },
+        '/C1': {
+          changeOrigin: true,
+          target: 'http://39.101.122.174:8090',
+          rewrite: (path) => path.replace(/^\/C1/, '')
         }
       }
     },
