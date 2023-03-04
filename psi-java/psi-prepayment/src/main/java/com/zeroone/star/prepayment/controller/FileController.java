@@ -58,15 +58,32 @@ public class FileController {
      * author 明破
      * since 2023-02-13
      */
-    @GetMapping("export")
-    @ApiOperation(value = "导出功能")
-    public ResponseEntity<byte[]> download() {
-        return null;
+    @GetMapping("export-payments-excel")
+    @ApiOperation(value = "获取导出文件")
+    public ResponseEntity<byte[]> download(String paymentType) {
+        // 实体类中的paymentType，2011代表采购预付有申请，2010代表采购预付无申请
+        if(paymentType.equals("2011")){
+            return paymentService.download(true);
+        }
+        else if(paymentType.equals("2010")){
+            return paymentService.download(false);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
     }
 
+    @GetMapping(value = "export-payments-url")
     @ApiOperation(value = "获取导出链接")
-    public JsonVO<String> downloadUrl() {
-        return null;
+    @ResponseBody
+    public JsonVO<String> downloadUrl(String paymentType) {
+        // 实体类中的paymentType，2011代表采购预付有申请，2010代表采购预付无申请
+        if(paymentType.equals("2011")) {
+            return paymentService.downloadUrl(true);
+        }else if(paymentType.equals("2010")) {
+            return paymentService.downloadUrl(false);
+        }else {
+            return JsonVO.fail("获取文件链接失败");
+        }
     }
 
     /**

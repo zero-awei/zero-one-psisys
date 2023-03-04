@@ -10,10 +10,10 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.prepayment.DocListVO;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.jws.soap.SOAPBinding;
 
 /**
  * <p>
@@ -88,6 +88,20 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * author neigui
      */
     void importExcelOfPayment(MultipartFile file) throws Exception;
+
+    /**
+     * 获取导出文件
+     * return 返回响应对象
+     * author 明破
+     */
+    ResponseEntity<byte[]> download(boolean isRequested);
+
+    /**
+     * 获取导出链接
+     * return 返回下载路径
+     * author 明破
+     */
+    JsonVO<String> downloadUrl(boolean isRequested);
 
 }
 
