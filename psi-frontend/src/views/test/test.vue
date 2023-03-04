@@ -19,7 +19,9 @@
 // TODO 引入的方法需要改 import {Xxx} from ''
 import { handleAddMenu } from './api/menu.js'   // 引入 业务接口测试方法
 import { handleQueryBasBankAccount } from './api/public.js'  //引入公共接口测试方法
-import { handleQuery } from './api/addressbook.js'
+//import { handleQuery } from './api/addressbook.js'
+import { handleQuery, handleClose, handleDelete, handleEdit, handlequeryAllByBillno, handleQueryOneHav, handleUnclose, handleVoid } from './api/caigouyufuapply.js'
+import { handleQueryOneNo } from './api/caigouyufu.js'
 
 function handle() {
   // TODO 改的是下面这行
@@ -29,6 +31,14 @@ function handle() {
   // handleQueryBasBankAccount()
 
   handleQuery()
+  handleClose()
+  handleDelete()
+  handleEdit()
+  handlequeryAllByBillno()
+  handleQueryOneHav()
+  handleQueryOneNo()
+  handleUnclose()
+  handleVoid()
 
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())

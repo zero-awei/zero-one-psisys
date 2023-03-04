@@ -1,31 +1,32 @@
 <template>
   <div>
     <!-- 采购预付（无申请） -->
- <div>
-    <!-- 查询 -->
-    <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
-      @reset="handleReset"></psi-form>
-  </div>
-    <div style="margin-top:10px">
-    <!-- 表格数据 -->
-    <!-- 导入导出 采购预付（无新增）新增？？？？？？ -->
-    <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
-      @add="handleAdd">
-    </psi-table>
-  </div>
+     <div>
+      <!-- 查询 -->
+      <psi-form :items="items" :formData="formData" :toggleItems="toggleItems" @query="handleQuery"
+        @reset="handleReset"></psi-form>
+    </div>
+      <div style="margin-top:10px">
+      <!-- 表格数据 -->
+      <!-- 导入导出 采购预付（无新增）新增？？？？？？ -->
+      <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+        @add="handleAdd">
+      </psi-table>
+    </div>
 
-    <!-- 弹出框 -->
-    <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
+      <!-- 弹出框 -->
+      <!-- <psi-dialog ref="editDialog" v-model="editDialogVisible" :attrs="editDialogVisible">
     </psi-dialog>
     <psi-dialog ref="editDialog" v-model="examineDialogVisible" :attrs="examineDialogVisible">
     </psi-dialog> -->
-  </div>
+    </div>
 </template>
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-// import { getTableList, query } from './api/caigouyufu.js'
 import { format } from '@/apis/date/index.js'
+import { queryAll, close, deleteById, edit, queryAllByBillno, queryOneNo, unclose, voidById } from './api/caigouyufu.js'
+
 
 // 查询表单相关数据及方法
 const formState = reactive({
@@ -42,7 +43,7 @@ const formState = reactive({
       prop: 'daterange',
       startPlaceholder: '开始日期',
       endPlaceholder: '结束日期'
-    }
+    },
   ],
   // 查询表单折叠项的配置
   toggleItems: [
@@ -82,6 +83,17 @@ const formState = reactive({
           value: 1
         }
       ]
+    },
+    
+    {
+      type: 'input',
+      label: '处理状态',
+      prop: 'billStage',
+    },
+    {
+      type: 'input',
+      label: '付款类型',
+      prop: 'paymentType',
     },
     {
       type: 'select',
@@ -139,7 +151,9 @@ const formState = reactive({
     isEffective: 0,
     isVoided: 1,
     subject: '',
-    supplierId: ''
+    subject: '',
+    supplierId: '',
+    paymentType: '',
   }
 })
 const { items, toggleItems, formData } = toRefs(formState)
@@ -168,7 +182,7 @@ const tableStatus = reactive({
     {
       type: 'text',
       label: '单据主题',
-      prop: 'city',
+      prop: 'subject',
       width: '184'
     },
     {
@@ -180,61 +194,79 @@ const tableStatus = reactive({
     {
       type: 'text',
       label: '供应商',
-      prop: 'zip',
+      prop: 'supplierld',
       width: '184'
     },
-    // tag?????????????????? 操作怎么写
     {
       type: 'text',
-      label: '操作',
-      prop: 'tag',
+      label: '金额',
+      prop: 'amt',
       width: '120'
-    }
-    // {
-    //   type: 'slot',
-    //   label: '操作',
-    //   prop: 'operation',
-    //   slotName: 'operation'
-    // }
+    },
+    {
+      type: 'text',
+      label: '审核人',
+      prop: 'approver',
+      width: '120'
+    },
+    {
+      type: 'slot',
+      label: '操作',
+      prop: 'operation',
+      slotName: 'operation'
+    },
+    {
+      type: 'text',
+      label: '单据编号',
+      prop: 'billNo',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '处理状态',
+      prop: 'billStage',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '已核销金额',
+      prop: 'checkedAmt',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建人',
+      prop: 'createBy',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建时间',
+      prop: 'createTime',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建部门',
+      prop: 'sysOrgCode',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
+      prop: 'updateBy',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'updateTime',
+      width: '120'
+    },
   ],
   // table 数据
   tableData: [
-    {
-      date: '2016-05-03',
-      name: 'Tom1',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Home'
-    },
-    {
-      date: '2016-05-02',
-      name: 'Tom2',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Office'
-    },
-    {
-      date: '2016-05-04',
-      name: 'Tom3',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Home'
-    },
-    {
-      date: '2016-05-01',
-      name: 'Tom4',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Office'
-    }
+
   ],
   // table 总体配置
   attributes: {
@@ -257,106 +289,170 @@ const pagination = reactive({
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
-
-/* // 7.2 列出所有单据
-//TODO 前后联调
-function doGetTableList() {
-  getTableList(
-    // 参数为空是这么写？
-    {},
-    // 请求成功
+//---------------处理事件----------
+function handleQuery() {
+  let params = {}
+  params.billDateStart = formData.value.billDateStart
+  params.billDateEnd = formData.value.billDateEnd
+  params.billNo = formData.value.billNo
+  params.billStage = formData.value.billStage
+  params.isClosed = formData.value.isClosed
+  params.isEffective = formData.value.isEffective
+  params.isVoided = formData.value.isVoided
+  params.subject = formData.value.subject
+  params.supplierId = formData.value.supplierId
+  params.paymentType = formData.value.paymentType
+  queryAll(
+    params,
     (data) => {
-      // 分页配置
-      // 页面属性 配对 返回数据
-      pagination.currentPage = data.pageIndex
-      pagination.pageSize = data.pageSize
-      pagination.pages = data.pages
-      // 表格列表数据
-      tableData = data.rows
+      // 查询返回的是表格数据
+      // 分页
+      pagination.value.currentPage = data.pageIndex
+      pagination.value.pageSize = data.pageSize
+      pagination.value.total = data.total
+      //表格数据
+      tableData.value = data.rows
     },
-    () => {
-      ElMessage.error('查询数据出现错误')
+    (msg) => {
+      ElMessage.warning(msg)
     }
   )
 }
- */
-
-/* // editDialog配置
-
-let editDialogVisible = ref(false)
-const editdialogState = reactive({
-  editDialogAttrs: {
-    title: '应付核销 - 编辑',
-    width: '80%'
-  }
-})
-const { editDialogAttrs } = toRefs(editdialogState)
-function edit(data) {
-  editDialogVisible = true
-  // 弹出框内的表格数据和data配置
-}
-// examineDialog配置
-
-let examineDialogVisible = ref(false)
-const examineDialogState = reactive({
-  examineDialogAttrs: {
-    title: '应付核销 - 审核',
-    width: '80%'
-  }
-})
-const { examineDialogAttrs } = toRefs(editdialogState) */
-// function edit(data){
-//   editDialogVisible=true
-//   // 弹出框内的表格数据和data配置
-
-
-// }
-// ------方法 ----
-// 表单重置
+//重置按钮
 function handleReset() {
-  //查询表单重置，表格也要刷新
-  doGetTableList()
+  handleQueryAll()
 }
-// 7.5 普通查询
-function handleQuery(data) {
-  // // // console.log('父组件接收')
-  // // // console.log('params--', params.daterange)
-  // // console.log('data.daterange[0]', data.daterange[0])
-  // // console.log('data.daterange[1]', data.daterange[1])
-  // // console.log('typeof', typeof data.daterange[1])
-  // 处理表单数据 主要是开始日期和结束日期
-  let params = {}
-  params.billNo = data.billNo
-  params.billStage = data.billStage
-  params.billStage = data.billStage
-  params.isClosed = data.isClosed
-  params.isEffective = data.isEffective
-  params.isVoided = data.isVoided
-  params.subject = data.subject
-  params.supplierId = data.supplierId
-  params.billDateBegin = format(data.daterange[0], 'yyyy-MM-dd hh:mm:ss')
-  params.billDateEnd = format(data.daterange[1], 'yyyy-MM-dd hh:mm:ss')
-  // // console.log('params', params)
-  /* // 后端调用接口
-  query(
+function handleQueryAll() {
+  queryAll(
     {
-      params
-    },
-    (data) => {
-      tableData = data.rows
-      pagination.currentPage = data.pageIndex
-      pagination.pageSize = data.pageSize
-      pagination.pages = data.pages
-    }
-  ) */
-}
-// 点击新增按钮触发方法
-function handleAdd() {
 
+    },
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      pagination.value.currentPage = data.pageIndex
+      pagination.value.pageSize = data.pageSize
+      pagination.value.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
 }
-// 在钩子函数时查询所有单据
-onMounted(() => {
-})
+//关闭按钮
+function handleClose() {
+  let params = {}
+  params.id = idData.value.id
+  close(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//删除信息
+function handleDelete() {
+  let params = {}
+  params.id = idData.value.id
+  deleteById(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//修改采购预付单功能
+function handleEdit() {
+  let params = {}
+  params.amt = editData.value.amt
+  params.attachment = editData.value.attachment
+  params.billDate = editData.value.billDate
+  params.billNo = editData.value.billNo
+  params.entryAmt = editData.value.entryAmt
+  params.entryBankAccountld = editData.value.entryBankAccountld
+  params.entryCustom1 = editData.value.entryCustom1
+  params.entryCustom2 = editData.value.entryCustom2
+  params.entryNo = editData.value.entryNo
+  params.entryId = editData.value.entryId
+  params.entryMid = editData.value.entryMid
+  params.entryRemark = editData.value.entryRemark
+  params.entrySettleMethod = editData.value.entrySettleMethod
+  params.entrySrcBillId = editData.value.entrySrcBillId
+  params.entrySrcBillType = editData.value.entrySrcBillType
+  params.entrySrcNo = editData.value.entrySrcNo
+  params.remark = editData.value.remark
+  params.srcBillId = editData.value.srcBillId
+  params.srcBillType = editData.value.srcBillType
+  params.srcNo = editData.value.srcNo
+  params.subject = editData.value.subject
+  params.supplierId = editData.value.supplierId
+  params.version = editData.value.version
+  edit(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//付款申请单分录列表
+function handlequeryAllByBillno() {
+  let params = {}
+  params.billNo = queryByBillNOData.value.billNo
+  queryAllByBillno(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//查看单据详情信息
+function handleQueryOneNo() {
+  let params = {}
+  params.billNo = oneNoData.value.billNo
+  queryOneNo(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//反关闭操作
+function handleUnclose() {
+  let params = {}
+  params.id = uncloseData.value.id
+  unclose(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//作废操作
+function handleVoid() {
+  let params = {}
+  params.id = voidData.value.id
+  voidById(
+    params,
+    (data) => { },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
