@@ -1,4 +1,5 @@
 package com.zeroone.star.prepayment.service.impl;
+
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.IdUtil;
@@ -7,8 +8,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
-import com.zeroone.star.prepayment.entity.FinPaymentReq;
-import com.zeroone.star.prepayment.entity.FinPaymentReqEntry;
+
 import com.zeroone.star.prepayment.mapper.FinPaymentEntryMapper;
 import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
 import com.zeroone.star.prepayment.mapper.FinPaymentReqEntryMapper;
@@ -41,6 +41,7 @@ import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+
 import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -106,9 +107,9 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
      * Author: Kong
      */
     @Override
-    public int insert(PrepaymentDTO prepaymentDTO, UserDTO userDTO){
+    public int insert(PrepaymentDTO prepaymentDTO, UserDTO userDTO) {
         FinPayment finPayment = new FinPayment();
-        BeanUtils.copyProperties(prepaymentDTO,finPayment);
+        BeanUtils.copyProperties(prepaymentDTO, finPayment);
         //时间
 //        finPayment.setCreateTime(LocalDateTime.now());
         //用户信息
@@ -119,35 +120,35 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     @Override
     public PageVO<DocListVO> listAll(DocListQuery condition) {
         //构建分页对象
-        Page<FinPayment> finPaymentPage = new Page<>(condition.getPageIndex(),condition.getPageSize());
+        Page<FinPayment> finPaymentPage = new Page<>(condition.getPageIndex(), condition.getPageSize());
         //创建查询条件
         QueryWrapper<FinPayment> finPaymentQueryWrapper = new QueryWrapper<>();
         //根据单据编号查询
-        if (condition.getBillNo()!=null)finPaymentQueryWrapper.eq("bill_no",condition.getBillNo());
+        if (condition.getBillNo() != null) finPaymentQueryWrapper.eq("bill_no", condition.getBillNo());
         //根据单据日期查询
-        if(condition.getBillDateStart()!=null && condition.getBillDateEnd()!=null)
-            finPaymentQueryWrapper.between("bill_date",condition.getBillDateStart(),condition.getBillDateEnd());
-        else if (condition.getBillDateStart()!=null)
-            finPaymentQueryWrapper.ge("bill_date",condition.getBillDateStart());
-        else if(condition.getBillDateEnd()!=null)
-            finPaymentQueryWrapper.le("bill_date",condition.getBillDateEnd());
+        if (condition.getBillDateStart() != null && condition.getBillDateEnd() != null)
+            finPaymentQueryWrapper.between("bill_date", condition.getBillDateStart(), condition.getBillDateEnd());
+        else if (condition.getBillDateStart() != null)
+            finPaymentQueryWrapper.ge("bill_date", condition.getBillDateStart());
+        else if (condition.getBillDateEnd() != null)
+            finPaymentQueryWrapper.le("bill_date", condition.getBillDateEnd());
         //根据单据主题查询
-        if (condition.getSubject()!=null)finPaymentQueryWrapper.like("subject",condition.getSubject());
+        if (condition.getSubject() != null) finPaymentQueryWrapper.like("subject", condition.getSubject());
         //根据供应商查询
-        if (condition.getSupplierId()!=null)finPaymentQueryWrapper.eq("supplier_id",condition.getSupplierId());
+        if (condition.getSupplierId() != null) finPaymentQueryWrapper.eq("supplier_id", condition.getSupplierId());
         //根据处理状态查询
-        if (condition.getBillStage()!=null)finPaymentQueryWrapper.eq("bill_stage",condition.getBillStage());
+        if (condition.getBillStage() != null) finPaymentQueryWrapper.eq("bill_stage", condition.getBillStage());
         //根据是否生效查询
-        if (condition.getIsEffective()!=null)finPaymentQueryWrapper.eq("is_effective",condition.getIsEffective());
+        if (condition.getIsEffective() != null) finPaymentQueryWrapper.eq("is_effective", condition.getIsEffective());
         //根据是否关闭查询
-        if (condition.getIsClosed()!=null)finPaymentQueryWrapper.eq("is_closed",condition.getIsClosed());
+        if (condition.getIsClosed() != null) finPaymentQueryWrapper.eq("is_closed", condition.getIsClosed());
         //根据是否作废查询
-        if (condition.getIsVoided()!=null)finPaymentQueryWrapper.eq("is_voided",condition.getIsVoided());
+        if (condition.getIsVoided() != null) finPaymentQueryWrapper.eq("is_voided", condition.getIsVoided());
         //根据付款类型查询（即2011是有申请，2010是无申请）
-        if (condition.getPaymentType()!=null)finPaymentQueryWrapper.eq("payment_type",condition.getPaymentType());
+        if (condition.getPaymentType() != null) finPaymentQueryWrapper.eq("payment_type", condition.getPaymentType());
         //执行SQL
         Page<FinPayment> result = baseMapper.selectPage(finPaymentPage, finPaymentQueryWrapper);
-        return PageVO.create(result,DocListVO.class);
+        return PageVO.create(result, DocListVO.class);
     }
 
     /**
@@ -176,7 +177,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     }
 
     @Override
-    public JsonVO<String> closeById(String id,UserDTO userDTO) {
+    public JsonVO<String> closeById(String id, UserDTO userDTO) {
         FinPayment finPayment = selectById(id);
         // 查询要关闭的单据信息
         if (finPayment == null) {
@@ -199,7 +200,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     }
 
     @Override
-    public JsonVO<String> uncloseById(String id,UserDTO userDTO) {
+    public JsonVO<String> uncloseById(String id, UserDTO userDTO) {
         FinPayment finPayment = selectById(id);
         // 查询要关闭的单据信息
         if (finPayment == null) {
@@ -223,7 +224,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     }
 
     @Override
-    public JsonVO<String> voidById(String id,UserDTO userDTO) {
+    public JsonVO<String> voidById(String id, UserDTO userDTO) {
         FinPayment finPayment = selectById(id);
         // 查询要关闭的单据信息
         if (finPayment == null) {
@@ -256,10 +257,6 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     FinPaymentMapper paymentMapper;
     @Resource
     FinPaymentEntryMapper paymentEntryMapper;
-    @Resource
-    FinPaymentReqMapper paymentReqMapper;
-    @Resource
-    FinPaymentReqEntryMapper paymentReqEntryMapper;
 
     @Override
     public void importExcelOfPayment(MultipartFile file) throws Exception {
@@ -272,12 +269,16 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
      *
      * @return 无申请带有明细信息的采购预付信息列表
      */
-    private List<FinPaymentExportQuery> fetchExportFinPayment() {
+    private List<FinPaymentExportQuery> fetchExportFinPayment(boolean isRequested) {
 
         // 获取主表数据
         List<FinPayment> allFinPayments;
         QueryWrapper<FinPayment> finPaymentQueryWrapper = new QueryWrapper<>();
-        finPaymentQueryWrapper.eq("payment_type", 2010);
+        if (isRequested) {
+            finPaymentQueryWrapper.eq("payment_type", 2011);
+        } else {
+            finPaymentQueryWrapper.eq("payment_type", 2010);
+        }
         allFinPayments = finPaymentMapper.selectList(finPaymentQueryWrapper);
 
         // 初始化最终结果列表及明细查询条件
@@ -292,7 +293,11 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
             // 将查询获取到的主表属性对应拷贝到导出实体类的属性
             BeanUtils.copyProperties(nowFinPayment, temp);
             // 对应原始数据修改显示信息
-            temp.setIsRequested("采购预付(无申请)");
+            if (isRequested) {
+                temp.setIsRequested("采购预付(有申请)");
+            } else {
+                temp.setIsRequested("采购预付(无申请)");
+            }
             temp.setIsEffective(nowFinPayment.getIsEffective() == 1 ? "是" : "否");
             temp.setIsAuto(nowFinPayment.getIsAuto() == 1 ? "是" : "否");
             temp.setIsVoided(nowFinPayment.getIsVoided() ? "是" : "否");
@@ -327,64 +332,6 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     }
 
     /**
-     * 导出获取有申请采购预付表
-     *
-     * @return 有申请带有明细信息的采购预付信息列表
-     */
-    private List<FinPaymentExportQuery> fetchExportFinPaymentReq() {
-
-        // 获取主表数据
-        List<FinPaymentReq> allFinPayments;
-        QueryWrapper<FinPaymentReq> finPaymentReqQueryWrapper = new QueryWrapper<>();
-        finPaymentReqQueryWrapper.eq("payment_type", 2011);
-        allFinPayments = paymentReqMapper.selectList(finPaymentReqQueryWrapper);
-
-        // 初始化最终结果列表及明细查询条件
-        List<FinPaymentExportQuery> results = new ArrayList<>();
-        QueryWrapper<FinPaymentReqEntry> finPaymentEntryQueryWrapper = new QueryWrapper<>();
-
-        // 装填最终结果数据
-        for (FinPaymentReq nowFinPayment : allFinPayments) {
-
-            // 创建一个导出对象准备存储一行数据
-            FinPaymentExportQuery temp = new FinPaymentExportQuery();
-            // 将查询获取到的主表属性对应拷贝到导出实体类的属性
-            BeanUtils.copyProperties(nowFinPayment, temp);
-            // 对应原始数据修改显示信息
-            temp.setIsRequested("采购预付(有申请)");
-            temp.setIsEffective(nowFinPayment.getIsEffective() == 1 ? "是" : "否");
-            temp.setIsAuto(nowFinPayment.getIsAuto() == 1 ? "是" : "否");
-            temp.setIsVoided(nowFinPayment.getIsVoided() == 1 ? "是" : "否");
-            temp.setIsRubric(nowFinPayment.getIsRubric() == 1 ? "是" : "否");
-            temp.setIsClosed(nowFinPayment.getIsClosed() == 1 ? "是" : "否");
-
-            // 构造明细表查询条件
-            finPaymentEntryQueryWrapper.eq("mid", nowFinPayment.getId());
-            // 查询明细表数据
-            List<FinPaymentReqEntry> finPaymentEntryList = paymentReqEntryMapper.selectList(finPaymentEntryQueryWrapper);
-
-            // 清空查询条件避免重复添加多个条件
-            finPaymentEntryQueryWrapper.clear();
-
-            // 将查询到的明细表属性对应拷贝到导出实体类（多条）并将其添加到最终结果列表中
-            for (FinPaymentReqEntry entryTemp : finPaymentEntryList) {
-                BeanUtils.copyProperties(entryTemp, temp);
-                temp.setEid(entryTemp.getId());
-                temp.setMid(entryTemp.getMid());
-                temp.setEBillNo(entryTemp.getBillNo());
-                temp.setESrcBillType(entryTemp.getSrcBillType());
-                temp.setESrcNo(entryTemp.getSrcNo());
-                temp.setEAmt(entryTemp.getAmt());
-                temp.setERemark(entryTemp.getRemark());
-                temp.setEVersion(entryTemp.getVersion());
-                results.add(temp);
-            }
-        }
-
-        return results;
-    }
-
-    /**
      * 获取导出文件
      *
      * @param isRequested 获取需要导出的信息类别(有申请/无申请?)
@@ -395,12 +342,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     public ResponseEntity<byte[]> download(boolean isRequested) {
 
         // 获取数据，参数控制是否有申请
-        List<FinPaymentExportQuery> results;
-        if (isRequested) {
-            results = fetchExportFinPaymentReq();
-        } else {
-            results = fetchExportFinPayment();
-        }
+        List<FinPaymentExportQuery> results = fetchExportFinPayment(isRequested);
 
         // 导出Excel
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -423,12 +365,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     public JsonVO<String> downloadUrl(boolean isRequested) {
 
         // 获取数据，参数控制是否有申请
-        List<FinPaymentExportQuery> results;
-        if (isRequested) {
-            results = fetchExportFinPaymentReq();
-        } else {
-            results = fetchExportFinPayment();
-        }
+        List<FinPaymentExportQuery> results = fetchExportFinPayment(isRequested);
 
         // 导出Excel
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -451,6 +388,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     // 用于获取当前登录的用户信息
     @Resource
     UserHolder userHolder;
+
     /**
      * 返回一个接口实现
      */
