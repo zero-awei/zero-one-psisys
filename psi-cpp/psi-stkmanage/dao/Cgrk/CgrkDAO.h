@@ -30,7 +30,7 @@
 #include "../../domain/query/Cgrk/QueryPurOrderEntryQuery.h"
 #include "../../domain/query/Cgrk/QueryCgrkBillListAdvancedQuery.h"
 #include "../../domain/dto/Cgrk/AddCgrkBillDTO.h"
-
+#include"../../domain/do/Cgrk/ModifyCgrkBillStatusDO.h"
 /**
  * 采购入库数据库操作实现
  */
@@ -80,6 +80,7 @@ public:
 	//删除采购入库单
 	uint64_t deleteCgrkBill(const string& id);
 
+	int updataBillStatus(const ModifyCgrkBillStatusDO& doObject);
 
 };
 #endif // !_SAMPLE_DAO_

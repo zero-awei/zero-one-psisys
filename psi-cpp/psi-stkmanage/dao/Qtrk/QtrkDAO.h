@@ -25,6 +25,8 @@
 #include "../../domain/vo/Qtrk/QueryQtrkBillDetailsVO.h"
 #include "../../domain/query/Qtrk/QueryQtrkBillListQuery.h"
 #include "../../domain/dto/Qtrk/AddQtrkBillDTO.h"
+#include"domain/do/Qtrk/ModifyQtrkBillStatusDO.h"
+#include"domain/do/Qtrk/DeleteBill.h"
 
 /**
  * 采购入库数据库操作实现
@@ -42,7 +44,10 @@ public:
 	//查询单据详细信息
 	list<StkIoEntryDO> selectBillDetails(string billNo);
 
+	int updataBillStatus(const ModifyQtrkBillStatusDO& doObject);
 
+
+	int deleteBill(const DeleteBill& doObject);
 
 
 };
