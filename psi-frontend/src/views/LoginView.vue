@@ -1,7 +1,7 @@
 <!-- 登录页面 -->
 <template>
   <!-- <div class="box-card">
-      <div><el-card style="width: 480px;"> -->
+        <div><el-card style="width: 480px;"> -->
   <!-- 表单验证 :rules="rules" -->
 <!-- <span>系统登录</span>
         <el-form :model="formData" :rules="rules" status-icon label-width="60px">
@@ -16,10 +16,10 @@
           </el-form-item>
         </el-form>
 
-          <Test /></el-card> -->
+            <Test /></el-card> -->
   <!-- 验证码组件 -->
 <!-- <Verify mode="pop" :captchaType="captchaType" :imgSize="{ width: '400px', height: '200px' }" ref="verify"
-          @success="handleSuccess"></Verify> -->
+            @success="handleSuccess"></Verify> -->
   <!-- </div></div> -->
   <div class="login-main">
     <div class="login-wraper">
@@ -34,7 +34,8 @@
             </el-form-item>
             <br />
             <el-form-item label="密码" prop="password">
-              <el-input v-model="formData.password" type="password" @keyup.native.enter="submitForm()"></el-input>
+              <!-- TODO <el-input v-model="formData.password" type="password" @keyup.native.enter="submitForm()"></el-input> -->
+              <el-input v-model="formData.password" type="password"></el-input>
             </el-form-item>
 
           </el-form>
@@ -111,14 +112,14 @@ function keyDown(e) {
     doLogin(); // 定义的登录方法
   }
 }
-onMounted(() => {
-  // 绑定监听事件
-  window.addEventListener("keydown", keyDown);
-})
-onUnmounted(() => {
-  // 销毁事件
-  window.removeEventListener("keydown", keyDown, false);
-})
+// onMounted(() => {
+//   // 绑定监听事件
+//   window.addEventListener("keydown", keyDown);
+// })
+// onUnmounted(() => {
+//   // 销毁事件
+//   window.removeEventListener("keydown", keyDown, false);
+// })
 
 
 // 定义登录提交函数

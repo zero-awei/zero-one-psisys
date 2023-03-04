@@ -17,15 +17,13 @@
 // 测试接口的方法是 handleXXX,  需要传请求参数params
 
 // TODO 引入的方法需要改 import {Xxx} from ''
-import { handleAddMenu } from './api/menu.js'   // 引入 业务接口测试方法
-import { handleQueryBasBankAccount } from './api/public.js'  //引入公共接口测试方法
 //import { handleQuery } from './api/addressbook.js'
-import { handleQuery, handleClose, handleDelete, handleEdit, handlequeryAllByBillno, handleQueryOneHav, handleUnclose, handleVoid } from './api/caigouyufuapply.js'
-import { handleQueryOneNo } from './api/caigouyufu.js'
-import { handleAddMenu } from './api/menu.js' // 引入 业务接口测试方法
-import { handleQueryBasBankAccount } from './api/public.js' //引入公共接口测试方法
-import { handleQuery } from './api/addressbook.js'
-import { newCheckPayableSave } from "./api/payable.js";
+// import { handleQuery, handleClose, handleDelete, handleEdit, handlequeryAllByBillno, handleQueryOneHav, handleUnclose, handleVoid } from './api/caigouyufuapply.js'
+// import { handleQueryOneNo } from './api/caigouyufu.js'
+// import { handleAddMenu } from './api/menu.js' // 引入 业务接口测试方法
+// import { handleQueryBasBankAccount } from './api/public.js' //引入公共接口测试方法
+// import { handleQuery } from './api/addressbook.js'
+// import { newCheckPayableSave } from "./api/payable.js";
 
 function handle() {
   // TODO 改的是下面这行
@@ -34,15 +32,15 @@ function handle() {
   // // 测试公共接口
   // handleQueryBasBankAccount()
 
-  handleQuery()
-  handleClose()
-  handleDelete()
-  handleEdit()
-  handlequeryAllByBillno()
-  handleQueryOneHav()
-  handleQueryOneNo()
-  handleUnclose()
-  handleVoid()
+  // handleQuery()
+  // handleClose()
+  // handleDelete()
+  // handleEdit()
+  // handlequeryAllByBillno()
+  // handleQueryOneHav()
+  // handleQueryOneNo()
+  // handleUnclose()
+  // handleVoid()
   // handleQuery()
 
   //测试应付核销接口
