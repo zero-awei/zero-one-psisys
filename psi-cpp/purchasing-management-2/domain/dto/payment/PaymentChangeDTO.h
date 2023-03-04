@@ -5,26 +5,26 @@
 #include "../FileDTO.h"
 #include <map>
 
-//ÐÞ¸Ä¶©µ¥×´Ì¬µÄDTO Ç°¶ËÐèÒª´«µÝÒ»¸öµ¥¾Ý±àºÅÒÔ¼°×´Ì¬ÐÞ¸ÄÐÅÏ¢
+//ï¿½Þ¸Ä¶ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½DTO Ç°ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½Ô¼ï¿½×´Ì¬ï¿½Þ¸ï¿½ï¿½ï¿½Ï¢
 class PaymentChangeDTO {
-	// ±àºÅ
+	// ï¿½ï¿½ï¿½
 	CC_SYNTHESIZE(string, id, Id);
-	// ²Ù×÷ÀàÐÍ(¹Ø±Õ/·´¹Ø±Õ/×÷·Ï)
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ø±ï¿½/ï¿½ï¿½ï¿½Ø±ï¿½/ï¿½ï¿½ï¿½ï¿½)
 	CC_SYNTHESIZE(int, opType, OpType);
-	// µ¥¾Ý±àºÅ
+	// ï¿½ï¿½ï¿½Ý±ï¿½ï¿½
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// ÊÇ·ñÉúÐ§
+	// ï¿½Ç·ï¿½ï¿½ï¿½Ð§
 	//CC_SYNTHESIZE(bool, is_effective, Is_effective);
-	// ÉúÐ§Ê±¼ä
+	// ï¿½ï¿½Ð§Ê±ï¿½ï¿½
 	//CC_SYNTHESIZE(string, effective_time, effective_time);
-	 //ÊÇ·ñ¹Ø±Õ
+	 //ï¿½Ç·ï¿½Ø±ï¿½
 	//CC_SYNTHESIZE(bool, is_closed, Is_closed);
-	//// ÊÇ·ñ×÷·Ï
+	//// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
 	//CC_SYNTHESIZE(bool, is_voided, Is_voided);
 public:
-	const enum OPTYPE { CLOSE = 0, UNCLOSE = 1, CANCEL = 2 }; // ²Ù×÷ÀàÐÍÃ¶¾ÙÀà
-	int OPS[3] = { 1, 0, 1 }; // ²Ù×÷ÀàÐÍ¶ÔÓ¦²Ù×÷Êý
-	//°ó¶¨JSON×ª»»·½·¨
+	enum OPTYPE { CLOSE = 0, UNCLOSE = 1, CANCEL = 2 }; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½
+	int OPS[3] = { 1, 0, 1 }; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½JSON×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	friend void from_json(const json& j, PaymentChangeDTO& t);
 };
 #endif // !_PUR_REQ_MOD_BILL_STATUS_DTO_

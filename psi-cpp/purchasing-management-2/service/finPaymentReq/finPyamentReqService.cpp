@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "FinPyamentReqService.h"
-#include "../../dao/finPaymentReq/FinPaymentReqDAO.h"
+#include "finPyamentReqService.h"
+#include "../../dao/finPaymentReq/finPaymentReqDAO.h"
 
-//¶¨ÒåÒ»¸öºêÓÃÀ´½øÐÐÄ¬ÈÏÖµµÄÐÞ¸Ä
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½Þ¸ï¿½
 #define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
 
-//¶¨ÒåÒ»¸öºêÓÃÀ´½øÐÐÖµµÄÐÞ¸Ä
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Þ¸ï¿½
 #define MODIFY(name) data.set##name(dto.get##name());
 
 string getTime1()
@@ -15,7 +15,7 @@ string getTime1()
 
 	localtime_s(&t, &now);
 
-	// ½«ÐÅÏ¢Êä³öµ½×Ö·û´®Á÷
+	// ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 	stringstream ss;
 	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
 	return ss.str();
@@ -23,16 +23,16 @@ string getTime1()
 
 uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const PayloadDTO& payload)
 {
-	//Ê×ÏÈ½«¶©µ¥±¾ÌåÌí¼Ó½øÊý¾Ý¿â
-	//×é×°´«ÊäÊý¾Ý
+	//ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+	//ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	FinPaymentReqManageDO data;
 	SnowFlake sf(1, 3);
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
 	string time = getTime1();
-	//Ê×ÏÈÊÇ½øÐÐidÉèÖÃÊ¹ÓÃÑ©»¨Ëã·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ñ©ï¿½ï¿½ï¿½ã·¨
 	data.setId(id);
-	//»ñÈ¡±ØÌîÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	data.setBillNo(BillNo);
 	MODIFY(BillDate);
 	MODIFY(SupplierId);
@@ -40,13 +40,13 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	MODIFY(PaymentType);
 	MODIFY(Operator);
 	MODIFY(BillStage);
-	//»ñÈ¡ÓÃ»§µÄÐÅÏ¢£¬´Ë´¦ÎªÌí¼Ó¶©µ¥ÈËÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ë´ï¿½Îªï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	data.setSysOrgCode(payload.getDepartment());
 	data.setCreateBy(payload.getUsername());
 	data.setCreateTime(time);
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(time);
-	//´æÔÚÄ¬ÈÏÖµÊ±µÄ´¦Àí
+	//ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÊ±ï¿½Ä´ï¿½ï¿½ï¿½
 	MODIFY_DEFAULT(SrcBillType);
 	MODIFY_DEFAULT(SrcBillId);
 	MODIFY_DEFAULT(SrcNo);
@@ -56,19 +56,19 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	MODIFY_DEFAULT(Amt);
 	MODIFY_DEFAULT(Remark);
 	MODIFY_DEFAULT(Version);
-	//Ö´ÐÐÊý¾ÝÐÞ¸Ä
+	//Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
 	FinPaymentReqDAO dao;
-	//È»ºó½«¶©µ¥Ã÷Ï¸Ìí¼Ó½øÊý¾Ý¿â
+	//È»ï¿½ó½«¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 	for (FinPaymentReqEtryDTO& dto : dto.getDetail()) {
 		FinPaymentReqEntryManageDO data;
-		//Ê×ÏÈÊÇ½øÐÐidÉèÖÃÊ¹ÓÃÑ©»¨Ëã·¨
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ñ©ï¿½ï¿½ï¿½ã·¨
 		data.setId(to_string(sf.nextId()));
-		//ÉèÖÃºÍÖ÷±íµÄÁ´½Ó¼ü
+		//ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½
 		data.setMid(id);
 		data.setBillNo(BillNo);
-		//½øÐÐ±ØÌîÖµµÄ²åÈë
+		//ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Öµï¿½Ä²ï¿½ï¿½ï¿½
 		MODIFY(EntryNo);
-		//Ä¬ÈÏÖµÉèÖÃ
+		//Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 		MODIFY_DEFAULT(SrcBillType);
 		MODIFY_DEFAULT(SrcEntryId);
 		MODIFY_DEFAULT(SrcNo);
@@ -86,18 +86,18 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 
 uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const PayloadDTO& payload)
 {
-	//Ê×ÏÈ½«¶©µ¥±¾ÌåÌí¼Ó½øÊý¾Ý¿â
-	//×é×°´«ÊäÊý¾Ý
+	//ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+	//ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	FinPaymentReqManageDO data;
 	FinPaymentReqDAO dao;
 	SnowFlake sf(1, 3);
-	//Ê¹ÓÃÑ©»¨Ëã·¨ÉèÖÃid
+	//Ê¹ï¿½ï¿½Ñ©ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½ï¿½ï¿½id
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
 
-	//½øÐÐidÉèÖÃ
+	//ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½
 	data.setId(id);
-	//»ñÈ¡±ØÌîÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	data.setBillNo(BillNo);
 	MODIFY(BillDate);
 	MODIFY(SupplierId);
@@ -105,10 +105,10 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	MODIFY(Operator);
 	MODIFY(CreateBy);
 	MODIFY(CreateTime);
-	//»ñÈ¡ÐÞ¸ÄÓÃ»§µÄÐÅÏ¢£¬´Ë´¦ÎªÌí¼Ó¶©µ¥ÈËÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½Þ¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ë´ï¿½Îªï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(getTime1());
-	//´æÔÚÄ¬ÈÏÖµÊ±µÄ´¦Àí
+	//ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÊ±ï¿½Ä´ï¿½ï¿½ï¿½
 	MODIFY_DEFAULT(SrcBillType);
 	MODIFY_DEFAULT(SrcBillId);
 	MODIFY_DEFAULT(SrcNo);
@@ -118,19 +118,19 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	MODIFY_DEFAULT(Attachment);
 	MODIFY_DEFAULT(Remark);
 	MODIFY_DEFAULT(Version);
-	//Ö´ÐÐÊý¾ÝÐÞ¸Ä
+	//Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
 
-	//È»ºó½«¶©µ¥Ã÷Ï¸Ìí¼Ó½øÊý¾Ý¿â
+	//È»ï¿½ó½«¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 	for (FinPaymentReqEtryDTO& dto : dto.getDetail()) {
 		FinPaymentReqEntryManageDO data;
-		//Ê×ÏÈÊÇ½øÐÐidÉèÖÃ,ÓÃÑ©»¨Ëã·¨
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ñ©ï¿½ï¿½ï¿½ã·¨
 		data.setId(to_string(sf.nextId()));
-		//ÉèÖÃºÍÖ÷±íµÄÍâ¼ü
+		//ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		data.setMid(id);
 		data.setBillNo(BillNo);
-		//½øÐÐ±ØÌîÖµµÄ²åÈë
+		//ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Öµï¿½Ä²ï¿½ï¿½ï¿½
 		MODIFY(EntryNo);
-		//Ä¬ÈÏÖµÉèÖÃ
+		//Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 		MODIFY_DEFAULT(SrcBillType);
 		MODIFY_DEFAULT(SrcEntryId);
 		MODIFY_DEFAULT(SrcNo);
@@ -148,7 +148,7 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 bool FinPyamentReqService::removeData(string billNo)
 {
 	FinPaymentReqDAO dao;
-	//Ê×ÏÈ»ñÈ¡¸½¼þÐÅÏ¢
+	//ï¿½ï¿½ï¿½È»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	list<FinPaymentReqManageDO> getdata = dao.selectByBillNo(billNo);
 	if (getdata.size() == 1)
 	{
@@ -156,14 +156,14 @@ bool FinPyamentReqService::removeData(string billNo)
 		if (data.getAttachment() != "")
 		{
 #ifdef LINUX
-			//¶¨Òå¿Í»§¶Ë¶ÔÏó
+			//ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½
 			FastDfsClient client("conf/client.conf", 3);
 #else
-			//¶¨Òå¿Í»§¶Ë¶ÔÏó
+			//ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½
 			FastDfsClient client("1.15.240.108");
 #endif
 			string fieldName = data.getAttachment();
-			//É¾³ýÎÄ¼þ
+			//É¾ï¿½ï¿½ï¿½Ä¼ï¿½
 			if (!fieldName.empty())
 			{
 				client.deleteFile(fieldName);
@@ -174,12 +174,12 @@ bool FinPyamentReqService::removeData(string billNo)
 }
 
 PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery& query) {
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½
 	PageVO<FinPaymentReqVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//²éÑ¯Êý¾Ý×ÜÌõÊý
+	//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	FinPaymentReqDO obj;
 	obj.setBill_no(query.getBillNo());
 	obj.setBill_date(query.getBillDate());
@@ -195,7 +195,7 @@ PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery
 		return pages;
 	}
 
-	//·ÖÒ³²éÑ¯Êý¾Ý
+	//ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	pages.setTotal(count);
 	pages.calcPages();
 	list<FinPaymentReqDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
@@ -231,7 +231,7 @@ PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery
 	pages.setRows(vr);
 	return pages;
 }
-//²éÑ¯Ö¸¶¨µ¥¾ÝÏêÏ¸ÐÅÏ¢
+//ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 FinPaymentDetailVO FinPyamentReqService::detailDate(const FinPaymentReqEntryQuery& query) {
 	FinPaymentReqDAO dao;
 	list<FinPaymentReqDO> pus = dao.selectBillNo(query.getBillNo());

@@ -3,7 +3,7 @@
 #ifndef _PAYMENTCONTROLLER_H_
 #define _PAYMENTCONTROLLER_H_
 #include "../../domain/dto/payment/PaymentChangeDTO.h"
-#include "../../domain/dto/payment/DepaymentDTO.h"
+#include "../../domain/dto/payment/DePaymentDTO.h"
 #include "../../domain/dto/payment/PaymentImportDTO.h"
 #include "../../domain/dto/payment/AddPaymentDTO.h"
 
@@ -13,23 +13,23 @@
 #include "../../domain/vo/payment/PaymentVO.h"
 
 /**
- * ¿ØÖÆÆ÷
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 class PaymentController
 {
 public:
-	//ÐÞ¸Ä¶©µ¥×´Ì¬
+	//ï¿½Þ¸Ä¶ï¿½ï¿½ï¿½×´Ì¬
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPayment, execChangePayment, PaymentChangeDTO);
-	//É¾³ý
+	//É¾ï¿½ï¿½
 	CREATE_API_FUN_BODY(deleteById, execDePayment, DePaymentDTO);
-	//Ìí¼Ó
+	//ï¿½ï¿½ï¿½ï¿½
 	CREATE_API_FUN_BODY_PAYLOAD(AddPayment, execAddPayment, AddPaymentDTO);
 private:
-	//ÐÞ¸Äµ¥¾Ý×´Ì¬£¨¹Ø±Õ/×÷·Ï/·´¹Ø±Õ£©
+	//ï¿½Þ¸Äµï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ø±ï¿½/ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½Ø±Õ£ï¿½
 	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload);
-	//É¾³ýÊý¾Ý
+	//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	JsonVO<string> execDePayment(const DePaymentDTO& dto);
-	//Ìí¼ÓÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	JsonVO<uint64_t> execAddPayment(const AddPaymentDTO& dto, const PayloadDTO& payload);
 
 };

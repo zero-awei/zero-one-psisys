@@ -1,16 +1,16 @@
 #include "stdafx.h"
 #include "PaymentService.h"
-#include "../../dao/Payment/PaymentDAO.h"
+#include "../../dao/payment/PaymentDAO.h"
 
-// Í¨¹ýIDÉ¾³ýÊý¾Ý
+// Í¨ï¿½ï¿½IDÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 bool PaymentService::DePayment(const DePaymentDTO& dto)
 {
-	//×é×°´«ÊäÊý¾Ý
+	//ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	PaymentDAO dao;
 	FinPayReqDO data;
 	data.setId(dto.getId());
 	data.setBill_no(dto.getBill_no());
-	//Ö´ÐÐÊý¾ÝÐÞ¸Ä
+	//Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
 	if (dto.getId() != "" || dto.getBill_no() != "")
 	{
 		data.setId(dto.getId());
@@ -25,20 +25,20 @@ string getPayTime()
 
 	localtime_s(&t, &now);
 
-	// ½«ÐÅÏ¢Êä³öµ½×Ö·û´®Á÷
+	// ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 	stringstream ss;
 	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
 	return ss.str();
 }
 
-// ÐÞ¸Äµ¥¾Ý×´Ì¬
+// ï¿½Þ¸Äµï¿½ï¿½ï¿½×´Ì¬
 bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
 	FinPayReqDO data;
 
 	string time = getPayTime();
 
-	// ÉèÖÃÓÃ»§Êý¾Ý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	data.setUpdate_by(payload.getUsername());
 	data.setCreate_by(payload.getUsername());
 	data.setUpdate_time(time);
@@ -60,36 +60,36 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadD
 
 
 
-//¶¨ÒåÒ»¸öºêÓÃÀ´½øÐÐÖµµÄÐÞ¸Ä
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Þ¸ï¿½
 #define MODIFY(name) data.set##name(dto.get##name());
-//¶¨ÒåÒ»¸öºêÓÃÀ´½øÐÐÄ¬ÈÏÖµµÄÐÞ¸Ä
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½Þ¸ï¿½
 #define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
-// ±£´æÊý¾Ý
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& payload)
 {
-	//Ê×ÏÈ½«¶©µ¥±¾ÌåÌí¼Ó½øÊý¾Ý¿â
-	//×é×°´«ÊäÊý¾Ý
+	//ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+	//ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	FinPayReqDO data;
 	SnowFlake sf(1, 4);
 	string id = to_string(sf.nextId());
 	string Bill_no = dto.getBill_no();
 	string time = getPayTime();
-	//Ê×ÏÈÊÇ½øÐÐidÉèÖÃÊ¹ÓÃÑ©»¨Ëã·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ñ©ï¿½ï¿½ï¿½ã·¨
 	data.setId(id);
-	//»ñÈ¡±ØÌîÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	data.setBill_no(Bill_no);
 	MODIFY(Bill_date);
 	MODIFY(Operator);
 	MODIFY(Op_dept);
 	MODIFY(Supplier_id);
-	//»ñÈ¡ÓÃ»§µÄÐÅÏ¢£¬´Ë´¦ÎªÌí¼Ó¶©µ¥ÈËÐÅÏ¢
+	//ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ë´ï¿½Îªï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	data.setOp_dept(payload.getDepartment());
 	data.setOperator(payload.getUsername());
 	data.setCreate_time(time);
 	data.setUpdate_by(payload.getUsername());
 	data.setCreate_by(payload.getUsername());
 	data.setUpdate_time(time);
-	//´æÔÚÄ¬ÈÏÖµÊ±µÄ´¦Àí
+	//ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÊ±ï¿½Ä´ï¿½ï¿½ï¿½
 	MODIFY_DEFAULT(Src_bill_type);
 	MODIFY_DEFAULT(Src_bill_id);
 	MODIFY_DEFAULT(Src_no);
@@ -97,8 +97,8 @@ uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& pa
 	MODIFY_DEFAULT(Payment_type);
 	MODIFY_DEFAULT(Amt);
 	MODIFY_DEFAULT(Remark);
-	//Ö´ÐÐÊý¾ÝÐÞ¸Ä
+	//Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
 	PaymentDAO dao;
-	//È»ºó½«¶©µ¥Ã÷Ï¸Ìí¼Ó½øÊý¾Ý¿â
+	//È»ï¿½ó½«¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 	return dao.insertPayment(data);
 }

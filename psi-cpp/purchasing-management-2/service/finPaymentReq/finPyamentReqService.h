@@ -11,29 +11,29 @@
 #include <cstdio> 
 
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/dto/finPaymentReq/AddPaymentReqDTO.h"
-#include "../../domain/dto/finPaymentReq/ModPyamentReqDTO.h"
+#include "../../domain/dto/finPaymentReq/addPaymentReqDTO.h"
+#include "../../domain/dto/finPaymentReq/modPyamentReqDTO.h"
 #include"../../domain/vo/finPaymentReq/finPaymentReqVO.h"
-#include"../../domain/vo/finPaymentReq/FinPaymentDetailVO.h"
-#include"../../domain/query/finPaymentReq/FinPaymentReqQuery.h"
+#include"../../domain/vo/finPaymentReq/finPaymentDetailVO.h"
+#include"../../domain/query/finPaymentReq/finPaymentReqQuery.h"
 #include"../../domain/query/finPaymentReq/finPaymentReqEntryQuery.h"
 
 
 class FinPyamentReqService
 {
 public:
-	//²åÈëÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint64_t saveData(const AddPaymentReqDTO& dto, const PayloadDTO& payload);
 
-	//¸üÐÂÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint64_t updateData(const ModPyamentReqDTO& dto, const PayloadDTO& payload);
 
-	// Í¨¹ýÖ÷Ä¿Â¼billNoÉ¾³ýÊý¾Ý
+	// Í¨ï¿½ï¿½ï¿½ï¿½Ä¿Â¼billNoÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool removeData(string billNo);
 	
-	// ·ÖÒ³²éÑ¯ËùÓÐÊý¾Ý
+	// ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	PageVO<FinPaymentReqVO> queryList(const FinPaymentReqQuery& query);
-	//²éÑ¯Ö¸¶¨µ¥¾ÝÏêÏ¸ÐÅÏ¢
+	//ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	FinPaymentDetailVO detailDate(const FinPaymentReqEntryQuery& query);
 	
 };

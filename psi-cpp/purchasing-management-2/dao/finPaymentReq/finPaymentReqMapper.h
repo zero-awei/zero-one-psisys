@@ -5,7 +5,7 @@
 #define _FIN_PAYMENT_REQ_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqManageDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqManageDO.h"
 
 class FinPaymentReqMapper : public Mapper<FinPaymentReqManageDO>
 {

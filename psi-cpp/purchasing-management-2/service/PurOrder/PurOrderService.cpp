@@ -26,20 +26,6 @@
 
 #define ASSIGN(key) data.set##key(dto.get##key());
 
-// from c3-adam
-string getTime()
-{
-	time_t now = time(0);
-	struct tm t;
-
-	localtime_s(&t, &now);
-
-	// 将信息输出到字符串流
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
-}
-
 #define SET_PUR_ORDER_DO() \
 data.setBill_no(dto.getBill_no());\
 data.setBill_date(dto.getBill_date());\
@@ -122,15 +108,15 @@ entryData.setCustom1(entrydto.getCustom1());\
 entryData.setCustom2(entrydto.getCustom2());\
 entryData.setVersion(entrydto.getVersion());
 
-// 分页查询所有数据
+// ??????????????
 PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 {
-	//构建返回对象
+	//???????????
 	PageVO<PurOrderVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//查询数据总条数
+	//?????????????
 	PurOrderDO obj;
 	obj.setBill_no(query.getBill_no());
 	obj.setBill_date(query.getBill_date());
@@ -149,7 +135,7 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 		return pages;
 	}
 
-	//分页查询数据
+	//??????????
 	pages.setTotal(count);
 	pages.calcPages();
 	list<PurOrderDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
@@ -216,7 +202,7 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 	return pages;
 }
 
-// 查询单个数据
+// ???????????
 PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 {
 	PurOrderDetailVO vo;
@@ -663,17 +649,17 @@ PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 	return vo;
 }
 
-// 保存数据
+// ????????
 uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payload)
 {
-	//组装数据
+	//???????
 	PurOrderDO data;
 	PurOrderDAO dao;
 	uint64_t result = -1;
 
-	//调用雪花算法
+	//?????????
 	SnowFlake sf(1, 4);
-	string time = getTime();
+	string time = SimpleDateTimeFormat::format();
 	
 	if (dto.getBill_no() == "" || dto.getBill_date() == "" || dto.getOp_dept() == "" || dto.getOp_er() == "" || dto.getSupplier_id() == "" || dto.getInvoice_type() == "")
 	{
@@ -682,7 +668,7 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payl
 
 	data.setId(std::to_string(sf.nextId()));
 	SET_PUR_ORDER_DO();
-	// 创建人，从payload获取
+	// ?????????payload???
 	data.setCreate_by(payload.getUsername());
 	data.setCreate_time(time);
 	result = dao.insert(data);
@@ -705,21 +691,21 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payl
 	return result;
 }
 
-// 修改数据
+// ???????
 bool PurOrderService::updateData(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
-	//组装数据
+	//???????
 	PurOrderDO data;
 	PurOrderDAO dao;
 	uint64_t result = -1;
-	string time = getTime();
+	string time = SimpleDateTimeFormat::format();;
 
-	//调用雪花算法
+	//?????????
 	SnowFlake sf(1, 4);
 
 	data.setId(dto.getId());
 	SET_PUR_ORDER_DO();
-	// 创建人，从payload获取
+	// ?????????payload???
 	data.setUpdate_by(payload.getUsername());
 	data.setUpdate_time(time);
 
@@ -749,13 +735,13 @@ bool PurOrderService::updateData(const PurOrderDTO& dto, const PayloadDTO& paylo
 }
 
 
-// 修改单据状态(关闭/反关闭/作废)
-// 负责人：Andrew
+// ????????(???/?????/????)
+// ???????Andrew
 bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	PurOrderDO data;
 
-	// 设置字段值
+	// ????????
 	data.setUpdate_by(payload.getUsername());
 	data.setUpdate_time(SimpleDateTimeFormat::format());
 	ASSIGN(Id);
@@ -772,10 +758,11 @@ bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& pay
 		data.setIs_voided(dto.OPS[dto.getOpType()]);
 		return dao.updateStatusCancel(data) == 1;
 	}
+	return false;
 }
 
-// 删除采购订单-通过ID
-// 负责人：Andrew
+// ??????????-???ID
+// ???????Andrew
 bool PurOrderService::removeData(string id)
 {
 	PurOrderDAO dao;

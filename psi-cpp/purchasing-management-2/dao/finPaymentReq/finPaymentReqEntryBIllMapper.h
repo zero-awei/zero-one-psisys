@@ -4,7 +4,7 @@
 #define _FIN_PAYMENT_REQ_ENTRY_BILL_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqEntryDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqEntryDO.h"
 
 class FinPaymentReqEntryBillMapper : public Mapper<FinPaymentReqEntryDO>
 {

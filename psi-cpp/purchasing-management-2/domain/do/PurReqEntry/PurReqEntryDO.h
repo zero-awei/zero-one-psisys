@@ -70,4 +70,4 @@ public:
 
 };
 
-#endif  __PURREQENTRYDO_H__
+#endif  // !__PURREQENTRYDO_H__

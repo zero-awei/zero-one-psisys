@@ -24,21 +24,21 @@
 #include "../lib-common/include/CharsetConvertHepler.h"
 
 /**
-* ²É¹º¶©µ¥»ã×ÜVOÁìÓòÄ£ÐÍ
+* ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VOï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 */
 class StatisVO
 {
 	CC_SYNTHESIZE(uint64_t, id, Id); // ID
-	CC_SYNTHESIZE(double, price, Price); // ²É¹º½ð¶î
-	CC_SYNTHESIZE(double, incost, Incost); // Èë¿â½ð¶î
-	CC_SYNTHESIZE(double, settlePrice, SettlePrice); // ½áËã½ð¶î
-	CC_SYNTHESIZE(double, settledPrice, SettledPrice); // ÒÑ½áËã½ð¶î
-	CC_SYNTHESIZE(double, unsettledPrice, UnsettledPrice); // Î´½áËã½ð¶î
-	CC_SYNTHESIZE(uint16_t, year, Year); // Äê·Ý
-	CC_SYNTHESIZE(uint16_t, month, Month); // ÔÂ·Ý
-	CC_SYNTHESIZE(uint16_t, orders, Orders); // ¶©µ¥±ÊÊý
+	CC_SYNTHESIZE(double, price, Price); // ï¿½É¹ï¿½ï¿½ï¿½ï¿½
+	CC_SYNTHESIZE(double, incost, Incost); // ï¿½ï¿½ï¿½ï¿½ï¿½
+	CC_SYNTHESIZE(double, settlePrice, SettlePrice); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	CC_SYNTHESIZE(double, settledPrice, SettledPrice); // ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½
+	CC_SYNTHESIZE(double, unsettledPrice, UnsettledPrice); // Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	CC_SYNTHESIZE(uint16_t, year, Year); // ï¿½ï¿½ï¿½
+	CC_SYNTHESIZE(uint16_t, month, Month); // ï¿½Â·ï¿½
+	CC_SYNTHESIZE(uint16_t, orders, Orders); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public:
-	StatisVO() : id(666), price(6.6), incost(6.6), settlePrice(6.6), settledPrice(6.6), unsettledPrice(6.6), year(2023), month(2), orders(114514) {}
+	StatisVO() : id(666), price(6.6), incost(6.6), settlePrice(6.6), settledPrice(6.6), unsettledPrice(6.6), year(2023), month(2), orders(514) {}
 	friend void to_json(json& j, const StatisVO& sv)
 	{
 		j = json{
@@ -56,14 +56,14 @@ public:
 };
 
 /**
-* ²É¹º¶©µ¥»ã×Ü-²¿ÃÅ/ÒµÎñÔ±/¹©Ó¦ÉÌVOÁìÓòÄ£ÐÍ
+* ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½/Òµï¿½ï¿½Ô±/ï¿½ï¿½Ó¦ï¿½ï¿½VOï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 */
 class StatisByDeptVO : public StatisVO
 {
-	CC_SYNTHESIZE(string, dept, Dept); // ÒµÎñ²¿ÃÅID
-	CC_SYNTHESIZE(string, deptName, DeptName); // ÒµÎñ²¿ÃÅÃû
+	CC_SYNTHESIZE(string, dept, Dept); // Òµï¿½ï¿½ï¿½ï¿½ID
+	CC_SYNTHESIZE(string, deptName, DeptName); // Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public:
-	StatisByDeptVO() : dept("114514"), deptName(CharsetConvertHepler::ansiToUtf8("²¿ÃÅ")) {}
+	StatisByDeptVO() : dept("114514"), deptName(CharsetConvertHepler::ansiToUtf8("ï¿½ï¿½ï¿½ï¿½")) {}
 	friend void to_json(json& j, const StatisByDeptVO& sv)
 	{
 		to_json(j, static_cast<const StatisVO&>(sv));
@@ -74,10 +74,10 @@ public:
 
 class StatisByOperatorVO : public StatisByDeptVO
 {
-	CC_SYNTHESIZE(string, op, Op); // ÒµÎñÔ±ID
-	CC_SYNTHESIZE(string, opName, OpName); // ÒµÎñÔ±Ãû
+	CC_SYNTHESIZE(string, op, Op); // Òµï¿½ï¿½Ô±ID
+	CC_SYNTHESIZE(string, opName, OpName); // Òµï¿½ï¿½Ô±ï¿½ï¿½
 public:
-	StatisByOperatorVO() : op(CharsetConvertHepler::ansiToUtf8("op114")), opName(CharsetConvertHepler::ansiToUtf8("ÒµÎñÔ±1")) {}
+	StatisByOperatorVO() : op(CharsetConvertHepler::ansiToUtf8("op114")), opName(CharsetConvertHepler::ansiToUtf8("Òµï¿½ï¿½Ô±1")) {}
 	friend void to_json(json& j, const StatisByOperatorVO& sv)
 	{
 		to_json(j, static_cast<const StatisByDeptVO&>(sv));
@@ -88,10 +88,10 @@ public:
 
 class StatisBySupplierVO : public StatisVO
 {
-	CC_SYNTHESIZE(string, supplier, supplier); // ¹©Ó¦ÉÌID
-	CC_SYNTHESIZE(string, supName, SupName); // ¹©Ó¦ÉÌÃû
+	CC_SYNTHESIZE(string, supplier, supplier); // ï¿½ï¿½Ó¦ï¿½ï¿½ID
+	CC_SYNTHESIZE(string, supName, SupName); // ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
 public:
-	StatisBySupplierVO() : supplier(CharsetConvertHepler::ansiToUtf8("Nvidia")), supName(CharsetConvertHepler::ansiToUtf8("ÀÏ»Æ")) {}
+	StatisBySupplierVO() : supplier(CharsetConvertHepler::ansiToUtf8("Nvidia")), supName(CharsetConvertHepler::ansiToUtf8("ï¿½Ï»ï¿½")) {}
 	friend void to_json(json& j, const StatisBySupplierVO& sv)
 	{
 		to_json(j, static_cast<const StatisVO&>(sv));

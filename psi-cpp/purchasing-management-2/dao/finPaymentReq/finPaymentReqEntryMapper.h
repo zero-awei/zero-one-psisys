@@ -4,10 +4,10 @@
 #define _PUR_PAY_REQ_ENTRY_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqEntryManageDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqEntryManageDO.h"
 
 /**
- * Ê¾ÀýÖ÷±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½Æ¥ï¿½ï¿½Ó³ï¿½ï¿½
  */
 class FinPaymentReqEntryMapper : public Mapper<FinPaymentReqEntryManageDO>
 {

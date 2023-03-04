@@ -893,8 +893,8 @@ namespace cinatra {
 				req_.set_part_data({ close_frame.message, len });
 				req_.call_event(data_proc_state::data_close);
 
-				std::string close_msg = ws_.format_close_payload(opcode::close, close_frame.message, len);
-				auto header = ws_.format_header(close_msg.length(), opcode::close);
+				std::string close_msg = ws_.format_close_payload(opcode::cinatra_close, close_frame.message, len);
+				auto header = ws_.format_header(close_msg.length(), opcode::cinatra_close);
 				send_msg(std::move(header), std::move(close_msg));
 			}
 			break;

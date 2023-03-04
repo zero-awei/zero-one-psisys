@@ -5,36 +5,36 @@
 #include "../DoInclude.h"
 
 /*
- *¹ÜÀí±íµ¥ÏêÇé
+ *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 class FinPaymentReqEntryManageDO {
 	//id
 	CC_SYNTHESIZE(string, id, Id);
-	//Ö÷±íid
+	//ï¿½ï¿½ï¿½ï¿½id
 	CC_SYNTHESIZE(string, mid, Mid);
-	//µ¥¾ÝºÅ
+	//ï¿½ï¿½ï¿½Ýºï¿½
 	CC_SYNTHESIZE(string, billNo, BillNo);
-	//·ÖÂ¼ºÅ
+	//ï¿½ï¿½Â¼ï¿½ï¿½
 	CC_SYNTHESIZE(int, entryNo, EntryNo);
-	//Ô´µ¥ÀàÐÍ
+	//Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	CC_SYNTHESIZE(string, srcBillType, SrcBillType);
-	// Ô´µ¥id
+	// Ô´ï¿½ï¿½id
 	CC_SYNTHESIZE(string, srcBillId, SrcBillId);
-	//Ô´µ¥·ÖÂ¼id
+	//Ô´ï¿½ï¿½ï¿½ï¿½Â¼id
 	CC_SYNTHESIZE(string, srcEntryId, SrcEntryId);
-	//Ô´µ¥·ÖÂ¼ºÅ
+	//Ô´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
 	CC_SYNTHESIZE(string, srcNo, SrcNo);
-	//ÉêÇë½ð¶î
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	CC_SYNTHESIZE(double, amt, Amt);
-	//ÒÑ¸¶½ð¶î
+	//ï¿½Ñ¸ï¿½ï¿½ï¿½ï¿½
 	CC_SYNTHESIZE(double, paidAmt, PaidAmt);
-	//±¸×¢
+	//ï¿½ï¿½×¢
 	CC_SYNTHESIZE(string, remark, Remark);
-	//×Ô¶¨Òå1
+	//ï¿½Ô¶ï¿½ï¿½ï¿½1
 	CC_SYNTHESIZE(string, custom1, Custom1);
-	//×Ô¶¨Òå2
+	//ï¿½Ô¶ï¿½ï¿½ï¿½2
 	CC_SYNTHESIZE(string, custom2, Custom2);
-	//°æ±¾
+	//ï¿½æ±¾
 	CC_SYNTHESIZE(int, version, Version);
 public:
 	FinPaymentReqEntryManageDO() {
@@ -52,4 +52,4 @@ public:
 };
 
 
-#endif; //_FIN_PAYMENT_REQ_ENTRY_MANAGE_
+#endif // !_FIN_PAYMENT_REQ_ENTRY_MANAGE_

@@ -2,10 +2,10 @@
 #include "stdafx.h"
 #include <sstream>
 #include "finPaymentReqDAO.h"
-#include "FinPaymentReqMapper.h"
-#include "FinPaymentReqEntryMapper.h"
-#include "FinPaymentReqBillMapper.h"
-#include "FinPaymentReqEntryBillMapper.h"
+#include "finPaymentReqMapper.h"
+#include "finPaymentReqEntryMapper.h"
+#include "finPaymentReqBillMapper.h"
+#include "finPaymentReqEntryBIllMapper.h"
 
 #define FIN_PAYMENT_REQ_TERAM_PARSE(obj, sql) \
 SqlParams params; \

@@ -7,7 +7,7 @@
 //付款申请单-fin_payment_req
 //定义条件解析宏，减少重复代码
 #define JUDGE_STRING_SQL(sobj,ssql,sparams,funName,lowName)\
-if(!##sobj.get##funName().empty()){ \
+if(!sobj.get##funName().empty()){ \
     ssql << "AND `"#lowName"`=?";\
     SQLPARAMS_PUSH(sparams, "s", std::string, sobj.get##funName()); \
 }
@@ -17,11 +17,11 @@ if(sobj.get##funName() != -1){ \
     SQLPARAMS_PUSH(sparams, "i", int, sobj.get##funName()); \
 }
 #define JUDGE_DATE_SQL(sobj,ssql,sparams,dataName,funName1,funName2)\
-if(!##sobj.get##funName1().empty()){ \
+if(!sobj.get##funName1().empty()){ \
     ssql << "AND `"#dataName"` >=?";\
     SQLPARAMS_PUSH(sparams, "s", std::string, sobj.get##funName1()); \
 }\
-if(!##sobj.get##funName2().empty()){ \
+if(!sobj.get##funName2().empty()){ \
     ssql << "AND `"#dataName"` <=?";\
     SQLPARAMS_PUSH(sparams, "s", std::string, sobj.get##funName2()); \
 }\

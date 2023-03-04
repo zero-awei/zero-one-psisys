@@ -1,23 +1,23 @@
 #include "stdafx.h"
 #include "PrePayController.h"
-#include "../../domain/query/prepaymentbill/PrepayExportQuery.h"
+#include "../../domain/query/prepaymentbill/PrePayExportQuery.h"
 #include "../../service/prepayment/PrePayService.h"
 #include "../lib-common/include/CharsetConvertHepler.h"
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
 
 
-//²éÑ¯µ¥¾ÝÐÅÏ¢
-// ¸ºÔðÈË£ºQi
+//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Qi
 JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload)
 {
-	//²éÑ¯³É¹¦
+	//ï¿½ï¿½Ñ¯ï¿½É¹ï¿½
 	PrePayService service;
 	PageVO<PrepaymentBillVO> result = service.listAll(query);
 	return JsonVO<PageVO<PrepaymentBillVO>>(result, RS_SUCCESS);
 }
 
-//²éÑ¯Ö¸¶¨µ¥¾ÝÏêÏ¸ÐÅÏ¢
-// ¸ºÔðÈË£ºQi
+//ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Qi
 JsonVO<PageVO<PrepaymentDetailBillVO>> PrePayController::execQueryPayDetailBill(const PrepayDetailBillQuery& query, const PayloadDTO& payload)
 {
 	PrePayService service;
@@ -31,11 +31,11 @@ JsonVO<PageVO<PrepaymentDetailBillVO>> PrePayController::execQueryPayDetailBill(
 
 }
 
-//ÐÂÔöÔ¤¸¶ÉêÇëµ¥
-// ¸ºÔðÈË£ºQi
+//ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ëµ¥
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Qi
 JsonVO<uint64_t> PrePayController::execAddPay(const AddPayDTO& dto, const PayloadDTO& payload)
 {
-	//ÏìÓ¦½á¹û
+	//ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
 	JsonVO<uint64_t> result;
 	PrePayService service;
 	uint64_t id = service.saveData(dto, payload);
@@ -45,12 +45,12 @@ JsonVO<uint64_t> PrePayController::execAddPay(const AddPayDTO& dto, const Payloa
 	else {
 		result.fail(id);
 	}
-	//ÏìÓ¦½á¹û
+	//ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
 	return result;
 }
 
-//ÐÞ¸ÄÔ¤¸¶ÉêÇëµ¥
-// ¸ºÔðÈË£ºQi
+//ï¿½Þ¸ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ëµ¥
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Qi
 JsonVO<uint64_t> PrePayController::execModifyPay(const AddPayDTO& dto, const PayloadDTO& payload)
 {
 	PrePayService service;
@@ -64,33 +64,33 @@ JsonVO<uint64_t> PrePayController::execModifyPay(const AddPayDTO& dto, const Pay
 	return result;
 }
 
-// ÐÞ¸Äµ¥¾Ý×´Ì¬
-// ¸ºÔðÈË£ºAndrew
+// ï¿½Þ¸Äµï¿½ï¿½ï¿½×´Ì¬
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Andrew
 JsonVO<string> PrePayController::execModifyPayBillStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload)
 {
 	PrePayService service;
 	JsonVO<string> result;
 
-	// Êý¾ÝÐ£Ñé
-	if (dto.getId() == "" || dto.getBill_no() == "") // Èç¹ûIDºÍµ¥¾Ý±àºÅÎª¿Õ
+	// ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
+	if (dto.getId() == "" || dto.getBill_no() == "") // ï¿½ï¿½ï¿½IDï¿½Íµï¿½ï¿½Ý±ï¿½ï¿½Îªï¿½ï¿½
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
-	// Èç¹û±ØÌîÏîÎª¿Õ»òÕß²»ÊÇÃ¶¾ÙÀàÖÐÔªËØÔò²ÎÊý´íÎó
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ»ï¿½ï¿½ß²ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (dto.getOpType() != dto.CLOSE && dto.getOpType() != dto.CANCEL && dto.getOpType() != dto.UNCLOSE)
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
 
-	// Ö´ÐÐ
+	// Ö´ï¿½ï¿½
 	if (service.updateStatus(dto, payload)) {
 		result.success(dto.getId());
 		switch (dto.getOpType())
 		{
 		case dto.CLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("¹Ø±Õ³É¹¦"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("ï¿½Ø±Õ³É¹ï¿½"));
 			break;
 		case dto.UNCLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("·´¹Ø±Õ³É¹¦"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("ï¿½ï¿½ï¿½Ø±Õ³É¹ï¿½"));
 			break;
 		case dto.CANCEL:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("×÷·Ï³É¹¦"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("ï¿½ï¿½ï¿½Ï³É¹ï¿½"));
 			break;
 		}
 	}
@@ -99,20 +99,20 @@ JsonVO<string> PrePayController::execModifyPayBillStatus(const PayModBillStatusD
 		switch (dto.getOpType())
 		{
 		case dto.CLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("¹Ø±ÕÊ§°Ü"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("ï¿½Ø±ï¿½Ê§ï¿½ï¿½"));
 			break;
 		case dto.UNCLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("·´¹Ø±ÕÊ§°Ü"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("ï¿½ï¿½ï¿½Ø±ï¿½Ê§ï¿½ï¿½"));
 			break;
 		case dto.CANCEL:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("×÷·ÏÊ§°Ü"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½"));
 			break;
 		}
 	}
 	return result;
 }
-//²É¹º¶©µ¥ÁÐ±í
-//¸ºÔðÈË£ºÐì²»Ï´
+//ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ì²»Ï´
 JsonVO<PageVO<PurOrderVO>> PrePayController::execQuerypayFindBill(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	PrePayService service;
@@ -120,8 +120,8 @@ JsonVO<PageVO<PurOrderVO>> PrePayController::execQuerypayFindBill(const PurOrder
 	return JsonVO<PageVO<PurOrderVO>>(result, RS_SUCCESS);
 }
 
-//²É¹º¶©µ¥·ÖÁÐ±í
-//¸ºÔðÈË£ºÐì²»Ï´
+//ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ì²»Ï´
 JsonVO<PurOrderVO> PrePayController::execQueryPayDetailBill(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	if (query.getBill_no() == "") {
@@ -132,25 +132,25 @@ JsonVO<PurOrderVO> PrePayController::execQueryPayDetailBill(const PurOrderQuery&
 	return JsonVO<PurOrderVO>({}, RS_SUCCESS);
 }
 
-//É¾³ý
-//¸ºÔðÈË£ºÐì²»Ï´
+//É¾ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ì²»Ï´
 JsonVO<string> PrePayController::execRemoveDePayId(const DePayDTO& dto)
 {
 	PrePayService service;
 	JsonVO<string> result;
-	// Êý¾ÝÐ£Ñé
-	if (dto.getId() == "" || dto.getBill_no() == "") {// Èç¹ûIDºÍµ¥¾Ý±àºÅÎª¿Õ
+	// ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
+	if (dto.getId() == "" || dto.getBill_no() == "") {// ï¿½ï¿½ï¿½IDï¿½Íµï¿½ï¿½Ý±ï¿½ï¿½Îªï¿½ï¿½
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
 	}
-	//Ö´ÐÐÊý¾ÝÉ¾³ý
+	//Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	if (service.DePrePayId(dto)) {
 		result.success(dto.getId());
-		result.setMessage(CharsetConvertHepler::ansiToUtf8("É¾³ý³É¹¦"));
+		result.setMessage(CharsetConvertHepler::ansiToUtf8("É¾ï¿½ï¿½ï¿½É¹ï¿½"));
 	}
 	else {
 		result.fail(dto.getId());
-		result.setMessage(CharsetConvertHepler::ansiToUtf8("É¾³ýÊ§°Ü"));
+		result.setMessage(CharsetConvertHepler::ansiToUtf8("É¾ï¿½ï¿½Ê§ï¿½ï¿½"));
 	}
-	//ÏìÓ¦½á¹û
+	//ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
 	return result;
 }

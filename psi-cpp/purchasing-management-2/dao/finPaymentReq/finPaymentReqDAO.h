@@ -3,38 +3,38 @@
 #ifndef _FIN_PAYMENT_REQ_DAO_
 #define _FIN_PAYMENT_REQ_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqManageDO.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqEntryManageDO.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqEntryDO.h"
-#include "../../domain/do/finPaymentReq/FinPaymentReqDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqManageDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqEntryManageDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqEntryDO.h"
+#include "../../domain/do/FinPaymentReq/FinPaymentReqDO.h"
 
 
 /**
- * Ê¾Àý±íÊý¾Ý¿â²Ù×÷ÊµÏÖ
+ * Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
  */
 class FinPaymentReqDAO : public BaseDAO
 {
 public:
-	// Ìí¼ÓÉêÇë(±£´æ/Ìá½») ²åÈëÊý¾Ý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½/ï¿½á½») ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint64_t insert(const FinPaymentReqManageDO& obj);
 
-	// Ìí¼ÓÃ÷Ï¸ÉêÇë(±£´æ/Ìá½») ²åÈëÊý¾Ý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½/ï¿½á½») ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint64_t insertEntry(const FinPaymentReqEntryManageDO& obj);
 
-	// Í¨¹ýbillNoÉ¾³ýÊý¾Ý
+	// Í¨ï¿½ï¿½billNoÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int deleteByBillNo(string billNo);
 
-	//Í¨¹ýBillNo²éÕÒÖ÷±íÊý¾Ý ÓÉÓÚÖ÷±íÖ»ÓÐÒ»¸öËùÒÔÖ»·µ»ØÒ»¸ö
+	//Í¨ï¿½ï¿½BillNoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 	list<FinPaymentReqManageDO> selectByBillNo(const string& billNo);
 
-	//Í¨¹ýBillNo²éÕÒÃ÷Ï¸±íÊý¾Ý
+	//Í¨ï¿½ï¿½BillNoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	list<FinPaymentReqEntryManageDO> selectEntryByBillNo(const string& billNo);
 
-	// Í³¼ÆÊý¾ÝÌõÊý
+	// Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint64_t count(const FinPaymentReqDO& iObj);
-	// ·ÖÒ³²éÑ¯Êý¾Ý
+	// ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	list<FinPaymentReqDO> selectWithPage(const FinPaymentReqDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// Í¨¹ý±àºÅ²é¿´ÏêÏ¸ÐÅÏ¢
+	// Í¨ï¿½ï¿½ï¿½ï¿½Å²é¿´ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	list<FinPaymentReqDO> selectBillNo(const string& billNo);
 
 };

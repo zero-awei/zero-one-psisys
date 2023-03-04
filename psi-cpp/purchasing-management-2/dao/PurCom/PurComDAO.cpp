@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "PurComDAO.h"
-#include "PurComMApper.h"
+#include "PurComMapper.h"
 #include <sstream>
 
 uint64_t PurComDAO::count(const PurComDO& obj)
@@ -26,28 +26,28 @@ uint64_t PurComDAO::count(const PurComDO& obj)
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare";
 	SqlParams params;
-	//____´ýÌí¼ÓÉ¸Ñ¡Ìõ¼þ___
+	//____ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½ï¿½ï¿½___
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 
-// Í³¼ÆÃ÷Ï¸ÌõÊý
+// Í³ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½
 uint64_t PurComDAO::countEntrys(const PurComEntryDO& obj) 
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare_entry";
 	SqlParams params;
-	//____´ýÌí¼ÓÉ¸Ñ¡Ìõ¼þ___
+	//____ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½ï¿½ï¿½___
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-//·ÖÒ³²éÑ¯Êý¾Ý
+//ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	// Ìí¼Ó²éÑ¯Óï¾ä
+	// ï¿½ï¿½ï¿½Ó²ï¿½Ñ¯ï¿½ï¿½ï¿½
 	sql << "SELECT id, bill_no, bill_date, src_bill_type,\
 		src_bill_id, src_no, `subject`, is_rubric,\
 		candidate_quot_ids, payment_method, delivery_place,\
@@ -59,32 +59,32 @@ list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, 
 		update_by, update_time, version FROM pur_compare";
 	SqlParams params;
 
-	// Ìí¼ÓÉ¸Ñ¡Óï¾ä
+	// ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½ï¿½
 	sql << " WHERE 1=1";
-	// É¸Ñ¡Ìõ¼þÎªµ¥¾Ý±àºÅ
+	// É¸Ñ¡ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ý±ï¿½ï¿½
 	if (!obj.getBill_no().empty()) {
 		sql << " AND `bill_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getBill_no())));
 	}
-	// É¸Ñ¡Ìõ¼þÎªµ¥¾ÝÊ±¼ä
+	// É¸Ñ¡ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	// 
-	// É¸Ñ¡Ìõ¼þÎªÔ´µ¥ºÅ
+	// É¸Ñ¡ï¿½ï¿½ï¿½ï¿½ÎªÔ´ï¿½ï¿½ï¿½ï¿½
 	if (!obj.getSrc_no().empty()) {
 		sql << " AND `src_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getSrc_no())));
 	}
-	// ·ÖÒ³ÏÔÊ¾
+	// ï¿½ï¿½Ò³ï¿½ï¿½Ê¾
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComMapper mapper;
 	string sqlStr = sql.str();
-	// ·µ»Ø²éÑ¯½á¹û
+	// ï¿½ï¿½ï¿½Ø²ï¿½Ñ¯ï¿½ï¿½ï¿½
 	return sqlSession->executeQuery<PurComDO, PurComMapper>(sqlStr, mapper, params);
 }
 
 list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	// Ìí¼Ó²éÑ¯Óï¾ä
+	// ï¿½ï¿½ï¿½Ó²ï¿½Ñ¯ï¿½ï¿½ï¿½
 	sql << "SELECT id, mid, bill_no, \
 			entry_no, src_bill_type, src_bill_id, \
 			src_entry_id, src_no, supplier_id, \
@@ -94,13 +94,13 @@ list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint6
 			custom1, custom2, version \
 			FROM pur_compare_entry";
 	SqlParams params;
-	// Ìí¼ÓÉ¸Ñ¡Óï¾ä
+	// ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½ï¿½
 	sql << " WHERE 1=1";
 	if (!obj.getMid().empty()) {
 		sql << " AND `mid`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getMid())));
 	}
-	// ·ÖÒ³ÏÔÊ¾
+	// ï¿½ï¿½Ò³ï¿½ï¿½Ê¾
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComEntryMapper mapper;
 	string sqlStr = sql.str();

@@ -4,7 +4,7 @@
 #include "../lib-common/include/CharsetConvertHepler.h"
 
 //修改单据状态
-JsonVO<string>  PaymentController::execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload)
+JsonVO<string> PaymentController::execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
 
 	// 数据校验
