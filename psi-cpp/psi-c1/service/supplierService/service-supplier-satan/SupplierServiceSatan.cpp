@@ -3,7 +3,7 @@
 #include "../lib-http/include/JWTUtil.h"
 #include "../lib-common/include/SnowFlake.h"
 #include "SupplierServiceSatan.h"
-#include "../../../dao/supplierDAO/dao-Supplier-satan/SupplierDAO.h"
+#include "../../../dao/supplierDao/dao-Supplier-satan/SupplierDAO.h"
 #include <sstream>
 
 
