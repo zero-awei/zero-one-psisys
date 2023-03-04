@@ -19,10 +19,37 @@ import Request from '@/apis/request.js'
 // 定义一个功能模块基础url，方便替换
 const currBaseUrl = '/payablemanagement/checkmanagement/'
 
-//ANCHOR 新增应付核销单
+//ANCHOR 新增应付核销单-save
 
-export function newTable(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + /*'add/{action}'*/'add/{action}', data)
+export function newTableSave(data, success, fail) {
+  Request.requestJson(
+    Request.POST,
+    currBaseUrl + /*'add/{action}'*/ 'add/save',
+    data
+  )
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 新增应付核销单-submit
+
+export function newTableSubmit(data, success, fail) {
+  Request.requestJson(
+    Request.POST,
+    currBaseUrl + /*'add/{action}'*/ 'add/submit',
+    data
+  )
     .then((data) => {
       if (data.data) {
         success(data.data)
@@ -174,8 +201,8 @@ export function getTableList(data, success, fail) {
 
 //ANCHOR 修改应付核销单
 
-export function modifyTable(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'modify/{action}', data) // save and submit
+export function modifyTableSave(data, success, fail) {
+  Request.requestJson(Request.PUT, currBaseUrl + 'modify/save', data) // save and submit
     .then((data) => {
       if (data.data) {
         success(data.data)
@@ -190,6 +217,24 @@ export function modifyTable(data, success, fail) {
       fail()
     })
 }
+
+export function modifyTableSubmit(data, success, fail) {
+  Request.requestJson(Request.PUT, currBaseUrl + 'modify/submit', data) // save and submit
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
 
 //ANCHOR 根据供应商ID查询应付单
 
@@ -228,7 +273,6 @@ export function queryPaymentBySupplier(data, success, fail) {
       fail()
     })
 }
-
 
 //ANCHOR 反关闭应付核销单（批量）
 

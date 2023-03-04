@@ -21,7 +21,7 @@ import { handleAddMenu } from './api/menu.js' // 引入 业务接口测试方法
 import { handleQueryBasBankAccount } from './api/public.js' //引入公共接口测试方法
 import { handleQuery } from './api/addressbook.js'
 import * as payable from './api/payable.js'
-import {newCheckPayable} from "./api/payable.js";
+import {newCheckPayableSave} from "./api/payable.js";
 
 function handle() {
   // TODO 改的是下面这行
@@ -37,17 +37,17 @@ function handle() {
   // payable.getTableList()
   // payable.queryPayableBySupplier()
   // payable.queryPaymentBySupplier()
-  //TODO 这种写法不会测试
-  // payable.newCheckPayable()
+  // payable.newCheckPayableSave()
+  // payable.newCheckPayableSubmit()
   // payable.checkCheckPayable()
   // payable.closeCheckPayable()
   // payable.deleteCheckPayable()
-  //TODO 导出没法测
+  //导出无需测试
   // payable.exportCheckPayable()
-  //TODO 导入没法测
+  //导入无需测试
   // payable.importCheckPayable()
-  //TODO 这种写法不会测试
-  // payable.modifyCheckPayable()
+  // payable.modifyCheckPayableSave()
+  // payable.modifyCheckPayableSubmit()
   // payable.uncloseCheckPayable()
   // payable.voidCheckPayable()
 
@@ -56,9 +56,9 @@ function handle() {
   // payable.getTableByBillNo()
   // payable.addOtherTable()
   // payable.deleteOtherPayable()
-  //TODO 导出没法测
+  //导出无需测试
   // payable.exportPayableTable()
-  //TODO 导入没法测
+  //导入无需测试
   // payable.importOtherPayable()
   // payable.modifyOtherPayable()
   // payable.updateOtherPayable()
@@ -66,7 +66,7 @@ function handle() {
   //测试采购应付接口
   // payable.getPayableTableByBillNO()
   // payable.listAllTable()
-  //TODO 导出没法测
+  //导出无需测试
   // payable.exportPayableTable()
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())

@@ -7,8 +7,8 @@ import {
   closeTable,
   deleteTable,
   exportTable,
-  importTable, modifyTable,
-  newTable, uncloseTable, voidTable
+  importTable, modifyTableSave,
+  newTableSave, uncloseTable, voidTable
 } from '@/views/yingfuyufukuan/yingfuguanli/api/yingfuhexiao.js'
 
 // 应付核销
@@ -83,8 +83,7 @@ export function queryPaymentBySupplier() {
   )
 }
 
-//TODO 无法测试
-export function newCheckPayable() {
+export function newCheckPayableSave() {
   let params = {
     amt: '202',
     approvalRemark: '',
@@ -136,7 +135,7 @@ export function newCheckPayable() {
     updateTime: '2023-02-09 03:27:18',
     version: '0'
   }
-  payableCheck.newTable(
+  payableCheck.newTableSave(
     params,
     (data) => {
       console.log('请求data: ', data)
@@ -147,6 +146,71 @@ export function newCheckPayable() {
     }
   )
 }
+
+export function newCheckPayableSubmit() {
+  let params = {
+    amt: '202',
+    approvalRemark: '',
+    approvalResultType: '1',
+    approver: 'psi',
+    attachment: '',
+    billDate: '2023-02-07',
+    billNo: 'YFHX-230209-009',
+    billStage: '1',
+    billType: 'FinPayableCheck:2',
+    bpmiInstanceId: '',
+    checkPayableEntryList: [
+      {
+        amt: '202',
+        billNo: 'YFHX-230209-009',
+        checkSide: '1',
+        custom1: '',
+        custom2: '',
+        entryNo: '101',
+        id: '1623386325955944449',
+        mid: '1623386325943361538',
+        remark: '',
+        srcBillId: '1623342154423508993',
+        srcBillType: 'FinPayable:299',
+        srcEntryId: '',
+        srcNo: 'QTAP-230208-016',
+        uncheckedAmt: '0',
+        version: '0'
+      }
+    ],
+    createBy: 'psi',
+    createTime: '2023-02-09 02:20:36',
+    effectiveTime: '2023-02-09 03:27:18',
+    id: '1623386325943361538',
+    isAuto: '0',
+    isClosed: '1',
+    isEffective: '1',
+    isRubric: '0',
+    isVoided: '0',
+    payableCheckType: '2',
+    remark: '',
+    srcBillId: '',
+    srcBillType: '',
+    srcNo: '',
+    subject: '3333333333',
+    supplierId: '1623284221748748290',
+    sysOrgCode: 'A01A05',
+    updateBy: 'psi',
+    updateTime: '2023-02-09 03:27:18',
+    version: '0'
+  }
+  payableCheck.newTableSubmit(
+    params,
+    (data) => {
+      console.log('请求data: ', data)
+    },
+    (msg) => {
+      console.log('msg', msg)
+      ElMessage.error('错误信息')
+    }
+  )
+}
+
 
 export function checkCheckPayable() {
   let params = {
@@ -226,7 +290,7 @@ export function importCheckPayable() {
   )
 }
 
-export function modifyCheckPayable() {
+export function modifyCheckPayableSave() {
   let params = {
     amt: '202',
     approvalRemark: '',
@@ -278,7 +342,7 @@ export function modifyCheckPayable() {
     updateTime: '2023-02-09 03:27:18',
     version: 0
   }
-  payableCheck.modifyTable(
+  payableCheck.modifyTableSave(
     params,
     (data) => {
       console.log('请求data: ', data)
@@ -289,6 +353,71 @@ export function modifyCheckPayable() {
     }
   )
 }
+
+export function modifyCheckPayableSubmit() {
+  let params = {
+    amt: '202',
+    approvalRemark: '',
+    approvalResultType: '1',
+    approver: 'psi',
+    attachment: '',
+    billDate: '2023-02-07',
+    billNo: 'YFHX-230209-009',
+    billStage: '1',
+    billType: 'FinPayableCheck:2',
+    bpmiInstanceId: '',
+    checkPayableEntryList: [
+      {
+        amt: '202',
+        billNo: 'YFHX-230209-009',
+        checkSide: '1',
+        custom1: '',
+        custom2: '',
+        entryNo: '101',
+        id: '1623386325955944449',
+        mid: '1623386325943361538',
+        remark: '',
+        srcBillId: '1623342154423508993',
+        srcBillType: 'FinPayable:299',
+        srcEntryId: '',
+        srcNo: 'QTAP-230208-016',
+        uncheckedAmt: '0',
+        version: '0'
+      }
+    ],
+    createBy: 'psi',
+    createTime: '2023-02-09 02:20:36',
+    effectiveTime: '2023-02-09 03:27:18',
+    id: '1623386325943361538',
+    isAuto: '0',
+    isClosed: '0',
+    isEffective: '1',
+    isRubric: '0',
+    isVoided: '0',
+    payableCheckType: '2',
+    remark: '',
+    srcBillId: '',
+    srcBillType: '',
+    srcNo: '',
+    subject: '3333333333',
+    supplierId: '1623284221748748290',
+    sysOrgCode: 'A01A05',
+    updateBy: 'psi',
+    updateTime: '2023-02-09 03:27:18',
+    version: 0
+  }
+  payableCheck.modifyTableSubmit(
+    params,
+    (data) => {
+      console.log('请求data: ', data)
+    },
+    (msg) => {
+      console.log('msg', msg)
+      ElMessage.error('错误信息')
+    }
+  )
+}
+
 
 export function uncloseCheckPayable() {
   let params = {
