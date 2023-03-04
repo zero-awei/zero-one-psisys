@@ -16,46 +16,60 @@
 // 测试接口的方法是 handleXXX,  需要传请求参数params
 
 // TODO 引入的方法需要改 import {Xxx} from ''
-import {
-  handleSavePermission,
-  handleDeletePermission,
-  handleListPermission
-} from '@/views/sysmanage/api/rolepermission.js'
-import {
-  handleSaveMenu,
-  handleDeleteMenu,
-  handleListMenu
-} from '@/views/sysmanage/api/rolemenu.js'
-
-const savePermissionData = {
-  fatherPermissionId: '2e42e3835c2b44ec9f7bc26c146ee531',
-  instruction: 'nihao',
-  permissionId: '1',
-  permissionName: '成功',
-  permissionType: 2,
-  url: '/result/success'
+// import {
+//   handleSavePermission,
+//   handleDeletePermission,
+//   handleListPermission
+// } from '@/views/sysmanage/api/rolepermission.js'
+// import {
+//   handleSaveMenu,
+//   handleDeleteMenu,
+//   handleListMenu
+// } from '@/views/sysmanage/api/rolemenu.js'
+import { handleQueryAllROle } from '@/views/sysmanage/api/rolemanagement.js'
+// const savePermissionData = {
+//   fatherPermissionId: '2e42e3835c2b44ec9f7bc26c146ee531',
+//   instruction: 'nihao',
+//   permissionId: '1',
+//   permissionName: '成功',
+//   permissionType: 2,
+//   url: '/result/success'
+// }
+// const deletePermissionData = {
+//   permissionId: '1'
+// }
+// const listPermissionData = {
+//   RId: '00a2a0ae65cdca5e93209cdbde97cbe6'
+// }
+// const saveMenuData = {
+//   icon: 'null',
+//   id: '12345678',
+//   name: '菜单1',
+//   parentId: '00a2a0ae65cdca5e93209cdbde97cbe6',
+//   sortNo: '1.1',
+//   url: '/main/1'
+// }
+// const deleteMenuData = {
+//   id: '1'
+// }
+// const listMenuData = {
+//   RId: '043780fa095ff1b2bec4dc406d76f023'
+// }
+// const Data = {
+//   fatherPermissionName: '性能监控',
+//   fatherUrl: '/monitor',
+//   instruction: '拥有该权限的人可以对后台redis进行监控',
+//   permissionId: '00a2a0ae65cdca5e93209cdbde97cbe6',
+//   permissionName: 'Redis监控',
+//   permissionType: 1,
+//   url: '/monitor/redis/info'
+// }
+const data = {
+  pageIndex: '1',
+  pageSize: '10',
+  roleCode: 'third_role',
+  roleName: '第三方登录角色'
 }
-const deletePermissionData = {
-  permissionId: '1'
-}
-const listPermissionData = {
-  RId: '00a2a0ae65cdca5e93209cdbde97cbe6'
-}
-const saveMenuData = {
-  icon: 'null',
-  id: '12345678',
-  name: '菜单1',
-  parentId: '00a2a0ae65cdca5e93209cdbde97cbe6',
-  sortNo: '1.1',
-  url: '/main/1'
-}
-const deleteMenuData = {
-  id: '1'
-}
-const listMenuData = {
-  RId: '043780fa095ff1b2bec4dc406d76f023'
-}
-
 /**
  * 接口测试函数
  */
@@ -90,10 +104,15 @@ function handle() {
   //   (item) => item, // success
   //   (item) => item // fail
   // )
-  handleListMenu(
-    listMenuData,
+  // handleListMenu(
+  //   listMenuData,
+  //   (item) => item, // success
+  //   (item) => item // fail
+  // )
+  handleQueryAllROle(
+    data,
     (item) => item, // success
-    (item) => item // fail
+    (item) => item // fail)
   )
 }
 // 查看是否调用成功，可以在 测试接口(./api/menu.js 定义的方法中 console.log())
