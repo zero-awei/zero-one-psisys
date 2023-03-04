@@ -25,55 +25,22 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.function.Consumer;
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
-import cn.hutool.core.util.IdUtil;
-import com.alibaba.excel.EasyExcel;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zeroone.star.prepayment.entity.FinPayment;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
-
 import com.zeroone.star.prepayment.mapper.FinPaymentEntryMapper;
-import com.zeroone.star.prepayment.mapper.FinPaymentMapper;
-import com.zeroone.star.prepayment.mapper.FinPaymentReqEntryMapper;
-import com.zeroone.star.prepayment.mapper.FinPaymentReqMapper;
-import com.zeroone.star.prepayment.service.IFinPaymentService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.easyexcel.EasyExcelComponent;
 import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
 import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
-import com.zeroone.star.project.components.user.UserDTO;
-import com.zeroone.star.project.components.user.UserHolder;
-import com.zeroone.star.project.dto.prepayment.AuditDTO;
-import com.zeroone.star.project.dto.prepayment.ModifyDTO;
-import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.FinPaymentExportQuery;
-import com.zeroone.star.project.utils.easyExcel.EasyExcelUtils;
-import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.project.vo.PageVO;
-import com.zeroone.star.project.vo.prepayment.DocListVO;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-
-import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
-import org.springframework.beans.BeanUtils;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * <p>

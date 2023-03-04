@@ -20,17 +20,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Random;
-
 import com.zeroone.star.prepayment.entity.FinPaymentReq;
 import com.zeroone.star.prepayment.entity.PurOrder;
 import com.zeroone.star.prepayment.service.*;
 import com.zeroone.star.project.query.prepayment.DocListQuery;
 import com.zeroone.star.project.query.prepayment.PreDetQuery;
-
 import java.util.ArrayList;
 
 /**
