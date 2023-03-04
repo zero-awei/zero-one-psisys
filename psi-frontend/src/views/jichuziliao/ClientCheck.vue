@@ -39,7 +39,7 @@ const drawerStatus = reactive({
   basicItems: [
     {
       type: 'input',
-      prop: 'name1',
+      prop: 'code',
       label: '编码'
     },
     {
@@ -446,6 +446,11 @@ const status = reactive({
     // 待后续修改1
     headOperation: ['add', 'select'],
     // rightOperation: true
+  },
+  props: {
+    address: String,
+    city: String,
+    date: String
   }
 })
 
