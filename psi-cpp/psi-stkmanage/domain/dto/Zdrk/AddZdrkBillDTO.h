@@ -3,7 +3,7 @@
 #define _ADDZDRKBILL_DTO_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/Zdrk\ZdrkBillDetailDTO.h"
+#include "../../dto/Zdrk/ZdrkBillDetailDTO.h"
 #include "../FileDTO.h"
 /**
  * 添加单据传输对象

@@ -1,16 +1,14 @@
 #pragma once
-//
+
 #ifndef _CGRK_DAO_
 #define _CGRK_DAO_
 #include "BaseDAO.h"
-#include "FastDfsClient.h"
 #include "../../domain/do/Cgrk/StkIoDO.h"
 #include "../../domain/do/Cgrk/StkIoEntryDO.h"
 #include "../../service/Cgthck/CgthckMapper.h"
 #include "../lib-common/include/SnowFlake.h"
 #include"domain/do/Cgthck/QueryCgthrkBillListDO.h"
 #include"domain/do/Cgthck/QueryCgthrkBillListReturnDO.h"
-#include"domain/vo/Cgthck/BillEntryDetailedVO.h"
 #include"domain/do/Cgthck/BillDetailedDO.h"
 #include"../../domain/do/Cgthck/QueryCgthrkBillListReturnDO.h"
 #include"../../domain/do/Cgthck/QueryCgthrkBillDetailedReturnDO.h"
@@ -30,10 +28,6 @@ public:
 	uint64_t insert(const CgthckDO& iobj);
 	// 插入单据明细
 	int insert(const CgthckEntryDO& iobj);
-	// 插入文件
-	string insertFile(const string& fileName);
-	// 删除文件
-	bool deleteFile(const string& fileName);
 	// 修改单据数据
 	int update(const CgthckDO& iobj);
 	// 修改单据明细

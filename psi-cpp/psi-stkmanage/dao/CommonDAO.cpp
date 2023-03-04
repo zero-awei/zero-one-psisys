@@ -38,30 +38,6 @@ string CommonDAO::selectAttachmentByBillNo(const string& billNo)
     return *ret.begin();
 }
 
-string CommonDAO::insertAttachment(const string& fileName)
-{
-#ifdef LINUX
-    // 定义客户端对象
-    FastDfsClient client("conf/client.conf", 3);
-#else
-    // 定义客户端对象
-    FastDfsClient client("192.168.235.251");
-#endif
-    return client.uploadFile(fileName);
-}
-
-bool CommonDAO::deleteAttachment(const string& fileName)
-{
-#ifdef LINUX
-    // 定义客户端对象
-    FastDfsClient client("conf/client.conf", 3);
-#else
-    // 定义客户端对象
-    FastDfsClient client("192.168.235.251");
-#endif
-    return client.deleteFile(fileName);
-}
-
 list<int> CommonDAO::selectEntryNoByBillNo(const string& billNo)
 {
     string sql = "SELECT `entry_no` FROM `stk_io_entry` WHERE `bill_no`=?";

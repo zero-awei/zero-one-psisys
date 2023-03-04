@@ -89,7 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -135,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -158,7 +158,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -243,7 +243,11 @@
     <ClInclude Include="domain\do\Cgrk\QueryCgrkBillListDO.h" />
     <ClInclude Include="domain\do\Cgrk\StkIoDO.h" />
     <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h" />
+    <ClInclude Include="domain\do\Cgthck\BillDetailedDO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillDetailedReturnDO.h" />
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListDO.h" />
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListReturnDO.h" />
     <ClInclude Include="domain\do\Cgthck\SysUserDepartDO.h" />
     <ClInclude Include="domain\do\Cgthck\SysUserRoleDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
@@ -252,8 +256,10 @@
     <ClInclude Include="domain\do\Qtrk\ModifyQtrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h" />
+    <ClInclude Include="domain\do\SysDepartDO.h" />
     <ClInclude Include="domain\do\SysDictDO.h" />
     <ClInclude Include="domain\do\SysDictItemDO.h" />
+    <ClInclude Include="domain\do\SysRoleDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillDO.h" />
     <ClInclude Include="domain\do\Zdrk\QueryZdrkBillListDO.h" />
     <ClInclude Include="domain\dto\Cgrk\AddCgrkBillDTO.h" />

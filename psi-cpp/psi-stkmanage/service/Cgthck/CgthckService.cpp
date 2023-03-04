@@ -2,6 +2,9 @@
 #include "CgthckService.h"
 #include"domain/do/Cgthck/QueryCgthrkBillListDO.h"
 #include"../../dao/Cgthck/CgthckDAO.h"
+#include <FastDfsClient.h>
+#include <ExcelComponent.h>
+#include <CharsetConvertHepler.h>
 
 PageVO<QueryCgthckBillVO> CgthckService::queryAllFitBill(const QueryCgthckBillQuery& query) {
     //构建返回对象
@@ -106,7 +109,35 @@ QueryCgthrkDetailedBillVO CgthckService::queryBillDetial(const CgthckBillDetaile
     vo.setSysOrgCode(sub.getSysOrgCode());
     vo.setUpdateTime(sub.getUpdateTime());
     vo.setUpdateBy(sub.getUpdateBy());
-    vo.setDetail(sub.getDetail());
+
+
+    list<BillEntryDetailedVO> vr;
+    for (const auto& entry : sub.getDetail()) {
+        BillEntryDetailedVO v;
+        v.setSrcNo(entry.getSrcNo());
+        v.setMaterialId(entry.getMaterialId());
+        v.setSize("");
+        v.setWarehouseId(entry.getWarehouseId());
+        v.setUnit(entry.getUnitId());
+        v.setSettleQty(entry.getSettleQty());
+        v.setTaxRate(entry.getTaxRate());
+        v.setPrice(entry.getPrice());
+        v.setDiscountRate(entry.getDiscountRate());
+        v.setTax(entry.getTax());
+        v.setSettleAmt(entry.getSettleAmt());
+        v.setInNum(entry.getQty());
+        v.setBuyCost(entry.getCost());
+        v.setInMoney(entry.getCost());
+        v.setInvoicedQty(entry.getInvoicedQty());
+        v.setInvoicedAmt(entry.getInvoicedAmt());
+        v.setRemarks(entry.getRemark());
+        v.setCustom1(entry.getCustom1());
+        v.setCustom2(entry.getCustom2());
+
+        vr.push_back(v);
+    }
+    vo.setDetail(vr);
+
     return vo;
 
 }
@@ -169,10 +200,19 @@ int CgthckService::saveData(const AddCgthckBillDTO& dto)
     CgthckDAO dao;
 
     // 上传附件
+
+#ifdef LINUX
+// 定义客户端对象
+    FastDfsClient client("conf/client.conf", 3);
+#else
+    // 定义客户端对象
+    FastDfsClient client("1.15.240.108");
+#endif
+
     string attachment{ "" };
     for (auto& f : dto.getFiles())
     {
-        string fileName = dao.insertFile(f);
+        string fileName = client.uploadFile(f);
         if (!fileName.empty())
         {
             attachment += fileName + ',';
@@ -312,10 +352,19 @@ int CgthckService::updateData(const AddCgthckBillDTO& dto)
     CgthckDAO dao;
 
     // 上传附件
+
+#ifdef LINUX
+    // 定义客户端对象
+    FastDfsClient client("conf/client.conf", 3);
+#else
+    // 定义客户端对象
+    FastDfsClient client("1.15.240.108");
+#endif
+
     string attachment{ "" };
     for (auto& f : dto.getFiles())
     {
-        string fileName = dao.insertFile(f);
+        string fileName = client.uploadFile(f);
         if (!fileName.empty())
         {
             attachment += fileName + ',';
@@ -369,7 +418,7 @@ int CgthckService::updateData(const AddCgthckBillDTO& dto)
     {
         dao.getSqlSession()->rollbackTransaction();
         // 删除新增的附件
-        dao.deleteFile(attachment);
+        client.deleteFile(attachment);
         return -2;
     }
 

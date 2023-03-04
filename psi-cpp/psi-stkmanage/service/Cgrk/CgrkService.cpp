@@ -18,6 +18,7 @@
 */
 #include "stdafx.h"
 #include "CgrkService.h"
+#include "FastDfsClient.h"
 #include "../../dao/Cgrk/CgrkDAO.h"
 #include "../../dao/CommonDAO.h"
 #include <algorithm>
@@ -248,8 +249,6 @@ QueryCgrkBillDetailsVO CgrkService::getCgrkBillDetails(const QueryCgrkBillDetail
 	}
 	details.setEntry(vr);
 
-	CgrkDAO CDAO;
-
 	return details;
 
 }
@@ -366,10 +365,19 @@ int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& paylo
 	CommonDAO cDao;
 
 	// 上传附件
+	
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	// 定义传入数据库内的附件名称
 	string attachment = "";
 	for (auto& file : dto.getFiles()) {
-		string fileName = cDao.insertAttachment(file);
+		string fileName = client.uploadFile(file);
 		if (!fileName.empty()) {
 			if (attachment.size() != 0) {
 				attachment += ",";
@@ -430,7 +438,7 @@ int CgrkService::saveCgrkBill(const AddCgrkBillDTO& dto, const PayloadDTO& paylo
 		vector<string_view> fileNames = split(attachment, ",");
 		if (!fileNames.empty()) {
 			for (const auto& file : fileNames) {
-				cDao.deleteAttachment(string(file));
+				client.deleteFile(string(file));
 			}
 		}
 		return -2;
@@ -485,10 +493,19 @@ int CgrkService::updateCgrkBill(const ModifyCgrkBillDTO dto, const PayloadDTO& p
 	CommonDAO cDao;
 
 	// 上传附件
+	
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	// 定义传入数据库内的附件名称
 	string attachment = "";
 	for (auto& file : dto.getFiles()) {
-		string fileName = cDao.insertAttachment(file);
+		string fileName = client.uploadFile(file);
 		if (!fileName.empty()) {
 			if (attachment.size() != 0) {
 				attachment += ",";
@@ -564,7 +581,7 @@ int CgrkService::updateCgrkBill(const ModifyCgrkBillDTO dto, const PayloadDTO& p
 		vector<string_view> fileNames = split(attachment, ",");
 		if (!fileNames.empty()) {
 			for (const auto& file : fileNames) {
-				cDao.deleteAttachment(string(file));
+				client.deleteFile(string(file));
 			}
 		}
 		return -2;

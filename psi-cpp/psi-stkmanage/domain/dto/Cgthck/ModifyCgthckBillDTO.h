@@ -27,4 +27,4 @@ public:
 	}
 };
 
-#endif _MODIFY_CGTHCK_BILL_DTO_ // !_MODIFY_DOC_LIST_DTO_
+#endif  // !_MODIFY_DOC_LIST_DTO_

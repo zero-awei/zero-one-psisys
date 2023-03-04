@@ -5,7 +5,7 @@
 #include "BaseDAO.h"
 
 /*
-* 用于进行查询指定数据和上传删除附件的DAO
+* 用于进行查询指定数据的DAO
 */
 class CommonDAO : public BaseDAO
 {
@@ -18,10 +18,6 @@ public:
 	string selectAttachmentByBillNo(const string& billNo);
 	// 根据单据编号查询明细分录号列表
 	list<int> selectEntryNoByBillNo(const string& billNo);
-	// 上传附件
-	string insertAttachment(const string& fileName);
-	// 删除附件
-	bool deleteAttachment(const string& fileName);
 };
 
 #endif // !_COMMON_DAO_

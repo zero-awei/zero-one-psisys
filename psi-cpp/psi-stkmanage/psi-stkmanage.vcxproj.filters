@@ -593,6 +593,24 @@
     <ClInclude Include="dao\Cgthck\QueryCgthckBillListDOMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\BillDetailedDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillDetailedReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\Cgthck\QueryCgthrkBillListReturnDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\SysRoleDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="domain\do\SysDepartDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="public\test.html" />

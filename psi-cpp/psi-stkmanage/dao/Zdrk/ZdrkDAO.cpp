@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ZdrkDao.h"
+#include "ZdrkDAO.h"
 #include "sstream"
 #include "../../dao/Cgrk/StkIoMapper.h"
 #include "../../dao/Cgrk/StkIoEntryMapper.h"

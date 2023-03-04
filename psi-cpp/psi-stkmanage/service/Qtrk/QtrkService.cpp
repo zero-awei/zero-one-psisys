@@ -1,8 +1,8 @@
-
 #include "stdafx.h"
 #include "QtrkService.h"
 #include "../../dao/Qtrk/QtrkDAO.h"
 #include "../../dao/CommonDAO.h"
+#include "FastDfsClient.h"
 #include "../../../lib-common/include/SnowFlake.h"
 #include "../../../lib-common/include/StringUtil.h"
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
@@ -29,10 +29,19 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 	CommonDAO cDao;
 
 	// 上传附件
+	
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	// 定义传入数据库内的附件名称
 	string attachment = "";
 	for (auto& file : dto.getFiles()) {
-		string fileName = cDao.insertAttachment(file);
+		string fileName = client.uploadFile(file);
 		if (!fileName.empty()) {
 			if (attachment.size() != 0) {
 				attachment += ",";
@@ -79,7 +88,7 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 		vector<string_view> fileNames = split(attachment, ",");
 		if (!fileNames.empty()) {
 			for (const auto& file : fileNames) {
-				cDao.deleteAttachment(string(file));
+				client.deleteFile(string(file));
 			}
 		}
 		return -2;
@@ -109,7 +118,7 @@ int QtrkService::saveBillData(const AddQtrkBillDTO& dto, const PayloadDTO& paylo
 			vector<string_view> fileNames = split(attachment, ",");
 			if (!fileNames.empty()) {
 				for (const auto& file : fileNames) {
-					cDao.deleteAttachment(string(file));
+					client.deleteFile(string(file));
 				}
 			}
 			return -3;
@@ -134,6 +143,14 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 		}(dto)) {
 		return -1;
 	}
+
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
 
 	// 定义DAO层对象
 	QtrkDAO pDao;
@@ -179,7 +196,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 				if (!result.empty()) {
 					result += ",";
 				}
-				string f = cDao.insertAttachment(file);
+				string f = client.uploadFile(file);
 				result += f;
 				needUploadFile.push_back(f);
 			}
@@ -203,7 +220,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 		// 删除新增的附件
 		if (!needUploadFile.empty()) {
 			for (const auto& file : needUploadFile) {
-				cDao.deleteAttachment(file);
+				client.deleteFile(file);
 			}
 		}
 		return -2;
@@ -244,7 +261,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 					// 删除新增的附件
 					if (!needUploadFile.empty()) {
 						for (const auto& file : needUploadFile) {
-							cDao.deleteAttachment(file);
+							client.deleteFile(file);
 						}
 					}
 					return -3;
@@ -263,7 +280,7 @@ int QtrkService::updateBillDate(const AddQtrkBillDTO& dto, const PayloadDTO& pay
 	// 删除需要删除的附件
 	if (!needDeleteFile.empty()) {
 		for (const auto& file : needDeleteFile) {
-			cDao.deleteAttachment(file);
+			client.deleteFile(file);
 		}
 	}
 	return row;

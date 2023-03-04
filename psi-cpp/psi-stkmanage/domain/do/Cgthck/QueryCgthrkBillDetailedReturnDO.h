@@ -60,7 +60,7 @@ class QueryCgthrkBillDetailedReturnDO {
 	// 修改人
 	CC_SYNTHESIZE(std::string, updateBy, UpdateBy);
 	//详细信息
-	CC_SYNTHESIZE(list<BillEntryDetailedVO>, detail, Detail);
+	CC_SYNTHESIZE(list<StkIoEntryDO>, detail, Detail);
 };
 
 

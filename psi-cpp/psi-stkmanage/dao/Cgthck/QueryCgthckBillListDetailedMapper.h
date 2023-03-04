@@ -5,35 +5,29 @@
 
 #include "Mapper.h"
 #include "../../domain/vo/Cgthck/BillEntryDetailedVO.h"
-class QueryCgthckBillListDetailedMapper :public Mapper<BillEntryDetailedVO> {
+class QueryCgthckBillListDetailedMapper :public Mapper<StkIoEntryDO> {
 public:
-	BillEntryDetailedVO mapper(ResultSet* resultSet) const override
+	StkIoEntryDO mapper(ResultSet* resultSet) const override
 	{
-		BillEntryDetailedVO data;
-		data.setSrcNo(resultSet->getString(1));
+		StkIoEntryDO data;
+		data.setSrcEntryId(resultSet->getString(1));
 		data.setMaterialId(resultSet->getString(2));
-		data.setSize(resultSet->getString(3));
+		data.setBatchNo(resultSet->getString(3));
 		data.setWarehouseId(resultSet->getString(4));
-		data.setUnit(resultSet->getString(5));
-
-		data.setSettleQty(resultSet->getDouble(6));
+		data.setUnitId(resultSet->getString(5));
+		data.setQty(resultSet->getDouble(6));
 		data.setTaxRate(resultSet->getDouble(7));
 		data.setPrice(resultSet->getDouble(8));
 		data.setDiscountRate(resultSet->getDouble(9));
 		data.setTax(resultSet->getDouble(10));
 		data.setSettleAmt(resultSet->getDouble(11));
-
-		data.setInNum(resultSet->getInt(12));
-
-		data.setBuyCost(resultSet->getDouble(13));
-		data.setInMoney(resultSet->getDouble(14));
+		data.setSettleQty(resultSet->getDouble(12));
+		data.setExpense(resultSet->getDouble(13));
+		data.setInvoicedAmt(resultSet->getDouble(14));
 		data.setInvoicedQty(resultSet->getDouble(15));
-		data.setInvoicedAmt(resultSet->getDouble(16));
-
-		data.setRemarks(resultSet->getString(17));
-		data.setCustom1(resultSet->getString(18));
-		data.setCustom2(resultSet->getString(19));
-
+		data.setRemark(resultSet->getString(16));
+		data.setCustom1(resultSet->getString(17));
+		data.setCustom2(resultSet->getString(18));
 
 		return data;
 	}

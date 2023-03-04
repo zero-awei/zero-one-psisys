@@ -2,12 +2,7 @@
 #ifndef _CGTHCK_SERVICE_
 #define _CGTHCK_SERVICE_
 ////
-#include "ExcelComponent.h"
-#include "FastDfsClient.h"
-#include "CharsetConvertHepler.h"
 #include "../../domain/vo/PageVO.h"
-#include "../../dao/Cgthck/CgthckDAO.h"
-#include "../../domain/do/Cgthck/CgthckDO.h"
 #include "../../domain/vo/Cgthck/ExportCgthckVO.h"
 #include "../../domain/vo/Cgthck/QueryCgrkBillListsVO.h"
 #include "../../domain/vo/Cgthck/QueryCgthckBillVO.h"
@@ -24,7 +19,6 @@
 #include "../psi-stkmanage/domain/query/Cgthck/QueryCgthckBillQuery.h"
 #include "../psi-stkmanage/domain/vo/Cgthck/QueryCgthrkDetailedBillVO.h"
 #include"../../domain/dto/Cgthck/CgthckBillDetailedDTO.h"
-#include"../../domain/do/Cgthck/QueryCgthrkBillDetailedReturnDO.h"
 
 class CgthckService {
 public:

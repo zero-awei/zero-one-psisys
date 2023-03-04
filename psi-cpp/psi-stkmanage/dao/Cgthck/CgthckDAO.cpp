@@ -145,39 +145,39 @@ uint64_t CgthckDAO::count(const QueryCgthrkBillListDO& Obj) {
 		SqlParams params;
 		sql << " WHERE sys_depart.org_code = stk_io.op_dept and stk_io.supplier_id = bas_supplier.id and stk_io.sys_org_code = sys_depart.org_code";
 		if (!Obj.getId().empty()) {
-				sql << " AND `bill_no`=?"; 
-				params.push_back(SqlParam("s", std::make_shared<string>(Obj.getId())));
+			sql << " AND `bill_no`=?"; 
+			SQLPARAMS_PUSH(params, "s", string, Obj.getId());
 		} 
 
 		if (!Obj.getTheme().empty()) {
 			sql << " AND `subject`=?";
-			params.push_back(SqlParam("s", std::make_shared<string>(Obj.getTheme())));
+			SQLPARAMS_PUSH(params, "s", string, Obj.getTheme());
 		}
 
 		if (!Obj.getStage().empty()) {
 			sql << " AND `bill_stage`=?";
-			params.push_back(SqlParam("s", std::make_shared<string>(Obj.getStage())));
+			SQLPARAMS_PUSH(params, "s", string, Obj.getStage());
 		}
 
 		if (Obj.getIsEffective()!=-1) {
 			sql << " AND `is_effective`=?";
-			params.push_back(SqlParam("s", std::make_shared<int>(Obj.getIsEffective())));
+			SQLPARAMS_PUSH(params, "i", int, Obj.getIsEffective());
 		}
 		if (Obj.getIsClosed() != -1) {
 			sql << " AND `is_closed`=?";
-			params.push_back(SqlParam("s", std::make_shared<int>(Obj.getIsClosed())));
+			SQLPARAMS_PUSH(params, "i", int, Obj.getIsClosed());
 		}
 		if (Obj.getIsVoided() != -1) {
 			sql << " AND `is_voided`=?";
-			params.push_back(SqlParam("s", std::make_shared<int>(Obj.getIsVoided())));
+			SQLPARAMS_PUSH(params, "i", int, Obj.getIsVoided());
 		}
 		if (!Obj.getBeginData().empty()) {
 			sql << " AND `bill_date`>=?";
-			params.push_back(SqlParam("s", std::make_shared<string>(Obj.getBeginData())));
+			SQLPARAMS_PUSH(params, "s", string, Obj.getBeginData());
 		}
 		if (!Obj.getEndData().empty()) {
 			sql << " AND `bill_date`<=?";
-			params.push_back(SqlParam("s", std::make_shared<string>(Obj.getEndData())));
+			SQLPARAMS_PUSH(params, "s", string, Obj.getEndData());
 		}
 
 		string sqlStr = sql.str();
@@ -193,38 +193,38 @@ list<QueryCgthrkBillListReturnDO> CgthckDAO::selectCgthckBillList(const QueryCgt
 	sql << " WHERE sys_depart.org_code = stk_io.op_dept and stk_io.supplier_id = bas_supplier.id and stk_io.sys_org_code = sys_depart.org_code";
 	if (!Obj.getId().empty()) {
 		sql << " AND `bill_no`=?";
-		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getId())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getId());
 	}
 
 	if (!Obj.getTheme().empty()) {
 		sql << " AND `subject`=?";
-		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getTheme())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getTheme());
 	}
 
 	if (!Obj.getStage().empty()) {
 		sql << " AND `bill_stage`=?";
-		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getStage())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getStage());
 	}
 
 	if (Obj.getIsEffective() != -1) {
 		sql << " AND `is_effective`=?";
-		params.push_back(SqlParam("s", std::make_shared<int>(Obj.getIsEffective())));
+		SQLPARAMS_PUSH(params, "i", int, Obj.getIsEffective());
 	}
 	if (Obj.getIsClosed() != -1) {
 		sql << " AND `is_closed`=?";
-		params.push_back(SqlParam("s", std::make_shared<int>(Obj.getIsClosed())));
+		SQLPARAMS_PUSH(params, "i", int, Obj.getIsClosed());
 	}
 	if (Obj.getIsVoided() != -1) {
 		sql << " AND `is_voided`=?";
-		params.push_back(SqlParam("s", std::make_shared<int>(Obj.getIsVoided())));
+		SQLPARAMS_PUSH(params, "i", int, Obj.getIsVoided());
 	}
 	if (!Obj.getBeginData().empty()) {
 		sql << " AND `bill_date`>=?";
-		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getBeginData())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getBeginData());
 	}
 	if (!Obj.getEndData().empty()) {
 		sql << " AND `bill_date`<=?";
-		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getEndData())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getEndData());
 	}
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	QueryCgthckBillListDOMapper mapper;
@@ -235,17 +235,17 @@ list<QueryCgthrkBillListReturnDO> CgthckDAO::selectCgthckBillList(const QueryCgt
 QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const BillDetailedDO& Obj) {
 	QueryCgthrkBillDetailedReturnDO q;
 	stringstream sql;
-	sql << "SELECT src_entry_id, material_id,batch_no, warehouse_id,unit_id,qty,tax_rate,price,discount_rate,tax,settle_amt,settle_qty,expense,invoiced_amt,invoiced_qty,invoiced_amt,remark,custom1,custom2 FROM `stk_io_entry`";
+	sql << "SELECT src_entry_id, material_id,batch_no, warehouse_id,unit_id,qty,tax_rate,price,discount_rate,tax,settle_amt,settle_qty,expense,invoiced_amt,invoiced_qty,remark,custom1,custom2 FROM `stk_io_entry`";
 	sql << " where 1=1";
 	//组装sql
 	SqlParams params;
 	if (!Obj.getBillNo().empty()) {
 		sql << " AND `bill_no`=?";
-		params.push_back(SqlParam("s", std::make_shared<string>(Obj.getBillNo())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getBillNo());
 	}
 	QueryCgthckBillListDetailedMapper mapper;
 	string sqlStr = sql.str();
-	list<BillEntryDetailedVO> entry = sqlSession->executeQuery<BillEntryDetailedVO, QueryCgthckBillListDetailedMapper>(sqlStr, mapper, params);
+	list<StkIoEntryDO> entry = sqlSession->executeQuery<StkIoEntryDO, QueryCgthckBillListDetailedMapper>(sqlStr, mapper, params);
 
 	stringstream sql1;
 	sql1 << "SELECT stk_io.bill_no,stk_io.bill_date,stk_io.subject,stk_io.src_no,bas_supplier.`name`,sys_depart.depart_name,operator,cost,settle_amt,settled_amt,invoiced_amt,invoice_type,`handler`,bill_stage,is_effective,is_closed,is_voided,is_auto,is_rubric,stk_io.remark,effective_time,approver, stk_io.create_time, stk_io.create_by, sys_depart.depart_name, stk_io.update_time, stk_io.update_by from stk_io, sys_depart, bas_supplier";
@@ -255,7 +255,7 @@ QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const Bi
 	sql1 << " WHERE sys_depart.org_code = stk_io.op_dept and stk_io.supplier_id = bas_supplier.id and stk_io.sys_org_code = sys_depart.org_code";
 	if (!Obj.getBillNo().empty()) {
 		sql1 << " AND `bill_no`=?";
-		params1.push_back(SqlParam("s", std::make_shared<string>(Obj.getBillNo())));
+		SQLPARAMS_PUSH(params, "s", string, Obj.getBillNo());
 	}
 	sqlStr = sql1.str();
 	QueryCgthckBillListDOMapper mapper2;
@@ -291,29 +291,6 @@ QueryCgthrkBillDetailedReturnDO CgthckDAO::selectCgthckBillListDetailed(const Bi
 	q.setDetail(entry);
 	return q;
 
-}
-string CgthckDAO::insertFile(const string & fileName)
-{
-#ifdef LINUX
-	// 定义客户端对象
-	FastDfsClient client("conf/client.conf", 3);
-#else
-	// 定义客户端对象
-	FastDfsClient client("1.15.240.108");
-#endif
-	return client.uploadFile(fileName);
-}
-
-bool CgthckDAO::deleteFile(const string& fileName)
-{
-#ifdef LINUX
-	// 定义客户端对象
-	FastDfsClient client("conf/client.conf", 3);
-#else
-	// 定义客户端对象
-	FastDfsClient client("1.15.240.108");
-#endif
-	return client.deleteFile(fileName);
 }
 
 uint64_t CgthckDAO::count(const CgthckEntryDO& iobj)
@@ -432,7 +409,7 @@ uint64_t CgthckDAO::importData(const CgthckEntryDO& iobj)
 				"?, ?, ?, ?, ?, ?, ?, ?, ?, "
 				"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	uint64_t result = sqlSession->executeUpdate(sql,
-					"%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%d%d%s%s%s%s%s%s%s%s%s%s%s",
+					"%s%s%s%s%s%s%d%d%d%d%d%d%d%d%d%d%d%d%s%s%i%s%s%s%s%s%s%s%s",
 					iobj.getMaterialId(), iobj.getBatchNo(), iobj.getWarehouseId(), iobj.getStockIoDirection(), iobj.getSupplierId(), iobj.getUnitId(),
 					iobj.getSwellQty(), iobj.getQty(), iobj.getExpense(), iobj.getCost(), iobj.getSettleQty(), iobj.getTaxRate(),
 					iobj.getPrice(), iobj.getDiscountRate(), iobj.getTax(), iobj.getSettleAmt(), iobj.getInvoicedQty(), iobj.getInvoicedAmt(),

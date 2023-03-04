@@ -1,21 +1,8 @@
-/*
- Copyright Zero One Star. All rights reserved.
- @Author: awei
- @Date: 2022/10/25 11:13:11
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-	  https://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "PyrkService.h"
 #include "../../dao/Pyrk/PyrkDAO.h"
 #include "../../dao/CommonDAO.h"
+#include "FastDfsClient.h"
 #include "../../../lib-common/include/SnowFlake.h"
 #include "../../../lib-common/include/StringUtil.h"
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
@@ -41,10 +28,19 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 	CommonDAO cDao;
 
 	// 上传附件
+	
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	// 定义传入数据库内的附件名称
 	string attachment = "";
 	for (auto& file : dto.getFiles()) {
-		string fileName = cDao.insertAttachment(file);
+		string fileName = client.uploadFile(file);
 		if (!fileName.empty()) {
 			if (attachment.size() != 0) {
 				attachment += ",";
@@ -90,7 +86,7 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 		vector<string_view> fileNames = split(attachment, ",");
 		if (!fileNames.empty()) {
 			for (const auto& file : fileNames) {
-				cDao.deleteAttachment(string(file));
+				client.deleteFile(string(file));
 			}
 		}
 		return -2;
@@ -119,7 +115,7 @@ int PyrkService::saveBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& pa
 			vector<string_view> fileNames = split(attachment, ",");
 			if (!fileNames.empty()) {
 				for (const auto& file : fileNames) {
-					cDao.deleteAttachment(string(file));
+					client.deleteFile(string(file));
 				}
 			}
 			return -3;
@@ -182,6 +178,15 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		return -1;
 	}
 
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
+
 	// 定义DAO层对象
 	PyrkDAO pDao;
 	CommonDAO cDao;
@@ -225,7 +230,7 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 				if (!result.empty()) {
 					result += ",";
 				}
-				string f = cDao.insertAttachment(file);
+				string f = client.uploadFile(file);
 				result += f;
 				needUploadFile.push_back(f);
 			}
@@ -249,7 +254,7 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 		// 删除新增的附件
 		if (!needUploadFile.empty()) {
 			for (const auto& file : needUploadFile) {
-				cDao.deleteAttachment(file);
+				client.deleteFile(file);
 			}
 		}
 		return -2;
@@ -288,7 +293,7 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 					// 删除新增的附件
 					if (!needUploadFile.empty()) {
 						for (const auto& file : needUploadFile) {
-							cDao.deleteAttachment(file);
+							client.deleteFile(file);
 						}
 					}
 					return -3;
@@ -307,7 +312,7 @@ int PyrkService::updateBillData(const PyrkBillDetailDTO& dto, const PayloadDTO& 
 	// 删除需要删除的附件
 	if (!needDeleteFile.empty()) {
 		for (const auto& file : needDeleteFile) {
-			cDao.deleteAttachment(file);
+			client.deleteFile(file);
 		}
 	}
 	return row;
@@ -353,11 +358,20 @@ int PyrkService::removeBillById(const string& billNo)
 	// 删除明细
 	pDao.deleteDetailById(billNo);
 	// 附件
+
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	string attachments = cDao.selectAttachmentByBillNo(billNo);
 	if (!attachments.empty()) { // 删除附件
 		vector<string_view> attachment = split(attachments, ",");
 		for (const auto& file : attachment) {
-			cDao.deleteAttachment(string(file));
+			client.deleteFile(string(file));
 		}
 	}
 	// 删除单据

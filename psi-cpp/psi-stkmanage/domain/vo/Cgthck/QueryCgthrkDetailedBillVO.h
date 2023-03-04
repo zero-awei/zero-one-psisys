@@ -69,7 +69,7 @@ class QueryCgthrkDetailedBillVO {
 
 	//退货出库明细（这又是一个list）
 	CC_SYNTHESIZE(list<BillEntryDetailedVO>, detail, Detail);
-
+public:
 	BIND_TO_JSON
 	(
 		QueryCgthrkDetailedBillVO, billNo, billDate, subject, srcNo, supplierId, optDept, srcOperator,

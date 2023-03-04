@@ -3,6 +3,7 @@
 #include "../psi-stkmanage/dao/CommonDAO.h"
 #include "../../dao/Zdrk/ZdrkDAO.h"
 #include "../../../lib-common/include/SnowFlake.h"
+#include "FastDfsClient.h"
 #include <ctime>
 
 int ZdrkService::saveBillData(const AddZdrkBillDTO& dto, const PayloadDTO& payload)
@@ -25,10 +26,19 @@ int ZdrkService::saveBillData(const AddZdrkBillDTO& dto, const PayloadDTO& paylo
 	CommonDAO cDao;
 
 	// 上传附件
+	
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	// 定义传入数据库内的附件名称
 	string attachment = "";
 	for (auto& file : dto.getFiles()) {
-		string fileName = cDao.insertAttachment(file);
+		string fileName = client.uploadFile(file);
 		cout << fileName << endl;
 		if (!fileName.empty()) {
 			if (attachment.size() != 0) {
@@ -84,7 +94,7 @@ int ZdrkService::saveBillData(const AddZdrkBillDTO& dto, const PayloadDTO& paylo
 		vector<string_view> fileNames = split(attachment, ",");
 		if (!fileNames.empty()) {
 			for (const auto& file : fileNames) {
-				cDao.deleteAttachment(string(file));
+				client.deleteFile(string(file));
 			}
 		}
 		return -2;
@@ -115,7 +125,7 @@ int ZdrkService::saveBillData(const AddZdrkBillDTO& dto, const PayloadDTO& paylo
 			vector<string_view> fileNames = split(attachment, ",");
 			if (!fileNames.empty()) {
 				for (const auto& file : fileNames) {
-					cDao.deleteAttachment(string(file));
+					client.deleteFile(string(file));
 				}
 			}
 			return -3;
@@ -140,6 +150,14 @@ int ZdrkService::updateBillData(const ModifyZdrkBillDTO& dto, const PayloadDTO& 
 		}(dto)) {
 		return -1;
 	}
+
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
 
 	// 定义DAO层对象
 	ZdrkDAO zDao;
@@ -185,7 +203,7 @@ int ZdrkService::updateBillData(const ModifyZdrkBillDTO& dto, const PayloadDTO& 
 				if (!result.empty()) {
 					result += ",";
 				}
-				string f = cDao.insertAttachment(file);
+				string f = client.uploadFile(file);
 				result += f;
 				needUploadFile.push_back(f);
 			}
@@ -218,7 +236,7 @@ int ZdrkService::updateBillData(const ModifyZdrkBillDTO& dto, const PayloadDTO& 
 		// 删除新增的附件
 		if (!needUploadFile.empty()) {
 			for (const auto& file : needUploadFile) {
-				cDao.deleteAttachment(file);
+				client.deleteFile(file);
 			}
 		}
 		return -2;
@@ -259,7 +277,7 @@ int ZdrkService::updateBillData(const ModifyZdrkBillDTO& dto, const PayloadDTO& 
 					// 删除新增的附件
 					if (!needUploadFile.empty()) {
 						for (const auto& file : needUploadFile) {
-							cDao.deleteAttachment(file);
+							client.deleteFile(file);
 						}
 					}
 					return -3;
@@ -278,7 +296,7 @@ int ZdrkService::updateBillData(const ModifyZdrkBillDTO& dto, const PayloadDTO& 
 	// 删除需要删除的附件
 	if (!needDeleteFile.empty()) {
 		for (const auto& file : needDeleteFile) {
-			cDao.deleteAttachment(file);
+			client.deleteFile(file);
 		}
 	}
 	return row;
@@ -395,11 +413,20 @@ int ZdrkService::removeBillById(const string& billNo)
 	// 删除明细
 	pDao.deleteDetailById(billNo);
 	// 附件
+
+#ifdef LINUX
+	// 定义客户端对象
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	// 定义客户端对象
+	FastDfsClient client("1.15.240.108");
+#endif
+
 	string attachments = cDao.selectAttachmentByBillNo(billNo);
 	if (!attachments.empty()) { // 删除附件
 		vector<string_view> attachment = split(attachments, ",");
 		for (const auto& file : attachment) {
-			cDao.deleteAttachment(string(file));
+			client.deleteFile(string(file));
 		}
 	}
 	// 删除单据

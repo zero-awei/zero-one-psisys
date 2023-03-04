@@ -7,7 +7,7 @@
 #include "Pyrk/PyrkController.h"
 
 #include "Cgthck/CgthckController.h"
-#include "Cgrk/CgrkController.h"
+#include "cgrk/CgrkController.h"
 #include "Qtrk/QtrkController.h"
 #include "Pyrk/PyrkController.h"
 
