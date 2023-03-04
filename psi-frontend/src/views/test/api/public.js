@@ -26,20 +26,20 @@ import { queryMaterialTreeList } from '@/apis/public/index.js'
 import { createReceipt } from '@/apis/public/index.js'
 
 //1. 供应商资金账户下拉列表 |  queryBasBankAccount
-  // {
-  // 	"id": 1,
-  // 	"value": "1584913699556106242"
-  // }
-  // {
-  //       label: '部门1',
-  //       value: '1'
-  //     },
+// {
+// 	"id": 1,
+// 	"value": "1584913699556106242"
+// }
+// {
+//       label: '部门1',
+//       value: '1'
+//     },
 export const handleQueryBasBankAccount = () => {
   console.log('查询供应商资金账户下拉列表')
   queryBasBankAccount(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('BasBankAccount')) {
         data.forEach((item) => {
           let temp = {}
@@ -65,7 +65,7 @@ export const handleQueryInvoiceType = () => {
   queryInvoiceType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('InvoiceType')) {
         data.forEach((item) => {
           let temp = {}
@@ -82,16 +82,16 @@ export const handleQueryInvoiceType = () => {
   )
 }
 //3. 单据阶段下拉列表      |  queryBillStage
-    // {
-    // 	"id": -81367038,
-    // 	"name": "核批完"
-    // },
+// {
+// 	"id": -81367038,
+// 	"name": "核批完"
+// },
 export const handleQueryBillStage = () => {
   console.log('单据阶段下拉列表')
   queryBillStage(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('BillStage')) {
         data.forEach((item) => {
           let temp = {}
@@ -108,16 +108,16 @@ export const handleQueryBillStage = () => {
   )
 }
 //4. 采购类型下拉列表      |  queryPurchaseType
-    // {
-    // 	"id": 1349517314,
-    // 	"name": "生产原料"
-    // },
+// {
+// 	"id": 1349517314,
+// 	"name": "生产原料"
+// },
 export const handleQueryPurchaseType = () => {
   console.log('采购类型下拉列表')
   queryPurchaseType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('PurchaseType')) {
         data.forEach((item) => {
           let temp = {}
@@ -134,16 +134,16 @@ export const handleQueryPurchaseType = () => {
   )
 }
 //5. 税率下拉列表         |  queryTaxType
-    // {
-    // 	"id": -2131726335,
-    // 	"rate": "13"
-    // },
+// {
+// 	"id": -2131726335,
+// 	"rate": "13"
+// },
 export const handleQueryTaxType = () => {
   console.log('税率下拉列表')
   queryTaxType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('TaxType')) {
         data.forEach((item) => {
           let temp = {}
@@ -161,16 +161,16 @@ export const handleQueryTaxType = () => {
 }
 
 //6. 纳税规模下拉列表  | queryTaxScaleType
-    // {
-    // 	"id": 2120617985,
-    // 	"name": "一般纳税人"
-    // }
+// {
+// 	"id": 2120617985,
+// 	"name": "一般纳税人"
+// }
 export const handleQueryTaxScaleType = () => {
   console.log('纳税规模下拉列表')
   queryTaxScaleType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('TaxScaleType')) {
         data.forEach((item) => {
           let temp = {}
@@ -187,16 +187,16 @@ export const handleQueryTaxScaleType = () => {
   )
 }
 //7. 开票方式下拉列表  | queryInvoiceMethodType
-    // {
-    // 	"id": 1,
-    // 	"name": "审核中"
-    // }
+// {
+// 	"id": 1,
+// 	"name": "审核中"
+// }
 export const handleQueryInvoiceMethodType = () => {
   console.log('开票方式下拉列表')
   queryInvoiceMethodType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('InvoiceMethodType')) {
         data.forEach((item) => {
           let temp = {}
@@ -213,16 +213,16 @@ export const handleQueryInvoiceMethodType = () => {
   )
 }
 //8. 运输方式下拉列表  |  queryTransportMethod
-    // {
-    // 	"id": 1,
-    // 	"name": "审核中"
-    // }
+// {
+// 	"id": 1,
+// 	"name": "审核中"
+// }
 export const handleQueryTransportMethod = () => {
   console.log('运输方式下拉列表')
   queryTransportMethod(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('TransportMethod')) {
         data.forEach((item) => {
           let temp = {}
@@ -239,16 +239,16 @@ export const handleQueryTransportMethod = () => {
   )
 }
 //9. 结算方式下拉列表  | querySettleMethod
-    //  {
-    // 		"id": 1,
-    // 		"name": "审核中"
-    // 	}
+//  {
+// 		"id": 1,
+// 		"name": "审核中"
+// 	}
 export const handleQuerySettleMethod = () => {
   console.log('结算方式下拉列表')
   querySettleMethod(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('SettleMethod')) {
         data.forEach((item) => {
           let temp = {}
@@ -265,16 +265,16 @@ export const handleQuerySettleMethod = () => {
   )
 }
 //10. 货币类型下拉列表 | queryCurrencyType
-    // {
-    // 	"id": "1250264330398093314",
-    // 	"name": "人民币"
-    // },
+// {
+// 	"id": "1250264330398093314",
+// 	"name": "人民币"
+// },
 export const handleQueryCurrencyType = () => {
   console.log('货币类型下拉列表')
   queryCurrencyType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('CurrencyType')) {
         data.forEach((item) => {
           let temp = {}
@@ -291,16 +291,16 @@ export const handleQueryCurrencyType = () => {
   )
 }
 //11. 交货方式下拉列表 | queryDeliveryType
-    // {
-    // 	"id": 1,
-    // 	"name": "送货上门"
-    // }
+// {
+// 	"id": 1,
+// 	"name": "送货上门"
+// }
 export const handleQueryDeliveryType = () => {
   console.log('交货方式下拉列表')
   queryDeliveryType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('DeliveryType')) {
         data.forEach((item) => {
           let temp = {}
@@ -317,16 +317,16 @@ export const handleQueryDeliveryType = () => {
   )
 }
 //12. 仓库下拉列表   | queryWarehouse
-    // {
-    // 	"id": "1584936383497183234",
-    // 	"name": "01 一号仓库"
-    // },
+// {
+// 	"id": "1584936383497183234",
+// 	"name": "01 一号仓库"
+// },
 export const handleQueryWarehouse = () => {
   console.log('仓库下拉列表')
   queryWarehouse(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('Warehouse')) {
         data.forEach((item) => {
           let temp = {}
@@ -343,9 +343,9 @@ export const handleQueryWarehouse = () => {
   )
 }
 // TODO 13. 选区数据（省市区）|  queryArea
-    // {
-    // 	"name": "1230769620021972993"
-    // },
+// {
+// 	"name": "1230769620021972993"
+// },
 // export const handleQueryArea = () => {
 //   console.log('选区数据（省市区）')
 //   queryArea(
@@ -369,15 +369,15 @@ export const handleQueryWarehouse = () => {
 // }
 
 // 14. 物料类型下拉列表 | queryMaterialType
-    // 	"id": "123",
-    // 	"name": "01图灵"
-    // }
+// 	"id": "123",
+// 	"name": "01图灵"
+// }
 export const handleQueryMaterialType = () => {
   console.log('物料类型下拉列表')
   queryMaterialType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('MaterialType')) {
         data.forEach((item) => {
           let temp = {}
@@ -394,17 +394,17 @@ export const handleQueryMaterialType = () => {
   )
 }
 // TODO 15. 付款方式下拉列表 | queryPaymethodType
-    // {
-    // 	"dict_id": "",
-    // 	"id": "123",
-    // 	"name": "01图灵"
-    // }
+// {
+// 	"dict_id": "",
+// 	"id": "123",
+// 	"name": "01图灵"
+// }
 export const handleQueryPaymethodType = () => {
   console.log('付款方式下拉列表')
   queryPaymethodType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('PaymethodType')) {
         data.forEach((item) => {
           let temp = {}
@@ -421,17 +421,17 @@ export const handleQueryPaymethodType = () => {
   )
 }
 // 16. 交货方式下拉列表 | queryDeliverymethodType
-    // {
-    // 	"dict_id": "",
-    // 	"id": "123",
-    // 	"name": "01图灵"
-    // }
+// {
+// 	"dict_id": "",
+// 	"id": "123",
+// 	"name": "01图灵"
+// }
 export const handleQueryDeliverymethodType = () => {
   console.log('交货方式下拉列表')
   queryDeliverymethodType(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('DeliverymethodType')) {
         data.forEach((item) => {
           let temp = {}
@@ -448,16 +448,16 @@ export const handleQueryDeliverymethodType = () => {
   )
 }
 // 17. 供应商名称下拉列表 | querySuppliersName
-    // {
-    // 	"id": "111",
-    // 	"name": "qwyed"
-    // }
+// {
+// 	"id": "111",
+// 	"name": "qwyed"
+// }
 export const handleQuerySuppliersName = () => {
   console.log('供应商名称下拉列表')
   querySuppliersName(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('SuppliersName')) {
         data.forEach((item) => {
           let temp = {}
@@ -483,7 +483,7 @@ export const handleQuerySuppliersLevel = () => {
   querySuppliersLevel(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('SuppliersLevel')) {
         data.forEach((item) => {
           let temp = {}
@@ -510,7 +510,7 @@ export const handleQuerySupplierAdvancedCriteria = () => {
   querySupplierAdvancedCriteria(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('SupplierAdvancedCriteria')) {
         data.forEach((item) => {
           let temp = {}
@@ -586,7 +586,7 @@ export const handleGetUser = () => {
   getUser(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('User')) {
         data.rows.forEach((item) => {
           let temp = {}
@@ -697,7 +697,7 @@ export const handleGetDepart = () => {
   getDepart(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('DepartName')) {
         data.forEach((item) => {
           let temp = {}
@@ -768,7 +768,7 @@ export const handleCreateReceipt = () => {
   createReceipt(
     {},
     (data) => {
-      const list=[]
+      const list = []
       if (!localStorage.getItem('CreateReceipt')) {
         data.forEach((item) => {
           let temp = {}
@@ -780,7 +780,10 @@ export const handleCreateReceipt = () => {
       }
     },
     () => {
-      ElMessage.error('查询 请求新单据编号（根据新增类型生成新单据编号） 出现错误')
+      ElMessage.error(
+        '查询 请求新单据编号（根据新增类型生成新单据编号） 出现错误'
+      )
     }
   )
 }
+//公共接口测试
