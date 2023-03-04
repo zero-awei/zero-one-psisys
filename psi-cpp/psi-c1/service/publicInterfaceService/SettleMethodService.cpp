@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 #include "SettleMethodService.h"
-#include "../../dao/publicInterfaceDAO/SettleMethodDao.h"
+#include "../../dao/publicInterfaceDao/SettleMethodDao.h"
 
 list<SettleMethodVO> SettleMethodService::listAll()
 {

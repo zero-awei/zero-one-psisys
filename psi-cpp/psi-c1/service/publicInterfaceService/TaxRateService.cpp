@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "TaxRateService.h"
-#include "../../dao/publicInterfaceDAO/TaxRateDAO.h"
+#include "../../dao/publicInterfaceDao/TaxRateDAO.h"
 
 list<TaxRateVO> TaxRateService::listAll()
 {

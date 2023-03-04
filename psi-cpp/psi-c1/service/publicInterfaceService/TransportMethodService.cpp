@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 #include "TransportMethodService.h"
-#include "../../dao/publicInterfaceDAO/TransportMethodDao.h"
+#include "../../dao/publicInterfaceDao/TransportMethodDao.h"
 
 list<TransportMethodVO> TransportMethodService::listAll()
 {

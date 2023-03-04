@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MaterialService.h"
 #include "../../domain/do/publicInterfaceDO/MaterialQueryDO.h"
-#include "../../dao/publicInterfaceDAO/MaterialDAO.h"
+#include "../../dao/publicInterfaceDao/MaterialDAO.h"
 #include "../../domain/vo/publicInterfaceVO/MaterialVO.h"
 
 PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)

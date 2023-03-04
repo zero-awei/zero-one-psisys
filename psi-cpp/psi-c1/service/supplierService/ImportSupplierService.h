@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _IMPORT_SUPPLIER_SERVICE_
 #define _IMPORT_SUPPLIER_SERVICE_
-#include "../../dao/supplierDAO/ImportSupplierDAO.h"
+#include "../../dao/supplierDao/ImportSupplierDAO.h"
 #include "../../domain/dto/FileDTO.h"
 
 class ImportSupplierService

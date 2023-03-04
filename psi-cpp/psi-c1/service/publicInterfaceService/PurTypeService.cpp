@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PurTypeService.h"
-#include "../../dao/publicInterfaceDAO/PurTypeDAO.h"
+#include "../../dao/publicInterfaceDao/PurTypeDAO.h"
 
 list<PurTypeVO> PurTypeService::listAll()
 {

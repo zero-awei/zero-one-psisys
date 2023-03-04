@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ExportSupplierService.h"
-#include "../../dao/supplierDAO/ExportSupplierDAO.h"
+#include "../../dao/supplierDao/ExportSupplierDAO.h"
 
 list<ExportSupplierDO> ExportSupplierService::listAll(const ExportSupplierQuery& query)
 {

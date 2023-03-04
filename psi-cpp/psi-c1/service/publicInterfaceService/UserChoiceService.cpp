@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "UserChoiceService.h"
 #include "../../domain/do/publicInterfaceDO/UserChoiceQueryDO.h"
-#include "../../dao/publicInterfaceDAO/UserChoiceDAO.h"
+#include "../../dao/publicInterfaceDao/UserChoiceDAO.h"
 #include "../../domain/vo/publicInterfaceVO/UserVO.h"
 
 PageVO<UserVO> UserChoiceService::listAll(const UserQuery& query)

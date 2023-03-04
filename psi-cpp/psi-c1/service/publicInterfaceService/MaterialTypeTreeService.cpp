@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MaterialTypeTreeService.h"
-#include"../../dao/publicInterfaceDAO/MaterialTypeTreeDAO.h"
+#include"../../dao/publicInterfaceDao/MaterialTypeTreeDAO.h"
 
 PageVO<MaterialTypeTreeListVO> MaterialTypeTreeListService::listAll(const MaterialTypeItemQuery& query)
 {

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "DepartNameService.h"
-#include "../../dao/publicInterfaceDAO/DepartNameDAO.h"
+#include "../../dao/publicInterfaceDao/DepartNameDAO.h"
 
 
 std::list<DepartVO> DepartNameService::listAll(const DepartNameQuery& query)

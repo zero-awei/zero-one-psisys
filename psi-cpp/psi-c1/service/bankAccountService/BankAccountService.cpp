@@ -5,7 +5,7 @@
  */
 #include "stdafx.h"
 #include "BankAccountService.h"
-#include "../../dao/bankAccountDAO/BankAccountDAO.h"
+#include "../../dao/bankAccountDao/BankAccountDAO.h"
 
 PageVO<BankAccountListVO> BankAccountService::listAll(const BankAccountQuery& query)
 {

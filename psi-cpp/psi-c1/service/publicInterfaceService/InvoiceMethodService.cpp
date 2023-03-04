@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 #include "InvoiceMethodService.h"
-#include "../../dao/publicInterfaceDAO/InvoiceMethodDao.h"
+#include "../../dao/publicInterfaceDao/InvoiceMethodDao.h"
 
 list<InvoiceMethodVO> InvoiceMethodService::listAll()
 {

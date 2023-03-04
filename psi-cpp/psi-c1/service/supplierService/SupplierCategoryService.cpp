@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SupplierCategoryService.h"
-#include "../../dao/supplierDAO/SupplierCategoryDAO.h"
+#include "../../dao/supplierDao/SupplierCategoryDAO.h"
 #include "../../domain/do/supplierDO/SupplierCategoryReturnDO.h"
 std::list<SuppliersCategoryVO> SupplierCategoryService::listAll()
 {

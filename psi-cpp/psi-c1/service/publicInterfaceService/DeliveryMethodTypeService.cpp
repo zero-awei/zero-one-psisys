@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "DeliveryMethodTypeService.h"
-#include "dao/publicInterfaceDAO/DeliveryMethodTypeDAO.h"
+#include "dao/publicInterfaceDao/DeliveryMethodTypeDAO.h"
 
 std::list<DeliveryMethodType> DeliveryMethodService::listAll()
 {
