@@ -61,6 +61,8 @@ class PurOrderDO {
 	CC_SYNTHESIZE(string, deliveryMethod, DeliveryMethod);
 	//交货地点
 	CC_SYNTHESIZE(string, deliveryPlace, DeliveryPlace);
+	//交货时间
+	CC_SYNTHESIZE(string, deliveryTime, DeliveryTime);
 	//运输方式
 	CC_SYNTHESIZE(string, transportMethod, TransportMethod);
 	//付款方式
@@ -82,7 +84,7 @@ class PurOrderDO {
 	//金额
 	CC_SYNTHESIZE(double, amt, Amt);
 	//预付款余额
-	CC_SYNTHESIZE(double, prepaymentBal, PrepaymentBal);
+	CC_SYNTHESIZE(double, prepaymentBal, PrePaymentBal);
 	//结算数量
 	CC_SYNTHESIZE(double, settleQty, SettleQty);
 	//结算金额
@@ -135,8 +137,60 @@ class PurOrderDO {
 
 
 public:
-	StkIoDO() {
-
+	PurOrderDO() {
+		id = "";
+		billNo = "";
+		billDate = "";
+		srcBillType = "";
+		srcBillId = "";
+		srcNo = "";
+		subject = "";
+		isRubric = -1;
+		purType = "";
+		supplierId = "";
+		contact = "";
+		phone = "";
+		fax = "";
+		email = "";
+		opDept = "";
+		operator1 = "";
+		deliveryMethod = "";
+		deliveryPlace = "";
+		transportMethod = "";
+		paymentMethod = "";
+		settleMethod = "";
+		settleTime = "";
+		invoiceMethod = "";
+		invoiceType = "";
+		currency = "";
+		exchangeRate = -1;
+		qty = -1;
+		amt = -1;
+		prepaymentBal = -1;
+		settleQty = -1;
+		settleAmt = -1;
+		inQty = -1;
+		inCost = -1;
+		settleAmt = -1;
+		invoicedAmt = -1;
+		attachment = "";
+		remark = "";
+		isAuto = -1;
+		billStage = "";
+		approver = "";
+		bpmiInstanceId = "";
+		approvalResultType = "";
+		approvalRemark = "";
+		isEffective = -1;
+		effectiveTime = "";
+		isClosed = -1;
+		isVoided = -1;
+		sysOrgCode = "";
+		createBy = "";
+		createTime = "";
+		updateBy = "";
+		updateTime = "";
+		version = "";
 
 	}
 };

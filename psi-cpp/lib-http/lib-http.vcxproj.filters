@@ -33,6 +33,9 @@
     <ClInclude Include="include\JWTUtil.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="D:\23考研\PSI相关\更新文件\connection.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\HttpServer.cpp">

@@ -69,12 +69,26 @@ class CgthckBillListDO
 	CC_SYNTHESIZE(std::string, apvRemark, ApvRemark);
 	// 核批结果类型
 	CC_SYNTHESIZE(std::string, apvResType, ApvResType);
+public:
+	CgthckBillListDO()
+	{
+		billNo = "";
+		billDate = "";
+		billStage = "";
+		isEff = true;
+		isClosed = false;
+		isVoided = false;
+		isAuto = false;
+		isRubric = true;
+		hasRp = true;
+		hasSwell = false;
+	}
 };
 
 /**
 * 采购退货出库(红入), 查询单据列表明细数据库实体类
 */
-class CgthckBillDetailDO : public CgthckBillListDO
+class CgthckBillDetailDO
 {
 	// 源单分录号
 	CC_SYNTHESIZE(std::string, srcNo, SrcNo);

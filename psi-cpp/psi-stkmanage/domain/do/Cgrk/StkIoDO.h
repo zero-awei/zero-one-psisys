@@ -1,10 +1,10 @@
 #pragma once
 /*
  Copyright Zero One Star. All rights reserved.
-
+ //
  @Author: awei
  @Date: 2022/10/25 11:52:32
-
+ //
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -80,7 +80,7 @@ class StkIoDO
 	CC_SYNTHESIZE(string, approver, Approver);
 	//审批实例id
 	CC_SYNTHESIZE(string, bpmiInstanceId, BpmiInstanceId);
-	//核批结果类型
+	//核批结果类型(1通过，0拒绝)
 	CC_SYNTHESIZE(string, approvalResultType, ApprovalResultType);
 	//核批意见
 	CC_SYNTHESIZE(string, approvalRemark, ApprovalRemark);

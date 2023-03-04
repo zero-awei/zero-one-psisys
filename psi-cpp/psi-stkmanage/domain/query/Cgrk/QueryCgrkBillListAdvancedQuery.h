@@ -23,18 +23,38 @@
 #include "../PageQuery.h"
 #include "QueryCgrkBillConditionsQuery.h"
 
+
+class Conditions
+{
+	//条件字段
+	CC_SYNTHESIZE(string,field , Field);
+	//运算符
+	CC_SYNTHESIZE(string, operator1 , Operator1);
+	//值
+	CC_SYNTHESIZE(string, value, Value);
+public:
+	// 绑定from_json
+	friend void from_json(const json& j, Conditions& t) { // NOLINT
+		BIND_FROM_TO_NORMAL(j, t, field);
+		BIND_FROM_TO_NORMAL(j, t, operator1);
+		BIND_FROM_TO_NORMAL(j, t, value);
+	}
+};
+
 class QueryCgrkBillListAdvancedQuery : public PageQuery
 {
 	//逻辑
 	CC_SYNTHESIZE(string, logic, Logic);
 	//条件列表
-	CC_SYNTHESIZE(list<QueryCgrkBillListQuery>, conditionsList, ConditionsList);
+	CC_SYNTHESIZE(list<Conditions>, conditionsList, ConditionsList);
 
 public:
 	// 绑定from_json
 	friend void from_json(const json& j, QueryCgrkBillListAdvancedQuery& t) { // NOLINT
 		BIND_FROM_TO_NORMAL(j, t, logic);
-
+		BIND_FROM_TO_OBJ(j, t, conditionsList, list<Conditions>);
+		BIND_FROM_TO_ULL(j, t, pageIndex);
+		BIND_FROM_TO_ULL(j, t, pageSize);
 	}
 };
 

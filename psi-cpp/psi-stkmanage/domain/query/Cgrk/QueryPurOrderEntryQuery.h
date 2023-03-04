@@ -31,9 +31,6 @@ class QueryPurOrderEntryQuery
 	//µ¥¾Ý±àºÅ
 	CC_SYNTHESIZE(string, billNo, BillNo);
 
-
-
-
 public:
 	// °ó¶¨from_json
 	friend void from_json(const json& j, QueryPurOrderEntryQuery& t) { // NOLINT

@@ -22,7 +22,7 @@
 
 
 /**
- *
+ * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
 class StkIoEntryMapper : public Mapper<StkIoEntryDO>
 {

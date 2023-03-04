@@ -20,6 +20,7 @@
 #include "../../domain/do/Cgrk/StkIoDO.h"
 
 /**
+ * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
 class StkIoMapper : public Mapper<StkIoDO>
 {

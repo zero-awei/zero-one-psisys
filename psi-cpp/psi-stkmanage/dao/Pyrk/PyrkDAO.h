@@ -6,6 +6,7 @@
 #include "../../domain/do/Cgrk/StkIoEntryDO.h"
 #include "../../domain/vo/Pyrk/QueryPyrkBillDetailsVO.h"
 #include "../../domain/query/Pyrk/QueryPyrkBillListQuery.h"
+#include"domain/do/Pyrk/QueryPyrkBillListDo.h"
 
 class PyrkDAO : public BaseDAO {
 public:
@@ -36,5 +37,8 @@ public:
 
 	//查询单据详细信息
 	list<StkIoEntryDO> selectBillDetails(string billNo);
+	
+	// 统计数据条数
+	uint64_t count(const QueryPyrkBillListDo& Obj);
 };
 #endif

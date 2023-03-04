@@ -89,7 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -135,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -158,7 +158,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lib-common\include;..\lib-http\include;..\lib-mysql\include;.\;.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -184,6 +184,8 @@
     <ClCompile Include="api\Qtrk\QtrkController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="api\Zdrk\ZdrkController.cpp" />
+    <ClCompile Include="dao\Cgrk\CgrkDAO.cpp" />
+    <ClCompile Include="dao\Cgthck\CgthckDAO.cpp" />
     <ClCompile Include="dao\CommonDAO.cpp" />
     <ClCompile Include="dao\Pyrk\PyrkDAO.cpp" />
     <ClCompile Include="dao\Qtrk\QtrkDAO.cpp" />
@@ -194,7 +196,6 @@
     <ClCompile Include="domain\dto\Pyrk\DetailDTO.cpp" />
     <ClCompile Include="domain\dto\Pyrk\PyrkBillDetailDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\AddQtrkBillDTO.cpp" />
-    <ClCompile Include="domain\dto\Qtrk\DeleteQtrkBillDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.cpp" />
     <ClCompile Include="domain\dto\Qtrk\QueryQtrkBillListDTO.cpp" />
     <ClCompile Include="domain\dto\Zdrk\AddZdrkBillDTO.cpp" />
@@ -202,6 +203,8 @@
     <ClCompile Include="domain\dto\Zdrk\ModifyZdrkBillDTO.cpp" />
     <ClCompile Include="domain\vo\ResultStatus.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="service\Cgrk\CgrkService.cpp" />
+    <ClCompile Include="service\Cgthck\CgthckService.cpp" />
     <ClCompile Include="service\Pyrk\PyrkService.cpp" />
     <ClCompile Include="service\Qtrk\QtrkService.cpp" />
     <ClCompile Include="service\Zdrk\ZdrkService.cpp" />
@@ -219,6 +222,14 @@
     <ClInclude Include="api\Qtrk\QtrkController.h" />
     <ClInclude Include="api\Router.h" />
     <ClInclude Include="api\Zdrk\ZdrkController.h" />
+    <ClInclude Include="dao\Cgrk\CgrkDAO.h" />
+    <ClInclude Include="dao\Cgrk\PurOrderEntryMapper.h" />
+    <ClInclude Include="dao\Cgrk\PurOrderMapper.h" />
+    <ClInclude Include="dao\Cgrk\StkIoEntryMapper.h" />
+    <ClInclude Include="dao\Cgrk\StkIoMapper.h" />
+    <ClInclude Include="dao\Cgthck\CgthckDAO.h" />
+    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDetailedMapper.h" />
+    <ClInclude Include="dao\Cgthck\QueryCgthckBillListDOMapper.h" />
     <ClInclude Include="dao\CommonDAO.h" />
     <ClInclude Include="dao\IntMapper.h" />
     <ClInclude Include="dao\Pyrk\PyrkDAO.h" />
@@ -226,8 +237,10 @@
     <ClInclude Include="dao\Qtrk\QtrkDAO.h" />
     <ClInclude Include="dao\Zdrk\ZdrkDao.h" />
     <ClInclude Include="dao\Zdrk\ZdrkMapper.h" />
+    <ClInclude Include="domain\do\Cgrk\ModifyCgrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderDO.h" />
     <ClInclude Include="domain\do\Cgrk\PurOrderEntryDO.h" />
+    <ClInclude Include="domain\do\Cgrk\QueryCgrkBillListDO.h" />
     <ClInclude Include="domain\do\Cgrk\StkIoDO.h" />
     <ClInclude Include="domain\do\Cgrk\StkIoEntryDO.h" />
     <ClInclude Include="domain\do\Cgthck\CgthckDO.h" />
@@ -235,6 +248,8 @@
     <ClInclude Include="domain\do\Cgthck\SysUserRoleDO.h" />
     <ClInclude Include="domain\do\DoInclude.h" />
     <ClInclude Include="domain\do\Pyrk\QueryPyrkBillListDo.h" />
+    <ClInclude Include="domain\do\Qtrk\DeleteBill.h" />
+    <ClInclude Include="domain\do\Qtrk\ModifyQtrkBillStatusDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryBillListDO.h" />
     <ClInclude Include="domain\do\Qtrk\QueryDetailMessageDO.h" />
     <ClInclude Include="domain\do\SysDictDO.h" />
@@ -248,6 +263,8 @@
     <ClInclude Include="domain\dto\Cgrk\RemoveCgrkBillDTO.h" />
     <ClInclude Include="domain\dto\Cgrk\ModifyCgrkBillStateDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\AddCgthckBillDTO.h" />
+    <ClInclude Include="domain\dto\Cgthck\CgthckBillDetailedDTO.h" />
+    <ClInclude Include="domain\dto\Cgthck\CgthckBillEntryDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\DeleteCgthckBillDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\ExportCgthckFileDTO.h" />
     <ClInclude Include="domain\dto\Cgthck\ImportCgthckFileDTO.h" />
@@ -262,6 +279,7 @@
     <ClInclude Include="domain\dto\Qtrk\DeleteQtrkBillDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\ExportQtrkFileDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\ImportQtrkFileDTO.h" />
+    <ClInclude Include="domain\dto\Qtrk\ModifyQtrkBillDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\QtrkBillDetailDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillDetailsDTO.h" />
     <ClInclude Include="domain\dto\Qtrk\QueryQtrkBillListDTO.h" />
@@ -279,12 +297,14 @@
     <ClInclude Include="domain\query\Cgrk\QueryCgrkBillListQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryPurOrderEntryQuery.h" />
     <ClInclude Include="domain\query\Cgrk\QueryPurOrderListQuery.h" />
+    <ClInclude Include="domain\query\Cgthck\QueryCgrkBillQuery.h" />
     <ClInclude Include="domain\query\Cgthck\QueryCgthckBillQuery.h" />
     <ClInclude Include="domain\query\PageQuery.h" />
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Pyrk\QueryPyrkBillListQuery.h" />
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Qtrk\QueryQtrkBillListQuery.h" />
+    <ClInclude Include="domain\query\Zdrk\QueryZdrkBillDetailsQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkBillListQuery.h" />
     <ClInclude Include="domain\query\Zdrk\QueryZdrkDBillDetailsQuery.h" />
     <ClInclude Include="domain\vo\Cgrk\CgrkBillEntryVO.h" />
@@ -293,7 +313,11 @@
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryListVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\Cgrk\QueryPurOrderListVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\BillEntryDetailedVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\ExportCgthckVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\QueryCgrkBillListsVO.h" />
     <ClInclude Include="domain\vo\Cgthck\QueryCgthckBillVO.h" />
+    <ClInclude Include="domain\vo\Cgthck\QueryCgthrkDetailedBillVO.h" />
     <ClInclude Include="domain\vo\JsonVO.h" />
     <ClInclude Include="domain\vo\Message.h" />
     <ClInclude Include="domain\vo\PageVO.h" />
@@ -302,13 +326,18 @@
     <ClInclude Include="domain\vo\Pyrk\QueryPyrkBillListVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ExportQtrkFileVO.h" />
     <ClInclude Include="domain\vo\Qtrk\ImportQtrkFileVO.h" />
+    <ClInclude Include="domain\vo\Qtrk\QtrkBillEntryVO.h" />
     <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Qtrk\QueryQtrkBillListVO.h" />
     <ClInclude Include="domain\vo\ResultStatus.h" />
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillDetailsVO.h" />
     <ClInclude Include="domain\vo\Zdrk\QueryZdrkBillListVO.h" />
+    <ClInclude Include="domain\vo\Zdrk\ZdrkBillEntryVO.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\Cgrk\CgrkService.h" />
+    <ClInclude Include="service\Cgthck\CgthckMapper.h" />
+    <ClInclude Include="service\Cgthck\CgthckService.h" />
     <ClInclude Include="service\Pyrk\PyrkService.h" />
     <ClInclude Include="service\Qtrk\QtrkService.h" />
     <ClInclude Include="service\Zdrk\ZdrkService.h" />
@@ -324,6 +353,9 @@
     <ProjectReference Include="..\lib-mysql\lib-mysql.vcxproj">
       <Project>{8293b741-b019-444f-80bc-70321a47868e}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="public\test.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
