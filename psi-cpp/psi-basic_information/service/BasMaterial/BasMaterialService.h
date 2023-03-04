@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef _BASMATERIAL_SERVICE_
 #define _BASMATERIAL_SERVICE_
 #include <list>

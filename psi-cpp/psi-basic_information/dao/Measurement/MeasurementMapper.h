@@ -32,6 +32,71 @@ public:
 	MeasurementDO mapper(ResultSet* resultSet) const override
 	{
 		MeasurementDO data;
+		data.setId(resultSet->getString(1));
+		data.setName(resultSet->getString(2));
+		data.setSymbol(resultSet->getString(3));
+		data.setHas_child(resultSet->getInt(4));
+		data.setPid(resultSet->getString(5));
+		data.setFactor(resultSet->getDouble(6));
+		data.setIs_enabled(resultSet->getInt(7));
+		data.setCreate_time(resultSet->getString(8));
+		data.setCreate_by(resultSet->getString(9));
+		data.setUpdate_time(resultSet->getString(10));
+		data.setUpdate_by(resultSet->getString(11));
+		return data;
+	}
+};
+
+/**
+ * 列表数据匹配映射
+ */
+class MeasurementListMapper : public Mapper<MeasurementDO>
+{
+public:
+	MeasurementDO mapper(ResultSet* resultSet) const override
+	{
+		MeasurementDO data;
+		data.setId(resultSet->getString(1));
+		data.setName(resultSet->getString(2));
+		data.setSymbol(resultSet->getString(3));
+		data.setHas_child(resultSet->getInt(4));
+		data.setFactor(resultSet->getDouble(5));
+		data.setIs_enabled(resultSet->getInt(6));
+		data.setCreate_time(resultSet->getString(7));
+		data.setCreate_by(resultSet->getString(8));
+		data.setUpdate_time(resultSet->getString(9));
+		data.setUpdate_by(resultSet->getString(10));
+		return data;
+	}
+};
+
+/**
+ * pid数据匹配映射
+ */
+class MeasurementPidMapper : public Mapper<MeasurementDO>
+{
+public:
+	MeasurementDO mapper(ResultSet* resultSet) const override
+	{
+		MeasurementDO data;
+		data.setPid(resultSet->getString(1));
+		return data;
+	}
+};
+
+//导出数据匹配映射
+class MeasurementImportMapper : public Mapper<MeasurementDO>
+{
+public:
+	MeasurementDO mapper(ResultSet* resultSet) const override
+	{
+		MeasurementDO data;
+		data.setName(resultSet->getString(1));
+		data.setSymbol(resultSet->getString(2));
+		data.setHas_child(resultSet->getInt(3));
+		data.setPid(resultSet->getString(4));
+		data.setFactor(resultSet->getDouble(5));
+		data.setIs_enabled(resultSet->getInt(6));
 		return data;
 	}
 };

@@ -17,13 +17,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _Measurement_CONTROLLER_
-#define _Measurement_CONTROLLER_
+#ifndef _MEASUREMENT_CONTROLLER_
+#define _MEASUREMENT_CONTROLLER_
 
 #include "../../domain/query/Measurement/MeasurementQuery.h"
 #include "../../domain/dto/Measurement/MeasurementDTO.h"
-#include "../../domain/vo/Measurement/MeasurementVo.h"
 #include "../../domain/dto/IDDTO.h"
+#include "../../domain/dto/FileDTO.h"
+#include "../../domain/vo/Measurement/MeasurementVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
@@ -34,33 +35,35 @@ class MeasurementController
 {
 public:
 	//前端传输给后端的各种请求
-	CREATE_API_FUN_QUERY_PAYLOAD(queryMeasurement, execQueryMeasurement, MeasurementQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryKidMeasurement, execQueryKidMeasurement, MeasurementQuery);
-	CREATE_API_FUN_QUERY_PAYLOAD(queryDetailMeasurement, execQueryDetailMeasurement, MeasurementQuery);
-	CREATE_API_FUN_BODY(addMeasurement, execAddMeasurement, MeasurementDTO);
-	CREATE_API_FUN_BODY(modifyMeasurement, execModifyMeasurement, MeasurementDTO);
-	CREATE_API_FUN_BODY(removeMeasurement, execRemoveMeasurement, MeasurementQueryDelete);
-	CREATE_API_FUN_BODY_FILE(addFileMeasurement, execAddFileMeasurement, MeasurementDTO);
-	CREATE_API_FUN_QUERY_PAYLOAD(exportExecl, execExportExecl, MeasurementQuery);
-
+	CREATE_API_FUN_QUERY(queryMeasurement, execQueryMeasurement, MeasurementQuery);
+	CREATE_API_FUN_QUERY(queryKidMeasurement, execQueryKidMeasurement, MeasurementKidQuery);
+	CREATE_API_FUN_QUERY(queryDetailMeasurement, execQueryDetailMeasurement, MeasurementAppQuery);
+	CREATE_API_FUN_BODY_PAYLOAD(addMeasurement, execAddMeasurement, MeasurementDTO);
+	CREATE_API_FUN_BODY_PAYLOAD(modifyMeasurement, execModifyMeasurement, MeasurementModifyDTO);
+	CREATE_API_FUN_BODY(removeMeasurement, execRemoveMeasurement, MeasurementDeleteDTO);
+	CREATE_API_FUN_BODY_PAYLOAD_FILE(addFileMeasurement, execImportFileMeasurement, MeasurementDTO);
+	CREATE_API_FUN_JSON(exportExecl, execExportExcel, StringIDs);
 private:
 	//后端传输给前端JsonVO
 	//普通查询(分页查询)
-	JsonVO<PageVO<MeasurementVO>> execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload);
+	JsonVO<PageVO<MeasurementVO>> execQueryMeasurement(const MeasurementQuery& query);
 	//查询指定单位子级列表
-	JsonVO<MeasurementVO> execQueryKidMeasurement(const MeasurementQuery& query, const PayloadDTO& payload);
+	JsonVO<list<MeasurementVO>> execQueryKidMeasurement(const MeasurementKidQuery& query);
 	//查询指定单位详细信息
-	JsonVO<MeasurementVO> execQueryDetailMeasurement(const MeasurementQuery& query, const PayloadDTO& payload);
-	//添加计量单位
-	JsonVO<PageVO<MeasurementVO>> execAddMeasurement(const MeasurementDTO& dto);
+	JsonVO<MeasurementVO> execQueryDetailMeasurement(const MeasurementAppQuery& query);
+	//新增计量单位
+	JsonVO<MeasurementVO> execAddMeasurement(const MeasurementDTO& dto, const PayloadDTO& payload);
+	//新增计量单位的子级计量单位
+	//JsonVO<MeasurementVO> execAddKidMeasurement(const MeasurementKidDTO& dto, const PayloadDTO& payload);
 	//修改计量单位
-	JsonVO<PageVO<MeasurementVO>> execModifyMeasurement(const MeasurementDTO& dto);
-	//删除计量单位(通过名称删除)
-	JsonVO<PageVO<MeasurementVO>> execRemoveMeasurement(const MeasurementQueryDelete& dto);
+	JsonVO<MeasurementVO> execModifyMeasurement(const MeasurementModifyDTO& dto, const PayloadDTO& payload);
+	//删除计量单位
+	JsonVO<string> execRemoveMeasurement(const MeasurementDeleteDTO& dto);
 	//文件导入
-	JsonVO<PageVO<MeasurementVO>> execAddFileMeasurement(const MeasurementDTO& dto);
+	//JsonVO<string> execImportFileMeasurement(const MeasurementImportFileDTO& dto, const PayloadDTO& payload);
+	JsonVO<bool> execImportFileMeasurement(const MeasurementDTO& dto, const PayloadDTO& payload);
 	//文件导出
-	JsonVO<string> execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload);
+	JsonVO<string> execExportExcel(const StringIDs& dto);
 };
 
-#endif // _Measurement_CONTROLLER_
+#endif // !_MEASUREMENT_CONTROLLER_

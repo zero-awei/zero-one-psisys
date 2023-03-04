@@ -20,10 +20,12 @@
 #ifndef _MEASUREMENT_SERVICE_
 #define _MEASUREMENT_SERVICE_
 #include <list>
-#include "../../domain/vo/Measurement/MeasurementVo.h"
-#include "../../domain/query/Measurement/MeasurementQuery.h"
+#include "../../domain/vo/measurement/MeasurementVO.h"
 #include "../../domain/vo/PageVO.h"
+#include "../../domain/dto/IDDTO.h"
+#include "../../domain/query/measurement/MeasurementQuery.h"
 #include "../../domain/dto/Measurement/MeasurementDTO.h"
+#include "../../../lib-http/include/JWTUtil.h"
 
 /**
  * 计量单位服务实现
@@ -33,12 +35,24 @@ class MeasurementService
 public:
 	// 分页查询所有数据
 	PageVO<MeasurementVO> listAll(const MeasurementQuery& query);
-	// 保存数据
-	uint64_t saveData(const MeasurementDTO& dto);
+	//查询指定单位的子级列表
+	list<MeasurementVO> queryKidData(const MeasurementKidQuery& query);
+	//查询指定单位的详细信息
+	MeasurementVO queryDetailData(const MeasurementAppQuery& query);
+	// 新增记录单位
+	MeasurementVO save(const MeasurementDTO& dto, const PayloadDTO& payload);
+	// 新增计量单位
+	string saveData(const MeasurementDTO& dto, const PayloadDTO& payload);
+	// 新增计量单位的子级计量单位
+	string saveKidData(const MeasurementDTO& dto, const PayloadDTO& payload);
 	// 修改数据
-	bool updateData(const MeasurementDTO& dto);
-	// 通过ID删除数据
-	bool removeData(uint64_t id);
+	MeasurementVO updateData(const MeasurementModifyDTO& dto, const PayloadDTO& payload);
+	//删除数据
+	bool removeData(const string& id);
+	//文件导入
+	bool saveFileData(const MeasurementDTO& dto, const PayloadDTO& payload);
+	//文件导出
+	bool getData(const StringIDs& dto, vector<vector<string>>& data);
 };
 
 #endif // !_Measurement_SERVICE_

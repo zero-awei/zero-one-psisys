@@ -17,10 +17,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _Measurement_DTO_
-#define _Measurement_DTO_
+#ifndef _MEASUREMENT_DTO_
+#define _MEASUREMENT_DTO_
 
 #include "../../GlobalInclude.h"
+#include <string>
 #include "../FileDTO.h"
 
 /**
@@ -28,51 +29,169 @@
  */
 class MeasurementDTO : public FileDTO
 {
+	// pid
+	CC_SYNTHESIZE(string, pid, Pid);
+	//has_child
+	CC_SYNTHESIZE(uint64_t, has_child, Has_child);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 符号
-	CC_SYNTHESIZE(string, sign, Sign);
+	CC_SYNTHESIZE(string, symbol, Symbol);
 	// 换算系数
-	CC_SYNTHESIZE(uint64_t, scale, Scale);
+	CC_SYNTHESIZE(double, factor, Factor);
 	// 启用
-	CC_SYNTHESIZE(string, enable, Enable);
-	// 创建时间
-	CC_SYNTHESIZE(string, ctime, Ctime);
-	// 创建人
-	CC_SYNTHESIZE(string, creater, Creater);
-	// 修改时间
-	CC_SYNTHESIZE(string, rtime, Rtime);
-	// 修改人
-	CC_SYNTHESIZE(string, riviser, Riviser);
+	CC_SYNTHESIZE(string, is_enabled, Is_enabled);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, MeasurementDTO& t)
 	{
+		BIND_FROM_TO_NORMAL(j, t, pid);
 		BIND_FROM_TO_NORMAL(j, t, name);
-		BIND_FROM_TO_NORMAL(j, t, sign);
-		BIND_FROM_TO_I(j, t, scale);
-		BIND_FROM_TO_NORMAL(j, t, enable);
-		BIND_FROM_TO_NORMAL(j, t, ctime);
-		BIND_FROM_TO_NORMAL(j, t, creater);
-		BIND_FROM_TO_NORMAL(j, t, rtime);
-		BIND_FROM_TO_NORMAL(j, t, riviser);
+		BIND_FROM_TO_NORMAL(j, t, symbol);
+		BIND_FROM_TO_LD(j, t, factor);
+		BIND_FROM_TO_NORMAL(j, t, is_enabled);
+		BIND_FROM_TO_I(j, t, has_child);
 	}
-
-	BIND_TO_JSON(MeasurementDTO, name, sign, scale, enable, ctime, creater, rtime, riviser);
+	MeasurementDTO() {
+		is_enabled = "是";
+		factor = -1.0;
+		has_child = 0;
+	}
 };
 
-class MeasurementQueryDelete
+/*
+//导入文件DTO
+class MeasurementFileDTO : public FileDTO
 {
+	// 基准单位
+	CC_SYNTHESIZE(string, pname, Pname);
+	// has_child
+	CC_SYNTHESIZE(uint64_t, has_child, Has_child);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
+	// 符号
+	CC_SYNTHESIZE(string, symbol, Symbol);
+	// 换算系数
+	CC_SYNTHESIZE(double, factor, Factor);
+	// 启用
+	CC_SYNTHESIZE(int, is_enabled, Is_enabled);
 public:
 	// 绑定JSON转换方法
-	friend void from_json(const json& j, MeasurementQueryDelete& t)
+	friend void from_json(const json& j, MeasurementFileDTO& t)
 	{
+		BIND_FROM_TO_NORMAL(j, t, pname);
 		BIND_FROM_TO_NORMAL(j, t, name);
+		BIND_FROM_TO_NORMAL(j, t, symbol);
+		BIND_FROM_TO_LD(j, t, factor);
+		BIND_FROM_TO_I(j, t, has_child);
+		BIND_FROM_TO_I(j, t, is_enabled);
 	}
+	MeasurementFileDTO() {
+		is_enabled = -1;
+		factor = -1.0;
+		//has_child = 0;
+	}
+};
+*/
 
-	BIND_TO_JSON(MeasurementQueryDelete, name);
+//修改DTO
+class MeasurementModifyDTO
+{
+	// id
+	CC_SYNTHESIZE(string, id, Id);
+	// 名称
+	CC_SYNTHESIZE(string, name, Name);
+	// 符号
+	CC_SYNTHESIZE(string, symbol, Symbol);
+	// 换算系数
+	CC_SYNTHESIZE(double, factor, Factor);
+	// 启用
+	CC_SYNTHESIZE(string, is_enabled, Is_enabled);
+public:
+	// 绑定JSON转换方法
+	friend void from_json(const json& j, MeasurementModifyDTO& t)
+	{
+		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, name);
+		BIND_FROM_TO_NORMAL(j, t, symbol);
+		BIND_FROM_TO_LD(j, t, factor);
+		BIND_FROM_TO_NORMAL(j, t, is_enabled);
+	}
+	MeasurementModifyDTO() {
+		is_enabled = "是";
+		factor = -1.0;
+	}
 };
 
-#endif // !_Measurement_DTO_
+//查询删除
+class MeasurementDeleteDTO
+{
+	// id
+	CC_SYNTHESIZE(string, id, Id);
+public:
+	// 绑定JSON转换方法
+	friend void from_json(const json& j, MeasurementDeleteDTO& t)
+	{
+		BIND_FROM_TO_NORMAL(j, t, id);
+	}
+
+	BIND_TO_JSON(MeasurementDeleteDTO, id);
+};
+
+/*
+//新增子级列表DTO
+class MeasurementKidDTO
+{
+	// pname
+	CC_SYNTHESIZE(string, pname, Pname);
+	// id
+	CC_SYNTHESIZE(string, id, Id);
+	// has_child
+	CC_SYNTHESIZE(string, has_child, Has_child);
+	// 名称
+	CC_SYNTHESIZE(string, name, Name);
+	// 符号
+	CC_SYNTHESIZE(string, symbol, Symbol);
+	// 换算系数
+	CC_SYNTHESIZE(uint64_t, factor, Factor);
+	// 启用
+	CC_SYNTHESIZE(string, is_enabled, Is_enabled);
+public:
+	// 绑定JSON转换方法
+	friend void from_json(const json& j, MeasurementKidDTO& t)
+	{
+		BIND_FROM_TO_NORMAL(j, t, pname);
+		BIND_FROM_TO_NORMAL(j, t, id);
+		BIND_FROM_TO_NORMAL(j, t, has_child);
+		BIND_FROM_TO_NORMAL(j, t, name);
+		BIND_FROM_TO_NORMAL(j, t, symbol);
+		BIND_FROM_TO_I(j, t, factor);
+		BIND_FROM_TO_NORMAL(j, t, is_enabled);
+	}
+
+	BIND_TO_JSON(MeasurementKidDTO, name, symbol, factor, is_enabled);
+};
+*/
+
+/*
+//导入文件DTO列表
+class MeasurementImportFileDTO : public FileDTO
+{
+protected:
+	// 导入文件信息
+	list<MeasurementFileDTO> import;
+public:
+	const list<MeasurementFileDTO>& getImport() const { return import; }
+	void addImportItem(MeasurementFileDTO dtoObj) {
+		import.push_back(dtoObj);
+	};
+
+	// 绑定JSON转换方法
+	friend void from_json(const json& j, MeasurementImportFileDTO& t)
+	{
+		BIND_FROM_TO_OBJ(j, t, import);
+	}
+};
+*/
+
+#endif // !_MEASUREMENT_DTO_

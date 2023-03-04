@@ -32,13 +32,29 @@ public:
 	uint64_t count(const MeasurementDO& iObj);
 	// 分页查询数据
 	list<MeasurementDO> selectWithPage(const MeasurementDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// 通过姓名查询数据
+	// 查询指定单位子级列表
+	list<MeasurementDO> selectKidData(const string& id);
+	// 通过Id查询数据
+	list<MeasurementDO> selectById(const string& id);
+	//通过pid查询数据
+	list<MeasurementDO> selectByPid(const string& pid);
+	// 通过名称查询数据
 	list<MeasurementDO> selectByName(const string& name);
 	// 插入数据
-	uint64_t insert(const MeasurementDO& iObj);
+	int insert(const MeasurementDO& iObj);
 	// 修改数据
 	int update(const MeasurementDO& uObj);
-	// 通过ID删除数据
-	int deleteById(uint64_t id);
+	//修改新增之后的has_child
+	int updateHas_child(const int& count, const string& id);
+	//新增子级列表更新pid
+	int updatePid(const string& pid, const string& id);
+	// 通过名称删除数据
+	int deleteById(const string& id);
+	//通过pid删除数据
+	int deleteByPid(const string& pid);
+	// 导入文件
+	uint64_t ImportFile(const MeasurementImportFileDO& iObj);
+	//导出文件
+	list<MeasurementDO> selectExportFile(const string& obj);
 };
 #endif // !_Measurement_DAO_

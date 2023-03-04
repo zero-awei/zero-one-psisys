@@ -17,93 +17,38 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _Measuremnet_VO_
-#define _Measurement_VO_
+#ifndef _MEASUREMNET_VO_
+#define _MEASUREMENT_VO_
 
 #include "../../GlobalInclude.h"
+#include <string>
 
 /**
  * 显示对象
  */
 class MeasurementVO
 {
+	//主键ID
+	CC_SYNTHESIZE(string, id, Id);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 符号
-	CC_SYNTHESIZE(string, sign, Sign);
+	CC_SYNTHESIZE(string, symbol, Symbol);
 	// 换算系数
-	CC_SYNTHESIZE(uint64_t, scale, Scale);
+	CC_SYNTHESIZE(double, factor, Factor);
 	// 启用
-	CC_SYNTHESIZE(string, enable, Enable);
+	CC_SYNTHESIZE(string, is_enabled, Is_enabled);
 	// 创建时间
-	CC_SYNTHESIZE(string, ctime, Ctime);
+	CC_SYNTHESIZE(string, create_time, Create_time);
 	// 创建人
-	CC_SYNTHESIZE(string, creater, Creater);
+	CC_SYNTHESIZE(string, create_by, Create_by);
 	// 修改时间
-	CC_SYNTHESIZE(string, rtime, Rtime);
+	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 修改人
-	CC_SYNTHESIZE(string, riviser, Riviser);
+	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
-	MeasurementVO()
-	{
-		name = "m";
-		sign = "m";
-		scale = 1;
-		enable = "yes";
-		ctime = "2023-2-20";
-		creater = "gly";
-		rtime = "2023-2-20";
-		riviser = "gly";
-	}
-
 	// 绑定JSON转换方法
-	BIND_TO_JSON(MeasurementVO, name, sign, scale, enable, ctime, creater, rtime, riviser);
-};
-
-class MeasurementDetailVO
-{
-	// 名称
-	CC_SYNTHESIZE(string, name, Name);
-	// 符号
-	CC_SYNTHESIZE(string, sign, Sign);
-	// 换算系数
-	CC_SYNTHESIZE(uint64_t, scale, Scale);
-	// 启用
-	CC_SYNTHESIZE(string, enable, Enable);
-public:
-	MeasurementDetailVO()
-	{
-		name = "m";
-		sign = "m";
-		scale = 1;
-		enable = "yes";
-	}
-
-	// 绑定JSON转换方法
-	BIND_TO_JSON(MeasurementDetailVO, name, sign, scale, enable);
-};
-
-class MeasurementActionInfoVO
-{
-	// 创建时间
-	CC_SYNTHESIZE(string, ctime, Ctime);
-	// 创建人
-	CC_SYNTHESIZE(string, creater, Creater);
-	// 修改时间
-	CC_SYNTHESIZE(string, rtime, Rtime);
-	// 修改人
-	CC_SYNTHESIZE(string, riviser, Riviser);
-public:
-	MeasurementActionInfoVO()
-	{
-		ctime = "2023-2-20";
-		creater = "gly";
-		rtime = "2023-2-20";
-		riviser = "gly";
-	}
-
-	// 绑定JSON转换方法
-	BIND_TO_JSON(MeasurementActionInfoVO, ctime, creater, rtime, riviser);
+	BIND_TO_JSON(MeasurementVO, id, name, symbol, factor, is_enabled, create_time, create_by, update_time, update_by);
 };
 
 #endif // !_MEASUREMENT_VO_

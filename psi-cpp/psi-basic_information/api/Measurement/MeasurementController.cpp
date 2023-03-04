@@ -19,55 +19,109 @@
 #include "stdafx.h"
 #include "MeasurementController.h"
 #include "../../service/Measurement/MeasurementService.h"
-#include <list>
+#include "../../../lib-common/include/ExcelComponent.h"
+#include "../../../lib-common/include/CharsetConvertHepler.h"
+#include "FastDfsClient.h"
 
-/*
-JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
+//普通查询(分页查询)
+JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query)
 {
 	//定义一个Service
-	//MeasurementService service;
+	MeasurementService service;
 	//查询数据
-	//PageVO<MeasurementVO> result = service.listAll(query);
+	JsonVO<PageVO<MeasurementVO>> result;
+	PageVO<MeasurementVO> vr = service.listAll(query);
+	result.setData(vr);
 	//响应结果
-	//return JsonVO<PageVO<MeasurementVO>>(result, RS_SUCCESS);
-	return JsonVO<PageVO<MeasurementVO>>();
-}
-
-JsonVO<uint64_t> MeasurementController::execAddMeasurement(const MeasurementDTO& dto)
-{
-	JsonVO<uint64_t> result;
-	MeasurementService service;
-	//执行数据新增
-	uint64_t id = service.saveData(dto);
-	if (id > 0) {
-		result.success(id);
-	}
-	else
-	{
-		result.fail(id);
-	}
-	//响应结果
-	//return result;
-}
-
-JsonVO<uint64_t> MeasurementController::execModifyMeasurement(const MeasurementDTO& dto)
-{
-	MeasurementService service;
-	JsonVO<uint64_t> result;
-	if (service.updateData(dto)) {
-		result.success(dto.getId());
-	}
-	else
-	{
-		result.fail(dto.getId());
-	}
 	return result;
 }
 
-JsonVO<uint64_t> MeasurementController::execRemoveMeasurement(const MeasurementDTO& dto)
+
+//查询指定单位的子级列表
+JsonVO<list<MeasurementVO>> MeasurementController::execQueryKidMeasurement(const MeasurementKidQuery& query)
+{
+	//todo:数据校验
+	if (query.getId() == "")
+	{
+		return JsonVO<list<MeasurementVO>>({}, RS_PARAMS_INVALID);
+	}
+	MeasurementService service;
+	JsonVO<list<MeasurementVO>> result;
+	list<MeasurementVO> rows = service.queryKidData(query);
+	result.setData(rows);
+	return result;
+}
+
+//查询指定单位的详细信息
+JsonVO<MeasurementVO> MeasurementController::execQueryDetailMeasurement(const MeasurementAppQuery& query)
+{
+	//todo:数据校验
+	if (query.getId() == "")
+	{
+		return JsonVO<MeasurementVO>({}, RS_PARAMS_INVALID);
+	}
+	JsonVO<MeasurementVO> result;
+	MeasurementService service;
+	MeasurementVO vo = service.queryDetailData(query);
+	result.success(vo);
+	return result;
+}
+
+//新增计量单位
+JsonVO<MeasurementVO> MeasurementController::execAddMeasurement(const MeasurementDTO& dto, const PayloadDTO& payload)
+{
+	//参数校验
+	if (dto.getName().empty() ||
+		dto.getSymbol().empty() ||
+		dto.getFactor() <= 0 ||
+		(dto.getIs_enabled() != CharsetConvertHepler::ansiToUtf8("是")
+			&& dto.getIs_enabled() != CharsetConvertHepler::ansiToUtf8("否")))
+	{
+		return JsonVO<MeasurementVO>({}, RS_PARAMS_INVALID);
+	}
+
+	//执行数据业务
+	JsonVO<MeasurementVO> result;
+	MeasurementService service;
+	MeasurementVO vo = service.save(dto, payload);
+	if (vo.getCreate_time().empty())
+	{
+		result.fail(vo);
+	}
+	else
+	{
+		result.success(vo);
+	}
+	//响应结果
+	return result;
+}
+
+//修改计量单位
+JsonVO<MeasurementVO> MeasurementController::execModifyMeasurement(const MeasurementModifyDTO& dto, const PayloadDTO& payload)
+{
+	//参数校验
+	if (dto.getName().empty() ||
+		dto.getSymbol().empty() ||
+		dto.getFactor() <= 0 ||
+		(dto.getIs_enabled() != CharsetConvertHepler::ansiToUtf8("是")
+			&& dto.getIs_enabled() != CharsetConvertHepler::ansiToUtf8("否")))
+	{
+		return JsonVO<MeasurementVO>({}, RS_PARAMS_INVALID);
+	}
+	MeasurementService service;
+	MeasurementVO vo = service.updateData(dto, payload);
+	JsonVO<MeasurementVO> result;
+	result.setData(vo);
+	result.success(vo);
+	return result;
+}
+
+//删除计量单位
+JsonVO<string> MeasurementController::execRemoveMeasurement(const MeasurementDeleteDTO& dto)
 {
 	MeasurementService service;
-	JsonVO<uint64_t> result;
+	JsonVO<string> result;
+	result.setData(dto.getId());
 	//执行数据删除
 	if (service.removeData(dto.getId())) {
 		result.success(dto.getId());
@@ -80,137 +134,61 @@ JsonVO<uint64_t> MeasurementController::execRemoveMeasurement(const MeasurementD
 	return result;
 }
 
-JsonVO<uint64_t> MeasurementController::execRemoveById(const IntID& id)
-{
-	MeasurementDTO dto;
-	dto.setId(id.getId());
-	return execRemoveMeasurement(dto);
-}
-
-JsonVO<MeasurementVO> MeasurementController::execJsonMeasurement(const MeasurementDTO& dto)
-{
-	//构建一个测试VO
-	MeasurementVO vo;
-	vo.setId(dto.getId());
-	vo.setName(dto.getName());
-	vo.setAge(dto.getAge());
-	vo.setSex(dto.getSex());
-
-	//响应结果
-	return JsonVO<SampleVO>(vo, RS_API_UN_IMPL);
-}
-
-/*
-JsonVO<UserVO> MeasurementController::execModifyUserInfo(const UserDTO& dto)
-{
-	//构建一个测试VO
-	UserVO vo;
-	vo.setNickname(dto.getNickname());
-	vo.setIdCard(dto.getIdCard());
-	vo.setAge(dto.getAge());
-
-	//输出测试上传文件路径列表
-	for (auto file : dto.getFiles()) {
-		std::cout << "path " << file << std::endl;
-	}
-
-	//响应结果
-	return JsonVO<UserVO>(vo, RS_API_UN_IMPL);
-}
-*/
-
-//普通查询
-JsonVO<PageVO<MeasurementVO>> MeasurementController::execQueryMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
-{
-	JsonVO<PageVO<MeasurementVO>> js;
-	PageVO<MeasurementVO> data;
-	list<MeasurementVO> rows;
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	data.setRows(rows);
-	js.success(data);
-	return js;
-}
-
-//查询指定单位子级列表
-JsonVO<MeasurementVO> MeasurementController::execQueryKidMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
-{
-	JsonVO<MeasurementVO> js;
-	//js.push_back(MeasurmentVO());
-	js.success(MeasurementVO());
-	return js;
-}
-
-//查询指定单位详细信息
-JsonVO<MeasurementVO> MeasurementController::execQueryDetailMeasurement(const MeasurementQuery& query, const PayloadDTO& payload)
-{
-	JsonVO<MeasurementVO> js;
-	//js.push_back(MeasurmentVO());
-	js.success(MeasurementVO());
-	return js;
-}
-
-//添加计量单位
-JsonVO<PageVO<MeasurementVO>> MeasurementController::execAddMeasurement(const MeasurementDTO& dto)
-{
-	JsonVO<PageVO<MeasurementVO>> js;
-	PageVO<MeasurementVO> data;
-	list<MeasurementVO> rows;
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	data.setRows(rows);
-	js.success(data);
-	return js;
-}
-
-//修改计量单位
-JsonVO<PageVO<MeasurementVO>> MeasurementController::execModifyMeasurement(const MeasurementDTO& dto)
-{
-	JsonVO<PageVO<MeasurementVO>> js;
-	PageVO<MeasurementVO> data;
-	list<MeasurementVO> rows;
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	data.setRows(rows);
-	js.success(data);
-	return js;
-}
-
-//删除计量单位(通过名称删除)
-JsonVO<PageVO<MeasurementVO>> MeasurementController::execRemoveMeasurement(const MeasurementQueryDelete& dto)
-{
-	JsonVO<PageVO<MeasurementVO>> js;
-	PageVO<MeasurementVO> data;
-	list<MeasurementVO> rows;
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	data.setRows(rows);
-	js.success(data);
-	return js;
-}
-
 //文件导入
-JsonVO<PageVO<MeasurementVO>> MeasurementController::execAddFileMeasurement(const MeasurementDTO& dto)
+JsonVO<bool> MeasurementController::execImportFileMeasurement(const MeasurementDTO& dto, const PayloadDTO& payload)
 {
-	JsonVO<PageVO<MeasurementVO>> js;
-	PageVO<MeasurementVO> data;
-	list<MeasurementVO> rows;
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	rows.push_back(MeasurementVO());
-	data.setRows(rows);
-	js.success(data);
-	return js;
+	JsonVO<bool> result;
+	MeasurementService service;
+	bool flag = service.saveFileData(dto, payload);
+	if (flag)
+	{
+		result.success(true);
+	}
+	else
+	{
+		result.fail(false);
+	}
+	return result;
 }
 
 //文件导出
-JsonVO<string> MeasurementController::execExportExecl(const MeasurementQuery& query, const PayloadDTO& payload)
+JsonVO<string> MeasurementController::execExportExcel(const StringIDs& dto)
 {
-	JsonVO<string> js;
-	//js.success();
-	return js;
+	MeasurementService service;
+	// 创建excel表
+	string filename = "./public/bas_Unit/bas_Unit.xlsx";
+	vector<vector<string>> data;
+	data.emplace_back(vector<std::string>({
+		CharsetConvertHepler::ansiToUtf8("名称"),
+		CharsetConvertHepler::ansiToUtf8("符号"),
+		CharsetConvertHepler::ansiToUtf8("是否基准"),
+		CharsetConvertHepler::ansiToUtf8("基准单位"),
+		CharsetConvertHepler::ansiToUtf8("换算系数"),
+		CharsetConvertHepler::ansiToUtf8("是否启用"),
+		}));
+	// 查询数据
+	if (!service.getData(dto, data))
+		return JsonVO<string>(CharsetConvertHepler::ansiToUtf8("导出失败"), RS_FAIL);
+	string sheetname = CharsetConvertHepler::ansiToUtf8("计算单位");
+	ExcelComponent excel;
+	excel.writeVectorToFile(filename, sheetname, data);
+	// 上传到文件服务器
+#ifdef LINUX
+	FastDfsClient client("conf/client.conf", 3);
+#else
+	FastDfsClient client("1.15.240.108");
+
+#endif // #ifdef LINUX
+	filename = client.uploadFile(filename);
+	// TODO:数据校验
+	if (filename.empty())
+	{
+		JsonVO<string> result(filename, RS_FAIL);
+	}
+	else
+	{
+		filename = "http://1.15.240.108:8888/" + filename;
+		JsonVO<string> result(filename, RS_SUCCESS);
+		return result;
+	}
 }

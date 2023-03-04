@@ -21,39 +21,68 @@
 #ifndef _Measurement_DO_
 #define _Measurement_DO_
 #include "../DoInclude.h"
+#include <string>
+using namespace std;
 
 /**
  * 数据库实体类
  */
 class MeasurementDO
 {
+	// pid
+	CC_SYNTHESIZE(string, pid, Pid);
+	//是否有子级列表
+	CC_SYNTHESIZE(uint64_t, has_child, Has_child);
+	// ID
+	CC_SYNTHESIZE(string, id, Id);
 	// 名称
 	CC_SYNTHESIZE(string, name, Name);
 	// 符号
-	CC_SYNTHESIZE(string, sign, Sign);
+	CC_SYNTHESIZE(string, symbol, Symbol);
 	// 换算系数
-	CC_SYNTHESIZE(uint64_t, scale, Scale);
+	CC_SYNTHESIZE(double, factor, Factor);
 	// 启用
-	CC_SYNTHESIZE(string, enable, Enable);
+	CC_SYNTHESIZE(int, is_enabled, Is_enabled);
 	// 创建时间
-	CC_SYNTHESIZE(string, ctime, Ctime);
+	CC_SYNTHESIZE(string, create_time, Create_time);
 	// 创建人
-	CC_SYNTHESIZE(string, creater, Creater);
+	CC_SYNTHESIZE(string, create_by, Create_by);
 	// 修改时间
-	CC_SYNTHESIZE(string, rtime, Rtime);
+	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 修改人
-	CC_SYNTHESIZE(string, riviser, Riviser);
+	CC_SYNTHESIZE(string, update_by, Update_by);
 public:
+	/*
 	MeasurementDO() {
+		id = "";
 		name = "";
-		sign = "";
-		scale = 1;
-		enable = "";
-		ctime = "";
-		creater = "";
-		rtime = "";
-		riviser = "";
+		symbol = "";
+		factor = 1;
+		is_enabled = "";		
+		create_time = "";
+		create_by = "";
+		update_time = "";
+		update_by = "";
 	}
+	*/
 };
 
-#endif // !_Measurement_DTO_
+//导入文件DO
+class MeasurementImportFileDO
+{
+protected:
+	// 导入信息
+	list<MeasurementDO> import;
+public:
+	const list<MeasurementDO>& getImport() const { return import; }
+	void addImportItem(MeasurementDO doObj) { import.push_back(doObj); }
+};
+
+//导出文件DO
+class StringIDsDO
+{
+	// Id
+	CC_SYNTHESIZE(std::list<std::string>, ids, Ids);
+};
+
+#endif // !_Measurement_DO_
