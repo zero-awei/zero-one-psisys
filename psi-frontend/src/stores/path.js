@@ -60,7 +60,10 @@ export const pathStore = defineStore('path', {
       }
       // console.log('---------path', path)
       this.pathList.push(path)
-      this.pathIdSet.add(path.id)
+      // this.pathIdSet.add(path.id)
+    },
+    addPathIdSet(id) {
+      this.pathIdSet.add(id)
     },
     removePathIdSet(id) {
       this.pathIdSet.delete(id)

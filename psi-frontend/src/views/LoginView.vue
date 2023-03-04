@@ -18,13 +18,9 @@
     <Test />
   </el-card>
   <!-- 验证码组件 -->
-<!-- <Verify
-    mode="pop"
-    :captchaType="captchaType"
-    :imgSize="{ width: '400px', height: '200px' }"
-    ref="verify"
+  <Verify mode="pop" :captchaType="captchaType" :imgSize="{ width: '400px', height: '200px' }" ref="verify"
     @success="handleSuccess">
-          </Verify> -->
+  </Verify>
 </template>
 
 <script setup>
@@ -60,6 +56,7 @@ const rules = reactive({
  * @param code 验证码字符串
  */
 function doLogin(code) {
+  // console.log('777777777')
   // 发送登录请求
   login(
     {
@@ -68,6 +65,7 @@ function doLogin(code) {
       code: code
     },
     () => {
+      // console.log("99999999999")
       // 跳转到首页
       $router.push('/home')
       // 登录成功提示
@@ -103,7 +101,7 @@ function submitForm() {
 
   // 弹出验证码框
   // useVerify('clickWord')
-
+  // console.log('111111111')
   doLogin()
 }
 

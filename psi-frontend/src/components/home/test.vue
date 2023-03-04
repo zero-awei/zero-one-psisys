@@ -64,8 +64,8 @@ const store = userStore()
 const menus = store.getMenus
 
 // document.getElementsByClassName('el - sub - menu__title').setAttribute('style', '');
-console.log('')
-console.log('00000000000', document.getElementsByClassName('el-sub-menu__title'))
+// console.log('')
+// console.log('00000000000', document.getElementsByClassName('el-sub-menu__title'))
 const props = defineProps({
   label: {
     type: Boolean,
