@@ -1,3 +1,11 @@
+<!--
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-03-04 15:52:38
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-03-04 16:12:18
+ * @FilePath: \psi-frontend\src\views\yingfuyufukuan\yingfuguanli\YingFuHeXiao.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <!-- 应付核销界面 -->
   <div>
@@ -22,7 +30,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-// import { getTableList, query } from './api/yingfuhexiao.js'
+import { getTableList } from './api/yingfuhexiao.js'
 import { format } from '@/apis/date/index.js'
 
 // 查询表单相关数据及方法

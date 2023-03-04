@@ -7,14 +7,26 @@
  * @FilePath: \psi-frontend\src\views\yingfuyufukuan\payables\methods.js
  * 可以输入预定的版权声明、个性签名、空行等
  */
+
+/**
+ * @author spk
+ * @description 完善接口
+ * @since 2023-03-01
+ */
+
 import Request from '@/apis/request.js'
 
 // 定义一个功能模块基础url，方便替换
-const currBaseUrl = '/fin-payable-check/'
+const currBaseUrl = '/payablemanagement/checkmanagement/'
 
-// 7.1 单据详情
-export function getTableDetail(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'detail', data)
+//ANCHOR 新增应付核销单-save
+
+export function newTableSave(data, success, fail) {
+  Request.requestJson(
+    Request.POST,
+    currBaseUrl + /*'add/{action}'*/ 'add/save',
+    data
+  )
     .then((data) => {
       if (data.data) {
         success(data.data)
@@ -30,9 +42,148 @@ export function getTableDetail(data, success, fail) {
     })
 }
 
-// 7.2 列出所有单据
+//ANCHOR 新增应付核销单-submit
+
+export function newTableSubmit(data, success, fail) {
+  Request.requestJson(
+    Request.POST,
+    currBaseUrl + /*'add/{action}'*/ 'add/submit',
+    data
+  )
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 审核应付核销单
+
+export function checkTable(data, success, fail) {
+  Request.requestForm(Request.PUT, currBaseUrl + 'check', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 关闭应付核销单（批量）
+
+export function closeTable(data, success, fail) {
+  Request.requestForm(Request.PUT, currBaseUrl + 'close', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 删除应付核销单（批量）
+
+export function deleteTable(data, success, fail) {
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 查询指定单据详情信息（明细列表）
+
+export function queryTableEntries(data, success, fail) {
+  Request.requestForm(Request.GET, currBaseUrl + 'entry', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 应付核销导出功能
+//TODO 导入导出没有data怎么说
+
+export function exportTable(data, success, fail) {
+  Request.requestForm(Request.POST, currBaseUrl + 'export', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 应付核销导入功能
+
+export function importTable(data, success, fail) {
+  Request.requestForm(Request.GET, currBaseUrl + 'import', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 查询单据列表
+
 export function getTableList(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'list-all', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'list', data)
     .then((data) => {
       if (data.data) {
         success(data.data)
@@ -48,9 +199,104 @@ export function getTableList(data, success, fail) {
     })
 }
 
-// 7.5 普通查询
-export function query(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query', data)
+//ANCHOR 修改应付核销单
+
+export function modifyTableSave(data, success, fail) {
+  Request.requestJson(Request.PUT, currBaseUrl + 'modify/save', data) // save and submit
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+export function modifyTableSubmit(data, success, fail) {
+  Request.requestJson(Request.PUT, currBaseUrl + 'modify/submit', data) // save and submit
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+
+//ANCHOR 根据供应商ID查询应付单
+
+export function queryPayableBySupplier(data, success, fail) {
+  Request.requestForm(Request.GET, currBaseUrl + 'queryPayableBySupplier', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 根据供应商ID查询付款单
+
+export function queryPaymentBySupplier(data, success, fail) {
+  Request.requestForm(Request.GET, currBaseUrl + 'queryPaymentBySupplier', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 反关闭应付核销单（批量）
+
+export function uncloseTable(data, success, fail) {
+  Request.requestForm(Request.PUT, currBaseUrl + 'unclose', data)
+    .then((data) => {
+      if (data.data) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+//ANCHOR 作废应付核销单
+
+export function voidTable(data, success, fail) {
+  Request.requestForm(Request.PUT, currBaseUrl + 'void', data)
     .then((data) => {
       if (data.data) {
         success(data.data)
