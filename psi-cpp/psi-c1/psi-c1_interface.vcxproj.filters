@@ -40,7 +40,7 @@
     <ClCompile Include="api\publicInterfaceController\TransportMethodController.cpp" />
     <ClCompile Include="api\publicInterfaceController\UserChoiceController.cpp" />
     <ClCompile Include="dao\bankAccountDAO\BankAccountDAO.cpp" />
-    <ClCompile Include="dao\publicInterfaceDao\AreaDAO.cpp" />
+    <ClCompile Include="dao\publicInterfaceDAO\AreaDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\BasBankAccountDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\BasWareHouseTreeDAO.cpp" />
     <ClCompile Include="dao\publicInterfaceDAO\BillStageDAO.cpp" />
@@ -152,9 +152,9 @@
     <ClInclude Include="api\publicInterfaceController\TaxScaleController.h" />
     <ClInclude Include="api\publicInterfaceController\TransportMethodController.h" />
     <ClInclude Include="api\publicInterfaceController\UserChoiceController.h" />
-    <ClInclude Include="dao\bankAccountDao\BankAccountDAO.h" />
-    <ClInclude Include="dao\bankAccountDao\BankAccountMapper.h" />
-    <ClInclude Include="dao\bankAccountDao\temp.h" />
+    <ClInclude Include="dao\bankAccountDAO\BankAccountDAO.h" />
+    <ClInclude Include="dao\bankAccountDAO\BankAccountMapper.h" />
+    <ClInclude Include="dao\bankAccountDAO\temp.h" />
     <ClInclude Include="dao\publicInterfaceDAO\areaDAO.h" />
     <ClInclude Include="dao\publicInterfaceDAO\areaMapper.h" />
     <ClInclude Include="dao\publicInterfaceDAO\BasBankAccountDAO.h" />
