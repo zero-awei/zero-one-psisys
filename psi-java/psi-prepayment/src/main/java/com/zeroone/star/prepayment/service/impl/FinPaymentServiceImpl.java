@@ -272,45 +272,15 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     }
 
     @Resource
-    FinPaymentMapper paymentMapper;
-
-    @Override
-    public void importExcelOfPayment(MultipartFile file) throws Exception {
-        EasyExcel.read(file.getInputStream(), FinPayment.class, EasyExcelUtils.getListener(this.process(), 2)).sheet().doRead();
-    }
-
-    // 用于获取当前登录的用户信息
-    @Resource
-    UserHolder userHolder;
-    /**
-     * 返回一个接口实现
-     */
-    public Consumer<List<FinPayment>> process() {
-        return payments -> {
-            for (FinPayment payment : payments) {
-                payment.setId(IdUtil.getSnowflake().nextIdStr());
-                payment.setCreateTime(LocalDateTime.now());
-                try {
-                    UserDTO currentUser = userHolder.getCurrentUser();
-                    payment.setCreateBy(currentUser.getUsername());
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            paymentMapper.addBatch(payments);
-        };
-    }
-
-    @Resource
     EasyExcelComponent excel;
     @Resource
     FastDfsClientComponent dfsClient;
     @Value("${fastdfs.nginx-servers}")
     private String serverUrl;
     @Resource
-    FinPaymentMapper paymentMapper;
-    @Resource
     FinPaymentEntryMapper paymentEntryMapper;
+    @Resource
+    FinPaymentMapper paymentMapper;
 
     @Override
     public void importExcelOfPayment(MultipartFile file) throws Exception {
@@ -442,7 +412,6 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     // 用于获取当前登录的用户信息
     @Resource
     UserHolder userHolder;
-
     /**
      * 返回一个接口实现
      */
