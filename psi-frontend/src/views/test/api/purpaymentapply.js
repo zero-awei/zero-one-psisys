@@ -1,37 +1,36 @@
 import { 
-    getBillList,    //查询单据列表
-    getDetailBill,    //查看指定单据
-    getPrepaybill,     //采购订单列表
-    getPrepaybillDetail,    //采购订单分列表
-    postAdd,      //添加采购预付申请单
-    putModifyPay,    //修改采购预付申请
-    deleteMenu,     //删除采购预付申请单
-    modifyBillStatus,    //采购预付申请修改单据状态(关闭/反关闭/作废)
-    payInto,     //导入
-    payExport    //导出
-} from '@/views/caigouguanli/api/purprepaymentapply.js'
+    paymentApplyBill,    //查询单据列表
+    finPaymentReqEntry,    //查看指定单据详细信息
+    appPayment,     //添加采购付款申请单（保存/提交）
+    changePayment,    //修改采购付款申请单（保存/提交/审核）----修改状态
+    modPaymentReq,      //修改采购付款申请单（保存/提交/审核）----修改内容
+    deleteById,    //删除采购付款申请单
+    modifyPaymentStatus,     //修改单据状态（关闭/作废/反关闭）
+    importPayment,    //导入
+    exportPayment,     //导出
+
+} from '@/views/caigouguanli/api/purpaymentapply.js'
 
 
 
-export function handleGetBillList() {
+export function handlePaymentApplyBill() {
   // 自定义请求参数
   let params = {
     pageIndex:0,
     pageSize:0,
-    bill_no:"", 
-    bill_begin_date:"",
-    bill_end_date:"",
-    subject: "",
-	  supplier_id: "",
-	  bill_stage: "",
-  	is_effective: "-1",
-	  is_closed: "-1",
-	  is_voided: "-1"
+    billNo:"CGFKSQ-221120-001", 
+    billDate:"2022-11-20",
+    subject:"",
+    supplierId: "",
+    billStage: "",
+    isEffective: "1",
+    isClosed: "1",
+    isVoided: "0",
   }
   params.pageIndex = 1
   params.pageSize = 10
   let pagniation={}
-  getBillList(
+  paymentApplyBill(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -52,13 +51,13 @@ export function handleGetBillList() {
   )
 }
 
-export function handleGetDetailBill() {
+export function handleFinPaymentReqEntry() {
   // 自定义请求参数
   let params = {
-    bill_no:""
+    billNo:"CGFKSQ-221120-001"
   }
   let pagniation={}
-  getDetailBill(
+  finPaymentReqEntry(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -79,14 +78,41 @@ export function handleGetDetailBill() {
   )
 }
 
-export function handleGetPrepaybill() {
+export function handleAppPayment() {
   // 自定义请求参数
   let params = {
-    bill_no:"",
-    bill_date:""
+    bill_no: "",
+	bill_date: "2023-2-22",
+	src_bill_type: "123",
+	src_bill_id: "123",
+	src_no: "ABC",
+	subject: "123",
+	is_rubric: 123,
+	payment_type: "132",
+	supplier_id: "123",
+	op_dept: "123",
+	operator1: "123",
+	amt: 123,
+	paid_amt: 123,
+	attachment: "123",
+	effective_time: "123",
+	is_auto: "123",
+	bill_stage: "123",
+	approver: "132",
+	bpmi_instance_id: "123",
+	approval_result_type: "312",
+	approval_remark: "123132",
+	is_effective: 132,
+	is_closed: 123,
+	is_voided: 312,
+	create_by: "132",
+	sys_org_code: "132",
+	update_by: "123",
+	create_time: "123",
+	id: "123"
   }
   let pagniation={}
-  getPrepaybill(
+  appPayment(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -107,13 +133,16 @@ export function handleGetPrepaybill() {
   )
 }
 
-export function handleGetPrepaybillDetail() {
+export function handleChangePayment() {
   // 自定义请求参数
   let params = {
-    bill_no:""
+    id: 123,
+	opType: "CLOSE",
+	bill_no: "CSQW",
+	is_closed: "1"
   }
   let pagniation={}
-  getPrepaybillDetail(
+  changePayment(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -134,44 +163,30 @@ export function handleGetPrepaybillDetail() {
   )
 }
 
-export function handlePostAdd() {
+export function handleModPaymentReq() {
   // 自定义请求参数
   let params = {
-    bill_no: "123456711",
-	  bill_date: "2023-5-5",
-	  subject: "采购笔记本",
-	  op: "李业武",
-	  op_dept: "市场部",
-	  supplier_id: "广电总局",
-	  remark:"附件备注",
-	  attachment: "xxx",
-    detail: [
-      {
-        entry_no: "9",
-        src_bill_type: "采购",
-        src_bill_id: "159999999999",
-        src_no: "CGDD-221120-005",
-        amt: 55555.50,
-        paid_amt: 5555.40,
-        remark: "",
-        custom1: "",
-        custom2: ""
-      },
-      {
-        entry_no: "10",
-        src_bill_type: "采购",
-        src_bill_id: "158888888888",
-        src_no: "CGDD-221120-006",
-        amt: 22222.10,
-        paid_amt: 4444.10,
-        remark: "",
-        custom1: "",
-        custom2: ""
-      }
-    ]
+    billNo:"CGYFSQ-221120-001",
+    billDate:"2022-11-20",
+    srcBillType:"",
+    srcBillId:"",
+    srcNo:"",
+    subject:"",
+    paymentType:"",
+    supplierId:"1584950950470164481",
+    opDept:"A01A03",
+    operator1:"li",
+    remark:"",
+    attachment:"",
+    createBy:"",
+    createTime:"2022-11-20 21:26:07",
+    amt:1.0,
+    isEffective:"1",
+    isClosed:"1",
+    isVoided:"0"
   }
   let pagniation={}
-  postAdd(
+  modPaymentReq(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -192,44 +207,13 @@ export function handlePostAdd() {
   )
 }
 
-export function handlePutModifyPay() {
+export function handleDeleteById() {
   // 自定义请求参数
   let params = {
-    id: "12243087515380236288",
-	  bill_date: "2023-5-5",
-	  subject: "采购笔记本",
-	  op: "李业武",
-	  op_dept: "市场部",
-	  supplier_id: "广电总局",
-	  remark:"附件备注",
-	  attachment: "xxx",
-    detail: [
-      {
-        entry_no: "9",
-        src_bill_type: "采购",
-        src_bill_id: "159999999999",
-        src_no: "CGDD-221120-005",
-        amt: 55555.50,
-        paid_amt: 5555.40,
-        remark: "",
-        custom1: "",
-        custom2: ""
-      },
-      {
-        entry_no: "10",
-        src_bill_type: "采购",
-        src_bill_id: "158888888888",
-        src_no: "CGDD-221120-006",
-        amt: 22222.10,
-        paid_amt: 4444.10,
-        remark: "",
-        custom1: "",
-        custom2: ""
-      }
-    ]
+    id: "159290032213046067"
   }
   let pagniation={}
-  putModifyPay(
+  deleteById(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -250,14 +234,17 @@ export function handlePutModifyPay() {
   )
 }
 
-export function handleDeleteMenu() {
+export function handleModifyPaymentStatus() {
   // 自定义请求参数
   let params = {
-    id: "1594317750844637186",
-    bill_no:"CGYFSQ-221120-001"
-  }
+    id: "113",
+	opType: "2",
+	bill_no: "ABC",
+	is_closed: 0,
+	is_voided: 1
+}
   let pagniation={}
-  deleteMenu(
+  modifyPaymentStatus(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -278,31 +265,3 @@ export function handleDeleteMenu() {
   )
 }
 
-export function handleModifyBillStatus() {
-  // 自定义请求参数
-  let params = {
-    id: "1594317750844637186",
-    bill_no:"CGYFSQ-221120-001",
-    opType:1
-  }
-  let pagniation={}
-  modifyBillStatus(
-    params,
-    (data) => {
-      console.log('全部请求data----', data)
-      // 查询返回的是表格数据
-      // 分页
-      let pagination = {}
-      pagination.value.currentPage = data.pageIndex
-      pagination.value.pageSize = data.pageSize
-      pagination.value.total = data.total
-      let tableData = {}
-      // 表格数据
-      tableData.value = data.rows
-    },
-    (msg) => {
-      let ElMessage = {}
-      //ElMessage.warning(msg)
-    }
-  )
-}
