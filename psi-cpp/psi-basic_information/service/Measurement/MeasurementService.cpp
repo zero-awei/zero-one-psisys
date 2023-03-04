@@ -19,7 +19,7 @@
 #include "stdafx.h"
 #include "../../domain/do/Measurement/MeasurementDO.h"
 #include "MeasurementService.h"
-#include "../../dao/Measurement/MeasurementDao.h"
+#include "../../dao/Measurement/MeasurementDAO.h"
 #include "SnowFlake.h"
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
 #include "../../../lib-common/include/FastDfsClient.h"

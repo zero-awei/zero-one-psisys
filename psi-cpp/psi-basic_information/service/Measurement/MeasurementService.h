@@ -20,10 +20,10 @@
 #ifndef _MEASUREMENT_SERVICE_
 #define _MEASUREMENT_SERVICE_
 #include <list>
-#include "../../domain/vo/measurement/MeasurementVO.h"
+#include "../../domain/vo/Measurement/MeasurementVo.h"
+#include "../../domain/query/Measurement/MeasurementQuery.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/dto/IDDTO.h"
-#include "../../domain/query/measurement/MeasurementQuery.h"
 #include "../../domain/dto/Measurement/MeasurementDTO.h"
 #include "../../../lib-http/include/JWTUtil.h"
 

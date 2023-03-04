@@ -184,6 +184,7 @@ JsonVO<string> MeasurementController::execExportExcel(const StringIDs& dto)
 	if (filename.empty())
 	{
 		JsonVO<string> result(filename, RS_FAIL);
+		return result;
 	}
 	else
 	{
