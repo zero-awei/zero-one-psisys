@@ -30,7 +30,7 @@
     </psi-dialog> -->
 </template>
 
-<script setup>
+<script  setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
 // import {  } from './api/caigouyufuapply.js'
 import { format } from '@/apis/date/index.js'
