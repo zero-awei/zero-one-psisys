@@ -5,7 +5,7 @@
 #include "Mapper.h"
 #include "../../domain/do/pur-quot/PurQuotEntryDO.h"
 
-//µ¼³öµÄMapper
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mapper
 class PurQuotEntryMapper : public Mapper<PurQuotEntryDO> {
 public:
 	PurQuotEntryDO mapper(ResultSet* resultSet) const override {

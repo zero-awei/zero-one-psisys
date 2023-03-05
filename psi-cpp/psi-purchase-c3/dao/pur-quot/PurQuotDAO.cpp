@@ -190,9 +190,9 @@ list<PurQuotEntryDO> PurQuotDAO::selectPurQuotDividedList(const PurQuotEntryDO& 
 list<PurQuotDO> PurQuotDAO::selectPurQuotBase(const PurQuotDO& obj) {
 	stringstream sql;
 	sql << "SELECT bill_no, bill_date, bill_stage, is_effective, is_closed, is_voided, subject,\
-		is_temp_supplied, supplier_id, payment_method, delivery_time, delivery_place, \
-	contact, phone, fax, email, remark, approval_mark, attachment, approval_result_type ,\
-	 effective_time,approver, bpmi_instance_id, bpmi_instance_id, sys_org_code, create_by, update_time, \
+		is_temp_supplier, supplier_id, payment_method, delivery_time, delivery_place, \
+	contact, phone, fax, email, remark, approval_remark, attachment, approval_result_type ,\
+	 effective_time,approver, bpmi_instance_id, create_time, sys_org_code, create_by, update_time, \
 	update_by, is_auto, is_rubric, src_bill_type FROM pur_quot";
 	PUR_QUOT_ENTRY_TERAM_PARSE(obj, sql);
 	PurQuotBaseMapper mapper;
