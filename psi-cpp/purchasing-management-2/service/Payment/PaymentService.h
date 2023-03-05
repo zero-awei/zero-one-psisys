@@ -5,28 +5,22 @@
 #include <time.h>
 #include <cstdio> //C++
 
-#include "SnowFlake.h"
-#include "FastDfsClient.h"
-#include "ExcelComponent.h"
-#include "CharsetConvertHepler.h"
-
-//²é¿´Ô¤¸¶ÉêÇëµ¥ÁĞ±í
-#include "../../domain/query/prepaymentbill/PrepayBillQuery.h"
+//ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½
 #include "../../domain/query/prepaymentbill/PrepayDetailBillQuery.h"
 #include "../../domain/vo/prepaymentbill/PrepaymentBillVO.h"
 #include "../../domain/vo/prepaymentbill/PrepaymentDetailBillVO.h"
-//Ôö¼ÓĞŞ¸ÄÉ¾³ıÔ¤¸¶ÉêÇëµ¥ÁĞ±í
+//ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½
 #include "../../domain/dto/prepayment/AddPayDTO.h"
 #include "../../domain/dto/prepayment/PrepaymentDTO.h"
-//É¾³ıDTO
+//?ï¿½ï¿½DTO
 #include "../../domain/dto/payment/DePaymentDTO.h"
-//ĞŞ¸Ä¶©µ¥×´Ì¬DTO
+//ï¿½??ï¿½ï¿½ï¿½??DTO
 #include "../../domain/dto/payment/PaymentChangeDTO.h"
-//Ìí¼ÓDTO
+//ï¿½ï¿½ï¿½ï¿½DTO
 #include "../../domain/dto/payment/AddPaymentDTO.h"
 
 #include "../../domain/vo/prepayment/PrepaymentVO.h"
-//µ¼Èëµ¼³ö
+//ï¿½ï¿½ï¿½?ï¿½ï¿½
 #include "../../domain/query/prepaymentbill/PrePayExportQuery.h"
 #include "../../domain/dto/prepayment/PayIntoDTO.h"
 #include "../../domain/vo/prepayment_req/PrepaymentIntoVO.h"
@@ -34,21 +28,28 @@
 
 #include "../../domain/vo/PageVO.h"
 
+// æœ€åç¼–è¯‘
+#include "../../domain/query/prepaymentbill/PrepayBillQuery.h"
+#include "SnowFlake.h"
+#include "ExcelComponent.h"
+#include "CharsetConvertHepler.h"
+#include "FastDfsClient.h"
+
 /**
- * Ê¾Àı·şÎñÊµÏÖ£¬ÑİÊ¾»ù´¡µÄÊ¾Àı·şÎñÊµÏÖ
- * Ô¤¸¶ÉêÇëµÄ·şÎñÊµÏÖ
+ * ?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½
+ * ?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½?
  */
 class PaymentService
 {
 public:
-	// Í¨¹ıIDÉ¾³ıÊı¾İ
+	// ?ï¿½ï¿½ID?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool DePayment(const  DePaymentDTO& dto);
-	// ĞŞ¸Äµ¥¾İ×´Ì¬
+	// ï¿½??ï¿½ï¿½ï¿½??
 	bool ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload);
 
-	// Ìí¼ÓÊı¾İ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool AddPay(const AddPaymentDTO& dto);
-	//²åÈëÊı¾İ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint64_t saveData(const AddPaymentDTO& dto, const PayloadDTO& payload);
 
 };

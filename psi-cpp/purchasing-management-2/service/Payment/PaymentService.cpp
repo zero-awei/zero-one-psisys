@@ -1,6 +1,7 @@
 #include "stdafx.h"
-#include "PaymentService.h"
 #include "../../dao/payment/PaymentDAO.h"
+#include "../../lib-common/include/SimpleDateTimeFormat.h"
+#include "PaymentService.h"
 
 // ͨ��IDɾ������
 bool PaymentService::DePayment(const DePaymentDTO& dto)
@@ -18,25 +19,12 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 	}
 }
 
-string getPayTime()
-{
-	time_t now = time(0);
-	struct tm t;
-
-	localtime_s(&t, &now);
-
-	// ����Ϣ������ַ�����
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
-}
-
 // �޸ĵ���״̬
 bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
 	FinPayReqDO data;
 
-	string time = getPayTime();
+	string time = SimpleDateTimeFormat::format();
 
 	// �����û�����
 	data.setUpdate_by(payload.getUsername());
@@ -73,7 +61,7 @@ uint64_t PaymentService::saveData(const AddPaymentDTO& dto, const PayloadDTO& pa
 	SnowFlake sf(1, 4);
 	string id = to_string(sf.nextId());
 	string Bill_no = dto.getBill_no();
-	string time = getPayTime();
+	string time = SimpleDateTimeFormat::format();
 	//�����ǽ���id����ʹ��ѩ���㷨
 	data.setId(id);
 	//��ȡ������Ϣ

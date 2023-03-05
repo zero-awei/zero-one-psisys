@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "finPyamentReqService.h"
 #include "../../dao/finPaymentReq/finPaymentReqDAO.h"
+#include "../../lib-common/include/SimpleDateTimeFormat.h"
 
 //����һ������������Ĭ��ֵ���޸�
 #define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
@@ -8,18 +9,6 @@
 //����һ������������ֵ���޸�
 #define MODIFY(name) data.set##name(dto.get##name());
 
-string getTime1()
-{
-	time_t now = time(0);
-	struct tm t;
-
-	localtime_s(&t, &now);
-
-	// ����Ϣ������ַ�����
-	stringstream ss;
-	ss << t.tm_year + 1900 << "-" << t.tm_mon + 1 << "-" << t.tm_mday << " " << t.tm_hour << ":" << t.tm_min << ":" << t.tm_sec;
-	return ss.str();
-}
 
 uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const PayloadDTO& payload)
 {
@@ -29,7 +18,7 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	SnowFlake sf(1, 3);
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
-	string time = getTime1();
+	string time = SimpleDateTimeFormat::format();
 	//�����ǽ���id����ʹ��ѩ���㷨
 	data.setId(id);
 	//��ȡ������Ϣ
@@ -107,7 +96,7 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	MODIFY(CreateTime);
 	//��ȡ�޸��û�����Ϣ���˴�Ϊ���Ӷ�������Ϣ
 	data.setUpdateBy(payload.getUsername());
-	data.setUpdateTime(getTime1());
+	data.setUpdateTime(SimpleDateTimeFormat::format());
 	//����Ĭ��ֵʱ�Ĵ���
 	MODIFY_DEFAULT(SrcBillType);
 	MODIFY_DEFAULT(SrcBillId);
