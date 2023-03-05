@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-05 14:38:52
+ * @LastEditTime: 2023-03-05 15:50:47
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -30,7 +30,8 @@
           <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
 
           <div style="margin-top:10px">
-            <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+            <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
+              @sizeChange="handleSizeChange" @currentChange="handleCurrentChange">
               <template v-slot:basicOperation="slot">
                 <!-- 修改点2 -->
                 <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
@@ -93,7 +94,7 @@ const tableState = reactive({
     {
       type: 'text',
       label: '姓名',
-      prop: 'nealname',
+      prop: 'realname',
       width: '120'
     },
     {
@@ -108,12 +109,12 @@ const tableState = reactive({
       prop: 'departName',
       width: '120'
     },
-    {
-      type: 'text',
-      label: '职务',
-      prop: 'post',
-      width: '120'
-    },
+    // {
+    //   type: 'text',
+    //   label: '职务',
+    //   prop: 'post',
+    //   width: '120'
+    // },
 
     {
       type: 'text',
@@ -121,12 +122,6 @@ const tableState = reactive({
       prop: 'phone',
       width: '120'
     },
-    {
-      type: 'text',
-      label: '公司邮箱',
-      prop: 'email',
-      width: '120'
-    }
   ],
 
   // 配置表格数据绑定的字段
@@ -139,13 +134,13 @@ const tableState = reactive({
     headOperation: []
   }
 })
-const { tableItems, tableData, attributes } = toRefs(tableState)
+let { tableItems, tableData, attributes } = toRefs(tableState)
 
 // 分页相关配置
 const pagination = reactive({
   currentPage: 2, // 当前页
   pageSize: 100, // 每页数据量
-  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  pageSizes: [10, 20, 30, 40], // 可选择的每页展示量
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
@@ -197,7 +192,10 @@ function handleQuery() {
       pagination.value.total = data.total
 
       // 表格数据
-      tableData.value = data.rows
+      tableData = [...data.rows]
+      // data.rows.forEach((item) => {
+      //   tableData.push(item)
+      // })
     },
     (msg) => {
       ElMessage.warning(msg)
@@ -225,9 +223,10 @@ function handleQueryAll() {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      pagination.value.currentPage = data.pageIndex
-      pagination.value.pageSize = data.pageSize
-      pagination.value.total = data.total
+      console.log('---通讯录', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
 
       // 表格数据
       tableData.value = data.rows
@@ -247,6 +246,133 @@ function handleQueryAddress() {
 onMounted(() => {
   handleQueryAll()
 })
+
+
+// 分页相关方法
+// page-size 改变时触发   点击每页显示多少条数据时触发
+function handleSizeChange(value) {
+  console.log("handleSizeChange", value)
+  let param = {
+  }
+  param.pageSize = value
+  param.pageIndex = pagination.currentPage
+  queryAll(
+    { ...param },
+    // {},
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      console.log('---通讯录', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+
+// current-page 改变时触发   跳转到第x页时触发
+function handleCurrentChange(value) {
+  console.log("handleCurrentChange", value)
+   let param = {
+  }
+  param.pageSize = pagination.pageSize
+  param.pageIndex = value
+  queryAll(
+    { ...param },
+    // {},
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      console.log('---通讯录', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+
+// // 用户点击上一页按钮改变当前页时触发
+// function handlePrevClickChange(value) {
+//   console.log("handlePrevClickChange", value)
+//   //  console.log("handleCurrentChange", value)
+//   let param = {
+//   }
+//   param.pageSize = pagination.pageSize
+//   param.pageIndex = value
+//   queryAll(
+//     { ...param },
+//     // {},
+//     // 成功回调函数
+
+//     (data) => {
+//       // 查询全部返回的是表格数据
+//       // 分页
+//       console.log('---通讯录', data)
+//       pagination.currentPage = data.pageIndex
+//       pagination.pageSize = data.pageSize
+//       pagination.total = data.total
+
+//       // 表格数据
+//       tableData.value = data.rows
+
+//     },
+//     // 失败回调函数
+//     (msg) => {
+//       ElMessage.warning(msg)
+//     }
+//   )
+// }
+
+// // 用户点击下一页按钮改变当前页时触发
+// function handleNextClickChange(value) {
+//   console.log("handleNextClickChange", value)
+//    let param = {
+//   }
+//   param.pageSize = pagination.pageSize
+//   param.pageIndex = value
+//   queryAll(
+//     { ...param },
+//     // {},
+//     // 成功回调函数
+
+//     (data) => {
+//       // 查询全部返回的是表格数据
+//       // 分页
+//       console.log('---通讯录', data)
+//       pagination.currentPage = data.pageIndex
+//       pagination.pageSize = data.pageSize
+//       pagination.total = data.total
+
+//       // 表格数据
+//       tableData.value = data.rows
+
+//     },
+//     // 失败回调函数
+//     (msg) => {
+//       ElMessage.warning(msg)
+//     }
+//   )
+// }
 </script>
 
 <style scoped></style>
