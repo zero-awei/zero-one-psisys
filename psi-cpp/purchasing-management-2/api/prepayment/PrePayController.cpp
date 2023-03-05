@@ -6,8 +6,8 @@
 #include "../../domain/vo/PurOrder/PurOrderVO.h"
 
 
-//��ѯ������Ϣ
-// �����ˣ�Qi
+//
+//负责人：Qi
 JsonVO<PageVO<PrepaymentBillVO>> PrePayController::execQueryPrepayFindBill(const PrepayBillQuery& query, const PayloadDTO& payload)
 {
 	//��ѯ�ɹ�

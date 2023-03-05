@@ -157,7 +157,7 @@ public:
 		approval_result_type = "";
 		approval_remark = "";
 		is_effective = -1;
-		effective_time = -1;
+		effective_time = "";
 		is_closed = -1;
 		is_voided = -1;
 		sys_org_code = "";

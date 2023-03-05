@@ -34,6 +34,7 @@
     <ClCompile Include="api\finPaymenReq\FinPaymentReqControlle.cpp" />
     <ClCompile Include="service\finPaymentReq\finPyamentReqService.cpp" />
     <ClCompile Include="dao\finPaymentReq\finPaymentReqDAO.cpp" />
+    <ClCompile Include="usrlib\jwt\TestToken.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\payment\PaymentController.h" />
@@ -171,5 +172,6 @@
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryManageDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqManageDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
+    <ClInclude Include="usrlib\jwt\TestToken.h" />
   </ItemGroup>
 </Project>

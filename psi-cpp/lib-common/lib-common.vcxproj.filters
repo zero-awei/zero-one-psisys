@@ -60,9 +60,6 @@
     <ClInclude Include="include\SimpleDateTimeFormat.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\Documents\Tencent Files\1207368051\FileRecv\SimpleDateTimeFormat.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

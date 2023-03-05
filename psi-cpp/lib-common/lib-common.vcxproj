@@ -169,7 +169,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\Documents\Tencent Files\1207368051\FileRecv\ExcelComponent.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\Documents\Tencent Files\1207368051\FileRecv\SimpleDateTimeFormat.h" />
     <ClInclude Include="include\CharsetConvertHepler.h" />
     <ClInclude Include="include\ExcelComponent.h" />
     <ClInclude Include="include\FastDfsClient.h" />
