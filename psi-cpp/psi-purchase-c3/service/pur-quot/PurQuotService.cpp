@@ -15,7 +15,7 @@
 
 
 #define PUR_QUOT_I_TO_STRING(t) (t==1 ?CharsetConvertHepler::ansiToUtf8("是"):CharsetConvertHepler::ansiToUtf8("否"))
-#define PUR_QUOT_STRING_TO_I(s) (s==CharsetConvertHepler::ansiToUtf8("是")? 1 : 0)
+#define PUR_QUOT_STRING_TO_I(s) (s==CharsetConvertHepler::ansiToUtf8("是")? 1 : -1)
 
 //导入
 uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
