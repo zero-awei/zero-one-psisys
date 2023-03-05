@@ -22,8 +22,8 @@
 #include "api/Router.h"
 #include "ServerInfo.h"
 #include "StringUtil.h"
-#ifdef HTTP_SERVER_DEMO
-#include "uselib/jwt/TestToken.h"
+#ifdef CHECK_TOKEN
+#include "usrlib/jwt/TestToken.h"
 #endif
 
 #ifdef USE_NACOS
@@ -49,10 +49,10 @@ bool getStartArg(int argc, char* argv[]) {
 	int dbMax = 25;
 #ifdef USE_NACOS
 	// Nacos配置参数
-	std::string nacosAddr = "192.168.220.128:8848";
+	std::string nacosAddr = "47.113.146.200:8848";
 	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
-	std::string serviceName = "feign-cpp-sample";
-	std::string regIp = "192.168.220.128";
+	std::string serviceName = "c4-purchasing";
+	std::string regIp = "47.113.146.200";
 #endif
 
 	// 开始解析
@@ -134,6 +134,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+	TestToken::generateToken();
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
