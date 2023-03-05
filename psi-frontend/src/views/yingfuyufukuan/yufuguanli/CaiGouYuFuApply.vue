@@ -11,8 +11,17 @@
       <!-- 导入导出 采购预付新增？？？？？？ -->
       <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
         @add="handleAdd">
+
+        <!-- 编辑删除  -->
+      <template v-slot:basicOperation="slot">
+          <el-button link type="primary" @click="drawerVisible = true">编辑</el-button>
+
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+      </template>
       </psi-table>
     </div>
+
+
   </div>
 
   <!-- 弹出框 -->
@@ -56,7 +65,7 @@ const formState = reactive({
       type: 'select',
       label: '供应商',
       prop: 'supplierId',
-      placeholder: '请选择性别',
+      placeholder: '请选择',
       options: [
         {
           label: '供应商1',
@@ -72,7 +81,7 @@ const formState = reactive({
       type: 'select',
       label: '单据阶段',
       prop: 'billStage',
-      placeholder: '请选择性别',
+      placeholder: '请选择',
       options: [
         {
           label: '阶段1',
@@ -120,12 +129,12 @@ const formState = reactive({
       prop: 'isVoided',
       options: [
         {
-          label: '否',
-          value: 1
-        },
-        {
           label: '是',
           value: 0
+        },
+        {
+          label: '否',
+          value: 1
         }
       ]
     }],
@@ -149,16 +158,17 @@ const tableStatus = reactive({
   // table列配置
   tableItems: [
     {
+      type: 'text',
       label: '单据编号',
       prop: 'billNo',
       width: '160',
       align: 'center',
-      type: 'function',
-      fixed: true,
+      
+     /*  fixed: true,
       // ES6 的 Template Strings 模版字符串
       callback: (data) => {
         return `<span style="color:#409eff"> ${data.billNo}</span>`
-      }
+      } */
     },
     {
       type: 'text',
@@ -174,56 +184,8 @@ const tableStatus = reactive({
     },
     {
       type: 'text',
-      label: '创建人',
-      prop: 'createBy',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '创建部门',
-      prop: 'sysOrgCode',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '创建时间',
-      prop: 'createTime',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '生效日期',
-      prop: 'effectiveTime',
-      width: '120'
-    },
-    {
-      type: 'text',
       label: '金额',
       prop: 'amt',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '修改人',
-      prop: 'updateBy',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '修改时间',
-      prop: 'updateTime',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '审核人',
-      prop: 'approver',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '处理状态',
-      prop: 'billStage',
       width: '120'
     },
     {
@@ -234,26 +196,20 @@ const tableStatus = reactive({
     },
     {
       type: 'text',
-      label: '是否自动单据',
-      prop: 'isAuto',
-      width: '120'
-    },
-    {
-      type: 'text',
-      label: '已关闭',
-      prop: 'isClosed',
+      label: '单据阶段',
+      prop: 'billStage',
       width: '120'
     },
     {
       type: 'text',
       label: '是否生效',
-      prop: 'isEffective',
+      prop: 'iSEffective',
       width: '120'
     },
     {
       type: 'text',
-      label: '是否红字',
-      prop: 'isRubric',
+      label: '是否关闭',
+      prop: 'isClosed',
       width: '120'
     },
     {
@@ -264,20 +220,124 @@ const tableStatus = reactive({
     },
     {
       type: 'text',
+      label: '审核人',
+      prop: 'approver',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建时间',
+      prop: 'CreatTime',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '创建部门',
+      prop: 'SysOrgCode',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '生效日期',
+      prop: 'effectiveTime',
+      width: '120'
+    },
+
+    {
+      type: 'text',
+      label: '是否自动单据',
+      prop: 'isAuto',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '是否红字',
+      prop: 'isRubric',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改时间',
+      prop: 'updateTime',
+      width: '120'
+    },
+    {
+      type: 'text',
+      label: '修改人',
+      prop: 'updateBy',
+      width: '120'
+    },
+    {
+      type: 'text',
       label: '备注',
       prop: 'remark',
       width: '120'
     },
+    {
+      type: 'slot',
+      label: '操作',
+      width: '120',
+      slotName: 'basicOperation',
+      fixed: 'right'
+    }
   ],
   // 配置表格数据绑定的字段
-  tableData: [],
+  tableData: [
+    {
+      date: '2016-05-03',
+      name: 'Tom1',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Home'
+    },
+    {
+      date: '2016-05-02',
+      name: 'Tom2',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Office'
+    },
+    {
+      date: '2016-05-04',
+      name: 'Tom3',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Home'
+    },
+    {
+      date: '2016-05-01',
+      name: 'Tom4',
+      state: 'California',
+      city: 'Los Angeles',
+      address: 'No. 189, Grove St, Los Angeles',
+      zip: 'CA 90036',
+      tag: 'Office'
+    }
+  ],
+  // table 总体配置
   attributes: {
+    selection: true, //是否多选框
     index: true, // 索引
-    border: true,
-    maxHeight: '400',
-    height: '400',
-    headOperation: []
+    border: true, //表格边框
+    maxHeight: '400', // 表格最大高度
+    height: '400', //表格高度
+    headOperation: ['add', 'importData', 'exportData', 'select']
   }
+})
+const { tableItems, tableData, attributes } = toRefs(tableStatus)
+// 分页相关配置
+const pagination = reactive({
+  currentPage: 2, // 当前页
+  pageSize: 100, // 每页数据量
+  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  total: 400, //数据总量
+  layout: 'total, sizes, prev, pager, next, jumper'
 })
 
 
@@ -446,5 +506,13 @@ function handleVoid() {
       ElMessage.warning(msg)
     }
   )
+}
+// 编辑删除
+function addClient() {
+  // drawerVisible.value = true
+}
+// 修改
+function reviseClient() {
+  // drawerVisible.value = true
 }
 </script>

@@ -11,7 +11,75 @@
     <!-- 导入导出 采购退货出库详情？？？？？？ -->
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
       @add="handleAdd">
+      <template v-slot:basicOperation="slot">
+          <el-button link type="primary" @click="drawerVisible = true">编辑</el-button>
+
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+      </template>
     </psi-table>
+
+
+<!-- 弹出框 -->
+<psi-dialog v-model="dialogVisible" :attrs="attrs">
+      <template #default>
+
+        <el-switch v-model="switchMode" class="mt-2" inline-prompt :active-icon="Sunny" :inactive-icon="MoonNight"
+      style="--el-switch-on-color: #dcdfe6; --el-switch-off-color: #2c2c2c" />
+
+        <div class="search">
+          <!-- 弹出框上面的表单 -->
+          <psi-form :items="itemsDia" :toggle-items="toggleItemsDia" :formData="formDataDia"></psi-form>
+        </div>
+
+        <div class="tabs">
+          <!-- 明细 -->
+          <el-tabs v-model="activeName" class="demo-tabs" style="height:300px">
+
+            <!-- 采购明细 -->
+          <el-tab-pane label="采购明细" name="first">
+          <!-- el-table方式 -->
+          <el-button @click="addEl">新增</el-button>
+          <el-table :data="elTableData" height="300px" max-height="300px" border>
+            <el-table-column prop="name" label="el姓名" width="180">
+              <el-input v-model="elTableData.name"></el-input>
+            </el-table-column>
+            <el-table-column prop="age" label="el年龄" width="180">
+              <el-input v-model="elTableData.age"></el-input>
+            </el-table-column>
+            <el-table-column prop="option" label="选项" width="180">
+              <el-select v-model="elTableData.option" class="m-2" placeholder="Select" size="large">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+              </el-select>
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+
+        <!-- 明细 -->
+        <el-tab-pane label="明细" name="two">
+          <!-- psi-table方式 -->
+          <psi-table :items="tableItemsP" :tableData="tableDataP" :attributes="attributesP" @add="add">
+            <template v-slot:inputName="slot">
+              <el-input v-model="slot.data.name"></el-input>
+            </template>
+            <template v-slot:inputAge="slot">
+              <el-input v-model="slot.data.age"></el-input>
+            </template>
+            <template v-slot:selectOption="slot">
+              <el-select v-model="slot.data.option" class="m-2" placeholder="Select" size="large">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+              </el-select>
+            </template>
+          </psi-table>
+        </el-tab-pane>
+          </el-tabs>
+        </div>
+
+        <div class="footer">
+          <psi-form :buttonShow="false" :items="footItems" :formData="footFormData"></psi-form>
+        </div>
+      </template>
+    </psi-dialog>
+
   </div>
 
   <!-- 弹出框 -->
@@ -27,6 +95,238 @@ import { ref, reactive, toRefs, onMounted } from 'vue'
 import { } from './api/caigoutuihuochuku.js'
 // 引入日期格式化方法
 import { format } from '@/apis/date/index.js'
+import { Sunny, MoonNight } from '@element-plus/icons-vue'
+const switchMode = ref(true)
+const value = ref('')
+let dialogVisible = ref(false)
+
+
+const state = reactive({
+  attrs: {
+    title: '单据',
+    width: '80%',
+    determine: true
+  },
+})
+const { attrs, tabs, tabAttrs } = toRefs(state)
+
+
+
+// 采购明细下面表格
+// EL表格相关
+const elTableData = reactive([
+  {
+    name: 'elname1',
+    age: 12,
+    option: "Option1"
+  }
+])
+//明细中的option
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
+
+// 明细的表格
+// 表格相关
+const tableStateP = reactive({
+  // 查询表单每一项的配置
+  tableItemsP: [
+    {
+      type: 'slot',
+      label: '姓名',
+      width: '200',
+      slotName: 'inputName',
+      prop: 'name'
+    },
+    {
+      type: 'slot',
+      label: '年龄',
+      width: '200',
+      slotName: 'inputAge',
+      prop: 'age'
+    },
+    {
+      type: 'slot',
+      label: '选项',
+      width: '200',
+      slotName: 'selectOption',
+      prop: 'option'
+    },
+  ],
+
+  // 配置数据绑定的字段
+  tableDataP: [
+    {
+      name: 'name1',
+      age: 12,
+      option: "Option1"
+    }
+  ],
+  attributesP: {
+    selection: true, //是否多选框
+    index: true, // 索引
+    border: true,
+    maxHeight: '300px',
+    height: '300px',
+    headOperation: ['add']
+  }
+})
+const { tableItemsP, tableDataP, attributesP } = toRefs(tableStateP)
+
+// 弹出框最下面表单
+const footState = reactive({
+  footItems: [
+    {
+      type: 'input',
+      label: '备注',
+      prop: 'note',
+      placeholder: '请输入备注'
+    },
+    {
+      type: 'input',
+      label: '核批意见',
+      prop: 'advice',
+      placeholder: '请输入核批意见'
+    },
+    {
+      type: 'input',
+      label: '核批结果',
+      prop: 'outcome',
+      placeholder: '请输入核批结果'
+    }
+  ],
+  footFormData: {
+    note: '',
+    advice: '',
+    outcome: ''
+  }
+})
+const { footItems, footFormData } = toRefs(footState)
+
+
+//弹出框上面 表单
+const formStateDia = reactive({
+  // 查询表单每一项的配置
+  // 修改点6
+  itemsDia: [
+    {
+      type: 'input',
+      label: '单据编号',
+      prop: 'id',
+      placeholder: '请输入单据编号'
+    },
+    {
+      type: 'datePicker',
+      label: '单据日期',
+      prop: 'date',
+      placeholder: ''
+    },
+    {
+      type: 'select',
+      prop: 'do',
+      options: [
+        {
+          label: '执行完',
+          value: 0
+        },
+        {
+          label: '执行中',
+          value: 1
+        }
+      ]
+    },
+    {
+      type: 'select',
+      prop: 'vaildate',
+      label: '已生效',
+      options: [
+        {
+          label: '是',
+          value: 0
+        },
+        {
+          label: '否',
+          value: 1
+        }
+      ]
+    }
+  ],
+  toggleItemsDia: [
+    {
+      type: 'input',
+      label: '单据主题',
+      prop: 'subject',
+      placeholder: '请输入单据主题'
+    },
+    {
+      type: 'select',
+      label: '供应商',
+      prop: 'supplier',
+      placeholder: '请选择',
+      options: [
+        {
+          label: '供应商1',
+          value: 0
+        },
+        {
+          label: '供应商2',
+          value: 1
+        },
+        {
+          label: '供应商3',
+          value: 2
+        }
+      ]
+    },
+    {
+      type: 'input',
+      label: '已核销金额',
+      prop: 'num',
+      placeholder: '已核销金额'
+    }
+  ],
+  formDataDia: {
+    id: '',
+    date: '2023-02-02',
+    do: 0,
+    vaildate: 0,
+    subject: '石化结款',
+    supplier: 0,
+    num: 200
+  }
+})
+
+const { itemsDia, toggleItemsDia, formDataDia } = toRefs(formStateDia)
+
+
+
+
+
+
+
+
+
+
+
 
 // 查询表单相关数据及方法
 const formState = reactive({
@@ -190,6 +490,12 @@ const tableStatus = reactive({
       label: '操作',
       prop: 'tag',
       width: '120'
+    }, {
+      type: 'slot',
+      label: '操作',
+      width: '120',
+      slotName: 'basicOperation',
+      fixed: 'right'
     }
     // {
     //   type: 'slot',
@@ -304,6 +610,7 @@ function handleReset() {
 //新增
 function handleAdd() {
   //弹出采购退货出库新增组件
+  dialogVisible.value = true
 }
 
 //点击页面初始化数据

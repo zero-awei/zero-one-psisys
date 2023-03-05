@@ -10,6 +10,11 @@
     <!-- 导入导出 盘盈入库详情？？？？？？ -->
     <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
       @add="handleAdd">
+      <template v-slot:basicOperation="slot">
+          <el-button link type="primary" @click="drawerVisible = true">编辑</el-button>
+
+          <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+      </template>
     </psi-table>
   </div>
 
@@ -169,10 +174,11 @@ const tableStatus = reactive({
     },
     // tag?????????????????? 操作怎么写
     {
-      type: 'text',
+      type: 'slot',
       label: '操作',
-      prop: 'tag',
-      width: '120'
+      width: '120',
+      slotName: 'basicOperation',
+      fixed: 'right'
     }
     // {
     //   type: 'slot',

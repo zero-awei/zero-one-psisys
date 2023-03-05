@@ -78,7 +78,7 @@
 <script setup>
 import { reactive, toRefs, ref } from 'vue'
 
-
+//弹出下
 const tableState = reactive({
   // 查询表单每一项的配置
   dialogTableItems: [
@@ -175,7 +175,7 @@ const tableState = reactive({
 const { dialogTableItems, dialogTableData, dialogattributes } = toRefs(tableState)
 
 // 弹出框
-
+//弹出上
 let dialogVisible = ref(false)
 const state = reactive({
   attrs: {
