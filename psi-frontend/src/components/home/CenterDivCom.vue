@@ -20,12 +20,12 @@
                             <div class="body">
                                 <div class="name">
                                   <span>今日笔数</span>
-                                  <p>0</p>
+                                  <p>{{SalList.dingdan.todayCount}}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{SalList.dingdan.weekCount}}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.dingdan.monthCount }}</p>
                                </div >
                             </div >
                         
@@ -33,13 +33,13 @@
                         
                              <div class="body">
                                 <div class="name">
-                                  <span>今日笔数</span>
-                                  <p>0</p>
+                                  <span>今日金额</span>
+                                  <p>{{SalList.dingdan.todayAmt}}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{ SalList.dingdan.weekAmt }}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.dingdan.monthAmt }}</p>
                                </div >
                             </div >
                     </div>
@@ -56,24 +56,24 @@
                    <div class="body">
                                 <div class="name">
                                   <span>今日笔数</span>
-                                  <p>0</p>
+                                  <p>{{SalList.chuku.todayCount}}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{SalList.chuku.weekCount}}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.chuku.monthCount }}</p>
                                </div >
                             </div >
                     <!-- 出库右 -->
                     <div class="body">
                                 <div class="name">
-                                  <span>今日笔数</span>
-                                  <p>0</p>
+                                  <span>今日金额</span>
+                                  <p>{{ SalList.chuku.todayAmt }}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{ SalList.chuku.weekAmt }}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.chuku.monthAmt }}</p>
                                </div >
                             </div >
                     </div>
@@ -86,35 +86,35 @@
 
             <div class="div2">
              <el-row :gutter="20">
-           <!-- 订单部分 -->
+           <!-- 应收部分 -->
               <el-col :span="12">
                 <el-card class="cardBody" shadow="hover">
                    <div class="Div">
-                        <h1>订单</h1>
-                             <!--订单左  -->
+                        <h1>应收</h1>
+                             <!--应收左  -->
                             <div class="body">
                                 <div class="name">
                                   <span>今日笔数</span>
-                                  <p>0</p>
+                                  <p>{{SalList.yingshou.todayCount}}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{SalList.yingshou.weekCount}}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{SalList.yingshou.monthCount}}</p>
                                </div >
                             </div >
                         
-                        <!-- 订单右 -->
+                        <!-- 应收右 -->
                         
                              <div class="body">
                                 <div class="name">
-                                  <span>今日笔数</span>
-                                  <p>0</p>
+                                  <span>今日金额</span>
+                                  <p>{{ SalList.yingshou.todayAmt }}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{ SalList.yingshou.weekAmt }}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.yingshou.monthAmt }}</p>
                                </div >
                             </div >
                     </div>
@@ -122,33 +122,33 @@
                 </el-card>
             </el-col>
 
-                <!-- 出库部分 -->
+                <!-- 收款部分 -->
               <el-col :span="12">
                 <el-card class="cardBody" shadow="hover">
                     <div class="Div">
-                     <h1>出库</h1>
-                <!--出库左  -->
+                     <h1>收款</h1>
+                <!--收款左  -->
                    <div class="body">
                                 <div class="name">
                                   <span>今日笔数</span>
-                                  <p>0</p>
+                                  <p>{{ SalList.shoukuan.todayCount }}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{ SalList.shoukuan.weekCount }}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.shoukuan.monthCount }}</p>
                                </div >
                             </div >
-                    <!-- 出库右 -->
+                    <!-- 收款右 -->
                     <div class="body">
                                 <div class="name">
-                                  <span>今日笔数</span>
-                                  <p>0</p>
+                                  <span>今日金额</span>
+                                  <p>{{ SalList.shoukuan.todayAmt }}</p>
                                 </div>
                                 
                                <div class="data">
-                                    <p style="font-size:14px; display:block;"> 本周:8</p>
-                                    <p style="font-size:14px;display:block;">本月:8</p>
+                                    <p style="font-size:14px; display:block;"> 本周:{{ SalList.shoukuan.weekAmt }}</p>
+                                    <p style="font-size:14px;display:block;">本月:{{ SalList.shoukuan.monthAmt}}</p>
                                </div >
                             </div >
                     </div>
@@ -333,6 +333,53 @@
 
 
 </template>
+
+
+<script setup>
+import {  reactive, onMounted } from 'vue'
+import { getSalList, getPurList} from './api/CenterCom.js'
+import { Refresh } from '@element-plus/icons-vue'
+
+/*        数据         */
+//销售数据
+const SalList = reactive({
+  dingdan:{},
+  chuku:{},
+  yingshou:{},
+  fukuan:{}
+})
+
+
+
+/*     挂载数据              */
+//请求数据
+onMounted(() => {
+  doGetSalList()
+  // doGetPurList()
+  console.log(data)
+})
+
+/*      方法       */
+//请求销售概况
+function doGetSalList() {
+  let param = {}
+  getSalList(
+    param,
+    (data) => {
+      SalList.dingdan = data[0]
+      SalList.chuku = data[1]
+      SalList.yingshou = data[2]
+      SalList.fukuan = data[3]
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+
+
+</script>
 
 <style scoped>
 .el-card{

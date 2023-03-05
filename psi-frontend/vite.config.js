@@ -40,6 +40,40 @@ export default ({ mode }) =>
           changeOrigin: true,
           target: 'http://localhost:10680',
           rewrite: (path) => path.replace(/^\/captcha/, '')
+        },
+        '/C1': {
+          changeOrigin: true,
+          target: 'http://39.101.122.174:8090',
+          rewrite: (path) => path.replace(/^\/C1/, '')
+        },
+        '/C3': {
+          changeOrigin: true,
+          target: 'http://47.113.148.133:8090',
+          rewrite: (path) => path.replace(/^\/C3/, '')
+        },
+        '/J4': {
+          changeOrigin: true,
+          target: 'http://8.130.20.243:10690',
+          rewrite: (path) => path.replace(/^\/J4/, '')
+        },
+        // 不是虚拟前缀
+        // 系统管理
+        '/J2sys': {
+          changeOrigin: true,
+          target: 'http://8.130.30.128:10101/',
+          rewrite: (path) => path.replace(/^\/J2sys/, '')
+        },
+        // 基本信息
+        '/J2basedetail': {
+          changeOrigin: true,
+          target: 'http://8.130.30.128:10110/',
+          rewrite: (path) => path.replace(/^\/J2basedetail/, '')
+        },
+        // 首页模块
+        '/J2titlepage': {
+          changeOrigin: true,
+          target: 'http://8.130.24.117:10102/',
+          rewrite: (path) => path.replace(/^\/J2titlepage/, '')
         }
       }
     },
