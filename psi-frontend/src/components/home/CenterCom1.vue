@@ -1,7 +1,15 @@
+<!--
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-03-04 19:07:02
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-03-05 14:56:15
+ * @FilePath: \psi-frontend\src\components\home\CenterCom1.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="top">
-    <!--ToDo 2.5系统收支概况 -->
-    <!-- 
+  <!--ToDo 2.5系统收支概况 -->
+  <!-- 
     <el-row>
         <el-col class="head" :span="12">
             <el-card class="box-card">
@@ -22,14 +30,14 @@
                           <p>math</p>
                         </el-col>
                         <el-col :span="8">
-                          <span>欠供应商（元）</span>
-                          <p>math</p>
-                        </el-col>   
-                     </el-row>
-                  </div >  
-            </el-card>
-          </el-col>
-   -->
+                                      <span>欠供应商（元）</span>
+                                      <p>math</p>
+                                    </el-col>   
+                                 </el-row>
+                              </div >  
+                        </el-card>
+                      </el-col>
+               -->
 
     <el-row>
       <el-col class="head" :span="12">
@@ -48,15 +56,15 @@
             <el-row>
               <el-col :span="8">
                 <span>即时库存</span>
-                <p>0</p>
+                <p>{{ SysList.jishikucn.value }}</p>
               </el-col>
               <el-col :span="8">
                 <span>客户欠款（元）</span>
-                <p>math</p>
+                <p>{{ SysList.kehuqiankuan.value }}</p>
               </el-col>
               <el-col :span="8">
                 <span>欠供应商（元）</span>
-                <p>math</p>
+                <p>{{ SysList.qiangongyingshan.value }}</p>
               </el-col>
             </el-row>
           </div>
@@ -135,6 +143,60 @@
     </el-row>
   </div>
 </template>
+
+<script setup>
+import { ref, reactive, toRefs, onMounted } from 'vue'
+import { getCusList, getSysList } from './api/CenterCom.js'
+
+// 数据
+const SysList = reactive({
+  jishikucn: {},
+  kehuqiankuan: {},
+  qiangongyingshan: {},
+})
+
+onMounted(() => {
+  doGetSysList()
+  doGetCusList()
+})
+
+// -------- 方法
+
+
+function doGetCusList() {
+  getCusList(
+    {},
+    (data) => {
+      console.log('-------data')
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+
+  )
+}
+
+function doGetSysList() {
+  getSysList(
+    {},
+    (data) => {
+      console.log('-------data')
+      SysList.jishikucn = data[0]
+      SysList.kehuqiankuan = data[1]
+      SysList.qiangongyingshan = data[2]
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+
+  )
+}
+
+
+</script>
+
 
 <style scoped>
 .top {
@@ -215,8 +277,5 @@
 }
 </style>
 
-<script setup>
-
-</script>
 
  

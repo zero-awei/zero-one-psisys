@@ -1,4 +1,4 @@
-import { delete } from '@/views/sysmanage/api/classifieddictionary.js'
+import { deleteDict } from '@/views/sysmanage/api/classifieddictionary.js'
 import { insert } from '@/views/sysmanage/api/classifieddictionary.js'
 import { queryAll } from '@/views/sysmanage/api/classifieddictionary.js'
 import { queryOne } from '@/views/sysmanage/api/classifieddictionary.js'
@@ -9,7 +9,7 @@ export function handleDelete() {
   let params = {}
   params.id = '9999'
 
-  delete(
+  deleteDict(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -78,7 +78,6 @@ export function handleQueryAll() {
   )
 }
 
-
 export function handleUpdateOne() {
   // 自定义请求参数
   let params = {}
@@ -127,6 +126,3 @@ export function handleQueryOne() {
     }
   )
 }
-
-
-

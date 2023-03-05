@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-27 19:59:46
+ * @LastEditTime: 2023-03-05 14:38:52
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -14,32 +14,32 @@
         <el-card style="height:100vh">
           <el-input placeholder="输入机构名称查询" v-modle="name">
             <template #append>
-            <el-icon @click="handleQueryAddress">
-              <Search />
+              <el-icon @click="handleQueryAddress">
+                <Search />
               </el-icon>
-          </template>
-        </el-input>
-        <br/>
-        <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" />
-      </el-card>
-     
+            </template>
+          </el-input>
+          <br />
+          <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" />
+        </el-card>
+
       </el-col>
       <el-col :span="18">
         <el-card style="height:100vh">
-        <!-- 查询 -->
-        <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
+          <!-- 查询 -->
+          <psi-form :items="formItems" :formData="formData" @query="handleQuery" @reset="handleReset"></psi-form>
 
-        <div style="margin-top:10px">
-          <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
-            <template v-slot:basicOperation="slot">
-            <!-- 修改点2 -->
-            <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
+          <div style="margin-top:10px">
+            <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination">
+              <template v-slot:basicOperation="slot">
+                <!-- 修改点2 -->
+                <el-button link type="primary" @click="clientEditDialogVisible = true">编辑</el-button>
 
-            <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
-          </template>
-          
-          </psi-table>
-        </div>
+                <el-button link type="primary" @click="deleteRole(slot.data)">删除</el-button>
+              </template>
+
+            </psi-table>
+          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -162,13 +162,13 @@ const data = [
     children: [
       {
         label: '市场部',
-       
+
       },
-       {
+      {
         label: '研发部',
 
       },
-       {
+      {
         label: '财务部',
 
       },
@@ -212,10 +212,14 @@ function handleReset() {
 }
 
 function handleQueryAll() {
+  let param = {
+    pageIndex: 1,
+    pageSize: 1,
+    pages: 100,
+  }
   queryAll(
-    {
-
-    },
+    { ...param },
+    // {},
     // 成功回调函数
 
     (data) => {

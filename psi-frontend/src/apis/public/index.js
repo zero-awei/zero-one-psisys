@@ -515,9 +515,14 @@ export const querySuppliersName = (data, success, fail) => {
  */
 
 export const querySuppliersLevel = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/qurey-supplier-level', data.{
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/qurey-supplier-level',
+    data,
+    {
       baseURL: import.meta.env.VITE_API_C1
-    })
+    }
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -607,9 +612,9 @@ export const queryDepart = (data, success, fail) => {
  * @param fail 查询失败
  */
 export const getUser = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-user', data,{
-      baseURL: import.meta.env.VITE_API_C1
-    })
+  Request.requestForm(Request.GET, currBaseUrl + '/get-user', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -629,9 +634,9 @@ export const getUser = (data, success, fail) => {
 
 // 22.查询指定物料规格型号/单位
 export const getMaterial = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-material', data,{
-      baseURL: import.meta.env.VITE_API_C1
-    })
+  Request.requestForm(Request.GET, currBaseUrl + '/get-material', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -651,9 +656,9 @@ export const getMaterial = (data, success, fail) => {
 
 // 23.业务部门结构（用于输入查询条件）
 export const getDepart = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-depart', data,{
-      baseURL: import.meta.env.VITE_API_C1
-    })
+  Request.requestForm(Request.GET, currBaseUrl + '/get-depart', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -727,9 +732,9 @@ export const queryMaterialTreeList = (data, success, fail) => {
 
 //26 请求新单据编号（根据新增类型生成新单据编号）
 export const createReceipt = (data, success, fail) => {
-  Request.requestForm(Request.PUT, currBaseUrl + '/create-receipt', data,{
-      baseURL: import.meta.env.VITE_API_C1
-    })
+  Request.requestForm(Request.PUT, currBaseUrl + '/create-receipt', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调

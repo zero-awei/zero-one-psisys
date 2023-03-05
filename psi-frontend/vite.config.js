@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-28 20:49:18
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-04 18:03:48
+ * @LastEditTime: 2023-03-05 14:29:50
  * @FilePath: \psi-frontend\vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -55,6 +55,25 @@ export default ({ mode }) =>
           changeOrigin: true,
           target: 'http://8.130.20.243:10690',
           rewrite: (path) => path.replace(/^\/J4/, '')
+        },
+        // 不是虚拟前缀
+        // 系统管理
+        '/J2sys': {
+          changeOrigin: true,
+          target: 'http://8.130.30.128:10101/',
+          rewrite: (path) => path.replace(/^\/J2sys/, '')
+        },
+        // 基本信息
+        '/J2basedetail': {
+          changeOrigin: true,
+          target: 'http://8.130.30.128:10110/',
+          rewrite: (path) => path.replace(/^\/J2basedetail/, '')
+        },
+        // 首页模块
+        '/J2titlepage': {
+          changeOrigin: true,
+          target: 'http://8.130.24.117:10102/',
+          rewrite: (path) => path.replace(/^\/J2titlepage/, '')
         }
       }
     },
