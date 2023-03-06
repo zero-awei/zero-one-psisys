@@ -40,7 +40,6 @@
             </if>
             and sdict.dict_name = "单据阶段"
         </where>
-        limit #{pageIndex},#{pageSize}
     </select>
 
     <select id="getByBillNo" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO">
