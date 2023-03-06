@@ -25,11 +25,14 @@ import javax.validation.constraints.NotBlank;
 public class AddressbookQuery extends PageQuery{
 
 
-    @ApiModelProperty(value = "姓名",example = "张三")
+    @ApiModelProperty(value = "姓名",example = "李业武")
     private String realname;
 
-    @ApiModelProperty(value = "工号",example = "10")
+    @ApiModelProperty(value = "工号",example = "11")
     private String workNo;
+
+    @ApiModelProperty(value = "部门",example = "市场部")
+    private String departName;
 
 
 }

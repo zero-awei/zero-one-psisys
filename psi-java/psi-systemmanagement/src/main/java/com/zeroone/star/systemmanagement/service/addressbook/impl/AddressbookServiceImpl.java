@@ -67,4 +67,13 @@ public class AddressbookServiceImpl extends ServiceImpl<AddressbookMapper, Addre
         Page<Addressbook> result = mapper.getByWorkNo(addressBookPage,query);
         return PageVO.create(result, AddressbookVO.class);
     }
+
+    @Override
+    public PageVO<AddressbookVO> getByDepartName(AddressbookQuery query) {
+        // 构建查询条件
+        Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        // 执行查询
+        Page<Addressbook> result = mapper.getByDepartName(addressBookPage,query);
+        return PageVO.create(result, AddressbookVO.class);
+    }
 }

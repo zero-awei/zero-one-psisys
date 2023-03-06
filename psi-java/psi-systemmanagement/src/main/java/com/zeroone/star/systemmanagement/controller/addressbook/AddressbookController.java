@@ -63,4 +63,11 @@ public class AddressbookController implements AddressbookApis {
         return JsonVO.success(service.getByWorkNo(condition));
     }
 
+    @GetMapping("query-depart-name")
+    @ApiOperation(value = "根据部门名称查询通讯录")
+    @Override
+    public JsonVO<PageVO<AddressbookVO>> getByDepartName(@Validated AddressbookQuery condition) {
+        return JsonVO.success(service.getByDepartName(condition));
+    }
+
 }

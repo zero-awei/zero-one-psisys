@@ -28,4 +28,5 @@ public interface AddressbookMapper extends BaseMapper<Addressbook> {
 
     public Page<Addressbook> getByWorkNo(Page page,AddressbookQuery condition);
 
+    public Page<Addressbook> getByDepartName(Page page,AddressbookQuery condition);
 }

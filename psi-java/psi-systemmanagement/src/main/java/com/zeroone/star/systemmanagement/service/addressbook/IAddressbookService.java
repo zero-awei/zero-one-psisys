@@ -48,4 +48,12 @@ public interface IAddressbookService extends IService<Addressbook> {
      */
     PageVO<AddressbookVO> getByWorkNo(AddressbookQuery query);
 
+
+    /**
+     * 根据部门名称查询通讯录列表
+     * @param query 查询条件
+     * @return
+     */
+    PageVO<AddressbookVO> getByDepartName(AddressbookQuery query);
+
 }
