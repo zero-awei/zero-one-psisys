@@ -11,7 +11,7 @@ Author C1-三木
 class SupplierLevelVO
 {
 	// 等级编号
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 等级名称
 	CC_SYNTHESIZE(string, name, Name);
 public:

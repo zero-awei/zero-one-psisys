@@ -15,7 +15,7 @@ public:
 	SupplierQueryCriteriaDO mapper(ResultSet* resultSet) const override
 	{
 		SupplierQueryCriteriaDO data;
-		data.setId(resultSet->getUInt64(1));
+		data.setId(resultSet->getString(1));
 		data.setName(resultSet->getString(4));
 		return data;
 	}

@@ -11,7 +11,7 @@ Author C1-三木
 class PurTypeVO
 {
 	// 类型编号
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 类型名称
 	CC_SYNTHESIZE(string, name, Name);
 public:
