@@ -34,7 +34,6 @@
             </if>
             and sdict.dict_name = "单据阶段"
         </where>
-        limit #{pageIndex},#{pageSize}
     </select>
 
 <!-- spk: copied and modified based on chosen1's-->

@@ -14,6 +14,7 @@ import com.zeroone.star.project.dto.payablemanagement.CheckPayableEntryDTO;
 import com.zeroone.star.project.query.payablemanagement.CheckPayableQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.payablemanagement.CheckPayableVO;
+import com.zeroone.star.project.vo.payablemanagement.PayableVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -115,12 +116,18 @@ public class FinPayableCheckServiceImpl extends ServiceImpl<FinPayableCheckMappe
      */
     @Override
     public PageVO<CheckPayableVO> getAll(CheckPayableQuery query) {
-
         List<CheckPayableVO> list = mapper.getAllCheckPayable(query);
         if (list.isEmpty()) {
             return null;
         }
-        return new PageVO<>(query.getPageIndex(), query.getPageSize(), (long) list.size(), (long) 100, list);
+        long pages = list.size() % query.getPageSize() == 0 ? list.size() / query.getPageSize() : list.size() / query.getPageSize() + 1;
+        if (pages < query.getPageIndex() + 1) return null;
+        return new PageVO<>(query.getPageIndex(),
+                query.getPageSize(),
+                (long) list.size(),
+                pages,
+                list.subList((int) query.getPageIndex() * (int) query.getPageSize(),
+                        pages == query.getPageIndex() + 1 ? list.size() : (int) (query.getPageSize() * (query.getPageIndex() + 1))));
     }
 
 
