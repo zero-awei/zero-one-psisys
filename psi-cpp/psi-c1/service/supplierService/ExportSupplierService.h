@@ -10,6 +10,6 @@ class ExportSupplierService
 {
 public:
 	//查询要导出的供应商数据
-	list<ExportSupplierDO> listAll(const ExportSupplierQuery& query);
+	list<list<ExportSupplierDO>> listAll(const list<ExportSupplierQuery>& query);
 };
 #endif // !_WAREHOUSE_SERVICE_

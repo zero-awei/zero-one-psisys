@@ -292,7 +292,7 @@ void Router::initSupplier()
 	BIND_PUT_ROUTER(server, "/modify-supplier", &SupplierController::modifySupplier, nullptr);
 	//供应商导入导出
 	BIND_POST_ROUTER(server, "/import-supplier", &ImportSupplierController::importSupplier, nullptr);
-	BIND_GET_ROUTER(server, "/export-supplier", &ExportSupplierController::exportSupplier, nullptr);
+	BIND_POST_ROUTER(server, "/export-supplier", &ExportSupplierController::exportSupplier, nullptr);
 	//供应商等级下拉列表
 	BIND_GET_ROUTER(server, "/qurey-supplier-level", &SupplierLevelController::querySupplierLevel, nullptr);
 	//供应商高级查询条件下拉列表

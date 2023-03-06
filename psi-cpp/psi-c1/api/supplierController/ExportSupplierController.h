@@ -9,10 +9,10 @@
 class ExportSupplierController
 {
 public:
-	CREATE_API_FUN_QUERY_PAYLOAD(exportSupplier, execExportSupplier, ExportSupplierQuery);
+	CREATE_API_FUN_JSON_PAYLOAD(exportSupplier, execExportSupplier, list<ExportSupplierQuery>);
 private:
 	//执行供应商导出
-	JsonVO<std::string> execExportSupplier(const ExportSupplierQuery& query, const PayloadDTO& payload);
+	JsonVO<std::string> execExportSupplier(const list<ExportSupplierQuery>& query, const PayloadDTO& payload);
 };
 
 #endif // !_EXPORT_SUPPLIER_CONTROLLER_

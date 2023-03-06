@@ -2,11 +2,14 @@
 #include "ExportSupplierService.h"
 #include "../../dao/supplierDao/ExportSupplierDAO.h"
 
-list<ExportSupplierDO> ExportSupplierService::listAll(const ExportSupplierQuery& query)
+list<list<ExportSupplierDO>> ExportSupplierService::listAll(const list<ExportSupplierQuery>& query)
 {
     ExportSupplierDO obj;
-    obj.setId(query.getId());
     ExportSupplierDAO dao;
-    list<ExportSupplierDO> result = dao.selectSupplier(obj);
+    list<list<ExportSupplierDO>> result;
+    for (auto raw : query) {
+        obj.setId(raw.getId());
+        result.push_back(dao.selectSupplier(obj));
+    }
     return result;
 }
