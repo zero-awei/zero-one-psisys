@@ -49,6 +49,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<Expo
 		CharsetConvertHepler::ansiToUtf8("备选供应商"),
 		CharsetConvertHepler::ansiToUtf8("备注"),
 		CharsetConvertHepler::ansiToUtf8("版本"),
+		"测试"
 	};
 	data.push_back(header);
 	stringstream ss;

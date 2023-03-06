@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _EXPORT_SUPPLIER_CONTROLLER_
 #define _EXPORT_SUPPLIER_CONTROLLER_
 
@@ -11,7 +11,7 @@ class ExportSupplierController
 public:
 	CREATE_API_FUN_JSON_PAYLOAD(exportSupplier, execExportSupplier, list<ExportSupplierQuery>);
 private:
-	//ִ�й�Ӧ�̵���
+	//执行供应商导出
 	JsonVO<std::string> execExportSupplier(const list<ExportSupplierQuery>& query, const PayloadDTO& payload);
 };
 
