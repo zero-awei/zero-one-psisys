@@ -32,25 +32,29 @@ PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)
 
 	list<MaterialReturnDO>result = dao.selecMaterialWithPage(obj, query.getPageIndex(), query.getPageSize());
 	list<MaterialVO> vr;
-	for (MaterialReturnDO sub : result)
+	vector<MaterialReturnDO> r(result.begin(), result.end());
+	int time(query.getPageSize());
+	//根据pageindx和pagesize放入返回的元素
+	for (int i = (query.getPageIndex() - 1) * query.getPageSize();
+		time > 0 && r.size() > i; i++, time--)
 	{
 		MaterialVO vo;
-		vo.setId(sub.getId());
-		vo.setCode(sub.getCode());
-		vo.setName(sub.getName());
-		vo.setAuxName(sub.getAuxName());
-		vo.setCategoryId(sub.getCategoryId());
-		vo.setCategoryIdDictText(sub.getCategoryIdDictText());
-		vo.setModel(sub.getModel());
-		vo.setUnitIdDictText(sub.getUnitIdDictText());
-		vo.setPrice(sub.getPrice());
-		vo.setTaxCode(sub.getTaxCode());
-		vo.setIsEnabledDictText(sub.getIsEnabledDictText());
-		vo.setRemark(sub.getRemark());
-		vo.setCreateTime(sub.getCreateTime());
-		vo.setCreateBy(sub.getCreateBy());
-		vo.setUpdateTime(sub.getUpdateTime());
-		vo.setUpdateBy(sub.getUpdateBy());
+		vo.setId(r[i].getId());
+		vo.setCode(r[i].getCode());
+		vo.setName(r[i].getName());
+		vo.setAuxName(r[i].getAuxName());
+		vo.setCategoryId(r[i].getCategoryId());
+		vo.setCategoryIdDictText(r[i].getCategoryIdDictText());
+		vo.setModel(r[i].getModel());
+		vo.setUnitIdDictText(r[i].getUnitIdDictText());
+		vo.setPrice(r[i].getPrice());
+		vo.setTaxCode(r[i].getTaxCode());
+		vo.setIsEnabledDictText(r[i].getIsEnabledDictText());
+		vo.setRemark(r[i].getRemark());
+		vo.setCreateTime(r[i].getCreateTime());
+		vo.setCreateBy(r[i].getCreateBy());
+		vo.setUpdateTime(r[i].getUpdateTime());
+		vo.setUpdateBy(r[i].getUpdateBy());
 		vr.push_back(vo);
 	}
   	rs.setRows(vr);
