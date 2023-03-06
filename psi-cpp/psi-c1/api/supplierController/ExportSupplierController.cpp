@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "ExportSupplierController.h"
 #include "ExcelComponent.h"
 #include "CharsetConvertHepler.h"
@@ -9,46 +9,46 @@ using namespace std;
 JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<ExportSupplierQuery>& query, const PayloadDTO& payload)
 {
 	vector<vector<std::string>> data;
-	data.push_back({ CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌ±¨±í") });
+	data.push_back({ CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†æŠ¥è¡¨") });
 	vector<std::string> header{
-		CharsetConvertHepler::ansiToUtf8("±àÂë"),
-		CharsetConvertHepler::ansiToUtf8("Ãû³Æ"),
-		CharsetConvertHepler::ansiToUtf8("¼ò³Æ"),
-		CharsetConvertHepler::ansiToUtf8("Öú¼ÇÃû"),
-		CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌ·ÖÀà"),
-		CharsetConvertHepler::ansiToUtf8("¹©Ó¦ÉÌµÈ¼¶"),
-		CharsetConvertHepler::ansiToUtf8("ÄÉË°¹æÄ£"),
-		CharsetConvertHepler::ansiToUtf8("ËùÊô×Ü¹«Ë¾"),
-		CharsetConvertHepler::ansiToUtf8("ËùÊôµØÇø"),
-		CharsetConvertHepler::ansiToUtf8("ÒµÎñÇøÓò"),
-		CharsetConvertHepler::ansiToUtf8("¿Í»§µØÖ·"),
-		CharsetConvertHepler::ansiToUtf8("¿Í»§ÍøÕ¾"),
-		CharsetConvertHepler::ansiToUtf8("·¨ÈË´ú±í"),
-		CharsetConvertHepler::ansiToUtf8("·¨ÈËµç»°"),
-		CharsetConvertHepler::ansiToUtf8("²ÆÎñĞÅÏ¢ÁªÏµÈË"),
-		CharsetConvertHepler::ansiToUtf8("²ÆÎñĞÅÏ¢ÁªÏµµç»°"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±ĞÅÏ¢µ¥Î»Ãû³Æ"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±ĞÅÏ¢Ë°ºÅ"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±ĞÅÏ¢¿ª»§ĞĞ"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±ĞÅÏ¢ÒøĞĞÕËºÅ"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±ĞÅÏ¢ÕËºÅ"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±ĞÅÏ¢ÁªÏµµç»°"),
-		CharsetConvertHepler::ansiToUtf8("¿ªÆ±µØÖ·"),
-		CharsetConvertHepler::ansiToUtf8("°ì¿î×ÊÁÏµ¥Î»Ãû³Æ"),
-		CharsetConvertHepler::ansiToUtf8("°ì¿î×ÊÁÏ¿ª»§ĞĞ"),
-		CharsetConvertHepler::ansiToUtf8("°ì¿î×ÊÁÏĞĞºÅ"),
-		CharsetConvertHepler::ansiToUtf8("°ì¿î×ÊÁÏÕËºÅ"),
-		CharsetConvertHepler::ansiToUtf8("ÊÕ¼şĞÅÏ¢ÊÕ¼şÈË"),
-		CharsetConvertHepler::ansiToUtf8("ÊÕ¼şĞÅÏ¢ÁªÏµµç»°"),
-		CharsetConvertHepler::ansiToUtf8("ÊÕ¼şĞÅÏ¢´«Õæ"),
+		CharsetConvertHepler::ansiToUtf8("ç¼–ç "),
+		CharsetConvertHepler::ansiToUtf8("åç§°"),
+		CharsetConvertHepler::ansiToUtf8("ç®€ç§°"),
+		CharsetConvertHepler::ansiToUtf8("åŠ©è®°å"),
+		CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†åˆ†ç±»"),
+		CharsetConvertHepler::ansiToUtf8("ä¾›åº”å•†ç­‰çº§"),
+		CharsetConvertHepler::ansiToUtf8("çº³ç¨è§„æ¨¡"),
+		CharsetConvertHepler::ansiToUtf8("æ‰€å±æ€»å…¬å¸"),
+		CharsetConvertHepler::ansiToUtf8("æ‰€å±åœ°åŒº"),
+		CharsetConvertHepler::ansiToUtf8("ä¸šåŠ¡åŒºåŸŸ"),
+		CharsetConvertHepler::ansiToUtf8("å®¢æˆ·åœ°å€"),
+		CharsetConvertHepler::ansiToUtf8("å®¢æˆ·ç½‘ç«™"),
+		CharsetConvertHepler::ansiToUtf8("æ³•äººä»£è¡¨"),
+		CharsetConvertHepler::ansiToUtf8("æ³•äººç”µè¯"),
+		CharsetConvertHepler::ansiToUtf8("è´¢åŠ¡ä¿¡æ¯è”ç³»äºº"),
+		CharsetConvertHepler::ansiToUtf8("è´¢åŠ¡ä¿¡æ¯è”ç³»ç”µè¯"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨ä¿¡æ¯å•ä½åç§°"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨ä¿¡æ¯ç¨å·"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨ä¿¡æ¯å¼€æˆ·è¡Œ"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨ä¿¡æ¯é“¶è¡Œè´¦å·"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨ä¿¡æ¯è´¦å·"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨ä¿¡æ¯è”ç³»ç”µè¯"),
+		CharsetConvertHepler::ansiToUtf8("å¼€ç¥¨åœ°å€"),
+		CharsetConvertHepler::ansiToUtf8("åŠæ¬¾èµ„æ–™å•ä½åç§°"),
+		CharsetConvertHepler::ansiToUtf8("åŠæ¬¾èµ„æ–™å¼€æˆ·è¡Œ"),
+		CharsetConvertHepler::ansiToUtf8("åŠæ¬¾èµ„æ–™è¡Œå·"),
+		CharsetConvertHepler::ansiToUtf8("åŠæ¬¾èµ„æ–™è´¦å·"),
+		CharsetConvertHepler::ansiToUtf8("æ”¶ä»¶ä¿¡æ¯æ”¶ä»¶äºº"),
+		CharsetConvertHepler::ansiToUtf8("æ”¶ä»¶ä¿¡æ¯è”ç³»ç”µè¯"),
+		CharsetConvertHepler::ansiToUtf8("æ”¶ä»¶ä¿¡æ¯ä¼ çœŸ"),
 		CharsetConvertHepler::ansiToUtf8("recvEmail"),
-		CharsetConvertHepler::ansiToUtf8("ÊÕ¼şĞÅÏ¢µØÖ·"),
-		CharsetConvertHepler::ansiToUtf8("ÊÕ¼şĞÅÏ¢ÓÊ±à"),
-		CharsetConvertHepler::ansiToUtf8("¸½¼ş"),
-		CharsetConvertHepler::ansiToUtf8("ÊÇ·ñÆôÓÃ"),
-		CharsetConvertHepler::ansiToUtf8("±¸Ñ¡¹©Ó¦ÉÌ"),
-		CharsetConvertHepler::ansiToUtf8("±¸×¢"),
-		CharsetConvertHepler::ansiToUtf8("°æ±¾"),
+		CharsetConvertHepler::ansiToUtf8("æ”¶ä»¶ä¿¡æ¯åœ°å€"),
+		CharsetConvertHepler::ansiToUtf8("æ”¶ä»¶ä¿¡æ¯é‚®ç¼–"),
+		CharsetConvertHepler::ansiToUtf8("é™„ä»¶"),
+		CharsetConvertHepler::ansiToUtf8("æ˜¯å¦å¯ç”¨"),
+		CharsetConvertHepler::ansiToUtf8("å¤‡é€‰ä¾›åº”å•†"),
+		CharsetConvertHepler::ansiToUtf8("å¤‡æ³¨"),
+		CharsetConvertHepler::ansiToUtf8("ç‰ˆæœ¬"),
 	};
 	data.push_back(header);
 	stringstream ss;
@@ -230,7 +230,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<Expo
 			ss.str("");
 
 			if (sub.getIsEnabled() == 1) {
-				row.push_back(CharsetConvertHepler::ansiToUtf8("ÊÇ"));
+				row.push_back(CharsetConvertHepler::ansiToUtf8("æ˜¯"));
 			}
 
 			ss.clear();
@@ -258,7 +258,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<Expo
 		{
 			ss.clear();
 			ss
-				<< CharsetConvertHepler::ansiToUtf8("µ¥Ôª¸ñ×ø±ê£º(") << i
+				<< CharsetConvertHepler::ansiToUtf8("å•å…ƒæ ¼åæ ‡ï¼š(") << i
 				<< CharsetConvertHepler::ansiToUtf8(",") << j << ")";
 			row.push_back(ss.str());
 			ss.str("");
@@ -266,40 +266,40 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<Expo
 		data.push_back(row);
 	}*/
 
-	//¶¨Òå±£´æÊı¾İÎ»ÖÃºÍÒ³Ç©Ãû³Æ
+	//å®šä¹‰ä¿å­˜æ•°æ®ä½ç½®å’Œé¡µç­¾åç§°
 	std::string fileName = "./public/excel/1.xlsx";
 	std::string sheetName = CharsetConvertHepler::ansiToUtf8("supplier");
 
-	//±£´æµ½ÎÄ¼ş
+	//ä¿å­˜åˆ°æ–‡ä»¶
 	ExcelComponent excel;
 	excel.writeVectorToFile(fileName, sheetName, data);
 	
 
 #ifdef LINUX
-	//¶¨Òå¿Í»§¶Ë¶ÔÏó
+	//å®šä¹‰å®¢æˆ·ç«¯å¯¹è±¡
 	FastDfsClient client("conf/client.conf", 3);
 #else
-	//¶¨Òå¿Í»§¶Ë¶ÔÏó
+	//å®šä¹‰å®¢æˆ·ç«¯å¯¹è±¡
 	FastDfsClient client("1.15.240.108");
 #endif
 
-	//ÉÏ´«µ½FastDFS
+	//ä¸Šä¼ åˆ°FastDFS
 	std::string fieldName = client.uploadFile(fileName);
 	std::cout << "upload fieldname is : " << fieldName << std::endl;
 
-	//´ÓFastDFSÏÂÔØµ½±¾µØ
+	//ä»FastDFSä¸‹è½½åˆ°æœ¬åœ°
 	/*if (!fieldName.empty())
 	{
 		std::string path = "./public/fastdfs";
 		fileName = client.downloadFile(fieldName, &path);
 		std::cout << "download savepath is : " << fileName << std::endl;
 	}*/
-	//²âÊÔÉ¾³ıÎÄ¼ş
+	//æµ‹è¯•åˆ é™¤æ–‡ä»¶
 	/*if (!fieldName.empty())
 	{
 		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
 	}*/
-	//·µ»ØÏÂÔØµØÖ·
+	//è¿”å›ä¸‹è½½åœ°å€
 	JsonVO<std::string> res;
 	res.success("http://1.15.240.108:8888/" + fieldName);
 	
