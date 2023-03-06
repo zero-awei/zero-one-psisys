@@ -1,9 +1,8 @@
 package com.zeroone.star.prepayment.entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -32,6 +31,7 @@ public class FinPayment implements Serializable {
     /**
      * ID
      */
+    @TableId(type = IdType.ASSIGN_ID)
     @ExcelProperty("id")
     private String id;
 

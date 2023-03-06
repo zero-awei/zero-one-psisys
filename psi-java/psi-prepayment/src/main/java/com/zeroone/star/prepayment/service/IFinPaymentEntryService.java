@@ -1,6 +1,7 @@
 package com.zeroone.star.prepayment.service;
 import com.zeroone.star.prepayment.entity.FinPaymentEntry;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.dto.prepayment.ModifyDTO;
 import com.zeroone.star.project.dto.prepayment.PrepaymentDTO;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,12 @@ public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
      * author forever爱
      */
     public boolean updateById(ModifyDTO modifyDTO);
+
+    /**
+     * 保存付款单明细
+     * author forever爱
+     */
+    boolean saveByBillNo(ModifyDTO modifyDTO);
 
     /**
      * 插入

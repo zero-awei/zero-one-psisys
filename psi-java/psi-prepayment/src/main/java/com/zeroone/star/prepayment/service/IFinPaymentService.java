@@ -39,6 +39,12 @@ public interface IFinPaymentService extends IService<FinPayment> {
     JsonVO<String> auditById(AuditDTO auditDTO, UserDTO userDTO);
 
     /**
+     * 保存付款单
+     * author forever爱
+     */
+    boolean saveByBillNo(ModifyDTO modifyDTO, UserDTO userDTO);
+
+    /**
      * 添加付款单
      * param prepaymentDTO
      * return

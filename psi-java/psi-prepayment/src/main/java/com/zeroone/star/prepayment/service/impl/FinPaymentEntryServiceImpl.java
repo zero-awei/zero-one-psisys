@@ -50,6 +50,25 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
         return saveBatch(finPaymentEntryList);
     }
 
+    /**
+     * 保存付款单明细
+     * author forever爱
+     */
+    @Override
+    public boolean saveByBillNo(ModifyDTO modifyDTO) {
+        QueryWrapper<FinPaymentEntry> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("billNo", modifyDTO.getBillNo());
+        baseMapper.delete(queryWrapper);
+        List<FinPaymentEntryDTO> entryDTOList = modifyDTO.getEntryDTOList();
+        List<FinPaymentEntry> finPaymentEntryList = entryDTOList.stream().map(
+                dto -> {
+                    FinPaymentEntry entity = new FinPaymentEntry();
+                    BeanUtils.copyProperties(dto, entity);
+                    return entity;
+                }
+        ).collect(Collectors.toList());
+        return saveBatch(finPaymentEntryList);
+    }
 
     /**
      * 添加

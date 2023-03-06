@@ -96,6 +96,26 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
     }
 
     /**
+     * 保存采购预付单功能
+     * TODO 测试
+     * billStage 12---编制中
+     * param ModifyDTO 保存DTO
+     * return 查询结果
+     * author forever爱
+     */
+    @Override
+    public boolean saveByBillNo(ModifyDTO modifyDTO, UserDTO userDTO) {
+        FinPayment finPayment = new FinPayment();
+        BeanUtil.copyProperties(modifyDTO, finPayment);
+        finPayment.setUpdateBy(userDTO.getUsername());
+        finPayment.setBillStage("12");
+        //根据单据编号修改finpayment表
+        UpdateWrapper<FinPayment> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("billNo", finPayment.getBillNo());
+        return update(finPayment,updateWrapper);
+    }
+
+    /**
      * 添加采购预付单
      * Author: Kong
      */

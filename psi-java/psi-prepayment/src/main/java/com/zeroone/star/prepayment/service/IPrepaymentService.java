@@ -34,6 +34,14 @@ public interface IPrepaymentService {
     JsonVO<String> auditById(AuditDTO auditDTO, UserDTO userDTO);
 
     /**
+     * 保存采购预付单功能
+     * param ModifyDTO 保存DTO
+     * return 查询结果
+     * author forever爱
+     */
+    JsonVO<String> save(ModifyDTO modifyDTO, UserDTO userDTO);
+
+    /**
      * 单据列表查询
      * param condition 查询条件
      * return 查询结果

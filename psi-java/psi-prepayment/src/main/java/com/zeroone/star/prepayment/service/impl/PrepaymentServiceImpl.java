@@ -89,6 +89,24 @@ public class PrepaymentServiceImpl extends ServiceImpl<FinPaymentEntryMapper, Fi
     }
 
     /**
+     * 保存采购预付单功能
+     * author forever爱
+     * since 2023-02-13
+     */
+    @Override
+    public JsonVO<String> save(ModifyDTO modifyDTO, UserDTO userDTO) {
+        //1、finPayment表中数据修改
+        finPaymentService.saveByBillNo(modifyDTO,userDTO);
+        //2、finPaymentEntry表中数据修改
+        boolean flag = finPaymentEntryService.saveByBillNo(modifyDTO);
+        //3、判断成功还是失败
+        if (flag){
+            return JsonVO.success("保存成功");
+        }
+        return JsonVO.fail("保存失败");
+    }
+
+    /**
      * 单据分页查询
      * 采购预付（有申请）：payment_type 2011
      * 采购预付（无申请）：payment_type 2010

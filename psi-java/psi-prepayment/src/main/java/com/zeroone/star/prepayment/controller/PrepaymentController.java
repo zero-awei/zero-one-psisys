@@ -77,6 +77,27 @@ public class PrepaymentController implements PrepaymentApis {
         return prepaymentService.auditById(auditDTO,currentUser);
     }
 
+    /**
+     * 保存采购预付单功能
+     * param ModifyDTO 保存DTO
+     * return 查询结果
+     * author forever爱
+     */
+    @PutMapping("save")
+    @ApiOperation("保存采购预付单功能（返回值data值表示更新成功与否）")
+    @Override
+    public JsonVO<String> save(ModifyDTO modifyDTO) {
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+        if (currentUser == null) {
+            return JsonVO.fail(null);
+        }
+        return prepaymentService.save(modifyDTO,currentUser);
+    }
 
     /**
      * 单据分页查询

@@ -58,6 +58,14 @@ public interface PrepaymentApis {
     JsonVO<String> auditById(AuditDTO auditDTO);
 
     /**
+     * 保存采购预付单功能
+     * param ModifyDTO 保存DTO
+     * return 查询结果
+     * author forever爱
+     */
+    JsonVO<String> save(ModifyDTO modifyDTO);
+
+    /**
      * 单据列表查询(有申请)和(无申请)
      * param condition 查询条件
      * return 查询结果
