@@ -2,13 +2,14 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-28 11:07:12
+ * @LastEditTime: 2023-03-05 17:00:15
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div>
     <!-- 分类字典 -->
+
     <el-row style="margin-top:10px;margin-bottom:5px">
       <el-button type="primary" @click="categoryAddDialogVisible = true">新增</el-button>
     </el-row>
@@ -52,13 +53,21 @@
         @size-change="handleSizeChange" @current-change="handleCurrentChange" @prev-click="handlePrevClickChange"
         @next-click="handleNextClickChange" />
       <!--  @size-change="handleSizeChange"
-                                                      @current-change="handleCurrentChange" -->
+                                                          @current-change="handleCurrentChange" -->
     </div>
+
+
+    <psi-dialog ref="menuAddDialog" v-model="categoryAddDialogVisible" :attrs="categoryAddDialogAttrs"
+      @determine="handleAddCategory">
+      <psi-form :items="addCategoryItems" :formData="addCategoryFormData" :buttonShow="false"></psi-form>
+
+    </psi-dialog>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, toRefs } from 'vue'
+
 
 // 表格相关
 const tableState = reactive({
@@ -99,6 +108,58 @@ const pagination = reactive({
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
+// 新增菜单对话框配置
+let categoryAddDialogVisible = ref(false)
+const categoryAddDialogState = reactive({
+  categoryAddDialogAttrs: {
+    title: '新增菜单',
+    width: '50%',
+    determine: true,  //对话框的确定按钮生效
+  }
+})
+const { categoryAddDialogAttrs } = toRefs(categoryAddDialogState)
+
+const addCategoryState = reactive({
+  addCategoryItems: [
+
+    {
+      type: 'input',
+      label: '菜单名称',
+      prop: 'name',
+      placeholder: '请输入',
+    },
+    // {
+    //   type: 'select',
+    //   label: '父目录',
+    //   prop: 'parentId',
+    //   placeholder: '请选择',
+    //   options: parentMenusOptions
+    // },
+    {
+      type: 'input',
+      label: 'url路径',
+      prop: 'path',
+      placeholder: '请输入',
+    },
+    {
+      type: 'input',
+      label: '权限码',
+      prop: 'permissionId',
+      placeholder: '请输入',
+    },
+
+  ],
+  addCategoryFormData: {
+    name: '',     // 菜单名称
+    parentId: '', // 父目录
+    path: '',     // url路径
+    permissionId: '',// 权限码
+  }
+})
+
+const { addCategoryItems, addCategoryFormData, } = toRefs(addCategoryState)
+
+// const parentMenusOptions=[]
 
 
 // -------- 方法---------

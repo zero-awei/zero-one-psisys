@@ -1,3 +1,11 @@
+<!--
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-03-04 19:07:02
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-03-05 14:56:15
+ * @FilePath: \psi-frontend\src\components\home\CenterCom1.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="top">
   <!--ToDo 2.5系统收支概况 -->
@@ -22,14 +30,14 @@
                           <p>math</p>
                         </el-col>
                         <el-col :span="8">
-                                      <span>欠供应商（元）</span>
-                                      <p>math</p>
-                                    </el-col>   
-                                 </el-row>
-                              </div >  
-                        </el-card>
-                      </el-col>
-               -->
+                                        <span>欠供应商（元）</span>
+                                        <p>math</p>
+                                      </el-col>   
+                                   </el-row>
+                                </div >  
+                          </el-card>
+                        </el-col>
+                 -->
 
     <el-row>
       <el-col class="head" :span="12">
@@ -40,7 +48,7 @@
               <span>概况</span>
               <!-- 更新图标 加事件 -->
               <el-icon class="icon1">
-                <Refresh @click=" doGetSysList"/> 
+                <Refresh @click="doGetSysList" />
                 <!-- <Refresh/>  -->
               </el-icon>
             </div>
@@ -70,7 +78,7 @@
             <div class="card-header">
               <span>客户</span>
               <el-icon class="icon2">
-                <Refresh @click="doGetCusList()"/>
+                <Refresh @click="doGetCusList()" />
               </el-icon>
             </div>
           </template>
@@ -105,7 +113,7 @@
               <span>供应商</span>
               <!-- 更新图标 加事件 -->
               <el-icon class="icon3">
-                <Refresh @click="doGetSupList()"/>
+                <Refresh @click="doGetSupList()" />
               </el-icon>
             </div>
           </template>
@@ -113,19 +121,19 @@
             <div class="body">
               <div class="head-info.center">
                 <span>本日+</span>
-                <p>{{SupList.benri.value}}</p>
+                <p>{{ SupList.benri.value }}</p>
               </div>
               <div class="head-info.center">
                 <span>本周+</span>
-                <p>{{SupList.benzhou.value}}</p>
+                <p>{{ SupList.benzhou.value }}</p>
               </div>
               <div class="head-info.center">
                 <span>本月+</span>
-                <p>{{SupList.benyue.value}}</p>
+                <p>{{ SupList.benyue.value }}</p>
               </div>
               <div class="head-info.center">
                 <span>供应商数</span>
-                <p>{{SupList.gongyingshangshu.value}}</p>
+                <p>{{ SupList.gongyingshangshu.value }}</p>
               </div>
             </div>
           </div>
@@ -137,8 +145,8 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { getCusList, getSysList} from './api/CenterCom.js'
-import {getSupList} from './api/datalist.js'
+import { getCusList, getSysList } from './api/CenterCom.js'
+import { getSupList } from './api/datalist.js'
 import { Refresh } from '@element-plus/icons-vue'
 
 // 数据
@@ -151,18 +159,18 @@ const SysList = reactive({
 
 // 客户数量
 const CusList = reactive({
-  benri:{},
-  benzhou:{},
-  benyue:{},
-  kehushu:{}
+  benri: {},
+  benzhou: {},
+  benyue: {},
+  kehushu: {}
 })
 
 //供应商数量
 const SupList = reactive({
-  benri:{},
-  benzhou:{},
-  benyue:{},
-  gongyingshangshu:{}
+  benri: {},
+  benzhou: {},
+  benyue: {},
+  gongyingshangshu: {}
 })
 
 
@@ -234,29 +242,37 @@ function doGetSupList() {
   min-width: 1052px;
   width: 1192px;
 }
+
 .head {
   height: 160px;
   padding: 4px;
 }
+
 .el-icon {
   color: blue;
 }
+
 .icon2 {
   left: 200px;
 }
+
 .icon1 {
   left: 480px;
 }
+
 .icon3 {
   left: 150px;
 }
+
 .card-header span {
   color: black;
   font-size: 16px;
 }
+
 .card-bottom1 {
   height: 67px;
 }
+
 .card-bottom1 span {
   color: rgba(0, 0, 0, .45);
   display: inline-block;
@@ -264,20 +280,25 @@ function doGetSupList() {
   line-height: 22px;
   margin-bottom: 4px;
 }
+
 .card-bottom1 p {
   color: rgba(0, 0, 0, .85);
   font-size: 30px;
   line-height: 32px;
 }
+
 .body {
   display: flex;
 }
+
 .body div {
   padding: 4px;
 }
+
 .card-bottom2 .head-info.center {
   padding: 4px;
 }
+
 .card-bottom2 span {
   color: rgba(0, 0, 0, .45);
   display: inline-block;
@@ -285,9 +306,9 @@ function doGetSupList() {
   line-height: 22px;
   margin-bottom: 4px;
 }
+
 .card-bottom2 p {
   color: rgba(0, 0, 0, .85);
   font-size: 30px;
   line-height: 32px;
-}
-</style>
+}</style>

@@ -13,7 +13,10 @@ export const queryBasBankAccount = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     currBaseUrl + '/query-bas-bank-account',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -40,7 +43,9 @@ export const queryBasBankAccount = (data, success, fail) => {
  */
 
 export const queryInvoiceType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-type', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -66,7 +71,9 @@ export const queryInvoiceType = (data, success, fail) => {
  */
 
 export const queryBillStage = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-type', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -92,7 +99,9 @@ export const queryBillStage = (data, success, fail) => {
  */
 
 export const queryPurchaseType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-purchase-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-purchase-type', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -118,7 +127,9 @@ export const queryPurchaseType = (data, success, fail) => {
  */
 
 export const queryTaxType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-tax-rate', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-tax-rate', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -144,7 +155,9 @@ export const queryTaxType = (data, success, fail) => {
  */
 
 export const queryTaxScaleType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-tax-scale', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-tax-scale', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -170,7 +183,14 @@ export const queryTaxScaleType = (data, success, fail) => {
  */
 
 export const queryInvoiceMethodType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-invoice-method', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-invoice-method',
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -199,7 +219,10 @@ export const queryTransportMethod = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     currBaseUrl + '/query-transport-method',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -226,7 +249,9 @@ export const queryTransportMethod = (data, success, fail) => {
  */
 
 export const querySettleMethod = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-settle-method', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-settle-method', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -252,7 +277,9 @@ export const querySettleMethod = (data, success, fail) => {
  */
 
 export const queryCurrencyType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-Currency-Type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-Currency-Type', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -278,7 +305,9 @@ export const queryCurrencyType = (data, success, fail) => {
  */
 
 export const queryDeliveryType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-Delivery-Type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-Delivery-Type', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -304,7 +333,9 @@ export const queryDeliveryType = (data, success, fail) => {
  */
 
 export const queryWarehouse = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-Warehouse', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-Warehouse', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -329,7 +360,9 @@ export const queryWarehouse = (data, success, fail) => {
  * @param fail 查询失败
  */
 export const queryArea = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-area', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-area', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -355,7 +388,9 @@ export const queryArea = (data, success, fail) => {
  */
 
 export const queryMaterialType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-material-type', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/query-material-type', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -381,7 +416,14 @@ export const queryMaterialType = (data, success, fail) => {
  */
 
 export const queryPaymethodType = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-paymethod-type', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-paymethod-type',
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -410,7 +452,10 @@ export const queryDeliverymethodType = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     currBaseUrl + '/query-deliverymothod-type',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -437,7 +482,14 @@ export const queryDeliverymethodType = (data, success, fail) => {
  */
 
 export const querySuppliersName = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/query-suppliers-name', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/query-suppliers-name',
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -463,7 +515,14 @@ export const querySuppliersName = (data, success, fail) => {
  */
 
 export const querySuppliersLevel = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/qurey-supplier-level', data)
+  Request.requestForm(
+    Request.GET,
+    currBaseUrl + '/qurey-supplier-level',
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
+  )
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -492,7 +551,10 @@ export const querySupplierAdvancedCriteria = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     currBaseUrl + '/qurey-supplier-advanced_criteria',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -522,7 +584,10 @@ export const queryDepart = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     '/sysmanagement/usermanagement/list-depart',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -547,7 +612,9 @@ export const queryDepart = (data, success, fail) => {
  * @param fail 查询失败
  */
 export const getUser = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-user', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-user', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -567,7 +634,9 @@ export const getUser = (data, success, fail) => {
 
 // 22.查询指定物料规格型号/单位
 export const getMaterial = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-material', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-material', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -587,7 +656,9 @@ export const getMaterial = (data, success, fail) => {
 
 // 23.业务部门结构（用于输入查询条件）
 export const getDepart = (data, success, fail) => {
-  Request.requestForm(Request.GET, currBaseUrl + '/get-depart', data)
+  Request.requestForm(Request.GET, currBaseUrl + '/get-depart', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调
@@ -610,7 +681,10 @@ export const queryBasWareHouseTreeList = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     currBaseUrl + '/query-bas-ware-house-tree-list',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -634,7 +708,10 @@ export const queryMaterialTreeList = (data, success, fail) => {
   Request.requestForm(
     Request.GET,
     currBaseUrl + '/query-material-type-tree-list',
-    data
+    data,
+    {
+      baseURL: import.meta.env.VITE_API_C1
+    }
   )
     .then((data) => {
       if (data.data) {
@@ -655,7 +732,9 @@ export const queryMaterialTreeList = (data, success, fail) => {
 
 //26 请求新单据编号（根据新增类型生成新单据编号）
 export const createReceipt = (data, success, fail) => {
-  Request.requestForm(Request.PUT, currBaseUrl + '/create-receipt', data)
+  Request.requestForm(Request.PUT, currBaseUrl + '/create-receipt', data, {
+    baseURL: import.meta.env.VITE_API_C1
+  })
     .then((data) => {
       if (data.data) {
         // 执行成功回调

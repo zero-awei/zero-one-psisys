@@ -1,18 +1,15 @@
-import { query } from '@/views/sysmanage/api/addressbook.js'
-import { queryOrganizationName } from '@/views/sysmanage/api/addressbook.js'
-import { queryOrganizationTreeName } from '@/views/sysmanage/api/addressbook.js'
-import { download } from '@/views/sysmanage/api/addressbook.js'
-import { downloadUrl } from '@/views/sysmanage/api/addressbook.js'
+import { deleteDict } from '@/views/sysmanage/api/classifieddictionary.js'
+import { insert } from '@/views/sysmanage/api/classifieddictionary.js'
+import { queryAll } from '@/views/sysmanage/api/classifieddictionary.js'
+import { queryOne } from '@/views/sysmanage/api/classifieddictionary.js'
+import { updateOne } from '@/views/sysmanage/api/classifieddictionary.js'
 
-export function handleQuery() {
+export function handleDelete() {
   // 自定义请求参数
   let params = {}
-  params.realname = '张三'
-  params.workNo = '10'
-  params.pageIndex = 1
-  params.pageSize = 10
+  params.id = '9999'
 
-  query(
+  deleteDict(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -31,14 +28,13 @@ export function handleQuery() {
   )
 }
 
-export function handleQueryOrganizationName() {
+export function handleInsert() {
   // 自定义请求参数
   let params = {}
-  params.departName = '市场部'
-  params.pageIndex = 1
-  params.pageSize = 10
+  params.name = '张三1'
+  params.pid = '9999'
 
-  queryOrganizationName(
+  insert(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -57,14 +53,13 @@ export function handleQueryOrganizationName() {
   )
 }
 
-export function handleQueryOrganizationTreeName() {
+export function handleQueryAll() {
   // 自定义请求参数
   let params = {}
-  params.departName = '市场部'
   params.pageIndex = 1
-  params.pageSize = 10
+  params.ppageSizeid = 10
 
-  queryOrganizationTreeName(
+  queryAll(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -83,15 +78,13 @@ export function handleQueryOrganizationTreeName() {
   )
 }
 
-export function handleExcel() {
+export function handleUpdateOne() {
   // 自定义请求参数
   let params = {}
-  params.realname = '张三'
-  params.workNo = '10'
-  params.pageIndex = 1
-  params.pageSize = 10
+  params.id = '144'
+  params.name = '嘻嘻哈哈'
 
-  download(
+  updateOne(
     params,
     (data) => {
       console.log('全部请求data----', data)
@@ -110,15 +103,12 @@ export function handleExcel() {
   )
 }
 
-export function handleExcelUrl() {
+export function handleQueryOne() {
   // 自定义请求参数
   let params = {}
-  params.realname = '张三'
-  params.workNo = '10'
-  params.pageIndex = 1
-  params.pageSize = 10
+  params.pid = '1'
 
-  downloadUrl(
+  queryOne(
     params,
     (data) => {
       console.log('全部请求data----', data)
