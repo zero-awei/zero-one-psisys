@@ -1,7 +1,7 @@
 /*
  * @Author: li.ziwei
  * @Date: 2023-02-19 17:03:44
- * @LastEditTime: 2023-02-23 22:31:20
+ * @LastEditTime: 2023-03-05 20:21:33
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description:
  * @FilePath: \psi-frontend\src\views\yingfuyufukuan\payables\methods.js
@@ -47,3 +47,82 @@ export function getTableList(data, success, fail) {
 //       fail()
 //     })
 // }
+export function handleDeleteRole(data, success, fail) {
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+    .then((data) => {
+      if (data.code === 10000) {
+        console.log('hello')
+        console.log(data.data)
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+// 6.2 角色管理 新增角色
+export function handleSaveRole(data, success, fail) {
+  Request.requestForm(Request.POST, currBaseUrl + 'insert', data)
+    .then((data) => {
+      if (data.code === 10000) {
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+// const data = {
+//   pageIndex: '1',
+//   pageSize: '10',
+//   roleCode: 'third_role',
+//   roleName: '第三方登录角色'
+// }
+// 6.3 角色管理 分页查询角色权限
+export function handleQueryAllROle(data, success, fail) {
+  Request.requestForm(Request.GET, currBaseUrl + 'query-all', data)
+    .then((data) => {
+      if (data.code === 10000) {
+        console.log(data)
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}
+
+// 6.4 角色管理 修改信息
+export function handleUpdateRole(data, success, fail) {
+  Request.requestForm(Request.PUT, currBaseUrl + 'update', data)
+    .then((data) => {
+      if (data.code === 10000) {
+        console.log(data)
+        success(data.data)
+        return
+      }
+      fail()
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
+}

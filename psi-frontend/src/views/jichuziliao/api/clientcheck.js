@@ -26,7 +26,7 @@ export function addCustomer(data, success, fail) {
 
 // j2 3.10 普通条件分页查询
 export function queryCondition(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'query-condition', data, {
+  Request.requestForm(Request.GET, currBaseUrl + 'query-condition', data, {
     baseURL: import.meta.env.VITE_API_J2_BASE
   })
     .then((data) => {
