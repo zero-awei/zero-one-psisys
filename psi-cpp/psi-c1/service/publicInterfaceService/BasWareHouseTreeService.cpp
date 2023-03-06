@@ -39,8 +39,7 @@ PageVO<BasWareHouseTreeListVO> BasWareHouseTreeService::listAll(const BasWareHou
 					co.setCode(cb.getCode());
 					co.setCreateBy(cb.getCreateBy());
 
-					if (sub.getCreateBy() != "") co.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
-					else co.setCreateBy_dictText(u8"");
+					co.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
 
 					co.setCreateTime(cb.getCreateTime());
 					co.setAuxName(cb.getAuxName());
@@ -48,8 +47,7 @@ PageVO<BasWareHouseTreeListVO> BasWareHouseTreeService::listAll(const BasWareHou
 					co.setId(cb.getId());
 					co.setIsEnabled(cb.getIsEnabled());
 
-					if (sub.getIsEnabled() == 1) co.setIsEnable_dictText(CharsetConvertHepler::ansiToUtf8("是"));
-					else co.setIsEnable_dictText(CharsetConvertHepler::ansiToUtf8("否"));
+					co.setIsEnable_dictText(CharsetConvertHepler::ansiToUtf8("是"));
 
 					co.setPhone(cb.getPhone());
 					co.setName(cb.getName());
@@ -57,7 +55,7 @@ PageVO<BasWareHouseTreeListVO> BasWareHouseTreeService::listAll(const BasWareHou
 					co.setRemark(cb.getRemark());
 					co.setUpdateBy(cb.getUpdateBy());
 
-					if (cb.getUpdateBy() != "")	co.setUpdateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
+					if (cb.getUpdateBy() == "admin")	co.setUpdateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
 					else co.setUpdateBy_dictText("");
 
 					co.setUpdateTime(cb.getUpdateTime());
@@ -70,22 +68,20 @@ PageVO<BasWareHouseTreeListVO> BasWareHouseTreeService::listAll(const BasWareHou
 		BasWareHouseTreeListVO vo;
 		vo.setCode(sub.getCode());
 		vo.setCreateBy(sub.getCreateBy());
-		if (sub.getCreateBy() != "") vo.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
-		else vo.setCreateBy_dictText(u8"");
+		vo.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
 		vo.setCreateTime(sub.getCreateTime());
 		vo.setAuxName(sub.getAuxName());
 		vo.setHasChild(sub.getHasChild());
 		vo.setId(sub.getId());
 		vo.setIsEnabled(sub.getIsEnabled());
-		if (sub.getIsEnabled() == 1)vo.setIsEnable_dictText(CharsetConvertHepler::ansiToUtf8("是"));
-		else vo.setIsEnable_dictText(CharsetConvertHepler::ansiToUtf8("否"));
+		vo.setIsEnable_dictText(CharsetConvertHepler::ansiToUtf8("是"));
 		vo.setName(sub.getName());
 
 		vo.setPhone(sub.getPhone());
 		vo.setRemark(sub.getRemark());
 		vo.setPid(sub.getPid());
 		vo.setUpdateBy(sub.getUpdateBy());
-		if (sub.getUpdateBy() != "") vo.setUpdateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
+		if (sub.getUpdateBy() == "admin") vo.setUpdateBy_dictText(CharsetConvertHepler::ansiToUtf8("管理员"));
 		else vo.setUpdateBy_dictText(u8"");
 		vo.setUpdateTime(sub.getUpdateTime());
 		vo.setVersion(sub.getVersion());
