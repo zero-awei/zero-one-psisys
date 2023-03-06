@@ -4,7 +4,7 @@ import com.zeroone.star.oauth2.entity.SysMenu;
 import com.zeroone.star.oauth2.entity.SysRole;
 import com.zeroone.star.oauth2.service.ISysMenuService;
 import com.zeroone.star.oauth2.service.ISysRoleService;
-import com.zeroone.star.project.constant.RedisConstant;
+import com.zeroone.star.project.components.easyexcel.constant.RedisConstant;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 

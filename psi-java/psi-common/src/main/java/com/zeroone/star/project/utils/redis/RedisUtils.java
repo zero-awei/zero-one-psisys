@@ -1,14 +1,11 @@
 package com.zeroone.star.project.utils.redis;
 
-import cn.hutool.core.collection.CollUtil;
-import com.zeroone.star.project.constant.RedisConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

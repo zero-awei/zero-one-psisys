@@ -11,23 +11,17 @@ import java.util.List;
 
 @SpringBootTest
 class Oauth2ApplicationTests {
-    @Resource
-    ISysRoleService roleService;
-
-
-    @Test
-    public void testRoleService() {
-        List<SysRole> sysRoles = roleService.listRoleByUserId("70f5dcf03f36471dabba81381919291f");
-        sysRoles.forEach(System.out::println);
-    }
-
 
     @Resource
     PasswordEncoder passwordEncoder;
 
     @Test
     public void testPasswordEncoder() {
-        System.out.println(passwordEncoder.encode("123456"));
+        System.out.println("------------------生成密码--------------------");
+        System.out.println("123456: " + passwordEncoder.encode("123456"));
+        System.out.println("admin: " + passwordEncoder.encode("admin"));
+        System.out.println("root: " + passwordEncoder.encode("root"));
+        System.out.println("------------------生成密码结束------------------");
     }
 
 }

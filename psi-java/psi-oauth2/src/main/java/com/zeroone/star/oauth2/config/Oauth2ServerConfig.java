@@ -2,7 +2,7 @@ package com.zeroone.star.oauth2.config;
 
 import com.zeroone.star.oauth2.entity.SecurityUser;
 import com.zeroone.star.oauth2.service.impl.UserDetailsServiceImpl;
-import com.zeroone.star.project.constant.AuthConstant;
+import com.zeroone.star.project.components.easyexcel.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

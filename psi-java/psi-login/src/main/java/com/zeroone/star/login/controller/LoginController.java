@@ -4,16 +4,14 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.zeroone.star.login.entity.SysMenu;
 import com.zeroone.star.login.entity.SysRole;
 import com.zeroone.star.login.entity.SysUser;
 import com.zeroone.star.login.service.*;
 import com.zeroone.star.login.utils.CommonUtils;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
-import com.zeroone.star.project.constant.AuthConstant;
-import com.zeroone.star.project.constant.RedisConstant;
+import com.zeroone.star.project.components.easyexcel.constant.AuthConstant;
+import com.zeroone.star.project.components.easyexcel.constant.RedisConstant;
 import com.zeroone.star.project.dto.login.LoginDTO;
 import com.zeroone.star.project.dto.login.Oauth2TokenDTO;
 import com.zeroone.star.project.login.LoginApis;
@@ -29,10 +27,8 @@ import com.zeroone.star.project.vo.login.MenuTreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -307,10 +303,10 @@ public class LoginController implements LoginApis {
         String imageBase64 = lineCaptcha.getImageBase64();
         log.info("imageBase64: {}", imageBase64);
 
-        // 2. 将验证码放到redis，有效时间为60s
+        // 2. 将验证码放到redis，有效时间为600s
         String redisKey = CommonUtils.generateRedisKey(RedisConstant.CAPTCHA, captcha);
 
-        if (redisUtils.add(redisKey, captcha, 60L, TimeUnit.SECONDS) < 0) {
+        if (redisUtils.add(redisKey, captcha, 600L, TimeUnit.SECONDS) < 0) {
             return JsonVO.fail(null, ResultStatus.SERVER_ERROR);
         }
 
