@@ -40,7 +40,12 @@ class AddPayDTO
 	CC_SYNTHESIZE(bool, is_closed, Is_closed);
 	// 已作废
 	CC_SYNTHESIZE(bool, is_voided, Is_voided);
-	
+	//是否自动生成
+	CC_SYNTHESIZE(int, is_auto, Is_auto);
+	//是否红字
+	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
+	//版本
+	CC_SYNTHESIZE(int, version, Version);
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, AddPayDTO& t) {
@@ -59,8 +64,11 @@ public:
 		BIND_FROM_TO_B(j, t, is_effective);
 		BIND_FROM_TO_B(j, t, is_closed);
 		BIND_FROM_TO_B(j, t, is_voided);
+		BIND_FROM_TO_I(j, t, is_auto);
+		BIND_FROM_TO_I(j, t, is_rubric);
+		BIND_FROM_TO_I(j, t, version);
 	}; // NOLINT
-	BIND_TO_JSON(AddPayDTO, id, bill_no, bill_date, subject, op, op_dept, supplier_id, remark, attachment, detail, bill_stage, is_effective, is_closed, is_voided);
+	BIND_TO_JSON(AddPayDTO, id, bill_no, bill_date, subject, op, op_dept, supplier_id, remark, attachment, detail, bill_stage, is_effective, is_closed, is_voided, is_auto, is_rubric, version);
 };
 
 #endif // !_SAMPLE_DTO_

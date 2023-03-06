@@ -165,15 +165,17 @@ uint64_t PrepaymentDAO::insertPrepay(const PrepaymentDO& iObj)
 		<< "`id`,`bill_no`,`bill_date`, `src_bill_type`,`src_bill_id`,"
 		<< "`src_no`,`subject`,`payment_type`,`supplier_id`,`op_dept`,"
 		<< "`operator`,`amt`,`paid_amt`,`attachment`,`remark`,"
-		<< "`is_auto`,`bill_stage`,`sys_org_code`,`create_by`,`create_time`"
-		<< ") VALUES (" << ValueNum(19) << ",NOW())";
+		<< "`is_auto`,`is_rubric`,`version`,`bill_stage`,`sys_org_code`,"
+		<< "`create_by`,`create_time`) VALUES (" << ValueNum(21) << ",NOW())";
 	string sqlStr = sql.str();
-	result = sqlSession->executeUpdate(sqlStr, "%s%s%s%s%s%s%s%s%s%s%s%d%d%s%s%i%s%s%s",
+	result = sqlSession->executeUpdate(sqlStr, "%s%s%s%s%s%s%s%s%s%s%s%d%d%s%s%i%i%i%s%s%s",
 		iObj.getId(), iObj.getBill_no(), iObj.getBill_begin_date(), iObj.getSrc_bill_type(), iObj.getSrc_bill_id(),
 		iObj.getSrc_no(), iObj.getSubject(), iObj.getPayment_type(), iObj.getSupplier_id(), iObj.getOp_dept(),
 		iObj.getOperator(), iObj.getAmt(), iObj.getPaid_amt(), iObj.getAttachment(), iObj.getRemark(),
-		iObj.getIs_auto(), iObj.getBill_stage(), iObj.getSys_org_code(), iObj.getCreate_by()
+		iObj.getIs_auto(), iObj.getIs_rubric(), iObj.getVersion(), iObj.getBill_stage(), iObj.getSys_org_code(),
+		iObj.getCreate_by()
 	);
+	if (result == 0) return result;
 	sql.clear();
 	sql.str("");
 	sql << "INSERT INTO `fin_payment_req_entry` "
@@ -204,16 +206,19 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 	sql << "UPDATE `fin_payment_req` SET "
 		<< "`bill_date`=?, `src_bill_type`=?,`src_bill_id`=?,`src_no`=?,`subject`=?,"
 		<< "`supplier_id`=?,`op_dept`=?,`operator`=?,`amt`=?,`paid_amt`=?,"
-		<< "`attachment`=?,`remark`=?,`update_by`=?,"
+		<< "`is_auto`=?,`is_rubric`=?,`version`=?,`bill_stage`=?,`attachment`=?,"
+		<< "`remark`=?,`update_by`=?,"
 		<< "`update_time`=NOW() WHERE `id`=?";
 	string sqlStr = sql.str();
 	int result;
-	result = sqlSession->executeUpdate(sqlStr, "%s%s%s%s%s%s%s%s%d%d%s%s%s%s",
-		uObj.getBill_begin_date(), uObj.getSrc_bill_type(), uObj.getSrc_bill_id(), uObj.getSrc_no(),
-		uObj.getSubject(), uObj.getSupplier_id(), uObj.getOp_dept(), uObj.getOperator(), uObj.getAmt(),
-		uObj.getPaid_amt(), uObj.getAttachment(), uObj.getRemark(), uObj.getUpdate_by(), uObj.getId()
-	);
+	result = sqlSession->executeUpdate(sqlStr, "%s%s%s%s%s%s%s%s%d%d%i%i%i%s%s%s%s%s",
+		uObj.getBill_begin_date(), uObj.getSrc_bill_type(), uObj.getSrc_bill_id(), uObj.getSrc_no(), uObj.getSubject(),
+		uObj.getSupplier_id(), uObj.getOp_dept(), uObj.getOperator(), uObj.getAmt(), uObj.getPaid_amt(),
+		uObj.getIs_auto(), uObj.getIs_rubric(), uObj.getVersion(), uObj.getBill_stage(), uObj.getAttachment(),
+		 uObj.getRemark(), uObj.getUpdate_by(), uObj.getId()
+	); 
 	//Çå³ýÃ÷Ï¸
+	if (result == 0) return result;
 	sql.clear();
 	sql.str("");
 	sql << "DELETE FROM `fin_payment_req_entry` WHERE `mid`= ? ";
