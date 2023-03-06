@@ -12,7 +12,7 @@ Author C1-三木
 class SupplierQueryCriteriaVO
 {
 	// 查询条件编号
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 查询条件名称
 	CC_SYNTHESIZE(string, name, Name);
 public:
