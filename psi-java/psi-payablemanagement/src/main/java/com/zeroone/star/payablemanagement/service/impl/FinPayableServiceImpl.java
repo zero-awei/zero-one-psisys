@@ -49,6 +49,7 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
     @Override
     public PageVO<PayableVO> getAll(PayableQuery query) {
+        query.setPageIndex(query.getPageIndex() * query.getPageSize());
         List<PayableVO> list = mapper.getAllPayable(query);
         if (list.isEmpty()) {
             return null;
