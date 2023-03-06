@@ -9,46 +9,46 @@ using namespace std;
 JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<ExportSupplierQuery>& query, const PayloadDTO& payload)
 {
 	vector<vector<std::string>> data;
-	data.push_back({ CharsetConvertHepler::ansiToUtf8("供应商报表") });
+	data.push_back({ "供应商报表" });
 	vector<std::string> header{
-		CharsetConvertHepler::ansiToUtf8("编码"),
-		CharsetConvertHepler::ansiToUtf8("名称"),
-		CharsetConvertHepler::ansiToUtf8("简称"),
-		CharsetConvertHepler::ansiToUtf8("助记名"),
-		CharsetConvertHepler::ansiToUtf8("供应商分类"),
-		CharsetConvertHepler::ansiToUtf8("供应商等级"),
-		CharsetConvertHepler::ansiToUtf8("纳税规模"),
-		CharsetConvertHepler::ansiToUtf8("所属总公司"),
-		CharsetConvertHepler::ansiToUtf8("所属地区"),
-		CharsetConvertHepler::ansiToUtf8("业务区域"),
-		CharsetConvertHepler::ansiToUtf8("客户地址"),
-		CharsetConvertHepler::ansiToUtf8("客户网站"),
-		CharsetConvertHepler::ansiToUtf8("法人代表"),
-		CharsetConvertHepler::ansiToUtf8("法人电话"),
-		CharsetConvertHepler::ansiToUtf8("财务信息联系人"),
-		CharsetConvertHepler::ansiToUtf8("财务信息联系电话"),
-		CharsetConvertHepler::ansiToUtf8("开票信息单位名称"),
-		CharsetConvertHepler::ansiToUtf8("开票信息税号"),
-		CharsetConvertHepler::ansiToUtf8("开票信息开户行"),
-		CharsetConvertHepler::ansiToUtf8("开票信息银行账号"),
-		CharsetConvertHepler::ansiToUtf8("开票信息账号"),
-		CharsetConvertHepler::ansiToUtf8("开票信息联系电话"),
-		CharsetConvertHepler::ansiToUtf8("开票地址"),
-		CharsetConvertHepler::ansiToUtf8("办款资料单位名称"),
-		CharsetConvertHepler::ansiToUtf8("办款资料开户行"),
-		CharsetConvertHepler::ansiToUtf8("办款资料行号"),
-		CharsetConvertHepler::ansiToUtf8("办款资料账号"),
-		CharsetConvertHepler::ansiToUtf8("收件信息收件人"),
-		CharsetConvertHepler::ansiToUtf8("收件信息联系电话"),
-		CharsetConvertHepler::ansiToUtf8("收件信息传真"),
-		CharsetConvertHepler::ansiToUtf8("recvEmail"),
-		CharsetConvertHepler::ansiToUtf8("收件信息地址"),
-		CharsetConvertHepler::ansiToUtf8("收件信息邮编"),
-		CharsetConvertHepler::ansiToUtf8("附件"),
-		CharsetConvertHepler::ansiToUtf8("是否启用"),
-		CharsetConvertHepler::ansiToUtf8("备选供应商"),
-		CharsetConvertHepler::ansiToUtf8("备注"),
-		CharsetConvertHepler::ansiToUtf8("版本"),
+		"编码",
+		"名称",
+		"简称",
+		"助记名",
+		"供应商分类",
+		"供应商等级",
+		"纳税规模",
+		"所属总公司",
+		"所属地区",
+		"业务区域",
+		"客户地址",
+		"客户网站",
+		"法人代表",
+		"法人电话",
+		"财务信息联系人",
+		"财务信息联系电话",
+		"开票信息单位名称",
+		"开票信息税号",
+		"开票信息开户行",
+		"开票信息银行账号",
+		"开票信息账号",
+		"开票信息联系电话",
+		"开票地址",
+		"办款资料单位名称",
+		"办款资料开户行",
+		"办款资料行号",
+		"办款资料账号",
+		"收件信息收件人",
+		"收件信息联系电话",
+		"收件信息传真",
+		"recvEmail",
+		"收件信息地址",
+		"收件信息邮编",
+		"附件",
+		"是否启用",
+		"备选供应商",
+		"备注",
+		"版本"
 	};
 	data.push_back(header);
 	stringstream ss;
@@ -230,7 +230,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<Expo
 			ss.str("");
 
 			if (sub.getIsEnabled() == 1) {
-				row.push_back(CharsetConvertHepler::ansiToUtf8("是"));
+				row.push_back("是");
 			}
 
 			ss.clear();
