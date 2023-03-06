@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "BankAccountController.h"
 #include"CharsetConvertHepler.h"
 #include "../../service/bankAccountService/BankAccountService.h"
@@ -11,14 +11,14 @@ JsonVO<PageVO<SpecifiedBankAccountListVO>> BankAccountController::execSpecifiedB
 	vo.setBankAddress("");
 	vo.setBankNo("");
 	vo.setCreateBy("psi");
-	vo.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("¹ÜÀíÔ±"));
+	vo.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("ç®¡ç†å‘˜"));
 	vo.setCreateTime("2023-01-14 00:46:24");
 	vo.setCurrency("CNY");
-	vo.setCurrency_dictText(CharsetConvertHepler::ansiToUtf8("ÈËÃñ±Ò"));
+	vo.setCurrency_dictText(CharsetConvertHepler::ansiToUtf8("äººæ°‘å¸"));
 	vo.setId("1625174558616363009");
 	vo.setInitBal(0);
 	vo.setIsEnabled(1);
-	vo.setIsEnabled_dictText(CharsetConvertHepler::ansiToUtf8("ÊÇ"));
+	vo.setIsEnabled_dictText(CharsetConvertHepler::ansiToUtf8("æ˜¯"));
 	vo.setManager("");
 	vo.setName("123");
 	vo.setRemark("");
@@ -41,10 +41,10 @@ JsonVO<PageVO<SpecifiedBankAccountListVO>> BankAccountController::execSpecifiedB
 
 JsonVO<PageVO<BankAccountListVO>> BankAccountController::executequeryBankAccountList(BankAccountQuery& query)
 {
-	//¶¨ÒåÒ»¸öService
+	//å®šä¹‰ä¸€ä¸ªService
 	BankAccountService service;
-	//²éÑ¯Êı¾İ
+	//æŸ¥è¯¢æ•°æ®
 	PageVO<BankAccountListVO> result = service.listAll(query);
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return JsonVO<PageVO<BankAccountListVO>>(result, RS_SUCCESS);
 }
