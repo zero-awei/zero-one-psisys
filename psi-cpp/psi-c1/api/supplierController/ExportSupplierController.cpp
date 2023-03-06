@@ -230,7 +230,7 @@ JsonVO<std::string> ExportSupplierController::execExportSupplier(const list<Expo
 			ss.str("");
 
 			if (sub.getIsEnabled() == 1) {
-				row.push_back(CharsetConvertHepler::ansiToUtf8("是"));
+				row.push_back("是");
 			}
 
 			ss.clear();
