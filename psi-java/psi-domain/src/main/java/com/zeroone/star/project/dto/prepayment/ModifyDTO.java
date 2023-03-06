@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -33,8 +34,8 @@ public class ModifyDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
-//    @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
-//    private String billNo;
+    @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
+    private String billNo;
 
     @ApiModelProperty(value = "备注",example = "测试用")
     private String remark;

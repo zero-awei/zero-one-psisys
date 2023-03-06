@@ -29,7 +29,7 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
      */
     @Override
     public boolean updateById(ModifyDTO modifyDTO) {
-        QueryWrapper<FinPaymentEntry> queryWrapper = new QueryWrapper();
+        QueryWrapper<FinPaymentEntry> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("mid", modifyDTO.getId());
         baseMapper.delete(queryWrapper);
         List<FinPaymentEntryDTO> entryDTOList = modifyDTO.getEntryDTOList();
@@ -49,6 +49,7 @@ public class FinPaymentEntryServiceImpl extends ServiceImpl<FinPaymentEntryMappe
         ).collect(Collectors.toList());
         return saveBatch(finPaymentEntryList);
     }
+
 
     /**
      * 添加
