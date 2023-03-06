@@ -1,15 +1,16 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "MaterialTypeTreeService.h"
+#include"CharsetConvertHepler.h"
 #include"../../dao/publicInterfaceDao/MaterialTypeTreeDAO.h"
 
 PageVO<MaterialTypeTreeListVO> MaterialTypeTreeListService::listAll(const MaterialTypeItemQuery& query)
 {
 
-	//¹¹½¨·µ»Ø¶ÔÏó
+	//æ„å»ºè¿”å›å¯¹è±¡
 	PageVO<MaterialTypeTreeListVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
-	//²éÑ¯Êı¾İ×ÜÌõÊı
+	//æŸ¥è¯¢æ•°æ®æ€»æ¡æ•°
 	MaterialTypeTreeDO obj;
 	obj.setName(query.getName());
 	obj.setCode(query.getCode());
@@ -19,16 +20,16 @@ PageVO<MaterialTypeTreeListVO> MaterialTypeTreeListService::listAll(const Materi
 	{
 		return pages;
 	}
-	//·ÖÒ³²éÑ¯Êı¾İ
+	//åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	pages.setTotal(count);
 	pages.calcPages();
 	list<MaterialTypeTreeDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
 	list<MaterialTypeTreeListVO> vp;
-	//×Ó½Úµãlist
+	//å­èŠ‚ç‚¹list
 	list<MaterialTypeTreeListVO> vc;
 	for (MaterialTypeTreeDO sub : result)
 	{
-		//·¢ÏÖÓĞ×Ó½Úµã¾Í¿ªÊ¼±éÀú
+		//å‘ç°æœ‰å­èŠ‚ç‚¹å°±å¼€å§‹éå†
 		vector< MaterialTypeTreeListVO> res;
 		if (sub.getHasChild() == "1") {
 			MaterialTypeTreeListVO co;
@@ -36,22 +37,22 @@ PageVO<MaterialTypeTreeListVO> MaterialTypeTreeListService::listAll(const Materi
 				if (cb.getPid() == sub.getId()) {
 					co.setCode(cb.getCode());
 					co.setCreateBy(cb.getCreateBy());
-					if (sub.getCreateBy() != "") co.setCreateBy_dictText(u8"¹ÜÀíÔ±");
-					else co.setCreateBy_dictText(u8"");
+					if (sub.getCreateBy() != "") co.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("ç®¡ç†å‘˜"));
+					else co.setCreateBy_dictText("");
 					co.setCreateTime(cb.getCreateTime());
 					co.setFullname(cb.getFullname());
 					co.setHasChild(cb.getHasChild());
-					co.setHasChild_dictText(u8"111");
+					co.setHasChild_dictText("");
 					co.setId(cb.getId());
 					co.setIsEnabled(cb.getIsEnabled());
-					if (sub.getIsEnabled() == 1) co.setIsEnabled_dictText(u8"ÊÇ");
-					else co.setIsEnabled_dictText(u8"·ñ");
+					if (sub.getIsEnabled() == 1) co.setIsEnabled_dictText(CharsetConvertHepler::ansiToUtf8("æ˜¯"));
+					else co.setIsEnabled_dictText(CharsetConvertHepler::ansiToUtf8("å¦"));
 					co.setName(cb.getName());
 					co.setPid(cb.getPid());
 					co.setUpdateBy(cb.getUpdateBy());
-					if (cb.getUpdateBy() != "")	co.setUpdateBy_dictText(u8"¹ÜÀíÔ±");
+					if (cb.getUpdateBy() != "")	co.setUpdateBy_dictText(CharsetConvertHepler::ansiToUtf8("ç®¡ç†å‘˜"));
 					else co.setUpdateBy_dictText(u8"");
-					co.setUpdateBy_dictText(u8"22");
+					co.setUpdateBy_dictText(u8"");
 					co.setUpdateTime(cb.getUpdateTime());
 					co.setVersion(cb.getVersion());
 					res.push_back(co);
@@ -62,21 +63,21 @@ PageVO<MaterialTypeTreeListVO> MaterialTypeTreeListService::listAll(const Materi
 		MaterialTypeTreeListVO vo;
 		vo.setCode(sub.getCode());
 		vo.setCreateBy(sub.getCreateBy());
-		if(sub.getCreateBy() != "") vo.setCreateBy_dictText(u8"¹ÜÀíÔ±");
-		else vo.setCreateBy_dictText(u8"");
+		if(sub.getCreateBy() != "") vo.setCreateBy_dictText(CharsetConvertHepler::ansiToUtf8("ç®¡ç†å‘˜"));
+		else vo.setCreateBy_dictText("");
 		vo.setCreateTime(sub.getCreateTime());
 		vo.setFullname(sub.getFullname());
 		vo.setHasChild(sub.getHasChild());
 		vo.setHasChild_dictText(u8"11");
 		vo.setId(sub.getId());
 		vo.setIsEnabled(sub.getIsEnabled());
-		if(sub.getIsEnabled() == 1)vo.setIsEnabled_dictText(u8"ÊÇ");
-		else vo.setIsEnabled_dictText(u8"·ñ");
+		if(sub.getIsEnabled() == 1)vo.setIsEnabled_dictText(CharsetConvertHepler::ansiToUtf8("æ˜¯"));
+		else vo.setIsEnabled_dictText(CharsetConvertHepler::ansiToUtf8("å¦"));
 		vo.setName(sub.getName());
 		vo.setPid(sub.getPid());
 		vo.setUpdateBy(sub.getUpdateBy());
-		if(sub.getUpdateBy()!="") vo.setUpdateBy_dictText(u8"¹ÜÀíÔ±");
-		else vo.setUpdateBy_dictText(u8"");
+		if(sub.getUpdateBy()!="") vo.setUpdateBy_dictText(CharsetConvertHepler::ansiToUtf8("ç®¡ç†å‘˜"));
+		else vo.setUpdateBy_dictText("");
 		vo.setUpdateTime(sub.getUpdateTime());
 		vo.setVersion(sub.getVersion());
 		vo.setChildren(res);
