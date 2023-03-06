@@ -5,26 +5,26 @@
 #include "../FileDTO.h"
 #include <map>
 
-//�޸Ķ���״̬��DTO ǰ����Ҫ����һ�����ݱ���Լ�״̬�޸���Ϣ
+// 采购付款申请
 class PaymentChangeDTO {
-	// ���
+	// id编号
 	CC_SYNTHESIZE(string, id, Id);
-	// ��������(�ر�/���ر�/����)
+	// 操作数
 	CC_SYNTHESIZE(int, opType, OpType);
-	// ���ݱ��
+	// 账单
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// �Ƿ���Ч
+	// 是否生效
 	//CC_SYNTHESIZE(bool, is_effective, Is_effective);
-	// ��Чʱ��
+	// 生效时间
 	//CC_SYNTHESIZE(string, effective_time, effective_time);
-	 //�Ƿ�ر�
+	 // 是否关闭
 	//CC_SYNTHESIZE(bool, is_closed, Is_closed);
-	//// �Ƿ�����
+	//  是否作废
 	//CC_SYNTHESIZE(bool, is_voided, Is_voided);
 public:
-	enum OPTYPE { CLOSE = 0, UNCLOSE = 1, CANCEL = 2 }; // ��������ö����
-	int OPS[3] = { 1, 0, 1 }; // �������Ͷ�Ӧ������
-	//��JSONת������
+	enum OPTYPE { CLOSE = 0, UNCLOSE = 1, CANCEL = 2 }; // 定义枚举操作数
+	int OPS[3] = { 1, 0, 1 }; 
+	// 绑定JSON
 	friend void from_json(const json& j, PaymentChangeDTO& t);
 };
 #endif // !_PUR_REQ_MOD_BILL_STATUS_DTO_

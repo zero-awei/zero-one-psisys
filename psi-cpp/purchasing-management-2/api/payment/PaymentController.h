@@ -13,23 +13,23 @@
 #include "../../domain/vo/payment/PaymentVO.h"
 
 /**
- * ������
+ * 采购付款申请订单
  */
 class PaymentController
 {
 public:
-	//�޸Ķ���״̬
+	//修改单据状态
 	CREATE_API_FUN_BODY_PAYLOAD(modifyPayment, execChangePayment, PaymentChangeDTO);
-	//ɾ��
+	//删除指定单据
 	CREATE_API_FUN_BODY(deleteById, execDePayment, DePaymentDTO);
-	//����
+	//添加单据
 	CREATE_API_FUN_BODY_PAYLOAD(AddPayment, execAddPayment, AddPaymentDTO);
 private:
-	//�޸ĵ���״̬���ر�/����/���رգ�
+	//修改单据状态
 	JsonVO<string> execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload);
-	//ɾ������
+	//删除单据
 	JsonVO<string> execDePayment(const DePaymentDTO& dto);
-	//��������
+	//添加单据
 	JsonVO<uint64_t> execAddPayment(const AddPaymentDTO& dto, const PayloadDTO& payload);
 
 };

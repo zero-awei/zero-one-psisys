@@ -36,20 +36,19 @@
 #include "FastDfsClient.h"
 
 /**
- * ?������?�?���?������?������?��
- * ?������?���?��?
+ * 采购付款申请单Service
  */
 class PaymentService
 {
 public:
-	// ?��ID?������
+	//  定义删除
 	bool DePayment(const  DePaymentDTO& dto);
-	// �??���??
+	//  定义修改订单状态且加上用户
 	bool ChangePayStatus(const PaymentChangeDTO& dto, const PayloadDTO& payload);
 
-	// ��������
+	//  定义添加（修改前）
 	bool AddPay(const AddPaymentDTO& dto);
-	//��������
+	//  定义添加且加上用户（修改后）
 	uint64_t saveData(const AddPaymentDTO& dto, const PayloadDTO& payload);
 
 };

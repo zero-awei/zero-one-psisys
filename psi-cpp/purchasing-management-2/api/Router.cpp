@@ -118,13 +118,17 @@ void Router::createStatisRouter() {
 
 // 采购付款申请
 // 负责人：最初
+// 负责人: 巴比龙
 void Router::createPaymentRouter()
 {
 	//修改单据状态
+	//负责人：最初
 	BIND_PUT_ROUTER(server, "/modify-payment-status", &PaymentController::modifyPayment, nullptr);
 	//删除单据
+	//负责人 ： 最初
 	BIND_DEL_ROUTER(server, "/DePayment", &PaymentController::deleteById, nullptr);
 	//添加单据
+	//负责人 : 最初
 	BIND_PUT_ROUTER(server, "/AppPayment", &PaymentController::AddPayment, nullptr);
 
 	//查询列表
