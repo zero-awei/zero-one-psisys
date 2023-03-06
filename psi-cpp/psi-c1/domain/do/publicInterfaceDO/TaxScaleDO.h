@@ -10,12 +10,12 @@ Author C1-ÈýÄ¾
 class TaxScaleDO
 {
 	// ½×¶Î±àºÅ
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// ½×¶ÎÃû³Æ
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	TaxScaleDO() {
-		id = 0;
+		id = "";
 		name = "";
 	}
 };

@@ -17,7 +17,7 @@ public:
 	InvoiceTypeDO mapper(ResultSet* resultSet) const override
 	{
 		InvoiceTypeDO data;
-		data.setId(resultSet->getInt(1));
+		data.setId(resultSet->getString(1));
 		data.setName(resultSet->getString(2));
 		return data;
 	}

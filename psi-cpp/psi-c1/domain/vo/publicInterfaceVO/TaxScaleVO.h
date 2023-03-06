@@ -11,7 +11,7 @@ Author C1-三木
 class TaxScaleVO
 {
 	// 模式编号
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 模式名称
 	CC_SYNTHESIZE(string, name, Name);
 public:

@@ -15,12 +15,12 @@
 class SettleMethodDO
 {
 	// ±àºÅ
-	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// »õ±ÒÃû
 	CC_SYNTHESIZE(string, name, Name);
 public:
 	SettleMethodDO() {
-		id = 0;
+		id = "";
 		name = "";
 	}
 };

@@ -11,7 +11,7 @@ public:
 	SupplierLevelDO mapper(ResultSet* resultSet) const override
 	{
 		SupplierLevelDO data;
-		data.setId(resultSet->getUInt64(1));
+		data.setId(resultSet->getString(1));
 		data.setName(resultSet->getString(3));
 		return data;
 	}

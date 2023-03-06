@@ -11,7 +11,7 @@ Author C1-三木
 class TaxRateVO
 {
 	// 税率编号
-	CC_SYNTHESIZE(int, id, Id);
+	CC_SYNTHESIZE(string, id, Id);
 	// 税率等级
 	CC_SYNTHESIZE(string, rate, Rate);
 public:
