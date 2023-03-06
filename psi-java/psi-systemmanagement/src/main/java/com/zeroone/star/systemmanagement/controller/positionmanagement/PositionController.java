@@ -1,5 +1,6 @@
 package com.zeroone.star.systemmanagement.controller.positionmanagement;
 
+import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionAddDTO;
 import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionDTO;
 import com.zeroone.star.project.query.systemmanagement.positionmanagement.PositionQuery;
 import com.zeroone.star.project.systemmanagement.positionmanagement.PositionApis;
@@ -43,7 +44,7 @@ public class PositionController implements PositionApis {
     @ApiOperation("添加职务（返回值data值表示插入成功与否）")
     @PostMapping("/addPosition")
     @Override
-    public JsonVO<String> savePosition(PositionDTO positionDTO) {
+    public JsonVO<String> savePosition(PositionAddDTO positionDTO) {
         if (positionDTO == null){
             return JsonVO.fail("无法执行请求,请联系管理员！");
         }

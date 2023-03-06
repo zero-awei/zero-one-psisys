@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.Getter;
@@ -51,7 +52,7 @@ public class SysCategory implements Serializable {
      * 创建日期
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新人
@@ -61,7 +62,8 @@ public class SysCategory implements Serializable {
     /**
      * 更新日期
      */
-    private LocalDateTime updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
 
     /**
      * 所属部门

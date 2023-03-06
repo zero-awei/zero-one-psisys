@@ -1,6 +1,8 @@
 package com.zeroone.star.project.systemmanagement.addressbook;
 
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationTreeQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
@@ -50,10 +52,17 @@ public interface AddressbookApis {
     JsonVO<PageVO<AddressbookVO>> getByWorkNo(AddressbookQuery condition);
 
     /**
-     * 根据部门名称查询通讯录
+     * 根据部门名称查询指定组织树
      * @param condition 查询条件
      * @return
      */
-    JsonVO<PageVO<AddressbookVO>> getByDepartName(AddressbookQuery condition);
+    JsonVO<PageVO<AddressbookVO>> getByDepartName(OrganizationTreeQuery condition);
+
+    /**
+     * 查询所有组织树
+     * @param condition
+     * @return
+     */
+    JsonVO<PageVO<AddressbookVO>> queryDepart(OrganizationQuery condition);
 
 }

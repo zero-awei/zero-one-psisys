@@ -19,9 +19,15 @@ import lombok.Data;
 @ApiModel("分类字典显示对象")
 public class ClassifiedDictionaryVO {
 
-    @ApiModelProperty(value = "姓名",example = "张三")
+    @ApiModelProperty(value = "名称",example = "物料")
     private String name;
 
     @ApiModelProperty(value = "编码",example = "A01")
     private String code;
+
+    @ApiModelProperty(value = "是否有子节点",example = "1")
+    private String hasChild;
+
+    @ApiModelProperty(value = "id",example = "1230769769930592257")
+    private String id;
 }

@@ -42,7 +42,7 @@ import java.util.List;
  * @version 1.0.0
  */
 @Controller
-@RequestMapping("excel-addressbook")
+@RequestMapping("/systemmanagement/excel-addressbook")
 @Api(tags = "通讯录数据导出")
 public class ExcelController {
     @Resource

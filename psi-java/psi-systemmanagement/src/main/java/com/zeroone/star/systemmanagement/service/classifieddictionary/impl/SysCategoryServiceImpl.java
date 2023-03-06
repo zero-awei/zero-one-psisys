@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,7 +42,8 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
     @Override
     public PageVO<ClassifiedDictionaryVO> listAll(PageQuery condition) {
         Page<SysCategory> page = new Page<>(condition.getPageIndex(),condition.getPageSize());
-        QueryWrapper<SysCategory> wrapper = new QueryWrapper<>();
+        LambdaQueryWrapper<SysCategory> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysCategory::getPid,"0");
         Page<SysCategory> result = mapper.selectPage(page,wrapper);
         return PageVO.create(result,ClassifiedDictionaryVO.class);
     }
@@ -57,7 +59,6 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
 
     @Override
     public String update(ClassifiedDictionaryUpdateDTO data) {
-        LocalDateTime now = LocalDateTime.now();
         if(data.getId() == null){
             return "更新失败";
         }
@@ -71,7 +72,7 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
             return e.getMessage();
         }
         //设置更新时间
-        sysCategory.setUpdateTime(now);
+        /*sysCategory.setUpdateTime(now);*/
         int result = mapper.updateById(sysCategory);
         if(result == 0){
             return "更新失败";
@@ -107,23 +108,21 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
         queryWrapper.eq(SysCategory::getPid,data.getPid());
         List<SysCategory> list = mapper.selectList(queryWrapper);
         int records = list.size();
-        //实现sql，查询出所有子节点并按照创建时间降序获取top1
+
         //根据父节点查子节点的数量为0
-        if(records == 0){
+        if(records == 0 || data.getPid().equals("0")){
             sysCategory.setCode("A01");
             sysCategory.setHasChild("0");
         }
         //根据父节点查子节点的数量不为0
         sysCategory.setHasChild("1");
+        //实现sql，查询出所有子节点并按照创建时间降序获取top1
         List<SysCategory> listLastNode =mapper.selectNodeOrderByCreateTime(data.getPid());
         String code = makeCode(listLastNode);
         if(data.getPid().equals("0")){
             sysCategory.setCode(code);
         }
         sysCategory.setCode(data.getPid()+code);
-        //更新操作时间
-        sysCategory.setCreateTime(now);
-        sysCategory.setUpdateTime(now);
         //set操作人和更新人
         try{
            UserDTO userDTO = holder.getCurrentUser();
@@ -156,7 +155,7 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
             chars[chars.length-2] = ++chars[chars.length-2];
             result = String.valueOf(chars);
             return result;
-        }{
+        }else {
             chars[chars.length-1] = ++chars[chars.length-1];
             result = String.valueOf(chars);
         }

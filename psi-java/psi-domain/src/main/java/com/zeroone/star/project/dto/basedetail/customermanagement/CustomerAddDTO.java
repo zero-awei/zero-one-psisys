@@ -1,16 +1,11 @@
 package com.zeroone.star.project.dto.basedetail.customermanagement;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @Description 添加customer

@@ -1,5 +1,6 @@
 package com.zeroone.star.project.systemmanagement.positionmanagement;
 
+import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionAddDTO;
 import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionDTO;
 import com.zeroone.star.project.query.systemmanagement.positionmanagement.PositionQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -27,7 +28,7 @@ public interface PositionApis {
      * @param positionDTO 根据DTO添加职务
      * @return 结果的字符串
      */
-    JsonVO<String> savePosition(PositionDTO positionDTO);
+    JsonVO<String> savePosition(PositionAddDTO positionDTO);
 
     /**
      * 修改指定职务信息

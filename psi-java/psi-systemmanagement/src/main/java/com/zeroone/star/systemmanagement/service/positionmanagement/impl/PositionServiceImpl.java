@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
+import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionAddDTO;
 import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionDTO;
 import com.zeroone.star.project.query.systemmanagement.positionmanagement.PositionQuery;
 import com.zeroone.star.project.vo.PageVO;
@@ -64,11 +65,11 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     }
 
     @Override
-    public String insert(PositionDTO positionDTO) {
+    public String insert(PositionAddDTO positionDTO) {
         LambdaQueryWrapper<Position> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Position::getCode,positionDTO.getCode());
         Position positionTest = positionMapper.selectOne(wrapper);
-        if(positionTest == null){
+        if(positionTest != null){
             return "添加失败";
         }
         Position position = new Position();

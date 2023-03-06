@@ -22,5 +22,8 @@ public class OrganizationVO {
     @ApiModelProperty(value = "机构名称",example = "北京 F 公司")
     private String departName;
 
+    @ApiModelProperty(value = "组织id",example = "c6d7cb4deeac411cb3384b1b31278596")
+    private String id;
+
 
 }

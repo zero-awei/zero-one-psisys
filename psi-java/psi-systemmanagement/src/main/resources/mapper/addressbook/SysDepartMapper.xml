@@ -4,7 +4,7 @@
 
     <select id="getOrganizationName" resultType="com.zeroone.star.systemmanagement.entity.addressbook.SysDepart">
         select
-            depart_name
+            id,depart_name
         from
             sys_depart
         where
@@ -14,7 +14,7 @@
 
     <select id="getOrganizationTreeName" resultType="com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO">
         select
-            s1.depart_name
+            s1.id,s1.depart_name
         from
             sys_depart s1 , sys_depart s2
         where

@@ -3,6 +3,8 @@ package com.zeroone.star.systemmanagement.mapper.addressbook;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationTreeQuery;
 import com.zeroone.star.systemmanagement.entity.addressbook.Addressbook;
 import org.mapstruct.Mapper;
 
@@ -28,5 +30,7 @@ public interface AddressbookMapper extends BaseMapper<Addressbook> {
 
     public Page<Addressbook> getByWorkNo(Page page,AddressbookQuery condition);
 
-    public Page<Addressbook> getByDepartName(Page page,AddressbookQuery condition);
+    public Page<Addressbook> getByDepartName(Page page, OrganizationTreeQuery condition);
+
+    public Page<Addressbook> listDepart(Page page, OrganizationQuery condition);
 }

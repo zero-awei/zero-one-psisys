@@ -10,11 +10,9 @@ import lombok.Data;
  * @Data 2023-02-11 15:57
  */
 @Data
-@ApiModel("编辑/删除职务DTO")
-public class PositionDTO {
+@ApiModel("添加职务DTO")
+public class PositionAddDTO {
 
-    @ApiModelProperty(value = "职务对象ID",example = "1624315388342083586")
-    private String Id;
 
     @ApiModelProperty(value = "职务编码", example = "devleader")
     private String code;

@@ -17,6 +17,10 @@ import java.time.LocalDateTime;
 @Data
 @ApiModel("查询客户VO")
 public class CustomerShowVO {
+
+    @ApiModelProperty(value = "客户对象id",example = "1584950506310148098")
+    private  String id;
+
     @ApiModelProperty(value = "客户对象编码code",example = "001")
     private  String code;
 

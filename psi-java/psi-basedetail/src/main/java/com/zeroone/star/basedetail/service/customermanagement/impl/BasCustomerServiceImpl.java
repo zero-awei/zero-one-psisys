@@ -56,7 +56,7 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
         customerBaseInfoVO.setName(basCustomer.getName());
         customerBaseInfoVO.setAuxName(basCustomer.getAuxName());
         customerBaseInfoVO.setAuxiliaryName(basCustomer.getAuxName());
-        customerBaseInfoVO.setIsEnabled(basCustomer.getIsEnabled().equals("1")?1:0);
+        customerBaseInfoVO.setIsEnabled(basCustomer.getIsEnabled().equals('1')?1:0);
         return customerBaseInfoVO;
     }
 
@@ -128,7 +128,7 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
         BeanUtil.copyProperties(basCustomer,customerAddDTO);
         UserHolder userHolder = new UserHolder();
         try {
-            basCustomer.setCreateBy(null);
+            basCustomer.setCreateBy(userHolder.getCurrentUser().getUsername());
             basCustomer.setUpdateBy(userHolder.getCurrentUser().getUsername());
         } catch (Exception e) {
             throw new RuntimeException(e);

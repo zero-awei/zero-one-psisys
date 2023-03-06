@@ -56,6 +56,21 @@
                     <mainClass>com.zeroone.star.titlepage.TitlePageApp</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <dockerHost>http://8.130.24.117:2375</dockerHost>
+                    <images>
+                        <image>
+                            <name>01star/${project.artifactId}:${project.version}</name>
+                            <build>
+                                <contextDir>${project.basedir}</contextDir>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

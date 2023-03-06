@@ -1,6 +1,8 @@
 package com.zeroone.star.systemmanagement.controller.addressbook;
 
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationTreeQuery;
 import com.zeroone.star.project.systemmanagement.addressbook.AddressbookApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -27,7 +29,7 @@ import javax.annotation.Resource;
  */
 
 @RestController
-@RequestMapping("/addressbook")
+@RequestMapping("/systemmanagement/addressbook")
 @Api(tags = "查询通讯录列表")
 @Validated
 public class AddressbookController implements AddressbookApis {
@@ -64,10 +66,17 @@ public class AddressbookController implements AddressbookApis {
     }
 
     @GetMapping("query-depart-name")
-    @ApiOperation(value = "根据部门名称查询通讯录")
+    @ApiOperation(value = "查询指定组织树")
     @Override
-    public JsonVO<PageVO<AddressbookVO>> getByDepartName(@Validated AddressbookQuery condition) {
+    public JsonVO<PageVO<AddressbookVO>> getByDepartName(@Validated OrganizationTreeQuery condition) {
         return JsonVO.success(service.getByDepartName(condition));
+    }
+
+    @GetMapping("query-all-depart")
+    @ApiOperation(value = "查询组织树")
+    @Override
+    public JsonVO<PageVO<AddressbookVO>> queryDepart(@Validated OrganizationQuery condition) {
+        return JsonVO.success(service.listDepart(condition));
     }
 
 }

@@ -14,6 +14,7 @@ import lombok.Data;
 public class CustomerLevelVO {
     @ApiModelProperty(value = "客户等级对象ID",example = "000001")
     private String id;
+
     @ApiModelProperty(value = "客户等级对象名称name",example = "一级")
     private String name;
 }

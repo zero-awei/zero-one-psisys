@@ -2,6 +2,8 @@ package com.zeroone.star.systemmanagement.service.addressbook;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationTreeQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
 import com.zeroone.star.systemmanagement.entity.addressbook.Addressbook;
@@ -50,10 +52,17 @@ public interface IAddressbookService extends IService<Addressbook> {
 
 
     /**
-     * 根据部门名称查询通讯录列表
+     * 根据部门名称查询组织结构
      * @param query 查询条件
      * @return
      */
-    PageVO<AddressbookVO> getByDepartName(AddressbookQuery query);
+    PageVO<AddressbookVO> getByDepartName(OrganizationTreeQuery query);
+
+    /**
+     * 查询所有组织结构
+     * @param query
+     * @return
+     */
+    PageVO<AddressbookVO> listDepart(OrganizationQuery query);
 
 }

@@ -23,6 +23,7 @@ public class CusLevel {
     @TableId(value = "id", type = IdType.AUTO)
     @TableField(value = "id")
     private String id;
+
     @TableField(value = "name")
     private String name;
 }

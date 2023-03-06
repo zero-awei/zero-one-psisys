@@ -36,8 +36,6 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
     public PageVO<OrganizationVO> listOrganization(OrganizationQuery query) {
         // 构建分页对象
         Page<SysDepart> sysDepartPage = new Page<>(query.getPageIndex(), query.getPageSize());
-        // 构建查询条件
-        QueryWrapper<SysDepart> sysDepartQueryWrapper = new QueryWrapper<>();
         // 执行分页查询
 //        Page<SysDepart> result = baseMapper.selectPage(sysDepartPage, sysDepartQueryWrapper);
         Page<SysDepart> result = mapper.getOrganizationName(sysDepartPage, query);
@@ -48,8 +46,6 @@ public class SysDepartServiceImpl extends ServiceImpl<SysDepartMapper, SysDepart
     public PageVO<OrganizationTreeVO> listOrganizationTree(OrganizationTreeQuery query) {
         // 构建分页对象
         Page<SysDepart> sysDepartPage = new Page<>(query.getPageIndex(), query.getPageSize());
-        // 构建查询条件
-        QueryWrapper<SysDepart> sysDepartQueryWrapper = new QueryWrapper<>();
         // 执行分页查询
         Page<SysDepart> result = mapper.getOrganizationTreeName(sysDepartPage, query);
         return PageVO.create(result, OrganizationTreeVO.class);

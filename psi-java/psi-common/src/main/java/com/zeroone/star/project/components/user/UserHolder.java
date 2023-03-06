@@ -34,7 +34,7 @@ public class UserHolder {
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     public UserDTO getCurrentUser() throws Exception {
         //从Header中获取用户信息
-       /* ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+       /*ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (servletRequestAttributes == null) {
             return null;
         }
@@ -48,8 +48,8 @@ public class UserHolder {
         }
         JSONObject userJsonObject = new JSONObject(userStr);*/
         return UserDTO.builder()
-                .id(Convert.toInt(1))
-                .username("test2")
+                .id(Convert.toInt("id"))
+                .username("username")
                 .isEnabled(Convert.toByte(1))
                 .roles(Convert.toList(String.class, null))
                 .build();

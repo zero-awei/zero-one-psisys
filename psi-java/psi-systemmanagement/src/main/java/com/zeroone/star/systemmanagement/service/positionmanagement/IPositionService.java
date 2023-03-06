@@ -1,6 +1,7 @@
 package com.zeroone.star.systemmanagement.service.positionmanagement;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionAddDTO;
 import com.zeroone.star.project.dto.systemmanagement.positionmanagement.PositionDTO;
 import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.systemmanagement.positionmanagement.PositionQuery;
@@ -25,7 +26,7 @@ public interface IPositionService extends IService<Position> {
 
     String update(PositionDTO positionDTO);
 
-    String insert(PositionDTO positionDTO);
+    String insert(PositionAddDTO positionDTO);
 
     PageVO<PositionVO> queryAll(PositionQuery positionQuery);
 

@@ -38,7 +38,7 @@ import java.util.List;
  * @date 2023/2/11 22:31
  */
 @RestController
-@RequestMapping("customer-management")
+@RequestMapping("/basedetail/customer-management")
 @Api(tags = "客户接口")
 @Validated
 public class CustomerController implements CustomerApis {
@@ -167,7 +167,7 @@ public class CustomerController implements CustomerApis {
     @ApiOperation("添加客户")
     @PostMapping("add-Customer")
     @Override
-    public JsonVO<String> saveCustomer(@RequestBody CustomerAddDTO customerAddDTO, BindingResult bindingResult) {
+    public JsonVO<String> saveCustomer(CustomerAddDTO customerAddDTO, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return JsonVO.fail(bindingResult.getFieldError().getDefaultMessage());
         }

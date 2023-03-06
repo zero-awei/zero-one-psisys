@@ -33,6 +33,7 @@ public class OrganizationmanagementController implements OrganizationManagementA
 
     @Resource
     private OrganizationmanagementService service;
+
     /**
      * 查询组织列表
      * @param condition 查询条件

@@ -3,6 +3,8 @@ package com.zeroone.star.systemmanagement.service.addressbook.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationQuery;
+import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationTreeQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
 import com.zeroone.star.systemmanagement.entity.addressbook.Addressbook;
@@ -69,11 +71,19 @@ public class AddressbookServiceImpl extends ServiceImpl<AddressbookMapper, Addre
     }
 
     @Override
-    public PageVO<AddressbookVO> getByDepartName(AddressbookQuery query) {
+    public PageVO<AddressbookVO> getByDepartName(OrganizationTreeQuery query) {
         // 构建查询条件
         Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
         // 执行查询
         Page<Addressbook> result = mapper.getByDepartName(addressBookPage,query);
+        return PageVO.create(result, AddressbookVO.class);
+    }
+
+    @Override
+    public PageVO<AddressbookVO> listDepart(OrganizationQuery query) {
+        Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        // 执行查询
+        Page<Addressbook> result = mapper.listDepart(addressBookPage,query);
         return PageVO.create(result, AddressbookVO.class);
     }
 }
