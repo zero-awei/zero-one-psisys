@@ -136,7 +136,6 @@
     <ClInclude Include="domain\vo\PurOrderSub\PurQuotVO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurReqEntryVO.h" />
     <ClInclude Include="dao\PurReq\PurReqDAO.h" />
-    <ClInclude Include="dao\PurOrder\PurOrderDetailMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderEntryDAO.h" />
     <ClInclude Include="dao\PurOrderSub\PurCompareEntryMapper.h" />
     <ClInclude Include="dao\PurOrderSub\PurCompareMapper.h" />

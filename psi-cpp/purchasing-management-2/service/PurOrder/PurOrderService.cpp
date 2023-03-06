@@ -202,13 +202,13 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 	return pages;
 }
 
-// ???????????
-PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
+// 负责人: 青羽
+PurOrderDetailVO PurOrderService::getPurOrder(const PurOrderQuery& query)
 {
 	PurOrderDetailVO vo;
 	PurOrderDAO dao;
 	list<PurOrderDO> do_datas;
-	do_datas = dao.selectDetail(bill_no);
+	do_datas = dao.selectDetail(query.getBill_no());
 	if (do_datas.empty()) return vo;
 	for (auto do_data : do_datas)
 	{
@@ -274,7 +274,7 @@ PurOrderDetailVO PurOrderService::getPurOrder(string bill_no)
 	vector<string> pur_quot, pur_quot_entry;
 
 	PurOrderEntryDAO entry_dao;
-	list<PurOrderEntryDO> pur_order_entry_do = entry_dao.selectPurOrderEntry(bill_no);
+	list<PurOrderEntryDO> pur_order_entry_do = entry_dao.selectPurOrderEntry(query.getBill_no());
 	list<PurOrderEntryVO> pur_order_entry_vo_list;
 	PurOrderEntryVO pur_order_entry_vo;
 	for (auto do_data : pur_order_entry_do)

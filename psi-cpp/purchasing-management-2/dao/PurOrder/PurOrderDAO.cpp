@@ -348,10 +348,10 @@ list<PurOrderDO> PurOrderDAO::selectDetail(const string bill_no)
 {
     string sql;
     sql = "SELECT * FROM `pur_order` WHERE `bill_no`=?";
-    PurOrderDetailMapper mapper;
+    PurOrderMapper mapper;
     SqlParams params;
     SQLPARAMS_PUSH(params, "s", std::string, bill_no);
-    return sqlSession->executeQuery<PurOrderDO, PurOrderDetailMapper>(sql, mapper, params);
+    return sqlSession->executeQuery<PurOrderDO, PurOrderMapper>(sql, mapper, params);
 }
 
 uint64_t PurOrderDAO::count(const PurOrderDO& iObj) {

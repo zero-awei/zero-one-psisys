@@ -21,7 +21,6 @@
 #define _PUR_ORDER_DAO_
 #include "BaseDAO.h"
 #include "../../domain/do/PurOrder/PurOrderDO.h"
-#include "../../dao/PurOrder/PurOrderDetailMapper.h"
 /**
  * 采购订单表数据库操作实现
  */

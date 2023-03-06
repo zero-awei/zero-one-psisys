@@ -47,7 +47,7 @@ public:
 	CREATE_API_FUN_QUERY_PAYLOAD(querylistPurOrder, execQueryListPurOrder, PurOrderQuery);
 	// 单个数据
 	// 负责人：青羽
-	CREATE_API_FUN_BODY(getPurOrder, execGetPurOrder, PurOrderDTO);
+	CREATE_API_FUN_QUERY(getPurOrder, execGetPurOrder, PurOrderQuery);
 	// 新增数据
 	// 负责人：青羽
 	CREATE_API_FUN_JSON_PAYLOAD(addPurOrder, execAddPurOrder, PurOrderDTO);
@@ -67,7 +67,7 @@ private:
 	JsonVO<PageVO<PurOrderVO>> execQueryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload);
 	// 查询单个数据
 	// 负责人：青羽
-	JsonVO<PurOrderDetailVO> execGetPurOrder(const PurOrderDTO& dto);
+	JsonVO<PurOrderDetailVO> execGetPurOrder(const PurOrderQuery& query);
 	// 新增数据
 	// 负责人：青羽
 	JsonVO<uint64_t> execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);

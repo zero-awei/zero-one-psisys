@@ -63,7 +63,7 @@ public:
 	// 分页查询所有数据
 	PageVO<PurOrderVO> listPurOrder(const PurOrderQuery& query);
 	// 查询单个数据
-	PurOrderDetailVO getPurOrder(string id);
+	PurOrderDetailVO getPurOrder(const PurOrderQuery& query);
 	// 保存数据
 	uint64_t saveData(const PurOrderDTO& dto, const PayloadDTO& payload);
 	// 修改数据

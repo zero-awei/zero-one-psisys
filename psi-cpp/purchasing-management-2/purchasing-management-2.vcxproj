@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -209,7 +209,6 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\PurOrderSub\PurReqEntryMapper.h" />
     <ClInclude Include="dao\PurOrderSub\PurReqMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderDAO.h" />
-    <ClInclude Include="dao\PurOrder\PurOrderDetailMapper.h" />
     <ClInclude Include="dao\PurOrder\PurOrderEntryDAO.h" />
     <ClInclude Include="dao\PurOrder\PurOrderMapper.h" />
     <ClInclude Include="dao\PurQuot\PurQuotDAO.h" />

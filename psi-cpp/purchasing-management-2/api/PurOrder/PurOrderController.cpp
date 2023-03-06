@@ -150,10 +150,10 @@ JsonVO<PageVO<PurOrderVO>> PurOrderController::execQueryListPurOrder(const PurOr
 }
 
 // 查询单个数据byDTO
-JsonVO<PurOrderDetailVO> PurOrderController::execGetPurOrder(const PurOrderDTO& dto)
+JsonVO<PurOrderDetailVO> PurOrderController::execGetPurOrder(const PurOrderQuery& query)
 {
 	PurOrderService service;
-	PurOrderDetailVO result = service.getPurOrder(dto.getBill_no());
+	PurOrderDetailVO result = service.getPurOrder(query);
 	if (result.getBill_no().empty()) return  JsonVO(result, RS_FAIL);
 	JsonVO<PurOrderDetailVO> jsresult = JsonVO(result, RS_SUCCESS);
 
