@@ -45,17 +45,28 @@ public interface OtherPayableApis {
     JsonVO<String> fileImport(MultipartFile file);
 
     /**
-     * 添加应付单
+     * 添加并保存应付单
      * @param PayableDTO 应付单DTO
      */
-    JsonVO<String> addOtherPayable(PayableDTO PayableDTO);
+    JsonVO<String> addOtherPayableSave(PayableDTO PayableDTO);
 
     /**
-     * 修改应付单
+     * 添加并提交应付单
      * @param PayableDTO 应付单DTO
      */
-    JsonVO<String> updateOtherPayable(PayableDTO PayableDTO);
+    JsonVO<String> addOtherPayableSubmit(PayableDTO PayableDTO);
 
+    /**
+     * 修改并保存应付单
+     * @param PayableDTO 应付单DTO
+     */
+    JsonVO<String> updateOtherPayableSave(PayableDTO PayableDTO);
+
+    /**
+     * 修改并提交应付单
+     * @param PayableDTO 应付单DTO
+     */
+    JsonVO<String> updateOtherPayableSubmit(PayableDTO PayableDTO);
     /**
      * 删除应付单
      * @param delPayable 待删除应付单DTO

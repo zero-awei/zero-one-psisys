@@ -96,7 +96,11 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
         //使用雪花算法生成id
         newPayable.setId(snowFlake.nextId()+"");
+        //获取创建时间
         newPayable.setCreateTime(LocalDateTime.now());
+        newPayable.setEffectiveTime(LocalDateTime.now());
+        //设置应付类型
+        newPayable.setPayableType("201");
         FinPayable finPayable = null;
         try {
             finPayable = TransformationUtils.convert(newPayable, FinPayable.class);
@@ -104,6 +108,11 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+        finPayable.setIsAuto(1);
+        finPayable.setIsRubric(0);
+        finPayable.setIsClosed(0);
+        finPayable.setIsVoided(0);
+        finPayable.setIsEffective(1);
         return mapper.insert(finPayable);
     }
 
@@ -148,8 +157,8 @@ public class FinPayableServiceImpl extends ServiceImpl<FinPayableMapper, FinPaya
 
         //与传入delPayable相同BillNo的数据库中的实体类
         FinPayable finPayableDB = baseMapper.selectOne(wrapper);
-        //如果没有该条数据则无法删除
-        if(finPayableDB==null){
+        //如果没有该条数据,或者处理状态不为“编制中”则无法删除
+        if(finPayableDB==null||!finPayableDB.getBillStage().equals("1")){
             return 0;
         }
         return mapper.deleteById(finPayableDB);

@@ -51,20 +51,48 @@ public class OtherPayableController implements OtherPayableApis {
     }
 
 
-    @PostMapping(value = "addOtherPayable")
-    @ApiOperation(value = "添加其他应付单")
+    @PostMapping(value = "addOtherPayableSave")
+    @ApiOperation(value = "添加其他应付单并保存")
     @Override
-    public JsonVO<String> addOtherPayable(PayableDTO create) {
-
+    public JsonVO<String> addOtherPayableSave(PayableDTO create) {
+        if (create != null) {
+            //保存后订单阶段为“编制中”
+            create.setBillStage("1");
+        }
         return service.addOtherPayable(create) > 0 ? JsonVO.success("新增保存成功") : JsonVO.fail("新增保存失败");
     }
 
-    @PutMapping(value = "updateOtherPayable")
-    @ApiOperation(value = "修改其他应付单")
+    @PostMapping(value = "addOtherPayableSubmit")
+    @ApiOperation(value = "添加其他应付单并提交")
     @Override
-    public JsonVO<String> updateOtherPayable(PayableDTO update) {
+    public JsonVO<String> addOtherPayableSubmit(PayableDTO create) {
+        if (create != null) {
+            //提交后订单阶段为“执行中”
+            create.setBillStage("3");
+        }
+        return service.addOtherPayable(create) > 0 ? JsonVO.success("新增提交成功") : JsonVO.fail("新增提交失败");
+    }
 
+    @PutMapping(value = "updateOtherPayableSave")
+    @ApiOperation(value = "修改其他应付单并保存")
+    @Override
+    public JsonVO<String> updateOtherPayableSave(PayableDTO update) {
+        if(update!=null){
+            //保存后订单阶段为“编制中”
+            update.setBillStage("1");
+        }
         return service.updateOtherPayable(update) > 0 ? JsonVO.success("编辑保存成功") : JsonVO.fail("编辑保存失败");
+    }
+
+    @PutMapping(value = "updateOtherPayableSubmit")
+    @ApiOperation(value = "修改其他应付单并提交")
+    @Override
+    public JsonVO<String> updateOtherPayableSubmit(PayableDTO update) {
+        if(update!=null){
+            //提交后订单阶段为“执行中”
+            update.setBillStage("3");
+        }
+        return service.updateOtherPayable(update) > 0 ? JsonVO.success("编辑提交成功") : JsonVO.fail("编辑提交失败");
     }
 
     @DeleteMapping("deleteOtherPayable")

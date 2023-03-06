@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PayableStatusDTO {
-    /**
-     * 单据ID
-     */
-    @ApiModelProperty(value = "ID", example = "1590717742358511617")
-    private String id;
+//    /**
+//     * 单据ID
+//     */
+//    @ApiModelProperty(value = "ID", example = "1590717742358511617")
+//    private String id;
     /**
      * 单据编号
      */

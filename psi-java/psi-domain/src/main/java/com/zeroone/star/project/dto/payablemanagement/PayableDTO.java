@@ -101,20 +101,20 @@ public class PayableDTO {
     /**
      * 单据阶段 1 编制中， 2编制完，3执行中 4.执行止 5执行完
      */
-    @ApiModelProperty(value = "单据阶段", example = "34")
+    @ApiModelProperty(value = "单据阶段", example = "1")
     private String billStage;
 
-    /**
-     * 已生效
-     */
-    @ApiModelProperty(value = "已生效", example = "1")
-    private Integer isEffective;
-
-    /**
-     * 是否红字
-     */
-    @ApiModelProperty(value = "是否红字", example = "1")
-    private Integer isRubric;
+//    /**
+//     * 已生效
+//     */
+//    @ApiModelProperty(value = "已生效", example = "1")
+//    private Integer isEffective;
+//
+//    /**
+//     * 是否红字
+//     */
+//    @ApiModelProperty(value = "是否红字", example = "1")
+//    private Integer isRubric;
 
     /**
      * 应付类型
@@ -159,11 +159,11 @@ public class PayableDTO {
     @ApiModelProperty(value = "备注")
     private String remark;
 
-    /**
-     * 是否自动生成
-     */
-    @ApiModelProperty(value = "是否自动生成", example = "1")
-    private Integer isAuto;
+//    /**
+//     * 是否自动生成
+//     */
+//    @ApiModelProperty(value = "是否自动生成", example = "1")
+//    private Integer isAuto;
 
     /**
      * 审核人
