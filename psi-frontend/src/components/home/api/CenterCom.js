@@ -45,12 +45,15 @@ export function getCusList(data, success, fail) {
 
 //2.3 查询销售概况  CenterDivCom 第一个
 export function getSalList(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'query-Sale', data,{
+  Request.requestJson(Request.POST, currBaseUrl + 'query-Sale', data,
+  {
     baseURL: import.meta.env.VITE_API_J2_TITLE
-  })
+  }
+  ) 
     .then((data) => {
       if (data.data) {
         success(data.data)
+        console.log(data)
         return
       }
       fail()
