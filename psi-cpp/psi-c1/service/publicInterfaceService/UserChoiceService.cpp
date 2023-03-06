@@ -26,15 +26,19 @@ PageVO<UserVO> UserChoiceService::listAll(const UserQuery& query)
 	rs.calcPages();
 	list<UserChoiceReturnDO> result = dao.selecUserWithPage(obj, query.getPageIndex(), query.getPageSize());
 	list<UserVO> vr;
-	for (UserChoiceReturnDO sub : result)
+	vector<UserChoiceReturnDO> r(result.begin(), result.end());
+	int time = query.getPageSize();
+	//根据pageindx和pagesize放入返回的元素
+	for (int i =(query.getPageIndex()-1)*query.getPageSize();
+		time>0&&r.size()>i;i++,time--)
 	{
 		UserVO vo;
-		vo.setId(sub.getId());
-		vo.setUserName(sub.getUserName());
-		vo.setRealName(sub.getRealName());
-		vo.setSex(sub.getSex());
-		vo.setPhone(sub.getPhone());
-		vo.setDepartMent(sub.getDepartMent());
+		vo.setId(r[i].getId());
+		vo.setUserName(r[i].getUserName());
+		vo.setRealName(r[i].getRealName());
+		vo.setSex(r[i].getSex());
+		vo.setPhone(r[i].getPhone());
+		vo.setDepartMent(r[i].getDepartMent());
 		vr.push_back(vo);
 	}
 	rs.setRows(vr);
