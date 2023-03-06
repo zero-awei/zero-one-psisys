@@ -145,8 +145,11 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
     public Boolean updateCustomer(BasCustomer basCustomer) {
         QueryWrapper<BasCustomer> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("code", basCustomer.getCode());
-        basCustomerMapper.update(basCustomer, queryWrapper);
-        return true;
+        int i = basCustomerMapper.update(basCustomer, queryWrapper);
+        if (i > 0){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -158,8 +161,11 @@ public class BasCustomerServiceImpl extends ServiceImpl<BasCustomerMapper, BasCu
     public Boolean removeCustomer(String code) {
         QueryWrapper<BasCustomer> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("code", code);
-        basCustomerMapper.delete(queryWrapper);
-        return true;
+        int i = basCustomerMapper.delete(queryWrapper);
+        if (i > 0){
+            return true;
+        }
+        return false;
     }
 
 
