@@ -71,10 +71,6 @@ const SalmList = reactive({
   money: []
 })
 
-let tempDataList = {
-  month: [],
-  money: []
-}
 
 //请求数据
 function doGetSalmList() {
@@ -85,10 +81,6 @@ function doGetSalmList() {
         let obj = item
         SalmList.month.push(obj.month)
         SalmList.money.push(obj.money)
-        tempDataList.month.push(obj.month)
-        tempDataList.money.push(obj.money)
-
-
       })
       let flag = true
       getOption1(flag);
