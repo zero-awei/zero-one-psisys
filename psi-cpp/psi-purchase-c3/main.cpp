@@ -26,18 +26,18 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "psitxms9527";
-	std::string dbName = "zopsi_sys";
-	std::string dbHost = "43.138.223.223";
+	std::string dbPassword = "123456";
+	std::string dbName = "test";
+	std::string dbHost = "192.168.220.128";
 	int dbPort = 3306;
 	int dbMax = 25;
 
 #ifdef USE_NACOS
 	// Nacos配置参数
-	std::string nacosAddr = "43.138.51.248:8848";
-	std::string nacosNs = "7fc50d88-3410-44a3-acff-9108d2bfe2b2";
+	std::string nacosAddr = "192.168.220.128:8848";
+	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
 	std::string serviceName = "psi-purchase-c3";
-	std::string regIp = "47.113.148.133";
+	std::string regIp = "192.168.220.128";
 
 #endif
 
