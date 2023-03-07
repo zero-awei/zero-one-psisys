@@ -132,6 +132,9 @@
     <ClCompile Include="dao\Cgthck\CgthckDAO.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="userlib\jwt\TestToken.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Router.h">
@@ -609,6 +612,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="domain\do\SysDepartDO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="userlib\jwt\TestToken.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

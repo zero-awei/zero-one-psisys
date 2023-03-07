@@ -214,6 +214,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="userlib\jwt\TestToken.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\Cgrk\CgrkController.h" />
@@ -348,6 +349,7 @@
     <ClInclude Include="service\Qtrk\QtrkService.h" />
     <ClInclude Include="service\Zdrk\ZdrkService.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="userlib\jwt\TestToken.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib-common\lib-common.vcxproj">
