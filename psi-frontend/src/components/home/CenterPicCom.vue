@@ -329,78 +329,7 @@ function getOption4(flag3) {
     )
   }
 }
-    //axios请求数据
-    // getOption1(){
-    //   var myEcharts = echarts.init(document.getElementById("div1"));
-    //   myEcharts.setOption(option1);
-    //   axios.get("/js/testData.json").then(res => {
-    //     // // console.log(res.data)
-    //     myEcharts.setOption(
-    //       {
-    //         xAxis: {
-    //           data: res.data.month
-    //         },
-    //         series: {
-    //           data: res.data.data,
-    //           label: {
-    //               show: true
-    //           }
-    //         }
-    //       }
-    //     )
-    //   })
-    // },
-    // // getOption2(){
-    //   var myEcharts = echarts.init(document.getElementById("div2"));
-    //   myEcharts.setOption(option2);
-    //   axios.get("../../static/div2/data.json").then(res => {
-    //     myEcharts.setOption(
-    //       {
-    //         xAxis: {
-    //           data: res.data.data1
-    //         },
-    //         series: {
-    //           data: res.data.data2,
-    //           label: {
-    //               show: true
-    //           }
-    //           }
-    //       }
-    //     )
-    //   })
-    // },
-    // getOption3(){
-    //   var myEcahrts = echarts.init(document.getElementById("div3"));
-    //   myEcahrts.setOption(option3);
-    //   axios.get("../../static/div3/data.json").then(res => {
-    //     myEcahrts.setOption({
-    //       series: {
-    //         data: res.data.data1,
-    //         label: {
-    //             show: true
-    //         }
-    //       }
-    //     })
-    //   })
-    // },
-    // getOption4(){
-    //   var myEcharts = echarts.init(document.getElementById("div4"));
-    //   myEcharts.setOption(option4);
-    //   axios.get("../../static/div4/data.json").then(res => {
-    //     myEcharts.setOption({
-    //       radar: {indicator: res.data.indicator},
-    //       series: {
-    //         data: res.data.data,
-    //         label: {
-    //             show: true
-    //         },
-    //         tooltip: {
-    //           trigger: 'item'
-    //         }
-    //       }
-    //     })
-    //   })
-    // }
+  
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
