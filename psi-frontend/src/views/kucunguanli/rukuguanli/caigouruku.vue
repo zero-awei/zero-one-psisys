@@ -1,7 +1,6 @@
 <template>
   <!-- 采购入库 -->
   <div>
-    <!-- {{dialogVisible}} -->
     <!-- 查询 （高级查询？？？？）-->
     <psi-form
       label="from1"

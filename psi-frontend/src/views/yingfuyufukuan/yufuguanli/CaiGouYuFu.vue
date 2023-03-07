@@ -23,8 +23,8 @@
 <psi-dialog v-model="dialogVisible" :attrs="attrs">
       <template #default>
 
-        <el-switch v-model="switchMode" class="mt-2" inline-prompt :active-icon="Sunny" :inactive-icon="MoonNight"
-      style="--el-switch-on-color: #dcdfe6; --el-switch-off-color: #2c2c2c" />
+       <!--  <el-switch v-model="switchMode" class="mt-2" inline-prompt :active-icon="Sunny" :inactive-icon="MoonNight"
+      style="--el-switch-on-color: #dcdfe6; --el-switch-off-color: #2c2c2c" /> -->
 
         <div class="search">
           <!-- 弹出框上面的表单 -->
