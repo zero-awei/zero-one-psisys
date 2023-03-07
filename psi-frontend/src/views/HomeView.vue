@@ -413,6 +413,7 @@ export default {
 
   :deep(.el-sub-menu__title) {
     background-color: #1c1c1d !important;
+
   }
 
   :deep(.el-menu-item) {

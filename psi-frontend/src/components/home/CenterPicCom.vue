@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div style="height:100%">
     <el-card class="box-card">
       <template #header>
         <div class="card-header">
-          <span :class="{ 'dark-span': isDarkThem }">销售金额</span>
-          <el-icon style="color:#409eff; ">
+          <span :class="{ 'dark-span': isDarkThem }" style="font-size:20px">销售金额</span>
+          <el-icon style="color:#409eff; cursor: pointer;" @click="doGetSalmList()">
             <Refresh />
           </el-icon>
         </div>
@@ -14,8 +14,8 @@
     <el-card class="box-card" style="margin-top:10px">
       <template #header>
         <div class="card-header">
-          <span :class="{ 'dark-span': isDarkThem }">毛利润</span>
-          <el-icon style="color:#409eff; ">
+          <span :class="{ 'dark-span': isDarkThem }" style="font-size:20px">毛利润</span>
+          <el-icon style="color:#409eff; cursor: pointer;" @click="doGetSaloList()">
             <Refresh />
           </el-icon>
         </div>
@@ -25,8 +25,8 @@
     <el-card class="box-card" style="margin-top:10px">
       <template #header>
         <div class="card-header">
-          <span :class="{ 'dark-span': isDarkThem }">采购金额</span>
-          <el-icon style="color:#409eff;">
+          <span :class="{ 'dark-span': isDarkThem }" style="font-size:20px">采购金额</span>
+          <el-icon style="color:#409eff;cursor: pointer;" @click="doGetPuroList()">
             <Refresh />
           </el-icon>
         </div>
@@ -36,8 +36,8 @@
     <el-card class="box-card" style="margin-top:10px">
       <template #header>
         <div class="card-header">
-          <span :class="{ 'dark-span': isDarkThem }">库存结存金额</span>
-          <el-icon style="color:#409eff; ">
+          <span :class="{ 'dark-span': isDarkThem }" style="font-size:20px">库存结存金额</span>
+          <el-icon style="color:#409eff;cursor: pointer; " @click="doGetQussList()">
             <Refresh />
           </el-icon>
         </div>
@@ -95,6 +95,8 @@ const QussList = reactive({
 
 //请求数据
 function doGetSalmList() {
+  SalmList.month = []
+  SalmList.money = []
   getSalmList(
     {},
     (data) => {
@@ -117,6 +119,8 @@ function doGetSalmList() {
 }
 //毛利润
 function doGetSaloList() {
+  SaloList.x = []
+  SaloList.y = []
   getSaloList(
     {},
     (data) => {
@@ -139,6 +143,8 @@ function doGetSaloList() {
 }
 //采购金额
 function doGetPuroList() {
+  PuroList.x = []
+  PuroList.y = []
   getPuroList(
     {},
     (data) => {
@@ -161,6 +167,8 @@ function doGetPuroList() {
 }
 //库存结存金额
 function doGetQussList() {
+  QussList.x = []
+  QussList.y = []
   getQussList(
     {},
     (data) => {

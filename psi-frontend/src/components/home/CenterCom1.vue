@@ -2,34 +2,34 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-03-04 19:07:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-07 17:02:24
+ * @LastEditTime: 2023-03-07 18:18:01
  * @FilePath: \psi-frontend\src\components\home\CenterCom1.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <div class="top">
+  <div class="top" :class="{ 'dark-cenercom1': isDarkThem }">
     <!--ToDo 2.5系统收支概况 -->
     <el-row>
-      <el-col class="head" :span="12">
+      <el-col class="head" :span="10">
         <el-card class="box-card">
           <template #header>
             <div class="card-header">
               <!-- {{Card name}} -->
-              <span>概况</span>
+              <span style="font-size:20px">概况</span>
               <!-- 更新图标 加事件 -->
-              <el-icon class="icon1">
-                <Refresh @click="doGetSysList" />
+              <el-icon class="icon1" style="cursor: pointer;" @click="doGetSysList()">
+                <Refresh />
                 <!-- <Refresh/>  -->
               </el-icon>
             </div>
           </template>
           <div class="card-bottom1">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="7">
                 <span>即时库存</span>
                 <p>{{ SysList.jishikucn.value }}</p>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="7">
                 <span>客户欠款（元）</span>
                 <p>{{ SysList.kehuqiankuan.value }}</p>
               </el-col>
@@ -42,13 +42,13 @@
         </el-card>
       </el-col>
 
-      <el-col class="head" :span="6">
+      <el-col class="head" :span="7">
         <el-card class="box-card">
           <template #header>
             <div class="card-header">
-              <span>客户</span>
-              <el-icon class="icon2">
-                <Refresh @click="doGetCusList()" />
+              <span style="font-size:20px">客户</span>
+              <el-icon class="icon2" style="cursor: pointer;" @click="doGetCusList()">
+                <Refresh />
               </el-icon>
             </div>
           </template>
@@ -75,15 +75,15 @@
         </el-card>
       </el-col>
 
-      <el-col class="head" :span="6">
+      <el-col class="head" :span="7">
         <el-card class="box-card">
           <template #header>
             <div class="card-header">
               <!-- {{Card name}} -->
-              <span>供应商</span>
+              <span style="font-size:20px">供应商</span>
               <!-- 更新图标 加事件 -->
-              <el-icon class="icon3">
-                <Refresh @click="doGetSupList()" />
+              <el-icon class="icon3" style="cursor: pointer;" @click="doGetSupList()">
+                <Refresh />
               </el-icon>
             </div>
           </template>
@@ -118,6 +118,18 @@ import { ref, reactive, toRefs, onMounted } from 'vue'
 import { getCusList, getSysList } from './api/CenterCom.js'
 import { getSupList } from './api/datalist.js'
 import { Refresh } from '@element-plus/icons-vue'
+import { storeToRefs } from 'pinia'
+import { themeStore } from '@/stores/theme'
+
+// 切换主题相关
+const themStore = themeStore()
+const isDarkThem = ref(false)
+const { isDarkTheme } = storeToRefs(themStore)
+const subscribe = themStore.$subscribe((mutation, state) => {
+  console.log('77777777', state.isDarkTheme)
+  isDarkThem.value = state.isDarkTheme
+
+})
 
 // 数据
 // 系统概况
@@ -223,15 +235,22 @@ function doGetSupList() {
 }
 
 .icon2 {
-  left: 200px;
+  /* left: 200px; */
 }
 
 .icon1 {
-  left: 480px;
+  /* right: 10%; */
+  /* left: 200px; */
 }
 
 .icon3 {
-  left: 150px;
+  /* left: 150px; */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-header span {
@@ -281,5 +300,14 @@ function doGetSupList() {
   color: rgba(0, 0, 0, .85);
   font-size: 30px;
   line-height: 32px;
+}
+
+.dark-cenercom1 span {
+  color: white;
+}
+
+
+.dark-cenercom1 p {
+  color: white;
 }
 </style>
