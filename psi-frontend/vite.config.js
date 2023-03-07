@@ -88,6 +88,10 @@ export default ({ mode }) =>
         '/J4': {
           changeOrigin: true,
           target: 'http://8.130.20.243:10690/'
+        },
+        '/C5':{
+          changeOrigin: true,
+          target: 'http://47.115.231.132:8090/'
         }
       }
     },
