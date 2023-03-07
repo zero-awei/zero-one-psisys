@@ -4,6 +4,7 @@
 
 /*
 查询列表 
+负责人: 巴比龙
 */
 JsonVO<PageVO<FinPaymentReqVO>> FinPaymentReqControlle::execQueryPayBill(const FinPaymentReqQuery& query, const PayloadDTO& payload) {
 	FinPyamentReqService service;
@@ -14,6 +15,7 @@ JsonVO<PageVO<FinPaymentReqVO>> FinPaymentReqControlle::execQueryPayBill(const F
 
 /*
 查询详情
+负责人: 巴比龙
 */
 JsonVO<FinPaymentDetailVO> FinPaymentReqControlle::execQueryPayDetailBill(const FinPaymentReqEntryQuery& query, const PayloadDTO& payload) {
 	FinPyamentReqService service;
@@ -28,7 +30,10 @@ JsonVO<FinPaymentDetailVO> FinPaymentReqControlle::execQueryPayDetailBill(const 
 	return jResult;
 }
 
-
+/*
+添加订单
+负责人: 巴比龙
+*/
 JsonVO<uint64_t> FinPaymentReqControlle::execAddPayHandle(const AddPaymentReqDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
@@ -37,6 +42,7 @@ JsonVO<uint64_t> FinPaymentReqControlle::execAddPayHandle(const AddPaymentReqDTO
 
 /*
 修改订单
+负责人: 巴比龙
 */
 JsonVO<uint64_t> FinPaymentReqControlle::execModPayHandle(const ModPyamentReqDTO& dto, const PayloadDTO& payload)
 {

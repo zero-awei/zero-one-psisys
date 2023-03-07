@@ -18,6 +18,7 @@
 
 /**
  * 采购付款申请订单
+ * 负责人: 巴比龙
  */
 class FinPaymentReqControlle
 {

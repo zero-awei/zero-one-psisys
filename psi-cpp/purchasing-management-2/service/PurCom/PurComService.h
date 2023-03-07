@@ -28,6 +28,7 @@
 
 /**
  * 采购请求服务实现，基础采购订单服务实现
+ * 负责人：J4nnA
  */
 class PurComService
 {

@@ -37,6 +37,7 @@ JsonVO<PurReqVO> PurReqController::execGetPurReq(const PurReqQuery& query)
 	JsonVO<PurReqVO> result = JsonVO(service.getData(query.getId()), RS_SUCCESS);
 	return result;
 }
+
 // ²éÑ¯listÊý¾Ý
 JsonVO<list<PurReqVO>> PurReqController::execListPurReqList(const PurReqQuery& query, const PayloadDTO& payload)
 {

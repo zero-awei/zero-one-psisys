@@ -148,10 +148,6 @@
     <ClInclude Include="dao\PurOrderSub\PurReqMapper.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDetailDTO.h" />
     <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqDO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryDO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryManageDO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqManageDO.h" />
     <ClInclude Include="api\finPaymenReq\FinPaymentReqControlle.h" />
     <ClInclude Include="domain\dto\finPaymentReq\addPaymentReqDTO.h" />
     <ClInclude Include="domain\dto\finPaymentReq\finPaymentReqEntryDTO.h" />
@@ -172,5 +168,7 @@
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqManageDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
     <ClInclude Include="usrlib\jwt\TestToken.h" />
+    <ClInclude Include="domain\do\prepayment\PrepaymentEntryDO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailEntryBillVO.h" />
   </ItemGroup>
 </Project>

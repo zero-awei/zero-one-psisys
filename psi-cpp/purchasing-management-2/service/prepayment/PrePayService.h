@@ -50,10 +50,13 @@ public:
 	bool updateData(const AddPayDTO& dto, const PayloadDTO& payload);
 
 	// 分页查询 预付申请单所有数据(多个对象)
+	// 负责人：xubuxi
 	PageVO<PurOrderVO> listAll(const PurOrderQuery& query);
 	// 查询预付申请单详细数据(单个对象)
+	// 负责人：xubuxi
 	PurOrderVO getAll(const PurOrderQuery& query);
 	// 通过ID删除数据
+	// 负责人：xubuxi
 	bool DePrePayId(const DePayDTO& dto);
 };
 

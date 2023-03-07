@@ -24,18 +24,18 @@
 class FinPyamentReqService
 {
 public:
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//²åÈëÊý¾Ý
 	uint64_t saveData(const AddPaymentReqDTO& dto, const PayloadDTO& payload);
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÐÞ¸ÄÊý¾Ý
 	uint64_t updateData(const ModPyamentReqDTO& dto, const PayloadDTO& payload);
 
-	// Í¨ï¿½ï¿½ï¿½ï¿½Ä¿Â¼billNoÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Í¨¹ýÖ÷Ä¿Â¼billNoÉ¾³ýÊý¾Ý
 	bool removeData(string billNo);
 	
-	// ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ·ÖÒ³²éÑ¯ËùÓÐÊý¾Ý
 	PageVO<FinPaymentReqVO> queryList(const FinPaymentReqQuery& query);
-	//ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
+	// ²éÑ¯Ö¸¶¨µ¥¾ÝÏêÏ¸ÐÅÏ¢
 	FinPaymentDetailVO detailDate(const FinPaymentReqEntryQuery& query);
 	
 };

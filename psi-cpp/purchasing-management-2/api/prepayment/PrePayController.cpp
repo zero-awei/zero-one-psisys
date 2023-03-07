@@ -98,33 +98,33 @@ JsonVO<uint64_t> PrePayController::execModifyPay(const AddPayDTO& dto, const Pay
 	return result;
 }
 
-// �޸ĵ���״̬
-// �����ˣ�Andrew
+// 修改单据状态(关闭、作废、反关闭)
+// 负责人：Andrew
 JsonVO<string> PrePayController::execModifyPayBillStatus(const PayModBillStatusDTO& dto, const PayloadDTO& payload)
 {
 	PrePayService service;
 	JsonVO<string> result;
 
-	// ����У��
-	if (dto.getId() == "" || dto.getBill_no() == "") // ���ID�͵��ݱ��Ϊ��
+	// 数据校验
+	if (dto.getId() == "" || dto.getBill_no() == "") // 如果ID和单据编号为空
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
-	// ���������Ϊ�ջ��߲���ö������Ԫ�����������
+	// 如果必填项为空或者不是枚举类中元素则参数错误
 	if (dto.getOpType() != dto.CLOSE && dto.getOpType() != dto.CANCEL && dto.getOpType() != dto.UNCLOSE)
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
 
-	// ִ��
+	// 执行
 	if (service.updateStatus(dto, payload)) {
 		result.success(dto.getId());
 		switch (dto.getOpType())
 		{
 		case dto.CLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("�رճɹ�"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("Close Successfully"));
 			break;
 		case dto.UNCLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("���رճɹ�"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("Anti-Close Successfully"));
 			break;
 		case dto.CANCEL:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("���ϳɹ�"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("Cancel Successfully"));
 			break;
 		}
 	}
@@ -133,20 +133,20 @@ JsonVO<string> PrePayController::execModifyPayBillStatus(const PayModBillStatusD
 		switch (dto.getOpType())
 		{
 		case dto.CLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("�ر�ʧ��"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("Close Successfully"));
 			break;
 		case dto.UNCLOSE:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("���ر�ʧ��"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("Anti-Close Successfully"));
 			break;
 		case dto.CANCEL:
-			result.setMessage(CharsetConvertHepler::ansiToUtf8("����ʧ��"));
+			result.setMessage(CharsetConvertHepler::ansiToUtf8("Cancel Successfully"));
 			break;
 		}
 	}
 	return result;
 }
-//�ɹ������б�
-//�����ˣ��첻ϴ
+//查询
+//负责人：徐不洗
 JsonVO<PageVO<PurOrderVO>> PrePayController::execQuerypayFindBill(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	PrePayService service;
@@ -154,8 +154,8 @@ JsonVO<PageVO<PurOrderVO>> PrePayController::execQuerypayFindBill(const PurOrder
 	return JsonVO<PageVO<PurOrderVO>>(result, RS_SUCCESS);
 }
 
-//�ɹ��������б�
-//�����ˣ��첻ϴ
+//查询指定单据详细信息
+//负责人：徐不洗
 JsonVO<PurOrderVO> PrePayController::execQueryPayDetailBill(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	if (query.getBill_no() == "") {
@@ -166,25 +166,25 @@ JsonVO<PurOrderVO> PrePayController::execQueryPayDetailBill(const PurOrderQuery&
 	return JsonVO<PurOrderVO>({}, RS_SUCCESS);
 }
 
-//ɾ��
-//�����ˣ��첻ϴ
+//删除订单
+//负责人：徐不洗
 JsonVO<string> PrePayController::execRemoveDePayId(const DePayDTO& dto)
 {
 	PrePayService service;
 	JsonVO<string> result;
-	// ����У��
-	if (dto.getId() == "" || dto.getBill_no() == "") {// ���ID�͵��ݱ��Ϊ��
+	// 数据校验
+	if (dto.getId() == "" || dto.getBill_no() == "") {// 如果ID和单据编号为空
 		return JsonVO<string>({}, RS_PARAMS_INVALID);
 	}
-	//ִ������ɾ��
+	//执行订单删除
 	if (service.DePrePayId(dto)) {
 		result.success(dto.getId());
-		result.setMessage(CharsetConvertHepler::ansiToUtf8("ɾ���ɹ�"));
+		result.setMessage(CharsetConvertHepler::ansiToUtf8("Delete Successfully"));
 	}
 	else {
 		result.fail(dto.getId());
-		result.setMessage(CharsetConvertHepler::ansiToUtf8("ɾ��ʧ��"));
+		result.setMessage(CharsetConvertHepler::ansiToUtf8("Delete Failure"));
 	}
-	//��Ӧ���
+	//结果返回
 	return result;
 }

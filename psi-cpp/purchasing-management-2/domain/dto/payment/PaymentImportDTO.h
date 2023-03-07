@@ -13,8 +13,6 @@
 class PaymentImportDTO : public FileDTO
 {
 protected:
-
-
 	// 一组新增类型
 	CC_SYNTHESIZE(std::list<std::string>, importPayment, ImportPayment);
 public:

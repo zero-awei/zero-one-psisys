@@ -30,6 +30,7 @@
 
 /**
  * 采购请求控制器，采购请求接口的使用
+ * 负责人：J4nnA
  */
 class PurComController {
 public:

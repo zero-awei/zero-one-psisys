@@ -21,6 +21,7 @@
 #include "../../service/PurCom/PurComService.h"
 
 // 查询list数据
+// 负责人：J4nnA
 JsonVO<PageVO<PurComVO>> PurComController::execListPurCom(const PurComQuery& query, const PayloadDTO& payload) {
 	// 定义一个Service
 	PurComService service;
@@ -31,6 +32,7 @@ JsonVO<PageVO<PurComVO>> PurComController::execListPurCom(const PurComQuery& que
 }
 
 // 查询单个数据
+// 负责人：J4nnA
 JsonVO<PurComVO> PurComController::execGetPurCom(const PurComQuery& query)
 {
 	PurComService service;
@@ -40,6 +42,8 @@ JsonVO<PurComVO> PurComController::execGetPurCom(const PurComQuery& query)
 	return result;
 }
 
+// 查询指定比价单的明细列表
+// 负责人：J4nnA
 JsonVO<PageVO<PurComEntryVO>> PurComController::execListPurComEntrys(const PurComEntryQuery& query, const PayloadDTO& payload)
 {
 	// 定义一个Service

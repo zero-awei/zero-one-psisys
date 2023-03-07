@@ -108,15 +108,16 @@ entryData.setCustom1(entrydto.getCustom1());\
 entryData.setCustom2(entrydto.getCustom2());\
 entryData.setVersion(entrydto.getVersion());
 
-// ??????????????
+// 分页查询所有数据
+// 负责人：青羽
 PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 {
-	//???????????
+	//构建返回对象
 	PageVO<PurOrderVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//?????????????
+	//查询数据总条数
 	PurOrderDO obj;
 	obj.setBill_no(query.getBill_no());
 	obj.setBill_date(query.getBill_date());
@@ -135,7 +136,7 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 		return pages;
 	}
 
-	//??????????
+	//分页查询数据
 	pages.setTotal(count);
 	pages.calcPages();
 	list<PurOrderDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
@@ -202,6 +203,7 @@ PageVO<PurOrderVO> PurOrderService::listPurOrder(const PurOrderQuery& query)
 	return pages;
 }
 
+// 查询单个数据
 // 负责人: 青羽
 PurOrderDetailVO PurOrderService::getPurOrder(const PurOrderQuery& query)
 {
@@ -649,15 +651,16 @@ PurOrderDetailVO PurOrderService::getPurOrder(const PurOrderQuery& query)
 	return vo;
 }
 
-// ????????
+// 保存数据
+// 负责人：青羽
 uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payload)
 {
-	//???????
+	//组装数据
 	PurOrderDO data;
 	PurOrderDAO dao;
 	uint64_t result = -1;
 
-	//?????????
+	//调用雪花算法
 	SnowFlake sf(1, 4);
 	string time = SimpleDateTimeFormat::format();
 	
@@ -668,7 +671,7 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payl
 
 	data.setId(std::to_string(sf.nextId()));
 	SET_PUR_ORDER_DO();
-	// ?????????payload???
+	// 创建人，从payload获取
 	data.setCreate_by(payload.getUsername());
 	data.setCreate_time(time);
 	result = dao.insert(data);
@@ -691,21 +694,22 @@ uint64_t PurOrderService::saveData(const PurOrderDTO& dto,const PayloadDTO& payl
 	return result;
 }
 
-// ???????
+// 修改数据
+// 负责人：青羽
 bool PurOrderService::updateData(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
-	//???????
+	//组装数据
 	PurOrderDO data;
 	PurOrderDAO dao;
 	uint64_t result = -1;
 	string time = SimpleDateTimeFormat::format();;
 
-	//?????????
+	//调用雪花算法
 	SnowFlake sf(1, 4);
 
 	data.setId(dto.getId());
 	SET_PUR_ORDER_DO();
-	// ?????????payload???
+	//创建人，从payload获取
 	data.setUpdate_by(payload.getUsername());
 	data.setUpdate_time(time);
 
@@ -735,13 +739,13 @@ bool PurOrderService::updateData(const PurOrderDTO& dto, const PayloadDTO& paylo
 }
 
 
-// ????????(???/?????/????)
-// ???????Andrew
+// 修改状态(关闭/反关闭/作废)
+// 负责人：Andrew
 bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	PurOrderDO data;
 
-	// ????????
+	// 获取时间以及单据编号和ID
 	data.setUpdate_by(payload.getUsername());
 	data.setUpdate_time(SimpleDateTimeFormat::format());
 	ASSIGN(Id);
@@ -761,8 +765,8 @@ bool PurOrderService::updateStatus(const PurOrderDTO& dto, const PayloadDTO& pay
 	return false;
 }
 
-// ??????????-???ID
-// ???????Andrew
+// 删除采购订单-ID
+// 负责人：Andrew
 bool PurOrderService::removeData(string id)
 {
 	PurOrderDAO dao;

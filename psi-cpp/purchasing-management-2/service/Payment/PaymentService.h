@@ -5,22 +5,22 @@
 #include <time.h>
 #include <cstdio> //C++
 
-//�??�����?�?�
+//查看预付申请单列表
 #include "../../domain/query/prepaymentbill/PrepayDetailBillQuery.h"
 #include "../../domain/vo/prepaymentbill/PrepaymentBillVO.h"
 #include "../../domain/vo/prepaymentbill/PrepaymentDetailBillVO.h"
-//�����?�?��?�����?�?�
+//增加修改删除预付申请单列表
 #include "../../domain/dto/prepayment/AddPayDTO.h"
 #include "../../domain/dto/prepayment/PrepaymentDTO.h"
-//?��DTO
+//删除DTO
 #include "../../domain/dto/payment/DePaymentDTO.h"
-//�??���??DTO
+//修改订单状态DTO
 #include "../../domain/dto/payment/PaymentChangeDTO.h"
-//����DTO
+//添加DTO
 #include "../../domain/dto/payment/AddPaymentDTO.h"
 
 #include "../../domain/vo/prepayment/PrepaymentVO.h"
-//���?��
+//导入导出
 #include "../../domain/query/prepaymentbill/PrePayExportQuery.h"
 #include "../../domain/dto/prepayment/PayIntoDTO.h"
 #include "../../domain/vo/prepayment_req/PrepaymentIntoVO.h"

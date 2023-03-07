@@ -19,6 +19,7 @@ effective_time,approver,create_time,create_by,sys_org_code,update_time,update_by
 
 
 // 分页查询 采购订单所有数据(多个对象)
+// 负责人：xubuxi
 PageVO<PurOrderVO> PrePayService::listAll(const PurOrderQuery& query)
 {
 	//构建返回对象
@@ -118,6 +119,7 @@ PageVO<PurOrderVO> PrePayService::listAll(const PurOrderQuery& query)
 
 
 //查询指定单据详细信息-通过单据编号查询数据
+// 负责人：xubuxi
 PurOrderVO PrePayService::getAll(const PurOrderQuery& query) {
 	// 构建返回对象
 	PurOrderVO detail;
@@ -194,6 +196,7 @@ PurOrderVO PrePayService::getAll(const PurOrderQuery& query) {
 
 
 // 通过ID删除数据
+// 负责人：xubuxi
 bool PrePayService::DePrePayId(const DePayDTO& dto)
 {
 	PrepaymentDAO dao;

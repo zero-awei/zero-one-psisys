@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -74,7 +74,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CHECK_TOKEN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -122,7 +122,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CHECK_TOKEN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
@@ -222,6 +222,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\FinPayReq\FinPayReqDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDetailDO.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
+    <ClInclude Include="domain\do\prepayment\PrepaymentEntryDO.h" />
     <ClInclude Include="domain\do\PurCompare\PurCompare.h" />
     <ClInclude Include="domain\do\PurCom\PurComDO.h" />
     <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
@@ -278,15 +279,12 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\payment\PaymentVO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailEntryBillVO.h" />
     <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
     <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComEntryVO.h" />
     <ClInclude Include="domain\vo\PurCom\PurComVO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqDO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryDO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqEntryManageDO.h" />
-    <ClInclude Include="domain\vo\PurOrderSub\FinPaymentReqManageDO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurCompareEntryVO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurCompareVO.h" />
     <ClInclude Include="domain\vo\PurOrderSub\PurInquiryEntryVO.h" />

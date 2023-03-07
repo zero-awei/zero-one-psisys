@@ -4,6 +4,7 @@
 #include "../lib-common/include/CharsetConvertHepler.h"
 
 //修改单据状态
+//负责人：最初
 JsonVO<string> PaymentController::execChangePayment(const PaymentChangeDTO& dto, const PayloadDTO& payload)
 {
 
@@ -52,6 +53,7 @@ JsonVO<string> PaymentController::execChangePayment(const PaymentChangeDTO& dto,
 }
 
 // 删除申请单
+//负责人：最初
 JsonVO<string> PaymentController::execDePayment(const DePaymentDTO& dto)
 {
 	PaymentService service;
@@ -76,6 +78,7 @@ JsonVO<string> PaymentController::execDePayment(const DePaymentDTO& dto)
 
 
 //添加申请
+//负责人：最初
 JsonVO<uint64_t> PaymentController::execAddPayment(const AddPaymentDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
@@ -100,6 +103,7 @@ JsonVO<uint64_t> PaymentController::execAddPayment(const AddPaymentDTO& dto, con
 	//		}
 	//	}
 	//}
+
 	//执行数据新增
 	uint64_t id = service.saveData(dto, payload);
 	if (id > 0) {

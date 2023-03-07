@@ -3,25 +3,24 @@
 #include "../../dao/finPaymentReq/finPaymentReqDAO.h"
 #include "../../lib-common/include/SimpleDateTimeFormat.h"
 
-//����һ������������Ĭ��ֵ���޸�
+// 定义名字
 #define MODIFY_DEFAULT(name) if (dto.get##name() != data.get##name()) {data.set##name(dto.get##name());}
 
-//����һ������������ֵ���޸�
+// 添加采购付款申请订单
 #define MODIFY(name) data.set##name(dto.get##name());
 
 
 uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const PayloadDTO& payload)
 {
-	//���Ƚ������������ӽ����ݿ�
-	//��װ��������
+	// 组装数据
 	FinPaymentReqManageDO data;
 	SnowFlake sf(1, 3);
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
 	string time = SimpleDateTimeFormat::format();
-	//�����ǽ���id����ʹ��ѩ���㷨
+	// 获取id
 	data.setId(id);
-	//��ȡ������Ϣ
+	// 获取用户默认值
 	data.setBillNo(BillNo);
 	MODIFY(BillDate);
 	MODIFY(SupplierId);
@@ -29,13 +28,13 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	MODIFY(PaymentType);
 	MODIFY(Operator);
 	MODIFY(BillStage);
-	//��ȡ�û�����Ϣ���˴�Ϊ���Ӷ�������Ϣ
+	// 获取用户信息
 	data.setSysOrgCode(payload.getDepartment());
 	data.setCreateBy(payload.getUsername());
 	data.setCreateTime(time);
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(time);
-	//����Ĭ��ֵʱ�Ĵ���
+	// 获取默认值
 	MODIFY_DEFAULT(SrcBillType);
 	MODIFY_DEFAULT(SrcBillId);
 	MODIFY_DEFAULT(SrcNo);
@@ -45,19 +44,19 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	MODIFY_DEFAULT(Amt);
 	MODIFY_DEFAULT(Remark);
 	MODIFY_DEFAULT(Version);
-	//ִ�������޸�
+	// 连接DAO层
 	FinPaymentReqDAO dao;
-	//Ȼ�󽫶�����ϸ���ӽ����ݿ�
+	//然后将订单明细添加进数据库
 	for (FinPaymentReqEtryDTO& dto : dto.getDetail()) {
 		FinPaymentReqEntryManageDO data;
-		//�����ǽ���id����ʹ��ѩ���㷨
+		//首先是进行id设置使用雪花算法
 		data.setId(to_string(sf.nextId()));
-		//���ú����������Ӽ�
+		//设置和主表的链接键
 		data.setMid(id);
 		data.setBillNo(BillNo);
-		//���б���ֵ�Ĳ���
+		// 进行必填值的插入
 		MODIFY(EntryNo);
-		//Ĭ��ֵ����
+		// 默认值设置
 		MODIFY_DEFAULT(SrcBillType);
 		MODIFY_DEFAULT(SrcEntryId);
 		MODIFY_DEFAULT(SrcNo);
@@ -72,21 +71,20 @@ uint64_t FinPyamentReqService::saveData(const AddPaymentReqDTO& dto, const Paylo
 	return dao.insert(data);
 }
 
-
+// 修改采购付款申请订单
 uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const PayloadDTO& payload)
 {
-	//���Ƚ������������ӽ����ݿ�
-	//��װ��������
+	// 组装数据
 	FinPaymentReqManageDO data;
 	FinPaymentReqDAO dao;
 	SnowFlake sf(1, 3);
-	//ʹ��ѩ���㷨����id
+	// 获取id
 	string id = to_string(sf.nextId());
 	string BillNo = dto.getBillNo();
 
-	//����id����
+	//获取用户默认值
 	data.setId(id);
-	//��ȡ������Ϣ
+	//获取必填信息
 	data.setBillNo(BillNo);
 	MODIFY(BillDate);
 	MODIFY(SupplierId);
@@ -94,10 +92,10 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	MODIFY(Operator);
 	MODIFY(CreateBy);
 	MODIFY(CreateTime);
-	//��ȡ�޸��û�����Ϣ���˴�Ϊ���Ӷ�������Ϣ
+	//获取修改用户的信息，此处为添加订单人信息
 	data.setUpdateBy(payload.getUsername());
 	data.setUpdateTime(SimpleDateTimeFormat::format());
-	//����Ĭ��ֵʱ�Ĵ���
+	//存在默认值时的处理
 	MODIFY_DEFAULT(SrcBillType);
 	MODIFY_DEFAULT(SrcBillId);
 	MODIFY_DEFAULT(SrcNo);
@@ -107,19 +105,18 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 	MODIFY_DEFAULT(Attachment);
 	MODIFY_DEFAULT(Remark);
 	MODIFY_DEFAULT(Version);
-	//ִ�������޸�
 
-	//Ȼ�󽫶�����ϸ���ӽ����ݿ�
+	//将订单明细添加进数据库
 	for (FinPaymentReqEtryDTO& dto : dto.getDetail()) {
 		FinPaymentReqEntryManageDO data;
-		//�����ǽ���id����,��ѩ���㷨
+		//首先是进行id设置,用雪花算法
 		data.setId(to_string(sf.nextId()));
-		//���ú����������
+		//设置和主表的外键
 		data.setMid(id);
 		data.setBillNo(BillNo);
-		//���б���ֵ�Ĳ���
+		//进行必填值的插入
 		MODIFY(EntryNo);
-		//Ĭ��ֵ����
+		//默认值设置
 		MODIFY_DEFAULT(SrcBillType);
 		MODIFY_DEFAULT(SrcEntryId);
 		MODIFY_DEFAULT(SrcNo);
@@ -137,7 +134,7 @@ uint64_t FinPyamentReqService::updateData(const ModPyamentReqDTO& dto, const Pay
 bool FinPyamentReqService::removeData(string billNo)
 {
 	FinPaymentReqDAO dao;
-	//���Ȼ�ȡ������Ϣ
+	//首先获取附件信息
 	list<FinPaymentReqManageDO> getdata = dao.selectByBillNo(billNo);
 	if (getdata.size() == 1)
 	{
@@ -145,14 +142,14 @@ bool FinPyamentReqService::removeData(string billNo)
 		if (data.getAttachment() != "")
 		{
 #ifdef LINUX
-			//����ͻ��˶���
+			//Linux端读取配置文件
 			FastDfsClient client("conf/client.conf", 3);
 #else
-			//����ͻ��˶���
+			//windows端读取配置文件
 			FastDfsClient client("1.15.240.108");
 #endif
 			string fieldName = data.getAttachment();
-			//ɾ���ļ�
+			//删除文件
 			if (!fieldName.empty())
 			{
 				client.deleteFile(fieldName);
@@ -162,13 +159,14 @@ bool FinPyamentReqService::removeData(string billNo)
 	return dao.deleteByBillNo(billNo);
 }
 
+// 分页查询所有数据
 PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery& query) {
-	//�������ض���
+	// 组装数据
 	PageVO<FinPaymentReqVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	//��ѯ����������
+	//查询数据总条数
 	FinPaymentReqDO obj;
 	obj.setBill_no(query.getBillNo());
 	obj.setBill_date(query.getBillDate());
@@ -184,7 +182,7 @@ PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery
 		return pages;
 	}
 
-	//��ҳ��ѯ����
+	//分页查询数据
 	pages.setTotal(count);
 	pages.calcPages();
 	list<FinPaymentReqDO> result = dao.selectWithPage(obj, query.getPageIndex(), query.getPageSize());
@@ -220,7 +218,7 @@ PageVO<FinPaymentReqVO> FinPyamentReqService::queryList(const FinPaymentReqQuery
 	pages.setRows(vr);
 	return pages;
 }
-//��ѯָ��������ϸ��Ϣ
+//查询指定单据详细信息
 FinPaymentDetailVO FinPyamentReqService::detailDate(const FinPaymentReqEntryQuery& query) {
 	FinPaymentReqDAO dao;
 	list<FinPaymentReqDO> pus = dao.selectBillNo(query.getBillNo());

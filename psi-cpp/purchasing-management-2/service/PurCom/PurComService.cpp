@@ -21,6 +21,7 @@
 #include "../../dao/PurCom/PurComDAO.h"
 
 // 分页查询所有数据
+// 负责人：J4nnA
 PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 {
 	// 构建返回对象
@@ -106,6 +107,7 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 }
 
 // 查询单个数据
+// 负责人：J4nnA
 PurComVO PurComService::getData(uint64_t id) {
 	PurComVO data;
 
@@ -113,6 +115,7 @@ PurComVO PurComService::getData(uint64_t id) {
 }
 
 // 查询指定比价单的明细列表
+// 负责人：J4nnA
 PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 {
 	// 构造返回对象

@@ -117,8 +117,7 @@ void Router::createStatisRouter() {
 }
 
 // 采购付款申请
-// 负责人：最初
-// 负责人: 巴比龙
+// 负责人：最初, 巴比龙
 void Router::createPaymentRouter()
 {
 	//修改单据状态
@@ -132,11 +131,14 @@ void Router::createPaymentRouter()
 	BIND_PUT_ROUTER(server, "/AppPayment", &PaymentController::AddPayment, nullptr);
 
 	//查询列表
+	//负责人: 巴比龙
 	BIND_GET_ROUTER(server, "/finPaymenReq", &FinPaymentReqControlle::queryFinPaymentReq, nullptr);
 	//查询单个详情
+	//负责人: 巴比龙
 	BIND_GET_ROUTER(server, "/finPaymentReqEntry", &FinPaymentReqControlle::queryFinPaymentReqEntry, nullptr);
 	BIND_POST_ROUTER(server, "/paymentReq/add", &FinPaymentReqControlle::addPaymentReq, nullptr);
 	//修改订单
+	//负责人: 巴比龙
 	BIND_PUT_ROUTER(server, "/paymentReq/mod", &FinPaymentReqControlle::modPaymentReq, nullptr);
 }
 

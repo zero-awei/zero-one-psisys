@@ -96,6 +96,7 @@ JsonVO<string> PurOrderController::execRemoveById(const StringID& id)
 }
 
 // 新增数据
+// 负责人：青羽
 JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	JsonVO<uint64_t> result;
@@ -118,7 +119,9 @@ JsonVO<uint64_t> PurOrderController::execAddPurOrder(const PurOrderDTO& dto, con
 	}
 	return result;
 }
+
 // 修改数据
+// 负责人：青羽
 JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload)
 {
 	//定义一个Service
@@ -142,6 +145,7 @@ JsonVO<uint64_t> PurOrderController::execModifyPurOrder(const PurOrderDTO& dto, 
 }
 
 // 查询list数据
+// 负责人：青羽
 JsonVO<PageVO<PurOrderVO>> PurOrderController::execQueryListPurOrder(const PurOrderQuery& query, const PayloadDTO& payload)
 {
 	PurOrderService service;
@@ -150,6 +154,7 @@ JsonVO<PageVO<PurOrderVO>> PurOrderController::execQueryListPurOrder(const PurOr
 }
 
 // 查询单个数据byDTO
+// 负责人：青羽
 JsonVO<PurOrderDetailVO> PurOrderController::execGetPurOrder(const PurOrderQuery& query)
 {
 	PurOrderService service;
