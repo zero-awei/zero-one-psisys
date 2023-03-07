@@ -4,12 +4,12 @@
         <div class="card-header">
              <span>处理中主要单据</span>
              <!-- 更新图标 加事件 -->
-             <el-icon style="color:blue;"
+             <el-icon style="color:blue; left:-30px"
               @click="doReset()"><Refresh /></el-icon>
         </div>
     </template> 
       <div class="card-bottom">
-          <el-table :data="tableData" style="width:280px">
+          <el-table :data="TableList.data" style="width:280px;height:955px">
             <!-- prop {类别 第一个空白}编制中 待核批 执行中-->
              <el-table-column 
                 prop="name" label="" width="63"/>
@@ -43,61 +43,42 @@ const props = defineProps({
 
 }) */
 import { getTableList} from './api/datalist.js'
-import {onMounted } from 'vue'
-// const {tableData} = toRefs(tableState)
-/* function doGetTableList() {
-  getTableList(
-    // 参数为空是这么写？
-    {},
-    // 请求成功
-    (data) => {
-      // 表格列表数据
-      // // console.log(data.data)
-      tableData = data.data
-      name = tableData.name
-      appr = tableData.appr
-      edit = tableData.edit
-      exec = tableData.exec 
-    },
-    () => {
-      ElMessage.error('查询数据出现错误')
-    }
-)
-}
+import {  reactive,onMounted,ref} from 'vue'
+import { Refresh } from '@element-plus/icons-vue'
 
-// 表单重置
-function doReset() {
-  //查询表单重置，表格也要刷新
+
+//数据
+const TableList = reactive({
+  data:[]
+})
+//请求数据
+onMounted(() => {
+  doGetTableList()
+})
+
+//方法
+function doGetTableList(){
+  getTableList(
+    {},
+    (data) => {
+      data.forEach((item, index) => {
+      let obj = item
+      TableList.data.push(obj)
+    })
+      console.log(data)
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+console.log(TableList.data)
+
+function doReset(){
   doGetTableList()
 }
-// 在钩子函数时查询所有单据
-onMounted(() => {
-  getTableList()
-})
- */
 
-/* const tableData = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-] */
 </script>
 
 
