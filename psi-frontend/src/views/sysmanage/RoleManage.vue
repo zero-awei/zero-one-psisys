@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-21 15:35:40
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-28 10:43:48
+ * @LastEditTime: 2023-03-06 17:35:21
  * @FilePath: \psi-frontend\src\views\sysmanage\RoleManage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -29,7 +29,7 @@
         </template>
         <!-- 权限操作 -->
         <template v-slot:permissionOperation="slot">
-          <el-button link type="primary" @click="permissonEdit = (slot.data)">编辑</el-button>
+          <el-button link type="primary" @click="permissonEdit(slot.data)">编辑</el-button>
         </template>
         <!-- 角色操作 -->
         <template v-slot:basicOperation="slot">
@@ -81,7 +81,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { getTableList } from './api/role.js'
+import { queryAllRole, addRoleJson, deleteRole } from './api/role.js'
 import { format } from '@/apis/date/index.js'
 import { userStore } from '@/stores/user.js'
 // import { pathStore } from '@/stores/public.js'
@@ -236,79 +236,86 @@ const tableState = reactive({
 })
 const { tableItems, tableData, attributes } = toRefs(tableState)
 // 表格数据模拟
-let da = {
-  "createBy": "admin",
-  "createTime": "2018-12-21 18:03:39",
-  "description": "管理员",
-  "id": "f6817f48af4fb3af11b9e8bf182f618b",
-  "roleCode": "admin",
-  "roleName": "管理员",
-  "updateBy": "admin",
-  "updateTime": "2019-05-20 11:40:26"
-}
-// // // console.log('111111111')
-// // // console.log(tableData)
-// tableData.push(da)
-tableData.value.push(da)
+// let da = {
+//   "createBy": "admin",
+//   "createTime": "2018-12-21 18:03:39",
+//   "description": "管理员",
+//   "id": "f6817f48af4fb3af11b9e8bf182f618b",
+//   "roleCode": "admin",
+//   "roleName": "管理员",
+//   "updateBy": "admin",
+//   "updateTime": "2019-05-20 11:40:26"
+// }
+// // // // console.log('111111111')
+// // // // console.log(tableData)
+// // tableData.push(da)
+// tableData.value.push(da)
 
 
 // 新增角色模块
 const addRoleFormState = reactive({
   // 查询表单每一项的配置
   addRoleItems: [
+    // {
+    //   type: 'input',
+    //   label: '创建人',
+    //   prop: 'createBy'
+    // },
+    // {
+    //   type: 'datePicker',
+    //   label: '创建时间',
+    //   prop: 'createTime'
+    // },
     {
       type: 'input',
-      label: '创建人',
-      prop: 'createBy'
+      label: '角色名称',
+      prop: 'roleName',
     },
     {
-      type: 'datePicker',
-      label: '创建时间',
-      prop: 'createTime'
+      type: 'input',
+      label: '角色编码',
+      prop: 'roleCode',
+
     },
     {
       type: 'input',
       label: '描述',
       prop: 'description',
     },
-    {
-      type: 'input',
-      label: '角色id',
-      prop: 'id',
-    },
-    {
-      type: 'input',
-      label: '角色编码',
-      prop: 'roleCode',
-    },
-    {
-      type: 'input',
-      label: '角色名称',
-      prop: 'roleName',
-    },
+    // {
+    //   type: 'input',
+    //   label: '角色id',
+    //   prop: 'id',
+    // },
+    // {
+    //   type: 'input',
+    //   label: '角色编码',
+    //   prop: 'roleCode',
+    // },
 
-    {
-      type: 'input',
-      label: '更新人',
-      prop: 'updateBy',
-    },
-    {
-      type: 'datePicker',
-      label: '更新时间',
-      prop: 'updateTime'
-    },
+    // {
+    //   type: 'input',
+    //   label: '更新人',
+    //   prop: 'updateBy',
+    // },
+    // {
+    //   type: 'datePicker',
+    //   label: '更新时间',
+    //   prop: 'updateTime'
+    // },
   ],
 
   // 配置数据绑定的字段
   addRoleFormData: {
-    createBy: '',
-    createTime: '',
+    // createBy: '',
+    // createTime: '',
     description: '',
-    id: '',
-    roleCode: '',
+    // id: '',
+    // roleCode: '',
     roleName: '',
-    updateBy: '',
-    updateTime: '',
+    roleCode: ''
+    // updateBy: '',
+    // updateTime: '',
   },
 })
 const { addRoleItems, addRoleFormData, } = toRefs(addRoleFormState)
@@ -316,8 +323,8 @@ const { addRoleItems, addRoleFormData, } = toRefs(addRoleFormState)
 // 分页相关配置
 const pagination = reactive({
   currentPage: 2, // 当前页
-  pageSize: 100, // 每页数据量
-  pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
+  pageSize: 10, // 每页数据量
+  pageSizes: [10, 20, 30, 40], // 可选择的每页展示量
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
@@ -329,7 +336,7 @@ let addDialogVisible = ref(false)
 const addDialogState = reactive({
   addDialogAttrs: {
     title: '角色新增',
-    width: '50%',
+    width: '60%',
     determine: true,
   }
 })
@@ -391,10 +398,9 @@ const editMenuTableState = reactive({
 })
 const { editMenuTableItems, editMenuTableData, editMenuAttr } = toRefs(editMenuTableState)
 
-// 表格相关
 const editPermissionTableState = reactive({
   // 查询表单每一项的配置
-  editPermissionTableItems: [
+  editPermisssionTableItems: [
     {
       type: 'text',
       label: '权限id',
@@ -424,8 +430,8 @@ const editPermissionTableState = reactive({
   ],
 
   // 配置数据绑定的字段
-  editPermissionTableData: [],
-  editPermissionAttr: {
+  editPermisssionTableData: [],
+  editPermisssionAttr: {
     selection: true, //是否多选框
     index: true, // 索引
     border: true,
@@ -434,7 +440,8 @@ const editPermissionTableState = reactive({
     headOperation: ['add', 'select']
   }
 })
-const { editPermissionTableItems, editPermissionTableData, editPermissionAttr } = toRefs(editPermissionTableState)
+const { editPermisssionTableItems, editPermisssionTableData, editPermisssionAttr } = toRefs(editPermissionTableState)
+
 
 
 
@@ -519,50 +526,53 @@ const editRoleFormState = reactive({
 const { editRoleItems, editRoleFormData } = toRefs(editRoleFormState)
 // 进入页面时查询表格所有单据
 onMounted(() => {
-  doGetTableList()
+  doQueryAllRole()
 
 })
 
 // ------------------------ 方法---------------------------
 // 6.3 分页查询所有用户
-function doGetTableList() {
-  // getTableList(
-  //   // 参数为空是这么写？
-  //   {},
-  //   // 请求成功
-  //   (data) => {
-  //     // 分页配置
-  //     // 页面属性 配对 返回数据
-  //     pagination.currentPage = data.pageIndex
-  //     pagination.pageSize = data.pageSize
-  //     pagination.pages = data.pages
-  //     // 表格列表数据
-  //     // tableData = data.rows
-  //     // 模拟表格列表数据
-  //     const da = [
-  //       {
-  //         "createBy": "admin",
-  //         "createTime": "2018-12-21 18:03:39",
-  //         "description": "管理员",
-  //         "id": "f6817f48af4fb3af11b9e8bf182f618b",
-  //         "roleCode": "admin",
-  //         "roleName": "管理员",
-  //         "updateBy": "admin",
-  //         "updateTime": "2019-05-20 11:40:26"
-  //       }
-  //     ]
-  //     tableData = da
-  //   },
-  //   () => {
-  //     ElMessage.error('查询数据出现错误')
-  //   }
-  // )
+function doQueryAllRole() {
+  let param = {
+    pageIndex: 1,
+    pageSize: 10,
+  }
+  queryAllRole(
+    param,
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      console.log('---查询所有角色', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
 
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
 }
 
 // 新增角色打开对话框
 function addRole() {
   addDialogVisible.value = true
+}
+// 新增角色表单清空
+function resetAddRole() {
+  // addRoleFormData.createBy = ''
+  // addRoleFormData.createTime = ''
+  addRoleFormData.description = ''
+  // addRoleFormData.id = ''
+  // addRoleFormData.roleCode = ''
+  addRoleFormData.roleName = ''
+  addRoleFormData.roleCode = ''
+  // addRoleFormData.updateBy = ''
+  // addRoleFormData.updateTime = ''
 }
 // 6.2 新增角色
 function handleAddRole() {
@@ -571,16 +581,48 @@ function handleAddRole() {
   const param = {}
   param.roleName = addRoleFormData.roleName
   param.description = addRoleFormData.description
-  const nDate = new Date()
-  param.createTime = format(nDate, 'yyyy-MM-dd hh:mm:ss')
-  param.createBy = store.getUser.roles[0]
+  param.roleCode = addRoleFormData.roleCode
+  // const nDate = new Date()
+  // param.createTime = format(nDate, 'yyyy-MM-dd hh:mm:ss')
+  // param.createBy = store.getUser.roles[0]
+  addRoleJson(
+    param,
+    (data) => {
+
+      //新增成功后清空表单,并且重新查询
+      resetAddRole()
+      doQueryAllRole()
+    },
+    () => {
+
+
+
+    }
+  )
   // param.id =
 
 }
 // 6.1 删除角色
-function handleDeleteRole() {
+function handleDeleteRole(data) {
   // TODO 前后端接口
+  console.log('删除角色id', data)
+  // 
+  let ids = data.id
+  deleteRole(
+    ids,
+    (data) => {
+      if (data.code === 10000) {
+        // 删除成功后更新列表
+        doQueryAllRole()
+      } else {
+        Elmessage.warn('删除失败')
+      }
+    },
+    () => {
 
+    }
+
+  )
 }
 
 
@@ -599,6 +641,12 @@ function menuEdit(data) {
   // // console.log("menuDialog数据", data)
 }
 
+
+// 权限编辑
+function permissonEdit(data) {
+  console.log('权限编辑data', data)
+  permissonEditDialogVisible.value = true
+}
 
 
 // 多选

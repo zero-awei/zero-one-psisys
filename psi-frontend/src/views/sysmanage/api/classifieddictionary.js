@@ -1,7 +1,7 @@
 import Request from '@/apis/request.js'
 
 // 定义一个功能模块基础url，方便替换
-const currBaseUrl = '/sys-category/'
+const currBaseUrl = '/systemmanagement/sys-category/'
 
 // j2 4.1 删除指定根字典（返回值data值表示删除成功与否）
 export function deleteDict(data, success, fail) {
@@ -47,7 +47,9 @@ export function insert(data, success, fail) {
 
 // j2 4.3 查询所有根字典
 export function queryAll(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query-all', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'query-all', data, {
+    baseURL: import.meta.env.VITE_API_J2_SYS
+  })
     .then((data) => {
       console.log('后端返回data----', data)
       // data是后端的响应示例

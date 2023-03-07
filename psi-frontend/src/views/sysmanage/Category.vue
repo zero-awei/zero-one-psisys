@@ -1,8 +1,8 @@
 <!--
  * @Author: 160405103 1348313766@qq.com
- * @Date: 2023-02-23 13:15:02
+ * @Date: 2023-02-23 13:15:02load
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-05 17:00:15
+ * @LastEditTime: 2023-03-06 15:00:45
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -23,7 +23,7 @@
       <el-table-column label="操作" :width="300" align="center">
         <template #default="scope">
           <!-- @click="handleEdit(scope.$index, scope.row) -->
-          <el-popover placement="bottom" :width="300" trigger="click">
+          <el-popover placement="bottom" :width="300" trigger="click" >
             <template #reference>
               <el-button style="margin-right: 16px">添加下级</el-button>
             </template>
@@ -36,7 +36,7 @@
               </el-form-item>
             </el-form>
             <el-button @click="handleAddSubCategory(scope.row)">确定</el-button>
-            <el-button @click="popoverVisible = false">取消</el-button>
+            <!-- <el-button @click="popoverVisible = false">取消</el-button> -->
           </el-popover>
           |
           <el-button link type="primary" @click="editMenu(scope.row)">修改</el-button>
@@ -66,8 +66,8 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRefs } from 'vue'
-
+import { ref, reactive, toRefs,onMounted } from 'vue'
+import {queryAll, queryOne } from './api/classifieddictionary.js'
 
 // 表格相关
 const tableState = reactive({
@@ -162,8 +162,47 @@ const { addCategoryItems, addCategoryFormData, } = toRefs(addCategoryState)
 // const parentMenusOptions=[]
 
 
+onMounted(() => {
+  handleQueryAll()
+})
 // -------- 方法---------
+
 function handleAddSubCategory() {
+
+}
+
+function handleQueryAll(){
+  let param = {
+    pageIndex: 1,
+    pageSize: 10,
+  }
+  queryAll(
+    { ...param },
+    // {},
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      console.log('---分类字典', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+
+const load = (row, treeNode, resolve)=>{
+  let params={}
+  
 
 }
 </script>

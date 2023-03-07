@@ -1,7 +1,7 @@
 <!-- 登录页面 -->
 <template>
   <!-- <div class="box-card">
-                      <div><el-card style="width: 480px;"> -->
+                        <div><el-card style="width: 480px;"> -->
   <!-- 表单验证 :rules="rules" -->
 <!-- <span>系统登录</span>
         <el-form :model="formData" :rules="rules" status-icon label-width="60px">
@@ -16,10 +16,10 @@
           </el-form-item>
         </el-form>
 
-                          <Test /></el-card> -->
+                            <Test /></el-card> -->
   <!-- 验证码组件 -->
 <!-- <Verify mode="pop" :captchaType="captchaType" :imgSize="{ width: '400px', height: '200px' }" ref="verify"
-                          @success="handleSuccess"></Verify> -->
+                            @success="handleSuccess"></Verify> -->
   <!-- </div></div> -->
   <div class="login-main">
     <div class="login-wraper">
@@ -128,9 +128,9 @@ function submitForm() {
   //$router.push('/home')
 
   // 弹出验证码框
-  // useVerify('clickWord')
+  useVerify('clickWord')
   // console.log('111111111')
-  doLogin()
+  // doLogin()
 }
 
 // 验证码组件引用

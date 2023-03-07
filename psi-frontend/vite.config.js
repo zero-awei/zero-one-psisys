@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-28 20:49:18
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-06 13:22:17
+ * @LastEditTime: 2023-03-06 15:07:55
  * @FilePath: \psi-frontend\vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -38,7 +38,8 @@ export default ({ mode }) =>
         },
         '/captcha': {
           changeOrigin: true,
-          target: 'http://localhost:10680',
+          // target: 'http://localhost:10680',
+          target: 'http://101.132.238.119:10200/',
           rewrite: (path) => path.replace(/^\/captcha/, '')
         },
         '/C1': {

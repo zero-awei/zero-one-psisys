@@ -1,4 +1,3 @@
-
 import { defineStore } from 'pinia'
 import Request from '@/apis/request'
 // 系统管理
@@ -425,7 +424,10 @@ export const userStore = defineStore('user', {
   }),
   getters: {
     // 获取token
-    getToken: (state) => state.token || localStorage.getItem('token'),
+    getToken: (state) =>
+      state.token ||
+      localStorage.getItem('token') ||
+      'AUTH:USER_TOKEN:eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJpZCI6ImU5Y2EyM2Q2OGQ4ODRkNGViYjE5ZDA3ODg5NzI3ZGFlIiwiZXhwIjoxNjc4MTcxNzA2LCJhdXRob3JpdGllcyI6WyJ0ZXN0IiwiYWRtaW4iXSwianRpIjoiOGQ3YjBhZDktMjkyZS00NWE1LWEyYmItZWNkMmE4YzZlMzFhIiwiY2xpZW50X2lkIjoicHNpLW1hbmFnZXIifQ.lfbQtZmzOLoPi3TJH3NnL6lxN0RFHvZ-_HOqpI4C4Zmj1XLu0kFwHjA4CB50YyKiO9Dp3cRTLDeow0qcn-BC0JNZ9HI-O4ql9_7SI-c1Rx0OcuSwZ9HrWWSTSHjhU_4gnr1MJsF2MVcNdbClqkuMn9Ik6Hh-v5Uq4qlVbZV_VoKSv1WGSAGGNNxNGe0pSj83mmob2UFs7OTA5g6XrCx9JSdFjpQ3yvx-zjr-PXrKFF4ZoauT59L_skUDJTJ4ifQ_kLBzpbx5nlw5VzHzs4366CtE15sjLHFCr2FeHi_Gl_gSDwEZRIl2P1Ccwp6v9tzpCAwxPXpdZn0P3d2hevuqQA',
     // 是否已加载
     isLoaded: (state) => state.loaded,
     // 获取当前用户
@@ -441,12 +443,15 @@ export const userStore = defineStore('user', {
     // 加载用户
     async loadUser() {
       // 发送获取当前用户信息请求
-      let data = await Request.requestForm(
-        Request.GET,
-        '/login/current-user',
-        null
-      )
-      this.user = data.data
+      // let data = await Request.requestForm(
+      //   Request.GET,
+      //   '/login/current-user',
+      //   null,
+      //   {
+      //     baseURL: import.meta.env.VITE_API_J1_LOGIN
+      //   }
+      // )
+      // this.user = data.data
     },
     // 加载菜单
     async loadMenus() {
@@ -454,11 +459,14 @@ export const userStore = defineStore('user', {
       //this.menus = testMenus
 
       // 发送获取菜单请求
-      let data = await Request.requestForm(
-        Request.GET,
-        '/login/get-menus',
-        null
-      )
+      // let data = await Request.requestForm(
+      //   Request.GET,
+      //   '/login/get-menus',
+      //   null,
+      //   {
+      //     baseURL: import.meta.env.VITE_API_J1_LOGIN
+      //   }
+      // )
       // this.menus = data.data
       this.menus.push(sysmanageRouter)
       // 在后端返回菜单列表中添加组件列表路由
@@ -483,7 +491,7 @@ export const userStore = defineStore('user', {
         '/login/refresh-token',
         {
           refreshToken: this.refreshToken,
-          clientId: import.meta.env.VITE_API_URL
+          clientId: import.meta.env.VITE_API_J1_LOGIN
         }
       )
       //设置Token相关属性
