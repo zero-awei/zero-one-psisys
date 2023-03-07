@@ -316,6 +316,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+*{
+  margin:0;
+  padding:0;
+}
 .el-container {
   height: 100vh;
 
