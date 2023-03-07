@@ -26,7 +26,7 @@ spring:
         - id: login-route
           uri: lb://${sn.login}
           predicates:
-            - Path=/login/**
+            - Path=/login/**,/captcha/**
         - id: sample-route
           uri: lb://${sn.sample}
           predicates:
@@ -45,3 +45,4 @@ secure:
       - "/auth/oauth/token"
       - "/login/auth-login"
       - "/login/refresh-token"
+      - "/captcha/**"

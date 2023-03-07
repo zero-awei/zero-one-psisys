@@ -4,6 +4,9 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import com.anji.captcha.model.common.ResponseModel;
+import com.anji.captcha.model.vo.CaptchaVO;
+import com.anji.captcha.service.CaptchaService;
 import com.zeroone.star.login.entity.SysRole;
 import com.zeroone.star.login.entity.SysUser;
 import com.zeroone.star.login.service.*;
@@ -27,6 +30,7 @@ import com.zeroone.star.project.vo.login.MenuTreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +44,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import static com.zeroone.star.project.vo.JsonVO.fail;
 
 /**
  * <p>
@@ -65,22 +71,27 @@ public class LoginController implements LoginApis {
     ISysRoleService roleService;
     @Resource
     private RedisUtils redisUtils;
+    @Resource
+    private CaptchaService captchaService;
 
     @ApiOperation(value = "授权登录")
     @PostMapping("auth-login")
     @Override
     public JsonVO<Oauth2TokenDTO> authLogin(LoginDTO loginDTO) {
-
-        // 1. 获取Redis验证码，与LoginDTO验证码进行比对
-        String captchaKey = CommonUtils.generateRedisKey(RedisConstant.CAPTCHA, loginDTO.getCode());
-        if (!redisUtils.isExist(captchaKey)) {
-            // 验证码验证失败
-            return JsonVO.fail(null, ResultStatus.WRONG_CAPTCHA);
-        }
-
-        // 删除验证码，防止反复使用验证码登录
-        if (redisUtils.del(captchaKey) < 0) {
-            log.error("LoginController#authLogin error, Redis删除验证码失败，存在反复利用验证码登录的行为");
+        CaptchaVO captchaVO = new CaptchaVO();
+        captchaVO.setCaptchaVerification(loginDTO.getCode());
+        ResponseModel response = captchaService.verification(captchaVO);
+        if (!response.isSuccess()) {
+            JsonVO<Oauth2TokenDTO> fail = fail(null);
+            fail.setMessage(response.getRepCode() + response.getRepMsg());
+            //验证码校验失败，返回信息告诉前端
+            //repCode  0000  无异常，代表成功
+            //repCode  9999  服务器内部异常
+            //repCode  0011  参数不能为空
+            //repCode  6110  验证码已失效，请重新获取
+            //repCode  6111  验证失败
+            //repCode  6112  获取验证码失败,请联系管理员
+            return fail;
         }
 
         // 2、账号密码认证
@@ -97,13 +108,11 @@ public class LoginController implements LoginApis {
         // 4. 将授权token存储到Redis中，记录登录状态
         String userTokenKey = CommonUtils.generateRedisTokenKey(oauth2Token.getData().getToken());
         if (redisUtils.add(userTokenKey, 1, 1L, TimeUnit.HOURS) < 0) {
-            return JsonVO.fail(oauth2Token.getData(), ResultStatus.SERVER_ERROR);
+            return fail(oauth2Token.getData(), ResultStatus.SERVER_ERROR);
         }
 
-        // 4. 返回结果
+        // 5. 返回结果token
         return oauth2Token;
-
-        //TODO:未实现认证成功后如何实现注销凭证（如记录凭证到内存数据库）
     }
 
     /**
@@ -118,7 +127,7 @@ public class LoginController implements LoginApis {
         // 1. 判断Redis服务器是否存在token
         String oldTokenKey = CommonUtils.generateRedisTokenKey(oauth2TokenDTO.getToken());
         if (!redisUtils.isExist(oldTokenKey)) {
-            return JsonVO.fail(null, ResultStatus.UNAUTHORIZED);
+            return fail(null, ResultStatus.UNAUTHORIZED);
         }
 
         // 2. 封装参数
@@ -136,11 +145,11 @@ public class LoginController implements LoginApis {
         // 4. 用刷新后的Token更新Redis数据
         String refreshedTokenKey = CommonUtils.generateRedisTokenKey(refreshedTokenDTO.getData().getToken());
         if (redisUtils.add(refreshedTokenKey, 1, 1L, TimeUnit.HOURS) < 0) {
-            return JsonVO.fail(null, ResultStatus.SERVER_BUSY);
+            return fail(null, ResultStatus.SERVER_BUSY);
         }
         // 当添加新token之后才删除，这样避免删除成功，但是添加失败后，导致token被误删除
         if (redisUtils.del(oldTokenKey) < 0) {
-            return JsonVO.fail(null, ResultStatus.SERVER_BUSY);
+            return fail(null, ResultStatus.SERVER_BUSY);
         }
         // TODO:未实现注销凭证验证
         // 5. 返回结果
@@ -159,7 +168,7 @@ public class LoginController implements LoginApis {
             return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
         }
         if (currentUser == null) {
-            return JsonVO.fail(null);
+            return fail(null);
         } else {
 
             SysUser user = userService.getById(currentUser.getId());
@@ -209,7 +218,7 @@ public class LoginController implements LoginApis {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         if (passwordEncoder.matches(loginDTOPassword, currentPassword)) {
-            return JsonVO.fail("修改的密码不能与原密码相同！");
+            return fail("修改的密码不能与原密码相同！");
         }
 
         String password = passwordEncoder.encode(loginDTOPassword);
@@ -217,7 +226,7 @@ public class LoginController implements LoginApis {
         if (isUpdate == true) {
             return JsonVO.success("修改成功！");
         }
-        return JsonVO.fail("修改失败！");
+        return fail("修改失败！");
     }
 
     @ApiOperation(value = "退出登录")
@@ -232,18 +241,16 @@ public class LoginController implements LoginApis {
             return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
         }
         if (StrUtil.isBlank(userToken)) {
-            return JsonVO.fail(ResultStatus.UNAUTHORIZED.getMessage(), ResultStatus.UNAUTHORIZED);
+            return fail(ResultStatus.UNAUTHORIZED.getMessage(), ResultStatus.UNAUTHORIZED);
         }
 
         // 2. 移除当前用户Token
         String userTokenKey = CommonUtils.generateRedisTokenKey(userToken);
         if (redisUtils.del(userTokenKey) < 0) {
-            return JsonVO.fail(ResultStatus.SERVER_ERROR.getMessage(), ResultStatus.SERVER_ERROR);
+            return fail(ResultStatus.SERVER_ERROR.getMessage(), ResultStatus.SERVER_ERROR);
         }
 
         return JsonVO.success("退出操作成功" + ResultStatus.SUCCESS.getMessage());
-
-        //TODO:登出逻辑，需要配合登录逻辑实现
 
     }
 
@@ -286,39 +293,5 @@ public class LoginController implements LoginApis {
 
     @Value("${captcha.lineCount}")
     private int lineCount;
-
-    /**
-     * @author  Gerins
-     * @desc  生成验证码
-     */
-    @ApiOperation("生成验证码")
-    @GetMapping ("get-captcha")
-    @Override
-    public JsonVO getCaptcha() {
-        // 1. 生成验证码
-        LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(captchaWidth, captchaHeight, codeCount, lineCount);
-        String captcha = lineCaptcha.getCode();
-        log.info("captcha code: {}", captcha);
-
-        String imageBase64 = lineCaptcha.getImageBase64();
-        log.info("imageBase64: {}", imageBase64);
-
-        // 2. 将验证码放到redis，有效时间为600s
-        String redisKey = CommonUtils.generateRedisKey(RedisConstant.CAPTCHA, captcha);
-
-        if (redisUtils.add(redisKey, captcha, 600L, TimeUnit.SECONDS) < 0) {
-            return JsonVO.fail(null, ResultStatus.SERVER_ERROR);
-        }
-
-        // 3. 返回Base64格式数据
-        Map<String, Object> data = new HashMap<>();
-        data.put("imageBase64", "data:image/jpg;base64," + imageBase64);
-        data.put("captcha", captcha);
-        return JsonVO.success(data);
-    }
-
-
-
-
 
 }

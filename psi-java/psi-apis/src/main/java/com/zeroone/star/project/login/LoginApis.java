@@ -55,14 +55,6 @@ public interface LoginApis {
 
     /**
      * @author Gerins
-     * @return 验证码
-     * @desc 生成验证码
-     */
-    JsonVO getCaptcha();
-
-
-    /**
-     * @author Gerins
      * @return 修改是否成功
      */
     JsonVO<String> changePassword(LoginDTO loginDTO);
