@@ -79,6 +79,8 @@ public JsonVO<List<MenuVO>> queryMenus(String id, String parentId) {
         }
         if (parentId != null){
             sysMenuQuery.setParentId(parentId);
+        } else {
+            sysMenuQuery.setParentId("00000000000000000000000000000001");
         }
 
         return iSysMenuService.queryMenus(sysMenuQuery);
