@@ -35,28 +35,28 @@ public class UserHolder {
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     public UserDTO getCurrentUser() throws Exception {
 //        从Header中获取用户信息
-        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        if (servletRequestAttributes == null) {
-            return null;
-        }
-        HttpServletRequest request = servletRequestAttributes.getRequest();
-        String userStr = request.getHeader("user");
-        //不是通过网关过来的，那么执行解析验证JWT
-        if(userStr == null){
-            //从token中解析用户信息并设置到Header中去
-            String realToken = request.getHeader("Authorization").replace("Bearer ", "");
-            userStr = jwtComponent.defaultRsaVerify(realToken);
-        }
-        JSONObject userJsonObject = new JSONObject(userStr);
-        return UserDTO.builder()
-                .id(Convert.toInt(userJsonObject.get("id")))
-                .username(userJsonObject.getStr("user_name"))
-                .isEnabled(Convert.toByte(1))
-                .roles(Convert.toList(String.class, userJsonObject.get("authorities")))
-                .build();
+//        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+//        if (servletRequestAttributes == null) {
+//            return null;
+//        }
+//        HttpServletRequest request = servletRequestAttributes.getRequest();
+//        String userStr = request.getHeader("user");
+//        //不是通过网关过来的，那么执行解析验证JWT
+//        if(userStr == null){
+//            //从token中解析用户信息并设置到Header中去
+//            String realToken = request.getHeader("Authorization").replace("Bearer ", "");
+//            userStr = jwtComponent.defaultRsaVerify(realToken);
+//        }
+//        JSONObject userJsonObject = new JSONObject(userStr);
+//        return UserDTO.builder()
+//                .id(Convert.toInt(userJsonObject.get("id")))
+//                .username(userJsonObject.getStr("user_name"))
+//                .isEnabled(Convert.toByte(1))
+//                .roles(Convert.toList(String.class, userJsonObject.get("authorities")))
+//                .build();
         //测试用用户信息
-//        List list = new ArrayList();
-//        list.add("111");
-//        return new UserDTO(111,"admin", (byte) 1,list);
+        List list = new ArrayList();
+        list.add("111");
+        return new UserDTO(111,"admin", (byte) 1,list);
     }
 }

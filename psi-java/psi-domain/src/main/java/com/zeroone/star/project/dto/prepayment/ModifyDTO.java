@@ -5,8 +5,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -31,10 +34,12 @@ public class ModifyDTO {
 //    private BigDecimal amt;
 
     @ApiModelProperty(value = "单据日期",example = "2022-01-14")
+    @NotNull(message = "单据日期不能为空")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date billDate;
 
     @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
+    @NotBlank(message = "单据编号不能为空")
     private String billNo;
 
     @ApiModelProperty(value = "备注",example = "测试用")
@@ -53,6 +58,7 @@ public class ModifyDTO {
     private String subject;
 
     @ApiModelProperty(value = "供应商",example = "1584950950470164481")
+    @NotBlank(message = "供应商不能为空")
     private String supplierId;
 
     @ApiModelProperty(value = "附件",example = "")
@@ -62,6 +68,7 @@ public class ModifyDTO {
     private Integer version;
 
     @ApiModelProperty(value = "采购单明细",example = "")
+    @Valid
     private List<FinPaymentEntryDTO> entryDTOList;
 
 }

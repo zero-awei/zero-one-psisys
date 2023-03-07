@@ -23,7 +23,7 @@ public interface IPrepaymentService {
      * return 查询结果
      * author forever爱
      */
-    JsonVO<String> modifyById(ModifyDTO modifyDTO, UserDTO userDTO);
+    JsonVO<String> modify(ModifyDTO modifyDTO, UserDTO userDTO);
 
     /**
      * 审核采购预付单功能

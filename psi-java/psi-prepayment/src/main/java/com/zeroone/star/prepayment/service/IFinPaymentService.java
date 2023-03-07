@@ -29,7 +29,7 @@ public interface IFinPaymentService extends IService<FinPayment> {
      * 修改付款单
      * author forever爱
      */
-    boolean updateById(ModifyDTO modifyDTO, UserDTO userDTO);
+    boolean updateByBillNo(ModifyDTO modifyDTO, UserDTO userDTO);
     /**
      * 审核采购预付单功能
      * param auditDTO 审核DTO

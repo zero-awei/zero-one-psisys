@@ -3,6 +3,8 @@ package com.zeroone.star.project.dto.prepayment;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -18,6 +20,7 @@ import java.math.BigDecimal;
 @Data
 public class FinPaymentEntryDTO {
     @ApiModelProperty(value = "金额",example = "1000.00")
+    @NotNull(message = "金额不能为空")
     private BigDecimal amt;
 
     @ApiModelProperty(value = "资金账户",example = "")
@@ -30,12 +33,15 @@ public class FinPaymentEntryDTO {
     private String custom2;
 
     @ApiModelProperty(value = "mid",example = "1626949545251745795")
+    @NotBlank(message = "mid不能为空")
     private String mid;
 
     @ApiModelProperty(value = "单据编号",example = "TEST-202302-002")
+    @NotBlank(message = "单据编号不能为空")
     private String billNo;
 
     @ApiModelProperty(value = "分录号",example = "10")
+    @NotNull(message = "分录号不能为空")
     private Integer entryNo;
 
     @ApiModelProperty(value = "源单类型",example = "FinPaymentReq:2011")

@@ -13,6 +13,7 @@ import com.zeroone.star.project.vo.prepayment.DetHavVO;
 import com.zeroone.star.project.vo.prepayment.DetNoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,12 +21,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import javax.annotation.Resource;
+import javax.validation.constraints.NotBlank;
+
 import com.zeroone.star.prepayment.service.*;
 import com.zeroone.star.project.vo.prepayment.*;
 
 @RestController
 @RequestMapping("prepayment")
 @Api(tags = "预付模块")
+@Validated
 public class PrepaymentController implements PrepaymentApis {
     @Resource
     IPrepaymentService prepaymentService;
@@ -42,7 +46,7 @@ public class PrepaymentController implements PrepaymentApis {
     @PutMapping("edit")
     @ApiOperation(value = "修改采购预付单功能（返回值data值表示更新成功与否）")
     @Override
-    public JsonVO<String> modifyById(ModifyDTO modifyDTO) {
+    public JsonVO<String> modify(@Validated ModifyDTO modifyDTO) {
         //获取用户信息
         UserDTO currentUser;
         try {
@@ -53,7 +57,7 @@ public class PrepaymentController implements PrepaymentApis {
         if (currentUser == null) {
             return JsonVO.fail(null);
         }
-        return prepaymentService.modifyById(modifyDTO,currentUser);
+        return prepaymentService.modify(modifyDTO,currentUser);
     }
 
     /**
@@ -64,7 +68,7 @@ public class PrepaymentController implements PrepaymentApis {
     @PutMapping("audit")
     @ApiOperation(value = "审核采购预付单功能（返回值data值表示更新成功与否）")
     @Override
-    public JsonVO<String> auditById(AuditDTO auditDTO) {
+    public JsonVO<String> auditById(@Validated AuditDTO auditDTO) {
         UserDTO currentUser;
         try {
             currentUser = userHolder.getCurrentUser();
@@ -86,7 +90,7 @@ public class PrepaymentController implements PrepaymentApis {
     @PutMapping("save")
     @ApiOperation("保存采购预付单功能（返回值data值表示更新成功与否）")
     @Override
-    public JsonVO<String> save(ModifyDTO modifyDTO) {
+    public JsonVO<String> save(@Validated ModifyDTO modifyDTO) {
         UserDTO currentUser;
         try {
             currentUser = userHolder.getCurrentUser();
@@ -132,14 +136,14 @@ public class PrepaymentController implements PrepaymentApis {
     @GetMapping("query-one-hav")
     @ApiOperation(value = "查看单据详情信息（有申请）")
     @Override
-    public JsonVO<DetHavVO> queryByBillHav(PreDetQuery condition) {
+    public JsonVO<DetHavVO> queryByBillHav(@Validated PreDetQuery condition) {
         return prepaymentService.queryByBillHav(condition);
     }
 
     @GetMapping("query-one-no")
     @ApiOperation(value = "查看单据详情信息（无申请）")
     @Override
-    public JsonVO<DetNoVO> queryByBillNo(PreDetQuery condition) {
+    public JsonVO<DetNoVO> queryByBillNo(@Validated PreDetQuery condition) {
         return prepaymentService.queryByBillNo(condition);
     }
 
@@ -151,7 +155,7 @@ public class PrepaymentController implements PrepaymentApis {
     @DeleteMapping("delete")
     @ApiOperation(value = "删除功能（返回值data值保存删除成功与否）")
     @Override
-    public JsonVO<String> deleteById(DeleteDTO deleteDTO) throws Exception {
+    public JsonVO<String> deleteById(@Validated DeleteDTO deleteDTO) throws Exception {
         return prepaymentService.deleteById(deleteDTO);
     }
 
@@ -198,8 +202,6 @@ public class PrepaymentController implements PrepaymentApis {
      * author yu-hang
      */
     @Override
-    @PutMapping("close")
-    @ApiOperation(value = "关闭操作（返回值data值表示更新成功与否）")
     public JsonVO<String> closeById(String id) {
         //获取用户信息
         UserDTO currentUser;
@@ -214,8 +216,6 @@ public class PrepaymentController implements PrepaymentApis {
         return prepaymentService.closeById(id,currentUser);
     }
 
-    @PutMapping("unclose")
-    @ApiOperation(value = "反关闭操作（返回值data值表示更新成功与否）")
     @Override
     public JsonVO<String> uncloseById(String id) {
         //获取用户信息
@@ -232,8 +232,6 @@ public class PrepaymentController implements PrepaymentApis {
     }
 
     @Override
-    @PutMapping("void")
-    @ApiOperation(value = "作废操作（返回值data值表示更新成功与否）")
     public JsonVO<String> voidById(String id) {
         //获取用户信息
         UserDTO currentUser;
@@ -247,4 +245,30 @@ public class PrepaymentController implements PrepaymentApis {
         }
         return prepaymentService.voidById(id,currentUser);
     }
+
+    @PutMapping("void")
+    @ApiOperation(value = "作废操作（返回值data值表示更新成功与否）")
+    public JsonVO<String> voidByIdValidate(@NotBlank(message = "id不能为空") @RequestParam String id) {
+        return voidById(id);
+    }
+
+    @PutMapping("unclose")
+    @ApiOperation(value = "反关闭操作（返回值data值表示更新成功与否）")
+    public JsonVO<String> uncloseByIdValidate(@NotBlank(message = "id不能为空") @RequestParam String id) {
+        return uncloseById(id);
+    }
+
+    @PutMapping("close")
+    @ApiOperation(value = "关闭操作（返回值data值表示更新成功与否）")
+    public JsonVO<String> closeByIdValidate(@NotBlank(message = "id不能为空") @RequestParam String id) {
+        return closeById(id);
+    }
+
+//    @GetMapping("query-one")
+//    @ApiOperation(value = "示例编号查询")
+//    public JsonVO<SampleVO> queryByIdValidate(
+//            @Min(value = 1, message = "最小值必须为1")
+//            @RequestParam int id) {
+//        return queryById(id);
+//    }
 }

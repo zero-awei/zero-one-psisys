@@ -18,14 +18,9 @@ import java.util.List;
  */
 @Component
 public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
-    /**
-     * 修改付款单明细
-     * author forever爱
-     */
-    public boolean updateById(ModifyDTO modifyDTO);
 
     /**
-     * 保存付款单明细
+     * 修改付款单明细
      * author forever爱
      */
     boolean saveByBillNo(ModifyDTO modifyDTO);
@@ -34,7 +29,7 @@ public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
      * 插入
      * author kong
      */
-    public int insert(PrepaymentDTO prepaymentDTO);
+    int insert(PrepaymentDTO prepaymentDTO);
 
     /**
      * 根据mid查询对应明细
@@ -42,5 +37,5 @@ public interface IFinPaymentEntryService extends IService<FinPaymentEntry> {
      * @param srcBillType 源单类型（ FinPaymentEntry  /  PurOrder ）
      * @return 查询结果
      */
-    public List<FinPaymentEntry> listByMid(String mid, String srcBillType);
+    List<FinPaymentEntry> listByMid(String mid, String srcBillType);
 }

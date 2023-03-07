@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * <p>
  * 描述：删除数据传输对象
@@ -18,5 +20,6 @@ import lombok.Data;
 @ApiModel("删除数据传输对象")
 public class DeleteDTO {
     @ApiModelProperty(value = "id", example = "10086")
+    @NotBlank(message = "id不能为空")
     private String id;
 }

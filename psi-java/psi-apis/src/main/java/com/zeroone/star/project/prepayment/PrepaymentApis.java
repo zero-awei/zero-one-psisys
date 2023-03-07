@@ -47,7 +47,7 @@ public interface PrepaymentApis {
      * return 查询结果
      * author forever爱
      */
-    JsonVO<String> modifyById(ModifyDTO modifyDTO);
+    JsonVO<String> modify(ModifyDTO modifyDTO);
 
     /**
      * 审核采购预付单功能

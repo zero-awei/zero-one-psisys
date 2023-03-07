@@ -66,11 +66,11 @@ public class PrepaymentServiceImpl extends ServiceImpl<FinPaymentEntryMapper, Fi
      */
     @Override
     @Transactional
-    public JsonVO<String> modifyById(ModifyDTO modifyDTO, UserDTO userDTO) {
+    public JsonVO<String> modify(ModifyDTO modifyDTO, UserDTO userDTO) {
         //1、finPayment表中数据修改
-        finPaymentService.updateById(modifyDTO,userDTO);
+        finPaymentService.updateByBillNo(modifyDTO,userDTO);
         //2、finPaymentEntry表中数据修改
-        boolean flag = finPaymentEntryService.updateById(modifyDTO);
+        boolean flag = finPaymentEntryService.saveByBillNo(modifyDTO);
         //3、判断成功还是失败
         if (flag){
             return JsonVO.success("修改成功");
@@ -94,6 +94,7 @@ public class PrepaymentServiceImpl extends ServiceImpl<FinPaymentEntryMapper, Fi
      * since 2023-02-13
      */
     @Override
+    @Transactional
     public JsonVO<String> save(ModifyDTO modifyDTO, UserDTO userDTO) {
         //1、finPayment表中数据修改
         finPaymentService.saveByBillNo(modifyDTO,userDTO);

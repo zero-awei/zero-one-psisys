@@ -62,14 +62,14 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
      * author forever爱
      */
     @Override
-    public boolean updateById(ModifyDTO modifyDTO, UserDTO userDTO) {
+    public boolean updateByBillNo(ModifyDTO modifyDTO, UserDTO userDTO) {
         FinPayment finPayment = new FinPayment();
         BeanUtil.copyProperties(modifyDTO, finPayment);
-        //时间
-//        finPayment.setUpdateTime(LocalDateTime.now());
-        //用户信息
         finPayment.setUpdateBy(userDTO.getUsername());
-        return updateById(finPayment);
+        finPayment.setBillStage("14");
+        UpdateWrapper<FinPayment> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("bill_no", finPayment.getBillNo());
+        return update(finPayment,updateWrapper);
     }
 
     /**
@@ -111,7 +111,7 @@ public class FinPaymentServiceImpl extends ServiceImpl<FinPaymentMapper, FinPaym
         finPayment.setBillStage("12");
         //根据单据编号修改finpayment表
         UpdateWrapper<FinPayment> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("billNo", finPayment.getBillNo());
+        updateWrapper.eq("bill_no", finPayment.getBillNo());
         return update(finPayment,updateWrapper);
     }
 
