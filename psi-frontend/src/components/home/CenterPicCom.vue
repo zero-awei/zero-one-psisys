@@ -12,7 +12,7 @@
       <div id="div1" style="width:230px;height:195px;float: left;"></div>
     </el-card>
 
-    <el-card class="box-card">
+    <!--    <el-card class="box-card">
       <template #header>
         <div class="card-header">
           <span>销售金额</span>
@@ -46,109 +46,159 @@
         </div>
       </template>
       <div id="div1" style="width:273px;height:176px;float: left;"></div>
-    </el-card>
+    </el-card> -->
     <!-- <div id="div2" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div3" style="width: 700px;height:300px;float: left;margin:20px"></div>
     <div id="div4" style="width: 700px;height:300px;float: left;margin:20px"></div> -->
   </div>
 </template>
 
-<script>
-
+<script setup>
+import { reactive, onMounted, onUpdated, nextTick } from 'vue'
 import * as echarts from "echarts"
-import axios from "axios"
+// import echarts from 'echarts'
+import { getSalmList } from './api/CenterCom.js'
+import { Refresh } from '@element-plus/icons-vue'
+
 
 // import option1 from "@/static/option.js"
 // import option2 from  "@/static/option.js"
 // import option3 from  "@/static/option.js"
 // import option4 from  "@/static/option.js"
-const datalist = {
-  "month": [
-    "3月",
-    "3月",
-    "3月",
-    "3月",
-    "3月",
-    "3月",
-    "3月",
-    "3月",
-    "3月",
-    "3月"
-  ],
-  "data": [
-    2000,
-    3334,
-    2133,
-    2000,
-    3334,
-    2133,
-    2133,
-    2000,
-    3334,
-    2133
+//销售数据
+const SalmList = reactive({
+  month: [],
+  money: []
+})
 
-  ]
+
+//请求数据
+function doGetSalmList() {
+  getSalmList(
+    {},
+    (data) => {
+      data.forEach((item, index) => {
+        let obj = item
+        SalmList.month.push(obj.month)
+        SalmList.money.push(obj.money)
+      })
+      let flag = true
+      getOption1(flag);
+      console.log(data)
+    },
+    console.log(SalmList),
+    // 失败回调函数
+    (msg) => {
+      let flag = false
+      getOption1(flag);
+      ElMessage.warning(msg)
+    }
+  )
 }
 
-export default {
-  mounted() {
-    this.getOption1();
-    // this.getOption2();
-    // this.getOption3();
-    // this.getOption4();
-  },
-  methods: {
-    getOption1() {
-      var myEcharts = echarts.init(document.getElementById("div1"));
-      var option1 = {
-        yAxis: {},
-        tooltip: {
-          trigger: "axis"
-        },
+
+
+onMounted(() => {
+
+  doGetSalmList();
+  // getOption1();
+  // this.getOption2();
+  // this.getOption3();
+  // this.getOption4();
+})
+// onUpdated(() => {
+//   doGetSalmList();
+//   getOption1();
+// })
+console.log(SalmList.month)
+
+
+
+
+function getOption1(flag) {
+  var myEcharts = echarts.init(document.getElementById("div1"));
+  console.log(SalmList.month)
+  //option1 柱状图
+  var option1 = {
+    // yAxis: {
+    //   type: 'value',
+    //   data: SalmList.money,
+    // },
+    // xAxis: {
+    //   type: 'category',
+    //   data: SalmList.month,   // []将数据保存到json中，使用axios读取数据。axios.get("json路径").then(res=>{})  
+    // },
+    yAxis: {
+      type: 'category',
+    },
+    xAxis: {
+      data: [],   // 将数据保存到json中，使用axios读取数据。axios.get("json路径").then(res=>{})  
+    },
+    tooltip: {
+      trigger: "axis"
+    },
+    grid: {
+      top: '4%',
+      left: '3%',
+      right: '4%',
+      bottom: '10%',
+      containLabel: true,
+    },
+    series: [{
+      type: 'bar',
+      itemStyle: {
+        color: '#1890ff'
+      },
+      markPoint: {
+        data: [
+          {
+            type: 'max', name: '最大值'
+          }, {
+            type: 'min', name: '最小值'
+          }
+        ]
+      },
+      markLine: {
+        data: [
+          {
+            type: 'average', name: '平均值'
+          }
+        ]
+      },
+      label: {
+        show: true,
+        rotate: 30,
+        position: 'inside'
+      },
+      barWidth: '50%',
+      // data: SalmList.money
+      data: []
+    }]
+  }
+  // 如果没有数据，渲染空页面
+  myEcharts.setOption(option1);
+
+  if (flag) { // 如果有数据渲染
+
+    myEcharts.setOption(
+      {
         xAxis: {
-          data: [],   // 将数据保存到json中，使用axios读取数据。axios.get("json路径").then(res=>{})  
-        },
-        grid: {
-          top: '4%',
-          left: '3%',
-          right: '4%',
-          bottom: '10%',
-          containLabel: true,
+          data: SalmList.month
         },
         series: {
-          type: "bar",
-          // name: "销量",
-          data: [],
-          itemStyle: {
-            color: '#1890ff'
-          }
-        },
-      }
-      // axios.get(".././testData.json").then(
-      //   res => {
-      //     // // console.log(res.data)
-      //     // let datalist=JSON.parse(res.data)
-      //   }
-      // )
-      myEcharts.setOption(option1);
-      myEcharts.setOption(
-        {
-          xAxis: {
-            data: datalist.month
-          },
-          series: {
-            data: datalist.data,
-            label: {
-              show: true
-            }
+          data: SalmList.money,
+          label: {
+            show: true
           }
         }
-      )
-    }
+      }
+    )
+
+  }
+}
 
 
-
-    //axios请求数据   
+    //axios请求数据
     // getOption1(){
     //   var myEcharts = echarts.init(document.getElementById("div1"));
     //   myEcharts.setOption(option1);
@@ -222,8 +272,6 @@ export default {
     //   })
     // }
 
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
