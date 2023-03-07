@@ -4,7 +4,7 @@
     <template #header>
       <div class="card-header">
         <span>销售</span>
-        <el-icon style="color:blue;">
+        <el-icon style="color:#409eff;">
           <Refresh @click="handleReSal()" />
         </el-icon>
       </div>
@@ -168,11 +168,11 @@
 
 
   <!-- 第二个 -->
-  <el-card class="card2">
+  <el-card class="card2" style="margin-top:10px">
     <template #header>
       <div class="card-header">
         <span>销售</span>
-        <el-icon style="color:blue;">
+        <el-icon style="color:#409eff;">
           <Refresh @click="handleRePur()" />
         </el-icon>
       </div>
@@ -333,9 +333,6 @@
 
     </div>
   </el-card>
-
-
-  <div style="height:300px;"></div>
 </template>
 
 
@@ -434,17 +431,17 @@ console.log(SalList.value.chuku) */
 
 <style scoped>
 .el-card {
-  top: 5px;
+  /* top: 5px; */
   left: 3px;
 }
 
 .el-row {
-  height: 213px;
+  /* height: 213px; */
 }
 
 .box-card {
-  top: 40px;
-  height: 500px;
+  /* top: 40px; */
+  /* height: 500px; */
 }
 
 .card-header {
@@ -454,11 +451,11 @@ console.log(SalList.value.chuku) */
 }
 
 .card2 {
-  top: 15px;
+  /* top: 15px; */
 }
 
 .div1 {
-  bottom: 25px;
+  bottom: 20px;
 }
 
 .div2 {
@@ -466,20 +463,20 @@ console.log(SalList.value.chuku) */
 }
 
 .div1 .div2 {
-  width: 587px;
-  height: 192px;
+  /* width: 587px;
+  height: 200px; */
 }
 
 .cardBody {
   /* display:flex; */
   width: 290px;
-  height: 210px;
+  height: 248px;
   margin-left: -20px;
 }
 
 .Div {
-  width: 245px;
-  height: 165px;
+  /* width: 245px;
+  height: 300px; */
   padding: 15px;
 }
 
@@ -526,9 +523,9 @@ console.log(SalList.value.chuku) */
 }
 
 .box-card {
-  width: 574px;
-  height: 480px;
-  padding: 4px;
+  /* width: 574px;
+  height: 480px; */
+  /* padding: 4px; */
 
 }
 

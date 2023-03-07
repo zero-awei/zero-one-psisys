@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-15 15:14:03
- * @LastEditTime: 2023-03-06 15:36:21
+ * @LastEditTime: 2023-03-07 14:49:47
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\Home\HeadSideCom.vue
@@ -210,10 +210,9 @@ function handleModifyPassword() {
 
 
 function switchThemes() {
-  // themStore.changeDark()
+  themStore.changeDark()
   // console.log("111111111111", themStore.changeDark())
   const toggleDark = useToggle(isDark)
-
   console.log(toggleDark())
 }
 </script>

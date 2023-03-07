@@ -316,10 +316,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
+
 .el-container {
   height: 100vh;
 
@@ -393,6 +394,10 @@ export default {
 .menu-class {
   height: 100%;
   // overflow: scroll;
+}
+
+:deep(.el-card__body) {
+  padding: 8px;
 }
 
 .dark-aside {

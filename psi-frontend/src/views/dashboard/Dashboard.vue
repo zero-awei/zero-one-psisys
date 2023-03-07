@@ -2,21 +2,24 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-24 13:55:48
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-24 14:00:55
+ * @LastEditTime: 2023-03-07 17:19:13
  * @FilePath: \psi-frontend\src\views\dashboard\Dashboard.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="total">
-    <div class="top">
+    <!-- <div class="top"> -->
+    <div>
+      <!-- <el-row> -->
       <CenterCom1 />
+      <!-- </el-row> -->
     </div>
     <div class="bottom">
-      <el-row :gutter="20">
-        <el-col :span="12">
+      <el-row :gutter="10">
+        <el-col :span="10">
           <CenterDivCom />
         </el-col>
-        <el-col :span="6">
+        <el-col :span="8">
           <CenterPicCom />
         </el-col>
         <el-col :span="6">
@@ -31,15 +34,16 @@
 .top {
   min-width: 180px;
   /* margin-bottom:4px; */
-  top: -10px;
+  /* top: -10px; */
 }
 
 .bottom {
   display: flex;
-  height: 100%;
-  min-width: 1052px;
-  width: 1192px;
-  left: -14px;
+  /* height: 100%; */
+  /* margin-top: 25px; */
+  /* min-width: 1052px; */
+  /* width: 1192px; */
+  /* left: -14px; */
 }
 </style>
 
