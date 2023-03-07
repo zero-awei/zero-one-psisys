@@ -334,7 +334,11 @@ uint64_t PrePayService::saveData(const AddPayDTO& dto, const PayloadDTO& payload
 	SET_X_FROM_Y(data, dto, Is_effective);
 	SET_X_FROM_Y(data, dto, Is_closed);
 	SET_X_FROM_Y(data, dto, Is_voided);
+	SET_X_FROM_Y(data, dto, Is_auto);
+	SET_X_FROM_Y(data, dto, Is_rubric);
+	SET_X_FROM_Y(data, dto, Version);
 	data.setCreate_by(payload.getUsername());
+	data.setSys_org_code(payload.getDepartment());
 	list<PrepaymentDetailDO> d;
 
 	double amt_count = 0;
@@ -397,6 +401,9 @@ bool PrePayService::updateData(const AddPayDTO& dto, const PayloadDTO& payload)
 	SET_X_FROM_Y(data, dto, Is_effective);
 	SET_X_FROM_Y(data, dto, Is_closed);
 	SET_X_FROM_Y(data, dto, Is_voided);
+	SET_X_FROM_Y(data, dto, Is_auto);
+	SET_X_FROM_Y(data, dto, Is_rubric);
+	SET_X_FROM_Y(data, dto, Version);
 	data.setUpdate_by(payload.getUsername());
 	SnowFlake sf(1, 4);
 	list<PrepaymentDetailDO> d;

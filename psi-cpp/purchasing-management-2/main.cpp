@@ -42,7 +42,7 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "20020211";
+	std::string dbPassword = "123456";
 	std::string dbName = "zopsi_sys";
 	std::string dbHost = "127.0.0.1";
 	int dbPort = 3306;
@@ -134,7 +134,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-	TestToken::generateToken();
+	//TestToken::generateToken();
 
 #ifdef USE_NACOS
 	// 创建Nacos客户端对象
