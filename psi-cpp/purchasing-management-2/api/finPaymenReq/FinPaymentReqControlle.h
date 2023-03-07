@@ -17,28 +17,28 @@
 
 
 /**
- * �ɹ����빦�ܵ�
+ * 采购付款申请订单
  */
 class FinPaymentReqControlle
 {
 public:
-	//��ѯ�б�
+	//查询列表
 	CREATE_API_FUN_QUERY_PAYLOAD(queryFinPaymentReq, execQueryPayBill, FinPaymentReqQuery);
-	//��ѯ��ϸ����
+	//查询单个详情
 	CREATE_API_FUN_QUERY_PAYLOAD(queryFinPaymentReqEntry, execQueryPayDetailBill, FinPaymentReqEntryQuery);
-	//����
+	//添加订单
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(addPaymentReq, execAddPayHandle, AddPaymentReqDTO);
-	//�޸�
+	//修改订单
 	CREATE_API_FUN_BODY_PAYLOAD_FILE(modPaymentReq, execModPayHandle, ModPyamentReqDTO);
 
 private:
-	//��ѯ�б�
+	//查询列表
 	JsonVO<PageVO<FinPaymentReqVO>> execQueryPayBill(const FinPaymentReqQuery& query, const PayloadDTO& payload);
-	//��ѯ��ϸ����
+	//查询单个详情
 	JsonVO<FinPaymentDetailVO> execQueryPayDetailBill(const FinPaymentReqEntryQuery& query, const PayloadDTO& payload);
-	//����
+	//添加订单
 	JsonVO<uint64_t> execAddPayHandle(const AddPaymentReqDTO& dto, const PayloadDTO& payload);
-	//�޸�
+	//添加订单
 	JsonVO<uint64_t> execModPayHandle(const ModPyamentReqDTO& dto, const PayloadDTO& payload);
 
 };
