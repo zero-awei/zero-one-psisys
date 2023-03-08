@@ -24,8 +24,8 @@
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
 #include "../../domain/dto/purOrder/PurOrderDTO.h"
 #include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/PurOrder/PurOrderVO.h"
-#include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
+#include "../../domain/vo/purOrder/PurOrderVO.h"
+#include "../../domain/vo/purOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 

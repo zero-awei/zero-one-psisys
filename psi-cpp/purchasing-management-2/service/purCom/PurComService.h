@@ -20,8 +20,8 @@
 #ifndef _PUR_COM_SERVICE_
 #define _PUR_COM_SERVICE_
 #include <list>
-#include "../../domain/vo/PurCom/PurComVO.h"
-#include "../../domain/vo/PurCom/PurComEntryVO.h"
+#include "../../domain/vo/purCom/PurComVO.h"
+#include "../../domain/vo/purCom/PurComEntryVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurCom/PurComQuery.h"
 #include "../../domain/query/PurCom/PurComEntryQuery.h"

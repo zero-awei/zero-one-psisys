@@ -30,7 +30,7 @@
 #include "../../domain/vo/prepayment/PrepaymentVO.h"
 // 采购订单列表
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
-#include "../../domain/vo/PurOrder/PurOrderVO.h"
+#include "../../domain/vo/purOrder/PurOrderVO.h"
 
 
 /**

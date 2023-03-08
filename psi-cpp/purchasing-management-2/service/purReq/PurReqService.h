@@ -20,9 +20,9 @@
 #ifndef _PUR_REQ_SERVICE_
 #define _PUR_REQ_SERVICE_
 #include <list>
-#include "../../domain/vo/PurReq/PurReqVO.h"
+#include "../../domain/vo/purReq/PurReqVO.h"
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/query/PurReq/PurReqQuery.h"
+#include "../../domain/query/purReq/PurReqQuery.h"
 #include "../../dao/purOrder/PurOrderEntryDAO.h"
 
 /**

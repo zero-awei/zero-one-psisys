@@ -21,8 +21,8 @@
 #ifndef _PUR_REQ_CONTROLLER_
 #define _PUR_REQ_CONTROLLER_
 
-#include "../../domain/query/PurReq/PurReqQuery.h"
-#include "../../domain/vo/PurReq/PurReqVO.h"
+#include "../../domain/query/purReq/PurReqQuery.h"
+#include "../../domain/vo/purReq/PurReqVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 

@@ -3,7 +3,7 @@
 #include "../../service/prepayment/PrePayService.h"
 #include "../../domain/query/prepaymentbill/PrePayExportQuery.h"
 #include "../lib-common/include/CharsetConvertHepler.h"
-#include "../../domain/vo/PurOrder/PurOrderVO.h"
+#include "../../domain/vo/purOrder/PurOrderVO.h"
 
 
 //查询单据信息

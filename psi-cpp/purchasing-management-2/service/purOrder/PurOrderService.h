@@ -21,8 +21,8 @@
 #define _PUR_ORDER_SERVICE_
 #include <list>
 //#include "FastDfsClient.h"
-#include "../../domain/vo/PurOrder/PurOrderVO.h"
-#include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
+#include "../../domain/vo/purOrder/PurOrderVO.h"
+#include "../../domain/vo/purOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
 #include "../../domain/dto/purOrder/PurOrderDTO.h"
@@ -39,13 +39,13 @@
 #include "../../domain/do/PurQuot/PurQuotDO.h"
 #include "../../domain/do/PurQuot/PurQuotEntryDO.h"
 
-#include "../../domain/vo/PurOrderSub/PurReqEntryVO.h"
-#include "../../domain/vo/PurOrderSub/PurCompareVO.h"
-#include "../../domain/vo/PurOrderSub/PurCompareEntryVO.h"
-#include "../../domain/vo/PurOrderSub/PurInquiryVO.h"
-#include "../../domain/vo/PurOrderSub/PurInquiryEntryVO.h"
-#include "../../domain/vo/PurOrderSub/PurQuotVO.h"
-#include "../../domain/vo/PurOrderSub/PurQuotEntryVO.h"
+#include "../../domain/vo/purOrderSub/PurReqEntryVO.h"
+#include "../../domain/vo/purOrderSub/PurCompareVO.h"
+#include "../../domain/vo/purOrderSub/PurCompareEntryVO.h"
+#include "../../domain/vo/purOrderSub/PurInquiryVO.h"
+#include "../../domain/vo/purOrderSub/PurInquiryEntryVO.h"
+#include "../../domain/vo/purOrderSub/PurQuotVO.h"
+#include "../../domain/vo/purOrderSub/PurQuotEntryVO.h"
 
 /**
  * 采购订单服务实现，基础采购订单服务实现
