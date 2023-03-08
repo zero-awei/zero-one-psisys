@@ -24,7 +24,7 @@
 #include "StringUtil.h"
 
 // Æ¾Ö¤Ð£Ñé
-#include "usrlib/jwt/TestToken.h"
+#include "uselib/jwt/TestToken.h"
 
 
 #ifdef USE_NACOS

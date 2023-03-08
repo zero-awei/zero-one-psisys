@@ -185,7 +185,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="api\PurCom\PurComController.h" />
     <ClInclude Include="api\PurOrder\PurOrderController.h" />
     <ClInclude Include="api\Router.h" />
-    <ClInclude Include="api\statis\StatisController.h" />
+    <ClInclude Include="api\Statis\StatisController.h" />
     <ClInclude Include="dao\DoInclude.h" />
     <ClInclude Include="dao\finPaymentReq\finPaymentReqBillMapper.h" />
     <ClInclude Include="dao\finPaymentReq\finPaymentReqDAO.h" />
@@ -310,7 +310,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="service\PurOrder\PurOrderService.h" />
     <ClInclude Include="service\PurReq\PurReqService.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="usrlib\jwt\TestToken.h" />
+    <ClInclude Include="uselib\jwt\TestToken.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="api\Aspect.cpp" />
@@ -351,7 +351,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="usrlib\jwt\TestToken.cpp" />
+    <ClCompile Include="uselib\jwt\TestToken.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

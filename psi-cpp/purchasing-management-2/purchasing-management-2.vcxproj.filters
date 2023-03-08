@@ -34,7 +34,7 @@
     <ClCompile Include="api\finPaymenReq\FinPaymentReqControlle.cpp" />
     <ClCompile Include="service\finPaymentReq\finPyamentReqService.cpp" />
     <ClCompile Include="dao\finPaymentReq\finPaymentReqDAO.cpp" />
-    <ClCompile Include="usrlib\jwt\TestToken.cpp" />
+    <ClCompile Include="uselib\jwt\TestToken.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\payment\PaymentController.h" />
@@ -43,7 +43,7 @@
     <ClInclude Include="api\PurCom\PurComController.h" />
     <ClInclude Include="api\PurOrder\PurOrderController.h" />
     <ClInclude Include="api\Router.h" />
-    <ClInclude Include="api\statis\StatisController.h" />
+    <ClInclude Include="api\Statis\StatisController.h" />
     <ClInclude Include="dao\DoInclude.h" />
     <ClInclude Include="dao\payment\PaymentDAO.h" />
     <ClInclude Include="dao\payment\PaymentMapper.h" />
@@ -167,7 +167,7 @@
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryManageDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqManageDO.h" />
     <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
-    <ClInclude Include="usrlib\jwt\TestToken.h" />
+    <ClInclude Include="uselib\jwt\TestToken.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentEntryDO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailEntryBillVO.h" />
   </ItemGroup>

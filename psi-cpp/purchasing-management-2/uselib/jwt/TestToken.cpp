@@ -8,7 +8,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
  
-      https://www.apache.org/licenses/LICENSE-2.0
+	  https://www.apache.org/licenses/LICENSE-2.0
  
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@
 #include "JWTUtil.h"
 #include <iostream>
 
-// RSA ˽Կ
+// RSA 私钥
 std::unique_ptr<std::string> RSA_PRIV_KEY = std::make_unique<std::string>(R"(
 -----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDYJSiDqR0pQ6U6
