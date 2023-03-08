@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeroone.star.login.mapper.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="com.zeroone.star.login.entity.SysMenu">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+    </resultMap>
+
+    <select id="selectByRoleCode" resultMap="BaseResultMap">
+        SELECT id,parent_id,`name`,url,icon FROM sys_menu WHERE id IN (SELECT menu_id FROM sys_role_menu WHERE role_id=(SELECT id FROM sys_role WHERE role_code=#{roleCode})) order by sort_no asc;
+    </select>
 
 </mapper>

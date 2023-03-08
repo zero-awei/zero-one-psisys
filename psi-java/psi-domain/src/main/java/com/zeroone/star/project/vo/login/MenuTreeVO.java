@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 public class MenuTreeVO {
     @ApiModelProperty(value = "序号", example = "1")
-    private Integer id;
+    private String id;
     @ApiModelProperty(value = "菜单名称", example = "获取菜单列表")
     private String name;
     @ApiModelProperty(value = "路由地址", example = "")
@@ -24,5 +24,5 @@ public class MenuTreeVO {
     @ApiModelProperty(value = "图标", example = "fa-stethoscope")
     private String icon;
     @ApiModelProperty(value = "父级菜单编号", example = "")
-    private Integer parentMenuId;
+    private String parentMenuId;
 }

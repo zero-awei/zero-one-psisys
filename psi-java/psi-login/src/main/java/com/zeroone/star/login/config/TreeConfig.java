@@ -21,12 +21,12 @@ public class TreeConfig {
     public NodeMapper<MenuTreeVO> createMenuNodeMapper() {
         return menu -> {
             TreeNode<MenuTreeVO> treeNode = new TreeNode<>();
-            treeNode.setId(menu.getId().toString());
+            treeNode.setId(menu.getId());
             treeNode.setText(menu.getName());
             if (menu.getParentMenuId() == null) {
                 treeNode.setPid(null);
             } else {
-                treeNode.setPid(menu.getParentMenuId().toString());
+                treeNode.setPid(menu.getParentMenuId());
             }
             treeNode.setRaw(menu);
             treeNode.setHref(menu.getPath());
