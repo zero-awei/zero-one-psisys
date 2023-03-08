@@ -22,14 +22,14 @@
 
 #include "../../GlobalInclude.h"
 
-#include "../PurReq/PurReqVO.h"
-#include "../PurOrderSub/PurReqEntryVO.h"
-#include "../PurOrderSub/PurCompareVO.h"
-#include "../PurOrderSub/PurCompareEntryVO.h"
-#include "../PurOrderSub/PurInquiryVO.h"
-#include "../PurOrderSub/PurInquiryEntryVO.h"
-#include "../PurOrderSub/PurQuotVO.h"
-#include "../PurOrderSub/PurQuotEntryVO.h"
+#include "../purReq/PurReqVO.h"
+#include "../purOrderSub/PurReqEntryVO.h"
+#include "../purOrderSub/PurCompareVO.h"
+#include "../purOrderSub/PurCompareEntryVO.h"
+#include "../purOrderSub/PurInquiryVO.h"
+#include "../purOrderSub/PurInquiryEntryVO.h"
+#include "../purOrderSub/PurQuotVO.h"
+#include "../purOrderSub/PurQuotEntryVO.h"
 
 
 /**

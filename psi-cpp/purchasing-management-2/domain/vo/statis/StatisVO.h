@@ -23,20 +23,18 @@
 #include "../../GlobalInclude.h"
 #include "../lib-common/include/CharsetConvertHepler.h"
 
-/**
-* �ɹ���������VO����ģ��
-*/
+
 class StatisVO
 {
-	CC_SYNTHESIZE(uint64_t, id, Id); // ID
-	CC_SYNTHESIZE(double, price, Price); // �ɹ����
-	CC_SYNTHESIZE(double, incost, Incost); // �����
-	CC_SYNTHESIZE(double, settlePrice, SettlePrice); // ������
-	CC_SYNTHESIZE(double, settledPrice, SettledPrice); // �ѽ�����
-	CC_SYNTHESIZE(double, unsettledPrice, UnsettledPrice); // δ������
-	CC_SYNTHESIZE(uint16_t, year, Year); // ���
-	CC_SYNTHESIZE(uint16_t, month, Month); // �·�
-	CC_SYNTHESIZE(uint16_t, orders, Orders); // ��������
+	CC_SYNTHESIZE(uint64_t, id, Id);
+	CC_SYNTHESIZE(double, price, Price); 
+	CC_SYNTHESIZE(double, incost, Incost);
+	CC_SYNTHESIZE(double, settlePrice, SettlePrice);
+	CC_SYNTHESIZE(double, settledPrice, SettledPrice);
+	CC_SYNTHESIZE(double, unsettledPrice, UnsettledPrice);
+	CC_SYNTHESIZE(uint16_t, year, Year);
+	CC_SYNTHESIZE(uint16_t, month, Month);
+	CC_SYNTHESIZE(uint16_t, orders, Orders);
 public:
 	StatisVO() : id(666), price(6.6), incost(6.6), settlePrice(6.6), settledPrice(6.6), unsettledPrice(6.6), year(2023), month(2), orders(514) {}
 	friend void to_json(json& j, const StatisVO& sv)
@@ -55,13 +53,11 @@ public:
 	}
 };
 
-/**
-* �ɹ���������-����/ҵ��Ա/��Ӧ��VO����ģ��
-*/
+
 class StatisByDeptVO : public StatisVO
 {
-	CC_SYNTHESIZE(string, dept, Dept); // ҵ����ID
-	CC_SYNTHESIZE(string, deptName, DeptName); // ҵ������
+	CC_SYNTHESIZE(string, dept, Dept); 
+	CC_SYNTHESIZE(string, deptName, DeptName);
 public:
 	StatisByDeptVO() : dept("114514"), deptName(CharsetConvertHepler::ansiToUtf8("����")) {}
 	friend void to_json(json& j, const StatisByDeptVO& sv)
@@ -74,8 +70,8 @@ public:
 
 class StatisByOperatorVO : public StatisByDeptVO
 {
-	CC_SYNTHESIZE(string, op, Op); // ҵ��ԱID
-	CC_SYNTHESIZE(string, opName, OpName); // ҵ��Ա��
+	CC_SYNTHESIZE(string, op, Op);
+	CC_SYNTHESIZE(string, opName, OpName); 
 public:
 	StatisByOperatorVO() : op(CharsetConvertHepler::ansiToUtf8("op114")), opName(CharsetConvertHepler::ansiToUtf8("ҵ��Ա1")) {}
 	friend void to_json(json& j, const StatisByOperatorVO& sv)
@@ -88,8 +84,8 @@ public:
 
 class StatisBySupplierVO : public StatisVO
 {
-	CC_SYNTHESIZE(string, supplier, supplier); // ��Ӧ��ID
-	CC_SYNTHESIZE(string, supName, SupName); // ��Ӧ����
+	CC_SYNTHESIZE(string, supplier, supplier);
+	CC_SYNTHESIZE(string, supName, SupName); 
 public:
 	StatisBySupplierVO() : supplier(CharsetConvertHepler::ansiToUtf8("Nvidia")), supName(CharsetConvertHepler::ansiToUtf8("�ϻ�")) {}
 	friend void to_json(json& j, const StatisBySupplierVO& sv)
