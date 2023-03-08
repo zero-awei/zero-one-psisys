@@ -394,10 +394,10 @@ function doGetSalList() {
       SalList.yingshou = data[2]
       SalList.shoukuan = data[3]
       // SalList = data
-      console.log(data)
+      // console.log(data)
       // console.log(SalList.dingdan)//正常数据
     },
-    console.log(SalList),//proxy
+    // console.log(SalList),//proxy
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)
@@ -416,10 +416,10 @@ function doGetPurList() {
       PurList.yingshou = data[2]
       PurList.shoukuan = data[3]
       // SalList = data
-      console.log(data)
+      // console.log(data)
       // console.log(SalList.dingdan)//正常数据
     },
-    console.log(PurList),//proxy
+    // console.log(PurList),//proxy
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)

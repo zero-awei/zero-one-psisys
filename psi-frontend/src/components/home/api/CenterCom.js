@@ -42,18 +42,15 @@ export function getCusList(data, success, fail) {
     })
 }
 
-
 //2.3 查询销售概况  CenterDivCom 第一个
 export function getSalList(data, success, fail) {
-  Request.requestJson(Request.POST, currBaseUrl + 'query-Sale', data,
-  {
+  Request.requestJson(Request.POST, currBaseUrl + 'query-Sale', data, {
     baseURL: import.meta.env.VITE_API_J2_TITLE
-  }
-  ) 
+  })
     .then((data) => {
       if (data.data) {
         success(data.data)
-        console.log(data)
+        // console.log(data)
         return
       }
       fail()
@@ -68,8 +65,7 @@ export function getSalList(data, success, fail) {
 
 //2.2 查询采购概况  CenterDivCom 第二个
 export function getPurList(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query-Purchase', data,
-  {
+  Request.requestForm(Request.GET, currBaseUrl + 'query-Purchase', data, {
     baseURL: import.meta.env.VITE_API_J2_TITLE
   })
     .then((data) => {
@@ -89,8 +85,7 @@ export function getPurList(data, success, fail) {
 
 //2.4查询销售金额概况 CenterPicCom第一个
 export function getSalmList(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query-SalesAmount', data,
-  {
+  Request.requestForm(Request.GET, currBaseUrl + 'query-SalesAmount', data, {
     baseURL: import.meta.env.VITE_API_J2_TITLE
   })
     .then((data) => {

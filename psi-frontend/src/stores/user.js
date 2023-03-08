@@ -457,22 +457,22 @@ export const userStore = defineStore('user', {
       //this.menus = testMenus
 
       // 发送获取菜单请求
-      // let data = await Request.requestForm(
-      //   Request.GET,
-      //   '/login/get-menus',
-      //   null,
-      //   {
-      //     baseURL: import.meta.env.VITE_API_J1_LOGIN
-      //   }
-      // )
-      // this.menus = data.data
-      this.menus.push(sysmanageRouter)
-      // 在后端返回菜单列表中添加组件列表路由
-      this.menus.push(baseDataRouter)
-      this.menus.push(purManagement)
-      this.menus.push(kucunguanli)
-      this.menus.push(yingfuyufukuan)
-      this.menus.push(componentRouter)
+      let data = await Request.requestForm(
+        Request.GET,
+        '/login/get-menus',
+        null,
+        {
+          baseURL: import.meta.env.VITE_API_J1_LOGIN
+        }
+      )
+      this.menus = data.data
+      // this.menus.push(sysmanageRouter)
+      // // 在后端返回菜单列表中添加组件列表路由
+      // this.menus.push(baseDataRouter)
+      // this.menus.push(purManagement)
+      // this.menus.push(kucunguanli)
+      // this.menus.push(yingfuyufukuan)
+      // this.menus.push(componentRouter)
     },
     // 加载刷新凭证
     loadRefreshToken() {

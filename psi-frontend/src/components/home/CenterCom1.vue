@@ -178,6 +178,9 @@ function doGetCusList() {
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)
+    },
+    ()=>{
+
     }
   )
 }
@@ -194,6 +197,9 @@ function doGetSysList() {
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)
+    },
+    () => {
+
     }
   )
 }
@@ -210,6 +216,9 @@ function doGetSupList() {
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)
+    },
+    () => {
+
     }
   )
 }
