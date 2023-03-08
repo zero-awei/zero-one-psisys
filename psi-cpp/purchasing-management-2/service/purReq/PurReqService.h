@@ -23,7 +23,7 @@
 #include "../../domain/vo/PurReq/PurReqVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurReq/PurReqQuery.h"
-#include "../../dao/PurOrder/PurOrderEntryDAO.h"
+#include "../../dao/purOrder/PurOrderEntryDAO.h"
 
 /**
  * 采购请求服务实现，基础采购订单服务实现

@@ -19,8 +19,8 @@
 #include "stdafx.h"
 #include "PurOrderService.h"
 #include "../../../lib-common/include/SnowFlake.h"
-#include "../../dao/PurOrder/PurOrderDAO.h"
-#include "../../dao/PurOrder/PurOrderEntryDAO.h"
+#include "../../dao/purOrder/PurOrderDAO.h"
+#include "../../dao/purOrder/PurOrderEntryDAO.h"
 #include "../lib-common//include/SimpleDateTimeFormat.h"
 #include "../lib-common//include/CharsetConvertHepler.h"
 

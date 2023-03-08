@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "PurComService.h"
-#include "../../dao/PurCom/PurComDAO.h"
+#include "../../dao/purCom/PurComDAO.h"
 
 // 分页查询所有数据
 // 负责人：J4nnA
