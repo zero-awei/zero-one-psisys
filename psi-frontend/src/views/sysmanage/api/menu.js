@@ -8,7 +8,9 @@ const currBaseUrl = '/sysmanagement/menumanagement/sys-menu/'
 // }
 // 4.1 新增菜单
 export function addMenu(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'add', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'add', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -26,7 +28,9 @@ export function addMenu(data, success, fail) {
 }
 // 4.2 删除菜单
 export function deleteMenu(data, success, fail) {
-  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -45,7 +49,9 @@ export function deleteMenu(data, success, fail) {
 
 // 4.3 查询菜单 id
 export function query(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'query', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -64,7 +70,9 @@ export function query(data, success, fail) {
 
 // 4.4 查询菜单  参数parentId
 export function queryMenus(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'queryMenus', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'queryMenus', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -82,7 +90,9 @@ export function queryMenus(data, success, fail) {
 }
 // 4.5 修改菜单
 export function update(data, success, fail) {
-  Request.requestForm(Request.PUT, currBaseUrl + 'update', data)
+  Request.requestForm(Request.PUT, currBaseUrl + 'update', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.data) {
         success(data.data)

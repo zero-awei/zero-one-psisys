@@ -57,7 +57,9 @@ export function query(data, success, fail) {
 
 // j2 4.4 查询组织列表
 export function queryOrganizationName(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'organization', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'query-all-depart', data, {
+    baseURL: import.meta.env.VITE_API_J2_SYS
+  })
     .then((data) => {
       console.log('后端返回data----', data)
       // data是后端的响应示例

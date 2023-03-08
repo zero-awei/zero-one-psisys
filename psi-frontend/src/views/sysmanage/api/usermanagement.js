@@ -35,7 +35,9 @@ const currBaseUrl = '/sysmanagement/usermanagement/'
 // }
 // 2.1 角色管理 添加用户
 export function handleSaveUser(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'add', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'add', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data.data)
@@ -54,7 +56,9 @@ export function handleSaveUser(data, success, fail) {
 
 // 2.2 角色管理 删除用户
 export function handleDeleteUser(data, success, fail) {
-  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         success(data.data)
@@ -72,7 +76,9 @@ export function handleDeleteUser(data, success, fail) {
 
 // 2.3 角色管理 导出用户
 export function handleGetUser(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'get-user', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'get-user', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -90,7 +96,9 @@ export function handleGetUser(data, success, fail) {
 }
 // 2.4 角色管理 导出所有用户
 export function handleGetUsers(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'get-users', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'get-users', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -109,7 +117,9 @@ export function handleGetUsers(data, success, fail) {
 
 // 2.5 角色管理 查询用户列表
 export function handleListAll(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'list-all', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'list-all', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -128,7 +138,9 @@ export function handleListAll(data, success, fail) {
 
 // 2.6 角色管理 下拉框获取部门列表
 export function handleListDepart(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'list-depart', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'list-depart', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -147,7 +159,9 @@ export function handleListDepart(data, success, fail) {
 
 // 3.7 角色管理 修改用户
 export function handleModify(data, success, fail) {
-  Request.requestForm(Request.PUT, currBaseUrl + 'modify', data)
+  Request.requestForm(Request.PUT, currBaseUrl + 'modify', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -166,7 +180,9 @@ export function handleModify(data, success, fail) {
 
 // 3.8 角色管理 模糊查询用户
 export function handleQueryUser(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query-user', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'query-user', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -185,7 +201,9 @@ export function handleQueryUser(data, success, fail) {
 
 // 3.9 角色管理 修改用户时的信息回显
 export function handleReview(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'review', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'review', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -204,7 +222,9 @@ export function handleReview(data, success, fail) {
 
 // 3.10 角色管理 冻结-解冻用户
 export function handleStatus(data, success, fail) {
-  Request.requestForm(Request.PUT, currBaseUrl + 'status', data)
+  Request.requestForm(Request.PUT, currBaseUrl + 'status', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -222,7 +242,9 @@ export function handleStatus(data, success, fail) {
 }
 // 3.11 角色管理 导入用户
 export function handleUpload(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'upload', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'upload', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)

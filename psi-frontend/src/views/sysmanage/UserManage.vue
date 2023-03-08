@@ -39,7 +39,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { getTableList } from './api/user.js'
+import { handleListAll } from './api/usermanagement.js'
 import { format } from '@/apis/date/index.js'
 // 查询表单相关数据及方法
 const formState = reactive({
@@ -145,9 +145,13 @@ const pagination = reactive({
 })
 // 7.2 列出所有单据
 function doGetTableList() {
-  getTableList(
+  let param = {
+    pageIndex: 1,
+    pageSize: 10,
+  }
+  handleListAll(
     // 参数为空是这么写？
-    {},
+    param,
     // 请求成功
     (data) => {
       // 分页配置

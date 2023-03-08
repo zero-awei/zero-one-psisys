@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-05 17:14:54
+ * @LastEditTime: 2023-03-08 00:33:23
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -50,7 +50,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-import { query, queryAll } from './api/addressbook.js'
+import { query, queryAll, queryOrganizationName } from './api/addressbook.js'
 
 
 const name = ref('')
@@ -139,9 +139,9 @@ let { tableItems, tableData, attributes } = toRefs(tableState)
 // 分页相关配置
 const pagination = reactive({
   currentPage: 2, // 当前页
-  pageSize: 100, // 每页数据量
-  pageSizes: [10, 20, 30, 40], // 可选择的每页展示量
-  total: 400, //数据总量
+  pageSize: 5, // 每页数据量
+  pageSizes: [1, 5, 10, 20, 30], // 可选择的每页展示量
+  total: 0, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
 
@@ -212,8 +212,7 @@ function handleReset() {
 function handleQueryAll() {
   let param = {
     pageIndex: 1,
-    pageSize: 1,
-    pages: 100,
+    pageSize: 5,
   }
   queryAll(
     { ...param },
@@ -243,8 +242,8 @@ function handleQueryAddress() {
 
 }
 
-function handleQueryOrganizationName(){
-  
+function handleQueryOrganizationName() {
+
 }
 
 onMounted(() => {
@@ -287,7 +286,7 @@ function handleSizeChange(value) {
 // current-page 改变时触发   跳转到第x页时触发
 function handleCurrentChange(value) {
   console.log("handleCurrentChange", value)
-   let param = {
+  let param = {
   }
   param.pageSize = pagination.pageSize
   param.pageIndex = value

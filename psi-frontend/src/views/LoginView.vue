@@ -1,7 +1,7 @@
 <!-- 登录页面 -->
 <template>
   <!-- <div class="box-card">
-                        <div><el-card style="width: 480px;"> -->
+                            <div><el-card style="width: 480px;"> -->
   <!-- 表单验证 :rules="rules" -->
 <!-- <span>系统登录</span>
         <el-form :model="formData" :rules="rules" status-icon label-width="60px">
@@ -16,10 +16,10 @@
           </el-form-item>
         </el-form>
 
-                            <Test /></el-card> -->
+                                <Test /></el-card> -->
   <!-- 验证码组件 -->
 <!-- <Verify mode="pop" :captchaType="captchaType" :imgSize="{ width: '400px', height: '200px' }" ref="verify"
-                            @success="handleSuccess"></Verify> -->
+                                @success="handleSuccess"></Verify> -->
   <!-- </div></div> -->
   <div class="login-main">
     <div class="login-wraper">
@@ -153,29 +153,29 @@ function useVerify(type) {
  */
 function handleSuccess(res) {
   //TODO[TEST_CODE]:测试调用二次验证
-  Request.requestForm(
-    Request.POST,
-    '/login',
-    { captchaVerification: res.captchaVerification },
-    { baseURL: import.meta.env.VITE_CAPTCHA_URL }
-  )
-    .then((res) => {
-      // // console.log(res)
-      if (res.data.repCode === '0000') {
-        // 跳转到首页
-        $router.push('/home')
-        // 登录成功提示
-        ElMessage.success('登录成功，前往首页')
-        return
-      }
-      ElMessage.error('账号或密码错误')
-    })
-    .catch((res) => {
-      // // console.log(res)
-      ElMessage.error('账号或密码错误')
-    })
+  // Request.requestForm(
+  //   Request.POST,
+  //   '/login',
+  //   { captchaVerification: res.captchaVerification },
+  //   { baseURL: import.meta.env.VITE_CAPTCHA_URL }
+  // )
+  //   .then((res) => {
+  //     // // console.log(res)
+  //     if (res.data.repCode === '0000') {
+  //       // 跳转到首页
+  //       $router.push('/home')
+  //       // 登录成功提示
+  //       ElMessage.success('登录成功，前往首页')
+  //       return
+  //     }
+  //     ElMessage.error('账号或密码错误')
+  //   })
+  //   .catch((res) => {
+  //     // // console.log(res)
+  //     ElMessage.error('账号或密码错误')
+  //   })
 
-  //doLogin(res.captchaVerification)
+  doLogin(res.captchaVerification)
 }
 </script>
 

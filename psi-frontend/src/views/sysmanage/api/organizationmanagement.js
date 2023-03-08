@@ -5,7 +5,9 @@ const currBaseUrl = '/systemmanagement/sys-depart/'
 
 // j2 4.1 删除组织结构
 export function deleteOri(data, success, fail) {
-  Request.requestForm(Request.DELETE, currBaseUrl + 'remove', data)
+  Request.requestForm(Request.DELETE, currBaseUrl + 'remove', data, {
+    baseURL: import.meta.env.VITE_API_J2_SYS
+  })
     .then((data) => {
       console.log('后端返回data----', data)
       // data是后端的响应示例
@@ -49,7 +51,9 @@ export function insert(data, success, fail) {
 
 // j2 4.2 修改组织结构
 export function modify(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'modify', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'modify', data, {
+    baseURL: import.meta.env.VITE_API_J2_SYS
+  })
     .then((data) => {
       console.log('后端返回data----', data)
       // data是后端的响应示例
@@ -93,7 +97,9 @@ export function queryAll(data, success, fail) {
 
 // j2 4.2 查询指定结构树
 export function queryTree(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'query-tree', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'query-tree', data, {
+    baseURL: import.meta.env.VITE_API_J2_SYS
+  })
     .then((data) => {
       console.log('后端返回data----', data)
       // data是后端的响应示例

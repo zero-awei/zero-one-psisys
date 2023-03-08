@@ -14,7 +14,9 @@ const currBaseUrl = '/sysmanagement/rolemanagement/permission/'
 
 // 7.1 系统管理 新增权限
 export function handleSavePermission(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'add', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'add', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.data === true) {
         console.log(data.data)
@@ -35,7 +37,9 @@ export function handleSavePermission(data, success, fail) {
 // }
 // 7.2 系统管理 删除权限
 export function handleDeletePermission(data, success, fail) {
-  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.data === true) {
         console.log(data.data)
@@ -56,7 +60,9 @@ export function handleDeletePermission(data, success, fail) {
 // }
 // 7.3 系统管理 查询权限
 export function handleListPermission(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'list', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'list', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.data.length > 0) {
         console.log(data.data)

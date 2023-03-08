@@ -23,7 +23,9 @@ const currBaseUrl = '/sysmanagement/permissionmanagement/'
 // }
 // 2.1 系统管理 添加权限
 export function handleSavePermission(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'add', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'add', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         success(data.data)
@@ -41,7 +43,9 @@ export function handleSavePermission(data, success, fail) {
 
 // 2.2 系统管理 删除权限
 export function handleDeletePermission(data, success, fail) {
-  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         success(data.data)
@@ -59,7 +63,9 @@ export function handleDeletePermission(data, success, fail) {
 
 // 2.3 系统管理 查询权限
 export function handleListPermission(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'query', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -77,7 +83,9 @@ export function handleListPermission(data, success, fail) {
 }
 // 2.4 系统管理 更新权限信息
 export function handleUpdatePermission(data, success, fail) {
-  Request.requestForm(Request.PUT, currBaseUrl + 'update', data)
+  Request.requestForm(Request.PUT, currBaseUrl + 'update', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)

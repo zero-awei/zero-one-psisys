@@ -17,7 +17,9 @@ const currBaseUrl = '/sysmanagement/rolemanagement/'
 // }
 // 6.1 角色管理 删除
 export function handleDeleteRole(data, success, fail) {
-  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data)
+  Request.requestForm(Request.DELETE, currBaseUrl + 'delete', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log('hello')
@@ -37,7 +39,9 @@ export function handleDeleteRole(data, success, fail) {
 
 // 6.2 角色管理 新增角色
 export function handleSaveRole(data, success, fail) {
-  Request.requestForm(Request.POST, currBaseUrl + 'insert', data)
+  Request.requestForm(Request.POST, currBaseUrl + 'insert', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         success(data.data)
@@ -60,7 +64,9 @@ export function handleSaveRole(data, success, fail) {
 // }
 // 6.3 角色管理 分页查询角色权限
 export function handleQueryAllROle(data, success, fail) {
-  Request.requestForm(Request.GET, currBaseUrl + 'query-all', data)
+  Request.requestForm(Request.GET, currBaseUrl + 'query-all', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)
@@ -79,7 +85,9 @@ export function handleQueryAllROle(data, success, fail) {
 
 // 6.4 角色管理 修改信息
 export function handleUpdateRole(data, success, fail) {
-  Request.requestForm(Request.PUT, currBaseUrl + 'update', data)
+  Request.requestForm(Request.PUT, currBaseUrl + 'update', data, {
+    baseURL: import.meta.env.VITE_API_J1_SYS
+  })
     .then((data) => {
       if (data.code === 10000) {
         console.log(data)

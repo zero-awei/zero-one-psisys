@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-05 17:47:45
+ * @LastEditTime: 2023-03-08 13:50:30
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -20,27 +20,18 @@
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }" :height="400" :max-height="400">
       <el-table-column fixed type="selection" width="50" align="center" />
       <el-table-column fixed type="index" width="50" align="center" />
-      <el-table-column prop="name" label="部门名称" align="center" sortablealign="center" />
-      <el-table-column prop="code" label="部门编码" align="center">
-      </el-table-column>
-      <el-table-column label="操作" :width="300" align="center">
+      <el-table-column prop="address" width="120" label="地址" align="center" sortablealign="center" />
+      <el-table-column prop="departName" width="120" label="部门名称" align="center"></el-table-column>
+      <el-table-column prop="departNameAbbr" width="120" label="部门编码" align="center"></el-table-column>
+      <el-table-column prop="departNameEn" width="120" label="部门英文名" align="center"></el-table-column>
+      <el-table-column prop="description" width="120" label="描述" align="center"></el-table-column>
+      <el-table-column prop="mobile" width="120" label="手机号" align="center"></el-table-column>
+      <el-table-column prop="updateBy" width="120" label="更新人" align="center"></el-table-column>
+      <el-table-column prop="updateTime" width="200" label="更新时间" align="center"></el-table-column>
+      <el-table-column label="操作" :width="300" align="center" fixed="right">
         <template #default="scope">
           <!-- @click="handleEdit(scope.$index, scope.row) -->
-          <el-popover placement="bottom" :width="300" trigger="click">
-            <template #reference>
-              <el-button style="margin-right: 16px">添加下级</el-button>
-            </template>
-            <el-form :model="addSubOriData" label-position="right">
-              <el-form-item label="父分类" prop="pid">
-                <el-input v-model="addSubOriData.pid" />
-              </el-form-item>
-              <el-form-item label="部门名称" prop="name">
-                <el-input v-model="addSubOriData.name" />
-              </el-form-item>
-            </el-form>
-            <el-button @click="handleAddSubCategory(scope.row)">确定</el-button>
-            <el-button @click="popoverVisible = false">取消</el-button>
-          </el-popover>
+          <el-button style="margin-right: 16px">添加下级</el-button>
           |
           <el-button link type="primary" @click="editMenu(scope.row)">修改</el-button>
           |
@@ -55,7 +46,7 @@
         :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total"
         @size-change="handleSizeChange" @current-change="handleCurrentChange" />
       <!--  @size-change="handleSizeChange"
-                                                                        @current-change="handleCurrentChange" -->
+                                                                              @current-change="handleCurrentChange" -->
     </div>
     <!-- 新增 对话框 -->
     <psi-dialog ref="orgAddDialog" v-model="orgAddDialogVisible" :attrs="orgAddDialogAttrs" @determine="handleAddOrg">
@@ -97,11 +88,10 @@ const { formItems, formData } = toRefs(formState)
 // 表格相关
 const tableState = reactive({
 
-
   // 配置表格数据绑定的字段
   tableData: [],
 })
-const { tableItems, tableData, attributes } = toRefs(tableState)
+const { tableData } = toRefs(tableState)
 
 // 分页相关配置
 const pagination = reactive({
@@ -225,11 +215,10 @@ function handleQuery() {
 function handleQueryAll() {
   let param = {
     pageIndex: 1,
-    pageSize: 1,
-    pages: 100,
+    pageSize: 10,
   }
   queryAll(
-    { ...param },
+    param,
     // {},
     // 成功回调函数
 
@@ -242,6 +231,7 @@ function handleQueryAll() {
       pagination.total = data.total
 
       // 表格数据
+
       tableData.value = data.rows
 
     },
