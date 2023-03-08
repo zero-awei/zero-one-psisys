@@ -21,7 +21,7 @@
 #define _TESTTOKEN_H_
 
 /**
- * JWT Token²âÊÔ
+ * æµ‹è¯•JWT Token
  */
 class TestToken {
 public:
