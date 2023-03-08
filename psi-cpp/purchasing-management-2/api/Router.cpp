@@ -28,15 +28,15 @@
 #endif
 
 #define ANDREW
-#include "Statis/StatisController.h"
+#include "statis/StatisController.h"
 #include "prepayment/PrePayController.h"
-#include "PurOrder/PurOrderController.h"
+#include "purOrder/PurOrderController.h"
 
 #define ZUICHU
 #include "payment/PaymentController.h"
 
 #define J4NNA
-#include "PurCom/PurComController.h"
+#include "purCom/PurComController.h"
 
 #include "finPaymenReq/FinPaymentReqControlle.h"
 #include "payment/PaymentController.h"

@@ -4,9 +4,9 @@
     <ClCompile Include="api\Aspect.cpp" />
     <ClCompile Include="api\payment\PaymentController.cpp" />
     <ClCompile Include="api\prepayment\PrePayController.cpp" />
-    <ClCompile Include="api\pueReq1\PurReqController.cpp" />
-    <ClCompile Include="api\purCom1\PurComController.cpp" />
-    <ClCompile Include="api\purOrder1\PurOrderController.cpp" />
+    <ClCompile Include="api\pueReq\PurReqController.cpp" />
+    <ClCompile Include="api\purCom\PurComController.cpp" />
+    <ClCompile Include="api\purOrder\PurOrderController.cpp" />
     <ClCompile Include="api\Router.cpp" />
     <ClCompile Include="dao\payment\PaymentDAO.cpp" />
     <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
@@ -39,11 +39,11 @@
   <ItemGroup>
     <ClInclude Include="api\payment\PaymentController.h" />
     <ClInclude Include="api\prepayment\PrePayController.h" />
-    <ClInclude Include="api\pueReq1\PurReqController.h" />
-    <ClInclude Include="api\purCom1\PurComController.h" />
-    <ClInclude Include="api\purOrder1\PurOrderController.h" />
+    <ClInclude Include="api\pueReq\PurReqController.h" />
+    <ClInclude Include="api\purCom\PurComController.h" />
+    <ClInclude Include="api\purOrder\PurOrderController.h" />
     <ClInclude Include="api\Router.h" />
-    <ClInclude Include="api\statis1\StatisController.h" />
+    <ClInclude Include="api\statis\StatisController.h" />
     <ClInclude Include="dao\DoInclude.h" />
     <ClInclude Include="dao\payment\PaymentDAO.h" />
     <ClInclude Include="dao\payment\PaymentMapper.h" />
