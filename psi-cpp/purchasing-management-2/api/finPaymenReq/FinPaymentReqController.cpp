@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "FinPaymentReqController.h"
-#include "../../service/finPaymentReq/finPyamentReqService.h"
+#include "../../service/finPaymentReq/FinPyamentReqService.h"
 
 /*
 ≤È—Ø¡–±Ì 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PaymentController.h"
-#include "../../service/Payment/PaymentService.h"
+#include "../../service/payment/PaymentService.h"
 #include "../lib-common/include/CharsetConvertHepler.h"
 
 //ÐÞ¸Äµ¥¾Ý×´Ì¬

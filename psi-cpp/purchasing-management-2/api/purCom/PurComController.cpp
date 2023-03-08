@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "PurComController.h"
-#include "../../service/PurCom/PurComService.h"
+#include "../../service/purCom/PurComService.h"
 
 // 查询list数据
 // 负责人：J4nnA

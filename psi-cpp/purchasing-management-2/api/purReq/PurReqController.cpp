@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "PurReqController.h"
-#include "../../service/PurReq/PurReqService.h"
+#include "../../service/purReq/PurReqService.h"
 
 // 查询list分页数据
 JsonVO<PageVO<PurReqVO>> PurReqController::execListPurReq(const PurReqQuery& query, const PayloadDTO& payload) {
