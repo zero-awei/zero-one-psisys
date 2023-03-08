@@ -142,6 +142,11 @@ SupplierDO SupplierDAO::SpecifiedSelect(const string& id)
 	{
 		return res.front();
 	}
+	else
+	{
+		SupplierDO temp;
+		return temp;
+	}
 }
 
 
