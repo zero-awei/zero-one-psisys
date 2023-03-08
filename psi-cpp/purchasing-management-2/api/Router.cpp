@@ -27,19 +27,14 @@
 #include "uselib/ws/TestWs.h"
 #endif
 
-#define ANDREW
 #include "statis/StatisController.h"
 #include "prepayment/PrePayController.h"
 #include "purOrder/PurOrderController.h"
-
-#define ZUICHU
 #include "payment/PaymentController.h"
-
-#define J4NNA
 #include "purCom/PurComController.h"
+#include "purReq/PurReqController.h"
+#include "finPaymenReq/FinPaymentReqController.h"
 
-#include "finPaymenReq/FinPaymentReqControlle.h"
-#include "payment/PaymentController.h"
 
 Router::Router(http_server* sever)
 {

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "finPyamentReqService.h"
+#include "FinPyamentReqService.h"
 #include "../../dao/finPaymentReq/finPaymentReqDAO.h"
 #include "../../lib-common/include/SimpleDateTimeFormat.h"
 

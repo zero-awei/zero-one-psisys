@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "FinPaymentReqControlle.h"
+#include "FinPaymentReqController.h"
 #include "../../service/finPaymentReq/finPyamentReqService.h"
 
 /*
