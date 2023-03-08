@@ -23,8 +23,8 @@
 #include "../../domain/vo/purCom/PurComVO.h"
 #include "../../domain/vo/purCom/PurComEntryVO.h"
 #include "../../domain/vo/PageVO.h"
-#include "../../domain/query/PurCom/PurComQuery.h"
-#include "../../domain/query/PurCom/PurComEntryQuery.h"
+#include "../../domain/query/purCom/PurComQuery.h"
+#include "../../domain/query/purCom/PurComEntryQuery.h"
 
 /**
  * 采购请求服务实现，基础采购订单服务实现

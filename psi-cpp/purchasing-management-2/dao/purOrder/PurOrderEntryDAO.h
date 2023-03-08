@@ -29,15 +29,15 @@
 #include "../../domain/do/PurQuot/PurQuotDO.h"
 #include "../../domain/do/PurQuot/PurQuotEntryDO.h"
 
-#include "../PurOrderSub/PurOrderEntryMapper.h"
-#include "../PurOrderSub/PurReqMapper.h"
-#include "../PurOrderSub/PurReqEntryMapper.h"
-#include "../PurOrderSub/PurCompareMapper.h"
-#include "../PurOrderSub/PurCompareEntryMapper.h"
-#include "../PurOrderSub/PurInquiryMapper.h"
-#include "../PurOrderSub/PurInquiryEntryMapper.h"
-#include "../PurOrderSub/PurQuotMapper.h"
-#include "../PurOrderSub/PurQuotEntryMapper.h"
+#include "../purOrderSub/PurOrderEntryMapper.h"
+#include "../purOrderSub/PurReqMapper.h"
+#include "../purOrderSub/PurReqEntryMapper.h"
+#include "../purOrderSub/PurCompareMapper.h"
+#include "../purOrderSub/PurCompareEntryMapper.h"
+#include "../purOrderSub/PurInquiryMapper.h"
+#include "../purOrderSub/PurInquiryEntryMapper.h"
+#include "../purOrderSub/PurQuotMapper.h"
+#include "../purOrderSub/PurQuotEntryMapper.h"
 /**
  * 采购订单表数据库操作实现
  */

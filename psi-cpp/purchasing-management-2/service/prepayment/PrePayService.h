@@ -24,7 +24,7 @@
 #include "../../domain/dto/prepayment/DePayDTO.h"
 #include "../../domain/vo/prepayment/PrepaymentVO.h"
 // 采购订单列表
-#include "../../domain/query/PurOrder/PurOrderQuery.h"
+#include "../../domain/query/purOrder/PurOrderQuery.h"
 #include "../../domain/vo/purOrder/PurOrderVO.h"
 
 /**

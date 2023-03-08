@@ -20,8 +20,8 @@
 #ifndef __STATIS_CONTROLLER__
 #define __STATIS_CONTROLLER__
 
-#include "../../domain/query/StatisQuery/ExeStatusQuery.h"
-#include "../../domain/query/StatisQuery/StatisQuery.h"
+#include "../../domain/query/statisQuery/ExeStatusQuery.h"
+#include "../../domain/query/statisQuery/StatisQuery.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/statis/ExeStatusVO.h"
 #include "../../domain/vo/statis/StatisVO.h"

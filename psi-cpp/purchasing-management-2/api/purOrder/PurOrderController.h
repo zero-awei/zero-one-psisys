@@ -21,7 +21,7 @@
 #ifndef _PUR_ORDER_CONTROLLER_
 #define _PUR_ORDER_CONTROLLER_
 
-#include "../../domain/query/PurOrder/PurOrderQuery.h"
+#include "../../domain/query/purOrder/PurOrderQuery.h"
 #include "../../domain/dto/purOrder/PurOrderDTO.h"
 #include "../../domain/dto/IDDTO.h"
 #include "../../domain/vo/purOrder/PurOrderVO.h"

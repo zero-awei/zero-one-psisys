@@ -18,7 +18,7 @@
 */
 #include "stdafx.h"
 #include "PurOrderEntryDAO.h"
-#include "../PurOrderSub/PurCompareEntryMapper.h"
+#include "../purOrderSub/PurCompareEntryMapper.h"
 #include <sstream>
 
 #define PUR_ORDER_ENTRY_MODIFY(obj, sql) \
