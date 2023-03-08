@@ -23,9 +23,9 @@
 #include "../../domain/query/StatisQuery/ExeStatusQuery.h"
 #include "../../domain/query/StatisQuery/StatisQuery.h"
 #include "../../domain/dto/IDDTO.h"
-#include "../../domain/vo/StatisVO/ExeStatusVO.h"
-#include "../../domain/vo/StatisVO/StatisVO.h"
-#include "../../domain/vo/StatisVO/MaterialVO.h"
+#include "../../domain/vo/statis/ExeStatusVO.h"
+#include "../../domain/vo/statis/StatisVO.h"
+#include "../../domain/vo/statis/MaterialVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/vo/JsonVO.h"
 
