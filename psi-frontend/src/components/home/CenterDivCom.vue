@@ -351,7 +351,7 @@ const themStore = themeStore()
 const isDarkThem = ref(false)
 const { isDarkTheme } = storeToRefs(themStore)
 const subscribe = themStore.$subscribe((mutation, state) => {
-  console.log('77777777', state.isDarkTheme)
+  // console.log('77777777', state.isDarkTheme)
   isDarkThem.value = state.isDarkTheme
 
 })
