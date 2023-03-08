@@ -76,13 +76,13 @@
       @size-change="handleSizeChange" @current-change="handleCurrentChange" @prev-click="handlePrevClickChange"
       @next-click="handleNextClickChange" />
       <!--  @size-change="handleSizeChange"
-                                                      @current-change="handleCurrentChange" -->
+                                                        @current-change="handleCurrentChange" -->
     </div>
     <!-- <div style="margin-top:10px"> -->
     <!-- <psi-table :items="tableItems" :tableData="tableData" :attributes="attributes" :pagination="pagination"
-                                    @selectionChange="selectionChange" @add="menuAddDialogVisible = true" @sizeChange="handleSizeChange"
-                                    @currentChange="handleCurrentChange" @prevClick="handlePrevClickChange" @nextClick="handleNextClickChange">
-                                    <template v-slot:labelText="slot"> -->
+                                      @selectionChange="selectionChange" @add="menuAddDialogVisible = true" @sizeChange="handleSizeChange"
+                                      @currentChange="handleCurrentChange" @prevClick="handlePrevClickChange" @nextClick="handleNextClickChange">
+                                      <template v-slot:labelText="slot"> -->
   <!-- {{ slot.data.type === 0 }} -->
   <!-- <el-button v-if="slot.data.type === 0" type="primary" size="small"> -->
   <!-- 根目录 -->
@@ -91,9 +91,9 @@
   <!-- <el-button v-else-if="slot.data.type === 1" type="success" size="small"> -->
   <!-- 一级菜单 -->
   <!-- </el-button>
-                                      <el-button v-else-if="slot.data.type === 2" type="warning" size="small">
-                                        二级菜单
-                                      </el-button>
+                                        <el-button v-else-if="slot.data.type === 2" type="warning" size="small">
+                                          二级菜单
+                                        </el-button>
           <el-button v-else="slot.data.type === 3" type="info" size="small">
             三级菜单
           </el-button>
@@ -117,14 +117,14 @@
               </el-form-item>
             </el-form>
             <el-button @click="handleAddSubMenu(slot.data)">确定</el-button>
-                                        <el-button @click="popoverVisible = false">取消</el-button>
-                                      </el-popover>
-                                      |
-                                      <el-button link type="primary" @click="editMenu(slot.data)">修改</el-button>
-                                      |
-                                      <el-button link type="primary" @click="handleDeleteMenu(slot.data)">删除</el-button>
-                                    </template>
-                                  </psi-table> -->
+                                          <el-button @click="popoverVisible = false">取消</el-button>
+                                        </el-popover>
+                                        |
+                                        <el-button link type="primary" @click="editMenu(slot.data)">修改</el-button>
+                                        |
+                                        <el-button link type="primary" @click="handleDeleteMenu(slot.data)">删除</el-button>
+                                      </template>
+                                    </psi-table> -->
     <!-- </div> -->
 
     <!-- 新增 对话框 -->
@@ -407,22 +407,22 @@ function selectionChange(val) {
 // 分页相关方法
 // page-size 改变时触发
 function handleSizeChange(value) {
-  console.log("handleSizeChange", value)
+  // console.log("handleSizeChange", value)
 }
 
 // current-page 改变时触发
 function handleCurrentChange(value) {
-  console.log("handleCurrentChange", value)
+  // console.log("handleCurrentChange", value)
 }
 
 // 用户点击上一页按钮改变当前页时触发
 function handlePrevClickChange(value) {
-  console.log("handlePrevClickChange", value)
+  // console.log("handlePrevClickChange", value)
 }
 
 // 用户点击下一页按钮改变当前页时触发
 function handleNextClhandleMenuDeleteickChange(value) {
-  console.log("handleNextClickChange", value)
+  // console.log("handleNextClickChange", value)
 }
 
 // 菜单接口是不是没有分页
@@ -435,7 +435,7 @@ function handleAddMenu() {
   params.parentId = addMenuFormData.value.parentId
   params.path = addMenuFormData.value.path
   params.permissionId = addMenuFormData.value.permissionId
-  console.log('新增菜单', params)
+  // console.log('新增菜单', params)
   //2. 调用menujs的addMenu方法
   addMenu(
     {
@@ -518,7 +518,7 @@ function handleQuery() {
 // 点击修改，打开修改菜单对话框
 function editMenu(data) {
   menuEditDialogVisible.value = true
-  console.log("点击编辑行传来的数据", data)
+  // console.log("点击编辑行传来的数据", data)
   // 给修改菜单对话框内的表单赋值
   editMenuFormData.value.name = data.name
   editMenuFormData.value.parentMenuId = data.parentMenuId
@@ -533,7 +533,7 @@ function handleEditMenu() {
   params.parentId = editMenuFormData.value.parentId
   params.path = editMenuFormData.value.path
   params.permissionId = editMenuFormData.value.permissionId
-  console.log("修改菜单点击确定", params)
+  // console.log("修改菜单点击确定", params)
   update(
     {
       params

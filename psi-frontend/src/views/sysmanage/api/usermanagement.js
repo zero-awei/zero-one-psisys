@@ -40,7 +40,7 @@ export function handleSaveUser(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data.data)
+        // console.log(data.data)
         success(data.data)
         return
       }
@@ -81,7 +81,7 @@ export function handleGetUser(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -101,7 +101,7 @@ export function handleGetUsers(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -122,7 +122,7 @@ export function handleListAll(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -143,7 +143,7 @@ export function handleListDepart(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -164,7 +164,7 @@ export function handleModify(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -185,7 +185,7 @@ export function handleQueryUser(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -206,7 +206,7 @@ export function handleReview(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -227,7 +227,7 @@ export function handleStatus(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -247,7 +247,7 @@ export function handleUpload(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }

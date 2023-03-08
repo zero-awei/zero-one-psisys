@@ -70,7 +70,7 @@ router.beforeEach(async function (to, from, next) {
   // 判断本地是否记录token值
   let store = userStore()
   let token = store.getToken
-  console.log('getToken', token)
+  // console.log('getToken', token)
   let pathstore = pathStore()
   // 如果有token
   if (token) {

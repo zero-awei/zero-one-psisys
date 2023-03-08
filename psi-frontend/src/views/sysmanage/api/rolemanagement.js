@@ -22,8 +22,8 @@ export function handleDeleteRole(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log('hello')
-        console.log(data.data)
+        // console.log('hello')
+        // console.log(data.data)
         success(data.data)
         return
       }
@@ -69,7 +69,7 @@ export function handleQueryAllROle(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -90,7 +90,7 @@ export function handleUpdateRole(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }

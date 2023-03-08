@@ -10,7 +10,7 @@ export function queryAll(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -38,7 +38,7 @@ export function query(data, success, fail) {
     }
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -61,7 +61,7 @@ export function queryOrganizationName(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -82,7 +82,7 @@ export function queryOrganizationName(data, success, fail) {
 export function queryOrganizationTreeName(data, success, fail) {
   Request.requestForm(Request.GET, currBaseUrl + 'organization', data)
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -103,7 +103,7 @@ export function queryOrganizationTreeName(data, success, fail) {
 export function download(data, success, fail) {
   Request.requestForm(Request.GET, currBaseUrlExcel + 'get-file', data)
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -124,7 +124,7 @@ export function download(data, success, fail) {
 export function downloadUrl(data, success, fail) {
   Request.requestForm(Request.GET, currBaseUrlExcel + 'get-url', data)
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {

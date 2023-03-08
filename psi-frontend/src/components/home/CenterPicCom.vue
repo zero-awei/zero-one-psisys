@@ -63,7 +63,7 @@ const themStore = themeStore()
 const isDarkThem = ref(false)
 const { isDarkTheme } = storeToRefs(themStore)
 const subscribe = themStore.$subscribe((mutation, state) => {
-  console.log('77777777', state.isDarkTheme)
+  // console.log('77777777', state.isDarkTheme)
   isDarkThem.value = state.isDarkTheme
 
 })
@@ -107,7 +107,7 @@ function doGetSalmList() {
       })
       let flag = true
       getOption1(flag, isDarkThem.value);
-      console.log(data)
+      // console.log(data)
     },
     // 失败回调函数
     (msg) => {
@@ -131,7 +131,7 @@ function doGetSaloList() {
       })
       let flag1 = true
       getOption2(flag1, isDarkThem.value);
-      console.log(data)
+      // console.log(data)
     },
     // 失败回调函数
     (msg) => {
@@ -155,7 +155,7 @@ function doGetPuroList() {
       })
       let flag2 = true
       getOption3(flag2, isDarkThem.value);
-      console.log(data)
+      // console.log(data)
     },
     // 失败回调函数
     (msg) => {
@@ -179,7 +179,7 @@ function doGetQussList() {
       })
       let flag3 = true
       getOption4(flag3, isDarkThem.value);
-      console.log(data)
+      // console.log(data)
     },
     // 失败回调函数
     (msg) => {
@@ -272,7 +272,7 @@ function getOption1(flag, isDark, changeTheme) {
     myEcharts = echarts.init(document.getElementById("div1"));
   }
 
-  console.log(SalmList.month)
+  // console.log(SalmList.month)
   // 如果没有数据，渲染空页面
   myEcharts.setOption(option1);
   if (flag) { // 如果有数据渲染

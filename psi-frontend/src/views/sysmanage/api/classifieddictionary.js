@@ -9,7 +9,7 @@ export function deleteDict(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if ((data.code = '10000')) {
@@ -32,7 +32,7 @@ export function insert(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if ((data.code = '10000')) {
@@ -55,7 +55,7 @@ export function queryAll(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -78,7 +78,7 @@ export function queryOne(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if (data.data) {
@@ -101,7 +101,7 @@ export function updateOne(data, success, fail) {
     baseURL: import.meta.env.VITE_API_J2_SYS
   })
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
       // 可以console.log(data) 在浏览器控制台查看数据
       if ((data.code = '10000')) {

@@ -148,7 +148,7 @@ const pagination = reactive({
 
 
 const handleNodeClick = (data) => {
-  console.log(data)
+  // console.log(data)
 }
 
 const data = [
@@ -222,7 +222,7 @@ function handleQueryAll() {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---通讯录', data)
+      // console.log('---通讯录', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total
@@ -254,7 +254,7 @@ onMounted(() => {
 // 分页相关方法
 // page-size 改变时触发   点击每页显示多少条数据时触发
 function handleSizeChange(value) {
-  console.log("handleSizeChange", value)
+  // console.log("handleSizeChange", value)
   let param = {
   }
   param.pageSize = value
@@ -267,7 +267,7 @@ function handleSizeChange(value) {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---通讯录', data)
+      // console.log('---通讯录', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total
@@ -285,7 +285,7 @@ function handleSizeChange(value) {
 
 // current-page 改变时触发   跳转到第x页时触发
 function handleCurrentChange(value) {
-  console.log("handleCurrentChange", value)
+  // console.log("handleCurrentChange", value)
   let param = {
   }
   param.pageSize = pagination.pageSize
@@ -298,7 +298,7 @@ function handleCurrentChange(value) {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---通讯录', data)
+      // console.log('---通讯录', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total

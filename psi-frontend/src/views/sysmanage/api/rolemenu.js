@@ -27,7 +27,7 @@ export function handleSaveMenu(data, success, fail) {
   })
     .then((data) => {
       if (data.data === true) {
-        console.log(data.data)
+        // console.log(data.data)
         success(data.data)
         return
       }
@@ -73,7 +73,7 @@ export function handleListMenu(data, success, fail) {
   })
     .then((data) => {
       if (data.data.length > 0) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }

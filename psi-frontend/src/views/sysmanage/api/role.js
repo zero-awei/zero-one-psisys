@@ -96,7 +96,7 @@ export function queryAllRole(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -115,7 +115,7 @@ export function handleUpdateRole(data, success, fail) {
   Request.requestForm(Request.PUT, currBaseUrl + 'update', data)
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }

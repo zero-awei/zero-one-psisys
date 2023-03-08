@@ -19,7 +19,7 @@ export function handleSavePermission(data, success, fail) {
   })
     .then((data) => {
       if (data.data === true) {
-        console.log(data.data)
+        // console.log(data.data)
         success(data.data)
         return
       }
@@ -42,7 +42,7 @@ export function handleDeletePermission(data, success, fail) {
   })
     .then((data) => {
       if (data.data === true) {
-        console.log(data.data)
+        // console.log(data.data)
         success(data.data)
         return
       }
@@ -65,7 +65,7 @@ export function handleListPermission(data, success, fail) {
   })
     .then((data) => {
       if (data.data.length > 0) {
-        console.log(data.data)
+        // console.log(data.data)
         success(data.data)
         return
       }

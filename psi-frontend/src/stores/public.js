@@ -121,7 +121,7 @@ export const publickStore = defineStore('path', {
     //       value: '1'
     //     },
     doQueryBasBankAccount() {
-      console.log('查询供应商资金账户下拉列表')
+      // console.log('查询供应商资金账户下拉列表')
       queryBasBankAccount(
         {},
         (data) => {

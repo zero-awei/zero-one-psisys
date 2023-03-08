@@ -9,9 +9,9 @@ export const themeStore = defineStore('theme', {
   },
   actions: {
     changeDark() {
-      console.log('22222222', this.isDarkTheme)
+      // console.log('22222222', this.isDarkTheme)
       this.isDarkTheme = !this.isDarkTheme
-      console.log('222333333', this.isDarkTheme)
+      // console.log('222333333', this.isDarkTheme)
     }
   }
 })

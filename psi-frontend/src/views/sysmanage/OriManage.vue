@@ -46,7 +46,7 @@
         :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total"
         @size-change="handleSizeChange" @current-change="handleCurrentChange" />
       <!--  @size-change="handleSizeChange"
-                                                                              @current-change="handleCurrentChange" -->
+                                                                                @current-change="handleCurrentChange" -->
     </div>
     <!-- 新增 对话框 -->
     <psi-dialog ref="orgAddDialog" v-model="orgAddDialogVisible" :attrs="orgAddDialogAttrs" @determine="handleAddOrg">
@@ -225,7 +225,7 @@ function handleQueryAll() {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---组织结构管理', data)
+      // console.log('---组织结构管理', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total
@@ -260,7 +260,7 @@ function handleAddOrg() {
   params.departName = addOrgFormData.value.departName
   params.departNameEn = addOrgFormData.value.departNameEn
   params.description = addOrgFormData.value.description
-  console.log('params', params)
+  // console.log('params', params)
   insert(
     params,
     // {},
@@ -269,7 +269,7 @@ function handleAddOrg() {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---组织结构管理新增', data)
+      // console.log('---组织结构管理新增', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total

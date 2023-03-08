@@ -223,10 +223,10 @@ export default {
 
     // // console.log("---------pathstore.getPathIdSet-------------", pathIdSet)
     function handleTabs(list) {
-      console.log("关闭时")
+      // console.log("关闭时")
       let nextTab = list[list.length - 1]
-      console.log("---------pathIdSet-------------", pathIdSet)
-      console.log("---------nextTab-------------", nextTab)
+      // console.log("---------pathIdSet-------------", pathIdSet)
+      // console.log("---------nextTab-------------", nextTab)
       const pathIdList = [...pathIdSet]
       // pathIdSet 和 pathList是同步更新，所以pathIdSet.has(nextTab.id)一定为true
       // if (pathIdList[pathIdList.length - 1] === nextTab.id) {
@@ -306,7 +306,7 @@ export default {
   methods: {
     switchThemes() {
       const toggleDark = useToggle(isDark)
-      console.log(toggleDark())
+      // console.log(toggleDark())
     }
   }
 }

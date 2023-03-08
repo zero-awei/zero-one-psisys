@@ -8,9 +8,9 @@ const currBaseUrlExcel = '/excel-positionmanagement'
 export function insert(data, success, fail) {
   Request.requestForm(Request.GET, currBaseUrl + 'addPosition', data)
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -26,16 +26,16 @@ export function insert(data, success, fail) {
 }
 
 // j2 4.3 删除职务（返回值data值表示删除成功与否）
-export function delete(data, success, fail) {
+export function deleteP(data, success, fail) {
   Request.requestForm(
     Request.GET,
     currBaseUrl + 'deletePosition',
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -58,9 +58,9 @@ export function queryRank(data, success, fail) {
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -83,9 +83,9 @@ export function queryAll(data, success, fail) {
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -108,9 +108,9 @@ export function updatePosition(data, success, fail) {
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -133,9 +133,9 @@ export function download(data, success, fail) {
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -158,9 +158,9 @@ export function downloadUrl(data, success, fail) {
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return
@@ -184,9 +184,9 @@ export function upload(data, success, fail) {
     data
   )
     .then((data) => {
-      console.log('后端返回data----', data)
+      // console.log('后端返回data----', data)
       // data是后端的响应示例
-      // 可以console.log(data) 在浏览器控制台查看数据
+      // 可以// console.log(data) 在浏览器控制台查看数据
       if (data.data) {
         success(data.data)
         return

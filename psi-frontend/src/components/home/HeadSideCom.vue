@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-15 15:14:03
- * @LastEditTime: 2023-03-07 14:49:47
+ * @LastEditTime: 2023-03-08 13:59:37
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\Home\HeadSideCom.vue
@@ -83,7 +83,7 @@ import { useRouter } from 'vue-router'
 import { format } from '@/apis/date/index.js'
 import { useDark, useToggle } from '@vueuse/core'
 import { Sunny, MoonNight } from '@element-plus/icons-vue'
-
+import Request from '@/apis/request'
 const isDark = useDark()
 
 // 亮色、黑暗模式选择
@@ -108,7 +108,7 @@ function handleLogout() {
   //跳到登录页面
   $router.push(/login)
   } */
-   Request.requestForm(
+  Request.requestForm(
     Request.GET,
     '/login/logout',
     null,
@@ -117,9 +117,9 @@ function handleLogout() {
     }
   ).then((data) => {
     if (data.code === 10000) {
-     $router.push('/')
+      $router.push('/')
     }
-    })
+  })
     .catch((err) => {
       // 打印错误信息
       console.warn(err)
@@ -181,11 +181,11 @@ function modifyPassword() {
 }
 
 function handleModifyPassword() {
-  let params={}
-  params.clientId=  import.meta.env.VITE_CLIENT_ID,
-  params.password = modifyPasswordData.newPassword
+  let params = {}
+  params.clientId = import.meta.env.VITE_CLIENT_ID,
+    params.password = modifyPasswordData.newPassword
   params.username = store.getUser.username
-   Request.requestForm(
+  Request.requestForm(
     Request.GET,
     '/login/change-password',
     params,
@@ -193,10 +193,10 @@ function handleModifyPassword() {
       baseURL: import.meta.env.VITE_API_J1_LOGIN
     }
   ).then((data) => {
-    if(data.code===10000){
+    if (data.code === 10000) {
       Elmessage.success('密码修改成功，请重新登陆')
       handleLogout()
-    }else{
+    } else {
       Elmessage.error('密码修改失败')
     }
   })
@@ -213,7 +213,7 @@ function switchThemes() {
   themStore.changeDark()
   // console.log("111111111111", themStore.changeDark())
   const toggleDark = useToggle(isDark)
-  console.log(toggleDark())
+  // console.log(toggleDark())
 }
 </script>
 

@@ -52,7 +52,7 @@ const themStore = themeStore()
 const isDarkThem = ref(false)
 const { isDarkTheme } = storeToRefs(themStore)
 const subscribe = themStore.$subscribe((mutation, state) => {
-  console.log('77777777', state.isDarkTheme)
+  // console.log('77777777', state.isDarkTheme)
   isDarkThem.value = state.isDarkTheme
 
 })
@@ -76,7 +76,7 @@ function doGetTableList() {
         let obj = item
         TableList.data.push(obj)
       })
-      console.log(data)
+      // console.log(data)
     },
     // 失败回调函数
     (msg) => {
@@ -84,7 +84,7 @@ function doGetTableList() {
     }
   )
 }
-console.log(TableList.data)
+// console.log(TableList.data)
 
 function doReset() {
   doGetTableList()

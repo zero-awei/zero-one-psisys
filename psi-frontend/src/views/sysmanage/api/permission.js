@@ -68,7 +68,7 @@ export function handleListPermission(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }
@@ -88,7 +88,7 @@ export function handleUpdatePermission(data, success, fail) {
   })
     .then((data) => {
       if (data.code === 10000) {
-        console.log(data)
+        // console.log(data)
         success(data.data)
         return
       }

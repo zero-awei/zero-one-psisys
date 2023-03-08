@@ -126,7 +126,7 @@ const themStore = themeStore()
 const isDarkThem = ref(false)
 const { isDarkTheme } = storeToRefs(themStore)
 const subscribe = themStore.$subscribe((mutation, state) => {
-  console.log('77777777', state.isDarkTheme)
+  // console.log('77777777', state.isDarkTheme)
   isDarkThem.value = state.isDarkTheme
 
 })
@@ -186,7 +186,7 @@ function doGetSysList() {
   getSysList(
     {},
     (data) => {
-      console.log('-------data')
+      // console.log('-------data')
       SysList.jishikucn = data[0]
       SysList.kehuqiankuan = data[1]
       SysList.qiangongyingshan = data[2]

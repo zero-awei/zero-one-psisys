@@ -33,7 +33,7 @@
           <!-- @click="handleEdit(scope.$index, scope.row) -->
           <!-- <el-popover placement="bottom" :width="300" trigger="click">
                                                                                                                   <template #reference> -->
-        <el-button link type="primary" @click="addSubCategory(scope.row)">添加下级</el-button>
+          <el-button link type="primary" @click="addSubCategory(scope.row)">添加下级</el-button>
           |
           <el-button link type="primary" @click="editCategory(scope.row)">修改</el-button>
           |
@@ -48,7 +48,7 @@
         :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total"
         @size-change="handleSizeChange" @current-change="handleCurrentChange" />
       <!--  @size-change="handleSizeChange"
-                                                                                                                                                                                                                          @current-change="handleCurrentChange" -->
+                                                                                                                                                                                                                            @current-change="handleCurrentChange" -->
     </div>
 
 
@@ -111,7 +111,7 @@ let popoverVisible = ref(false)
 const pagination = reactive({
   currentPage: 1, // 当前页
   pageSize: 5, // 每页数据量
-  pageSizes: [5, 10, 20, 30,40,50], // 可选择的每页展示量
+  pageSizes: [5, 10, 20, 30, 40, 50], // 可选择的每页展示量
   total: 5, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
@@ -239,7 +239,7 @@ function handleQueryAll() {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---分类字典', data)
+      // console.log('---分类字典', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total
@@ -269,12 +269,12 @@ function handleQueryAll() {
       })
 
 
-      console.log('addSubCategoryItems------', addSubCategoryItems.value[0])
+      // console.log('addSubCategoryItems------', addSubCategoryItems.value[0])
       addSubCategoryItems.value[0].options = pCategoryOptions
       editCategoryItems.value[0].options = pCategoryOptions
-      console.log('data------', data)
-      console.log('tableData------', tableData)
-      console.log('pCategoryOptions------', pCategoryOptions)
+      // console.log('data------', data)
+      // console.log('tableData------', tableData)
+      // console.log('pCategoryOptions------', pCategoryOptions)
     },
     // 失败回调函数
     (msg) => {
@@ -285,12 +285,12 @@ function handleQueryAll() {
 
 const load = (row, treeNode, resolve) => {
   let params = {}
-  console.log('懒加载', row)
+  // console.log('懒加载', row)
   params.pid = row.id
   queryOne(
     params,
     (data) => {
-      console.log('查询指定得到data', data)
+      // console.log('查询指定得到data', data)
       if (data.rows) {
         // 如果有数据
         let resolvelist = []
@@ -354,7 +354,7 @@ function addSubCategory(row) {
 
   addSubCategoryFormData.value.pid = row.id
   addSubCategoryFormData.value.name = ''
-  console.log('addSubCategoryFormData', addSubCategoryFormData.value)
+  // console.log('addSubCategoryFormData', addSubCategoryFormData.value)
   subCategoryAddDialogVisible.value = true
 }
 function handleAddSubCategory() {
@@ -376,7 +376,7 @@ function handleAddSubCategory() {
 }
 
 function handleDeleteCategory(row) {
-  console.log("id", row.id)
+  // console.log("id", row.id)
   let param = {}
   param.id = row.id
   deleteDict(
@@ -417,7 +417,7 @@ function handleEditCategory() {
 // page-size 改变时触发   点击每页显示多少条数据时触发
 function handleSizeChange(value) {
   tableData.value = []
-  console.log("handleSizeChange", value)
+  // console.log("handleSizeChange", value)
   let param = {
   }
   param.pageSize = value
@@ -430,7 +430,7 @@ function handleSizeChange(value) {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---分类字典', data)
+      // console.log('---分类字典', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total
@@ -460,12 +460,12 @@ function handleSizeChange(value) {
       })
 
 
-      console.log('addSubCategoryItems------', addSubCategoryItems.value[0])
+      // console.log('addSubCategoryItems------', addSubCategoryItems.value[0])
       addSubCategoryItems.value[0].options = pCategoryOptions
       editCategoryItems.value[0].options = pCategoryOptions
-      console.log('data------', data)
-      console.log('tableData------', tableData)
-      console.log('pCategoryOptions------', pCategoryOptions)
+      // console.log('data------', data)
+      // console.log('tableData------', tableData)
+      // console.log('pCategoryOptions------', pCategoryOptions)
     },
     // 失败回调函数
     (msg) => {
@@ -477,7 +477,7 @@ function handleSizeChange(value) {
 // current-page 改变时触发   跳转到第x页时触发
 function handleCurrentChange(value) {
   tableData.value = []
-  console.log("handleSizeChange", value)
+  // console.log("handleSizeChange", value)
   param.pageSize = pagination.pageSize
   param.pageIndex = value
   queryAll(
@@ -488,7 +488,7 @@ function handleCurrentChange(value) {
     (data) => {
       // 查询全部返回的是表格数据
       // 分页
-      console.log('---分类字典', data)
+      // console.log('---分类字典', data)
       pagination.currentPage = data.pageIndex
       pagination.pageSize = data.pageSize
       pagination.total = data.total
@@ -518,12 +518,12 @@ function handleCurrentChange(value) {
       })
 
 
-      console.log('addSubCategoryItems------', addSubCategoryItems.value[0])
+      // console.log('addSubCategoryItems------', addSubCategoryItems.value[0])
       addSubCategoryItems.value[0].options = pCategoryOptions
       editCategoryItems.value[0].options = pCategoryOptions
-      console.log('data------', data)
-      console.log('tableData------', tableData)
-      console.log('pCategoryOptions------', pCategoryOptions)
+      // console.log('data------', data)
+      // console.log('tableData------', tableData)
+      // console.log('pCategoryOptions------', pCategoryOptions)
     },
     // 失败回调函数
     (msg) => {
