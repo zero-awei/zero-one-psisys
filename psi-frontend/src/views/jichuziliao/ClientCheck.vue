@@ -1,3 +1,11 @@
+<!--
+ * @Author: 160405103 1348313766@qq.com
+ * @Date: 2023-03-04 19:07:02
+ * @LastEditors: 160405103 1348313766@qq.com
+ * @LastEditTime: 2023-03-05 16:17:11
+ * @FilePath: \psi-frontend\src\views\jichuziliao\ClientCheck.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div>
     <!-- 客户 -->
@@ -31,41 +39,41 @@
 </template>
     
 <script setup>
-import { reactive, toRefs, ref } from 'vue'
-import { } from './api/clientcheck.js'
+import { reactive, toRefs, ref, onMounted } from 'vue'
+import { addCustomer, queryCondition } from './api/clientcheck.js'
 // 抽屉
 const drawerStatus = reactive({
   title: '抽屉标题',
   basicItems: [
     {
       type: 'input',
+      prop: 'address',
+      label: '客户地址'
+    },
+    {
+      type: 'input',
+      prop: 'area',
+      label: '所属地区'
+    },
+    {
+      type: 'input',
+      prop: 'auxName',
+      label: '助记名'
+    },
+    {
+      type: 'input',
+      prop: 'auxiliaryName',
+      label: '辅助名称'
+    },
+    {
+      type: 'input',
+      prop: 'bizArea',
+      label: '业务区域'
+    },
+    {
+      type: 'input',
       prop: 'code',
-      label: '编码'
-    },
-    {
-      type: 'input',
-      prop: 'name2',
-      label: '名称'
-    },
-    {
-      type: 'input',
-      prop: 'name3',
-      label: '客户分类'
-    },
-    {
-      type: 'input',
-      prop: 'name4',
-      label: '客户等级'
-    },
-    {
-      type: 'input',
-      prop: 'name5',
-      label: '纳税规模'
-    },
-    {
-      type: 'input',
-      prop: 'name6',
-      label: '欠款额度'
+      label: '客户编码'
     },
     {
       type: 'input',
@@ -216,6 +224,12 @@ const drawerStatus = reactive({
     }
   ],
   formData: {
+    address: '',
+    area: '',
+    auxName: '',
+    auxiliaryName: '',
+    bizArea: '',
+    code: '',
     name1: '',
     name2: '',
     name3: '',
@@ -230,10 +244,6 @@ const drawerStatus = reactive({
   }
 })
 
-// 抽屉自定义事件
-function confirm(data) {
-  emit('confirm', props.formData)
-}
 
 let drawerVisible = ref(false)
 
@@ -294,8 +304,38 @@ const status = reactive({
     },
     {
       type: 'text',
+      prop: 'address',
+      label: '客户地址',
+      width: '120'
+    },
+    {
+      type: 'text',
+      prop: 'area',
+      label: '所属地区',
+      width: '120'
+    },
+    {
+      type: 'text',
+      prop: 'auxName',
+      label: '助记名',
+      width: '120'
+    },
+    {
+      type: 'text',
+      prop: 'auxiliaryName',
+      label: '辅助名称',
+      width: '120'
+    },
+    {
+      type: 'text',
+      prop: 'bizArea',
+      label: '业务区域',
+      width: '120'
+    },
+    {
+      type: 'text',
       label: '编码',
-      prop: 'date',
+      prop: '客户编码',
       width: '120'
     },
     {
@@ -399,42 +439,6 @@ const status = reactive({
   ],
   // table 数据
   tableData: [
-    {
-      date: '2016-05-03',
-      name: 'Tom1',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Home'
-    },
-    {
-      date: '2016-05-03',
-      name: 'Tom1',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Home'
-    },
-    {
-      date: '2016-05-03',
-      name: 'Tom1',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Home'
-    },
-    {
-      date: '2016-05-03',
-      name: 'Tom1',
-      state: 'California',
-      city: 'Los Angeles',
-      address: 'No. 189, Grove St, Los Angeles',
-      zip: 'CA 90036',
-      tag: 'Home'
-    }
   ],
   // table 总体配置
   attributes: {
@@ -465,6 +469,51 @@ const pagination = reactive({
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
 })
+
+
+onMounted(() => {
+  doQueryCondition()
+})
+
+// ---- 方法
+// 抽屉自定义事件
+function confirm(data) {
+  let params = {}
+  params.address = data.address
+  params.area = data.area
+  params.auxName = data.auxName
+  params.auxiliaryName = data.auxiliaryName
+  params.bizArea = data.bizArea
+  params.code = data.code
+
+
+
+  addCustomer(
+    {
+      ...params
+    },
+    (data) => {
+      // 新增以后刷新用户表格
+      doQueryCondition()
+
+    },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+//普通分页查询
+function doQueryCondition() {
+  queryCondition(
+    {},
+    (data) => {
+      tableData = [...data.rows]
+    },
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
 </script>
     
 <style lang='stylus' scoped></style>

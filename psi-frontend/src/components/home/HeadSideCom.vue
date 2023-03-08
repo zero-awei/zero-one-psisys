@@ -1,7 +1,7 @@
 <!--
  * @Author: li.ziwei
  * @Date: 2023-02-15 15:14:03
- * @LastEditTime: 2023-03-02 18:27:53
+ * @LastEditTime: 2023-03-07 14:49:47
  * @LastEditors: 160405103 1348313766@qq.com
  * @Description: 
  * @FilePath: \psi-frontend\src\components\Home\HeadSideCom.vue
@@ -31,10 +31,10 @@
               <!-- <Fold /> -->
               <Edit />
             </el-icon>
-            密码修改
+            修改密码
           </el-dropdown-item>
           <!-- <el-dropdown-item> <el-icon style=" left: 0px;color:black;margin-right:12px"><IconSetting /></el-icon>系统设置</el-dropdown-item> -->
-          <el-dropdown-item @click="handleClick">
+          <el-dropdown-item @click="handleLogout">
             <el-icon style="left: 0px;color:black;margin-right:12px">
               <House />
             </el-icon>
@@ -101,16 +101,32 @@ function handleSearch() {
   panelShow.value=true
   }*/
 
-function handleClick() {
+function handleLogout() {
   /* if(command === 'cancel'){
      //清除token
   // Cookie.remove('token')
   //跳到登录页面
   $router.push(/login)
   } */
-  $router.push('/')
+   Request.requestForm(
+    Request.GET,
+    '/login/logout',
+    null,
+    {
+      baseURL: import.meta.env.VITE_API_J1_LOGIN
+    }
+  ).then((data) => {
+    if (data.code === 10000) {
+     $router.push('/')
+    }
+    })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
 }
-
 
 // 菜单数据
 const menus = store.getMenus
@@ -165,15 +181,38 @@ function modifyPassword() {
 }
 
 function handleModifyPassword() {
-
+  let params={}
+  params.clientId=  import.meta.env.VITE_CLIENT_ID,
+  params.password = modifyPasswordData.newPassword
+  params.username = store.getUser.username
+   Request.requestForm(
+    Request.GET,
+    '/login/change-password',
+    params,
+    {
+      baseURL: import.meta.env.VITE_API_J1_LOGIN
+    }
+  ).then((data) => {
+    if(data.code===10000){
+      Elmessage.success('密码修改成功，请重新登陆')
+      handleLogout()
+    }else{
+      Elmessage.error('密码修改失败')
+    }
+  })
+    .catch((err) => {
+      // 打印错误信息
+      console.warn(err)
+      // 执行失败回调
+      fail()
+    })
 }
 
 
 function switchThemes() {
-  // themStore.changeDark()
-  console.log("111111111111", themStore.changeDark())
+  themStore.changeDark()
+  // console.log("111111111111", themStore.changeDark())
   const toggleDark = useToggle(isDark)
-
   console.log(toggleDark())
 }
 </script>

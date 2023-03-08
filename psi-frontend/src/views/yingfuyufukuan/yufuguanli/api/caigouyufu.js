@@ -5,7 +5,9 @@ const currBaseUrl = '/payment/'
 
 // j4 2.9 查询采购预付单功能
 export function queryAll(data, success, fail) {
-    Request.requestForm(Request.GET, currBaseUrl + 'query-all', data)
+    Request.requestForm(Request.GET, currBaseUrl + 'query-all', data,{
+      baseURL:import.meta.env.VITE_API_J4
+    })
       .then((data) => {
         // 可以console.log(data) 在浏览器控制台查看数据
         console.log('后端返回data------',data)

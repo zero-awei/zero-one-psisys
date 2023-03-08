@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-28 20:49:18
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-02 21:18:09
+ * @LastEditTime: 2023-03-06 15:07:55
  * @FilePath: \psi-frontend\vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -38,26 +38,36 @@ export default ({ mode }) =>
         },
         '/captcha': {
           changeOrigin: true,
-          target: 'http://localhost:10680',
+          // target: 'http://localhost:10680',
+          target: 'http://101.132.238.119:10200/',
           rewrite: (path) => path.replace(/^\/captcha/, '')
         },
         '/C1': {
           changeOrigin: true,
-          target: 'http://39.101.122.174:8090',
+          target: 'http://39.101.122.174:8090/',
           rewrite: (path) => path.replace(/^\/C1/, '')
         },
         '/C3': {
           changeOrigin: true,
-          target: 'http://47.113.148.133:8090',
+          target: 'http://47.113.148.133:8090/',
           rewrite: (path) => path.replace(/^\/C3/, '')
         },
-        '/J4': {
+        '/J1oauth': {
           changeOrigin: true,
-          target: 'http://8.130.20.243:10690',
-          rewrite: (path) => path.replace(/^\/J4/, '')
+          target: 'http://101.132.238.119:10400/',
+          rewrite: (path) => path.replace(/^\/J1oauth/, '')
+        },
+        '/J1login': {
+          changeOrigin: true,
+          target: 'http://101.132.238.119:10200/',
+          rewrite: (path) => path.replace(/^\/J1login/, '')
+        },
+        '/J1sys': {
+          changeOrigin: true,
+          target: 'http://47.113.200.198:15555/',
+          rewrite: (path) => path.replace(/^\/J1sys/, '')
         },
         // 不是虚拟前缀
-        // 系统管理
         '/J2sys': {
           changeOrigin: true,
           target: 'http://8.130.30.128:10101/',
@@ -74,6 +84,14 @@ export default ({ mode }) =>
           changeOrigin: true,
           target: 'http://8.130.24.117:10102/',
           rewrite: (path) => path.replace(/^\/J2titlepage/, '')
+        },
+        '/J4': {
+          changeOrigin: true,
+          target: 'http://8.130.20.243:10690/'
+        },
+        '/C5':{
+          changeOrigin: true,
+          target: 'http://47.115.231.132:8090/'
         }
       }
     },

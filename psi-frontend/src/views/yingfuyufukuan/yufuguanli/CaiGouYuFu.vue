@@ -86,14 +86,13 @@
 <script setup>
 import { ref, reactive, toRefs, onMounted ,isRef} from 'vue'
 // 引入方法
-import {} from './api/caigouyufu.js'
+import { queryAll } from './api/caigouyufu.js'
 // 引入日期格式化方法
 import { format } from '@/apis/date/index.js'
 import { Sunny, MoonNight } from '@element-plus/icons-vue'
 const switchMode = ref(true)
 const value = ref('')
 let dialogVisible = ref(false)
-
 
 const state = reactive({
   attrs: {
@@ -332,7 +331,7 @@ const formState = reactive({
     {
       type: 'daterange',
       label: '单据日期',
-      prop: 'daterange',
+      prop: 'billData',
       startPlaceholder: '开始日期',
       endPlaceholder: '结束日期'
     },
@@ -348,16 +347,16 @@ const formState = reactive({
       type: 'select',
       label: '供应商',
       prop: 'supplierId',
-      placeholder: '请选择性别',
+      placeholder: '请选择',
       options: [
-        {
+       /*  {
           label: '供应商1',
           value: 0
         },
         {
           label: '供应商2',
           value: 1
-        }
+        } */
       ]
     },
     {
@@ -376,16 +375,10 @@ const formState = reactive({
         }
       ]
     },
-    
     {
       type: 'input',
       label: '处理状态',
       prop: 'billStage',
-    },
-    {
-      type: 'input',
-      label: '付款类型',
-      prop: 'paymentType',
     },
     {
       type: 'select',
@@ -419,7 +412,7 @@ const formState = reactive({
     },
     {
       type: 'select',
-      label: '已作废',
+      label: '是否作废',
       prop: 'isVoided',
       options: [
         {
@@ -450,11 +443,13 @@ const formState = reactive({
 })
 const { items, toggleItems, formData } = toRefs(formState)
 
+
+
   // table列配置
   const tableStatus = reactive({
   // table列配置
   tableItems: [
-    {
+   /*  {
       label: '单据编号',
       prop: 'name',
       width: '160',
@@ -465,6 +460,13 @@ const { items, toggleItems, formData } = toRefs(formState)
       callback: (data) => {
         return `<span style="color:#409eff"> ${data.name}</span>`
       }
+    }, */
+    {
+      type: 'text',
+      label: '单据编号',
+      prop: 'billNo',
+      width: '160',
+      align: 'center',
     },
     {
       type: 'text',
@@ -529,7 +531,7 @@ const { items, toggleItems, formData } = toRefs(formState)
     {
       type: 'text',
       label: '创建时间',
-      prop: 'CreatTime',
+      prop: 'CreateTime',
       width: '75'
     },
     {

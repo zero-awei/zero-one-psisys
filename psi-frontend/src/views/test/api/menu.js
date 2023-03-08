@@ -35,6 +35,7 @@ export const handleAddMenu = () => {
     // 4.执行失败给出提示信息
     (msg) => {
       console.log('msg', msg)
+      // eslint-disable-next-line no-undef
       ElMessage.error('新增菜单出现错误')
     }
   )

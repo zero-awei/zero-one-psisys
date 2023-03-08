@@ -316,10 +316,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
+
 .el-container {
   height: 100vh;
 
@@ -395,6 +396,10 @@ export default {
   // overflow: scroll;
 }
 
+:deep(.el-card__body) {
+  padding: 8px;
+}
+
 .dark-aside {
   background-color: #1c1c1d;
 
@@ -408,6 +413,7 @@ export default {
 
   :deep(.el-sub-menu__title) {
     background-color: #1c1c1d !important;
+
   }
 
   :deep(.el-menu-item) {

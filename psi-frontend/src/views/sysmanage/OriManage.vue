@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-23 13:15:02
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-02-28 11:18:53
+ * @LastEditTime: 2023-03-05 17:47:45
  * @FilePath: \psi-frontend\src\views\sysmanage\SysPosition.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -20,7 +20,7 @@
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }" :height="400" :max-height="400">
       <el-table-column fixed type="selection" width="50" align="center" />
       <el-table-column fixed type="index" width="50" align="center" />
-      <el-table-column prop="name" label="部门名称" sortablealign="center" />
+      <el-table-column prop="name" label="部门名称" align="center" sortablealign="center" />
       <el-table-column prop="code" label="部门编码" align="center">
       </el-table-column>
       <el-table-column label="操作" :width="300" align="center">
@@ -47,16 +47,15 @@
           <el-button link type="primary" @click="handleDeleteMenu(scope.row)">删除</el-button>
 
         </template>
-      </el-table-column>
-  </el-table>
+    </el-table-column>
+    </el-table>
     <div class="demo-pagination-block">
       <!-- <div class="demonstration">All combined</div> -->
       <el-pagination v-model:current-page="pagination.currentPage" v-model:page-size="pagination.pageSize"
         :page-sizes="pagination.pageSizes" :layout="pagination.layout" :total="pagination.total"
-        @size-change="handleSizeChange" @current-change="handleCurrentChange" @prev-click="handlePrevClickChange"
-        @next-click="handleNextClickChange" />
+        @size-change="handleSizeChange" @current-change="handleCurrentChange" />
       <!--  @size-change="handleSizeChange"
-                                                              @current-change="handleCurrentChange" -->
+                                                                        @current-change="handleCurrentChange" -->
     </div>
     <!-- 新增 对话框 -->
     <psi-dialog ref="orgAddDialog" v-model="orgAddDialogVisible" :attrs="orgAddDialogAttrs" @determine="handleAddOrg">
@@ -74,7 +73,7 @@
 
 <script setup>
 import { ref, reactive, toRefs, onMounted } from 'vue'
-
+import { queryAll, insert } from './api/organizationmanagement.js'
 
 // 查询表单相关数据及方法
 const formState = reactive({
@@ -119,7 +118,7 @@ let orgAddDialogVisible = ref(false)
 const orgAddDialogState = reactive({
   orgAddDialogAttrs: {
     title: '新增组织结构',
-    width: '50%',
+    width: '80%',
     determine: true,  //对话框的确定按钮生效
   }
 })
@@ -130,15 +129,51 @@ const addOrgState = reactive({
   addOrgItems: [
     {
       type: 'input',
-      label: '组织结构名称',
-      prop: 'name',
+      label: '机构/部门名称',
+      prop: 'departName',
       placeholder: '请输入',
-    }
+    },
+    {
+      type: 'input',
+      label: '地址',
+      prop: 'address',
+      placeholder: '请输入',
+    },
+    {
+      type: 'input',
+      label: '创始人',
+      prop: 'creatBy',
+      placeholder: '请输入',
+    },
+    {
+      type: 'input',
+      label: '缩写',
+      prop: 'departNameAbbr',
+      placeholder: '请输入',
+    },
+    {
+      type: 'input',
+      label: '英文名',
+      prop: 'departNameEn',
+      placeholder: '请输入',
+    },
+    {
+      type: 'input',
+      label: '描述',
+      prop: 'description',
+      placeholder: '请输入',
+    },
+
 
 
   ],
   addOrgFormData: {
-    name: '',     // 菜单名称
+    address: '',     // 地址
+    creatBy: '',
+    departNameAbbr: '',
+    departName: '',
+    departNameEn: '',
+    description: ''
   }
 })
 
@@ -174,10 +209,47 @@ const editOrgState = reactive({
 const { editOrgItems, editOrgFormData, } = toRefs(editOrgState)
 
 const parentId = ref('')
+
+
+onMounted(() => {
+  handleQueryAll()
+})
+
+
 // ---------- 方法-------------
 // f2 5.3 查询组织结构列表
 function handleQuery() {
 
+}
+
+function handleQueryAll() {
+  let param = {
+    pageIndex: 1,
+    pageSize: 1,
+    pages: 100,
+  }
+  queryAll(
+    { ...param },
+    // {},
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      console.log('---组织结构管理', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
 }
 // 重置
 function handleReset() {
@@ -191,6 +263,36 @@ function addOrganization() {
 // j2 5.2 新增组织结构
 function handleAddOrg() {
 
+  let params = {}
+  params.address = addOrgFormData.value.address
+  params.creatBy = addOrgFormData.value.creatBy
+  params.departNameAbbr = addOrgFormData.value.departNameAbbr
+  params.departName = addOrgFormData.value.departName
+  params.departNameEn = addOrgFormData.value.departNameEn
+  params.description = addOrgFormData.value.description
+  console.log('params', params)
+  insert(
+    params,
+    // {},
+    // 成功回调函数
+
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      console.log('---组织结构管理新增', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
 
 }
 
