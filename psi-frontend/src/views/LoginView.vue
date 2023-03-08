@@ -1,7 +1,7 @@
 <!-- 登录页面 -->
 <template>
   <!-- <div class="box-card">
-                            <div><el-card style="width: 480px;"> -->
+                              <div><el-card style="width: 480px;"> -->
   <!-- 表单验证 :rules="rules" -->
 <!-- <span>系统登录</span>
         <el-form :model="formData" :rules="rules" status-icon label-width="60px">
@@ -16,10 +16,10 @@
           </el-form-item>
         </el-form>
 
-                                <Test /></el-card> -->
+                                  <Test /></el-card> -->
   <!-- 验证码组件 -->
 <!-- <Verify mode="pop" :captchaType="captchaType" :imgSize="{ width: '400px', height: '200px' }" ref="verify"
-                                @success="handleSuccess"></Verify> -->
+                                  @success="handleSuccess"></Verify> -->
   <!-- </div></div> -->
   <div class="login-main">
     <div class="login-wraper">
@@ -232,7 +232,7 @@ span {
     background-color: #fff;
     border-radius: 20px;
     // background: url("src/assets/login_two.jpg") no-repeat;
-    background: url("src/assets/login_5.jpg") no-repeat;
+    background: url("/login_5.jpg") no-repeat;
     background-size: 90% 100%;
     display: flex;
     justify-content: end;
@@ -301,7 +301,7 @@ span {
   .content {
     width: 85vw;
     height: 90vh;
-    background: url("src/assets/login_two.jpg") no-repeat;
+    // background: url("src/assets/login_two.jpg") no-repeat;
     background-size: 90% 100%;
     position: absolute;
     right: 15%;
