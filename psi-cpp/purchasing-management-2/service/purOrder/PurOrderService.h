@@ -25,8 +25,8 @@
 #include "../../domain/vo/PurOrder/PurOrderDetailVO.h"
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/PurOrder/PurOrderQuery.h"
-#include "../../domain/dto/PurOrder/PurOrderDTO.h"
-#include "../../domain/dto/PurOrder/PurOrderEntryDTO.h"
+#include "../../domain/dto/purOrder/PurOrderDTO.h"
+#include "../../domain/dto/purOrder/PurOrderEntryDTO.h"
 #include "../../dao/PurOrder/PurOrderDAO.h"
 #include "../../dao/PurOrder/PurOrderEntryDAO.h"
 
