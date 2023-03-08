@@ -714,6 +714,7 @@ bool PurOrderService::updateData(const PurOrderDTO& dto, const PayloadDTO& paylo
 	data.setUpdate_time(time);
 
 	result = dao.update(data);
+	if (!result) { return 0; }
 
 	list<PurOrderEntryDTO> poe = dto.getDetail();
 
