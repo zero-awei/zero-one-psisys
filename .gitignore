@@ -6,6 +6,8 @@
 # Log file
 *.log
 
+package-lock.json
+
 # BlueJ files
 *.ctxt
 
@@ -21,8 +23,8 @@
 *.rar
 *.7z
 *.exe
-!documents/05ã€ç¯å¢ƒæ­å»º/06ã€Dockeréƒ¨ç½²Sentinel/èµ„æº/sentinel-dashboard/*.jar
-!documents/05ã€ç¯å¢ƒæ­å»º/07ã€Dockeréƒ¨ç½²RocketMQ/èµ„æº/*.zip
+!documents/05¡¢»·¾³´î½¨/06¡¢Docker²¿ÊğSentinel/×ÊÔ´/sentinel-dashboard/*.jar
+!documents/05¡¢»·¾³´î½¨/07¡¢Docker²¿ÊğRocketMQ/×ÊÔ´/*.zip
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
