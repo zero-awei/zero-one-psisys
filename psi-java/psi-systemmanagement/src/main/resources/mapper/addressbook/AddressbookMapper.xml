@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.systemmanagement.mapper.addressbook.AddressbookMapper">
+
+
+    <select id="listAddressbook" resultType="com.zeroone.star.systemmanagement.entity.addressbook.Addressbook">
+        select
+            realname,
+            work_no,
+            depart_name,
+            post,
+            phone,
+            email
+        from
+            sys_user s1,sys_user_depart s2,sys_depart s3
+        where
+            s2.user_id = s1.id and s2.dep_id = s3.id
+    </select>
+
+
+    <select id="getByRealnameAndWorkNo" resultType="com.zeroone.star.systemmanagement.entity.addressbook.Addressbook">
+        select
+            realname,
+            work_no,
+            depart_name,
+            post,
+            phone,
+            email
+        from
+            sys_user s1,sys_user_depart s2,sys_depart s3
+        where
+            s2.user_id = s1.id and s2.dep_id = s3.id and s1.realname = #{condition.realname} and s1.work_no = #{condition.workNo}
+    </select>
+
+
+    <select id="getByRealname" resultType="com.zeroone.star.systemmanagement.entity.addressbook.Addressbook">
+        select
+            realname,
+            work_no,
+            depart_name,
+            post,
+            phone,
+            email
+        from
+            sys_user s1,sys_user_depart s2,sys_depart s3
+        where
+            s2.user_id = s1.id and s2.dep_id = s3.id and s1.realname = #{condition.realname}
+    </select>
+
+
+    <select id="getByWorkNo" resultType="com.zeroone.star.systemmanagement.entity.addressbook.Addressbook">
+        select
+            realname,
+            work_no,
+            depart_name,
+            post,
+            phone,
+            email
+        from
+            sys_user s1,sys_user_depart s2,sys_depart s3
+        where
+            s2.user_id = s1.id and s2.dep_id = s3.id and s1.work_no = #{condition.workNo}
+    </select>
+
+
+    <select id="getByDepartName" resultType="com.zeroone.star.systemmanagement.entity.addressbook.Addressbook">
+        select
+            realname,
+            work_no,
+            depart_name,
+            post,
+            phone,
+            email
+        from
+            sys_user s1,sys_user_depart s2,sys_depart s3
+        where
+            s2.user_id = s1.id and s2.dep_id = s3.id and s3.depart_name = #{condition.departName}
+    </select>
+
+
+    <select id="listDepart" resultType="com.zeroone.star.systemmanagement.entity.addressbook.Addressbook">
+        select
+            realname,
+            work_no,
+            depart_name,
+            post,
+            phone,
+            email
+        from
+            sys_user s1,sys_user_depart s2,sys_depart s3
+        where
+            s2.user_id = s1.id and s2.dep_id = s3.id
+    </select>
+</mapper>

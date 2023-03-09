@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.systemmanagement.mapper.addressbook.SysDepartMapper">
+
+    <select id="getOrganizationName" resultType="com.zeroone.star.systemmanagement.entity.addressbook.SysDepart">
+        select
+            id,depart_name
+        from
+            sys_depart
+        where
+            org_type = 1
+    </select>
+
+
+    <select id="getOrganizationTreeName" resultType="com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO">
+        select
+            s1.id,s1.depart_name
+        from
+            sys_depart s1 , sys_depart s2
+        where
+            s1.org_type = 2 and s2.depart_name = #{condition.departName} and s2.id = s1.parent_id
+    </select>
+</mapper>

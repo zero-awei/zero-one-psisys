@@ -1,0 +1,5 @@
+server:
+  port: ${sp.basedetail}
+spring:
+  application:
+    name: ${sn.basedetail}

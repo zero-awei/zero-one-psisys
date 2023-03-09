@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.titlepage.mapper.PurOrderMapper">
+
+    <!--List<PurOrder> queryPurOrder();-->
+    <select id="queryPurOrder" resultType="com.zeroone.star.titlepage.entity.PurOrder">
+        SELECT CONCAT(MAX(MONTH(b.bill_date)), '月') x, IFNULL(SUM(b.amt),0) y
+        FROM pur_order b
+        WHERE b.is_effective = 1 AND b.is_voided = 0
+          AND b.bill_date BETWEEN fn_first_day(DATE_ADD(SYSDATE(), INTERVAL -11 MONTH)) AND LAST_DAY(SYSDATE())
+        GROUP BY YEAR(b.bill_date), MONTH(b.bill_date)
+        ORDER BY YEAR(b.bill_date), MONTH(b.bill_date)
+    </select>
+</mapper>

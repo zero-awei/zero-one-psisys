@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.titlepage.mapper.StkIoSumMapper">
+
+    <select id="queryStkIoSum" resultType="com.zeroone.star.titlepage.entity.StkIoSum">
+        SELECT CONCAT(s.`month`, '月') x, IFNULL(SUM(s.bal_cost), 0) y
+        FROM stk_io_sum s
+        WHERE s.`year`*100 + s.`month`
+                  BETWEEN (SELECT PERIOD_ADD(`year`*100 + `month`, - 12) FROM bas_biz_period LIMIT 1)
+           AND (SELECT PERIOD_ADD(`year`*100 + `month`, - 1) FROM bas_biz_period LIMIT 1)
+        GROUP BY s.`year`, s.`month`
+        ORDER BY s.`year`, s.`month`
+    </select>
+</mapper>

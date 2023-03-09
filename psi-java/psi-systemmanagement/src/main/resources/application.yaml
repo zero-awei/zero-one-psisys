@@ -1,0 +1,5 @@
+server:
+  port: ${sp.systemmanagement}
+spring:
+  application:
+    name: ${sn.systemmanagement}

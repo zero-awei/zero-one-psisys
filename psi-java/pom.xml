@@ -23,8 +23,9 @@
         <module>psi-login</module>
         <module>psi-sysmanagement</module>
         <module>psi-doc</module>
-
-
+        <module>psi-systemmanagement</module>
+        <module>psi-basedetail</module>
+        <module>psi-titlepage</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
