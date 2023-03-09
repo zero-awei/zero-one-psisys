@@ -28,11 +28,11 @@
 > >
 > > `documents` -- 环境搭建、编码规范、项目需求等等文档资源
 > >
-> > `sc-java` -- `Java`项目主体
+> > `psi-java` -- `Java`项目主体
 > >
-> > `sc-cpp` -- `C++`项目主体
+> > `psi-cpp` -- `C++`项目主体
 > >
-> > `sc-frontend` -- 前端项目主体
+> > `psi-frontend` -- 前端项目主体
 
 ## 软件架构
 
