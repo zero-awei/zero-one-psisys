@@ -1,8 +1,8 @@
 package com.zeroone.star.gateway.authorization;
 
 import cn.hutool.core.convert.Convert;
-import com.zeroone.star.project.components.easyexcel.constant.AuthConstant;
-import com.zeroone.star.project.components.easyexcel.constant.RedisConstant;
+import com.zeroone.star.project.constant.AuthConstant;
+import com.zeroone.star.project.constant.RedisConstant;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.redis.core.RedisTemplate;

@@ -6,7 +6,7 @@ import com.zeroone.star.gateway.filter.CorsFilter;
 import com.zeroone.star.gateway.filter.WhitePathFilter;
 import com.zeroone.star.gateway.handler.RestfulAccessDeniedHandler;
 import com.zeroone.star.gateway.handler.RestfulAuthenticationEntryPoint;
-import com.zeroone.star.project.components.easyexcel.constant.AuthConstant;
+import com.zeroone.star.project.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

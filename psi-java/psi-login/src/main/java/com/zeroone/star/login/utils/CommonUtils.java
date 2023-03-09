@@ -1,6 +1,6 @@
 package com.zeroone.star.login.utils;
 
-import com.zeroone.star.project.components.easyexcel.constant.RedisConstant;
+import com.zeroone.star.project.constant.RedisConstant;
 
 import java.util.Random;
 

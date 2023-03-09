@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zeroone.star.oauth2.entity.*;
 import com.zeroone.star.oauth2.service.ISysRoleService;
 import com.zeroone.star.oauth2.service.ISysUserService;
-import com.zeroone.star.project.components.easyexcel.constant.AuthConstant;
+import com.zeroone.star.project.constant.AuthConstant;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

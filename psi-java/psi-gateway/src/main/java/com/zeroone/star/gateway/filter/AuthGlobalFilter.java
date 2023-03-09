@@ -2,7 +2,7 @@ package com.zeroone.star.gateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.nimbusds.jose.JWSObject;
-import com.zeroone.star.project.components.easyexcel.constant.RedisConstant;
+import com.zeroone.star.project.constant.RedisConstant;
 import com.zeroone.star.project.utils.redis.RedisUtils;
 import com.zeroone.star.project.vo.ResultStatus;
 import lombok.extern.slf4j.Slf4j;
