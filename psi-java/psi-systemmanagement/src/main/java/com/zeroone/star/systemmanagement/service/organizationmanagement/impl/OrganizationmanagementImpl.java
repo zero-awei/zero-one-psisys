@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.organizationmanagement.OrganizationListVO;
@@ -39,11 +40,10 @@ public class OrganizationmanagementImpl extends ServiceImpl<Organizationmanageme
     private UserHolder holder;
 
     @Override
-    public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition) {
+    public PageVO<OrganizationListVO> queryList(PageQuery pageQuery) {
         // 从第一页开始，每一页查6条数据
-        Page<SysDepart> page = new Page<>(1, 6);
+        Page<SysDepart> page = new Page<>(pageQuery.getPageIndex(),pageQuery.getPageSize());
         QueryWrapper<SysDepart> wrapper = new QueryWrapper<>();
-        wrapper.eq("depart_name", condition.getDepartName());
         Page<SysDepart> p = mapper.selectPage(page, wrapper);
         return PageVO.create(p, OrganizationListVO.class);
     }

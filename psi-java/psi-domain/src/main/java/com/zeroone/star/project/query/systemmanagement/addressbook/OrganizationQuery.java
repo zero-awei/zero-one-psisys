@@ -24,9 +24,9 @@ import javax.validation.constraints.NotBlank;
 @ApiModel("组织列表查询对象")
 public class OrganizationQuery extends PageQuery {
 
-    @NotBlank(message = "机构名称不能为空")
-    @ApiModelProperty(value = "机构名称",example = "北京 F 公司")
-    private String departName;
+    @NotBlank(message = "机构编码")
+    @ApiModelProperty(value = "机构编码",example = "A01")
+    private String orgCode;
 
 
 }

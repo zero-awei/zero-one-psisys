@@ -1,6 +1,7 @@
 package com.zeroone.star.project.systemmanagement.organizationmanagement;
 
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -17,10 +18,9 @@ public interface OrganizationManagementApis {
 
     /**
      * 查询组织列表
-     * @param condition 查询条件
      * @return 查询结果
      */
-    JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition);
+    JsonVO<PageVO<OrganizationListVO>> queryList(PageQuery condition);
 
     /**
      * 查询指定组织结构树

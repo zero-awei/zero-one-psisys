@@ -40,4 +40,7 @@ public class Addressbook {
     @ApiModelProperty(value = "公司邮箱",example = "110@fuck.com")
     private String email;
 
+    @ApiModelProperty(value = "组织编码",example = "A01A01")
+    private String orgCode;
+
 }

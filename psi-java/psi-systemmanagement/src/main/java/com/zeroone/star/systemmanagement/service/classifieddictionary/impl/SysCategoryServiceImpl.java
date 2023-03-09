@@ -116,7 +116,7 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
      */
     @Override
     public String save(ClassifiedDictionarySaveDTO data) {
-        //查询待插入数据是否已存在
+        // 查询待插入数据是否已存在
         LambdaQueryWrapper<SysCategory> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(SysCategory::getName,data.getName()).eq(SysCategory::getPid,data.getPid());
         List<SysCategory> sysCategories = mapper.selectList(wrapper);
@@ -124,20 +124,20 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
             return "数据已存在";
         }else {
             SysCategory sysCategory = new SysCategory();
-            //对象属性匹配
+            // 对象属性匹配
             BeanUtil.copyProperties(data,sysCategory);
-            //获取并排序同级结点
+            // 获取并排序同级结点
             List<SysCategory> list = mapper.selectNodeOrderByCreateTime(data.getPid());
             int size = list.size();
-            //判断pid==0并判断一级结点的数量是否为0
+            // 判断pid==0并判断一级结点的数量是否为0
             if(data.getPid().equals("0") && size == 0){
                 sysCategory.setCode("A01");
-            }else if(size == 0){        //判断子节点的数量是否为0
+            }else if(size == 0){        // 判断子节点的数量是否为0
                 LambdaQueryWrapper<SysCategory> queryWrapper = new LambdaQueryWrapper<>();
                 queryWrapper.eq(SysCategory::getId,data.getPid());
                 SysCategory parentCategory = mapper.selectOne(queryWrapper);
                 sysCategory.setCode(parentCategory.getCode()+"A01");
-                //更新父节点HasChild字段
+                // 更新父节点HasChild字段
                 parentCategory.setHasChild("1");
                 makeOperator(parentCategory);
                 mapper.updateById(parentCategory);
@@ -146,7 +146,7 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
                 sysCategory.setCode(code);
             }
             sysCategory.setHasChild("0");
-            //set操作人和更新人
+            // set操作人和更新人
             String resultOperator = makeOperator(sysCategory);
             int result = mapper.insert(sysCategory);
             if(result != 0 && resultOperator.equals("1")){
@@ -163,24 +163,24 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
      * @return code节点同级编码
      */
     public String makeCode(List<SysCategory> list){
-        //获取已经根据创建时间排序好的list的数量
+        // 获取已经根据创建时间排序好的list的数量
         int recodes = list.size();
-        //创建拼接好code的变量
+        // 创建拼接好code的变量
         String result = "";
-        //获取最后一个创建的同阶结点
+        // 获取最后一个创建的同阶结点
         SysCategory sysCategory = list.get(0);
-        //将该节点的编码字段变成一个字符数组
+        // 将该节点的编码字段变成一个字符数组
         char[] chars = sysCategory.getCode().toCharArray();
-        //判断同级结点的数量是否超过到9这个临界点
+        // 判断同级结点的数量是否超过到9这个临界点
         if(recodes%10 == 9){
-            //如果到9这个临界点则倒数第二个字符+1，最后一个字符为0
+            // 如果到9这个临界点则倒数第二个字符+1，最后一个字符为0
             chars[chars.length-1] = 0;
             chars[chars.length-2] = ++chars[chars.length-2];
-            //将设置好的字符数组转换为字符串
+            // 将设置好的字符数组转换为字符串
             result = String.valueOf(chars);
             return result;
         }else {
-            //如果没有到9这个临界点数组的最后一个字符自增
+            // 如果没有到9这个临界点数组的最后一个字符自增
             chars[chars.length-1] = ++chars[chars.length-1];
             result = String.valueOf(chars);
             return result;

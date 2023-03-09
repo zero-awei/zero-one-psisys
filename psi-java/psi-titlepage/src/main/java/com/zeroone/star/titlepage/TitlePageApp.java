@@ -21,7 +21,7 @@ import java.util.Properties;
 @EnableDiscoveryClient
 public class TitlePageApp {
     public static void main(String[] args) throws NacosException, UnknownHostException {
-        Properties properties = new Properties();
+       /* Properties properties = new Properties();
         properties.setProperty("namespace", "7fc50d88-3410-44a3-acff-9108d2bfe2b2");
         properties.setProperty("serverAddr","43.138.51.248:8848");
         NamingService namingService = NamingFactory.createNamingService(properties);
@@ -31,7 +31,7 @@ public class TitlePageApp {
         instance.setPort(10102);
         instance.setServiceName("homepage-j2");
         // 注册服务实例到 Nacos 服务注册中心
-        namingService.registerInstance(instance.getServiceName(), instance.getIp(), instance.getPort());
+        namingService.registerInstance(instance.getServiceName(), instance.getIp(), instance.getPort());*/
         SpringApplication.run(TitlePageApp.class,args);
     }
 }

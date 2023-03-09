@@ -1,6 +1,7 @@
 package com.zeroone.star.systemmanagement.service.organizationmanagement;
 
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.PageVO;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 public interface OrganizationmanagementService extends IService<SysDepart> {
 
-    public PageVO<OrganizationListVO> queryList(OrganizationListQuery condition);
+    public PageVO<OrganizationListVO> queryList(PageQuery condition);
     public List<OrganizationTreeVO> queryTree(String departName);
     public String add(OrganizationManagementDTO data);
     public String modify(OrganizationManagementDTO data);
