@@ -273,7 +273,7 @@ uint64_t PurReqService::getFromExecl(string fileName, const PayloadDTO& payload)
 	//获取完数据进行删除
 	remove(fileName.c_str());
 
-	int row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
+	size_t row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
 	for (; row1 < readData.size(); ++row1)
 	{
 		//每个行数据的数组

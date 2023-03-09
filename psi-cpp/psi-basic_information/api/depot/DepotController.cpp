@@ -168,7 +168,7 @@ JsonVO<string> DepotController::execExportExecl(const DepotQuery& query, const P
     vector<vector<string>> data;
     vector<std::string> head({ "名称", "编号", "助记名", "电话",\
         "启用", "备注", "创建时间","创建人", "修改时间", "修改人" });
-    for (int i = 0; i < head.size(); ++i)    head[i] = CharsetConvertHepler::ansiToUtf8(head[i]);
+    for (size_t i = 0; i < head.size(); ++i)    head[i] = CharsetConvertHepler::ansiToUtf8(head[i]);
     data.emplace_back(head);
     // 查询数据
     if (!service.getData(query, data))
@@ -198,7 +198,7 @@ JsonVO<string> DepotController::execExportExeclOnly(const OnlyValueQuery& query,
     vector<vector<string>> data;
     vector<std::string> head({ "名称", "编号", "助记名", "电话",\
         "启用", "备注", "创建时间","创建人", "修改时间", "修改人" });
-    for (int i = 0; i < head.size(); ++i)    head[i] = CharsetConvertHepler::ansiToUtf8(head[i]);
+    for (size_t i = 0; i < head.size(); ++i)    head[i] = CharsetConvertHepler::ansiToUtf8(head[i]);
     data.emplace_back(head);
     // 查询数据
     if (!service.getDataById(query, data))

@@ -29,8 +29,7 @@ PageVO<UserVO> UserChoiceService::listAll(const UserQuery& query)
 	vector<UserChoiceReturnDO> r(result.begin(), result.end());
 	uint64_t time = query.getPageSize();
 	//根据pageindx和pagesize放入返回的元素
-	for (uint64_t i =(query.getPageIndex()-1)*query.getPageSize();
-		time>0&&r.size()>i;i++,time--)
+	for (size_t i = (size_t)((query.getPageIndex() - 1) * query.getPageSize()); time > 0 && r.size() > i; i++, time--)
 	{
 		UserVO vo;
 		vo.setId(r[i].getId());

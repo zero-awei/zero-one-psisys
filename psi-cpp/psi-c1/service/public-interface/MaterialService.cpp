@@ -19,7 +19,7 @@ PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)
 	obj.setTaxCode(query.getTaxCode());
 
 	MaterialDAO dao;
-	
+
 	uint64_t count = dao.count(obj);
 	if (count <= 0)
 	{
@@ -35,8 +35,7 @@ PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)
 	vector<MaterialReturnDO> r(result.begin(), result.end());
 	uint64_t time(query.getPageSize());
 	//根据pageindx和pagesize放入返回的元素
-	for (uint64_t i = (query.getPageIndex() - 1) * query.getPageSize();
-		time > 0 && r.size() > i; i++, time--)
+	for (size_t i = (size_t)((query.getPageIndex() - 1) * query.getPageSize()); time > 0 && r.size() > i; i++, time--)
 	{
 		MaterialVO vo;
 		vo.setId(r[i].getId());
@@ -57,6 +56,6 @@ PageVO<MaterialVO> MaterialService::listAll(const MaterialQuery& query)
 		vo.setUpdateBy(r[i].getUpdateBy());
 		vr.push_back(vo);
 	}
-  	rs.setRows(vr);
+	rs.setRows(vr);
 	return rs;
 }

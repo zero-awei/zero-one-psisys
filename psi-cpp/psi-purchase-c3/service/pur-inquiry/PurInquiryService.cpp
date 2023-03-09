@@ -178,7 +178,7 @@ uint64_t PurInquiryService::PurInquiryInto(string fileName, const PayloadDTO& pa
 	//然后加载明细数据
 	std::string sheetName2 = CharsetConvertHepler::ansiToUtf8("采购询价单明细");
 	auto readEntryData = excel.readIntoVector(fileName, sheetName2);
-	int row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
+	size_t row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
 	for (; row1 < readData.size(); ++row1)
 	{
 		//每个行数据的数组

@@ -381,7 +381,7 @@ uint64_t PurCompareService::savePurComInto(const PurComIntoDTO& dto,const Payloa
 	sheetName = CharsetConvertHepler::ansiToUtf8("采购比价单分录");
 	vector<vector<string>> readEntryData = excel.readIntoVector(fileName, sheetName);
 	// 导入数据
-	int row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
+	size_t row1 = 1, row2 = 1;//row1代表主表行号， row2代表明细表行号
 	for (; row1 < readData.size(); ++row1)
 	{
 		//每个行数据的数组

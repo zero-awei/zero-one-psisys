@@ -31,7 +31,7 @@ uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
 	//将二维数组转换为DO模型
 	list<PurQuotDO> pur_quot_do;
 	if (data.size() > 1) {
-		for (int i = 1; i < data.size(); ++i) {
+		for (size_t i = 1; i < data.size(); ++i) {
 			//str是一个字符串,是二维数组中的每一个元素
 			PurQuotDO tmp_do;
 			int j = 0;
@@ -78,7 +78,7 @@ uint64_t PurQuotService::updatePurQuotInto(const PurQuotIntoDTO& dto) {
 
 	list<PurQuotEntryDO> pur_quot_entry_do;
 	if (entry_data.size() > 1) {
-		for (int i = 1; i < entry_data.size(); ++i) {
+		for (size_t i = 1; i < entry_data.size(); ++i) {
 			//str是一个字符串,是二维数组中的每一个元素
 			PurQuotEntryDO tmp_entry_do;
 			int j = 0;
