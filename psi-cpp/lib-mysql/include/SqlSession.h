@@ -70,7 +70,7 @@ if (__fmt__ != "") { \
 	while (__fmt__.find_first_of("%") == 0) { \
 		__fmt__ = __fmt__.substr(1); \
 	} \
-	int len = __fmt__.length() + 1; \
+	size_t len = __fmt__.length() + 1; \
 	char* strs = new char[len]; \
 	SCPY(strs, len, __fmt__); \
 	char* next; \

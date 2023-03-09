@@ -68,7 +68,7 @@ void StringUtil::trim(string* str)
 void StringUtil::replace(string* base, const string& src, const string& dst)
 {
 	if (!base) return;
-	int pos = 0, srclen = src.size(), dstlen = dst.size();
+	size_t pos = 0, srclen = src.size(), dstlen = dst.size();
 	while ((pos = base->find(src, pos)) != string::npos)
 	{
 		base->replace(pos, srclen, dst);

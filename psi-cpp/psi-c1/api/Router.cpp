@@ -26,42 +26,49 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "api/Aspect.h"
-#include "api/ApiHelper.h"
 #include "domain/vo/JsonVO.h"
 
-#include "supplierController/SuppliersNomalQueryController.h"
-#include "supplierController/SupplierController.h"
-#include "supplierController/SupplierLevelController.h"
-#include "supplierController/SupplierQueryCriteriaController.h"
-#include "supplierController/ImportSupplierController.h"
-#include "supplierController/ExportSupplierController.h"
-#include "supplierController/SuppliersNameController.h"
+#include "supplier/SuppliersNomalQueryController.h"
+#include "supplier/SupplierController.h"
+#include "supplier/SupplierLevelController.h"
+#include "supplier/SupplierQueryCriteriaController.h"
+#include "supplier/ImportSupplierController.h"
+#include "supplier/ExportSupplierController.h"
+#include "supplier/SuppliersNameController.h"
+#include "supplier/SupplierCategoryController.h"
 
-#include "publicInterfaceController/MaterialTypeController.h"
-#include "publicInterfaceController/DeliveryMethodController.h"
-#include "publicInterfaceController/PayMethodController.h"
-#include "publicInterfaceController/InvoiceTypeController.h"
-#include "publicInterfaceController/InvoiceMethodController.h"
-#include "publicInterfaceController/SettleMethodController.h"
-#include "publicInterfaceController/TransportMethodController.h"
-#include "publicInterfaceController/BillStageController.h"
-#include "publicInterfaceController/PurTypeController.h"
-#include "publicInterfaceController/TaxRateController.h"
-#include "publicInterfaceController/TaxScaleController.h"
-#include "publicInterfaceController/CurrencyTypeController.h"
-#include "publicInterfaceController/DeliveryTypeController.h"
-#include "publicInterfaceController/WarehouseController.h"
-#include "publicInterfaceController/CurrencyTypeController.h"
-#include "publicInterfaceController/DeliveryTypeController.h"
-#include "publicInterfaceController/WarehouseController.h"
+#include "public-interface/MaterialTypeController.h"
+#include "public-interface/DeliveryMethodController.h"
+#include "public-interface/PayMethodController.h"
+#include "public-interface/InvoiceTypeController.h"
+#include "public-interface/InvoiceMethodController.h"
+#include "public-interface/SettleMethodController.h"
+#include "public-interface/TransportMethodController.h"
+#include "public-interface/BillStageController.h"
+#include "public-interface/PurTypeController.h"
+#include "public-interface/TaxRateController.h"
+#include "public-interface/TaxScaleController.h"
+#include "public-interface/CurrencyTypeController.h"
+#include "public-interface/DeliveryTypeController.h"
+#include "public-interface/WarehouseController.h"
+#include "public-interface/CurrencyTypeController.h"
+#include "public-interface/DeliveryTypeController.h"
+#include "public-interface/WarehouseController.h"
+#include "public-interface/areaController.h"
+#include "public-interface/UserChoiceController.h"
+#include "public-interface/MaterialQueryController.h"
+#include "public-interface/DepartChoiceController.h"
+#include "public-interface/MaterialTypeTreeListController.h"
+#include "public-interface/BasWareHouseTreeListController.h"
+#include "public-interface/CreateReceiptController.h"
 
-#include "bankAccountController/AddAccountController.h"
-#include "bankAccountController/EditAccountController.h"
-#include "bankAccountController/DeleteAccountController.h"
-#include "bankAccountController/ImportAccountController.h"
-#include "bankAccountController/ExportAccountController.h"
-
-
+#include "bank-account/AddAccountController.h"
+#include "bank-account/EditAccountController.h"
+#include "bank-account/DeleteAccountController.h"
+#include "bank-account/ImportAccountController.h"
+#include "bank-account/ExportAccountController.h"
+#include "bank-account/BankAccountController.h"
+#include "bank-account/BasBankAccountController.h"
 
 Router::Router(http_server* sever)
 {
@@ -73,6 +80,7 @@ void Router::initRouter()
 	//设置静态文件目录
 	server->set_public_root_directory("public");
 	server->set_static_dir("static/file");
+	
 	initAreaSetting();
 	initUserChoiceSetting();
 	initMaterialQuerySetting();
@@ -86,11 +94,8 @@ void Router::initRouter()
 	createMaterialTypeTreeList();
 
 	//仓库树状结构列表
-	
 	createBasWareHouseTreeList();
-
 	createBankAccount();
-
 	createCreateReceipt();
 	initInvoiceMethodSetting();
 	initInvoiceTypeSetting();
@@ -113,44 +118,6 @@ void Router::initRouter()
 	initDeliveryType();
 	initWarehouse();
 	initSupplier();
-
-#ifdef HTTP_SERVER_DEMO
-	//绑定首页页面
-	BIND_GET_ROUTER(server, "/", [](request& req, response& res) {
-		res.render_raw_view("./public/test.html");
-		}, nullptr);
-
-	//初始化一个文件上传接口示例
-	BIND_POST_ROUTER(server, "/upload-file", [](request& req, response& res) {
-		if (req.get_content_type() != content_type::multipart)
-		{
-			JsonVO vo = JsonVO("", RS_CONTENT_TYPE_ERR);
-			nlohmann::json jvo = nlohmann::json(vo);
-			jvo.erase("data");
-			res.render_json(jvo);
-			return;
-		}
-		//获取表单参数
-		std::cout << "nickname:" << req.get_multipart_value_by_key1("nickname") << std::endl;
-		std::cout << "age:" << req.get_multipart_value_by_key1("age") << std::endl;
-		//获取文件路径
-		auto& files = req.get_upload_files();
-		std::vector<string> filePaths;
-		for (auto& file : files) {
-			filePaths.push_back(file.get_file_path().substr(1));
-			std::cout << "path " << file.get_file_path() << ",size " << file.get_file_size() << std::endl;
-		}
-		res.render_json(nlohmann::json(JsonVO<std::vector<std::string>>(filePaths, RS_SUCCESS)));
-		}, nullptr);
-
-	createSampleRouter();
-	createUserDepartRouter();
-	TestWs::addChatHandler(server);
-
-
-
-
-#endif
 }
 
 void Router::initAreaSetting()

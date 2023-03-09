@@ -21,25 +21,10 @@
 #define _ROUTER_
 
 #include "api/ApiHelper.h"
-#include "./publicInterfaceController/areaController.h"
-#include "./publicInterfaceController/UserChoiceController.h"
-#include "./publicInterfaceController/MaterialQueryController.h"
-#include "./publicInterfaceController/DepartChoiceController.h"
-#include "./supplierController/SupplierCategoryController.h"
-#include "./bankAccountController/BasBankAccountController.h"
-#include "./publicInterfaceController/MaterialTypeTreeListController.h"
-#include "./publicInterfaceController/BasWareHouseTreeListController.h"
-#include "./bankAccountController/BankAccountController.h"
-#include "./publicInterfaceController/CreateReceiptController.h"
 
 /**
  * 前端访问服务器路由绑定，用于定义前端访问后端接口和访问路径绑定
  */
- /**
-  *Author c1-ruizi
-  * 2023/2/12  17:46
-  * 接口：开票方式
-  */
 class Router
 {
 private:
@@ -49,19 +34,15 @@ public:
 	explicit Router(http_server* sever);
 	//呼叫初始化
 	void initRouter();
-
+private:
 	//公共接口的供应商资金账户
 	void createBasBankAccount();
-
 	//物料分类树状结构列表
 	void createMaterialTypeTreeList();
-
 	//仓库树状结构列表
 	void createBasWareHouseTreeList();
-
 	//银行账户
 	void createBankAccount();
-
 	//创建单据编号
 	void createCreateReceipt();
 	void initAreaSetting();
@@ -89,16 +70,6 @@ public:
 	void initbaSetting();
 	//下面开始是自己写的
 	void initSupplier();
-	
-private:
-#ifdef HTTP_SERVER_DEMO
-	//创建演示路由
-	void createSampleRouter();
-	//创建用户管理-部门管理路由
-	void createUserDepartRouter();
-
-	
-#endif
 };
 
 #endif // !_ROUTER_
