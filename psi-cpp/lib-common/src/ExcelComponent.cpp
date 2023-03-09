@@ -8,7 +8,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+			https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -154,4 +154,66 @@ void ExcelComponent::writeVectorToFile(const std::string& fileName, const std::s
 
 	//保存到文件
 	wb.save(fileName);
+}
+
+
+
+void ExcelComponent::makeName(const std::string& title)
+{
+	wb.title(title);
+}
+
+void ExcelComponent::mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend)
+{
+	// 如果存在sheet，那么对指定单元格进行合并
+	if (wb.contains(sheetName))
+	{
+		sheet = wb.sheet_by_title(sheetName);
+		sheet.merge_cells(xlnt::range_reference(columnbegin, columnend));
+	}
+}
+
+// 创建新Sheet
+void ExcelComponent::createNewSheet(const std::string& sheetName)
+{
+	// 如果指定页签不存在，那么创建新页签
+	if (!wb.contains(sheetName))
+	{
+		createSheet(sheetName);
+	}
+}
+
+void ExcelComponent::cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt)
+{
+	xlnt::horizontal_alignment center = xlnt::horizontal_alignment::center;
+	xlnt::horizontal_alignment left = xlnt::horizontal_alignment::left;
+	xlnt::horizontal_alignment right = xlnt::horizontal_alignment::right;
+	xlnt::vertical_alignment vcenter = xlnt::vertical_alignment::center;
+	if (wb.contains(sheetName))
+	{
+		sheet = wb.sheet_by_title(sheetName);
+		sheet = wb.active_sheet();
+		//xlnt::alignment alignment = sheet.cell(cell).alignment();
+		switch (opt)
+		{
+		case 1:
+			// 水平居中
+			sheet.cell(cell_ref).alignment().horizontal(center);
+			// 垂直居中
+			//sheet.cell(cell).alignment().vertical(vcenter);
+			break;
+		case 2:
+			// 水平居左
+			//sheet.cell(cell).alignment(alignment.horizontal(left).vertical(vcenter));
+			sheet.cell(cell_ref).alignment().horizontal(left);
+			break;
+		case 3:
+			// 水平居右
+			sheet.cell(cell_ref).alignment().horizontal(right);
+			break;
+		default:
+			break;
+		}
+	}
+
 }

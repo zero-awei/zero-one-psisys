@@ -77,3 +77,4 @@ add_subdirectory ("lib-common")
 # 在后面添加你的模块
 add_subdirectory("psi-basic_information")
 add_subdirectory("psi-c1")
+add_subdirectory("psi-purchase-c3")

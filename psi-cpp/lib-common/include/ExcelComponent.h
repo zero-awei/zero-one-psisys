@@ -9,7 +9,7 @@
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
-	  https://www.apache.org/licenses/LICENSE-2.0
+			https://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
@@ -46,6 +46,16 @@ public:
 	// 清空工作薄
 	void clearWorkbook();
 
+	// 工作表命名
+	void makeName(const std::string& title);
+	// 合并单元格
+	void mergeCell(const std::string& sheetName, const xlnt::cell_reference& columnbegin, const xlnt::cell_reference& columnend);
+	// 创建新Sheet
+	void createNewSheet(const std::string& sheetName);
+	// 单元格对齐
+	void cellCpation(const std::string& sheetName, const xlnt::cell_reference& cell_ref, int opt);  //1 居中，2居左，三居右
+
+
 	//************************************
 	// Method:    readIntoVector
 	// FullName:  ExcelComponent::readIntoVector
@@ -70,3 +80,7 @@ public:
 	void writeVectorToFile(const std::string& fileName, const std::string& sheetName, const std::vector<std::vector<std::string>>& data);
 };
 #endif // _EXCELCOMPONENT_H_
+
+
+
+
