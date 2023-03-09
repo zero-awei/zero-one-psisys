@@ -21,33 +21,34 @@
 #include "PurComMapper.h"
 #include <sstream>
 
+#include "PurOrderDividedListMapper.h"
+
+// 统计数据条数
 uint64_t PurComDAO::count(const PurComDO& obj)
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare";
 	SqlParams params;
-	//____������ɸѡ����___
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 
-// ͳ����ϸ����
+// 统计明细条数
 uint64_t PurComDAO::countEntrys(const PurComEntryDO& obj) 
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare_entry";
 	SqlParams params;
-	//____������ɸѡ����___
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-//��ҳ��ѯ����
+// 分页查询数据
 list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	// ���Ӳ�ѯ���
+	// SQL语句生成
 	sql << "SELECT id, bill_no, bill_date, src_bill_type,\
 		src_bill_id, src_no, `subject`, is_rubric,\
 		candidate_quot_ids, payment_method, delivery_place,\
@@ -59,32 +60,30 @@ list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, 
 		update_by, update_time, version FROM pur_compare";
 	SqlParams params;
 
-	// ����ɸѡ���
 	sql << " WHERE 1=1";
-	// ɸѡ����Ϊ���ݱ��
+	// 条件拼接
 	if (!obj.getBill_no().empty()) {
 		sql << " AND `bill_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getBill_no())));
 	}
-	// ɸѡ����Ϊ����ʱ��
-	// 
-	// ɸѡ����ΪԴ����
+
 	if (!obj.getSrc_no().empty()) {
 		sql << " AND `src_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getSrc_no())));
 	}
-	// ��ҳ��ʾ
+
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComMapper mapper;
 	string sqlStr = sql.str();
-	// ���ز�ѯ���
+	// 结果返回
 	return sqlSession->executeQuery<PurComDO, PurComMapper>(sqlStr, mapper, params);
 }
 
+// 查询指定比价单明细列表
 list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	// ���Ӳ�ѯ���
+	// 查询语句生成
 	sql << "SELECT id, mid, bill_no, \
 			entry_no, src_bill_type, src_bill_id, \
 			src_entry_id, src_no, supplier_id, \
@@ -94,17 +93,28 @@ list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint6
 			custom1, custom2, version \
 			FROM pur_compare_entry";
 	SqlParams params;
-	// ����ɸѡ���
+	// 条件拼接
 	sql << " WHERE 1=1";
 	if (!obj.getMid().empty()) {
 		sql << " AND `mid`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getMid())));
 	}
-	// ��ҳ��ʾ
+
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComEntryMapper mapper;
 	string sqlStr = sql.str();
 	list<PurComEntryDO> temp = sqlSession->executeQuery<PurComEntryDO, PurComEntryMapper>(sqlStr, mapper, params);
 
 	return temp;
+}
+
+list<PurOrderDividedListDO> PurComDAO::selectPurOrderDividedListDO(const PurOrderDividedListDO& obj) {
+	stringstream sql;
+	sql << "SELECT bill_no, entry_no, material_id, unit_id, qty, ordered_qty, tax_rate, price, amt, suggest_supplier_id, remark, custom1, custom2 FROM pur_req_entry";
+	SqlParams params;
+	sql << " WHERE 1=1 AND bill_no=?";
+	SQLPARAMS_PUSH(params, "s", std::string, obj.getBillNo());
+	PurOrderDividedListMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<PurOrderDividedListDO, PurOrderDividedListMapper>(sqlStr, mapper, params);
 }

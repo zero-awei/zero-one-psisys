@@ -170,5 +170,9 @@
     <ClInclude Include="uselib\jwt\TestToken.h" />
     <ClInclude Include="domain\do\prepayment\PrepaymentEntryDO.h" />
     <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailEntryBillVO.h" />
+    <ClInclude Include="dao\purCom\PurOrderDividedListMapper.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderDividedListDO.h" />
+    <ClInclude Include="domain\query\purOrder\PurOrderDividedListQuery.h" />
+    <ClInclude Include="domain\vo\purOrder\PurOrderDividedListVO.h" />
   </ItemGroup>
 </Project>

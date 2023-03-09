@@ -74,7 +74,6 @@ private:
 	// 修改数据
 	// 负责人：青羽
 	JsonVO<uint64_t> execModifyPurOrder(const PurOrderDTO& dto, const PayloadDTO& payload);
-
 };
 
 #endif // _PUR_ORDER_CONTROLLER_

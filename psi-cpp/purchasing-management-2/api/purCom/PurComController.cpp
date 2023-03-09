@@ -54,3 +54,19 @@ JsonVO<PageVO<PurComEntryVO>> PurComController::execListPurComEntrys(const PurCo
 	// 响应结果
 	return JsonVO<PageVO<PurComEntryVO>>(result, RS_SUCCESS);
 }
+
+// 查询询价单分录列表
+// 负责人：c3阿坤
+JsonVO<list<PurOrderDividedListVO>> PurComController::execQueryPurOrderDividedList(const PurOrderDividedListQuery& query, const PayloadDTO& payload) {
+	//构建返回对象
+	list<PurOrderDividedListVO> result;
+	
+	//数据校验
+	if (query.getBillNo() == "") return JsonVO<list<PurOrderDividedListVO>>(result, RS_PARAMS_INVALID);
+
+	//数据校验成功,返回对应的对象
+	PurComService service;
+	result = service.listPurOrderDividedListDO(query);
+
+	return JsonVO<list<PurOrderDividedListVO>>(result, RS_SUCCESS);
+}

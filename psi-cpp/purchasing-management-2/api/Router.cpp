@@ -186,6 +186,10 @@ void Router::createPrePayRouter()
 // 比价单列表查询及明细列表查询
 // 负责人：J4nnA
 void Router::createPurComRouter() {
+	// 查询询价单分录列表
+	// 负责人：c3阿坤	
+	BIND_GET_ROUTER(server, "/pur-order-detail-find-bill", &PurComController::queryPurOrderDividedList, nullptr);
+	
 	// 分页数据
 	// 负责人：J4nnA
 	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);

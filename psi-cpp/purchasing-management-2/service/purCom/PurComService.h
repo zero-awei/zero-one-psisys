@@ -25,6 +25,8 @@
 #include "../../domain/vo/PageVO.h"
 #include "../../domain/query/purCom/PurComQuery.h"
 #include "../../domain/query/purCom/PurComEntryQuery.h"
+#include "../../domain/vo/purOrder/PurOrderDividedListVO.h"
+#include "../../domain/query/purOrder/PurOrderDividedListQuery.h"
 
 /**
  * 采购请求服务实现，基础采购订单服务实现
@@ -39,7 +41,9 @@ public:
 	PurComVO getData(uint64_t id);
 	// 查询指定比价单详情列表
 	PageVO<PurComEntryVO>listEntry(const PurComEntryQuery& query);
-	//PageVO<PurComEntryVO> listEntrys(const PurComEntryQuery& query);
+	
+	//获取多个PurQuotDividedListVO对象
+	list<PurOrderDividedListVO> listPurOrderDividedListDO(const PurOrderDividedListQuery& query);
 };
 
 #endif // ! _PUR_COM_SERVICE_

@@ -23,11 +23,12 @@
 #include "BaseDAO.h"
 #include "../../domain/do/PurCom/PurComDO.h"
 #include "../../domain/do/PurCom/PurComEntryDO.h"
+
+#include "../../domain/do/PurOrder/PurOrderDividedListDO.h"
+
 /*
 *	数据库操作实现 
 */
-
-
 class PurComDAO : public BaseDAO {
 public:
 	// 统计数据条数
@@ -38,6 +39,9 @@ public:
 	list<PurComDO> selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize);
 	// 查询指定比价单明细列表
 	list<PurComEntryDO> selectPurComEntry(const PurComEntryDO& obj, uint64_t pageIndex, uint64_t pageSize);
+
+	// 查询询价单分录列表
+	list<PurOrderDividedListDO> selectPurOrderDividedListDO(const PurOrderDividedListDO& obj);
 };
 
 #endif // ! _PUR_COM_DAO_

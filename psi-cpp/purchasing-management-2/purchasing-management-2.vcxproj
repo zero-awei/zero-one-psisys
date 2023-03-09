@@ -199,6 +199,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
     <ClInclude Include="dao\purCom\PurComDAO.h" />
     <ClInclude Include="dao\purCom\PurComMapper.h" />
+    <ClInclude Include="dao\purCom\PurOrderDividedListMapper.h" />
     <ClInclude Include="dao\purOrderSub\PurCompareEntryMapper.h" />
     <ClInclude Include="dao\purOrderSub\PurCompareMapper.h" />
     <ClInclude Include="dao\purOrderSub\PurInquiryEntryMapper.h" />
@@ -228,6 +229,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
     <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h" />
     <ClInclude Include="domain\do\PurInquiry\PurInquiryEntryDO.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderDividedListDO.h" />
     <ClInclude Include="domain\do\PurOrder\PurOrderDO.h" />
     <ClInclude Include="domain\do\PurOrder\PurOrderEntryDO.h" />
     <ClInclude Include="domain\do\PurQuot\PurQuotDO.h" />
@@ -264,6 +266,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h" />
     <ClInclude Include="domain\query\purCom\PurComEntryQuery.h" />
     <ClInclude Include="domain\query\purCom\PurComQuery.h" />
+    <ClInclude Include="domain\query\purOrder\PurOrderDividedListQuery.h" />
     <ClInclude Include="domain\query\purOrder\PurOrderQuery.h" />
     <ClInclude Include="domain\query\purReq\PurReqQuery.h" />
     <ClInclude Include="domain\query\statisQuery\ExeStatusQuery.h" />
@@ -293,6 +296,7 @@ libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="domain\vo\purOrderSub\PurQuotVO.h" />
     <ClInclude Include="domain\vo\purOrderSub\PurReqEntryVO.h" />
     <ClInclude Include="domain\vo\purOrder\PurOrderDetailVO.h" />
+    <ClInclude Include="domain\vo\purOrder\PurOrderDividedListVO.h" />
     <ClInclude Include="domain\vo\purOrder\PurOrderEntryVO.h" />
     <ClInclude Include="domain\vo\purOrder\PurOrderVO.h" />
     <ClInclude Include="domain\vo\purReq\PurReqVO.h" />

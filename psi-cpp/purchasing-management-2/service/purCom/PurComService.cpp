@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "PurComService.h"
 #include "../../dao/purCom/PurComDAO.h"
+#include "../../dao/purOrder/PurOrderDAO.h"
 
 // 分页查询所有数据
 // 负责人：J4nnA
@@ -187,4 +188,36 @@ PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 	// 将vr填入pages中，并返回pages
 	pages.setRows(vr);
 	return pages;
+}
+
+list<PurOrderDividedListVO> PurComService::listPurOrderDividedListDO(const PurOrderDividedListQuery& query) {
+	//设置查询条件
+	PurOrderDividedListDO obj;
+	obj.setBillNo(query.getBillNo());
+	//接收查询到的DO
+	PurComDAO dao;
+	list<PurOrderDividedListDO> result = dao.selectPurOrderDividedListDO(obj);
+
+	//构建返回对象vo
+	list<PurOrderDividedListVO> vr;
+	if (!result.empty()) {
+		for (PurOrderDividedListDO sub : result) {
+			PurOrderDividedListVO vo;
+			vo.setBillNo(sub.getBillNo());
+			vo.setEntryNo(sub.getEntryNo());
+			vo.setMaterialId(sub.getMaterialId());
+			vo.setUnitId(sub.getUnitId());
+			vo.setQty(sub.getQty());
+			vo.setOrderedQty(sub.getOrderedQty());
+			vo.setTaxRate(sub.getTaxRate());
+			vo.setPrice(sub.getPrice());
+			vo.setAmt(sub.getAmt());
+			vo.setSuggestSupplierId(sub.getSuggestSupplierId());
+			vo.setRemark(sub.getRemark());
+			vo.setCustom1(sub.getCustom1());
+			vo.setCustom2(sub.getCustom2());
+			vr.push_back(vo);
+		}
+	}
+	return vr;
 }

@@ -65,20 +65,20 @@ class AddPaymentReqDTO :public FileDTO
 public:
 	//绑定JSON转换方法
 	friend void from_json(const json& j, AddPaymentReqDTO& t) {
-		BIND_FROM_TO_ULL(j, t, billNo);
-		BIND_FROM_TO_ULL(j, t, billDate);
-		BIND_FROM_TO_ULL(j, t, srcBillType);
-		BIND_FROM_TO_ULL(j, t, srcBillId);
-		BIND_FROM_TO_ULL(j, t, srcNo);
-		BIND_FROM_TO_ULL(j, t, subject);
-		BIND_FROM_TO_ULL(j, t, supplierId);
-		BIND_FROM_TO_ULL(j, t, opDept);
-		BIND_FROM_TO_ULL(j, t, operator1);
-		BIND_FROM_TO_ULL(j, t, paymentType);
-		BIND_FROM_TO_ULL(j, t, remark);
-		BIND_FROM_TO_ULL(j, t, billStage);
-		BIND_FROM_TO_ULL(j, t, effectiveTime);
-		BIND_FROM_TO_ULL(j, t, version);
+		BIND_FROM_TO_NORMAL(j, t, billNo);
+		BIND_FROM_TO_NORMAL(j, t, billDate);
+		BIND_FROM_TO_NORMAL(j, t, srcBillType);
+		BIND_FROM_TO_NORMAL(j, t, srcBillId);
+		BIND_FROM_TO_NORMAL(j, t, srcNo);
+		BIND_FROM_TO_NORMAL(j, t, subject);
+		BIND_FROM_TO_NORMAL(j, t, supplierId);
+		BIND_FROM_TO_NORMAL(j, t, opDept);
+		BIND_FROM_TO_NORMAL(j, t, operator1);
+		BIND_FROM_TO_NORMAL(j, t, paymentType);
+		BIND_FROM_TO_NORMAL(j, t, remark);
+		BIND_FROM_TO_NORMAL(j, t, billStage);
+		BIND_FROM_TO_NORMAL(j, t, effectiveTime);
+		BIND_FROM_TO_I(j, t, version);
 
 		BIND_FROM_TO_D(j, t, amt);
 

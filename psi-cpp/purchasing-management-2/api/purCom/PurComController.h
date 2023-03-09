@@ -21,6 +21,9 @@
 #ifndef _PUR_COM_CONTROLLER_
 #define _PUR_COM_CONTROLLER_
 
+#include "../../domain/query/purOrder/PurOrderDividedListQuery.h"
+#include "../../domain/vo/purOrder/PurOrderDividedListVO.h"
+
 #include "../../domain/query/purCom/PurComQuery.h"
 #include "../../domain/query/purCom/PurComEntryQuery.h"
 #include "../../domain/vo/purCom/PurComVO.h"
@@ -40,6 +43,10 @@ public:
 	CREATE_API_FUN_BODY(getPurCom, execGetPurCom, PurComQuery);
 	// 明细列表
 	CREATE_API_FUN_QUERY_PAYLOAD(listPurComEntrys, execListPurComEntrys, PurComEntryQuery);
+
+	//询价单分录列表
+	//负责人：c3阿坤
+	CREATE_API_FUN_QUERY_PAYLOAD(queryPurOrderDividedList, execQueryPurOrderDividedList, PurOrderDividedListQuery);
 private:
 	// 请求分页数据
 	JsonVO<PageVO<PurComVO>> execListPurCom(const PurComQuery& query, const PayloadDTO& payload);
@@ -47,6 +54,9 @@ private:
 	JsonVO<PurComVO> execGetPurCom(const PurComQuery& query);
 	// 查询指定比价单的明细列表
 	JsonVO<PageVO<PurComEntryVO>> execListPurComEntrys(const PurComEntryQuery& query, const PayloadDTO& payload);
+
+	//询价单分录列表
+	JsonVO<list<PurOrderDividedListVO>> execQueryPurOrderDividedList(const PurOrderDividedListQuery& query, const PayloadDTO& payload);
 };
 
 #endif // ! _PUR_COM_CONTROLLER_

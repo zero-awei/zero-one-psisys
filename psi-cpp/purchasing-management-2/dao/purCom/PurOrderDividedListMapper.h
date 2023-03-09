@@ -9,7 +9,7 @@
 #include "../../domain/do/PurOrder/PurOrderDividedListDO.h"
 
 /**
- *
+ * 查询询价单分录列表Mapper
  */
 class PurOrderDividedListMapper : public Mapper<PurOrderDividedListDO> {
 public:
@@ -32,4 +32,5 @@ public:
 		return data;
 	}
 };
+
 #endif

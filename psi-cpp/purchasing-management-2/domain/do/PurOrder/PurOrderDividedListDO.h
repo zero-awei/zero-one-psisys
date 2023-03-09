@@ -1,17 +1,18 @@
 #pragma once
-/*
 
+/*
  @Author: akun
  @Date: 2023/02/26 22:11
 */
-#ifndef _PUR_ORDER_DIVIDED_LIST_VO_H_
-#define _PUR_ORDER_DIVIDED_LIST_VO_H_
+
+#ifndef _PUR_ORDER_DIVIDED_LIST_DO_H_
+#define _PUR_ORDER_DIVIDED_LIST_DO_H_
 #include "../../GlobalInclude.h"
-#include "../JsonVO.h"
+
 /**
  * 采购订单--采购申请单分录列表VO对象
  */
-class PurOrderDividedListVO{
+class PurOrderDividedListDO {
 	//单据编号
 	CC_SYNTHESIZE(string, bill_no, BillNo);
 	//分录号
@@ -40,8 +41,21 @@ class PurOrderDividedListVO{
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 public:
-	BIND_TO_JSON(PurOrderDividedListVO, bill_no, entry_no, material_id, unit_id ,qty, ordered_qty,
-	tax_rate,price,amt, suggest_supplier_id,remark,  custom1, custom2);
+	PurOrderDividedListDO() {
+		bill_no = "";
+		entry_no = -1;
+		material_id = "";
+		unit_id = "";
+		qty = -1.0;
+		ordered_qty = -1.0;
+		tax_rate = -1.0;
+		price = -1.0;
+		amt = -1.0;
+		suggest_supplier_id = "";
+		remark = "";
+		custom1 = "";
+		custom2 = "";
+	}
 };
 
 #endif // !_PUR_ORDER_VO_
