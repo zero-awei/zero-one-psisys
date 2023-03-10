@@ -241,6 +241,7 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 			flag = true;
 		}
 	}
+	if (flag == true || result != 0);
 	return result;
 }
 
