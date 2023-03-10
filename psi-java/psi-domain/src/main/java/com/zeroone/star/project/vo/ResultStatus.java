@@ -22,6 +22,7 @@ public enum ResultStatus {
     SERVER_BUSY("服务器繁忙", 9998),
     FAIL("操作失败", 9999),
     SUCCESS("操作成功"),
+    PARAM_NULL("参数缺失",10001)
     ;
 
     private final String message;

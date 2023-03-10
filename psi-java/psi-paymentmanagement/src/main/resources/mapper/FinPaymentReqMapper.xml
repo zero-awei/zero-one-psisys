@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.paymentmanagement.mapper.FinPaymentReqMapper">
+
+    <select id="queryAll" resultType="com.zeroone.star.project.vo.paymentmanagement.FinPaymentReqVO">
+        SELECT
+        req.bill_no,
+        req.bill_date,
+        req.`subject`,
+        req.payment_type,
+        b.`name`,
+        d.depart_name,
+        u.realname,
+        req.amt,
+        req.paid_amt,
+        req.remark,
+        req.is_closed
+        FROM
+        fin_payment_req AS req
+        JOIN bas_supplier AS b ON req.supplier_id = b.id
+        JOIN sys_depart AS d ON d.org_code = req.op_dept
+        JOIN sys_user AS u ON u.username = req.operator
+        <where>
+            <if test="billNo != null and billNo != ''">
+                req.bill_no = #{billNo}
+            </if>
+            <if test="billDate != null and billDate != ''">
+                AND req.bill_date=#{billDate}
+            </if>
+            <if test="supplierId != null and supplierId != ''">
+                AND b.`name` = #{supplierId}
+            </if>
+        </where>
+    </select>
+</mapper>
