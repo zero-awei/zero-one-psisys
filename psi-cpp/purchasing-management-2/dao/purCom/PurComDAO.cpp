@@ -23,32 +23,33 @@
 
 #include "PurOrderDividedListMapper.h"
 
-// 统计数据条数
 uint64_t PurComDAO::count(const PurComDO& obj)
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare";
 	SqlParams params;
+	//添加筛选条件,目前不需添加
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 
 // 统计明细条数
-uint64_t PurComDAO::countEntrys(const PurComEntryDO& obj) 
+uint64_t PurComDAO::countEntrys(const PurComEntryDO& obj)
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM pur_compare_entry";
 	SqlParams params;
+	//添加筛选条件,目前不需添加
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-// 分页查询数据
+//分页查询数据
 list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	// SQL语句生成
+	// 添加查询语句
 	sql << "SELECT id, bill_no, bill_date, src_bill_type,\
 		src_bill_id, src_no, `subject`, is_rubric,\
 		candidate_quot_ids, payment_method, delivery_place,\
@@ -60,30 +61,39 @@ list<PurComDO> PurComDAO::selectPurCom(const PurComDO& obj, uint64_t pageIndex, 
 		update_by, update_time, version FROM pur_compare";
 	SqlParams params;
 
+	// 添加筛选语句
 	sql << " WHERE 1=1";
-	// 条件拼接
+	// 筛选条件为单据编号
 	if (!obj.getBill_no().empty()) {
 		sql << " AND `bill_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getBill_no())));
 	}
-
+	// 筛选条件为单据时间
+	if (!obj.getBill_date().empty()) {
+		sql << " AND `bill_date`>=?";
+		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getBill_date())));
+	}
+	if (!obj.getBill_date().empty()) {
+		sql << " AND `bill_date`<=?";
+		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getBill_date_end())));
+	}
+	// 筛选条件为源单号
 	if (!obj.getSrc_no().empty()) {
 		sql << " AND `src_no`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getSrc_no())));
 	}
-
+	// 分页显示
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComMapper mapper;
 	string sqlStr = sql.str();
-	// 结果返回
+	// 返回查询结果
 	return sqlSession->executeQuery<PurComDO, PurComMapper>(sqlStr, mapper, params);
 }
 
-// 查询指定比价单明细列表
 list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint64_t pageIndex, uint64_t pageSize)
 {
 	stringstream sql;
-	// 查询语句生成
+	// 添加查询语句
 	sql << "SELECT id, mid, bill_no, \
 			entry_no, src_bill_type, src_bill_id, \
 			src_entry_id, src_no, supplier_id, \
@@ -93,13 +103,13 @@ list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint6
 			custom1, custom2, version \
 			FROM pur_compare_entry";
 	SqlParams params;
-	// 条件拼接
+	// 添加筛选条件
 	sql << " WHERE 1=1";
 	if (!obj.getMid().empty()) {
 		sql << " AND `mid`=?";
 		params.push_back(SqlParam("s", std::make_shared<std::string>(obj.getMid())));
 	}
-
+	// 分页显示
 	sql << " LIMIT " << ((pageIndex - 1) * pageSize) << "," << pageSize;
 	PurComEntryMapper mapper;
 	string sqlStr = sql.str();
@@ -107,6 +117,7 @@ list<PurComEntryDO> PurComDAO::selectPurComEntry(const PurComEntryDO& obj, uint6
 
 	return temp;
 }
+
 
 list<PurOrderDividedListDO> PurComDAO::selectPurOrderDividedListDO(const PurOrderDividedListDO& obj) {
 	stringstream sql;

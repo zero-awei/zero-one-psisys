@@ -32,8 +32,10 @@ class PurComDO
 	CC_SYNTHESIZE(string, id, Id);
 	// 单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	// 单据日期
+	// 单据日期_开始日期
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
+	// 单据日期_结束日期___J4nnA追加了该字段
+	CC_SYNTHESIZE(string, bill_date_end, Bill_date_end);
 	// 源单类型
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	// 源单id

@@ -22,22 +22,23 @@
 #include "../../dao/purOrder/PurOrderDAO.h"
 
 // 分页查询所有数据
-// 负责人：J4nnA
 PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 {
-	// 构建返回对象
+	// 构造返回对象
 	PageVO<PurComVO> pages;
 	pages.setPageIndex(query.getPageIndex());
 	pages.setPageSize(query.getPageSize());
 
-	// 构造DO
+	// 构造DO,填写可能用到的成员
 	PurComDO obj;
 	obj.setBill_no(query.getBill_no());
 	obj.setBill_date(query.getBill_date());
-	
+	obj.setBill_date_end(query.getBill_date_end());
+	obj.setSrc_no(query.getSrc_no());
+
 	// 生成DAO层对象
 	PurComDAO dao;
-	
+
 	//查询数据总条数
 	uint64_t count = dao.count(obj);
 	//
@@ -71,7 +72,7 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 		vo.setSubject(sub.getSubject());
 		vo.setIs_rubric(sub.getIs_rubric());
 		vo.setCandidate_quot_ids(sub.getCandi_date_quot_ids());
-		
+
 		vo.setPayment_method(sub.getPayment_method());
 		vo.setDelivery_place(sub.getDelivery_place());
 		vo.setDelivery_time(sub.getDelivery_time());
@@ -87,7 +88,7 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 		vo.setApproval_result_type(sub.getApproval_result_type());
 		vo.setApproval_remark(sub.getApproval_remark());
 		vo.setIs_effective(sub.getIs_effective());
-		
+
 		vo.setEffective_time(sub.getEffective_time());
 		vo.setIs_closed(sub.getIs_closed());
 		vo.setIs_voided(sub.getIs_voided());
@@ -95,7 +96,7 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 		vo.setSys_org_code(sub.getSys_org_code());
 		vo.setCreate_by(sub.getCreate_by());
 		vo.setCreate_time(sub.getCreate_time());
-		
+
 		vo.setUpdate_by(sub.getUpdate_by());
 		vo.setUpdate_time(sub.getUpdate_time());
 		vo.setVersion(sub.getVersion());
@@ -107,16 +108,8 @@ PageVO<PurComVO> PurComService::listAll(const PurComQuery& query)
 	return pages;
 }
 
-// 查询单个数据
-// 负责人：J4nnA
-PurComVO PurComService::getData(uint64_t id) {
-	PurComVO data;
-
-	return data;
-}
 
 // 查询指定比价单的明细列表
-// 负责人：J4nnA
 PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 {
 	// 构造返回对象
@@ -131,11 +124,8 @@ PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 	// 生成DAO层对象
 	PurComDAO dao;
 
-	//------------------------------------------------------未实现
-	uint64_t count = 1;
-	
 	// 查询数据总条数
-	//uint64_t count = dao.countEntrys(obj);
+	uint64_t count = dao.countEntrys(obj);
 	//
 	// 待加入筛选条件
 	//
@@ -143,7 +133,7 @@ PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 	{
 		return pages;
 	}
-	
+
 	// 调用DAO层功能,传入DO
 	pages.setTotal(count);
 	pages.calcPages();
@@ -189,6 +179,7 @@ PageVO<PurComEntryVO> PurComService::listEntry(const PurComEntryQuery& query)
 	pages.setRows(vr);
 	return pages;
 }
+
 
 list<PurOrderDividedListVO> PurComService::listPurOrderDividedListDO(const PurOrderDividedListQuery& query) {
 	//设置查询条件

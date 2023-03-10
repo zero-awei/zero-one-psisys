@@ -193,9 +193,7 @@ void Router::createPurComRouter() {
 	// 分页数据
 	// 负责人：J4nnA
 	BIND_GET_ROUTER(server, "/purCom/list", &PurComController::listPurCom, nullptr);
-	// 单个数据
-	// 负责人：J4nnA
-	BIND_GET_ROUTER(server, "/purCom/queryEntryByMainId", &PurComController::getPurCom, nullptr);
+
 	// 明细列表
 	// 负责人：J4nnA
 	BIND_GET_ROUTER(server, "/purCom/listEntrys", &PurComController::listPurComEntrys, nullptr);
