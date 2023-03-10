@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _PAYMENT_CHANGE_DTO_
 #define _PAYMENT_CHANGE_DTO_
 #include "../../GlobalInclude.h"

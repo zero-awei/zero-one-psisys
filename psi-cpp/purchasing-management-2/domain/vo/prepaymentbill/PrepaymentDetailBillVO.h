@@ -14,11 +14,11 @@ class PrepaymentDetailBillVO {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
 	//分录号
-	CC_SYNTHESIZE(int, entry_no, Entry_no);
+	CC_SYNTHESIZE(uint64_t, entry_no, Entry_no);
 	//源单号
 	CC_SYNTHESIZE(string, src_no, Src_no);
 	//申请金额
-	CC_SYNTHESIZE(int, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 

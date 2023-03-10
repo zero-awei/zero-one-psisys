@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -24,75 +24,75 @@
 #include "FinPaymentReqEntryDO.h"
 
 /*
- *��ѯ����
+ * 采购付款申请DO
  */
 class FinPaymentReqDO
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
-	//���ݱ��
+	//单据编号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//��������
+	//单据日期
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	//Դ������
+	//源单类型
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	//Դ��id
+	//源单号
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//Դ����
+	//源单编号
 	CC_SYNTHESIZE(string, src_no, Src_no);
-	//����
+
 	CC_SYNTHESIZE(string, subject, Subject);
-	//�Ƿ����
+	//是否红字
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//��������
+	//付款类型
 	CC_SYNTHESIZE(string, payment_type, Payment_type);
-	//��Ӧ��
+	//供应商
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
-	//ҵ����
+	//业务部门
 	CC_SYNTHESIZE(string, op_dept, Op_dept);
-	//ҵ��Ա
+	//业务员
 	CC_SYNTHESIZE(string, operator1,Operator);
-	//������
+	//申请金额
 	CC_SYNTHESIZE(double, amt, Amt);
-	//�Ѹ����
+	//已付金额
 	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
-	//����
+	//附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//��ע
+	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
-	//�Ƿ��Զ�����
+	//是否自动生成
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	//���ݽ׶�
+	//单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	//�����
+	//审核人
 	CC_SYNTHESIZE(string, approver, Approver);
-	//����ʵ��id
+	//审核实例id
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
-	//�����������
+	//核批结果类型
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
-	//�������
+	//核批意见
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-	//�Ƿ���Ч
+	//是否生效
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	//��Чʱ��
+	//生效时间
 	CC_SYNTHESIZE(string,effective_time, Effective_time);
-	//�ѹر�
+	//已关闭
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	//�Ƿ�����
+	//是否作废
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	//��������
+	//创建部门
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	//������
+	//创建人
 	CC_SYNTHESIZE(string, create_by, Create_by);
-	//����ʱ��
+	//创建时间
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	//�޸���
+	//修改人
 	CC_SYNTHESIZE(string, update_by, Update_by);
-	//�޸�ʱ��
+	//修改时间
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	//�汾
+	//版本
 	CC_SYNTHESIZE(int, version, Version);
-	//��ϸ
+	
 	CC_SYNTHESIZE(list<FinPaymentReqEntryDO>, detail, Detail);
 public:
 	FinPaymentReqDO()

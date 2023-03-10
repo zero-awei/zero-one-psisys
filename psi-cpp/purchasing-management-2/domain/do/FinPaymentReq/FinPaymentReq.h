@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #pragma once
 /*
@@ -28,67 +28,67 @@ class FinPaymentReq
 {
 	//ID
 	CC_SYNTHESIZE(string, id, Id);
-	//µ¥¾İ±àºÅ
+	//å•æ®ç¼–å·
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
-	//µ¥¾İÈÕÆÚ
+	//å•æ®æ—¥æœŸ
 	CC_SYNTHESIZE(string, bill_date, Bill_date);
-	//Ô´µ¥ÀàĞÍ
+	//æºå•ç±»å‹
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
-	//Ô´µ¥id
+	//æºå•id
 	CC_SYNTHESIZE(string, src_bill_id, Src_bill_id);
-	//Ô´µ¥ºÅ
+	//æºå•å·
 	CC_SYNTHESIZE(string, src_no, Src_no);
 	//
 	CC_SYNTHESIZE(string, subject, Subject);
-	//ÊÇ·ñºì×Ö
+	//æ˜¯å¦çº¢å­—
 	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
-	//¸¶¿îÀàĞÍ
+	//ä»˜æ¬¾ç±»å‹
 	CC_SYNTHESIZE(string, payment_type, Payment_type);
-	//¹©Ó¦ÉÌ
+	//ä¾›åº”å•†
 	CC_SYNTHESIZE(string, supplier_id, Supplier_id);
-	//ÒµÎñ²¿ÃÅ
+	//ä¸šåŠ¡éƒ¨é—¨
 	CC_SYNTHESIZE(string, op_dept, Op_dept);
-	//ÒµÎñÔ±
+	//ä¸šåŠ¡å‘˜
 	CC_SYNTHESIZE(string, operator, Operator);
-	//ÉêÇë½ğ¶î
+	//ç”³è¯·é‡‘é¢
 	CC_SYNTHESIZE(double, amt, Amt);
-	//ÒÑ¸¶½ğ¶î
+	//å·²ä»˜é‡‘é¢
 	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
-	//¸½¼ş
+	//é™„ä»¶
 	CC_SYNTHESIZE(string, attachment, Attachment);
-	//±¸×¢
+	//å¤‡æ³¨
 	CC_SYNTHESIZE(string, remark, Remark);
-	//ÊÇ·ñ×Ô¶¯Éú³É
+	//æ˜¯å¦è‡ªåŠ¨ç”Ÿæˆ
 	CC_SYNTHESIZE(int, is_auto, Is_auto);
-	//µ¥¾İ½×¶Î
+	//å•æ®é˜¶æ®µ
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
-	//ÉóºËÈË
+	//å®¡æ ¸äºº
 	CC_SYNTHESIZE(string, approver, Approver);
-	//ÉóÅúÊµÀıid
+	//å®¡æ‰¹å®ä¾‹id
 	CC_SYNTHESIZE(string, bpmi_instance_id, Bpmi_instance_id);
-	//ºËÅú½á¹ûÀàĞÍ
+	//æ ¸æ‰¹ç»“æœç±»å‹
 	CC_SYNTHESIZE(string, approval_result_type, Approval_result_type);
-	//ºËÅúÒâ¼û
+	//æ ¸æ‰¹æ„è§
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
-	//ÊÇ·ñÉúĞ§
+	//æ˜¯å¦ç”Ÿæ•ˆ
 	CC_SYNTHESIZE(int, is_effective, Is_effective);
-	//ÉúĞ§Ê±¼ä
+	//ç”Ÿæ•ˆæ—¶é—´
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
-	//ÒÑ¹Ø±Õ
+	//å·²å…³é—­
 	CC_SYNTHESIZE(int, is_closed, Is_closed);
-	//ÊÇ·ñ×÷·Ï
+	//æ˜¯å¦ä½œåºŸ
 	CC_SYNTHESIZE(int, is_voided, Is_voided);
-	//´´½¨²¿ÃÅ
+	//åˆ›å»ºéƒ¨é—¨
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
-	//´´½¨ÈË
+	//åˆ›å»ºäºº
 	CC_SYNTHESIZE(string, create_by, Create_by);
-	//´´½¨Ê±¼ä
+	//åˆ›å»ºæ—¶é—´
 	CC_SYNTHESIZE(string, create_time, Create_time);
-	//ĞŞ¸ÄÈË
+	//ä¿®æ”¹äºº
 	CC_SYNTHESIZE(string, update_by, Update_by);
-	//ĞŞ¸ÄÊ±¼ä
+	//ä¿®æ”¹æ—¶é—´
 	CC_SYNTHESIZE(string, update_time, Update_time);
-	//°æ±¾
+	//ç‰ˆæœ¬
 	CC_SYNTHESIZE(int, version, Version);
 public:
 	FinPaymentReq()

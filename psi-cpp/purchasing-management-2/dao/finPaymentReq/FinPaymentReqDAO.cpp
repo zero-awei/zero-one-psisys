@@ -59,7 +59,7 @@ std::list<FinPaymentReqDO> FinPaymentReqDAO::selectWithPage(const FinPaymentReqD
 	return sqlSession->executeQuery<FinPaymentReqDO, FinPaymentReqBillMapper>(sqlStr, mapper, params);
 }
 
-std::list<FinPaymentReqDO>  FinPaymentReqDAO::selectBillNo(const string& no)
+std::list<FinPaymentReqDO> FinPaymentReqDAO::selectBillNo(const string& no)
 {
 	string sql;
 	sql = "SELECT * FROM fin_payment_req WHERE bill_no=?";

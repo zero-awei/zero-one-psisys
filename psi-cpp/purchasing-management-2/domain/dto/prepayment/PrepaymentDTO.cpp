@@ -3,7 +3,7 @@
 
 void from_json(const json& j, PrepaymentDTO& t) { // NOLINT
 	BIND_FROM_TO_NORMAL(j, t, id);
-	BIND_FROM_TO_ULL(j, t, bill_no);
+	BIND_FROM_TO_NORMAL(j, t, bill_no);
 	BIND_FROM_TO_NORMAL(j, t, bill_date);
 	BIND_FROM_TO_NORMAL(j, t, subject);
 	BIND_FROM_TO_NORMAL(j, t, op);

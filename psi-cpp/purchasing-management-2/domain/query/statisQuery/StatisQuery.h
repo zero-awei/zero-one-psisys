@@ -25,15 +25,20 @@
 */
 class StatisQuery : public BaseQuery
 {
-	CC_SYNTHESIZE(uint16_t, year, Year); // 年份
-	CC_SYNTHESIZE(uint16_t, month, Month); // 月份
+	CC_SYNTHESIZE(int, year, Year); // 年份
+	CC_SYNTHESIZE(int, month, Month); // 月份
 public:
+	StatisQuery() : year(0), month(0) {}
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisQuery& sq)
 	{
-		from_json(j, static_cast<BaseQuery&>(sq));
-		BIND_FROM_TO_UL(j, sq, year);
-		BIND_FROM_TO_UL(j, sq, month);
+		BIND_FROM_TO_ULL(j, sq, pageIndex);
+		BIND_FROM_TO_ULL(j, sq, pageSize);
+		BIND_FROM_TO_NORMAL(j, sq, column);
+		BIND_FROM_TO_NORMAL(j, sq, order);
+		BIND_FROM_TO_NORMAL(j, sq, field);
+		BIND_FROM_TO_I(j, sq, year);
+		BIND_FROM_TO_I(j, sq, month);
 	}
 };
 
@@ -42,12 +47,18 @@ public:
 */
 class StatisByDeptQuery : public StatisQuery
 {
-	CC_SYNTHESIZE(std::string, dept, Dept); // 业务部门ID
+	CC_SYNTHESIZE(string, dept, Dept); // 业务部门ID
 public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisByDeptQuery& bq)
 	{
-		from_json(j, static_cast<StatisQuery&>(bq));
+		BIND_FROM_TO_ULL(j, bq, pageIndex);
+		BIND_FROM_TO_ULL(j, bq, pageSize);
+		BIND_FROM_TO_NORMAL(j, bq, column);
+		BIND_FROM_TO_NORMAL(j, bq, order);
+		BIND_FROM_TO_NORMAL(j, bq, field);
+		BIND_FROM_TO_I(j, bq, year);
+		BIND_FROM_TO_I(j, bq, month);
 		BIND_FROM_TO_NORMAL(j, bq, dept);
 	}
 };
@@ -59,7 +70,14 @@ public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisByOperatorQuery& bq)
 	{
-		from_json(j, static_cast<StatisByDeptQuery&>(bq));
+		BIND_FROM_TO_ULL(j, bq, pageIndex);
+		BIND_FROM_TO_ULL(j, bq, pageSize);
+		BIND_FROM_TO_NORMAL(j, bq, column);
+		BIND_FROM_TO_NORMAL(j, bq, order);
+		BIND_FROM_TO_NORMAL(j, bq, field);
+		BIND_FROM_TO_I(j, bq, year);
+		BIND_FROM_TO_I(j, bq, month);
+		BIND_FROM_TO_NORMAL(j, bq, dept);
 		BIND_FROM_TO_NORMAL(j, bq, opName);
 	}
 };
@@ -71,7 +89,13 @@ public:
 	//// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisBySupplierQuery& bq)
 	{
-		from_json(j, static_cast<StatisQuery&>(bq));
+		BIND_FROM_TO_ULL(j, bq, pageIndex);
+		BIND_FROM_TO_ULL(j, bq, pageSize);
+		BIND_FROM_TO_NORMAL(j, bq, column);
+		BIND_FROM_TO_NORMAL(j, bq, order);
+		BIND_FROM_TO_NORMAL(j, bq, field);
+		BIND_FROM_TO_I(j, bq, year);
+		BIND_FROM_TO_I(j, bq, month);
 		BIND_FROM_TO_ULL(j, bq, supplier);
 	}
 };
@@ -85,7 +109,13 @@ public:
 	// 绑定JSON转换方法
 	friend void from_json(const json& j, StatisByMaterialQuery& bq)
 	{
-		from_json(j, static_cast<StatisQuery&>(bq));
+		BIND_FROM_TO_ULL(j, bq, pageIndex);
+		BIND_FROM_TO_ULL(j, bq, pageSize);
+		BIND_FROM_TO_NORMAL(j, bq, column);
+		BIND_FROM_TO_NORMAL(j, bq, order);
+		BIND_FROM_TO_NORMAL(j, bq, field);
+		BIND_FROM_TO_I(j, bq, year);
+		BIND_FROM_TO_I(j, bq, month);
 		BIND_FROM_TO_ULL(j, bq, material);
 		BIND_FROM_TO_NORMAL(j, bq, materialCode);
 		BIND_FROM_TO_NORMAL(j, bq, materialName);

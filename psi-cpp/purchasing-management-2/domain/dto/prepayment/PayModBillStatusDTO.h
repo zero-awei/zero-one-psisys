@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _PUR_REQ_MOD_BILL_STATUS_DTO_
 #define _PUR_REQ_MOD_BILL_STATUS_DTO_
 

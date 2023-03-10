@@ -13,6 +13,7 @@
 
 #define MAPPER_GETINT(funName,x) data.set##funName(resultSet->getUInt64(x))
 #define MAPPER_GETSTR(funName,x) data.set##funName(resultSet->getString(x))
+#define MAPPER_GETDBL(funName,x) data.set##funName(resultSet->getDouble(x))
 
 class PrepaymentMapper : public Mapper<PrepaymentDO>
 {
@@ -33,8 +34,8 @@ public:
 		MAPPER_GETSTR(Supplier_id, 10);
 		MAPPER_GETSTR(Op_dept, 11);
 		MAPPER_GETSTR(Operator, 12);
-		MAPPER_GETINT(Amt, 13);
-		MAPPER_GETINT(Paid_amt, 14);
+		MAPPER_GETDBL(Amt, 13);
+		MAPPER_GETDBL(Paid_amt, 14);
 		MAPPER_GETSTR(Attachment, 15);
 		MAPPER_GETSTR(Remark, 16);
 		MAPPER_GETINT(Is_auto, 17);

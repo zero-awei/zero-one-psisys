@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #ifndef _PAYMENTCONTROLLER_H_
 #define _PAYMENTCONTROLLER_H_

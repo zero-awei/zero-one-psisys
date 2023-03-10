@@ -209,6 +209,7 @@ bool PrePayService::DePrePayId(const DePayDTO& dto)
 		data.setId(dto.getId());
 		return dao.deleteById(data) == 1;
 	}
+	return false;
 }
 
 // 分页查询 预付申请单所有数据(多个对象)
@@ -468,4 +469,5 @@ bool PrePayService::updateStatus(const PayModBillStatusDTO& dto, const PayloadDT
 		data.setIs_voided(dto.OPS[dto.getOpType()]);
 		return dao.updateStatusCancel(data) == 1;
 	}
+	return false;
 }

@@ -48,7 +48,7 @@ class PurQuotDO
 	// 数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	// 金额
-	CC_SYNTHESIZE(float, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
