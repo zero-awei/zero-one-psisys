@@ -32,5 +32,5 @@ public interface AddressbookMapper extends BaseMapper<Addressbook> {
 
     public Page<Addressbook> getByDepartName(Page page, OrganizationTreeQuery condition);
 
-    public Page<Addressbook> listDepart(Page page, OrganizationQuery condition);
+    public Page<Addressbook> listDepart(Page page, String id);
 }

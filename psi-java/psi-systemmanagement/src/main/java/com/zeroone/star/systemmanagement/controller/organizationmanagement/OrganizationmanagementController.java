@@ -2,6 +2,7 @@ package com.zeroone.star.systemmanagement.controller.organizationmanagement;
 
 
 import com.zeroone.star.project.dto.systemmanagement.organizationmanagement.OrganizationManagementDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.systemmanagement.organizationmanagement.OrganizationListQuery;
 import com.zeroone.star.project.systemmanagement.organizationmanagement.OrganizationManagementApis;
 import com.zeroone.star.project.vo.JsonVO;
@@ -36,13 +37,12 @@ public class OrganizationmanagementController implements OrganizationManagementA
 
     /**
      * 查询组织列表
-     * @param condition 查询条件
      * @return
      */
     @ApiOperation("查询组织列表")
     @GetMapping("/query-all")
     @Override
-    public JsonVO<PageVO<OrganizationListVO>> queryList(OrganizationListQuery condition) {
+    public JsonVO<PageVO<OrganizationListVO>> queryList(PageQuery condition) {
         PageVO<OrganizationListVO> pageVO = service.queryList(condition);
         return JsonVO.success(pageVO);
     }

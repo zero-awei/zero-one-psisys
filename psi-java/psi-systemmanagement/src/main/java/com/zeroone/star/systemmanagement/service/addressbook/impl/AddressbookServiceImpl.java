@@ -1,5 +1,6 @@
 package com.zeroone.star.systemmanagement.service.addressbook.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.query.systemmanagement.addressbook.AddressbookQuery;
@@ -8,7 +9,9 @@ import com.zeroone.star.project.query.systemmanagement.addressbook.OrganizationT
 import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.systemmanagement.addressbook.AddressbookVO;
 import com.zeroone.star.systemmanagement.entity.addressbook.Addressbook;
+import com.zeroone.star.systemmanagement.entity.addressbook.SysDepart;
 import com.zeroone.star.systemmanagement.mapper.addressbook.AddressbookMapper;
+import com.zeroone.star.systemmanagement.mapper.addressbook.SysDepartMapper;
 import com.zeroone.star.systemmanagement.service.addressbook.IAddressbookService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +34,8 @@ public class AddressbookServiceImpl extends ServiceImpl<AddressbookMapper, Addre
 
     @Resource
     private AddressbookMapper mapper;
+    @Resource
+    private SysDepartMapper sysDepartMapper;
 
 
 
@@ -82,8 +87,11 @@ public class AddressbookServiceImpl extends ServiceImpl<AddressbookMapper, Addre
     @Override
     public PageVO<AddressbookVO> listDepart(OrganizationQuery query) {
         Page<Addressbook> addressBookPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        LambdaQueryWrapper<SysDepart> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysDepart::getOrgCode,query.getOrgCode());
+        String id = sysDepartMapper.selectOne(wrapper).getId();
         // 执行查询
-        Page<Addressbook> result = mapper.listDepart(addressBookPage,query);
+        Page<Addressbook> result = mapper.listDepart(addressBookPage,id);
         return PageVO.create(result, AddressbookVO.class);
     }
 }

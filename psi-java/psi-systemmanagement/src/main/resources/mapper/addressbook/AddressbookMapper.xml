@@ -10,7 +10,8 @@
             depart_name,
             post,
             phone,
-            email
+            email,
+            s3.org_code
         from
             sys_user s1,sys_user_depart s2,sys_depart s3
         where
@@ -25,7 +26,8 @@
             depart_name,
             post,
             phone,
-            email
+            email,
+            s3.org_code
         from
             sys_user s1,sys_user_depart s2,sys_depart s3
         where
@@ -40,7 +42,8 @@
             depart_name,
             post,
             phone,
-            email
+            email,
+            s3.org_code
         from
             sys_user s1,sys_user_depart s2,sys_depart s3
         where
@@ -55,7 +58,9 @@
             depart_name,
             post,
             phone,
-            email
+            email,
+            org_code,
+            s3.org_code
         from
             sys_user s1,sys_user_depart s2,sys_depart s3
         where
@@ -70,7 +75,8 @@
             depart_name,
             post,
             phone,
-            email
+            email,
+            s3.org_code
         from
             sys_user s1,sys_user_depart s2,sys_depart s3
         where
@@ -85,10 +91,11 @@
             depart_name,
             post,
             phone,
-            email
+            email,
+            s3.org_code
         from
             sys_user s1,sys_user_depart s2,sys_depart s3
         where
-            s2.user_id = s1.id and s2.dep_id = s3.id
+            s2.user_id = s1.id and s2.dep_id = s3.id and s3.parent_id = #{id}
     </select>
 </mapper>

@@ -82,7 +82,7 @@ public class SysCategoryController implements ClassifiedDictionaryApis {
     @Override
     public JsonVO<String> add(ClassifiedDictionarySaveDTO data) {
         if(data == null || service.save(data).equals("数据已存在")){
-            return JsonVO.create(null, ResultStatus.FAIL);
+            return JsonVO.create(service.save(data), ResultStatus.FAIL);
         }
         return JsonVO.success(service.save(data));
     }
