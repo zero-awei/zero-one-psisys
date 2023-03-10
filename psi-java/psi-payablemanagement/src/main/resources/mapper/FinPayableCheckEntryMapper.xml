@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.payablemanagement.mapper.FinPayableCheckEntryMapper">
+
+    <select id="getByMainId" resultType="com.zeroone.star.project.vo.payablemanagement.CheckPayableEntryVO" parameterType="com.zeroone.star.project.query.payablemanagement.CheckPayableEntryQuery" >
+        <include refid="allEntries" />
+        <where>
+                and fe.mid = #{mainId}
+        </where>
+    </select>
+    
+    <sql id="allEntries">
+        SELECT fe.id, fe.mid, fe.bill_no, fe.entry_no, fe.src_bill_type, fe.src_bill_id, fe.src_entry_id, fe.src_no, fe.check_side, fe.amt, fe.remark, fe.custom1, fe.custom2, fe.version,
+        CASE WHEN fe.amt - fp.checked_amt &lt; 0 THEN 0
+        ELSE fe.amt - fp.checked_amt
+        END AS unchecked_amt
+        FROM fin_payable_check_entry fe
+        INNER JOIN fin_payable fp ON fe.src_bill_id = fp.id
+    </sql>
+</mapper>

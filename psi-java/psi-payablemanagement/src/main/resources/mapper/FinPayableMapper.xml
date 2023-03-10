@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.payablemanagement.mapper.FinPayableMapper">
+
+    <select id="getBySupplierId" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO" parameterType="com.zeroone.star.project.query.payablemanagement.PayableBySupplierQuery">
+        <include refid="selectBase"/>
+        where sdict.dict_name = "单据阶段" and t.supplier_id = #{supplierId};
+    </select>
+
+
+    <select id="getAllPayable" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO" parameterType="com.zeroone.star.project.query.payablemanagement.PayableQuery">
+        <include refid="multiCondition"/>
+        <where>
+            <if test="billNo != null">
+                and t.bill_no = #{billNo}
+            </if>
+            <if test="subject != null">
+                and t.subject = #{subject}
+            </if>
+            <if test="supplierId != null">
+                and bs.`name` = #{supplierId}
+            </if>
+            <if test="billStage != null">
+                and sdi.item_text = #{billStage}
+            </if>
+            <if test="isEffective != null">
+                and t.is_effective = #{isEffective}
+            </if>
+            <if test="isClosed != null">
+                and t.is_closed = #{isClosed}
+            </if>
+            <if test="isVoided != null">
+                and t.is_voided = #{isVoided}
+            </if>
+            <if test="billDateEnd != null">
+                and t.bill_date &lt; #{billDateEnd}
+            </if>
+            <if test="billDateBegin != null">
+                and t.bill_date &gt; #{billDateBegin}
+            </if>
+            and sdict.dict_name = "单据阶段"
+        </where>
+    </select>
+
+    <select id="getByBillNo" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO">
+        <include refid="selectBase"/> where sdict.dict_name = "单据阶段" and t.bill_no = #{billNo};
+    </select>
+
+    <sql id="selectBase" >
+        SELECT t.bill_no , t.bill_date , t.`subject`, t.src_no ,bs.`name` supplier_id_dict_text,
+               sd.depart_name op_dept_dict_text,su.realname operator_dict_text, t.amt ,t.checked_amt ,
+               sdi.item_text bill_stage_dict_text, t.is_effective ,t.is_closed ,t.is_voided ,t.is_auto ,
+               t.is_rubric, t.remark ,t.effective_time , su1.realname approver_dict_text, t.create_time ,
+               su2.realname create_by_dict_text, sd1.depart_name sys_org_code_dict_text, t.update_time,
+               su3.realname update_by_dict_text, t.approval_remark, t.attachment, t.approval_result_type,
+               sdi2.item_text src_bill_type_dict_text
+        FROM fin_payable t
+                 LEFT JOIN bas_supplier bs ON t.supplier_id = bs.id
+                 LEFT JOIN sys_depart sd ON t.op_dept = sd.org_code
+                 LEFT JOIN sys_user su ON t.operator = su.username
+                 LEFT JOIN sys_user su1 ON t.approver = su1.username
+                 LEFT JOIN sys_user su2 ON t.create_by = su2.username
+                 LEFT JOIN sys_depart sd1 ON t.sys_org_code = sd1.org_code
+                 LEFT JOIN sys_user su3 ON t.update_by = su3.username
+                 JOIN sys_dict_item sdi2 ON t.src_bill_type = sdi2.item_value
+                 JOIN sys_dict_item sdi ON t.bill_stage = sdi.item_value
+                 JOIN sys_dict sdict ON sdi.dict_id = sdict.id
+    </sql>
+
+    <sql id="multiCondition" >
+        SELECT t.bill_no , t.bill_date , t.`subject`, t.src_no ,bs.`name` supplier_id_dict_text,
+               sd.depart_name op_dept_dict_text,su.realname operator_dict_text, t.amt ,t.checked_amt ,
+               sdi.item_text bill_stage_dict_text, t.is_effective ,t.is_closed ,t.is_voided ,t.is_auto ,
+               t.is_rubric, t.remark ,t.effective_time , su1.realname approver_dict_text, t.create_time ,
+               su2.realname create_by_dict_text, sd1.depart_name sys_org_code_dict_text, t.update_time,
+               su3.realname update_by_dict_text
+        FROM fin_payable t
+                 LEFT JOIN bas_supplier bs ON t.supplier_id = bs.id
+                 LEFT JOIN sys_depart sd ON t.op_dept = sd.org_code
+                 LEFT JOIN sys_user su ON t.operator = su.username
+                 LEFT JOIN sys_user su1 ON t.approver = su1.username
+                 LEFT JOIN sys_user su2 ON t.create_by = su2.username
+                 LEFT JOIN sys_depart sd1 ON t.sys_org_code = sd1.org_code
+                 LEFT JOIN sys_user su3 ON t.update_by = su3.username
+                 JOIN sys_dict_item sdi ON t.bill_stage = sdi.item_value
+                 JOIN sys_dict sdict ON sdi.dict_id = sdict.id
+    </sql>
+
+    <select id="queryPayable" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO" parameterType="com.zeroone.star.project.query.payablemanagement.PayableQuery">
+        <include refid="multiCondition"/>
+        <where>
+            <if test="billNo != null">
+                and t.bill_no = #{billNo}
+            </if>
+            <if test="subject != null">
+                and t.subject = #{subject}
+            </if>
+            <if test="supplierId != null">
+                and bs.`name` = #{supplierId}
+            </if>
+            <if test="billStage != null">
+                and sdi.item_text = #{billStage}
+            </if>
+            <if test="isEffective != null">
+                and t.is_effective = #{isEffective}
+            </if>
+            <if test="isClosed != null">
+                and t.is_closed = #{isClosed}
+            </if>
+            <if test="isVoided != null">
+                and t.is_voided = #{isVoided}
+            </if>
+            <if test="billDateEnd != null">
+                and t.bill_date &lt;= #{billDateEnd}
+            </if>
+            <if test="billDateBegin != null">
+                and t.bill_date &gt;= #{billDateBegin}
+            </if>
+            and sdict.dict_name = "单据阶段"
+        </where>
+    </select>
+
+    <select id="getOneByBillNo" resultType="com.zeroone.star.project.vo.payablemanagement.PayableVO">
+        <include refid="selectBase"/> where sdict.dict_name = "单据阶段" and t.bill_no = #{billNo};
+    </select>
+</mapper>
