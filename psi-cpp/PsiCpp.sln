@@ -18,6 +18,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psi-purchase-c3", "psi-purc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psi-stkmanage", "psi-stkmanage\psi-stkmanage.vcxproj", "{FC8352B9-32FD-4CB6-B354-9CB40D487B30}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "purchasing-management-2", "purchasing-management-2\purchasing-management-2.vcxproj", "{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -90,6 +92,14 @@ Global
 		{FC8352B9-32FD-4CB6-B354-9CB40D487B30}.Release|x64.Build.0 = Release|x64
 		{FC8352B9-32FD-4CB6-B354-9CB40D487B30}.Release|x86.ActiveCfg = Release|Win32
 		{FC8352B9-32FD-4CB6-B354-9CB40D487B30}.Release|x86.Build.0 = Release|Win32
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Debug|x64.ActiveCfg = Debug|x64
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Debug|x64.Build.0 = Debug|x64
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Debug|x86.ActiveCfg = Debug|Win32
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Debug|x86.Build.0 = Debug|Win32
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Release|x64.ActiveCfg = Release|x64
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Release|x64.Build.0 = Release|x64
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Release|x86.ActiveCfg = Release|Win32
+		{D3D1FF30-CC8D-47DB-9FD8-90B0470B99CD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

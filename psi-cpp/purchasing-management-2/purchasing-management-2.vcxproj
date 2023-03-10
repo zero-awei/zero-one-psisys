@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{d3d1ff30-cc8d-47db-9fd8-90b0470b99cd}</ProjectGuid>
+    <RootNamespace>purchasingmanagement2</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CHECK_TOKEN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>mysqlcppconn.lib;
+libcrypto.lib;
+libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib\debug;..\lib-mysql\lib\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>mysqlcppconn.lib;
+libcrypto.lib;
+libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib-http\lib\openssl;..\lib-common\lib;..\lib-mysql\lib\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib/release" "$(OutDir)" /a /F /I /Y /C</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CHECK_TOKEN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>mysqlcppconn.lib;
+libcrypto.lib;
+libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64\debug;..\lib-mysql\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>.\;..\lib-mysql\include;..\lib-http\include;..\lib-common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>mysqlcppconn.lib;
+libcrypto.lib;
+libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib-http\lib64\openssl;..\lib-common\lib64;..\lib-mysql\lib64\vs14;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy "$(SolutionDir)lib-dy/lib64/release" "$(OutDir)" /a /F /I /Y /C</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib-common\lib-common.vcxproj">
+      <Project>{213f58ad-9943-4155-8a45-1b2dab0bb8f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib-http\lib-http.vcxproj">
+      <Project>{634af60f-bb31-439b-98c1-805bc34265f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib-mysql\lib-mysql.vcxproj">
+      <Project>{8293b741-b019-444f-80bc-70321a47868e}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="api\finPaymenReq\FinPaymentReqController.h" />
+    <ClInclude Include="api\payment\PaymentController.h" />
+    <ClInclude Include="api\prepayment\PrePayController.h" />
+    <ClInclude Include="api\purReq\PurReqController.h" />
+    <ClInclude Include="api\purCom\PurComController.h" />
+    <ClInclude Include="api\purOrder\PurOrderController.h" />
+    <ClInclude Include="api\Router.h" />
+    <ClInclude Include="api\statis\StatisController.h" />
+    <ClInclude Include="dao\DoInclude.h" />
+    <ClInclude Include="dao\finPaymentReq\FinPaymentReqBillMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\FinPaymentReqDAO.h" />
+    <ClInclude Include="dao\finPaymentReq\FinPaymentReqEntryBIllMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\FinPaymentReqEntryMapper.h" />
+    <ClInclude Include="dao\finPaymentReq\FinPaymentReqMapper.h" />
+    <ClInclude Include="dao\payment\PaymentDAO.h" />
+    <ClInclude Include="dao\payment\PaymentMapper.h" />
+    <ClInclude Include="dao\prepayment\PrepaymentDAO.h" />
+    <ClInclude Include="dao\prepayment\PrepaymentDetailMapper.h" />
+    <ClInclude Include="dao\prepayment\PrepaymentMapper.h" />
+    <ClInclude Include="dao\purCom\PurComDAO.h" />
+    <ClInclude Include="dao\purCom\PurComMapper.h" />
+    <ClInclude Include="dao\purCom\PurOrderDividedListMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurCompareEntryMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurCompareMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurInquiryEntryMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurInquiryMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurOrderEntryMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurQuotEntryMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurQuotMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurReqEntryMapper.h" />
+    <ClInclude Include="dao\purOrderSub\PurReqMapper.h" />
+    <ClInclude Include="dao\purOrder\PurOrderDAO.h" />
+    <ClInclude Include="dao\purOrder\PurOrderEntryDAO.h" />
+    <ClInclude Include="dao\purOrder\PurOrderMapper.h" />
+    <ClInclude Include="dao\purQuot\PurQuotDAO.h" />
+    <ClInclude Include="dao\purQuot\PurQuotMapper.h" />
+    <ClInclude Include="domain\do\DoInclude.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReq.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqEntryManageDO.h" />
+    <ClInclude Include="domain\do\FinPaymentReq\FinPaymentReqManageDO.h" />
+    <ClInclude Include="domain\do\FinPayReq\FinPayReqDO.h" />
+    <ClInclude Include="domain\do\prepayment\PrepaymentDetailDO.h" />
+    <ClInclude Include="domain\do\prepayment\PrepaymentDO.h" />
+    <ClInclude Include="domain\do\prepayment\PrepaymentEntryDO.h" />
+    <ClInclude Include="domain\do\PurCompare\PurCompare.h" />
+    <ClInclude Include="domain\do\PurCom\PurComDO.h" />
+    <ClInclude Include="domain\do\PurCom\PurComEntryDO.h" />
+    <ClInclude Include="domain\do\PurInquiry\PurInquiryDO.h" />
+    <ClInclude Include="domain\do\PurInquiry\PurInquiryEntryDO.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderDividedListDO.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderDO.h" />
+    <ClInclude Include="domain\do\PurOrder\PurOrderEntryDO.h" />
+    <ClInclude Include="domain\do\PurQuot\PurQuotDO.h" />
+    <ClInclude Include="domain\do\PurQuot\PurQuotEntryDO.h" />
+    <ClInclude Include="domain\do\PurReqEntry\PurReqEntryDO.h" />
+    <ClInclude Include="domain\do\PurReq\PurReqDO.h" />
+    <ClInclude Include="domain\dto\FileDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\addPaymentReqDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\finPaymentReqEntryDTO.h" />
+    <ClInclude Include="domain\dto\finPaymentReq\modPyamentReqDTO.h" />
+    <ClInclude Include="domain\dto\IDDTO.h" />
+    <ClInclude Include="domain\dto\PaymentBillImpl\addPayApplyDTO.h" />
+    <ClInclude Include="domain\dto\PaymentBillImpl\modPayApplyDTO.h" />
+    <ClInclude Include="domain\dto\payment\AddPaymentDTO.h" />
+    <ClInclude Include="domain\dto\payment\DePaymentDTO.h" />
+    <ClInclude Include="domain\dto\payment\PaymentChangeDTO.h" />
+    <ClInclude Include="domain\dto\payment\PaymentImportDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\AddPayDetailDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\AddPayDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\DePayDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\PayIntoDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\PayModBillStatusDTO.h" />
+    <ClInclude Include="domain\dto\prepayment\PrepaymentDTO.h" />
+    <ClInclude Include="domain\dto\purOrder\PurOrderDTO.h" />
+    <ClInclude Include="domain\dto\purOrder\PurOrderEntryDTO.h" />
+    <ClInclude Include="domain\GlobalInclude.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqEntryQuery.h" />
+    <ClInclude Include="domain\query\finPaymentReq\finPaymentReqQuery.h" />
+    <ClInclude Include="domain\query\PageQuery.h" />
+    <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillDetailQuery.h" />
+    <ClInclude Include="domain\query\PaymentBillImpl\PaymentBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrepayBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrepayDetailBillQuery.h" />
+    <ClInclude Include="domain\query\prepaymentbill\PrePayExportQuery.h" />
+    <ClInclude Include="domain\query\purCom\PurComEntryQuery.h" />
+    <ClInclude Include="domain\query\purCom\PurComQuery.h" />
+    <ClInclude Include="domain\query\purOrder\PurOrderDividedListQuery.h" />
+    <ClInclude Include="domain\query\purOrder\PurOrderQuery.h" />
+    <ClInclude Include="domain\query\purReq\PurReqQuery.h" />
+    <ClInclude Include="domain\query\statisQuery\ExeStatusQuery.h" />
+    <ClInclude Include="domain\query\statisQuery\StatisQuery.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentDetailVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqEntryVO.h" />
+    <ClInclude Include="domain\vo\finPaymentReq\finPaymentReqVO.h" />
+    <ClInclude Include="domain\vo\JsonVO.h" />
+    <ClInclude Include="domain\vo\Message.h" />
+    <ClInclude Include="domain\vo\PageVO.h" />
+    <ClInclude Include="domain\vo\PaymentBillImpl\PaymentBillDetailVO.h" />
+    <ClInclude Include="domain\vo\PaymentBillImpl\PaymentBillVO.h" />
+    <ClInclude Include="domain\vo\payment\PaymentVO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentBillVO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailBillVO.h" />
+    <ClInclude Include="domain\vo\prepaymentbill\PrepaymentDetailEntryBillVO.h" />
+    <ClInclude Include="domain\vo\prepayment\PrepaymentVO.h" />
+    <ClInclude Include="domain\vo\prepayment_req\PrepaymentExportVO.h" />
+    <ClInclude Include="domain\vo\prepayment_req\PrepaymentIntoVO.h" />
+    <ClInclude Include="domain\vo\purCom\PurComEntryVO.h" />
+    <ClInclude Include="domain\vo\purCom\PurComVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurCompareEntryVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurCompareVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurInquiryEntryVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurInquiryVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurQuotEntryVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurQuotVO.h" />
+    <ClInclude Include="domain\vo\purOrderSub\PurReqEntryVO.h" />
+    <ClInclude Include="domain\vo\purOrder\PurOrderDetailVO.h" />
+    <ClInclude Include="domain\vo\purOrder\PurOrderDividedListVO.h" />
+    <ClInclude Include="domain\vo\purOrder\PurOrderEntryVO.h" />
+    <ClInclude Include="domain\vo\purOrder\PurOrderVO.h" />
+    <ClInclude Include="domain\vo\purReq\PurReqVO.h" />
+    <ClInclude Include="domain\vo\ResultStatus.h" />
+    <ClInclude Include="domain\vo\statis\ExeStatusVO.h" />
+    <ClInclude Include="domain\vo\statis\MaterialVO.h" />
+    <ClInclude Include="domain\vo\statis\StatisVO.h" />
+    <ClInclude Include="Macros.h" />
+    <ClInclude Include="dao\purReq\PurReqDAO.h" />
+    <ClInclude Include="ServerInfo.h" />
+    <ClInclude Include="service\finPaymentReq\FinPyamentReqService.h" />
+    <ClInclude Include="service\payment\PaymentService.h" />
+    <ClInclude Include="service\prepayment\PrePayService.h" />
+    <ClInclude Include="service\purCom\PurComService.h" />
+    <ClInclude Include="service\purOrder\PurOrderService.h" />
+    <ClInclude Include="service\purReq\PurReqService.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="uselib\jwt\TestToken.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="api\Aspect.cpp" />
+    <ClCompile Include="api\finPaymenReq\FinPaymentReqController.cpp" />
+    <ClCompile Include="api\payment\PaymentController.cpp" />
+    <ClCompile Include="api\prepayment\PrePayController.cpp" />
+    <ClCompile Include="api\purReq\PurReqController.cpp" />
+    <ClCompile Include="api\purCom\PurComController.cpp" />
+    <ClCompile Include="api\purOrder\PurOrderController.cpp" />
+    <ClCompile Include="api\Router.cpp" />
+    <ClCompile Include="dao\finPaymentReq\FinPaymentReqDAO.cpp" />
+    <ClCompile Include="dao\payment\PaymentDAO.cpp" />
+    <ClCompile Include="dao\prepayment\PrepaymentDAO.cpp" />
+    <ClCompile Include="dao\purCom\PurComDAO.cpp" />
+    <ClCompile Include="dao\purOrder\PurOrderDAO.cpp" />
+    <ClCompile Include="dao\purOrder\PurOrderEntryDAO.cpp" />
+    <ClCompile Include="dao\purQuot\PurQuotDAO.cpp" />
+    <ClCompile Include="domain\dto\payment\AddPaymentDTO.cpp" />
+    <ClCompile Include="domain\dto\payment\DePaymentDTO.cpp" />
+    <ClCompile Include="domain\dto\payment\PaymentChangeDTO.cpp" />
+    <ClCompile Include="domain\dto\prepayment\DePayDTO.cpp" />
+    <ClCompile Include="domain\dto\prepayment\PayModBillStatusDTO.cpp" />
+    <ClCompile Include="domain\dto\prepayment\PrepaymentDTO.cpp" />
+    <ClCompile Include="domain\dto\purOrder\PurOrderDTO.cpp" />
+    <ClCompile Include="domain\dto\purOrder\PurOrderEntryDTO.cpp" />
+    <ClCompile Include="domain\vo\ResultStatus.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="dao\purReq\PurReqDAO.cpp" />
+    <ClCompile Include="service\finPaymentReq\FinPyamentReqService.cpp" />
+    <ClCompile Include="service\payment\PaymentService.cpp" />
+    <ClCompile Include="service\prepayment\PrePayService.cpp" />
+    <ClCompile Include="service\purCom\PurComService.cpp" />
+    <ClCompile Include="service\purOrder\PurOrderService.cpp" />
+    <ClCompile Include="service\purReq\PurReqService.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="uselib\jwt\TestToken.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
