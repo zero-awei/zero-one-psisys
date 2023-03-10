@@ -10,31 +10,31 @@
 
 
 /**
- * ʾ�������ݿ����ʵ��
+ * 采购付款申请
  */
 class FinPaymentReqDAO : public BaseDAO
 {
 public:
-	// ��������(����/�ύ) ��������
+	// 插入
 	uint64_t insert(const FinPaymentReqManageDO& obj);
 
-	// ������ϸ����(����/�ύ) ��������
+	// 插入到明细表
 	uint64_t insertEntry(const FinPaymentReqEntryManageDO& obj);
 
-	// ͨ��billNoɾ������
+	// ͨ通过bill_no删除
 	int deleteByBillNo(string billNo);
 
-	//ͨ��BillNo������������ ��������ֻ��һ������ֻ����һ��
+	// 通过bill_no查询
 	list<FinPaymentReqManageDO> selectByBillNo(const string& billNo);
 
-	//ͨ��BillNo������ϸ������
+	// 通过bill_no查询明细表
 	list<FinPaymentReqEntryManageDO> selectEntryByBillNo(const string& billNo);
 
-	// ͳ����������
+	// 计数
 	uint64_t count(const FinPaymentReqDO& iObj);
-	// ��ҳ��ѯ����
+	// 查询指定页
 	list<FinPaymentReqDO> selectWithPage(const FinPaymentReqDO& obj, uint64_t pageIndex, uint64_t pageSize);
-	// ͨ����Ų鿴��ϸ��Ϣ
+	// ͨ通过bill_no查询
 	list<FinPaymentReqDO> selectBillNo(const string& billNo);
 
 };

@@ -17,6 +17,7 @@ bool PaymentService::DePayment(const DePaymentDTO& dto)
 		data.setId(dto.getId());
 		return dao.deleteById(data) == 1;
 	}
+	return false;
 }
 
 // 修改采购订单状态
@@ -44,6 +45,7 @@ bool PaymentService::ChangePayStatus(const PaymentChangeDTO& dto, const PayloadD
 		data.setIs_voided(dto.OPS[dto.getOpType()]);
 		return dao.ChangeStatusCancel(data) == 1;
 	}
+	return false;
 }
 
 

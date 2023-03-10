@@ -52,7 +52,7 @@ class PurOrderDetailVO
 	// 单据主题
 	CC_SYNTHESIZE(string, subject, Subject);
 	// 红字单据
-	CC_SYNTHESIZE(int, is_rubric, Is_rubric);
+	CC_SYNTHESIZE(uint64_t, is_rubric, Is_rubric);
 	// 采购类型
 	CC_SYNTHESIZE(string, pur_type, Pur_type);
 	// 供应商
@@ -94,27 +94,27 @@ class PurOrderDetailVO
 	// 数量
 	CC_SYNTHESIZE(double, qty, Qty);
 	// 金额
-	CC_SYNTHESIZE(float, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	// 预付余款	
-	CC_SYNTHESIZE(float, prepayment_bal, Prepayment_bal);
+	CC_SYNTHESIZE(double, prepayment_bal, Prepayment_bal);
 	// 结算数量
 	CC_SYNTHESIZE(double, settle_qty, Settle_qty);
 	// 结算金额
-	CC_SYNTHESIZE(float, settle_amt, Settle_amt);
+	CC_SYNTHESIZE(double, settle_amt, Settle_amt);
 	// 已入库数量		
 	CC_SYNTHESIZE(double, in_qty, In_qty);
 	// 已入库成本
-	CC_SYNTHESIZE(float, in_cost, In_cost);
+	CC_SYNTHESIZE(double, in_cost, In_cost);
 	// 已结算金额
-	CC_SYNTHESIZE(float, settled_amt, Settled_amt);
+	CC_SYNTHESIZE(double, settled_amt, Settled_amt);
 	// 已开票金额
-	CC_SYNTHESIZE(float, invoiced_amt, Invoiced_amt);
+	CC_SYNTHESIZE(double, invoiced_amt, Invoiced_amt);
 	// 附件
 	CC_SYNTHESIZE(string, attachment, Attachment);
 	//备注
 	CC_SYNTHESIZE(string, remark, Remark);
 	// 是否自动生成:自动单据
-	CC_SYNTHESIZE(int, is_auto, Is_auto);
+	CC_SYNTHESIZE(uint64_t, is_auto, Is_auto);
 	// 单据阶段		
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	// 审核人
@@ -126,13 +126,13 @@ class PurOrderDetailVO
 	// 核批意见
 	CC_SYNTHESIZE(string, approval_remark, Approval_remark);
 	// 是否生效
-	CC_SYNTHESIZE(int, is_effective, Is_effective);
+	CC_SYNTHESIZE(uint64_t, is_effective, Is_effective);
 	// 生效时间
 	CC_SYNTHESIZE(string, effective_time, Effective_time);
 	// 是否关闭
-	CC_SYNTHESIZE(int, is_closed, Is_closed);
+	CC_SYNTHESIZE(uint64_t, is_closed, Is_closed);
 	// 是否作废
-	CC_SYNTHESIZE(int, is_voided, Is_voided);
+	CC_SYNTHESIZE(uint64_t, is_voided, Is_voided);
 	// 创建部门
 	CC_SYNTHESIZE(string, sys_org_code, Sys_org_code);
 	// 创建人
@@ -144,7 +144,7 @@ class PurOrderDetailVO
 	// 修改时间
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 版本
-	CC_SYNTHESIZE(int, version, Version);
+	CC_SYNTHESIZE(uint64_t, version, Version);
 	// Entry
 	CC_SYNTHESIZE(list<PurOrderEntryVO>, entry, Entry);
 	// Pur_req

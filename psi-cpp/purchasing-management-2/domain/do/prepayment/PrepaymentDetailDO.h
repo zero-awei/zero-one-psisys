@@ -15,7 +15,7 @@ class PrepaymentDetailDO {
 	//单据号
 	CC_SYNTHESIZE(string, bill_no, Bill_no);
 	//分录号
-	CC_SYNTHESIZE(int, entry_no, Entry_no);
+	CC_SYNTHESIZE(uint64_t, entry_no, Entry_no);
 	//源单类型
 	CC_SYNTHESIZE(string, src_bill_type, Src_bill_type);
 	//srcBillId
@@ -35,7 +35,7 @@ class PrepaymentDetailDO {
 	//自定义2
 	CC_SYNTHESIZE(string, custom2, Custom2);
 	//版本
-	CC_SYNTHESIZE(int, version, Version);
+	CC_SYNTHESIZE(uint64_t, version, Version);
 
 public:
 	PrepaymentDetailDO() {

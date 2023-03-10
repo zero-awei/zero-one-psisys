@@ -31,16 +31,6 @@ JsonVO<PageVO<PurComVO>> PurComController::execListPurCom(const PurComQuery& que
 	return JsonVO<PageVO<PurComVO>>(result, RS_SUCCESS);
 }
 
-// 查询单个数据
-// 负责人：J4nnA
-JsonVO<PurComVO> PurComController::execGetPurCom(const PurComQuery& query)
-{
-	PurComService service;
-	//JsonVO<PurComVO> result = JsonVO(service.getData(query.getId()), RS_SUCCESS);
-	//return result;
-	JsonVO<PurComVO> result;
-	return result;
-}
 
 // 查询指定比价单的明细列表
 // 负责人：J4nnA

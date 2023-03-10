@@ -25,9 +25,9 @@ class PrepaymentBillVO
 	//业务员
 	CC_SYNTHESIZE(string, op, Operator);
 	//申请金额
-	CC_SYNTHESIZE(int, amt, Amt);
+	CC_SYNTHESIZE(double, amt, Amt);
 	//已付金额
-	CC_SYNTHESIZE(int, paid_amt, Paid_amt);
+	CC_SYNTHESIZE(double, paid_amt, Paid_amt);
 	// 单据阶段
 	CC_SYNTHESIZE(string, bill_stage, Bill_stage);
 	// 已生效

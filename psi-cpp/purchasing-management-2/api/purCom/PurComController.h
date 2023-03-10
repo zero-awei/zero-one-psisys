@@ -39,8 +39,6 @@ class PurComController {
 public:
 	// 分页数据
 	CREATE_API_FUN_QUERY_PAYLOAD(listPurCom, execListPurCom, PurComQuery);
-	// 单个数据
-	CREATE_API_FUN_BODY(getPurCom, execGetPurCom, PurComQuery);
 	// 明细列表
 	CREATE_API_FUN_QUERY_PAYLOAD(listPurComEntrys, execListPurComEntrys, PurComEntryQuery);
 

@@ -47,8 +47,6 @@ JUDGE_INT_SQL(obj,sql,params,Is_voided, is_voided)\
 %s%s%s%s%s\
 %s%s%s%s"
 
-
-//`approval_result_type`,`approval_remark` `update_by`,`update_time`"
 std::string ValueNum(unsigned int x) {
 	std::string str;
 	while (x-- > 1) {

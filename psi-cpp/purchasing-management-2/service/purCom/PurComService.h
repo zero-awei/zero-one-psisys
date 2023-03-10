@@ -37,8 +37,7 @@ class PurComService
 public:
 	// 分页查询所有数据
 	PageVO<PurComVO> listAll(const PurComQuery& query);
-	// 查询单个数据
-	PurComVO getData(uint64_t id);
+
 	// 查询指定比价单详情列表
 	PageVO<PurComEntryVO>listEntry(const PurComEntryQuery& query);
 	
