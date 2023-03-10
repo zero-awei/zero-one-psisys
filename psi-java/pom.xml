@@ -27,6 +27,7 @@
         <module>psi-basedetail</module>
         <module>psi-titlepage</module>
         <module>psi-payablemanagement</module>
+        <module>psi-prepayment</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
