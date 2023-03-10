@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-build</artifactId>
         <version>2.3.5.RELEASE</version>
-        <relativePath />
+        <relativePath/>
     </parent>
     <groupId>com.zeroone.star</groupId>
     <artifactId>psi-java</artifactId>
@@ -55,7 +55,6 @@
         <es.client.version>7.14.0</es.client.version>
         <captcha.version>1.3.0</captcha.version>
         <mapstruct.version>1.4.0.Final</mapstruct.version>
-
     </properties>
     <dependencies>
         <!-- lombok -->
@@ -237,6 +236,16 @@
                 <version>${fastdfs.version}</version>
             </dependency>
             -->
+            <dependency>
+                <groupId>com.zeroone.star</groupId>
+                <artifactId>fastdfs-spring-boot-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${apache.common.io.version}</version>
+            </dependency>
 
             <!-- mapstruct -->
             <dependency>
@@ -249,36 +258,24 @@
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
-
-
-            <dependency>
-                <groupId>com.zeroone.star</groupId>
-                <artifactId>fastdfs-spring-boot-starter</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${apache.common.io.version}</version>
-            </dependency>
             <!-- logstash logback encoder -->
-<!--            <dependency>-->
-<!--                <groupId>net.logstash.logback</groupId>-->
-<!--                <artifactId>logstash-logback-encoder</artifactId>-->
-<!--                <version>${logstash-logback-encoder.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
+            </dependency>
             <!-- spring boot admin server -->
-<!--            <dependency>-->
-<!--                <groupId>de.codecentric</groupId>-->
-<!--                <artifactId>spring-boot-admin-starter-server</artifactId>-->
-<!--                <version>${spring-boot-admin.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
             <!-- spring boot admin client -->
-<!--            <dependency>-->
-<!--                <groupId>de.codecentric</groupId>-->
-<!--                <artifactId>spring-boot-admin-starter-client</artifactId>-->
-<!--                <version>${spring-boot-admin.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
             <!-- findbugs -->
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
