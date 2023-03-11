@@ -230,18 +230,13 @@ int PrepaymentDAO::updatePrepay(const PrepaymentDO& uObj)
 		<< "`remark`,`custom1`,`custom2`)"
 		<< " VALUES (" << ValueNum(13) << ")";
 	sqlStr = sql.str();
-	bool flag = false;
 	for (PrepaymentDetailDO dtObj : uObj.getDetail()) {
 		uint64_t result_detail = sqlSession->executeUpdate(sqlStr, "%s%s%s%i%s%s%s%s%d%d%s%s%s",
 			dtObj.getId(), dtObj.getMid(), dtObj.getBill_no(), dtObj.getEntry_no(), dtObj.getSrc_bill_type(),
 			dtObj.getSrc_bill_id(), dtObj.getSrc_entry_id(), dtObj.getSrc_no(), dtObj.getAmt(), dtObj.getPaid_amt(),
 			dtObj.getRemark(), dtObj.getCustom1(), dtObj.getCustom2()
 		);
-		if (result_detail != 0 && !flag) {
-			flag = true;
-		}
 	}
-	if (flag == true || result != 0);
 	return result;
 }
 
