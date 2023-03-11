@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.prepayment.mapper.FinPaymentMapper">
+
+    <insert id="addBatch" parameterType="com.zeroone.star.prepayment.entity.FinPayment">
+        insert into fin_payment values
+        <foreach collection="list" item="payment" separator=",">
+            (#{payment.billNo},#{payment.billNo},#{payment.billDate},#{payment.srcBillType},#{payment.srcBillId},#{payment.srcNo},#{payment.subject},#{payment.isRubric},#{payment.paymentType}
+            ,#{payment.supplierId},#{payment.amt},#{payment.checkedAmt},#{payment.attachment},#{payment.remark},#{payment.isAuto},#{payment.billStage},#{payment.approver}
+            ,#{payment.bpmiInstanceId},#{payment.approvalResultType},#{payment.approvalRemark},#{payment.isEffective},#{payment.effectiveTime},#{payment.isClosed}
+            ,#{payment.isVoided},#{payment.createTime},#{payment.createBy},#{payment.sysOrgCode},#{payment.updateTime},#{payment.updateBy},#{payment.version})
+        </foreach>
+    </insert>
+
+</mapper>
