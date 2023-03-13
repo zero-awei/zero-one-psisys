@@ -172,7 +172,7 @@
     <el-card class="card2" style="margin-top:10px;height:49%">
       <template #header>
         <div class="card-header">
-          <span style="font-size:20px">销售</span>
+          <span style="font-size:20px">采购</span>
           <el-icon style="color:#409eff;cursor: pointer;" @click="handleRePur()">
             <Refresh />
           </el-icon>
@@ -340,7 +340,7 @@
 
 <script setup>
 import { ref, reactive, onMounted, toRaw } from 'vue'
-import { getSalList, getPurList } from './api/CenterCom.js'
+import { getSalList, getPurList } from '@/components/api/CenterCom.js'
 import { Refresh } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
 import { themeStore } from '@/stores/theme'
@@ -351,7 +351,7 @@ const themStore = themeStore()
 const isDarkThem = ref(false)
 const { isDarkTheme } = storeToRefs(themStore)
 const subscribe = themStore.$subscribe((mutation, state) => {
-  // console.log('77777777', state.isDarkTheme)
+  console.log('77777777', state.isDarkTheme)
   isDarkThem.value = state.isDarkTheme
 
 })
@@ -394,10 +394,10 @@ function doGetSalList() {
       SalList.yingshou = data[2]
       SalList.shoukuan = data[3]
       // SalList = data
-      // console.log(data)
+      console.log(data)
       // console.log(SalList.dingdan)//正常数据
     },
-    // console.log(SalList),//proxy
+    console.log(SalList),//proxy
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)
@@ -416,10 +416,10 @@ function doGetPurList() {
       PurList.yingshou = data[2]
       PurList.shoukuan = data[3]
       // SalList = data
-      // console.log(data)
+      console.log(data)
       // console.log(SalList.dingdan)//正常数据
     },
-    // console.log(PurList),//proxy
+    console.log(PurList),//proxy
     // 失败回调函数
     (msg) => {
       ElMessage.warning(msg)
