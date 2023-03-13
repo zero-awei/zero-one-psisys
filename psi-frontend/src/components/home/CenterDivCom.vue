@@ -172,7 +172,7 @@
     <el-card class="card2" style="margin-top:10px;height:49%">
       <template #header>
         <div class="card-header">
-          <span style="font-size:20px">销售</span>
+          <span style="font-size:20px">采购</span>
           <el-icon style="color:#409eff;cursor: pointer;" @click="handleRePur()">
             <Refresh />
           </el-icon>
