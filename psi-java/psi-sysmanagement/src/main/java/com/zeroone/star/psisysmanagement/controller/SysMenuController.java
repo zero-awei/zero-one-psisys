@@ -1,11 +1,16 @@
 package com.zeroone.star.psisysmanagement.controller;
 
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
+import com.zeroone.star.project.sysmanagement.MenuManagementApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
+import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.service.ISysMenuService;
+import com.zeroone.star.psisysmanagement.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -26,7 +31,7 @@ import java.util.List;
 @Api(tags = "系统管理-菜单管理接口")
 @RestController
 @RequestMapping("/sysmanagement/menumanagement/sys-menu")
-public class SysMenuController {
+public class SysMenuController implements MenuManagementApis {
 
     @Resource
     private ISysMenuService iSysMenuService;
@@ -69,22 +74,21 @@ public class SysMenuController {
     }
 
     @SneakyThrows
-    @ApiOperation(value = "查询菜单")
+    @ApiOperation(value = "条件查询菜单")
     @GetMapping("/query")
-public JsonVO<List<MenuVO>> queryMenus(String id, String parentId) {
-        //一级菜单parentId为0
-        SysMenuQuery sysMenuQuery = new SysMenuQuery();
-        if (id != null){
-            sysMenuQuery.setId(id);
-        }
-        if (parentId != null){
-            sysMenuQuery.setParentId(parentId);
-        } else {
-            sysMenuQuery.setParentId("00000000000000000000000000000001");
-        }
+    @Override
+    public JsonVO<PageVO<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery) {
+        PageVO<MenuVO> menuVOPageVO = iSysMenuService.queryMenus(sysMenuQuery);
+        return JsonVO.success(menuVOPageVO);
+    }
 
-        return iSysMenuService.queryMenus(sysMenuQuery);
-
+    @SneakyThrows
+    @ApiOperation(value = "查询所有菜单")
+    @GetMapping("/query-all")
+    @Override
+    public JsonVO<PageVO<MenuVO>> queryAllMenus(PageQuery sysMenuQuery) {
+        PageVO<MenuVO> menuVOPageVO = iSysMenuService.selectAllMenus(sysMenuQuery);
+        return JsonVO.success(menuVOPageVO);
     }
 
 }

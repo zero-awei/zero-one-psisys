@@ -20,7 +20,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @ApiModel("用户管理的查询对象")
 public class UserQuery extends PageQuery {
-    @NotBlank(message = "id不能为空")
-    @ApiModelProperty(value = "id", example = "1a2b3")
+
+    @ApiModelProperty(value = "id", example = "e9ca23d68d884d4ebb19d07889727dae")
     private String id;
 }

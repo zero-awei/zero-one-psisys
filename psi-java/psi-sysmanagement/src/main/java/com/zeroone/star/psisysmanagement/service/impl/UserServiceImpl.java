@@ -3,6 +3,7 @@ package com.zeroone.star.psisysmanagement.service.impl;
 import cn.hutool.core.date.DateTime;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.read.listener.PageReadListener;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -21,6 +22,7 @@ import com.zeroone.star.psisysmanagement.service.DepartService;
 import com.zeroone.star.psisysmanagement.service.IUserService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -55,33 +57,35 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     DepartService departService;
 
     // axin
-    //    展示用户列表 finished tested（传id的情况下）
+    // 展示用户列表 finished tested（传id的情况下）
     @Override
     public PageVO<UserVO> listAllUsers(UserQuery query) {
-        //        创建分页对象
+        // 创建分页对象
         Page<User> userPage = new Page<>(query.getPageIndex(), query.getPageSize());
-//        执行分页查询
-        Page<User> result = baseMapper.selectPage(userPage,null);
+        // 执行分页查询
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.like(Strings.isNotBlank(query.getId()), User::getId, query.getId());
+        Page<User> result = baseMapper.selectPage(userPage,lambdaQueryWrapper);
         return PageVO.create(result, UserVO.class);
     }
 
     // axin
-    //    模糊查询用户 finished tested
+    // 模糊查询用户 finished tested
     @Override
     public PageVO<UserVO> listUser(FindUserQuery query) {
-        //        创建分页对象
+        // 创建分页对象
         Page<User> userPage = new Page<>(query.getPageIndex(), query.getPageSize());
-//        创建查询条件
+        // 创建查询条件
         QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.like("realname",query.getName());
         userQueryWrapper.like("username",query.getName());
-//        执行分页查询
+        // 执行分页查询
         Page<User> result = baseMapper.selectPage(userPage, userQueryWrapper);
         return PageVO.create(result, UserVO.class);
     }
 
-    //    axin
-//       新增用户
+    // axin
+    // 新增用户
     @Override
     public void saveUser(AddUserDTO dto) {
         User user = new User();

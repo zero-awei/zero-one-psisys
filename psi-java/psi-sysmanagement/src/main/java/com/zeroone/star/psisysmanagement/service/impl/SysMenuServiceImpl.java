@@ -1,16 +1,21 @@
 package com.zeroone.star.psisysmanagement.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
 import com.zeroone.star.psisysmanagement.mapper.SysMenuMapper;
 import com.zeroone.star.psisysmanagement.service.ISysMenuService;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,32 +35,18 @@ import java.util.List;
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements ISysMenuService {
 
     @Override
-    public JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery) {
+    public PageVO<MenuVO> queryMenus(SysMenuQuery sysMenuQuery) {
 
-        ArrayList<MenuVO> menuVOS = new ArrayList<>();
-        String id = sysMenuQuery.getId();
-        String parentId = sysMenuQuery.getParentId();
+        LambdaQueryWrapper<SysMenu> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        Page<SysMenu> pageInfo = new Page(sysMenuQuery.getPageIndex(), sysMenuQuery.getPageSize());
 
-        //传入的参数有id时，返回该id对应的菜单
-        if (id != null) {
-            SysMenu sysMenu = baseMapper.selectById(id);
-            MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
-            menuVOS.add(menuVO);
-        }
+        lambdaQueryWrapper.like(Strings.isNotBlank(sysMenuQuery.getId()), SysMenu::getId, sysMenuQuery.getId());
+        lambdaQueryWrapper.like(Strings.isNotBlank(sysMenuQuery.getParentId()), SysMenu::getParentId, sysMenuQuery.getParentId());
+        lambdaQueryWrapper.like(Strings.isNotBlank(sysMenuQuery.getName()), SysMenu::getName, sysMenuQuery.getName());
 
-        //传入的参数有parentId时，返回该parentId对应的子id(次级子节点，非全部子节点)
-        if (parentId != null) {
-            QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("parent_id", sysMenuQuery.getParentId());
-            List<SysMenu> sysMenus = baseMapper.selectList(queryWrapper);
-            for (SysMenu sysMenu : sysMenus) {
-                MenuVO menuVO = BeanUtil.copyProperties(sysMenu, MenuVO.class);
-                menuVOS.add(menuVO);
-            }
-        }
-
-        return menuVOS.size() == 0 ?
-                JsonVO.create(null, ResultStatus.FAIL) : JsonVO.create(menuVOS, ResultStatus.SUCCESS);
+        Page<SysMenu> sysMenuPage = baseMapper.selectPage(pageInfo, lambdaQueryWrapper);
+        PageVO<MenuVO> menuVOPageVO = PageVO.create(sysMenuPage, MenuVO.class);
+        return menuVOPageVO;
     }
 
     @Override
@@ -214,6 +205,13 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         resetSortNo(selectFromDB.getSortNo(), selectFromDB.getParentId());
 
         return num >= 1 ? JsonVO.success(ResultStatus.SUCCESS) : JsonVO.fail(ResultStatus.FAIL);
+    }
+
+    @Override
+    public PageVO<MenuVO> selectAllMenus(PageQuery condition) {
+        Page<SysMenu> pageInfo = new Page<>(condition.getPageIndex(), condition.getPageSize());
+        Page<SysMenu> sysMenuPage = baseMapper.selectPage(pageInfo, null);
+        return PageVO.create(pageInfo, MenuVO.class);
     }
 
     /**

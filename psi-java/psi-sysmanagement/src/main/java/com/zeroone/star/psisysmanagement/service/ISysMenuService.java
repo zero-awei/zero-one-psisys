@@ -2,8 +2,10 @@ package com.zeroone.star.psisysmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.sysmanagement.menumanagement.MenuDTO;
+import com.zeroone.star.project.query.PageQuery;
 import com.zeroone.star.project.query.sysmanagement.menumanagement.SysMenuQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.PageVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.project.vo.sysmanagement.menumanagement.MenuVO;
 import com.zeroone.star.psisysmanagement.entity.SysMenu;
@@ -19,13 +21,6 @@ import java.util.List;
  * @since 2023-02-14
  */
 public interface ISysMenuService extends IService<SysMenu> {
-
-    /**
-     * 查询菜单
-     * @param sysMenuQuery
-     * @return
-     */
-    JsonVO<List<MenuVO>> queryMenus(SysMenuQuery sysMenuQuery);
 
     /**
      * 新增菜单
@@ -47,6 +42,20 @@ public interface ISysMenuService extends IService<SysMenu> {
      * @return
      */
     JsonVO<ResultStatus> deleteMenu(SysMenuQuery sysMenuQuery);
+
+    /**
+     * 查询所有菜单
+     * @param condition
+     * @return 菜单列表
+     */
+    PageVO<MenuVO> selectAllMenus(PageQuery condition);
+
+    /**
+     * 查询菜单
+     * @param sysMenuQuery
+     * @return
+     */
+    PageVO<MenuVO> queryMenus(SysMenuQuery sysMenuQuery);
 
 }
 

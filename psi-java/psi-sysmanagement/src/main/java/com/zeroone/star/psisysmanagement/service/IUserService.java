@@ -25,14 +25,14 @@ import java.util.List;
 public interface IUserService extends IService<User> {
 
     // axin
-    //    查询用户列表（通过UserQuery中的id属性）
+    // 查询用户列表（通过UserQuery中的id属性）
     PageVO<UserVO> listAllUsers(UserQuery query);
 
     // axin
-    //    查询用户信息（通过FindUserQuery中的name属性）
+    // 查询用户信息（通过FindUserQuery中的name属性）
     PageVO<UserVO> listUser(FindUserQuery query);
-    //     axin
-//        新增用户
+    // axin
+    // 新增用户
     void saveUser(AddUserDTO dto);
 
 
