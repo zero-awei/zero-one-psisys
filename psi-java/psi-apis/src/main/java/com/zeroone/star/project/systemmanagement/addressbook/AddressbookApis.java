@@ -21,12 +21,19 @@ import org.springframework.validation.annotation.Validated;
 public interface AddressbookApis {
 
     /**
+     * 查询通讯录
+     * @param condition 查询条件
+     * @return 查询结果
+     */
+    JsonVO<PageVO<AddressbookVO>> query(AddressbookQuery condition);
+
+    /**
      * 查询通讯录列表
      * @param condition 查询条件
      * @return 查询结果
      */
     JsonVO<PageVO<AddressbookVO>> queryAddressbook(AddressbookQuery condition);
-    
+
     /**
      * 根据姓名和工号查询通讯录列表
      *
