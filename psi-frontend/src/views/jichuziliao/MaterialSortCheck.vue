@@ -31,8 +31,8 @@
 </template>
     
 <script setup>
-import { reactive, toRefs, ref } from 'vue'
-import { } from './api/materialsortcheck.js'
+import { reactive, toRefs, ref, onMounted } from 'vue'
+import { getBase } from './api/materialsortcheck.js'
 // 抽屉
 const drawerStatus = reactive({
   title: '抽屉标题',
@@ -265,6 +265,35 @@ const pagination = reactive({
   pageSizes: [100, 200, 300, 400], // 可选择的每页展示量
   total: 400, //数据总量
   layout: 'total, sizes, prev, pager, next, jumper'
+})
+
+function handleQuery() {
+  let param = {
+    pageIndex: 1,
+    pageSize: 5,
+  }
+  getBase(
+    param,
+    (data) => {
+      // 查询全部返回的是表格数据
+      // 分页
+      // console.log('---通讯录', data)
+      pagination.currentPage = data.pageIndex
+      pagination.pageSize = data.pageSize
+      pagination.total = data.total
+
+      // 表格数据
+      tableData.value = data.rows
+
+    },
+    // 失败回调函数
+    (msg) => {
+      ElMessage.warning(msg)
+    }
+  )
+}
+onMounted(() => {
+  handleQuery()
 })
 </script>
     

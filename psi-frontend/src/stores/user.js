@@ -457,6 +457,7 @@ export const userStore = defineStore('user', {
       //this.menus = testMenus
 
       // 发送获取菜单请求
+      // console.log('getMenus调用1')
       let data = await Request.requestForm(
         Request.GET,
         '/login/get-menus',
@@ -465,7 +466,9 @@ export const userStore = defineStore('user', {
           baseURL: import.meta.env.VITE_API_J1_LOGIN
         }
       )
+      console.log('getMenus调用2', data)
       this.menus = data.data
+
       // this.menus.push(sysmanageRouter)
       // // 在后端返回菜单列表中添加组件列表路由
       // this.menus.push(baseDataRouter)

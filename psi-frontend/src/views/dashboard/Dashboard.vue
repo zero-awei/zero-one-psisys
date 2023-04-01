@@ -2,7 +2,7 @@
  * @Author: 160405103 1348313766@qq.com
  * @Date: 2023-02-24 13:55:48
  * @LastEditors: 160405103 1348313766@qq.com
- * @LastEditTime: 2023-03-07 18:15:49
+ * @LastEditTime: 2023-04-01 19:17:34
  * @FilePath: \psi-frontend\src\views\dashboard\Dashboard.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -11,19 +11,19 @@
     <!-- <div class="top"> -->
     <div>
       <!-- <el-row> -->
-      <CenterCom1 />
+      <!-- <CenterCom1 /> -->
       <!-- </el-row> -->
     </div>
     <div class="bottom">
       <el-row :gutter="10">
         <el-col :span="10">
-          <CenterDivCom />
+          <!-- <CenterDivCom /> -->
         </el-col>
         <el-col :span="8">
-          <CenterPicCom />
+          <!-- <CenterPicCom /> -->
         </el-col>
         <el-col :span="6">
-          <CenterTabCom />
+          <!-- <CenterTabCom /> -->
         </el-col>
       </el-row>
     </div>
